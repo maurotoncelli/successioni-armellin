@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Successioni Armellin - Presentazione di Progetto</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  :root{
+    --navy:#0E2A47;
+    --slate:#20405E;
+    --gold:#B5894E;
+    --sand:#EFE9DD;
+    --pearl:#F5F7FA;
+    --ink:#16242F;
+    --soft:#5A6B7B;
+    --ok:#2E7D5B;
+    --err:#B4423A;
+    --warn:#C08A2E;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html,body{
+    font-family:'Inter',-apple-system,'Helvetica Neue',Arial,sans-serif;
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @page{ size:A4 landscape; margin:0; }
+
+  .slide{
+    position:relative;
+    width:297mm;
+    height:209.7mm;
+    padding:18mm 20mm;
+    page-break-after:always;
+    overflow:hidden;
+    background:#fff;
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+  .slide:last-child{ page-break-after:auto; }
+
+  h1,h2,h3,.serif{ font-family:'Lora',Georgia,'Times New Roman',serif; }
+
+  /* ---------- footer ---------- */
+  .foot{
+    position:absolute;
+    left:20mm; right:20mm; bottom:10mm;
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:9pt; color:var(--soft);
+    letter-spacing:.04em;
+    border-top:1px solid rgba(14,42,71,.12);
+    padding-top:4mm;
+  }
+  .foot .brand{ font-family:'Lora',serif; color:var(--navy); font-weight:600; }
+  .foot .num{ font-variant-numeric:tabular-nums; }
+
+  .kicker{
+    display:inline-block;
+    font-size:9.5pt; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:6mm;
+  }
+  .kicker::before{ content:""; display:inline-block; width:14mm; height:2px; background:var(--gold); vertical-align:middle; margin-right:4mm; }
+
+  h2.title{ font-size:30pt; line-height:1.1; color:var(--navy); font-weight:700; margin-bottom:5mm; max-width:230mm; }
+  p.lead{ font-size:13pt; line-height:1.55; color:var(--slate); max-width:200mm; }
+
+  /* ---------- COVER ---------- */
+  .cover{
+    background:
+      radial-gradient(120% 90% at 100% 0%, rgba(181,137,78,.20) 0%, rgba(181,137,78,0) 45%),
+      linear-gradient(160deg, #0E2A47 0%, #14304f 55%, #0b2138 100%);
+    color:#fff;
+    display:flex; flex-direction:column; justify-content:center;
+    padding:24mm 26mm;
+  }
+  .cover .mono{
+    width:18mm; height:18mm; border-radius:3mm;
+    background:linear-gradient(150deg,var(--gold),#9c7035);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Lora',serif; font-weight:700; font-size:16pt; color:#0E2A47;
+    box-shadow:0 6px 20px rgba(0,0,0,.25);
+    margin-bottom:14mm;
+  }
+  .cover .eyebrow{ font-size:11pt; letter-spacing:.28em; text-transform:uppercase; color:var(--gold); margin-bottom:7mm; }
+  .cover h1{ font-size:46pt; line-height:1.06; font-weight:700; letter-spacing:.5px; }
+  .cover h1 span{ color:var(--gold); }
+  .cover .sub{ font-size:15pt; color:#cfd9e4; margin-top:8mm; max-width:190mm; line-height:1.5; }
+  .cover .sign{
+    margin-top:16mm; padding-top:7mm; border-top:1px solid rgba(255,255,255,.18);
+    display:flex; gap:10mm; font-size:10.5pt; color:#aebccb;
+  }
+  .cover .sign b{ color:#fff; font-weight:600; display:block; font-size:11.5pt; font-family:'Lora',serif; }
+  .cover .conf{ position:absolute; right:26mm; bottom:18mm; font-size:8.5pt; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.45); }
+
+  /* ---------- generic layout ---------- */
+  .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:10mm; margin-top:9mm; }
+  .grid3{ display:grid; grid-template-columns:repeat(3,1fr); gap:8mm; margin-top:9mm; }
+
+  .card{
+    background:var(--pearl);
+    border:1px solid rgba(14,42,71,.08);
+    border-radius:4mm;
+    padding:8mm;
+  }
+  .card h3{ font-size:14pt; color:var(--navy); margin-bottom:3mm; }
+  .card p{ font-size:10.5pt; line-height:1.5; color:var(--slate); }
+  .card .ico{
+    width:11mm; height:11mm; border-radius:2.5mm; background:var(--sand);
+    color:var(--navy); display:flex; align-items:center; justify-content:center;
+    font-family:'Lora',serif; font-weight:700; font-size:13pt; margin-bottom:5mm;
+  }
+
+  ul.clean{ list-style:none; margin-top:6mm; }
+  ul.clean li{ position:relative; padding-left:9mm; margin-bottom:4.5mm; font-size:11.5pt; line-height:1.5; color:var(--slate); }
+  ul.clean li::before{ content:""; position:absolute; left:0; top:2.2mm; width:4mm; height:4mm; border-radius:50%; background:var(--gold); }
+  ul.clean li b{ color:var(--navy); }
+
+  /* ---------- pricing ---------- */
+  .price-wrap{ display:grid; grid-template-columns:repeat(3,1fr); gap:7mm; margin-top:8mm; }
+  .price{
+    border:1px solid rgba(14,42,71,.12); border-radius:4mm; padding:8mm 7mm; background:#fff; position:relative;
+  }
+  .price.featured{ background:var(--navy); border-color:var(--navy); color:#fff; transform:translateY(-4mm); box-shadow:0 14px 30px rgba(14,42,71,.22); }
+  .price .name{ font-family:'Lora',serif; font-size:14pt; font-weight:600; color:var(--navy); }
+  .price.featured .name{ color:#fff; }
+  .price .tag{ position:absolute; top:-4mm; right:7mm; background:var(--gold); color:#0E2A47; font-size:8pt; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:1.5mm 3mm; border-radius:2mm; }
+  .price .amt{ font-family:'Lora',serif; font-size:30pt; font-weight:700; color:var(--navy); margin:4mm 0 1mm; }
+  .price.featured .amt{ color:var(--gold); }
+  .price .amt small{ font-size:12pt; color:var(--soft); font-weight:500; }
+  .price .desc{ font-size:9.5pt; color:var(--soft); line-height:1.45; min-height:14mm; }
+  .price.featured .desc{ color:#c9d4e0; }
+  .addon{ margin-top:8mm; font-size:10.5pt; color:var(--slate); background:var(--sand); border-radius:3mm; padding:5mm 7mm; }
+  .addon b{ color:var(--navy); }
+
+  /* ---------- journey steps ---------- */
+  .steps{ display:grid; grid-template-columns:repeat(5,1fr); gap:5mm; margin-top:10mm; }
+  .step{ text-align:center; position:relative; }
+  .step .dot{
+    width:16mm; height:16mm; margin:0 auto 5mm; border-radius:50%;
+    background:var(--navy); color:#fff; font-family:'Lora',serif; font-weight:700; font-size:15pt;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .step h4{ font-size:11pt; color:var(--navy); font-family:'Lora',serif; margin-bottom:2mm; }
+  .step p{ font-size:8.8pt; color:var(--soft); line-height:1.4; }
+  .step:not(:last-child)::after{ content:""; position:absolute; top:8mm; right:-2.5mm; width:5mm; height:2px; background:var(--gold); }
+
+  /* ---------- strengths / weaknesses ---------- */
+  .col-head{ display:flex; align-items:center; gap:4mm; margin-bottom:5mm; }
+  .col-head .badge{ width:9mm;height:9mm;border-radius:50%; display:flex;align-items:center;justify-content:center; font-weight:700; font-size:12pt; color:#fff; }
+  .col-head.pos .badge{ background:var(--ok); }
+  .col-head.neg .badge{ background:var(--warn); }
+  .col-head h3{ font-size:14pt; color:var(--navy); }
+  ul.mini{ list-style:none; }
+  ul.mini li{ position:relative; padding-left:7mm; margin-bottom:3.6mm; font-size:10.3pt; line-height:1.45; color:var(--slate); }
+  ul.mini li::before{ content:""; position:absolute; left:0; top:1.8mm; width:3mm;height:3mm;border-radius:50%; }
+  ul.mini.pos li::before{ background:var(--ok); }
+  ul.mini.neg li::before{ background:var(--warn); }
+  ul.mini li b{ color:var(--navy); }
+
+  /* comparison table */
+  table.cmp{ width:100%; border-collapse:collapse; margin-top:8mm; font-size:9.6pt; }
+  table.cmp th, table.cmp td{ text-align:left; padding:3.2mm 4mm; border-bottom:1px solid rgba(14,42,71,.10); }
+  table.cmp thead th{ background:var(--navy); color:#fff; font-weight:600; font-size:9pt; letter-spacing:.03em; }
+  table.cmp thead th:first-child{ border-top-left-radius:2.5mm; }
+  table.cmp thead th:last-child{ border-top-right-radius:2.5mm; }
+  table.cmp td:first-child{ font-weight:600; color:var(--navy); }
+  table.cmp .us{ background:rgba(181,137,78,.12); font-weight:600; color:var(--navy); }
+  table.cmp tbody tr:nth-child(even) td{ background:rgba(14,42,71,.025); }
+  table.cmp tbody tr:nth-child(even) td.us{ background:rgba(181,137,78,.16); }
+
+  .checklist{ display:grid; grid-template-columns:1fr 1fr; gap:5mm 10mm; margin-top:9mm; }
+  .ci{ display:flex; gap:5mm; align-items:flex-start; }
+  .ci .b{ width:8mm;height:8mm;border-radius:2mm;background:var(--gold);color:#0E2A47;flex:0 0 auto; display:flex;align-items:center;justify-content:center; font-weight:700; font-size:11pt; }
+  .ci div p{ font-size:11pt; color:var(--navy); font-weight:600; }
+  .ci div span{ font-size:9.5pt; color:var(--soft); }
+
+  /* roadmap */
+  .road{ position:relative; margin-top:12mm; padding-left:4mm; }
+  .phase{ display:grid; grid-template-columns:30mm 1fr; gap:8mm; padding:5mm 0; border-left:2px solid var(--sand); position:relative; padding-left:10mm; margin-left:4mm; }
+  .phase::before{ content:""; position:absolute; left:-3.2mm; top:7mm; width:6mm;height:6mm;border-radius:50%; background:var(--gold); border:2px solid #fff; }
+  .phase .ph{ font-family:'Lora',serif; font-weight:700; color:var(--navy); font-size:12pt; }
+  .phase .pd b{ color:var(--navy); }
+  .phase .pd{ font-size:10.3pt; color:var(--slate); line-height:1.5; }
+
+  /* closing */
+  .closing{ background:linear-gradient(160deg,#0E2A47,#0b2138); color:#fff; display:flex; flex-direction:column; justify-content:center; padding:26mm; }
+  .closing h2{ font-size:34pt; color:#fff; line-height:1.12; }
+  .closing h2 span{ color:var(--gold); }
+  .closing p{ font-size:13pt; color:#cfd9e4; margin-top:7mm; max-width:180mm; line-height:1.55; }
+  .closing .next{ margin-top:12mm; display:grid; grid-template-columns:repeat(3,1fr); gap:8mm; }
+  .closing .next .n{ border:1px solid rgba(255,255,255,.16); border-radius:4mm; padding:7mm; }
+  .closing .next .n b{ font-family:'Lora',serif; color:var(--gold); font-size:12pt; display:block; margin-bottom:2mm; }
+  .closing .next .n span{ font-size:9.8pt; color:#cdd8e3; line-height:1.45; }
+</style>
+</head>
+<body>
+
+<!-- 1. COVER -->
+<section class="slide cover">
+  <div class="mono">A</div>
+  <div class="eyebrow">Progetto Sito Web &amp; CRM &middot; 2026</div>
+  <h1>Successioni <span>Armellin</span></h1>
+  <div class="sub">La tua attivit&agrave; di successioni online: un servizio chiaro, umano e professionale, costruito attorno a te e alla fiducia dei tuoi clienti.</div>
+  <div class="sign">
+    <div><b>Geom. Lorenzo Armellin</b>Pontedera (PI) &middot; Albo Geometri Pisa n. 1969</div>
+    <div><b>Documento</b>Presentazione di progetto &middot; bozza di allineamento</div>
+  </div>
+  <div class="conf">Documento riservato</div>
+</section>
+
+<!-- 2. VISIONE -->
+<section class="slide">
+  <span class="kicker">La visione</span>
+  <h2 class="title">Un servizio premium, dove oggi c'&egrave; solo burocrazia</h2>
+  <p class="lead">Le successioni online sono dominate da portali anonimi che competono solo sul prezzo, o dallo strumento gratuito ma complesso dell'Agenzia. Manca un'opzione che unisca la <b>fiducia di un professionista reale</b> alla <b>comodit&agrave; del 100% online</b>.</p>
+  <div class="grid3">
+    <div class="card"><div class="ico">1</div><h3>Mercato attivo</h3><p>Adempimento obbligatorio entro 12 mesi: domanda costante e con forte intento d'acquisto su Google.</p></div>
+    <div class="card"><div class="ico">2</div><h3>Cliente in difficolt&agrave;</h3><p>Spesso in lutto, poco pratico di fisco: cerca rassicurazione e qualcuno di cui fidarsi, non il prezzo pi&ugrave; basso.</p></div>
+    <div class="card"><div class="ico">3</div><h3>Il tuo vantaggio</h3><p>Geometra abilitato, con volto, nome e studio: l'esatto opposto del portale impersonale.</p></div>
+  </div>
+</section>
+
+<!-- 3. PROMESSA -->
+<section class="slide">
+  <span class="kicker">Il cliente e la promessa</span>
+  <h2 class="title">"Alla burocrazia pensiamo noi"</h2>
+  <div class="grid2">
+    <div>
+      <p class="lead" style="margin-bottom:6mm;">Il posizionamento non &egrave; "costo poco", ma <b>"ti tolgo il problema, con la garanzia di un professionista"</b>. Vendiamo tempo, certezza e serenit&agrave;.</p>
+      <ul class="clean">
+        <li><b>Zero code e zero stress:</b> tutto online, da casa.</li>
+        <li><b>Zero errori:</b> controllo di un geometra abilitato, niente sanzioni.</li>
+        <li><b>Un volto, non un call center:</b> un referente unico.</li>
+      </ul>
+    </div>
+    <div class="card" style="background:var(--navy); color:#fff;">
+      <h3 style="color:#fff;">Perch&eacute; non "fai-da-te" sul sito dell'Agenzia?</h3>
+      <p style="color:#cfd9e4; margin-top:4mm;">&Egrave; gratis, ma serve SPID, tempo e competenza. La precompilata <b style="color:#fff;">propone</b> i dati, non li <b style="color:#fff;">valida</b>: gli errori (e le sanzioni) restano a carico del cittadino.</p>
+      <p style="color:var(--gold); font-family:'Lora',serif; font-size:13pt; margin-top:7mm;">"Si pu&ograve; fare gratis da soli.<br>Ma il tempo, e gli errori, li paghi tu."</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4. PACCHETTI -->
+<section class="slide">
+  <span class="kicker">Offerta</span>
+  <h2 class="title">Tre pacchetti chiari (la "regola del 3")</h2>
+  <div class="price-wrap">
+    <div class="price">
+      <div class="name">Semplice</div>
+      <div class="amt">290<small>&euro;</small></div>
+      <div class="desc">Successione lineare, senza immobili. L'essenziale fatto bene.</div>
+    </div>
+    <div class="price featured">
+      <div class="tag">Il pi&ugrave; scelto</div>
+      <div class="name">Completo</div>
+      <div class="amt">490<small>&euro;</small></div>
+      <div class="desc">Con immobili: dichiarazione + volture catastali. (+60&euro; per immobile extra)</div>
+    </div>
+    <div class="price">
+      <div class="name">Zero Stress</div>
+      <div class="amt">790<small>&euro;</small></div>
+      <div class="desc">Tutto incluso, gestione completa di banche e pratiche collegate.</div>
+    </div>
+  </div>
+  <div class="addon">Servizio aggiuntivo &middot; <b>Riunione di Usufrutto</b> &nbsp;150&euro;. &nbsp;&nbsp; Nota: gli onorari sono separati e trasparenti rispetto alle <b>imposte di Stato</b> (autoliquidazione).</div>
+</section>
+
+<!-- 5. COME FUNZIONA -->
+<section class="slide">
+  <span class="kicker">Come funziona</span>
+  <h2 class="title">Dal clic alla pratica conclusa, in 5 passi</h2>
+  <div class="steps">
+    <div class="step"><div class="dot">1</div><h4>Pre-valutazione</h4><p>Il cliente compila un breve form e riceve subito il pacchetto consigliato.</p></div>
+    <div class="step"><div class="dot">2</div><h4>Pagamento</h4><p>Paga online in sicurezza; l'incarico parte, con garanzia e recesso chiari.</p></div>
+    <div class="step"><div class="dot">3</div><h4>Documenti</h4><p>Area riservata con checklist guidata: carica solo ci&ograve; che serve.</p></div>
+    <div class="step"><div class="dot">4</div><h4>Lavorazione</h4><p>Tu lavori la pratica; il cliente segue lo stato e riceve aggiornamenti.</p></div>
+    <div class="step"><div class="dot">5</div><h4>Conclusione</h4><p>Scarica i documenti finali; dopo 48h parte la richiesta di recensione.</p></div>
+  </div>
+  <p class="lead" style="margin-top:14mm;">Dietro le quinte, un <b>CRM su misura</b> automatizza email, solleciti e archiviazione: tu resti il "pilota", il software fa la segreteria.</p>
+</section>
+
+<!-- 6. VANTAGGI vs COMPETITOR -->
+<section class="slide">
+  <span class="kicker">Posizionamento</span>
+  <h2 class="title">Dove vinciamo sui competitor</h2>
+  <table class="cmp">
+    <thead>
+      <tr><th>Cosa conta per il cliente</th><th class="us">Successioni Armellin</th><th>Portali online</th><th>CAF</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Professionista reale (volto + albo)</td><td class="us">S&igrave;, verificabile</td><td>Spesso anonimo</td><td>Operatore sportello</td></tr>
+      <tr><td>Empatia con chi &egrave; in lutto</td><td class="us">Al centro di tutto</td><td>Funzionale/fredda</td><td>Burocratica</td></tr>
+      <tr><td>100% online + studio fisico</td><td class="us">Locale + Nazionale</td><td>Solo nazionale</td><td>Solo locale</td></tr>
+      <tr><td>Area cliente moderna</td><td class="us">S&igrave;, mobile-first</td><td>Rara/basica</td><td>No</td></tr>
+      <tr><td>Servizio completo (banche, catasto)</td><td class="us">S&igrave;</td><td>Spesso parziale</td><td>Variabile</td></tr>
+      <tr><td>Trasparenza prezzo</td><td class="us">3 pacchetti chiari</td><td>Media</td><td>Bassa</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 7. FORZE & DEBOLEZZE -->
+<section class="slide">
+  <span class="kicker">Analisi onesta</span>
+  <h2 class="title">Punti di forza e punti di attenzione</h2>
+  <div class="grid2">
+    <div>
+      <div class="col-head pos"><div class="badge">+</div><h3>I nostri punti di forza</h3></div>
+      <ul class="mini pos">
+        <li><b>Fiducia:</b> persona reale e abilitata, E-E-A-T forte.</li>
+        <li><b>Empatia &amp; UX:</b> esperienza pensata per over-50 in difficolt&agrave;.</li>
+        <li><b>Local + Nazionale:</b> studio a Pontedera + tutta Italia.</li>
+        <li><b>Completezza:</b> "pensiamo a tutto noi", referente unico.</li>
+        <li><b>Efficienza:</b> CRM + automazioni + AI interna di supporto.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="col-head neg"><div class="badge">!</div><h3>Punti di attenzione (e rimedi)</h3></div>
+      <ul class="mini neg">
+        <li><b>Partenza da zero:</b> serve costruire recensioni e SEO &rarr; 20 recensioni iniziali + contenuti.</li>
+        <li><b>Prezzo pi&ugrave; alto dei portali:</b> giustificato dal valore, non si compete al ribasso.</li>
+        <li><b>Capacit&agrave; limitata (~25/mese):</b> automazioni e, oltre 30, un collaboratore.</li>
+        <li><b>Dipendenza da te:</b> processi documentati e tempi realistici.</li>
+        <li><b>Costo pubblicit&agrave;:</b> mix locale/nazionale e tracciamento per ottimizzare.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 8. COSA SERVE DA TE -->
+<section class="slide">
+  <span class="kicker">Il tuo contributo</span>
+  <h2 class="title">Cosa serve da te per partire</h2>
+  <div class="checklist">
+    <div class="ci"><div class="b">&#10003;</div><div><p>Shooting fotografico</p><span>Ritratto e studio: la fiducia nasce dal vederti.</span></div></div>
+    <div class="ci"><div class="b">&#10003;</div><div><p>~20 recensioni iniziali</p><span>Da clienti storici, per partire credibili.</span></div></div>
+    <div class="ci"><div class="b">&#10003;</div><div><p>Dati e credenziali</p><span>Albo, ENTRATEL, P.IVA, biografia per "Chi Sono".</span></div></div>
+    <div class="ci"><div class="b">&#10003;</div><div><p>Google Business Profile</p><span>Scheda ottimizzata con foto per la ricerca locale.</span></div></div>
+    <div class="ci"><div class="b">&#10003;</div><div><p>Budget pubblicitario</p><span>Indicativo 600-800&euro;/mese in avvio (70% nazionale, 30% locale).</span></div></div>
+    <div class="ci"><div class="b">&#10003;</div><div><p>Decisioni operative</p><span>Gestionale, dominio, conferma pacchetti e tempistiche.</span></div></div>
+  </div>
+</section>
+
+<!-- 9. ROADMAP -->
+<section class="slide">
+  <span class="kicker">Percorso</span>
+  <h2 class="title">Come arriviamo al lancio, per fasi</h2>
+  <div class="road">
+    <div class="phase"><div class="ph">Fase 1</div><div class="pd"><b>Allineamento &amp; contenuti.</b> Riunione, raccolta dati, definizione testi, shooting, brand.</div></div>
+    <div class="phase"><div class="ph">Fase 2</div><div class="pd"><b>Prototipo navigabile.</b> Sito e CRM simulati per provare design ed esperienza prima di costruire.</div></div>
+    <div class="phase"><div class="ph">Fase 3</div><div class="pd"><b>Sviluppo.</b> Sito pubblico, area riservata e CRM con automazioni, pagamenti e sicurezza.</div></div>
+    <div class="phase"><div class="ph">Fase 4</div><div class="pd"><b>Lancio &amp; crescita.</b> Pubblicazione, campagne Google, raccolta recensioni e ottimizzazione sui dati.</div></div>
+  </div>
+  <p class="lead" style="margin-top:10mm;">Ad ogni fase una verifica e un'approvazione: nessun passo successivo senza il tuo via libera. Cos&igrave; si evita di "bruciare" tempo e budget.</p>
+</section>
+
+<!-- 10. CHIUSURA -->
+<section class="slide closing">
+  <h2>Costruiamo qualcosa di <span>solido</span>,<br>prima di scrivere una riga di codice.</h2>
+  <p>Tutto il progetto &egrave; documentato in dettaglio (la "Bibbia di progetto"): ogni schermata, ogni funzione, ogni costo &egrave; pianificato per partire con sicurezza.</p>
+  <div class="next">
+    <div class="n"><b>1 &middot; Riunione</b><span>Rivediamo insieme dati, competitor e pacchetti.</span></div>
+    <div class="n"><b>2 &middot; Asset</b><span>Shooting, recensioni e materiali iniziali.</span></div>
+    <div class="n"><b>3 &middot; Prototipo</b><span>Vedi e provi il sito prima della costruzione.</span></div>
+  </div>
+</section>
+
+</body>
+</html>

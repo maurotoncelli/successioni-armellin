@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Successioni Armellin - Piano Operativo di Progetto</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  :root{
+    --navy:#0E2A47; --slate:#20405E; --gold:#B5894E; --sand:#EFE9DD;
+    --pearl:#F5F7FA; --ink:#16242F; --soft:#5A6B7B;
+    --ok:#2E7D5B; --err:#B4423A; --warn:#C08A2E;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{ font-family:'Inter',-apple-system,'Helvetica Neue',Arial,sans-serif; color:var(--ink); -webkit-font-smoothing:antialiased; }
+  @page{ size:A4 landscape; margin:0; }
+
+  .slide{
+    position:relative; width:297mm; height:209.7mm; padding:16mm 18mm 18mm;
+    page-break-after:always; overflow:hidden; background:#fff;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  .slide:last-child{ page-break-after:auto; }
+  h1,h2,h3,h4,.serif{ font-family:'Lora',Georgia,'Times New Roman',serif; }
+
+  .foot{
+    position:absolute; left:18mm; right:18mm; bottom:8mm;
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:8.5pt; color:var(--soft); letter-spacing:.04em;
+    border-top:1px solid rgba(14,42,71,.12); padding-top:3mm;
+  }
+  .foot .brand{ font-family:'Lora',serif; color:var(--navy); font-weight:600; }
+  .foot .num{ font-variant-numeric:tabular-nums; }
+
+  .kicker{ display:inline-block; font-size:9.5pt; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:5mm; }
+  .kicker::before{ content:""; display:inline-block; width:14mm; height:2px; background:var(--gold); vertical-align:middle; margin-right:4mm; }
+
+  h2.title{ font-size:27pt; line-height:1.12; color:var(--navy); font-weight:700; margin-bottom:4mm; max-width:250mm; }
+  p.lead{ font-size:12.5pt; line-height:1.55; color:var(--slate); max-width:230mm; }
+
+  /* COVER */
+  .cover{
+    background: radial-gradient(120% 90% at 100% 0%, rgba(181,137,78,.20) 0%, rgba(181,137,78,0) 45%), linear-gradient(160deg,#0E2A47 0%,#14304f 55%,#0b2138 100%);
+    color:#fff; display:flex; flex-direction:column; justify-content:center; padding:24mm 26mm;
+  }
+  .cover .mono{ width:18mm; height:18mm; border-radius:3mm; background:linear-gradient(150deg,var(--gold),#9c7035); display:flex; align-items:center; justify-content:center; font-family:'Lora',serif; font-weight:700; font-size:16pt; color:#0E2A47; box-shadow:0 6px 20px rgba(0,0,0,.25); margin-bottom:12mm; }
+  .cover .eyebrow{ font-size:11pt; letter-spacing:.28em; text-transform:uppercase; color:var(--gold); margin-bottom:7mm; }
+  .cover h1{ font-size:44pt; line-height:1.06; font-weight:700; letter-spacing:.5px; }
+  .cover h1 span{ color:var(--gold); }
+  .cover .sub{ font-size:14.5pt; color:#cfd9e4; margin-top:8mm; max-width:200mm; line-height:1.5; }
+  .cover .sign{ margin-top:14mm; padding-top:7mm; border-top:1px solid rgba(255,255,255,.18); display:flex; gap:10mm; font-size:10.5pt; color:#aebccb; }
+  .cover .sign b{ color:#fff; font-weight:600; display:block; font-size:11.5pt; font-family:'Lora',serif; }
+  .cover .conf{ position:absolute; right:26mm; bottom:18mm; font-size:8.5pt; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.45); }
+
+  /* layout */
+  .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:9mm; margin-top:7mm; }
+  .grid3{ display:grid; grid-template-columns:repeat(3,1fr); gap:7mm; margin-top:7mm; }
+  .grid4{ display:grid; grid-template-columns:repeat(2,1fr); gap:6mm 9mm; margin-top:6mm; }
+
+  .card{ background:var(--pearl); border:1px solid rgba(14,42,71,.08); border-radius:4mm; padding:7mm; }
+  .card h3{ font-size:13pt; color:var(--navy); margin-bottom:2.5mm; }
+  .card p{ font-size:10pt; line-height:1.45; color:var(--slate); }
+  .card .ico{ width:10mm; height:10mm; border-radius:2.5mm; background:var(--sand); color:var(--navy); display:flex; align-items:center; justify-content:center; font-family:'Lora',serif; font-weight:700; font-size:12pt; margin-bottom:4mm; }
+  .card.dark{ background:var(--navy); color:#fff; } .card.dark h3{ color:#fff; } .card.dark p{ color:#cfd9e4; }
+
+  ul.clean{ list-style:none; margin-top:5mm; }
+  ul.clean li{ position:relative; padding-left:8mm; margin-bottom:3.6mm; font-size:11pt; line-height:1.45; color:var(--slate); }
+  ul.clean li::before{ content:""; position:absolute; left:0; top:2mm; width:3.6mm; height:3.6mm; border-radius:50%; background:var(--gold); }
+  ul.clean li b{ color:var(--navy); }
+
+  /* agenda */
+  .agenda{ display:grid; grid-template-columns:1fr 1fr; gap:3.5mm 10mm; margin-top:8mm; }
+  .ag{ display:flex; gap:5mm; align-items:baseline; font-size:11pt; color:var(--slate); padding:2mm 0; border-bottom:1px dotted rgba(14,42,71,.14); }
+  .ag b{ font-family:'Lora',serif; color:var(--gold); width:8mm; }
+  .ag span b{ color:var(--navy); width:auto; }
+
+  /* pricing */
+  .price-wrap{ display:grid; grid-template-columns:repeat(3,1fr); gap:7mm; margin-top:7mm; }
+  .price{ border:1px solid rgba(14,42,71,.12); border-radius:4mm; padding:8mm 7mm; background:#fff; position:relative; }
+  .price.featured{ background:var(--navy); border-color:var(--navy); color:#fff; transform:translateY(-3mm); box-shadow:0 14px 30px rgba(14,42,71,.22); }
+  .price .name{ font-family:'Lora',serif; font-size:14pt; font-weight:600; color:var(--navy); }
+  .price.featured .name{ color:#fff; }
+  .price .tag{ position:absolute; top:-4mm; right:7mm; background:var(--gold); color:#0E2A47; font-size:8pt; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:1.5mm 3mm; border-radius:2mm; }
+  .price .amt{ font-family:'Lora',serif; font-size:28pt; font-weight:700; color:var(--navy); margin:3mm 0 1mm; }
+  .price.featured .amt{ color:var(--gold); }
+  .price .amt small{ font-size:12pt; color:var(--soft); font-weight:500; }
+  .price .desc{ font-size:9.5pt; color:var(--soft); line-height:1.4; min-height:13mm; }
+  .price.featured .desc{ color:#c9d4e0; }
+  .addon{ margin-top:7mm; font-size:10pt; color:var(--slate); background:var(--sand); border-radius:3mm; padding:5mm 7mm; }
+  .addon b{ color:var(--navy); }
+
+  /* steps */
+  .steps{ display:grid; grid-template-columns:repeat(5,1fr); gap:5mm; margin-top:9mm; }
+  .step{ text-align:center; position:relative; }
+  .step .dot{ width:15mm; height:15mm; margin:0 auto 4mm; border-radius:50%; background:var(--navy); color:#fff; font-family:'Lora',serif; font-weight:700; font-size:14pt; display:flex; align-items:center; justify-content:center; }
+  .step h4{ font-size:10.5pt; color:var(--navy); margin-bottom:2mm; }
+  .step p{ font-size:8.6pt; color:var(--soft); line-height:1.4; }
+  .step:not(:last-child)::after{ content:""; position:absolute; top:7.5mm; right:-2.5mm; width:5mm; height:2px; background:var(--gold); }
+
+  /* journey 9 */
+  .journey{ display:grid; grid-template-columns:repeat(3,1fr); gap:5mm; margin-top:7mm; }
+  .jp{ background:var(--pearl); border:1px solid rgba(14,42,71,.08); border-left:3px solid var(--gold); border-radius:3mm; padding:5mm 6mm; }
+  .jp .n{ font-family:'Lora',serif; color:var(--gold); font-size:10pt; font-weight:700; }
+  .jp h4{ font-size:11pt; color:var(--navy); margin:1mm 0 1.5mm; }
+  .jp p{ font-size:8.8pt; color:var(--slate); line-height:1.4; }
+
+  /* tree / architecture cards */
+  .arch{ display:grid; grid-template-columns:repeat(3,1fr); gap:6mm; margin-top:7mm; }
+  .arch .b{ background:var(--pearl); border:1px solid rgba(14,42,71,.08); border-radius:3mm; padding:6mm; }
+  .arch .b h4{ font-size:11.5pt; color:var(--navy); margin-bottom:2.5mm; }
+  .arch .b ul{ list-style:none; }
+  .arch .b li{ font-size:9pt; color:var(--slate); line-height:1.5; padding-left:5mm; position:relative; }
+  .arch .b li::before{ content:"\203A"; position:absolute; left:0; color:var(--gold); font-weight:700; }
+  .arch .b.accent{ background:var(--navy); } .arch .b.accent h4{ color:#fff; } .arch .b.accent li{ color:#cfd9e4; }
+
+  /* comparison */
+  table.cmp{ width:100%; border-collapse:collapse; margin-top:7mm; font-size:9.4pt; }
+  table.cmp th, table.cmp td{ text-align:left; padding:3mm 4mm; border-bottom:1px solid rgba(14,42,71,.10); }
+  table.cmp thead th{ background:var(--navy); color:#fff; font-weight:600; font-size:9pt; }
+  table.cmp thead th:first-child{ border-top-left-radius:2.5mm; } table.cmp thead th:last-child{ border-top-right-radius:2.5mm; }
+  table.cmp td:first-child{ font-weight:600; color:var(--navy); }
+  table.cmp .us{ background:rgba(181,137,78,.12); font-weight:600; color:var(--navy); }
+  table.cmp tbody tr:nth-child(even) td{ background:rgba(14,42,71,.025); }
+  table.cmp tbody tr:nth-child(even) td.us{ background:rgba(181,137,78,.16); }
+
+  /* strengths/weaknesses */
+  .col-head{ display:flex; align-items:center; gap:4mm; margin-bottom:4mm; }
+  .col-head .badge{ width:9mm;height:9mm;border-radius:50%; display:flex;align-items:center;justify-content:center; font-weight:700; font-size:12pt; color:#fff; }
+  .col-head.pos .badge{ background:var(--ok); } .col-head.neg .badge{ background:var(--warn); }
+  .col-head h3{ font-size:13.5pt; color:var(--navy); }
+  ul.mini{ list-style:none; }
+  ul.mini li{ position:relative; padding-left:7mm; margin-bottom:3.4mm; font-size:10pt; line-height:1.4; color:var(--slate); }
+  ul.mini li::before{ content:""; position:absolute; left:0; top:1.7mm; width:3mm;height:3mm;border-radius:50%; }
+  ul.mini.pos li::before{ background:var(--ok); } ul.mini.neg li::before{ background:var(--warn); }
+  ul.mini li b{ color:var(--navy); }
+
+  /* checklist */
+  .checklist{ display:grid; grid-template-columns:1fr 1fr; gap:5mm 10mm; margin-top:8mm; }
+  .ci{ display:flex; gap:5mm; align-items:flex-start; }
+  .ci .b{ width:8mm;height:8mm;border-radius:2mm;background:var(--gold);color:#0E2A47;flex:0 0 auto; display:flex;align-items:center;justify-content:center; font-weight:700; font-size:11pt; }
+  .ci div p{ font-size:11pt; color:var(--navy); font-weight:600; }
+  .ci div span{ font-size:9.3pt; color:var(--soft); }
+
+  /* timeline roadmap */
+  .road{ position:relative; margin-top:8mm; }
+  .phase{ display:grid; grid-template-columns:38mm 1fr; gap:8mm; padding:4mm 0; border-left:2px solid var(--sand); position:relative; padding-left:10mm; margin-left:4mm; }
+  .phase::before{ content:""; position:absolute; left:-3.2mm; top:6mm; width:6mm;height:6mm;border-radius:50%; background:var(--gold); border:2px solid #fff; }
+  .phase.mvp::before{ background:var(--ok); width:7mm; height:7mm; left:-3.7mm; }
+  .phase .ph{ font-family:'Lora',serif; font-weight:700; color:var(--navy); font-size:11.5pt; }
+  .phase .ph small{ display:block; font-family:'Inter'; font-weight:600; color:var(--gold); font-size:8.5pt; letter-spacing:.06em; margin-top:1mm; }
+  .phase .pd{ font-size:10pt; color:var(--slate); line-height:1.45; } .phase .pd b{ color:var(--navy); }
+  .pill{ display:inline-block; background:var(--ok); color:#fff; font-size:8pt; font-weight:700; letter-spacing:.05em; padding:1mm 2.5mm; border-radius:2mm; text-transform:uppercase; }
+
+  /* questions appendix */
+  .qgrid{ display:grid; grid-template-columns:1fr 1fr; gap:5mm 10mm; margin-top:6mm; }
+  .qgroup{ break-inside:avoid; margin-bottom:3mm; }
+  .qgroup h4{ font-size:11pt; color:var(--navy); margin-bottom:2mm; display:flex; align-items:center; gap:3mm; }
+  .qgroup h4 .t{ width:6mm;height:6mm;border-radius:1.5mm;background:var(--gold);color:#0E2A47; font-family:'Inter'; font-weight:700; font-size:8pt; display:flex;align-items:center;justify-content:center; }
+  .qlist{ list-style:none; }
+  .qlist li{ position:relative; padding-left:5.5mm; margin-bottom:1.6mm; font-size:8.6pt; line-height:1.32; color:var(--slate); }
+  .qlist li::before{ content:"?"; position:absolute; left:0; top:0; color:var(--gold); font-weight:700; font-size:8.5pt; }
+  .qlist li.done{ color:var(--soft); }
+  .qlist li.done::before{ content:"\2713"; color:var(--ok); }
+
+  /* closing */
+  .closing{ background:linear-gradient(160deg,#0E2A47,#0b2138); color:#fff; display:flex; flex-direction:column; justify-content:center; padding:26mm; }
+  .closing h2{ font-size:32pt; color:#fff; line-height:1.12; }
+  .closing h2 span{ color:var(--gold); }
+  .closing p{ font-size:12.5pt; color:#cfd9e4; margin-top:7mm; max-width:190mm; line-height:1.55; }
+  .closing .next{ margin-top:11mm; display:grid; grid-template-columns:repeat(3,1fr); gap:8mm; }
+  .closing .next .n{ border:1px solid rgba(255,255,255,.16); border-radius:4mm; padding:7mm; }
+  .closing .next .n b{ font-family:'Lora',serif; color:var(--gold); font-size:12pt; display:block; margin-bottom:2mm; }
+  .closing .next .n span{ font-size:9.6pt; color:#cdd8e3; line-height:1.45; }
+
+  .note{ margin-top:7mm; font-size:9.5pt; color:var(--soft); font-style:italic; }
+</style>
+</head>
+<body>
+
+<!-- 1. COVER -->
+<section class="slide cover">
+  <div class="mono">A</div>
+  <div class="eyebrow">Sito Web &amp; CRM &middot; 2026</div>
+  <h1>Successioni <span>Armellin</span></h1>
+  <div class="sub">Piano operativo di progetto: cosa costruiamo, come, con quali tempi e costi, e le decisioni da prendere insieme.</div>
+  <div class="sign">
+    <div><b>Geom. Lorenzo Armellin</b>Pontedera (PI) &middot; Albo Geometri Pisa n. 1969</div>
+    <div><b>Documento</b>Piano operativo &middot; riunione di allineamento</div>
+  </div>
+  <div class="conf">Documento riservato</div>
+</section>
+
+<!-- 2. AGENDA -->
+<section class="slide">
+  <span class="kicker">Agenda</span>
+  <h2 class="title">Cosa vediamo oggi</h2>
+  <p class="lead">Una panoramica completa: dalla visione del servizio fino al piano tecnico, ai costi e alle decisioni operative. L'obiettivo &egrave; partire allineati e con il quadro chiaro.</p>
+  <div class="agenda">
+    <div class="ag"><b>01</b><span><b>Visione e mercato</b> &middot; perch&eacute; ora</span></div>
+    <div class="ag"><b>02</b><span><b>Cliente, promessa e pacchetti</b></span></div>
+    <div class="ag"><b>03</b><span><b>Percorso del cliente</b> &middot; dalla ricerca alla pratica</span></div>
+    <div class="ag"><b>04</b><span><b>Sito, multilingua e area riservata</b></span></div>
+    <div class="ag"><b>05</b><span><b>CRM, recessi e rimborsi</b></span></div>
+    <div class="ag"><b>06</b><span><b>Tecnologia, sicurezza e aggiornamenti</b></span></div>
+    <div class="ag"><b>07</b><span><b>SEO, marketing, foto e video</b></span></div>
+    <div class="ag"><b>08</b><span><b>Costi, tempi e cosa serve da te</b></span></div>
+    <div class="ag"><b>09</b><span><b>Vantaggi vs competitor</b></span></div>
+    <div class="ag"><b>10</b><span><b>Domande per te</b> &middot; checklist riunione</span></div>
+  </div>
+  <div class="foot"><span class="brand">Successioni Armellin</span><span>Piano Operativo &middot; 2026</span><span class="num">2 / 28</span></div>
+</section>
+
+<!-- 3. VISIONE & MERCATO -->
+<section class="slide">
+  <span class="kicker">La visione</span>
+  <h2 class="title">Un servizio premium, dove oggi c'&egrave; solo burocrazia</h2>
+  <p class="lead">Le successioni online sono dominate da portali anonimi che competono solo sul prezzo, o dallo strumento gratuito ma complesso dell'Agenzia. Manca un'opzione che unisca la <b>fiducia di un professionista reale</b> alla <b>comodit&agrave; del 100% online</b>.</p>
+  <div class="grid3">
+    <div class="card"><div class="ico">1</div><h3>Mercato attivo</h3><p>Adempimento obbligatorio entro 12 mesi: domanda costante e con forte intento d'acquisto su Google.</p></div>
+    <div class="card"><div class="ico">2</div><h3>Cliente in difficolt&agrave;</h3><p>Spesso in lutto, poco pratico di fisco: cerca rassicurazione e qualcuno di cui fidarsi, non il prezzo pi&ugrave; basso.</p></div>
+    <div class="card"><div class="ico">3</div><h3>Il tuo vantaggio</h3><p>Geometra abilitato, con volto, nome e studio: l'esatto opposto del portale impersonale.</p></div>
+  </div>
+  <div class="foot"><span class="brand">Successioni Armellin</span><span>Piano Operativo &middot; 2026</span><span class="num">3 / 28</span></div>
+</section>
+
+<!-- 4. CLIENTE & PROMESSA -->
+<section class="slide">
+  <span class="kicker">Il cliente e la promessa</span>
+  <h2 class="title">"Alla burocrazia pensiamo noi"</h2>
+  <div class="grid2">
+    <div>
+      <p class="lead" style="margin-bottom:6mm;">Il posizionamento non &egrave; "costo poco", ma <b>"ti tolgo il problema, con la garanzia di un professionista"</b>. Vendiamo tempo, certezza e serenit&agrave;.</p>
+      <ul class="clean">
+        <li><b>Zero code e zero stress:</b> tutto online, da casa.</li>
+        <li><b>Zero errori:</b> controllo di un geometra abilitato, niente sanzioni.</li>
+        <li><b>Un volto, non un call center:</b> un referente unico.</li>
+        <li><b>Prezzo chiaro:</b> onorario separato dalle imposte di Stato.</li>
+      </ul>
+    </div>
+    <div class="card dark">
+      <h3>Perch&eacute; non "fai-da-te" sul sito dell'Agenzia?</h3>
+      <p style="margin-top:4mm;">&Egrave; gratis, ma serve SPID, tempo e competenza. La precompilata <b style="color:#fff;">propone</b> i dati, non li <b style="color:#fff;">valida</b>: gli errori (e le sanzioni) restano a carico del cittadino.</p>
+      <p style="color:var(--gold); font-family:'Lora',serif; font-size:13pt; margin-top:7mm;">"Si pu&ograve; fare gratis da soli.<br>Ma il tempo, e gli errori, li paghi tu."</p>
+    </div>
+  </div>
+  <div class="foot"><span class="brand">Successioni Armellin</span><span>Piano Operativo &middot; 2026</span><span class="num">4 / 28</span></div>
+</section>
+
+<!-- 5. NAMING & BRAND -->
+<section class="slide">
+  <span class="kicker">Naming &amp; identit&agrave;</span>
+  <h2 class="title">"Successioni Armellin": chiaro, locale, di fiducia</h2>
+  <p class="lead">Il nome dice subito cosa fai e mette il tuo cognome (la persona) al centro: e il differenziatore contro i portali anonimi. Identit&agrave; visiva sobria e premium, pensata per ispirare affidabilit&agrave;.</p>
+  <div class="grid3">
+    <div class="card"><div class="ico">Aa</div><h3>Tipografia</h3><p>Titoli serif eleganti (Lora), testo pulito e leggibile (Inter): autorevole ma accessibile, anche per over-50.</p></div>
+    <div class="card"><div class="ico">&#9632;</div><h3>Colori</h3><p>Blu notte (fiducia, competenza) + oro caldo (premium, cura). Neutri chiari per respiro e leggibilit&agrave;.</p></div>
+    <div class="card"><div class="ico">&#10022;</div><h3>Tono</h3><p>Empatico e rassicurante, prima persona. Niente burocratese: ogni termine tecnico viene spiegato.</p></div>
+  </div>
+  <p class="note">Il nome definitivo del dominio e del brand resta da confermare insieme (vedi "Domande per te").</p>
+  <div class="foot"><span class="brand">Successioni Armellin</span><span>Piano Operativo &middot; 2026</span><span class="num">5 / 28</span></div>
+</section>
+
+<!-- 6. PACCHETTI -->
+<section class="slide">
+  <span class="kicker">Offerta</span>
+  <h2 class="title">Tre pacchetti chiari (la "regola del 3")</h2>
+  <div class="price-wrap">
+    <div class="price"><div class="name">Semplice</div><div class="amt">290<small>&euro;</small></div><div class="desc">Successione lineare, senza immobili. L'essenziale fatto bene.</div></div>
+    <div class="price featured"><div class="tag">Il pi&ugrave; scelto</div><div class="name">Completo</div><div class="amt">490<small>&euro;</small></div><div class="desc">Con immobili: dichiarazione + volture catastali. (+60&euro; per immobile extra)</div></div>
+    <div class="price"><div class="name">Zero Stress</div><div class="amt">790<small>&euro;</small></div><div class="desc">Tutto incluso, gestione completa di banche e pratiche collegate.</div></div>
+  </div>
+  <div class="addon">Servizio aggiuntivo &middot; <b>Riunione di Usufrutto</b> 150&euro;. &nbsp;&nbsp; Gli onorari sono <b>separati e trasparenti</b> rispetto alle imposte di Stato (autoliquidazione): nessun ricarico, comunicate al centesimo prima dell'invio.</div>
+  <div class="foot"><span class="brand">Successioni Armellin</span><span>Piano Operativo &middot; 2026</span><span class="num">6 / 28</span></div>
+</section>
+
+<!-- 7. CUSTOMER JOURNEY -->
+<section class="slide">
+  <span class="kicker">Percorso del cliente</span>
+  <h2 class="title">Dall'esigenza al post-vendita, in 9 fasi</h2>
+  <div class="journey">
+    <div class="jp"><div class="n">01</div><h4>Trigger</h4><p>Dopo il decesso cerca su Google "come fare la successione".</p></div>
+    <div class="jp"><div class="n">02</div><h4>Scoperta</h4><p>Arriva da ricerca organica, Google Ads o scheda locale.</p></div>
+    <div class="jp"><div class="n">03</div><h4>Valutazione</h4><p>Scorre la home: empatia, prezzi chiari, il tuo volto.</p></div>
+    <div class="jp"><div class="n">04</div><h4>Pre-valutazione</h4><p>Compila un breve form e vede il pacchetto consigliato.</p></div>
+    <div class="jp"><div class="n">05</div><h4>Acquisto</h4><p>Paga online; l'incarico parte, recesso e garanzia chiari.</p></div>
+    <div class="jp"><div class="n">06</div><h4>Onboarding</h4><p>Accede all'area riservata e carica i documenti guidato.</p></div>
+    <div class="jp"><div class="n">07</div><h4>Lavorazione</h4><p>Segue lo stato della pratica e riceve aggiornamenti.</p></div>
+    <div class="jp"><div class="n">08</div><h4>Completamento</h4><p>Scarica i documenti finali, con etichette chiare.</p></div>
+    <div class="jp"><div class="n">09</div><h4>Post-vendita</h4><p>Recensione, eventuale recesso/garanzia, fidelizzazione.</p></div>
+  </div>
+  <div class="foot"><span class="brand">Successioni Armellin</span><span>Piano Operativo &middot; 2026</span><span class="num">7 / 28</span></div>
+</section>
+
+<!-- 8. ARCHITETTURA SITO -->
+<section class="slide">
+  <span class="kicker">Architettura del sito</span>
+  <h2 class="title">Tutte le pagine, in una mappa</h2>
+  <div class="arch">
+    <div class="b"><h4>Pagine pubbliche</h4><ul><li>Home</li><li>Tariffe</li><li>Come Funziona</li><li>Chi Sono (+ video)</li><li>Guide / Blog</li><li>FAQ &middot; Contatti</li></ul></div>
+    <div class="b"><h4>Conversione</h4><ul><li>Preventivo (form)</li><li>Grazie / esito</li><li>Checkout (pagamento)</li></ul></div>
+    <div class="b accent"><h4>Area riservata cliente</h4><ul><li>Accesso senza password</li><li>Stato pratica</li><li>Caricamento documenti</li><li>Download finali</li><li>Profilo</li></ul></div>
+    <div class="b"><h4>Hub legale</h4><ul><li>Privacy &middot; Cookie</li><li>Termini / Condizioni</li><li>Garanzia</li><li>Recesso (chiaro)</li></ul></div>
+    <div class="b accent"><h4>CRM /admin</h4><ul><li>Strumento interno (solo tu)</li><li>Gestione pratiche</li></ul></div>
+    <div class="b"><h4>Elementi globali</h4><ul><li>Header + selettore lingua</li><li>Footer (legale, contatti, AT Studio)</li><li>Banner consensi cookie</li></ul></div>
+  </div>
+  <div class="foot"><span class="brand">Successioni Armellin</span><span>Piano Operativo &middot; 2026</span><span class="num">8 / 28</span></div>
+</section>
+
+<!-- 9. MULTILINGUA -->
+<section class="slide">
+  <span class="kicker">Multilingua &amp; stranieri in Italia</span>
+  <h2 class="title">Un mercato che nessuno presidia davvero</h2>
+  <div class="grid2">
+    <div>
+      <p class="lead" style="margin-bottom:5mm;">Il sito nasce <b>multilingua</b> per intercettare gli stranieri residenti in Italia che devono fare una successione: una nicchia poco coperta dai competitor.</p>
+      <ul class="clean">
+        <li><b>Lingue al lancio:</b> italiano + inglese, arabo, tedesco, spagnolo, russo, turco, cinese, hindi, albanese, francese.</li>
+        <li><b>Ben indicizzato:</b> ogni lingua ha le sue pagine ottimizzate per Google (tag hreflang, sitemap dedicate).</li>
+        <li><b>Articoli dedicati</b> agli stranieri (documenti dal paese d'origine, codice fiscale).</li>
+      </ul>
+    </div>
+    <div class="card dark">
+      <h3>Scelte per contenere i costi</h3>
+      <p style="margin-top:4mm;">Traduzioni realizzate con <b style="color:#fff;">intelligenza artificiale avanzata</b> (budget limitato). I testi legali fanno comunque fede in italiano.</p>
+      <p style="margin-top:5mm;">I marocchini sono coperti dall'arabo; il francese copre gran parte dell'Africa francofona. Possibili lingue africane aggiuntive in seguito.</p>
+    </div>
+  </div>
+  <div class="foot"><span class="brand">Successioni Armellin</span><span>Piano Operativo &middot; 2026</span><span class="num">9 / 28</span></div>
+</section>
+
+<!-- 10. AREA RISERVATA -->
+<section class="slide">
+  <span class="kicker">Area riservata cliente</span>
+  <h2 class="title">Caricare i documenti, senza confusione</h2>
+  <div class="grid2">
+    <div>
+      <ul class="clean">
+        <li><b>Accesso semplice senza password:</b> si entra con un link via email (niente credenziali da ricordare).</li>
+        <li><b>Checklist guidata:</b> il sistema chiede solo i documenti che servono per quel caso.</li>
+        <li><b>Stato chiaro di ogni file:</b> da caricare / caricato / da rifare (con il motivo).</li>
+        <li><b>Download finali</b> ordinati e con etichette comprensibili.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Il pulsante "Ho finito"</h3>
+      <p style="margin-top:3mm;">Per essere sicuri che il cliente abbia caricato tutto: un contatore mostra cosa manca, e il pulsante <b>"Ho finito - invia a Lorenzo"</b> si attiva solo quando la checklist &egrave; completa. Niente pratiche che partono a met&agrave;.</p>
+    </div>
+  </div>
+  <p class="note">Pensata per utenti non tecnici (over-50), mobile-first, sicura e conforme al GDPR.</p>
+  <div class="foot"><span class="brand">Successioni Armellin</span><span>Piano Operativo &middot; 2026</span><span class="num">10 / 28</span></div>
+</section>
+
+<!-- 11. CRM -->
+<section class="slide">
+  <span class="kicker">Il tuo CRM</span>
+  <h2 class="title">"Flowdesk - Armellin": tu pilota, il software segretaria</h2>
+  <p class="lead">Un gestionale su misura, ispirato al CRM che gi&agrave; usi, dove segui tutte le pratiche in un colpo d'occhio. Il software fa la parte ripetitiva; tu prendi le decisioni.</p>
+  <div class="grid4">
+    <div class="card"><h3>Bacheca pratiche</h3><p>Colonne dallo stato Lead fino a Conclusa: trascini la card e parte l'automazione giusta.</p></div>
+    <div class="card"><h3>Scheda pratica</h3><p>Dati cliente, documenti con anteprima, validazione Approva/Rifiuta, brogliaccio PDF, dossier ZIP.</p></div>
+    <div class="card"><h3>Automazioni</h3><p>Email di stato, inviti al caricamento, solleciti, richiesta recensione: in automatico.</p></div>
+    <div class="card"><h3>Assistente AI interno</h3><p>Solo a tuo supporto: alert scadenze, lettura documenti, bozze testi. Tu verifichi sempre.</p></div>
+  </div>
+  <div class="foot"><span class="brand">Successioni Armellin</span><span>Piano Operativo &middot; 2026</span><span class="num">11 / 28</span></div>
+</section>
+
+<!-- 12. RECESSI -->
+<section class="slide">
+  <span class="kicker">Recessi &amp; rimborsi</span>
+  <h2 class="title">Gestiti in autonomia, dal CRM</h2>
+  <div class="grid2">
+    <div>
+      <p class="lead" style="margin-bottom:5mm;">Il CRM calcola e prepara, tu confermi con un click. Nessun rimborso parte senza la tua approvazione.</p>
+      <ul class="clean">
+        <li><b>Pannello recesso:</b> mostra se si &egrave; entro i 14 giorni e il tipo di rimborso suggerito.</li>
+        <li><b>Rimborso Stripe</b> totale o parziale in un click, con email di conferma automatica.</li>
+        <li><b>Promemoria nota di credito</b> e tutto tracciato (audit).</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Trasparenza verso il cliente</h3>
+      <p style="margin-top:3mm;">Una pagina pubblica dedicata <b>"/recesso"</b> spiega in modo semplice diritti, tempi e condizioni, senza legalese. Linkata dal checkout, dal footer e dalle FAQ: fiducia in pi&ugrave;, contestazioni in meno.</p>
+    </div>
+  </div>
+  <div class="foot"><span class="brand">Successioni Armellin</span><span>Piano Operativo &middot; 2026</span><span class="num">12 / 28</span></div>
+</section>
+
+<!-- 13. COME FUNZIONA -->
+<section class="slide">
+  <span class="kicker">Come funziona</span>
+  <h2 class="title">Dal clic alla pratica conclusa, in 5 passi</h2>
+  <div class="steps">
+    <div class="step"><div class="dot">1</div><h4>Pre-valutazione</h4><p>Form breve e pacchetto consigliato.</p></div>
+    <div class="step"><div class="dot">2</div><h4>Pagamento</h4><p>Online e sicuro; recesso chiaro.</p></div>
+    <div class="step"><div class="dot">3</div><h4>Documenti</h4><p>Area riservata con checklist.</p></div>
+    <div class="step"><div class="dot">4</div><h4>Lavorazione</h4><p>Tu lavori, il cliente segue.</p></div>
+    <div class="step"><div class="dot">5</div><h4>Conclusione</h4><p>Documenti finali + recensione.</p></div>
+  </div>
+  <p class="lead" style="margin-top:12mm;">Dietro le quinte, il CRM automatizza email, solleciti e archiviazione. Tu resti il "pilota": il software fa la segreteria.</p>
+  <div class="foot"><span class="brand">Successioni Armellin</span><span>Piano Operativo &middot; 2026</span><span class="num">13 / 28</span></div>
+</section>
+
+<!-- 14. STACK & SICUREZZA -->
+<section class="slide">
+  <span class="kicker">Tecnologia &amp; sicurezza</span>
+  <h2 class="title">Strumenti moderni, dati al sicuro</h2>
+  <div class="grid3">
+    <div class="card"><div class="ico">&#9881;</div><h3>Stack</h3><p>Next.js + Supabase + Stripe: sito veloce, database affidabile e pagamenti sicuri. Tutto su infrastruttura professionale in UE.</p></div>
+    <div class="card"><div class="ico">&#128274;</div><h3>Sicurezza</h3><p>Ogni cliente vede solo i propri dati (isolamento a livello di database), cifratura, accessi protetti, link ai file a scadenza.</p></div>
+    <div class="card"><div class="ico">&#9878;</div><h3>Conformit&agrave;</h3><p>GDPR by design: privacy, consensi, conservazione documenti e cookie banner certificato gi&agrave; previsti.</p></div>
+  </div>
+  <p class="lead" style="margin-top:9mm;">I documenti finali restano disponibili al cliente; gli originali sensibili vengono minimizzati e archiviati offline (NAS) per la massima protezione.</p>
+  <div class="foot"><span class="brand">Successioni Armellin</span><span>Piano Operativo &middot; 2026</span><span class="num">14 / 28</span></div>
+</section>
+
+<!-- 15. GESTIONE & AGGIORNAMENTI -->
+<section class="slide">
+  <span class="kicker">Gestione &amp; aggiornamenti</span>
+  <h2 class="title">Modifiche sicure, senza rompere il sito live</h2>
+  <div class="grid3">
+    <div class="card"><div class="ico">1</div><h3>Sviluppo</h3><p>Codice gestito con GitHub e Cursor (editor con AI). Sito e CRM nello stesso progetto.</p></div>
+    <div class="card"><div class="ico">2</div><h3>Anteprima</h3><p>Ogni modifica si prova su un'anteprima privata <b>prima</b> di pubblicarla. Niente sorprese in produzione.</p></div>
+    <div class="card"><div class="ico">3</div><h3>Pubblicazione</h3><p>Online in automatico una volta approvata, con possibilit&agrave; di tornare indietro in un click.</p></div>
+  </div>
+  <p class="lead" style="margin-top:9mm;">Tre ambienti separati (sviluppo, test, produzione), backup e monitoraggio degli errori: il servizio resta affidabile H24.</p>
+  <div class="foot"><span class="brand">Successioni Armellin</span><span>Piano Operativo &middot; 2026</span><span class="num">15 / 28</span></div>
+</section>
+
+<!-- 16. SEO & GTM -->
+<section class="slide">
+  <span class="kicker">SEO &amp; marketing</span>
+  <h2 class="title">Come ti facciamo trovare</h2>
+  <div class="grid2">
+    <div>
+      <ul class="clean">
+        <li><b>Google Ads</b> su ricerche ad alta intenzione (es. "costo successione online").</li>
+        <li><b>Contenuti/guide (SEO)</b> nazionali e locali, aggiornati al 2026.</li>
+        <li><b>Scheda Google locale</b> (Pontedera, Valdera, Pisa) con recensioni.</li>
+        <li><b>Mix budget</b> indicativo 70% nazionale / 30% locale.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Fiducia che porta clienti (E-E-A-T)</h3>
+      <p style="margin-top:3mm;">Persona reale, abilitata e verificabile, recensioni vere, contenuti utili: &egrave; ci&ograve; che Google premia in un settore delicato come questo, e ci&ograve; di cui il cliente ha bisogno per fidarsi.</p>
+    </div>
+  </div>
+  <div class="foot"><span class="brand">Successioni Armellin</span><span>Piano Operativo &middot; 2026</span><span class="num">16 / 28</span></div>
+</section>
+
+<!-- 17. SHOOTING & VIDEO -->
+<section class="slide">
+  <span class="kicker">Foto &amp; video</span>
+  <h2 class="title">Il tuo volto &egrave; la prima leva di fiducia</h2>
+  <div class="grid2">
+    <div>
+      <p class="lead" style="margin-bottom:5mm;">Mezza giornata di shooting in studio: ritratti, dettagli "al lavoro" e ambiente. Niente foto stock: la fiducia nasce dal vederti davvero.</p>
+      <ul class="clean">
+        <li><b>Foto</b> per home, "Chi Sono", come funziona e Google/social.</li>
+        <li><b>Video di benvenuto</b> (60-90s) in cui parli in prima persona al cliente.</li>
+        <li>Sottotitoli multilingua per arrivare anche agli stranieri.</li>
+      </ul>
+    </div>
+    <div class="card dark">
+      <h3>Il video in fondo alla home</h3>
+      <p style="margin-top:4mm;">Come fanno i migliori competitor: un breve messaggio tuo, autentico, appena prima dell'invito all'azione. Tecnicamente leggero, non rallenta il sito.</p>
+      <p style="color:var(--gold); font-family:'Lora',serif; font-size:12pt; margin-top:6mm;">"Alla burocrazia, in questo momento difficile, penso io."</p>
+    </div>
+  </div>
+  <div class="foot"><span class="brand">Successioni Armellin</span><span>Piano Operativo &middot; 2026</span><span class="num">17 / 28</span></div>
+</section>
+
+<!-- 18. VANTAGGI vs COMPETITOR -->
+<section class="slide">
+  <span class="kicker">Posizionamento</span>
+  <h2 class="title">Dove vinciamo sui competitor</h2>
+  <table class="cmp">
+    <thead><tr><th>Cosa conta per il cliente</th><th class="us">Successioni Armellin</th><th>Portali online</th><th>CAF</th></tr></thead>
+    <tbody>
+      <tr><td>Professionista reale (volto + albo)</td><td class="us">S&igrave;, verificabile</td><td>Spesso anonimo</td><td>Operatore sportello</td></tr>
+      <tr><td>Empatia con chi &egrave; in lutto</td><td class="us">Al centro di tutto</td><td>Funzionale/fredda</td><td>Burocratica</td></tr>
+      <tr><td>100% online + studio fisico</td><td class="us">Locale + Nazionale</td><td>Solo nazionale</td><td>Solo locale</td></tr>
+      <tr><td>Area cliente moderna</td><td class="us">S&igrave;, mobile-first</td><td>Rara/basica</td><td>No</td></tr>
+      <tr><td>Multilingua per stranieri</td><td class="us">S&igrave;, 11 lingue</td><td>Raro</td><td>No</td></tr>
+      <tr><td>Trasparenza prezzo</td><td class="us">3 pacchetti chiari</td><td>Media</td><td>Bassa</td></tr>
+    </tbody>
+  </table>
+  <div class="foot"><span class="brand">Successioni Armellin</span><span>Piano Operativo &middot; 2026</span><span class="num">18 / 28</span></div>
+</section>
+
+<!-- 19. FORZE & ATTENZIONI -->
+<section class="slide">
+  <span class="kicker">Analisi onesta</span>
+  <h2 class="title">Punti di forza e punti di attenzione</h2>
+  <div class="grid2">
+    <div>
+      <div class="col-head pos"><div class="badge">+</div><h3>Punti di forza</h3></div>
+      <ul class="mini pos">
+        <li><b>Fiducia:</b> persona reale e abilitata.</li>
+        <li><b>Empatia &amp; UX:</b> pensata per over-50 in difficolt&agrave;.</li>
+        <li><b>Local + Nazionale:</b> studio a Pontedera + tutta Italia.</li>
+        <li><b>Completezza:</b> "pensiamo a tutto noi".</li>
+        <li><b>Efficienza:</b> CRM + automazioni + AI interna.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="col-head neg"><div class="badge">!</div><h3>Punti di attenzione (e rimedi)</h3></div>
+      <ul class="mini neg">
+        <li><b>Partenza da zero:</b> servono recensioni e SEO &rarr; 20 recensioni iniziali + contenuti.</li>
+        <li><b>Prezzo &gt; portali:</b> giustificato dal valore, no ribasso.</li>
+        <li><b>Capacit&agrave; ~25/mese:</b> automazioni e, oltre 30, un collaboratore.</li>
+        <li><b>Dipendenza da te:</b> processi documentati, tempi realistici.</li>
+        <li><b>Costo ADV:</b> mix locale/nazionale e tracciamento.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span class="brand">Successioni Armellin</span><span>Piano Operativo &middot; 2026</span><span class="num">19 / 28</span></div>
+</section>
+
+<!-- 20. COSTI DI PROGETTO -->
+<section class="slide">
+  <span class="kicker">Costi di progetto</span>
+  <h2 class="title">Cosa serve per far girare il sistema</h2>
+  <div class="grid2">
+    <div>
+      <h4 style="color:var(--navy); font-size:12.5pt; margin-bottom:3mm;">Servizi mensili (piccola scala)</h4>
+      <table class="cmp" style="margin-top:2mm;">
+        <tbody>
+          <tr><td>Hosting + Database (Vercel+Supabase)</td><td>~45 &euro;</td></tr>
+          <tr><td>Email, code, monitoraggio, anti-abuso</td><td>0-60 &euro;</td></tr>
+          <tr><td>Cookie banner (CMP) + Fatturazione</td><td>18-60 &euro;</td></tr>
+          <tr><td>Dominio</td><td>~2 &euro;</td></tr>
+          <tr><td class="us">Totale indicativo</td><td class="us">~90-200 &euro;/mese</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h4 style="color:var(--navy); font-size:12.5pt; margin-bottom:3mm;">Una tantum (avvio)</h4>
+      <table class="cmp" style="margin-top:2mm;">
+        <tbody>
+          <tr><td>Shooting foto + video</td><td>300-800 &euro;</td></tr>
+          <tr><td>Logo / brand</td><td>0-500+ &euro;</td></tr>
+          <tr><td>Consulenza legale (privacy, T&amp;C)</td><td>500-2.000 &euro;</td></tr>
+          <tr><td>Hardware NAS (se non posseduto)</td><td>300-600+ &euro;</td></tr>
+        </tbody>
+      </table>
+      <div class="addon" style="margin-top:5mm;"><b>Marketing:</b> 600-800 &euro;/mese in avvio, poi si scala solo sui dati.</div>
+    </div>
+  </div>
+  <p class="note">Cifre indicative da verificare sui listini correnti. Le imposte di Stato dei clienti sono partite separate, non costi del progetto.</p>
+  <div class="foot"><span class="brand">Successioni Armellin</span><span>Piano Operativo &middot; 2026</span><span class="num">20 / 28</span></div>
+</section>
+
+<!-- 21. ROADMAP -->
+<section class="slide">
+  <span class="kicker">Tempi &amp; percorso</span>
+  <h2 class="title">Come arriviamo al lancio</h2>
+  <div class="road">
+    <div class="phase mvp"><div class="ph">Fase 1 <small>GIU - FINE LUGLIO</small></div><div class="pd"><span class="pill">MVP</span> &nbsp;<b>Prima versione online:</b> sito pubblico, form preventivo, pagamento, area riservata e CRM essenziale. Abbastanza per acquisire e lavorare i primi clienti.</div></div>
+    <div class="phase"><div class="ph">Fase 2 <small>AGOSTO - SETTEMBRE</small></div><div class="pd"><b>Completamento:</b> automazioni CRM, recessi/rimborsi, assistente AI, multilingua completo, contenuti SEO.</div></div>
+    <div class="phase"><div class="ph">Fase 3 <small>AUTUNNO</small></div><div class="pd"><b>Crescita e ottimizzazione:</b> campagne a regime, statistiche avanzate, lettura automatica documenti (OCR), rifiniture.</div></div>
+  </div>
+  <p class="note">Onesto sui tempi: a fine luglio &egrave; realistico un <b>MVP</b> (versione di partenza completa nei flussi essenziali). Il prodotto pieno matura nelle fasi successive. Ad ogni fase un'approvazione tua prima di proseguire.</p>
+  <div class="foot"><span class="brand">Successioni Armellin</span><span>Piano Operativo &middot; 2026</span><span class="num">21 / 28</span></div>
+</section>
+
+<!-- 22. COSA SERVE DA TE -->
+<section class="slide">
+  <span class="kicker">Il tuo contributo</span>
+  <h2 class="title">Cosa serve da te per partire</h2>
+  <div class="checklist">
+    <div class="ci"><div class="b">&#10003;</div><div><p>Shooting foto + video</p><span>Ritratto, studio e video di benvenuto.</span></div></div>
+    <div class="ci"><div class="b">&#10003;</div><div><p>~20 recensioni iniziali</p><span>Da clienti storici, per partire credibili.</span></div></div>
+    <div class="ci"><div class="b">&#10003;</div><div><p>Dati e credenziali</p><span>Albo, ENTRATEL, P.IVA, biografia per "Chi Sono".</span></div></div>
+    <div class="ci"><div class="b">&#10003;</div><div><p>Google Business Profile</p><span>Scheda ottimizzata con foto per la ricerca locale.</span></div></div>
+    <div class="ci"><div class="b">&#10003;</div><div><p>Budget pubblicitario</p><span>Indicativo 600-800&euro;/mese in avvio.</span></div></div>
+    <div class="ci"><div class="b">&#10003;</div><div><p>Decisioni operative</p><span>Gestionale, dominio, conferma pacchetti (vedi domande).</span></div></div>
+  </div>
+  <div class="foot"><span class="brand">Successioni Armellin</span><span>Piano Operativo &middot; 2026</span><span class="num">22 / 28</span></div>
+</section>
+
+<!-- 23. DOMANDE 1 -->
+<section class="slide">
+  <span class="kicker">Domande per te &middot; 1 di 4</span>
+  <h2 class="title">Anagrafica, studio e operativit&agrave;</h2>
+  <div class="qgrid">
+    <div>
+      <div class="qgroup"><h4><span class="t">1</span>Anagrafica e studio</h4>
+        <ul class="qlist">
+          <li>Ragione sociale / intestazione esatta dello studio.</li>
+          <li>Partita IVA e Codice Fiscale (conferma).</li>
+          <li>Numero e data di iscrizione all'Albo (Collegio Pisa).</li>
+          <li class="done">Indirizzo studio: Via Vittorio Veneto 31, Pontedera (confermato).</li>
+          <li>PEC, email, telefono, eventuale WhatsApp Business.</li>
+          <li>Dati di nascita (per pagine legali/fatturazione).</li>
+          <li>Orari di lavoro / disponibilit&agrave; (per SLA realistici).</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="qgroup"><h4><span class="t">2</span>Operativit&agrave; attuale</h4>
+        <ul class="qlist">
+          <li>Quante pratiche di successione gestisci (mese / anno)?</li>
+          <li>Tempo medio per pratica (semplice / completa / complessa)?</li>
+          <li>Quale software gestionale usi? (DeCuius, DE.A.S., altro)</li>
+          <li>In che formato importi/esporti i dati? (CSV, Excel...)</li>
+          <li>Come gestisci oggi documenti e comunicazioni coi clienti?</li>
+        </ul>
+      </div>
+      <div class="qgroup"><h4><span class="t">3</span>Asset tecnici &amp; infrastruttura</h4>
+        <ul class="qlist">
+          <li>Hai un NAS o un PC con HDD esterni? Marca/modello?</li>
+          <li>Sistema operativo del PC d'ufficio? Connessione internet?</li>
+          <li>Hai gi&agrave; un dominio? Dove &egrave; registrato? Chi gestisce il DNS?</li>
+          <li>Caselle email professionali sul dominio? Provider?</li>
+          <li>CRM su sottodominio (app.) o su /admin?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="brand">Successioni Armellin</span><span>Piano Operativo &middot; 2026</span><span class="num">23 / 28</span></div>
+</section>
+
+<!-- 24. DOMANDE 2 -->
+<section class="slide">
+  <span class="kicker">Domande per te &middot; 2 di 4</span>
+  <h2 class="title">Legale, fiscale e pricing</h2>
+  <div class="qgrid">
+    <div>
+      <div class="qgroup"><h4><span class="t">4</span>Legale e fiscale</h4>
+        <ul class="qlist">
+          <li>Come raccogli oggi la firma su mandato e dichiarazione?</li>
+          <li>Possiedi una firma digitale/CNS? Di che tipo?</li>
+          <li>Hai un commercialista/avvocato di riferimento?</li>
+          <li>Software di fatturazione elettronica gi&agrave; in uso?</li>
+          <li>Trattamento IVA/Cassa e come mostrare i prezzi?</li>
+          <li>Svolgi anche mediazione immobiliare? (antiriciclaggio)</li>
+          <li>Note di credito via API per i rimborsi, o passo manuale?</li>
+          <li>Recesso self-service dall'area riservata o solo via email?</li>
+          <li>Criterio per il rimborso parziale (lavoro gi&agrave; svolto)?</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="qgroup"><h4><span class="t">5</span>Pricing e business</h4>
+        <ul class="qlist">
+          <li>Confermi i prezzi? 290 / 490 (+60 immobile) / 790 / Usufrutto 150.</li>
+          <li>Sono sostenibili a margine (IVA, Cassa, commissioni, ADV)?</li>
+          <li>Obiettivo di fatturato/reddito mensile desiderato?</li>
+          <li>Disposto, oltre ~30 pratiche/mese, a delegare a un collaboratore?</li>
+        </ul>
+      </div>
+      <div class="qgroup"><h4><span class="t">i</span>Gi&agrave; deciso insieme</h4>
+        <ul class="qlist">
+          <li class="done">Multilingua: 11 lingue al lancio (it, en, ar, de, es, ru, tr, zh, hi, sq, fr).</li>
+          <li class="done">Traduzioni con AI avanzata (testi legali validi in italiano).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="brand">Successioni Armellin</span><span>Piano Operativo &middot; 2026</span><span class="num">24 / 28</span></div>
+</section>
+
+<!-- 25. DOMANDE 3 -->
+<section class="slide">
+  <span class="kicker">Domande per te &middot; 3 di 4</span>
+  <h2 class="title">Brand, marketing e materiali</h2>
+  <div class="qgrid">
+    <div>
+      <div class="qgroup"><h4><span class="t">6</span>Brand e marketing</h4>
+        <ul class="qlist">
+          <li>Hai gi&agrave; un logo / elementi di brand (colori, font)?</li>
+          <li>Hai una scheda Google Business Profile? Con quante recensioni?</li>
+          <li>Puoi raccogliere ~20 recensioni iniziali da clienti storici?</li>
+          <li>Disponibilit&agrave; per lo shooting foto + video (data, mezza giornata)?</li>
+          <li>Hai foto/materiali esistenti utilizzabili?</li>
+          <li>Budget mensile per l'advertising?</li>
+          <li>Disponibile a girare il video di benvenuto (60-90s)?</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="qgroup"><h4><span class="t">7</span>Materiali da consegnare</h4>
+        <ul class="qlist">
+          <li>Visura camerale / dati fiscali per le pagine legali.</li>
+          <li>Esempio (anonimizzato) di import/export del gestionale.</li>
+          <li>Testi, brochure o materiali gi&agrave; esistenti.</li>
+        </ul>
+      </div>
+      <div class="qgroup"><h4><span class="t">+</span>Dettagli sito</h4>
+        <ul class="qlist">
+          <li>Motto latino per "Chi Sono"/footer: ne hai uno preferito?</li>
+          <li>Credit footer "AT Studio": testo esatto ed eventuale link.</li>
+          <li>Indirizzo email da usare come "risposta" delle email automatiche.</li>
+          <li>Eventuali lingue africane aggiuntive (somalo/amarico/tigrino)?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="brand">Successioni Armellin</span><span>Piano Operativo &middot; 2026</span><span class="num">25 / 28</span></div>
+</section>
+
+<!-- 26. DOMANDE 4 -->
+<section class="slide">
+  <span class="kicker">Domande per te &middot; 4 di 4</span>
+  <h2 class="title">Biografia e credenziali (pagina "Chi Sono")</h2>
+  <div class="qgrid">
+    <div>
+      <div class="qgroup"><h4><span class="t">8</span>Formazione e percorso</h4>
+        <ul class="qlist">
+          <li>Diploma di geometra: istituto e anno. Eventuale laurea?</li>
+          <li>Anni di esperienza e tappe principali del percorso.</li>
+          <li>Da quando eserciti in proprio e da quando ti occupi di successioni.</li>
+          <li>Perch&eacute; ti sei specializzato nelle successioni (motivazione)?</li>
+        </ul>
+      </div>
+      <div class="qgroup"><h4><span class="t">8</span>Tocco umano</h4>
+        <ul class="qlist">
+          <li>Come ti presenteresti in 2 righe a un cliente in difficolt&agrave;?</li>
+          <li>Valori e approccio al lavoro da trasmettere.</li>
+          <li>Lingue parlate (utile per eredi all'estero).</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="qgroup"><h4><span class="t">8</span>Credenziali e prova sociale</h4>
+        <ul class="qlist">
+          <li>Conferma iscrizione Albo (n. 1969) + link scheda Collegio.</li>
+          <li>Abilitazione ENTRATEL come intermediario (data/estremi).</li>
+          <li>Firma digitale/CNS (tipo).</li>
+          <li>Altre abilitazioni/certificazioni (energetico, sicurezza...).</li>
+          <li>Iscrizioni a registri/elenchi (es. CTU al Tribunale).</li>
+          <li>Corsi/aggiornamenti su successioni/fiscale.</li>
+          <li>Associazioni di categoria o reti professionali.</li>
+          <li>N. indicativo di pratiche gi&agrave; gestite (per "X pratiche seguite").</li>
+          <li>Casi significativi raccontabili in forma anonima.</li>
+          <li>Partner abituali (commercialista, notaio, avvocato).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="brand">Successioni Armellin</span><span>Piano Operativo &middot; 2026</span><span class="num">26 / 28</span></div>
+</section>
+
+<!-- 27. NOTA TEMPI -->
+<section class="slide">
+  <span class="kicker">In sintesi</span>
+  <h2 class="title">Un progetto pianificato in ogni dettaglio</h2>
+  <p class="lead">Tutto il progetto &egrave; gi&agrave; documentato nella "Bibbia di progetto": ogni schermata, ogni funzione, ogni regola legale e ogni costo sono pianificati. Questo riduce i rischi, evita rifacimenti e ci fa partire con sicurezza.</p>
+  <div class="grid3">
+    <div class="card"><div class="ico">&#10003;</div><h3>Chiaro</h3><p>Sai cosa costruiamo, in che ordine e con quali tempi (MVP a fine luglio).</p></div>
+    <div class="card"><div class="ico">&#10003;</div><h3>Conforme</h3><p>Privacy, recesso, consensi e fatturazione previsti fin dall'inizio.</p></div>
+    <div class="card"><div class="ico">&#10003;</div><h3>Scalabile</h3><p>Parte snello e cresce con la tua attivit&agrave;, senza rifare tutto.</p></div>
+  </div>
+  <div class="foot"><span class="brand">Successioni Armellin</span><span>Piano Operativo &middot; 2026</span><span class="num">27 / 28</span></div>
+</section>
+
+<!-- 28. CHIUSURA -->
+<section class="slide closing">
+  <h2>Costruiamo qualcosa di <span>solido</span>,<br>insieme.</h2>
+  <p>Il prossimo passo &egrave; rispondere alle domande di questa riunione e raccogliere i primi materiali: da l&igrave; partiamo verso l'MVP di fine luglio.</p>
+  <div class="next">
+    <div class="n"><b>1 &middot; Decisioni</b><span>Rispondiamo insieme alle domande operative.</span></div>
+    <div class="n"><b>2 &middot; Asset</b><span>Shooting, video, recensioni e dati.</span></div>
+    <div class="n"><b>3 &middot; Sviluppo</b><span>Costruzione per fasi, con la tua approvazione.</span></div>
+  </div>
+</section>
+
+</body>
+</html>
