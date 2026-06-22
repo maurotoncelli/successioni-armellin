@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Lora, Playfair_Display } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/site/navbar";
-import { Footer } from "@/components/site/footer";
-import { MobileCta } from "@/components/site/mobile-cta";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -43,12 +40,7 @@ export default function RootLayout({
       lang="it"
       className={`${inter.variable} ${lora.variable} ${playfair.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-bg text-text">
-        <Navbar />
-        <main className="flex-1 pb-20 lg:pb-0">{children}</main>
-        <Footer />
-        <MobileCta />
-      </body>
+      <body className="h-full">{children}</body>
     </html>
   );
 }
