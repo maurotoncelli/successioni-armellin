@@ -159,6 +159,24 @@ graph TD
 - **QA**: build di produzione OK (31 route, CRM incluse), ESLint OK, smoke test runtime (tutte le route 200). Commit e push su GitHub.
 - **Limiti noti del prototipo CRM**: i pulsanti (Cambia stato, Approva/Rifiuta, Nuova pratica, ricerca) sono UI non ancora funzionanti (nessuna azione reale); servono a validare layout e flusso con Lorenzo. Le automazioni, i pagamenti Stripe, gli invii email/WhatsApp e la persistenza arrivano con le fasi successive.
 
+### 2026-06-22 - Riunione 2: risposte di Lorenzo recepite (bibbia + prototipo)
+- Aggiornati `DOMANDE_PER_LORENZO.md` (risposte) e `DECISIONI.md` (vincoli congelati), piu cap. 01 (pricing) e 02 (brand).
+- **Anagrafica/fiscale**: ditta individuale; P.IVA/CF e Albo confermati; indirizzo Pontedera; orario 9-13 / 15-19; **regime forfettario (NO IVA)**; fatturazione Aruba; **CNS Aruba**; **no mediazione immobiliare**; diplomato; in proprio dal 2012; **~100 successioni**; abilitato Entratel.
+- **Pricing/capienza**: Completo 490 (fino a 5 eredi, 1-3 immobili, fino a 5 conti); Zero Stress (3-8 immobili, max 5 conti, 5 eredi, recupero documenti incluso) - prezzo 790 da confermare; Semplice 290 invariato. **Add-on**: Riunione di usufrutto 150 (spostata nei servizi correlati) + **Adeguamento/ricalcolo IMU 90 (prezzo PROPOSTO da noi, da confermare)** + voltura aggiuntiva 60.
+- **Su misura**: scatta per tanti immobili / particelle agricole / terreni; NON per annessi, testamento, eredi all'estero; recupero documenti solo se eccede il pacchetto 490. Conguaglio e SLA confermati (lavorazione ~3-4 gg con doc completi).
+- **Business**: obiettivo fatturato min 10k / ideale 15k al mese; crescita con budget ADV; soft launch obiettivo ~15 successioni.
+- **Esonero successione** (foto fornita): NON dovuta solo se TUTTE e tre: eredi in linea retta/coniuge + attivo lordo <= 100.000 EUR + nessun immobile (art. 28 c.7 TUS). Recepito nel form/Esito A (onesta).
+- **Firma mandato**: oggi cartaceo, disposto ad aggiornarsi -> v1 baseline cartaceo (scarica/firma/ricarica) + FES consigliata.
+- **Accesso area riservata**: Magic Link email + OTP email, **+ opzione OTP via telefono/SMS** se il cliente preferisce.
+- **Brand**: logo provvisorio = "A" dorato (definitivo poi); valori = onesto/pratico/realista/reperibile/dedicato/lavoratore (copy in @02); Google Business SI; 20 recensioni SI; foto/video forniti da Lorenzo; dominio DA REGISTRARE; partner citato = commercialista dedicato.
+- **Prototipo aggiornato**: `site.ts` (add-on usufrutto 150 + IMU 90, capienza pacchetti), login area riservata con scelta Email/Telefono, schermata mandato con alternativa cartacea.
+
+## Decisioni ancora da chiudere (post Riunione 2)
+- Prezzo Adeguamento/ricalcolo IMU: proposto 90 EUR, attendere conferma di Lorenzo.
+- Prezzo Zero Stress (790?) e regola di confine immobili Completo/Zero Stress (sovrapposizione a 3).
+- Contributo integrativo Cassa Geometri (CIPAG) nel forfettario: se/come mostrarlo nel prezzo (verifica col commercialista).
+- Data esatta iscrizione Albo (web 2022 vs "in proprio dal 2012").
+
 ## Prossimi step (in ordine)
 1. **Finalizzare il deploy Vercel** (Framework Preset = Next.js) e verificare sito + `/crm` online. [Mauro/Lorenzo]
 1b. [FATTO 22/06] **Prototipo Area Riservata cliente** (`/area-riservata`): costruito con dati finti (vedi Diario). Resta da validare con Lorenzo al gate.

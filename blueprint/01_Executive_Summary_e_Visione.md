@@ -27,17 +27,19 @@ Trasformare il servizio di pratiche di successione del Geom. Lorenzo Armellin (s
 - Pagamento anticipato online (incasso prima della lavorazione) con garanzia di rimborso in caso di impedimenti.
 - Prezzi consolidati (onorario al cliente; imposte di Stato escluse e a carico dell'erede):
 
-| Pacchetto | Target | Prezzo | Incluso |
-|-----------|--------|--------|---------|
-| Semplice (solo liquidita) | Eredita di soli conti/libretti/titoli, nessun immobile | 290 EUR | Dichiarazione, calcolo imposte, invio telematico, assistenza email |
-| Completo (il piu venduto) | Famiglia che eredita casa + risparmi (fino a 3 immobili) | 490 EUR | Tutto "Semplice" + immobili + voltura catastale + assistenza prioritaria. +60 EUR per immobile oltre il 3 |
-| Zero Stress / VIP | Chi non ha documenti/tempo, casi complessi | 790 EUR | Tutto "Completo" + recupero documenti + successioni testamentarie + consulenza dedicata + urgenza |
+| Pacchetto | Target | Prezzo | Capienza inclusa (Riunione 2) |
+|-----------|--------|--------|-------------------------------|
+| Semplice (solo liquidita) | Eredita di soli conti/libretti/titoli, nessun immobile | 290 EUR | Dichiarazione, calcolo imposte, invio telematico, assistenza |
+| Completo (il piu venduto) | Famiglia che eredita casa + risparmi | 490 EUR | Fino a **5 eredi**, **1-3 immobili**, fino a **5 conti** + voltura catastale + assistenza prioritaria |
+| Zero Stress / VIP | Chi non ha documenti/tempo, piu immobili | 790 EUR (da confermare) | **3-8 immobili**, non oltre **5 conti**, fino a **5 eredi**, **recupero documenti** incluso + corsia prioritaria |
 
-- Upsell ricorrente: Riunione di Usufrutto 150 EUR e altri servizi accessori a carrello.
-- Casi complessi oltre la fascia Zero Stress (>~800 EUR): gestiti con preventivo personalizzato (no 4o pacchetto pubblico), emesso dal CRM dopo consulenza telefonica (@04/@05).
-- Riferimento attuale (Riunione 1): oggi Lorenzo lavora a tariffa unica di ~600 EUR a successione, tutto dall'ufficio (non si reca in banca), con una chiamata di consulenza sempre inclusa; throughput fino a 2 pratiche lineari in una mattina. La scaletta a 3 pacchetti e un riposizionamento rispetto a questa prassi.
+> Nota capienza (Riunione 2): sovrapposizione a 3 immobili tra Completo e Zero Stress da chiudere. Regola operativa proposta: **Completo 1-3 immobili; Zero Stress quando gli immobili superano 3 oppure quando serve il recupero documenti**.
+
+- **Add-on / servizi correlati** (a carrello, snapshot `line_items`): **Riunione di usufrutto 150 EUR** + **Adeguamento/ricalcolo IMU post-successione** (prezzo PROPOSTO **90 EUR**, da confermare con Lorenzo) + voltura aggiuntiva. (L'usufrutto passa da "upsell" a servizio correlato del catalogo `addons`.)
+- Casi complessi: gestiti con preventivo personalizzato (no 4o pacchetto pubblico), emesso dal CRM dopo consulenza (@04/@05). **Trigger "su misura" (Riunione 2): tanti immobili (oltre Zero Stress), particelle agricole, terreni**. NON fanno scattare il su misura (restano nei pacchetti): annessi, testamento, eredi all'estero. Il recupero documenti diventa "su misura" solo quando va oltre cio che copre il pacchetto 490.
+- Riferimento attuale (Riunione 1): oggi Lorenzo lavora a tariffa unica di ~600 EUR a successione, tutto dall'ufficio (non si reca in banca), con una chiamata di consulenza sempre inclusa; throughput fino a 2 pratiche lineari in una mattina. Con documenti completi chiude in **3-4 giorni** (Riunione 2). La scaletta a pacchetti e un riposizionamento rispetto a questa prassi.
 - Onorario medio ponderato stimato (mix 30% Semplice / 55% Completo / 15% Zero Stress): ~475 EUR.
-- Trattamento IVA e Cassa Geometri in fattura: prezzo mostrato consigliato "IVA e Cassa incluse" per chiarezza B2C (da confermare nel Cap. 13).
+- **Trattamento fiscale (Riunione 2): regime forfettario, NESSUNA IVA.** I prezzi a display sono l'onorario finale "tutto incluso". Da verificare col commercialista l'eventuale contributo integrativo Cassa Geometri (CIPAG) (@13).
 
 ### Capacita produttiva (stima realistica, geometra solo full-time)
 - Ore produttive sul tecnico: ~110-120 h/mese (segreteria e solleciti automatizzati dal CRM).
@@ -53,7 +55,7 @@ Trasformare il servizio di pratiche di successione del Geom. Lorenzo Armellin (s
 - Combinazione difendibile: professionista reale e abilitato + esperienza digitale fluida + minor costo di servizio grazie all'automazione del CRM + riprova sociale (recensioni) + autorita SEO (E-E-A-T).
 - **Competenza catastale del geometra** (rafforzata in Riunione 1): la verifica dei dati catastali (particelle, annessi, terreni agricoli) incrociati con gli atti citati e un controllo tecnico che CAF e portali generalisti non offrono; aggiunge una consulenza anche sul versante tecnico-legale/notarile. Da valorizzare nel copy (@02/@03).
 - **"Geometra + commercialista" (il meglio dei due mondi)**: competenza catastale del geometra abilitato Entratel + **supervisione fiscale di un commercialista** (collaborazione disponibile) per validazione dei contenuti/calcoli fiscali, casi complessi e backstop. Trasforma la barriera di percezione ("ma non dovrebbe farla un commercialista?") in un punto di forza e rafforza l'E-E-A-T (@02/@09). Responsabilita di predisposizione/trasmissione in capo a Lorenzo; claim veritieri (@10).
-- **Onesta come leva di fiducia**: quando la dichiarazione non e dovuta (eredi diretti, importi modesti, niente immobili) lo si dice al cliente prima di farlo pagare (Esito A del form, @04). Scoraggiare un acquisto non necessario costruisce reputazione e passaparola in un settore YMYL.
+- **Onesta come leva di fiducia**: quando la dichiarazione non e dovuta lo si dice al cliente prima di farlo pagare (Esito A del form, @04). Criterio di legge (esonero, art. 28 c.7 TUS): la dichiarazione NON e dovuta SOLO se ricorrono **tutte e tre** le condizioni: (1) eredi = **coniuge e/o parenti in linea retta** (figli, genitori); (2) **attivo ereditario lordo <= 100.000 EUR**; (3) **nessun immobile o diritto reale immobiliare**. Se anche una manca, va presentata. (Distinto dal fatto che tra coniuge/figli spesso non e dovuta l'IMPOSTA per via delle franchigie, pur restando dovuta la dichiarazione se ci sono immobili.) Scoraggiare un acquisto non necessario costruisce reputazione e passaparola in un settore YMYL.
 - Best value di gamma: il pacchetto Completo a 490 EUR con volture incluse, contro un range di mercato indicativo di 390-650 EUR.
 - Trasparenza totale sui costi come elemento di marketing (no sorprese, imposte calcolate al centesimo prima di procedere).
 
@@ -106,8 +108,8 @@ Trasformare il servizio di pratiche di successione del Geom. Lorenzo Armellin (s
 ## Decisioni congelate (lock-in)
 - Lorenzo e geometra iscritto all'albo e ABILITATO ENTRATEL come intermediario (prerequisito soddisfatto).
 - Obiettivo: attivita full-time; capacita target a regime ~25 pratiche/mese (tetto sostenibile ~30 da solo).
-- Modello a pacchetti a prezzo fisso (no tariffa oraria).
-- Prezzi: Semplice 290 EUR, Completo 490 EUR (+60 EUR/immobile oltre il 3), Zero Stress 790 EUR, Upsell Usufrutto 150 EUR.
+- Modello a pacchetti a prezzo fisso (no tariffa oraria). **Regime forfettario, prezzi senza IVA** (Riunione 2).
+- Prezzi e capienza (Riunione 2): Semplice 290; Completo 490 (fino a 5 eredi / 1-3 immobili / fino a 5 conti); Zero Stress 790 da confermare (3-8 immobili / max 5 conti / recupero documenti). Add-on: Riunione di usufrutto 150; Adeguamento/ricalcolo IMU 90 (proposto, da confermare). Obiettivo fatturato: min 10.000 / ideale 15.000 EUR mese.
 - Pagamento anticipato dell'onorario, con imposte di Stato a parte e a carico dell'erede.
 - Servizio nazionale con ancoraggio locale (studio fisico a Pontedera).
 - Sviluppo in-house del sito + CRM (no SaaS CRM generalisti).

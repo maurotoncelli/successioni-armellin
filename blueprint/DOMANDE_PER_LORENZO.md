@@ -9,12 +9,12 @@ Nota: alcune voci sono PRE-COMPILATE da fonti pubbliche (Collegio Geometri di Pi
 ---
 
 ## 1. Anagrafica e dati dello studio (per footer, pagine legali, fatturazione)
-- [ ] Ragione sociale / intestazione esatta dello studio:
-  - (da web - DA CONFERMARE) Geom. Lorenzo Armellin (ditta individuale / studio tecnico)
-- [ ] Partita IVA e Codice Fiscale:
-  - (da web - DA CONFERMARE) P.IVA 02432220503 · C.F. RMLLNZ90E27G843J
-- [ ] Numero e data di iscrizione all'Albo dei Geometri (e collegio provinciale):
-  - (da web - DA CONFERMARE) Collegio Geometri e Geometri Laureati della Provincia di Pisa, n. 1969, iscritto dal 21/01/2022
+- [x] Ragione sociale / intestazione esatta dello studio:
+  - CONFERMATO (Riunione 2, 22/06): **ditta individuale** - Geom. Lorenzo Armellin.
+- [x] Partita IVA e Codice Fiscale:
+  - CONFERMATO (Riunione 2): P.IVA 02432220503 · C.F. RMLLNZ90E27G843J.
+- [x] Numero e data di iscrizione all'Albo dei Geometri (e collegio provinciale):
+  - CONFERMATO (Riunione 2): iscrizione Albo OK (Collegio Geometri Pisa, n. 1969). Nota: verificare la data (il web riporta 21/01/2022, ma Lorenzo lavora in proprio dal 2012 - possibile re-iscrizione/trasferimento collegio).
 - [x] Indirizzo completo dello studio:
   - CONFERMATO (studio operativo da mostrare sul sito): Via Vittorio Veneto 31, 56025 Pontedera (PI)
   - Nota: il Collegio riporta Via Cappelletto 55, Santa Maria a Monte (PI) - probabile indirizzo di residenza/registrazione, NON da usare sul sito.
@@ -23,7 +23,8 @@ Nota: alcune voci sono PRE-COMPILATE da fonti pubbliche (Collegio Geometri di Pi
   - Nota: per il sito serviranno email dedicate sul dominio (vedi @07), non la Gmail personale.
 - [ ] Dati di nascita (per pagine legali/fatturazione, dato sensibile):
   - (da web - DA CONFERMARE) nato a Pontedera (PI) il 27/05/1990
-- [ ] Orari di lavoro / disponibilita (impatta promesse di tempistica e SLA - @01):
+- [x] Orari di lavoro / disponibilita (impatta promesse di tempistica e SLA - @01):
+  - CONFERMATO (Riunione 2): **orario ufficio 9:00-13:00 e 15:00-19:00**. Tempo di lavorazione: se ha tutti i documenti, completa la pratica in **3-4 giorni**.
 
 ## 2. Operativita attuale (per CRM e simulazione lavoro - @05)
 - [ ] Quante pratiche di successione gestisce oggi (al mese / all'anno)?
@@ -46,7 +47,8 @@ Nota: alcune voci sono PRE-COMPILATE da fonti pubbliche (Collegio Geometri di Pi
   - (Riunione 1) NAS **QNAP serie TS-x31K** (sigla fornita: "x31K"). DA PRECISARE il modello esatto (TS-131K 1 bay / TS-231K 2 bay / TS-431K 4 bay), numero e taglia dei dischi e se in RAID. Impatto: sync cold storage pull-only via QNAP HBS 3 (Hybrid Backup Sync) o Rclone (@12).
 - [ ] Sistema operativo del PC d'ufficio (Windows/Mac)?
 - [ ] Connessione internet dell'ufficio (fibra, banda, IP statico)?
-- [ ] Ha gia un dominio web? Quale? Dove e registrato?
+- [x] Ha gia un dominio web? Quale? Dove e registrato?
+  - CONFERMATO (Riunione 2): **dominio DA FARE** (ancora da registrare). Proposta naming da @02/ANALISI_COMPETITORS.
 - [ ] Chi gestisce/ha accesso al pannello DNS del dominio? (serve per SPF/DKIM/DMARC e sottodomini)
 - [ ] Ha caselle email professionali sul dominio? Provider? (registrar/Google/Microsoft)
 - [ ] Quale indirizzo vuole usare come "reply-to" per le email automatiche del sistema?
@@ -58,36 +60,53 @@ Nota: alcune voci sono PRE-COMPILATE da fonti pubbliche (Collegio Geometri di Pi
 - [ ] Credit footer "AT STUDIO": wording esatto (es. "Realizzato da AT STUDIO") ed eventuale URL a cui linkarlo.
 
 ## 4. Legale e fiscale (per @10)
-- [ ] Come raccoglie oggi la firma del cliente su mandato e dichiarazione? (cartaceo, firma digitale, altro) -> serve per decidere lo strumento di firma online
-- [ ] Possiede una firma digitale/CNS? Di che tipo?
+- [x] Come raccoglie oggi la firma del cliente su mandato e dichiarazione? (cartaceo, firma digitale, altro) -> serve per decidere lo strumento di firma online
+  - CONFERMATO (Riunione 2): **oggi firma in CARTACEO**, ma e disposto ad aggiornarsi (firma online) se richiesto. Decisione: v1 supporta il fallback cartaceo (scarica/firma/ricarica) come baseline + FES ad accettazione tracciata consigliata (Lorenzo aperto ad adottarla). Vedi DECISIONI/@06/@10.
+- [x] Possiede una firma digitale/CNS? Di che tipo?
+  - CONFERMATO (Riunione 2): **firma digitale CNS di Aruba**.
 - [x] Ha un commercialista e/o un avvocato di riferimento? (chi validera informativa, T&C, DPIA)
-  - CONFERMATO (Riunione 1): ha **due commercialisti di riferimento**. DA CHIEDERE: nominativi/contatti e se uno di loro (o un avvocato) puo validare informativa privacy, Condizioni di Vendita e l'eventuale DPIA.
-- [ ] Software di fatturazione elettronica gia in uso? (FattureInCloud, Aruba, altro)
-- [ ] Conferma trattamento IVA/Cassa e come vuole mostrare i prezzi (IVA inclusa o + IVA)?
-- [ ] Svolge anche attivita di mediazione immobiliare? (rileva per antiriciclaggio)
+  - CONFERMATO (Riunione 1): ha **due commercialisti di riferimento**. Riunione 2: come partner abituale da citare sul sito si parte dal **commercialista dedicato** (supervisione fiscale). DA CHIEDERE ancora: chi valida informativa privacy, Condizioni di Vendita e DPIA.
+- [x] Software di fatturazione elettronica gia in uso? (FattureInCloud, Aruba, altro)
+  - CONFERMATO (Riunione 2): **fatturazione con Aruba**.
+- [x] Conferma trattamento IVA/Cassa e come vuole mostrare i prezzi (IVA inclusa o + IVA)?
+  - CONFERMATO (Riunione 2): **regime forfettario, NO IVA**. I prezzi mostrati sono il prezzo finale dell'onorario ("tutto incluso", senza IVA). DA VERIFICARE col commercialista: eventuale contributo integrativo Cassa Geometri (CIPAG) in fattura e se includerlo nel prezzo a display.
+- [x] Svolge anche attivita di mediazione immobiliare? (rileva per antiriciclaggio)
+  - CONFERMATO (Riunione 2): **NO mediazione immobiliare** -> antiriciclaggio non applicabile (coerente con @10).
 - [ ] Recessi/rimborsi: il software di fatturazione consente di emettere note di credito via API (per integrarle nel CRM) o resta un passo manuale?
 - [ ] Vuole permettere al cliente di richiedere il recesso direttamente dall'area riservata (self-service) o solo via email/PEC?
 - [ ] Criterio per il rimborso parziale (lavoro gia svolto): percentuali/regole di riferimento o decisione caso per caso?
 
 ## 5. Pricing e business (per @01, @13)
-- [ ] Conferma i prezzi proposti? Semplice 290 / Completo 490 (+60/immobile extra) / Zero Stress 790 / Usufrutto 150
-  - (Riunione 1) Lorenzo dice che "i prezzi proposti potrebbero anche andar bene". Riferimento attuale: oggi fa pagare **600 EUR a successione** (tariffa unica). Conferma definitiva della scaletta a 3 pacchetti DA CHIUDERE.
-- [ ] Sono sostenibili come margine al netto di IVA, Cassa, commissioni e ADV?
-- [ ] Obiettivo di fatturato/reddito mensile desiderato?
-- [ ] E disposto, oltre ~30 pratiche/mese, a delegare a un collaboratore?
-- [ ] **Casi complessi oltre ~800 EUR**: confermare la gestione via **preventivo personalizzato** (no 4o pacchetto pubblico) emesso dal CRM dopo consulenza telefonica (vedi @04/@05). Quali fattori fanno scattare il "su misura" (n. immobili, terreni/particelle agricole, annessi, testamento, eredi all'estero, recupero documenti)?
-- [ ] **Soglia "non serve la successione"**: Lorenzo stima che sotto ~80.000 EUR nel 90% dei casi la dichiarazione non serve. Confermare il criterio operativo da usare nel form (riferimento di legge: esonero se eredita al coniuge/parenti in linea retta + attivo <= 100.000 EUR + nessun immobile/diritto reale immobiliare, art. 28 c.7 TUS). Vogliamo dirlo al cliente in modo onesto e offrire una verifica (vedi @04)?
-- [ ] **Tutela dalla perdita su incarichi pesanti**: ok al meccanismo "cambio pacchetto con conguaglio" (addebito/rimborso della differenza one-click dal CRM) + invito a leggere la guida alla scelta del pacchetto e a una chiamata di riallineamento prima/dopo l'acquisto?
-- [ ] **SLA di consegna per pacchetto** (giorni LAVORATIVI dalla documentazione completa, riferiti al NOSTRO invio, esclusi enti terzi): confermare la proposta Semplice **5** / Completo **10** / Zero Stress **3** (corsia prioritaria) / Su misura concordato. Sono sostenibili col suo throughput (2 pratiche/mattina)? Sara mostrato su Tariffe e nelle Condizioni di Vendita art. 7 (@03/@10).
+- [x] Conferma i prezzi proposti? Semplice 290 / Completo 490 / Zero Stress / Usufrutto 150
+  - CONFERMATO (Riunione 2) con CAPIENZA per pacchetto:
+    - **Completo 490 EUR**: fino a **5 eredi**, **da 1 a 3 immobili**, fino a **5 conti bancari**.
+    - **Zero Stress**: **da 3 a 8 immobili**, non oltre **5 conti**, **recupero documenti** incluso, fino a **5 eredi**. (DA CHIARIRE: sovrapposizione a 3 immobili tra Completo e Zero Stress -> proposta: Completo 1-3 immobili, Zero Stress quando >3 immobili o quando serve il recupero documenti. Prezzo Zero Stress: confermare se resta 790.)
+    - **Semplice 290** (soli conti/liquidita, nessun immobile): non ridiscusso, si mantiene.
+  - **Servizi correlati / add-on**: **Riunione di usufrutto 150 EUR** (spostata negli add-on, non upsell a se) + **Adeguamento/ricalcolo IMU** come servizio aggiuntivo (prezzo PROPOSTO da noi: **90 EUR** base, vedi DECISIONI - Lorenzo deve confermare).
+- [ ] Sono sostenibili come margine al netto di Cassa, commissioni e ADV? (regime forfettario, no IVA)
+- [x] Obiettivo di fatturato/reddito mensile desiderato?
+  - CONFERMATO (Riunione 2): **minimo 10.000 EUR/mese, ideale 15.000 EUR/mese**; crescita insieme all'aumento del budget ADV secondo i piani.
+- [ ] E disposto, oltre ~30 pratiche/mese, a delegare a un collaboratore? (Riunione 1: si, in prospettiva)
+- [x] **Casi complessi**: gestione via **preventivo personalizzato** (no 4o pacchetto pubblico) emesso dal CRM dopo consulenza (@04/@05). Fattori che fanno scattare il "su misura":
+  - CONFERMATO (Riunione 2): **SI -> su misura**: tanti immobili (oltre la capienza Zero Stress), **particelle agricole**, **terreni**. **NO -> restano nei pacchetti standard**: annessi, testamento, eredi all'estero. **Recupero documenti -> su misura SOLO se in conflitto con il pacchetto 490** (altrimenti e gestito da Zero Stress).
+- [x] **Soglia "non serve la successione" / quando e gratis** (foto/screenshot fornito da Lorenzo, Riunione 2):
+  - Criterio di legge (esonero, art. 28 c.7 TUS): la dichiarazione **NON e dovuta** SOLO se ricorrono **tutte e tre** le condizioni insieme: (1) eredita devoluta **esclusivamente al coniuge e/o parenti in linea retta** (figli, genitori); (2) **attivo ereditario lordo <= 100.000 EUR**; (3) **nessun bene immobile o diritto reale immobiliare**. Se anche una sola manca, va presentata.
+  - "Gratis": il cliente puo sempre farla da solo (precompilata gratuita AdE con SPID); inoltre tra coniuge/figli operano franchigie elevate (1 mln a erede) per cui spesso **non e dovuta imposta di successione**, ma la **dichiarazione** puo comunque servire (es. se ci sono immobili).
+  - Decisione: il form (Esito A) avvisa onestamente quando con buona probabilita non serve, offrendo una verifica. Usare il criterio legale dei 100k + linea retta + niente immobili; la stima prudente di Lorenzo (~80k) resta come soglia di cautela interna. Vedi @04.
+- [x] **Tutela dalla perdita - "cambio pacchetto con conguaglio"**: CONFERMATO (Riunione 2).
+- [x] **SLA di consegna per pacchetto** (giorni LAVORATIVI dalla documentazione completa, riferiti al NOSTRO invio): CONFERMATO (Riunione 2) - "tempi consegna si". Nota: lavorazione effettiva ~3-4 giorni con documenti completi; gli SLA pubblici restano prudenziali (cuscinetto). Mostrati su Tariffe e Condizioni di Vendita art. 7 (@03/@10).
 
 ## 6. Brand e marketing (per @02, @09)
-- [ ] Ha gia un logo / elementi di brand (colori, font)?
-- [ ] Ha gia una scheda Google Business Profile? Con quante recensioni?
-- [ ] Puo realmente raccogliere ~20 recensioni iniziali da clienti storici?
-- [ ] Disponibilita per lo shooting fotografico + video in studio (data, mezza giornata)? Concept pronto: `shooting/Concept_Shooting_Lorenzo.md`.
-- [ ] Video di benvenuto: disponibile a girarlo (60-90s, prima persona)? Eventuali punti da includere nello script.
-- [ ] Ha foto/materiali esistenti utilizzabili?
-- [ ] Budget mensile che intende destinare all'advertising?
+- [x] Ha gia un logo / elementi di brand (colori, font)?
+  - CONFERMATO (Riunione 2): per ora si usa il **monogramma "A" su sfondo dorato** gia realizzato nel prototipo; in futuro si ricalibra il logo definitivo.
+- [x] Ha gia una scheda Google Business Profile? Con quante recensioni?
+  - CONFERMATO (Riunione 2): **SI**, si procede con la scheda Google Business Profile.
+- [x] Puo realmente raccogliere ~20 recensioni iniziali da clienti storici?
+  - CONFERMATO (Riunione 2): **SI**, ok alle ~20 recensioni richieste.
+- [x] Disponibilita per lo shooting fotografico + video in studio?
+  - CONFERMATO (Riunione 2): **foto e video se ne occupa Lorenzo** (li fornisce lui).
+- [x] Video di benvenuto / foto esistenti: li fornisce Lorenzo (vedi sopra).
+- [ ] Budget mensile advertising: cresce per fasi insieme ai risultati (vedi obiettivi @01/@09); importo iniziale soft launch ~400 EUR/mese.
 
 ## 7. Materiali da farsi consegnare
 - [ ] Visura camerale / dati fiscali per le pagine legali.
@@ -98,27 +117,26 @@ Nota: alcune voci sono PRE-COMPILATE da fonti pubbliche (Collegio Geometri di Pi
 > Serve a costruire la pagina autore/bio: in un settore YMYL la fiducia nasce da una persona reale, competente e verificabile.
 
 Formazione e percorso:
-- [ ] Diploma di geometra: istituto e anno (da web - DA CONFERMARE: diploma 2009). Eventuale laurea?
-- [ ] Anni di esperienza nel settore e tappe principali del percorso (dove ha lavorato prima di mettersi in proprio).
-- [ ] Da quando esercita in proprio (apertura P.IVA/studio) e da quando si occupa di successioni.
+- [x] Diploma di geometra: CONFERMATO (Riunione 2) **diplomato geometra** (istituto/anno da precisare).
+- [x] Da quando esercita in proprio e da quando si occupa di successioni: CONFERMATO (Riunione 2) **lavora in proprio e si occupa di successioni dal 2012**.
 - [ ] Perche si e specializzato nelle successioni (storia/motivazione personale: ottimo per il copy empatico).
 
 Credenziali e abilitazioni (prove di autorevolezza da esibire sul sito):
 - [ ] Conferma iscrizione Albo (n. 1969, Collegio Pisa) e link alla scheda pubblica del Collegio.
-- [ ] Abilitazione ENTRATEL come intermediario (data/estremi): e il requisito chiave per trasmettere le successioni (@10).
-- [ ] Possesso di firma digitale/CNS (tipo).
+- [x] Abilitazione ENTRATEL come intermediario: CONFERMATO (Riunione 2) **abilitato Entratel** (requisito chiave, @10).
+- [x] Possesso di firma digitale/CNS (tipo): CONFERMATO (Riunione 2) **CNS Aruba**.
 - [ ] Altre abilitazioni/certificazioni (es. certificatore energetico, sicurezza cantieri D.Lgs. 81/08, antincendio, ecc.).
 - [ ] Iscrizioni a registri/elenchi (es. CTU presso il Tribunale, albo fornitori, ecc.).
 - [ ] Corsi/aggiornamenti professionali rilevanti, soprattutto su successioni/fiscale.
 - [ ] Eventuali associazioni di categoria o reti professionali.
 
 Numeri e prova sociale (E-E-A-T):
-- [ ] Numero indicativo di pratiche di successione gia gestite (per "X pratiche seguite").
+- [x] Numero indicativo di pratiche di successione gia gestite: CONFERMATO (Riunione 2) **circa un centinaio di successioni** (usare "oltre 100 successioni seguite").
 - [ ] Casi/esperienze significative raccontabili in forma anonima.
-- [ ] Eventuali partner abituali (commercialista, notaio, avvocato) da citare come rete di garanzia.
+- [x] Eventuali partner abituali da citare come rete di garanzia: CONFERMATO (Riunione 2) per ora il **commercialista dedicato** (supervisione fiscale).
 
 Tocco umano (per ritratto e copy - @02):
 - [ ] Come si presenterebbe in 2 righe a un cliente in difficolta? (tono in prima persona)
-- [ ] Valori/approccio al lavoro che vuole trasmettere.
+- [x] Valori/approccio al lavoro che vuole trasmettere: CONFERMATO (Riunione 2) - Lorenzo si descrive come persona **onesta, pratica, realista, reperibile, dedicata, lavoratrice**. Copy dei valori elaborato in @02 (sezione "Valori del brand").
 - [ ] Lingue parlate (utile se ci sono eredi all'estero).
 - [ ] Disponibilita a un breve testo/video di presentazione e allo shooting (@09).

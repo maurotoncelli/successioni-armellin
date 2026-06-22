@@ -30,6 +30,16 @@ Identita di marca del Geom. Lorenzo Armellin: archetipo, tono di voce, palette c
   - Do: "Sappiamo che e un momento difficile: alla burocrazia pensiamo noi."
   - Don't: "Provvediamo all'espletamento degli adempimenti dichiarativi di cui al TUS."
 
+### Valori del brand (Riunione 2)
+> Come Lorenzo si descrive: persona onesta, pratica, realista, reperibile, dedicata, lavoratrice. Tradotti in valori di marca (da usare in "Chi Sono", microcopy, email):
+- **Onesto/Trasparente**: ti dico come stanno le cose, anche quando ti conviene NON pagare la pratica (esonero) o farla da solo. Prezzi chiari, nessuna sorpresa.
+- **Pratico/Concreto**: meno burocratese, piu soluzioni. Penso io alla parte complicata, a te resta poco da fare.
+- **Realista**: tempi e aspettative dichiarati e mantenibili, niente promesse che non dipendono da me (es. tempi dell'Agenzia).
+- **Reperibile/Presente**: una persona reale che risponde, con uno studio fisico; c'e sempre una chiamata in cui ti spiego tutto.
+- **Dedizione/Cura**: seguo la tua pratica come fosse mia, con attenzione ai dettagli (la competenza catastale del geometra che evita gli errori).
+- **Lavoratore/Affidabile**: ci metto impegno e costanza; oltre 100 successioni gestite dal 2012.
+- Tagline di servizio coerenti: "Ti dico la verita, anche quando non conviene a me"; "Alla parte difficile penso io".
+
 ### Palette colori (direzione: Trust & Premium) - HEX
 - Primario (Blu Navy): #0E2A47
 - Secondario (Slate): #20405E
@@ -68,7 +78,7 @@ Identita di marca del Geom. Lorenzo Armellin: archetipo, tono di voce, palette c
 
 ## Nodi da sciogliere
 - Approvazione estetica finale da parte di Lorenzo (palette, font, mood) (DOMANDE_PER_LORENZO).
-- Logo: esiste gia o va creato? Stile (wordmark, monogramma LA, simbolo geometrico)?
+- [RISOLTO provvisoriamente, Riunione 2] Logo: per ora si usa il **monogramma "A" su sfondo dorato** del prototipo; logo definitivo da ricalibrare in futuro (stile wordmark/monogramma da decidere).
 - Conferma direzione "Trust & Premium" vs alternativa "Modern & Earthy" (antracite + salvia/terracotta) se preferita.
 - Naming definitivo del brand/sito (proposta: "Successioni Armellin") e dominio da registrare - decisione dopo l'analisi competitor (vedi ANALISI_COMPETITORS.md).
 
@@ -87,6 +97,8 @@ Identita di marca del Geom. Lorenzo Armellin: archetipo, tono di voce, palette c
 - Foto reali (Lorenzo + studio), niente foto stock; niente foto citta in home; indirizzo come ancora di fiducia.
 - Regola anti-burocratese: termini tecnici sempre spiegati.
 - Posizionamento "geometra (catasto) + supervisione commercialista (fisco)" come gestione della barriera di percezione; claim veritieri e proporzionati (@09/@10).
+- Valori del brand (Riunione 2): onesto, pratico, realista, reperibile, dedicato, lavoratore (copy sopra).
+- Logo provvisorio: monogramma "A" su sfondo dorato (prototipo); definitivo da ricalibrare.
 
 ---
 

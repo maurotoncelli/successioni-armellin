@@ -44,12 +44,12 @@ export const packages: Package[] = [
     name: "Successione Completa",
     tagline: "Con immobili e voltura catastale",
     description:
-      "Tutto incluso quando ci sono immobili: controllo dei dati catastali, dichiarazione e voltura catastale.",
+      "Tutto incluso quando ci sono immobili: controllo dei dati catastali, dichiarazione e voltura catastale. Copre fino a 5 eredi, da 1 a 3 immobili e fino a 5 conti bancari.",
     features: [
       "Tutto quello del pacchetto Semplice",
+      "Fino a 5 eredi, 1-3 immobili, fino a 5 conti",
       "Controllo dei dati catastali da geometra",
       "Voltura catastale inclusa",
-      "Recupero visure e atti di provenienza",
     ],
     price: 490,
     extraPropertyFee: 60,
@@ -62,12 +62,12 @@ export const packages: Package[] = [
     name: "Zero Stress",
     tagline: "Ce ne occupiamo noi, dall'inizio alla fine",
     description:
-      "La massima tranquillita: seguiamo ogni passaggio, recuperiamo i documenti mancanti e ti aggiorniamo a ogni step.",
+      "La massima tranquillita per i casi piu corposi: da 3 a 8 immobili, fino a 5 conti e 5 eredi. Recuperiamo noi i documenti mancanti e ti aggiorniamo a ogni step.",
     features: [
       "Tutto quello del pacchetto Completo",
+      "Da 3 a 8 immobili, fino a 5 conti e 5 eredi",
       "Recupero documenti presso enti e banche",
       "Priorita di lavorazione",
-      "Aggiornamenti dedicati a ogni passaggio",
     ],
     price: 790,
     extraPropertyFee: 60,
@@ -90,7 +90,14 @@ export const addons: Addon[] = [
     name: "Riunione di usufrutto",
     description:
       "Aggiornamento catastale a seguito dell'estinzione dell'usufrutto.",
-    price: 120,
+    price: 150,
+  },
+  {
+    key: "ADEGUAMENTO_IMU",
+    name: "Adeguamento e ricalcolo IMU",
+    description:
+      "Ricalcolo dell'IMU dopo la successione e aggiornamento per i nuovi intestatari.",
+    price: 90,
   },
   {
     key: "VOLTURA_EXTRA",

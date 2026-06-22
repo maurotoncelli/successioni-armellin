@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { FileSignature, Check, Download } from "lucide-react";
+import { FileSignature, Check, Download, Upload } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { buttonClasses } from "@/components/ui/button";
 import { PageHeading } from "@/components/area/ui";
@@ -59,8 +59,28 @@ export default function MandatoPage() {
               className={buttonClasses()}
             >
               <FileSignature className="h-4 w-4" />
-              Accetto e firmo
+              Accetto e firmo online
             </button>
+
+            {/* Alternativa: firma cartacea (prassi attuale dello studio) */}
+            <div className="rounded-lg border border-primary/10 bg-bg-muted p-4">
+              <p className="text-sm font-medium text-text">
+                Preferisci la firma cartacea?
+              </p>
+              <p className="mt-0.5 text-sm text-text-muted">
+                Scarica il mandato, firmalo a mano e ricaricalo: per noi va benissimo.
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <button className="inline-flex items-center gap-2 rounded-[10px] border border-primary/20 px-4 py-2 text-sm font-medium text-primary hover:bg-primary/5">
+                  <Download className="h-4 w-4" />
+                  Scarica il mandato
+                </button>
+                <button className="inline-flex items-center gap-2 rounded-[10px] border border-primary/20 px-4 py-2 text-sm font-medium text-primary hover:bg-primary/5">
+                  <Upload className="h-4 w-4" />
+                  Carica il mandato firmato
+                </button>
+              </div>
+            </div>
           </div>
         ) : (
           <div className="mt-5 space-y-3">

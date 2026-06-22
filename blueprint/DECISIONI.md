@@ -1,25 +1,31 @@
 # DECISIONI - Vincoli congelati del progetto (aggregato)
 
 > Raccolta di tutte le "Decisioni congelate" sparse nei capitoli. E il PRIMO file da dare in pasto all'AI: definisce i vincoli non negoziabili. In caso di dubbio, queste decisioni prevalgono.
-> Stato: In revisione · Ultimo aggiornamento: 2026-06-22 (integrati esiti Riunione 1)
+> Stato: In revisione · Ultimo aggiornamento: 2026-06-22 (integrati esiti Riunione 1 + Riunione 2: anagrafica, pricing/capienza, su misura, fiscale forfettario, firma, auth, brand)
 > Ogni voce rimanda al capitolo di origine come fonte di dettaglio.
 
 ## Business e modello (@01)
-- Geometra iscritto all'albo e ABILITATO ENTRATEL (prerequisito soddisfatto).
-- Attivita full-time; capacita target a regime ~25 pratiche/mese (tetto sostenibile ~30 da solo).
-- Pacchetti a prezzo fisso: Semplice 290, Completo 490 (+60/immobile oltre il 3), Zero Stress 790, Upsell Usufrutto 150.
+- Geometra iscritto all'albo e ABILITATO ENTRATEL (confermato Riunione 2). **Ditta individuale**, **regime forfettario (NO IVA)**; fatturazione con **Aruba**; firma digitale **CNS Aruba**; **no mediazione immobiliare** (antiriciclaggio non applicabile). Diplomato geometra, in proprio e su successioni **dal 2012**, **~100 successioni** gia gestite.
+- Attivita full-time; capacita target a regime ~25 pratiche/mese (tetto sostenibile ~30 da solo). **Obiettivo fatturato: minimo 10.000 EUR/mese, ideale 15.000 EUR/mese** (Riunione 2); crescita per fasi insieme al budget ADV. Soft launch: obiettivo gestire ~15 successioni.
+- Pacchetti a prezzo fisso (Riunione 2), prezzi = onorario finale senza IVA (forfettario):
+  - **Semplice 290** (soli conti/liquidita, nessun immobile).
+  - **Completo 490**: fino a **5 eredi**, **1-3 immobili**, fino a **5 conti bancari**.
+  - **Zero Stress** (790, da confermare): **3-8 immobili**, non oltre **5 conti**, **recupero documenti** incluso, fino a **5 eredi**. Aperto: sovrapposizione a 3 immobili con Completo -> regola operativa proposta: Completo 1-3, Zero Stress >3 immobili o quando serve recupero documenti.
+  - **Add-on / servizi correlati**: **Riunione di usufrutto 150** + **Adeguamento/ricalcolo IMU** (prezzo PROPOSTO 90 EUR, da confermare Lorenzo) + voltura aggiuntiva.
 - Pagamento anticipato dell'onorario; imposte di Stato separate e a carico dell'erede.
-- Casi complessi (>~800 EUR): preventivo personalizzato emesso dal CRM dopo consulenza, NO 4o pacchetto pubblico (Riunione 1).
-- Onesta sul non-obbligo: se la dichiarazione non e dovuta, si avvisa il cliente prima dell'acquisto (Esito A del form, @04) - leva di fiducia.
-- Servizio nazionale con ancoraggio locale (studio Pontedera).
+- Casi complessi -> **preventivo personalizzato** dal CRM dopo consulenza, NO 4o pacchetto pubblico. **Trigger "su misura" (Riunione 2): SI** = tanti immobili (oltre Zero Stress), particelle agricole, terreni; **NO** (restano nei pacchetti) = annessi, testamento, eredi all'estero; **recupero documenti** = su misura solo se in conflitto col pacchetto 490.
+- Cambio pacchetto con conguaglio: CONFERMATO (Riunione 2). SLA di consegna: CONFERMATI (lavorazione effettiva ~3-4 gg con documenti completi; SLA pubblici prudenziali).
+- Onesta sul non-obbligo: se la dichiarazione non e dovuta, si avvisa il cliente prima dell'acquisto (Esito A del form, @04). Criterio legale (esonero, art. 28 c.7 TUS): NON dovuta solo se TUTTE e tre: (1) eredi = coniuge/parenti in linea retta; (2) attivo lordo <= 100.000 EUR; (3) nessun immobile/diritto reale immobiliare.
+- Servizio nazionale con ancoraggio locale (studio Pontedera, **orario 9-13 / 15-19**).
 - Sviluppo in-house di sito + CRM.
 - Gestionale in uso: Sogei - Successioni Online (AdE) - confermato Riunione 1.
 
 ## Legale e compliance (@10)
 - Titolare del trattamento: Studio Geom. Lorenzo Armellin.
-- Antiriciclaggio NON applicabile all'attivita tipica del geometra.
+- Antiriciclaggio NON applicabile (confermato Riunione 2: Lorenzo non svolge mediazione immobiliare).
+- Fiscale: regime forfettario, **nessuna IVA** in fattura; prezzi a display = onorario finale "tutto incluso". Da verificare col commercialista l'eventuale contributo integrativo Cassa Geometri (CIPAG). Fatturazione elettronica via Aruba.
 - Recesso: avvio immediato lavorazione subordinato a consenso espresso + accettazione perdita recesso, conferma su supporto durevole.
-- Firma: FES ad accettazione tracciata (timestamp, IP, versione+hash, log) per consensi (checkout) e mandato (area riservata, prima dell'avvio); fallback firma autografa via upload; FEA/FEQ non in v1 (@10 par. 5.1).
+- Firma (aggiornato Riunione 2): Lorenzo oggi raccoglie il mandato in **CARTACEO** ed e disposto ad aggiornarsi. v1 = **fallback cartaceo (scarica -> firma -> ricarica) come baseline** + **FES ad accettazione tracciata** (timestamp, IP, versione+hash, log) consigliata per consensi (checkout) e mandato (area riservata, prima dell'avvio); Lorenzo dispone di **CNS Aruba**; FEA/FEQ non in v1 (@10 par. 5.1).
 - Retention: in cloud restano i documenti FINALI; input sensibili minimizzati/cancellati post-lavorazione. Matrice per tipo (@10 par. 4.1): input grezzi ~30 gg dalla chiusura, finali/fiscali 10 anni, IBAN cancellato dopo l'addebito; purge automatico con log.
 - Residenza dati: preferenza UE.
 - Contenuti fiscali allineati all'autoliquidazione 2025.
@@ -28,7 +34,7 @@
 - Frontend: Next.js (App Router) + TypeScript + Tailwind + shadcn/ui + Motion.
 - Backend/dati: Supabase (Postgres/Auth/Storage/Realtime) in UE; RLS come backbone.
 - Accesso dati: supabase-js (RLS); Drizzle opzionale lato server. Prisma abbandonato come layer principale.
-- Auth: Supabase Auth passwordless (OTP/Magic Link). Niente social login (Google/Apple) in v1; eventuale Google in fase 2 con match sull'email della pratica.
+- Auth: Supabase Auth passwordless. Cliente (Riunione 2): **Magic Link via email (primario) + OTP via email; in alternativa OTP via telefono/SMS** se il cliente preferisce (caveat: costo/deliverability SMS, provider UE). Niente social login (Google/Apple) in v1; eventuale Google in fase 2 con match sull'email della pratica.
 - Storage: Supabase Storage (no S3 in v1); bucket pubblico `site-assets` per le immagini del sito.
 - Sito data-driven via CMS leggero interno (Supabase + editor CRM) per pacchetti/prezzi, FAQ, testi, immagini. Sito statico SSG/ISR su CDN con revalidation on-demand alla pubblicazione (nessuna query DB per-visita); flusso Bozza/Anteprima/Pubblica + versioning; Zod con fallback; MDX solo per i long-form. Niente headless CMS esterno.
 - Pagamenti: Stripe. Email: Resend. WhatsApp: Cloud API (se attivato).
@@ -85,7 +91,8 @@
 - UI/stack CRM: stesso stack del progetto (Next.js + Tailwind + shadcn/ui), tema dark "Flowdesk - Armellin" applicato via design token (vedi @SPEC_Design_Tokens). NON si replica il React+CSS vanilla del Flowdesk personale: si riprende solo il linguaggio grafico. Scelta a favore di coerenza e ottimizzazione (un solo repo/toolchain, componenti/auth condivisi).
 
 ## Area riservata (@06)
-- Accesso passwordless (Magic Link primario, OTP alternativo).
+- Accesso passwordless: Magic Link via email (primario) + OTP via email; **opzione OTP via telefono/SMS** per chi preferisce (Riunione 2).
+- Mandato: baseline **cartaceo** (scarica/firma/ricarica) + FES ad accettazione tracciata consigliata (Lorenzo oggi cartaceo, disposto ad adottare la firma online; ha CNS Aruba).
 - Area sbloccata dopo il pagamento; nessun "paga per sbloccare" sui documenti finali.
 - Upload con checklist dinamica = la checklist gestita da Lorenzo (`document_requirements`); il cliente vede solo le voci applicabili; stato documenti visibile e ricaricabile.
 - Vista "Il tuo acquisto" (`/ordine`): riepilogo di cosa ha acquistato e cosa include (da snapshot `line_items`), importo, stato pagamento, fattura. Sempre consultabile.
@@ -98,6 +105,9 @@
 - Palette "Trust & Premium" (HEX in @SPEC_Design_Tokens).
 - Tipografia: Lora (titoli) + Inter (testo).
 - Regola anti-burocratese: termini tecnici sempre spiegati.
+- Logo (Riunione 2): **provvisorio** = monogramma "A" su sfondo dorato (gia nel prototipo); logo definitivo da ricalibrare in seguito.
+- Valori del brand (Riunione 2, da copy in @02): onesto, pratico, realista, reperibile, dedicato, lavoratore.
+- Asset marketing (Riunione 2): Google Business Profile SI, ~20 recensioni iniziali SI, foto/video forniti da Lorenzo, dominio ancora DA REGISTRARE; partner citato = commercialista dedicato.
 
 ## Analytics (@08)
 - GA4 + GTM + Data Layer; Consent Mode v2 default "denied".
