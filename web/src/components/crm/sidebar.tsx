@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
   KanbanSquare,
+  CalendarDays,
   Users,
   BarChart3,
   FileEdit,
@@ -15,6 +16,7 @@ import { cn } from "@/lib/utils";
 const nav = [
   { href: "/crm", label: "Home operativa", icon: LayoutDashboard, exact: true },
   { href: "/crm/pratiche", label: "Pratiche", icon: KanbanSquare },
+  { href: "/crm/calendario", label: "Calendario", icon: CalendarDays },
   { href: "/crm/contatti", label: "Contatti", icon: Users },
   { href: "/crm/statistiche", label: "Statistiche", icon: BarChart3 },
 ];

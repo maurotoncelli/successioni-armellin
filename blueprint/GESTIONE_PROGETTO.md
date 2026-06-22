@@ -1,8 +1,9 @@
 # Gestione Progetto - Fasi di Release e Step
 
 > Piano di esecuzione a fasi con punti di approvazione (gate). Complementare al @13_Stima_Costi (che definisce l'ORDINE TECNICO di sviluppo): qui si governa il COME e QUANDO si rilascia, con prototipi e validazioni prima del go-live.
-> Stato: In revisione · Ultimo aggiornamento: 2026-06-18
+> Stato: In revisione · Ultimo aggiornamento: 2026-06-22
 > Riferimenti: @13 (roadmap dev), @11 (sicurezza), @12 (operations), @10 (legale), DECISIONI.
+> Diario di sviluppo (cronologia, dettagli e step operativi): vedi sezione "Diario di sviluppo" in fondo a questo documento.
 
 ## Principio dei "gate" (go / no-go)
 Ogni fase ha un obiettivo, dei deliverable e un **criterio di uscita** che deve essere approvato prima di passare alla fase successiva. Questo evita di costruire sul vuoto e di scoprire problemi tardi.
@@ -43,13 +44,13 @@ graph TD
 - Deliverable: prototipo multipagina navigabile (home, tariffe, chi sono, form, FAQ) con contenuti reali ma senza backend.
 - Tecnologia prototipo: DECISO -> mockup in Next.js + dati finti (evolve nel prodotto reale, no lavoro buttato).
 - Gate di uscita: Lorenzo approva layout, flusso e copy.
-- Stato: Da iniziare
+- Stato: In corso - prototipo costruito e su GitHub; deploy Vercel da finalizzare (vedi Diario 2026-06-21). In attesa validazione Lorenzo.
 
 ## Fase 2 - Prototipo CRM (validazione flusso/usabilita)
 - Obiettivo: validare interfaccia e flusso del CRM con dati finti.
 - Deliverable: mockup di Kanban, scheda lavoro, anagrafica/storico, dashboard KPI (dati simulati).
 - Gate di uscita: Lorenzo approva l'usabilita e conferma colonne/azioni/viste.
-- Stato: Da iniziare
+- Stato: In corso - prototipo costruito (Home operativa, Pipeline Kanban/Lista, Scheda pratica, Contatti, Statistiche) e su GitHub (vedi Diario 2026-06-22). In attesa validazione Lorenzo.
 
 ## Fase 3 - Infrastruttura e Dati
 - Obiettivo: basi tecniche pronte (@13 step 1-3).
@@ -108,3 +109,59 @@ graph TD
 ## Note
 - Le fasi possono parzialmente sovrapporsi (es. contenuti SEO mentre si sviluppa il CRM), ma i gate restano vincolanti.
 - Aggiornare lo "Stato" di ciascuna fase man mano che si avanza.
+
+---
+
+# Diario di sviluppo
+
+> Cronologia di cosa e stato fatto, con dettagli tecnici, decisioni operative e step ancora da fare. Si aggiorna a ogni avanzamento. Il diario serve a Lorenzo e allo sviluppo per non perdere il filo.
+
+## Coordinate tecniche del progetto
+- **Repository GitHub**: `https://github.com/maurotoncelli/successioni-armellin` (branch `main`).
+- **App**: Next.js 16 (App Router, Turbopack) + TypeScript + Tailwind CSS v4. La web app vive nella sottocartella **`web/`** del repo; alla radice restano `blueprint/`, `seed/`, ecc.
+- **Hosting**: Vercel (collegato a GitHub, deploy automatico a ogni push). **Root Directory del progetto Vercel = `web`**.
+- **Struttura cartelle principali** (dentro `web/src`):
+  - `app/(site)/` -> sito pubblico (route group con navbar/footer; gli URL NON cambiano).
+  - `app/crm/` -> CRM interno (layout dark dedicato, area `/crm`).
+  - `components/site/` e `components/crm/` -> componenti dei due ambiti.
+  - `content/` -> dati finti del prototipo (`site.ts`, `crm-data.ts`); `seed/content_entries.it.json` alla radice del repo per i testi.
+- **Stato dati**: tutto il prototipo (sito + CRM) gira su **dati FINTI**. Nessun backend ancora collegato. Il "motore" reale (Supabase + schema + RLS) e la Fase 3 e abilitera sia i pacchetti dinamici del sito sia il CRM reale.
+
+## Cronologia
+
+### 2026-06-21 - Fase 1: Prototipo Sito
+- Scaffold Next.js nella cartella `web/` con stack del blueprint (Next.js + TS + Tailwind v4 + design token brand: navy/oro, font Lora/Inter/Playfair).
+- Costruite tutte le pagine pubbliche da `STRUTTURA_CONTENUTI_SITO.md`: Home, Tariffe, Chi Sono, Come Funziona, Documenti, FAQ, Contatti, Guide, Recesso, pagine legali (placeholder), funnel `/preventivo` (+ `/grazie`) e `/checkout` (mock), pagina 404.
+- Contenuti caricati da `seed/content_entries.it.json` + fixtures locali (`content/site.ts`) per pacchetti, add-on, FAQ, recensioni, guide.
+- Repo Git inizializzato e pushato su GitHub; collegamento a Vercel.
+- **Problema aperto (deploy)**: Vercel restituisce 404. Causa diagnosticata: il "Framework Preset" del progetto Vercel e rimasto su "Other" (impostato all'import quando la root era vuota). **Fix da completare lato Lorenzo/Mauro**: in Vercel -> Project Settings -> impostare **Framework Preset = Next.js** (oltre a Root Directory = `web`), salvare e rilanciare il deploy. Ogni nuovo push ritenta il deploy.
+
+### 2026-06-22 - Fase 2: Prototipo CRM "Flowdesk - Armellin"
+- **Riorganizzazione layout**: introdotto il route group `app/(site)/` per il sito pubblico (navbar/footer/CTA mobile) separato dal CRM; `app/layout.tsx` reso minimale (solo html/body/font). Gli URL pubblici restano identici.
+- **Tema CRM dark** (`.theme-crm` + token "Flowdesk - Armellin" in `globals.css`, da @SPEC_Design_Tokens): superfici scure, accento indigo->viola, distinto dal tema navy/oro del sito.
+- **Layout CRM**: sidebar (Home/Pratiche/Contatti/Statistiche + voce CMS marcata "Fase 5") e topbar con barra di **ricerca globale** (placeholder: codice pratica, CF defunto, nome/email).
+- **Dati finti CRM** (`content/crm-data.ts`): 8 pratiche d'esempio lungo tutta la pipeline, con contatti, checklist documenti, comunicazioni, To-Do, log eventi, alert e KPI derivati. Enum allineati a @SPEC_Data_Model.
+- **Pagine costruite**:
+  - **Home operativa** (`/crm`): card di sintesi (schede attive, da fare, completate, incassi), pannello **alert automatici**, widget **To-Do**, tabella "Tocca a te".
+  - **Pipeline** (`/crm/pratiche`): toggle **Kanban / Lista**; card con badge azione `action_owner` ("Tocca a te" / "In attesa del cliente" / "In attesa AdE"), urgenza, importo.
+  - **Scheda pratica** (`/crm/pratiche/[id]`): riepilogo dati, riepilogo ordine (line items + totale + nota imposte), **checklist documenti** con Approva/Rifiuta, cronologia comunicazioni (auto/manuale), appunti (chiamata/pagamenti/note), date chiave, To-Do, timeline eventi.
+  - **Contatti** (`/crm/contatti`): rubrica con consenso marketing e **storico pratiche** per contatto.
+  - **Statistiche** (`/crm/statistiche`): KPI (pratiche, onorari, ticket medio, conversione) + grafici a barre per stato/pacchetto.
+  - **Calendario** (`/crm/calendario`, aggiunto 22/06 su richiesta): viste **Mese** e **Agenda** con le date chiave derivate dalle pratiche (apertura, consegna prevista, scadenza 12 mesi = decesso + 1 anno, invio AdE), legenda colori, click sull'evento -> apre la scheda. **Senza sync Google** (rimandata: e "idea futura" anche nel cap. 05).
+- **QA**: build di produzione OK (31 route, CRM incluse), ESLint OK, smoke test runtime (tutte le route 200). Commit e push su GitHub.
+- **Limiti noti del prototipo CRM**: i pulsanti (Cambia stato, Approva/Rifiuta, Nuova pratica, ricerca) sono UI non ancora funzionanti (nessuna azione reale); servono a validare layout e flusso con Lorenzo. Le automazioni, i pagamenti Stripe, gli invii email/WhatsApp e la persistenza arrivano con le fasi successive.
+
+## Prossimi step (in ordine)
+1. **Finalizzare il deploy Vercel** (Framework Preset = Next.js) e verificare sito + `/crm` online. [Mauro/Lorenzo]
+1b. **(Da decidere) Prototipo Area Riservata cliente** (`/area-riservata`): dashboard, "il tuo acquisto", caricamento documenti, recesso - con dati finti, sullo stile del CRM. Non presente nel prototipo sito (Fase 1) perche e Fase 5 (richiede login + backend); si puo anticipare come mockup se Lorenzo vuole validarla ora. [In attesa di conferma]
+2. **Validazione Lorenzo (gate Fasi 1-2)**: rivedere insieme sito e CRM, raccogliere correzioni su layout, flusso, copy, colonne/azioni/viste del CRM. [Lorenzo]
+3. **Raccolta contenuti reali**: prezzi/SLA pacchetti definitivi, testi, FAQ, foto brand; risposte a `Domande_per_Lorenzo`. [Lorenzo]
+4. **Fase 3 - Motore condiviso**: progetto Supabase UE, schema dati (@SPEC_Data_Model), Row Level Security + test cross-tenant, auth admin 2FA / client passwordless, ambienti dev/staging/prod, CI/CD. [Sviluppo]
+5. **Fase 4 - Sito reale**: pagine alimentate dal DB, form multi-step -> lead in DB + eventi GA4, checkout Stripe + webhook, pagine legali + CMP.
+6. **Fase 5 - Area riservata + CRM reale**: collegare il prototipo CRM al DB (azioni vere, automazioni email, validazione documenti) e l'area cliente.
+
+## Decisioni operative registrate
+- Hosting: **Vercel** (scartato Netlify).
+- Repo: monorepo con app in `web/`; blueprint e seed alla radice.
+- Prototipi (sito e CRM) nello **stesso stack** del prodotto reale, cosi evolvono senza riscrivere (no lavoro buttato).
+- CRM come area `/crm` della stessa app (stesso repo/toolchain/auth/DB futuri), con tema visivo proprio.

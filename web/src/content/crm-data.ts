@@ -616,6 +616,53 @@ export const alerts: Alert[] = [
   { kind: "ferma", text: "SUC-2026-0005 - ferma da 5 giorni", practiceId: "p8" },
 ];
 
+export type CalEventType = "apertura" | "consegna" | "scadenza" | "invio";
+
+export type CalEvent = {
+  dateStr: string; // YYYY-MM-DD
+  type: CalEventType;
+  label: string;
+  practiceId: string;
+  code: string;
+};
+
+export const calEventMeta: Record<
+  CalEventType,
+  { label: string; chip: string; dot: string }
+> = {
+  apertura: { label: "Apertura scheda", chip: "bg-crm-teal/15 text-crm-teal", dot: "bg-crm-teal" },
+  consegna: { label: "Consegna prevista", chip: "bg-crm-accent/15 text-crm-accent", dot: "bg-crm-accent" },
+  scadenza: { label: "Scadenza 12 mesi", chip: "bg-crm-rose/15 text-crm-rose", dot: "bg-crm-rose" },
+  invio: { label: "Invio AdE", chip: "bg-crm-green/15 text-crm-green", dot: "bg-crm-green" },
+};
+
+function addOneYear(dateStr: string): string {
+  const [y, m, d] = dateStr.split("-").map(Number);
+  return `${y + 1}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+}
+
+export function calendarEvents(): CalEvent[] {
+  const events: CalEvent[] = [];
+  for (const p of practices) {
+    if (p.status === "ANNULLATA") continue;
+    if (p.openedAt)
+      events.push({ dateStr: p.openedAt, type: "apertura", label: "Apertura", practiceId: p.id, code: p.code });
+    if (p.dueDate)
+      events.push({ dateStr: p.dueDate, type: "consegna", label: "Consegna", practiceId: p.id, code: p.code });
+    if (p.submittedAt)
+      events.push({ dateStr: p.submittedAt, type: "invio", label: "Invio AdE", practiceId: p.id, code: p.code });
+    if (p.dateOfDeath && p.status !== "CHIUSA")
+      events.push({
+        dateStr: addOneYear(p.dateOfDeath),
+        type: "scadenza",
+        label: "Scadenza 12 mesi",
+        practiceId: p.id,
+        code: p.code,
+      });
+  }
+  return events;
+}
+
 export function getPractice(id: string): Practice | undefined {
   return practices.find((p) => p.id === id);
 }

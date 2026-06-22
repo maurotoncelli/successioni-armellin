@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 const mobileNav = [
   { href: "/crm", label: "Home" },
   { href: "/crm/pratiche", label: "Pratiche" },
+  { href: "/crm/calendario", label: "Calendario" },
   { href: "/crm/contatti", label: "Contatti" },
   { href: "/crm/statistiche", label: "Statistiche" },
 ];
