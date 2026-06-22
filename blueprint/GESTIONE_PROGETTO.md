@@ -171,6 +171,22 @@ graph TD
 - **Brand**: logo provvisorio = "A" dorato (definitivo poi); valori = onesto/pratico/realista/reperibile/dedicato/lavoratore (copy in @02); Google Business SI; 20 recensioni SI; foto/video forniti da Lorenzo; dominio DA REGISTRARE; partner citato = commercialista dedicato.
 - **Prototipo aggiornato**: `site.ts` (add-on usufrutto 150 + IMU 90, capienza pacchetti), login area riservata con scelta Email/Telefono, schermata mandato con alternativa cartacea.
 
+### 2026-06-22 - Fase 3 avviata: motore reale (prima fetta, CMS pacchetti)
+- Obiettivo: passare dai dati finti al database reale, partendo da pacchetti/add-on/FAQ (fetta a basso rischio, niente dati personali).
+- Stack DB: **Supabase cloud free in UE** (scelto al posto del locale perche Docker non e installato; lo schema/codice e identico).
+- Fatto (codice, attivo appena si collegano le chiavi):
+  - `supabase init` + migrazioni versionate: `supabase/migrations/20260622120000_cms_content.sql` (enum package_type, tabelle packages/addons/faqs, trigger updated_at, RLS: lettura pubblica solo record attivi/pubblicati, scrittura solo service_role) e `..._cms_seed.sql` (contenuti confermati Riunione 2, idempotente).
+  - Client Supabase server/admin (`web/src/lib/supabase/`), tipi DB scritti a mano (rigenerabili con `supabase gen types`).
+  - Layer `web/src/lib/cms.ts`: `getPackages/getAddons/getFaqs` con **fallback automatico alle fixture** se il DB non e configurato (il sito non si rompe mai).
+  - Refactor del sito: tariffe, faq, checkout, ordine e le card pacchetti ora leggono dal layer CMS.
+  - Mini-CMS nel CRM: `/crm/listino` (voce in sidebar) per modificare prezzi/testi/disponibilita di pacchetti e add-on, con server action "Salva e pubblica" che rigenera le pagine (revalidatePath).
+  - Gate admin **provvisorio** su `/crm` (`web/src/proxy.ts` + `/crm-login`): cookie con hash della password (`ADMIN_PASSWORD`); se la password non e impostata il gate e disattivato (demo libera). Sara sostituito da Supabase Auth.
+- QA: build OK, lint OK, smoke test pagine OK (con fixture). Smoke test scrittura DB in sospeso: richiede le chiavi Supabase.
+- Attivazione (passi rimasti, richiedono l'utente):
+  1. Creare il progetto Supabase (free, regione UE) e compilare `web/.env.local` da `web/.env.example`.
+  2. Applicare schema+seed: `npx supabase link` poi `npx supabase db push` (oppure incollare le migrazioni nello SQL editor).
+  3. Impostare `ADMIN_PASSWORD` per proteggere il CRM.
+
 ## Decisioni ancora da chiudere (post Riunione 2)
 - Prezzo Adeguamento/ricalcolo IMU: proposto 90 EUR, attendere conferma di Lorenzo.
 - Prezzo Zero Stress (790?) e regola di confine immobili Completo/Zero Stress (sovrapposizione a 3).

@@ -1,9 +1,10 @@
 import { Check } from "lucide-react";
-import { packages } from "@/content/site";
+import { getPackages } from "@/lib/cms";
 import { ButtonLink } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-export function PackageCards() {
+export async function PackageCards() {
+  const packages = await getPackages();
   return (
     <div className="grid gap-6 md:grid-cols-3">
       {packages

@@ -3,7 +3,7 @@ import { Check, Download, Landmark } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { PageHeading } from "@/components/area/ui";
 import { currentPractice as p } from "@/content/area-data";
-import { packages } from "@/content/site";
+import { getPackages } from "@/lib/cms";
 
 const paymentLabels: Record<string, string> = {
   PAID: "Pagato",
@@ -12,7 +12,8 @@ const paymentLabels: Record<string, string> = {
   NONE: "—",
 };
 
-export default function OrdinePage() {
+export default async function OrdinePage() {
+  const packages = await getPackages();
   const pkg = packages.find((x) => x.key === p.selectedPackage);
 
   return (

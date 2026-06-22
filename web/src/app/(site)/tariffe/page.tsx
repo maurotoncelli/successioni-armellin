@@ -5,7 +5,7 @@ import { Section, SectionHeading } from "@/components/ui/section";
 import { Card } from "@/components/ui/card";
 import { PackageCards } from "@/components/site/package-cards";
 import { CtaBand } from "@/components/site/cta-band";
-import { addons } from "@/content/site";
+import { getAddons } from "@/lib/cms";
 import { cta, list, text } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -13,9 +13,10 @@ export const metadata: Metadata = {
   description: text("tariffe", "hero_subtitle"),
 };
 
-export default function TariffePage() {
+export default async function TariffePage() {
   const deliverable = list<string>("tariffe", "deliverable_list");
   const finalCta = cta("tariffe", "cta_finale_button");
+  const addons = await getAddons();
 
   return (
     <>

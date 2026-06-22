@@ -10,8 +10,10 @@ import {
   BarChart3,
   FileEdit,
   ExternalLink,
+  LogOut,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { logout } from "@/app/crm-login/actions";
 
 const nav = [
   { href: "/crm", label: "Home operativa", icon: LayoutDashboard, exact: true },
@@ -75,14 +77,21 @@ export function Sidebar() {
         <p className="px-3 pb-1 pt-4 text-[11px] font-semibold uppercase tracking-wider text-crm-muted">
           Sito
         </p>
-        <span className="flex cursor-not-allowed items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-crm-muted/70">
+        <Link
+          href="/crm/listino"
+          className={cn(
+            "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+            pathname.startsWith("/crm/listino")
+              ? "bg-crm-accent/15 text-crm-accent"
+              : "text-crm-text2 hover:bg-crm-hover hover:text-crm-text",
+          )}
+        >
           <FileEdit className="h-[18px] w-[18px]" />
-          Contenuti (CMS)
-          <span className="ml-auto text-[10px] uppercase">Fase 5</span>
-        </span>
+          Listino e contenuti
+        </Link>
       </nav>
 
-      <div className="border-t border-crm-border p-3">
+      <div className="space-y-1 border-t border-crm-border p-3">
         <Link
           href="/"
           className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-crm-text2 hover:bg-crm-hover hover:text-crm-text"
@@ -90,6 +99,15 @@ export function Sidebar() {
           <ExternalLink className="h-4 w-4" />
           Vai al sito pubblico
         </Link>
+        <form action={logout}>
+          <button
+            type="submit"
+            className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-crm-text2 hover:bg-crm-hover hover:text-crm-text"
+          >
+            <LogOut className="h-4 w-4" />
+            Esci
+          </button>
+        </form>
       </div>
     </aside>
   );

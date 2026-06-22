@@ -12,6 +12,7 @@ const mobileNav = [
   { href: "/crm/calendario", label: "Calendario" },
   { href: "/crm/contatti", label: "Contatti" },
   { href: "/crm/statistiche", label: "Statistiche" },
+  { href: "/crm/listino", label: "Listino e contenuti" },
 ];
 
 export function Topbar() {

@@ -3,7 +3,7 @@ import { ChevronDown } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
 import { Section } from "@/components/ui/section";
 import { CtaBand } from "@/components/site/cta-band";
-import { faqs, type Faq } from "@/content/site";
+import { getFaqs, type Faq } from "@/lib/cms";
 import { cta, text } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -21,8 +21,8 @@ function groupByCategory(items: Faq[]) {
   return Array.from(map.entries());
 }
 
-export default function FaqPage() {
-  const grouped = groupByCategory(faqs);
+export default async function FaqPage() {
+  const grouped = groupByCategory(await getFaqs());
   const ctaButton = cta("faq", "cta_button");
   const ctaPhone = cta("faq", "cta_phone");
 

@@ -4,7 +4,7 @@ import { ShieldCheck, Info, Lock } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { packages } from "@/content/site";
+import { getPackages } from "@/lib/cms";
 import { cta, list, text } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -12,7 +12,8 @@ export const metadata: Metadata = {
   robots: { index: false },
 };
 
-export default function CheckoutPage() {
+export default async function CheckoutPage() {
+  const packages = await getPackages();
   const order = packages.find((p) => p.key === "COMPLETO") ?? packages[0];
   const metodi = list<string>("checkout", "pagamento_metodi");
   const trustItems = list<string>("checkout", "trust_items");
