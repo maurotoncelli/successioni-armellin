@@ -59,6 +59,8 @@ export type ChecklistItem = {
   label: string;
   required: boolean;
   status: RequirementStatus;
+  reason?: string; // motivo del rifiuto (stato RIFIUTATO)
+  help?: string; // istruzioni mostrate al cliente
 };
 
 export type Communication = {
@@ -267,11 +269,18 @@ export const practices: Practice[] = [
     paymentNotes: "Pagato online il 10/06.",
     notes: "Mancano ancora 2 visure.",
     checklist: [
-      { label: "Carta d'identita di Lucia Ferri", required: true, status: "APPROVATO" },
+      { label: "Carta d'identita di Lucia Ferri", required: true, status: "APPROVATO", help: "Fronte e retro, ben leggibili." },
       { label: "Certificato di morte", required: true, status: "APPROVATO" },
-      { label: "Visura catastale - immobile 1", required: true, status: "CARICATO" },
-      { label: "Visura catastale - immobile 2", required: true, status: "ATTESO" },
-      { label: "Atto di provenienza", required: true, status: "ATTESO" },
+      { label: "Visura catastale - immobile 1", required: true, status: "CARICATO", help: "La trovi tra i documenti del catasto o te la procuriamo noi." },
+      { label: "Visura catastale - immobile 2", required: true, status: "ATTESO", help: "La trovi tra i documenti del catasto o te la procuriamo noi." },
+      {
+        label: "Atto di provenienza",
+        required: true,
+        status: "RIFIUTATO",
+        reason: "Il file caricato e illeggibile: ricarica una scansione piu nitida o una foto a fuoco.",
+        help: "E' il rogito/atto con cui il defunto aveva acquisito l'immobile.",
+      },
+      { label: "IBAN dell'erede", required: false, status: "ATTESO", help: "Serve solo per l'eventuale addebito delle imposte (F24)." },
     ],
     communications: [
       {

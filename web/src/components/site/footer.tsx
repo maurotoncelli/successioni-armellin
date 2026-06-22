@@ -70,6 +70,11 @@ export function Footer() {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link href="/area-riservata" className="font-medium text-white hover:text-accent">
+                Area riservata
+              </Link>
+            </li>
           </ul>
         </div>
 

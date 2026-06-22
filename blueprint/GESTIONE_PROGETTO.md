@@ -148,12 +148,20 @@ graph TD
   - **Contatti** (`/crm/contatti`): rubrica con consenso marketing e **storico pratiche** per contatto.
   - **Statistiche** (`/crm/statistiche`): KPI (pratiche, onorari, ticket medio, conversione) + grafici a barre per stato/pacchetto.
   - **Calendario** (`/crm/calendario`, aggiunto 22/06 su richiesta): viste **Mese** e **Agenda** con le date chiave derivate dalle pratiche (apertura, consegna prevista, scadenza 12 mesi = decesso + 1 anno, invio AdE), legenda colori, click sull'evento -> apre la scheda. **Senza sync Google** (rimandata: e "idea futura" anche nel cap. 05).
+
+### 2026-06-22 - Prototipo Area Riservata cliente (Fase 5 anticipata, su richiesta)
+- Costruito il prototipo navigabile dell'**Area Riservata** (`/area-riservata`) con dati finti, in tema brand (navy/oro) e **mobile-first**, separato dal sito marketing (header + sidebar desktop + bottom-bar mobile dedicati). Allineato al cap. 06.
+- **Data-driven**: tutte le schermate derivano dalla stessa pratica del CRM (`area-data.ts` deriva da `crm-data.ts`); la **checklist documenti e l'unica fonte condivisa** CRM<->cliente (mappata nei 3 stati cliente: Da caricare / Caricato / Da rifare; "Approvato" resta interno).
+- **Schermate**: Accesso passwordless (mock magic link + "Entra nella demo"), Dashboard (tracker stato client-friendly + "prossima azione" contestuale + avanzamento documenti + card imposte), Il tuo acquisto (`/ordine`: line items, totale, cosa include, stato pagamento, fattura, riquadro imposte), Documenti (checklist interattiva con contatore "X di Y", upload simulato, pulsante-cancello sticky "Ho finito - invia a Lorenzo" che si attiva solo a checklist completa, stato "Da rifare" con motivo), Dati/IBAN, Mandato (lettura + accettazione FES con conferma), Recesso self-service (finestra 14gg + conseguenze + invio richiesta), Conclusa (download finali, attivi solo a pratica conclusa), Profilo (recapiti + preferenze notifiche).
+- Aggiunto link "Area riservata" nel footer del sito pubblico.
+- **QA**: build OK (route /area-riservata/* prerenderizzate), ESLint OK, smoke test runtime (tutte 200).
+- **Limiti noti**: login, upload, firma, download e persistenza sono simulati lato client; diventano reali con auth Supabase + storage + signed URL (Fase 3-5).
 - **QA**: build di produzione OK (31 route, CRM incluse), ESLint OK, smoke test runtime (tutte le route 200). Commit e push su GitHub.
 - **Limiti noti del prototipo CRM**: i pulsanti (Cambia stato, Approva/Rifiuta, Nuova pratica, ricerca) sono UI non ancora funzionanti (nessuna azione reale); servono a validare layout e flusso con Lorenzo. Le automazioni, i pagamenti Stripe, gli invii email/WhatsApp e la persistenza arrivano con le fasi successive.
 
 ## Prossimi step (in ordine)
 1. **Finalizzare il deploy Vercel** (Framework Preset = Next.js) e verificare sito + `/crm` online. [Mauro/Lorenzo]
-1b. **(Da decidere) Prototipo Area Riservata cliente** (`/area-riservata`): dashboard, "il tuo acquisto", caricamento documenti, recesso - con dati finti, sullo stile del CRM. Non presente nel prototipo sito (Fase 1) perche e Fase 5 (richiede login + backend); si puo anticipare come mockup se Lorenzo vuole validarla ora. [In attesa di conferma]
+1b. [FATTO 22/06] **Prototipo Area Riservata cliente** (`/area-riservata`): costruito con dati finti (vedi Diario). Resta da validare con Lorenzo al gate.
 2. **Validazione Lorenzo (gate Fasi 1-2)**: rivedere insieme sito e CRM, raccogliere correzioni su layout, flusso, copy, colonne/azioni/viste del CRM. [Lorenzo]
 3. **Raccolta contenuti reali**: prezzi/SLA pacchetti definitivi, testi, FAQ, foto brand; risposte a `Domande_per_Lorenzo`. [Lorenzo]
 4. **Fase 3 - Motore condiviso**: progetto Supabase UE, schema dati (@SPEC_Data_Model), Row Level Security + test cross-tenant, auth admin 2FA / client passwordless, ambienti dev/staging/prod, CI/CD. [Sviluppo]
