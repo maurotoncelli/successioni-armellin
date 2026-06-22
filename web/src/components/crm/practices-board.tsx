@@ -1,20 +1,65 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import Link from "next/link";
-import { KanbanSquare, List, Home, AlertCircle } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { KanbanSquare, List, Home, AlertCircle, Loader2 } from "lucide-react";
 import {
   pipelineOrder,
   statusLabels,
   type Practice,
+  type PracticeStatus,
 } from "@/content/crm-data";
+import { changeStatus } from "@/app/crm/pratiche/[id]/actions";
 import { ActionBadge, StatusPill } from "@/components/crm/ui";
+import { hasExternalEffect } from "@/lib/transitions";
+import { TransitionConfirm } from "@/components/crm/transition-confirm";
 import { cn } from "@/lib/utils";
 
 type View = "kanban" | "list";
 
 export function PracticesBoard({ practices }: { practices: Practice[] }) {
+  const router = useRouter();
   const [view, setView] = useState<View>("kanban");
+  const [items, setItems] = useState<Practice[]>(practices);
+  const [pending, startTransition] = useTransition();
+  const [movingId, setMovingId] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [pendingMove, setPendingMove] = useState<{
+    id: string;
+    toStatus: PracticeStatus;
+  } | null>(null);
+
+  // Decide se chiedere conferma (transizione a effetto esterno = invia email)
+  // oppure spostare subito (transizione neutra).
+  function requestMove(id: string, toStatus: PracticeStatus) {
+    const current = items.find((p) => p.id === id);
+    if (!current || current.status === toStatus) return;
+    if (hasExternalEffect(toStatus)) setPendingMove({ id, toStatus });
+    else doMove(id, toStatus);
+  }
+
+  function doMove(id: string, toStatus: PracticeStatus) {
+    const prev = items;
+    setError(null);
+    setMovingId(id);
+    // ottimistico: sposta subito la card
+    setItems((list) =>
+      list.map((p) => (p.id === id ? { ...p, status: toStatus } : p)),
+    );
+
+    startTransition(async () => {
+      const res = await changeStatus(id, toStatus);
+      if (!res.ok) {
+        setItems(prev); // rollback
+        setError(res.error);
+      } else {
+        router.refresh();
+      }
+      setMovingId(null);
+      setPendingMove(null);
+    });
+  }
 
   return (
     <div className="space-y-5">
@@ -22,7 +67,7 @@ export function PracticesBoard({ practices }: { practices: Practice[] }) {
         <div>
           <h1 className="text-xl font-semibold text-crm-text">Pratiche</h1>
           <p className="text-sm text-crm-text2">
-            {practices.length} pratiche · pipeline allineata al pagamento anticipato
+            {items.length} pratiche · trascina una card per cambiare stato
           </p>
         </div>
         <div className="flex items-center gap-1 rounded-lg border border-crm-border bg-crm-surface p-1">
@@ -41,10 +86,30 @@ export function PracticesBoard({ practices }: { practices: Practice[] }) {
         </div>
       </div>
 
+      {error && (
+        <div className="flex items-center gap-2 rounded-lg border border-crm-rose/30 bg-crm-rose/10 px-3 py-2 text-sm text-crm-rose">
+          <AlertCircle className="h-4 w-4" />
+          {error}
+        </div>
+      )}
+
       {view === "kanban" ? (
-        <KanbanView practices={practices} />
+        <KanbanView
+          practices={items}
+          onMove={requestMove}
+          movingId={pending ? movingId : null}
+        />
       ) : (
-        <ListView practices={practices} />
+        <ListView practices={items} />
+      )}
+
+      {pendingMove && (
+        <TransitionConfirm
+          targetStatus={pendingMove.toStatus}
+          pending={pending}
+          onConfirm={() => doMove(pendingMove.id, pendingMove.toStatus)}
+          onCancel={() => setPendingMove(null)}
+        />
       )}
     </div>
   );
@@ -78,26 +143,61 @@ function ToggleButton({
   );
 }
 
-function KanbanView({ practices }: { practices: Practice[] }) {
+function KanbanView({
+  practices,
+  onMove,
+  movingId,
+}: {
+  practices: Practice[];
+  onMove: (id: string, toStatus: PracticeStatus) => void;
+  movingId: string | null;
+}) {
+  const [overStatus, setOverStatus] = useState<PracticeStatus | null>(null);
+
   return (
     <div className="flex gap-4 overflow-x-auto pb-3">
       {pipelineOrder.map((status) => {
-        const items = practices.filter((p) => p.status === status);
+        const columnItems = practices.filter((p) => p.status === status);
+        const isOver = overStatus === status;
         return (
-          <div key={status} className="w-72 shrink-0">
+          <div
+            key={status}
+            className="w-72 shrink-0"
+            onDragOver={(e) => {
+              e.preventDefault();
+              if (overStatus !== status) setOverStatus(status);
+            }}
+            onDragLeave={(e) => {
+              // ignora i dragleave verso elementi figli
+              if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+                setOverStatus((s) => (s === status ? null : s));
+              }
+            }}
+            onDrop={(e) => {
+              e.preventDefault();
+              setOverStatus(null);
+              const id = e.dataTransfer.getData("text/plain");
+              if (id) onMove(id, status);
+            }}
+          >
             <div className="mb-2 flex items-center justify-between px-1">
               <h2 className="text-xs font-semibold uppercase tracking-wide text-crm-text2">
                 {statusLabels[status]}
               </h2>
               <span className="rounded-full bg-crm-surface px-2 py-0.5 text-xs text-crm-muted">
-                {items.length}
+                {columnItems.length}
               </span>
             </div>
-            <div className="space-y-2">
-              {items.map((p) => (
-                <KanbanCard key={p.id} practice={p} />
+            <div
+              className={cn(
+                "min-h-24 space-y-2 rounded-[12px] p-1 transition-colors",
+                isOver && "bg-crm-accent/10 ring-1 ring-crm-accent/40",
+              )}
+            >
+              {columnItems.map((p) => (
+                <KanbanCard key={p.id} practice={p} moving={movingId === p.id} />
               ))}
-              {items.length === 0 && (
+              {columnItems.length === 0 && (
                 <div className="rounded-[12px] border border-dashed border-crm-border px-3 py-6 text-center text-xs text-crm-muted">
                   Vuota
                 </div>
@@ -110,19 +210,37 @@ function KanbanView({ practices }: { practices: Practice[] }) {
   );
 }
 
-function KanbanCard({ practice }: { practice: Practice }) {
+function KanbanCard({
+  practice,
+  moving,
+}: {
+  practice: Practice;
+  moving: boolean;
+}) {
   return (
     <Link
       href={`/crm/pratiche/${practice.id}`}
-      className="block rounded-[12px] border border-crm-border bg-crm-surface p-3.5 transition-colors hover:border-crm-accent/40"
+      draggable
+      onDragStart={(e) => {
+        e.dataTransfer.setData("text/plain", practice.id);
+        e.dataTransfer.effectAllowed = "move";
+      }}
+      className={cn(
+        "block cursor-grab rounded-[12px] border border-crm-border bg-crm-surface p-3.5 transition-colors hover:border-crm-accent/40 active:cursor-grabbing",
+        moving && "opacity-50",
+      )}
     >
       <div className="flex items-center justify-between">
         <span className="font-mono text-xs text-crm-accent">{practice.code}</span>
-        {practice.urgent && (
-          <span className="inline-flex items-center gap-1 text-xs text-crm-rose">
-            <AlertCircle className="h-3.5 w-3.5" />
-            Urgente
-          </span>
+        {moving ? (
+          <Loader2 className="h-3.5 w-3.5 animate-spin text-crm-muted" />
+        ) : (
+          practice.urgent && (
+            <span className="inline-flex items-center gap-1 text-xs text-crm-rose">
+              <AlertCircle className="h-3.5 w-3.5" />
+              Urgente
+            </span>
+          )
         )}
       </div>
       <p className="mt-1.5 text-sm font-medium text-crm-text">

@@ -118,3 +118,83 @@ export async function saveAddon(
   revalidatePath("/crm/listino");
   return { ok: true, message: "Salvato e pubblicato." };
 }
+
+/* --- FAQ (domande frequenti) ------------------------------------------------ */
+
+function faqFields(formData: FormData) {
+  return {
+    question: String(formData.get("question") ?? "").trim(),
+    answer: String(formData.get("answer") ?? "").trim(),
+    category: strOrNull(formData.get("category")),
+    sort_order: numOrNull(formData.get("sort_order")) ?? 0,
+    is_published: formData.get("is_published") === "on",
+  };
+}
+
+function revalidateFaqs() {
+  revalidatePath("/faq");
+  revalidatePath("/");
+  revalidatePath("/crm/listino");
+}
+
+export async function saveFaq(
+  _prev: ActionResult | null,
+  formData: FormData,
+): Promise<ActionResult> {
+  if (!isAdminConfigured) {
+    return { ok: false, message: "Database non collegato: configura Supabase in .env.local." };
+  }
+  const id = String(formData.get("id") ?? "").trim();
+  if (!id) return { ok: false, message: "FAQ non valida." };
+
+  const fields = faqFields(formData);
+  if (!fields.question || !fields.answer) {
+    return { ok: false, message: "Domanda e risposta sono obbligatorie." };
+  }
+
+  const { error } = await getAdminClient()
+    .from("faqs")
+    .update(fields)
+    .eq("id", id);
+
+  if (error) return { ok: false, message: `Errore: ${error.message}` };
+  revalidateFaqs();
+  return { ok: true, message: "Salvato e pubblicato." };
+}
+
+export async function createFaq(
+  _prev: ActionResult | null,
+  formData: FormData,
+): Promise<ActionResult> {
+  if (!isAdminConfigured) {
+    return { ok: false, message: "Database non collegato: configura Supabase in .env.local." };
+  }
+  const fields = faqFields(formData);
+  if (!fields.question || !fields.answer) {
+    return { ok: false, message: "Domanda e risposta sono obbligatorie." };
+  }
+
+  const { error } = await getAdminClient()
+    .from("faqs")
+    .insert({ ...fields, locale: "it" });
+
+  if (error) return { ok: false, message: `Errore: ${error.message}` };
+  revalidateFaqs();
+  return { ok: true, message: "FAQ aggiunta." };
+}
+
+export async function deleteFaq(
+  _prev: ActionResult | null,
+  formData: FormData,
+): Promise<ActionResult> {
+  if (!isAdminConfigured) {
+    return { ok: false, message: "Database non collegato." };
+  }
+  const id = String(formData.get("id") ?? "").trim();
+  if (!id) return { ok: false, message: "FAQ non valida." };
+
+  const { error } = await getAdminClient().from("faqs").delete().eq("id", id);
+  if (error) return { ok: false, message: `Errore: ${error.message}` };
+  revalidateFaqs();
+  return { ok: true, message: "FAQ eliminata." };
+}

@@ -11,14 +11,40 @@ const MONTHS = [
   "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre",
 ];
 const WEEKDAYS = ["Lun", "Mar", "Mer", "Gio", "Ven", "Sab", "Dom"];
-const TODAY = "2026-06-22";
+const SOON_DAYS = 14;
+
+// Tipi di evento che rappresentano una scadenza (da evidenziare se vicina/scaduta).
+const DEADLINE_TYPES: ReadonlySet<CalEventType> = new Set(["scadenza", "consegna"]);
+
+function daysTo(today: string, dateStr: string): number {
+  const a = Date.parse(`${today}T00:00:00Z`);
+  const b = Date.parse(`${dateStr}T00:00:00Z`);
+  if (Number.isNaN(a) || Number.isNaN(b)) return Number.POSITIVE_INFINITY;
+  return Math.round((b - a) / 86_400_000);
+}
+
+// Classe extra per evidenziare le scadenze: rosso se scaduta, giallo se imminente.
+function urgencyRing(today: string, e: CalEvent): string {
+  if (!DEADLINE_TYPES.has(e.type)) return "";
+  const d = daysTo(today, e.dateStr);
+  if (d < 0) return "ring-1 ring-crm-rose";
+  if (d <= SOON_DAYS) return "ring-1 ring-crm-amber";
+  return "";
+}
 
 type View = "mese" | "agenda";
 
-export function Calendar({ events }: { events: CalEvent[] }) {
-  // default: giugno 2026 (mese corrente del prototipo)
-  const [year, setYear] = useState(2026);
-  const [month, setMonth] = useState(5); // 0-based -> giugno
+export function Calendar({
+  events,
+  today,
+}: {
+  events: CalEvent[];
+  today: string;
+}) {
+  const todayYear = Number(today.slice(0, 4));
+  const todayMonth = Number(today.slice(5, 7)) - 1; // 0-based
+  const [year, setYear] = useState(todayYear);
+  const [month, setMonth] = useState(todayMonth);
   const [view, setView] = useState<View>("mese");
 
   function shift(delta: number) {
@@ -72,9 +98,15 @@ export function Calendar({ events }: { events: CalEvent[] }) {
       <Legend />
 
       {view === "mese" ? (
-        <MonthView year={year} month={month} events={events} onShift={shift} />
+        <MonthView
+          year={year}
+          month={month}
+          events={events}
+          today={today}
+          onShift={shift}
+        />
       ) : (
-        <AgendaView events={events} />
+        <AgendaView events={events} today={today} />
       )}
     </div>
   );
@@ -97,11 +129,13 @@ function MonthView({
   year,
   month,
   events,
+  today,
   onShift,
 }: {
   year: number;
   month: number;
   events: CalEvent[];
+  today: string;
   onShift: (d: number) => void;
 }) {
   const firstDay = new Date(year, month, 1);
@@ -158,7 +192,7 @@ function MonthView({
           const ds = day
             ? `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`
             : "";
-          const isToday = ds === TODAY;
+          const isToday = ds === today;
           const dayEvents = day ? eventsForDay(day) : [];
           return (
             <div
@@ -186,6 +220,7 @@ function MonthView({
                         className={cn(
                           "block truncate rounded px-1.5 py-0.5 text-[11px] font-medium",
                           calEventMeta[e.type].chip,
+                          urgencyRing(today, e),
                         )}
                         title={`${calEventMeta[e.type].label} · ${e.code}`}
                       >
@@ -203,9 +238,9 @@ function MonthView({
   );
 }
 
-function AgendaView({ events }: { events: CalEvent[] }) {
+function AgendaView({ events, today }: { events: CalEvent[]; today: string }) {
   const upcoming = [...events]
-    .filter((e) => e.dateStr >= TODAY)
+    .filter((e) => e.dateStr >= today)
     .sort((a, b) => a.dateStr.localeCompare(b.dateStr));
 
   return (
@@ -214,19 +249,28 @@ function AgendaView({ events }: { events: CalEvent[] }) {
         <p className="p-6 text-sm text-crm-muted">Nessun evento in arrivo.</p>
       )}
       <ul>
-        {upcoming.map((e, i) => (
-          <li key={i} className="border-b border-crm-border last:border-0">
-            <Link
-              href={`/crm/pratiche/${e.practiceId}`}
-              className="flex items-center gap-4 px-4 py-3 hover:bg-crm-hover/40"
-            >
-              <span className="w-24 shrink-0 text-sm text-crm-text2">{e.dateStr}</span>
-              <span className={cn("h-2.5 w-2.5 shrink-0 rounded-full", calEventMeta[e.type].dot)} />
-              <span className="text-sm text-crm-text">{calEventMeta[e.type].label}</span>
-              <span className="ml-auto font-mono text-xs text-crm-accent">{e.code}</span>
-            </Link>
-          </li>
-        ))}
+        {upcoming.map((e, i) => {
+          const d = daysTo(today, e.dateStr);
+          const isSoon = DEADLINE_TYPES.has(e.type) && d <= SOON_DAYS;
+          return (
+            <li key={i} className="border-b border-crm-border last:border-0">
+              <Link
+                href={`/crm/pratiche/${e.practiceId}`}
+                className="flex items-center gap-4 px-4 py-3 hover:bg-crm-hover/40"
+              >
+                <span className="w-24 shrink-0 text-sm text-crm-text2">{e.dateStr}</span>
+                <span className={cn("h-2.5 w-2.5 shrink-0 rounded-full", calEventMeta[e.type].dot)} />
+                <span className="text-sm text-crm-text">{calEventMeta[e.type].label}</span>
+                {isSoon && (
+                  <span className="rounded-full bg-crm-amber/15 px-2 py-0.5 text-[11px] font-medium text-crm-amber">
+                    {d === 0 ? "oggi" : d === 1 ? "domani" : `tra ${d} gg`}
+                  </span>
+                )}
+                <span className="ml-auto font-mono text-xs text-crm-accent">{e.code}</span>
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

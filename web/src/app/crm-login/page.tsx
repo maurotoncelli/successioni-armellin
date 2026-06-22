@@ -1,16 +1,22 @@
-import { LoginForm } from "./login-form";
+import { AdminLogin } from "./admin-login";
 
 export const metadata = {
   title: "Accesso CRM",
   robots: { index: false },
 };
 
+const NOTICES: Record<string, string> = {
+  forbidden: "Questo account non e autorizzato ad accedere al CRM.",
+  "2fa": "Completa la verifica in due passaggi per accedere.",
+};
+
 export default async function CrmLoginPage({
   searchParams,
 }: {
-  searchParams: Promise<{ next?: string }>;
+  searchParams: Promise<{ error?: string }>;
 }) {
-  const { next } = await searchParams;
+  const { error } = await searchParams;
+  const notice = error ? NOTICES[error] : undefined;
 
   return (
     <div className="theme-crm flex min-h-screen items-center justify-center bg-crm-bg px-4">
@@ -29,15 +35,16 @@ export default async function CrmLoginPage({
           Accesso riservato
         </h1>
         <p className="mt-1 text-sm text-crm-muted">
-          Inserisci la password per accedere al pannello di gestione.
+          Accedi con email, password e codice di verifica (2FA).
         </p>
 
-        <LoginForm next={next ?? "/crm"} />
+        {notice && (
+          <p className="mt-3 rounded-lg border border-crm-rose/30 bg-crm-rose/10 px-3 py-2 text-xs text-crm-rose">
+            {notice}
+          </p>
+        )}
 
-        <p className="mt-4 text-[11px] leading-relaxed text-crm-muted">
-          Accesso provvisorio con password. Verra sostituito
-          dall&apos;autenticazione sicura a due fattori.
-        </p>
+        <AdminLogin />
       </div>
     </div>
   );

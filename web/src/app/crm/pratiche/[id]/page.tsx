@@ -6,32 +6,31 @@ import {
   Phone,
   MessageCircle,
   User,
-  FileText,
   Check,
-  X,
   Clock,
   CalendarDays,
   StickyNote,
 } from "lucide-react";
-import {
-  getPractice,
-  practices,
-  type Communication,
-  type RequirementStatus,
-} from "@/content/crm-data";
+import { type Communication } from "@/content/crm-data";
+import { getPractice } from "@/lib/crm";
 import { CrmCard, ActionBadge, StatusPill, SectionTitle } from "@/components/crm/ui";
-
-export function generateStaticParams() {
-  return practices.map((p) => ({ id: p.id }));
-}
-
-const reqStatusMeta: Record<RequirementStatus, { label: string; cls: string }> = {
-  ATTESO: { label: "Da caricare", cls: "text-crm-muted" },
-  CARICATO: { label: "Caricato", cls: "text-crm-amber" },
-  APPROVATO: { label: "Approvato", cls: "text-crm-green" },
-  RIFIUTATO: { label: "Da rifare", cls: "text-crm-rose" },
-  NON_APPLICABILE: { label: "Non applicabile", cls: "text-crm-muted" },
-};
+import { PaymentLinkButton } from "@/components/crm/payment-link";
+import { CrmChecklist, type CrmDocItem } from "@/components/crm/checklist";
+import {
+  StatusChanger,
+  AddCommunication,
+  AddNote,
+} from "@/components/crm/practice-workflow";
+import { PracticeExtrasCard } from "@/components/crm/practice-extras-card";
+import { FinalDocsCard } from "@/components/crm/final-docs-card";
+import { InvoiceCard } from "@/components/crm/invoice-card";
+import { StateTaxesForm } from "@/components/crm/state-taxes-form";
+import { DueDateForm } from "@/components/crm/due-date-form";
+import { OfflinePayment } from "@/components/crm/offline-payment";
+import { WithdrawalPanel } from "@/components/crm/withdrawal-panel";
+import { PracticeTasks } from "@/components/crm/practice-tasks";
+import { getSafeExtras } from "@/lib/practice-extras";
+import { isInvoicingConfigured } from "@/lib/invoice";
 
 const channelIcon = {
   EMAIL: Mail,
@@ -46,11 +45,22 @@ export default async function SchedaPraticaPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const p = getPractice(id);
+  const p = await getPractice(id);
   if (!p) notFound();
+
+  const extras = await getSafeExtras(p.id);
 
   const approved = p.checklist.filter((c) => c.status === "APPROVATO").length;
   const requiredCount = p.checklist.filter((c) => c.required).length;
+  const checklistItems: CrmDocItem[] = p.checklist.map((c, index) => ({
+    index,
+    label: c.label,
+    required: c.required,
+    status: c.status,
+    fileName: c.fileName,
+    hasFile: Boolean(c.filePath),
+    reason: c.reason,
+  }));
 
   return (
     <div className="space-y-6">
@@ -76,19 +86,30 @@ export default async function SchedaPraticaPage({
             Defunto: {p.deceasedName} · CF {p.deceasedCf}
           </p>
         </div>
-        <div className="flex gap-2">
-          <button className="rounded-lg border border-crm-border bg-crm-surface px-3 py-2 text-sm text-crm-text2 hover:text-crm-text">
+        <div className="flex flex-wrap items-center gap-2">
+          <Link
+            href={`/brogliaccio/${p.id}`}
+            target="_blank"
+            className="rounded-lg border border-crm-border bg-crm-surface px-3 py-2 text-sm text-crm-text2 hover:text-crm-text"
+          >
             Brogliaccio PDF
-          </button>
-          <button className="rounded-lg crm-gradient px-3 py-2 text-sm font-semibold text-white">
-            Cambia stato
-          </button>
+          </Link>
+          <StatusChanger practiceId={p.id} status={p.status} />
         </div>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-3">
         {/* Colonna principale */}
         <div className="space-y-6 lg:col-span-2">
+          {/* Recesso (se richiesto) */}
+          {extras.withdrawal && (
+            <WithdrawalPanel
+              practiceId={p.id}
+              withdrawal={extras.withdrawal}
+              paid={p.paymentStatus === "PAID"}
+            />
+          )}
+
           {/* Riepilogo pratica */}
           <CrmCard>
             <SectionTitle>Riepilogo pratica</SectionTitle>
@@ -142,6 +163,7 @@ export default async function SchedaPraticaPage({
                 ? ` Comunicate al cliente: ${p.stateTaxes} €.`
                 : " Da calcolare e comunicare prima dell'invio."}
             </p>
+            <StateTaxesForm practiceId={p.id} current={p.stateTaxes} />
           </CrmCard>
 
           {/* Checklist documenti */}
@@ -155,46 +177,16 @@ export default async function SchedaPraticaPage({
               )}
             </div>
             {p.checklist.length > 0 ? (
-              <ul className="mt-4 space-y-2">
-                {p.checklist.map((doc, i) => {
-                  const meta = reqStatusMeta[doc.status];
-                  return (
-                    <li
-                      key={i}
-                      className="flex items-center justify-between gap-3 rounded-lg border border-crm-border bg-crm-bg2/40 px-3 py-2.5 text-sm"
-                    >
-                      <div className="flex items-center gap-2.5">
-                        <FileText className="h-4 w-4 text-crm-text2" />
-                        <span className="text-crm-text">{doc.label}</span>
-                        {!doc.required && (
-                          <span className="text-xs text-crm-muted">(facolt.)</span>
-                        )}
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <span className={`text-xs font-medium ${meta.cls}`}>
-                          {meta.label}
-                        </span>
-                        {doc.status === "CARICATO" && (
-                          <div className="flex gap-1">
-                            <span className="grid h-6 w-6 place-items-center rounded bg-crm-green/15 text-crm-green">
-                              <Check className="h-3.5 w-3.5" />
-                            </span>
-                            <span className="grid h-6 w-6 place-items-center rounded bg-crm-rose/15 text-crm-rose">
-                              <X className="h-3.5 w-3.5" />
-                            </span>
-                          </div>
-                        )}
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
+              <CrmChecklist practiceId={p.id} items={checklistItems} />
             ) : (
               <p className="mt-4 text-sm text-crm-muted">
                 Checklist non ancora generata (si crea al pagamento).
               </p>
             )}
           </CrmCard>
+
+          {/* Documenti finali (consegna) */}
+          <FinalDocsCard practiceId={p.id} docs={extras.finalDocuments ?? []} />
 
           {/* Comunicazioni */}
           <CrmCard>
@@ -203,7 +195,13 @@ export default async function SchedaPraticaPage({
               {p.communications.map((c, i) => (
                 <CommunicationRow key={i} comm={c} />
               ))}
+              {p.communications.length === 0 && (
+                <li className="text-sm text-crm-muted">
+                  Nessuna comunicazione registrata.
+                </li>
+              )}
             </ul>
+            <AddCommunication practiceId={p.id} />
           </CrmCard>
         </div>
 
@@ -242,7 +240,26 @@ export default async function SchedaPraticaPage({
                 <span className="text-crm-text">{p.selectedPackage ?? "—"}</span>
               </div>
             </div>
+            {p.paymentStatus !== "PAID" && (
+              <>
+                {(p.selectedPackage || p.suggestedPackage) && (
+                  <PaymentLinkButton practiceId={p.id} />
+                )}
+                <OfflinePayment practiceId={p.id} suggestedAmount={p.price} />
+              </>
+            )}
           </CrmCard>
+
+          {/* Fattura onorario */}
+          <InvoiceCard
+            practiceId={p.id}
+            invoice={extras.invoice}
+            invoicingConfigured={isInvoicingConfigured}
+            paid={p.paymentStatus === "PAID"}
+          />
+
+          {/* Mandato & IBAN */}
+          <PracticeExtrasCard practiceId={p.id} extras={extras} />
 
           {/* Date */}
           <CrmCard>
@@ -253,6 +270,7 @@ export default async function SchedaPraticaPage({
               <DateRow icon={<Clock className="h-4 w-4" />} label="Consegna prevista" value={p.dueDate} />
               <DateRow icon={<Check className="h-4 w-4" />} label="Invio AdE" value={p.submittedAt} />
             </ul>
+            <DueDateForm practiceId={p.id} current={p.dueDate} />
           </CrmCard>
 
           {/* Appunti */}
@@ -263,28 +281,15 @@ export default async function SchedaPraticaPage({
               <Note label="Note pagamenti" value={p.paymentNotes} />
               <Note label="Note generali" value={p.notes} />
             </div>
+            <div className="mt-4 border-t border-crm-border pt-4">
+              <AddNote practiceId={p.id} />
+            </div>
           </CrmCard>
 
           {/* To-Do */}
           <CrmCard>
             <SectionTitle>Cose da fare</SectionTitle>
-            {p.tasks.length > 0 ? (
-              <ul className="mt-3 space-y-2">
-                {p.tasks.map((t, i) => (
-                  <li key={i} className="flex items-start gap-2.5 text-sm">
-                    <span className="mt-0.5 h-4 w-4 shrink-0 rounded border border-crm-border-strong" />
-                    <span className="text-crm-text">
-                      {t.title}
-                      {t.dueDate && (
-                        <span className="text-crm-muted"> · {t.dueDate}</span>
-                      )}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p className="mt-3 text-sm text-crm-muted">Nessun promemoria.</p>
-            )}
+            <PracticeTasks practiceId={p.id} tasks={p.tasks} />
           </CrmCard>
 
           {/* Timeline */}
@@ -344,7 +349,7 @@ function Note({ label, value }: { label: string; value: string }) {
         <StickyNote className="h-3.5 w-3.5" />
         {label}
       </p>
-      <p className="mt-1 text-crm-text2">
+      <p className="mt-1 whitespace-pre-line text-crm-text2">
         {value || <span className="text-crm-muted">—</span>}
       </p>
     </div>

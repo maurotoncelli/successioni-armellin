@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
-import { LegalPlaceholder } from "@/components/site/legal-placeholder";
-import { text } from "@/lib/content";
+import { LegalDocView } from "@/components/site/legal-doc";
+import { getLegalDoc } from "@/content/legal";
 
-export const metadata: Metadata = { title: "La nostra garanzia" };
+const doc = getLegalDoc("garanzia");
+
+export const metadata: Metadata = { title: doc.title, description: doc.intro };
 
 export default function GaranziaPage() {
-  return (
-    <LegalPlaceholder
-      title={text("legale", "garanzia_title", "La nostra garanzia")}
-      intro="La promessa Soddisfatti o Rimborsati: cosa significa e come funziona."
-    />
-  );
+  return <LegalDocView doc={doc} />;
 }

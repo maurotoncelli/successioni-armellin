@@ -1,14 +1,17 @@
 "use client";
 
 import { useActionState } from "react";
-import { Check, Loader2, AlertCircle } from "lucide-react";
+import { Check, Loader2, AlertCircle, Plus, Trash2 } from "lucide-react";
 import { CrmCard } from "@/components/crm/ui";
 import {
   savePackage,
   saveAddon,
+  saveFaq,
+  createFaq,
+  deleteFaq,
   type ActionResult,
 } from "@/app/crm/listino/actions";
-import type { PackageRow, AddonRow } from "@/lib/supabase/types";
+import type { PackageRow, AddonRow, FaqRow } from "@/lib/supabase/types";
 
 const fieldLabel =
   "block text-[11px] font-semibold uppercase tracking-wider text-crm-muted mb-1";
@@ -238,12 +241,122 @@ function AddonForm({ addon }: { addon: AddonRow }) {
   );
 }
 
+function FaqFields({ faq }: { faq?: FaqRow }) {
+  return (
+    <div className="grid gap-3 sm:grid-cols-2">
+      <div className="sm:col-span-2">
+        <label className={fieldLabel}>Domanda</label>
+        <input
+          name="question"
+          defaultValue={faq?.question ?? ""}
+          className={input}
+        />
+      </div>
+      <div className="sm:col-span-2">
+        <label className={fieldLabel}>Risposta</label>
+        <textarea
+          name="answer"
+          defaultValue={faq?.answer ?? ""}
+          rows={4}
+          className={input}
+        />
+      </div>
+      <div>
+        <label className={fieldLabel}>Categoria</label>
+        <input
+          name="category"
+          defaultValue={faq?.category ?? ""}
+          placeholder="es. Costi e imposte"
+          className={input}
+        />
+      </div>
+      <div>
+        <label className={fieldLabel}>Ordine</label>
+        <input
+          name="sort_order"
+          type="number"
+          step="1"
+          defaultValue={faq?.sort_order ?? 0}
+          className={input}
+        />
+      </div>
+    </div>
+  );
+}
+
+function FaqForm({ faq }: { faq: FaqRow }) {
+  const [state, action, pending] = useActionState(saveFaq, null);
+  const [delState, delAction, delPending] = useActionState(deleteFaq, null);
+  return (
+    <CrmCard>
+      <form action={action}>
+        <input type="hidden" name="id" value={faq.id} />
+        <div className="mb-3 flex items-center justify-between">
+          <label className="inline-flex items-center gap-2 text-xs text-crm-text2">
+            <input
+              type="checkbox"
+              name="is_published"
+              defaultChecked={faq.is_published}
+              className="h-4 w-4 accent-[var(--color-crm-accent)]"
+            />
+            Pubblicata (visibile sul sito)
+          </label>
+        </div>
+        <FaqFields faq={faq} />
+        <SaveBar state={state} pending={pending} />
+      </form>
+
+      <form action={delAction} className="mt-2 flex items-center justify-end gap-3">
+        <StatusLine state={delState} pending={delPending} />
+        <input type="hidden" name="id" value={faq.id} />
+        <button
+          type="submit"
+          disabled={delPending}
+          className="inline-flex items-center gap-1.5 rounded-lg border border-crm-rose/40 px-3 py-1.5 text-xs font-medium text-crm-rose hover:bg-crm-rose/10 disabled:opacity-60"
+        >
+          <Trash2 className="h-3.5 w-3.5" />
+          Elimina
+        </button>
+      </form>
+    </CrmCard>
+  );
+}
+
+function NewFaqForm() {
+  const [state, action, pending] = useActionState(createFaq, null);
+  return (
+    <CrmCard>
+      <form action={action}>
+        <div className="mb-3 flex items-center justify-between">
+          <h3 className="inline-flex items-center gap-1.5 text-sm font-semibold text-crm-text">
+            <Plus className="h-4 w-4 text-crm-accent" />
+            Aggiungi una FAQ
+          </h3>
+          <label className="inline-flex items-center gap-2 text-xs text-crm-text2">
+            <input
+              type="checkbox"
+              name="is_published"
+              defaultChecked
+              className="h-4 w-4 accent-[var(--color-crm-accent)]"
+            />
+            Pubblicata
+          </label>
+        </div>
+        <FaqFields />
+        <SaveBar state={state} pending={pending} />
+      </form>
+    </CrmCard>
+  );
+}
+
 export function ListinoEditor({
   packages,
   addons,
+  faqs,
 }: {
   packages: PackageRow[];
   addons: AddonRow[];
+  faqs: FaqRow[];
 }) {
   return (
     <div className="space-y-8">
@@ -266,6 +379,18 @@ export function ListinoEditor({
           {addons.map((addon) => (
             <AddonForm key={addon.key} addon={addon} />
           ))}
+        </div>
+      </section>
+
+      <section>
+        <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-crm-muted">
+          Domande frequenti (FAQ)
+        </h2>
+        <div className="grid gap-4 xl:grid-cols-2">
+          {faqs.map((faq) => (
+            <FaqForm key={faq.id} faq={faq} />
+          ))}
+          <NewFaqForm />
         </div>
       </section>
     </div>

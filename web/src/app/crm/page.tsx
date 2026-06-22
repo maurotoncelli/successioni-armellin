@@ -10,12 +10,28 @@ import {
   FileWarning,
 } from "lucide-react";
 import { CrmCard, ActionBadge, SectionTitle, PracticeLink } from "@/components/crm/ui";
+import { statusLabels } from "@/content/crm-data";
 import {
-  practices,
-  alerts,
-  kpi,
-  statusLabels,
-} from "@/content/crm-data";
+  getPractices,
+  deriveKpi,
+  deriveAlerts,
+  upcomingDeadlines,
+} from "@/lib/crm";
+
+export const dynamic = "force-dynamic";
+
+function deadlineBadge(daysLeft: number): { text: string; cls: string } {
+  if (daysLeft < 0)
+    return {
+      text: `scaduta da ${Math.abs(daysLeft)} gg`,
+      cls: "bg-crm-rose/15 text-crm-rose",
+    };
+  if (daysLeft === 0) return { text: "oggi", cls: "bg-crm-rose/15 text-crm-rose" };
+  if (daysLeft === 1) return { text: "domani", cls: "bg-crm-amber/15 text-crm-amber" };
+  if (daysLeft <= 14)
+    return { text: `tra ${daysLeft} gg`, cls: "bg-crm-amber/15 text-crm-amber" };
+  return { text: `tra ${daysLeft} gg`, cls: "bg-crm-surface text-crm-text2" };
+}
 
 const alertIcons = {
   scadenza: AlertTriangle,
@@ -25,7 +41,13 @@ const alertIcons = {
   consegna: Calendar,
 } as const;
 
-export default function CrmHomePage() {
+export default async function CrmHomePage() {
+  const practices = await getPractices();
+  const kpi = deriveKpi(practices);
+  const alerts = deriveAlerts(practices);
+  const today = new Date().toISOString().slice(0, 10);
+  const deadlines = upcomingDeadlines(practices, today, 30);
+
   // Aggregazione To-Do da tutte le pratiche
   const allTasks = practices.flatMap((p) =>
     p.tasks
@@ -75,6 +97,49 @@ export default function CrmHomePage() {
           tone="purple"
         />
       </div>
+
+      {/* Scadenze in arrivo / scadute (derivate dalle pratiche) */}
+      <CrmCard>
+        <div className="flex items-center justify-between">
+          <SectionTitle>Scadenze in arrivo</SectionTitle>
+          <span className="text-xs text-crm-muted">prossimi 30 giorni</span>
+        </div>
+        {deadlines.length === 0 ? (
+          <p className="mt-4 text-sm text-crm-muted">
+            Nessuna scadenza nei prossimi 30 giorni.
+          </p>
+        ) : (
+          <ul className="mt-4 space-y-2">
+            {deadlines.map((d, i) => {
+              const badge = deadlineBadge(d.daysLeft);
+              return (
+                <li key={i}>
+                  <PracticeLink
+                    id={d.practiceId}
+                    className="flex items-center gap-3 rounded-lg border border-crm-border bg-crm-bg2/50 px-3 py-2.5 text-sm text-crm-text2 transition-colors hover:border-crm-accent/40 hover:text-crm-text"
+                  >
+                    <Calendar className="h-4 w-4 shrink-0 text-crm-muted" />
+                    <span className="min-w-0 flex-1 truncate">
+                      <span className="font-medium text-crm-text">{d.label}</span>
+                      {" · "}
+                      {d.clientName}
+                    </span>
+                    <span className="shrink-0 text-xs text-crm-muted">{d.dateStr}</span>
+                    <span
+                      className={`shrink-0 rounded-full px-2 py-0.5 text-[11px] font-medium ${badge.cls}`}
+                    >
+                      {badge.text}
+                    </span>
+                    <span className="shrink-0 font-mono text-xs text-crm-accent">
+                      {d.code}
+                    </span>
+                  </PracticeLink>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </CrmCard>
 
       <div className="grid gap-6 lg:grid-cols-3">
         {/* Alert automatici */}

@@ -1,10 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { createLead } from "@/app/(site)/preventivo/actions";
+import { trackEvent } from "@/lib/analytics";
 
 type Props = {
   stepTitles: string[];
@@ -73,12 +75,42 @@ export function PreventivoForm({
   const [relation, setRelation] = useState("");
   const [heirs, setHeirs] = useState("");
   const [hasRealEstate, setHasRealEstate] = useState("");
+  const [realEstateCount, setRealEstateCount] = useState("");
   const [hasWill, setHasWill] = useState("");
   const [hasOther, setHasOther] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [privacy, setPrivacy] = useState(false);
+  const [marketing, setMarketing] = useState(false);
+  const [touched, setTouched] = useState<{
+    name?: boolean;
+    email?: boolean;
+    phone?: boolean;
+  }>({});
+  const [pending, startTransition] = useTransition();
+
+  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+  const phoneValid =
+    phone.trim() === "" || /^[+()\d][\d\s().-]{5,19}$/.test(phone.trim());
+  const nameValid = name.trim() !== "";
+
+  const nameError =
+    touched.name && !nameValid ? "Inserisci nome e cognome." : "";
+  const emailError =
+    email.trim() !== "" && !emailValid
+      ? "Inserisci un'email valida (es. nome@email.it)."
+      : touched.email && email.trim() === ""
+        ? "L'email e obbligatoria."
+        : "";
+  const phoneError =
+    phone.trim() !== "" && !phoneValid
+      ? "Inserisci un numero di telefono valido."
+      : "";
 
   const progress = ((step + 1) / total) * 100;
-  const canSubmit = privacy;
+  const canSubmit =
+    privacy && nameValid && emailValid && phoneValid && !pending;
 
   function next() {
     setStep((s) => Math.min(s + 1, total - 1));
@@ -87,14 +119,32 @@ export function PreventivoForm({
     setStep((s) => Math.max(s - 1, 0));
   }
   function submit() {
-    // Mock: instrada all'esito in base alle risposte (logica reale in @04)
-    const esito =
-      hasOther === "si" || hasRealEstate === "nonso"
-        ? "c"
-        : hasRealEstate === "no" && relation === "figlio"
-          ? "a"
-          : "b";
-    router.push(`/preventivo/grazie?esito=${esito}`);
+    startTransition(async () => {
+      const parsedRealEstate = Number.parseInt(realEstateCount, 10);
+      const result = await createLead({
+        relation,
+        heirs,
+        hasRealEstate,
+        realEstateCount:
+          hasRealEstate === "si" && Number.isFinite(parsedRealEstate)
+            ? parsedRealEstate
+            : null,
+        hasWill,
+        hasOther,
+        name,
+        email,
+        phone,
+        marketing,
+      });
+      trackEvent("generate_lead", {
+        esito: result.esito,
+        relation,
+        has_real_estate: hasRealEstate,
+      });
+      const params = new URLSearchParams({ esito: result.esito });
+      if (result.practiceId) params.set("practice", result.practiceId);
+      router.push(`/preventivo/grazie?${params.toString()}`);
+    });
   }
 
   return (
@@ -121,7 +171,9 @@ export function PreventivoForm({
                 options={[
                   { value: "coniuge", label: "Coniuge" },
                   { value: "figlio", label: "Figlio/a" },
+                  { value: "genitore", label: "Genitore (madre/padre)" },
                   { value: "fratello", label: "Fratello/Sorella" },
+                  { value: "nipote", label: "Nipote" },
                   { value: "altro", label: "Altro" },
                 ]}
                 value={relation}
@@ -137,7 +189,8 @@ export function PreventivoForm({
                 { value: "1", label: "1" },
                 { value: "2", label: "2" },
                 { value: "3", label: "3" },
-                { value: "4+", label: "4 o piu" },
+                { value: "4", label: "4" },
+                { value: "5+", label: "5 o piu" },
               ]}
               value={heirs}
               onChange={setHeirs}
@@ -152,6 +205,31 @@ export function PreventivoForm({
                 value={hasRealEstate}
                 onChange={setHasRealEstate}
               />
+              {hasRealEstate === "si" && (
+                <div className="rounded-[10px] border border-accent/20 bg-sand/40 p-4">
+                  <label
+                    htmlFor="realEstateCount"
+                    className="mb-1.5 block text-sm font-medium text-primary"
+                  >
+                    Quanti immobili in tutto?
+                  </label>
+                  <input
+                    id="realEstateCount"
+                    name="realEstateCount"
+                    type="number"
+                    min={1}
+                    inputMode="numeric"
+                    placeholder="Es. 2"
+                    value={realEstateCount}
+                    onChange={(e) => setRealEstateCount(e.target.value)}
+                    className="w-32 rounded-[10px] border border-primary/20 bg-bg px-3 py-2.5 text-sm focus:border-accent focus:outline-none"
+                  />
+                  <p className="mt-1.5 text-xs text-text-muted">
+                    Conta case, terreni, box e quote: ogni immobile in piu puo
+                    incidere sul preventivo.
+                  </p>
+                </div>
+              )}
               <OptionGroup
                 label="C'e un testamento?"
                 options={yesNo}
@@ -170,10 +248,35 @@ export function PreventivoForm({
           {step === 3 && (
             <>
               <div className="grid gap-4 sm:grid-cols-2">
-                <Input label="Nome e cognome" name="name" />
-                <Input label="Email" name="email" type="email" />
+                <Input
+                  label="Nome e cognome"
+                  name="name"
+                  value={name}
+                  onChange={setName}
+                  onBlur={() => setTouched((t) => ({ ...t, name: true }))}
+                  error={nameError}
+                />
+                <Input
+                  label="Email"
+                  name="email"
+                  type="email"
+                  inputMode="email"
+                  value={email}
+                  onChange={setEmail}
+                  onBlur={() => setTouched((t) => ({ ...t, email: true }))}
+                  error={emailError}
+                />
               </div>
-              <Input label="Telefono" name="phone" />
+              <Input
+                label="Telefono"
+                name="phone"
+                type="tel"
+                inputMode="tel"
+                value={phone}
+                onChange={setPhone}
+                onBlur={() => setTouched((t) => ({ ...t, phone: true }))}
+                error={phoneError}
+              />
               <label className="flex items-start gap-3 text-sm text-text">
                 <input
                   type="checkbox"
@@ -186,6 +289,8 @@ export function PreventivoForm({
               <label className="flex items-start gap-3 text-sm text-text-muted">
                 <input
                   type="checkbox"
+                  checked={marketing}
+                  onChange={(e) => setMarketing(e.target.checked)}
                   className="mt-1 h-4 w-4 accent-[var(--color-accent)]"
                 />
                 <span>{consensoMarketing}</span>
@@ -211,7 +316,7 @@ export function PreventivoForm({
             </Button>
           ) : (
             <Button onClick={submit} disabled={!canSubmit} size="lg">
-              {submitLabel}
+              {pending ? "Invio in corso…" : submitLabel}
             </Button>
           )}
         </div>
@@ -230,10 +335,20 @@ function Input({
   label,
   name,
   type = "text",
+  value,
+  onChange,
+  onBlur,
+  error,
+  inputMode,
 }: {
   label: string;
   name: string;
   type?: string;
+  value: string;
+  onChange: (v: string) => void;
+  onBlur?: () => void;
+  error?: string;
+  inputMode?: "text" | "email" | "tel" | "numeric";
 }) {
   return (
     <div>
@@ -247,8 +362,24 @@ function Input({
         id={name}
         name={name}
         type={type}
-        className="w-full rounded-[10px] border border-primary/20 bg-bg px-3 py-2.5 text-sm focus:border-accent focus:outline-none"
+        inputMode={inputMode}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        onBlur={onBlur}
+        aria-invalid={Boolean(error)}
+        aria-describedby={error ? `${name}-error` : undefined}
+        className={cn(
+          "w-full rounded-[10px] border bg-bg px-3 py-2.5 text-sm focus:outline-none",
+          error
+            ? "border-error focus:border-error"
+            : "border-primary/20 focus:border-accent",
+        )}
       />
+      {error && (
+        <p id={`${name}-error`} className="mt-1 text-xs text-error">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

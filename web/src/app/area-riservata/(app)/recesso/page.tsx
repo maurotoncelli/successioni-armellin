@@ -1,14 +1,26 @@
-"use client";
-
-import { useState } from "react";
-import { Check, Info } from "lucide-react";
+import { Info } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { buttonClasses } from "@/components/ui/button";
 import { PageHeading } from "@/components/area/ui";
+import { NoPracticeState } from "@/components/area/empty";
+import { WithdrawalForm } from "@/components/area/withdrawal-form";
+import { requireClientView } from "@/lib/area";
+import { getSafeExtras } from "@/lib/practice-extras";
 
-export default function RecessoPage() {
-  const [reason, setReason] = useState("");
-  const [requested, setRequested] = useState(false);
+export default async function RecessoPage() {
+  const { practice } = await requireClientView();
+  if (!practice) {
+    return (
+      <div>
+        <PageHeading
+          title="Richiesta di recesso"
+          subtitle="Puoi richiedere il recesso finché la pratica non è completata."
+        />
+        <NoPracticeState />
+      </div>
+    );
+  }
+
+  const { withdrawal } = await getSafeExtras(practice.id);
 
   return (
     <div>
@@ -35,52 +47,7 @@ export default function RecessoPage() {
       </Card>
 
       <Card className="mt-6">
-        {!requested ? (
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              setRequested(true);
-            }}
-            className="space-y-4"
-          >
-            <div>
-              <label htmlFor="reason" className="mb-1.5 block text-sm font-medium text-text">
-                Motivo (facoltativo)
-              </label>
-              <textarea
-                id="reason"
-                value={reason}
-                onChange={(e) => setReason(e.target.value)}
-                rows={3}
-                placeholder="Se vuoi, raccontaci perché…"
-                className="w-full rounded-[10px] border border-primary/20 bg-bg px-3 py-2.5 text-sm text-text focus:border-accent focus:outline-none"
-              />
-            </div>
-            <button type="submit" className={buttonClasses({ variant: "outline" })}>
-              Richiedi recesso
-            </button>
-            <p className="text-xs text-text-muted">
-              In alternativa puoi scrivere a{" "}
-              <a href="mailto:studio@armellin.it" className="text-accent-dark hover:underline">
-                studio@armellin.it
-              </a>{" "}
-              o via PEC.
-            </p>
-          </form>
-        ) : (
-          <div className="space-y-2">
-            <div className="flex items-start gap-3 rounded-lg border border-success/30 bg-success/10 p-4">
-              <Check className="mt-0.5 h-5 w-5 shrink-0 text-success" />
-              <div className="text-sm text-text">
-                <p className="font-semibold">Richiesta inviata.</p>
-                <p className="mt-0.5 text-text-muted">
-                  Lorenzo ha ricevuto la tua richiesta e ti ricontatterà.
-                  Stato: <strong>Inviata</strong> → In gestione → Esito.
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
+        <WithdrawalForm current={withdrawal} />
       </Card>
     </div>
   );

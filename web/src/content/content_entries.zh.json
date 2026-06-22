@@ -1,0 +1,36 @@
+{
+  "_meta": {
+    "purpose": "Traduzione parziale (prep multilingua). Contiene solo la collection 'area_login'. Tutte le altre chiavi ricadono sull'italiano (IT fa fede).",
+    "locale": "zh",
+    "version": 1,
+    "updated_at": "2026-06-22"
+  },
+  "entries": [
+    { "collection": "area_login", "key": "header_title", "locale": "zh", "is_published": true, "value": "客户专区" },
+    { "collection": "area_login", "key": "header_subtitle", "locale": "zh", "is_published": true, "value": "登录以跟进您的继承事务。" },
+    { "collection": "area_login", "key": "tab_email", "locale": "zh", "is_published": true, "value": "邮箱" },
+    { "collection": "area_login", "key": "tab_phone", "locale": "zh", "is_published": true, "value": "电话" },
+    { "collection": "area_login", "key": "email_label", "locale": "zh", "is_published": true, "value": "您的邮箱" },
+    { "collection": "area_login", "key": "email_hint", "locale": "zh", "is_published": true, "value": "请使用您付款时所用的邮箱。" },
+    { "collection": "area_login", "key": "email_cta", "locale": "zh", "is_published": true, "value": "给我发送登录链接" },
+    { "collection": "area_login", "key": "email_sending", "locale": "zh", "is_published": true, "value": "正在发送…" },
+    { "collection": "area_login", "key": "phone_label", "locale": "zh", "is_published": true, "value": "您的电话号码" },
+    { "collection": "area_login", "key": "phone_hint", "locale": "zh", "is_published": true, "value": "请使用您下单时的号码。我们将通过短信向您发送验证码。" },
+    { "collection": "area_login", "key": "phone_cta", "locale": "zh", "is_published": true, "value": "通过短信发送验证码" },
+    { "collection": "area_login", "key": "phone_sending", "locale": "zh", "is_published": true, "value": "正在发送…" },
+    { "collection": "area_login", "key": "sent_email_title", "locale": "zh", "is_published": true, "value": "请查看您的邮箱" },
+    { "collection": "area_login", "key": "sent_email_body", "locale": "zh", "is_published": true, "value": "我们已向 {contact} 发送了登录链接。链接将在几分钟后过期。" },
+    { "collection": "area_login", "key": "sent_phone_title", "locale": "zh", "is_published": true, "value": "请查看您的短信" },
+    { "collection": "area_login", "key": "sent_phone_body", "locale": "zh", "is_published": true, "value": "我们已向 {contact} 发送了 6 位验证码。请在下方输入。" },
+    { "collection": "area_login", "key": "otp_toggle", "locale": "zh", "is_published": true, "value": "我收到了验证码，输入它" },
+    { "collection": "area_login", "key": "otp_label", "locale": "zh", "is_published": true, "value": "6 位验证码" },
+    { "collection": "area_login", "key": "otp_cta", "locale": "zh", "is_published": true, "value": "验证验证码" },
+    { "collection": "area_login", "key": "otp_verifying", "locale": "zh", "is_published": true, "value": "正在验证…" },
+    { "collection": "area_login", "key": "resend", "locale": "zh", "is_published": true, "value": "重新发送" },
+    { "collection": "area_login", "key": "error_link", "locale": "zh", "is_published": true, "value": "登录链接无效或已过期。请重新申请。" },
+    { "collection": "area_login", "key": "secure_note", "locale": "zh", "is_published": true, "value": "安全登录" },
+    { "collection": "area_login", "key": "back_to_site", "locale": "zh", "is_published": true, "value": "返回网站" },
+    { "collection": "area_login", "key": "privacy_link", "locale": "zh", "is_published": true, "value": { "label": "隐私", "href": "/privacy" } },
+    { "collection": "area_login", "key": "termini_link", "locale": "zh", "is_published": true, "value": { "label": "条款", "href": "/termini-condizioni" } }
+  ]
+}

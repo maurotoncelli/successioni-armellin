@@ -1,22 +1,21 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { ADMIN_COOKIE, hashToken } from "@/lib/admin-auth";
+import { updateSession } from "@/lib/supabase/middleware";
+
+/*
+  Proxy (Next 16, runtime Node): rinnova la sessione Supabase (cookie) per le aree
+  autenticate. Il GATING vero e demandato ai layout:
+  - /area-riservata -> requireClientView (lib/area)
+  - /crm            -> requireAdmin (lib/admin): emergenza / aperto / ADMIN+2FA
+*/
 
 export async function proxy(req: NextRequest) {
-  const password = process.env.ADMIN_PASSWORD;
-
-  // Gate disattivato finche non viene impostata una password (demo accessibile).
-  if (!password) return NextResponse.next();
-
-  const expected = await hashToken(password);
-  const cookie = req.cookies.get(ADMIN_COOKIE)?.value;
-
-  if (cookie === expected) return NextResponse.next();
-
-  const loginUrl = new URL("/crm-login", req.url);
-  loginUrl.searchParams.set("next", req.nextUrl.pathname);
-  return NextResponse.redirect(loginUrl);
+  const { pathname } = req.nextUrl;
+  if (pathname.startsWith("/area-riservata") || pathname.startsWith("/crm")) {
+    return updateSession(req);
+  }
+  return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/crm", "/crm/:path*"],
+  matcher: ["/crm", "/crm/:path*", "/area-riservata", "/area-riservata/:path*"],
 };

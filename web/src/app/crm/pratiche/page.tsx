@@ -1,6 +1,9 @@
 import { PracticesBoard } from "@/components/crm/practices-board";
-import { practices } from "@/content/crm-data";
+import { getPractices } from "@/lib/crm";
 
-export default function PratichePage() {
+export const dynamic = "force-dynamic";
+
+export default async function PratichePage() {
+  const practices = await getPractices();
   return <PracticesBoard practices={practices} />;
 }

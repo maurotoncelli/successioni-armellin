@@ -3,15 +3,26 @@ import { ArrowRight, Receipt, Landmark } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { buttonClasses } from "@/components/ui/button";
 import { PageHeading, StatusTracker } from "@/components/area/ui";
+import { NoPracticeState } from "@/components/area/empty";
+import { requireClientView } from "@/lib/area";
 import {
-  currentPractice as p,
   clientSteps,
   currentStepIndex,
   nextAction,
   toClientDocState,
 } from "@/content/area-data";
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  const { practice: p } = await requireClientView();
+  if (!p) {
+    return (
+      <div>
+        <PageHeading title="Area personale" subtitle="Benvenuto." />
+        <NoPracticeState />
+      </div>
+    );
+  }
+
   const step = currentStepIndex(p.status);
   const action = nextAction(p);
 

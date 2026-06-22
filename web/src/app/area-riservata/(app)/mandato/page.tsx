@@ -1,15 +1,22 @@
-"use client";
-
-import { useState } from "react";
-import { FileSignature, Check, Download, Upload } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { buttonClasses } from "@/components/ui/button";
 import { PageHeading } from "@/components/area/ui";
-import { account } from "@/content/area-data";
+import { NoPracticeState } from "@/components/area/empty";
+import { MandateForm } from "@/components/area/mandate-form";
+import { requireClientView } from "@/lib/area";
+import { getSafeExtras } from "@/lib/practice-extras";
 
-export default function MandatoPage() {
-  const [accepted, setAccepted] = useState(false);
-  const [signed, setSigned] = useState(false);
+export default async function MandatoPage() {
+  const { practice, account } = await requireClientView();
+  if (!practice) {
+    return (
+      <div>
+        <PageHeading title="Mandato e consensi" subtitle="Firma l'incarico." />
+        <NoPracticeState />
+      </div>
+    );
+  }
+
+  const extras = await getSafeExtras(practice.id);
 
   return (
     <div>
@@ -41,65 +48,13 @@ export default function MandatoPage() {
           </p>
         </div>
 
-        {!signed ? (
-          <div className="mt-5 space-y-4">
-            <label className="flex items-start gap-3 text-sm text-text">
-              <input
-                type="checkbox"
-                checked={accepted}
-                onChange={(e) => setAccepted(e.target.checked)}
-                className="mt-0.5 h-4 w-4 rounded border-primary/30 text-accent focus:ring-accent"
-              />
-              Ho letto e accetto il mandato, le condizioni e l&apos;informativa
-              privacy.
-            </label>
-            <button
-              disabled={!accepted}
-              onClick={() => setSigned(true)}
-              className={buttonClasses()}
-            >
-              <FileSignature className="h-4 w-4" />
-              Accetto e firmo online
-            </button>
-
-            {/* Alternativa: firma cartacea (prassi attuale dello studio) */}
-            <div className="rounded-lg border border-primary/10 bg-bg-muted p-4">
-              <p className="text-sm font-medium text-text">
-                Preferisci la firma cartacea?
-              </p>
-              <p className="mt-0.5 text-sm text-text-muted">
-                Scarica il mandato, firmalo a mano e ricaricalo: per noi va benissimo.
-              </p>
-              <div className="mt-3 flex flex-wrap gap-2">
-                <button className="inline-flex items-center gap-2 rounded-[10px] border border-primary/20 px-4 py-2 text-sm font-medium text-primary hover:bg-primary/5">
-                  <Download className="h-4 w-4" />
-                  Scarica il mandato
-                </button>
-                <button className="inline-flex items-center gap-2 rounded-[10px] border border-primary/20 px-4 py-2 text-sm font-medium text-primary hover:bg-primary/5">
-                  <Upload className="h-4 w-4" />
-                  Carica il mandato firmato
-                </button>
-              </div>
-            </div>
-          </div>
-        ) : (
-          <div className="mt-5 space-y-3">
-            <div className="flex items-start gap-3 rounded-lg border border-success/30 bg-success/10 p-4">
-              <Check className="mt-0.5 h-5 w-5 shrink-0 text-success" />
-              <div className="text-sm text-text">
-                <p className="font-semibold">Mandato firmato.</p>
-                <p className="mt-0.5 text-text-muted">
-                  Firma elettronica registrata (data, ora e dispositivo). Ti
-                  abbiamo inviato una copia via email.
-                </p>
-              </div>
-            </div>
-            <button className="inline-flex items-center gap-2 rounded-[10px] border border-primary/20 px-4 py-2 text-sm font-medium text-primary hover:bg-primary/5">
-              <Download className="h-4 w-4" />
-              Scarica copia firmata
-            </button>
-          </div>
-        )}
+        <div className="mt-5">
+          <MandateForm
+            signerName={account.name}
+            practiceCode={account.practiceCode}
+            initial={extras.mandate}
+          />
+        </div>
       </Card>
     </div>
   );

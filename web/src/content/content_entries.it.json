@@ -23,8 +23,9 @@
 
     { "collection": "globals", "key": "mobile_cta", "locale": "it", "is_published": true, "value": { "label": "Calcola il preventivo gratis", "href": "/preventivo" } },
 
-    { "collection": "footer", "key": "studio", "locale": "it", "is_published": true, "value": { "ragione_sociale": "Geom. Lorenzo Armellin", "piva": "DA CONFERMARE", "albo": "Collegio di Pisa n. 1969 (da confermare)", "indirizzo": "Via Vittorio Veneto 31, 56025 Pontedera (PI)" } },
+    { "collection": "footer", "key": "studio", "locale": "it", "is_published": true, "value": { "ragione_sociale": "Geom. Lorenzo Armellin", "forma_giuridica": "Ditta individuale - regime forfettario (operazione senza IVA, art. 1 c. 54-89 L. 190/2014)", "piva": "DA CONFERMARE", "cf": "DA CONFERMARE", "rea": "DA CONFERMARE", "albo": "Collegio Geometri e Geometri Laureati di Pisa, n. 1969 (DA CONFERMARE)", "indirizzo": "Via Vittorio Veneto 31, 56025 Pontedera (PI)" } },
     { "collection": "footer", "key": "trust_line", "locale": "it", "is_published": true, "value": "Geom. abilitato Entratel - con supervisione fiscale di un commercialista" },
+    { "collection": "footer", "key": "odr", "locale": "it", "is_published": true, "value": { "label": "Risoluzione controversie online (ODR)", "href": "https://ec.europa.eu/consumers/odr" } },
     { "collection": "footer", "key": "legal_menu", "locale": "it", "is_published": true, "value": [
       { "label": "Privacy", "href": "/privacy" },
       { "label": "Cookie Policy", "href": "/cookie-policy" },
@@ -35,6 +36,7 @@
     { "collection": "footer", "key": "credit", "locale": "it", "is_published": true, "value": "Realizzato da AT STUDIO" },
 
     { "collection": "settings", "key": "phone", "locale": "it", "is_published": true, "value": "DA CONFERMARE" },
+    { "collection": "settings", "key": "area_label", "locale": "it", "is_published": true, "value": "Area personale" },
     { "collection": "settings", "key": "whatsapp", "locale": "it", "is_published": true, "value": "https://wa.me/39" },
     { "collection": "settings", "key": "email", "locale": "it", "is_published": true, "value": "info@DA-CONFERMARE.it" },
     { "collection": "settings", "key": "pec", "locale": "it", "is_published": true, "value": "DA CONFERMARE" },
@@ -63,13 +65,15 @@
       { "titolo": "Zero errori e sanzioni", "testo": "Controllo tecnico dei dati catastali da un geometra abilitato." },
       { "titolo": "Assistenza umana", "testo": "Parli sempre con una persona reale, non con un bot." }
     ] },
+    { "collection": "home", "key": "come_funziona_eyebrow", "locale": "it", "is_published": true, "value": "Semplice" },
     { "collection": "home", "key": "come_funziona_title", "locale": "it", "is_published": true, "value": "Come funziona, in 3 passi" },
     { "collection": "home", "key": "come_funziona_steps", "locale": "it", "is_published": true, "value": [
       { "titolo": "1. Rispondi a poche domande", "testo": "Ti diciamo subito di cosa hai bisogno e quanto costa." },
-      { "titolo": "2. Carichi i documenti", "testo": "Dalla tua area riservata, anche da foto. Ti diamo la lista esatta." },
+      { "titolo": "2. Carichi i documenti", "testo": "Dalla tua area personale, anche da foto. Ti diamo la lista esatta." },
       { "titolo": "3. Pensiamo a tutto noi", "testo": "Predisponiamo e inviamo la dichiarazione; tu ricevi le ricevute." }
     ] },
     { "collection": "home", "key": "come_funziona_sla_note", "locale": "it", "is_published": true, "value": "Invio entro X giorni lavorativi da quando abbiamo tutti i documenti completi." },
+    { "collection": "home", "key": "tariffe_eyebrow", "locale": "it", "is_published": true, "value": "Tariffe" },
     { "collection": "home", "key": "tariffe_title", "locale": "it", "is_published": true, "value": "Prezzi chiari, senza sorprese" },
     { "collection": "home", "key": "tariffe_intro", "locale": "it", "is_published": true, "value": "Paghi un onorario fisso. Le imposte di Stato sono separate, a carico dell'erede, e te le calcoliamo noi." },
     { "collection": "home", "key": "tariffe_cta", "locale": "it", "is_published": true, "value": { "label": "Vedi i pacchetti", "href": "/tariffe" } },
@@ -94,6 +98,7 @@
     { "collection": "home", "key": "cta_finale_button", "locale": "it", "is_published": true, "value": { "label": "Calcola il preventivo gratis", "href": "/preventivo" } },
     { "collection": "home", "key": "cta_finale_phone", "locale": "it", "is_published": true, "value": { "label": "Oppure chiama Lorenzo", "href": "tel:+39" } },
 
+    { "collection": "tariffe", "key": "hero_eyebrow", "locale": "it", "is_published": true, "value": "Prezzi chiari" },
     { "collection": "tariffe", "key": "hero_title", "locale": "it", "is_published": true, "value": "Prezzi chiari. Quello che vedi e quello che paghi." },
     { "collection": "tariffe", "key": "hero_subtitle", "locale": "it", "is_published": true, "value": "Un onorario fisso per pacchetto, deciso prima. Le imposte di Stato sono separate e te le calcoliamo noi, senza ricarichi. Per i casi particolari, un preventivo su misura." },
     { "collection": "tariffe", "key": "card_badge_popolare", "locale": "it", "is_published": true, "value": "Il piu scelto" },
@@ -111,6 +116,8 @@
     { "collection": "tariffe", "key": "deliverable_list", "locale": "it", "is_published": true, "value": ["Ricevuta di presentazione/registrazione dell'Agenzia", "Copia della dichiarazione di successione", "Attestazione / esito F24", "Esito della voltura catastale (dove prevista)", "La nostra fattura"] },
     { "collection": "tariffe", "key": "esempio_title", "locale": "it", "is_published": true, "value": "Guarda un esempio dei documenti finali" },
     { "collection": "tariffe", "key": "addon_intro", "locale": "it", "is_published": true, "value": "Servizi aggiuntivi, se ti servono" },
+    { "collection": "tariffe", "key": "addon_subtitle", "locale": "it", "is_published": true, "value": "Tocca un servizio per saperne di piu. Per ora li attiviamo su richiesta: ne parliamo insieme e te li inseriamo nella pratica." },
+    { "collection": "tariffe", "key": "addon_contact_text", "locale": "it", "is_published": true, "value": "Questo servizio si aggiunge su richiesta, con un preventivo dedicato. Chiamaci o scrivici: valutiamo insieme il tuo caso e te lo inseriamo nella pratica, senza sorprese." },
     { "collection": "tariffe", "key": "rate_text", "locale": "it", "is_published": true, "value": "L'onorario si puo pagare a rate al checkout (PayPal Pay in 3, Klarna, Scalapay, dove disponibili). Si rateizza l'onorario, non le imposte di Stato, che seguono le scadenze di legge." },
     { "collection": "tariffe", "key": "su_misura_text", "locale": "it", "is_published": true, "value": "Piu immobili, terreni agricoli, annessi, testamento o eredi all'estero? Ogni caso e diverso: ti facciamo un preventivo su misura, senza sorprese." },
     { "collection": "tariffe", "key": "su_misura_cta", "locale": "it", "is_published": true, "value": { "label": "Richiedi un preventivo su misura", "href": "/preventivo" } },
@@ -125,6 +132,7 @@
     { "collection": "tariffe", "key": "cta_finale_title", "locale": "it", "is_published": true, "value": "Pochi minuti per sapere quanto costa, senza impegno." },
     { "collection": "tariffe", "key": "cta_finale_button", "locale": "it", "is_published": true, "value": { "label": "Calcola il preventivo gratis", "href": "/preventivo" } },
 
+    { "collection": "chi_siamo", "key": "hero_eyebrow", "locale": "it", "is_published": true, "value": "Chi sono" },
     { "collection": "chi_siamo", "key": "hero_title", "locale": "it", "is_published": true, "value": "Ciao, sono Lorenzo Armellin." },
     { "collection": "chi_siamo", "key": "hero_subtitle", "locale": "it", "is_published": true, "value": "Geometra abilitato a trasmettere le dichiarazioni di successione all'Agenzia delle Entrate. Dietro questo sito non c'e un software: c'e una persona che segue la tua pratica." },
     { "collection": "chi_siamo", "key": "hero_ritratto", "locale": "it", "is_published": false, "value": { "asset_key": "ritratto_lorenzo" } },
@@ -154,6 +162,7 @@
     { "collection": "chi_siamo", "key": "cta_finale_button", "locale": "it", "is_published": true, "value": { "label": "Calcola il preventivo gratis", "href": "/preventivo" } },
     { "collection": "chi_siamo", "key": "cta_finale_phone", "locale": "it", "is_published": true, "value": { "label": "Chiamami", "href": "tel:+39" } },
 
+    { "collection": "documenti", "key": "hero_eyebrow", "locale": "it", "is_published": true, "value": "Guida ai documenti" },
     { "collection": "documenti", "key": "hero_title", "locale": "it", "is_published": true, "value": "Quali documenti servono per la successione?" },
     { "collection": "documenti", "key": "hero_subtitle", "locale": "it", "is_published": true, "value": "Rispondi a poche domande e ti diciamo subito, gratis, cosa ti servira nel tuo caso. Senza impegno. E se qualcosa non ce l'hai, spesso lo recuperiamo noi." },
     { "collection": "documenti", "key": "interattiva_title", "locale": "it", "is_published": true, "value": "Costruisci la tua lista personalizzata" },
@@ -167,6 +176,7 @@
     { "collection": "documenti", "key": "cta_pdf", "locale": "it", "is_published": true, "value": { "label": "Scarica la lista (PDF)", "href": "#" } },
     { "collection": "documenti", "key": "cta_email", "locale": "it", "is_published": true, "value": { "label": "Ricevila via email", "href": "#" } },
 
+    { "collection": "faq", "key": "hero_eyebrow", "locale": "it", "is_published": true, "value": "FAQ" },
     { "collection": "faq", "key": "hero_title", "locale": "it", "is_published": true, "value": "Domande frequenti sulle successioni" },
     { "collection": "faq", "key": "hero_subtitle", "locale": "it", "is_published": true, "value": "Le risposte chiare alle domande che ci fanno piu spesso. Se non trovi la tua, scrivici o chiama Lorenzo: rispondiamo a tutti." },
     { "collection": "faq", "key": "hero_search", "locale": "it", "is_published": true, "value": true },
@@ -179,6 +189,7 @@
     { "collection": "faq", "key": "cta_button", "locale": "it", "is_published": true, "value": { "label": "Calcola il preventivo gratis", "href": "/preventivo" } },
     { "collection": "faq", "key": "cta_phone", "locale": "it", "is_published": true, "value": { "label": "Chiedi a Lorenzo", "href": "tel:+39" } },
 
+    { "collection": "recesso", "key": "hero_eyebrow", "locale": "it", "is_published": true, "value": "Le tue tutele" },
     { "collection": "recesso", "key": "hero_title", "locale": "it", "is_published": true, "value": "Il tuo diritto di recesso, spiegato semplice" },
     { "collection": "recesso", "key": "hero_subtitle", "locale": "it", "is_published": true, "value": "Vogliamo che tu sia tranquillo. Qui ti spieghiamo in parole chiare come funziona disdire e farti rimborsare. Il testo formale e nelle Condizioni di vendita." },
     { "collection": "recesso", "key": "cosa_title", "locale": "it", "is_published": true, "value": "Hai 14 giorni per ripensarci" },
@@ -188,8 +199,8 @@
     { "collection": "recesso", "key": "iniziato_title", "locale": "it", "is_published": true, "value": "E se cambio idea mentre state lavorando?" },
     { "collection": "recesso", "key": "iniziato_body", "locale": "it", "is_published": true, "value": "Puoi recedere lo stesso: paghi solo la parte di lavoro gia svolta fino a quel momento, in proporzione, e ti rimborsiamo il resto. Niente penali nascoste." },
     { "collection": "recesso", "key": "come_title", "locale": "it", "is_published": true, "value": "Come si chiede il recesso" },
-    { "collection": "recesso", "key": "come_body", "locale": "it", "is_published": true, "value": "Nel modo piu semplice: dalla tua area riservata trovi il pulsante 'Richiedi recesso'. In alternativa puoi scriverci via email/PEC. Puoi usare il modulo tipo qui sotto, ma non e obbligatorio." },
-    { "collection": "recesso", "key": "come_cta_area", "locale": "it", "is_published": true, "value": { "label": "Richiedi il recesso dall'area riservata", "href": "/area-riservata/recesso" } },
+    { "collection": "recesso", "key": "come_body", "locale": "it", "is_published": true, "value": "Nel modo piu semplice: dalla tua area personale trovi il pulsante 'Richiedi recesso'. In alternativa puoi scriverci via email/PEC. Puoi usare il modulo tipo qui sotto, ma non e obbligatorio." },
+    { "collection": "recesso", "key": "come_cta_area", "locale": "it", "is_published": true, "value": { "label": "Richiedi il recesso dall'area personale", "href": "/area-riservata/recesso" } },
     { "collection": "recesso", "key": "rimborso_title", "locale": "it", "is_published": true, "value": "Quando ricevo il rimborso" },
     { "collection": "recesso", "key": "rimborso_body", "locale": "it", "is_published": true, "value": "Entro i termini di legge (di norma 14 giorni dalla richiesta), con lo stesso metodo di pagamento che hai usato. Le imposte di Stato eventualmente gia versate all'Erario seguono le regole dell'Agenzia, non dipendono da noi." },
     { "collection": "recesso", "key": "garanzia_title", "locale": "it", "is_published": true, "value": "Recesso e garanzia: due cose diverse" },
@@ -197,11 +208,12 @@
     { "collection": "recesso", "key": "garanzia_link", "locale": "it", "is_published": true, "value": { "label": "Leggi la Garanzia", "href": "/garanzia" } },
     { "collection": "recesso", "key": "tc_link", "locale": "it", "is_published": true, "value": "Questa pagina spiega il recesso in modo semplice. Il testo che fa fede e nelle Condizioni di vendita." },
 
+    { "collection": "come_funziona", "key": "hero_eyebrow", "locale": "it", "is_published": true, "value": "Il processo" },
     { "collection": "come_funziona", "key": "hero_title", "locale": "it", "is_published": true, "value": "Come funziona: semplice, da casa, in 3 passi" },
     { "collection": "come_funziona", "key": "hero_subtitle", "locale": "it", "is_published": true, "value": "Niente code, niente uffici. Ti guidiamo noi passo passo: tu pensi alla tua famiglia, alla burocrazia pensiamo noi." },
     { "collection": "come_funziona", "key": "steps", "locale": "it", "is_published": true, "value": [
       { "numero": 1, "titolo": "Rispondi a poche domande", "testo": "Compili un breve questionario online (5 minuti). Ti diciamo subito di cosa hai bisogno e quanto costa - e se per il tuo caso la successione non e nemmeno dovuta, te lo diciamo gratis.", "dettaglio": "Esito immediato: prezzo, oppure preventivo su misura per i casi complessi." },
-      { "numero": 2, "titolo": "Carichi i documenti", "testo": "Dalla tua area riservata carichi i documenti, anche da foto col telefono. Ti diamo la lista esatta, personalizzata sul tuo caso. Se ti manca qualcosa, spesso lo recuperiamo noi.", "dettaglio": "Una persona reale controlla tutto: niente moduli lasciati a meta." },
+      { "numero": 2, "titolo": "Carichi i documenti", "testo": "Dalla tua area personale carichi i documenti, anche da foto col telefono. Ti diamo la lista esatta, personalizzata sul tuo caso. Se ti manca qualcosa, spesso lo recuperiamo noi.", "dettaglio": "Una persona reale controlla tutto: niente moduli lasciati a meta." },
       { "numero": 3, "titolo": "Pensiamo a tutto noi", "testo": "Lorenzo predispone e invia la dichiarazione all'Agenzia delle Entrate. Ti comunichiamo prima le imposte da versare. A fine pratica ricevi ricevute e documenti finali nella tua area.", "dettaglio": "Dove previsto, ci occupiamo anche della voltura catastale." }
     ] },
     { "collection": "come_funziona", "key": "sla_title", "locale": "it", "is_published": true, "value": "Quanto tempo ci vuole" },
@@ -215,6 +227,7 @@
     { "collection": "come_funziona", "key": "cta_button", "locale": "it", "is_published": true, "value": { "label": "Calcola il preventivo gratis", "href": "/preventivo" } },
     { "collection": "come_funziona", "key": "cta_phone", "locale": "it", "is_published": true, "value": { "label": "Parla con Lorenzo", "href": "tel:+39" } },
 
+    { "collection": "contatti", "key": "hero_eyebrow", "locale": "it", "is_published": true, "value": "Contatti" },
     { "collection": "contatti", "key": "hero_title", "locale": "it", "is_published": true, "value": "Parla con noi" },
     { "collection": "contatti", "key": "hero_subtitle", "locale": "it", "is_published": true, "value": "Hai una domanda o vuoi capire se ti serve la successione? Scrivici o chiamaci: ti risponde una persona reale, non un bot." },
     { "collection": "contatti", "key": "telefono", "locale": "it", "is_published": true, "value": { "label": "Telefono / WhatsApp", "numero": "+39 ...", "cta_chiama": "tel:+39", "cta_whatsapp": "https://wa.me/39" } },
@@ -230,6 +243,7 @@
     { "collection": "contatti", "key": "cta_body", "locale": "it", "is_published": true, "value": "Preferisci partire subito? Calcola il preventivo gratis, ci vogliono 5 minuti." },
     { "collection": "contatti", "key": "cta_button", "locale": "it", "is_published": true, "value": { "label": "Calcola il preventivo", "href": "/preventivo" } },
 
+    { "collection": "guide", "key": "hero_eyebrow", "locale": "it", "is_published": true, "value": "Guide" },
     { "collection": "guide", "key": "hero_title", "locale": "it", "is_published": true, "value": "Guide alle successioni: chiare, aggiornate, senza burocratese" },
     { "collection": "guide", "key": "hero_subtitle", "locale": "it", "is_published": true, "value": "Tutto quello che serve sapere su successione, imposte e documenti, spiegato in modo semplice da chi le pratiche le fa davvero." },
     { "collection": "guide", "key": "hero_search", "locale": "it", "is_published": true, "value": true },
@@ -266,15 +280,17 @@
     { "collection": "grazie", "key": "header_title", "locale": "it", "is_published": true, "value": "Grazie! Ecco l'esito della tua pre-valutazione" },
     { "collection": "grazie", "key": "esito_a_title", "locale": "it", "is_published": true, "value": "Forse non devi fare la dichiarazione" },
     { "collection": "grazie", "key": "esito_a_body", "locale": "it", "is_published": true, "value": "In base a quello che ci hai detto, il tuo caso potrebbe rientrare nell'esonero di legge. Non vogliamo venderti un servizio che non ti serve: verifichiamolo insieme, gratis. La conferma definitiva e sul caso concreto." },
-    { "collection": "grazie", "key": "esito_a_cta", "locale": "it", "is_published": true, "value": { "label": "Prenota la verifica gratuita", "href": "tel:+39" } },
+    { "collection": "grazie", "key": "esito_a_cta", "locale": "it", "is_published": true, "value": { "label": "Chiama per la verifica gratuita", "href": "tel:+39" } },
     { "collection": "grazie", "key": "esito_b_title", "locale": "it", "is_published": true, "value": "Ecco il pacchetto giusto per te" },
     { "collection": "grazie", "key": "esito_b_cta", "locale": "it", "is_published": true, "value": { "label": "Procedi al pagamento", "href": "/checkout" } },
-    { "collection": "grazie", "key": "esito_b_riallineamento", "locale": "it", "is_published": true, "value": "Prima di pagare, dai un'occhiata alla guida alla scelta del pacchetto o fai due parole con Lorenzo: se hai scelto quello sbagliato, cambiarlo e semplice e si regola solo la differenza." },
+    { "collection": "grazie", "key": "esito_b_riallineamento", "locale": "it", "is_published": true, "value": "Prima di pagare, dai un'occhiata alla {guida} alla scelta del pacchetto o fai due parole con Lorenzo: se hai scelto quello sbagliato, cambiarlo e semplice e si regola solo la differenza." },
+    { "collection": "grazie", "key": "esito_b_guida", "locale": "it", "is_published": true, "value": { "label": "guida", "href": "/tariffe" } },
     { "collection": "grazie", "key": "esito_c_title", "locale": "it", "is_published": true, "value": "Il tuo caso merita un preventivo su misura" },
     { "collection": "grazie", "key": "esito_c_body", "locale": "it", "is_published": true, "value": "Hai elementi particolari (piu immobili, terreni/annessi, altri beni, testamento o eredi all'estero). Per non farti pagare ne piu ne meno del giusto, Lorenzo ti prepara un preventivo dedicato." },
-    { "collection": "grazie", "key": "esito_c_cta", "locale": "it", "is_published": true, "value": { "label": "Richiedi il preventivo / prenota la chiamata", "href": "tel:+39" } },
+    { "collection": "grazie", "key": "esito_c_cta", "locale": "it", "is_published": true, "value": { "label": "Chiama per il preventivo su misura", "href": "tel:+39" } },
     { "collection": "grazie", "key": "documenti_title", "locale": "it", "is_published": true, "value": "Intanto, ecco cosa ti servira" },
     { "collection": "grazie", "key": "documenti_disclaimer", "locale": "it", "is_published": true, "value": "Lista indicativa: quella definitiva la conferma Lorenzo dopo aver visto il tuo caso." },
+    { "collection": "grazie", "key": "documenti_faq_link", "locale": "it", "is_published": true, "value": { "label": "Approfondisci nelle FAQ", "href": "/faq" } },
     { "collection": "grazie", "key": "documenti_hook", "locale": "it", "is_published": true, "value": "Non ce l'hai? Lo recuperiamo noi." },
     { "collection": "grazie", "key": "documenti_cta_pdf", "locale": "it", "is_published": true, "value": { "label": "Scarica la lista (PDF)", "href": "#" } },
     { "collection": "grazie", "key": "documenti_cta_email", "locale": "it", "is_published": true, "value": { "label": "Ricevila via email", "href": "#" } },
@@ -312,6 +328,36 @@
     { "collection": "sistema", "key": "manutenzione_title", "locale": "it", "is_published": true, "value": "Stiamo facendo manutenzione" },
     { "collection": "sistema", "key": "manutenzione_body", "locale": "it", "is_published": true, "value": "Torniamo online a breve. Per urgenze, contattaci." },
     { "collection": "sistema", "key": "sessione_title", "locale": "it", "is_published": true, "value": "Sessione scaduta" },
-    { "collection": "sistema", "key": "sessione_body", "locale": "it", "is_published": true, "value": "Per la tua sicurezza ti abbiamo disconnesso. Accedi di nuovo per continuare." }
+    { "collection": "sistema", "key": "sessione_body", "locale": "it", "is_published": true, "value": "Per la tua sicurezza ti abbiamo disconnesso. Accedi di nuovo per continuare." },
+
+    { "collection": "area_login", "key": "header_title", "locale": "it", "is_published": true, "value": "Area personale" },
+    { "collection": "area_login", "key": "header_subtitle", "locale": "it", "is_published": true, "value": "Accedi per seguire la tua pratica di successione." },
+    { "collection": "area_login", "key": "tab_email", "locale": "it", "is_published": true, "value": "Email" },
+    { "collection": "area_login", "key": "tab_phone", "locale": "it", "is_published": true, "value": "Telefono" },
+    { "collection": "area_login", "key": "email_label", "locale": "it", "is_published": true, "value": "La tua email" },
+    { "collection": "area_login", "key": "email_placeholder", "locale": "it", "is_published": true, "value": "nome@email.it" },
+    { "collection": "area_login", "key": "email_hint", "locale": "it", "is_published": true, "value": "Usa l'email con cui hai effettuato il pagamento." },
+    { "collection": "area_login", "key": "email_cta", "locale": "it", "is_published": true, "value": "Inviami il link di accesso" },
+    { "collection": "area_login", "key": "email_sending", "locale": "it", "is_published": true, "value": "Invio in corso…" },
+    { "collection": "area_login", "key": "phone_label", "locale": "it", "is_published": true, "value": "Il tuo numero di telefono" },
+    { "collection": "area_login", "key": "phone_placeholder", "locale": "it", "is_published": true, "value": "+39 333 123 4567" },
+    { "collection": "area_login", "key": "phone_hint", "locale": "it", "is_published": true, "value": "Usa il numero con cui hai effettuato l'ordine. Ti invieremo un codice via SMS." },
+    { "collection": "area_login", "key": "phone_cta", "locale": "it", "is_published": true, "value": "Inviami il codice via SMS" },
+    { "collection": "area_login", "key": "phone_sending", "locale": "it", "is_published": true, "value": "Invio in corso…" },
+    { "collection": "area_login", "key": "sent_email_title", "locale": "it", "is_published": true, "value": "Controlla la tua email" },
+    { "collection": "area_login", "key": "sent_email_body", "locale": "it", "is_published": true, "value": "Ti abbiamo inviato un link di accesso a {contact}. Il link scade dopo pochi minuti." },
+    { "collection": "area_login", "key": "sent_phone_title", "locale": "it", "is_published": true, "value": "Controlla gli SMS" },
+    { "collection": "area_login", "key": "sent_phone_body", "locale": "it", "is_published": true, "value": "Ti abbiamo inviato un codice a 6 cifre al numero {contact}. Inseriscilo qui sotto." },
+    { "collection": "area_login", "key": "otp_toggle", "locale": "it", "is_published": true, "value": "Ho ricevuto un codice, inseriscilo" },
+    { "collection": "area_login", "key": "otp_label", "locale": "it", "is_published": true, "value": "Codice a 6 cifre" },
+    { "collection": "area_login", "key": "otp_placeholder", "locale": "it", "is_published": true, "value": "123456" },
+    { "collection": "area_login", "key": "otp_cta", "locale": "it", "is_published": true, "value": "Verifica codice" },
+    { "collection": "area_login", "key": "otp_verifying", "locale": "it", "is_published": true, "value": "Verifica…" },
+    { "collection": "area_login", "key": "resend", "locale": "it", "is_published": true, "value": "Invia di nuovo" },
+    { "collection": "area_login", "key": "error_link", "locale": "it", "is_published": true, "value": "Il link di accesso non e valido o e scaduto. Richiedine uno nuovo." },
+    { "collection": "area_login", "key": "secure_note", "locale": "it", "is_published": true, "value": "Accesso sicuro" },
+    { "collection": "area_login", "key": "back_to_site", "locale": "it", "is_published": true, "value": "Torna al sito" },
+    { "collection": "area_login", "key": "privacy_link", "locale": "it", "is_published": true, "value": { "label": "Privacy", "href": "/privacy" } },
+    { "collection": "area_login", "key": "termini_link", "locale": "it", "is_published": true, "value": { "label": "Termini", "href": "/termini-condizioni" } }
   ]
 }

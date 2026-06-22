@@ -78,6 +78,21 @@ Nota sviluppo self-build: se realizzato in autonomia con Cursor, il costo "vivo"
 **Fast-follow (subito dopo il go-live, dietro feature flag, non bloccano agosto):**
 13. **Estrazione documenti OCR/AI** (V1.1): pipeline OCR + AI in UE (DPA, no-training) -> "Riepilogo dati consigliati" correggibile nella scheda pratica (@05/@07/@10/@11). Costo incrementale modesto (OCR ~centesimi/pagina + LLM pochi centesimi/doc): a ~30 pratiche/mese stimabile in poche decine di EUR/mese, da confermare a consuntivo.
 
+### Avanzamento sviluppo (aggiornato 2026-06-22)
+> Mappa degli step roadmap sullo stato reale del codice. Dettagli in @GESTIONE_PROGETTO (Diario) e @SPEC_Data_Model (Stato implementazione).
+
+| Step | Stato | Note |
+|------|-------|------|
+| 1. Setup infrastruttura | PARZIALE | Repo GitHub OK, Supabase cloud UE OK, deploy Vercel OK. Manca: ambienti dev/staging/prod separati, CI/CD formale. |
+| 2. Schema dati + RLS + test cross-tenant | PARZIALE | Create `packages/addons/faqs` + `contacts/practices` con RLS. Manca: tabelle documenti/automazioni, `profiles`, policy per-cliente e test cross-tenant (dipendono dall'auth). |
+| 3. Autenticazione (admin 2FA + client passwordless) | DA FARE | Oggi gate provvisorio (cookie+`ADMIN_PASSWORD`); area cliente solo prototipo UI. |
+| 4. Sito pubblico + brand | PROTOTIPO+DB | Pagine costruite; tariffe/FAQ/checkout/card pacchetti ora leggono dal DB (CMS). |
+| 5. Form multi-step -> lead in DB + GA4 | PARZIALE | Lead reale in DB OK (form -> `contacts`+`practices`). Manca: eventi GA4, Turnstile, validazione Zod server. |
+| 6. Checkout Stripe + webhook + fatturazione | DA FARE | Checkout e prototipo statico. |
+| 7. Area riservata (upload, dashboard, signed URL) | PROTOTIPO | UI completa con dati finti; nessun upload/storage reale. |
+| 8. CRM (Kanban, scheda, validazione, automazioni) | PROTOTIPO+DB(lettura) | UI completa; home/pratiche/scheda/contatti/calendario/statistiche leggono dal DB. Manca: azioni di scrittura (cambio stato, validazione doc), automazioni email. |
+| 9-12 (WhatsApp, SEO/GBP, sync NAS, QA/hardening) | DA FARE | — |
+
 ### Checklist QA pre-lancio
 - Flussi funzionali end-to-end (form -> pagamento -> upload -> chiusura).
 - Test RLS cross-tenant (un cliente non vede dati altrui) (@11).

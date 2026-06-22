@@ -16,6 +16,12 @@ Form multi-step di pre-valutazione (lead magnet) a 4 schermate con logica condiz
 
 ## Stato attuale del progetto
 
+### Implementazione (codice) - aggiornato 2026-06-22
+- Form `/preventivo` a 4 step funzionante; lo step finale raccoglie nome/email/telefono + consensi.
+- **Lead reale**: il submit chiama la server action `createLead` (`web/src/app/(site)/preventivo/actions.ts`) che crea un `contact` + una `practice` LEAD nel database, con pacchetto suggerito e flag "su misura" calcolati dalle risposte (esiti A/B/C), poi instrada alla thank-you. Verificato dal vivo (lead di prova -> codice `SUC-2026-0013` -> visibile nel CRM).
+- Senza DB configurato il form resta funzionante (nessuna scrittura, solo routing all'esito) come fallback.
+- **Ancora da fare**: eventi GA4 (`form_start/form_step/generate_lead`), Turnstile anti-abuso, validazione Zod lato server, email automatica di conferma reale.
+
 ### Principi UX
 - Una domanda/blocco facile per schermata, transizioni sobrie, barra di progresso (Passo X di 4).
 - Mobile-first, pulsanti grandi per le scelte multiple, navigazione "Indietro" che NON perde i dati.

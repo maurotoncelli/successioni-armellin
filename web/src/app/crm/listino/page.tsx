@@ -1,14 +1,15 @@
 import { AlertTriangle, Database } from "lucide-react";
-import { getPackagesAdmin, getAddonsAdmin } from "@/lib/cms";
+import { getPackagesAdmin, getAddonsAdmin, getFaqsAdmin } from "@/lib/cms";
 import { isAdminConfigured } from "@/lib/supabase/admin";
 import { ListinoEditor } from "@/components/crm/listino-editor";
 
 export const dynamic = "force-dynamic";
 
 export default async function ListinoPage() {
-  const [packages, addons] = await Promise.all([
+  const [packages, addons, faqs] = await Promise.all([
     getPackagesAdmin(),
     getAddonsAdmin(),
+    getFaqsAdmin(),
   ]);
 
   return (
@@ -18,7 +19,7 @@ export default async function ListinoPage() {
           Listino e contenuti
         </h1>
         <p className="mt-1 text-sm text-crm-muted">
-          Modifica prezzi, testi e disponibilita di pacchetti e add-on. Premendo
+          Modifica prezzi, testi e disponibilita di pacchetti, add-on e FAQ. Premendo
           &quot;Salva e pubblica&quot; le pagine del sito si aggiornano subito.
         </p>
       </div>
@@ -48,7 +49,7 @@ export default async function ListinoPage() {
         </div>
       )}
 
-      <ListinoEditor packages={packages} addons={addons} />
+      <ListinoEditor packages={packages} addons={addons} faqs={faqs} />
     </div>
   );
 }

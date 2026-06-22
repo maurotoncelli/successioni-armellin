@@ -26,9 +26,10 @@ export default function RecessoPage() {
   return (
     <>
       <PageHero
-        eyebrow="Le tue tutele"
+        eyebrow={text("recesso", "hero_eyebrow", "Le tue tutele")}
         title={text("recesso", "hero_title")}
         subtitle={text("recesso", "hero_subtitle")}
+        back
       />
 
       <Section>

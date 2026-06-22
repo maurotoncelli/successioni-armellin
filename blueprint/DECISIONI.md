@@ -49,6 +49,7 @@
 - Imbuto: Hero -> Trust -> Problema/Soluzione -> Come Funziona -> Tariffe -> Recensioni -> Chi Sono -> FAQ -> CTA -> Footer.
 - Pagine autonome: Tariffe, Chi Sono, Guide, Contatti, hub legale.
 - CTA primaria unica: "Calcola Preventivo" -> /preventivo.
+- Naming area cliente (user-facing): si chiama **"Area personale"** in TUTTE le interfacce rivolte all'utente (navbar, footer, login, email/notifiche, conferma pagamento). Motivazione: "Area Riservata" risultava ambiguo (sembrava l'area di Lorenzo, non quella del cliente). La **rotta tecnica resta `/area-riservata`** (nessun redirect, auth/callback invariati) e i riferimenti tecnici/di capitolo (es. @06) restano col nome storico. Label gestita data-driven via `settings.area_label` (IT = "Area personale"); l'H1 di login via `area_login.header_title`. Le altre lingue usano gia traduzioni equivalenti (Client Area, Espace client, Личный кабинет, ...).
 - Tariffe: riga "Caso particolare? -> preventivo su misura" (no 4o pacchetto) + box "Ti serve davvero la successione?" + guida alla scelta del pacchetto con invito alla chiamata di riallineamento.
 - Mobile-first; accessibilita WCAG 2.2 AA; foto reali (no stock).
 - Guida ai documenti pre-acquisto (`/documenti-successione`): interattiva (lista personalizzata) + versione evergreen SEO; stesso motore della checklist post-vendita (`document_catalog` + relevance_rule) per coerenza; lista indicativa confermata da Lorenzo; hook "non ce l'hai? lo recuperiamo noi". Riproposta nella thank-you (Esiti B/C, @04).
@@ -151,3 +152,14 @@
 - Budget marketing: soft launch ~400 EUR/mese (3 mesi), poi 600-800 EUR/mese.
 - Go-live target: fine agosto 2026 con scope MVP; non-essenziale dopo il lancio.
 - Roadmap Blueprint -> Code nell'ordine definito; checklist QA pre-lancio obbligatoria.
+
+## Implementazione sviluppo (de-facto, aggiornato 2026-06-22)
+> Decisioni prese durante lo sviluppo del motore. Dettagli e cronologia in @GESTIONE_PROGETTO (Diario); schema reale in @SPEC_Data_Model (Stato implementazione).
+- **DB reale attivo**: Supabase cloud, regione UE (scelto al posto del locale perche Docker non installato; schema/codice identici). Migrazioni versionate in `supabase/migrations/`, applicate via pooler IPv4.
+- **Ordine delle fette del motore**: (1) CMS pacchetti/add-on/FAQ -> (2) pratiche+contatti e lead reali dal form -> (3) pagamenti Stripe (codice pronto). Prossime: auth reale, documenti/upload, automazioni email.
+- **Pagamenti (Stripe)**: scelto **Stripe Checkout hosted** (no Payment Element in v1): PCI-light + supporto nativo rate/BNPL, coerente con @04. Checkout pubblico (`/api/checkout`) e link assistito del CRM (`generatePaymentLink`) condividono la stessa logica di prezzo (`lib/order.ts` + `lib/payments.ts`). Conferma SOLO via webhook firmato + idempotente (`stripe_events`). Solo l'onorario passa da Stripe; le imposte di Stato restano separate.
+- **Pragmatismo schema**: collezioni della pratica (checklist/comunicazioni/task/log/righe ordine) salvate come `jsonb` ora; tabelle dedicate del target rinviate alle fasi che le richiedono. Snapshot denormalizzati sulla pratica per semplicita. Vedi scostamenti in @SPEC_Data_Model.
+- **Dati privati**: `contacts`/`practices` con RLS senza policy pubbliche (accesso solo `service_role` dal server). Le policy per-cliente arrivano con l'auth reale.
+- **Gate CRM provvisorio**: cookie + `ADMIN_PASSWORD` (se vuoto, demo libera). Da sostituire con Supabase Auth + 2FA admin.
+- **Rendering**: pagine CMS pubbliche e CRM oggi dinamiche + `revalidatePath` (semplificazione Next.js 16); SSG/ISR pieno resta l'obiettivo per il sito ad alto traffico.
+- **Sicurezza (TODO bloccante pre-go-live)**: rigenerare le chiavi Supabase condivise in chat (anon/service_role/password DB) e impostare `ADMIN_PASSWORD`.

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Phone, Mail, MapPin } from "lucide-react";
+import Image from "next/image";
+import { Phone, Mail, MapPin, ExternalLink } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
-import { Section } from "@/components/ui/section";
+import { Section, SectionHeading } from "@/components/ui/section";
 import { Card } from "@/components/ui/card";
 import { ContactForm } from "@/components/site/contact-form";
 import { obj, text } from "@/lib/content";
@@ -34,10 +35,15 @@ export default function ContattiPage() {
     citta: "",
   });
 
+  const indirizzo = `${studio.via}, ${studio.cap} ${studio.citta}`;
+  const mapQuery = encodeURIComponent(indirizzo);
+  const mapEmbedSrc = `https://www.google.com/maps?q=${mapQuery}&z=15&hl=it&output=embed`;
+  const mapLink = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
+
   return (
     <>
       <PageHero
-        eyebrow="Contatti"
+        eyebrow={text("contatti", "hero_eyebrow", "Contatti")}
         title={text("contatti", "hero_title")}
         subtitle={text("contatti", "hero_subtitle")}
       />
@@ -86,9 +92,60 @@ export default function ContattiPage() {
             </div>
           </Card>
         </div>
-        <p className="mt-10 text-center text-sm text-text-muted">
-          {text("contatti", "mappa_nota")}
-        </p>
+      </Section>
+
+      <Section tone="sand">
+        <SectionHeading
+          eyebrow="Dove ci trovi"
+          title={`Lo studio a ${studio.citta}`}
+          intro={text("contatti", "mappa_nota")}
+        />
+
+        <div className="mt-10 grid gap-6 lg:grid-cols-2">
+          {/* Foto di Pontedera: responsive (mobile/tablet/desktop) via object-cover
+              + sizes; il container cambia altezza per breakpoint. */}
+          <figure className="relative h-64 overflow-hidden rounded-2xl border border-primary/10 shadow-sm sm:h-80 lg:h-[460px]">
+            <Image
+              src="/images/pontedera-studio.png"
+              alt={`Veduta di ${studio.citta} (immagine indicativa)`}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/85 via-primary/40 to-transparent p-5">
+              <figcaption className="flex items-start gap-2 text-white">
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
+                <span>
+                  <span className="block font-semibold">{indirizzo}</span>
+                  <span className="block text-sm text-white/75">
+                    Immagine indicativa di {studio.citta}
+                  </span>
+                </span>
+              </figcaption>
+            </div>
+          </figure>
+
+          {/* Mappa interattiva (lazy-load) dell'indirizzo dello studio. */}
+          <div className="relative h-64 overflow-hidden rounded-2xl border border-primary/10 shadow-sm sm:h-80 lg:h-[460px]">
+            <iframe
+              title={`Mappa dello studio - ${indirizzo}`}
+              src={mapEmbedSrc}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+              className="h-full w-full border-0 grayscale-[15%]"
+            />
+            <a
+              href={mapLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute bottom-4 right-4 inline-flex items-center gap-1.5 rounded-full bg-bg/95 px-4 py-2 text-sm font-semibold text-primary shadow-md backdrop-blur transition-colors hover:text-accent"
+            >
+              <ExternalLink className="h-4 w-4" />
+              Apri in Google Maps
+            </a>
+          </div>
+        </div>
       </Section>
     </>
   );

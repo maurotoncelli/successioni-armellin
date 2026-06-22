@@ -1,25 +1,11 @@
 /*
-  Dati FINTI dell'Area Riservata cliente (prototipo Fase 5 anticipato).
-  Data-driven: derivano dalla stessa pratica gestita nel CRM (fonte unica,
-  vedi crm-data.ts). In produzione arriveranno da Supabase con RLS (@06/@11).
-  Per il prototipo "il cliente loggato" e Lucia Ferri (pratica p3, in attesa documenti).
+  Helper/etichette dell'Area personale cliente (logica di presentazione).
+  I DATI veri della pratica del cliente loggato arrivano da Supabase con RLS
+  (vedi lib/area.ts, @06/@11). Qui restano solo: mappatura stati client-friendly,
+  step della pratica, "prossima azione" e l'elenco fac-simile dei documenti finali.
 */
 
-import {
-  practices,
-  type Practice,
-  type RequirementStatus,
-} from "@/content/crm-data";
-
-export const currentPractice: Practice =
-  practices.find((p) => p.id === "p3") ?? practices[0];
-
-export const account = {
-  name: currentPractice.clientName,
-  email: currentPractice.clientEmail,
-  phone: currentPractice.clientPhone,
-  practiceCode: currentPractice.code,
-};
+import { type Practice, type RequirementStatus } from "@/content/crm-data";
 
 // Etichette di stato "client-friendly" (non i nomi interni Kanban)
 export const clientSteps = [

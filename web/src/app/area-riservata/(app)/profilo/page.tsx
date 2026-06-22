@@ -1,14 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { LogOut } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { buttonClasses } from "@/components/ui/button";
 import { PageHeading } from "@/components/area/ui";
-import { account } from "@/content/area-data";
+import { useAreaData } from "@/components/area/area-context";
+import { signOut } from "../../actions";
 
 export default function ProfiloPage() {
+  const { account } = useAreaData();
   const [emailNotif, setEmailNotif] = useState(true);
   const [waNotif, setWaNotif] = useState(false);
 
@@ -50,13 +51,15 @@ export default function ProfiloPage() {
         </div>
       </Card>
 
-      <Link
-        href="/area-riservata"
-        className={buttonClasses({ variant: "outline", className: "mt-6" })}
-      >
-        <LogOut className="h-4 w-4" />
-        Esci
-      </Link>
+      <form action={signOut}>
+        <button
+          type="submit"
+          className={buttonClasses({ variant: "outline", className: "mt-6" })}
+        >
+          <LogOut className="h-4 w-4" />
+          Esci
+        </button>
+      </form>
     </div>
   );
 }

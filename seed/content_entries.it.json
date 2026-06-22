@@ -23,8 +23,9 @@
 
     { "collection": "globals", "key": "mobile_cta", "locale": "it", "is_published": true, "value": { "label": "Calcola il preventivo gratis", "href": "/preventivo" } },
 
-    { "collection": "footer", "key": "studio", "locale": "it", "is_published": true, "value": { "ragione_sociale": "Geom. Lorenzo Armellin", "piva": "DA CONFERMARE", "albo": "Collegio di Pisa n. 1969 (da confermare)", "indirizzo": "Via Vittorio Veneto 31, 56025 Pontedera (PI)" } },
+    { "collection": "footer", "key": "studio", "locale": "it", "is_published": true, "value": { "ragione_sociale": "Geom. Lorenzo Armellin", "forma_giuridica": "Ditta individuale - regime forfettario (operazione senza IVA, art. 1 c. 54-89 L. 190/2014)", "piva": "DA CONFERMARE", "cf": "DA CONFERMARE", "rea": "DA CONFERMARE", "albo": "Collegio Geometri e Geometri Laureati di Pisa, n. 1969 (DA CONFERMARE)", "indirizzo": "Via Vittorio Veneto 31, 56025 Pontedera (PI)" } },
     { "collection": "footer", "key": "trust_line", "locale": "it", "is_published": true, "value": "Geom. abilitato Entratel - con supervisione fiscale di un commercialista" },
+    { "collection": "footer", "key": "odr", "locale": "it", "is_published": true, "value": { "label": "Risoluzione controversie online (ODR)", "href": "https://ec.europa.eu/consumers/odr" } },
     { "collection": "footer", "key": "legal_menu", "locale": "it", "is_published": true, "value": [
       { "label": "Privacy", "href": "/privacy" },
       { "label": "Cookie Policy", "href": "/cookie-policy" },
@@ -35,6 +36,7 @@
     { "collection": "footer", "key": "credit", "locale": "it", "is_published": true, "value": "Realizzato da AT STUDIO" },
 
     { "collection": "settings", "key": "phone", "locale": "it", "is_published": true, "value": "DA CONFERMARE" },
+    { "collection": "settings", "key": "area_label", "locale": "it", "is_published": true, "value": "Area personale" },
     { "collection": "settings", "key": "whatsapp", "locale": "it", "is_published": true, "value": "https://wa.me/39" },
     { "collection": "settings", "key": "email", "locale": "it", "is_published": true, "value": "info@DA-CONFERMARE.it" },
     { "collection": "settings", "key": "pec", "locale": "it", "is_published": true, "value": "DA CONFERMARE" },
@@ -66,7 +68,7 @@
     { "collection": "home", "key": "come_funziona_title", "locale": "it", "is_published": true, "value": "Come funziona, in 3 passi" },
     { "collection": "home", "key": "come_funziona_steps", "locale": "it", "is_published": true, "value": [
       { "titolo": "1. Rispondi a poche domande", "testo": "Ti diciamo subito di cosa hai bisogno e quanto costa." },
-      { "titolo": "2. Carichi i documenti", "testo": "Dalla tua area riservata, anche da foto. Ti diamo la lista esatta." },
+      { "titolo": "2. Carichi i documenti", "testo": "Dalla tua area personale, anche da foto. Ti diamo la lista esatta." },
       { "titolo": "3. Pensiamo a tutto noi", "testo": "Predisponiamo e inviamo la dichiarazione; tu ricevi le ricevute." }
     ] },
     { "collection": "home", "key": "come_funziona_sla_note", "locale": "it", "is_published": true, "value": "Invio entro X giorni lavorativi da quando abbiamo tutti i documenti completi." },
@@ -188,8 +190,8 @@
     { "collection": "recesso", "key": "iniziato_title", "locale": "it", "is_published": true, "value": "E se cambio idea mentre state lavorando?" },
     { "collection": "recesso", "key": "iniziato_body", "locale": "it", "is_published": true, "value": "Puoi recedere lo stesso: paghi solo la parte di lavoro gia svolta fino a quel momento, in proporzione, e ti rimborsiamo il resto. Niente penali nascoste." },
     { "collection": "recesso", "key": "come_title", "locale": "it", "is_published": true, "value": "Come si chiede il recesso" },
-    { "collection": "recesso", "key": "come_body", "locale": "it", "is_published": true, "value": "Nel modo piu semplice: dalla tua area riservata trovi il pulsante 'Richiedi recesso'. In alternativa puoi scriverci via email/PEC. Puoi usare il modulo tipo qui sotto, ma non e obbligatorio." },
-    { "collection": "recesso", "key": "come_cta_area", "locale": "it", "is_published": true, "value": { "label": "Richiedi il recesso dall'area riservata", "href": "/area-riservata/recesso" } },
+    { "collection": "recesso", "key": "come_body", "locale": "it", "is_published": true, "value": "Nel modo piu semplice: dalla tua area personale trovi il pulsante 'Richiedi recesso'. In alternativa puoi scriverci via email/PEC. Puoi usare il modulo tipo qui sotto, ma non e obbligatorio." },
+    { "collection": "recesso", "key": "come_cta_area", "locale": "it", "is_published": true, "value": { "label": "Richiedi il recesso dall'area personale", "href": "/area-riservata/recesso" } },
     { "collection": "recesso", "key": "rimborso_title", "locale": "it", "is_published": true, "value": "Quando ricevo il rimborso" },
     { "collection": "recesso", "key": "rimborso_body", "locale": "it", "is_published": true, "value": "Entro i termini di legge (di norma 14 giorni dalla richiesta), con lo stesso metodo di pagamento che hai usato. Le imposte di Stato eventualmente gia versate all'Erario seguono le regole dell'Agenzia, non dipendono da noi." },
     { "collection": "recesso", "key": "garanzia_title", "locale": "it", "is_published": true, "value": "Recesso e garanzia: due cose diverse" },
@@ -201,7 +203,7 @@
     { "collection": "come_funziona", "key": "hero_subtitle", "locale": "it", "is_published": true, "value": "Niente code, niente uffici. Ti guidiamo noi passo passo: tu pensi alla tua famiglia, alla burocrazia pensiamo noi." },
     { "collection": "come_funziona", "key": "steps", "locale": "it", "is_published": true, "value": [
       { "numero": 1, "titolo": "Rispondi a poche domande", "testo": "Compili un breve questionario online (5 minuti). Ti diciamo subito di cosa hai bisogno e quanto costa - e se per il tuo caso la successione non e nemmeno dovuta, te lo diciamo gratis.", "dettaglio": "Esito immediato: prezzo, oppure preventivo su misura per i casi complessi." },
-      { "numero": 2, "titolo": "Carichi i documenti", "testo": "Dalla tua area riservata carichi i documenti, anche da foto col telefono. Ti diamo la lista esatta, personalizzata sul tuo caso. Se ti manca qualcosa, spesso lo recuperiamo noi.", "dettaglio": "Una persona reale controlla tutto: niente moduli lasciati a meta." },
+      { "numero": 2, "titolo": "Carichi i documenti", "testo": "Dalla tua area personale carichi i documenti, anche da foto col telefono. Ti diamo la lista esatta, personalizzata sul tuo caso. Se ti manca qualcosa, spesso lo recuperiamo noi.", "dettaglio": "Una persona reale controlla tutto: niente moduli lasciati a meta." },
       { "numero": 3, "titolo": "Pensiamo a tutto noi", "testo": "Lorenzo predispone e invia la dichiarazione all'Agenzia delle Entrate. Ti comunichiamo prima le imposte da versare. A fine pratica ricevi ricevute e documenti finali nella tua area.", "dettaglio": "Dove previsto, ci occupiamo anche della voltura catastale." }
     ] },
     { "collection": "come_funziona", "key": "sla_title", "locale": "it", "is_published": true, "value": "Quanto tempo ci vuole" },

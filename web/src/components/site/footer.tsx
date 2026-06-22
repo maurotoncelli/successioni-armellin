@@ -1,9 +1,13 @@
 import Link from "next/link";
 import { list, obj, text } from "@/lib/content";
+import { LanguageSwitcher } from "./language-switcher";
 
 type Studio = {
   ragione_sociale: string;
+  forma_giuridica?: string;
   piva: string;
+  cf?: string;
+  rea?: string;
   albo: string;
   indirizzo: string;
 };
@@ -17,10 +21,27 @@ export function Footer() {
   });
   const trustLine = text("footer", "trust_line");
   const legalMenu = list<{ label: string; href: string }>("footer", "legal_menu");
+  const odr = obj<{ label: string; href: string }>("footer", "odr", {
+    label: "",
+    href: "",
+  });
   const credit = text("footer", "credit");
   const menu = list<{ label: string; href: string }>("navbar", "menu");
   const email = text("settings", "email");
   const phone = text("settings", "phone");
+  const pec = text("settings", "pec");
+  const areaLabel = text("settings", "area_label", "Area personale");
+
+  // Dati identificativi obbligatori (professionista/e-commerce B2C): mostrati
+  // sempre, anche come placeholder "DA CONFERMARE", finche non confermati da
+  // Lorenzo (vedi blueprint/10_Legale_Compliance + DOMANDE_PER_LORENZO).
+  const legalData: { label: string; value: string }[] = [
+    { label: "Forma", value: studio.forma_giuridica ?? "" },
+    { label: "P.IVA", value: studio.piva },
+    { label: "C.F.", value: studio.cf ?? "" },
+    { label: "REA", value: studio.rea ?? "" },
+    { label: "PEC", value: pec },
+  ].filter((row) => row.value);
 
   return (
     <footer className="mt-auto bg-primary text-white/80">
@@ -56,6 +77,17 @@ export function Footer() {
               </>
             )}
           </address>
+
+          {legalData.length > 0 && (
+            <dl className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-xs text-white/60">
+              {legalData.map((row) => (
+                <div key={row.label} className="flex gap-1.5">
+                  <dt className="font-semibold text-white/70">{row.label}:</dt>
+                  <dd>{row.value}</dd>
+                </div>
+              ))}
+            </dl>
+          )}
         </div>
 
         <div>
@@ -72,7 +104,7 @@ export function Footer() {
             ))}
             <li>
               <Link href="/area-riservata" className="font-medium text-white hover:text-accent">
-                Area riservata
+                {areaLabel}
               </Link>
             </li>
           </ul>
@@ -90,20 +122,32 @@ export function Footer() {
                 </Link>
               </li>
             ))}
+            {odr.href && (
+              <li>
+                <a
+                  href={odr.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-accent"
+                >
+                  {odr.label}
+                </a>
+              </li>
+            )}
           </ul>
         </div>
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-2 px-5 py-5 text-xs text-white/60 sm:flex-row sm:px-8">
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-3 px-5 py-5 text-xs text-white/60 sm:flex-row sm:px-8">
           <p>
-            &copy; {new Date().getFullYear()} {studio.ragione_sociale}.
-            {studio.piva && studio.piva !== "DA CONFERMARE"
-              ? ` P.IVA ${studio.piva}.`
-              : ""}{" "}
-            Tutti i diritti riservati.
+            &copy; {new Date().getFullYear()} {studio.ragione_sociale}. Tutti i
+            diritti riservati.
           </p>
-          <p>{credit}</p>
+          <div className="flex items-center gap-4">
+            <p>{credit}</p>
+            <LanguageSwitcher tone="onDark" align="right" dropUp />
+          </div>
         </div>
       </div>
     </footer>

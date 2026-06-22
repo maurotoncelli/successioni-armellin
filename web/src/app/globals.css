@@ -76,14 +76,19 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-h1,
-h2,
-h3,
-h4 {
-  font-family: var(--font-serif);
-  color: var(--color-primary);
-  line-height: 1.2;
-  text-wrap: balance;
+/* In @layer base cosi le utility Tailwind (es. text-white) possono
+   sovrascrivere il colore di default dei titoli (necessario sugli sfondi
+   scuri come gli hero). */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+    color: var(--color-primary);
+    line-height: 1.2;
+    text-wrap: balance;
+  }
 }
 
 /* Focus visibile accessibile (WCAG, @03) */

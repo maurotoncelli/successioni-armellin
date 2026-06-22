@@ -1,0 +1,36 @@
+{
+  "_meta": {
+    "purpose": "Traduzione parziale (prep multilingua). Contiene solo la collection 'area_login'. Tutte le altre chiavi ricadono sull'italiano (IT fa fede).",
+    "locale": "hi",
+    "version": 1,
+    "updated_at": "2026-06-22"
+  },
+  "entries": [
+    { "collection": "area_login", "key": "header_title", "locale": "hi", "is_published": true, "value": "ग्राहक क्षेत्र" },
+    { "collection": "area_login", "key": "header_subtitle", "locale": "hi", "is_published": true, "value": "अपनी उत्तराधिकार प्रक्रिया देखने के लिए साइन इन करें।" },
+    { "collection": "area_login", "key": "tab_email", "locale": "hi", "is_published": true, "value": "ईमेल" },
+    { "collection": "area_login", "key": "tab_phone", "locale": "hi", "is_published": true, "value": "फ़ोन" },
+    { "collection": "area_login", "key": "email_label", "locale": "hi", "is_published": true, "value": "आपका ईमेल" },
+    { "collection": "area_login", "key": "email_hint", "locale": "hi", "is_published": true, "value": "वही ईमेल उपयोग करें जिससे आपने भुगतान किया।" },
+    { "collection": "area_login", "key": "email_cta", "locale": "hi", "is_published": true, "value": "मुझे लॉगिन लिंक भेजें" },
+    { "collection": "area_login", "key": "email_sending", "locale": "hi", "is_published": true, "value": "भेजा जा रहा है…" },
+    { "collection": "area_login", "key": "phone_label", "locale": "hi", "is_published": true, "value": "आपका फ़ोन नंबर" },
+    { "collection": "area_login", "key": "phone_hint", "locale": "hi", "is_published": true, "value": "अपने ऑर्डर वाला नंबर उपयोग करें। हम आपको SMS से कोड भेजेंगे।" },
+    { "collection": "area_login", "key": "phone_cta", "locale": "hi", "is_published": true, "value": "SMS से कोड भेजें" },
+    { "collection": "area_login", "key": "phone_sending", "locale": "hi", "is_published": true, "value": "भेजा जा रहा है…" },
+    { "collection": "area_login", "key": "sent_email_title", "locale": "hi", "is_published": true, "value": "अपना ईमेल देखें" },
+    { "collection": "area_login", "key": "sent_email_body", "locale": "hi", "is_published": true, "value": "हमने {contact} पर एक लॉगिन लिंक भेजा है। यह लिंक कुछ मिनटों में समाप्त हो जाएगा।" },
+    { "collection": "area_login", "key": "sent_phone_title", "locale": "hi", "is_published": true, "value": "अपने SMS देखें" },
+    { "collection": "area_login", "key": "sent_phone_body", "locale": "hi", "is_published": true, "value": "हमने {contact} पर 6 अंकों का कोड भेजा है। इसे नीचे दर्ज करें।" },
+    { "collection": "area_login", "key": "otp_toggle", "locale": "hi", "is_published": true, "value": "मुझे कोड मिला है, इसे दर्ज करें" },
+    { "collection": "area_login", "key": "otp_label", "locale": "hi", "is_published": true, "value": "6 अंकों का कोड" },
+    { "collection": "area_login", "key": "otp_cta", "locale": "hi", "is_published": true, "value": "कोड सत्यापित करें" },
+    { "collection": "area_login", "key": "otp_verifying", "locale": "hi", "is_published": true, "value": "सत्यापित किया जा रहा है…" },
+    { "collection": "area_login", "key": "resend", "locale": "hi", "is_published": true, "value": "फिर से भेजें" },
+    { "collection": "area_login", "key": "error_link", "locale": "hi", "is_published": true, "value": "लॉगिन लिंक अमान्य है या समाप्त हो गया है। नया अनुरोध करें।" },
+    { "collection": "area_login", "key": "secure_note", "locale": "hi", "is_published": true, "value": "सुरक्षित पहुँच" },
+    { "collection": "area_login", "key": "back_to_site", "locale": "hi", "is_published": true, "value": "साइट पर वापस जाएँ" },
+    { "collection": "area_login", "key": "privacy_link", "locale": "hi", "is_published": true, "value": { "label": "गोपनीयता", "href": "/privacy" } },
+    { "collection": "area_login", "key": "termini_link", "locale": "hi", "is_published": true, "value": { "label": "शर्तें", "href": "/termini-condizioni" } }
+  ]
+}

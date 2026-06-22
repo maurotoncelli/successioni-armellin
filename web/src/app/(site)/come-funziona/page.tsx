@@ -22,7 +22,7 @@ export default function ComeFunzionaPage() {
   return (
     <>
       <PageHero
-        eyebrow="Il processo"
+        eyebrow={text("come_funziona", "hero_eyebrow", "Il processo")}
         title={text("come_funziona", "hero_title")}
         subtitle={text("come_funziona", "hero_subtitle")}
       />

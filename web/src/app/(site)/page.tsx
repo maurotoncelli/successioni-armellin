@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   House,
@@ -42,18 +43,31 @@ export default function HomePage() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-primary text-white">
-        <div className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-accent/15 blur-3xl" />
-        <Container className="relative py-20 sm:py-28">
-          <div className="max-w-3xl">
-            <span className="inline-flex items-center rounded-full border border-accent/40 bg-accent/10 px-4 py-1.5 text-sm font-medium text-accent">
+      {/* Hero: foto di Lorenzo (placeholder) di sfondo, testo sovrapposto.
+          Il soggetto e spostato a destra e il gradiente navy da sinistra
+          garantisce la leggibilita del testo (titolo bianco). */}
+      <section className="relative flex min-h-[560px] items-center overflow-hidden bg-primary text-white sm:min-h-[600px]">
+        <Image
+          src="/images/lorenzo-hero.png"
+          alt="Geom. Lorenzo Armellin nel suo studio (immagine indicativa)"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[78%_center]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/85 to-primary/25" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent" />
+        <div className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-accent/10 blur-3xl" />
+        <Container className="relative py-16 sm:py-20">
+          <div className="max-w-2xl">
+            <p className="flex items-center gap-3 text-sm font-medium uppercase tracking-[0.18em] text-accent">
+              <span className="h-px w-8 bg-accent/60" />
               {text("home", "hero_specialization_badge")}
-            </span>
-            <h1 className="mt-6 font-display text-4xl text-white sm:text-6xl">
+            </p>
+            <h1 className="mt-5 font-display text-4xl text-white drop-shadow-sm sm:text-5xl lg:text-6xl">
               {text("home", "hero_title")}
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/85">
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/90">
               {text("home", "hero_subtitle")}
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -103,7 +117,7 @@ export default function HomePage() {
       {/* Come funziona */}
       <Section id="come-funziona" tone="sand">
         <SectionHeading
-          eyebrow="Semplice"
+          eyebrow={text("home", "come_funziona_eyebrow", "Semplice")}
           title={text("home", "come_funziona_title")}
         />
         <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -127,7 +141,7 @@ export default function HomePage() {
       {/* Tariffe (estratto) */}
       <Section>
         <SectionHeading
-          eyebrow="Tariffe"
+          eyebrow={text("home", "tariffe_eyebrow", "Tariffe")}
           title={text("home", "tariffe_title")}
           intro={text("home", "tariffe_intro")}
         />
@@ -148,30 +162,41 @@ export default function HomePage() {
           title={text("home", "faidate_title")}
           intro={text("home", "faidate_intro")}
         />
-        <div className="mx-auto mt-10 max-w-3xl overflow-hidden rounded-2xl border border-primary/10 bg-bg">
-          <div className="grid grid-cols-3 bg-primary text-sm font-semibold text-white">
-            <div className="p-4" />
-            <div className="p-4 text-center">Fai-da-te</div>
-            <div className="p-4 text-center text-accent">Con noi</div>
-          </div>
-          {confronto.map((row, i) => (
-            <div
-              key={row.voce}
-              className={`grid grid-cols-3 text-sm ${
-                i % 2 === 1 ? "bg-bg-muted" : ""
-              }`}
-            >
-              <div className="p-4 font-medium text-primary">{row.voce}</div>
-              <div className="flex items-center justify-center gap-1.5 p-4 text-text-muted">
-                <X className="h-4 w-4 text-error" />
-                <span className="text-center">{row.faidate}</span>
-              </div>
-              <div className="flex items-center justify-center gap-1.5 p-4">
-                <Check className="h-4 w-4 text-success" />
-                <span className="text-center">{row.noi}</span>
-              </div>
+        <div className="mx-auto mt-12 max-w-4xl">
+          <div className="relative grid grid-cols-[1.3fr_1fr_1fr] overflow-hidden rounded-2xl border border-primary/10 bg-bg shadow-sm sm:grid-cols-[1.5fr_1fr_1fr]">
+            {/* Intestazioni */}
+            <div className="border-b border-primary/10 p-4 sm:p-5" />
+            <div className="border-b border-primary/10 p-4 text-center sm:p-5">
+              <span className="text-xs font-semibold uppercase tracking-wide text-text-muted">
+                Fai-da-te
+              </span>
             </div>
-          ))}
+            <div className="relative border-b border-accent/20 bg-sand p-4 text-center sm:p-5">
+              <span className="absolute -top-px left-0 right-0 h-1 bg-accent" />
+              <span className="text-xs font-semibold uppercase tracking-wide text-accent-dark">
+                Con noi
+              </span>
+            </div>
+
+            {/* Righe */}
+            {confronto.map((row) => (
+              <div key={row.voce} className="contents">
+                <div className="flex items-center border-t border-primary/[0.06] p-4 text-sm font-medium text-primary sm:p-5">
+                  {row.voce}
+                </div>
+                <div className="flex items-center justify-center gap-2 border-t border-primary/[0.06] p-4 text-center text-sm text-text-muted sm:p-5">
+                  <X className="h-4 w-4 shrink-0 text-error/70" />
+                  <span>{row.faidate}</span>
+                </div>
+                <div className="flex items-center justify-center gap-2 border-t border-accent/15 bg-sand p-4 text-center text-sm font-medium text-primary sm:p-5">
+                  <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-success/15 text-success">
+                    <Check className="h-3 w-3" strokeWidth={3} />
+                  </span>
+                  <span>{row.noi}</span>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </Section>
 
@@ -189,7 +214,15 @@ export default function HomePage() {
       {/* Chi sono (estratto) */}
       <Section tone="sand">
         <div className="grid items-center gap-10 md:grid-cols-2">
-          <div className="aspect-[4/3] rounded-2xl bg-secondary/90" aria-hidden />
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-primary/10 shadow-sm">
+            <Image
+              src="/images/lorenzo-ritratto.png"
+              alt="Geom. Lorenzo Armellin (immagine indicativa)"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover"
+            />
+          </div>
           <div>
             <h2 className="text-3xl sm:text-4xl">
               {text("home", "chisono_title")}

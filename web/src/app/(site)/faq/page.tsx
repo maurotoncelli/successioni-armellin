@@ -29,7 +29,7 @@ export default async function FaqPage() {
   return (
     <>
       <PageHero
-        eyebrow="FAQ"
+        eyebrow={text("faq", "hero_eyebrow", "FAQ")}
         title={text("faq", "hero_title")}
         subtitle={text("faq", "hero_subtitle")}
       />

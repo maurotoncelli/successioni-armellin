@@ -18,9 +18,10 @@ export default function DocumentiPage() {
   return (
     <>
       <PageHero
-        eyebrow="Guida ai documenti"
+        eyebrow={text("documenti", "hero_eyebrow", "Guida ai documenti")}
         title={text("documenti", "hero_title")}
         subtitle={text("documenti", "hero_subtitle")}
+        back
       />
 
       <Section>

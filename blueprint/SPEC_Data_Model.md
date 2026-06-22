@@ -4,6 +4,32 @@
 > Stato: In revisione · Ultimo aggiornamento: 2026-06-22
 > Riferimenti: @07_Stack (Supabase/Postgres), @05_CRM, @06_Area_Riservata, @11_Sicurezza (RLS), @10_Legale_Compliance (retention).
 
+## Stato implementazione (2026-06-22)
+> Questo capitolo descrive lo schema TARGET completo. Qui sotto cosa e gia realizzato sul database Supabase reale (regione UE) e gli scostamenti pragmatici della prima implementazione del motore. Migrazioni versionate in `supabase/migrations/`.
+
+**Tabelle gia create e attive nel DB**
+- CMS: `packages`, `addons`, `faqs` (migrazione `20260622120000_cms_content.sql` + seed). Lette dal sito; editabili dal CRM `/crm/listino`.
+- CRM: `contacts`, `practices` (migrazione `20260622130000_crm_practices.sql` + seed 8+8). Lette dal CRM; i lead reali dal form le popolano.
+- Pagamenti: `stripe_events` (registro idempotenza webhook) e nuovi campi su `practices` (`stripe_session_id`, `stripe_payment_intent_id`, `paid_at`, `payment_recorded_by`) + stato `PARTIALLY_REFUNDED` (migrazione `20260622140000_stripe_payments.sql`, **applicata e verificata** sul DB il 22/06). Restano da impostare le chiavi Stripe per il test live.
+
+**Scostamenti pragmatici rispetto al target (da normalizzare in fasi successive)**
+- `practices` usa colonne **jsonb** per `checklist`, `communications`, `tasks`, `log`, `line_items` invece delle tabelle dedicate del target (`document_requirements`, `documents`, `communications`, `tasks`, `log_events`, `practice_adjustments`). Scelta per velocita del prototipo-motore; le tabelle dedicate arriveranno quando servono upload/validazione reali e automazioni.
+- `practices` ha campi **snapshot denormalizzati** `client_name/client_email/client_phone/relation/deceased_*` oltre a `contact_id`, per semplicita di lettura. Il target prevede `applicant_relation` (enum) e i dati defunto come da tabella.
+- Codice pratica: implementato come colonna **`code`** (il target la chiama `practice_code`) con default via sequence `practice_code_seq`, formato `SUC-AAAA-NNNN`. Da rinominare/allineare quando si consolida.
+- Enum creati finora: `package_type`, `practice_status`, `action_owner`, `payment_status`, **`role`** (`ADMIN`/`CLIENT`). Mancano (da creare con le rispettive feature): `quote_outcome`, `estate_value_band`, `applicant_relation`, `payment_method`, `adjustment_*`, `scheduled_action_status`, `comm_*`, `document_type`, `approval_status`, `requirement_status`, `extraction_status`.
+- `profiles` **CREATA** (migrazione `20260622150000_auth_profiles.sql`): collega `auth.users` all'anagrafica (`contact_id`) con `role`. L'auth **CLIENTE** (Supabase Auth passwordless) e l'auth **ADMIN** (email+password + 2FA TOTP) sono **attive**; `ADMIN_PASSWORD` resta solo come accesso d'emergenza anti-lockout. Il ruolo ADMIN si assegna via allowlist `ADMIN_EMAILS` (al login o col bootstrap del primo account).
+- **Documenti (upload reale, fase 1)**: i file caricati dal cliente vivono nel bucket Storage **privato** `practice-docs` (path `<practiceId>/<index>-<nome>`); lo STATO di ogni documento sta nel jsonb `checklist` di `practices`, con i campi opzionali aggiunti `file_path`/`fileName`/`uploadedAt` (la voce passa ad ATTESO->CARICATO->APPROVATO/RIFIUTATO). **Non** sono ancora usate le tabelle `document_requirements`/`documents`. **Accesso allo Storage solo server-side con service_role**: nessuna policy RLS path-based; la proprieta e verificata nel codice (cliente via `getClientView`, CRM via `requireAdmin`), download via URL firmati a tempo. Bucket creato a runtime al primo upload (limite 10MB, MIME PDF/JPG/PNG).
+- **Mandato + IBAN (extra pratica, NO-DDL)**: in attesa di poter riapplicare migrazioni (password DB resettata), il mandato firmato e l'IBAN sono salvati in un documento JSON privato nello stesso bucket: `<practiceId>/_extras.json` (`{ mandate: { method, signerName, signedAt, filePath? }, iban: { last4, enc, providedAt } }`). L'**IBAN e cifrato a livello applicativo** (AES-256-GCM, chiave derivata con scrypt dalla service_role key) -> dato sensibile mai in chiaro a riposo; il cliente vede solo `last4`, il CRM lo rivela on-demand (decifratura server). Il mandato cartaceo firmato e un file privato nel bucket. Anche i **documenti finali** di consegna (ricevuta AdE, dichiarazione, visure, fattura) stanno qui: file in `<practiceId>/final/...` con elenco in `_extras.json` (`finalDocuments[]`), caricati dall'admin e scaricati dal cliente via URL firmati. Quando si riavra accesso DDL, questi extra andranno normalizzati su colonne/tabelle dedicate (`practices.mandate`, `documents` con `is_final`, gestione IBAN cifrato + retention).
+
+**RLS attuale**
+- `packages/addons/faqs`: RLS attiva, **lettura pubblica** dei soli record attivi/pubblicati; scrittura solo `service_role`.
+- `contacts/practices`: RLS attiva. Aggiunte le **policy per-cliente** (authenticated): un CLIENT legge SOLO la propria anagrafica e le proprie pratiche, via helper `public.current_contact_id()` (SECURITY DEFINER su `profiles`). Anon resta negato; il CRM continua a leggere/scrivere via `service_role` (bypassa RLS).
+- `profiles`: RLS attiva; l'utente legge SOLO il proprio profilo (`id = auth.uid()`). Il provisioning (insert/update, collegamento `contact_id` per email) avviene lato server via `service_role`.
+
+**Rendering**: le pagine pubbliche CMS e le pagine CRM oggi sono **dinamiche** (lettura DB lato server) + `revalidatePath` alla pubblicazione, invece dello schema SSG/ISR pieno descritto nel target (semplificazione dovuta a Next.js 16; lo schema ISR resta l'obiettivo per il sito pubblico ad alto traffico).
+
+**Tabelle ancora da creare**: `document_catalog`, `document_requirements`, `documents`, `document_extractions`, `practice_adjustments`, `communications`, `withdrawal_requests`, `tasks`, `scheduled_actions`, `log_events`, `content_entries`, `media_assets`. (`profiles` e `stripe_events` gia create.)
+
 ## Convenzioni
 - Database: PostgreSQL (Supabase). Tabelle e colonne in snake_case. Valori enum in UPPER_SNAKE.
 - Chiavi primarie: uuid (default gen_random_uuid()).

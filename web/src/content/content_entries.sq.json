@@ -1,0 +1,36 @@
+{
+  "_meta": {
+    "purpose": "Traduzione parziale (prep multilingua). Contiene solo la collection 'area_login'. Tutte le altre chiavi ricadono sull'italiano (IT fa fede).",
+    "locale": "sq",
+    "version": 1,
+    "updated_at": "2026-06-22"
+  },
+  "entries": [
+    { "collection": "area_login", "key": "header_title", "locale": "sq", "is_published": true, "value": "Zona e klientit" },
+    { "collection": "area_login", "key": "header_subtitle", "locale": "sq", "is_published": true, "value": "Hyni për të ndjekur praktikën tuaj të trashëgimisë." },
+    { "collection": "area_login", "key": "tab_email", "locale": "sq", "is_published": true, "value": "Email" },
+    { "collection": "area_login", "key": "tab_phone", "locale": "sq", "is_published": true, "value": "Telefoni" },
+    { "collection": "area_login", "key": "email_label", "locale": "sq", "is_published": true, "value": "Email-i juaj" },
+    { "collection": "area_login", "key": "email_hint", "locale": "sq", "is_published": true, "value": "Përdorni email-in me të cilin keni paguar." },
+    { "collection": "area_login", "key": "email_cta", "locale": "sq", "is_published": true, "value": "Më dërgo lidhjen e hyrjes" },
+    { "collection": "area_login", "key": "email_sending", "locale": "sq", "is_published": true, "value": "Po dërgohet…" },
+    { "collection": "area_login", "key": "phone_label", "locale": "sq", "is_published": true, "value": "Numri juaj i telefonit" },
+    { "collection": "area_login", "key": "phone_hint", "locale": "sq", "is_published": true, "value": "Përdorni numrin e porosisë suaj. Do t'ju dërgojmë një kod me SMS." },
+    { "collection": "area_login", "key": "phone_cta", "locale": "sq", "is_published": true, "value": "Më dërgo kodin me SMS" },
+    { "collection": "area_login", "key": "phone_sending", "locale": "sq", "is_published": true, "value": "Po dërgohet…" },
+    { "collection": "area_login", "key": "sent_email_title", "locale": "sq", "is_published": true, "value": "Kontrolloni email-in tuaj" },
+    { "collection": "area_login", "key": "sent_email_body", "locale": "sq", "is_published": true, "value": "Dërguam një lidhje hyrjeje te {contact}. Lidhja skadon për pak minuta." },
+    { "collection": "area_login", "key": "sent_phone_title", "locale": "sq", "is_published": true, "value": "Kontrolloni SMS-të tuaja" },
+    { "collection": "area_login", "key": "sent_phone_body", "locale": "sq", "is_published": true, "value": "Dërguam një kod me 6 shifra te {contact}. Shkruajeni më poshtë." },
+    { "collection": "area_login", "key": "otp_toggle", "locale": "sq", "is_published": true, "value": "Mora një kod, dua ta fus" },
+    { "collection": "area_login", "key": "otp_label", "locale": "sq", "is_published": true, "value": "Kod me 6 shifra" },
+    { "collection": "area_login", "key": "otp_cta", "locale": "sq", "is_published": true, "value": "Verifiko kodin" },
+    { "collection": "area_login", "key": "otp_verifying", "locale": "sq", "is_published": true, "value": "Po verifikohet…" },
+    { "collection": "area_login", "key": "resend", "locale": "sq", "is_published": true, "value": "Dërgo përsëri" },
+    { "collection": "area_login", "key": "error_link", "locale": "sq", "is_published": true, "value": "Lidhja e hyrjes është e pavlefshme ose ka skaduar. Kërkoni një të re." },
+    { "collection": "area_login", "key": "secure_note", "locale": "sq", "is_published": true, "value": "Hyrje e sigurt" },
+    { "collection": "area_login", "key": "back_to_site", "locale": "sq", "is_published": true, "value": "Kthehu te faqja" },
+    { "collection": "area_login", "key": "privacy_link", "locale": "sq", "is_published": true, "value": { "label": "Privatësia", "href": "/privacy" } },
+    { "collection": "area_login", "key": "termini_link", "locale": "sq", "is_published": true, "value": { "label": "Kushtet", "href": "/termini-condizioni" } }
+  ]
+}

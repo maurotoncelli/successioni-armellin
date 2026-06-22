@@ -1,0 +1,36 @@
+{
+  "_meta": {
+    "purpose": "Traduzione parziale (prep multilingua). Contiene solo la collection 'area_login'. Tutte le altre chiavi ricadono sull'italiano (IT fa fede).",
+    "locale": "tr",
+    "version": 1,
+    "updated_at": "2026-06-22"
+  },
+  "entries": [
+    { "collection": "area_login", "key": "header_title", "locale": "tr", "is_published": true, "value": "Özel Alan" },
+    { "collection": "area_login", "key": "header_subtitle", "locale": "tr", "is_published": true, "value": "Veraset işleminizi takip etmek için giriş yapın." },
+    { "collection": "area_login", "key": "tab_email", "locale": "tr", "is_published": true, "value": "E-posta" },
+    { "collection": "area_login", "key": "tab_phone", "locale": "tr", "is_published": true, "value": "Telefon" },
+    { "collection": "area_login", "key": "email_label", "locale": "tr", "is_published": true, "value": "E-postanız" },
+    { "collection": "area_login", "key": "email_hint", "locale": "tr", "is_published": true, "value": "Ödeme yaptığınız e-postayı kullanın." },
+    { "collection": "area_login", "key": "email_cta", "locale": "tr", "is_published": true, "value": "Giriş bağlantısını gönder" },
+    { "collection": "area_login", "key": "email_sending", "locale": "tr", "is_published": true, "value": "Gönderiliyor…" },
+    { "collection": "area_login", "key": "phone_label", "locale": "tr", "is_published": true, "value": "Telefon numaranız" },
+    { "collection": "area_login", "key": "phone_hint", "locale": "tr", "is_published": true, "value": "Siparişinizdeki numarayı kullanın. Size SMS ile bir kod göndereceğiz." },
+    { "collection": "area_login", "key": "phone_cta", "locale": "tr", "is_published": true, "value": "SMS ile kod gönder" },
+    { "collection": "area_login", "key": "phone_sending", "locale": "tr", "is_published": true, "value": "Gönderiliyor…" },
+    { "collection": "area_login", "key": "sent_email_title", "locale": "tr", "is_published": true, "value": "E-postanızı kontrol edin" },
+    { "collection": "area_login", "key": "sent_email_body", "locale": "tr", "is_published": true, "value": "{contact} adresine bir giriş bağlantısı gönderdik. Bağlantı birkaç dakika içinde sona erer." },
+    { "collection": "area_login", "key": "sent_phone_title", "locale": "tr", "is_published": true, "value": "SMS'lerinizi kontrol edin" },
+    { "collection": "area_login", "key": "sent_phone_body", "locale": "tr", "is_published": true, "value": "{contact} numarasına 6 haneli bir kod gönderdik. Aşağıya girin." },
+    { "collection": "area_login", "key": "otp_toggle", "locale": "tr", "is_published": true, "value": "Bir kod aldım, girmek istiyorum" },
+    { "collection": "area_login", "key": "otp_label", "locale": "tr", "is_published": true, "value": "6 haneli kod" },
+    { "collection": "area_login", "key": "otp_cta", "locale": "tr", "is_published": true, "value": "Kodu doğrula" },
+    { "collection": "area_login", "key": "otp_verifying", "locale": "tr", "is_published": true, "value": "Doğrulanıyor…" },
+    { "collection": "area_login", "key": "resend", "locale": "tr", "is_published": true, "value": "Tekrar gönder" },
+    { "collection": "area_login", "key": "error_link", "locale": "tr", "is_published": true, "value": "Giriş bağlantısı geçersiz veya süresi dolmuş. Yeni bir tane isteyin." },
+    { "collection": "area_login", "key": "secure_note", "locale": "tr", "is_published": true, "value": "Güvenli giriş" },
+    { "collection": "area_login", "key": "back_to_site", "locale": "tr", "is_published": true, "value": "Siteye dön" },
+    { "collection": "area_login", "key": "privacy_link", "locale": "tr", "is_published": true, "value": { "label": "Gizlilik", "href": "/privacy" } },
+    { "collection": "area_login", "key": "termini_link", "locale": "tr", "is_published": true, "value": { "label": "Koşullar", "href": "/termini-condizioni" } }
+  ]
+}

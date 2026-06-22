@@ -16,6 +16,13 @@ Il CRM e il cruscotto unico da cui Lorenzo gestisce le pratiche: una Kanban boar
 
 ## Stato attuale del progetto
 
+### Implementazione (codice) - aggiornato 2026-06-22
+- CRM navigabile in `/crm` con gate **provvisorio** (cookie + `ADMIN_PASSWORD`; se vuoto, demo libera) — sara sostituito da Supabase Auth + 2FA (@11).
+- **Dati reali dal database** (Supabase UE) in LETTURA: home operativa, pratiche (Kanban/Lista), scheda pratica `[id]`, contatti con storico, calendario, statistiche. KPI/alert/calendario sono DERIVATI dalle pratiche (`web/src/lib/crm.ts`).
+- Tabelle `contacts` + `practices` con seed degli 8 contatti/8 pratiche del prototipo (codici `SUC-2026-0005..0012`); nuovi codici via sequence da 0013. Collezioni (checklist/comunicazioni/task/log) in jsonb per ora (@SPEC_Data_Model, Stato implementazione).
+- Mini-CMS `/crm/listino`: modifica prezzi/testi/disponibilita di pacchetti e add-on con "Salva e pubblica" (scrive nel DB + `revalidatePath`). Testato dal vivo (490->495->490 riflesso sul sito).
+- **Ancora da fare (scrittura/operativita reale)**: cambio stato pratica, validazione documenti (Approva/Rifiuta), automazioni email/WhatsApp, conguagli, recesso, export. La UI esiste, la logica server no.
+
 ### Linguaggio visivo (UI)
 - Il CRM "Flowdesk - Armellin" si ISPIRA visivamente al CRM personale "Flowdesk - Maurotoncelli" (variante per Armellin): codice e funzionalita sono propri/diversi, ma gli ELEMENTI GRAFICI sono ripresi (dark mode, glassmorphism, accento indigo->viola).
 - Stack: STESSO del resto del progetto (Next.js + Tailwind + shadcn/ui), per coerenza e ottimizzazione (un solo repo/toolchain, componenti e auth/Supabase/RLS condivisi). NON si replica il React+CSS vanilla del Flowdesk personale: si riprende solo il linguaggio grafico via design token.

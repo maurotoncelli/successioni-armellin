@@ -16,7 +16,8 @@ export async function PackageCards() {
             <div
               key={pkg.key}
               className={cn(
-                "relative flex flex-col rounded-2xl border bg-bg p-7 shadow-sm",
+                "group relative flex flex-col rounded-2xl border bg-bg p-7 shadow-sm",
+                "transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-lg hover:ring-2 hover:ring-accent/40",
                 featured
                   ? "border-accent ring-1 ring-accent"
                   : "border-primary/10",

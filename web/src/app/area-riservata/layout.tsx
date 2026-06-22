@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Area Riservata",
+  title: "Area personale",
   robots: { index: false },
 };
 

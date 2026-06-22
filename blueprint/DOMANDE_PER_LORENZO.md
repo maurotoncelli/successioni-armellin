@@ -25,6 +25,10 @@ Nota: alcune voci sono PRE-COMPILATE da fonti pubbliche (Collegio Geometri di Pi
   - (da web - DA CONFERMARE) nato a Pontedera (PI) il 27/05/1990
 - [x] Orari di lavoro / disponibilita (impatta promesse di tempistica e SLA - @01):
   - CONFERMATO (Riunione 2): **orario ufficio 9:00-13:00 e 15:00-19:00**. Tempo di lavorazione: se ha tutti i documenti, completa la pratica in **3-4 giorni**.
+- [ ] **Numero REA** (Repertorio Economico Amministrativo) ed eventuale CCIAA di iscrizione: da recuperare dalla visura camerale (serve nel footer per la ditta individuale).
+- [ ] **Email dedicata sul dominio** per il footer e le richieste GDPR (es. `info@dominio` e `privacy@dominio`): da creare una volta registrato il dominio (oggi solo Gmail personale, non da pubblicare).
+
+> NOTA IMPLEMENTAZIONE (footer + pagine legali data-driven): i dati di questa sezione alimentano il **footer** (`footer.studio` + `settings`) e vengono interpolati automaticamente nelle pagine legali (privacy, condizioni, cookie) tramite i token `{{piva}}`, `{{cf}}`, `{{rea}}`, `{{pec}}`, `{{albo}}`, ecc. Finche non sono confermati restano a video come "DA CONFERMARE". **Prima del go-live**: inserire i valori definitivi in `web/src/content/content_entries.it.json` (collection `footer`/`settings`) - una sola modifica si riflette ovunque. P.IVA/C.F. risultano gia indicati in Riunione 2 (P.IVA 02432220503 · C.F. RMLLNZ90E27G843J): da ri-verificare formalmente sulla visura prima di pubblicarli, insieme a numero/data Albo e REA.
 
 ## 2. Operativita attuale (per CRM e simulazione lavoro - @05)
 - [ ] Quante pratiche di successione gestisce oggi (al mese / all'anno)?

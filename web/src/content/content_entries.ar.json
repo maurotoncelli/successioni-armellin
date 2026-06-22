@@ -1,0 +1,36 @@
+{
+  "_meta": {
+    "purpose": "Traduzione parziale (prep multilingua). Contiene solo la collection 'area_login'. Tutte le altre chiavi ricadono sull'italiano (IT fa fede). Lingua RTL.",
+    "locale": "ar",
+    "version": 1,
+    "updated_at": "2026-06-22"
+  },
+  "entries": [
+    { "collection": "area_login", "key": "header_title", "locale": "ar", "is_published": true, "value": "المنطقة الخاصة" },
+    { "collection": "area_login", "key": "header_subtitle", "locale": "ar", "is_published": true, "value": "سجّل الدخول لمتابعة ملف الميراث الخاص بك." },
+    { "collection": "area_login", "key": "tab_email", "locale": "ar", "is_published": true, "value": "البريد الإلكتروني" },
+    { "collection": "area_login", "key": "tab_phone", "locale": "ar", "is_published": true, "value": "الهاتف" },
+    { "collection": "area_login", "key": "email_label", "locale": "ar", "is_published": true, "value": "بريدك الإلكتروني" },
+    { "collection": "area_login", "key": "email_hint", "locale": "ar", "is_published": true, "value": "استخدم البريد الإلكتروني الذي دفعت به." },
+    { "collection": "area_login", "key": "email_cta", "locale": "ar", "is_published": true, "value": "أرسل لي رابط الدخول" },
+    { "collection": "area_login", "key": "email_sending", "locale": "ar", "is_published": true, "value": "جارٍ الإرسال…" },
+    { "collection": "area_login", "key": "phone_label", "locale": "ar", "is_published": true, "value": "رقم هاتفك" },
+    { "collection": "area_login", "key": "phone_hint", "locale": "ar", "is_published": true, "value": "استخدم الرقم الذي طلبت به. سنرسل لك رمزًا عبر الرسائل القصيرة." },
+    { "collection": "area_login", "key": "phone_cta", "locale": "ar", "is_published": true, "value": "أرسل الرمز عبر الرسائل القصيرة" },
+    { "collection": "area_login", "key": "phone_sending", "locale": "ar", "is_published": true, "value": "جارٍ الإرسال…" },
+    { "collection": "area_login", "key": "sent_email_title", "locale": "ar", "is_published": true, "value": "تحقق من بريدك الإلكتروني" },
+    { "collection": "area_login", "key": "sent_email_body", "locale": "ar", "is_published": true, "value": "لقد أرسلنا رابط الدخول إلى {contact}. ينتهي الرابط خلال دقائق قليلة." },
+    { "collection": "area_login", "key": "sent_phone_title", "locale": "ar", "is_published": true, "value": "تحقق من رسائلك القصيرة" },
+    { "collection": "area_login", "key": "sent_phone_body", "locale": "ar", "is_published": true, "value": "لقد أرسلنا رمزًا من 6 أرقام إلى {contact}. أدخله بالأسفل." },
+    { "collection": "area_login", "key": "otp_toggle", "locale": "ar", "is_published": true, "value": "لقد استلمت رمزًا، أدخله" },
+    { "collection": "area_login", "key": "otp_label", "locale": "ar", "is_published": true, "value": "رمز من 6 أرقام" },
+    { "collection": "area_login", "key": "otp_cta", "locale": "ar", "is_published": true, "value": "تأكيد الرمز" },
+    { "collection": "area_login", "key": "otp_verifying", "locale": "ar", "is_published": true, "value": "جارٍ التحقق…" },
+    { "collection": "area_login", "key": "resend", "locale": "ar", "is_published": true, "value": "إعادة الإرسال" },
+    { "collection": "area_login", "key": "error_link", "locale": "ar", "is_published": true, "value": "رابط الدخول غير صالح أو منتهي الصلاحية. اطلب رابطًا جديدًا." },
+    { "collection": "area_login", "key": "secure_note", "locale": "ar", "is_published": true, "value": "دخول آمن" },
+    { "collection": "area_login", "key": "back_to_site", "locale": "ar", "is_published": true, "value": "العودة إلى الموقع" },
+    { "collection": "area_login", "key": "privacy_link", "locale": "ar", "is_published": true, "value": { "label": "الخصوصية", "href": "/privacy" } },
+    { "collection": "area_login", "key": "termini_link", "locale": "ar", "is_published": true, "value": { "label": "الشروط", "href": "/termini-condizioni" } }
+  ]
+}

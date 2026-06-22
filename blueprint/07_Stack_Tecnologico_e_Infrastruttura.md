@@ -19,6 +19,14 @@ Scelte tecnologiche definitive del progetto, consolidate attorno a Supabase per 
 
 ## Stato attuale del progetto
 
+### Implementazione (codice) - aggiornato 2026-06-22
+- App Next.js (App Router) in `web/`; deploy su Vercel; repo GitHub. Stack confermato: TypeScript + Tailwind + shadcn/ui.
+- **Supabase cloud attivo in UE** (scelto al posto del locale: Docker non installato). Migrazioni versionate in `supabase/migrations/`, applicate via pooler IPv4. Client server (anon, lettura pubblica) e admin (service_role, solo server) in `web/src/lib/supabase/`.
+- CMS leggero attivo (pacchetti/add-on/FAQ dal DB) + motore pratiche/lead (vedi @05/@04). Tipi DB scritti a mano in `web/src/lib/supabase/types.ts` (rigenerabili con `supabase gen types`).
+- **Note tecniche Next.js 16**: `middleware.ts` -> `proxy.ts`; niente `unstable_cache`/`revalidateTag`, si usa rendering dinamico + `revalidatePath` (ISR pieno rinviato).
+- **Auth provvisoria**: gate CRM via cookie + `ADMIN_PASSWORD` (vedi @SPEC_Env_Vars). Supabase Auth reale ancora da implementare.
+- **TODO sicurezza pre-go-live**: rigenerare le chiavi Supabase condivise in chat (anon/service_role/password DB).
+
 ### Principio guida
 Un solo prodotto full-stack (Next.js) + un solo backend-as-a-service (Supabase) per dati, auth, storage e realtime. Vendor aggiuntivi solo dove indispensabili (pagamenti, email, messaggistica, code, monitoring). Residenza dati in UE ove possibile (@10_Legale_Compliance).
 

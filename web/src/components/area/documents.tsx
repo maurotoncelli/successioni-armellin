@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
 import {
   Upload,
   Trash2,
@@ -9,24 +10,37 @@ import {
   Loader2,
   HelpCircle,
   PartyPopper,
+  FileCheck2,
 } from "lucide-react";
 import { buttonClasses } from "@/components/ui/button";
 import { ToneBadge } from "@/components/area/ui";
 import { clientDocMeta, type ClientDocState } from "@/content/area-data";
+import { submitDocuments } from "@/app/area-riservata/(app)/documenti/actions";
 import { cn } from "@/lib/utils";
 
 export type DocItem = {
+  index: number; // indice nella checklist della pratica (chiave per le azioni server)
   label: string;
   required: boolean;
   state: ClientDocState;
   reason?: string;
   help?: string;
+  fileName?: string;
 };
 
+const ACCEPT = ".pdf,.jpg,.jpeg,.png";
+const MAX_BYTES = 10 * 1024 * 1024;
+
 export function DocumentsClient({ initial }: { initial: DocItem[] }) {
+  const router = useRouter();
   const [docs, setDocs] = useState<DocItem[]>(initial);
   const [uploading, setUploading] = useState<number | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, startSubmit] = useTransition();
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const pendingIndexRef = useRef<number | null>(null);
 
   const requiredDocs = docs.filter((d) => d.required);
   const uploadedRequired = requiredDocs.filter(
@@ -41,36 +55,116 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
     [uploadedTotal, docs.length],
   );
 
-  function simulateUpload(index: number) {
-    setUploading(index);
-    setSubmitted(false);
-    setTimeout(() => {
-      setDocs((prev) =>
-        prev.map((d, i) =>
-          i === index ? { ...d, state: "CARICATO", reason: undefined } : d,
-        ),
-      );
-      setUploading(null);
-    }, 900);
+  function triggerUpload(index: number) {
+    setError(null);
+    pendingIndexRef.current = index;
+    fileInputRef.current?.click();
   }
 
-  function removeDoc(index: number) {
-    setDocs((prev) =>
-      prev.map((d, i) => (i === index ? { ...d, state: "DA_CARICARE" } : d)),
-    );
+  async function onFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    const index = pendingIndexRef.current;
+    e.target.value = ""; // consente di ricaricare lo stesso file
+    pendingIndexRef.current = null;
+    if (!file || index === null) return;
+
+    if (file.size > MAX_BYTES) {
+      setError("File troppo grande (massimo 10 MB).");
+      return;
+    }
+
+    setUploading(index);
     setSubmitted(false);
+    setError(null);
+    try {
+      const body = new FormData();
+      body.append("file", file);
+      body.append("index", String(index));
+      const res = await fetch("/api/area/documents/upload", {
+        method: "POST",
+        body,
+      });
+      const data = (await res.json()) as { error?: string; fileName?: string };
+      if (!res.ok) {
+        setError(data.error ?? "Caricamento non riuscito.");
+        return;
+      }
+      setDocs((prev) =>
+        prev.map((d) =>
+          d.index === index
+            ? { ...d, state: "CARICATO", reason: undefined, fileName: data.fileName }
+            : d,
+        ),
+      );
+      router.refresh();
+    } catch {
+      setError("Caricamento non riuscito, controlla la connessione.");
+    } finally {
+      setUploading(null);
+    }
+  }
+
+  async function removeDoc(index: number) {
+    setError(null);
+    setSubmitted(false);
+    setUploading(index);
+    try {
+      const res = await fetch("/api/area/documents/delete", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ index }),
+      });
+      if (!res.ok) {
+        const data = (await res.json()) as { error?: string };
+        setError(data.error ?? "Eliminazione non riuscita.");
+        return;
+      }
+      setDocs((prev) =>
+        prev.map((d) =>
+          d.index === index
+            ? { ...d, state: "DA_CARICARE", reason: undefined, fileName: undefined }
+            : d,
+        ),
+      );
+      router.refresh();
+    } catch {
+      setError("Eliminazione non riuscita, riprova.");
+    } finally {
+      setUploading(null);
+    }
+  }
+
+  function handleSubmit() {
+    setError(null);
+    startSubmit(async () => {
+      const res = await submitDocuments();
+      if (res.ok) {
+        setSubmitted(true);
+        router.refresh();
+      } else {
+        setError(res.error);
+      }
+    });
   }
 
   // ordina: prima quelli da fare, poi i caricati
   const order = docs
-    .map((d, i) => ({ d, i }))
+    .slice()
     .sort((a, b) => {
       const rank = (s: ClientDocState) => (s === "CARICATO" ? 1 : 0);
-      return rank(a.d.state) - rank(b.d.state);
+      return rank(a.state) - rank(b.state);
     });
 
   return (
     <div className="pb-28 lg:pb-0">
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept={ACCEPT}
+        className="hidden"
+        onChange={onFileChange}
+      />
+
       {/* Contatore + barra */}
       <div className="mb-5 rounded-2xl border border-primary/10 bg-bg p-5 shadow-sm">
         <div className="flex items-center justify-between text-sm">
@@ -89,16 +183,21 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
         </div>
       </div>
 
+      {error && (
+        <div className="mb-4 flex items-start gap-2 rounded-2xl border border-error/30 bg-error/10 p-3 text-sm text-error">
+          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+          {error}
+        </div>
+      )}
+
       {/* Lista */}
       <ul className="space-y-3">
-        {order.map(({ d, i }) => (
+        {order.map((d) => (
           <li
-            key={d.label}
+            key={d.index}
             className={cn(
               "rounded-2xl border bg-bg p-4 shadow-sm",
-              d.state === "DA_RIFARE"
-                ? "border-error/30"
-                : "border-primary/10",
+              d.state === "DA_RIFARE" ? "border-error/30" : "border-primary/10",
             )}
           >
             <div className="flex items-start justify-between gap-3">
@@ -115,6 +214,12 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
                     {d.help}
                   </p>
                 )}
+                {d.state === "CARICATO" && d.fileName && (
+                  <p className="mt-2 flex items-center gap-1.5 text-xs text-text-muted">
+                    <FileCheck2 className="h-3.5 w-3.5 shrink-0 text-success" />
+                    {d.fileName}
+                  </p>
+                )}
                 {d.state === "DA_RIFARE" && d.reason && (
                   <p className="mt-2 rounded-lg bg-error/10 px-3 py-2 text-xs text-error">
                     {d.reason}
@@ -127,22 +232,27 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
             <div className="mt-3 flex items-center gap-2">
               {d.state === "CARICATO" ? (
                 <button
-                  onClick={() => removeDoc(i)}
-                  className="inline-flex items-center gap-1.5 rounded-[10px] px-3 py-2 text-sm font-medium text-text-muted hover:bg-bg-muted"
+                  onClick={() => removeDoc(d.index)}
+                  disabled={uploading === d.index}
+                  className="inline-flex items-center gap-1.5 rounded-[10px] px-3 py-2 text-sm font-medium text-text-muted hover:bg-bg-muted disabled:opacity-50"
                 >
-                  <Trash2 className="h-4 w-4" />
+                  {uploading === d.index ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : (
+                    <Trash2 className="h-4 w-4" />
+                  )}
                   Elimina
                 </button>
               ) : (
                 <button
-                  onClick={() => simulateUpload(i)}
-                  disabled={uploading === i}
+                  onClick={() => triggerUpload(d.index)}
+                  disabled={uploading === d.index}
                   className={buttonClasses({
                     variant: d.state === "DA_RIFARE" ? "primary" : "outline",
                     className: "py-2 text-sm",
                   })}
                 >
-                  {uploading === i ? (
+                  {uploading === d.index ? (
                     <>
                       <Loader2 className="h-4 w-4 animate-spin" />
                       Caricamento…
@@ -176,10 +286,15 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
         <div className="mx-auto max-w-6xl">
           {complete ? (
             <button
-              onClick={() => setSubmitted(true)}
+              onClick={handleSubmit}
+              disabled={isSubmitting}
               className={buttonClasses({ size: "lg", className: "w-full" })}
             >
-              <Check className="h-5 w-5" />
+              {isSubmitting ? (
+                <Loader2 className="h-5 w-5 animate-spin" />
+              ) : (
+                <Check className="h-5 w-5" />
+              )}
               Ho finito — invia a Lorenzo
             </button>
           ) : (

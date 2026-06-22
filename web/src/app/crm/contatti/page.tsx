@@ -1,9 +1,16 @@
 import Link from "next/link";
 import { Mail, Phone, Check, Minus } from "lucide-react";
-import { contacts, practicesByContact, statusLabels } from "@/content/crm-data";
+import { statusLabels } from "@/content/crm-data";
+import { getContacts, getPractices, practicesByContact } from "@/lib/crm";
 import { CrmCard } from "@/components/crm/ui";
 
-export default function ContattiPage() {
+export const dynamic = "force-dynamic";
+
+export default async function ContattiPage() {
+  const [contacts, practices] = await Promise.all([
+    getContacts(),
+    getPractices(),
+  ]);
   return (
     <div className="space-y-5">
       <div>
@@ -15,7 +22,7 @@ export default function ContattiPage() {
 
       <div className="grid gap-4 md:grid-cols-2">
         {contacts.map((c) => {
-          const history = practicesByContact(c.id);
+          const history = practicesByContact(practices, c.id);
           return (
             <CrmCard key={c.id}>
               <div className="flex items-start justify-between gap-3">

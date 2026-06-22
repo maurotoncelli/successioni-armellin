@@ -619,7 +619,7 @@
 ---
 
 ## NOTE DI PERIMETRO (cosa NON sta in questo file)
-- **Area riservata cliente** (`/area-riservata/*`): dashboard, documenti, dati, mandato, ordine, recesso, profilo -> schermate e copy in @06 (app, non CMS marketing).
+- **Area personale del cliente** (`/area-riservata/*`): dashboard, documenti, dati, mandato, ordine, recesso, profilo -> schermate e copy in @06 (app, non CMS marketing). Nota naming: l'etichetta user-facing e **"Area personale"** (vedi DECISIONI); la rotta tecnica resta `/area-riservata`. Label data-driven: `settings.area_label`.
 - **CRM `/admin`**: tutto in @05 (app interna).
 - **Contenuti data-driven**: pacchetti/add-on (`packages`/`addons`), FAQ (`faqs`), articoli (`articles`), immagini/fac-simile (`media_assets`) -> gestiti dal CRM, qui solo citati.
 

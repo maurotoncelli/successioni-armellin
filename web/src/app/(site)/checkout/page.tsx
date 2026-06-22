@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ShieldCheck, Info, Lock } from "lucide-react";
+import { ShieldCheck, Info } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { getPackages } from "@/lib/cms";
+import { CheckoutPanel } from "@/components/site/checkout-panel";
+import { getPackages, getAddons } from "@/lib/cms";
+import { getPractice } from "@/lib/crm";
+import { buildOrder } from "@/lib/order";
+import type { PackageKey } from "@/lib/supabase/types";
 import { cta, list, text } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -12,10 +15,35 @@ export const metadata: Metadata = {
   robots: { index: false },
 };
 
-export default async function CheckoutPage() {
-  const packages = await getPackages();
-  const order = packages.find((p) => p.key === "COMPLETO") ?? packages[0];
-  const metodi = list<string>("checkout", "pagamento_metodi");
+export const dynamic = "force-dynamic";
+
+export default async function CheckoutPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ practice?: string; annullato?: string }>;
+}) {
+  const { practice: practiceId, annullato } = await searchParams;
+
+  const [packages, addons] = await Promise.all([getPackages(), getAddons()]);
+  const practice = practiceId ? await getPractice(practiceId) : undefined;
+
+  const packageKey = (practice?.selectedPackage ??
+    practice?.suggestedPackage ??
+    undefined) as PackageKey | undefined;
+
+  const order = packageKey
+    ? buildOrder(
+        {
+          packageKey,
+          realEstateCount: practice?.realEstateCount ?? null,
+        },
+        packages,
+        addons,
+      )
+    : null;
+
+  const pkg = packageKey ? packages.find((p) => p.key === packageKey) : undefined;
+
   const trustItems = list<string>("checkout", "trust_items");
   const modificaLink = cta("checkout", "modifica_link");
   const recessoLink = cta("checkout", "recesso_link");
@@ -33,6 +61,13 @@ export default async function CheckoutPage() {
             </p>
           </div>
 
+          {annullato && (
+            <p className="mx-auto mt-6 max-w-2xl rounded-[10px] bg-amber-50 p-3 text-center text-sm text-amber-700">
+              Pagamento annullato. Nessun addebito effettuato: puoi riprovare
+              quando vuoi.
+            </p>
+          )}
+
           <div className="mt-10 grid gap-6 lg:grid-cols-5">
             {/* Riepilogo */}
             <div className="lg:col-span-2">
@@ -47,29 +82,51 @@ export default async function CheckoutPage() {
                   </Link>
                 </div>
 
-                <div className="mt-5 flex items-center justify-between border-b border-primary/10 pb-4">
-                  <div>
-                    <p className="font-medium text-primary">{order.name}</p>
-                    <p className="text-sm text-text-muted">{order.tagline}</p>
+                {order && pkg ? (
+                  <>
+                    <div className="mt-5 space-y-2.5 border-b border-primary/10 pb-4">
+                      {order.lineItems.map((item) => (
+                        <div
+                          key={item.key}
+                          className="flex items-start justify-between gap-3 text-sm"
+                        >
+                          <span className="text-text">{item.label}</span>
+                          <span className="shrink-0 font-medium text-primary">
+                            {item.amount}&euro;
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="mt-4 flex items-center justify-between">
+                      <span className="font-semibold text-primary">
+                        Totale onorario
+                      </span>
+                      <span className="font-display text-2xl font-bold text-primary">
+                        {order.total}&euro;
+                      </span>
+                    </div>
+
+                    <div className="mt-5 flex gap-2 rounded-[10px] bg-sand/60 p-3 text-xs leading-relaxed text-text-muted">
+                      <Info className="h-4 w-4 shrink-0 text-accent" />
+                      <span>{text("checkout", "prezzo_imposte_nota")}</span>
+                    </div>
+                  </>
+                ) : (
+                  <div className="mt-5 text-sm text-text-muted">
+                    <p>
+                      Non risulta una pratica con un pacchetto da pagare. Calcola
+                      prima il preventivo: ti proponiamo il pacchetto giusto e
+                      colleghiamo il pagamento alla tua pratica.
+                    </p>
+                    <Link
+                      href="/preventivo"
+                      className="mt-3 inline-block font-medium text-accent hover:text-accent-dark"
+                    >
+                      Vai al preventivo &rarr;
+                    </Link>
                   </div>
-                  <span className="font-display text-xl font-bold text-primary">
-                    {order.price}&euro;
-                  </span>
-                </div>
-
-                <div className="mt-4 flex items-center justify-between">
-                  <span className="font-semibold text-primary">
-                    Totale onorario
-                  </span>
-                  <span className="font-display text-2xl font-bold text-primary">
-                    {order.price}&euro;
-                  </span>
-                </div>
-
-                <div className="mt-5 flex gap-2 rounded-[10px] bg-sand/60 p-3 text-xs leading-relaxed text-text-muted">
-                  <Info className="h-4 w-4 shrink-0 text-accent" />
-                  <span>{text("checkout", "prezzo_imposte_nota")}</span>
-                </div>
+                )}
               </Card>
             </div>
 
@@ -77,56 +134,20 @@ export default async function CheckoutPage() {
             <div className="lg:col-span-3">
               <Card>
                 <h2 className="text-xl">{text("checkout", "pagamento_title")}</h2>
-                <div className="mt-4 space-y-2">
-                  {metodi.map((m, i) => (
-                    <label
-                      key={m}
-                      className="flex items-center gap-3 rounded-[10px] border border-primary/15 p-3.5 text-sm"
-                    >
-                      <input
-                        type="radio"
-                        name="metodo"
-                        defaultChecked={i === 0}
-                        className="h-4 w-4 accent-[var(--color-accent)]"
-                      />
-                      {m}
-                    </label>
-                  ))}
+                <div className="mt-4">
+                  <CheckoutPanel
+                    practiceId={order ? (practiceId ?? null) : null}
+                    payLabel={cta("checkout", "cta_pay").label}
+                    consensoTc={text("checkout", "consenso_tc")}
+                    consensoAvvio={text("checkout", "consenso_avvio")}
+                    ctaNota={text("checkout", "cta_nota")}
+                    rateNota={text("checkout", "rate_nota")}
+                    recessoLink={{
+                      href: recessoLink.href,
+                      label: recessoLink.label,
+                    }}
+                  />
                 </div>
-                <p className="mt-3 text-xs text-text-muted">
-                  {text("checkout", "rate_nota")}
-                </p>
-
-                <div className="mt-6 space-y-3">
-                  <label className="flex items-start gap-3 text-sm">
-                    <input
-                      type="checkbox"
-                      className="mt-1 h-4 w-4 accent-[var(--color-accent)]"
-                    />
-                    <span>{text("checkout", "consenso_tc")}</span>
-                  </label>
-                  <label className="flex items-start gap-3 text-sm">
-                    <input
-                      type="checkbox"
-                      className="mt-1 h-4 w-4 accent-[var(--color-accent)]"
-                    />
-                    <span>{text("checkout", "consenso_avvio")}</span>
-                  </label>
-                </div>
-
-                <Button size="lg" className="mt-6 w-full">
-                  <Lock className="h-4 w-4" />
-                  {cta("checkout", "cta_pay").label}
-                </Button>
-                <p className="mt-2 text-center text-xs text-text-muted">
-                  {text("checkout", "cta_nota")}
-                </p>
-
-                <p className="mt-4 text-center text-xs text-text-muted">
-                  <Link href={recessoLink.href} className="underline">
-                    {recessoLink.label}
-                  </Link>
-                </p>
               </Card>
             </div>
           </div>

@@ -1,0 +1,36 @@
+{
+  "_meta": {
+    "purpose": "Traduzione parziale (prep multilingua). Contiene solo la collection 'area_login'. Tutte le altre chiavi ricadono sull'italiano (IT fa fede).",
+    "locale": "es",
+    "version": 1,
+    "updated_at": "2026-06-22"
+  },
+  "entries": [
+    { "collection": "area_login", "key": "header_title", "locale": "es", "is_published": true, "value": "Área privada" },
+    { "collection": "area_login", "key": "header_subtitle", "locale": "es", "is_published": true, "value": "Accede para seguir tu trámite de sucesión." },
+    { "collection": "area_login", "key": "tab_email", "locale": "es", "is_published": true, "value": "Correo" },
+    { "collection": "area_login", "key": "tab_phone", "locale": "es", "is_published": true, "value": "Teléfono" },
+    { "collection": "area_login", "key": "email_label", "locale": "es", "is_published": true, "value": "Tu correo electrónico" },
+    { "collection": "area_login", "key": "email_hint", "locale": "es", "is_published": true, "value": "Usa el correo con el que realizaste el pago." },
+    { "collection": "area_login", "key": "email_cta", "locale": "es", "is_published": true, "value": "Enviarme el enlace de acceso" },
+    { "collection": "area_login", "key": "email_sending", "locale": "es", "is_published": true, "value": "Enviando…" },
+    { "collection": "area_login", "key": "phone_label", "locale": "es", "is_published": true, "value": "Tu número de teléfono" },
+    { "collection": "area_login", "key": "phone_hint", "locale": "es", "is_published": true, "value": "Usa el número con el que hiciste el pedido. Te enviaremos un código por SMS." },
+    { "collection": "area_login", "key": "phone_cta", "locale": "es", "is_published": true, "value": "Enviarme el código por SMS" },
+    { "collection": "area_login", "key": "phone_sending", "locale": "es", "is_published": true, "value": "Enviando…" },
+    { "collection": "area_login", "key": "sent_email_title", "locale": "es", "is_published": true, "value": "Revisa tu correo" },
+    { "collection": "area_login", "key": "sent_email_body", "locale": "es", "is_published": true, "value": "Hemos enviado un enlace de acceso a {contact}. El enlace caduca en unos minutos." },
+    { "collection": "area_login", "key": "sent_phone_title", "locale": "es", "is_published": true, "value": "Revisa tus SMS" },
+    { "collection": "area_login", "key": "sent_phone_body", "locale": "es", "is_published": true, "value": "Hemos enviado un código de 6 cifras al {contact}. Introdúcelo abajo." },
+    { "collection": "area_login", "key": "otp_toggle", "locale": "es", "is_published": true, "value": "He recibido un código, introducirlo" },
+    { "collection": "area_login", "key": "otp_label", "locale": "es", "is_published": true, "value": "Código de 6 cifras" },
+    { "collection": "area_login", "key": "otp_cta", "locale": "es", "is_published": true, "value": "Verificar código" },
+    { "collection": "area_login", "key": "otp_verifying", "locale": "es", "is_published": true, "value": "Verificando…" },
+    { "collection": "area_login", "key": "resend", "locale": "es", "is_published": true, "value": "Enviar de nuevo" },
+    { "collection": "area_login", "key": "error_link", "locale": "es", "is_published": true, "value": "El enlace de acceso no es válido o ha caducado. Solicita uno nuevo." },
+    { "collection": "area_login", "key": "secure_note", "locale": "es", "is_published": true, "value": "Acceso seguro" },
+    { "collection": "area_login", "key": "back_to_site", "locale": "es", "is_published": true, "value": "Volver al sitio" },
+    { "collection": "area_login", "key": "privacy_link", "locale": "es", "is_published": true, "value": { "label": "Privacidad", "href": "/privacy" } },
+    { "collection": "area_login", "key": "termini_link", "locale": "es", "is_published": true, "value": { "label": "Términos", "href": "/termini-condizioni" } }
+  ]
+}

@@ -5,8 +5,9 @@ import { Section, SectionHeading } from "@/components/ui/section";
 import { Card } from "@/components/ui/card";
 import { PackageCards } from "@/components/site/package-cards";
 import { CtaBand } from "@/components/site/cta-band";
+import { AddonCards } from "@/components/site/addon-cards";
 import { getAddons } from "@/lib/cms";
-import { cta, list, text } from "@/lib/content";
+import { cta, list, obj, text } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Tariffe",
@@ -18,10 +19,22 @@ export default async function TariffePage() {
   const finalCta = cta("tariffe", "cta_finale_button");
   const addons = await getAddons();
 
+  const telefono = obj("contatti", "telefono", {
+    numero: "",
+    cta_chiama: "tel:+39",
+  });
+  const emailObj = obj("contatti", "email", { generale: "" });
+  const addonContact = {
+    phoneHref: telefono.cta_chiama || "tel:+39",
+    phoneLabel: "Chiama Lorenzo",
+    emailHref: emailObj.generale ? `mailto:${emailObj.generale}` : "/contatti",
+    emailLabel: "Scrivici via email",
+  };
+
   return (
     <>
       <PageHero
-        eyebrow="Prezzi chiari"
+        eyebrow={text("tariffe", "hero_eyebrow", "Prezzi chiari")}
         title={text("tariffe", "hero_title")}
         subtitle={text("tariffe", "hero_subtitle")}
       />
@@ -66,20 +79,15 @@ export default async function TariffePage() {
       </Section>
 
       <Section tone="sand">
-        <SectionHeading title={text("tariffe", "addon_intro")} />
-        <div className="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-2">
-          {addons.map((addon) => (
-            <Card key={addon.key} className="flex items-center justify-between gap-4">
-              <div>
-                <h3 className="text-lg">{addon.name}</h3>
-                <p className="mt-1 text-sm text-text-muted">{addon.description}</p>
-              </div>
-              <span className="shrink-0 font-display text-xl font-bold text-primary">
-                +{addon.price}&euro;
-              </span>
-            </Card>
-          ))}
-        </div>
+        <SectionHeading
+          title={text("tariffe", "addon_intro")}
+          intro={text("tariffe", "addon_subtitle")}
+        />
+        <AddonCards
+          addons={addons}
+          contactText={text("tariffe", "addon_contact_text")}
+          contact={addonContact}
+        />
       </Section>
 
       <Section>

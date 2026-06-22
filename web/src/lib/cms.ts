@@ -8,6 +8,7 @@ import {
   type Addon,
   type Faq,
 } from "@/content/site";
+import { articles as fixtureArticles, type Article } from "@/content/articles";
 import type { PackageRow, AddonRow, FaqRow } from "@/lib/supabase/types";
 
 /*
@@ -21,9 +22,10 @@ export const CMS_TAGS = {
   packages: "cms:packages",
   addons: "cms:addons",
   faqs: "cms:faqs",
+  articles: "cms:articles",
 } as const;
 
-export type { Package, Addon, Faq };
+export type { Package, Addon, Faq, Article };
 
 function mapPackage(row: PackageRow): Package {
   return {
@@ -110,6 +112,76 @@ export async function getFaqs(): Promise<Faq[]> {
   }
 }
 
+/*
+  Articoli della sezione Guide (/guide).
+  Fonte attuale: fixture locali (`@/content/articles`). In Fase 4 diventeranno
+  una tabella Supabase `articles` con identica forma: l'accesso resta qui, cosi
+  le pagine non cambiano. Ordinati per data (in evidenza prima, poi recenti).
+*/
+function sortArticles(items: Article[]): Article[] {
+  return [...items].sort((a, b) => {
+    if (a.featured !== b.featured) return a.featured ? -1 : 1;
+    return b.publishedAt.localeCompare(a.publishedAt);
+  });
+}
+
+export async function getArticles(): Promise<Article[]> {
+  return sortArticles(fixtureArticles);
+}
+
+export async function getArticle(slug: string): Promise<Article | null> {
+  return fixtureArticles.find((a) => a.slug === slug) ?? null;
+}
+
+/* Articoli correlati: prima quelli indicati esplicitamente, poi stessa
+   categoria; mai l'articolo stesso. Tagliati a `limit` (default 3). */
+export async function getRelatedArticles(
+  slug: string,
+  limit = 3,
+): Promise<Article[]> {
+  const current = fixtureArticles.find((a) => a.slug === slug);
+  if (!current) return [];
+  const bySlug = new Map(fixtureArticles.map((a) => [a.slug, a]));
+  const picked: Article[] = [];
+  const seen = new Set<string>([slug]);
+
+  for (const relSlug of current.related) {
+    const rel = bySlug.get(relSlug);
+    if (rel && !seen.has(rel.slug)) {
+      picked.push(rel);
+      seen.add(rel.slug);
+    }
+  }
+  if (picked.length < limit) {
+    for (const a of sortArticles(fixtureArticles)) {
+      if (picked.length >= limit) break;
+      if (!seen.has(a.slug) && a.categorySlug === current.categorySlug) {
+        picked.push(a);
+        seen.add(a.slug);
+      }
+    }
+  }
+  return picked.slice(0, limit);
+}
+
+/*
+  Data di consegna prevista calcolata dallo SLA del pacchetto, a partire da una
+  data (di norma il giorno del pagamento). Ritorna null se il pacchetto non ha
+  uno SLA. Usata per popolare automaticamente `due_date` al pagamento.
+*/
+export async function slaDueDate(
+  packageKey: string | null,
+  fromDate: string,
+): Promise<string | null> {
+  if (!packageKey) return null;
+  const pkg = (await getPackages()).find((p) => p.key === packageKey);
+  if (!pkg?.slaDays) return null;
+  const d = new Date(`${fromDate}T00:00:00Z`);
+  if (Number.isNaN(d.getTime())) return null;
+  d.setUTCDate(d.getUTCDate() + pkg.slaDays);
+  return d.toISOString().slice(0, 10);
+}
+
 /* --- Letture ADMIN (non cache): includono i record non attivi, per l'editor CRM --- */
 
 export async function getPackagesAdmin(): Promise<PackageRow[]> {
@@ -132,6 +204,28 @@ export async function getPackagesAdmin(): Promise<PackageRow[]> {
   const { data, error } = await getAdminClient()
     .from("packages")
     .select("*")
+    .order("sort_order", { ascending: true });
+  if (error) throw error;
+  return data ?? [];
+}
+
+export async function getFaqsAdmin(): Promise<FaqRow[]> {
+  if (!isAdminConfigured) {
+    return fixtureFaqs.map((f, i) => ({
+      id: `fixture-${i}`,
+      locale: "it",
+      question: f.question,
+      answer: f.answer,
+      category: f.category ?? null,
+      sort_order: i,
+      is_published: true,
+      updated_at: new Date().toISOString(),
+    }));
+  }
+  const { data, error } = await getAdminClient()
+    .from("faqs")
+    .select("*")
+    .eq("locale", "it")
     .order("sort_order", { ascending: true });
   if (error) throw error;
   return data ?? [];

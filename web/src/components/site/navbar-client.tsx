@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, Phone } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Menu, X, Phone, Lock } from "lucide-react";
 import type { Cta } from "@/lib/content";
 import { buttonClasses } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { LanguageSwitcher } from "./language-switcher";
 
 type MenuItem = { label: string; href: string };
 
@@ -13,12 +15,20 @@ export function NavbarClient({
   menu,
   cta,
   ctaPhone,
+  areaLabel,
 }: {
   menu: MenuItem[];
   cta: Cta;
   ctaPhone: Cta;
+  areaLabel: string;
 }) {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Quando l'utente sta gia calcolando o pagando, il CTA "Calcola il preventivo
+  // gratis" e fuorviante: lo nascondiamo su /preventivo e /checkout.
+  const hideQuoteCta =
+    pathname?.startsWith("/preventivo") || pathname?.startsWith("/checkout");
 
   return (
     <header className="sticky top-0 z-40 border-b border-primary/10 bg-bg/90 backdrop-blur">
@@ -57,20 +67,36 @@ export function NavbarClient({
             <Phone className="h-4 w-4" />
             {ctaPhone.label}
           </a>
-          <Link href={cta.href} className={buttonClasses({ variant: "primary" })}>
-            {cta.label}
+          <Link
+            href="/area-riservata"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-accent"
+          >
+            <Lock className="h-4 w-4" />
+            {areaLabel}
           </Link>
+          <LanguageSwitcher align="right" />
+          {!hideQuoteCta && (
+            <Link
+              href={cta.href}
+              className={buttonClasses({ variant: "primary" })}
+            >
+              {cta.label}
+            </Link>
+          )}
         </div>
 
-        <button
-          type="button"
-          className="inline-flex items-center justify-center rounded-md p-2 text-primary lg:hidden"
-          aria-label={open ? "Chiudi menu" : "Apri menu"}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        <div className="flex items-center gap-1 lg:hidden">
+          <LanguageSwitcher align="right" />
+          <button
+            type="button"
+            className="inline-flex items-center justify-center rounded-md p-2 text-primary"
+            aria-label={open ? "Chiudi menu" : "Apri menu"}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </nav>
 
       <div
@@ -91,15 +117,30 @@ export function NavbarClient({
               </Link>
             </li>
           ))}
-          <li className="mt-2">
+          <li>
             <Link
-              href={cta.href}
-              className={buttonClasses({ variant: "primary", className: "w-full" })}
+              href="/area-riservata"
+              className="flex items-center gap-2 rounded-md px-3 py-2.5 text-base font-medium text-text hover:bg-primary/5"
               onClick={() => setOpen(false)}
             >
-              {cta.label}
+              <Lock className="h-4 w-4" />
+              {areaLabel}
             </Link>
           </li>
+          {!hideQuoteCta && (
+            <li className="mt-2">
+              <Link
+                href={cta.href}
+                className={buttonClasses({
+                  variant: "primary",
+                  className: "w-full",
+                })}
+                onClick={() => setOpen(false)}
+              >
+                {cta.label}
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
     </header>

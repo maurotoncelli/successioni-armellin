@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
-import { CheckCircle2, FileText, Phone, CreditCard } from "lucide-react";
+import Link from "next/link";
+import { CheckCircle2, Phone, CreditCard } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { Card } from "@/components/ui/card";
 import { ButtonLink } from "@/components/ui/button";
 import { documentsList } from "@/content/site";
+import { BackLink } from "@/components/site/back-link";
+import { DocList } from "@/components/site/doc-list";
+import { getPackages } from "@/lib/cms";
+import { getPractice } from "@/lib/crm";
+import type { PackageKey } from "@/lib/supabase/types";
 import { cta, text } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -21,10 +27,32 @@ function resolveEsito(value?: string): Esito {
 export default async function GraziePage({
   searchParams,
 }: {
-  searchParams: Promise<{ esito?: string }>;
+  searchParams: Promise<{ esito?: string; practice?: string }>;
 }) {
-  const { esito: rawEsito } = await searchParams;
+  const { esito: rawEsito, practice: practiceId } = await searchParams;
   const esito = resolveEsito(rawEsito);
+
+  const esitoBCta = cta("grazie", "esito_b_cta");
+  const checkoutHref = practiceId
+    ? `/checkout?practice=${practiceId}`
+    : esitoBCta.href;
+
+  // Esito B: mostriamo davvero quale pacchetto consigliamo (nome + prezzo).
+  let suggestedPkg: { name: string; price: number; tagline: string } | null =
+    null;
+  if (esito === "b") {
+    const [packages, practice] = await Promise.all([
+      getPackages(),
+      practiceId ? getPractice(practiceId) : Promise.resolve(undefined),
+    ]);
+    const key = (practice?.selectedPackage ??
+      practice?.suggestedPackage ??
+      "COMPLETO") as PackageKey;
+    const pkg = packages.find((p) => p.key === key);
+    if (pkg) {
+      suggestedPkg = { name: pkg.name, price: pkg.price, tagline: pkg.tagline };
+    }
+  }
 
   const esitoConfig = {
     a: {
@@ -36,7 +64,7 @@ export default async function GraziePage({
     b: {
       title: text("grazie", "esito_b_title"),
       body: text("grazie", "esito_b_riallineamento"),
-      cta: cta("grazie", "esito_b_cta"),
+      cta: { label: esitoBCta.label, href: checkoutHref },
       icon: <CreditCard className="h-7 w-7 text-accent" />,
     },
     c: {
@@ -47,9 +75,42 @@ export default async function GraziePage({
     },
   }[esito];
 
+  // La parola "guida" nel testo esito B diventa un link (apre /tariffe in nuova
+  // scheda). Il testo usa il token {guida}; data-driven anche nelle altre lingue.
+  const guidaCta = cta("grazie", "esito_b_guida", {
+    label: "guida",
+    href: "/tariffe",
+  });
+  const faqLink = cta("grazie", "documenti_faq_link", {
+    label: "Approfondisci nelle FAQ",
+    href: "/faq",
+  });
+
+  function renderBody(body: string) {
+    const parts = body.split("{guida}");
+    if (parts.length === 1) return body;
+    return (
+      <>
+        {parts[0]}
+        <Link
+          href={guidaCta.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-accent underline underline-offset-2 hover:text-accent-dark"
+        >
+          {guidaCta.label}
+        </Link>
+        {parts.slice(1).join("{guida}")}
+      </>
+    );
+  }
+
   return (
     <Section tone="muted">
       <div className="mx-auto max-w-2xl">
+        <div className="mb-6">
+          <BackLink fallbackHref="/preventivo" />
+        </div>
         <div className="text-center">
           <CheckCircle2 className="mx-auto h-12 w-12 text-success" />
           <h1 className="mt-4 text-3xl sm:text-4xl">
@@ -64,8 +125,29 @@ export default async function GraziePage({
             </span>
             <div>
               <h2 className="text-xl">{esitoConfig.title}</h2>
-              <p className="mt-2 leading-relaxed text-text-muted">
-                {esitoConfig.body}
+              {suggestedPkg && (
+                <div className="mt-3 rounded-[10px] border border-accent/30 bg-sand/50 p-4">
+                  <div className="flex items-baseline justify-between gap-3">
+                    <span className="font-display text-lg font-semibold text-primary">
+                      Pacchetto {suggestedPkg.name}
+                    </span>
+                    <span className="shrink-0 font-display text-xl font-bold text-accent">
+                      {suggestedPkg.price}&euro;
+                    </span>
+                  </div>
+                  {suggestedPkg.tagline && (
+                    <p className="mt-1 text-sm text-text-muted">
+                      {suggestedPkg.tagline}
+                    </p>
+                  )}
+                  <p className="mt-2 text-xs text-text-muted">
+                    + imposte calcolate sul tuo caso: te le diciamo prima di
+                    farti pagare.
+                  </p>
+                </div>
+              )}
+              <p className="mt-3 leading-relaxed text-text-muted">
+                {renderBody(esitoConfig.body)}
               </p>
               <div className="mt-5">
                 <ButtonLink href={esitoConfig.cta.href} variant="primary">
@@ -78,14 +160,11 @@ export default async function GraziePage({
 
         <Card className="mt-6">
           <h2 className="text-xl">{text("grazie", "documenti_title")}</h2>
-          <ul className="mt-4 space-y-2.5">
-            {documentsList.slice(0, 5).map((doc) => (
-              <li key={doc.name} className="flex items-start gap-2.5 text-sm">
-                <FileText className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                <span>{doc.name}</span>
-              </li>
-            ))}
-          </ul>
+          <DocList
+            items={documentsList.slice(0, 5)}
+            faqLabel={faqLink.label}
+            faqHref={faqLink.href}
+          />
           <p className="mt-4 text-sm text-text-muted">
             {text("grazie", "documenti_disclaimer")}
           </p>

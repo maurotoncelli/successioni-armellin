@@ -1,0 +1,36 @@
+{
+  "_meta": {
+    "purpose": "Traduzione parziale (prep multilingua). Contiene solo la collection 'area_login'. Tutte le altre chiavi ricadono sull'italiano (IT fa fede).",
+    "locale": "ru",
+    "version": 1,
+    "updated_at": "2026-06-22"
+  },
+  "entries": [
+    { "collection": "area_login", "key": "header_title", "locale": "ru", "is_published": true, "value": "Личный кабинет" },
+    { "collection": "area_login", "key": "header_subtitle", "locale": "ru", "is_published": true, "value": "Войдите, чтобы следить за вашим делом о наследстве." },
+    { "collection": "area_login", "key": "tab_email", "locale": "ru", "is_published": true, "value": "Эл. почта" },
+    { "collection": "area_login", "key": "tab_phone", "locale": "ru", "is_published": true, "value": "Телефон" },
+    { "collection": "area_login", "key": "email_label", "locale": "ru", "is_published": true, "value": "Ваша эл. почта" },
+    { "collection": "area_login", "key": "email_hint", "locale": "ru", "is_published": true, "value": "Используйте адрес, с которого вы оплатили." },
+    { "collection": "area_login", "key": "email_cta", "locale": "ru", "is_published": true, "value": "Отправить ссылку для входа" },
+    { "collection": "area_login", "key": "email_sending", "locale": "ru", "is_published": true, "value": "Отправка…" },
+    { "collection": "area_login", "key": "phone_label", "locale": "ru", "is_published": true, "value": "Ваш номер телефона" },
+    { "collection": "area_login", "key": "phone_hint", "locale": "ru", "is_published": true, "value": "Используйте номер из вашего заказа. Мы отправим код по SMS." },
+    { "collection": "area_login", "key": "phone_cta", "locale": "ru", "is_published": true, "value": "Отправить код по SMS" },
+    { "collection": "area_login", "key": "phone_sending", "locale": "ru", "is_published": true, "value": "Отправка…" },
+    { "collection": "area_login", "key": "sent_email_title", "locale": "ru", "is_published": true, "value": "Проверьте почту" },
+    { "collection": "area_login", "key": "sent_email_body", "locale": "ru", "is_published": true, "value": "Мы отправили ссылку для входа на {contact}. Ссылка действует несколько минут." },
+    { "collection": "area_login", "key": "sent_phone_title", "locale": "ru", "is_published": true, "value": "Проверьте SMS" },
+    { "collection": "area_login", "key": "sent_phone_body", "locale": "ru", "is_published": true, "value": "Мы отправили 6-значный код на номер {contact}. Введите его ниже." },
+    { "collection": "area_login", "key": "otp_toggle", "locale": "ru", "is_published": true, "value": "Я получил код, ввести его" },
+    { "collection": "area_login", "key": "otp_label", "locale": "ru", "is_published": true, "value": "6-значный код" },
+    { "collection": "area_login", "key": "otp_cta", "locale": "ru", "is_published": true, "value": "Подтвердить код" },
+    { "collection": "area_login", "key": "otp_verifying", "locale": "ru", "is_published": true, "value": "Проверка…" },
+    { "collection": "area_login", "key": "resend", "locale": "ru", "is_published": true, "value": "Отправить снова" },
+    { "collection": "area_login", "key": "error_link", "locale": "ru", "is_published": true, "value": "Ссылка для входа недействительна или истекла. Запросите новую." },
+    { "collection": "area_login", "key": "secure_note", "locale": "ru", "is_published": true, "value": "Безопасный вход" },
+    { "collection": "area_login", "key": "back_to_site", "locale": "ru", "is_published": true, "value": "Вернуться на сайт" },
+    { "collection": "area_login", "key": "privacy_link", "locale": "ru", "is_published": true, "value": { "label": "Конфиденциальность", "href": "/privacy" } },
+    { "collection": "area_login", "key": "termini_link", "locale": "ru", "is_published": true, "value": { "label": "Условия", "href": "/termini-condizioni" } }
+  ]
+}

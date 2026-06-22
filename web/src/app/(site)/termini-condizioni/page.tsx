@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
-import { LegalPlaceholder } from "@/components/site/legal-placeholder";
-import { text } from "@/lib/content";
+import { LegalDocView } from "@/components/site/legal-doc";
+import { getLegalDoc } from "@/content/legal";
 
-export const metadata: Metadata = { title: "Condizioni di vendita" };
+const doc = getLegalDoc("termini");
+
+export const metadata: Metadata = { title: doc.title, description: doc.intro };
 
 export default function TerminiPage() {
-  return (
-    <LegalPlaceholder
-      title={text("legale", "tc_title", "Condizioni di vendita")}
-      intro="I termini e le condizioni che regolano il nostro servizio."
-    />
-  );
+  return <LegalDocView doc={doc} />;
 }

@@ -195,43 +195,10 @@ export const reviews: Review[] = [
   },
 ];
 
-export type GuidePreview = {
-  title: string;
-  excerpt: string;
-  category: string;
-  slug: string;
-};
-
-export const guides: GuidePreview[] = [
-  {
-    title: "Successione: cos'e e quando va presentata",
-    excerpt:
-      "Una guida chiara per capire l'adempimento, i termini e cosa si rischia a non farlo.",
-    category: "Capire la successione",
-    slug: "successione-cosa-e",
-  },
-  {
-    title: "Quanto si paga di imposte di successione nel 2026",
-    excerpt:
-      "Franchigie, aliquote e autoliquidazione: come funzionano le imposte e chi le paga.",
-    category: "Imposte e costi",
-    slug: "imposte-successione-2026",
-  },
-  {
-    title: "I documenti per la successione: la lista completa",
-    excerpt:
-      "Tutti i documenti tipici e come recuperarli, caso per caso.",
-    category: "Documenti",
-    slug: "documenti-successione",
-  },
-  {
-    title: "Eredi che vivono all'estero: come gestire la pratica",
-    excerpt:
-      "Cosa cambia quando uno degli eredi risiede fuori dall'Italia.",
-    category: "Eredi stranieri",
-    slug: "eredi-estero",
-  },
-];
+/*
+  Le anteprime delle guide (ex `guides`/`GuidePreview`) sono confluite negli
+  articoli data-driven: vedi `@/content/articles` e l'accesso via `@/lib/cms`.
+*/
 
 export type DocItem = {
   name: string;

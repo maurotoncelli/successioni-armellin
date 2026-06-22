@@ -12,6 +12,8 @@
 ## Sintesi
 Lo spazio dove il cliente accede in modo semplice (passwordless), monitora lo stato della pratica, carica i documenti richiesti e scarica i documenti finali. Pensata per utenti non tecnici (over-50), mobile-first, sicura e conforme al GDPR.
 
+> **Naming (user-facing):** nelle interfacce rivolte al cliente questa sezione si chiama **"Area personale"** (non "Area Riservata", che risultava ambiguo). Il titolo di capitolo e la **rotta tecnica `/area-riservata`** restano invariati per continuita interna. Etichetta gestita data-driven via `settings.area_label` (IT) e `area_login.header_title` per l'H1 di login. Vedi [DECISIONI.md](DECISIONI.md).
+
 ---
 
 ## Stato attuale del progetto

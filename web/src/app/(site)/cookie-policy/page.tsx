@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
-import { LegalPlaceholder } from "@/components/site/legal-placeholder";
-import { text } from "@/lib/content";
+import { LegalDocView } from "@/components/site/legal-doc";
+import { getLegalDoc } from "@/content/legal";
 
-export const metadata: Metadata = { title: "Cookie Policy" };
+const doc = getLegalDoc("cookie");
+
+export const metadata: Metadata = { title: doc.title, description: doc.intro };
 
 export default function CookiePolicyPage() {
-  return (
-    <LegalPlaceholder
-      title={text("legale", "cookie_title", "Cookie Policy")}
-      intro="I cookie e le tecnologie simili che utilizziamo e come gestire i consensi."
-    />
-  );
+  return <LegalDocView doc={doc} />;
 }

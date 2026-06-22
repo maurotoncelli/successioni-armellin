@@ -4,19 +4,16 @@ import {
   TrendingUp,
   Receipt,
 } from "lucide-react";
-import {
-  practices,
-  pipelineOrder,
-  statusLabels,
-  kpi,
-} from "@/content/crm-data";
+import { statusLabels } from "@/content/crm-data";
+import { getPractices, deriveKpi, statusCounts } from "@/lib/crm";
 import { CrmCard, SectionTitle } from "@/components/crm/ui";
 
-export default function StatistichePage() {
-  const byStatus = pipelineOrder.map((status) => ({
-    status,
-    count: practices.filter((p) => p.status === status).length,
-  }));
+export const dynamic = "force-dynamic";
+
+export default async function StatistichePage() {
+  const practices = await getPractices();
+  const kpi = deriveKpi(practices);
+  const byStatus = statusCounts(practices);
   const maxCount = Math.max(...byStatus.map((s) => s.count), 1);
 
   const paid = practices.filter((p) => p.paymentStatus === "PAID");

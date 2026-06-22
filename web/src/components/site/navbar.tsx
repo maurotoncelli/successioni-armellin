@@ -1,4 +1,4 @@
-import { cta, list } from "@/lib/content";
+import { cta, list, text } from "@/lib/content";
 import { NavbarClient } from "./navbar-client";
 
 export function Navbar() {
@@ -11,6 +11,15 @@ export function Navbar() {
     label: "Parla con Lorenzo",
     href: "tel:+39",
   });
+  const areaLabel = text("settings", "area_label", "Area personale");
 
-  return <NavbarClient menu={menu} cta={mainCta} ctaPhone={phoneCta} />;
+  // La navbar resta statica: lo switcher rileva la lingua dal cookie lato client.
+  return (
+    <NavbarClient
+      menu={menu}
+      cta={mainCta}
+      ctaPhone={phoneCta}
+      areaLabel={areaLabel}
+    />
+  );
 }

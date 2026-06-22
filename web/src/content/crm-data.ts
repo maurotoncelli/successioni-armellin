@@ -16,7 +16,12 @@ export type PracticeStatus =
 
 export type ActionOwner = "ADMIN" | "CLIENT" | "EXTERNAL" | "NONE";
 export type PackageType = "SEMPLICE" | "COMPLETO" | "ZERO_STRESS" | null;
-export type PaymentStatus = "NONE" | "PENDING" | "PAID" | "REFUNDED";
+export type PaymentStatus =
+  | "NONE"
+  | "PENDING"
+  | "PAID"
+  | "PARTIALLY_REFUNDED"
+  | "REFUNDED";
 export type RequirementStatus =
   | "ATTESO"
   | "CARICATO"
@@ -61,6 +66,9 @@ export type ChecklistItem = {
   status: RequirementStatus;
   reason?: string; // motivo del rifiuto (stato RIFIUTATO)
   help?: string; // istruzioni mostrate al cliente
+  filePath?: string; // percorso del file in Storage (privato)
+  fileName?: string; // nome originale del file caricato dal cliente
+  uploadedAt?: string; // ISO timestamp dell'ultimo caricamento
 };
 
 export type Communication = {

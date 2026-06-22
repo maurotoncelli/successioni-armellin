@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Search, Plus, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -18,6 +18,16 @@ const mobileNav = [
 export function Topbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [query, setQuery] = useState(searchParams.get("q") ?? "");
+
+  function onSearch(e: React.FormEvent) {
+    e.preventDefault();
+    const q = query.trim();
+    if (q.length < 2) return;
+    router.push(`/crm/cerca?q=${encodeURIComponent(q)}`);
+  }
 
   return (
     <header className="sticky top-0 z-30 border-b border-crm-border bg-crm-bg2/80 backdrop-blur">
@@ -31,22 +41,24 @@ export function Topbar() {
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
 
-        <div className="relative flex-1 max-w-xl">
+        <form onSubmit={onSearch} className="relative flex-1 max-w-xl">
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-crm-muted" />
           <input
             type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
             placeholder="Cerca per codice pratica, CF defunto, nome, email..."
             className="h-9 w-full rounded-lg border border-crm-border bg-crm-surface pl-9 pr-3 text-sm text-crm-text placeholder:text-crm-muted focus:border-crm-accent focus:outline-none"
           />
-        </div>
+        </form>
 
-        <button
-          type="button"
+        <Link
+          href="/crm/pratiche/nuova"
           className="hidden items-center gap-1.5 rounded-lg crm-gradient px-3.5 py-2 text-sm font-semibold text-white sm:inline-flex"
         >
           <Plus className="h-4 w-4" />
           Nuova pratica
-        </button>
+        </Link>
       </div>
 
       {open && (

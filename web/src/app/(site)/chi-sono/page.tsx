@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { MapPin, BadgeCheck } from "lucide-react";
+import Image from "next/image";
+import { MapPin, BadgeCheck, Play } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { Card } from "@/components/ui/card";
@@ -30,14 +31,22 @@ export default function ChiSonoPage() {
   return (
     <>
       <PageHero
-        eyebrow="Chi sono"
+        eyebrow={text("chi_siamo", "hero_eyebrow", "Chi sono")}
         title={text("chi_siamo", "hero_title")}
         subtitle={text("chi_siamo", "hero_subtitle")}
       />
 
       <Section>
         <div className="grid items-start gap-10 md:grid-cols-2">
-          <div className="aspect-[4/5] rounded-2xl bg-secondary/90" aria-hidden />
+          <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-primary/10 shadow-sm">
+            <Image
+              src="/images/lorenzo-ritratto.png"
+              alt="Geom. Lorenzo Armellin (immagine indicativa)"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover"
+            />
+          </div>
           <div>
             <h2 className="text-3xl">{text("chi_siamo", "team_title")}</h2>
             <p className="mt-4 leading-relaxed text-text-muted">
@@ -73,6 +82,32 @@ export default function ChiSonoPage() {
           <p className="mt-2 text-sm text-text-muted">
             {text("chi_siamo", "studio_nota")}
           </p>
+        </div>
+      </Section>
+
+      <Section tone="sand">
+        <div className="mx-auto max-w-3xl">
+          <figure className="group relative aspect-video overflow-hidden rounded-2xl border border-primary/10 shadow-md">
+            <Image
+              src="/images/lorenzo-video-poster.png"
+              alt="Video di benvenuto del Geom. Lorenzo Armellin (immagine indicativa)"
+              fill
+              sizes="(max-width: 768px) 100vw, 768px"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-primary/25 transition-colors group-hover:bg-primary/15" />
+            <span className="absolute inset-0 grid place-items-center">
+              <span className="grid h-20 w-20 place-items-center rounded-full bg-white/90 text-primary shadow-lg transition-transform group-hover:scale-105">
+                <Play className="h-8 w-8 translate-x-0.5 fill-current" />
+              </span>
+            </span>
+            <span className="absolute bottom-3 right-3 rounded-full bg-primary/80 px-3 py-1 text-xs font-medium text-white backdrop-blur">
+              Video in arrivo
+            </span>
+          </figure>
+          <figcaption className="mt-4 text-center text-sm text-text-muted">
+            {text("chi_siamo", "video_caption")}
+          </figcaption>
         </div>
       </Section>
 

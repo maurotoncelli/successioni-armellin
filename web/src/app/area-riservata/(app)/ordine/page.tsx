@@ -1,20 +1,35 @@
 import Link from "next/link";
-import { Check, Download, Landmark } from "lucide-react";
+import { Check, Landmark } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { PageHeading } from "@/components/area/ui";
-import { currentPractice as p } from "@/content/area-data";
+import { NoPracticeState } from "@/components/area/empty";
+import { InvoiceDownload } from "@/components/area/invoice-download";
+import { requireClientView } from "@/lib/area";
 import { getPackages } from "@/lib/cms";
+import { getSafeExtras } from "@/lib/practice-extras";
 
 const paymentLabels: Record<string, string> = {
   PAID: "Pagato",
   PENDING: "In attesa",
+  PARTIALLY_REFUNDED: "Rimborsato in parte",
   REFUNDED: "Rimborsato",
   NONE: "—",
 };
 
 export default async function OrdinePage() {
+  const { practice: p } = await requireClientView();
+  if (!p) {
+    return (
+      <div>
+        <PageHeading title="Il tuo acquisto" subtitle="Riepilogo ordine." />
+        <NoPracticeState />
+      </div>
+    );
+  }
+
   const packages = await getPackages();
   const pkg = packages.find((x) => x.key === p.selectedPackage);
+  const { invoice } = await getSafeExtras(p.id);
 
   return (
     <div>
@@ -63,12 +78,17 @@ export default async function OrdinePage() {
             </div>
           </dl>
 
-          <button
-            className="mt-4 inline-flex items-center gap-2 rounded-[10px] border border-primary/20 px-4 py-2 text-sm font-medium text-primary hover:bg-primary/5"
-          >
-            <Download className="h-4 w-4" />
-            Scarica fattura
-          </button>
+          {invoice?.hasFile ? (
+            <InvoiceDownload number={invoice.number} />
+          ) : invoice ? (
+            <p className="mt-4 text-sm text-text-muted">
+              Fattura n. {invoice.number} emessa. Il PDF sara disponibile a breve.
+            </p>
+          ) : (
+            <p className="mt-4 text-sm text-text-muted">
+              La fattura sara disponibile qui non appena emessa.
+            </p>
+          )}
         </Card>
 
         {/* Cosa include */}
