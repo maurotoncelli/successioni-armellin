@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { getAdminClient, isAdminConfigured } from "@/lib/supabase/admin";
-import type { PackageKey } from "@/lib/supabase/types";
+import { computeEsito, suggestedPackage, type Esito } from "@/lib/quote";
 
 export type LeadInput = {
   relation: string; // coniuge | figlio | genitore | fratello | nipote | altro
@@ -15,11 +15,13 @@ export type LeadInput = {
   email: string;
   phone: string;
   marketing: boolean;
+  /** Da dove arriva il lead: opt-in email sul risultato o richiesta su misura. */
+  kind?: "email_quote" | "custom_quote";
 };
 
 export type LeadResult = {
   ok: boolean;
-  esito: "a" | "b" | "c";
+  esito: Esito;
   code?: string;
   practiceId?: string;
 };
@@ -32,24 +34,6 @@ const relationLabels: Record<string, string> = {
   nipote: "Nipote",
   altro: "Altro",
 };
-
-// Parenti in linea retta (discendenti/ascendenti): rientrano nei casi di
-// possibile esonero dalla dichiarazione (art. 28 TUS) quando non ci sono immobili.
-const directLineRelations = ["figlio", "genitore"];
-
-function computeEsito(input: LeadInput): "a" | "b" | "c" {
-  // Allineato a @04: casi incerti/complessi -> consulenza/su misura.
-  if (input.hasOther === "si" || input.hasRealEstate === "nonso") return "c";
-  if (input.hasRealEstate === "no" && directLineRelations.includes(input.relation))
-    return "a";
-  return "b";
-}
-
-function suggestedPackage(esito: "a" | "b" | "c"): PackageKey | null {
-  if (esito === "a") return "SEMPLICE";
-  if (esito === "b") return "COMPLETO";
-  return null; // su misura
-}
 
 function splitName(full: string): { first: string; last: string } {
   const parts = full.trim().split(/\s+/);
@@ -76,6 +60,13 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
     const heirsCount = Number.parseInt(input.heirs || "0", 10) || 0;
     const fullName = input.name.trim() || `${first} ${last}`.trim();
     const nowStamp = new Date().toISOString().slice(0, 16).replace("T", " ");
+    const isCustom = input.kind === "custom_quote" || esito === "c";
+    const source =
+      input.kind === "custom_quote"
+        ? "Richiesta preventivo su misura (sito)"
+        : input.kind === "email_quote"
+          ? "Preventivo via email (sito)"
+          : "Form sito";
 
     const { data: contact, error: contactErr } = await admin
       .from("contacts")
@@ -84,7 +75,7 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
         last_name: last,
         email: input.email.trim() || null,
         phone: input.phone.trim() || null,
-        source: "Form sito",
+        source,
         marketing_consent: input.marketing,
         last_activity: isoDate(),
       })
@@ -107,15 +98,19 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
         has_real_estate: input.hasRealEstate === "si",
         real_estate_count:
           input.hasRealEstate === "si" ? (input.realEstateCount ?? null) : null,
-        requires_custom_quote: esito === "c",
+        requires_custom_quote: isCustom,
         suggested_package: suggestedPackage(esito),
-        notes: "Lead dal form preventivo del sito.",
+        notes: isCustom
+          ? "Richiesta di preventivo su misura dal sito."
+          : "Lead dal preventivo del sito (opt-in email).",
         communications: [
           {
             channel: "EMAIL",
             direction: "OUTBOUND",
             source: "AUTO",
-            subject: "Abbiamo ricevuto la tua richiesta",
+            subject: isCustom
+              ? "Abbiamo ricevuto la tua richiesta di preventivo su misura"
+              : "Ecco il tuo preventivo",
             occurredAt: nowStamp,
           },
         ],

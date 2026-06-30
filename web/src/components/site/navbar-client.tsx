@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Phone, Lock } from "lucide-react";
+import { Menu, X, Phone, UserRound } from "lucide-react";
 import type { Cta } from "@/lib/content";
 import { buttonClasses } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -34,7 +34,7 @@ export function NavbarClient({
     <header className="sticky top-0 z-40 border-b border-primary/10 bg-bg/90 backdrop-blur">
       <nav className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-5 sm:px-8">
         <Link href="/" className="flex items-center gap-2" aria-label="Home">
-          <span className="grid h-9 w-9 place-items-center rounded-md bg-primary font-display text-lg font-bold text-white">
+          <span className="grid h-9 w-9 place-items-center rounded-md bg-accent font-display text-lg font-bold text-white">
             A
           </span>
           <span className="font-serif text-lg font-semibold text-primary">
@@ -46,12 +46,12 @@ export function NavbarClient({
           </span>
         </Link>
 
-        <ul className="hidden items-center gap-7 lg:flex">
+        <ul className="hidden items-center gap-6 xl:flex">
           {menu.map((item) => (
             <li key={item.href}>
               <Link
                 href={item.href}
-                className="text-sm font-medium text-text transition-colors hover:text-accent"
+                className="whitespace-nowrap text-sm font-medium text-text transition-colors hover:text-accent"
               >
                 {item.label}
               </Link>
@@ -59,33 +59,41 @@ export function NavbarClient({
           ))}
         </ul>
 
-        <div className="hidden items-center gap-3 lg:flex">
-          <a
-            href={ctaPhone.href}
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-accent"
-          >
-            <Phone className="h-4 w-4" />
-            {ctaPhone.label}
-          </a>
+        <div className="hidden items-center gap-3 xl:flex">
           <Link
             href="/area-riservata"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-accent"
+            className="inline-flex items-center gap-1.5 whitespace-nowrap text-sm font-medium text-primary hover:text-accent"
           >
-            <Lock className="h-4 w-4" />
+            <UserRound className="h-4 w-4 shrink-0" />
             {areaLabel}
           </Link>
           <LanguageSwitcher align="right" />
+          {/* Separatore: a destra le AZIONI (concettualmente diverse dalle voci di menu). */}
+          <span className="h-5 w-px bg-primary/15" aria-hidden />
+          <a
+            href={ctaPhone.href}
+            className={buttonClasses({
+              variant: "outline",
+              className: "whitespace-nowrap",
+            })}
+          >
+            <Phone className="h-4 w-4 shrink-0" />
+            {ctaPhone.label}
+          </a>
           {!hideQuoteCta && (
             <Link
               href={cta.href}
-              className={buttonClasses({ variant: "primary" })}
+              className={buttonClasses({
+                variant: "primary",
+                className: "whitespace-nowrap",
+              })}
             >
               {cta.label}
             </Link>
           )}
         </div>
 
-        <div className="flex items-center gap-1 lg:hidden">
+        <div className="flex items-center gap-1 xl:hidden">
           <LanguageSwitcher align="right" />
           <button
             type="button"
@@ -101,7 +109,7 @@ export function NavbarClient({
 
       <div
         className={cn(
-          "overflow-hidden border-t border-primary/10 bg-bg lg:hidden",
+          "overflow-hidden border-t border-primary/10 bg-bg xl:hidden",
           open ? "block" : "hidden",
         )}
       >
@@ -123,9 +131,23 @@ export function NavbarClient({
               className="flex items-center gap-2 rounded-md px-3 py-2.5 text-base font-medium text-text hover:bg-primary/5"
               onClick={() => setOpen(false)}
             >
-              <Lock className="h-4 w-4" />
+              <UserRound className="h-4 w-4 shrink-0" />
               {areaLabel}
             </Link>
+          </li>
+          {/* Azioni in fondo, separate dalle voci di menu. */}
+          <li className="mt-3 border-t border-primary/10 pt-3">
+            <a
+              href={ctaPhone.href}
+              className={buttonClasses({
+                variant: "outline",
+                className: "w-full",
+              })}
+              onClick={() => setOpen(false)}
+            >
+              <Phone className="h-4 w-4 shrink-0" />
+              {ctaPhone.label}
+            </a>
           </li>
           {!hideQuoteCta && (
             <li className="mt-2">

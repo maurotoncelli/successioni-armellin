@@ -127,6 +127,17 @@ async function handleCheckoutCompleted(
   const stamp = nowStamp();
   const today = new Date().toISOString().slice(0, 10);
 
+  // Backfill dei dati cliente da Stripe quando la pratica e nata "anonima"
+  // (checkout diretto dal sito): cosi il CRM sa chi ha pagato e parte la mail.
+  const customer = session.customer_details;
+  const backfill: Record<string, string> = {};
+  if (!row.client_email && customer?.email) backfill.client_email = customer.email;
+  if (row.client_name.trim() === "" && customer?.name)
+    backfill.client_name = customer.name;
+  if (!row.client_phone && customer?.phone)
+    backfill.client_phone = customer.phone;
+  const clientEmail = row.client_email || customer?.email || "";
+
   const communications = asArray<Record<string, unknown>>(row.communications);
   communications.unshift({
     channel: "EMAIL",
@@ -163,6 +174,7 @@ async function handleCheckoutCompleted(
       due_date: dueDate,
       communications,
       log,
+      ...backfill,
     })
     .eq("id", practiceId);
 
@@ -174,8 +186,8 @@ async function handleCheckoutCompleted(
   // Notifica automatica al cliente: pagamento ricevuto + invito a caricare i
   // documenti (@05, transizione "Pagato" = auto via webhook). La comunicazione
   // e gia registrata sopra; qui parte l'email vera (no-op se Resend non attivo).
-  if (row.client_email) {
-    await notifyStatusChange(row.client_email, "PAGATO");
+  if (clientEmail) {
+    await notifyStatusChange(clientEmail, "PAGATO");
   }
 
   // Fatturazione automatica dell'onorario (Opzione L), solo se attivata via env.

@@ -5,15 +5,30 @@ import Link from "next/link";
 import { Lock, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { trackEvent } from "@/lib/analytics";
+import { createCheckoutPractice } from "@/app/(site)/checkout/actions";
+import type { PackageKey } from "@/lib/supabase/types";
 
 /*
   Pannello di pagamento del checkout (client): raccoglie i consensi e avvia la
   sessione Stripe via POST /api/checkout, poi reindirizza alla pagina di Stripe.
-  La conferma del pagamento resta lato server (webhook), mai sul redirect.
+  Due sorgenti: pratica gia esistente (link dal CRM) oppure pacchetto+risposte
+  dal preventivo pubblico - in quel caso la pratica si crea SOLO ora, al click di
+  pagamento. La conferma del pagamento resta lato server (webhook).
 */
+
+type CheckoutAnswers = {
+  relation: string;
+  heirs: string;
+  hasRealEstate: string;
+  hasWill: string;
+  hasOther: string;
+};
 
 type Props = {
   practiceId: string | null;
+  packageKey?: PackageKey | null;
+  realEstateCount?: number | null;
+  answers?: CheckoutAnswers;
   payLabel: string;
   consensoTc: string;
   consensoAvvio: string;
@@ -24,6 +39,9 @@ type Props = {
 
 export function CheckoutPanel({
   practiceId,
+  packageKey = null,
+  realEstateCount = null,
+  answers,
   payLabel,
   consensoTc,
   consensoAvvio,
@@ -36,26 +54,60 @@ export function CheckoutPanel({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const canPay = Boolean(practiceId) && tc && avvio && !loading;
+  const hasOrder = Boolean(practiceId) || Boolean(packageKey);
+  const canPay = hasOrder && tc && avvio && !loading;
+
+  async function startStripe(id: string) {
+    const res = await fetch("/api/checkout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        practiceId: id,
+        packageKey: packageKey ?? undefined,
+      }),
+    });
+    const data = await res.json();
+    if (!res.ok || !data.url) {
+      setError(data?.error?.message ?? "Impossibile avviare il pagamento.");
+      setLoading(false);
+      return;
+    }
+    window.location.href = data.url as string;
+  }
 
   async function pay() {
-    if (!practiceId) return;
+    if (!hasOrder) return;
     setLoading(true);
     setError(null);
-    trackEvent("begin_checkout", { practice_id: practiceId });
+    trackEvent("begin_checkout", { practice_id: practiceId, package: packageKey });
     try {
-      const res = await fetch("/api/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ practiceId }),
-      });
-      const data = await res.json();
-      if (!res.ok || !data.url) {
-        setError(data?.error?.message ?? "Impossibile avviare il pagamento.");
-        setLoading(false);
+      // Pratica gia esistente (CRM) -> avvio diretto.
+      if (practiceId) {
+        await startStripe(practiceId);
         return;
       }
-      window.location.href = data.url as string;
+      // Preventivo pubblico -> creo la pratica adesso, poi avvio Stripe.
+      if (packageKey) {
+        const created = await createCheckoutPractice({
+          packageKey,
+          realEstateCount,
+          relation: answers?.relation,
+          heirs: answers?.heirs,
+          hasRealEstate: answers?.hasRealEstate,
+          hasWill: answers?.hasWill,
+          hasOther: answers?.hasOther,
+        });
+        if (!created.ok) {
+          setError(
+            created.reason === "not_configured"
+              ? "Pagamenti non ancora attivi. Riprova piu tardi o contattaci."
+              : "Impossibile avviare il pagamento. Riprova tra poco.",
+          );
+          setLoading(false);
+          return;
+        }
+        await startStripe(created.practiceId);
+      }
     } catch {
       setError("Errore di rete. Riprova tra poco.");
       setLoading(false);
@@ -92,14 +144,14 @@ export function CheckoutPanel({
         </label>
       </div>
 
-      {!practiceId && (
+      {!hasOrder && (
         <p className="mt-4 flex items-start gap-2 rounded-[10px] bg-amber-50 p-3 text-xs text-amber-700">
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
           Per pagare, parti dal{" "}
           <Link href="/preventivo" className="font-medium underline">
             calcolo del preventivo
           </Link>
-          : così colleghiamo il pagamento alla tua pratica.
+          : così ti proponiamo il pacchetto giusto.
         </p>
       )}
 

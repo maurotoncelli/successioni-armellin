@@ -7,6 +7,7 @@ import { CheckoutPanel } from "@/components/site/checkout-panel";
 import { getPackages, getAddons } from "@/lib/cms";
 import { getPractice } from "@/lib/crm";
 import { buildOrder } from "@/lib/order";
+import { isPackageKey } from "@/lib/quote";
 import type { PackageKey } from "@/lib/supabase/types";
 import { cta, list, text } from "@/lib/content";
 
@@ -20,22 +21,40 @@ export const dynamic = "force-dynamic";
 export default async function CheckoutPage({
   searchParams,
 }: {
-  searchParams: Promise<{ practice?: string; annullato?: string }>;
+  searchParams: Promise<{
+    practice?: string;
+    annullato?: string;
+    pkg?: string;
+    recount?: string;
+    rel?: string;
+    heirs?: string;
+    hasre?: string;
+    will?: string;
+    other?: string;
+  }>;
 }) {
-  const { practice: practiceId, annullato } = await searchParams;
+  const sp = await searchParams;
+  const { practice: practiceId, annullato } = sp;
 
   const [packages, addons] = await Promise.all([getPackages(), getAddons()]);
   const practice = practiceId ? await getPractice(practiceId) : undefined;
 
+  // Due sorgenti: pratica esistente (link dal CRM) OPPURE parametri dal preventivo
+  // pubblico (flusso "result-first": la pratica si crea al pagamento).
+  const paramPackage = isPackageKey(sp.pkg) ? sp.pkg : undefined;
+  const paramReCount = sp.recount ? Number.parseInt(sp.recount, 10) : null;
+
   const packageKey = (practice?.selectedPackage ??
     practice?.suggestedPackage ??
-    undefined) as PackageKey | undefined;
+    paramPackage) as PackageKey | undefined;
+
+  const realEstateCount = practice?.realEstateCount ?? paramReCount ?? null;
 
   const order = packageKey
     ? buildOrder(
         {
           packageKey,
-          realEstateCount: practice?.realEstateCount ?? null,
+          realEstateCount,
         },
         packages,
         addons,
@@ -136,7 +155,16 @@ export default async function CheckoutPage({
                 <h2 className="text-xl">{text("checkout", "pagamento_title")}</h2>
                 <div className="mt-4">
                   <CheckoutPanel
-                    practiceId={order ? (practiceId ?? null) : null}
+                    practiceId={practiceId ?? null}
+                    packageKey={order ? (packageKey ?? null) : null}
+                    realEstateCount={realEstateCount}
+                    answers={{
+                      relation: sp.rel ?? "",
+                      heirs: sp.heirs ?? "",
+                      hasRealEstate: sp.hasre ?? "",
+                      hasWill: sp.will ?? "no",
+                      hasOther: sp.other ?? "no",
+                    }}
                     payLabel={cta("checkout", "cta_pay").label}
                     consensoTc={text("checkout", "consenso_tc")}
                     consensoAvvio={text("checkout", "consenso_avvio")}

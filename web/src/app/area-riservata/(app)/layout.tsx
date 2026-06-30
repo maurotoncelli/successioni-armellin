@@ -21,7 +21,7 @@ export default async function AreaAppLayout({
               href="/area-riservata/dashboard"
               className="flex items-center gap-2"
             >
-              <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-sm font-bold text-white">
+              <span className="grid h-8 w-8 place-items-center rounded-lg bg-accent text-sm font-bold text-white">
                 A
               </span>
               <span className="hidden font-display text-sm font-semibold text-primary sm:block">

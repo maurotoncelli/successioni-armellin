@@ -1,18 +1,24 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { createLead } from "@/app/(site)/preventivo/actions";
+import { computeEsito, suggestedPackage } from "@/lib/quote";
 import { trackEvent } from "@/lib/analytics";
+
+/*
+  Form pubblico del preventivo - versione "result-first" (no barriera contatti).
+  Solo domande: al termine calcoliamo l'esito LATO CLIENT (nessun dato personale,
+  nessuna scrittura su DB) e portiamo l'utente alla pagina risultato passando le
+  risposte via query string. I contatti si chiedono solo dopo, e solo se serve
+  (pagamento, opt-in email, preventivo su misura).
+*/
 
 type Props = {
   stepTitles: string[];
   progressLabel: string;
-  consensoPrivacy: string;
-  consensoMarketing: string;
   submitLabel: string;
   trustItems: string[];
 };
@@ -63,8 +69,6 @@ const yesNo: Choice[] = [
 export function PreventivoForm({
   stepTitles,
   progressLabel,
-  consensoPrivacy,
-  consensoMarketing,
   submitLabel,
   trustItems,
 }: Props) {
@@ -78,39 +82,14 @@ export function PreventivoForm({
   const [realEstateCount, setRealEstateCount] = useState("");
   const [hasWill, setHasWill] = useState("");
   const [hasOther, setHasOther] = useState("");
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [privacy, setPrivacy] = useState(false);
-  const [marketing, setMarketing] = useState(false);
-  const [touched, setTouched] = useState<{
-    name?: boolean;
-    email?: boolean;
-    phone?: boolean;
-  }>({});
-  const [pending, startTransition] = useTransition();
-
-  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
-  const phoneValid =
-    phone.trim() === "" || /^[+()\d][\d\s().-]{5,19}$/.test(phone.trim());
-  const nameValid = name.trim() !== "";
-
-  const nameError =
-    touched.name && !nameValid ? "Inserisci nome e cognome." : "";
-  const emailError =
-    email.trim() !== "" && !emailValid
-      ? "Inserisci un'email valida (es. nome@email.it)."
-      : touched.email && email.trim() === ""
-        ? "L'email e obbligatoria."
-        : "";
-  const phoneError =
-    phone.trim() !== "" && !phoneValid
-      ? "Inserisci un numero di telefono valido."
-      : "";
 
   const progress = ((step + 1) / total) * 100;
-  const canSubmit =
-    privacy && nameValid && emailValid && phoneValid && !pending;
+
+  // Avanti abilitato solo quando la domanda dello step ha una risposta.
+  const stepValid =
+    (step === 0 && relation !== "") ||
+    (step === 1 && heirs !== "") ||
+    (step === 2 && hasRealEstate !== "");
 
   function next() {
     setStep((s) => Math.min(s + 1, total - 1));
@@ -118,33 +97,29 @@ export function PreventivoForm({
   function back() {
     setStep((s) => Math.max(s - 1, 0));
   }
-  function submit() {
-    startTransition(async () => {
-      const parsedRealEstate = Number.parseInt(realEstateCount, 10);
-      const result = await createLead({
-        relation,
-        heirs,
-        hasRealEstate,
-        realEstateCount:
-          hasRealEstate === "si" && Number.isFinite(parsedRealEstate)
-            ? parsedRealEstate
-            : null,
-        hasWill,
-        hasOther,
-        name,
-        email,
-        phone,
-        marketing,
-      });
-      trackEvent("generate_lead", {
-        esito: result.esito,
-        relation,
-        has_real_estate: hasRealEstate,
-      });
-      const params = new URLSearchParams({ esito: result.esito });
-      if (result.practiceId) params.set("practice", result.practiceId);
-      router.push(`/preventivo/grazie?${params.toString()}`);
+
+  function seeResult() {
+    const esito = computeEsito({ relation, hasRealEstate, hasOther });
+    const pkg = suggestedPackage(esito);
+    const parsed = Number.parseInt(realEstateCount, 10);
+    const params = new URLSearchParams({
+      esito,
+      rel: relation,
+      heirs,
+      hasre: hasRealEstate,
+      will: hasWill || "no",
+      other: hasOther || "no",
     });
+    if (pkg) params.set("pkg", pkg);
+    if (hasRealEstate === "si" && Number.isFinite(parsed) && parsed > 0) {
+      params.set("recount", String(parsed));
+    }
+    trackEvent("quote_result", {
+      esito,
+      relation,
+      has_real_estate: hasRealEstate,
+    });
+    router.push(`/preventivo/grazie?${params.toString()}`);
   }
 
   return (
@@ -165,21 +140,19 @@ export function PreventivoForm({
 
         <div className="mt-6 space-y-6">
           {step === 0 && (
-            <>
-              <OptionGroup
-                label="Che parentela hai con la persona mancata?"
-                options={[
-                  { value: "coniuge", label: "Coniuge" },
-                  { value: "figlio", label: "Figlio/a" },
-                  { value: "genitore", label: "Genitore (madre/padre)" },
-                  { value: "fratello", label: "Fratello/Sorella" },
-                  { value: "nipote", label: "Nipote" },
-                  { value: "altro", label: "Altro" },
-                ]}
-                value={relation}
-                onChange={setRelation}
-              />
-            </>
+            <OptionGroup
+              label="Che parentela hai con la persona mancata?"
+              options={[
+                { value: "coniuge", label: "Coniuge" },
+                { value: "figlio", label: "Figlio/a" },
+                { value: "genitore", label: "Genitore (madre/padre)" },
+                { value: "fratello", label: "Fratello/Sorella" },
+                { value: "nipote", label: "Nipote" },
+                { value: "altro", label: "Altro" },
+              ]}
+              value={relation}
+              onChange={setRelation}
+            />
           )}
 
           {step === 1 && (
@@ -244,59 +217,6 @@ export function PreventivoForm({
               />
             </>
           )}
-
-          {step === 3 && (
-            <>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <Input
-                  label="Nome e cognome"
-                  name="name"
-                  value={name}
-                  onChange={setName}
-                  onBlur={() => setTouched((t) => ({ ...t, name: true }))}
-                  error={nameError}
-                />
-                <Input
-                  label="Email"
-                  name="email"
-                  type="email"
-                  inputMode="email"
-                  value={email}
-                  onChange={setEmail}
-                  onBlur={() => setTouched((t) => ({ ...t, email: true }))}
-                  error={emailError}
-                />
-              </div>
-              <Input
-                label="Telefono"
-                name="phone"
-                type="tel"
-                inputMode="tel"
-                value={phone}
-                onChange={setPhone}
-                onBlur={() => setTouched((t) => ({ ...t, phone: true }))}
-                error={phoneError}
-              />
-              <label className="flex items-start gap-3 text-sm text-text">
-                <input
-                  type="checkbox"
-                  checked={privacy}
-                  onChange={(e) => setPrivacy(e.target.checked)}
-                  className="mt-1 h-4 w-4 accent-[var(--color-accent)]"
-                />
-                <span>{consensoPrivacy}</span>
-              </label>
-              <label className="flex items-start gap-3 text-sm text-text-muted">
-                <input
-                  type="checkbox"
-                  checked={marketing}
-                  onChange={(e) => setMarketing(e.target.checked)}
-                  className="mt-1 h-4 w-4 accent-[var(--color-accent)]"
-                />
-                <span>{consensoMarketing}</span>
-              </label>
-            </>
-          )}
         </div>
 
         <div className="mt-8 flex items-center justify-between gap-3">
@@ -310,13 +230,14 @@ export function PreventivoForm({
           )}
 
           {step < total - 1 ? (
-            <Button onClick={next}>
+            <Button onClick={next} disabled={!stepValid}>
               Avanti
               <ArrowRight className="h-4 w-4" />
             </Button>
           ) : (
-            <Button onClick={submit} disabled={!canSubmit} size="lg">
-              {pending ? "Invio in corso…" : submitLabel}
+            <Button onClick={seeResult} disabled={!stepValid} size="lg">
+              <Sparkles className="h-4 w-4" />
+              {submitLabel}
             </Button>
           )}
         </div>
@@ -327,59 +248,6 @@ export function PreventivoForm({
           <li key={item}>&bull; {item}</li>
         ))}
       </ul>
-    </div>
-  );
-}
-
-function Input({
-  label,
-  name,
-  type = "text",
-  value,
-  onChange,
-  onBlur,
-  error,
-  inputMode,
-}: {
-  label: string;
-  name: string;
-  type?: string;
-  value: string;
-  onChange: (v: string) => void;
-  onBlur?: () => void;
-  error?: string;
-  inputMode?: "text" | "email" | "tel" | "numeric";
-}) {
-  return (
-    <div>
-      <label
-        htmlFor={name}
-        className="mb-1.5 block text-sm font-medium text-primary"
-      >
-        {label}
-      </label>
-      <input
-        id={name}
-        name={name}
-        type={type}
-        inputMode={inputMode}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        onBlur={onBlur}
-        aria-invalid={Boolean(error)}
-        aria-describedby={error ? `${name}-error` : undefined}
-        className={cn(
-          "w-full rounded-[10px] border bg-bg px-3 py-2.5 text-sm focus:outline-none",
-          error
-            ? "border-error focus:border-error"
-            : "border-primary/20 focus:border-accent",
-        )}
-      />
-      {error && (
-        <p id={`${name}-error`} className="mt-1 text-xs text-error">
-          {error}
-        </p>
-      )}
     </div>
   );
 }

@@ -13,7 +13,6 @@ export default function PreventivoPage() {
     text("preventivo", "step1_title", "Partiamo dalle basi"),
     text("preventivo", "step2_title", "Chi sono gli eredi"),
     text("preventivo", "step3_title", "Cosa fa parte dell'eredita"),
-    text("preventivo", "step4_title", "Dove ti mandiamo il preventivo"),
   ];
 
   return (
@@ -31,12 +30,10 @@ export default function PreventivoPage() {
         <div className="mt-10">
           <PreventivoForm
             stepTitles={stepTitles}
-            progressLabel={text("preventivo", "progress_label", "Passo {n} di 4")}
-            consensoPrivacy={text("preventivo", "consenso_privacy")}
-            consensoMarketing={text("preventivo", "consenso_marketing")}
+            progressLabel={text("preventivo", "progress_label", "Passo {n} di 3")}
             submitLabel={
               cta("preventivo", "cta_submit", {
-                label: "Invia e ricevi il preventivo gratuito",
+                label: "Vedi subito il risultato",
                 href: "#",
               }).label
             }

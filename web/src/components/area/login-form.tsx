@@ -89,7 +89,7 @@ export function LoginForm({ locale }: { locale: string }) {
     <div className="flex min-h-screen items-center justify-center px-4 py-10">
       <div className="w-full max-w-md">
         <div className="mb-6 text-center">
-          <span className="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-primary text-lg font-bold text-white">
+          <span className="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-accent text-lg font-bold text-white">
             A
           </span>
           <h1 className="mt-4 font-display text-2xl font-semibold text-primary">
