@@ -23,7 +23,7 @@
 
     { "collection": "globals", "key": "mobile_cta", "locale": "it", "is_published": true, "value": { "label": "Calcola il preventivo gratis", "href": "/preventivo" } },
 
-    { "collection": "footer", "key": "studio", "locale": "it", "is_published": true, "value": { "ragione_sociale": "Geom. Lorenzo Armellin", "forma_giuridica": "Ditta individuale - regime forfettario (operazione senza IVA, art. 1 c. 54-89 L. 190/2014)", "piva": "DA CONFERMARE", "cf": "DA CONFERMARE", "rea": "DA CONFERMARE", "albo": "Collegio Geometri e Geometri Laureati di Pisa, n. 1969 (DA CONFERMARE)", "indirizzo": "Via Vittorio Veneto 31, 56025 Pontedera (PI)" } },
+    { "collection": "footer", "key": "studio", "locale": "it", "is_published": true, "value": { "ragione_sociale": "Geom. Lorenzo Armellin", "forma_giuridica": "Ditta individuale - regime forfettario (operazione senza IVA, art. 1 c. 54-89 L. 190/2014)", "piva": "02432220503", "cf": "RMLLNZ90E27G843J", "albo": "Collegio Geometri e Geometri Laureati di Pisa, n. 1969 - iscritto dal 21/01/2022", "indirizzo": "Via Vittorio Veneto 31, 56025 Pontedera (PI)" } },
     { "collection": "footer", "key": "trust_line", "locale": "it", "is_published": true, "value": "Geom. abilitato Entratel - con supervisione fiscale di un commercialista" },
     { "collection": "footer", "key": "odr", "locale": "it", "is_published": true, "value": { "label": "Risoluzione controversie online (ODR)", "href": "https://ec.europa.eu/consumers/odr" } },
     { "collection": "footer", "key": "legal_menu", "locale": "it", "is_published": true, "value": [
@@ -35,11 +35,11 @@
     ] },
     { "collection": "footer", "key": "credit", "locale": "it", "is_published": true, "value": "Realizzato da AT STUDIO" },
 
-    { "collection": "settings", "key": "phone", "locale": "it", "is_published": true, "value": "DA CONFERMARE" },
+    { "collection": "settings", "key": "phone", "locale": "it", "is_published": true, "value": "320 1570567" },
     { "collection": "settings", "key": "area_label", "locale": "it", "is_published": true, "value": "Area personale" },
-    { "collection": "settings", "key": "whatsapp", "locale": "it", "is_published": true, "value": "https://wa.me/39" },
-    { "collection": "settings", "key": "email", "locale": "it", "is_published": true, "value": "info@DA-CONFERMARE.it" },
-    { "collection": "settings", "key": "pec", "locale": "it", "is_published": true, "value": "DA CONFERMARE" },
+    { "collection": "settings", "key": "whatsapp", "locale": "it", "is_published": true, "value": "https://wa.me/393201570567" },
+    { "collection": "settings", "key": "email", "locale": "it", "is_published": true, "value": "studio@successioniarmellin.it" },
+    { "collection": "settings", "key": "pec", "locale": "it", "is_published": true, "value": "lorenzo.armellin@geopec.it" },
     { "collection": "settings", "key": "address", "locale": "it", "is_published": true, "value": { "via": "Via Vittorio Veneto 31", "cap": "56025", "citta": "Pontedera (PI)" } },
     { "collection": "settings", "key": "opening_hours", "locale": "it", "is_published": true, "value": [
       { "giorni": "Lun-Ven", "orario": "9:00-13:00 / 14:30-18:30" },
@@ -139,9 +139,9 @@
     { "collection": "chi_siamo", "key": "bio_body", "locale": "it", "is_published": false, "value": "Mi occupo di successioni ogni giorno. Da geometra, la mia forza e il controllo dei dati catastali - particelle, subalterni, annessi, atti di provenienza - che e poi il punto dove la maggior parte delle pratiche si blocca. Il mio obiettivo e semplice: toglierti un peso in un momento gia difficile, con prezzi chiari e senza farti girare tra uffici e banche." },
     { "collection": "chi_siamo", "key": "credenziali_title", "locale": "it", "is_published": true, "value": "Le mie credenziali" },
     { "collection": "chi_siamo", "key": "credenziali_list", "locale": "it", "is_published": false, "value": [
-      { "voce": "Iscrizione Albo dei Geometri", "dettaglio": "Collegio di Pisa n. 1969 (da confermare)" },
+      { "voce": "Iscrizione Albo dei Geometri", "dettaglio": "Collegio di Pisa n. 1969 - iscritto dal 21/01/2022" },
       { "voce": "Abilitazione Entratel", "dettaglio": "Intermediario per l'invio telematico all'Agenzia delle Entrate" },
-      { "voce": "Partita IVA", "dettaglio": "DA CONFERMARE" }
+      { "voce": "Partita IVA", "dettaglio": "02432220503" }
     ] },
     { "collection": "chi_siamo", "key": "team_title", "locale": "it", "is_published": true, "value": "Il meglio dei due mondi: geometra + commercialista" },
     { "collection": "chi_siamo", "key": "team_body", "locale": "it", "is_published": true, "value": "La dichiarazione la predispongo e la trasmetto io, che sono pienamente titolato a farlo. Per la parte fiscale mi avvalgo della supervisione di un commercialista: cosi unisci la precisione catastale di un geometra alla sicurezza sui numeri. Una sola pratica, due competenze." },
@@ -230,8 +230,8 @@
     { "collection": "contatti", "key": "hero_eyebrow", "locale": "it", "is_published": true, "value": "Contatti" },
     { "collection": "contatti", "key": "hero_title", "locale": "it", "is_published": true, "value": "Parla con noi" },
     { "collection": "contatti", "key": "hero_subtitle", "locale": "it", "is_published": true, "value": "Hai una domanda o vuoi capire se ti serve la successione? Scrivici o chiamaci: ti risponde una persona reale, non un bot." },
-    { "collection": "contatti", "key": "telefono", "locale": "it", "is_published": true, "value": { "label": "Telefono / WhatsApp", "numero": "+39 ...", "cta_chiama": "tel:+39", "cta_whatsapp": "https://wa.me/39" } },
-    { "collection": "contatti", "key": "email", "locale": "it", "is_published": true, "value": { "generale": "info@DA-CONFERMARE.it", "pec": "DA CONFERMARE" } },
+    { "collection": "contatti", "key": "telefono", "locale": "it", "is_published": true, "value": { "label": "Telefono / WhatsApp", "numero": "+39 320 1570567", "cta_chiama": "tel:+393201570567", "cta_whatsapp": "https://wa.me/393201570567" } },
+    { "collection": "contatti", "key": "email", "locale": "it", "is_published": true, "value": { "generale": "studio@successioniarmellin.it", "pec": "lorenzo.armellin@geopec.it" } },
     { "collection": "contatti", "key": "studio", "locale": "it", "is_published": true, "value": { "via": "Via Vittorio Veneto 31", "cap": "56025", "citta": "Pontedera (PI)" } },
     { "collection": "contatti", "key": "orari", "locale": "it", "is_published": false, "value": [ { "giorni": "Lun-Ven", "orario": "9:00-13:00 / 14:30-18:30" }, { "giorni": "Sab-Dom", "orario": "Chiuso" } ] },
     { "collection": "contatti", "key": "canali_title", "locale": "it", "is_published": true, "value": "Ti seguiamo anche nella tua lingua" },

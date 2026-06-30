@@ -14,21 +14,21 @@ Nota: alcune voci sono PRE-COMPILATE da fonti pubbliche (Collegio Geometri di Pi
 - [x] Partita IVA e Codice Fiscale:
   - CONFERMATO (Riunione 2): P.IVA 02432220503 · C.F. RMLLNZ90E27G843J.
 - [x] Numero e data di iscrizione all'Albo dei Geometri (e collegio provinciale):
-  - CONFERMATO (Riunione 2): iscrizione Albo OK (Collegio Geometri Pisa, n. 1969). Nota: verificare la data (il web riporta 21/01/2022, ma Lorenzo lavora in proprio dal 2012 - possibile re-iscrizione/trasferimento collegio).
+  - CONFERMATO (Riunione 3, 29/06): Collegio Geometri Pisa, **n. 1969, iscritto dal 21/01/2022**.
 - [x] Indirizzo completo dello studio:
   - CONFERMATO (studio operativo da mostrare sul sito): Via Vittorio Veneto 31, 56025 Pontedera (PI)
   - Nota: il Collegio riporta Via Cappelletto 55, Santa Maria a Monte (PI) - probabile indirizzo di residenza/registrazione, NON da usare sul sito.
-- [ ] PEC, email ordinaria, telefono, eventuale numero WhatsApp Business:
-  - (da web - DA CONFERMARE) PEC lorenzo.armellin@geopec.it · email geom.armellin@gmail.com · tel/cell 320 1570567
-  - Nota: per il sito serviranno email dedicate sul dominio (vedi @07), non la Gmail personale.
+- [x] PEC, email ordinaria, telefono, eventuale numero WhatsApp Business:
+  - CONFERMATO (Riunione 3): PEC **lorenzo.armellin@geopec.it** · telefono/WhatsApp **320 1570567** · Gmail per accesso admin CRM **geom.armellin@gmail.com**. Email pubblica del sito: **studio@successioniarmellin.it** (sul dominio).
 - [ ] Dati di nascita (per pagine legali/fatturazione, dato sensibile):
   - (da web - DA CONFERMARE) nato a Pontedera (PI) il 27/05/1990
 - [x] Orari di lavoro / disponibilita (impatta promesse di tempistica e SLA - @01):
   - CONFERMATO (Riunione 2): **orario ufficio 9:00-13:00 e 15:00-19:00**. Tempo di lavorazione: se ha tutti i documenti, completa la pratica in **3-4 giorni**.
-- [ ] **Numero REA** (Repertorio Economico Amministrativo) ed eventuale CCIAA di iscrizione: da recuperare dalla visura camerale (serve nel footer per la ditta individuale).
-- [ ] **Email dedicata sul dominio** per il footer e le richieste GDPR (es. `info@dominio` e `privacy@dominio`): da creare una volta registrato il dominio (oggi solo Gmail personale, non da pubblicare).
+- [x] **Numero REA** / iscrizione Registro Imprese:
+  - CONFERMATO (Riunione 3): **NON applicabile** - Lorenzo e professionista (geometra con P.IVA), **non iscritto al Registro Imprese / commercio**. Campo REA rimosso dal footer.
+- [x] **Email dedicata sul dominio**: CONFERMATO (Riunione 3) **studio@successioniarmellin.it** (pubblica) + **privacy@successioniarmellin.it** (GDPR). Da creare come caselle reali (vedi RUNBOOK_GoLive).
 
-> NOTA IMPLEMENTAZIONE (footer + pagine legali data-driven): i dati di questa sezione alimentano il **footer** (`footer.studio` + `settings`) e vengono interpolati automaticamente nelle pagine legali (privacy, condizioni, cookie) tramite i token `{{piva}}`, `{{cf}}`, `{{rea}}`, `{{pec}}`, `{{albo}}`, ecc. Finche non sono confermati restano a video come "DA CONFERMARE". **Prima del go-live**: inserire i valori definitivi in `web/src/content/content_entries.it.json` (collection `footer`/`settings`) - una sola modifica si riflette ovunque. P.IVA/C.F. risultano gia indicati in Riunione 2 (P.IVA 02432220503 · C.F. RMLLNZ90E27G843J): da ri-verificare formalmente sulla visura prima di pubblicarli, insieme a numero/data Albo e REA.
+> NOTA IMPLEMENTAZIONE (footer + pagine legali data-driven): i dati di questa sezione alimentano il **footer** (`footer.studio` + `settings`) e vengono interpolati automaticamente nelle pagine legali (privacy, condizioni, cookie) tramite i token `{{piva}}`, `{{cf}}`, `{{pec}}`, `{{albo}}`, ecc. **STATO (Riunione 3, 29/06)**: P.IVA, C.F., Albo+data, PEC, telefono ed email sono stati CONFERMATI e inseriti in `content_entries.it.json` (niente piu "DA CONFERMARE"). REA non applicabile. Resta da confermare solo la **data di nascita** (oggi non pubblicata).
 
 ## 2. Operativita attuale (per CRM e simulazione lavoro - @05)
 - [ ] Quante pratiche di successione gestisce oggi (al mese / all'anno)?
