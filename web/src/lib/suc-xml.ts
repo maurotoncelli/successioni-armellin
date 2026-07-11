@@ -339,10 +339,10 @@ export function buildSucXml(
       ) +
       wrap(
         "suc:ImpegnoATrasmettere",
-        el("suc:CFintermediario", cfFornitore, iF + "  ") +
-          el("suc:ImpegnoATrasmettere", "2", iF + "  ") + // 2 = dich. predisposta dall'intermediario
-          el("suc:DataImpegno", oggi, iF + "  ") +
-          el("suc:FirmaIntermediario", "1", iF + "  "),
+        el("reg:CFintermediario", cfFornitore, iF + "  ") +
+          el("reg:ImpegnoATrasmettere", "2", iF + "  ") + // 2 = dich. predisposta dall'intermediario
+          el("reg:DataImpegno", oggi, iF + "  ") +
+          el("reg:FirmaIntermediario", "1", iF + "  "),
         iF,
       ),
     iQ,
@@ -381,13 +381,13 @@ export function buildSucXml(
     const i2 = indent + "  ";
     return wrap(
       "suc:Luogo",
-      el("suc:Provincia", upper(im.provincia).slice(0, 2) || null, i2) +
+      el("reg:Provincia", upper(im.provincia).slice(0, 2) || null, i2) +
         wrap(
-          "suc:Italia",
-          el("suc:ComuneAmministrativo", upper(im.comune), i2 + "  ") +
-            el("suc:CodiceComune", upper(im.codice_comune), i2 + "  ") +
-            el("suc:Indirizzo", upper(im.indirizzo), i2 + "  ") +
-            el("suc:CodiceComuneAmministrativo", upper(im.codice_comune), i2 + "  "),
+          "reg:Italia",
+          el("reg:ComuneAmministrativo", upper(im.comune), i2 + "  ") +
+            el("reg:CodiceComune", upper(im.codice_comune), i2 + "  ") +
+            el("reg:Indirizzo", upper(im.indirizzo), i2 + "  ") +
+            el("reg:CodiceComuneAmministrativo", upper(im.codice_comune), i2 + "  "),
           i2,
         ),
       indent,
@@ -433,24 +433,24 @@ export function buildSucXml(
       wrap(
         "suc:DatiTerreni",
         wrap(
-          "suc:DatiCatastali",
-          el("suc:Foglio", im.foglio, i2 + "    ") +
-            el("suc:Particella", im.particella, i2 + "    ") +
-            el("suc:Subalterno", im.subalterno, i2 + "    "),
+          "reg:DatiCatastali",
+          el("reg:Foglio", im.foglio, i2 + "    ") +
+            el("reg:Particella", im.particella, i2 + "    ") +
+            el("reg:Subalterno", im.subalterno, i2 + "    "),
           i2 + "  ",
         ) +
           wrap(
-            "suc:DatiTerreni",
+            "reg:DatiTerreni",
             (superficie
               ? wrap(
-                  "suc:Superficie",
-                  el("suc:SuperficieAre", superficie.are, i2 + "      ") +
-                    el("suc:SuperficieCentiare", superficie.centiare, i2 + "      "),
+                  "reg:Superficie",
+                  el("reg:SuperficieAre", superficie.are, i2 + "      ") +
+                    el("reg:SuperficieCentiare", superficie.centiare, i2 + "      "),
                   i2 + "    ",
                 )
               : "") +
-              el("suc:Natura", upper(im.categoria).slice(0, 1) || "T", i2 + "    ") +
-              el("suc:RedditoDominicale", im.rendita, i2 + "    "),
+              el("reg:Natura", upper(im.categoria).slice(0, 1) || "T", i2 + "    ") +
+              el("reg:RedditoDominicale", im.rendita, i2 + "    "),
             i2 + "  ",
           ),
         i2,
@@ -478,18 +478,18 @@ export function buildSucXml(
       wrap(
         "suc:DatiFabbricati",
         wrap(
-          "suc:DatiCatastali",
-          el("suc:Foglio", im.foglio, i2 + "    ") +
-            el("suc:Particella", im.particella, i2 + "    ") +
-            el("suc:Subalterno", im.subalterno, i2 + "    "),
+          "reg:DatiCatastali",
+          el("reg:Foglio", im.foglio, i2 + "    ") +
+            el("reg:Particella", im.particella, i2 + "    ") +
+            el("reg:Subalterno", im.subalterno, i2 + "    "),
           i2 + "  ",
         ) +
           wrap(
-            "suc:DatiFabbricati",
-            el("suc:CategoriaCatastale", upper(im.categoria).replace("/", ""), i2 + "    ") +
-              el("suc:Classe", im.classe, i2 + "    ") +
-              el("suc:Consistenza", im.consistenza, i2 + "    ") +
-              el("suc:RenditaCatastale", im.rendita, i2 + "    "),
+            "reg:DatiFabbricati",
+            el("reg:CategoriaCatastale", upper(im.categoria).replace("/", ""), i2 + "    ") +
+              el("reg:Classe", im.classe, i2 + "    ") +
+              el("reg:Consistenza", im.consistenza, i2 + "    ") +
+              el("reg:RenditaCatastale", im.rendita, i2 + "    "),
             i2 + "  ",
           ),
         i2,
