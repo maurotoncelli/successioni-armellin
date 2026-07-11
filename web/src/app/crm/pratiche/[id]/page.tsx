@@ -20,6 +20,7 @@ import {
   StatusChanger,
   AddCommunication,
   AddNote,
+  CallNotesEditor,
 } from "@/components/crm/practice-workflow";
 import { PracticeExtrasCard } from "@/components/crm/practice-extras-card";
 import { FinalDocsCard } from "@/components/crm/final-docs-card";
@@ -29,7 +30,9 @@ import { DueDateForm } from "@/components/crm/due-date-form";
 import { OfflinePayment } from "@/components/crm/offline-payment";
 import { WithdrawalPanel } from "@/components/crm/withdrawal-panel";
 import { PracticeTasks } from "@/components/crm/practice-tasks";
+import { ExtractionPanel } from "@/components/crm/extraction-panel";
 import { getSafeExtras } from "@/lib/practice-extras";
+import { getExtraction, isAiConfigured } from "@/lib/extraction";
 import { isInvoicingConfigured } from "@/lib/invoice";
 
 const channelIcon = {
@@ -49,6 +52,8 @@ export default async function SchedaPraticaPage({
   if (!p) notFound();
 
   const extras = await getSafeExtras(p.id);
+  const extraction = await getExtraction(p.id);
+  const docsWithFile = p.checklist.filter((c) => c.filePath).length;
 
   const approved = p.checklist.filter((c) => c.status === "APPROVATO").length;
   const requiredCount = p.checklist.filter((c) => c.required).length;
@@ -185,6 +190,16 @@ export default async function SchedaPraticaPage({
             )}
           </CrmCard>
 
+          {/* Dati estratti (AI) */}
+          <CrmCard>
+            <ExtractionPanel
+              practiceId={p.id}
+              initial={extraction}
+              aiConfigured={isAiConfigured}
+              docsReady={docsWithFile}
+            />
+          </CrmCard>
+
           {/* Documenti finali (consegna) */}
           <FinalDocsCard practiceId={p.id} docs={extras.finalDocuments ?? []} />
 
@@ -277,7 +292,7 @@ export default async function SchedaPraticaPage({
           <CrmCard>
             <SectionTitle>Appunti</SectionTitle>
             <div className="mt-3 space-y-3 text-sm">
-              <Note label="Appunti chiamata" value={p.callNotes} />
+              <CallNotesEditor practiceId={p.id} value={p.callNotes} />
               <Note label="Note pagamenti" value={p.paymentNotes} />
               <Note label="Note generali" value={p.notes} />
             </div>

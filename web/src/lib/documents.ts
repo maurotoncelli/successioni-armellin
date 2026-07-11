@@ -24,10 +24,12 @@ export async function ensureDocBucket(admin: Admin) {
 async function ensureBucket(admin: Admin) {
   const { data } = await admin.storage.getBucket(DOC_BUCKET);
   if (!data) {
+    // Niente allowedMimeTypes a livello bucket: oltre ai documenti del cliente
+    // (validati lato app con ALLOWED_DOC_TYPES) qui vivono anche i JSON interni
+    // (_extras.json, _extraction.json) e i documenti finali di Lorenzo.
     await admin.storage.createBucket(DOC_BUCKET, {
       public: false,
       fileSizeLimit: MAX_DOC_BYTES,
-      allowedMimeTypes: ALLOWED_DOC_TYPES,
     });
   }
 }

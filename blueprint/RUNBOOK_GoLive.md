@@ -7,7 +7,7 @@
 ## Decisioni (riunione 2026-06-29)
 - Dominio: **successioniarmellin.it**
 - Registrar + DNS: **Aruba** (gestione DNS direttamente nel pannello Aruba; Cloudflare accantonato perche non registra i `.it` e a noi serve comunque "DNS only" senza proxy). Nameserver: **default Aruba** (technorail/arubadns).
-- Email: **Google Workspace** sul dominio, casella principale `studio@successioniarmellin.it` (+ `privacy@` per GDPR)
+- Email: **Google Workspace Business Starter** (~6 EUR/mese) sul dominio (scelta 11/07: su Aruba la casella base non e inclusa e M365/PEC non convengono), casella principale `studio@successioniarmellin.it` (+ alias `privacy@` per GDPR). La posta transazionale resta separata su Resend.
 - Pagamenti: **solo carte** (Stripe)
 - Dominio principale (canonical): **www.successioniarmellin.it** (apex `successioniarmellin.it` -> 308 redirect a www). `NEXT_PUBLIC_SITE_URL=https://www.successioniarmellin.it`.
 - Account: Aruba dominio = account Lorenzo `15411133@aruba.it` · Cloudflare = account Gmail Lorenzo · Google Workspace: contatto/recupero `viavittorioveneto1@gmail.com`, admin `studio@successioniarmellin.it`.
@@ -23,9 +23,23 @@ Legenda: [ ] da fare · (chi). Valori segreti -> solo in Vercel / `.env.local`.
 
 ---
 
-## STATO AVANZAMENTO (aggiornato 30/06 12:30)
+## STATO AVANZAMENTO (aggiornato 11/07 12:10)
 
-### Fatto
+### Fatto l'11/07 (sessione con Geom. Armellin)
+- **Email — Google Workspace Business Starter**: account `studio@successioniarmellin.it` creato/attivato (prova 14gg, carta inserita). Creato anche l'utente `lorenzo@successioniarmellin.it` (2ª licenza → DA DECIDERE: tenerla come casella vera o trasformarla in alias gratuito). **Dominio verificato** su Google (TXT `google-site-verification` su Aruba). **MX** su Aruba sostituiti: `@ -> smtp.google.com` prio 1 (verificato alla fonte). MANCANO: attendere propagazione MX sui resolver pubblici + premere **"Conferma"** su Google per attivare Gmail; poi test invio/ricezione + alias `privacy@`.
+- **Stripe**: account creato (sandbox/test, login `geom.armellin@gmail.com`). Webhook creato in sandbox (`checkout.session.completed` + `charge.refunded` -> `https://www.successioniarmellin.it/api/stripe/webhook`). 3 variabili su Vercel (Production+Preview) + redeploy. **Account LIVE attivato** con dati fiscali di Lorenzo. **SMOKE TEST SUPERATO** end-to-end: pratica `SUC-2026-0020` -> **PAGATO/PAID 490€** (webhook OK). DA FARE prima del lancio: creare webhook anche nell'account **Live** e sostituire su Vercel le chiavi TEST con le **LIVE** (pk_live/sk_live/whsec live) + redeploy.
+- **Supabase**: il progetto era **in PAUSA** (piano free, ~11gg inattività) -> **ripristinato** (account **Mauro via GitHub `info@maurotoncelli.it`**). Ora raggiungibile (verificato). È stata la causa del "fetch failed" iniziale al checkout.
+- **Resend**: account creato (`geom.armellin@gmail.com`), dominio `successioniarmellin.it` (regione **UE/eu-west-1**). Su Aruba inseriti e propagati i **3 TXT**: DKIM (`resend._domainkey`), SPF (`send`), DMARC (`_dmarc`). **MX su `send` NON inseribile su Aruba** (Aruba non supporta MX sui sotto-nomi). Verifica Resend **"in checking"**. Se Resend NON verifica senza l'MX -> spostare la gestione DNS su **Cloudflare** (gratis) e aggiungere lì l'MX `send -> feedback-smtp.eu-west-1.amazonses.com` prio 10.
+
+### Da fare (prossima sessione)
+- **Resend**: attendere "Verified"; se serve l'MX -> Cloudflare DNS. Poi `RESEND_API_KEY` + `EMAIL_FROM="Successioni Armellin <studio@successioniarmellin.it>"` su Vercel + test (cambio stato pratica -> email al cliente).
+- **Google**: confermare MX su Google (attiva Gmail), test posta, alias `privacy@`, decidere utente `lorenzo@`.
+- **Stripe LIVE**: webhook nell'account Live + chiavi LIVE su Vercel (sostituiscono le TEST) + redeploy + test.
+- **CRM**: primo login ADMIN reale + 2FA (verificare che il pannello pratiche di Lorenzo veda `SUC-2026-0020`), test login cliente.
+- **Pulizia**: rimuovere/archiviare la pratica di test `SUC-2026-0020`.
+- **Sicurezza**: rigenerare chiavi Supabase; svuotare `ADMIN_PASSWORD` dopo l'accesso reale; usare password DIVERSE per ogni servizio (ora Google/Stripe/Resend condividono `FORZApisa90!`).
+
+### Fatto (30/06)
 - **Dominio + DNS su Aruba**: NS default Aruba; `A @ -> 216.198.79.1`, `CNAME www -> d35c84c1af317e07.vercel-dns-017.com`. Propagati sui resolver pubblici (verificato via dig).
 - **Vercel**: Root Directory `web`, domini `www` (primario) + apex (308 a www) "Valid", certificato SSL attivo. Sito reale online su `https://www.successioniarmellin.it`.
 - **Environment Variables su Vercel**: Supabase (URL/anon/service), `NEXT_PUBLIC_SITE_URL` (Production), `ADMIN_EMAILS`, `FIELD_ENCRYPTION_KEY`, `EMAIL_FROM`.
@@ -59,13 +73,15 @@ Legenda: [ ] da fare · (chi). Valori segreti -> solo in Vercel / `.env.local`.
 - [x] Certificato SSL attivo; `https://www.successioniarmellin.it` serve il sito reale (apex -> 308 a www). Verificato 30/06. (Nota: la cache DNS locale di vecchi resolver puo mostrare la vecchia pagina Aruba fino a ~1h.)
 - [x] Deploy della versione aggiornata (push `main` -> commit `43add67`): Area personale, pagine legali, footer legale, /crm-login. FATTO 30/06.
 
-## 3) Email reale sul dominio (Google Workspace)
-- [ ] Attivare **Google Workspace** (Business Starter) sul dominio `successioniarmellin.it`. (Lorenzo+Mauro)
-- [ ] Verificare il dominio (record TXT di verifica fornito da Google). (Mauro)
-- [ ] Creare le caselle: `studio@` (pubblica) e `privacy@` (richieste GDPR). (Lorenzo+Mauro)
-- [ ] Su **Aruba > Record MX > SOSTITUISCI RECORD**: sostituire l'MX Aruba con quello di Google (setup semplificato): `MX @ -> smtp.google.com` priorita `1`. (Mauro)
-- [ ] (Consigliato) SPF di Google: `TXT @ -> v=spf1 include:_spf.google.com ~all` (coordinare con SPF Resend al punto 4: un solo record TXT SPF con piu `include`). (Mauro)
-- Nota: separare la posta "umana" (caselle Google) dall'invio transazionale (Resend, punto 4).
+## 3) Email reale sul dominio (Google Workspace Business Starter)
+> Scelta 11/07: Google Workspace Business Starter (~6 EUR/mese). Account admin gia creato: `studio@successioniarmellin.it` (recovery `viavittorioveneto1@gmail.com`). In fase di attivazione scegliere il piano **Business Starter**, NON Standard.
+- [ ] Completare l'attivazione (prova 14gg, richiede carta ma nessun addebito per 14gg). (Lorenzo+Mauro)
+- [ ] Verificare il dominio: Google fornisce un record **TXT** `google-site-verification=...` -> inserirlo su **Aruba > DNS > record TXT @**. (Mauro)
+- [ ] Su **Aruba > record MX**: sostituire gli MX Aruba con quello di Google -> `MX @ -> smtp.google.com` priorita `1`. (Mauro)
+- [ ] Creare alias `privacy@successioniarmellin.it` (per richieste GDPR). (Lorenzo+Mauro)
+- [ ] Verificare invio/ricezione di prova. (Mauro)
+- [ ] SPF: al punto 4 (Resend) fare UN solo record `TXT @` con entrambi gli include, es. `v=spf1 include:_spf.google.com include:(Resend) ~all`. (Mauro)
+- Nota: separare la posta "umana" (Google Workspace) dall'invio transazionale (Resend, punto 4).
 
 ## 4) Email transazionali (Resend)
 - [ ] Creare account **Resend** e aggiungere il dominio (consigliato sottodominio invio `send.successioniarmellin.it`). (Lorenzo+Mauro)

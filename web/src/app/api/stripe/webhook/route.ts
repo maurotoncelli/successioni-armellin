@@ -6,6 +6,7 @@ import { getAdminClient, isAdminConfigured } from "@/lib/supabase/admin";
 import { notifyStatusChange } from "@/lib/notifications";
 import { issueInvoiceForPractice, isInvoicingConfigured } from "@/lib/invoice";
 import { slaDueDate } from "@/lib/cms";
+import { generateChecklist } from "@/lib/checklist";
 import type { PracticeRow, PaymentStatusKey } from "@/lib/supabase/types";
 
 /*
@@ -160,6 +161,21 @@ async function handleCheckoutCompleted(
     }
   }
 
+  // Checklist documenti auto-generata al pagamento (@06): senza, il cliente
+  // pagante troverebbe l'area documenti vuota. Solo se non gia presente
+  // (una checklist personalizzata da Lorenzo non va mai sovrascritta).
+  const existingChecklist = asArray<unknown>(row.checklist);
+  let checklist = row.checklist;
+  if (existingChecklist.length === 0) {
+    checklist = generateChecklist({
+      hasRealEstate: row.has_real_estate,
+      realEstateCount: row.real_estate_count,
+      hasWill: row.has_will,
+      hasMinorHeirs: row.has_minor_heirs,
+    });
+    log.unshift({ action: "checklist_generata", at: stamp });
+  }
+
   await admin
     .from("practices")
     .update({
@@ -172,6 +188,7 @@ async function handleCheckoutCompleted(
       paid_at: new Date().toISOString(),
       opened_at: row.opened_at ?? today,
       due_date: dueDate,
+      checklist,
       communications,
       log,
       ...backfill,

@@ -18,6 +18,15 @@ import {
 } from "@/lib/practice-extras";
 import { issueInvoiceForPractice } from "@/lib/invoice";
 import { slaDueDate } from "@/lib/cms";
+import { generateChecklist } from "@/lib/checklist";
+import {
+  runExtraction,
+  getExtraction,
+  saveReviewedData,
+  type ExtractionResult,
+  type ExtractionData,
+} from "@/lib/extraction";
+import { buildSucXml } from "@/lib/suc-xml";
 import {
   notifyStatusChange,
   notifyDocumentRejected,
@@ -362,6 +371,146 @@ export async function addCommunication(
   return { ok: true };
 }
 
+/*
+  Estrazione AI (@05): legge documenti caricati + appunti chiamata e compila la
+  scheda dati per la dichiarazione. Puo durare decine di secondi (documenti
+  pesanti): il client la invoca con un pending state dedicato.
+*/
+export type ExtractionActionResult =
+  | { ok: true; result: ExtractionResult }
+  | { ok: false; error: string };
+
+export async function runAiExtraction(
+  practiceId: string,
+): Promise<ExtractionActionResult> {
+  await requireAdmin();
+  const outcome = await runExtraction(practiceId);
+  if (!outcome.ok) return outcome;
+
+  // Traccia l'estrazione nella timeline della pratica.
+  const admin = getAdminClient();
+  const { data } = await admin
+    .from("practices")
+    .select("log")
+    .eq("id", practiceId)
+    .maybeSingle();
+  if (data) {
+    const log: LogEvent[] = Array.isArray(data.log) ? (data.log as LogEvent[]) : [];
+    log.push({ action: "estrazione_ai", at: stamp() });
+    await admin.from("practices").update({ log }).eq("id", practiceId);
+  }
+
+  revalidatePath(`/crm/pratiche/${practiceId}`);
+  return outcome;
+}
+
+/*
+  Salvataggio delle correzioni manuali sui dati estratti (Fetta 3): il JSON
+  revisionato sostituisce i dati AI e diventa la base per l'XML .suc.
+*/
+export async function saveExtractionEdits(
+  practiceId: string,
+  data: ExtractionData,
+): Promise<WorkflowResult> {
+  await requireAdmin();
+  const res = await saveReviewedData(practiceId, data);
+  if (!res.ok) return res;
+
+  const admin = getAdminClient();
+  const { data: row } = await admin
+    .from("practices")
+    .select("log")
+    .eq("id", practiceId)
+    .maybeSingle();
+  if (row) {
+    const log: LogEvent[] = Array.isArray(row.log) ? (row.log as LogEvent[]) : [];
+    log.push({ action: "dati_estratti_revisionati", at: stamp() });
+    await admin.from("practices").update({ log }).eq("id", practiceId);
+  }
+  revalidatePath(`/crm/pratiche/${practiceId}`);
+  return { ok: true };
+}
+
+/*
+  Export XML .suc (Fetta 4): genera la fornitura SUC13 dai dati revisionati.
+  Restituisce contenuto + nome file al client, che avvia il download; l'esito
+  va SEMPRE controllato con il modulo di controllo AdE nel Desktop Telematico.
+*/
+export type SucExportResult =
+  | { ok: true; xml: string; fileName: string; warnings: string[] }
+  | { ok: false; error: string };
+
+export async function exportSucXml(
+  practiceId: string,
+): Promise<SucExportResult> {
+  await requireAdmin();
+  const admin = getAdminClient();
+  const { data: row } = await admin
+    .from("practices")
+    .select("*")
+    .eq("id", practiceId)
+    .maybeSingle();
+  if (!row) return { ok: false, error: "Pratica non trovata." };
+
+  const extraction = await getExtraction(practiceId);
+  if (extraction?.status !== "READY" || !extraction.data) {
+    return {
+      ok: false,
+      error: "Prima esegui (e revisiona) l'estrazione dati: l'XML si genera da li.",
+    };
+  }
+
+  const built = buildSucXml(row as PracticeRow, extraction.data, {
+    cfFornitore: process.env.SUC_CF_FORNITORE,
+  });
+
+  const log: LogEvent[] = Array.isArray(row.log) ? (row.log as LogEvent[]) : [];
+  log.push({ action: "export_xml_suc", at: stamp() });
+  await admin.from("practices").update({ log }).eq("id", practiceId);
+  revalidatePath(`/crm/pratiche/${practiceId}`);
+
+  return { ok: true, ...built };
+}
+
+/*
+  Appunti chiamata (@05): campo di lavoro di Lorenzo per le informazioni
+  raccolte in chiamata col cliente. A differenza di `notes` (append di righe
+  timestampate), qui il testo e libero e si salva per intero: e un documento
+  vivo che Lorenzo rilegge e corregge, e fara da sorgente per l'estrazione AI
+  del dossier dichiarazione.
+*/
+export async function updateCallNotes(
+  practiceId: string,
+  text: string,
+): Promise<WorkflowResult> {
+  await requireAdmin();
+
+  const admin = getAdminClient();
+  const { data } = await admin
+    .from("practices")
+    .select("call_notes, log")
+    .eq("id", practiceId)
+    .maybeSingle();
+  if (!data) return { ok: false, error: "Pratica non trovata." };
+
+  const next = text.trim();
+  if (next === (data.call_notes ?? "").toString().trim()) return { ok: true };
+
+  const log: LogEvent[] = Array.isArray(data.log) ? (data.log as LogEvent[]) : [];
+  log.push({ action: "appunti_chiamata_aggiornati", at: stamp() });
+
+  const { error } = await admin
+    .from("practices")
+    .update({ call_notes: next, log })
+    .eq("id", practiceId);
+  if (error) {
+    console.error("[crm] updateCallNotes:", error.message);
+    return { ok: false, error: "Salvataggio non riuscito." };
+  }
+  revalidatePath(`/crm/pratiche/${practiceId}`);
+  return { ok: true };
+}
+
 export async function addNote(
   practiceId: string,
   text: string,
@@ -488,7 +637,7 @@ export async function registerOfflinePayment(
   const { data } = await admin
     .from("practices")
     .select(
-      "payment_status, client_email, communications, log, opened_at, payment_notes, due_date, selected_package",
+      "payment_status, client_email, communications, log, opened_at, payment_notes, due_date, selected_package, checklist, has_real_estate, real_estate_count, has_will, has_minor_heirs",
     )
     .eq("id", practiceId)
     .maybeSingle();
@@ -527,6 +676,17 @@ export async function registerOfflinePayment(
       patch.due_date = due;
       log.push({ action: "consegna_auto_sla", at: now });
     }
+  }
+
+  // Checklist documenti auto-generata al pagamento, come nel webhook Stripe.
+  if (!Array.isArray(data.checklist) || data.checklist.length === 0) {
+    patch.checklist = generateChecklist({
+      hasRealEstate: Boolean(data.has_real_estate),
+      realEstateCount: data.real_estate_count,
+      hasWill: Boolean(data.has_will),
+      hasMinorHeirs: Boolean(data.has_minor_heirs),
+    });
+    log.push({ action: "checklist_generata", at: now });
   }
 
   const notice = data.client_email

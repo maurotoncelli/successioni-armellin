@@ -18,3 +18,7 @@ build/
 
 # Cursor
 .cursor/plans/
+
+# Credenziali/accessi locali (NON committare mai)
+ACCESSI_LOCALE.md
+*.secrets.md

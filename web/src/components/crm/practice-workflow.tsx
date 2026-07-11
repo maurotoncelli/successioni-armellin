@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { Loader2, Save, Send, Plus } from "lucide-react";
+import { Loader2, Save, Send, Plus, Check, PencilLine, PhoneCall } from "lucide-react";
 import {
   pipelineOrder,
   statusLabels,
@@ -13,6 +13,7 @@ import {
   changeStatus,
   addCommunication,
   addNote,
+  updateCallNotes,
 } from "@/app/crm/pratiche/[id]/actions";
 import { hasExternalEffect } from "@/lib/transitions";
 import { TransitionConfirm } from "@/components/crm/transition-confirm";
@@ -176,6 +177,112 @@ export function AddCommunication({ practiceId }: { practiceId: string }) {
         </button>
       </div>
       {error && <p className="text-xs text-crm-rose">{error}</p>}
+    </div>
+  );
+}
+
+/*
+  Editor degli "Appunti chiamata": campo di lavoro libero (si salva per
+  intero, non append) per le informazioni raccolte da Lorenzo in chiamata.
+*/
+export function CallNotesEditor({
+  practiceId,
+  value,
+}: {
+  practiceId: string;
+  value: string;
+}) {
+  const router = useRouter();
+  const [editing, setEditing] = useState(false);
+  const [text, setText] = useState(value);
+  const [saved, setSaved] = useState(false);
+  const [pending, startTransition] = useTransition();
+  const [error, setError] = useState<string | null>(null);
+
+  function save() {
+    setError(null);
+    startTransition(async () => {
+      const res = await updateCallNotes(practiceId, text);
+      if (res.ok) {
+        setEditing(false);
+        setSaved(true);
+        setTimeout(() => setSaved(false), 2500);
+        router.refresh();
+      } else setError(res.error);
+    });
+  }
+
+  if (!editing) {
+    return (
+      <div className="rounded-lg border border-crm-border bg-crm-bg2/40 p-3">
+        <div className="flex items-center justify-between gap-2">
+          <p className="flex items-center gap-1.5 text-xs font-medium text-crm-muted">
+            <PhoneCall className="h-3.5 w-3.5" />
+            Appunti chiamata
+          </p>
+          <button
+            onClick={() => {
+              setText(value);
+              setEditing(true);
+            }}
+            className="inline-flex items-center gap-1 text-xs text-crm-muted hover:text-crm-text"
+          >
+            <PencilLine className="h-3.5 w-3.5" />
+            {value.trim() ? "Modifica" : "Scrivi"}
+          </button>
+        </div>
+        <p className="mt-1.5 whitespace-pre-wrap text-sm text-crm-text">
+          {value.trim() || "—"}
+        </p>
+        {saved && (
+          <p className="mt-1 inline-flex items-center gap-1 text-xs text-crm-green">
+            <Check className="h-3.5 w-3.5" /> Salvato
+          </p>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <div className="rounded-lg border border-crm-accent/40 bg-crm-bg2/40 p-3">
+      <p className="flex items-center gap-1.5 text-xs font-medium text-crm-muted">
+        <PhoneCall className="h-3.5 w-3.5" />
+        Appunti chiamata
+      </p>
+      <textarea
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        rows={6}
+        autoFocus
+        placeholder="Informazioni raccolte in chiamata: dati del defunto, eredi, immobili, banche, particolarita del caso…"
+        className={`${inputCls} mt-2 w-full resize-y`}
+      />
+      <div className="mt-2 flex items-center gap-2">
+        <button
+          onClick={save}
+          disabled={pending}
+          className="inline-flex items-center gap-1.5 rounded-lg crm-gradient px-3 py-1.5 text-sm font-semibold text-white disabled:opacity-50"
+        >
+          {pending ? (
+            <Loader2 className="h-4 w-4 animate-spin" />
+          ) : (
+            <Save className="h-4 w-4" />
+          )}
+          Salva appunti
+        </button>
+        <button
+          onClick={() => {
+            setEditing(false);
+            setText(value);
+            setError(null);
+          }}
+          disabled={pending}
+          className="rounded-lg border border-crm-border bg-crm-surface px-3 py-1.5 text-sm text-crm-text hover:border-crm-accent/40"
+        >
+          Annulla
+        </button>
+      </div>
+      {error && <p className="mt-1 text-xs text-crm-rose">{error}</p>}
     </div>
   );
 }
