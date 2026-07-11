@@ -146,6 +146,14 @@ Implementato (build ok, NON ancora committato ne' testato con documenti reali):
   **warnings** espliciti (VALORI immobili non calcolati - servono coefficienti/agevolazioni -,
   quadri ED/EF/EG/EH non generati, CF mancanti, parentele non mappate).
   Prima dell'invio la bozza va SEMPRE passata dal modulo di controllo AdE.
+  **VALIDAZIONE XSD UFFICIALE SUPERATA (11/07 sera)**: il file generato passa
+  `xmllint --schema fornituraSUC13_v1.xsd` con il pacchetto specifiche AdE
+  aggiornato al 02/07/2025 (scaricato da agenziaentrate.gov.it, copia in
+  /tmp/suctest/xsd durante la sessione). Attenzione ai namespace: dentro
+  Luogo/DatiCatastali/DatiTerreni-interno/DatiFabbricati-interno/ImpegnoATrasmettere
+  gli elementi sono in namespace `reg:`, non `suc:` (fixato in b8530c9).
+  Curiosita: il file reale di Lorenzo NON passa lo stesso XSD (Presentatore del
+  QuadroEH senza CodiceCarica) - il modulo di controllo e piu permissivo dello schema.
 - Estrazione AI estesa: campo `sesso` per persona; per i terreni categoria=natura,
   consistenza=superficie, rendita=reddito dominicale (istruzioni nel prompt).
 - Fix bucket Storage: `ensureDocBucket` prima di salvare `_extraction.json` e bucket creato
