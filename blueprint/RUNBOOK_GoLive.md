@@ -23,6 +23,52 @@ Legenda: [ ] da fare · (chi). Valori segreti -> solo in Vercel / `.env.local`.
 
 ---
 
+## STATO AVANZAMENTO (aggiornato 11/07 15:30)
+
+### Fatto l'11/07 pomeriggio (sessione Mauro + agente)
+- **Gmail ATTIVO**: MX propagati e confermati su Google admin. **SPF Google** aggiunto su
+  Aruba (TXT `@`: `v=spf1 include:_spf.google.com ~all` - correzione: prima versione aveva
+  un tab iniziale che lo invalidava). **DKIM Google** (`google._domainkey`) aggiunto su Aruba
+  e propagato: su Google admin resta da premere "Avvia autenticazione" se non gia fatto.
+- **CRM accessibile**: su Vercel impostate `ADMIN_PASSWORD` (accesso emergenza
+  `/crm-login`, valore in ACCESSI_LOCALE.md) e `ADMIN_EMAILS`
+  (info@maurotoncelli.it, studio@, geom.armellin@gmail.com) + `SUC_CF_FORNITORE`.
+  Vercel CLI autenticata sul Mac di Mauro: l'agente puo gestire le env da terminale.
+- **Generatore XML SUC13 completato e validato** contro XSD ufficiale AdE (vedi
+  HANDOFF_AGENTE 8-bis): valori immobili calcolati (identici al software AdE sul caso
+  reale), allegati EG in base64, quadro EH, riepilogo EE. Deploy in produzione.
+- **Debug CRM completo**: tutte le pagine OK, Supabase read/write OK, checkout Stripe
+  test OK, gate produzione OK. Checklist retro-compilata su `SUC-2026-0020`.
+- **Decisione**: OTP SMS a consumo (Twilio) approvato da Mauro -> da attivare con la
+  carta di Lorenzo al prossimo incontro.
+
+### DA FARE - checklist aggiornata (11/07 sera)
+**Con Lorenzo (prossimo incontro):**
+- [ ] **OpenAI**: creare account/API key (carta Lorenzo) -> darla all'agente che imposta
+      `OPENAI_API_KEY` su Vercel (attiva l'estrazione AI nel CRM).
+- [ ] **Twilio** (OTP SMS area clienti): account con carta Lorenzo -> configurare in
+      Supabase (Auth > Providers > Phone). Nel frattempo il login email basta.
+- [ ] **Stripe LIVE**: webhook nell'account live + sostituire chiavi TEST con LIVE su
+      Vercel + redeploy + pagamento di prova vero (rimborsabile).
+- [ ] **Test XML reale**: Lorenzo scarica l'XML di una pratica dal CRM e lo passa nel
+      modulo di controllo del Desktop Telematico -> feedback per rifiniture.
+- [ ] Password diverse per Google/Stripe/Resend (ora condividono FORZApisa90!).
+**Mauro da solo:**
+- [ ] **Resend**: attendere "Verified" (in pending: manca l'MX su `send`, Aruba non lo
+      supporta; se non verifica entro 72h -> migrare DNS a Cloudflare). Poi API key ->
+      all'agente per `RESEND_API_KEY` su Vercel + SMTP custom in Supabase
+      (smtp.resend.com:465, user `resend`, pass = API key).
+- [ ] **Supabase Redirect URLs**: Auth > URL Configuration -> aggiungere
+      `https://www.successioniarmellin.it/**`, `https://successioniarmellin.it/**`,
+      `http://localhost:3000/**` (serve al magic link dell'area clienti).
+- [ ] **Google**: test invio/ricezione da studio@, alias `privacy@`, decidere se
+      `lorenzo@` resta casella (2ª licenza a pagamento) o diventa alias gratuito.
+- [ ] **CRM**: primo accesso definitivo (email+password+2FA) -> poi svuotare
+      `ADMIN_PASSWORD` su Vercel.
+- [ ] **Pulizia**: archiviare pratica test `SUC-2026-0020`; rigenerare chiavi Supabase.
+
+---
+
 ## STATO AVANZAMENTO (aggiornato 11/07 12:10)
 
 ### Fatto l'11/07 (sessione con Geom. Armellin)
