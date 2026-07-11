@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { list, obj, text } from "@/lib/content";
 import { LanguageSwitcher } from "./language-switcher";
+import { CookiePreferencesLink } from "@/components/analytics/cookie-preferences-link";
 
 type Studio = {
   ragione_sociale: string;
@@ -134,6 +135,9 @@ export function Footer() {
                 </a>
               </li>
             )}
+            <li>
+              <CookiePreferencesLink className="cursor-pointer hover:text-accent" />
+            </li>
           </ul>
         </div>
       </div>

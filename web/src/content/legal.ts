@@ -16,8 +16,10 @@ import type { ArticleBlock } from "@/content/articles";
 
   STATO: testi PRELIMINARI generati dal blueprint (@10_Legale_Compliance) e
   dalle bozze in bozze_legali/. Devono essere VALIDATI da un legale/DPO prima del
-  go-live. La cookie policy definitiva sara gestita dalla CMP (iubenda): quella
-  qui sotto e un riepilogo interim. La versione italiana fa sempre fede.
+  go-live. Il consenso cookie e gestito dal banner proprio del sito
+  (components/analytics/consent-banner.tsx, GA4 Consent Mode v2, default denied);
+  la revoca avviene dal link "Preferenze cookie" nel footer.
+  La versione italiana fa sempre fede.
 */
 
 export type LegalBlock = ArticleBlock;
@@ -158,6 +160,16 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
           ["Stripe", "Elaborazione dei pagamenti", "UE/USA (SCC)"],
           ["Resend", "Invio email transazionali", "UE/USA (SCC)"],
           [
+            "Google Workspace",
+            "Email professionale dello Studio",
+            "UE/USA (SCC / DPF)",
+          ],
+          [
+            "OpenAI",
+            "Estrazione assistita dei dati dai documenti della pratica (supporto interno al professionista)",
+            "UE/USA (SCC / DPF)",
+          ],
+          [
             "Meta Platforms (WhatsApp Cloud API)",
             "Messaggistica (se attivata)",
             "UE/USA (SCC)",
@@ -167,8 +179,7 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
             "Statistiche e advertising (solo previo consenso)",
             "UE/USA (SCC)",
           ],
-          ["Cloudflare (Turnstile)", "Protezione anti-abuso dei moduli", "UE/USA (SCC)"],
-          ["iubenda", "Gestione del consenso (CMP)", "UE"],
+          ["Cloudflare (Turnstile)", "Protezione anti-abuso dei moduli (se attivata)", "UE/USA (SCC)"],
         ],
       },
       {
@@ -204,12 +215,20 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
       { type: "h2", text: "11. Cookie e tecnologie di tracciamento" },
       {
         type: "p",
-        text: "Il sito utilizza cookie tecnici e, previo consenso, cookie analitici e di marketing. La gestione del consenso avviene tramite una piattaforma certificata (CMP). Il dettaglio delle categorie, delle finalita e delle durate e riportato nella Cookie Policy dedicata, accessibile dal banner e dal footer. Il consenso e revocabile in qualsiasi momento.",
+        text: "Il sito utilizza cookie tecnici e, previo consenso, cookie di statistica (Google Analytics 4 con Consent Mode: nessun cookie di misurazione viene impostato senza consenso). Il dettaglio delle categorie, delle finalita e delle durate e riportato nella Cookie Policy dedicata, accessibile dal banner e dal footer. Il consenso e revocabile in qualsiasi momento dal link \"Preferenze cookie\" nel footer.",
       },
       { type: "h2", text: "12. Processo decisionale automatizzato e intelligenza artificiale" },
       {
         type: "p",
-        text: "Non e effettuato alcun processo decisionale automatizzato che produca effetti giuridici sull'interessato ai sensi dell'art. 22 GDPR. Eventuali strumenti di intelligenza artificiale sono usati esclusivamente come supporto interno all'attivita del professionista (es. organizzazione documentale, bozze), con decisione finale sempre rimessa a una persona.",
+        text: "Non e effettuato alcun processo decisionale automatizzato che produca effetti giuridici sull'interessato ai sensi dell'art. 22 GDPR. Lo Studio utilizza strumenti di intelligenza artificiale esclusivamente come supporto interno all'attivita del professionista: in particolare, i documenti caricati per la pratica possono essere elaborati tramite il servizio API di OpenAI (responsabile del trattamento, vedi sezione 7) per estrarne i dati necessari alla predisposizione della dichiarazione (es. dati anagrafici, catastali).",
+      },
+      {
+        type: "ul",
+        items: [
+          "I dati inviati tramite API non sono utilizzati da OpenAI per addestrare i propri modelli.",
+          "Ogni dato estratto viene verificato e validato dal professionista prima dell'uso: la decisione finale e sempre rimessa a una persona.",
+          "Il trasferimento extra-UE eventualmente connesso avviene con le garanzie della sezione 8.",
+        ],
       },
       { type: "h2", text: "13. Minori" },
       {
@@ -359,9 +378,9 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
     updatedAt: "Versione preliminare - data di pubblicazione da definire",
     notice: {
       tone: "info",
-      title: "Gestita dalla piattaforma di consenso",
+      title: "Come gestiamo il consenso",
       text:
-        "La cookie policy definitiva, con l'elenco puntuale e sempre aggiornato di cookie e durate, e generata dalla piattaforma di gestione del consenso (CMP) e accessibile dal banner. Quella qui sotto e un riepilogo interim. " +
+        "Il consenso e raccolto tramite il banner del sito: i cookie non necessari restano disattivati finche non li accetti (Consent Mode). Puoi cambiare idea in ogni momento dal link Preferenze cookie nel footer. " +
         LANG_NOTE,
     },
     body: [
@@ -381,13 +400,13 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
             "Sempre attivi (non richiedono consenso)",
           ],
           [
-            "Analitici",
-            "Statistiche aggregate su come viene usato il sito per migliorarlo.",
+            "Analitici (Google Analytics 4)",
+            "Statistiche aggregate su come viene usato il sito per migliorarlo. Grazie al Consent Mode, nessun cookie di misurazione viene impostato senza il tuo consenso.",
             "Solo previo consenso",
           ],
           [
             "Marketing",
-            "Misurazione delle campagne pubblicitarie e attribuzione (es. Google Ads).",
+            "Misurazione delle campagne pubblicitarie e attribuzione (es. Google Ads). Al momento non attivi: se attivati, richiederanno il consenso dal banner.",
             "Solo previo consenso",
           ],
         ],
@@ -395,7 +414,7 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
       { type: "h2", text: "Come gestisci il consenso" },
       {
         type: "p",
-        text: "Al primo accesso un banner ti permette di accettare, rifiutare o personalizzare per categoria, con pari evidenza tra le scelte. Puoi modificare o revocare il consenso in qualsiasi momento dal link dedicato presente sul sito; la revoca non pregiudica la liceita dei trattamenti precedenti.",
+        text: "Al primo accesso un banner ti permette di accettare o rifiutare i cookie non necessari, con pari evidenza tra le scelte. Puoi modificare o revocare il consenso in qualsiasi momento dal link \"Preferenze cookie\" nel footer del sito; la revoca non pregiudica la liceita dei trattamenti precedenti.",
       },
       { type: "h2", text: "Disattivazione dal browser" },
       {

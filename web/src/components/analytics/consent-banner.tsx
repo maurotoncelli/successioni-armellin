@@ -10,7 +10,11 @@ import { CONSENT_KEY, updateConsent, type ConsentChoice } from "@/lib/analytics"
   Banner consensi cookie (CMP minimale). Mostra il banner finche l'utente non
   sceglie; salva la scelta in localStorage e aggiorna il Consent Mode di GA4.
   "Accetta" -> granted, "Solo necessari" -> denied (default, GA resta spento).
+  Il link "Preferenze cookie" nel footer riapre il banner (evento custom) per
+  permettere di modificare/revocare il consenso in ogni momento (GDPR art. 7.3).
 */
+
+export const REOPEN_CONSENT_EVENT = "cookie-preferences:open";
 
 export function ConsentBanner() {
   const [visible, setVisible] = useState(false);
@@ -25,6 +29,10 @@ export function ConsentBanner() {
     // localStorage e disponibile solo dopo il mount (lato client): aggiornamento intenzionale.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setVisible(show);
+
+    const reopen = () => setVisible(true);
+    window.addEventListener(REOPEN_CONSENT_EVENT, reopen);
+    return () => window.removeEventListener(REOPEN_CONSENT_EVENT, reopen);
   }, []);
 
   function choose(choice: ConsentChoice) {
