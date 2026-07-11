@@ -17,6 +17,12 @@ Sessione 11/07 con Geom. Armellin — progressi:
 - **Pipeline dichiarazione (nuova, 11/07 pomeriggio)**: costruita la filiera CRM
   "pagamento -> checklist auto -> documenti -> appunti chiamata -> estrazione AI -> revisione -> XML `.suc`".
   Vedi sezione 8-bis qui sotto. NON ancora committata al momento della scrittura.
+- **Check legale/GDPR (11/07 tardo pomeriggio, deploy `3d95b5f`)**: impianto conforme;
+  corretti e deployati: privacy aggiornata al trattamento AI (OpenAI/Google Workspace
+  tra i responsabili, sez. 12 riscritta), cookie policy allineata al banner reale
+  (niente iubenda), link "Preferenze cookie" nel footer per revocare il consenso.
+  APERTO: condizioni garanzia "da definire", retention lead (proposta 12 mesi),
+  validazione da un legale, DPA OpenAI. Dettagli in @RUNBOOK_GoLive.
 Dettaglio completo e TODO in **@RUNBOOK_GoLive** (sezione "STATO AVANZAMENTO 11/07").
 Lingua del progetto: **italiano**. Scrivere sempre in italiano con l'utente.
 

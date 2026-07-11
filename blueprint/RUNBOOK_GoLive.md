@@ -25,6 +25,30 @@ Legenda: [ ] da fare · (chi). Valori segreti -> solo in Vercel / `.env.local`.
 
 ## STATO AVANZAMENTO (aggiornato 11/07 15:30)
 
+### Fatto l'11/07 tardo pomeriggio - CHECK LEGALE/GDPR (deploy `3d95b5f`)
+Verifica completa di privacy, cookie, condizioni di vendita, recesso e consensi.
+**Risultato: impianto conforme**, 3 lacune trovate e CORRETTE (gia online):
+1. **Privacy aggiornata al trattamento AI**: aggiunti OpenAI e Google Workspace alla
+   tabella responsabili (sez. 7) e riscritta la sez. 12 (estrazione dati dai documenti
+   via API OpenAI, no training sui dati, validazione umana finale).
+2. **Cookie policy allineata alla realta**: rimossi i riferimenti a iubenda (non usata);
+   ora descrive il banner proprio del sito + GA4 Consent Mode v2 (default negato).
+3. **Link "Preferenze cookie" nel footer** (sezione Legale): riapre il banner per
+   modificare/revocare il consenso (prima mancava: GDPR art. 7.3).
+Verificato OK: recesso conforme artt. 52-59 Cod. Consumo (doppia checkbox al checkout,
+art. 59 avvio immediato), consensi privacy/marketing separati nei form (marketing
+salvato su DB), footer con P.IVA/C.F./Albo/PEC/ODR, foro consumatore.
+
+**APERTO lato legale (prossima sessione / con Lorenzo):**
+- [ ] **Garanzia Soddisfatti o Rimborsati**: casi coperti, importi e tempi ancora
+      "da definire" nella pagina /garanzia -> decisione di Lorenzo, poi aggiornare testo.
+- [ ] **Retention lead non convertiti**: privacy dice "in fase di definizione".
+      Proposta: 12 mesi poi cancellazione/anonimizzazione -> conferma di Lorenzo.
+- [ ] **Validazione legale**: tutti i documenti hanno l'avviso "testo preliminare in
+      validazione" -> serve passaggio da avvocato/consulente privacy per toglierlo.
+- [ ] **DPA OpenAI**: quando si crea l'account OpenAI con Lorenzo, accettare il Data
+      Processing Addendum dal pannello (formalizza il ruolo ex art. 28 GDPR).
+
 ### Fatto l'11/07 pomeriggio (sessione Mauro + agente)
 - **Gmail ATTIVO**: MX propagati e confermati su Google admin. **SPF Google** aggiunto su
   Aruba (TXT `@`: `v=spf1 include:_spf.google.com ~all` - correzione: prima versione aveva
