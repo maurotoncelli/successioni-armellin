@@ -4,7 +4,7 @@ import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
 import { createCheckoutSession } from "@/lib/payments";
 import { requireAdmin } from "@/lib/admin";
-import { signedDocUrl, setDocStatus } from "@/lib/documents";
+import { signedDocUrl, setDocStatus, DOC_BUCKET } from "@/lib/documents";
 import {
   mandateFileUrl,
   revealIban,
@@ -26,7 +26,7 @@ import {
   type ExtractionResult,
   type ExtractionData,
 } from "@/lib/extraction";
-import { buildSucXml } from "@/lib/suc-xml";
+import { buildSucXml, type SucAllegato } from "@/lib/suc-xml";
 import {
   notifyStatusChange,
   notifyDocumentRejected,
@@ -460,9 +460,64 @@ export async function exportSucXml(
     };
   }
 
+  /*
+    Allegati per il Quadro EG: i documenti approvati della checklist, incorporati
+    in base64. Il tracciato AdE accetta SOLO pdf e tif/tiff: i JPG/PNG vengono
+    saltati e segnalati (andranno convertiti in PDF e allegati nel software AdE).
+  */
+  const allegati: SucAllegato[] = [];
+  const allegatiWarnings: string[] = [];
+  const checklist = Array.isArray(row.checklist)
+    ? (row.checklist as { label: string; filePath?: string; status?: string }[])
+    : [];
+  for (const item of checklist) {
+    if (!item.filePath) continue;
+    const label = item.label ?? "Documento";
+    const ext = item.filePath.split(".").pop()?.toLowerCase() ?? "";
+    const mime =
+      ext === "pdf" ? ("application/pdf" as const)
+      : ext === "tif" || ext === "tiff" ? ("image/tiff" as const)
+      : null;
+    if (!mime) {
+      allegatiWarnings.push(
+        `Allegato "${label}" saltato: il tracciato AdE accetta solo PDF/TIFF (file .${ext}). Convertirlo in PDF e allegarlo nel software AdE.`,
+      );
+      continue;
+    }
+    const { data: blob } = await admin.storage
+      .from(DOC_BUCKET)
+      .download(item.filePath);
+    if (!blob) {
+      allegatiWarnings.push(`Allegato "${label}": download non riuscito, non incluso.`);
+      continue;
+    }
+    const lower = label.toLowerCase();
+    const category: SucAllegato["category"] = /identit/.test(lower)
+      ? "DocumentiIdentita"
+      : /albero|stato di famiglia/.test(lower)
+        ? "AlberoGenealogico"
+        : /testamento/.test(lower)
+          ? "Testamento"
+          : "Altro";
+    allegati.push({
+      category,
+      fileName: item.filePath.split("/").pop() ?? "documento.pdf",
+      description: label,
+      base64: Buffer.from(await blob.arrayBuffer()).toString("base64"),
+      mime,
+    });
+  }
+
   const built = buildSucXml(row as PracticeRow, extraction.data, {
     cfFornitore: process.env.SUC_CF_FORNITORE,
+    allegati,
   });
+  built.warnings.push(...allegatiWarnings);
+  if (allegati.length > 0) {
+    built.warnings.push(
+      `Quadro EG: allegati ${allegati.length} documenti dalla checklist (in base64 dentro l'XML).`,
+    );
+  }
 
   const log: LogEvent[] = Array.isArray(row.log) ? (row.log as LogEvent[]) : [];
   log.push({ action: "export_xml_suc", at: stamp() });

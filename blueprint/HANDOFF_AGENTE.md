@@ -161,8 +161,25 @@ Implementato (build ok, NON ancora committato ne' testato con documenti reali):
 - Env nuove in `.env.example`: `OPENAI_API_KEY`, `OPENAI_MODEL`, `SUC_CF_FORNITORE`
   (CF Lorenzo `RMLLNZ90E27G843J`, e' anche il CF intermediario nei file reali).
   **DA IMPOSTARE su Vercel** quando si attiva l'AI.
+- **v3 (11/07 sera, dopo ok di Mauro)**: aggiunti al generatore
+  - **valori immobili calcolati**: fabbricati rendita x1,05 x coefficiente
+    (110 prima casa, 120 gruppi A/C, 168 B, 60 A10/D, 40,8 C1/E - VERIFICATO sul
+    file reale: A2 rendita 631,37 -> 79553 identico al software AdE); terreni
+    RD x1,25 x90 (default non edificabile, TipologiaTerreno 3). Override con campo
+    "valore" e spunta "prima casa (si/no)" nel pannello revisione. QuotaValore
+    devoluzione = valore x quota (identico al reale).
+  - **Quadro EE** completo (TotaleValoreImmobili + altri beni + attivo).
+  - **Quadro EG (allegati)**: i documenti della checklist vengono incorporati in
+    base64 nell'XML (solo PDF/TIFF, unico formato ammesso dal tracciato; JPG/PNG
+    segnalati da convertire). Categorie: Testamento/AlberoGenealogico/
+    DocumentiIdentita/Altro (mappate dall'etichetta checklist).
+  - **Quadro EH (dich. sostitutive)**: presentatore, defunto con luogo decesso
+    (nuovi campi estrazione comune_decesso/provincia_decesso, fallback ultima
+    residenza), eredi (max 3 oltre il dichiarante, limite del tracciato), flag
+    assenza testamento/interdetti/rinuncia di default (warning per verificare).
+  Tutto VALIDA contro fornituraSUC13_v1.xsd ufficiale.
 - Quadri non generati automaticamente: ED (passivita), EF (liquidazione imposte),
-  EG (allegati), EH (dich. sostitutive), EO (titoli/fondi), volture.
+  EO (titoli/fondi), volture.
 
 ### Debug CRM (11/07 sera) - esito
 - Tutte le pagine CRM rispondono 200 in locale (build di produzione) con gate emergenza:

@@ -52,6 +52,8 @@ export type ExtractedImmobile = {
   rendita: string | null; // fabbricati: rendita catastale | terreni: reddito dominicale
   quota_possesso: string | null;
   indirizzo: string | null;
+  prima_casa: string | null; // "si" se l'erede referente ha i requisiti prima casa
+  valore: string | null; // valore dichiarato, se noto (altrimenti calcolato da rendita)
 };
 
 export type ExtractedRapporto = {
@@ -71,6 +73,8 @@ export type ExtractionData = {
     comune_nascita: string | null;
     provincia_nascita: string | null;
     data_decesso: string | null;
+    comune_decesso: string | null;
+    provincia_decesso: string | null;
     stato_civile: string | null;
     comune_ultima_residenza: string | null;
     provincia_ultima_residenza: string | null;
@@ -206,6 +210,8 @@ const extractionSchema = obj({
     comune_nascita: S,
     provincia_nascita: S,
     data_decesso: S,
+    comune_decesso: S,
+    provincia_decesso: S,
     stato_civile: S,
     comune_ultima_residenza: S,
     provincia_ultima_residenza: S,
@@ -234,6 +240,8 @@ const extractionSchema = obj({
       rendita: S,
       quota_possesso: S,
       indirizzo: S,
+      prima_casa: S,
+      valore: S,
     }),
   },
   rapporti_bancari: {
@@ -259,6 +267,8 @@ Regole:
 - Date in formato GG/MM/AAAA. Importi come stringhe con la virgola decimale (es. "1.234,56").
 - Codici fiscali italiani: 16 caratteri alfanumerici; verifica la coerenza con nome/data di nascita quando possibile.
 - Per gli immobili distingui catasto "fabbricati" e "terreni"; riporta foglio/particella/subalterno/categoria/classe/rendita dalla visura. Per i TERRENI: in "categoria" metti la natura/qualita (es. "SEMINATIVO", "T"), in "consistenza" la superficie (es. "2 are 40 ca"), in "rendita" il reddito dominicale. Per i FABBRICATI: categoria catastale (A2, C6...), consistenza in vani/mq, rendita catastale.
+- "prima_casa": scrivi "si" SOLO se dagli appunti risulta che l'erede ha i requisiti prima casa su quell'immobile; altrimenti null. "valore": solo se un valore dichiarato e' indicato esplicitamente nei documenti o negli appunti.
+- "comune_decesso"/"provincia_decesso": dal certificato di morte (luogo del decesso, che puo' differire dalla residenza).
 - Per ogni persona indica anche il sesso (M/F) se deducibile dal documento o dal codice fiscale.
 - Gli appunti chiamata possono integrare o correggere i documenti: se c'e conflitto, segnala il conflitto in "avvertenze" e preferisci il documento ufficiale.
 - In "avvertenze" segnala anche: dati illeggibili, documenti scaduti, incongruenze, dati mancanti importanti per la dichiarazione.

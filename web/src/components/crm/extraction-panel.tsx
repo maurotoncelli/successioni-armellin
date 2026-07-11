@@ -66,6 +66,8 @@ const emptyImmobile: ExtractedImmobile = {
   rendita: null,
   quota_possesso: null,
   indirizzo: null,
+  prima_casa: null,
+  valore: null,
 };
 
 function emptyData(): ExtractionData {
@@ -79,6 +81,8 @@ function emptyData(): ExtractionData {
       comune_nascita: null,
       provincia_nascita: null,
       data_decesso: null,
+      comune_decesso: null,
+      provincia_decesso: null,
       stato_civile: null,
       comune_ultima_residenza: null,
       provincia_ultima_residenza: null,
@@ -398,6 +402,8 @@ function ReadView({
               <Field label="Rendita" value={im.rendita} />
               <Field label="Quota" value={im.quota_possesso} />
               <Field label="Indirizzo" value={im.indirizzo} />
+              <Field label="Prima casa" value={im.prima_casa} />
+              <Field label="Valore dichiarato" value={im.valore} />
             </dl>
           ))}
         </Block>
@@ -470,6 +476,8 @@ function EditForm({
               ["comune_nascita", "Comune nascita"],
               ["provincia_nascita", "Prov. nascita"],
               ["data_decesso", "Data decesso"],
+              ["comune_decesso", "Comune decesso"],
+              ["provincia_decesso", "Prov. decesso"],
               ["stato_civile", "Stato civile"],
               ["comune_ultima_residenza", "Comune ultima residenza"],
               ["provincia_ultima_residenza", "Prov."],
@@ -601,6 +609,8 @@ function EditForm({
                   ["rendita", "Rendita"],
                   ["quota_possesso", "Quota (es. 1/1)"],
                   ["indirizzo", "Indirizzo"],
+                  ["prima_casa", "Prima casa (si/no)"],
+                  ["valore", "Valore (vuoto = calcolato)"],
                 ] as const
               ).map(([key, label]) => (
                 <Input

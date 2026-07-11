@@ -14,10 +14,11 @@ import type { ExtractionData, ExtractedPerson, ExtractedImmobile } from "@/lib/e
   (percorso previsto dalle stesse specifiche per i software di terzi).
 
   Copertura: Frontespizio (defunto, presentatore/dichiarante, firme, impegno a
-  trasmettere), EA (eredi), EB (terreni), EC (fabbricati), ER (conti correnti/
-  crediti), EE (riepilogo attivo). NON generati (da completare nel software
-  AdE, segnalati nei warnings): ED (passivita), EF (liquidazione imposte),
-  EG (allegati), EH (dichiarazioni sostitutive), EO (titoli/fondi), volture.
+  trasmettere), EA (eredi), EB (terreni) ed EC (fabbricati) con VALORI calcolati
+  da rendita x coefficienti standard, EE (riepilogo), EG (allegati PDF/TIFF in
+  base64), EH (dichiarazioni sostitutive), ER (conti correnti/crediti).
+  NON generati (segnalati nei warnings): ED (passivita), EF (liquidazione
+  imposte, la calcola il software AdE), EO (titoli/fondi), volture.
 */
 
 const NS = {
@@ -199,7 +200,47 @@ function devoluzione(
   return wrap(`suc:${name}`, rows, indent);
 }
 
+/* --------------------------- valori immobili ------------------------------- */
+
+/*
+  Valore ai fini dell'imposta = rendita rivalutata (x1,05) x moltiplicatore.
+  Moltiplicatori standard successioni (verificati sul file reale: A2 e C6 x120):
+  prima casa 110; gruppo B 168 (140 +20% dal 2007); A/10 e gruppo D 60;
+  C/1 e gruppo E 40,8; resto dei gruppi A e C 120.
+  Terreni non edificabili: reddito dominicale x1,25 x90.
+*/
+function valoreFabbricato(
+  rendita: string | null | undefined,
+  categoria: string | null | undefined,
+  primaCasa: boolean,
+): number | null {
+  const r = parseAmount(rendita);
+  if (r === null) return null;
+  const cat = upper(categoria).replace("/", "");
+  let mult = 120;
+  if (primaCasa) mult = 110;
+  else if (cat === "A10" || cat.startsWith("D")) mult = 60;
+  else if (cat === "C1" || cat.startsWith("E")) mult = 40.8;
+  else if (cat.startsWith("B")) mult = 168;
+  return Math.round(r * 1.05 * mult);
+}
+
+function valoreTerreno(redditoDominicale: string | null | undefined): number | null {
+  const rd = parseAmount(redditoDominicale);
+  if (rd === null) return null;
+  return Math.round(rd * 1.25 * 90);
+}
+
 /* -------------------------------- build ----------------------------------- */
+
+// Allegato per il Quadro EG (il tracciato accetta SOLO pdf e tif/tiff).
+export type SucAllegato = {
+  category: "Testamento" | "AlberoGenealogico" | "DocumentiIdentita" | "Altro";
+  fileName: string;
+  description: string;
+  base64: string;
+  mime: "application/pdf" | "image/tif" | "image/tiff";
+};
 
 export type SucBuildResult = {
   xml: string;
@@ -210,7 +251,7 @@ export type SucBuildResult = {
 export function buildSucXml(
   practice: PracticeRow,
   data: ExtractionData,
-  options: { cfFornitore?: string } = {},
+  options: { cfFornitore?: string; allegati?: SucAllegato[] } = {},
 ): SucBuildResult {
   const warnings: string[] = [];
   const d = data.defunto;
@@ -285,6 +326,8 @@ export function buildSucXml(
         (terreni.length ? el("suc:CasellaEB", "1", iF + "  ") : "") +
         (fabbricati.length ? el("suc:CasellaEC", "1", iF + "  ") : "") +
         el("suc:CasellaEE", "1", iF + "  ") +
+        ((options.allegati?.length ?? 0) > 0 ? el("suc:CasellaEG", "1", iF + "  ") : "") +
+        (presentatore ? el("suc:CasellaEH", "1", iF + "  ") : "") +
         (rendite.length ? el("suc:CasellaER", "1", iF + "  ") : "") +
         el("suc:FirmaDichiarante", "1", iF + "  "),
       iF,
@@ -420,13 +463,23 @@ export function buildSucXml(
     return null;
   }
 
+  let totaleImmobili = 0;
+
   function terrenoXml(im: ExtractedImmobile, indent: string): string {
     const i2 = indent + "  ";
-    if (!im.codice_comune)
-      warnings.push(`Terreno fg.${im.foglio ?? "?"} part.${im.particella ?? "?"}: codice comune catastale mancante.`);
-    warnings.push(
-      `Terreno fg.${im.foglio ?? "?"} part.${im.particella ?? "?"}: VALORE non calcolato (serve reddito dominicale rivalutato x coefficiente): inserirlo nel software AdE.`,
-    );
+    const rif = `Terreno fg.${im.foglio ?? "?"} part.${im.particella ?? "?"}`;
+    if (!im.codice_comune) warnings.push(`${rif}: codice comune catastale mancante.`);
+    const valore = parseAmount(im.valore) !== null
+      ? Math.round(parseAmount(im.valore) as number)
+      : valoreTerreno(im.rendita);
+    if (valore === null) {
+      warnings.push(`${rif}: reddito dominicale mancante, VALORE da inserire nel software AdE.`);
+    } else if (parseAmount(im.valore) === null) {
+      warnings.push(
+        `${rif}: valore ${valore} EUR calcolato come non edificabile (RD x1,25 x90). Se edificabile va indicato il valore venale.`,
+      );
+    }
+    if (valore !== null) totaleImmobili += valore;
     const superficie = parseSuperficie(im.consistenza);
     const inner =
       luogoXml(im, i2) +
@@ -457,22 +510,28 @@ export function buildSucXml(
       ) +
       possessoXml(im, i2) +
       el("suc:CodiceDiritto_P", "1", i2) +
-      devoluzione("DevoluzioneEB", eredi, null, i2);
+      el("suc:TipologiaTerreno", "3", i2) + // 3 = non edificabile (default prudente)
+      (valore !== null ? el("suc:Valore", String(valore), i2) : "") +
+      devoluzione("DevoluzioneEB", eredi, valore, i2);
     return wrap("suc:Terreni", inner, indent);
   }
 
   function fabbricatoXml(im: ExtractedImmobile, indent: string): string {
     const i2 = indent + "  ";
-    if (!im.codice_comune)
+    const rif = `Fabbricato ${im.comune ?? ""} fg.${im.foglio ?? "?"} part.${im.particella ?? "?"} sub.${im.subalterno ?? "-"}`;
+    if (!im.codice_comune) warnings.push(`${rif}: codice comune catastale mancante.`);
+    const primaCasa = /^s[iì]/i.test((im.prima_casa ?? "").trim());
+    const valore = parseAmount(im.valore) !== null
+      ? Math.round(parseAmount(im.valore) as number)
+      : valoreFabbricato(im.rendita, im.categoria, primaCasa);
+    if (valore === null) {
+      warnings.push(`${rif}: rendita catastale mancante, VALORE da inserire nel software AdE.`);
+    } else if (parseAmount(im.valore) === null) {
       warnings.push(
-        `Fabbricato ${im.comune ?? ""} fg.${im.foglio ?? "?"} part.${im.particella ?? "?"}: codice comune catastale mancante.`,
+        `${rif}: valore ${valore} EUR calcolato (rendita x1,05 x${primaCasa ? "110 prima casa - ricordati l'agevolazione P nel software AdE" : "coefficiente standard di categoria"}).`,
       );
-    // Valore = rendita catastale rivalutata (x1,05) x moltiplicatore.
-    // Il moltiplicatore dipende da categoria e agevolazioni: NON lo calcoliamo
-    // (prima casa 110, altri 120/140/60...); lo segnaliamo sempre.
-    warnings.push(
-      `Fabbricato ${im.comune ?? ""} fg.${im.foglio ?? "?"} part.${im.particella ?? "?"} sub.${im.subalterno ?? "-"}: VALORE da calcolare nel software AdE (rendita x coefficiente per categoria/agevolazioni).`,
-    );
+    }
+    if (valore !== null) totaleImmobili += valore;
     const inner =
       luogoXml(im, i2) +
       wrap(
@@ -496,7 +555,8 @@ export function buildSucXml(
       ) +
       possessoXml(im, i2) +
       el("suc:CodiceDiritto_P", "1", i2) +
-      devoluzione("DevoluzioneEC", eredi, null, i2);
+      (valore !== null ? el("suc:Valore", String(valore), i2) : "") +
+      devoluzione("DevoluzioneEC", eredi, valore, i2);
     return wrap("suc:Fabbricati", inner, indent);
   }
 
@@ -545,28 +605,176 @@ export function buildSucXml(
 
   const totaleRendite = rendite.reduce((sum, r) => sum + (parseAmount(r.saldo) ?? 0), 0);
   const altriBeniTot = data.altri_beni.reduce((sum, b) => sum + (parseAmount(b.valore) ?? 0), 0);
-  if (data.immobili.length > 0)
-    warnings.push("Quadro EE: il totale immobili NON e incluso (dipende dai valori calcolati nel software AdE): ricalcolare li.");
   if (data.altri_beni.length > 0)
     warnings.push(`${data.altri_beni.length} "altri beni" rilevati: inserirli nel quadro pertinente del software AdE.`);
-  warnings.push("Quadri NON generati automaticamente: ED (passivita es. spese funebri), EF (liquidazione imposte), EG (allegati), EH (dich. sostitutive): completarli nel software AdE.");
+  warnings.push("Quadri NON generati automaticamente: ED (passivita es. spese funebri) ed EF (liquidazione imposte): completarli/calcolarli nel software AdE.");
 
-  const quadroEE =
-    rendite.length || altriBeniTot
-      ? wrap(
-          "suc:QuadroEE",
-          el("suc:TotaleValoreAltriBeni", String(Math.round(totaleRendite + altriBeniTot)), iF) +
-            el("suc:TotaleAttivo", String(Math.round(totaleRendite + altriBeniTot)), iF) +
-            el("suc:TotaleValoreAsseEreditarioNetto", String(Math.round(totaleRendite + altriBeniTot)), iF),
-          iQ,
+  const totAltri = Math.round(totaleRendite + altriBeniTot);
+  const totAttivo = totaleImmobili + totAltri;
+  const quadroEE = totAttivo
+    ? wrap(
+        "suc:QuadroEE",
+        (totaleImmobili ? el("suc:TotaleValoreImmobili", String(totaleImmobili), iF) : "") +
+          (totAltri ? el("suc:TotaleValoreAltriBeni", String(totAltri), iF) : "") +
+          el("suc:TotaleAttivo", String(totAttivo), iF) +
+          el("suc:TotaleValoreAsseEreditarioNetto", String(totAttivo), iF),
+        iQ,
+      )
+    : "";
+
+  /* --- Quadro EG (allegati) ------------------------------------------------------
+     Il tracciato accetta solo application/pdf e image/tif(f): i JPG/PNG vanno
+     convertiti (segnalato a monte, in exportSucXml). Categorie in ordine XSD. */
+
+  const allegati = options.allegati ?? [];
+
+  function categoriaEG(cat: SucAllegato["category"]): string {
+    const items = allegati.filter((a) => a.category === cat);
+    if (items.length === 0) return "";
+    const i2 = iF + "  ";
+    const inner =
+      el(`suc:${cat}Num`, String(items.length), i2) +
+      items
+        .map((a) =>
+          wrap(
+            `suc:${cat}All`,
+            el("reg:FileType", a.mime, i2 + "  ") +
+              el("reg:FileName", a.fileName.slice(0, 100).toUpperCase(), i2 + "  ") +
+              el("reg:FileDescription", a.description.slice(0, 100).toUpperCase(), i2 + "  ") +
+              el("reg:ImageData", a.base64, i2 + "  "),
+            i2,
+          ),
         )
-      : "";
+        .join("");
+    return wrap(`suc:${cat}`, inner, iF);
+  }
+
+  const quadroEG = wrap(
+    "suc:QuadroEG",
+    categoriaEG("Testamento") +
+      categoriaEG("AlberoGenealogico") +
+      categoriaEG("DocumentiIdentita") +
+      categoriaEG("Altro"),
+    iQ,
+  );
+
+  /* --- Quadro EH (dichiarazioni sostitutive) -------------------------------------
+     Ricalcato sui file reali: presentatore (anagrafica reg + CF), defunto con
+     luogo del decesso, flag di assenza testamento/interdetti/rinuncia. */
+
+  const comuneDecesso = upper(d.comune_decesso) || upper(d.comune_ultima_residenza);
+  const provDecesso = (upper(d.provincia_decesso) || upper(d.provincia_ultima_residenza)).slice(0, 2);
+  if (!upper(d.comune_decesso) && comuneDecesso)
+    warnings.push("Quadro EH: luogo del decesso non estratto, usata l'ultima residenza del defunto: verificare col certificato di morte.");
+  if (!comuneDecesso)
+    warnings.push("Quadro EH: comune del decesso mancante (obbligatorio): integrarlo nel software AdE.");
+
+  const eh = iF + "  "; // dentro SezioneI_DichSost
+  const anagraficaReg = (p: {
+    cognome?: string | null; nome?: string | null; sesso?: string | null; cf?: string | null;
+    dataNascita?: string | null; comuneNascita?: string | null; provinciaNascita?: string | null;
+  }, indent: string) =>
+    el("reg:Cognome", upper(p.cognome), indent) +
+    el("reg:Nome", upper(p.nome), indent) +
+    el("reg:Sesso", upper(p.sesso).slice(0, 1) || sexFromCf(p.cf), indent) +
+    el("reg:DataNascita", dateToSuc(p.dataNascita), indent) +
+    el("reg:ComuneNascita", upper(p.comuneNascita), indent) +
+    el("reg:ProvinciaNascita", upper(p.provinciaNascita).slice(0, 2) || null, indent);
+
+  const ehEredi = eredi.filter((e) => e !== presentatore);
+  if (ehEredi.length > 3)
+    warnings.push(`Quadro EH: il tracciato accetta al massimo 3 eredi oltre al dichiarante (qui ${ehEredi.length}): gli eccedenti vanno gestiti nel software AdE.`);
+
+  const quadroEH = presentatore
+    ? wrap(
+        "suc:QuadroEH",
+        wrap(
+          "suc:PrimoModulo",
+          wrap(
+            "suc:SezioneI_DichSost",
+            wrap(
+              "suc:Presentatore",
+              anagraficaReg(
+                {
+                  cognome: presentatore.cognome, nome: presentatore.nome, sesso: presentatore.sesso,
+                  cf: presentatore.codice_fiscale, dataNascita: presentatore.data_nascita,
+                  comuneNascita: presentatore.comune_nascita, provinciaNascita: presentatore.provincia_nascita,
+                },
+                eh + "  ",
+              ) +
+                el("suc:CodiceFiscale", upper(presentatore.codice_fiscale), eh + "  ") +
+                el("suc:CodiceCarica", "1", eh + "  "),
+              eh,
+            ) +
+              wrap(
+                "suc:DatiDefunto",
+                wrap(
+                  "suc:DatiAnagrafici",
+                  anagraficaReg(
+                    {
+                      cognome: d.cognome ?? practice.deceased_name.split(" ").slice(-1)[0],
+                      nome: d.nome, sesso: d.sesso, cf: cfDefunto, dataNascita: d.data_nascita,
+                      comuneNascita: d.comune_nascita, provinciaNascita: d.provincia_nascita,
+                    },
+                    eh + "    ",
+                  ),
+                  eh + "  ",
+                ) +
+                  wrap(
+                    "suc:Decesso",
+                    el("suc:FlagDeceduto", "1", eh + "    ") +
+                      el("suc:DataDecesso", dateToSuc(d.data_decesso ?? practice.date_of_death), eh + "    ") +
+                      el("suc:Comune", comuneDecesso, eh + "    ") +
+                      el("suc:Provincia", provDecesso || null, eh + "    "),
+                    eh + "  ",
+                  ),
+                eh,
+              ) +
+              wrap("suc:Dichiarante", el("suc:PresenzaDichiarante", "1", eh + "  "), eh) +
+              ehEredi
+                .slice(0, 3)
+                .map((e) =>
+                  wrap(
+                    "suc:Eredi",
+                    el("suc:CodiceFiscale", upper(e.codice_fiscale), eh + "  ") +
+                      el("suc:GradoParentela", gradoParentelaCode(e.grado_parentela), eh + "  ") +
+                      wrap("suc:DatiAnagrafici", anagraficaReg(
+                        {
+                          cognome: e.cognome, nome: e.nome, sesso: e.sesso, cf: e.codice_fiscale,
+                          dataNascita: e.data_nascita, comuneNascita: e.comune_nascita,
+                          provinciaNascita: e.provincia_nascita,
+                        },
+                        eh + "    ",
+                      ), eh + "  "),
+                    eh,
+                  ),
+                )
+                .join("") +
+              wrap(
+                "suc:Testamento",
+                data.testamento.presente
+                  ? wrap("suc:PresenzaTestamento", el("suc:FlagTestamento", "1", eh + "    "), eh + "  ")
+                  : el("suc:FlagAssenzaTestamento", "1", eh + "  "),
+                eh,
+              ) +
+              wrap("suc:Interdetti", el("suc:FlagAssenzaInterdetti", "1", eh + "  "), eh) +
+              wrap("suc:Rinuncia", el("suc:FlagAssenzaRinuncia", "1", eh + "  "), eh) +
+              el("suc:FirmaDichiarante", "1", eh),
+            iF + "",
+          ),
+          iF.slice(2) + "",
+        ),
+        iQ,
+      )
+    : "";
+  if (quadroEH)
+    warnings.push("Quadro EH generato con flag standard (nessun interdetto, nessuna rinuncia): verificare che corrispondano al caso reale.");
 
   /* --- busta finale ------------------------------------------------------------ */
 
   const dichiarazione = wrap(
     "suc:Dichiarazione",
-    frontespizio + quadroEA + quadroEB + quadroEC + quadroEE + quadroER,
+    frontespizio + quadroEA + quadroEB + quadroEC + quadroEE + quadroEG + quadroEH + quadroER,
     i + i,
     ' identificativo="00001"',
   );
