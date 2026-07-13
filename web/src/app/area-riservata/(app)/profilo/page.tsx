@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import { LogOut } from "lucide-react";
+import { useState, useTransition } from "react";
+import { LogOut, Pencil, Check, X, Loader2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { buttonClasses } from "@/components/ui/button";
 import { PageHeading } from "@/components/area/ui";
 import { useAreaData } from "@/components/area/area-context";
 import { signOut } from "../../actions";
+import { updatePhone } from "./actions";
 
 export default function ProfiloPage() {
   const { account } = useAreaData();
@@ -28,10 +29,7 @@ export default function ProfiloPage() {
             <dt className="text-text-muted">Email</dt>
             <dd className="font-medium text-text">{account.email}</dd>
           </div>
-          <div className="flex justify-between">
-            <dt className="text-text-muted">Telefono</dt>
-            <dd className="font-medium text-text">{account.phone}</dd>
-          </div>
+          <PhoneRow initial={account.phone} />
         </dl>
       </Card>
 
@@ -60,6 +58,90 @@ export default function ProfiloPage() {
           Esci
         </button>
       </form>
+    </div>
+  );
+}
+
+function PhoneRow({ initial }: { initial: string }) {
+  const [phone, setPhone] = useState(initial);
+  const [editing, setEditing] = useState(false);
+  const [draft, setDraft] = useState(initial);
+  const [error, setError] = useState<string | null>(null);
+  const [pending, startTransition] = useTransition();
+
+  function save() {
+    setError(null);
+    startTransition(async () => {
+      const res = await updatePhone(draft);
+      if (res.ok) {
+        setPhone(res.phone);
+        setEditing(false);
+      } else {
+        setError(res.error);
+      }
+    });
+  }
+
+  if (!editing) {
+    return (
+      <div className="flex items-center justify-between">
+        <dt className="text-text-muted">Telefono</dt>
+        <dd className="flex items-center gap-2 font-medium text-text">
+          {phone || <span className="text-text-muted">non inserito</span>}
+          <button
+            onClick={() => {
+              setDraft(phone);
+              setEditing(true);
+            }}
+            title={phone ? "Modifica numero" : "Aggiungi numero"}
+            className="text-text-muted hover:text-accent-dark"
+          >
+            <Pencil className="h-3.5 w-3.5" />
+          </button>
+        </dd>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <div className="flex items-center justify-between gap-3">
+        <dt className="shrink-0 text-text-muted">Telefono</dt>
+        <dd className="flex min-w-0 items-center gap-1.5">
+          <input
+            type="tel"
+            value={draft}
+            onChange={(e) => setDraft(e.target.value)}
+            placeholder="320 1234567"
+            autoFocus
+            className="w-40 rounded-lg border border-primary/20 px-2.5 py-1.5 text-sm focus:border-accent focus:outline-none"
+          />
+          <button
+            onClick={save}
+            disabled={pending}
+            title="Salva"
+            className="grid h-7 w-7 place-items-center rounded-lg bg-accent/10 text-accent-dark hover:bg-accent/20 disabled:opacity-50"
+          >
+            {pending ? (
+              <Loader2 className="h-4 w-4 animate-spin" />
+            ) : (
+              <Check className="h-4 w-4" />
+            )}
+          </button>
+          <button
+            onClick={() => {
+              setEditing(false);
+              setError(null);
+            }}
+            disabled={pending}
+            title="Annulla"
+            className="grid h-7 w-7 place-items-center rounded-lg text-text-muted hover:bg-bg-muted disabled:opacity-50"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </dd>
+      </div>
+      {error && <p className="mt-1.5 text-right text-xs text-error">{error}</p>}
     </div>
   );
 }
