@@ -514,6 +514,13 @@ export async function exportSucXml(
         continue;
       }
     }
+    // Specifiche AdE: max 5 MB per singolo allegato.
+    if (payload.byteLength > 5 * 1024 * 1024) {
+      allegatiWarnings.push(
+        `Allegato "${label}" NON incluso: supera i 5 MB previsti dalle specifiche AdE (${(payload.byteLength / 1024 / 1024).toFixed(1)} MB). Ridurlo/dividerlo e allegarlo nel software AdE.`,
+      );
+      continue;
+    }
     const lower = label.toLowerCase();
     const category: SucAllegato["category"] = /identit/.test(lower)
       ? "DocumentiIdentita"
