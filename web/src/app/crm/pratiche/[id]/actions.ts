@@ -27,7 +27,7 @@ import {
   type ExtractionData,
 } from "@/lib/extraction";
 import { buildSucXml, type SucAllegato } from "@/lib/suc-xml";
-import { imageToPdf } from "@/lib/image-to-pdf";
+import { imagesToPdf, type PdfImage } from "@/lib/image-to-pdf";
 import {
   notifyStatusChange,
   notifyDocumentRejected,
@@ -475,70 +475,92 @@ export async function exportSucXml(
   const checklist = Array.isArray(row.checklist)
     ? (row.checklist as ChecklistItem[])
     : [];
-  const allFiles = checklist.flatMap((item) =>
-    listItemFiles(item).map((f) => ({ label: item.label ?? "Documento", file: f })),
-  );
-  for (const { label, file } of allFiles) {
-    const ext = file.path.split(".").pop()?.toLowerCase() ?? "";
-    const mime =
-      ext === "pdf" ? ("application/pdf" as const)
-      : ext === "tif" || ext === "tiff" ? ("image/tiff" as const)
-      : null;
-    const imageMime =
-      ext === "jpg" || ext === "jpeg" ? ("image/jpeg" as const)
-      : ext === "png" ? ("image/png" as const)
-      : null;
-    if (!mime && !imageMime) {
-      allegatiWarnings.push(
-        `Allegato "${label}" (${file.name}) saltato: formato .${ext} non gestito (il tracciato AdE accetta solo PDF/TIFF). Convertirlo in PDF e allegarlo nel software AdE.`,
-      );
-      continue;
-    }
-    const { data: blob } = await admin.storage.from(DOC_BUCKET).download(file.path);
-    if (!blob) {
-      allegatiWarnings.push(
-        `Allegato "${label}" (${file.name}): download non riuscito, non incluso.`,
-      );
-      continue;
-    }
-    const fileName = file.path.split("/").pop() ?? "documento.pdf";
-    let payload: Uint8Array = new Uint8Array(await blob.arrayBuffer());
-    let outMime: SucAllegato["mime"] = mime ?? "application/pdf";
-    let outName = fileName;
-    if (imageMime) {
-      try {
-        payload = await imageToPdf(payload, imageMime, label);
-        outName = fileName.replace(/\.(jpe?g|png)$/i, "") + ".pdf";
-        convertiti += 1;
-      } catch {
-        allegatiWarnings.push(
-          `Allegato "${label}" (${file.name}): conversione in PDF non riuscita (immagine corrotta?), non incluso. Convertirlo a mano e allegarlo nel software AdE.`,
-        );
-        continue;
-      }
-    }
-    // Specifiche AdE: max 5 MB per singolo allegato.
-    if (payload.byteLength > 5 * 1024 * 1024) {
-      allegatiWarnings.push(
-        `Allegato "${label}" (${file.name}) NON incluso: supera i 5 MB previsti dalle specifiche AdE (${(payload.byteLength / 1024 / 1024).toFixed(1)} MB). Ridurlo/dividerlo e allegarlo nel software AdE.`,
-      );
-      continue;
-    }
+
+  const MAX_ALLEGATO_BYTES = 5 * 1024 * 1024; // specifiche AdE: max 5 MB per allegato
+  const categoryFor = (label: string): SucAllegato["category"] => {
     const lower = label.toLowerCase();
-    const category: SucAllegato["category"] = /identit/.test(lower)
+    return /identit/.test(lower)
       ? "DocumentiIdentita"
       : /albero|stato di famiglia/.test(lower)
         ? "AlberoGenealogico"
         : /testamento/.test(lower)
           ? "Testamento"
           : "Altro";
+  };
+  const pushAllegato = (
+    label: string,
+    fileName: string,
+    payload: Uint8Array,
+    mime: SucAllegato["mime"],
+  ): boolean => {
+    if (payload.byteLength > MAX_ALLEGATO_BYTES) {
+      allegatiWarnings.push(
+        `Allegato "${label}" (${fileName}) NON incluso: supera i 5 MB previsti dalle specifiche AdE (${(payload.byteLength / 1024 / 1024).toFixed(1)} MB). Ridurlo/dividerlo e allegarlo nel software AdE.`,
+      );
+      return false;
+    }
     allegati.push({
-      category,
-      fileName: outName,
+      category: categoryFor(label),
+      fileName,
       description: label,
       base64: Buffer.from(payload).toString("base64"),
-      mime: outMime,
+      mime,
     });
+    return true;
+  };
+
+  // Per ogni voce: i PDF/TIFF restano allegati singoli; TUTTE le foto della
+  // voce vengono unite in UN solo PDF/A multi-pagina (es. atto notarile in
+  // 8 foto -> "atto_notarile.pdf" di 8 pagine).
+  for (const item of checklist) {
+    const label = item.label ?? "Documento";
+    const pagine: PdfImage[] = [];
+    for (const file of listItemFiles(item)) {
+      const ext = file.path.split(".").pop()?.toLowerCase() ?? "";
+      const mime =
+        ext === "pdf" ? ("application/pdf" as const)
+        : ext === "tif" || ext === "tiff" ? ("image/tiff" as const)
+        : null;
+      const imageMime =
+        ext === "jpg" || ext === "jpeg" ? ("image/jpeg" as const)
+        : ext === "png" ? ("image/png" as const)
+        : null;
+      if (!mime && !imageMime) {
+        allegatiWarnings.push(
+          `Allegato "${label}" (${file.name}) saltato: formato .${ext} non gestito (il tracciato AdE accetta solo PDF/TIFF). Convertirlo in PDF e allegarlo nel software AdE.`,
+        );
+        continue;
+      }
+      const { data: blob } = await admin.storage.from(DOC_BUCKET).download(file.path);
+      if (!blob) {
+        allegatiWarnings.push(
+          `Allegato "${label}" (${file.name}): download non riuscito, non incluso.`,
+        );
+        continue;
+      }
+      const payload = new Uint8Array(await blob.arrayBuffer());
+      if (imageMime) {
+        pagine.push({ bytes: payload, mime: imageMime });
+      } else {
+        const fileName = file.path.split("/").pop() ?? "documento.pdf";
+        pushAllegato(label, fileName, payload, mime as SucAllegato["mime"]);
+      }
+    }
+    if (pagine.length > 0) {
+      try {
+        const pdf = await imagesToPdf(pagine, label);
+        const baseName =
+          label.toLowerCase().replace(/[^\w]+/g, "_").replace(/^_+|_+$/g, "") ||
+          "documento";
+        if (pushAllegato(label, `${baseName}.pdf`, pdf, "application/pdf")) {
+          convertiti += pagine.length;
+        }
+      } catch {
+        allegatiWarnings.push(
+          `Allegato "${label}": conversione delle foto in PDF non riuscita (immagine corrotta?), non incluso. Convertirlo a mano e allegarlo nel software AdE.`,
+        );
+      }
+    }
   }
 
   const built = buildSucXml(row as PracticeRow, extraction.data, {
@@ -550,7 +572,7 @@ export async function exportSucXml(
     built.warnings.push(
       `Quadro EG: allegati ${allegati.length} documenti dalla checklist (in base64 dentro l'XML)` +
         (convertiti > 0
-          ? `, di cui ${convertiti} foto convertite automaticamente in PDF.`
+          ? `; ${convertiti} foto convertite automaticamente in PDF/A (unite per documento).`
           : "."),
     );
   }

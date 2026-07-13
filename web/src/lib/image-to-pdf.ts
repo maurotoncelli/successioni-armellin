@@ -3,11 +3,11 @@ import { randomBytes } from "node:crypto";
 import { PDFDocument, PDFHexString, PDFName, PDFString } from "pdf-lib";
 
 /*
-  Conversione immagine (JPG/PNG) -> PDF/A-1b a pagina singola, usata dall'export
-  XML SUC13: le specifiche tecniche AdE accettano come allegati (Quadro EG) solo
-  PDF/A-1a, PDF/A-1b o TIFF, max 5 MB per file. I clienti caricano soprattutto
-  foto: gli originali in storage NON vengono toccati, la conversione avviene al
-  volo in fase di export.
+  Conversione immagini (JPG/PNG) -> PDF/A-1b (una pagina per immagine), usata
+  dall'export XML SUC13: le specifiche tecniche AdE accettano come allegati
+  (Quadro EG) solo PDF/A-1a, PDF/A-1b o TIFF, max 5 MB per file. I clienti
+  caricano soprattutto foto: gli originali in storage NON vengono toccati, la
+  conversione avviene al volo in fase di export.
 
   Ricetta PDF/A-1b applicata qui:
   - OutputIntent GTS_PDFA1 con profilo ICC sRGB incorporato (profilo compatto
@@ -62,11 +62,18 @@ function xmpPacket(title: string, isoDate: string): string {
 <?xpacket end="w"?>`;
 }
 
-export async function imageToPdf(
-  bytes: Uint8Array,
-  mime: "image/jpeg" | "image/png",
+export type PdfImage = {
+  bytes: Uint8Array;
+  mime: "image/jpeg" | "image/png";
+};
+
+/** Un'immagine per pagina: le foto di un documento multi-pagina (es. atto
+ *  notarile fotografato) diventano UN solo PDF/A con piu pagine. */
+export async function imagesToPdf(
+  images: PdfImage[],
   title: string,
 ): Promise<Uint8Array> {
+  if (images.length === 0) throw new Error("Nessuna immagine da convertire.");
   const doc = await PDFDocument.create();
   const now = new Date();
   // Millisecondi azzerati: la data XMP (senza ms) deve equivalere a quella
@@ -78,22 +85,24 @@ export async function imageToPdf(
   doc.setCreationDate(now);
   doc.setModificationDate(now);
 
-  const image =
-    mime === "image/jpeg" ? await doc.embedJpg(bytes) : await doc.embedPng(bytes);
+  for (const { bytes, mime } of images) {
+    const image =
+      mime === "image/jpeg" ? await doc.embedJpg(bytes) : await doc.embedPng(bytes);
 
-  const landscape = image.width > image.height;
-  const page = doc.addPage(landscape ? [A4.h, A4.w] : [A4.w, A4.h]);
-  const { width: pw, height: ph } = page.getSize();
+    const landscape = image.width > image.height;
+    const page = doc.addPage(landscape ? [A4.h, A4.w] : [A4.w, A4.h]);
+    const { width: pw, height: ph } = page.getSize();
 
-  const scale = Math.min(pw / image.width, ph / image.height);
-  const w = image.width * scale;
-  const h = image.height * scale;
-  page.drawImage(image, {
-    x: (pw - w) / 2,
-    y: (ph - h) / 2,
-    width: w,
-    height: h,
-  });
+    const scale = Math.min(pw / image.width, ph / image.height);
+    const w = image.width * scale;
+    const h = image.height * scale;
+    page.drawImage(image, {
+      x: (pw - w) / 2,
+      y: (ph - h) / 2,
+      width: w,
+      height: h,
+    });
+  }
 
   // --- Marcatori PDF/A-1b ---
   const ctx = doc.context;

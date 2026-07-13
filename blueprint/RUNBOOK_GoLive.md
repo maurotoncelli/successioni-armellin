@@ -98,6 +98,24 @@ salvato su DB), footer con P.IVA/C.F./Albo/PEC/ODR, foro consumatore.
       obblighi cliente, diligenza, recesso, privacy, firma a distanza), dati studio
       dalla fonte unica. DA VALIDARE con l'avvocato insieme agli altri testi legali.
 - [ ] Password diverse per Google/Stripe/Resend (ora condividono FORZApisa90!).
+**Migliorie post-lancio (non bloccanti):**
+- [ ] **Scansione antivirus upload** (VirusTotal API o simile) sui file caricati
+      dai clienti. Oggi: bucket privato, tipi limitati (PDF/JPG/PNG), 10 MB max,
+      immagini rigenerate da sharp (neutralizza payload nelle foto). Rischio
+      residuo basso, riguarda i PDF. Decisione 13/07: segnato, non implementato.
+- [ ] **Notifiche WhatsApp automatiche** (WhatsApp Business Cloud API di Meta).
+      Cosa serve: account Meta Business VERIFICATO intestato allo studio (docs
+      aziendali di Lorenzo), un numero di telefono dedicato NON gia registrato
+      su WhatsApp app (il numero personale di Lorenzo non va bene se lo usa gia),
+      template messaggi approvati da Meta, carta di Lorenzo per il pay-per-use.
+      Costi Italia (2026): messaggi "utility" ~0,03-0,04 EUR l'uno; con decine di
+      pratiche/mese si parla di pochi EUR/mese. Finestra di servizio 24h gratuita
+      quando e il cliente a scrivere per primo. In alternativa via Twilio (stesso
+      account del futuro SMS OTP, gestione piu semplice, piccolo sovrapprezzo).
+      Il codice notifiche email e gia strutturato per aggiungere il canale WA.
+- [ ] **Toggle preferenze notifiche nel profilo cliente**: oggi estetici, da
+      collegare alle notifiche reali quando Resend (e eventualmente WA) e attivo.
+
 **Mauro da solo:**
 - [ ] **Resend**: attendere "Verified" (in pending: manca l'MX su `send`, Aruba non lo
       supporta; se non verifica entro 72h -> migrare DNS a Cloudflare). Poi API key ->

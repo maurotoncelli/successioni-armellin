@@ -31,7 +31,7 @@ export type DocItem = {
 
 const ACCEPT = ".pdf,.jpg,.jpeg,.png";
 const MAX_BYTES = 10 * 1024 * 1024;
-const MAX_FILES = 3;
+const MAX_FILES = 10;
 
 export function DocumentsClient({ initial }: { initial: DocItem[] }) {
   const router = useRouter();
@@ -284,7 +284,7 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
                 </button>
                 {d.files.length > 0 && d.state !== "DA_RIFARE" && (
                   <span className="text-xs text-text-muted">
-                    es. fronte/retro o piu pagine
+                    fronte/retro o una foto per pagina: le uniamo noi
                   </span>
                 )}
               </div>

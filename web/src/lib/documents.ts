@@ -23,7 +23,10 @@ import type { ChecklistFile, ChecklistItem, RequirementStatus } from "@/content/
 export const DOC_BUCKET = "practice-docs";
 export const MAX_DOC_BYTES = 10 * 1024 * 1024; // 10 MB
 export const ALLOWED_DOC_TYPES = ["application/pdf", "image/jpeg", "image/png"];
-export const MAX_FILES_PER_ITEM = 3;
+// Documenti multi-pagina fotografati (es. atto notarile): all'export le foto
+// della stessa voce vengono unite in un unico PDF/A, quindi il limite puo
+// essere generoso.
+export const MAX_FILES_PER_ITEM = 10;
 
 type Admin = ReturnType<typeof getAdminClient>;
 
