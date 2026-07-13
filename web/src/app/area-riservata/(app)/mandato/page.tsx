@@ -4,6 +4,7 @@ import { NoPracticeState } from "@/components/area/empty";
 import { MandateForm } from "@/components/area/mandate-form";
 import { requireClientView } from "@/lib/area";
 import { getSafeExtras } from "@/lib/practice-extras";
+import { buildMandatoParagraphs, buildMandatoText } from "@/content/mandato";
 
 export default async function MandatoPage() {
   const { practice, account } = await requireClientView();
@@ -17,6 +18,11 @@ export default async function MandatoPage() {
   }
 
   const extras = await getSafeExtras(practice.id);
+  const mandatoParams = {
+    practiceCode: account.practiceCode,
+    signerName: account.name,
+  };
+  const paragraphs = buildMandatoParagraphs(mandatoParams);
 
   return (
     <div>
@@ -30,28 +36,18 @@ export default async function MandatoPage() {
           <p className="font-semibold text-text">
             Mandato professionale - Pratica {account.practiceCode}
           </p>
-          <p className="mt-2">
-            Il/La sottoscritto/a {account.name} conferisce al Geom. Lorenzo
-            Armellin l&apos;incarico di predisporre e trasmettere la dichiarazione
-            di successione e gli adempimenti connessi, secondo il pacchetto
-            acquistato.
-          </p>
-          <p className="mt-2">
-            Il professionista opera con la supervisione fiscale di un
-            commercialista. L&apos;onorario è quello indicato in &quot;Il tuo
-            acquisto&quot;; le imposte di Stato sono separate e a carico
-            dell&apos;erede.
-          </p>
-          <p className="mt-2">
-            (Testo fac-simile per il prototipo: la versione definitiva sarà
-            validata con il legale.)
-          </p>
+          {paragraphs.map((para, i) => (
+            <p key={i} className="mt-2">
+              {para}
+            </p>
+          ))}
         </div>
 
         <div className="mt-5">
           <MandateForm
             signerName={account.name}
             practiceCode={account.practiceCode}
+            mandateText={buildMandatoText(mandatoParams)}
             initial={extras.mandate}
           />
         </div>

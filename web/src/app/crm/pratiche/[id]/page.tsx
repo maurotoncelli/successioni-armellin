@@ -34,6 +34,7 @@ import { ExtractionPanel } from "@/components/crm/extraction-panel";
 import { getSafeExtras } from "@/lib/practice-extras";
 import { getExtraction, isAiConfigured } from "@/lib/extraction";
 import { isInvoicingConfigured } from "@/lib/invoice";
+import { listItemFiles } from "@/lib/documents";
 
 const channelIcon = {
   EMAIL: Mail,
@@ -53,7 +54,7 @@ export default async function SchedaPraticaPage({
 
   const extras = await getSafeExtras(p.id);
   const extraction = await getExtraction(p.id);
-  const docsWithFile = p.checklist.filter((c) => c.filePath).length;
+  const docsWithFile = p.checklist.filter((c) => listItemFiles(c).length > 0).length;
 
   const approved = p.checklist.filter((c) => c.status === "APPROVATO").length;
   const requiredCount = p.checklist.filter((c) => c.required).length;
@@ -62,8 +63,7 @@ export default async function SchedaPraticaPage({
     label: c.label,
     required: c.required,
     status: c.status,
-    fileName: c.fileName,
-    hasFile: Boolean(c.filePath),
+    files: listItemFiles(c).map((f) => f.name),
     reason: c.reason,
   }));
 

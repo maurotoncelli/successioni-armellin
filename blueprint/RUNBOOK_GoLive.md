@@ -80,11 +80,23 @@ salvato su DB), footer con P.IVA/C.F./Albo/PEC/ODR, foro consumatore.
       clienti sono inclusi cosi come sono -> capire se il controllo AdE pretende
       **PDF/A** (in tal caso serve conversione automatica in export).
 - [x] **Conversione JPG/PNG -> PDF all'export XML**: FATTO 13/07 (deploy). Le foto
-      dei clienti vengono convertite AL VOLO in PDF A4 (`lib/image-to-pdf.ts`,
-      pdf-lib) durante `exportSucXml` e incluse nel Quadro EG; gli originali in
-      storage restano intatti (l'estrazione AI continua a lavorare sulle foto).
-      Se il controllo AdE pretende PDF/A rigoroso -> estendere la generazione
-      (OutputIntent ICC + XMP) in image-to-pdf.ts.
+      dei clienti vengono convertite AL VOLO in **PDF/A-1b** (`lib/image-to-pdf.ts`,
+      pdf-lib + OutputIntent sRGB + XMP pdfaid, richiesto dalle specifiche AdE:
+      "PDF/A-1a o PDF/A-1b oppure TIF/TIFF, max 5 MB per allegato") durante
+      `exportSucXml`, incluse nel Quadro EG; limite 5 MB verificato all'export.
+      Gli originali in storage restano intatti. Controprova consigliata: servizio
+      "Validare e convertire file" nell'area riservata Entratel.
+- [x] **Area cliente - multi-file per voce checklist**: FATTO 13/07. Fino a 3 file
+      per documento (es. fronte/retro CI); CRM scarica i singoli file; estrazione
+      AI ed export XML iterano su tutti. Retro-compatibile (filePath legacy).
+- [x] **Compressione foto lato server**: FATTO 13/07. JPG/PNG ricompressi al
+      caricamento (max 2000px, JPEG q82, EXIF applicato): foto 8-12 MB -> ~1 MB,
+      cosi i PDF/A restano sotto i 5 MB AdE.
+- [x] **Mandato professionale riscritto** (13/07): testo unico in
+      `content/mandato.ts` (prima duplicato pagina+download con refusi), 7 clausole
+      coerenti con le Condizioni di vendita (oggetto, corrispettivo/imposte,
+      obblighi cliente, diligenza, recesso, privacy, firma a distanza), dati studio
+      dalla fonte unica. DA VALIDARE con l'avvocato insieme agli altri testi legali.
 - [ ] Password diverse per Google/Stripe/Resend (ora condividono FORZApisa90!).
 **Mauro da solo:**
 - [ ] **Resend**: attendere "Verified" (in pending: manca l'MX su `send`, Aruba non lo

@@ -25,11 +25,13 @@ export type DocItem = {
   state: ClientDocState;
   reason?: string;
   help?: string;
-  fileName?: string;
+  /** Nomi dei file caricati per la voce (max MAX_FILES). */
+  files: string[];
 };
 
 const ACCEPT = ".pdf,.jpg,.jpeg,.png";
 const MAX_BYTES = 10 * 1024 * 1024;
+const MAX_FILES = 3;
 
 export function DocumentsClient({ initial }: { initial: DocItem[] }) {
   const router = useRouter();
@@ -84,7 +86,7 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
         method: "POST",
         body,
       });
-      const data = (await res.json()) as { error?: string; fileName?: string };
+      const data = (await res.json()) as { error?: string; files?: string[] };
       if (!res.ok) {
         setError(data.error ?? "Caricamento non riuscito.");
         return;
@@ -92,7 +94,7 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
       setDocs((prev) =>
         prev.map((d) =>
           d.index === index
-            ? { ...d, state: "CARICATO", reason: undefined, fileName: data.fileName }
+            ? { ...d, state: "CARICATO", reason: undefined, files: data.files ?? d.files }
             : d,
         ),
       );
@@ -104,7 +106,7 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
     }
   }
 
-  async function removeDoc(index: number) {
+  async function removeFile(index: number, fileIdx: number) {
     setError(null);
     setSubmitted(false);
     setUploading(index);
@@ -112,7 +114,7 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
       const res = await fetch("/api/area/documents/delete", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ index }),
+        body: JSON.stringify({ index, fileIdx }),
       });
       if (!res.ok) {
         const data = (await res.json()) as { error?: string };
@@ -120,11 +122,16 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
         return;
       }
       setDocs((prev) =>
-        prev.map((d) =>
-          d.index === index
-            ? { ...d, state: "DA_CARICARE", reason: undefined, fileName: undefined }
-            : d,
-        ),
+        prev.map((d) => {
+          if (d.index !== index) return d;
+          const files = d.files.filter((_, i) => i !== fileIdx);
+          return {
+            ...d,
+            files,
+            state: files.length > 0 ? d.state : "DA_CARICARE",
+            reason: undefined,
+          };
+        }),
       );
       router.refresh();
     } catch {
@@ -214,11 +221,26 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
                     {d.help}
                   </p>
                 )}
-                {d.state === "CARICATO" && d.fileName && (
-                  <p className="mt-2 flex items-center gap-1.5 text-xs text-text-muted">
-                    <FileCheck2 className="h-3.5 w-3.5 shrink-0 text-success" />
-                    {d.fileName}
-                  </p>
+                {d.files.length > 0 && (
+                  <ul className="mt-2 space-y-1">
+                    {d.files.map((name, fileIdx) => (
+                      <li
+                        key={`${fileIdx}-${name}`}
+                        className="flex items-center gap-1.5 text-xs text-text-muted"
+                      >
+                        <FileCheck2 className="h-3.5 w-3.5 shrink-0 text-success" />
+                        <span className="truncate">{name}</span>
+                        <button
+                          onClick={() => removeFile(d.index, fileIdx)}
+                          disabled={uploading === d.index}
+                          title="Elimina questo file"
+                          className="ml-1 text-text-muted hover:text-error disabled:opacity-50"
+                        >
+                          <Trash2 className="h-3.5 w-3.5" />
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
                 )}
                 {d.state === "DA_RIFARE" && d.reason && (
                   <p className="mt-2 rounded-lg bg-error/10 px-3 py-2 text-xs text-error">
@@ -229,26 +251,18 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
               <DocStateBadge state={d.state} />
             </div>
 
-            <div className="mt-3 flex items-center gap-2">
-              {d.state === "CARICATO" ? (
-                <button
-                  onClick={() => removeDoc(d.index)}
-                  disabled={uploading === d.index}
-                  className="inline-flex items-center gap-1.5 rounded-[10px] px-3 py-2 text-sm font-medium text-text-muted hover:bg-bg-muted disabled:opacity-50"
-                >
-                  {uploading === d.index ? (
-                    <Loader2 className="h-4 w-4 animate-spin" />
-                  ) : (
-                    <Trash2 className="h-4 w-4" />
-                  )}
-                  Elimina
-                </button>
-              ) : (
+            {d.files.length < MAX_FILES && (
+              <div className="mt-3 flex items-center gap-2">
                 <button
                   onClick={() => triggerUpload(d.index)}
                   disabled={uploading === d.index}
                   className={buttonClasses({
-                    variant: d.state === "DA_RIFARE" ? "primary" : "outline",
+                    variant:
+                      d.state === "DA_RIFARE"
+                        ? "primary"
+                        : d.files.length === 0
+                          ? "outline"
+                          : "ghost",
                     className: "py-2 text-sm",
                   })}
                 >
@@ -260,12 +274,21 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
                   ) : (
                     <>
                       <Upload className="h-4 w-4" />
-                      {d.state === "DA_RIFARE" ? "Ricarica" : "Carica"}
+                      {d.state === "DA_RIFARE"
+                        ? "Ricarica"
+                        : d.files.length > 0
+                          ? "Aggiungi un altro file"
+                          : "Carica"}
                     </>
                   )}
                 </button>
-              )}
-            </div>
+                {d.files.length > 0 && d.state !== "DA_RIFARE" && (
+                  <span className="text-xs text-text-muted">
+                    es. fronte/retro o piu pagine
+                  </span>
+                )}
+              </div>
+            )}
           </li>
         ))}
       </ul>

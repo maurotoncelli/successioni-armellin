@@ -3,6 +3,7 @@ import { DocumentsClient, type DocItem } from "@/components/area/documents";
 import { NoPracticeState } from "@/components/area/empty";
 import { requireClientView } from "@/lib/area";
 import { toClientDocState } from "@/content/area-data";
+import { listItemFiles } from "@/lib/documents";
 
 export default async function DocumentiPage() {
   const { practice } = await requireClientView();
@@ -26,7 +27,7 @@ export default async function DocumentiPage() {
         state,
         reason: d.reason,
         help: d.help,
-        fileName: d.fileName,
+        files: listItemFiles(d).map((f) => f.name),
       },
     ];
   });

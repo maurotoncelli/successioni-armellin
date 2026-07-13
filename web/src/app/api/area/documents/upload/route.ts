@@ -36,12 +36,16 @@ export async function POST(req: Request) {
 
   try {
     const item = await uploadDocument(view.practice.id, index, file);
-    return NextResponse.json({ ok: true, fileName: item.fileName });
+    return NextResponse.json({
+      ok: true,
+      files: (item.files ?? []).map((f) => f.name),
+    });
   } catch (err) {
-    console.error("[area] upload documento:", err);
-    return NextResponse.json(
-      { error: "Caricamento non riuscito, riprova." },
-      { status: 500 },
-    );
+    const message =
+      err instanceof Error && err.message.startsWith("Massimo")
+        ? err.message
+        : "Caricamento non riuscito, riprova.";
+    if (message.startsWith("Caricamento")) console.error("[area] upload documento:", err);
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

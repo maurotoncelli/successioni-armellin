@@ -10,18 +10,20 @@ export async function POST(req: Request) {
   }
 
   let index = NaN;
+  let fileIdx: number | undefined;
   try {
-    const body = (await req.json()) as { index?: number };
+    const body = (await req.json()) as { index?: number; fileIdx?: number };
     index = Number(body.index);
+    fileIdx = body.fileIdx === undefined ? undefined : Number(body.fileIdx);
   } catch {
     return NextResponse.json({ error: "Richiesta non valida." }, { status: 400 });
   }
-  if (Number.isNaN(index)) {
+  if (Number.isNaN(index) || (fileIdx !== undefined && Number.isNaN(fileIdx))) {
     return NextResponse.json({ error: "Richiesta non valida." }, { status: 400 });
   }
 
   try {
-    await removeDocument(view.practice.id, index);
+    await removeDocument(view.practice.id, index, fileIdx);
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("[area] elimina documento:", err);

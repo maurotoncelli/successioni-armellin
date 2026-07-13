@@ -60,14 +60,26 @@ export const actionOwnerMeta: Record<
   NONE: { label: "Nessuna azione", tone: "muted" },
 };
 
+export type ChecklistFile = {
+  path: string; // percorso in Storage (privato)
+  name: string; // nome originale del file
+  uploadedAt?: string; // ISO timestamp del caricamento
+};
+
 export type ChecklistItem = {
   label: string;
   required: boolean;
   status: RequirementStatus;
   reason?: string; // motivo del rifiuto (stato RIFIUTATO)
   help?: string; // istruzioni mostrate al cliente
-  filePath?: string; // percorso del file in Storage (privato)
-  fileName?: string; // nome originale del file caricato dal cliente
+  /**
+   * File caricati per la voce (max 3: es. fronte/retro documento).
+   * filePath/fileName restano per retro-compatibilita con le pratiche esistenti
+   * e rispecchiano il PRIMO file; usare lib/documents.listItemFiles per leggerli.
+   */
+  files?: ChecklistFile[];
+  filePath?: string; // percorso del primo file in Storage (privato)
+  fileName?: string; // nome originale del primo file caricato dal cliente
   uploadedAt?: string; // ISO timestamp dell'ultimo caricamento
 };
 

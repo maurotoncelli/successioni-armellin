@@ -4,7 +4,7 @@ import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
 import { createCheckoutSession } from "@/lib/payments";
 import { requireAdmin } from "@/lib/admin";
-import { signedDocUrl, setDocStatus, DOC_BUCKET } from "@/lib/documents";
+import { signedDocUrl, setDocStatus, listItemFiles, DOC_BUCKET } from "@/lib/documents";
 import {
   mandateFileUrl,
   revealIban,
@@ -39,6 +39,7 @@ import { getAdminClient } from "@/lib/supabase/admin";
 import type { PracticeRow } from "@/lib/supabase/types";
 import type {
   ActionOwner,
+  ChecklistItem,
   Communication,
   LogEvent,
   PracticeStatus,
@@ -78,9 +79,10 @@ export type DocUrlResult =
 export async function getDocumentUrl(
   practiceId: string,
   index: number,
+  fileIdx = 0,
 ): Promise<DocUrlResult> {
   await requireAdmin();
-  const url = await signedDocUrl(practiceId, index);
+  const url = await signedDocUrl(practiceId, index, fileIdx);
   if (!url) return { ok: false, error: "Nessun file disponibile." };
   return { ok: true, url };
 }
@@ -471,12 +473,13 @@ export async function exportSucXml(
   const allegatiWarnings: string[] = [];
   let convertiti = 0;
   const checklist = Array.isArray(row.checklist)
-    ? (row.checklist as { label: string; filePath?: string; status?: string }[])
+    ? (row.checklist as ChecklistItem[])
     : [];
-  for (const item of checklist) {
-    if (!item.filePath) continue;
-    const label = item.label ?? "Documento";
-    const ext = item.filePath.split(".").pop()?.toLowerCase() ?? "";
+  const allFiles = checklist.flatMap((item) =>
+    listItemFiles(item).map((f) => ({ label: item.label ?? "Documento", file: f })),
+  );
+  for (const { label, file } of allFiles) {
+    const ext = file.path.split(".").pop()?.toLowerCase() ?? "";
     const mime =
       ext === "pdf" ? ("application/pdf" as const)
       : ext === "tif" || ext === "tiff" ? ("image/tiff" as const)
@@ -487,18 +490,18 @@ export async function exportSucXml(
       : null;
     if (!mime && !imageMime) {
       allegatiWarnings.push(
-        `Allegato "${label}" saltato: formato .${ext} non gestito (il tracciato AdE accetta solo PDF/TIFF). Convertirlo in PDF e allegarlo nel software AdE.`,
+        `Allegato "${label}" (${file.name}) saltato: formato .${ext} non gestito (il tracciato AdE accetta solo PDF/TIFF). Convertirlo in PDF e allegarlo nel software AdE.`,
       );
       continue;
     }
-    const { data: blob } = await admin.storage
-      .from(DOC_BUCKET)
-      .download(item.filePath);
+    const { data: blob } = await admin.storage.from(DOC_BUCKET).download(file.path);
     if (!blob) {
-      allegatiWarnings.push(`Allegato "${label}": download non riuscito, non incluso.`);
+      allegatiWarnings.push(
+        `Allegato "${label}" (${file.name}): download non riuscito, non incluso.`,
+      );
       continue;
     }
-    const fileName = item.filePath.split("/").pop() ?? "documento.pdf";
+    const fileName = file.path.split("/").pop() ?? "documento.pdf";
     let payload: Uint8Array = new Uint8Array(await blob.arrayBuffer());
     let outMime: SucAllegato["mime"] = mime ?? "application/pdf";
     let outName = fileName;
@@ -509,7 +512,7 @@ export async function exportSucXml(
         convertiti += 1;
       } catch {
         allegatiWarnings.push(
-          `Allegato "${label}": conversione in PDF non riuscita (immagine corrotta?), non incluso. Convertirlo a mano e allegarlo nel software AdE.`,
+          `Allegato "${label}" (${file.name}): conversione in PDF non riuscita (immagine corrotta?), non incluso. Convertirlo a mano e allegarlo nel software AdE.`,
         );
         continue;
       }
@@ -517,7 +520,7 @@ export async function exportSucXml(
     // Specifiche AdE: max 5 MB per singolo allegato.
     if (payload.byteLength > 5 * 1024 * 1024) {
       allegatiWarnings.push(
-        `Allegato "${label}" NON incluso: supera i 5 MB previsti dalle specifiche AdE (${(payload.byteLength / 1024 / 1024).toFixed(1)} MB). Ridurlo/dividerlo e allegarlo nel software AdE.`,
+        `Allegato "${label}" (${file.name}) NON incluso: supera i 5 MB previsti dalle specifiche AdE (${(payload.byteLength / 1024 / 1024).toFixed(1)} MB). Ridurlo/dividerlo e allegarlo nel software AdE.`,
       );
       continue;
     }

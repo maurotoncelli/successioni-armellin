@@ -19,10 +19,13 @@ type MandateState = SafeExtras["mandate"];
 export function MandateForm({
   signerName,
   practiceCode,
+  mandateText,
   initial,
 }: {
   signerName: string;
   practiceCode: string;
+  /** Testo completo del mandato (da @/content/mandato, unica fonte di verita). */
+  mandateText: string;
   initial: MandateState;
 }) {
   const router = useRouter();
@@ -32,19 +35,6 @@ export function MandateForm({
   const [pending, startTransition] = useTransition();
   const [uploading, setUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
-
-  const mandateText = `MANDATO PROFESSIONALE - Pratica ${practiceCode}
-
-Il/La sottoscritto/a ${signerName} conferisce al Geom. Lorenzo Armellin l'incarico
-di predisporre e trasmettere la dichiarazione di successione e gli adempimenti
-connessi, secondo il pacchetto acquistato.
-
-Il professionista opera con la supervisione fiscale di un commercialista.
-L'onorario e quello indicato in "Il tuo acquisto"; le imposte di Stato sono
-separate e a carico dell'erede.
-
-(Testo fac-simile per il prototipo: la versione definitiva sara validata con il legale.)
-`;
 
   function downloadBlank() {
     const blob = new Blob([mandateText], { type: "text/plain;charset=utf-8" });

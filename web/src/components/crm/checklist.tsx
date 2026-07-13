@@ -15,8 +15,8 @@ export type CrmDocItem = {
   label: string;
   required: boolean;
   status: RequirementStatus;
-  fileName?: string;
-  hasFile: boolean;
+  /** Nomi dei file caricati (piu file per voce, es. fronte/retro). */
+  files: string[];
   reason?: string;
 };
 
@@ -39,10 +39,10 @@ export function CrmChecklist({
   const [busy, setBusy] = useState<number | null>(null);
   const [, startTransition] = useTransition();
 
-  async function download(index: number) {
+  async function download(index: number, fileIdx: number) {
     setBusy(index);
     try {
-      const res = await getDocumentUrl(practiceId, index);
+      const res = await getDocumentUrl(practiceId, index, fileIdx);
       if (res.ok) window.open(res.url, "_blank", "noopener,noreferrer");
     } finally {
       setBusy(null);
@@ -77,6 +77,7 @@ export function CrmChecklist({
       {items.map((doc) => {
         const meta = reqStatusMeta[doc.status];
         const isBusy = busy === doc.index;
+        const hasFile = doc.files.length > 0;
         return (
           <li
             key={doc.index}
@@ -88,9 +89,20 @@ export function CrmChecklist({
               {!doc.required && (
                 <span className="text-xs text-crm-muted">(facolt.)</span>
               )}
-              {doc.fileName && (
-                <span className="truncate text-xs text-crm-muted">
-                  · {doc.fileName}
+              {hasFile && (
+                <span className="flex min-w-0 flex-wrap items-center gap-x-2 text-xs text-crm-muted">
+                  {doc.files.map((name, fileIdx) => (
+                    <button
+                      key={`${fileIdx}-${name}`}
+                      onClick={() => download(doc.index, fileIdx)}
+                      disabled={isBusy}
+                      title={`Scarica ${name}`}
+                      className="inline-flex max-w-44 items-center gap-1 truncate underline-offset-2 hover:text-crm-text hover:underline disabled:opacity-50"
+                    >
+                      <Download className="h-3 w-3 shrink-0" />
+                      <span className="truncate">{name}</span>
+                    </button>
+                  ))}
                 </span>
               )}
             </div>
@@ -98,21 +110,8 @@ export function CrmChecklist({
               <span className={`text-xs font-medium ${meta.cls}`}>
                 {meta.label}
               </span>
-              {doc.hasFile && (
-                <button
-                  onClick={() => download(doc.index)}
-                  disabled={isBusy}
-                  title="Scarica"
-                  className="grid h-6 w-6 place-items-center rounded bg-white/5 text-crm-text2 hover:text-crm-text disabled:opacity-50"
-                >
-                  {isBusy ? (
-                    <Loader2 className="h-3.5 w-3.5 animate-spin" />
-                  ) : (
-                    <Download className="h-3.5 w-3.5" />
-                  )}
-                </button>
-              )}
-              {doc.hasFile && doc.status !== "APPROVATO" && (
+              {isBusy && <Loader2 className="h-3.5 w-3.5 animate-spin text-crm-muted" />}
+              {hasFile && doc.status !== "APPROVATO" && (
                 <button
                   onClick={() => approve(doc.index)}
                   disabled={isBusy}
@@ -122,7 +121,7 @@ export function CrmChecklist({
                   <Check className="h-3.5 w-3.5" />
                 </button>
               )}
-              {doc.hasFile && doc.status !== "RIFIUTATO" && (
+              {hasFile && doc.status !== "RIFIUTATO" && (
                 <button
                   onClick={() => reject(doc.index)}
                   disabled={isBusy}
@@ -132,7 +131,7 @@ export function CrmChecklist({
                   <X className="h-3.5 w-3.5" />
                 </button>
               )}
-              {!doc.hasFile && doc.status === "RIFIUTATO" && (
+              {!hasFile && doc.status === "RIFIUTATO" && (
                 <span title="In attesa di nuovo caricamento" className="text-crm-muted">
                   <RotateCcw className="h-3.5 w-3.5" />
                 </span>

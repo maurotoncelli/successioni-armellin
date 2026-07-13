@@ -1,6 +1,6 @@
 import "server-only";
 import { getAdminClient } from "@/lib/supabase/admin";
-import { DOC_BUCKET, ensureDocBucket } from "@/lib/documents";
+import { DOC_BUCKET, ensureDocBucket, listItemFiles } from "@/lib/documents";
 import type { ChecklistItem } from "@/content/crm-data";
 import type { PracticeRow } from "@/lib/supabase/types";
 
@@ -307,9 +307,9 @@ export async function runExtraction(
   const checklist = Array.isArray(practice.checklist)
     ? (practice.checklist as ChecklistItem[])
     : [];
-  const withFile = checklist.filter(
-    (c) => c.filePath && (c.status === "CARICATO" || c.status === "APPROVATO"),
-  );
+  const withFile = checklist
+    .filter((c) => c.status === "CARICATO" || c.status === "APPROVATO")
+    .flatMap((c) => listItemFiles(c).map((f) => ({ label: c.label, file: f })));
   const callNotes = (practice.call_notes ?? "").trim();
 
   if (withFile.length === 0 && !callNotes) {
@@ -323,24 +323,22 @@ export async function runExtraction(
   const docs: DocPayload[] = [];
   const skipped: string[] = [];
   let total = 0;
-  for (const item of withFile) {
-    const { data } = await admin.storage
-      .from(DOC_BUCKET)
-      .download(item.filePath as string);
+  for (const { label, file } of withFile) {
+    const { data } = await admin.storage.from(DOC_BUCKET).download(file.path);
     if (!data) {
-      skipped.push(item.label);
+      skipped.push(label);
       continue;
     }
     const bytes = Buffer.from(await data.arrayBuffer());
     if (total + bytes.length > MAX_TOTAL_DOC_BYTES) {
-      skipped.push(item.label);
+      skipped.push(label);
       continue;
     }
     total += bytes.length;
     docs.push({
-      label: item.label,
-      fileName: item.fileName || "documento",
-      contentType: contentTypeFor(item.fileName || ""),
+      label,
+      fileName: file.name || "documento",
+      contentType: contentTypeFor(file.name || ""),
       bytes,
     });
   }
