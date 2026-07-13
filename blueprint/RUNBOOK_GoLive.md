@@ -76,6 +76,15 @@ salvato su DB), footer con P.IVA/C.F./Albo/PEC/ODR, foro consumatore.
       Vercel + redeploy + pagamento di prova vero (rimborsabile).
 - [ ] **Test XML reale**: Lorenzo scarica l'XML di una pratica dal CRM e lo passa nel
       modulo di controllo del Desktop Telematico -> feedback per rifiniture.
+      In particolare verificare gli ALLEGATI (Quadro EG): oggi i PDF caricati dai
+      clienti sono inclusi cosi come sono -> capire se il controllo AdE pretende
+      **PDF/A** (in tal caso serve conversione automatica in export).
+- [ ] **Conversione JPG/PNG -> PDF all'export XML** (agente, 13/07): i clienti
+      caricano soprattutto foto; oggi JPG/PNG vengono SALTATI dal Quadro EG con
+      avviso (il tracciato AdE accetta solo PDF/TIFF) e ricadono su Lorenzo come
+      lavoro manuale. Implementare conversione automatica immagine->PDF in
+      `exportSucXml` (actions.ts pratica CRM), cosi tutti gli allegati finiscono
+      nell'XML senza passaggi manuali.
 - [ ] Password diverse per Google/Stripe/Resend (ora condividono FORZApisa90!).
 **Mauro da solo:**
 - [ ] **Resend**: attendere "Verified" (in pending: manca l'MX su `send`, Aruba non lo
