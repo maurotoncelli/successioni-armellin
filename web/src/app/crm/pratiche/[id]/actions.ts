@@ -27,6 +27,7 @@ import {
   type ExtractionData,
 } from "@/lib/extraction";
 import { buildSucXml, type SucAllegato } from "@/lib/suc-xml";
+import { imageToPdf } from "@/lib/image-to-pdf";
 import {
   notifyStatusChange,
   notifyDocumentRejected,
@@ -462,11 +463,13 @@ export async function exportSucXml(
 
   /*
     Allegati per il Quadro EG: i documenti approvati della checklist, incorporati
-    in base64. Il tracciato AdE accetta SOLO pdf e tif/tiff: i JPG/PNG vengono
-    saltati e segnalati (andranno convertiti in PDF e allegati nel software AdE).
+    in base64. Il tracciato AdE accetta SOLO pdf e tif/tiff: le foto JPG/PNG dei
+    clienti vengono convertite AL VOLO in PDF A4 (lib/image-to-pdf, gli originali
+    in storage restano intatti). Altri formati vengono saltati e segnalati.
   */
   const allegati: SucAllegato[] = [];
   const allegatiWarnings: string[] = [];
+  let convertiti = 0;
   const checklist = Array.isArray(row.checklist)
     ? (row.checklist as { label: string; filePath?: string; status?: string }[])
     : [];
@@ -478,9 +481,13 @@ export async function exportSucXml(
       ext === "pdf" ? ("application/pdf" as const)
       : ext === "tif" || ext === "tiff" ? ("image/tiff" as const)
       : null;
-    if (!mime) {
+    const imageMime =
+      ext === "jpg" || ext === "jpeg" ? ("image/jpeg" as const)
+      : ext === "png" ? ("image/png" as const)
+      : null;
+    if (!mime && !imageMime) {
       allegatiWarnings.push(
-        `Allegato "${label}" saltato: il tracciato AdE accetta solo PDF/TIFF (file .${ext}). Convertirlo in PDF e allegarlo nel software AdE.`,
+        `Allegato "${label}" saltato: formato .${ext} non gestito (il tracciato AdE accetta solo PDF/TIFF). Convertirlo in PDF e allegarlo nel software AdE.`,
       );
       continue;
     }
@@ -490,6 +497,22 @@ export async function exportSucXml(
     if (!blob) {
       allegatiWarnings.push(`Allegato "${label}": download non riuscito, non incluso.`);
       continue;
+    }
+    const fileName = item.filePath.split("/").pop() ?? "documento.pdf";
+    let payload: Uint8Array = new Uint8Array(await blob.arrayBuffer());
+    let outMime: SucAllegato["mime"] = mime ?? "application/pdf";
+    let outName = fileName;
+    if (imageMime) {
+      try {
+        payload = await imageToPdf(payload, imageMime, label);
+        outName = fileName.replace(/\.(jpe?g|png)$/i, "") + ".pdf";
+        convertiti += 1;
+      } catch {
+        allegatiWarnings.push(
+          `Allegato "${label}": conversione in PDF non riuscita (immagine corrotta?), non incluso. Convertirlo a mano e allegarlo nel software AdE.`,
+        );
+        continue;
+      }
     }
     const lower = label.toLowerCase();
     const category: SucAllegato["category"] = /identit/.test(lower)
@@ -501,10 +524,10 @@ export async function exportSucXml(
           : "Altro";
     allegati.push({
       category,
-      fileName: item.filePath.split("/").pop() ?? "documento.pdf",
+      fileName: outName,
       description: label,
-      base64: Buffer.from(await blob.arrayBuffer()).toString("base64"),
-      mime,
+      base64: Buffer.from(payload).toString("base64"),
+      mime: outMime,
     });
   }
 
@@ -515,7 +538,10 @@ export async function exportSucXml(
   built.warnings.push(...allegatiWarnings);
   if (allegati.length > 0) {
     built.warnings.push(
-      `Quadro EG: allegati ${allegati.length} documenti dalla checklist (in base64 dentro l'XML).`,
+      `Quadro EG: allegati ${allegati.length} documenti dalla checklist (in base64 dentro l'XML)` +
+        (convertiti > 0
+          ? `, di cui ${convertiti} foto convertite automaticamente in PDF.`
+          : "."),
     );
   }
 
