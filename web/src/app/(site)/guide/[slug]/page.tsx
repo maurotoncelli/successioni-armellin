@@ -69,7 +69,7 @@ export default async function ArticlePage({
   const ctaBox = obj("article", "cta_box", {
     titolo: "Vuoi che ce ne occupiamo noi?",
     button: { label: "Calcola il preventivo gratis", href: "/preventivo" },
-    phone: "tel:+39",
+    phone: "tel:+393201570567",
   });
   const disclaimer = text("article", "disclaimer");
   const authorBox = obj("article", "autore_box", {

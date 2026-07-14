@@ -38,12 +38,12 @@ export function generateChecklist(input: ChecklistInput): ChecklistItem[] {
     item(
       "Certificato di morte",
       true,
-      "Rilasciato dal Comune. In alternativa compila l'autocertificazione: il modello e qui sotto.",
+      "Rilasciato dal Comune. In alternativa compila la dichiarazione sostitutiva di certificato di morte e stato di famiglia del defunto: il modello e qui sotto.",
     ),
     item(
-      "Autocertificazione stato di famiglia / albero genealogico",
+      "Autocertificazione stato di famiglia di ciascun erede",
       true,
-      "Serve a ricostruire chi sono gli eredi. Scarica il modello qui sotto, compilalo e ricaricalo firmato.",
+      "Serve a ricostruire chi sono gli eredi: OGNI erede compila e firma il proprio modello (lo trovi qui sotto), poi caricali tutti in questa voce.",
     ),
   ];
 

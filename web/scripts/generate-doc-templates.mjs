@@ -164,13 +164,13 @@ const FIRMA = [
 ];
 
 await buildPdf(
-  "Dichiarazione sostitutiva del certificato di morte",
-  "Resa ai sensi dell'art. 46 del D.P.R. 28 dicembre 2000, n. 445 - Modello predisposto dallo Studio Armellin, successioniarmellin.it",
+  "Dichiarazione sostitutiva di certificato di morte e stato di famiglia del defunto",
+  "Ai fini successori - Resa ai sensi degli artt. 46 e 47 del D.P.R. 28 dicembre 2000, n. 445 - Modello predisposto dallo Studio Armellin, successioniarmellin.it",
   [
     ...DICHIARANTE,
     { t: "gap", n: 6 },
     { t: "b", text: "DICHIARA" },
-    { t: "p", text: "che il/la Sig./Sig.ra di seguito indicato/a e' deceduto/a:" },
+    { t: "p", text: "A) che il/la Sig./Sig.ra di seguito indicato/a e' deceduto/a:" },
     { t: "f", label: "Cognome e nome del/della defunto/a:" },
     { t: "f", label: "Nato/a a:                                              il:" },
     { t: "f", label: "Codice fiscale:" },
@@ -178,14 +178,25 @@ await buildPdf(
     { t: "f", label: "Comune (e prov.) del decesso:" },
     { t: "f", label: "Ultima residenza (Comune, prov., via e n. civico):" },
     { t: "f", label: "Rapporto di parentela del dichiarante con il/la defunto/a:" },
+    { t: "gap", n: 4 },
+    {
+      t: "p",
+      text: "B) che lo stato di famiglia del/della defunto/a alla data del decesso era composto dalle seguenti persone (compreso il/la defunto/a):",
+    },
+    {
+      t: "table",
+      headers: ["Cognome e nome", "Luogo e data di nascita", "Rapporto con il defunto"],
+      rows: 5,
+      colWidths: [0.4, 0.34, 0.26],
+    },
     ...FIRMA,
   ],
-  "dichiarazione-sostitutiva-certificato-morte.pdf",
+  "dichiarazione-sostitutiva-morte-stato-famiglia-defunto.pdf",
 );
 
 await buildPdf(
-  "Dichiarazione sostitutiva di stato di famiglia e albero genealogico",
-  "Ai fini successori - Resa ai sensi degli artt. 46 e 47 del D.P.R. 28 dicembre 2000, n. 445 - Modello predisposto dallo Studio Armellin, successioniarmellin.it",
+  "Autocertificazione stato di famiglia di ciascun erede",
+  "Ai fini successori - Resa ai sensi degli artt. 46 e 47 del D.P.R. 28 dicembre 2000, n. 445 - Ogni erede compila e firma il proprio modello - Studio Armellin, successioniarmellin.it",
   [
     ...DICHIARANTE,
     { t: "gap", n: 6 },
@@ -196,36 +207,23 @@ await buildPdf(
     },
     { t: "f", label: "Cognome e nome del/della defunto/a:" },
     { t: "f", label: "Codice fiscale:                                        deceduto/a il:" },
+    { t: "f", label: "Rapporto di parentela del dichiarante con il/la defunto/a:" },
     { t: "gap", n: 4 },
     {
       t: "p",
-      text: "A) che lo stato di famiglia del/della defunto/a alla data del decesso era composto dalle seguenti persone:",
+      text: "A) che il proprio stato di famiglia e' composto dalle seguenti persone (compreso il/la dichiarante):",
     },
     {
       t: "table",
-      headers: ["Cognome e nome", "Luogo e data di nascita", "Rapporto con il defunto"],
-      rows: 4,
+      headers: ["Cognome e nome", "Luogo e data di nascita", "Rapporto con il dichiarante"],
+      rows: 5,
       colWidths: [0.4, 0.34, 0.26],
     },
     {
       t: "p",
-      text: "B) che gli eredi / chiamati all'eredita del/della defunto/a sono i seguenti (compreso il dichiarante; indicare anche gli eventuali rinunciatari):",
-    },
-    {
-      t: "table",
-      headers: ["Cognome e nome", "Luogo e data di nascita", "Codice fiscale", "Parentela"],
-      rows: 6,
-      colWidths: [0.3, 0.26, 0.26, 0.18],
-    },
-    {
-      t: "p",
-      text: "C) che il/la defunto/a (barrare la casella che interessa):  [  ] NON ha lasciato testamento    [  ] HA lasciato testamento, pubblicato con verbale registrato presso l'Ufficio di __________________________ in data ____________ al n. ____________;",
-    },
-    {
-      t: "p",
-      text: "D) che non esistono altri eredi o chiamati all'eredita oltre a quelli sopra indicati, che tra gli eredi [  ] NON vi sono / [  ] vi sono soggetti minorenni o incapaci, e che non vi sono cause di indegnita a succedere (art. 463 c.c.).",
+      text: "B) che il/la dichiarante (barrare la casella che interessa):  [  ] ACCETTA l'eredita    [  ] HA RINUNCIATO all'eredita con atto registrato;",
     },
     ...FIRMA,
   ],
-  "dichiarazione-sostitutiva-stato-famiglia-albero.pdf",
+  "autocertificazione-stato-famiglia-erede.pdf",
 );

@@ -25,7 +25,7 @@ export default function ContattiPage() {
   const telefono = obj<Telefono>("contatti", "telefono", {
     label: "Telefono",
     numero: "",
-    cta_chiama: "tel:+39",
+    cta_chiama: "tel:+393201570567",
     cta_whatsapp: "#",
   });
   const email = obj<Email>("contatti", "email", { generale: "", pec: "" });

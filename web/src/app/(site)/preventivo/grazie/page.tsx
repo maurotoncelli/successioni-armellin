@@ -4,14 +4,14 @@ import { CheckCircle2, Phone, CreditCard, MessageCircle } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { Card } from "@/components/ui/card";
 import { ButtonLink } from "@/components/ui/button";
-import { documentsList } from "@/content/site";
+import { documentsList, type DocItem } from "@/content/site";
 import { BackLink } from "@/components/site/back-link";
 import { DocList } from "@/components/site/doc-list";
 import { SoftLead, type SoftLeadAnswers } from "@/components/site/soft-lead";
 import { getPackages, getAddons } from "@/lib/cms";
 import { buildOrder } from "@/lib/order";
 import { isPackageKey, type Esito } from "@/lib/quote";
-import { cta, obj, text } from "@/lib/content";
+import { cta, list, obj, text } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Il tuo risultato",
@@ -57,6 +57,10 @@ export default async function GraziePage({
     cta_chiama: "tel:+393201570567",
     cta_whatsapp: "https://wa.me/393201570567",
   });
+
+  // Lista documenti data-driven (stessi nomi della checklist); fallback statico.
+  const docsFromContent = list<DocItem>("documenti", "lista");
+  const docItems = docsFromContent.length > 0 ? docsFromContent : documentsList;
 
   // Esito B: mostriamo SUBITO il pacchetto consigliato (nome + prezzo) senza
   // chiedere nulla. Il prezzo e calcolato dalle risposte (pacchetto + immobili).
@@ -300,7 +304,7 @@ export default async function GraziePage({
         <Card className="mt-6">
           <h2 className="text-xl">{text("grazie", "documenti_title")}</h2>
           <DocList
-            items={documentsList.slice(0, 5)}
+            items={docItems.slice(0, 5)}
             faqLabel={faqLink.label}
             faqHref={faqLink.href}
           />

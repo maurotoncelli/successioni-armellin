@@ -9,7 +9,7 @@ export function Navbar() {
   });
   const phoneCta = cta("navbar", "cta_phone", {
     label: "Parla con Lorenzo",
-    href: "tel:+39",
+    href: "tel:+393201570567",
   });
   const areaLabel = text("settings", "area_label", "Area personale");
 

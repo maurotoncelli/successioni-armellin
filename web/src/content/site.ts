@@ -214,12 +214,13 @@ export const documentsList: DocItem[] = [
   },
   {
     name: "Certificato di morte",
-    description: "O autocertificazione, dove ammessa.",
+    description:
+      "O la dichiarazione sostitutiva di certificato di morte e stato di famiglia del defunto: il modello te lo diamo noi.",
     when: "Sempre",
   },
   {
-    name: "Autocertificazione dello stato di famiglia",
-    description: "Per individuare gli eredi.",
+    name: "Autocertificazione stato di famiglia di ciascun erede",
+    description: "Serve a individuare gli eredi: un modello per ciascuno, te lo diamo noi.",
     when: "Sempre",
   },
   {

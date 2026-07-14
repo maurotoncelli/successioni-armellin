@@ -4,8 +4,8 @@ import { PageHero } from "@/components/site/page-hero";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { Card } from "@/components/ui/card";
 import { ButtonLink } from "@/components/ui/button";
-import { documentsList } from "@/content/site";
-import { cta, text } from "@/lib/content";
+import { documentsList, type DocItem } from "@/content/site";
+import { cta, list, text } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Documenti per la successione",
@@ -14,6 +14,9 @@ export const metadata: Metadata = {
 
 export default function DocumentiPage() {
   const ctaPreventivo = cta("documenti", "cta_preventivo");
+  // Lista data-driven (documenti.lista); fallback alla lista statica.
+  const docs = list<DocItem>("documenti", "lista");
+  const items = docs.length > 0 ? docs : documentsList;
 
   return (
     <>
@@ -30,7 +33,7 @@ export default function DocumentiPage() {
           intro={text("documenti", "evergreen_intro")}
         />
         <div className="mx-auto mt-12 grid max-w-4xl gap-4 sm:grid-cols-2">
-          {documentsList.map((doc) => (
+          {items.map((doc) => (
             <Card key={doc.name} className="flex gap-4">
               <FileText className="h-6 w-6 shrink-0 text-accent" />
               <div>

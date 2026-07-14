@@ -21,11 +21,11 @@ export default async function TariffePage() {
 
   const telefono = obj("contatti", "telefono", {
     numero: "",
-    cta_chiama: "tel:+39",
+    cta_chiama: "tel:+393201570567",
   });
   const emailObj = obj("contatti", "email", { generale: "" });
   const addonContact = {
-    phoneHref: telefono.cta_chiama || "tel:+39",
+    phoneHref: telefono.cta_chiama || "tel:+393201570567",
     phoneLabel: "Chiama Lorenzo",
     emailHref: emailObj.generale ? `mailto:${emailObj.generale}` : "/contatti",
     emailLabel: "Scrivici via email",

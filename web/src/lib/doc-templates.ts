@@ -14,13 +14,15 @@ export type DocTemplate = {
   name: string;
 };
 
+// I pattern coprono anche le etichette VECCHIE delle checklist gia generate
+// ("Autocertificazione stato di famiglia / albero genealogico").
 const RULES: { pattern: RegExp; templates: DocTemplate[] }[] = [
   {
     pattern: /certificato di morte/i,
     templates: [
       {
-        href: "/templates/dichiarazione-sostitutiva-certificato-morte.pdf",
-        name: "Dichiarazione sostitutiva del certificato di morte (art. 46 DPR 445/2000)",
+        href: "/templates/dichiarazione-sostitutiva-morte-stato-famiglia-defunto.pdf",
+        name: "Dichiarazione sostitutiva di certificato di morte e stato di famiglia del defunto (artt. 46-47 DPR 445/2000)",
       },
     ],
   },
@@ -28,8 +30,8 @@ const RULES: { pattern: RegExp; templates: DocTemplate[] }[] = [
     pattern: /stato di famiglia|albero genealogico/i,
     templates: [
       {
-        href: "/templates/dichiarazione-sostitutiva-stato-famiglia-albero.pdf",
-        name: "Dichiarazione sostitutiva di stato di famiglia e albero genealogico (artt. 46-47 DPR 445/2000)",
+        href: "/templates/autocertificazione-stato-famiglia-erede.pdf",
+        name: "Autocertificazione stato di famiglia di ciascun erede (artt. 46-47 DPR 445/2000)",
       },
       {
         href: "/templates/dichiarazione-sostitutiva-eredi-ade.pdf",

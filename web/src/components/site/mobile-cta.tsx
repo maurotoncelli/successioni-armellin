@@ -9,7 +9,7 @@ export function MobileCta() {
   });
   const phone = cta("navbar", "cta_phone", {
     label: "Chiama",
-    href: "tel:+39",
+    href: "tel:+393201570567",
   });
 
   return (
