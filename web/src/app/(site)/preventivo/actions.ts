@@ -11,6 +11,7 @@ export type LeadInput = {
   realEstateCount?: number | null; // numero immobili, se hasRealEstate === "si"
   hasWill: string; // si | no | nonso
   hasOther: string; // si | no | nonso
+  over100k?: string; // si | no | nonso - attivo oltre 100.000 EUR (solo linea retta senza immobili)
   name: string;
   email: string;
   phone: string;

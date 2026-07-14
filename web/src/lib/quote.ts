@@ -16,6 +16,7 @@ export type QuizAnswers = {
   realEstateCount?: number | null;
   hasWill: string; // si | no | nonso
   hasOther: string; // si | no | nonso
+  over100k?: string; // si | no | nonso - attivo ereditario oltre 100.000 EUR
 };
 
 // Coniuge e parenti in linea retta (art. 28 c.7 TUS): rientrano nei casi di
@@ -27,13 +28,17 @@ export function computeEsito(input: {
   relation: string;
   hasRealEstate: string;
   hasOther: string;
+  over100k?: string;
 }): Esito {
   if (input.hasOther === "si" || input.hasRealEstate === "nonso") return "c";
   if (
     input.hasRealEstate === "no" &&
     directLineRelations.includes(input.relation)
-  )
-    return "a";
+  ) {
+    // L'esonero art. 28 c.7 TUS vale solo con attivo ereditario <= 100.000 EUR:
+    // sopra soglia la dichiarazione e' dovuta anche in linea retta -> Semplice.
+    return input.over100k === "si" ? "b" : "a";
+  }
   return "b";
 }
 

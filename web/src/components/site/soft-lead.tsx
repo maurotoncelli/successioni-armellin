@@ -21,6 +21,7 @@ export type SoftLeadAnswers = {
   realEstateCount: number | null;
   hasWill: string;
   hasOther: string;
+  over100k?: string;
 };
 
 type Props = {
@@ -77,6 +78,7 @@ export function SoftLead({
         realEstateCount: answers.realEstateCount,
         hasWill: answers.hasWill,
         hasOther: answers.hasOther,
+        over100k: answers.over100k,
         name,
         email,
         phone,

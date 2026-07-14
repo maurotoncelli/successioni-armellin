@@ -35,6 +35,7 @@ export default async function GraziePage({
     hasre?: string;
     will?: string;
     other?: string;
+    k100?: string;
   }>;
 }) {
   const sp = await searchParams;
@@ -48,6 +49,7 @@ export default async function GraziePage({
     realEstateCount: Number.isFinite(recount) ? recount : null,
     hasWill: sp.will ?? "no",
     hasOther: sp.other ?? "no",
+    over100k: sp.k100,
   };
 
   // Telefono / WhatsApp reali (data-driven).

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { computeEsito, suggestedPackage } from "@/lib/quote";
+import { computeEsito, directLineRelations, suggestedPackage } from "@/lib/quote";
 import { trackEvent } from "@/lib/analytics";
 
 /*
@@ -82,6 +82,12 @@ export function PreventivoForm({
   const [realEstateCount, setRealEstateCount] = useState("");
   const [hasWill, setHasWill] = useState("");
   const [hasOther, setHasOther] = useState("");
+  const [over100k, setOver100k] = useState("");
+
+  // La soglia dei 100.000 EUR conta solo per l'esonero art. 28 c.7 TUS:
+  // eredi coniuge/linea retta E nessun immobile.
+  const askOver100k =
+    hasRealEstate === "no" && directLineRelations.includes(relation);
 
   const progress = ((step + 1) / total) * 100;
 
@@ -99,7 +105,12 @@ export function PreventivoForm({
   }
 
   function seeResult() {
-    const esito = computeEsito({ relation, hasRealEstate, hasOther });
+    const esito = computeEsito({
+      relation,
+      hasRealEstate,
+      hasOther,
+      over100k: askOver100k ? over100k : undefined,
+    });
     const pkg = suggestedPackage(esito, hasRealEstate);
     const parsed = Number.parseInt(realEstateCount, 10);
     const params = new URLSearchParams({
@@ -110,6 +121,7 @@ export function PreventivoForm({
       will: hasWill || "no",
       other: hasOther || "no",
     });
+    if (askOver100k && over100k) params.set("k100", over100k);
     if (pkg) params.set("pkg", pkg);
     if (hasRealEstate === "si" && Number.isFinite(parsed) && parsed > 0) {
       params.set("recount", String(parsed));
@@ -202,6 +214,14 @@ export function PreventivoForm({
                     incidere sul preventivo.
                   </p>
                 </div>
+              )}
+              {askOver100k && (
+                <OptionGroup
+                  label="Il valore totale dell'eredita (conti, titoli, ecc.) supera i 100.000 euro?"
+                  options={yesNo}
+                  value={over100k}
+                  onChange={setOver100k}
+                />
               )}
               <OptionGroup
                 label="C'e un testamento?"
