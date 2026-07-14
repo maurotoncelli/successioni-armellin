@@ -18,11 +18,18 @@ export function LegalLinksText({ text }: { text: string }) {
   let parts: ReactNode[] = [text];
 
   for (const { pattern, href } of TARGETS) {
-    parts = parts.flatMap((part, i) => {
-      if (typeof part !== "string") return [part];
+    const next: ReactNode[] = [];
+    for (const [i, part] of parts.entries()) {
+      if (typeof part !== "string") {
+        next.push(part);
+        continue;
+      }
       const match = part.match(pattern);
-      if (!match || match.index === undefined) return [part];
-      return [
+      if (!match || match.index === undefined) {
+        next.push(part);
+        continue;
+      }
+      next.push(
         part.slice(0, match.index),
         <Link
           key={`${href}-${i}`}
@@ -34,8 +41,9 @@ export function LegalLinksText({ text }: { text: string }) {
           {match[0]}
         </Link>,
         part.slice(match.index + match[0].length),
-      ];
-    });
+      );
+    }
+    parts = next;
   }
 
   return <>{parts}</>;
