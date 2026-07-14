@@ -101,8 +101,8 @@ export function WithdrawalForm({ current }: { current?: WithdrawalInfo }) {
       </button>
       <p className="text-xs text-text-muted">
         In alternativa puoi scrivere a{" "}
-        <a href="mailto:studio@armellin.it" className="text-accent-dark hover:underline">
-          studio@armellin.it
+        <a href="mailto:studio@successioniarmellin.it" className="text-accent-dark hover:underline">
+          studio@successioniarmellin.it
         </a>{" "}
         o via PEC.
       </p>

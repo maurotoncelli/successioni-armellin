@@ -1018,12 +1018,19 @@ export async function updateWithdrawal(
   const admin = getAdminClient();
   const { data } = await admin
     .from("practices")
-    .select("client_email, communications, log")
+    .select("status, client_email, communications, log")
     .eq("id", practiceId)
     .maybeSingle();
   const { communications, log } = loadArrays(data ?? {});
   const now = stamp();
   log.push({ action: `recesso:${status}`, at: now });
+
+  // Richiesta risolta: il badge torna all'owner naturale dello stato pratica;
+  // finche e in gestione (IN_REVIEW) la palla resta a Lorenzo.
+  const actionOwner: ActionOwner =
+    status === "ACCEPTED" || status === "REJECTED"
+      ? (data?.status ? ownerByStatus[data.status] : "ADMIN")
+      : "ADMIN";
 
   if (
     data?.client_email &&
@@ -1048,9 +1055,10 @@ export async function updateWithdrawal(
 
   await admin
     .from("practices")
-    .update({ communications, log })
+    .update({ communications, log, action_owner: actionOwner })
     .eq("id", practiceId);
   revalidatePath(`/crm/pratiche/${practiceId}`);
+  revalidatePath("/crm");
   revalidatePath("/area-riservata/recesso");
   return { ok: true };
 }

@@ -110,7 +110,14 @@ export async function notifyAdminWithdrawalRequest(
   clientName: string,
   reason: string,
 ): Promise<{ sent: boolean; subject: string }> {
-  const admins = (process.env.ADMIN_EMAILS || "")
+  // Destinatari delle notifiche operative: ADMIN_NOTIFY_EMAILS se impostata
+  // (es. solo Lorenzo), altrimenti tutta l'allowlist ADMIN_EMAILS. Cosi chi ha
+  // accesso al CRM (ADMIN_EMAILS) non riceve per forza anche le email.
+  const admins = (
+    process.env.ADMIN_NOTIFY_EMAILS ||
+    process.env.ADMIN_EMAILS ||
+    ""
+  )
     .split(",")
     .map((e) => e.trim())
     .filter(Boolean);

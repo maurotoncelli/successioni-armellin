@@ -195,10 +195,34 @@ export function deriveKpi(practices: Practice[]) {
   };
 }
 
+/*
+  Recesso in sospeso, derivato dal log della pratica (gli extras stanno su
+  Storage, il log e gia sulla riga): pendente se l'ultimo evento "recesso" e
+  la richiesta del cliente o la presa in gestione, non un esito.
+*/
+export function hasPendingWithdrawal(p: Practice): boolean {
+  let pending = false;
+  for (const e of p.log) {
+    if (e.action === "recesso_richiesto" || e.action === "recesso:REQUESTED" || e.action === "recesso:IN_REVIEW") {
+      pending = true;
+    } else if (e.action === "recesso:ACCEPTED" || e.action === "recesso:REJECTED") {
+      pending = false;
+    }
+  }
+  return pending;
+}
+
 export function deriveAlerts(practices: Practice[]): Alert[] {
   const alerts: Alert[] = [];
   for (const p of practices) {
     if (["CHIUSA", "ANNULLATA"].includes(p.status)) continue;
+    if (hasPendingWithdrawal(p)) {
+      alerts.push({
+        kind: "recesso",
+        text: `${p.code} - RICHIESTA DI RECESSO da gestire`,
+        practiceId: p.id,
+      });
+    }
     if (p.urgent) {
       alerts.push({
         kind: "scadenza",

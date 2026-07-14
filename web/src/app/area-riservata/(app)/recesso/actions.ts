@@ -46,9 +46,11 @@ export async function submitWithdrawal(
     occurredAt: now,
   });
   log.push({ action: "recesso_richiesto", at: now });
+  // La palla passa a Lorenzo: il badge CRM mostra "Tocca a te" (non piu
+  // "In attesa del cliente") finche la richiesta non viene gestita.
   await admin
     .from("practices")
-    .update({ communications, log })
+    .update({ communications, log, action_owner: "ADMIN" })
     .eq("id", p.id);
 
   await notifyAdminWithdrawalRequest(

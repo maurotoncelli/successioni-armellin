@@ -8,6 +8,7 @@ import {
   Calendar,
   CircleDollarSign,
   FileWarning,
+  OctagonAlert,
 } from "lucide-react";
 import { CrmCard, ActionBadge, SectionTitle, PracticeLink } from "@/components/crm/ui";
 import { statusLabels } from "@/content/crm-data";
@@ -39,6 +40,7 @@ const alertIcons = {
   pagamento: CircleDollarSign,
   ferma: Clock,
   consegna: Calendar,
+  recesso: OctagonAlert,
 } as const;
 
 export default async function CrmHomePage() {
@@ -151,13 +153,24 @@ export default async function CrmHomePage() {
           <ul className="mt-4 space-y-2">
             {alerts.map((alert, i) => {
               const Icon = alertIcons[alert.kind];
+              const isWithdrawal = alert.kind === "recesso";
               return (
                 <li key={i}>
                   <PracticeLink
                     id={alert.practiceId}
-                    className="flex items-center gap-3 rounded-lg border border-crm-border bg-crm-bg2/50 px-3 py-2.5 text-sm text-crm-text2 transition-colors hover:border-crm-accent/40 hover:text-crm-text"
+                    className={
+                      isWithdrawal
+                        ? "flex items-center gap-3 rounded-lg border border-crm-rose/50 bg-crm-rose/10 px-3 py-2.5 text-sm font-semibold text-crm-rose transition-colors hover:border-crm-rose"
+                        : "flex items-center gap-3 rounded-lg border border-crm-border bg-crm-bg2/50 px-3 py-2.5 text-sm text-crm-text2 transition-colors hover:border-crm-accent/40 hover:text-crm-text"
+                    }
                   >
-                    <Icon className="h-4 w-4 shrink-0 text-crm-amber" />
+                    <Icon
+                      className={
+                        isWithdrawal
+                          ? "h-4 w-4 shrink-0 text-crm-rose"
+                          : "h-4 w-4 shrink-0 text-crm-amber"
+                      }
+                    />
                     {alert.text}
                   </PracticeLink>
                 </li>

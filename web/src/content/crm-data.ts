@@ -632,7 +632,7 @@ export const contacts: Contact[] = [
 ];
 
 export type Alert = {
-  kind: "scadenza" | "documenti" | "pagamento" | "ferma" | "consegna";
+  kind: "scadenza" | "documenti" | "pagamento" | "ferma" | "consegna" | "recesso";
   text: string;
   practiceId: string;
 };
