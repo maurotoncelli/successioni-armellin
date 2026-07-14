@@ -28,12 +28,15 @@ export async function findContactIdByEmail(
   email: string,
 ): Promise<string | null> {
   if (!email || !isAdminConfigured) return null;
+  // Possono esistere piu contatti con la stessa email (lead ripetuti):
+  // si aggancia il piu recente. maybeSingle() qui fallirebbe con i duplicati.
   const { data } = await getAdminClient()
     .from("contacts")
     .select("id")
     .ilike("email", email)
-    .maybeSingle();
-  return data?.id ?? null;
+    .order("last_activity", { ascending: false })
+    .limit(1);
+  return data?.[0]?.id ?? null;
 }
 
 const onlyDigits = (s: string | null | undefined) => (s ?? "").replace(/\D/g, "");

@@ -139,6 +139,39 @@ async function handleCheckoutCompleted(
     backfill.client_phone = customer.phone;
   const clientEmail = row.client_email || customer?.email || "";
 
+  // Aggancio all'anagrafica (contacts): le pratiche nate dal checkout diretto
+  // non hanno contact_id, ma la RLS dell'area personale mostra al cliente solo
+  // le pratiche con il SUO contact_id. Senza questo aggancio, il cliente
+  // pagante troverebbe l'area vuota. Trova il contatto per email o crealo.
+  let contactId = row.contact_id;
+  if (!contactId && clientEmail) {
+    const { data: found } = await admin
+      .from("contacts")
+      .select("id")
+      .ilike("email", clientEmail)
+      .order("last_activity", { ascending: false })
+      .limit(1);
+    contactId = found?.[0]?.id ?? null;
+    if (!contactId) {
+      const fullName = (backfill.client_name ?? row.client_name ?? "").trim();
+      const [first, ...rest] = fullName.split(/\s+/);
+      const { data: created } = await admin
+        .from("contacts")
+        .insert({
+          first_name: first || "Cliente",
+          last_name: rest.join(" "),
+          email: clientEmail,
+          phone: backfill.client_phone ?? row.client_phone ?? null,
+          source: "Checkout sito",
+          marketing_consent: false,
+          last_activity: new Date().toISOString().slice(0, 10),
+        })
+        .select("id")
+        .single();
+      contactId = created?.id ?? null;
+    }
+  }
+
   const communications = asArray<Record<string, unknown>>(row.communications);
   communications.unshift({
     channel: "EMAIL",
@@ -185,6 +218,7 @@ async function handleCheckoutCompleted(
       payment_method: "STRIPE",
       payment_recorded_by: "SYSTEM",
       stripe_payment_intent_id: paymentIntentId,
+      contact_id: contactId,
       paid_at: new Date().toISOString(),
       opened_at: row.opened_at ?? today,
       due_date: dueDate,
