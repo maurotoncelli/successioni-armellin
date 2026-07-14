@@ -11,11 +11,13 @@ import {
   HelpCircle,
   PartyPopper,
   FileCheck2,
+  Download,
 } from "lucide-react";
 import { buttonClasses } from "@/components/ui/button";
 import { ToneBadge } from "@/components/area/ui";
 import { clientDocMeta, type ClientDocState } from "@/content/area-data";
 import { submitDocuments } from "@/app/area-riservata/(app)/documenti/actions";
+import { templatesForLabel } from "@/lib/doc-templates";
 import { cn } from "@/lib/utils";
 
 export type DocItem = {
@@ -221,6 +223,7 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
                     {d.help}
                   </p>
                 )}
+                <DocTemplates label={d.label} />
                 {d.files.length > 0 && (
                   <ul className="mt-2 space-y-1">
                     {d.files.map((name, fileIdx) => (
@@ -335,4 +338,41 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
 function DocStateBadge({ state }: { state: ClientDocState }) {
   const meta = clientDocMeta[state];
   return <ToneBadge tone={meta.tone}>{meta.label}</ToneBadge>;
+}
+
+/*
+  Modelli precompilati abbinati alla voce: il cliente li scarica, li compila,
+  li firma e li ricarica nella stessa voce (vedi lib/doc-templates).
+*/
+function DocTemplates({ label }: { label: string }) {
+  const templates = templatesForLabel(label);
+  if (templates.length === 0) return null;
+  return (
+    <div className="mt-2 rounded-xl border border-accent/25 bg-accent/5 px-3 py-2.5">
+      <p className="text-xs font-medium text-text">
+        Ti serve il modulo? Te lo diamo noi:
+      </p>
+      <ul className="mt-1.5 space-y-1">
+        {templates.map((t) => (
+          <li key={t.href}>
+            <a
+              href={t.href}
+              download
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-start gap-1.5 text-xs font-medium text-accent underline underline-offset-2 hover:text-accent-dark"
+            >
+              <Download className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+              {t.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p className="mt-1.5 text-[11px] leading-4 text-text-muted">
+        Scarica il modello, stampalo e compilalo in ogni parte, firmalo e
+        ricaricalo qui (va bene anche una foto ben leggibile), insieme alla
+        copia del documento d&apos;identita di chi firma.
+      </p>
+    </div>
+  );
 }
