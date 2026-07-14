@@ -100,7 +100,7 @@ export function PreventivoForm({
 
   function seeResult() {
     const esito = computeEsito({ relation, hasRealEstate, hasOther });
-    const pkg = suggestedPackage(esito);
+    const pkg = suggestedPackage(esito, hasRealEstate);
     const parsed = Number.parseInt(realEstateCount, 10);
     const params = new URLSearchParams({
       esito,

@@ -18,9 +18,10 @@ export type QuizAnswers = {
   hasOther: string; // si | no | nonso
 };
 
-// Parenti in linea retta (discendenti/ascendenti): rientrano nei casi di
-// possibile esonero dalla dichiarazione (art. 28 TUS) quando non ci sono immobili.
-export const directLineRelations = ["figlio", "genitore"];
+// Coniuge e parenti in linea retta (art. 28 c.7 TUS): rientrano nei casi di
+// possibile esonero dalla dichiarazione quando non ci sono immobili, e comunque
+// nei casi "lineari" da pacchetto Semplice.
+export const directLineRelations = ["coniuge", "figlio", "genitore"];
 
 export function computeEsito(input: {
   relation: string;
@@ -36,9 +37,14 @@ export function computeEsito(input: {
   return "b";
 }
 
-export function suggestedPackage(esito: Esito): PackageKey | null {
+export function suggestedPackage(
+  esito: Esito,
+  hasRealEstate?: string,
+): PackageKey | null {
   if (esito === "a") return "SEMPLICE";
-  if (esito === "b") return "COMPLETO";
+  // Esito b: il Completo ha senso solo se ci sono immobili (voltura inclusa);
+  // senza immobili il caso rientra nel Semplice anche per parenti non in linea retta.
+  if (esito === "b") return hasRealEstate === "no" ? "SEMPLICE" : "COMPLETO";
   return null; // su misura
 }
 

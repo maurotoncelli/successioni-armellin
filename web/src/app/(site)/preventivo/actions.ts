@@ -99,7 +99,7 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
         real_estate_count:
           input.hasRealEstate === "si" ? (input.realEstateCount ?? null) : null,
         requires_custom_quote: isCustom,
-        suggested_package: suggestedPackage(esito),
+        suggested_package: suggestedPackage(esito, input.hasRealEstate),
         notes: isCustom
           ? "Richiesta di preventivo su misura dal sito."
           : "Lead dal preventivo del sito (opt-in email).",
