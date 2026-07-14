@@ -5,6 +5,7 @@ import { CheckCircle2, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { createLead } from "@/app/(site)/preventivo/actions";
+import { LegalLinksText } from "@/components/site/legal-links-text";
 import { trackEvent } from "@/lib/analytics";
 
 /*
@@ -161,7 +162,9 @@ export function SoftLead({
             onChange={(e) => setPrivacy(e.target.checked)}
             className="mt-1 h-4 w-4 accent-[var(--color-accent)]"
           />
-          <span>{consensoPrivacy}</span>
+          <span>
+            <LegalLinksText text={consensoPrivacy} />
+          </span>
         </label>
         <label className="flex items-start gap-3 text-sm text-text-muted">
           <input

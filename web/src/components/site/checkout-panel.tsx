@@ -6,6 +6,7 @@ import { Lock, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { trackEvent } from "@/lib/analytics";
 import { createCheckoutPractice } from "@/app/(site)/checkout/actions";
+import { LegalLinksText } from "@/components/site/legal-links-text";
 import type { PackageKey } from "@/lib/supabase/types";
 
 /*
@@ -131,7 +132,9 @@ export function CheckoutPanel({
             onChange={(e) => setTc(e.target.checked)}
             className="mt-1 h-4 w-4 accent-[var(--color-accent)]"
           />
-          <span>{consensoTc}</span>
+          <span>
+            <LegalLinksText text={consensoTc} />
+          </span>
         </label>
         <label className="flex items-start gap-3 text-sm">
           <input
