@@ -9,6 +9,7 @@ import {
   CircleDollarSign,
   FileWarning,
   OctagonAlert,
+  UserPlus,
 } from "lucide-react";
 import { CrmCard, ActionBadge, SectionTitle, PracticeLink } from "@/components/crm/ui";
 import { statusLabels } from "@/content/crm-data";
@@ -41,6 +42,7 @@ const alertIcons = {
   ferma: Clock,
   consegna: Calendar,
   recesso: OctagonAlert,
+  lead: UserPlus,
 } as const;
 
 export default async function CrmHomePage() {

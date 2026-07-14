@@ -3,6 +3,10 @@
 import { revalidatePath } from "next/cache";
 import { getAdminClient, isAdminConfigured } from "@/lib/supabase/admin";
 import { computeEsito, suggestedPackage, type Esito } from "@/lib/quote";
+import { getPackages, getAddons } from "@/lib/cms";
+import { buildOrder } from "@/lib/order";
+import { notifyAdminNewLead, notifyLeadRecap } from "@/lib/notifications";
+import type { Communication, LogEvent } from "@/content/crm-data";
 
 export type LeadInput = {
   relation: string; // coniuge | figlio | genitore | fratello | nipote | altro
@@ -104,17 +108,7 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
         notes: isCustom
           ? "Richiesta di preventivo su misura dal sito."
           : "Lead dal preventivo del sito (opt-in email).",
-        communications: [
-          {
-            channel: "EMAIL",
-            direction: "OUTBOUND",
-            source: "AUTO",
-            subject: isCustom
-              ? "Abbiamo ricevuto la tua richiesta di preventivo su misura"
-              : "Ecco il tuo preventivo",
-            occurredAt: nowStamp,
-          },
-        ],
+        communications: [],
         tasks: [
           {
             title: `Richiamare ${fullName || "il contatto"} per consulenza`,
@@ -127,6 +121,85 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
       .select("id, code")
       .single();
     if (practiceErr) throw practiceErr;
+
+    // Email REALI: riepilogo/conferma al visitatore + notifica immediata a
+    // Lorenzo. Registrate in cronologia solo se l'invio e andato a buon fine;
+    // un errore email non blocca mai la creazione del lead.
+    const communications: Communication[] = [];
+    const log: LogEvent[] = [{ action: "lead_creato", at: nowStamp }];
+    try {
+      // Pacchetto suggerito con prezzo (per il riepilogo e per Lorenzo).
+      let packageLabel: string | undefined;
+      let recap: Parameters<typeof notifyLeadRecap>[1] | null = null;
+      if (isCustom) {
+        recap = { kind: "custom" };
+      } else if (esito === "a") {
+        recap = { kind: "esonero" };
+      } else {
+        const pkgKey = suggestedPackage(esito, input.hasRealEstate);
+        if (pkgKey) {
+          const [packages, addons] = await Promise.all([
+            getPackages(),
+            getAddons(),
+          ]);
+          const order = buildOrder(
+            { packageKey: pkgKey, realEstateCount: input.realEstateCount },
+            packages,
+            addons,
+          );
+          const pkg = packages.find((p) => p.key === pkgKey);
+          if (order && pkg) {
+            packageLabel = `${pkg.name} (${order.total.toLocaleString("it-IT")} €)`;
+            const base = (process.env.NEXT_PUBLIC_SITE_URL || "").replace(/\/$/, "");
+            const params = new URLSearchParams({ pkg: pkgKey });
+            if (input.realEstateCount)
+              params.set("recount", String(input.realEstateCount));
+            recap = {
+              kind: "package",
+              packageLabel: pkg.name,
+              total: order.total,
+              checkoutUrl: `${base}/checkout?${params.toString()}`,
+            };
+          }
+        }
+      }
+
+      if (recap && input.email.trim()) {
+        const sentRecap = await notifyLeadRecap(input.email.trim(), recap);
+        if (sentRecap.sent) {
+          communications.push({
+            channel: "EMAIL",
+            direction: "OUTBOUND",
+            source: "AUTO",
+            subject: sentRecap.subject,
+            occurredAt: nowStamp,
+          });
+          log.push({ action: "email_inviata", at: nowStamp });
+        }
+      }
+
+      const sentAdmin = await notifyAdminNewLead({
+        practiceId: practice.id,
+        practiceCode: practice.code,
+        clientName: fullName,
+        email: input.email.trim(),
+        phone: input.phone.trim(),
+        custom: isCustom,
+        packageLabel,
+      });
+      if (sentAdmin.sent) {
+        log.push({ action: "notifica_admin_inviata", at: nowStamp });
+      }
+
+      if (communications.length > 0 || log.length > 1) {
+        await admin
+          .from("practices")
+          .update({ communications, log })
+          .eq("id", practice.id);
+      }
+    } catch (err) {
+      console.error("[preventivo] invio email lead fallito:", err);
+    }
 
     revalidatePath("/crm");
     revalidatePath("/crm/pratiche");

@@ -223,6 +223,15 @@ export function deriveAlerts(practices: Practice[]): Alert[] {
         practiceId: p.id,
       });
     }
+    if (p.status === "LEAD") {
+      alerts.push({
+        kind: "lead",
+        text: p.requiresCustomQuote
+          ? `${p.code} - preventivo su misura richiesto: ricontattare ${p.clientName}`
+          : `${p.code} - nuovo lead dal sito: ${p.clientName}`,
+        practiceId: p.id,
+      });
+    }
     if (p.urgent) {
       alerts.push({
         kind: "scadenza",

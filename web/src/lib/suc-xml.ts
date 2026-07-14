@@ -1,6 +1,7 @@
 import "server-only";
 import type { PracticeRow } from "@/lib/supabase/types";
 import type { ExtractionData, ExtractedPerson, ExtractedImmobile } from "@/lib/extraction";
+import { valoreCatastaleFabbricato, valoreCatastaleTerreno } from "@/lib/catasto";
 
 /*
   Generatore del file telematico della dichiarazione di successione
@@ -203,11 +204,9 @@ function devoluzione(
 /* --------------------------- valori immobili ------------------------------- */
 
 /*
-  Valore ai fini dell'imposta = rendita rivalutata (x1,05) x moltiplicatore.
-  Moltiplicatori standard successioni (verificati sul file reale: A2 e C6 x120):
-  prima casa 110; gruppo B 168 (140 +20% dal 2007); A/10 e gruppo D 60;
-  C/1 e gruppo E 40,8; resto dei gruppi A e C 120.
-  Terreni non edificabili: reddito dominicale x1,25 x90.
+  Valore ai fini dell'imposta: logica condivisa in lib/catasto.ts (usata anche
+  dal calcolatore pubblico /strumenti/valore-catastale). Moltiplicatori
+  verificati sul file reale: A2 e C6 x120.
 */
 function valoreFabbricato(
   rendita: string | null | undefined,
@@ -216,19 +215,13 @@ function valoreFabbricato(
 ): number | null {
   const r = parseAmount(rendita);
   if (r === null) return null;
-  const cat = upper(categoria).replace("/", "");
-  let mult = 120;
-  if (primaCasa) mult = 110;
-  else if (cat === "A10" || cat.startsWith("D")) mult = 60;
-  else if (cat === "C1" || cat.startsWith("E")) mult = 40.8;
-  else if (cat.startsWith("B")) mult = 168;
-  return Math.round(r * 1.05 * mult);
+  return valoreCatastaleFabbricato(r, categoria, primaCasa);
 }
 
 function valoreTerreno(redditoDominicale: string | null | undefined): number | null {
   const rd = parseAmount(redditoDominicale);
   if (rd === null) return null;
-  return Math.round(rd * 1.25 * 90);
+  return valoreCatastaleTerreno(rd);
 }
 
 /* -------------------------------- build ----------------------------------- */

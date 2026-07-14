@@ -632,7 +632,14 @@ export const contacts: Contact[] = [
 ];
 
 export type Alert = {
-  kind: "scadenza" | "documenti" | "pagamento" | "ferma" | "consegna" | "recesso";
+  kind:
+    | "scadenza"
+    | "documenti"
+    | "pagamento"
+    | "ferma"
+    | "consegna"
+    | "recesso"
+    | "lead";
   text: string;
   practiceId: string;
 };

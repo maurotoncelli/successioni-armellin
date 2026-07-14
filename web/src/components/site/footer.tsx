@@ -28,6 +28,10 @@ export function Footer() {
   });
   const credit = text("footer", "credit");
   const menu = list<{ label: string; href: string }>("navbar", "menu");
+  const toolsLink = obj<{ label: string; href: string }>("footer", "strumenti_link", {
+    label: "",
+    href: "",
+  });
   const email = text("settings", "email");
   const phone = text("settings", "phone");
   const pec = text("settings", "pec");
@@ -103,6 +107,13 @@ export function Footer() {
                 </Link>
               </li>
             ))}
+            {toolsLink.href && (
+              <li>
+                <Link href={toolsLink.href} className="hover:text-accent">
+                  {toolsLink.label}
+                </Link>
+              </li>
+            )}
             <li>
               <Link href="/area-riservata" className="font-medium text-white hover:text-accent">
                 {areaLabel}

@@ -256,6 +256,11 @@ export default async function GraziePage({
                 "Lorenzo ti ricontatta a breve con il preventivo su misura.",
               )}
               requirePhone
+              footnote={text(
+                "grazie",
+                "soft_custom_footnote",
+                "Inviando la richiesta non ti impegni a nulla: ti ricontattiamo noi entro un giorno lavorativo per il preventivo su misura.",
+              )}
             />
           ) : (
             <SoftLead

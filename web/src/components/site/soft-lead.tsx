@@ -36,6 +36,8 @@ type Props = {
   successTitle: string;
   successBody: string;
   requirePhone?: boolean;
+  /** Nota sotto il pulsante (es. "ti ricontattiamo noi entro un giorno lavorativo"). */
+  footnote?: string;
 };
 
 export function SoftLead({
@@ -49,6 +51,7 @@ export function SoftLead({
   successTitle,
   successBody,
   requirePhone = false,
+  footnote,
 }: Props) {
   const [open, setOpen] = useState(kind === "custom_quote");
   const [name, setName] = useState("");
@@ -191,6 +194,9 @@ export function SoftLead({
       >
         {pending ? "Invio in corso…" : submitLabel}
       </Button>
+      {footnote && (
+        <p className="mt-3 text-center text-xs text-text-muted">{footnote}</p>
+      )}
     </div>
   );
 }

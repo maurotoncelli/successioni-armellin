@@ -104,23 +104,23 @@ export async function notifyFinalDocsReady(
   return { sent, subject };
 }
 
+// Destinatari delle notifiche operative: ADMIN_NOTIFY_EMAILS se impostata
+// (es. solo Lorenzo), altrimenti tutta l'allowlist ADMIN_EMAILS. Cosi chi ha
+// accesso al CRM (ADMIN_EMAILS) non riceve per forza anche le email.
+function adminNotifyRecipients(): string[] {
+  return (process.env.ADMIN_NOTIFY_EMAILS || process.env.ADMIN_EMAILS || "")
+    .split(",")
+    .map((e) => e.trim())
+    .filter(Boolean);
+}
+
 export async function notifyAdminWithdrawalRequest(
   practiceId: string,
   practiceCode: string,
   clientName: string,
   reason: string,
 ): Promise<{ sent: boolean; subject: string }> {
-  // Destinatari delle notifiche operative: ADMIN_NOTIFY_EMAILS se impostata
-  // (es. solo Lorenzo), altrimenti tutta l'allowlist ADMIN_EMAILS. Cosi chi ha
-  // accesso al CRM (ADMIN_EMAILS) non riceve per forza anche le email.
-  const admins = (
-    process.env.ADMIN_NOTIFY_EMAILS ||
-    process.env.ADMIN_EMAILS ||
-    ""
-  )
-    .split(",")
-    .map((e) => e.trim())
-    .filter(Boolean);
+  const admins = adminNotifyRecipients();
   const subject = `Richiesta di recesso · ${practiceCode}`;
   if (admins.length === 0) return { sent: false, subject };
   const html = emailLayout({
@@ -133,6 +133,98 @@ export async function notifyAdminWithdrawalRequest(
   });
   // Invio a TUTTI gli indirizzi admin (Resend accetta piu destinatari in `to`).
   const { sent } = await sendEmail({ to: admins, subject, html });
+  return { sent, subject };
+}
+
+/*
+  Nuovo lead dal sito (opt-in email o richiesta preventivo su misura):
+  notifica IMMEDIATA a Lorenzo con recapiti e link alla pratica nel CRM.
+*/
+export async function notifyAdminNewLead(input: {
+  practiceId: string;
+  practiceCode: string;
+  clientName: string;
+  email: string;
+  phone: string;
+  custom: boolean; // true = richiesta preventivo su misura
+  packageLabel?: string; // pacchetto suggerito (lead da opt-in email)
+}): Promise<{ sent: boolean; subject: string }> {
+  const admins = adminNotifyRecipients();
+  const subject = input.custom
+    ? `Richiesta preventivo su misura · ${input.practiceCode}`
+    : `Nuovo lead dal sito · ${input.practiceCode}`;
+  if (admins.length === 0) return { sent: false, subject };
+  const rows = [
+    `<strong>${input.clientName || "Contatto senza nome"}</strong>`,
+    input.email && `Email: <a href="mailto:${input.email}">${input.email}</a>`,
+    input.phone && `Telefono: <a href="tel:${input.phone}">${input.phone}</a>`,
+    input.packageLabel && `Pacchetto suggerito: ${input.packageLabel}`,
+  ]
+    .filter(Boolean)
+    .join("<br/>");
+  const html = emailLayout({
+    heading: input.custom
+      ? "Nuova richiesta di preventivo su misura"
+      : "Nuovo lead dal preventivo del sito",
+    bodyHtml: `<p style="margin:0 0 10px">${rows}</p>
+      <p style="margin:0">${
+        input.custom
+          ? "Il cliente aspetta di essere ricontattato per il preventivo dedicato."
+          : "Ha richiesto il riepilogo del preventivo via email."
+      }</p>`,
+    ctaLabel: "Apri la pratica",
+    ctaHref: crmPracticeUrl(input.practiceId),
+  });
+  const { sent } = await sendEmail({ to: admins, subject, html });
+  return { sent, subject };
+}
+
+/*
+  Email al VISITATORE che lascia i contatti sul preventivo: riepilogo del
+  pacchetto (opt-in email) o conferma di presa in carico (su misura).
+*/
+export async function notifyLeadRecap(
+  to: string,
+  input:
+    | { kind: "custom" }
+    | { kind: "esonero" }
+    | {
+        kind: "package";
+        packageLabel: string;
+        total: number;
+        checkoutUrl: string;
+      },
+): Promise<{ sent: boolean; subject: string }> {
+  if (input.kind === "custom") {
+    const subject = "Abbiamo ricevuto la tua richiesta di preventivo su misura";
+    const html = emailLayout({
+      heading: "Richiesta ricevuta!",
+      bodyHtml: `<p style="margin:0 0 10px">Grazie per la fiducia. Lorenzo sta gia guardando il tuo caso: ti ricontatta <strong>entro un giorno lavorativo</strong> (di solito in giornata) con un preventivo dedicato, senza impegno.</p>
+        <p style="margin:0">Se preferisci anticipare i tempi, rispondi a questa email o scrivici su WhatsApp.</p>`,
+    });
+    const { sent } = await sendEmail({ to, subject, html });
+    return { sent, subject };
+  }
+  if (input.kind === "esonero") {
+    const subject = "Il riepilogo della tua pre-valutazione";
+    const html = emailLayout({
+      heading: "Forse non devi fare la dichiarazione",
+      bodyHtml: `<p style="margin:0 0 10px">In base alle tue risposte, il tuo caso potrebbe rientrare nell'<strong>esonero di legge</strong> dalla dichiarazione di successione. Non vogliamo venderti un servizio che non ti serve: la conferma definitiva va fatta sul caso concreto, gratis.</p>
+        <p style="margin:0">Rispondi a questa email o chiamaci quando vuoi: verifichiamo insieme in pochi minuti.</p>`,
+    });
+    const { sent } = await sendEmail({ to, subject, html });
+    return { sent, subject };
+  }
+  const subject = "Il riepilogo del tuo preventivo";
+  const html = emailLayout({
+    heading: "Ecco il tuo preventivo",
+    bodyHtml: `<p style="margin:0 0 10px">In base alle tue risposte, il pacchetto giusto per il tuo caso e:</p>
+      <p style="margin:0 0 10px;font-size:18px"><strong>${input.packageLabel}</strong> — <span style="font-size:22px;font-weight:700;color:#1f6f5c">${input.total.toLocaleString("it-IT")} €</span></p>
+      <p style="margin:0">Prezzo chiaro, tutto compreso (le imposte di Stato sono a parte e si versano senza ricarichi). Quando vuoi, riprendi da qui:</p>`,
+    ctaLabel: "Procedi quando sei pronto",
+    ctaHref: input.checkoutUrl,
+  });
+  const { sent } = await sendEmail({ to, subject, html });
   return { sent, subject };
 }
 
