@@ -1,9 +1,11 @@
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { LoginForm } from "@/components/area/login-form";
 import { LanguageSwitcher } from "@/components/site/language-switcher";
 import { coerceLocale, text } from "@/lib/content";
+import { getSessionUser } from "@/lib/area";
 
 /*
   Pagina di login dell'area personale (server component).
@@ -17,6 +19,11 @@ export default async function AreaLoginPage({
 }: {
   searchParams: Promise<{ lang?: string | string[] }>;
 }) {
+  // Sessione gia attiva -> niente form: dritto alla dashboard. Cosi il link
+  // "Area personale" del sito non chiede mai di rifare l'accesso.
+  const user = await getSessionUser();
+  if (user) redirect("/area-riservata/dashboard");
+
   const { lang } = await searchParams;
   const cookieLang = (await cookies()).get("lang")?.value;
   const locale = coerceLocale(lang, cookieLang);
