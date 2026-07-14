@@ -14,7 +14,7 @@ const FROM =
   "Successioni Armellin <noreply@successioniarmellin.it>";
 
 export async function sendEmail(input: {
-  to: string;
+  to: string | string[];
   subject: string;
   html: string;
 }): Promise<{ sent: boolean }> {
@@ -23,7 +23,8 @@ export async function sendEmail(input: {
     console.info("[email] non configurato (RESEND_API_KEY assente), skip:", input.subject);
     return { sent: false };
   }
-  if (!input.to) return { sent: false };
+  const to = (Array.isArray(input.to) ? input.to : [input.to]).filter(Boolean);
+  if (to.length === 0) return { sent: false };
   try {
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -33,7 +34,7 @@ export async function sendEmail(input: {
       },
       body: JSON.stringify({
         from: FROM,
-        to: [input.to],
+        to,
         subject: input.subject,
         html: input.html,
       }),

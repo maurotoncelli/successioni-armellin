@@ -124,8 +124,8 @@ export async function notifyAdminWithdrawalRequest(
     ctaLabel: "Apri la pratica",
     ctaHref: crmPracticeUrl(practiceId),
   });
-  // Invio al primo admin (gli altri in copia logica non gestita da Resend free).
-  const { sent } = await sendEmail({ to: admins[0], subject, html });
+  // Invio a TUTTI gli indirizzi admin (Resend accetta piu destinatari in `to`).
+  const { sent } = await sendEmail({ to: admins, subject, html });
   return { sent, subject };
 }
 
