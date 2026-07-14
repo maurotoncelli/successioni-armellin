@@ -6,7 +6,10 @@
 
 ## Decisioni (riunione 2026-06-29)
 - Dominio: **successioniarmellin.it**
-- Registrar + DNS: **Aruba** (gestione DNS direttamente nel pannello Aruba; Cloudflare accantonato perche non registra i `.it` e a noi serve comunque "DNS only" senza proxy). Nameserver: **default Aruba** (technorail/arubadns).
+- Registrar: **Aruba**. DNS: ~~pannello Aruba~~ -> **CLOUDFLARE dal 13/07** (Aruba non
+  permette MX su sottodomini, richiesto da Resend). Nameserver del dominio cambiati su
+  Aruba in `athena.ns.cloudflare.com` + `santino.ns.cloudflare.com`. Aruba resta solo
+  per il rinnovo del dominio; i record DNS si gestiscono su dash.cloudflare.com.
 - Email: **Google Workspace Business Starter** (~6 EUR/mese) sul dominio (scelta 11/07: su Aruba la casella base non e inclusa e M365/PEC non convengono), casella principale `studio@successioniarmellin.it` (+ alias `privacy@` per GDPR). La posta transazionale resta separata su Resend.
 - Pagamenti: **solo carte** (Stripe)
 - Dominio principale (canonical): **www.successioniarmellin.it** (apex `successioniarmellin.it` -> 308 redirect a www). `NEXT_PUBLIC_SITE_URL=https://www.successioniarmellin.it`.
@@ -23,7 +26,27 @@ Legenda: [ ] da fare · (chi). Valori segreti -> solo in Vercel / `.env.local`.
 
 ---
 
-## STATO AVANZAMENTO (aggiornato 11/07 15:30)
+## STATO AVANZAMENTO (aggiornato 13/07 15:20)
+
+### Fatto il 13/07 (sessione Mauro + agente) - EMAIL/DNS
+- **Resend collegato a Vercel**: installata l'integrazione **Resend dal Vercel
+  Marketplace** -> chiave "Vercel Integration" salvata come `RESEND_API_KEY` su
+  tutti gli ambienti + **redeploy produzione** fatto (chiave attiva).
+- **Diagnosi Resend**: dominio in stato **failed** — DKIM verificato ma MX+SPF su
+  `send` falliti (l'MX su sottodominio non e inseribile su Aruba, come previsto).
+- **MIGRAZIONE DNS A CLOUDFLARE completata**:
+  1. Sito aggiunto su Cloudflare (account `studio@successioniarmellin.it`, login
+     Google, piano Free) — record importati automaticamente da Aruba.
+  2. Token API "Zone DNS" creato da Mauro (in ACCESSI_LOCALE.md, da revocare a
+     fine lavori) -> l'agente ha sistemato la zona via API: **proxy disattivato
+     su tutti i record** (Vercel vuole DNS-only), eliminato record `localhost`,
+     **aggiunto `MX send -> feedback-smtp.eu-west-1.amazonses.com` prio 10**.
+  3. **Nameserver cambiati nel pannello Aruba** ("Sostituisci Name Server"):
+     `athena.ns.cloudflare.com` + `santino.ns.cloudflare.com`. Operazione riuscita;
+     delega al registro .it in propagazione (monitor automatico ogni 5 min attivo).
+- **Al propagarsi della delega** (automatico/agente): verifica dominio su Resend ->
+  mail di test -> notifiche email del CRM attive. Poi SMTP custom in Supabase
+  (smtp.resend.com:465, user `resend`, pass = API key) per gli OTP/magic link.
 
 ### Fatto l'11/07 tardo pomeriggio - CHECK LEGALE/GDPR (deploy `3d95b5f`)
 Verifica completa di privacy, cookie, condizioni di vendita, recesso e consensi.
@@ -39,15 +62,18 @@ Verificato OK: recesso conforme artt. 52-59 Cod. Consumo (doppia checkbox al che
 art. 59 avvio immediato), consensi privacy/marketing separati nei form (marketing
 salvato su DB), footer con P.IVA/C.F./Albo/PEC/ODR, foro consumatore.
 
-**APERTO lato legale (prossima sessione / con Lorenzo):**
+**APERTO lato legale:**
 - [ ] **Garanzia Soddisfatti o Rimborsati**: casi coperti, importi e tempi ancora
       "da definire" nella pagina /garanzia -> decisione di Lorenzo, poi aggiornare testo.
-- [ ] **Retention lead non convertiti**: privacy dice "in fase di definizione".
-      Proposta: 12 mesi poi cancellazione/anonimizzazione -> conferma di Lorenzo.
-- [ ] **Validazione legale**: tutti i documenti hanno l'avviso "testo preliminare in
-      validazione" -> serve passaggio da avvocato/consulente privacy per toglierlo.
-- [ ] **DPA OpenAI**: quando si crea l'account OpenAI con Lorenzo, accettare il Data
-      Processing Addendum dal pannello (formalizza il ruolo ex art. 28 GDPR).
+- [x] **Retention lead non convertiti**: DECISO 14/07 -> **12 mesi** poi
+      cancellazione/anonimizzazione. Privacy aggiornata (sez. 9).
+- [x] **Validazione legale**: DECISO 14/07 (Mauro+Lorenzo) -> i testi si pubblicano
+      SENZA passaggio dall'avvocato. Rimossi gli avvisi "testo preliminare in
+      validazione" da privacy/condizioni e dal mandato; resta solo la nota sulla
+      versione italiana che fa fede. Data pubblicazione: 14 luglio 2026.
+- [ ] **DPA OpenAI**: account creato il 14/07 -> accettare il Data Processing
+      Addendum: https://openai.com/policies/data-processing-addendum/
+      (link "execute the DPA", si compila con email studio@ e dati dello studio).
 
 ### Fatto l'11/07 pomeriggio (sessione Mauro + agente)
 - **Gmail ATTIVO**: MX propagati e confermati su Google admin. **SPF Google** aggiunto su
@@ -117,9 +143,10 @@ salvato su DB), footer con P.IVA/C.F./Albo/PEC/ODR, foro consumatore.
       collegare alle notifiche reali quando Resend (e eventualmente WA) e attivo.
 
 **Mauro da solo:**
-- [ ] **Resend**: attendere "Verified" (in pending: manca l'MX su `send`, Aruba non lo
-      supporta; se non verifica entro 72h -> migrare DNS a Cloudflare). Poi API key ->
-      all'agente per `RESEND_API_KEY` su Vercel + SMTP custom in Supabase
+- [x] **Resend - sblocco DNS**: FATTO 13/07 (vedi sezione sopra): DNS migrato a
+      Cloudflare, MX `send` aggiunto, `RESEND_API_KEY` su Vercel via integrazione
+      Marketplace + redeploy. RESTA (attesa propagazione NS, poi agente):
+      verifica "Verified" su Resend -> mail di test -> SMTP custom in Supabase
       (smtp.resend.com:465, user `resend`, pass = API key).
 - [ ] **Supabase Redirect URLs**: Auth > URL Configuration -> aggiungere
       `https://www.successioniarmellin.it/**`, `https://successioniarmellin.it/**`,
@@ -221,12 +248,25 @@ salvato su DB), footer con P.IVA/C.F./Albo/PEC/ODR, foro consumatore.
 
 ---
 
-## Riepilogo record DNS (Aruba) - da compilare con i valori reali
-| Tipo | Nome | Valore | Scopo | Proxy |
-|---|---|---|---|---|
-| A | @ | 216.198.79.1 | sito (apex -> 308 a www) | DNS only |
-| CNAME | www | d35c84c1af317e07.vercel-dns-017.com | sito (canonical) | DNS only |
-| MX | @ | smtp.google.com (priorita 1) | posta in arrivo (Google Workspace) | DNS only |
-| TXT | @ | v=spf1 include:_spf.google.com include:(SPF Resend) ~all | SPF unico Google+Resend | - |
-| TXT/CNAME | (DKIM Resend) | (da Resend) | firma email | DNS only |
-| TXT | _dmarc | v=DMARC1; p=none; rua=mailto:studio@successioniarmellin.it | policy anti-spoof | - |
+## Riepilogo record DNS - su CLOUDFLARE dal 13/07 (tutti DNS-only, verificati)
+| Tipo | Nome | Valore | Scopo |
+|---|---|---|---|
+| A | @ | 216.198.79.1 | sito (apex -> 308 a www, Vercel) |
+| CNAME | www | d35c84c1af317e07.vercel-dns-017.com | sito (canonical, Vercel) |
+| MX | @ | smtp.google.com (prio 1) | posta in arrivo (Google Workspace) |
+| MX | send | feedback-smtp.eu-west-1.amazonses.com (prio 10) | return-path Resend |
+| TXT | @ | v=spf1 include:_spf.google.com ~all | SPF Google (dominio principale) |
+| TXT | @ | google-site-verification=... | verifica dominio Google |
+| TXT | send | v=spf1 include:amazonses.com ~all | SPF Resend (sottodominio invio) |
+| TXT | google._domainkey | v=DKIM1;... | DKIM Google |
+| TXT | resend._domainkey | p=MIGf... | DKIM Resend |
+| TXT | _dmarc | v=DMARC1; p=none; | policy anti-spoof (poi quarantine/reject) |
+| CNAME | admin / ftp / _domainconnect | (residui Aruba) | innocui, si possono togliere |
+
+## Documentazione finale per Lorenzo (da preparare prima della consegna)
+Dossier unico con: tecnologie usate (Next.js/Vercel/Supabase/Stripe/Resend/Google
+Workspace/Cloudflare/OpenAI), mappa degli account e chi li possiede, dove vivono i
+DNS e come si modificano, come si accede a CRM e area clienti, flusso pratica
+end-to-end, costi ricorrenti, e cosa fare nei casi comuni (rinnovo dominio, cambio
+password, problema email). Basarsi su questo runbook + HANDOFF + ACCESSI_LOCALE
+(le credenziali restano fuori dal repo).

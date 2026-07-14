@@ -42,12 +42,9 @@ export type LegalSlug = "privacy" | "termini" | "cookie" | "garanzia";
 const LANG_NOTE =
   "La versione italiana di questo documento fa fede: eventuali traduzioni hanno valore di mera cortesia e, in caso di discrepanza, prevale l'italiano.";
 
-const VALIDATION_NOTICE = {
-  tone: "warning" as const,
-  title: "Testo preliminare in validazione",
-  text:
-    "Questa e una versione di lavoro predisposta dallo Studio. Prima della pubblicazione definitiva sara validata da un professionista (legale/DPO). I dati anagrafici contrassegnati come da confermare verranno completati al go-live. " +
-    LANG_NOTE,
+const LANG_NOTICE = {
+  tone: "info" as const,
+  text: LANG_NOTE,
 };
 
 export const legalDocs: Record<LegalSlug, LegalDoc> = {
@@ -57,8 +54,8 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
     eyebrow: "Documento legale",
     intro:
       "Come trattiamo i tuoi dati personali quando consulti il sito, richiedi un preventivo, acquisti un servizio o usi la tua area personale, in conformita al GDPR (Reg. UE 2016/679).",
-    updatedAt: "Versione preliminare - data di pubblicazione da definire",
-    notice: VALIDATION_NOTICE,
+    updatedAt: "Ultimo aggiornamento: 14 luglio 2026",
+    notice: LANG_NOTICE,
     body: [
       {
         type: "p",
@@ -198,7 +195,7 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
           "Documenti fiscali e contabili (fatture, ricevute, mandato, dichiarazione): conservati per il termine di legge, almeno 10 anni (art. 2220 c.c. e obblighi fiscali).",
           "Documenti di input sensibili caricati dal cliente (es. carta d'identita): conservati per il tempo necessario alla lavorazione e poi cancellati dal cloud (minimizzazione).",
           "Documenti finali (ricevute AdE, visure aggiornate, fattura): resi disponibili nell'area personale del cliente per la consultazione; l'archivio completo e conservato in sicurezza.",
-          "Dati di contatto per preventivi non convertiti: cancellati o anonimizzati entro un periodo definito (in fase di definizione).",
+          "Dati di contatto per preventivi non convertiti: cancellati o anonimizzati entro 12 mesi dall'ultimo contatto.",
           "Dati per marketing: fino a revoca del consenso.",
           "Dati tecnici/log e cookie: secondo le durate indicate nella Cookie Policy.",
         ],
@@ -249,8 +246,8 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
     eyebrow: "Documento legale",
     intro:
       "I termini e le condizioni che regolano la vendita a distanza dei nostri servizi professionali ai consumatori (D.Lgs. 206/2005, Codice del Consumo).",
-    updatedAt: "Versione preliminare - data di pubblicazione da definire",
-    notice: VALIDATION_NOTICE,
+    updatedAt: "Ultimo aggiornamento: 14 luglio 2026",
+    notice: LANG_NOTICE,
     body: [
       { type: "h2", text: "1. Informazioni sul professionista (art. 49 Cod. Consumo)" },
       {
@@ -375,7 +372,7 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
     eyebrow: "Documento legale",
     intro:
       "I cookie e le tecnologie simili che utilizziamo, e come gestire i tuoi consensi.",
-    updatedAt: "Versione preliminare - data di pubblicazione da definire",
+    updatedAt: "Ultimo aggiornamento: 14 luglio 2026",
     notice: {
       tone: "info",
       title: "Come gestiamo il consenso",

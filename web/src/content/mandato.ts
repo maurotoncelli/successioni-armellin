@@ -5,9 +5,9 @@ import { obj, text } from "@/lib/content";
   Usato sia dalla pagina /area-riservata/mandato (rendering) sia dal download
   .txt nel form di firma: prima era duplicato in due punti con refusi.
 
-  STATO: prima stesura legale predisposta internamente, coerente con le
-  Condizioni di vendita (@/content/legal). Da VALIDARE con l'avvocato prima di
-  togliere la nota in coda (stesso iter dei documenti legali del sito).
+  STATO: testo definitivo dal 14/07/2026 (decisione di Mauro+Lorenzo: si
+  pubblica senza passaggio dall'avvocato), coerente con le Condizioni di
+  vendita (@/content/legal).
 
   I dati del professionista arrivano da footer.studio / settings (stessa fonte
   di verita di footer e documenti legali).
@@ -56,7 +56,7 @@ export function buildMandatoParagraphs({
 
     "7. CONFERIMENTO E FIRMA. Il presente mandato e conferito a distanza. La firma avviene, a scelta del Cliente, in modalita elettronica (selezione della casella di accettazione e del pulsante di firma nell'area personale, con registrazione di data e ora) oppure mediante sottoscrizione autografa del documento scaricato e successivo caricamento della copia firmata.",
 
-    "(Testo in validazione legale: la versione definitiva sara confermata con il professionista incaricato. La versione italiana fa fede.)",
+    "(La versione italiana del presente mandato fa fede.)",
   ];
 }
 

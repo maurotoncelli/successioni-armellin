@@ -1,6 +1,6 @@
 # HANDOFF per il prossimo agente
 
-> Documento di passaggio di consegne. Aggiornato: 2026-07-11.
+> Documento di passaggio di consegne. Aggiornato: 2026-07-13.
 > Scopo: permettere a un nuovo agente (senza contesto) di riprendere il lavoro.
 > Riferimenti chiave: @RUNBOOK_GoLive (procedura go-live, STATO DETTAGLIATO 11/07),
 > @SPEC_Env_Vars, @DOMANDE_PER_LORENZO, @PROSSIMO_INCONTRO_LORENZO, @07_Stack.
@@ -14,6 +14,10 @@ Sessione 11/07 con Geom. Armellin — progressi:
 - **Supabase**: era **in pausa** (causa "fetch failed" al checkout) -> **ripristinato** (account Mauro via GitHub `info@maurotoncelli.it`).
 - **Email Google Workspace Business Starter**: attivato, dominio verificato, **MX Google impostati su Aruba** (in propagazione); resta il "Conferma" su Google + alias `privacy@`.
 - **Resend**: dominio aggiunto, **3 TXT (DKIM/SPF/DMARC) propagati** su Aruba; **MX `send` NON inseribile su Aruba** -> se Resend non verifica, spostare DNS su **Cloudflare** (gratis). Verifica "in checking".
+  **AGGIORNAMENTO 13/07**: verifica Resend risultava **failed** (mancava l'MX su `send`) ->
+  **DNS migrato a Cloudflare** (vedi sez. 2), MX `send` aggiunto, nameserver cambiati su
+  Aruba. `RESEND_API_KEY` gia su Vercel (integrazione Marketplace) + redeploy fatto.
+  Appena la delega .it propaga: ri-verificare il dominio su Resend e mandare mail di test.
 - **Pipeline dichiarazione (nuova, 11/07 pomeriggio)**: costruita la filiera CRM
   "pagamento -> checklist auto -> documenti -> appunti chiamata -> estrazione AI -> revisione -> XML `.suc`".
   Vedi sezione 8-bis qui sotto. NON ancora committata al momento della scrittura.
@@ -46,15 +50,29 @@ Lingua del progetto: **italiano**. Scrivere sempre in italiano con l'utente.
 - Verifica produzione bypassando la cache DNS locale:
   `curl --resolve www.successioniarmellin.it:443:216.198.79.1 https://www.successioniarmellin.it/...`
 
-## 2. Dominio e DNS (gestiti su ARUBA)
+## 2. Dominio e DNS (dominio su ARUBA, DNS su CLOUDFLARE dal 13/07)
 - Dominio `successioniarmellin.it` registrato su **Aruba** (account Lorenzo `15411133@aruba.it`).
-- **Nameserver = default Aruba** (technorail/arubadns). **Cloudflare e stato accantonato**
-  (non registra i `.it` e non serve, vogliamo "DNS only"). Gestire i record nel pannello Aruba.
-- Record gia impostati (FATTI, propagati):
-  - `A` `@` -> `216.198.79.1` (apex Vercel)
-  - `CNAME` `www` -> `d35c84c1af317e07.vercel-dns-017.com`
-- Record di default Aruba ancora presenti (innocui): `A localhost`, vari `A mx`, `CNAME _domainconnect`, `CNAME admin`, `CNAME ftp`.
-- **DA FARE** (email): sostituire l'MX Aruba (tab "Record MX" > SOSTITUISCI RECORD) con quello Google.
+- **Migrazione DNS a Cloudflare FATTA il 13/07** (motivo: Aruba non permette record MX
+  su sottodomini, e Resend richiede `MX send` per verificare il dominio):
+  - Zona Cloudflare creata (account `studio@successioniarmellin.it`, login Google,
+    piano Free). Zone id `e965ef074eb5238124103d8ec383c470`.
+  - Record importati da Aruba, poi via API: **proxy arancione disattivato ovunque**
+    (Vercel vuole DNS-only), eliminato record spazzatura `localhost`,
+    **aggiunto `MX send -> feedback-smtp.eu-west-1.amazonses.com` prio 10** (Resend).
+  - **Nameserver cambiati nel pannello Aruba** (Sostituisci Name Server):
+    `athena.ns.cloudflare.com` + `santino.ns.cloudflare.com`. Al momento della
+    scrittura la delega al registro .it era in propagazione (monitor attivo).
+  - Token API Cloudflare "Zone DNS" in `ACCESSI_LOCALE.md` (da revocare a fine lavori).
+  - D'ora in poi i record DNS si gestiscono su **dash.cloudflare.com** (o via API),
+    NON piu nel pannello Aruba. Aruba resta solo registrar (rinnovo dominio).
+- Record attivi (tutti DNS-only, verificati 13/07):
+  - `A` `@` -> `216.198.79.1` (apex Vercel) · `CNAME` `www` -> `d35c84c1af317e07.vercel-dns-017.com`
+  - `MX` `@` -> `smtp.google.com` prio 1 (Google Workspace)
+  - `MX` `send` -> `feedback-smtp.eu-west-1.amazonses.com` prio 10 (Resend)
+  - `TXT` `@`: SPF Google + `google-site-verification` · `TXT` `send`: SPF amazonses (Resend)
+  - `TXT` `google._domainkey` (DKIM Google) · `TXT` `resend._domainkey` (DKIM Resend)
+  - `TXT` `_dmarc`: `v=DMARC1; p=none;`
+  - CNAME residui Aruba innocui: `admin`, `ftp`, `_domainconnect`.
 
 ## 3. Hosting Vercel (FATTO)
 - Progetto collegato al repo, Root Directory `web`, dominio `www` primario + apex con 308 redirect, SSL attivo.
@@ -65,7 +83,10 @@ Lingua del progetto: **italiano**. Scrivere sempre in italiano con l'utente.
   `EMAIL_FROM` (=`Successioni Armellin <studio@successioniarmellin.it>`),
   `NEXT_PUBLIC_SITE_URL` (=`https://www.successioniarmellin.it`, SOLO Production).
 - **Stripe (11/07)**: `STRIPE_SECRET_KEY`, `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`, `STRIPE_WEBHOOK_SECRET` IMPOSTATE su Vercel (Production+Preview) con chiavi **TEST/sandbox** + redeploy fatto. DA FARE prima del lancio: **sostituire con le chiavi LIVE** (+ webhook nell'account Live).
-- **DA IMPOSTARE ancora**: `RESEND_API_KEY` (dopo verifica dominio Resend) + `EMAIL_FROM` è già presente.
+- **Resend (13/07)**: `RESEND_API_KEY` IMPOSTATA su Vercel (Production/Preview/Development)
+  tramite l'**integrazione Resend nel Vercel Marketplace** (chiave "Vercel Integration");
+  redeploy fatto. `EMAIL_FROM` gia presente. L'invio si sblocca quando il dominio Resend
+  risulta "Verified" (dipende dalla propagazione nameserver -> Cloudflare, vedi sez. 2).
 - I valori segreti reali NON sono in questo file: stanno su Vercel e in `web/.env.local` (git-ignored). Template: `web/.env.example`.
 
 ## 4. Cosa manca per l'operativita (richiede Lorenzo)
