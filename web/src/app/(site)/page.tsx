@@ -90,6 +90,36 @@ export default function HomePage() {
 
       <TrustBar />
 
+      {/* Cos'e' l'app: sezione richiesta dalla verifica branding OAuth di
+          Google (la home deve spiegare in modo esplicito e ben visibile scopo
+          dell'applicazione, uso dei dati Google e link alla privacy). */}
+      <Section className="!py-10 sm:!py-12">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-2xl sm:text-3xl">
+            {text("home", "app_scopo_title")}
+          </h2>
+          <p className="mt-4 text-sm leading-relaxed text-text-muted sm:text-base">
+            {text("home", "app_scopo_body")}
+          </p>
+          <p className="mt-3 text-sm text-text-muted">
+            Maggiori dettagli su come trattiamo i tuoi dati:{" "}
+            <a
+              href="https://www.successioniarmellin.it/privacy"
+              className="font-medium text-accent underline hover:text-accent-dark"
+            >
+              Privacy Policy
+            </a>
+            {" · "}
+            <a
+              href="https://www.successioniarmellin.it/termini-condizioni"
+              className="font-medium text-accent underline hover:text-accent-dark"
+            >
+              Termini di servizio
+            </a>
+          </p>
+        </div>
+      </Section>
+
       {/* Problema / Soluzione */}
       <Section>
         <SectionHeading

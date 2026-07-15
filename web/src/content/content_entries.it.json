@@ -76,6 +76,8 @@
       { "titolo": "3. Pensiamo a tutto noi", "testo": "Predisponiamo e inviamo la dichiarazione; tu ricevi le ricevute." }
     ] },
     { "collection": "home", "key": "come_funziona_sla_note", "locale": "it", "is_published": true, "value": "Invio entro 10-15 giorni lavorativi (in base al pacchetto) da quando abbiamo tutti i documenti completi." },
+    { "collection": "home", "key": "app_scopo_title", "locale": "it", "is_published": true, "value": "Cos'è Successioni Armellin" },
+    { "collection": "home", "key": "app_scopo_body", "locale": "it", "is_published": true, "value": "Successioni Armellin è l'applicazione web dello studio del Geom. Lorenzo Armellin per gestire online la dichiarazione di successione: calcoli un preventivo con prezzo chiaro, paghi in sicurezza con carta e nella tua Area personale carichi i documenti richiesti, firmi il mandato e segui la pratica passo passo fino all'invio all'Agenzia delle Entrate. Per accedere all'Area personale puoi usare la tua email, il telefono o il tuo account Google: in questo caso utilizziamo esclusivamente il tuo nome e il tuo indirizzo email per creare e riconoscere il tuo profilo, nessun altro dato del tuo account viene letto o condiviso." },
     { "collection": "home", "key": "tariffe_eyebrow", "locale": "it", "is_published": true, "value": "Tariffe" },
     { "collection": "home", "key": "tariffe_title", "locale": "it", "is_published": true, "value": "Prezzi chiari, senza sorprese" },
     { "collection": "home", "key": "tariffe_intro", "locale": "it", "is_published": true, "value": "Paghi un onorario fisso. Le imposte sono separate, a carico dell'erede, e te le calcoliamo noi." },
