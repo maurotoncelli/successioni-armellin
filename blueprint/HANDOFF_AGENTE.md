@@ -142,6 +142,23 @@ Lingua del progetto: **italiano**. Scrivere sempre in italiano con l'utente.
   email nostra al cliente (Stripe manda la sua), ANNULLATA senza template email
   (la copre l'email esito recesso).
 
+### Blocco 13 — Audit "pratica chiusa" + celebrazione (FATTO 15/07)
+- Audit del flusso di chiusura: fattura (auto FattureInCloud e MANUALE con PDF)
+  arriva correttamente all'area cliente (/ordine, "Scarica fattura" con URL
+  firmato) + email notifyInvoiceReady in entrambi i percorsi; documenti finali
+  su /conclusa con download singolo e ZIP; email di chiusura; IBAN cancellato
+  alla chiusura (retention). NESSUN buco su fattura/documenti.
+- Fix di un buco reale: si poteva chiudere una pratica SENZA documenti finali
+  caricati -> l'email diceva "trovi i documenti da scaricare" ma l'area era
+  vuota. Ora `changeStatus` -> CHIUSA e' bloccato finche' non c'e' almeno un
+  documento finale (messaggio chiaro a Lorenzo).
+- Gamification: alla chiusura (scheda pratica o drag kanban, dopo la conferma)
+  parte la CELEBRAZIONE: overlay coriandoli + card "Pratica conclusa!" con
+  contatore delle chiuse + fanfara di vittoria sintetizzata con Web Audio API
+  (nessun file audio; parte su gesto utente quindi niente blocco autoplay).
+  Componente `web/src/components/crm/celebration.tsx` + keyframes in
+  globals.css; `changeStatus` ritorna `celebrate.closedTotal` quando chiude.
+
 ### Blocco 12 — Calendario CRM irrobustito (FATTO 15/07)
 - Audit: gli eventi derivati c'erano (apertura, consegna, invio AdE, scadenza
   12 mesi) ma "poche voci" perche' molte pratiche di prova non hanno date e i

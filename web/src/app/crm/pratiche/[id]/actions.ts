@@ -15,6 +15,7 @@ import {
   invoiceUrl,
   removeInvoice,
   setWithdrawalStatus,
+  getSafeExtras,
   type WithdrawalStatus,
 } from "@/lib/practice-extras";
 import { issueInvoiceForPractice } from "@/lib/invoice";
@@ -272,10 +273,16 @@ function stamp(): string {
 
 export type WorkflowResult = { ok: true } | { ok: false; error: string };
 
+// Esito del cambio stato: alla CHIUSURA include i dati per la celebrazione
+// nel CRM (suono + annuncio "pratica conclusa n. X").
+export type ChangeStatusResult =
+  | { ok: true; celebrate?: { closedTotal: number } }
+  | { ok: false; error: string };
+
 export async function changeStatus(
   practiceId: string,
   status: PracticeStatus,
-): Promise<WorkflowResult> {
+): Promise<ChangeStatusResult> {
   await requireAdmin();
   if (!ownerByStatus[status]) return { ok: false, error: "Stato non valido." };
 
@@ -299,6 +306,19 @@ export async function changeStatus(
       error:
         "Nessun pagamento registrato: usa \u201cRegistra pagamento offline\u201d oppure invia il link di pagamento. Lo stato passa a PAGATO da solo.",
     };
+  }
+
+  // Chiusura solo con i documenti finali gia caricati: l'email di chiusura
+  // dice al cliente "trovi i documenti finali da scaricare", non deve mentire.
+  if (status === "CHIUSA") {
+    const extras = await getSafeExtras(practiceId);
+    if (!extras.finalDocuments?.length) {
+      return {
+        ok: false,
+        error:
+          "Carica prima i documenti finali (ricevuta, dichiarazione, visure): l'email di chiusura dice al cliente che sono pronti da scaricare.",
+      };
+    }
   }
 
   const log: LogEvent[] = Array.isArray(data.log) ? (data.log as LogEvent[]) : [];
@@ -346,6 +366,15 @@ export async function changeStatus(
   revalidatePath(`/crm/pratiche/${practiceId}`);
   revalidatePath("/crm/pratiche");
   revalidatePath("/crm");
+
+  // Pratica CONCLUSA: dati per la celebrazione (quante chiuse in totale).
+  if (status === "CHIUSA") {
+    const { count } = await admin
+      .from("practices")
+      .select("id", { count: "exact", head: true })
+      .eq("status", "CHIUSA");
+    return { ok: true, celebrate: { closedTotal: count ?? 1 } };
+  }
   return { ok: true };
 }
 

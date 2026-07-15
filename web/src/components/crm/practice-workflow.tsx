@@ -17,6 +17,7 @@ import {
 } from "@/app/crm/pratiche/[id]/actions";
 import { hasExternalEffect } from "@/lib/transitions";
 import { TransitionConfirm } from "@/components/crm/transition-confirm";
+import { Celebration } from "@/components/crm/celebration";
 
 const statusOptions: PracticeStatus[] = [...pipelineOrder, "ANNULLATA"];
 
@@ -35,6 +36,7 @@ export function StatusChanger({
   const [pending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
   const [confirming, setConfirming] = useState(false);
+  const [celebrating, setCelebrating] = useState<number | null>(null);
 
   function doSave() {
     setError(null);
@@ -42,6 +44,7 @@ export function StatusChanger({
       const res = await changeStatus(practiceId, value);
       if (res.ok) {
         setConfirming(false);
+        if (res.celebrate) setCelebrating(res.celebrate.closedTotal);
         router.refresh();
       } else {
         setError(res.error);
@@ -91,6 +94,13 @@ export function StatusChanger({
           pending={pending}
           onConfirm={doSave}
           onCancel={() => setConfirming(false)}
+        />
+      )}
+
+      {celebrating !== null && (
+        <Celebration
+          closedTotal={celebrating}
+          onClose={() => setCelebrating(null)}
         />
       )}
     </div>

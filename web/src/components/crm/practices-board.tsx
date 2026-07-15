@@ -14,6 +14,7 @@ import { changeStatus } from "@/app/crm/pratiche/[id]/actions";
 import { ActionBadge, StatusPill } from "@/components/crm/ui";
 import { hasExternalEffect } from "@/lib/transitions";
 import { TransitionConfirm } from "@/components/crm/transition-confirm";
+import { Celebration } from "@/components/crm/celebration";
 import { cn } from "@/lib/utils";
 
 type View = "kanban" | "list";
@@ -29,6 +30,7 @@ export function PracticesBoard({ practices }: { practices: Practice[] }) {
     id: string;
     toStatus: PracticeStatus;
   } | null>(null);
+  const [celebrating, setCelebrating] = useState<number | null>(null);
 
   // Decide se chiedere conferma (transizione a effetto esterno = invia email)
   // oppure spostare subito (transizione neutra).
@@ -54,6 +56,7 @@ export function PracticesBoard({ practices }: { practices: Practice[] }) {
         setItems(prev); // rollback
         setError(res.error);
       } else {
+        if (res.celebrate) setCelebrating(res.celebrate.closedTotal);
         router.refresh();
       }
       setMovingId(null);
@@ -109,6 +112,13 @@ export function PracticesBoard({ practices }: { practices: Practice[] }) {
           pending={pending}
           onConfirm={() => doMove(pendingMove.id, pendingMove.toStatus)}
           onCancel={() => setPendingMove(null)}
+        />
+      )}
+
+      {celebrating !== null && (
+        <Celebration
+          closedTotal={celebrating}
+          onClose={() => setCelebrating(null)}
         />
       )}
     </div>
