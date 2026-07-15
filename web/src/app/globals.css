@@ -123,6 +123,37 @@ body {
   border-radius: 9999px;
 }
 
+/*
+  Barra di scorrimento orizzontale del kanban (@05): quella di sistema su macOS
+  sparisce a riposo ed e sottile. Qui la barra "proxy" (sticky in fondo alla
+  finestra) e SEMPRE visibile, alta e con thumb accent ben cliccabile.
+*/
+.crm-scroll-x {
+  scrollbar-width: auto;
+  scrollbar-color: var(--color-crm-accent) transparent;
+}
+.crm-scroll-x::-webkit-scrollbar {
+  height: 12px;
+}
+.crm-scroll-x::-webkit-scrollbar-track {
+  background: transparent;
+}
+.crm-scroll-x::-webkit-scrollbar-thumb {
+  background: var(--color-crm-accent);
+  border-radius: 9999px;
+}
+.crm-scroll-x::-webkit-scrollbar-thumb:hover {
+  background: var(--color-crm-accent-hover);
+}
+
+/* Nasconde la scrollbar nativa (lo scorrimento resta: trackpad, drag, proxy). */
+.crm-scroll-hidden {
+  scrollbar-width: none;
+}
+.crm-scroll-hidden::-webkit-scrollbar {
+  display: none;
+}
+
 .crm-gradient {
   background: linear-gradient(135deg, #818cf8, #a78bfa);
 }

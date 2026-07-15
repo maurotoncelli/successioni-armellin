@@ -24,7 +24,10 @@ export default async function CrmLayout({
       <Sidebar />
       <div className="flex min-w-0 flex-1 flex-col">
         <Topbar notificationCount={notificationCount} />
-        <main className="flex-1 overflow-x-hidden p-4 sm:p-6">{children}</main>
+        {/* overflow-x-clip (non hidden): stesso clipping ma NON crea uno scroll
+            container, cosi la barra sticky del kanban resta agganciata al
+            fondo della finestra. */}
+        <main className="flex-1 overflow-x-clip p-4 sm:p-6">{children}</main>
       </div>
     </div>
   );

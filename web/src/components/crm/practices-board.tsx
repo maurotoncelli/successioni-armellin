@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { KanbanSquare, List, Home, AlertCircle, Loader2 } from "lucide-react";
@@ -153,59 +153,115 @@ function KanbanView({
   movingId: string | null;
 }) {
   const [overStatus, setOverStatus] = useState<PracticeStatus | null>(null);
+  const boardRef = useRef<HTMLDivElement>(null);
+  const proxyRef = useRef<HTMLDivElement>(null);
+  const spacerRef = useRef<HTMLDivElement>(null);
+
+  /*
+    Barra di scorrimento "proxy" SEMPRE visibile e sticky al fondo della
+    finestra: quella nativa su macOS sparisce a riposo e, se la board prosegue
+    sotto il bordo dello schermo, non si vede affatto. La barra nativa viene
+    nascosta e questa proxy (sincronizzata nei due sensi) la sostituisce.
+  */
+  useEffect(() => {
+    const board = boardRef.current;
+    const proxy = proxyRef.current;
+    const spacer = spacerRef.current;
+    if (!board || !proxy || !spacer) return;
+
+    const syncWidth = () => {
+      spacer.style.width = `${board.scrollWidth}px`;
+      proxy.style.display =
+        board.scrollWidth > board.clientWidth + 1 ? "" : "none";
+    };
+    syncWidth();
+    const ro = new ResizeObserver(syncWidth);
+    ro.observe(board);
+
+    // Assegnare lo stesso scrollLeft non ri-emette l'evento: niente loop.
+    const onBoardScroll = () => {
+      proxy.scrollLeft = board.scrollLeft;
+    };
+    const onProxyScroll = () => {
+      board.scrollLeft = proxy.scrollLeft;
+    };
+    board.addEventListener("scroll", onBoardScroll, { passive: true });
+    proxy.addEventListener("scroll", onProxyScroll, { passive: true });
+
+    return () => {
+      ro.disconnect();
+      board.removeEventListener("scroll", onBoardScroll);
+      proxy.removeEventListener("scroll", onProxyScroll);
+    };
+  }, []);
 
   return (
-    <div className="flex gap-4 overflow-x-auto pb-3">
-      {pipelineOrder.map((status) => {
-        const columnItems = practices.filter((p) => p.status === status);
-        const isOver = overStatus === status;
-        return (
-          <div
-            key={status}
-            className="w-72 shrink-0"
-            onDragOver={(e) => {
-              e.preventDefault();
-              if (overStatus !== status) setOverStatus(status);
-            }}
-            onDragLeave={(e) => {
-              // ignora i dragleave verso elementi figli
-              if (!e.currentTarget.contains(e.relatedTarget as Node)) {
-                setOverStatus((s) => (s === status ? null : s));
-              }
-            }}
-            onDrop={(e) => {
-              e.preventDefault();
-              setOverStatus(null);
-              const id = e.dataTransfer.getData("text/plain");
-              if (id) onMove(id, status);
-            }}
-          >
-            <div className="mb-2 flex items-center justify-between px-1">
-              <h2 className="text-xs font-semibold uppercase tracking-wide text-crm-text2">
-                {statusLabels[status]}
-              </h2>
-              <span className="rounded-full bg-crm-surface px-2 py-0.5 text-xs text-crm-muted">
-                {columnItems.length}
-              </span>
-            </div>
+    <div>
+      <div
+        ref={boardRef}
+        className="crm-scroll-hidden flex gap-4 overflow-x-auto pb-3"
+      >
+        {pipelineOrder.map((status) => {
+          const columnItems = practices.filter((p) => p.status === status);
+          const isOver = overStatus === status;
+          return (
             <div
-              className={cn(
-                "min-h-24 space-y-2 rounded-[12px] p-1 transition-colors",
-                isOver && "bg-crm-accent/10 ring-1 ring-crm-accent/40",
-              )}
+              key={status}
+              className="w-72 shrink-0"
+              onDragOver={(e) => {
+                e.preventDefault();
+                if (overStatus !== status) setOverStatus(status);
+              }}
+              onDragLeave={(e) => {
+                // ignora i dragleave verso elementi figli
+                if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+                  setOverStatus((s) => (s === status ? null : s));
+                }
+              }}
+              onDrop={(e) => {
+                e.preventDefault();
+                setOverStatus(null);
+                const id = e.dataTransfer.getData("text/plain");
+                if (id) onMove(id, status);
+              }}
             >
-              {columnItems.map((p) => (
-                <KanbanCard key={p.id} practice={p} moving={movingId === p.id} />
-              ))}
-              {columnItems.length === 0 && (
-                <div className="rounded-[12px] border border-dashed border-crm-border px-3 py-6 text-center text-xs text-crm-muted">
-                  Vuota
-                </div>
-              )}
+              <div className="mb-2 flex items-center justify-between px-1">
+                <h2 className="text-xs font-semibold uppercase tracking-wide text-crm-text2">
+                  {statusLabels[status]}
+                </h2>
+                <span className="rounded-full bg-crm-surface px-2 py-0.5 text-xs text-crm-muted">
+                  {columnItems.length}
+                </span>
+              </div>
+              <div
+                className={cn(
+                  "min-h-24 space-y-2 rounded-[12px] p-1 transition-colors",
+                  isOver && "bg-crm-accent/10 ring-1 ring-crm-accent/40",
+                )}
+              >
+                {columnItems.map((p) => (
+                  <KanbanCard key={p.id} practice={p} moving={movingId === p.id} />
+                ))}
+                {columnItems.length === 0 && (
+                  <div className="rounded-[12px] border border-dashed border-crm-border px-3 py-6 text-center text-xs text-crm-muted">
+                    Vuota
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
+
+      {/* Barra proxy: sticky, quindi visibile anche se la board prosegue
+          sotto il bordo della finestra. */}
+      <div
+        ref={proxyRef}
+        className="crm-scroll-x sticky bottom-0 z-10 -mx-1 overflow-x-auto overflow-y-hidden rounded-full bg-crm-bg/90 px-1 py-1 backdrop-blur"
+        aria-hidden
+      >
+        <div ref={spacerRef} className="h-px" />
+      </div>
     </div>
   );
 }

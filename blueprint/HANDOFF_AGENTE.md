@@ -120,6 +120,41 @@ Lingua del progetto: **italiano**. Scrivere sempre in italiano con l'utente.
   `dedupeMinutes`; nuova `countCrmNotifications` alimenta la CAMPANELLA con
   badge contatore nella Topbar CRM (conteggio nel layout, visibile ovunque).
 
+### Blocco 9 — Audit "Tocca a te / In attesa del cliente" + email cliente (FATTO 15/07, da committare)
+- Audit completo di `action_owner` su TUTTE le azioni e delle email al cliente.
+  Logica confermata sensata nel complesso; 4 buchi trovati e fixati:
+  1. `rejectDocument` (CRM): ora porta `action_owner` a CLIENT (prima il badge
+     restava "Tocca a te" anche se la palla era del cliente) + log
+     `documento_rifiutato`; email invariata.
+  2. Upload area cliente: se il cliente ricarica l'ULTIMA voce rifiutata, la
+     palla torna automaticamente ad ADMIN anche senza ripremere "Ho finito"
+     (log `documento_ricaricato_dopo_rifiuto`). `uploadDocument` ora ritorna
+     `UploadOutcome` (item + wasRejected + otherRejectedRemaining).
+  3. `changeStatus` a PAGATO manuale ora BLOCCATO se `payment_status !== PAID`:
+     evitava email "pagamento ricevuto" falsa + alert "link non pagato" perenne.
+     Messaggio indirizza a "Registra pagamento offline" o al link di pagamento.
+  4. Guardie pratica annullata/rimborsata su `submitDocuments`, `signMandate`,
+     `saveIbanAction` (l'upload era gia' protetto; le action erano invocabili
+     direttamente).
+- Scelte CONFERMATE (non bug): checkout anonimo LEAD+CLIENT (no rumore),
+  `setStateTaxes` non cambia owner (Lorenzo continua a lavorare la pratica in
+  LAVORAZIONE mentre aspetta l'IBAN), rimborso totale via webhook non manda
+  email nostra al cliente (Stripe manda la sua), ANNULLATA senza template email
+  (la copre l'email esito recesso).
+
+### Blocco 10 — Scrollbar kanban sempre visibile (FATTO 15/07, da committare)
+- Problema: la scrollbar orizzontale della board kanban (/crm/pratiche) e
+  quella nativa macOS: sparisce a riposo e, se la board prosegue sotto il bordo
+  della finestra, non si vede proprio.
+- Fix in `practices-board.tsx`: scrollbar nativa nascosta (`.crm-scroll-hidden`)
+  e sostituita da una barra "proxy" STICKY al fondo della finestra, sempre
+  visibile, alta 12px con thumb accent (`.crm-scroll-x` in globals.css),
+  sincronizzata bidirezionalmente con la board (scrollLeft) + ResizeObserver
+  per la larghezza. Nascosta da sola se non c'e overflow.
+- `crm/layout.tsx`: `main` da `overflow-x-hidden` a `overflow-x-clip` (stesso
+  clipping ma non crea scroll container, altrimenti `sticky bottom-0` non
+  aggancia il viewport).
+
 ### Blocco 8 — Fix placeholder "entro X giorni lavorativi" (FATTO 15/07 mattina)
 - In produzione home e /tariffe mostravano letteralmente "entro X giorni
   lavorativi" (placeholder mai sostituito!). Fixate le entry
