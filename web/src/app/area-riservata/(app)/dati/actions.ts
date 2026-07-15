@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { getClientView } from "@/lib/area";
+import { isPracticeCancelled } from "@/content/area-data";
 import { saveIban } from "@/lib/practice-extras";
 import { pushCrmNotification } from "@/lib/crm-notifications";
 
@@ -13,6 +14,9 @@ export type IbanResult =
 export async function saveIbanAction(iban: string): Promise<IbanResult> {
   const view = await getClientView();
   if (!view?.practice) return { ok: false, error: "Sessione non valida." };
+  if (isPracticeCancelled(view.practice)) {
+    return { ok: false, error: "La pratica è annullata: azione non disponibile." };
+  }
   const res = await saveIban(view.practice.id, iban);
   if (res.ok) {
     await pushCrmNotification({

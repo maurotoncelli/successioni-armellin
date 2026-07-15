@@ -130,17 +130,26 @@ async function compressUpload(
   }
 }
 
+export type UploadOutcome = {
+  item: ChecklistItem;
+  /** La voce era stata RIFIUTATA: questo upload e la correzione richiesta. */
+  wasRejected: boolean;
+  /** Dopo l'upload restano ALTRE voci rifiutate da ricaricare. */
+  otherRejectedRemaining: boolean;
+};
+
 export async function uploadDocument(
   practiceId: string,
   index: number,
   file: File,
-): Promise<ChecklistItem> {
+): Promise<UploadOutcome> {
   const admin = getAdminClient();
   await ensureBucket(admin);
 
   const checklist = await getChecklist(admin, practiceId);
   const item = checklist[index];
   if (!item) throw new Error("Voce della checklist non trovata.");
+  const wasRejected = item.status === "RIFIUTATO";
 
   const files = listItemFiles(item);
   if (files.length >= MAX_FILES_PER_ITEM) {
@@ -169,7 +178,13 @@ export async function uploadDocument(
   };
   checklist[index] = updated;
   await saveChecklist(admin, practiceId, checklist);
-  return updated;
+  return {
+    item: updated,
+    wasRejected,
+    otherRejectedRemaining: checklist.some(
+      (c, i) => i !== index && c.status === "RIFIUTATO",
+    ),
+  };
 }
 
 /**

@@ -190,14 +190,22 @@ export async function rejectDocument(
   await requireAdmin();
   await setDocStatus(practiceId, index, "RIFIUTATO", reason);
 
-  // Avvisa il cliente che un documento va ricaricato.
   const admin = getAdminClient();
   const { data } = await admin
     .from("practices")
     .select("client_email, checklist, communications, log")
     .eq("id", practiceId)
     .maybeSingle();
-  if (data?.client_email) {
+  if (!data) {
+    revalidatePath(`/crm/pratiche/${practiceId}`);
+    return;
+  }
+
+  const { communications, log } = loadArrays(data);
+  log.push({ action: "documento_rifiutato", at: stamp() });
+
+  // Avvisa il cliente che un documento va ricaricato.
+  if (data.client_email) {
     const checklist = Array.isArray(data.checklist)
       ? (data.checklist as { label?: string }[])
       : [];
@@ -209,12 +217,6 @@ export async function rejectDocument(
       cleanReason,
     );
     if (notice.sent) {
-      const communications: Communication[] = Array.isArray(data.communications)
-        ? (data.communications as Communication[])
-        : [];
-      const log: LogEvent[] = Array.isArray(data.log)
-        ? (data.log as LogEvent[])
-        : [];
       communications.push({
         channel: "EMAIL",
         direction: "OUTBOUND",
@@ -223,14 +225,19 @@ export async function rejectDocument(
         occurredAt: stamp(),
       });
       log.push({ action: "email_inviata", at: stamp() });
-      await admin
-        .from("practices")
-        .update({ communications, log })
-        .eq("id", practiceId);
     }
   }
 
+  // La palla passa al cliente: deve ricaricare il documento corretto.
+  // (Torna ad ADMIN quando ricarica l'ultima voce rifiutata o preme "Ho finito".)
+  await admin
+    .from("practices")
+    .update({ communications, log, action_owner: "CLIENT" })
+    .eq("id", practiceId);
+
   revalidatePath(`/crm/pratiche/${practiceId}`);
+  revalidatePath("/crm/pratiche");
+  revalidatePath("/crm");
 }
 
 /* ---------------------------------------------------------------------------
@@ -275,11 +282,24 @@ export async function changeStatus(
   const admin = getAdminClient();
   const { data } = await admin
     .from("practices")
-    .select("status, log, opened_at, submitted_at, client_email, communications")
+    .select(
+      "status, log, opened_at, submitted_at, client_email, communications, payment_status",
+    )
     .eq("id", practiceId)
     .maybeSingle();
   if (!data) return { ok: false, error: "Pratica non trovata." };
   if (data.status === status) return { ok: true };
+
+  // PAGATO a mano senza un pagamento registrato = email "pagamento ricevuto"
+  // falsa + alert "link non pagato" perenne. Lo stato PAGATO arriva da solo
+  // dal webhook Stripe o da "Registra pagamento offline".
+  if (status === "PAGATO" && data.payment_status !== "PAID") {
+    return {
+      ok: false,
+      error:
+        "Nessun pagamento registrato: usa \u201cRegistra pagamento offline\u201d oppure invia il link di pagamento. Lo stato passa a PAGATO da solo.",
+    };
+  }
 
   const log: LogEvent[] = Array.isArray(data.log) ? (data.log as LogEvent[]) : [];
   log.push({ action: `cambio_stato:${status}`, at: stamp() });

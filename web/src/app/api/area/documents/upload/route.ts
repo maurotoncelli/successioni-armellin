@@ -7,6 +7,8 @@ import {
   MAX_DOC_BYTES,
 } from "@/lib/documents";
 import { pushCrmNotification } from "@/lib/crm-notifications";
+import { getAdminClient } from "@/lib/supabase/admin";
+import type { LogEvent } from "@/content/crm-data";
 
 // Upload di un documento da parte del CLIENTE. La proprieta e garantita da
 // getClientView (sessione): si carica solo sulla propria pratica.
@@ -43,7 +45,35 @@ export async function POST(req: Request) {
   }
 
   try {
-    const item = await uploadDocument(view.practice.id, index, file);
+    const { item, wasRejected, otherRejectedRemaining } = await uploadDocument(
+      view.practice.id,
+      index,
+      file,
+    );
+
+    // Correzione completata: il cliente ha ricaricato l'ULTIMA voce rifiutata.
+    // La palla torna a Lorenzo anche se il cliente non ripreme "Ho finito"
+    // (il badge era passato a CLIENT al momento del rifiuto).
+    if (wasRejected && !otherRejectedRemaining) {
+      const admin = getAdminClient();
+      const { data } = await admin
+        .from("practices")
+        .select("log")
+        .eq("id", view.practice.id)
+        .maybeSingle();
+      const log: LogEvent[] = Array.isArray(data?.log)
+        ? (data.log as LogEvent[])
+        : [];
+      log.push({
+        action: "documento_ricaricato_dopo_rifiuto",
+        at: new Date().toISOString().slice(0, 16).replace("T", " "),
+      });
+      await admin
+        .from("practices")
+        .update({ log, action_owner: "ADMIN" })
+        .eq("id", view.practice.id);
+    }
+
     // Dedupe 30': gli upload multi-file della stessa voce (es. fronte/retro)
     // generano UNA notifica, non una per file.
     await pushCrmNotification({

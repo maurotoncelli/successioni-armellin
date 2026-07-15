@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { getClientView } from "@/lib/area";
+import { isPracticeCancelled } from "@/content/area-data";
 import { getAdminClient } from "@/lib/supabase/admin";
 import { pushCrmNotification } from "@/lib/crm-notifications";
 import type { Communication, LogEvent } from "@/content/crm-data";
@@ -12,6 +13,9 @@ export type SubmitResult = { ok: true } | { ok: false; error: string };
 export async function submitDocuments(): Promise<SubmitResult> {
   const view = await getClientView();
   if (!view?.practice) return { ok: false, error: "Sessione non valida." };
+  if (isPracticeCancelled(view.practice)) {
+    return { ok: false, error: "La pratica è annullata: azione non disponibile." };
+  }
 
   const admin = getAdminClient();
   const practiceId = view.practice.id;

@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { getClientView } from "@/lib/area";
+import { isPracticeCancelled } from "@/content/area-data";
 import { signMandateElectronic } from "@/lib/practice-extras";
 import { pushCrmNotification } from "@/lib/crm-notifications";
 
@@ -11,6 +12,9 @@ export type MandateResult = { ok: true } | { ok: false; error: string };
 export async function signMandate(): Promise<MandateResult> {
   const view = await getClientView();
   if (!view?.practice) return { ok: false, error: "Sessione non valida." };
+  if (isPracticeCancelled(view.practice)) {
+    return { ok: false, error: "La pratica è annullata: azione non disponibile." };
+  }
   try {
     await signMandateElectronic(view.practice.id, view.account.name);
   } catch (err) {
