@@ -25,6 +25,7 @@
 
     { "collection": "footer", "key": "studio", "locale": "it", "is_published": true, "value": { "ragione_sociale": "Geom. Lorenzo Armellin", "forma_giuridica": "Ditta individuale - regime forfettario (operazione senza IVA, art. 1 c. 54-89 L. 190/2014)", "piva": "02432220503", "cf": "RMLLNZ90E27G843J", "albo": "Collegio Geometri e Geometri Laureati di Pisa, n. 1969 - iscritto dal 21/01/2022", "indirizzo": "Via Vittorio Veneto 31, 56025 Pontedera (PI)" } },
     { "collection": "footer", "key": "trust_line", "locale": "it", "is_published": true, "value": "Geom. abilitato Entratel - con supervisione fiscale di un commercialista" },
+    { "collection": "footer", "key": "area_app_note", "locale": "it", "is_published": true, "value": "Questo sito permette di gestire online la propria pratica di successione: nell'Area personale i clienti seguono lo stato della pratica, caricano i documenti richiesti e firmano il mandato. L'accesso avviene con email, telefono o account Google: dell'account Google usiamo solo nome e indirizzo email per identificarti, nessun altro dato viene letto o condiviso. Dettagli nella" },
     { "collection": "footer", "key": "odr", "locale": "it", "is_published": true, "value": { "label": "Risoluzione controversie online (ODR)", "href": "https://ec.europa.eu/consumers/odr" } },
     { "collection": "footer", "key": "legal_menu", "locale": "it", "is_published": true, "value": [
       { "label": "Privacy", "href": "/privacy" },

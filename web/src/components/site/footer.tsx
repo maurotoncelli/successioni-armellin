@@ -36,6 +36,7 @@ export function Footer() {
   const phone = text("settings", "phone");
   const pec = text("settings", "pec");
   const areaLabel = text("settings", "area_label", "Area personale");
+  const areaNote = text("footer", "area_app_note");
 
   // Dati identificativi obbligatori (professionista/e-commerce B2C): mostrati
   // sempre, anche come placeholder "DA CONFERMARE", finche non confermati da
@@ -92,6 +93,18 @@ export function Footer() {
                 </div>
               ))}
             </dl>
+          )}
+
+          {/* Scopo dell'app + uso dei dati Google: richiesto dalla verifica
+              del branding OAuth (la home deve spiegare cosa fa l'applicazione). */}
+          {areaNote && (
+            <p className="mt-4 max-w-sm text-xs leading-relaxed text-white/60">
+              {areaNote}{" "}
+              <Link href="/privacy" className="underline hover:text-accent">
+                Privacy Policy
+              </Link>
+              .
+            </p>
           )}
         </div>
 
