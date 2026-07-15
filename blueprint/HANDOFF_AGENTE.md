@@ -120,7 +120,7 @@ Lingua del progetto: **italiano**. Scrivere sempre in italiano con l'utente.
   `dedupeMinutes`; nuova `countCrmNotifications` alimenta la CAMPANELLA con
   badge contatore nella Topbar CRM (conteggio nel layout, visibile ovunque).
 
-### Blocco 9 — Audit "Tocca a te / In attesa del cliente" + email cliente (FATTO 15/07, da committare)
+### Blocco 9 — Audit "Tocca a te / In attesa del cliente" + email cliente (FATTO 15/07, committato)
 - Audit completo di `action_owner` su TUTTE le azioni e delle email al cliente.
   Logica confermata sensata nel complesso; 4 buchi trovati e fixati:
   1. `rejectDocument` (CRM): ora porta `action_owner` a CLIENT (prima il badge
@@ -142,7 +142,23 @@ Lingua del progetto: **italiano**. Scrivere sempre in italiano con l'utente.
   email nostra al cliente (Stripe manda la sua), ANNULLATA senza template email
   (la copre l'email esito recesso).
 
-### Blocco 10 — Scrollbar kanban sempre visibile (FATTO 15/07, da committare)
+### Blocco 11 — Video "Come funziona" (SCRIPT PRONTO 15/07, riprese da fare)
+- Script completo + testo voce fuori campo in
+  `blueprint/15_Video_Come_Funziona_Script.md`. Video di processo lato cliente
+  per la pagina /come-funziona: protagonista donna, mix camera + screen
+  recording. Master 16:9 ~1:55 (MAX 2:00), tagli 60-75s e verticale 9:16 30s.
+- Flusso mostrato: ricerca sito -> preventivo (VO si sofferma sui 3 esiti:
+  prezzo/su misura/esonero gratis) -> pagamento Stripe 490 EUR -> area personale
+  (login Google, firma mandato, upload documenti: scansione/foto/modelli, VO si
+  sofferma) -> "Ho finito" -> email lavorazione -> pratica inviata/conclusa ->
+  download documenti finali -> recensione (breve) -> CTA preventivo.
+- Riprese schermo: SOLO pratica di prova con dati fittizi (mai dati reali),
+  email di scena da casella pulita, prezzo reale a listino (490 Semplice).
+- Integrazione dev quando pronto: video su /come-funziona (sotto hero), MP4
+  self-hosted o Vimeo/Mux (NO YouTube), poster + sottotitoli, 2 sorgenti
+  16:9/9:16, lazy-load, no autoplay con audio.
+
+### Blocco 10 — Scrollbar kanban sempre visibile (FATTO 15/07, committato)
 - Problema: la scrollbar orizzontale della board kanban (/crm/pratiche) e
   quella nativa macOS: sparisce a riposo e, se la board prosegue sotto il bordo
   della finestra, non si vede proprio.
