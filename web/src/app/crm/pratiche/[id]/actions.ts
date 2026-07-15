@@ -3,6 +3,7 @@
 import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
 import { createCheckoutSession } from "@/lib/payments";
+import { getStripe, isStripeConfigured } from "@/lib/stripe";
 import { requireAdmin } from "@/lib/admin";
 import { signedDocUrl, setDocStatus, listItemFiles, DOC_BUCKET } from "@/lib/documents";
 import {
@@ -1045,31 +1046,74 @@ export async function createChecklistNow(
 }
 
 // Esito del recesso dal CRM (in gestione / accettato / respinto) + email cliente.
+// Con `refundStripe: true` (spunta esplicita nel pannello) l'accettazione avvia
+// anche il rimborso TOTALE su Stripe: se il rimborso fallisce, la richiesta di
+// recesso NON viene toccata, cosi Lorenzo puo riprovare o rimborsare a mano.
 export async function updateWithdrawal(
   practiceId: string,
   status: WithdrawalStatus,
   note?: string,
+  opts?: { refundStripe?: boolean },
 ): Promise<WorkflowResult> {
   await requireAdmin();
+
+  const admin = getAdminClient();
+  const { data } = await admin
+    .from("practices")
+    .select(
+      "status, client_email, communications, log, payment_status, payment_method, stripe_payment_intent_id, code",
+    )
+    .eq("id", practiceId)
+    .maybeSingle();
+  if (!data) return { ok: false, error: "Pratica non trovata." };
+
+  const { communications, log } = loadArrays(data);
+  const now = stamp();
+
+  // Rimborso automatico su Stripe: PRIMA di segnare l'esito, cosi un errore
+  // Stripe non lascia il recesso "accettato" senza rimborso partito.
+  let refundSucceeded = false;
+  if (status === "ACCEPTED" && opts?.refundStripe) {
+    if (!isStripeConfigured) {
+      return { ok: false, error: "Stripe non configurato: rimborso non possibile." };
+    }
+    if (data.payment_status !== "PAID") {
+      return {
+        ok: false,
+        error: "La pratica non risulta pagata: nessun rimborso da eseguire.",
+      };
+    }
+    if (!data.stripe_payment_intent_id) {
+      return {
+        ok: false,
+        error:
+          "Nessun pagamento Stripe collegato alla pratica (pagamento offline?): esegui il rimborso a mano e accetta senza la spunta.",
+      };
+    }
+    try {
+      const refund = await getStripe().refunds.create({
+        payment_intent: data.stripe_payment_intent_id,
+        metadata: { practice_id: practiceId, practice_code: data.code ?? "" },
+      });
+      refundSucceeded = refund.status === "succeeded";
+      log.push({ action: "rimborso_stripe_avviato", at: now });
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Errore Stripe.";
+      console.error("[crm] updateWithdrawal rimborso Stripe:", err);
+      return { ok: false, error: `Rimborso Stripe non riuscito: ${message}` };
+    }
+  }
+
   const updated = await setWithdrawalStatus(practiceId, status, note);
   if (!updated) {
     return { ok: false, error: "Nessuna richiesta di recesso da aggiornare." };
   }
 
-  const admin = getAdminClient();
-  const { data } = await admin
-    .from("practices")
-    .select("status, client_email, communications, log")
-    .eq("id", practiceId)
-    .maybeSingle();
-  const { communications, log } = loadArrays(data ?? {});
-  const now = stamp();
   log.push({ action: `recesso:${status}`, at: now });
 
   // Recesso ACCETTATO = pratica ANNULLATA: il contratto e' sciolto, il cliente
   // non deve piu vedere una pratica "attiva" con documenti caricabili
-  // (l'area personale passa in modalita' storico). Il rimborso Stripe resta
-  // manuale (promemoria nel pannello recesso del CRM).
+  // (l'area personale passa in modalita' storico).
   const closeOnAccept =
     status === "ACCEPTED" &&
     data?.status !== "CHIUSA" &&
@@ -1117,6 +1161,9 @@ export async function updateWithdrawal(
       log,
       action_owner: actionOwner,
       ...(closeOnAccept ? { status: "ANNULLATA" } : {}),
+      // Se Stripe ha gia confermato il rimborso lo si riflette subito; in ogni
+      // caso il webhook charge.refunded resta la conferma definitiva.
+      ...(refundSucceeded ? { payment_status: "REFUNDED" } : {}),
     })
     .eq("id", practiceId);
   revalidatePath(`/crm/pratiche/${practiceId}`);

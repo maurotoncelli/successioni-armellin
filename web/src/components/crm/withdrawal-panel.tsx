@@ -18,25 +18,35 @@ export function WithdrawalPanel({
   practiceId,
   withdrawal,
   paid,
+  amount,
+  stripeRefundable,
 }: {
   practiceId: string;
   withdrawal: WithdrawalInfo;
   paid: boolean;
+  /** Prezzo pagato: mostrato accanto alla spunta di rimborso. */
+  amount?: number;
+  /** true se il pagamento e avvenuto via Stripe (rimborso automatico possibile). */
+  stripeRefundable?: boolean;
 }) {
   const router = useRouter();
   const [note, setNote] = useState(withdrawal.outcomeNote ?? "");
   const [busy, setBusy] = useState<WithdrawalInfo["status"] | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [refund, setRefund] = useState(false);
   const [, startTransition] = useTransition();
 
   const resolved =
     withdrawal.status === "ACCEPTED" || withdrawal.status === "REJECTED";
+  const canAutoRefund = paid && Boolean(stripeRefundable);
 
   function act(status: WithdrawalInfo["status"]) {
     setBusy(status);
     setError(null);
     startTransition(async () => {
-      const res = await updateWithdrawal(practiceId, status, note);
+      const res = await updateWithdrawal(practiceId, status, note, {
+        refundStripe: status === "ACCEPTED" && canAutoRefund && refund,
+      });
       if (!res.ok) setError(res.error);
       else router.refresh();
       setBusy(null);
@@ -72,8 +82,9 @@ export function WithdrawalPanel({
         {paid && (
           <p className="flex items-start gap-1.5 rounded-lg bg-crm-amber/10 p-2.5 text-xs text-crm-amber">
             <AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0" />
-            Pratica pagata: se accetti il recesso ricordati il rimborso su Stripe
-            e l&apos;eventuale nota di credito nel gestionale di fatturazione.
+            {canAutoRefund
+              ? "Pratica pagata: se accetti il recesso puoi far partire il rimborso Stripe direttamente da qui (spunta sotto). Ricordati l'eventuale nota di credito nel gestionale di fatturazione."
+              : "Pratica pagata (non via Stripe): se accetti il recesso ricordati il rimborso manuale e l'eventuale nota di credito nel gestionale di fatturazione."}
           </p>
         )}
 
@@ -86,6 +97,23 @@ export function WithdrawalPanel({
               placeholder="Nota per il cliente (motivazione / esito)…"
               className="w-full rounded-lg border border-crm-border bg-crm-bg2 px-2.5 py-1.5 text-sm text-crm-text outline-none focus:border-crm-accent"
             />
+            {canAutoRefund && (
+              <label className="flex cursor-pointer items-start gap-2 rounded-lg border border-crm-border bg-crm-bg2/60 p-2.5 text-xs text-crm-text2">
+                <input
+                  type="checkbox"
+                  checked={refund}
+                  onChange={(e) => setRefund(e.target.checked)}
+                  className="mt-0.5 h-3.5 w-3.5 accent-crm-accent"
+                />
+                <span>
+                  Se accetto, esegui anche il <strong>rimborso totale su Stripe</strong>
+                  {typeof amount === "number" && amount > 0
+                    ? ` (${amount.toLocaleString("it-IT")} €)`
+                    : ""}
+                  . Il rimborso non è annullabile.
+                </span>
+              </label>
+            )}
             <div className="flex flex-wrap gap-2">
               {withdrawal.status === "REQUESTED" && (
                 <button

@@ -116,6 +116,8 @@ export default async function SchedaPraticaPage({
               practiceId={p.id}
               withdrawal={extras.withdrawal}
               paid={p.paymentStatus === "PAID"}
+              amount={p.price}
+              stripeRefundable={p.paymentMethod === "STRIPE"}
             />
           )}
 
