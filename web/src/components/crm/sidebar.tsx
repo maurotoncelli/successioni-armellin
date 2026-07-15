@@ -9,6 +9,7 @@ import {
   Users,
   BarChart3,
   FileEdit,
+  Lightbulb,
   ExternalLink,
   LogOut,
 } from "lucide-react";
@@ -88,6 +89,18 @@ export function Sidebar() {
         >
           <FileEdit className="h-[18px] w-[18px]" />
           Listino e contenuti
+        </Link>
+        <Link
+          href="/crm/migliorie"
+          className={cn(
+            "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+            pathname.startsWith("/crm/migliorie")
+              ? "bg-crm-accent/15 text-crm-accent"
+              : "text-crm-text2 hover:bg-crm-hover hover:text-crm-text",
+          )}
+        >
+          <Lightbulb className="h-[18px] w-[18px]" />
+          Migliorie sito
         </Link>
       </nav>
 

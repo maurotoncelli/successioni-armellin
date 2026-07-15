@@ -142,6 +142,18 @@ Lingua del progetto: **italiano**. Scrivere sempre in italiano con l'utente.
   email nostra al cliente (Stripe manda la sua), ANNULLATA senza template email
   (la copre l'email esito recesso).
 
+### Blocco 14 — Sezione "Migliorie sito" nel CRM (FATTO 15/07)
+- Nuova voce in sidebar (gruppo "Sito", icona lampadina) -> /crm/migliorie:
+  appunti liberi (titolo + testo) dove Mauro/Lorenzo segnano le modifiche da
+  fare al sito quando se ne accorgono, per lavorarle in blocco.
+- CRUD completo: "Nuovo appunto", modifica in place, eliminazione con conferma
+  inline. Griglia di card in stile CRM, data ultima modifica, empty state.
+- Tabella `site_notes` (creata in produzione via Management API + migrazione
+  `supabase/migrations/20260715120000_site_notes.sql`), RLS attiva senza
+  policy (solo service_role). Lib `web/src/lib/site-notes.ts`, action con
+  requireAdmin in `web/src/app/crm/migliorie/actions.ts`, UI
+  `web/src/components/crm/site-notes.tsx`.
+
 ### Blocco 13 — Audit "pratica chiusa" + celebrazione (FATTO 15/07)
 - Audit del flusso di chiusura: fattura (auto FattureInCloud e MANUALE con PDF)
   arriva correttamente all'area cliente (/ordine, "Scarica fattura" con URL

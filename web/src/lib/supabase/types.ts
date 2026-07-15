@@ -136,6 +136,14 @@ export type CrmNotificationRow = {
   created_at: string;
 };
 
+export type SiteNoteRow = {
+  id: string;
+  title: string;
+  body: string;
+  created_at: string;
+  updated_at: string;
+};
+
 export type RoleKey = "ADMIN" | "CLIENT";
 
 export type ProfileRow = {
@@ -198,6 +206,12 @@ export type Database = {
         Insert: Partial<CrmNotificationRow> &
           Pick<CrmNotificationRow, "kind" | "title">;
         Update: Partial<CrmNotificationRow>;
+        Relationships: [];
+      };
+      site_notes: {
+        Row: SiteNoteRow;
+        Insert: Partial<SiteNoteRow>;
+        Update: Partial<SiteNoteRow>;
         Relationships: [];
       };
     };
