@@ -21,7 +21,9 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://successioni.example.it"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.successioniarmellin.it",
+  ),
   title: {
     default: "Successioni Online | Geom. Lorenzo Armellin",
     template: "%s | Geom. Lorenzo Armellin",

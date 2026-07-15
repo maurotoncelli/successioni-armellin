@@ -91,11 +91,17 @@ export function PreventivoForm({
 
   const progress = ((step + 1) / total) * 100;
 
-  // Avanti abilitato solo quando la domanda dello step ha una risposta.
+  // Avanti abilitato solo quando TUTTE le domande dello step hanno risposta:
+  // testamento/altri beni/soglia 100k cambiano l'esito (esonero o su misura),
+  // quindi non possono restare senza risposta.
   const stepValid =
     (step === 0 && relation !== "") ||
     (step === 1 && heirs !== "") ||
-    (step === 2 && hasRealEstate !== "");
+    (step === 2 &&
+      hasRealEstate !== "" &&
+      hasWill !== "" &&
+      hasOther !== "" &&
+      (!askOver100k || over100k !== ""));
 
   function next() {
     setStep((s) => Math.min(s + 1, total - 1));

@@ -297,6 +297,16 @@ export default async function GraziePage({
                 "soft_email_ok_body",
                 "Ti abbiamo inviato il riepilogo del preventivo. Quando vuoi, riprendi da li.",
               )}
+              successTitleNoEmail={text(
+                "grazie",
+                "soft_email_ok_title_noemail",
+                "Richiesta registrata!",
+              )}
+              successBodyNoEmail={text(
+                "grazie",
+                "soft_email_ok_body_noemail",
+                "Abbiamo registrato la tua richiesta: ti invieremo il riepilogo del preventivo a breve.",
+              )}
             />
           )}
         </div>

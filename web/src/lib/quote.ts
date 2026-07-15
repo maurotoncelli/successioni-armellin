@@ -37,7 +37,9 @@ export function computeEsito(input: {
   ) {
     // L'esonero art. 28 c.7 TUS vale solo con attivo ereditario <= 100.000 EUR:
     // sopra soglia la dichiarazione e' dovuta anche in linea retta -> Semplice.
-    return input.over100k === "si" ? "b" : "a";
+    // Prudenza: l'esonero si suggerisce SOLO con un "no" esplicito; con
+    // "si" o "non lo so" (o risposta mancante) meglio la dichiarazione.
+    return input.over100k === "no" ? "a" : "b";
   }
   return "b";
 }

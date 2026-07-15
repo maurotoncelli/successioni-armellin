@@ -223,12 +223,17 @@ export function deriveAlerts(practices: Practice[]): Alert[] {
         practiceId: p.id,
       });
     }
-    if (p.status === "LEAD") {
+    // Le pratiche "anonime" create al click sul pagamento (checkout abbandonato)
+    // sono LEAD senza contatto: niente alert, non c'e nessuno da ricontattare.
+    const hasContact = Boolean(
+      p.clientName.trim() || p.clientEmail.trim() || p.clientPhone.trim(),
+    );
+    if (p.status === "LEAD" && (hasContact || p.requiresCustomQuote)) {
       alerts.push({
         kind: "lead",
         text: p.requiresCustomQuote
-          ? `${p.code} - preventivo su misura richiesto: ricontattare ${p.clientName}`
-          : `${p.code} - nuovo lead dal sito: ${p.clientName}`,
+          ? `${p.code} - preventivo su misura richiesto: ricontattare ${p.clientName || "il lead"}`
+          : `${p.code} - nuovo lead dal sito: ${p.clientName || p.clientEmail}`,
         practiceId: p.id,
       });
     }
@@ -246,7 +251,9 @@ export function deriveAlerts(practices: Practice[]): Alert[] {
         practiceId: p.id,
       });
     }
-    if (p.paymentStatus === "PENDING") {
+    // PENDING su un LEAD anonimo = tentativo Stripe abbandonato: rumore, non
+    // un pagamento da sollecitare (non sapremmo nemmeno chi sollecitare).
+    if (p.paymentStatus === "PENDING" && !(p.status === "LEAD" && !hasContact)) {
       alerts.push({
         kind: "pagamento",
         text: `${p.code} - link di pagamento non ancora pagato`,

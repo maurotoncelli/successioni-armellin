@@ -8,14 +8,29 @@ import type { PracticeStatus } from "@/content/crm-data";
   registrare una comunicazione AUTO in cronologia quando l'email parte davvero.
 */
 
+// Base assoluta obbligatoria: nelle email i link relativi sono morti.
+export function siteBase(): string {
+  return (
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.successioniarmellin.it"
+  ).replace(/\/$/, "");
+}
+
 function areaUrl(): string {
-  const base = (process.env.NEXT_PUBLIC_SITE_URL || "").replace(/\/$/, "");
-  return `${base}/area-riservata`;
+  return `${siteBase()}/area-riservata`;
 }
 
 function crmPracticeUrl(practiceId: string): string {
-  const base = (process.env.NEXT_PUBLIC_SITE_URL || "").replace(/\/$/, "");
-  return `${base}/crm/pratiche/${practiceId}`;
+  return `${siteBase()}/crm/pratiche/${practiceId}`;
+}
+
+// I testi liberi (motivazioni, nomi, note) finiscono in template HTML:
+// vanno sempre escapati, sono input di utenti o comunque non controllati.
+function esc(s: string): string {
+  return s
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
 }
 
 function eur(n: number): string {
@@ -125,8 +140,8 @@ export async function notifyAdminWithdrawalRequest(
   if (admins.length === 0) return { sent: false, subject };
   const html = emailLayout({
     heading: "Nuova richiesta di recesso",
-    bodyHtml: `<p style="margin:0 0 10px"><strong>${clientName}</strong> ha richiesto il recesso per la pratica <strong>${practiceCode}</strong>.</p>
-      ${reason ? `<p style="margin:0 0 10px;padding:10px 12px;background:#f4f5f3;border-radius:8px">${reason}</p>` : ""}
+    bodyHtml: `<p style="margin:0 0 10px"><strong>${esc(clientName)}</strong> ha richiesto il recesso per la pratica <strong>${esc(practiceCode)}</strong>.</p>
+      ${reason ? `<p style="margin:0 0 10px;padding:10px 12px;background:#f4f5f3;border-radius:8px">${esc(reason)}</p>` : ""}
       <p style="margin:0">Gestisci la richiesta dalla scheda della pratica nel CRM.</p>`,
     ctaLabel: "Apri la pratica",
     ctaHref: crmPracticeUrl(practiceId),
@@ -155,10 +170,12 @@ export async function notifyAdminNewLead(input: {
     : `Nuovo lead dal sito · ${input.practiceCode}`;
   if (admins.length === 0) return { sent: false, subject };
   const rows = [
-    `<strong>${input.clientName || "Contatto senza nome"}</strong>`,
-    input.email && `Email: <a href="mailto:${input.email}">${input.email}</a>`,
-    input.phone && `Telefono: <a href="tel:${input.phone}">${input.phone}</a>`,
-    input.packageLabel && `Pacchetto suggerito: ${input.packageLabel}`,
+    `<strong>${esc(input.clientName || "Contatto senza nome")}</strong>`,
+    input.email &&
+      `Email: <a href="mailto:${esc(input.email)}">${esc(input.email)}</a>`,
+    input.phone &&
+      `Telefono: <a href="tel:${esc(input.phone)}">${esc(input.phone)}</a>`,
+    input.packageLabel && `Pacchetto suggerito: ${esc(input.packageLabel)}`,
   ]
     .filter(Boolean)
     .join("<br/>");
@@ -253,7 +270,7 @@ export async function notifyWithdrawalOutcome(
   const html = emailLayout({
     heading: map.heading,
     bodyHtml: `<p style="margin:0 0 10px">${map.body}</p>
-      ${note ? `<p style="margin:0;padding:10px 12px;background:#f4f5f3;border-radius:8px">${note}</p>` : ""}`,
+      ${note ? `<p style="margin:0;padding:10px 12px;background:#f4f5f3;border-radius:8px">${esc(note)}</p>` : ""}`,
     ctaLabel: "Vai all'area personale",
     ctaHref: `${areaUrl()}/recesso`,
   });
@@ -285,8 +302,8 @@ export async function notifyDocumentRejected(
   const subject = `Un documento va ricaricato: ${docLabel}`;
   const html = emailLayout({
     heading: "Un documento va rifatto",
-    bodyHtml: `<p style="margin:0 0 10px">Il documento <strong>${docLabel}</strong> ha bisogno di una correzione:</p>
-      <p style="margin:0 0 10px;padding:10px 12px;background:#fdecea;border-radius:8px;color:#9b2c20">${reason}</p>
+    bodyHtml: `<p style="margin:0 0 10px">Il documento <strong>${esc(docLabel)}</strong> ha bisogno di una correzione:</p>
+      <p style="margin:0 0 10px;padding:10px 12px;background:#fdecea;border-radius:8px;color:#9b2c20">${esc(reason)}</p>
       <p style="margin:0">Puoi ricaricarlo dalla tua area personale, e una cosa veloce.</p>`,
     ctaLabel: "Ricarica il documento",
     ctaHref: `${areaUrl()}/documenti`,

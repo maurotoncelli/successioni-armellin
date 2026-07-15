@@ -35,6 +35,9 @@ type Props = {
   consensoMarketing: string;
   successTitle: string;
   successBody: string;
+  /** Testi alternativi se l'email di riepilogo NON e' partita (niente false promesse). */
+  successTitleNoEmail?: string;
+  successBodyNoEmail?: string;
   requirePhone?: boolean;
   /** Nota sotto il pulsante (es. "ti ricontattiamo noi entro un giorno lavorativo"). */
   footnote?: string;
@@ -50,6 +53,8 @@ export function SoftLead({
   consensoMarketing,
   successTitle,
   successBody,
+  successTitleNoEmail,
+  successBodyNoEmail,
   requirePhone = false,
   footnote,
 }: Props) {
@@ -60,6 +65,7 @@ export function SoftLead({
   const [privacy, setPrivacy] = useState(false);
   const [marketing, setMarketing] = useState(false);
   const [done, setDone] = useState(false);
+  const [emailWentOut, setEmailWentOut] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
 
@@ -91,6 +97,7 @@ export function SoftLead({
       });
       trackEvent("generate_lead", { kind, esito: res.esito });
       if (res.ok) {
+        setEmailWentOut(res.emailSent !== false);
         setDone(true);
       } else {
         // Senza DB configurato non possiamo salvare: messaggio onesto.
@@ -108,9 +115,11 @@ export function SoftLead({
           <CheckCircle2 className="mt-0.5 h-6 w-6 shrink-0 text-success" />
           <div>
             <h3 className="text-lg font-semibold text-primary">
-              {successTitle}
+              {emailWentOut ? successTitle : (successTitleNoEmail ?? successTitle)}
             </h3>
-            <p className="mt-1 text-sm text-text-muted">{successBody}</p>
+            <p className="mt-1 text-sm text-text-muted">
+              {emailWentOut ? successBody : (successBodyNoEmail ?? successBody)}
+            </p>
           </div>
         </div>
       </div>

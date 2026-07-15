@@ -155,7 +155,7 @@ async function handleCheckoutCompleted(
     if (!contactId) {
       const fullName = (backfill.client_name ?? row.client_name ?? "").trim();
       const [first, ...rest] = fullName.split(/\s+/);
-      const { data: created } = await admin
+      const { data: created, error: contactErr } = await admin
         .from("contacts")
         .insert({
           first_name: first || "Cliente",
@@ -168,6 +168,12 @@ async function handleCheckoutCompleted(
         })
         .select("id")
         .single();
+      if (contactErr) {
+        // Non blocchiamo la registrazione del pagamento (verita' = Stripe),
+        // ma senza contact_id il cliente non vede la pratica in area
+        // personale: va tracciato in modo visibile per Lorenzo.
+        console.error("[stripe-webhook] creazione contatto fallita:", contactErr);
+      }
       contactId = created?.id ?? null;
     }
   }
@@ -183,6 +189,9 @@ async function handleCheckoutCompleted(
 
   const log = asArray<Record<string, unknown>>(row.log);
   log.unshift({ action: "pagamento_ricevuto", at: stamp });
+  if (!contactId) {
+    log.unshift({ action: "contatto_non_agganciato", at: stamp });
+  }
 
   // Auto-calcolo consegna prevista da SLA pacchetto (se non gia impostata).
   let dueDate = row.due_date;

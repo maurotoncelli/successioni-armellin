@@ -5,7 +5,7 @@ import { getAdminClient, isAdminConfigured } from "@/lib/supabase/admin";
 import { computeEsito, suggestedPackage, type Esito } from "@/lib/quote";
 import { getPackages, getAddons } from "@/lib/cms";
 import { buildOrder } from "@/lib/order";
-import { notifyAdminNewLead, notifyLeadRecap } from "@/lib/notifications";
+import { notifyAdminNewLead, notifyLeadRecap, siteBase } from "@/lib/notifications";
 import type { Communication, LogEvent } from "@/content/crm-data";
 
 export type LeadInput = {
@@ -29,6 +29,8 @@ export type LeadResult = {
   esito: Esito;
   code?: string;
   practiceId?: string;
+  /** true se l'email di riepilogo al visitatore e' partita davvero. */
+  emailSent?: boolean;
 };
 
 const relationLabels: Record<string, string> = {
@@ -127,6 +129,7 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
     // un errore email non blocca mai la creazione del lead.
     const communications: Communication[] = [];
     const log: LogEvent[] = [{ action: "lead_creato", at: nowStamp }];
+    let emailSent = false;
     try {
       // Pacchetto suggerito con prezzo (per il riepilogo e per Lorenzo).
       let packageLabel: string | undefined;
@@ -150,7 +153,7 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
           const pkg = packages.find((p) => p.key === pkgKey);
           if (order && pkg) {
             packageLabel = `${pkg.name} (${order.total.toLocaleString("it-IT")} €)`;
-            const base = (process.env.NEXT_PUBLIC_SITE_URL || "").replace(/\/$/, "");
+            const base = siteBase();
             const params = new URLSearchParams({ pkg: pkgKey });
             if (input.realEstateCount)
               params.set("recount", String(input.realEstateCount));
@@ -166,6 +169,7 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
 
       if (recap && input.email.trim()) {
         const sentRecap = await notifyLeadRecap(input.email.trim(), recap);
+        emailSent = sentRecap.sent;
         if (sentRecap.sent) {
           communications.push({
             channel: "EMAIL",
@@ -205,7 +209,7 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
     revalidatePath("/crm/pratiche");
     revalidatePath("/crm/contatti");
 
-    return { ok: true, esito, code: practice.code, practiceId: practice.id };
+    return { ok: true, esito, code: practice.code, practiceId: practice.id, emailSent };
   } catch (err) {
     console.error("[preventivo] createLead errore:", err);
     return { ok: false, esito };

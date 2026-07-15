@@ -1,33 +1,37 @@
 # HANDOFF per il prossimo agente
 
-> Documento di passaggio di consegne. Aggiornato: 2026-07-13.
+> Documento di passaggio di consegne. Aggiornato: **2026-07-14 sera**.
 > Scopo: permettere a un nuovo agente (senza contesto) di riprendere il lavoro.
-> Riferimenti chiave: @RUNBOOK_GoLive (procedura go-live, STATO DETTAGLIATO 11/07),
-> @SPEC_Env_Vars, @DOMANDE_PER_LORENZO, @PROSSIMO_INCONTRO_LORENZO, @07_Stack.
-> Credenziali/dati sensibili (Google/Stripe/Resend/Supabase + dati fiscali Lorenzo):
-> nel file **`ACCESSI_LOCALE.md`** in root (git-ignored, NON committato). Non è nel repo.
+> Riferimenti chiave: @RUNBOOK_GoLive (procedura go-live), @SPEC_Env_Vars,
+> @DOMANDE_PER_LORENZO, @PROSSIMO_INCONTRO_LORENZO, @07_Stack.
+> Credenziali/dati sensibili (Google/Stripe/Resend/Supabase/OpenAI/Cloudflare + dati
+> fiscali Lorenzo): nel file **`ACCESSI_LOCALE.md`** in root (git-ignored, NON
+> committato). Non è nel repo.
 
-## 0. TL;DR (stato 11/07)
-Il sito e **online in produzione** su `https://www.successioniarmellin.it` (Vercel + HTTPS).
-Sessione 11/07 con Geom. Armellin — progressi:
-- **Stripe**: collegato e **smoke test SUPERATO** (pratica `SUC-2026-0020` -> PAGATO 490€ end-to-end, in modalità TEST). Account LIVE già attivato; resta lo **switch alle chiavi LIVE + webhook Live** su Vercel prima del lancio.
-- **Supabase**: era **in pausa** (causa "fetch failed" al checkout) -> **ripristinato** (account Mauro via GitHub `info@maurotoncelli.it`).
-- **Email Google Workspace Business Starter**: attivato, dominio verificato, **MX Google impostati su Aruba** (in propagazione); resta il "Conferma" su Google + alias `privacy@`.
-- **Resend**: dominio aggiunto, **3 TXT (DKIM/SPF/DMARC) propagati** su Aruba; **MX `send` NON inseribile su Aruba** -> se Resend non verifica, spostare DNS su **Cloudflare** (gratis). Verifica "in checking".
-  **AGGIORNAMENTO 13/07**: verifica Resend risultava **failed** (mancava l'MX su `send`) ->
-  **DNS migrato a Cloudflare** (vedi sez. 2), MX `send` aggiunto, nameserver cambiati su
-  Aruba. `RESEND_API_KEY` gia su Vercel (integrazione Marketplace) + redeploy fatto.
-  Appena la delega .it propaga: ri-verificare il dominio su Resend e mandare mail di test.
-- **Pipeline dichiarazione (nuova, 11/07 pomeriggio)**: costruita la filiera CRM
-  "pagamento -> checklist auto -> documenti -> appunti chiamata -> estrazione AI -> revisione -> XML `.suc`".
-  Vedi sezione 8-bis qui sotto. NON ancora committata al momento della scrittura.
-- **Check legale/GDPR (11/07 tardo pomeriggio, deploy `3d95b5f`)**: impianto conforme;
-  corretti e deployati: privacy aggiornata al trattamento AI (OpenAI/Google Workspace
-  tra i responsabili, sez. 12 riscritta), cookie policy allineata al banner reale
-  (niente iubenda), link "Preferenze cookie" nel footer per revocare il consenso.
-  APERTO: condizioni garanzia "da definire", retention lead (proposta 12 mesi),
-  validazione da un legale, DPA OpenAI. Dettagli in @RUNBOOK_GoLive.
-Dettaglio completo e TODO in **@RUNBOOK_GoLive** (sezione "STATO AVANZAMENTO 11/07").
+## 0. TL;DR (stato 14/07 sera)
+Il sito e **online e OPERATIVO in produzione** su `https://www.successioniarmellin.it`.
+**Il 14/07 e' stato completato ed eseguito con successo il primo ACQUISTO REALE da 290 EUR**
+(pratica `SUC-2026-0022`, carta vera, Stripe LIVE): checkout -> webhook -> PAGATO ->
+checklist auto -> email "pagamento ricevuto" -> login cliente -> firma mandato ->
+richiesta recesso di test. Tutta la filiera funziona.
+
+Stato servizi (tutto ATTIVO):
+- **Stripe LIVE**: chiavi live + webhook live configurati su Vercel. Pagamenti veri OK.
+- **Resend**: dominio **Verified** (DNS su Cloudflare), invii funzionanti; e' anche
+  l'SMTP custom di Supabase Auth (magic link / OTP ai clienti).
+- **Supabase Auth cliente**: FUNZIONA (era rotto per PKCE/redirect). Configurato via
+  Management API: Site URL `https://www.successioniarmellin.it`, redirect URLs
+  (www/apex/localhost), SMTP Resend, template email con `token_hash` + codice OTP a 6
+  cifre come fallback, rate limit email alzato a 100/h.
+- **OpenAI**: `OPENAI_API_KEY` su Vercel, estrazione AI provata su pratica demo.
+- **Google Workspace**: `studio@successioniarmellin.it` attivo, MX verificati.
+- **Vercel**: funzioni spostate in **fra1** (prima iad1 USA: era la causa dei click
+  lenti nell'area personale, 4-5 round-trip transatlantici verso Supabase eu-central-1).
+- **Legale**: testi pubblicati come DEFINITIVI dal 14/07 (decisione Mauro+Lorenzo,
+  senza passaggio avvocato): rimossi i notice "in validazione", retention lead 12 mesi,
+  mandato unificato in `web/src/content/mandato.ts`.
+Sezione **8-ter** qui sotto = cronaca completa del 14/07 con i BUG FIX importanti.
+Sezione **9** = TODO APERTI (leggila per prima!).
 Lingua del progetto: **italiano**. Scrivere sempre in italiano con l'utente.
 
 ## 1. Progetto e stack
@@ -79,26 +83,28 @@ Lingua del progetto: **italiano**. Scrivere sempre in italiano con l'utente.
 - Canonical: **www.successioniarmellin.it**.
 - Environment Variables GIA impostate (Production; i NEXT_PUBLIC anche Preview/Dev):
   `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`,
-  `ADMIN_EMAILS` (=`geom.armellin@gmail.com,mauro.toncelli@gmail.com`), `FIELD_ENCRYPTION_KEY`,
+  `ADMIN_EMAILS` (dal 14/07 sera =`geom.armellin@gmail.com,info@maurotoncelli.it,studio@successioniarmellin.it`,
+  Lorenzo PRIMO; prima il primo indirizzo era info@maurotoncelli.it e le notifiche
+  recesso arrivavano a Mauro), `FIELD_ENCRYPTION_KEY`,
   `EMAIL_FROM` (=`Successioni Armellin <studio@successioniarmellin.it>`),
   `NEXT_PUBLIC_SITE_URL` (=`https://www.successioniarmellin.it`, SOLO Production).
-- **Stripe (11/07)**: `STRIPE_SECRET_KEY`, `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`, `STRIPE_WEBHOOK_SECRET` IMPOSTATE su Vercel (Production+Preview) con chiavi **TEST/sandbox** + redeploy fatto. DA FARE prima del lancio: **sostituire con le chiavi LIVE** (+ webhook nell'account Live).
-- **Resend (13/07)**: `RESEND_API_KEY` IMPOSTATA su Vercel (Production/Preview/Development)
-  tramite l'**integrazione Resend nel Vercel Marketplace** (chiave "Vercel Integration");
-  redeploy fatto. `EMAIL_FROM` gia presente. L'invio si sblocca quando il dominio Resend
-  risulta "Verified" (dipende dalla propagazione nameserver -> Cloudflare, vedi sez. 2).
+- **Stripe (aggiornato 14/07)**: chiavi **LIVE** (`STRIPE_SECRET_KEY`,
+  `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`, `STRIPE_WEBHOOK_SECRET` del webhook LIVE)
+  impostate su Vercel Production. **Primo pagamento reale riuscito il 14/07.**
+- **Resend (14/07)**: dominio **Verified**, `RESEND_API_KEY` su Vercel (integrazione
+  Marketplace), `EMAIL_FROM` corretto, invii verificati. Resend fa anche da SMTP
+  per Supabase Auth (magic link/OTP clienti).
+- **OpenAI (14/07)**: `OPENAI_API_KEY` impostata su Vercel; estrazione AI provata.
+- `web/vercel.json` fissa `regions: ["fra1"]` (funzioni vicine a Supabase eu-central-1).
 - I valori segreti reali NON sono in questo file: stanno su Vercel e in `web/.env.local` (git-ignored). Template: `web/.env.example`.
 
-## 4. Cosa manca per l'operativita (richiede Lorenzo)
-Procedura dettagliata passo-passo in **@RUNBOOK_GoLive** (punti 3-7). In sintesi:
-1. **Email Google Workspace Business Starter** (scelta 11/07, ~6 EUR/mese; su Aruba la casella base
-   non e inclusa): account `studio@successioniarmellin.it` (recovery `viavittorioveneto1@gmail.com`).
-   Attivare scegliendo il piano **Starter** (non Standard) -> verificare dominio (TXT su Aruba) ->
-   MX `smtp.google.com` prio 1 su Aruba -> creare alias `privacy@`.
-2. **Resend**: creare account, verificare dominio (record DNS su Aruba: SPF/DKIM/return-path), impostare `RESEND_API_KEY` su Vercel.
-3. **Stripe**: account intestato allo studio, chiavi TEST -> poi LIVE, webhook su `https://www.successioniarmellin.it/api/stripe/webhook` (evento `checkout.session.completed`, opz. `charge.refunded`), `STRIPE_WEBHOOK_SECRET`.
-4. **Supabase**: Authentication > Redirect URLs aggiungere `https://successioniarmellin.it/**` e `https://www.successioniarmellin.it/**` (+ `http://localhost:3000/**`).
-5. **Primo login ADMIN** reale su `/crm-login` (email in `ADMIN_EMAILS` + password -> setup 2FA TOTP), poi test login CLIENTE (area personale).
+## 4. Setup servizi: TUTTO FATTO al 14/07
+I punti 1-4 del vecchio elenco (Google Workspace, Resend, Stripe LIVE, Supabase
+redirect URLs) sono COMPLETATI e verificati end-to-end. Restano solo i TODO in
+sezione 9. Il punto "primo login ADMIN reale su `/crm-login`" e' IN CORSO:
+il 14/07 sera (screenshot ore 20:39) un tentativo di login CRM mostrava
+**"Questo account non e autorizzato ad accedere al CRM"** allo step 2FA —
+da investigare (vedi TODO #3).
 
 ## 5. Sicurezza pre-go-live pubblico (IMPORTANTE)
 - **Rigenerare** le chiavi Supabase (anon + service_role + password DB): quelle attuali sono passate in chat, vanno ruotate prima della spinta pubblica/marketing.
@@ -208,6 +214,61 @@ Implementato (build ok, NON ancora committato ne' testato con documenti reali):
 - Quadri non generati automaticamente: ED (passivita), EF (liquidazione imposte),
   EO (titoli/fondi), volture.
 
+## 8-ter. Sessione 14/07 (pomeriggio+sera) — cosa e' stato fatto e FIX importanti
+
+### Go-live tecnico completato
+- **Stripe LIVE**: chiavi `sk_live`/`pk_live`/`rk_live` fornite da Lorenzo, impostate su
+  Vercel + webhook LIVE creato. Primo pagamento reale 290 EUR riuscito (`SUC-2026-0022`).
+- **Resend verificato** (dopo migrazione DNS a Cloudflare del 13/07): invii OK.
+  `EMAIL_FROM` corretto su Vercel (era corrotto: "uccessioni" senza S).
+  `NEXT_PUBLIC_SITE_URL` aggiunta (Production) per i link CTA nelle email.
+- **Login cliente FIXATO** (errore "PKCE code verifier not found in storage"):
+  configurate via Supabase Management API (token `sbp_` in ACCESSI_LOCALE) Site URL,
+  Redirect URLs, SMTP custom = Resend, template email Magic Link/Confirmation con
+  `{{ .TokenHash }}` nel link + codice OTP 6 cifre visibile come fallback.
+
+### BUG FIX critici (da conoscere)
+1. **Pratica pagata invisibile nell'area personale** (commit `dc9fe0b`): le pratiche nate
+   dal checkout diretto non avevano `contact_id`, e la RLS mostra al cliente solo le
+   pratiche col SUO `contact_id` (via `profiles.contact_id`, funzione SQL
+   `current_contact_id()`). Ora il **webhook Stripe trova o crea il contatto per email**
+   e lo aggancia alla pratica. Inoltre `findContactIdByEmail` (lib/profiles.ts) usava
+   `maybeSingle()` che con email duplicate nei contatti restituiva null: ora prende il
+   piu' recente per `last_activity`. La `SUC-2026-0022` e' stata riparata a mano
+   (contatto `6d119ade-...` + profilo di mauro.toncelli@gmail.com collegati).
+2. **Lentezza click area personale** (commit `2c65866`): creato `web/vercel.json` con
+   `regions: ["fra1"]` + `loading.tsx` (skeleton) in `area-riservata/(app)/`.
+   Verificato: `x-vercel-id` ora `fra1::fra1`, risposte ~200-350ms.
+
+### Preventivo: logica 290/490 rifinita (commit precedenti al 14/07 sera)
+- `coniuge` aggiunto ai parenti in linea retta; senza immobili l'esito B suggerisce
+  SEMPLICE (290); nuova domanda condizionale `over100k` (attivo > 100k EUR) quando
+  linea retta + niente immobili: se >100k -> SEMPLICE, altrimenti esito A (esonero).
+- Link cliccabili su "Condizioni di vendita"/"informativa privacy" nei consensi
+  (`components/site/legal-links-text.tsx`).
+
+### Area personale: funzionalita' aggiunte
+- **Multi-file per voce checklist** (fino a 10): fronte/retro, una foto per pagina.
+  All'export SUC le immagini della stessa voce vengono UNITE in un unico PDF/A-1b
+  (sRGB ICC + XMP). Compressione immagini server-side con `sharp` all'upload.
+- **Telefono modificabile** nel profilo cliente (server action `updatePhone`,
+  normalizzazione E.164 in `lib/phone.ts`).
+- **Template scaricabili sotto le voci della checklist** (commit `41a8133`):
+  `web/src/lib/doc-templates.ts` abbina per etichetta (regex) i PDF in
+  `web/public/templates/` (generati da `web/scripts/generate-doc-templates.mjs` +
+  modello ufficiale AdE scaricato). Testo invito: scarica, compila, firma, ricarica.
+  **RICHIESTA UTENTE IN CORSO (non ancora fatta)**: rinominare i modelli — vedi TODO.
+
+### Recesso self-service (gia' esistente, verificato oggi)
+- Cliente: `/area-riservata/recesso` -> `submitWithdrawal` salva in
+  `practice-docs/<id>/_extras.json` (NO-DDL), aggiunge log `recesso_richiesto` +
+  comunicazione, invia **email a Lorenzo** (`notifyAdminWithdrawalRequest`, primo
+  indirizzo di `ADMIN_EMAILS`).
+- CRM: pannello `WithdrawalPanel` in cima alla scheda pratica (bordo rosso) con
+  Prendi in gestione / Accetta / Respingi + nota; esito notificato via email al cliente.
+- **GAP UX noto**: la richiesta si vede SOLO aprendo la scheda pratica; nessun alert
+  in dashboard CRM (`deriveAlerts` non guarda il recesso) — vedi TODO.
+
 ### Debug CRM (11/07 sera) - esito
 - Tutte le pagine CRM rispondono 200 in locale (build di produzione) con gate emergenza:
   dashboard, pratiche, dettaglio (per fixtures E pratiche reali), contatti, calendario,
@@ -231,7 +292,122 @@ Implementato (build ok, NON ancora committato ne' testato con documenti reali):
   Albo Geometri Pisa n. 1969 (dal 21/01/2022), PEC `lorenzo.armellin@geopec.it`,
   tel/WhatsApp `+39 320 1570567`. REA non applicabile.
 
-## 8. Note operative
+## 9. TODO APERTI (in ordine di urgenza, stato 14/07 sera)
+
+### Richieste utente IN CORSO (interrotte dal cambio chat — FARE SUBITO)
+1. **Rinominare i modelli/template della checklist** — FATTO 14/07 tarda sera
+   (commit `281c634`): nuovo PDF unico "Dichiarazione sostitutiva di certificato
+   di morte e stato di famiglia del defunto" (include lo stato di famiglia del
+   defunto) e "Autocertificazione stato di famiglia di ciascun erede" (un modello
+   per erede, con caselle accettazione/rinuncia). Aggiornati script, regex
+   (compatibili con le etichette VECCHIE delle checklist esistenti), label/help
+   in `checklist.ts`. Vecchi PDF eliminati da `public/templates/`.
+   Nello stesso commit: **FIX telefoni** — tutte le CTA "Parla con Lorenzo"/
+   "Chiama" del sito puntavano al placeholder `tel:+39` (non funzionante!),
+   ora `tel:+393201570567` ovunque (content entries + seed + fallback);
+   **lista documenti data-driven** (`documenti.lista`, usata da
+   /preventivo/grazie "Intanto ecco cosa ti servira" e /documenti-successione)
+   coi nomi allineati ai nuovi modelli.
+2. **Recesso visibile a Lorenzo nel CRM** — FATTO 14/07 sera (commit `a682b83` +
+   `bb8cad3`): (a) email di notifica a TUTTI i destinatari (nuova env
+   `ADMIN_NOTIFY_EMAILS` su Vercel = solo `geom.armellin@gmail.com`; fallback
+   `ADMIN_EMAILS`; Mauro NON riceve piu le notifiche sulla sua email di lavoro);
+   (b) la richiesta porta `action_owner` ad ADMIN ("Tocca a te" invece di
+   "In attesa del cliente"), l'esito lo ripristina da `ownerByStatus`;
+   (c) alert ROSSO "RICHIESTA DI RECESSO da gestire" in dashboard CRM
+   (`hasPendingWithdrawal` in `web/src/lib/crm.ts`, derivato dal log della riga:
+   pendente se ultimo evento recesso e richiesta/presa in gestione).
+   Fix bonus: mailto nel form recesso era `studio@armellin.it` ->
+   `studio@successioniarmellin.it`. Sulla `SUC-2026-0022` c'e' una richiesta
+   REQUESTED di test (l'alert deve comparire).
+3. **Login CRM "account non autorizzato"** (screenshot 20:39): l'errore esce allo step
+   2FA di `/crm-login`. `ADMIN_EMAILS` su Vercel (aggiornata 14/07 sera) =
+   `geom.armellin@gmail.com,info@maurotoncelli.it,studio@successioniarmellin.it`.
+   NOTA: `mauro.toncelli@gmail.com` NON e' in allowlist (e' l'account CLIENTE di
+   test): se il login CRM era con quella email, l'errore e' CORRETTO. Altrimenti
+   controllare tabella `profiles` e logica `ensureProfile`/`requireAdmin`.
+
+### Fatti il 14/07 tarda sera (commit `b7193a1`)
+- **Calcolatore valore catastale pubblico** `/strumenti/valore-catastale`
+  (SEO, testi data-driven collection `strumenti`): logica estratta in
+  `web/src/lib/catasto.ts` (condivisa col generatore SUC13, valori identici
+  al software AdE). Link: banner in `/guide` (`guide.strumenti_banner`) +
+  footer (`footer.strumenti_link`). sitemap.ts/robots.ts aggiunti nella
+  sessione di debugging (vedi sotto).
+- **Email lead REALI** (prima non partiva nulla, ne a Lorenzo ne al visitatore,
+  ma la cronologia CRM le registrava come inviate!): `createLead` ora invia
+  (a) riepilogo al visitatore — pacchetto+prezzo con link checkout per esito B,
+  nota esonero per esito A, conferma presa in carico per su misura — e
+  (b) `notifyAdminNewLead` agli admin (ADMIN_NOTIFY_EMAILS). Comunicazioni in
+  cronologia SOLO se l'invio riesce.
+- **Alert "nuovo lead"** in dashboard CRM (kind `lead` in deriveAlerts): tutte
+  le pratiche in stato LEAD attive generano l'alert.
+- **Footnote pre-invio** nel form preventivo su misura ("ti ricontattiamo noi
+  entro un giorno lavorativo"), entry `grazie.soft_custom_footnote` +
+  `soft_custom_desc` aggiornata.
+- **Fix continuita sessione area personale**: la pagina `/area-riservata`
+  mostrava SEMPRE il form di login anche con sessione valida (il link "Area
+  personale" di navbar/footer sembrava sloggare l'utente). Ora se c'e sessione
+  redirige a `/area-riservata/dashboard` (getSessionUser nella pagina login).
+
+### Sessione di debugging 14/07 notte (caccia ai bug sistematica)
+Giro completo di review (agente esploratore + fix). Corretti:
+- **SEO**: `metadataBase` in `app/layout.tsx` puntava ancora a
+  `successioni.example.it` (OG/canonical rotti da sempre!) -> ora
+  `NEXT_PUBLIC_SITE_URL` con fallback al dominio reale. AGGIUNTI `app/robots.ts`
+  (blocca /crm, /area-riservata, /api, /brogliaccio, /checkout) e `app/sitemap.ts`
+  (pagine pubbliche + guide). Prima non esistevano.
+- **Quiz preventivo**: allo step 3 si poteva vedere il risultato SENZA rispondere
+  a testamento/altri beni/soglia 100k -> esonero (esito A) suggerito a torto.
+  Ora `stepValid` richiede tutte le risposte; inoltre `computeEsito` e' prudente:
+  esonero SOLO con "no" esplicito alla soglia 100k ("non lo so" -> Semplice).
+- **Calcolatore catastale**: input "631.37" (punto decimale) veniva letto come
+  63137 (x100!) -> parser ora gestisce entrambi i formati; evento analytics
+  spostato dal corpo render a `useEffect` (doppio invio in strict mode).
+- **Aggancio pratica pagata <-> profilo cliente** (`lib/profiles.ts`): se il
+  profilo era nato dal login telefono e agganciato a un contatto con email
+  diversa da quella del pagamento Stripe, la pratica pagata restava invisibile
+  (RLS). Ora `ensureProfile` ri-aggancia il contatto per email verificata.
+- **Webhook Stripe**: errore di creazione contatto ora loggato + evento
+  `contatto_non_agganciato` nel log pratica (prima silenzioso: pratica PAGATA
+  senza contact_id = area cliente vuota senza traccia).
+- **Alert CRM piu' puliti** (`deriveAlerts`): le pratiche LEAD "anonime" dei
+  checkout abbandonati (nessun nome/email/telefono) non generano piu' alert
+  "nuovo lead" ne "pagamento non pagato".
+- **Recesso**: guardie server-side in `submitWithdrawal` (niente richieste su
+  pratiche CHIUSE/ANNULLATE, niente doppie richieste pendenti).
+- **Email**: URL sempre assoluti (`siteBase()` con fallback dominio produzione,
+  anche per il link checkout nel riepilogo lead); escape HTML dei testi liberi
+  (motivo recesso, nomi, note) nei template.
+- **SoftLead onesto**: se l'email di riepilogo NON parte, il messaggio di
+  successo non dice piu' "controlla la casella email" (nuove entry
+  `grazie.soft_email_ok_title_noemail` / `_body_noemail`; `createLead` ritorna
+  `emailSent`).
+- **CTA "Lascia una recensione"** (area conclusa) aveva `href="#"`: ora e' data
+  driven (`settings.review_url`, entry NON pubblicata) e la CTA resta nascosta
+  finche' Lorenzo non fornisce il link (es. profilo Google).
+Non toccati (scelte deliberate): `action_owner: CLIENT` sulle pratiche checkout
+(coerente con "in attesa del pagamento"); entry content con href `#` non
+renderizzate in UI; blocco `#guida` su /tariffe non renderizzato.
+
+### Con Lorenzo (prossimo incontro)
+- Test XML reale col modulo di controllo AdE (Desktop Telematico) su una pratica vera.
+- Garanzia "Soddisfatti o Rimborsati": condizioni ancora "da definire" su `/garanzia`.
+- DPA OpenAI da accettare nel pannello OpenAI (GDPR art. 28).
+- WhatsApp Cloud API (notifiche): serve Meta Business verificato di Lorenzo + costi.
+- Twilio per OTP SMS (login cliente senza email): account con carta di Lorenzo.
+
+### Pulizie tecniche (Mauro/agente)
+- Bonificare i **3 contatti duplicati** mauro.toncelli@gmail.com (lead di test) e
+  archiviare le pratiche di test (`SUC-2026-0016/18/19/20/22`); l'intestatario della
+  0022 e' "lorenzo armellin" (nome digitato nel checkout di test).
+- **Rigenerare le chiavi Supabase** (anon/service_role passate in chat) e **revocare
+  i token** Cloudflare (`cfut_`) e Supabase Management (`sbp_`) in ACCESSI_LOCALE.
+- **Rimuovere `ADMIN_PASSWORD`** da Vercel dopo il primo login admin riuscito con 2FA.
+- Toggle preferenze notifiche nel profilo cliente: oggi cosmetico, da collegare.
+- VirusTotal API sugli upload: miglioria post-lancio (runbook).
+
+## 10. Note operative
 - Se l'utente "non vede" le modifiche in produzione: e cache (DNS locale TTL ~1h o browser). Hard refresh / incognito / rete mobile. I resolver pubblici sono gia aggiornati.
 - Non creare file/documentazione non richiesti. Non committare senza richiesta esplicita.
-- Il transcript completo della sessione precedente e disponibile nella cartella agent-transcripts (citare le chat passate con i link [titolo](uuid)).
+- Il transcript completo delle sessioni precedenti e nella cartella agent-transcripts (citare le chat passate con i link [titolo](uuid)).

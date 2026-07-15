@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Download, FileCheck, Lock, Star } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { buttonClasses } from "@/components/ui/button";
@@ -8,6 +7,7 @@ import { FinalDocsClient } from "@/components/area/final-docs";
 import { requireClientView } from "@/lib/area";
 import { getSafeExtras } from "@/lib/practice-extras";
 import { finalDocuments } from "@/content/area-data";
+import { text } from "@/lib/content";
 
 export default async function ConclusaPage() {
   const { practice: p } = await requireClientView();
@@ -23,6 +23,9 @@ export default async function ConclusaPage() {
   const extras = await getSafeExtras(p.id);
   const realDocs = extras.finalDocuments ?? [];
   const concluded = p.status === "CHIUSA";
+  // Link recensione (es. profilo Google) data-driven: finche' non e'
+  // configurato in settings.review_url la card non mostra un link morto.
+  const reviewUrl = text("settings", "review_url");
 
   return (
     <div>
@@ -83,9 +86,16 @@ export default async function ConclusaPage() {
           <p className="mt-1 text-sm text-text-muted">
             Se ti sei trovato bene, una recensione ci aiuta tantissimo.
           </p>
-          <Link href="#" className={buttonClasses({ className: "mt-4" })}>
-            Lascia una recensione
-          </Link>
+          {reviewUrl && (
+            <a
+              href={reviewUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={buttonClasses({ className: "mt-4" })}
+            >
+              Lascia una recensione
+            </a>
+          )}
         </Card>
       )}
     </div>

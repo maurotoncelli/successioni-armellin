@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { getClientView } from "@/lib/area";
-import { requestWithdrawal } from "@/lib/practice-extras";
+import { getWithdrawal, requestWithdrawal } from "@/lib/practice-extras";
 import { notifyAdminWithdrawalRequest } from "@/lib/notifications";
 import { getAdminClient } from "@/lib/supabase/admin";
 import type { Communication, LogEvent } from "@/content/crm-data";
@@ -21,6 +21,22 @@ export async function submitWithdrawal(
   const view = await getClientView();
   if (!view?.practice) return { ok: false, error: "Sessione non valida." };
   const p = view.practice;
+
+  // Guardie server-side (la UI blocca gia, ma l'azione e invocabile comunque):
+  // niente recesso su pratiche chiuse/annullate ne doppie richieste pendenti.
+  if (p.status === "CHIUSA" || p.status === "ANNULLATA") {
+    return {
+      ok: false,
+      error: "La pratica è già conclusa: il recesso non è più applicabile.",
+    };
+  }
+  const current = await getWithdrawal(p.id);
+  if (current?.status === "REQUESTED" || current?.status === "IN_REVIEW") {
+    return {
+      ok: false,
+      error: "C'è già una richiesta di recesso in corso di valutazione.",
+    };
+  }
 
   await requestWithdrawal(p.id, reason);
 

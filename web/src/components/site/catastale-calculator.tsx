@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Calculator, Home, TreePine } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
@@ -34,8 +34,18 @@ const CATEGORIE = [
 type Tipo = "fabbricato" | "terreno";
 
 function parseImporto(raw: string): number | null {
-  const cleaned = raw.trim().replace(/\./g, "").replace(",", ".");
+  let cleaned = raw.trim().replace(/\s/g, "");
   if (!cleaned) return null;
+  if (cleaned.includes(",")) {
+    // Formato italiano: i punti sono separatori delle migliaia.
+    cleaned = cleaned.replace(/\./g, "").replace(",", ".");
+  } else {
+    const dots = cleaned.split(".").length - 1;
+    // "631.37" -> decimale; "1.234" o "1.234.567" -> migliaia.
+    if (dots > 1 || (dots === 1 && /\.\d{3}$/.test(cleaned))) {
+      cleaned = cleaned.replace(/\./g, "");
+    }
+  }
   const n = Number(cleaned);
   return Number.isFinite(n) && n > 0 ? n : null;
 }
@@ -64,7 +74,7 @@ export function CatastaleCalculator({ labels }: Props) {
   const [rendita, setRendita] = useState("");
   const [categoria, setCategoria] = useState<string>("A");
   const [primaCasa, setPrimaCasa] = useState(false);
-  const [tracked, setTracked] = useState(false);
+  const trackedRef = useRef(false);
 
   const importo = parseImporto(rendita);
 
@@ -84,10 +94,13 @@ export function CatastaleCalculator({ labels }: Props) {
   }, [tipo, importo, categoria, primaCasa]);
 
   // Un solo evento per sessione di calcolo (primo risultato mostrato).
-  if (result && !tracked) {
-    setTracked(true);
-    trackEvent("tool_valore_catastale", { tipo });
-  }
+  // Effetto e non render body: trackEvent e un side effect (gtag).
+  useEffect(() => {
+    if (result && !trackedRef.current) {
+      trackedRef.current = true;
+      trackEvent("tool_valore_catastale", { tipo });
+    }
+  }, [result, tipo]);
 
   const tabs: { key: Tipo; label: string; icon: typeof Home }[] = [
     { key: "fabbricato", label: labels.fabbricato, icon: Home },

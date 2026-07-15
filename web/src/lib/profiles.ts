@@ -80,6 +80,22 @@ export async function ensureProfile(user: User): Promise<EnsuredProfile> {
         (await findContactIdByEmail(email)) ??
         (await findContactIdByPhone(user.phone));
       if (contactId) updates.contact_id = contactId;
+    } else if (email) {
+      // L'email e' verificata (magic link/OTP): se il contatto agganciato ha
+      // un'email DIVERSA (es. profilo nato da login telefono, poi pagamento
+      // Stripe con email), si ricollega al contatto giusto, altrimenti la
+      // pratica pagata resterebbe invisibile in area personale (RLS).
+      const { data: linked } = await admin
+        .from("contacts")
+        .select("email")
+        .eq("id", existing.contact_id)
+        .maybeSingle();
+      const linkedEmail = (linked?.email ?? "").toLowerCase();
+      if (linkedEmail && linkedEmail !== email) {
+        const byEmail = await findContactIdByEmail(email);
+        if (byEmail && byEmail !== existing.contact_id)
+          updates.contact_id = byEmail;
+      }
     }
     if (wantAdmin && existing.role !== "ADMIN") updates.role = "ADMIN";
 
