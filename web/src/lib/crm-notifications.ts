@@ -19,7 +19,8 @@ export type CrmNotificationKind =
   | "lead"
   | "recesso"
   | "documenti"
-  | "mandato";
+  | "mandato"
+  | "iban";
 
 export type CrmNotification = {
   id: string;
@@ -49,9 +50,29 @@ export async function pushCrmNotification(input: {
   body?: string;
   practiceId?: string | null;
   practiceCode?: string;
+  /**
+   * Anti-rumore per eventi ripetuti in raffica (es. upload multi-file della
+   * stessa voce checklist): se negli ultimi N minuti esiste gia una notifica
+   * identica (stesso kind+titolo+pratica), non se ne crea un'altra.
+   */
+  dedupeMinutes?: number;
 }): Promise<void> {
   if (!isAdminConfigured) return;
   try {
+    if (input.dedupeMinutes && input.practiceId) {
+      const since = new Date(
+        Date.now() - input.dedupeMinutes * 60_000,
+      ).toISOString();
+      const { data: dup } = await getAdminClient()
+        .from("crm_notifications")
+        .select("id")
+        .eq("kind", input.kind)
+        .eq("title", input.title)
+        .eq("practice_id", input.practiceId)
+        .gte("created_at", since)
+        .limit(1);
+      if (dup && dup.length > 0) return;
+    }
     const { error } = await getAdminClient().from("crm_notifications").insert({
       kind: input.kind,
       title: input.title,
@@ -78,6 +99,20 @@ export async function listCrmNotifications(limit = 30): Promise<CrmNotification[
   } catch (err) {
     console.error("[crm-notifications] list:", err);
     return [];
+  }
+}
+
+export async function countCrmNotifications(): Promise<number> {
+  if (!isAdminConfigured) return 0;
+  try {
+    const { count, error } = await getAdminClient()
+      .from("crm_notifications")
+      .select("id", { count: "exact", head: true });
+    if (error) throw error;
+    return count ?? 0;
+  } catch (err) {
+    console.error("[crm-notifications] count:", err);
+    return 0;
   }
 }
 

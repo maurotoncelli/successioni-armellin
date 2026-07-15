@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { Search, Plus, Menu, X } from "lucide-react";
+import { Search, Plus, Menu, X, Bell } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const mobileNav = [
@@ -15,7 +15,7 @@ const mobileNav = [
   { href: "/crm/listino", label: "Listino e contenuti" },
 ];
 
-export function Topbar() {
+export function Topbar({ notificationCount = 0 }: { notificationCount?: number }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
@@ -51,6 +51,24 @@ export function Topbar() {
             className="h-9 w-full rounded-lg border border-crm-border bg-crm-surface pl-9 pr-3 text-sm text-crm-text placeholder:text-crm-muted focus:border-crm-accent focus:outline-none"
           />
         </form>
+
+        {/* Campanella: porta al pannello Notifiche della Home operativa. */}
+        <Link
+          href="/crm"
+          aria-label={
+            notificationCount > 0
+              ? `${notificationCount} notifiche da leggere`
+              : "Notifiche"
+          }
+          className="relative grid h-9 w-9 place-items-center rounded-lg text-crm-text2 hover:bg-crm-hover"
+        >
+          <Bell className="h-5 w-5" />
+          {notificationCount > 0 && (
+            <span className="absolute -right-0.5 -top-0.5 grid h-4.5 min-w-4.5 place-items-center rounded-full bg-crm-rose px-1 text-[10px] font-bold leading-none text-white">
+              {notificationCount > 99 ? "99+" : notificationCount}
+            </span>
+          )}
+        </Link>
 
         <Link
           href="/crm/pratiche/nuova"

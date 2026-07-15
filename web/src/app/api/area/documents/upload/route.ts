@@ -6,6 +6,7 @@ import {
   ALLOWED_DOC_TYPES,
   MAX_DOC_BYTES,
 } from "@/lib/documents";
+import { pushCrmNotification } from "@/lib/crm-notifications";
 
 // Upload di un documento da parte del CLIENTE. La proprieta e garantita da
 // getClientView (sessione): si carica solo sulla propria pratica.
@@ -43,6 +44,16 @@ export async function POST(req: Request) {
 
   try {
     const item = await uploadDocument(view.practice.id, index, file);
+    // Dedupe 30': gli upload multi-file della stessa voce (es. fronte/retro)
+    // generano UNA notifica, non una per file.
+    await pushCrmNotification({
+      kind: "documenti",
+      title: `Documento caricato: ${item.label}`,
+      body: `${view.practice.clientName || "Il cliente"} ha caricato un documento nell'area personale.`,
+      practiceId: view.practice.id,
+      practiceCode: view.practice.code,
+      dedupeMinutes: 30,
+    });
     return NextResponse.json({
       ok: true,
       files: (item.files ?? []).map((f) => f.name),

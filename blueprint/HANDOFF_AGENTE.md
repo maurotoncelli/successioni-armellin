@@ -114,6 +114,11 @@ Lingua del progetto: **italiano**. Scrivere sempre in italiano con l'utente.
   (`web/src/components/crm/notifications-panel.tsx`, client component con
   rimozione ottimistica; X per singola notifica + "Elimina tutte"). Server
   actions con requireAdmin in `web/src/app/crm/notifications/actions.ts`.
+- Estensione (11:15): eventi aggiunti — upload documento per voce checklist
+  (dedupe 30' per non spammare col multi-file), mandato firmato caricato come
+  PDF, IBAN inserito (kind `iban`). `pushCrmNotification` supporta
+  `dedupeMinutes`; nuova `countCrmNotifications` alimenta la CAMPANELLA con
+  badge contatore nella Topbar CRM (conteggio nel layout, visibile ovunque).
 
 ### Blocco 8 — Fix placeholder "entro X giorni lavorativi" (FATTO 15/07 mattina)
 - In produzione home e /tariffe mostravano letteralmente "entro X giorni

@@ -3,6 +3,7 @@ import { getClientView } from "@/lib/area";
 import { isPracticeCancelled } from "@/content/area-data";
 import { attachMandateFile } from "@/lib/practice-extras";
 import { ALLOWED_DOC_TYPES, MAX_DOC_BYTES } from "@/lib/documents";
+import { pushCrmNotification } from "@/lib/crm-notifications";
 
 // Upload del mandato cartaceo firmato (alternativa alla firma elettronica).
 export async function POST(req: Request) {
@@ -37,6 +38,13 @@ export async function POST(req: Request) {
 
   try {
     await attachMandateFile(view.practice.id, view.account.name, file);
+    await pushCrmNotification({
+      kind: "mandato",
+      title: "Mandato firmato caricato dal cliente",
+      body: `${view.account.name || "Il cliente"} ha caricato il mandato firmato (PDF/scansione).`,
+      practiceId: view.practice.id,
+      practiceCode: view.practice.code,
+    });
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("[area] upload mandato:", err);

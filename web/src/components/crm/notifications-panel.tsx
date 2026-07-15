@@ -6,6 +6,7 @@ import {
   Bell,
   CircleDollarSign,
   FileCheck2,
+  Landmark,
   OctagonAlert,
   PenLine,
   Undo2,
@@ -36,6 +37,7 @@ const kindMeta: Record<
   recesso: { icon: OctagonAlert, cls: "bg-crm-rose/15 text-crm-rose" },
   documenti: { icon: FileCheck2, cls: "bg-crm-accent/15 text-crm-accent" },
   mandato: { icon: PenLine, cls: "bg-crm-accent/15 text-crm-accent" },
+  iban: { icon: Landmark, cls: "bg-crm-green/15 text-crm-green" },
 };
 
 function formatWhen(iso: string): string {
