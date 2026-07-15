@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { getClientView } from "@/lib/area";
 import { getWithdrawal, requestWithdrawal } from "@/lib/practice-extras";
 import { notifyAdminWithdrawalRequest } from "@/lib/notifications";
+import { pushCrmNotification } from "@/lib/crm-notifications";
 import { getAdminClient } from "@/lib/supabase/admin";
 import type { Communication, LogEvent } from "@/content/crm-data";
 
@@ -75,6 +76,14 @@ export async function submitWithdrawal(
     data?.client_name ?? p.clientName,
     reason,
   );
+
+  await pushCrmNotification({
+    kind: "recesso",
+    title: "Richiesta di recesso dal cliente",
+    body: `${data?.client_name ?? p.clientName} ha chiesto il recesso.${reason ? ` Motivo: ${reason}` : ""}`,
+    practiceId: p.id,
+    practiceCode: data?.code ?? p.code,
+  });
 
   revalidatePath("/area-riservata/recesso");
   revalidatePath(`/crm/pratiche/${p.id}`);

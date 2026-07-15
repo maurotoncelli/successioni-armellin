@@ -85,17 +85,44 @@ Lingua del progetto: **italiano**. Scrivere sempre in italiano con l'utente.
   label CRM cambiata in "Eredi (composizione)". Vecchio param `rel` eliminato.
 - "Altri beni" cita esempi: quote societarie, azioni, aziende, imbarcazioni.
 
-### Blocco 5 — Login Google + password opzionale (CODICE FATTO, config MANCANTE)
+### Blocco 5 — Login Google + password opzionale (ATTIVO dal 15/07 mattina)
 - Server actions: `signInWithGoogle` (OAuth PKCE, atterra sullo stesso
   auth/callback del magic link) e `signInWithPassword` in
   `web/src/app/area-riservata/actions.ts`.
 - Login form: pulsante "Continua con Google" + terza tab "Password".
 - Profilo: sezione "Sicurezza" con crea/cambia password (`updatePassword` action,
   min 8 caratteri, via `supabase.auth.updateUser`).
-- **DA FARE PER ATTIVARE GOOGLE**: creare OAuth client su Google Cloud Console
-  (redirect URI = `https://<project-ref>.supabase.co/auth/v1/callback`) e abilitare
-  il provider Google su Supabase (Authentication -> Providers) con client id/secret.
-  Finche' non e' configurato, il pulsante mostra un errore gentile.
+- **ATTIVATO il 15/07**: OAuth client creato da Mauro su Google Cloud
+  (account studio@, credenziali in ACCESSI_LOCALE) e provider Google abilitato
+  su Supabase via Management API. Redirect verso accounts.google.com verificato.
+- **RESTA DA FARE**: pubblicare la schermata di consenso OAuth (e' in modalita'
+  Test: solo gli utenti di prova possono accedere). Google Auth Platform ->
+  Audience -> "Pubblica app" con l'account studio@successioniarmellin.it.
+
+### Blocco 7 — Centro notifiche CRM eliminabile (FATTO 15/07 mattina, da committare)
+- Nuova tabella `crm_notifications` (creata in produzione via Management API +
+  migrazione `supabase/migrations/20260715090000_crm_notifications.sql`): eventi
+  puntuali PERSISTENTI ed ELIMINABILI, complementari agli "Alert automatici"
+  derivati (che ricompaiono finche' la condizione persiste). RLS attiva senza
+  policy: accesso solo service_role.
+- Lib `web/src/lib/crm-notifications.ts` (push/list/delete/clear, push best-effort:
+  mai un errore che blocca l'operazione principale). Eventi innestati:
+  pagamento ricevuto + rimborso (webhook Stripe), nuovo lead/su misura
+  (createLead), recesso richiesto (submitWithdrawal), documenti inviati
+  (submitDocuments), mandato firmato (signMandate).
+- UI: pannello "Notifiche" in cima alla Home CRM
+  (`web/src/components/crm/notifications-panel.tsx`, client component con
+  rimozione ottimistica; X per singola notifica + "Elimina tutte"). Server
+  actions con requireAdmin in `web/src/app/crm/notifications/actions.ts`.
+
+### Blocco 8 — Fix placeholder "entro X giorni lavorativi" (FATTO 15/07 mattina)
+- In produzione home e /tariffe mostravano letteralmente "entro X giorni
+  lavorativi" (placeholder mai sostituito!). Fixate le entry
+  `home.come_funziona_sla_note` ("10-15 giorni lavorativi in base al pacchetto")
+  e `tariffe.sla_note` (riformulata senza numero, rimanda ai giorni indicati su
+  ogni pacchetto) in content_entries.it.json + seed. SLA reali nel DB packages:
+  SEMPLICE 10gg, COMPLETO 15gg, ZERO_STRESS 10gg (Lorenzo deve CONFERMARLI).
+  Serve il deploy per vederle online (le entry sono lette dal JSON a build time).
 
 ### Blocco 6 — Pulizia pratiche di prova (IN ATTESA CONFERMA MAURO)
 - Script `web/scripts/cleanup-test-practices.mjs`: preview di default,

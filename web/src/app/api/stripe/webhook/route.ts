@@ -4,6 +4,7 @@ import type Stripe from "stripe";
 import { getStripe, isStripeConfigured } from "@/lib/stripe";
 import { getAdminClient, isAdminConfigured } from "@/lib/supabase/admin";
 import { notifyStatusChange } from "@/lib/notifications";
+import { pushCrmNotification } from "@/lib/crm-notifications";
 import { issueInvoiceForPractice, isInvoicingConfigured } from "@/lib/invoice";
 import { slaDueDate } from "@/lib/cms";
 import { generateChecklist } from "@/lib/checklist";
@@ -27,6 +28,10 @@ function nowStamp(): string {
 
 function asArray<T>(value: unknown): T[] {
   return Array.isArray(value) ? (value as T[]) : [];
+}
+
+function eur(n: number): string {
+  return `${n.toLocaleString("it-IT")} €`;
 }
 
 export async function POST(req: Request) {
@@ -243,6 +248,14 @@ async function handleCheckoutCompleted(
     .update({ practice_id: practiceId })
     .eq("id", eventId);
 
+  await pushCrmNotification({
+    kind: "pagamento",
+    title: `Pagamento ricevuto: ${eur(Number(row.price))}`,
+    body: `${(backfill.client_name ?? row.client_name) || clientEmail || "Cliente"} ha pagato con carta. La pratica è ora attiva.`,
+    practiceId,
+    practiceCode: row.code,
+  });
+
   // Notifica automatica al cliente: pagamento ricevuto + invito a caricare i
   // documenti (@05, transizione "Pagato" = auto via webhook). La comunicazione
   // e gia registrata sopra; qui parte l'email vera (no-op se Resend non attivo).
@@ -311,6 +324,18 @@ async function handleChargeRefunded(admin: AdminClient, charge: Stripe.Charge) {
       ...(cancelPractice ? { status: "ANNULLATA", action_owner: "NONE" } : {}),
     })
     .eq("id", row.id);
+
+  await pushCrmNotification({
+    kind: "rimborso",
+    title: fullyRefunded
+      ? `Rimborso totale di ${eur(charge.amount_refunded / 100)}`
+      : `Rimborso parziale di ${eur(charge.amount_refunded / 100)}`,
+    body: cancelPractice
+      ? "Il rimborso totale ha annullato automaticamente la pratica."
+      : "Rimborso registrato da Stripe.",
+    practiceId: row.id,
+    practiceCode: row.code,
+  });
 
   revalidatePath(`/crm/pratiche/${row.id}`);
   revalidatePath("/crm/pratiche");

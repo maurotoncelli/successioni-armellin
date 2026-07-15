@@ -14,6 +14,7 @@ import {
 import { getPackages, getAddons } from "@/lib/cms";
 import { buildOrder } from "@/lib/order";
 import { notifyAdminNewLead, notifyLeadRecap, siteBase } from "@/lib/notifications";
+import { pushCrmNotification } from "@/lib/crm-notifications";
 import type { Communication, LogEvent } from "@/content/crm-data";
 
 export type LeadInput = {
@@ -217,6 +218,18 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
     } catch (err) {
       console.error("[preventivo] invio email lead fallito:", err);
     }
+
+    await pushCrmNotification({
+      kind: "lead",
+      title: isCustom
+        ? "Richiesta di preventivo su misura"
+        : "Nuovo lead dal preventivo del sito",
+      body: [fullName || "Contatto senza nome", input.email.trim(), input.phone.trim()]
+        .filter(Boolean)
+        .join(" · "),
+      practiceId: practice.id,
+      practiceCode: practice.code,
+    });
 
     revalidatePath("/crm");
     revalidatePath("/crm/pratiche");

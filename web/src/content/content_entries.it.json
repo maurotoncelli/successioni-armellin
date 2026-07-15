@@ -74,7 +74,7 @@
       { "titolo": "2. Carichi i documenti", "testo": "Dalla tua area personale, anche da foto. Ti diamo la lista esatta." },
       { "titolo": "3. Pensiamo a tutto noi", "testo": "Predisponiamo e inviamo la dichiarazione; tu ricevi le ricevute." }
     ] },
-    { "collection": "home", "key": "come_funziona_sla_note", "locale": "it", "is_published": true, "value": "Invio entro X giorni lavorativi da quando abbiamo tutti i documenti completi." },
+    { "collection": "home", "key": "come_funziona_sla_note", "locale": "it", "is_published": true, "value": "Invio entro 10-15 giorni lavorativi (in base al pacchetto) da quando abbiamo tutti i documenti completi." },
     { "collection": "home", "key": "tariffe_eyebrow", "locale": "it", "is_published": true, "value": "Tariffe" },
     { "collection": "home", "key": "tariffe_title", "locale": "it", "is_published": true, "value": "Prezzi chiari, senza sorprese" },
     { "collection": "home", "key": "tariffe_intro", "locale": "it", "is_published": true, "value": "Paghi un onorario fisso. Le imposte sono separate, a carico dell'erede, e te le calcoliamo noi." },
@@ -113,7 +113,7 @@
       { "voce": "Eredi oltre soglia standard", "importo": "secondo complessità" }
     ] },
     { "collection": "tariffe", "key": "sla_title", "locale": "it", "is_published": true, "value": "Tempi di consegna" },
-    { "collection": "tariffe", "key": "sla_note", "locale": "it", "is_published": true, "value": "Indichiamo l'invio della dichiarazione entro X giorni lavorativi dalla documentazione COMPLETA (non dal pagamento): così è una promessa che possiamo davvero mantenere. Sono esclusi i tempi di enti terzi (Agenzia, Catasto, banche)." },
+    { "collection": "tariffe", "key": "sla_note", "locale": "it", "is_published": true, "value": "Ogni pacchetto indica l'invio della dichiarazione entro un numero preciso di giorni lavorativi dalla documentazione COMPLETA (non dal pagamento): così è una promessa che possiamo davvero mantenere. Sono esclusi i tempi di enti terzi (Agenzia, Catasto, banche)." },
     { "collection": "tariffe", "key": "deliverable_title", "locale": "it", "is_published": true, "value": "Cosa ricevi a fine pratica" },
     { "collection": "tariffe", "key": "deliverable_list", "locale": "it", "is_published": true, "value": ["Ricevuta di presentazione/registrazione dell'Agenzia", "Copia della dichiarazione di successione", "Attestazione / esito F24", "Esito della voltura catastale (dove prevista)", "La nostra fattura"] },
     { "collection": "tariffe", "key": "esempio_title", "locale": "it", "is_published": true, "value": "Guarda un esempio dei documenti finali" },

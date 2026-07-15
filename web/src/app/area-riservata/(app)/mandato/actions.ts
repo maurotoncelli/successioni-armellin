@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { getClientView } from "@/lib/area";
 import { signMandateElectronic } from "@/lib/practice-extras";
+import { pushCrmNotification } from "@/lib/crm-notifications";
 
 export type MandateResult = { ok: true } | { ok: false; error: string };
 
@@ -16,6 +17,14 @@ export async function signMandate(): Promise<MandateResult> {
     console.error("[area] signMandate:", err);
     return { ok: false, error: "Firma non riuscita, riprova." };
   }
+  await pushCrmNotification({
+    kind: "mandato",
+    title: "Mandato firmato dal cliente",
+    body: `${view.account.name || "Il cliente"} ha firmato elettronicamente il mandato professionale.`,
+    practiceId: view.practice.id,
+    practiceCode: view.practice.code,
+  });
+
   revalidatePath("/area-riservata/mandato");
   return { ok: true };
 }

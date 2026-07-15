@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { getClientView } from "@/lib/area";
 import { getAdminClient } from "@/lib/supabase/admin";
+import { pushCrmNotification } from "@/lib/crm-notifications";
 import type { Communication, LogEvent } from "@/content/crm-data";
 
 export type SubmitResult = { ok: true } | { ok: false; error: string };
@@ -44,6 +45,14 @@ export async function submitDocuments(): Promise<SubmitResult> {
     console.error("[area] submitDocuments:", error.message);
     return { ok: false, error: "Invio non riuscito, riprova." };
   }
+
+  await pushCrmNotification({
+    kind: "documenti",
+    title: "Il cliente ha inviato i documenti",
+    body: `${view.practice.clientName || "Il cliente"} ha completato il caricamento: documenti pronti per la revisione.`,
+    practiceId,
+    practiceCode: view.practice.code,
+  });
 
   revalidatePath("/area-riservata/documenti");
   revalidatePath("/area-riservata/dashboard");

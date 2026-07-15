@@ -12,6 +12,7 @@ import {
   UserPlus,
 } from "lucide-react";
 import { CrmCard, ActionBadge, SectionTitle, PracticeLink } from "@/components/crm/ui";
+import { NotificationsPanel } from "@/components/crm/notifications-panel";
 import { statusLabels } from "@/content/crm-data";
 import {
   getPractices,
@@ -19,6 +20,7 @@ import {
   deriveAlerts,
   upcomingDeadlines,
 } from "@/lib/crm";
+import { listCrmNotifications } from "@/lib/crm-notifications";
 
 export const dynamic = "force-dynamic";
 
@@ -46,7 +48,10 @@ const alertIcons = {
 } as const;
 
 export default async function CrmHomePage() {
-  const practices = await getPractices();
+  const [practices, notifications] = await Promise.all([
+    getPractices(),
+    listCrmNotifications(),
+  ]);
   const kpi = deriveKpi(practices);
   const alerts = deriveAlerts(practices);
   const today = new Date().toISOString().slice(0, 10);
@@ -101,6 +106,9 @@ export default async function CrmHomePage() {
           tone="purple"
         />
       </div>
+
+      {/* Notifiche puntuali (eventi), eliminabili una volta lette */}
+      <NotificationsPanel notifications={notifications} />
 
       {/* Scadenze in arrivo / scadute (derivate dalle pratiche) */}
       <CrmCard>

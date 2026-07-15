@@ -126,6 +126,16 @@ export type StripeEventRow = {
   created_at: string;
 };
 
+export type CrmNotificationRow = {
+  id: string;
+  kind: string;
+  title: string;
+  body: string;
+  practice_id: string | null;
+  practice_code: string;
+  created_at: string;
+};
+
 export type RoleKey = "ADMIN" | "CLIENT";
 
 export type ProfileRow = {
@@ -181,6 +191,13 @@ export type Database = {
         Row: ProfileRow;
         Insert: Partial<ProfileRow> & Pick<ProfileRow, "id">;
         Update: Partial<ProfileRow>;
+        Relationships: [];
+      };
+      crm_notifications: {
+        Row: CrmNotificationRow;
+        Insert: Partial<CrmNotificationRow> &
+          Pick<CrmNotificationRow, "kind" | "title">;
+        Update: Partial<CrmNotificationRow>;
         Relationships: [];
       };
     };
