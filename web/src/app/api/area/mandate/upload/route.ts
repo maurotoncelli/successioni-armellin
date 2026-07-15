@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getClientView } from "@/lib/area";
+import { isPracticeCancelled } from "@/content/area-data";
 import { attachMandateFile } from "@/lib/practice-extras";
 import { ALLOWED_DOC_TYPES, MAX_DOC_BYTES } from "@/lib/documents";
 
@@ -8,6 +9,12 @@ export async function POST(req: Request) {
   const view = await getClientView();
   if (!view?.practice) {
     return NextResponse.json({ error: "Non autorizzato." }, { status: 401 });
+  }
+  if (isPracticeCancelled(view.practice)) {
+    return NextResponse.json(
+      { error: "La pratica è annullata: i caricamenti sono disattivati." },
+      { status: 403 },
+    );
   }
 
   const form = await req.formData();

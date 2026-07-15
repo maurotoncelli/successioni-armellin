@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { getAdminClient, isAdminConfigured } from "@/lib/supabase/admin";
 import { isStripeConfigured } from "@/lib/stripe";
-import { isPackageKey } from "@/lib/quote";
+import { decodeHeirs, heirsSummary, isPackageKey, totalHeirs } from "@/lib/quote";
 
 /*
   Crea la pratica SOLO al momento del pagamento (flusso "result-first" del sito):
@@ -12,19 +12,11 @@ import { isPackageKey } from "@/lib/quote";
   sulla pratica. Cosi non creiamo lead-spazzatura per ogni visitatore.
 */
 
-const relationLabels: Record<string, string> = {
-  coniuge: "Coniuge",
-  figlio: "Figlio/a",
-  genitore: "Genitore",
-  fratello: "Fratello/Sorella",
-  nipote: "Nipote",
-  altro: "Altro",
-};
-
 export type CheckoutPracticeInput = {
   packageKey: string;
   realEstateCount?: number | null;
-  relation?: string;
+  /** Composizione eredi serializzata (es. "1.2.0.0.0.0"), dal quiz. */
+  comp?: string;
   heirs?: string;
   hasRealEstate?: string;
   hasWill?: string;
@@ -47,7 +39,10 @@ export async function createCheckoutPractice(
   try {
     const admin = getAdminClient();
     const nowStamp = new Date().toISOString().slice(0, 16).replace("T", " ");
-    const heirsCount = Number.parseInt(input.heirs || "0", 10) || 0;
+    const composition = decodeHeirs(input.comp);
+    const heirsCount = composition
+      ? totalHeirs(composition)
+      : Number.parseInt(input.heirs || "0", 10) || 0;
 
     const { data: practice, error } = await admin
       .from("practices")
@@ -55,9 +50,7 @@ export async function createCheckoutPractice(
         status: "LEAD",
         action_owner: "CLIENT",
         client_name: "",
-        relation: input.relation
-          ? (relationLabels[input.relation] ?? input.relation)
-          : "",
+        relation: composition ? heirsSummary(composition) : "",
         heirs_count: heirsCount,
         has_will: input.hasWill === "si",
         has_real_estate: input.hasRealEstate === "si",

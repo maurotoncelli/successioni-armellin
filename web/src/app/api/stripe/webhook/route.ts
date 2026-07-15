@@ -295,10 +295,24 @@ async function handleChargeRefunded(admin: AdminClient, charge: Stripe.Charge) {
     at: nowStamp(),
   });
 
+  // Rimborso TOTALE = contratto sciolto: la pratica va in ANNULLATA (se non
+  // gia chiusa/annullata) cosi l'area cliente passa in modalita' storico.
+  const cancelPractice =
+    fullyRefunded && row.status !== "CHIUSA" && row.status !== "ANNULLATA";
+  if (cancelPractice) {
+    log.unshift({ action: "cambio_stato:ANNULLATA", at: nowStamp() });
+  }
+
   await admin
     .from("practices")
-    .update({ payment_status: newStatus, log })
+    .update({
+      payment_status: newStatus,
+      log,
+      ...(cancelPractice ? { status: "ANNULLATA", action_owner: "NONE" } : {}),
+    })
     .eq("id", row.id);
 
   revalidatePath(`/crm/pratiche/${row.id}`);
+  revalidatePath("/crm/pratiche");
+  revalidatePath("/crm");
 }

@@ -1003,6 +1003,47 @@ export async function removeTask(
   return { ok: true };
 }
 
+/*
+  Genera la checklist SUBITO su una pratica che non ce l'ha (es. creata a mano
+  per un cliente seguito in studio): normalmente nasce al pagamento, ma Lorenzo
+  deve poter caricare i documenti consegnati di persona senza aspettare.
+*/
+export async function createChecklistNow(
+  practiceId: string,
+): Promise<WorkflowResult> {
+  await requireAdmin();
+  const admin = getAdminClient();
+  const { data } = await admin
+    .from("practices")
+    .select("checklist, log, has_real_estate, real_estate_count, has_will, has_minor_heirs")
+    .eq("id", practiceId)
+    .maybeSingle();
+  if (!data) return { ok: false, error: "Pratica non trovata." };
+  if (Array.isArray(data.checklist) && data.checklist.length > 0) {
+    return { ok: false, error: "La checklist esiste già." };
+  }
+
+  const log: LogEvent[] = Array.isArray(data.log) ? (data.log as LogEvent[]) : [];
+  log.push({ action: "checklist_generata", at: stamp() });
+
+  const { error } = await admin
+    .from("practices")
+    .update({
+      checklist: generateChecklist({
+        hasRealEstate: Boolean(data.has_real_estate),
+        realEstateCount: data.real_estate_count,
+        hasWill: Boolean(data.has_will),
+        hasMinorHeirs: Boolean(data.has_minor_heirs),
+      }),
+      log,
+    })
+    .eq("id", practiceId);
+  if (error) return { ok: false, error: "Generazione non riuscita." };
+
+  revalidatePath(`/crm/pratiche/${practiceId}`);
+  return { ok: true };
+}
+
 // Esito del recesso dal CRM (in gestione / accettato / respinto) + email cliente.
 export async function updateWithdrawal(
   practiceId: string,
@@ -1025,10 +1066,26 @@ export async function updateWithdrawal(
   const now = stamp();
   log.push({ action: `recesso:${status}`, at: now });
 
+  // Recesso ACCETTATO = pratica ANNULLATA: il contratto e' sciolto, il cliente
+  // non deve piu vedere una pratica "attiva" con documenti caricabili
+  // (l'area personale passa in modalita' storico). Il rimborso Stripe resta
+  // manuale (promemoria nel pannello recesso del CRM).
+  const closeOnAccept =
+    status === "ACCEPTED" &&
+    data?.status !== "CHIUSA" &&
+    data?.status !== "ANNULLATA";
+  if (closeOnAccept) {
+    log.push({ action: "cambio_stato:ANNULLATA", at: now });
+    // Retention (@10): la finalita' e' esaurita, l'IBAN va cancellato subito.
+    const removed = await deleteIban(practiceId);
+    if (removed) log.push({ action: "iban_cancellato", at: now });
+  }
+
   // Richiesta risolta: il badge torna all'owner naturale dello stato pratica;
   // finche e in gestione (IN_REVIEW) la palla resta a Lorenzo.
-  const actionOwner: ActionOwner =
-    status === "ACCEPTED" || status === "REJECTED"
+  const actionOwner: ActionOwner = closeOnAccept
+    ? "NONE"
+    : status === "REJECTED"
       ? (data?.status ? ownerByStatus[data.status] : "ADMIN")
       : "ADMIN";
 
@@ -1055,9 +1112,15 @@ export async function updateWithdrawal(
 
   await admin
     .from("practices")
-    .update({ communications, log, action_owner: actionOwner })
+    .update({
+      communications,
+      log,
+      action_owner: actionOwner,
+      ...(closeOnAccept ? { status: "ANNULLATA" } : {}),
+    })
     .eq("id", practiceId);
   revalidatePath(`/crm/pratiche/${practiceId}`);
+  revalidatePath("/crm/pratiche");
   revalidatePath("/crm");
   revalidatePath("/area-riservata/recesso");
   return { ok: true };

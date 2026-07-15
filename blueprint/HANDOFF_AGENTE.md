@@ -31,8 +31,78 @@ Stato servizi (tutto ATTIVO):
   senza passaggio avvocato): rimossi i notice "in validazione", retention lead 12 mesi,
   mandato unificato in `web/src/content/mandato.ts`.
 Sezione **8-ter** qui sotto = cronaca completa del 14/07 con i BUG FIX importanti.
+Sezione **8-quater** = sessione 15/07 (blocchi post-incontro con Lorenzo).
 Sezione **9** = TODO APERTI (leggila per prima!).
 Lingua del progetto: **italiano**. Scrivere sempre in italiano con l'utente.
+
+## 8-quater. Sessione 15/07 — blocchi post-incontro Lorenzo (piano confermato da Mauro)
+
+### Blocco 1 — Recesso/rimborso chiude la pratica (FATTO)
+- `updateWithdrawal` (CRM): recesso ACCETTATO -> pratica `ANNULLATA` automatica,
+  `action_owner: NONE`, IBAN cancellato (retention @10). Il rimborso Stripe resta manuale.
+- Webhook `charge.refunded`: rimborso TOTALE -> `ANNULLATA` (se non gia' chiusa/annullata).
+- Area cliente in **modalita' storico** per pratiche annullate/rimborsate:
+  `isPracticeCancelled()` in `web/src/content/area-data.ts` (status ANNULLATA o payment
+  REFUNDED); dashboard con card "pratica annullata", pagina documenti in sola lettura,
+  API upload/delete/mandato bloccate (403), link recesso e IBAN nascosti in /ordine.
+- `getClientView` (lib/area.ts): con piu' pratiche privilegia quella ATTIVA
+  (pagata attiva -> qualsiasi attiva -> la piu' recente anche se annullata).
+
+### Blocco 2 — Upload documenti da CRM per clienti in studio (FATTO)
+- Nuova route `POST /api/crm/documents/upload` (requireAdmin): upload su una voce
+  checklist per conto del cliente; il documento nasce direttamente **APPROVATO**.
+- `CrmChecklist`: pulsante upload per ogni voce (multi-file, PDF/JPG/PNG).
+- Pulsante "Genera checklist adesso" (`GenerateChecklistButton` + action
+  `createChecklistNow`) sulle pratiche create a mano senza checklist.
+
+### Blocco 3 — Testi di Lorenzo + passata refusi (FATTO)
+- Home: sottotitolo "...tutto online (e se vuoi anche di persona)...".
+- Rimosso "senza ricarichi"; "imposte di Stato" -> "imposte" nei testi PUBBLICI
+  (restano in legal.ts/mandato.ts dove serve precisione e nel CRM interno).
+- "Se ti manca qualcosa, spesso lo possiamo recuperare noi" al posto delle varianti.
+- Nuova FAQ "agevolazione prima casa" (fixture + DB produzione).
+- **Passata accenti completa** su content_entries/site/articles/legal/mandato:
+  script `web/scripts/fix-accents.mjs` (parole non ambigue) + 2 subagent per il
+  verbo e/e'. ATTENZIONE storica: lo script aveva accentato per errore alcune CHIAVI
+  JSON (\_meta, citta, perche_geometra_body, cat_perche_intro), gia' ripristinate.
+- `seed/content_entries.it.json` ora e' una COPIA ESATTA di
+  `web/src/content/content_entries.it.json` (sincronizzati il 15/07).
+- **DB produzione aggiornato** con `web/scripts/update-prod-content.mjs` (one-shot):
+  faqs (8 testi corretti + nuova FAQ prima casa) e packages (accenti badge/descrizione).
+  Le pagine leggono faqs/packages da Supabase, NON dalle fixture.
+- Pacchetto 790: nessun cambio prezzo/nome ancora — proposte di rinomina presentate
+  a Mauro da girare a Lorenzo.
+
+### Blocco 4 — Quiz preventivo ridisegnato (FATTO)
+- **Prima domanda: "La persona mancata ha lasciato un testamento?"** — "si" ->
+  esito C (preventivo su misura), coerente con le condizioni di vendita.
+- **Eredi a contatori per tipo** (coniuge, figli, genitori, fratelli, nipoti, altri):
+  tipo `HeirsComposition` in `web/src/lib/quote.ts` con encode/decode per query
+  string (param `comp`, es. "1.2.0.0.0.0") e `heirsSummary()` ("Coniuge + 2 figli").
+- L'esonero (esito A) ora richiede: TUTTI gli eredi coniuge/linea retta
+  (`isAllDirectLine`), nessun immobile, "no" esplicito alla soglia 100k.
+- Il campo DB `practices.relation` ora contiene la composizione ("Coniuge + 2 figli");
+  label CRM cambiata in "Eredi (composizione)". Vecchio param `rel` eliminato.
+- "Altri beni" cita esempi: quote societarie, azioni, aziende, imbarcazioni.
+
+### Blocco 5 — Login Google + password opzionale (CODICE FATTO, config MANCANTE)
+- Server actions: `signInWithGoogle` (OAuth PKCE, atterra sullo stesso
+  auth/callback del magic link) e `signInWithPassword` in
+  `web/src/app/area-riservata/actions.ts`.
+- Login form: pulsante "Continua con Google" + terza tab "Password".
+- Profilo: sezione "Sicurezza" con crea/cambia password (`updatePassword` action,
+  min 8 caratteri, via `supabase.auth.updateUser`).
+- **DA FARE PER ATTIVARE GOOGLE**: creare OAuth client su Google Cloud Console
+  (redirect URI = `https://<project-ref>.supabase.co/auth/v1/callback`) e abilitare
+  il provider Google su Supabase (Authentication -> Providers) con client id/secret.
+  Finche' non e' configurato, il pulsante mostra un errore gentile.
+
+### Blocco 6 — Pulizia pratiche di prova (IN ATTESA CONFERMA MAURO)
+- Script `web/scripts/cleanup-test-practices.mjs`: preview di default,
+  `--delete` per cancellare (pratiche + file Storage + contatti orfani).
+  Tiene `SUC-2026-0022` e qualsiasi pratica con documenti reali su Storage.
+- Preview del 15/07: 18 pratiche, 17 da cancellare, da tenere solo la 0022.
+  Mauro deve confermare (dubbio: tenere anche SUC-2026-0020 Mauro PAGATO?).
 
 ## 1. Progetto e stack
 - Monorepo Git. App Next.js (v16, App Router) nella cartella **`web/`** (Root Directory su Vercel = `web`).

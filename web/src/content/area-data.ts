@@ -33,6 +33,12 @@ export function currentStepIndex(status: Practice["status"]): number {
   }
 }
 
+// Pratica "storica": annullata (recesso accettato) o rimborsata per intero.
+// L'area personale resta consultabile ma in sola lettura (niente upload).
+export function isPracticeCancelled(p: Practice): boolean {
+  return p.status === "ANNULLATA" || p.paymentStatus === "REFUNDED";
+}
+
 export type ClientDocState = "DA_CARICARE" | "CARICATO" | "DA_RIFARE";
 
 export const clientDocMeta: Record<

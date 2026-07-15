@@ -10,7 +10,7 @@ import { DocList } from "@/components/site/doc-list";
 import { SoftLead, type SoftLeadAnswers } from "@/components/site/soft-lead";
 import { getPackages, getAddons } from "@/lib/cms";
 import { buildOrder } from "@/lib/order";
-import { isPackageKey, type Esito } from "@/lib/quote";
+import { decodeHeirs, isPackageKey, totalHeirs, type Esito } from "@/lib/quote";
 import { cta, list, obj, text } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -30,7 +30,7 @@ export default async function GraziePage({
     esito?: string;
     pkg?: string;
     recount?: string;
-    rel?: string;
+    comp?: string;
     heirs?: string;
     hasre?: string;
     will?: string;
@@ -42,9 +42,10 @@ export default async function GraziePage({
   const esito = resolveEsito(sp.esito);
 
   const recount = sp.recount ? Number.parseInt(sp.recount, 10) : null;
+  const composition = decodeHeirs(sp.comp);
   const answers: SoftLeadAnswers = {
-    relation: sp.rel ?? "",
-    heirs: sp.heirs ?? "",
+    heirsComposition: composition,
+    heirs: composition ? String(totalHeirs(composition)) : (sp.heirs ?? ""),
     hasRealEstate: sp.hasre ?? "",
     realEstateCount: Number.isFinite(recount) ? recount : null,
     hasWill: sp.will ?? "no",
@@ -88,7 +89,7 @@ export default async function GraziePage({
     const params = new URLSearchParams({ pkg: packageKey });
     if (answers.realEstateCount)
       params.set("recount", String(answers.realEstateCount));
-    if (answers.relation) params.set("rel", answers.relation);
+    if (sp.comp) params.set("comp", sp.comp);
     if (answers.heirs) params.set("heirs", answers.heirs);
     if (answers.hasRealEstate) params.set("hasre", answers.hasRealEstate);
     params.set("will", answers.hasWill);

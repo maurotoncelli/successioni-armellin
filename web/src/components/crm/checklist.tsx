@@ -1,13 +1,23 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { FileText, Check, X, Download, Loader2, RotateCcw } from "lucide-react";
+import {
+  FileText,
+  Check,
+  X,
+  Download,
+  Loader2,
+  RotateCcw,
+  Upload,
+  ListPlus,
+} from "lucide-react";
 import type { RequirementStatus } from "@/content/crm-data";
 import {
   approveDocument,
   rejectDocument,
   getDocumentUrl,
+  createChecklistNow,
 } from "@/app/crm/pratiche/[id]/actions";
 
 export type CrmDocItem = {
@@ -37,7 +47,48 @@ export function CrmChecklist({
 }) {
   const router = useRouter();
   const [busy, setBusy] = useState<number | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [, startTransition] = useTransition();
+  const fileInput = useRef<HTMLInputElement>(null);
+  const uploadIndex = useRef<number | null>(null);
+
+  // Upload da parte di Lorenzo (cliente seguito in studio): il documento
+  // nasce direttamente APPROVATO.
+  function pickFile(index: number) {
+    uploadIndex.current = index;
+    fileInput.current?.click();
+  }
+
+  async function uploadPicked(files: FileList | null) {
+    const index = uploadIndex.current;
+    if (!files || files.length === 0 || index === null) return;
+    setBusy(index);
+    setError(null);
+    try {
+      for (const file of Array.from(files)) {
+        const form = new FormData();
+        form.set("practiceId", practiceId);
+        form.set("index", String(index));
+        form.set("file", file);
+        const res = await fetch("/api/crm/documents/upload", {
+          method: "POST",
+          body: form,
+        });
+        if (!res.ok) {
+          const body = (await res.json().catch(() => null)) as
+            | { error?: string }
+            | null;
+          setError(body?.error ?? "Caricamento non riuscito, riprova.");
+          break;
+        }
+      }
+      router.refresh();
+    } finally {
+      setBusy(null);
+      uploadIndex.current = null;
+      if (fileInput.current) fileInput.current.value = "";
+    }
+  }
 
   async function download(index: number, fileIdx: number) {
     setBusy(index);
@@ -73,7 +124,21 @@ export function CrmChecklist({
   }
 
   return (
-    <ul className="mt-4 space-y-2">
+    <>
+      <input
+        ref={fileInput}
+        type="file"
+        accept=".pdf,.jpg,.jpeg,.png"
+        multiple
+        className="hidden"
+        onChange={(e) => uploadPicked(e.target.files)}
+      />
+      {error && (
+        <p className="mt-3 rounded-lg bg-crm-rose/10 p-2.5 text-xs text-crm-rose">
+          {error}
+        </p>
+      )}
+      <ul className="mt-4 space-y-2">
       {items.map((doc) => {
         const meta = reqStatusMeta[doc.status];
         const isBusy = busy === doc.index;
@@ -111,6 +176,16 @@ export function CrmChecklist({
                 {meta.label}
               </span>
               {isBusy && <Loader2 className="h-3.5 w-3.5 animate-spin text-crm-muted" />}
+              {doc.status !== "NON_APPLICABILE" && (
+                <button
+                  onClick={() => pickFile(doc.index)}
+                  disabled={isBusy}
+                  title="Carica per il cliente (es. documenti consegnati in studio)"
+                  className="grid h-6 w-6 place-items-center rounded bg-crm-bg2 text-crm-text2 hover:text-crm-text disabled:opacity-50"
+                >
+                  <Upload className="h-3.5 w-3.5" />
+                </button>
+              )}
               {hasFile && doc.status !== "APPROVATO" && (
                 <button
                   onClick={() => approve(doc.index)}
@@ -140,6 +215,45 @@ export function CrmChecklist({
           </li>
         );
       })}
-    </ul>
+      </ul>
+    </>
+  );
+}
+
+/*
+  Pulsante "Genera checklist" per le pratiche create a mano nel CRM (la
+  checklist normalmente nasce al pagamento): permette a Lorenzo di iniziare
+  subito a caricare i documenti di un cliente seguito in studio.
+*/
+export function GenerateChecklistButton({ practiceId }: { practiceId: string }) {
+  const router = useRouter();
+  const [pending, startTransition] = useTransition();
+  const [error, setError] = useState<string | null>(null);
+
+  function generate() {
+    setError(null);
+    startTransition(async () => {
+      const res = await createChecklistNow(practiceId);
+      if (!res.ok) setError(res.error);
+      router.refresh();
+    });
+  }
+
+  return (
+    <div className="mt-3">
+      <button
+        onClick={generate}
+        disabled={pending}
+        className="inline-flex items-center gap-2 rounded-lg border border-crm-border bg-crm-bg2/60 px-3 py-2 text-sm font-medium text-crm-text hover:bg-crm-bg2 disabled:opacity-50"
+      >
+        {pending ? (
+          <Loader2 className="h-4 w-4 animate-spin" />
+        ) : (
+          <ListPlus className="h-4 w-4" />
+        )}
+        Genera checklist adesso
+      </button>
+      {error && <p className="mt-2 text-xs text-crm-rose">{error}</p>}
+    </div>
   );
 }

@@ -63,7 +63,7 @@ export default function ValoreCatastalePage() {
               renditaHelp: text(
                 "strumenti",
                 "catastale_help_rendita",
-                "La trovi nella visura catastale, colonna \"Rendita\". Se non ce l'hai, la recuperiamo noi.",
+                "La trovi nella visura catastale, colonna \"Rendita\". Se ti manca, spesso la possiamo recuperare noi.",
               ),
               redditoDominicale: text(
                 "strumenti",

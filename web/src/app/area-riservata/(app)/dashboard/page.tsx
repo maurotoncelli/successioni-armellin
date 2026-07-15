@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Receipt, Landmark } from "lucide-react";
+import { ArrowRight, Receipt, Landmark, Ban } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { buttonClasses } from "@/components/ui/button";
 import { PageHeading, StatusTracker } from "@/components/area/ui";
@@ -8,6 +8,7 @@ import { requireClientView } from "@/lib/area";
 import {
   clientSteps,
   currentStepIndex,
+  isPracticeCancelled,
   nextAction,
   toClientDocState,
 } from "@/content/area-data";
@@ -19,6 +20,46 @@ export default async function DashboardPage() {
       <div>
         <PageHeading title="Area personale" subtitle="Benvenuto." />
         <NoPracticeState />
+      </div>
+    );
+  }
+
+  // Pratica annullata/rimborsata: vista "storico", niente azioni da fare.
+  if (isPracticeCancelled(p)) {
+    const refunded =
+      p.paymentStatus === "REFUNDED" || p.paymentStatus === "PARTIALLY_REFUNDED";
+    return (
+      <div>
+        <PageHeading
+          title={`Ciao, ${p.clientName.split(" ")[0]}`}
+          subtitle={`Pratica ${p.code} · defunto ${p.deceasedName}`}
+        />
+        <Card className="border-primary/15 bg-bg-muted">
+          <div className="flex items-start gap-3">
+            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary">
+              <Ban className="h-5 w-5" />
+            </span>
+            <div>
+              <h2 className="text-lg font-medium text-text">
+                Questa pratica è stata annullata.
+              </h2>
+              <p className="mt-1 text-sm text-text-muted">
+                {refunded
+                  ? "Il recesso è stato accettato e il rimborso è stato emesso: lo vedrai sulla carta usata per il pagamento entro pochi giorni lavorativi."
+                  : "Il recesso è stato accettato. Se è previsto un rimborso, lo riceverai sulla carta usata per il pagamento."}{" "}
+                Non c&apos;è nient&apos;altro da fare: qui sotto trovi il
+                riepilogo del tuo acquisto, che resta consultabile.
+              </p>
+              <Link
+                href="/area-riservata/ordine"
+                className={buttonClasses({ variant: "outline", className: "mt-4" })}
+              >
+                <Receipt className="h-4 w-4" />
+                Vedi il tuo acquisto
+              </Link>
+            </div>
+          </div>
+        </Card>
       </div>
     );
   }
@@ -103,7 +144,7 @@ export default async function DashboardPage() {
         </Card>
       </div>
 
-      {/* Imposte di Stato (solo se comunicate) */}
+      {/* Imposte (solo se comunicate) */}
       {p.stateTaxes && (
         <Card className="mt-6">
           <div className="flex items-start gap-3">
@@ -112,11 +153,11 @@ export default async function DashboardPage() {
             </span>
             <div>
               <h2 className="text-sm font-semibold text-text">
-                Imposte di Stato comunicate: {p.stateTaxes} €
+                Imposte comunicate: {p.stateTaxes} €
               </h2>
               <p className="mt-1 text-sm text-text-muted">
-                Sono separate dal nostro onorario e si versano allo Stato (modello
-                F24). Nessun ricarico da parte nostra.
+                Sono separate dal nostro onorario e si versano allo Stato
+                (modello F24).
               </p>
               <Link
                 href="/area-riservata/ordine"

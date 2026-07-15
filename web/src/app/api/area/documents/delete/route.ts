@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getClientView } from "@/lib/area";
+import { isPracticeCancelled } from "@/content/area-data";
 import { removeDocument } from "@/lib/documents";
 
 // Eliminazione di un documento caricato dal CLIENTE (solo sulla propria pratica).
@@ -7,6 +8,12 @@ export async function POST(req: Request) {
   const view = await getClientView();
   if (!view?.practice) {
     return NextResponse.json({ error: "Non autorizzato." }, { status: 401 });
+  }
+  if (isPracticeCancelled(view.practice)) {
+    return NextResponse.json(
+      { error: "La pratica è annullata: i documenti non sono più modificabili." },
+      { status: 403 },
+    );
   }
 
   let index = NaN;

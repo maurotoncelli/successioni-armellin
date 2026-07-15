@@ -12,7 +12,7 @@ export default function PreventivoPage() {
   const stepTitles = [
     text("preventivo", "step1_title", "Partiamo dalle basi"),
     text("preventivo", "step2_title", "Chi sono gli eredi"),
-    text("preventivo", "step3_title", "Cosa fa parte dell'eredita"),
+    text("preventivo", "step3_title", "Cosa fa parte dell'eredità"),
   ];
 
   return (

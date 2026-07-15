@@ -18,7 +18,8 @@ import type { PackageKey } from "@/lib/supabase/types";
 */
 
 type CheckoutAnswers = {
-  relation: string;
+  /** Composizione eredi serializzata (es. "1.2.0.0.0.0"), dal quiz. */
+  comp: string;
   heirs: string;
   hasRealEstate: string;
   hasWill: string;
@@ -92,7 +93,7 @@ export function CheckoutPanel({
         const created = await createCheckoutPractice({
           packageKey,
           realEstateCount,
-          relation: answers?.relation,
+          comp: answers?.comp,
           heirs: answers?.heirs,
           hasRealEstate: answers?.hasRealEstate,
           hasWill: answers?.hasWill,

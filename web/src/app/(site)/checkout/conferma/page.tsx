@@ -75,8 +75,8 @@ export default async function ConfermaPage({
         </Card>
 
         <p className="mt-6 text-sm text-text-muted">
-          Le imposte di Stato sono separate dall&apos;onorario: te le calcoliamo e
-          comunichiamo prima dell&apos;invio, senza ricarichi.
+          Le imposte sono separate dall&apos;onorario: te le calcoliamo e
+          comunichiamo prima dell&apos;invio.
         </p>
       </div>
     </Section>

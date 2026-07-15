@@ -1,8 +1,9 @@
 import { PageHeading } from "@/components/area/ui";
+import { Card } from "@/components/ui/card";
 import { DocumentsClient, type DocItem } from "@/components/area/documents";
 import { NoPracticeState } from "@/components/area/empty";
 import { requireClientView } from "@/lib/area";
-import { toClientDocState } from "@/content/area-data";
+import { isPracticeCancelled, toClientDocState } from "@/content/area-data";
 import { listItemFiles } from "@/lib/documents";
 
 export default async function DocumentiPage() {
@@ -12,6 +13,25 @@ export default async function DocumentiPage() {
       <div>
         <PageHeading title="I tuoi documenti" subtitle="Checklist documenti." />
         <NoPracticeState />
+      </div>
+    );
+  }
+
+  if (isPracticeCancelled(practice)) {
+    return (
+      <div>
+        <PageHeading
+          title="I tuoi documenti"
+          subtitle="La pratica è stata annullata: non serve caricare nulla."
+        />
+        <Card className="border-primary/15 bg-bg-muted">
+          <p className="text-sm text-text-muted">
+            Questa pratica è stata annullata, quindi il caricamento dei
+            documenti è disattivato. I documenti d&apos;identità e gli altri
+            file caricati verranno cancellati dai nostri sistemi secondo la
+            privacy policy.
+          </p>
+        </Card>
       </div>
     );
   }

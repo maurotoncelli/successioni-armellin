@@ -3,15 +3,15 @@ import type { ArticleBlock } from "@/content/articles";
 /*
   Documenti legali del sito (data-driven, long-form strutturato).
 
-  Perche qui e non in content_entries.*.json:
+  Perché qui e non in content_entries.*.json:
   - sono testi lunghi e strutturati (sezioni, liste, tabelle), come gli articoli
     guida (@/content/articles): tenerli tipizzati evita HTML arbitrario e li
     rende coerenti col design system anche quando arriveranno dal CMS (Fase 4).
 
-  Identita del Titolare: NON e duplicata qui. I testi usano dei token
+  Identità del Titolare: NON e duplicata qui. I testi usano dei token
   ({{ragione_sociale}}, {{piva}}, {{cf}}, {{pec}}, ...) che vengono sostituiti a
   render-time con i valori di `footer.studio` / `settings` (unica fonte di
-  verita, vedi components/site/legal-doc.tsx). Cosi i dati anagrafici si
+  verita, vedi components/site/legal-doc.tsx). Così i dati anagrafici si
   confermano una volta sola e restano allineati ovunque.
 
   STATO: testi PRELIMINARI generati dal blueprint (@10_Legale_Compliance) e
@@ -29,7 +29,7 @@ export type LegalDoc = {
   title: string;
   eyebrow: string;
   intro: string;
-  /** Etichetta data ultimo aggiornamento (placeholder finche non pubblicato). */
+  /** Etichetta data ultimo aggiornamento (placeholder finché non pubblicato). */
   updatedAt: string;
   /** Avviso di stato mostrato in cima (es. testo in validazione). */
   notice?: { tone?: "info" | "warning"; title?: string; text: string };
@@ -53,7 +53,7 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
     title: "Informativa sulla privacy",
     eyebrow: "Documento legale",
     intro:
-      "Come trattiamo i tuoi dati personali quando consulti il sito, richiedi un preventivo, acquisti un servizio o usi la tua area personale, in conformita al GDPR (Reg. UE 2016/679).",
+      "Come trattiamo i tuoi dati personali quando consulti il sito, richiedi un preventivo, acquisti un servizio o usi la tua area personale, in conformità al GDPR (Reg. UE 2016/679).",
     updatedAt: "Ultimo aggiornamento: 14 luglio 2026",
     notice: LANG_NOTICE,
     body: [
@@ -75,19 +75,19 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
       { type: "h2", text: "2. Responsabile della protezione dei dati (DPO)" },
       {
         type: "p",
-        text: "La nomina di un DPO non risulta obbligatoria per l'attivita svolta; la valutazione e documentata dal Titolare e viene aggiornata in base a volumi e natura dei trattamenti. Per ogni richiesta in materia di dati personali puoi contattare il Titolare ai recapiti della sezione 1.",
+        text: "La nomina di un DPO non risulta obbligatoria per l'attività svolta; la valutazione è documentata dal Titolare e viene aggiornata in base a volumi e natura dei trattamenti. Per ogni richiesta in materia di dati personali puoi contattare il Titolare ai recapiti della sezione 1.",
       },
       { type: "h2", text: "3. Categorie di dati trattati" },
       {
         type: "p",
-        text: "A seconda dell'interazione, il Titolare puo trattare le seguenti categorie di dati:",
+        text: "A seconda dell'interazione, il Titolare può trattare le seguenti categorie di dati:",
       },
       {
         type: "ul",
         items: [
           "Dati identificativi e di contatto: nome, cognome, email, numero di telefono.",
           "Dati relativi al servizio (pratica di successione): codice fiscale, dati anagrafici e patrimoniali dell'erede e del defunto, dati su immobili, conti correnti e rapporti finanziari, gradi di parentela.",
-          "Documenti: documento d'identita, certificato/atto di morte, visure, certificazioni e ulteriori documenti necessari alla pratica.",
+          "Documenti: documento d'identità, certificato/atto di morte, visure, certificazioni e ulteriori documenti necessari alla pratica.",
           "Dati di pagamento: gestiti direttamente dal fornitore di pagamento (Stripe); il Titolare non memorizza i dati completi della carta.",
           "Dati tecnici e di navigazione: indirizzo IP, identificativi dei dispositivi, log, cookie e tecnologie simili (vedi sezione 11 e Cookie Policy).",
         ],
@@ -96,13 +96,13 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
         type: "p",
         text: "Alcuni dati possono riguardare soggetti diversi dall'utente che li conferisce (es. altri eredi o il defunto): chi li fornisce garantisce di essere legittimato a comunicarli e si impegna a informare gli interessati della presente informativa (art. 14 GDPR).",
       },
-      { type: "h2", text: "4. Finalita del trattamento e basi giuridiche" },
+      { type: "h2", text: "4. Finalità del trattamento e basi giuridiche" },
       {
         type: "table",
-        headers: ["Finalita", "Base giuridica (GDPR)"],
+        headers: ["Finalità", "Base giuridica (GDPR)"],
         rows: [
           [
-            "Riscontro alle richieste di preventivo/contatto e attivita precontrattuali",
+            "Riscontro alle richieste di preventivo/contatto e attività precontrattuali",
             "Art. 6.1.b (misure precontrattuali)",
           ],
           [
@@ -115,7 +115,7 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
           ],
           ["Gestione dei pagamenti", "Art. 6.1.b e 6.1.c"],
           [
-            "Sicurezza del sito, prevenzione di abusi/frodi, integrita dei sistemi",
+            "Sicurezza del sito, prevenzione di abusi/frodi, integrità dei sistemi",
             "Art. 6.1.f (legittimo interesse)",
           ],
           ["Marketing diretto / newsletter (se attivato)", "Art. 6.1.a (consenso)"],
@@ -127,17 +127,17 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
       },
       {
         type: "p",
-        text: "Non e prevista, di norma, la raccolta di categorie particolari di dati ex art. 9 GDPR. Qualora il cliente trasmetta spontaneamente dati eccedenti (es. informazioni sanitarie in un documento), il Titolare li tratta nei limiti dell'art. 9.2 e ne raccomanda la minimizzazione.",
+        text: "Non è prevista, di norma, la raccolta di categorie particolari di dati ex art. 9 GDPR. Qualora il cliente trasmetta spontaneamente dati eccedenti (es. informazioni sanitarie in un documento), il Titolare li tratta nei limiti dell'art. 9.2 e ne raccomanda la minimizzazione.",
       },
       { type: "h2", text: "5. Natura del conferimento" },
       {
         type: "p",
-        text: "Il conferimento dei dati per le finalita contrattuali, fiscali e legali e necessario: il mancato conferimento impedisce l'erogazione del servizio. Il conferimento per finalita di marketing e facoltativo e l'eventuale rifiuto non pregiudica l'accesso al servizio.",
+        text: "Il conferimento dei dati per le finalità contrattuali, fiscali e legali è necessario: il mancato conferimento impedisce l'erogazione del servizio. Il conferimento per finalità di marketing è facoltativo e l'eventuale rifiuto non pregiudica l'accesso al servizio.",
       },
-      { type: "h2", text: "6. Modalita del trattamento e sicurezza" },
+      { type: "h2", text: "6. Modalità del trattamento e sicurezza" },
       {
         type: "p",
-        text: "I dati sono trattati con strumenti informatici e misure tecniche e organizzative adeguate (art. 32 GDPR): cifratura in transito e a riposo, controllo degli accessi, segmentazione tramite Row Level Security, principio di minimizzazione, registrazione degli accessi (audit log). L'accesso e riservato al Titolare e ai responsabili autorizzati.",
+        text: "I dati sono trattati con strumenti informatici e misure tecniche e organizzative adeguate (art. 32 GDPR): cifratura in transito e a riposo, controllo degli accessi, segmentazione tramite Row Level Security, principio di minimizzazione, registrazione degli accessi (audit log). L'accesso è riservato al Titolare e ai responsabili autorizzati.",
       },
       { type: "h2", text: "7. Destinatari e responsabili del trattamento" },
       {
@@ -181,7 +181,7 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
       },
       {
         type: "p",
-        text: "I dati possono inoltre essere comunicati a soggetti pubblici (es. Agenzia delle Entrate, Catasto) per l'adempimento del servizio, a professionisti di fiducia (es. commercialista/notaio) ove necessario, e all'autorita giudiziaria/forze dell'ordine se richiesto per legge. I dati NON sono diffusi ne ceduti a terzi per loro autonome finalita.",
+        text: "I dati possono inoltre essere comunicati a soggetti pubblici (es. Agenzia delle Entrate, Catasto) per l'adempimento del servizio, a professionisti di fiducia (es. commercialista/notaio) ove necessario, e all'autorità giudiziaria/forze dell'ordine se richiesto per legge. I dati NON sono diffusi né ceduti a terzi per loro autonome finalità.",
       },
       { type: "h2", text: "8. Trasferimento dei dati extra-UE" },
       {
@@ -193,8 +193,8 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
         type: "ul",
         items: [
           "Documenti fiscali e contabili (fatture, ricevute, mandato, dichiarazione): conservati per il termine di legge, almeno 10 anni (art. 2220 c.c. e obblighi fiscali).",
-          "Documenti di input sensibili caricati dal cliente (es. carta d'identita): conservati per il tempo necessario alla lavorazione e poi cancellati dal cloud (minimizzazione).",
-          "Documenti finali (ricevute AdE, visure aggiornate, fattura): resi disponibili nell'area personale del cliente per la consultazione; l'archivio completo e conservato in sicurezza.",
+          "Documenti di input sensibili caricati dal cliente (es. carta d'identità): conservati per il tempo necessario alla lavorazione e poi cancellati dal cloud (minimizzazione).",
+          "Documenti finali (ricevute AdE, visure aggiornate, fattura): resi disponibili nell'area personale del cliente per la consultazione; l'archivio completo è conservato in sicurezza.",
           "Dati di contatto per preventivi non convertiti: cancellati o anonimizzati entro 12 mesi dall'ultimo contatto.",
           "Dati per marketing: fino a revoca del consenso.",
           "Dati tecnici/log e cookie: secondo le durate indicate nella Cookie Policy.",
@@ -203,7 +203,7 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
       { type: "h2", text: "10. Diritti dell'interessato" },
       {
         type: "p",
-        text: "Puoi esercitare in qualsiasi momento i diritti previsti dagli artt. 15-22 GDPR: accesso, rettifica, cancellazione (\"diritto all'oblio\", nei limiti degli obblighi di conservazione legale), limitazione, portabilita, opposizione al trattamento basato sul legittimo interesse, revoca del consenso in ogni momento (senza pregiudicare la liceita del trattamento precedente).",
+        text: "Puoi esercitare in qualsiasi momento i diritti previsti dagli artt. 15-22 GDPR: accesso, rettifica, cancellazione (\"diritto all'oblio\", nei limiti degli obblighi di conservazione legale), limitazione, portabilità, opposizione al trattamento basato sul legittimo interesse, revoca del consenso in ogni momento (senza pregiudicare la liceità del trattamento precedente).",
       },
       {
         type: "p",
@@ -212,30 +212,30 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
       { type: "h2", text: "11. Cookie e tecnologie di tracciamento" },
       {
         type: "p",
-        text: "Il sito utilizza cookie tecnici e, previo consenso, cookie di statistica (Google Analytics 4 con Consent Mode: nessun cookie di misurazione viene impostato senza consenso). Il dettaglio delle categorie, delle finalita e delle durate e riportato nella Cookie Policy dedicata, accessibile dal banner e dal footer. Il consenso e revocabile in qualsiasi momento dal link \"Preferenze cookie\" nel footer.",
+        text: "Il sito utilizza cookie tecnici e, previo consenso, cookie di statistica (Google Analytics 4 con Consent Mode: nessun cookie di misurazione viene impostato senza consenso). Il dettaglio delle categorie, delle finalità e delle durate è riportato nella Cookie Policy dedicata, accessibile dal banner e dal footer. Il consenso è revocabile in qualsiasi momento dal link \"Preferenze cookie\" nel footer.",
       },
       { type: "h2", text: "12. Processo decisionale automatizzato e intelligenza artificiale" },
       {
         type: "p",
-        text: "Non e effettuato alcun processo decisionale automatizzato che produca effetti giuridici sull'interessato ai sensi dell'art. 22 GDPR. Lo Studio utilizza strumenti di intelligenza artificiale esclusivamente come supporto interno all'attivita del professionista: in particolare, i documenti caricati per la pratica possono essere elaborati tramite il servizio API di OpenAI (responsabile del trattamento, vedi sezione 7) per estrarne i dati necessari alla predisposizione della dichiarazione (es. dati anagrafici, catastali).",
+        text: "Non è effettuato alcun processo decisionale automatizzato che produca effetti giuridici sull'interessato ai sensi dell'art. 22 GDPR. Lo Studio utilizza strumenti di intelligenza artificiale esclusivamente come supporto interno all'attività del professionista: in particolare, i documenti caricati per la pratica possono essere elaborati tramite il servizio API di OpenAI (responsabile del trattamento, vedi sezione 7) per estrarne i dati necessari alla predisposizione della dichiarazione (es. dati anagrafici, catastali).",
       },
       {
         type: "ul",
         items: [
           "I dati inviati tramite API non sono utilizzati da OpenAI per addestrare i propri modelli.",
-          "Ogni dato estratto viene verificato e validato dal professionista prima dell'uso: la decisione finale e sempre rimessa a una persona.",
+          "Ogni dato estratto viene verificato e validato dal professionista prima dell'uso: la decisione finale è sempre rimessa a una persona.",
           "Il trasferimento extra-UE eventualmente connesso avviene con le garanzie della sezione 8.",
         ],
       },
       { type: "h2", text: "13. Minori" },
       {
         type: "p",
-        text: "I servizi si rivolgono a persone maggiorenni. Il Titolare non raccoglie consapevolmente dati di minori senza il consenso di chi esercita la responsabilita genitoriale.",
+        text: "I servizi si rivolgono a persone maggiorenni. Il Titolare non raccoglie consapevolmente dati di minori senza il consenso di chi esercita la responsabilità genitoriale.",
       },
       { type: "h2", text: "14. Modifiche all'informativa" },
       {
         type: "p",
-        text: "Il Titolare puo aggiornare la presente informativa. La versione vigente e sempre pubblicata su questa pagina con la data di ultimo aggiornamento; in caso di modifiche sostanziali ne sara data adeguata evidenza.",
+        text: "Il Titolare può aggiornare la presente informativa. La versione vigente è sempre pubblicata su questa pagina con la data di ultimo aggiornamento; in caso di modifiche sostanziali ne sarà data adeguata evidenza.",
       },
     ],
   },
@@ -267,7 +267,7 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
       },
       {
         type: "p",
-        text: "L'invio telematico all'Agenzia delle Entrate e effettuato dal professionista in qualita di intermediario abilitato ENTRATEL, previo conferimento di apposito mandato/incarico e ricezione della dichiarazione firmata dal cliente. Il contratto si conclude a distanza, in modalita elettronica.",
+        text: "L'invio telematico all'Agenzia delle Entrate è effettuato dal professionista in qualità di intermediario abilitato ENTRATEL, previo conferimento di apposito mandato/incarico e ricezione della dichiarazione firmata dal cliente. Il contratto si conclude a distanza, in modalità elettronica.",
       },
       { type: "h2", text: "3. Pacchetti, prezzi ed esclusioni" },
       {
@@ -283,85 +283,85 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
       {
         type: "ul",
         items: [
-          "Sono esclusi dal pacchetto, salvo diverso accordo, i servizi non espressamente indicati (es. contenzioso, pratiche notarili, consulenze fiscali complesse, casi non lineari). Eventuali attivita aggiuntive sono preventivate a parte.",
-          "Preventivo personalizzato (casi complessi): per le pratiche che per natura o complessita eccedono i pacchetti standard (es. pluralita di immobili, terreni/particelle agricole, quote societarie, successioni testamentarie, eredi all'estero, recupero documentale), il prezzo e determinato tramite preventivo individuale comunicato prima dell'acquisto.",
-          "Il pacchetto proposto in esito al questionario online e indicativo: dopo la verifica della documentazione puo applicarsi la procedura di modifica e conguaglio (art. 5).",
-          "Verifica preliminare di non obbligo: ove dai dati forniti emerga che la dichiarazione non e dovuta per legge, il professionista lo segnala al cliente; la valutazione definitiva richiede l'esame del caso concreto.",
+          "Sono esclusi dal pacchetto, salvo diverso accordo, i servizi non espressamente indicati (es. contenzioso, pratiche notarili, consulenze fiscali complesse, casi non lineari). Eventuali attività aggiuntive sono preventivate a parte.",
+          "Preventivo personalizzato (casi complessi): per le pratiche che per natura o complessità eccedono i pacchetti standard (es. pluralità di immobili, terreni/particelle agricole, quote societarie, successioni testamentarie, eredi all'estero, recupero documentale), il prezzo è determinato tramite preventivo individuale comunicato prima dell'acquisto.",
+          "Il pacchetto proposto in esito al questionario online è indicativo: dopo la verifica della documentazione può applicarsi la procedura di modifica e conguaglio (art. 5).",
+          "Verifica preliminare di non obbligo: ove dai dati forniti emerga che la dichiarazione non è dovuta per legge, il professionista lo segnala al cliente; la valutazione definitiva richiede l'esame del caso concreto.",
         ],
       },
       { type: "h2", text: "4. Conclusione del contratto" },
       {
         type: "p",
-        text: "La richiesta di preventivo non e vincolante. Il contratto si perfeziona con il pagamento del pacchetto e l'accettazione esplicita delle presenti Condizioni in fase di checkout. Prima dell'acquisto il cliente prende visione delle caratteristiche del servizio, del prezzo totale, delle presenti Condizioni e dell'informativa privacy.",
+        text: "La richiesta di preventivo non è vincolante. Il contratto si perfeziona con il pagamento del pacchetto e l'accettazione esplicita delle presenti Condizioni in fase di checkout. Prima dell'acquisto il cliente prende visione delle caratteristiche del servizio, del prezzo totale, delle presenti Condizioni e dell'informativa privacy.",
       },
       { type: "h2", text: "5. Pagamento e modifica del pacchetto" },
       {
         type: "p",
-        text: "Il pagamento dell'onorario avviene anticipatamente tramite il fornitore di pagamento (Stripe). La fattura e emessa secondo gli obblighi vigenti. Le imposte di Stato sono gestite separatamente e versate dall'erede secondo le modalita comunicate.",
+        text: "Il pagamento dell'onorario avviene anticipatamente tramite il fornitore di pagamento (Stripe). La fattura è emessa secondo gli obblighi vigenti. Le imposte di Stato sono gestite separatamente e versate dall'erede secondo le modalità comunicate.",
       },
       {
         type: "p",
-        text: "Modifica del pacchetto e conguaglio: qualora, d'accordo con il cliente, il pacchetto venga modificato, si procede al conguaglio della differenza. In caso di passaggio a un pacchetto superiore, il cliente integra la differenza tramite link di pagamento; in caso di pacchetto inferiore, la differenza gia versata e rimborsata con lo stesso mezzo, senza ritardo. La modifica e confermata su supporto durevole. Le imposte di Stato restano in ogni caso escluse dal conguaglio.",
+        text: "Modifica del pacchetto e conguaglio: qualora, d'accordo con il cliente, il pacchetto venga modificato, si procede al conguaglio della differenza. In caso di passaggio a un pacchetto superiore, il cliente integra la differenza tramite link di pagamento; in caso di pacchetto inferiore, la differenza già versata è rimborsata con lo stesso mezzo, senza ritardo. La modifica è confermata su supporto durevole. Le imposte di Stato restano in ogni caso escluse dal conguaglio.",
       },
-      { type: "h2", text: "6. Obblighi e responsabilita del cliente" },
+      { type: "h2", text: "6. Obblighi e responsabilità del cliente" },
       {
         type: "ul",
         items: [
-          "Il cliente fornisce dati e documenti veritieri, completi e tempestivi ed e responsabile della loro correttezza.",
-          "Il professionista non risponde di ritardi, errori o sanzioni derivanti da informazioni o documenti errati, incompleti o forniti in ritardo dal cliente, ne dei tempi di lavorazione di enti terzi (Agenzia delle Entrate, Catasto, banche).",
+          "Il cliente fornisce dati e documenti veritieri, completi e tempestivi ed è responsabile della loro correttezza.",
+          "Il professionista non risponde di ritardi, errori o sanzioni derivanti da informazioni o documenti errati, incompleti o forniti in ritardo dal cliente, né dei tempi di lavorazione di enti terzi (Agenzia delle Entrate, Catasto, banche).",
           "Il cliente si impegna a conferire il mandato e a firmare la dichiarazione nei termini richiesti.",
         ],
       },
       { type: "h2", text: "7. Tempi di esecuzione" },
       {
         type: "p",
-        text: "I tempi di consegna indicati sul sito sono stime che decorrono dal momento in cui il cliente ha fornito tutta la documentazione necessaria, completa, corretta e validata dal professionista (e non dalla data del pagamento), e non comprendono i tempi degli enti terzi. Finche la documentazione e incompleta o in attesa di integrazione, il termine resta sospeso e riprende a decorrere dalla ricezione/validazione dell'ultimo documento mancante.",
+        text: "I tempi di consegna indicati sul sito sono stime che decorrono dal momento in cui il cliente ha fornito tutta la documentazione necessaria, completa, corretta e validata dal professionista (e non dalla data del pagamento), e non comprendono i tempi degli enti terzi. Finché la documentazione è incompleta o in attesa di integrazione, il termine resta sospeso e riprende a decorrere dalla ricezione/validazione dell'ultimo documento mancante.",
       },
       { type: "h2", text: "8. Diritto di recesso (artt. 52-59 Cod. Consumo)" },
       {
         type: "ul",
         items: [
           "Il consumatore ha diritto di recedere dal contratto entro 14 giorni senza fornire motivazioni; per i servizi il termine decorre dalla conclusione del contratto.",
-          "Per esercitare il recesso il cliente puo usare il modulo tipo o una qualsiasi dichiarazione esplicita inviata ai recapiti della sezione 1. Il professionista conferma senza ritardo la ricezione.",
+          "Per esercitare il recesso il cliente può usare il modulo tipo o una qualsiasi dichiarazione esplicita inviata ai recapiti della sezione 1. Il professionista conferma senza ritardo la ricezione.",
           "Avvio immediato: se il cliente chiede espressamente che la lavorazione inizi durante il periodo di recesso, presta consenso espresso all'avvio immediato e prende atto che perde il diritto di recesso a prestazione integralmente eseguita (art. 59, c.1, lett. a).",
-          "Recesso dopo l'avvio ma prima del completamento: il cliente corrisponde un importo proporzionale al servizio gia reso fino alla comunicazione del recesso (art. 57, c.3).",
-          "Il rimborso eventualmente dovuto e effettuato con lo stesso mezzo di pagamento, senza ritardo e comunque entro 14 giorni.",
+          "Recesso dopo l'avvio ma prima del completamento: il cliente corrisponde un importo proporzionale al servizio già reso fino alla comunicazione del recesso (art. 57, c.3).",
+          "Il rimborso eventualmente dovuto è effettuato con lo stesso mezzo di pagamento, senza ritardo e comunque entro 14 giorni.",
         ],
       },
       {
         type: "callout",
         tone: "info",
-        text: "Spieghiamo il recesso in parole semplici nella pagina dedicata /recesso. Questo testo formale e quello che fa fede.",
+        text: "Spieghiamo il recesso in parole semplici nella pagina dedicata /recesso. Questo testo formale è quello che fa fede.",
       },
       { type: "h2", text: "9. Garanzia commerciale \"Soddisfatti o Rimborsati\"" },
       {
         type: "p",
-        text: "Il professionista puo offrire, in aggiunta e volontariamente, una garanzia di rimborso alle condizioni indicate nella pagina Garanzia. Tale garanzia e aggiuntiva e non limita i diritti di legge del consumatore.",
+        text: "Il professionista può offrire, in aggiunta e volontariamente, una garanzia di rimborso alle condizioni indicate nella pagina Garanzia. Tale garanzia è aggiuntiva e non limita i diritti di legge del consumatore.",
       },
-      { type: "h2", text: "10. Limitazioni di responsabilita" },
+      { type: "h2", text: "10. Limitazioni di responsabilità" },
       {
         type: "p",
-        text: "Il professionista esegue l'incarico secondo diligenza professionale (obbligazione di mezzi). Salvo dolo o colpa grave, e nei limiti di legge, la responsabilita e parametrata all'importo dell'onorario corrisposto per la pratica. Il professionista non risponde di eventi imputabili a terzi, forza maggiore o malfunzionamenti di fornitori esterni.",
+        text: "Il professionista esegue l'incarico secondo diligenza professionale (obbligazione di mezzi). Salvo dolo o colpa grave, e nei limiti di legge, la responsabilità è parametrata all'importo dell'onorario corrisposto per la pratica. Il professionista non risponde di eventi imputabili a terzi, forza maggiore o malfunzionamenti di fornitori esterni.",
       },
-      { type: "h2", text: "11. Proprieta dei documenti e accesso" },
+      { type: "h2", text: "11. Proprietà dei documenti e accesso" },
       {
         type: "p",
-        text: "I documenti finali (ricevute, visure aggiornate, fattura) sono resi disponibili nell'area personale del cliente per la consultazione e il download, secondo i tempi indicati. La conservazione e regolata dall'informativa privacy.",
+        text: "I documenti finali (ricevute, visure aggiornate, fattura) sono resi disponibili nell'area personale del cliente per la consultazione e il download, secondo i tempi indicati. La conservazione è regolata dall'informativa privacy.",
       },
       { type: "h2", text: "12. Trattamento dei dati personali" },
       {
         type: "p",
-        text: "Il trattamento dei dati e descritto nell'Informativa Privacy disponibile sul sito, che costituisce parte integrante del rapporto.",
+        text: "Il trattamento dei dati è descritto nell'Informativa Privacy disponibile sul sito, che costituisce parte integrante del rapporto.",
       },
       { type: "h2", text: "13. Modifiche" },
       {
         type: "p",
-        text: "Il professionista puo modificare le presenti Condizioni; al rapporto si applica la versione accettata al momento dell'acquisto. La versione vigente e sempre pubblicata sul sito.",
+        text: "Il professionista può modificare le presenti Condizioni; al rapporto si applica la versione accettata al momento dell'acquisto. La versione vigente è sempre pubblicata sul sito.",
       },
       { type: "h2", text: "14. Legge applicabile, foro e risoluzione delle controversie" },
       {
         type: "p",
-        text: "Al contratto si applica la legge italiana. Per i consumatori resta fermo il foro inderogabile di residenza/domicilio del consumatore. Reclami ai recapiti della sezione 1. Il consumatore puo ricorrere alla piattaforma europea ODR (https://ec.europa.eu/consumers/odr) e agli organismi di mediazione/ADR competenti.",
+        text: "Al contratto si applica la legge italiana. Per i consumatori resta fermo il foro inderogabile di residenza/domicilio del consumatore. Reclami ai recapiti della sezione 1. Il consumatore può ricorrere alla piattaforma europea ODR (https://ec.europa.eu/consumers/odr) e agli organismi di mediazione/ADR competenti.",
       },
     ],
   },
@@ -377,7 +377,7 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
       tone: "info",
       title: "Come gestiamo il consenso",
       text:
-        "Il consenso e raccolto tramite il banner del sito: i cookie non necessari restano disattivati finche non li accetti (Consent Mode). Puoi cambiare idea in ogni momento dal link Preferenze cookie nel footer. " +
+        "Il consenso è raccolto tramite il banner del sito: i cookie non necessari restano disattivati finché non li accetti (Consent Mode). Puoi cambiare idea in ogni momento dal link Preferenze cookie nel footer. " +
         LANG_NOTE,
     },
     body: [
@@ -411,12 +411,12 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
       { type: "h2", text: "Come gestisci il consenso" },
       {
         type: "p",
-        text: "Al primo accesso un banner ti permette di accettare o rifiutare i cookie non necessari, con pari evidenza tra le scelte. Puoi modificare o revocare il consenso in qualsiasi momento dal link \"Preferenze cookie\" nel footer del sito; la revoca non pregiudica la liceita dei trattamenti precedenti.",
+        text: "Al primo accesso un banner ti permette di accettare o rifiutare i cookie non necessari, con pari evidenza tra le scelte. Puoi modificare o revocare il consenso in qualsiasi momento dal link \"Preferenze cookie\" nel footer del sito; la revoca non pregiudica la liceità dei trattamenti precedenti.",
       },
       { type: "h2", text: "Disattivazione dal browser" },
       {
         type: "p",
-        text: "Puoi gestire o eliminare i cookie anche dalle impostazioni del tuo browser. La disattivazione dei cookie tecnici puo compromettere alcune funzioni del sito (es. l'accesso all'area personale).",
+        text: "Puoi gestire o eliminare i cookie anche dalle impostazioni del tuo browser. La disattivazione dei cookie tecnici può compromettere alcune funzioni del sito (es. l'accesso all'area personale).",
       },
       { type: "h2", text: "Titolare e contatti" },
       {
@@ -431,7 +431,7 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
     title: "La nostra garanzia",
     eyebrow: "Le tue tutele",
     intro:
-      "La promessa Soddisfatti o Rimborsati: una tutela in piu che offriamo noi, oltre ai tuoi diritti di legge.",
+      "La promessa Soddisfatti o Rimborsati: una tutela in più che offriamo noi, oltre ai tuoi diritti di legge.",
     updatedAt: "Versione preliminare - condizioni di dettaglio da definire",
     notice: {
       tone: "warning",
@@ -459,7 +459,7 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
         type: "callout",
         tone: "info",
         title: "Garanzia e recesso sono due cose diverse",
-        text: "Il recesso e un tuo diritto di legge nei primi 14 giorni (vedi pagina Recesso). La garanzia Soddisfatti o Rimborsati e una promessa commerciale in piu, aggiuntiva e volontaria, che non limita in alcun modo i tuoi diritti di consumatore.",
+        text: "Il recesso è un tuo diritto di legge nei primi 14 giorni (vedi pagina Recesso). La garanzia Soddisfatti o Rimborsati è una promessa commerciale in più, aggiuntiva e volontaria, che non limita in alcun modo i tuoi diritti di consumatore.",
       },
       { type: "h2", text: "Cosa non copre" },
       {

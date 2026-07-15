@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { createLead } from "@/app/(site)/preventivo/actions";
 import { LegalLinksText } from "@/components/site/legal-links-text";
 import { trackEvent } from "@/lib/analytics";
+import type { HeirsComposition } from "@/lib/quote";
 
 /*
   Cattura contatto OPZIONALE sulla pagina risultato: l'utente ha gia visto
@@ -16,7 +17,9 @@ import { trackEvent } from "@/lib/analytics";
 */
 
 export type SoftLeadAnswers = {
-  relation: string;
+  /** Composizione eredi per tipo (nuovo quiz); null se non disponibile. */
+  heirsComposition: HeirsComposition | null;
+  /** Numero totale eredi (stringa per compatibilita con il flusso esistente). */
   heirs: string;
   hasRealEstate: string;
   realEstateCount: number | null;
@@ -82,7 +85,7 @@ export function SoftLead({
     setError(null);
     startTransition(async () => {
       const res = await createLead({
-        relation: answers.relation,
+        heirsComposition: answers.heirsComposition,
         heirs: answers.heirs,
         hasRealEstate: answers.hasRealEstate,
         realEstateCount: answers.realEstateCount,

@@ -15,7 +15,11 @@ import { type Communication } from "@/content/crm-data";
 import { getPractice } from "@/lib/crm";
 import { CrmCard, ActionBadge, StatusPill, SectionTitle } from "@/components/crm/ui";
 import { PaymentLinkButton } from "@/components/crm/payment-link";
-import { CrmChecklist, type CrmDocItem } from "@/components/crm/checklist";
+import {
+  CrmChecklist,
+  GenerateChecklistButton,
+  type CrmDocItem,
+} from "@/components/crm/checklist";
 import {
   StatusChanger,
   AddCommunication,
@@ -121,7 +125,7 @@ export default async function SchedaPraticaPage({
             <dl className="mt-4 grid grid-cols-2 gap-x-6 gap-y-3 text-sm sm:grid-cols-3">
               <Field label="Data decesso" value={p.dateOfDeath} />
               <Field label="Residenza" value={p.residence} />
-              <Field label="Relazione erede" value={p.relation} />
+              <Field label="Eredi (composizione)" value={p.relation} />
               <Field label="N. eredi" value={String(p.heirsCount)} />
               <Field label="Eredi minorenni" value={p.hasMinorHeirs ? "Si" : "No"} />
               <Field label="Testamento" value={p.hasWill ? "Si" : "No"} />
@@ -184,9 +188,14 @@ export default async function SchedaPraticaPage({
             {p.checklist.length > 0 ? (
               <CrmChecklist practiceId={p.id} items={checklistItems} />
             ) : (
-              <p className="mt-4 text-sm text-crm-muted">
-                Checklist non ancora generata (si crea al pagamento).
-              </p>
+              <div className="mt-4">
+                <p className="text-sm text-crm-muted">
+                  Checklist non ancora generata (si crea al pagamento). Se il
+                  cliente è seguito in studio puoi generarla subito e caricare
+                  tu i documenti.
+                </p>
+                <GenerateChecklistButton practiceId={p.id} />
+              </div>
             )}
           </CrmCard>
 

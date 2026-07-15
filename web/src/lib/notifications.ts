@@ -92,12 +92,12 @@ export async function notifyTaxesCommunicated(
   to: string,
   amount: number,
 ): Promise<{ sent: boolean; subject: string }> {
-  const subject = "Le imposte di Stato della tua successione";
+  const subject = "Le imposte della tua successione";
   const html = emailLayout({
-    heading: "Imposte di Stato calcolate",
-    bodyHtml: `<p style="margin:0 0 10px">Abbiamo calcolato le imposte di Stato dovute per la tua successione (modello F24, autoliquidazione):</p>
+    heading: "Imposte calcolate",
+    bodyHtml: `<p style="margin:0 0 10px">Abbiamo calcolato le imposte dovute per la tua successione (modello F24, autoliquidazione):</p>
       <p style="margin:0 0 10px;font-size:22px;font-weight:700;color:#1f6f5c">${eur(amount)}</p>
-      <p style="margin:0 0 10px">Queste somme <strong>non sono il nostro onorario</strong>: si versano allo Stato, senza alcun ricarico. Nella tua area personale trovi il dettaglio e puoi inserire l'IBAN per l'addebito.</p>`,
+      <p style="margin:0 0 10px">Queste somme <strong>non sono il nostro onorario</strong>: si versano allo Stato. Nella tua area personale trovi il dettaglio e puoi inserire l'IBAN per l'addebito.</p>`,
     ctaLabel: "Vai all'area personale",
     ctaHref: `${areaUrl()}/ordine`,
   });
@@ -237,7 +237,7 @@ export async function notifyLeadRecap(
     heading: "Ecco il tuo preventivo",
     bodyHtml: `<p style="margin:0 0 10px">In base alle tue risposte, il pacchetto giusto per il tuo caso e:</p>
       <p style="margin:0 0 10px;font-size:18px"><strong>${input.packageLabel}</strong> — <span style="font-size:22px;font-weight:700;color:#1f6f5c">${input.total.toLocaleString("it-IT")} €</span></p>
-      <p style="margin:0">Prezzo chiaro, tutto compreso (le imposte di Stato sono a parte e si versano senza ricarichi). Quando vuoi, riprendi da qui:</p>`,
+      <p style="margin:0">Prezzo chiaro, deciso prima (le imposte sono a parte: te le calcoliamo noi). Quando vuoi, riprendi da qui:</p>`,
     ctaLabel: "Procedi quando sei pronto",
     ctaHref: input.checkoutUrl,
   });

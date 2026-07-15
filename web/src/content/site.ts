@@ -54,7 +54,7 @@ export const packages: Package[] = [
     price: 490,
     extraPropertyFee: 60,
     slaDays: 15,
-    badge: "Il piu scelto",
+    badge: "Il più scelto",
     sortOrder: 2,
   },
   {
@@ -62,12 +62,12 @@ export const packages: Package[] = [
     name: "Zero Stress",
     tagline: "Ce ne occupiamo noi, dall'inizio alla fine",
     description:
-      "La massima tranquillita per i casi piu corposi: da 3 a 8 immobili, fino a 5 conti e 5 eredi. Recuperiamo noi i documenti mancanti e ti aggiorniamo a ogni step.",
+      "La massima tranquillità per i casi più corposi: da 3 a 8 immobili, fino a 5 conti e 5 eredi. Recuperiamo noi i documenti mancanti e ti aggiorniamo a ogni step.",
     features: [
       "Tutto quello del pacchetto Completo",
       "Da 3 a 8 immobili, fino a 5 conti e 5 eredi",
       "Recupero documenti presso enti e banche",
-      "Priorita di lavorazione",
+      "Priorità di lavorazione",
     ],
     price: 790,
     extraPropertyFee: 60,
@@ -116,45 +116,51 @@ export type Faq = {
 export const faqs: Faq[] = [
   {
     category: "Capire la successione",
-    question: "Cos'e la dichiarazione di successione?",
+    question: "Cos'è la dichiarazione di successione?",
     answer:
-      "E l'adempimento fiscale con cui si comunica all'Agenzia delle Entrate il patrimonio del defunto trasferito agli eredi. Va presentata di norma entro 12 mesi dal decesso.",
+      "È l'adempimento fiscale con cui si comunica all'Agenzia delle Entrate il patrimonio del defunto trasferito agli eredi. Va presentata di norma entro 12 mesi dal decesso.",
   },
   {
     category: "Capire la successione",
     question: "Entro quando va presentata?",
     answer:
-      "Generalmente entro 12 mesi dalla data del decesso. Presentarla in ritardo puo comportare sanzioni: ce ne occupiamo noi nei tempi corretti.",
+      "Generalmente entro 12 mesi dalla data del decesso. Presentarla in ritardo può comportare sanzioni: ce ne occupiamo noi nei tempi corretti.",
   },
   {
     category: "Costi e imposte",
     question: "Quanto costa il vostro servizio?",
     answer:
-      "Paghi un onorario fisso in base al pacchetto. Le imposte di Stato sono separate, a carico dell'erede, e te le calcoliamo e comunichiamo prima dell'invio, senza ricarichi.",
+      "Paghi un onorario fisso in base al pacchetto. Le imposte sono separate, a carico dell'erede, e te le calcoliamo e comunichiamo prima dell'invio.",
   },
   {
     category: "Costi e imposte",
     question: "Le imposte sono comprese nel prezzo?",
     answer:
-      "No: il prezzo del pacchetto e l'onorario professionale. Le imposte di Stato (successione, ipotecaria, catastale, bolli) si versano con F24 e sono separate. Te le calcoliamo noi prima.",
+      "No: il prezzo del pacchetto è l'onorario professionale. Le imposte (successione, ipotecaria, catastale, bolli) si versano con F24 e sono separate. Te le calcoliamo noi prima.",
   },
   {
-    category: "Perche non da soli",
+    category: "Costi e imposte",
+    question: "Cos'è l'agevolazione prima casa in successione?",
+    answer:
+      "Se almeno un erede ha i requisiti prima casa sull'immobile ereditato, le imposte ipotecaria e catastale si pagano in misura fissa (200 euro ciascuna) invece che in percentuale sul valore catastale. Verifichiamo noi se ti spetta e la indichiamo in dichiarazione.",
+  },
+  {
+    category: "Perché non da soli",
     question: "Posso farla gratis da solo sul sito dell'Agenzia?",
     answer:
-      "Si, esiste la successione precompilata gratuita ed e un'opzione onesta. Richiede pero SPID e competenza: non valida i dati catastali e gli eventuali errori (e le sanzioni) restano a tuo carico.",
+      "Sì, esiste la successione precompilata gratuita ed è un'opzione onesta. Richiede però SPID e competenza: non valida i dati catastali e gli eventuali errori (e le sanzioni) restano a tuo carico.",
   },
   {
     category: "Come funziona",
     question: "Devo andare in qualche ufficio?",
     answer:
-      "No. Questionario, documenti, comunicazioni e invio all'Agenzia avvengono online. C'e sempre una chiamata con Lorenzo per spiegarti tutto.",
+      "No. Questionario, documenti, comunicazioni e invio all'Agenzia avvengono online. C'è sempre una chiamata con Lorenzo per spiegarti tutto.",
   },
   {
     category: "Come funziona",
     question: "Quali documenti servono?",
     answer:
-      "Dipende dal tuo caso: ti diamo una lista personalizzata. Se ti manca qualcosa, spesso lo recuperiamo noi (visure, atti di provenienza).",
+      "Dipende dal tuo caso: ti diamo una lista personalizzata. Se ti manca qualcosa, spesso lo possiamo recuperare noi (visure, atti di provenienza).",
   },
   {
     category: "Dopo il servizio",
@@ -208,7 +214,7 @@ export type DocItem = {
 
 export const documentsList: DocItem[] = [
   {
-    name: "Documento d'identita e codice fiscale",
+    name: "Documento d'identità e codice fiscale",
     description: "Di tutti gli eredi e del defunto.",
     when: "Sempre",
   },
@@ -236,7 +242,7 @@ export const documentsList: DocItem[] = [
   {
     name: "Testamento",
     description: "Copia del testamento pubblicato, se presente.",
-    when: "Se c'e un testamento",
+    when: "Se c'è un testamento",
   },
   {
     name: "Certificazione di saldo dei conti",

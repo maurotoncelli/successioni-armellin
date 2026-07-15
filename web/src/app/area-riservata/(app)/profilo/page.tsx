@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { LogOut, Pencil, Check, X, Loader2 } from "lucide-react";
+import { LogOut, Pencil, Check, X, Loader2, KeyRound } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { buttonClasses } from "@/components/ui/button";
 import { PageHeading } from "@/components/area/ui";
 import { useAreaData } from "@/components/area/area-context";
 import { signOut } from "../../actions";
-import { updatePhone } from "./actions";
+import { updatePhone, updatePassword } from "./actions";
 
 export default function ProfiloPage() {
   const { account } = useAreaData();
@@ -31,6 +31,11 @@ export default function ProfiloPage() {
           </div>
           <PhoneRow initial={account.phone} />
         </dl>
+      </Card>
+
+      <Card className="mt-6">
+        <h2 className="text-sm font-semibold text-text">Sicurezza</h2>
+        <PasswordSection />
       </Card>
 
       <Card className="mt-6">
@@ -142,6 +147,132 @@ function PhoneRow({ initial }: { initial: string }) {
         </dd>
       </div>
       {error && <p className="mt-1.5 text-right text-xs text-error">{error}</p>}
+    </div>
+  );
+}
+
+/*
+  Crea/cambia password (opzionale): chi la imposta puo' accedere anche con
+  email+password, chi non la imposta continua con magic link/OTP.
+*/
+function PasswordSection() {
+  const [open, setOpen] = useState(false);
+  const [password, setPassword] = useState("");
+  const [confirm, setConfirm] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [saved, setSaved] = useState(false);
+  const [pending, startTransition] = useTransition();
+
+  const canSave =
+    password.length >= 8 && password === confirm && !pending;
+
+  function save() {
+    setError(null);
+    startTransition(async () => {
+      const res = await updatePassword(password);
+      if (res.ok) {
+        setSaved(true);
+        setOpen(false);
+        setPassword("");
+        setConfirm("");
+      } else {
+        setError(res.error);
+      }
+    });
+  }
+
+  if (!open) {
+    return (
+      <div className="mt-3">
+        <p className="text-sm text-text-muted">
+          Se vuoi, puoi creare una password per accedere più in fretta, senza
+          aspettare il link via email.
+        </p>
+        {saved && (
+          <p className="mt-2 flex items-center gap-1.5 text-sm font-medium text-success">
+            <Check className="h-4 w-4" />
+            Password salvata: dal prossimo accesso puoi usarla insieme agli
+            altri metodi.
+          </p>
+        )}
+        <button
+          onClick={() => {
+            setOpen(true);
+            setSaved(false);
+          }}
+          className={buttonClasses({ variant: "outline", className: "mt-3" })}
+        >
+          <KeyRound className="h-4 w-4" />
+          {saved ? "Cambia password" : "Crea o cambia password"}
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-3 space-y-3">
+      <div>
+        <label
+          htmlFor="new-password"
+          className="mb-1.5 block text-sm font-medium text-text"
+        >
+          Nuova password (minimo 8 caratteri)
+        </label>
+        <input
+          id="new-password"
+          type="password"
+          autoComplete="new-password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full max-w-sm rounded-[10px] border border-primary/20 bg-bg px-3 py-2.5 text-sm focus:border-accent focus:outline-none"
+        />
+      </div>
+      <div>
+        <label
+          htmlFor="confirm-password"
+          className="mb-1.5 block text-sm font-medium text-text"
+        >
+          Ripeti la password
+        </label>
+        <input
+          id="confirm-password"
+          type="password"
+          autoComplete="new-password"
+          value={confirm}
+          onChange={(e) => setConfirm(e.target.value)}
+          className="w-full max-w-sm rounded-[10px] border border-primary/20 bg-bg px-3 py-2.5 text-sm focus:border-accent focus:outline-none"
+        />
+        {confirm.length > 0 && confirm !== password && (
+          <p className="mt-1.5 text-xs text-error">
+            Le due password non coincidono.
+          </p>
+        )}
+      </div>
+      {error && <p className="text-sm text-error">{error}</p>}
+      <div className="flex gap-2">
+        <button
+          onClick={save}
+          disabled={!canSave}
+          className={buttonClasses({})}
+        >
+          {pending ? (
+            <Loader2 className="h-4 w-4 animate-spin" />
+          ) : (
+            <Check className="h-4 w-4" />
+          )}
+          Salva password
+        </button>
+        <button
+          onClick={() => {
+            setOpen(false);
+            setError(null);
+          }}
+          disabled={pending}
+          className={buttonClasses({ variant: "ghost" })}
+        >
+          Annulla
+        </button>
+      </div>
     </div>
   );
 }

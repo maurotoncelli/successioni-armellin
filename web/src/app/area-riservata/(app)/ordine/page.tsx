@@ -5,6 +5,7 @@ import { PageHeading } from "@/components/area/ui";
 import { NoPracticeState } from "@/components/area/empty";
 import { InvoiceDownload } from "@/components/area/invoice-download";
 import { requireClientView } from "@/lib/area";
+import { isPracticeCancelled } from "@/content/area-data";
 import { getPackages } from "@/lib/cms";
 import { getSafeExtras } from "@/lib/practice-extras";
 
@@ -30,6 +31,7 @@ export default async function OrdinePage() {
   const packages = await getPackages();
   const pkg = packages.find((x) => x.key === p.selectedPackage);
   const { invoice } = await getSafeExtras(p.id);
+  const cancelled = isPracticeCancelled(p);
 
   return (
     <div>
@@ -55,7 +57,7 @@ export default async function OrdinePage() {
             </div>
           </div>
           <p className="mt-3 text-xs text-text-muted">
-            Importi comprensivi di IVA/Cassa dove dovuti. Le imposte di Stato sono
+            Importi comprensivi di IVA/Cassa dove dovuti. Le imposte sono
             separate (vedi sotto).
           </p>
 
@@ -113,14 +115,14 @@ export default async function OrdinePage() {
         </Card>
       </div>
 
-      {/* Imposte di Stato */}
+      {/* Imposte */}
       <Card className="mt-6">
         <div className="flex items-start gap-3">
           <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary">
             <Landmark className="h-5 w-5" />
           </span>
           <div className="flex-1">
-            <h2 className="text-sm font-semibold text-text">Imposte di Stato</h2>
+            <h2 className="text-sm font-semibold text-text">Imposte</h2>
             {p.stateTaxes ? (
               <>
                 <p className="mt-1 text-2xl font-semibold text-text">
@@ -129,19 +131,20 @@ export default async function OrdinePage() {
                 <p className="mt-1 text-sm text-text-muted">
                   Queste somme <strong>non sono il nostro onorario</strong>: sono
                   imposte che si versano allo Stato (modello F24, autoliquidazione).
-                  Te le calcoliamo e comunichiamo prima dell&apos;invio, senza
-                  alcun ricarico.
+                  Te le calcoliamo e comunichiamo prima dell&apos;invio.
                 </p>
-                <Link
-                  href="/area-riservata/dati"
-                  className="mt-2 inline-block text-sm font-medium text-accent-dark hover:underline"
-                >
-                  Inserisci l&apos;IBAN per l&apos;addebito
-                </Link>
+                {!cancelled && (
+                  <Link
+                    href="/area-riservata/dati"
+                    className="mt-2 inline-block text-sm font-medium text-accent-dark hover:underline"
+                  >
+                    Inserisci l&apos;IBAN per l&apos;addebito
+                  </Link>
+                )}
               </>
             ) : (
               <p className="mt-1 text-sm text-text-muted">
-                Le imposte di Stato ti verranno calcolate e comunicate prima
+                Le imposte ti verranno calcolate e comunicate prima
                 dell&apos;invio.
               </p>
             )}
@@ -149,18 +152,20 @@ export default async function OrdinePage() {
         </div>
       </Card>
 
-      {/* Recesso */}
-      <div className="mt-6 text-center">
-        <p className="text-sm text-text-muted">
-          Hai cambiato idea?{" "}
-          <Link
-            href="/area-riservata/recesso"
-            className="font-medium text-accent-dark hover:underline"
-          >
-            Richiedi il recesso
-          </Link>
-        </p>
-      </div>
+      {/* Recesso (non proposto su pratiche gia annullate/rimborsate) */}
+      {!cancelled && (
+        <div className="mt-6 text-center">
+          <p className="text-sm text-text-muted">
+            Hai cambiato idea?{" "}
+            <Link
+              href="/area-riservata/recesso"
+              className="font-medium text-accent-dark hover:underline"
+            >
+              Richiedi il recesso
+            </Link>
+          </p>
+        </div>
+      )}
     </div>
   );
 }

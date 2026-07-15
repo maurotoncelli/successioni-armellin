@@ -18,10 +18,37 @@ import {
   verifyOtp,
   sendPhoneOtp,
   verifyPhoneOtp,
+  signInWithGoogle,
+  signInWithPassword,
   type LoginState,
 } from "@/app/area-riservata/actions";
 
 const initial: LoginState = {};
+
+// Logo Google multicolore ufficiale (le linee guida di Google lo richiedono
+// per i pulsanti "Continua con Google").
+function GoogleIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true">
+      <path
+        fill="#EA4335"
+        d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"
+      />
+      <path
+        fill="#4285F4"
+        d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"
+      />
+      <path
+        fill="#FBBC05"
+        d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"
+      />
+      <path
+        fill="#34A853"
+        d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"
+      />
+    </svg>
+  );
+}
 
 // Tutti i testi vengono dal content system (data driven), collection "area_login",
 // nella lingua attiva (locale). Le chiavi mancanti ricadono sull'italiano.
@@ -29,7 +56,7 @@ export function LoginForm({ locale }: { locale: string }) {
   const t = (key: string, fallback: string) =>
     text("area_login", key, fallback, locale);
 
-  const [method, setMethod] = useState<"email" | "phone">("email");
+  const [method, setMethod] = useState<"email" | "phone" | "password">("email");
 
   const [magicState, magicAction, magicPending] = useActionState(
     sendMagicLink,
@@ -44,12 +71,21 @@ export function LoginForm({ locale }: { locale: string }) {
     verifyPhoneOtp,
     initial,
   );
+  const [pwdState, pwdAction, pwdPending] = useActionState(
+    signInWithPassword,
+    initial,
+  );
+  const [googleState, googleAction, googlePending] = useActionState(
+    async (): Promise<LoginState> => signInWithGoogle(),
+    initial,
+  );
 
   const emailSent = magicState.sent === true;
   const phoneSent = phoneState.sent === true;
   const email = magicState.email ?? "";
   const phone = phoneState.phone ?? "";
-  const sent = method === "email" ? emailSent : phoneSent;
+  const sent =
+    method === "email" ? emailSent : method === "phone" ? phoneSent : false;
 
   const [showOtp, setShowOtp] = useState(false);
   const [linkError, setLinkError] = useState<string | null>(null);
@@ -108,34 +144,74 @@ export function LoginForm({ locale }: { locale: string }) {
 
         <div className="rounded-2xl border border-primary/10 bg-bg p-6 shadow-sm">
           {!sent && (
-            <div className="mb-5 grid grid-cols-2 gap-1 rounded-[10px] bg-primary/5 p-1">
-              <button
-                type="button"
-                onClick={() => setMethod("email")}
-                className={cn(
-                  "inline-flex items-center justify-center gap-1.5 rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                  method === "email"
-                    ? "bg-bg text-primary shadow-sm"
-                    : "text-text-muted hover:text-primary",
-                )}
-              >
-                <Mail className="h-4 w-4" />
-                {t("tab_email", "Email")}
-              </button>
-              <button
-                type="button"
-                onClick={() => setMethod("phone")}
-                className={cn(
-                  "inline-flex items-center justify-center gap-1.5 rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                  method === "phone"
-                    ? "bg-bg text-primary shadow-sm"
-                    : "text-text-muted hover:text-primary",
-                )}
-              >
-                <Phone className="h-4 w-4" />
-                {t("tab_phone", "Telefono")}
-              </button>
-            </div>
+            <>
+              {/* Google: un click e resti collegato (niente link da aspettare). */}
+              <form action={googleAction}>
+                <button
+                  type="submit"
+                  disabled={googlePending}
+                  className="flex w-full items-center justify-center gap-2.5 rounded-[10px] border border-primary/20 bg-bg px-4 py-2.5 text-sm font-medium text-text transition-colors hover:border-accent/50 disabled:opacity-60"
+                >
+                  {googlePending ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : (
+                    <GoogleIcon />
+                  )}
+                  {t("google_cta", "Continua con Google")}
+                </button>
+              </form>
+              {googleState.error && (
+                <p className="mt-2 text-sm text-error">{googleState.error}</p>
+              )}
+
+              <div className="my-5 flex items-center gap-3 text-xs text-text-muted">
+                <span className="h-px flex-1 bg-primary/10" />
+                {t("oppure", "oppure")}
+                <span className="h-px flex-1 bg-primary/10" />
+              </div>
+
+              <div className="mb-5 grid grid-cols-3 gap-1 rounded-[10px] bg-primary/5 p-1">
+                <button
+                  type="button"
+                  onClick={() => setMethod("email")}
+                  className={cn(
+                    "inline-flex items-center justify-center gap-1.5 rounded-md px-2 py-2 text-sm font-medium transition-colors",
+                    method === "email"
+                      ? "bg-bg text-primary shadow-sm"
+                      : "text-text-muted hover:text-primary",
+                  )}
+                >
+                  <Mail className="h-4 w-4" />
+                  {t("tab_email", "Email")}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setMethod("phone")}
+                  className={cn(
+                    "inline-flex items-center justify-center gap-1.5 rounded-md px-2 py-2 text-sm font-medium transition-colors",
+                    method === "phone"
+                      ? "bg-bg text-primary shadow-sm"
+                      : "text-text-muted hover:text-primary",
+                  )}
+                >
+                  <Phone className="h-4 w-4" />
+                  {t("tab_phone", "Telefono")}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setMethod("password")}
+                  className={cn(
+                    "inline-flex items-center justify-center gap-1.5 rounded-md px-2 py-2 text-sm font-medium transition-colors",
+                    method === "password"
+                      ? "bg-bg text-primary shadow-sm"
+                      : "text-text-muted hover:text-primary",
+                  )}
+                >
+                  <KeyRound className="h-4 w-4" />
+                  {t("tab_password", "Password")}
+                </button>
+              </div>
+            </>
           )}
 
           {/* ---------- EMAIL ---------- */}
@@ -313,6 +389,79 @@ export function LoginForm({ locale }: { locale: string }) {
                 ) : (
                   <>
                     {t("phone_cta", "Inviami il codice via SMS")}
+                    <ArrowRight className="h-4 w-4" />
+                  </>
+                )}
+              </button>
+            </form>
+          )}
+
+          {/* ---------- PASSWORD ---------- */}
+          {method === "password" && (
+            <form action={pwdAction} className="space-y-4">
+              <div>
+                <label
+                  htmlFor="pwd-email"
+                  className="mb-1.5 block text-sm font-medium text-text"
+                >
+                  {t("email_label", "La tua email")}
+                </label>
+                <div className="relative">
+                  <Mail className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-text-muted" />
+                  <input
+                    id="pwd-email"
+                    name="email"
+                    type="email"
+                    required
+                    defaultValue={pwdState.email ?? ""}
+                    placeholder={t("email_placeholder", "nome@email.it")}
+                    className="w-full rounded-[10px] border border-primary/20 bg-bg py-2.5 pl-9 pr-3 text-sm text-text focus:border-accent focus:outline-none"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  htmlFor="pwd-password"
+                  className="mb-1.5 block text-sm font-medium text-text"
+                >
+                  {t("password_label", "La tua password")}
+                </label>
+                <div className="relative">
+                  <KeyRound className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-text-muted" />
+                  <input
+                    id="pwd-password"
+                    name="password"
+                    type="password"
+                    required
+                    autoComplete="current-password"
+                    className="w-full rounded-[10px] border border-primary/20 bg-bg py-2.5 pl-9 pr-3 text-sm text-text focus:border-accent focus:outline-none"
+                  />
+                </div>
+                <p className="mt-1.5 text-xs text-text-muted">
+                  {t(
+                    "password_hint",
+                    "Si crea dal profilo, dopo il primo accesso. Non ce l'hai? Usa l'email.",
+                  )}
+                </p>
+              </div>
+
+              {pwdState.error && (
+                <p className="text-sm text-error">{pwdState.error}</p>
+              )}
+
+              <button
+                type="submit"
+                disabled={pwdPending}
+                className={buttonClasses({ className: "w-full" })}
+              >
+                {pwdPending ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    {t("password_verifying", "Accesso in corso…")}
+                  </>
+                ) : (
+                  <>
+                    {t("password_cta", "Accedi")}
                     <ArrowRight className="h-4 w-4" />
                   </>
                 )}

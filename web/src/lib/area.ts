@@ -49,7 +49,14 @@ export const getClientView = cache(async (): Promise<ClientView | null> => {
   if (error) console.error("[area] lettura pratiche:", error.message);
 
   const rows = data ?? [];
-  const chosen = rows.find((r) => r.payment_status === "PAID") ?? rows[0] ?? null;
+  // Priorita: pratica pagata ATTIVA -> qualsiasi attiva -> la piu recente
+  // (anche annullata: resta visibile come storico, non sparisce).
+  const isActive = (r: { status: string }) => r.status !== "ANNULLATA";
+  const chosen =
+    rows.find((r) => r.payment_status === "PAID" && isActive(r)) ??
+    rows.find(isActive) ??
+    rows[0] ??
+    null;
   const practice = chosen ? mapPractice(chosen) : null;
 
   const account: Account = practice

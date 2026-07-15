@@ -2,15 +2,24 @@
 
 import { revalidatePath } from "next/cache";
 import { getAdminClient, isAdminConfigured } from "@/lib/supabase/admin";
-import { computeEsito, suggestedPackage, type Esito } from "@/lib/quote";
+import {
+  computeEsito,
+  heirsSummary,
+  isAllDirectLine,
+  suggestedPackage,
+  totalHeirs,
+  type Esito,
+  type HeirsComposition,
+} from "@/lib/quote";
 import { getPackages, getAddons } from "@/lib/cms";
 import { buildOrder } from "@/lib/order";
 import { notifyAdminNewLead, notifyLeadRecap, siteBase } from "@/lib/notifications";
 import type { Communication, LogEvent } from "@/content/crm-data";
 
 export type LeadInput = {
-  relation: string; // coniuge | figlio | genitore | fratello | nipote | altro
-  heirs: string; // 1 | 2 | 3 | 4 | 5+
+  /** Composizione eredi per tipo (nuovo quiz); null se non disponibile. */
+  heirsComposition: HeirsComposition | null;
+  heirs: string; // numero totale eredi (stringa, compatibilita col flusso esistente)
   hasRealEstate: string; // si | no | nonso
   realEstateCount?: number | null; // numero immobili, se hasRealEstate === "si"
   hasWill: string; // si | no | nonso
@@ -33,15 +42,6 @@ export type LeadResult = {
   emailSent?: boolean;
 };
 
-const relationLabels: Record<string, string> = {
-  coniuge: "Coniuge",
-  figlio: "Figlio/a",
-  genitore: "Genitore",
-  fratello: "Fratello/Sorella",
-  nipote: "Nipote",
-  altro: "Altro",
-};
-
 function splitName(full: string): { first: string; last: string } {
   const parts = full.trim().split(/\s+/);
   if (parts.length <= 1) return { first: parts[0] ?? "", last: "" };
@@ -55,7 +55,15 @@ function isoDate(offsetDays = 0): string {
 }
 
 export async function createLead(input: LeadInput): Promise<LeadResult> {
-  const esito = computeEsito(input);
+  const esito = computeEsito({
+    hasWill: input.hasWill,
+    allDirectLine: input.heirsComposition
+      ? isAllDirectLine(input.heirsComposition)
+      : false,
+    hasRealEstate: input.hasRealEstate,
+    hasOther: input.hasOther,
+    over100k: input.over100k,
+  });
 
   // Senza database configurato il sito resta funzionante: niente scrittura.
   if (!isAdminConfigured) return { ok: false, esito };
@@ -63,8 +71,9 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
   try {
     const admin = getAdminClient();
     const { first, last } = splitName(input.name);
-    // "5+" -> 5, "4" -> 4, ecc. parseInt ignora il "+" finale.
-    const heirsCount = Number.parseInt(input.heirs || "0", 10) || 0;
+    const heirsCount = input.heirsComposition
+      ? totalHeirs(input.heirsComposition)
+      : Number.parseInt(input.heirs || "0", 10) || 0;
     const fullName = input.name.trim() || `${first} ${last}`.trim();
     const nowStamp = new Date().toISOString().slice(0, 16).replace("T", " ");
     const isCustom = input.kind === "custom_quote" || esito === "c";
@@ -99,7 +108,11 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
         client_name: fullName || "Nuovo lead",
         client_email: input.email.trim(),
         client_phone: input.phone.trim(),
-        relation: relationLabels[input.relation] ?? input.relation,
+        // Nel campo relation salviamo la composizione degli eredi in chiaro
+        // (es. "Coniuge + 2 figli"): e' l'informazione utile per Lorenzo.
+        relation: input.heirsComposition
+          ? heirsSummary(input.heirsComposition)
+          : "",
         heirs_count: heirsCount,
         has_will: input.hasWill === "si",
         has_real_estate: input.hasRealEstate === "si",

@@ -26,7 +26,7 @@ export default async function CheckoutPage({
     annullato?: string;
     pkg?: string;
     recount?: string;
-    rel?: string;
+    comp?: string;
     heirs?: string;
     hasre?: string;
     will?: string;
@@ -159,7 +159,7 @@ export default async function CheckoutPage({
                     packageKey={order ? (packageKey ?? null) : null}
                     realEstateCount={realEstateCount}
                     answers={{
-                      relation: sp.rel ?? "",
+                      comp: sp.comp ?? "",
                       heirs: sp.heirs ?? "",
                       hasRealEstate: sp.hasre ?? "",
                       hasWill: sp.will ?? "no",
