@@ -276,24 +276,59 @@ function addOneYear(dateStr: string): string {
   return `${y + 1}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
 }
 
+/*
+  Normalizza a "YYYY-MM-DD": alcune colonne testuali (e i vecchi dati) possono
+  contenere anche l'ora ("2026-07-15 09:30") che non matcherebbe mai la cella
+  del giorno nel calendario. Ritorna null se non c'e una data valida.
+*/
+function dateOnly(value: string | null | undefined): string | null {
+  if (!value) return null;
+  const d = value.slice(0, 10);
+  return /^\d{4}-\d{2}-\d{2}$/.test(d) ? d : null;
+}
+
 export function calendarEvents(practices: Practice[]): CalEvent[] {
   const events: CalEvent[] = [];
   for (const p of practices) {
     if (p.status === "ANNULLATA") continue;
-    if (p.openedAt)
-      events.push({ dateStr: p.openedAt, type: "apertura", label: "Apertura", practiceId: p.id, code: p.code });
-    if (p.dueDate)
-      events.push({ dateStr: p.dueDate, type: "consegna", label: "Consegna", practiceId: p.id, code: p.code });
-    if (p.submittedAt)
-      events.push({ dateStr: p.submittedAt, type: "invio", label: "Invio AdE", practiceId: p.id, code: p.code });
-    if (p.dateOfDeath && p.status !== "CHIUSA")
+
+    const opened = dateOnly(p.openedAt);
+    const due = dateOnly(p.dueDate);
+    const submitted = dateOnly(p.submittedAt);
+    const death = dateOnly(p.dateOfDeath);
+    // Dichiarazione partita: consegna e scadenza 12 mesi sono "assolte",
+    // restano visibili come storia ma senza evidenza di urgenza.
+    const fulfilled = p.status === "INVIATA" || p.status === "CHIUSA";
+
+    if (opened)
+      events.push({ dateStr: opened, type: "apertura", label: "Apertura", practiceId: p.id, code: p.code });
+    if (due)
+      events.push({ dateStr: due, type: "consegna", label: "Consegna", practiceId: p.id, code: p.code, done: fulfilled });
+    if (submitted)
+      events.push({ dateStr: submitted, type: "invio", label: "Invio AdE", practiceId: p.id, code: p.code });
+    if (death)
       events.push({
-        dateStr: addOneYear(p.dateOfDeath),
+        dateStr: addOneYear(death),
         type: "scadenza",
         label: "Scadenza 12 mesi",
         practiceId: p.id,
         code: p.code,
+        done: fulfilled,
       });
+
+    // Promemoria (to-do) con data: sono lavoro pianificato, vanno sul calendario.
+    for (const t of p.tasks) {
+      const taskDue = dateOnly(t.dueDate);
+      if (!taskDue) continue;
+      events.push({
+        dateStr: taskDue,
+        type: "todo",
+        label: t.title,
+        practiceId: p.id,
+        code: p.code,
+        done: t.done,
+      });
+    }
   }
   return events;
 }
@@ -310,16 +345,18 @@ export type DeadlineItem = {
   practiceId: string;
   code: string;
   clientName: string;
-  type: "scadenza" | "consegna";
+  type: "scadenza" | "consegna" | "todo";
   label: string;
   dateStr: string;
   daysLeft: number; // <0 = scaduta
 };
 
 /*
-  Scadenze rilevanti (consegna prevista + scadenza 12 mesi) entro `withinDays`
-  giorni, ordinate per data. Derivate dalle pratiche (no cron): servono al
-  pannello Home e all'evidenza nel calendario. Le scadute restano in lista.
+  Scadenze rilevanti (consegna prevista, scadenza 12 mesi, to-do con data)
+  entro `withinDays` giorni, ordinate per data. Derivate dalle pratiche
+  (no cron): servono al pannello Home e all'evidenza nel calendario.
+  Le scadute restano in lista. Consegna e scadenza 12 mesi sono "assolte"
+  quando la dichiarazione e partita (INVIATA): non sono piu urgenze.
 */
 export function upcomingDeadlines(
   practices: Practice[],
@@ -329,17 +366,31 @@ export function upcomingDeadlines(
   const items: DeadlineItem[] = [];
   for (const p of practices) {
     if (["CHIUSA", "ANNULLATA"].includes(p.status)) continue;
+    // Dichiarazione gia partita: consegna e 12 mesi assolte, restano solo i to-do.
+    const fulfilled = p.status === "INVIATA";
+    const death = dateOnly(p.dateOfDeath);
     const candidates: {
-      type: "scadenza" | "consegna";
+      type: "scadenza" | "consegna" | "todo";
       label: string;
       dateStr: string | null;
     }[] = [
-      { type: "consegna", label: "Consegna prevista", dateStr: p.dueDate },
+      {
+        type: "consegna",
+        label: "Consegna prevista",
+        dateStr: fulfilled ? null : dateOnly(p.dueDate),
+      },
       {
         type: "scadenza",
         label: "Scadenza 12 mesi",
-        dateStr: p.dateOfDeath ? addOneYear(p.dateOfDeath) : null,
+        dateStr: fulfilled || !death ? null : addOneYear(death),
       },
+      ...p.tasks
+        .filter((t) => !t.done)
+        .map((t) => ({
+          type: "todo" as const,
+          label: `To-do: ${t.title}`,
+          dateStr: dateOnly(t.dueDate),
+        })),
     ];
     for (const c of candidates) {
       if (!c.dateStr) continue;

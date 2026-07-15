@@ -14,7 +14,11 @@ const WEEKDAYS = ["Lun", "Mar", "Mer", "Gio", "Ven", "Sab", "Dom"];
 const SOON_DAYS = 14;
 
 // Tipi di evento che rappresentano una scadenza (da evidenziare se vicina/scaduta).
-const DEADLINE_TYPES: ReadonlySet<CalEventType> = new Set(["scadenza", "consegna"]);
+const DEADLINE_TYPES: ReadonlySet<CalEventType> = new Set([
+  "scadenza",
+  "consegna",
+  "todo",
+]);
 
 function daysTo(today: string, dateStr: string): number {
   const a = Date.parse(`${today}T00:00:00Z`);
@@ -24,8 +28,9 @@ function daysTo(today: string, dateStr: string): number {
 }
 
 // Classe extra per evidenziare le scadenze: rosso se scaduta, giallo se imminente.
+// Gli eventi "assolti" (dichiarazione inviata, to-do spuntato) non allarmano.
 function urgencyRing(today: string, e: CalEvent): string {
-  if (!DEADLINE_TYPES.has(e.type)) return "";
+  if (!DEADLINE_TYPES.has(e.type) || e.done) return "";
   const d = daysTo(today, e.dateStr);
   if (d < 0) return "ring-1 ring-crm-rose";
   if (d <= SOON_DAYS) return "ring-1 ring-crm-amber";
@@ -221,6 +226,7 @@ function MonthView({
                           "block truncate rounded px-1.5 py-0.5 text-[11px] font-medium",
                           calEventMeta[e.type].chip,
                           urgencyRing(today, e),
+                          e.done && "opacity-50",
                         )}
                         title={`${calEventMeta[e.type].label} · ${e.code}`}
                       >
@@ -251,16 +257,21 @@ function AgendaView({ events, today }: { events: CalEvent[]; today: string }) {
       <ul>
         {upcoming.map((e, i) => {
           const d = daysTo(today, e.dateStr);
-          const isSoon = DEADLINE_TYPES.has(e.type) && d <= SOON_DAYS;
+          const isSoon = DEADLINE_TYPES.has(e.type) && !e.done && d <= SOON_DAYS;
           return (
             <li key={i} className="border-b border-crm-border last:border-0">
               <Link
                 href={`/crm/pratiche/${e.practiceId}`}
-                className="flex items-center gap-4 px-4 py-3 hover:bg-crm-hover/40"
+                className={cn(
+                  "flex items-center gap-4 px-4 py-3 hover:bg-crm-hover/40",
+                  e.done && "opacity-50",
+                )}
               >
                 <span className="w-24 shrink-0 text-sm text-crm-text2">{e.dateStr}</span>
                 <span className={cn("h-2.5 w-2.5 shrink-0 rounded-full", calEventMeta[e.type].dot)} />
-                <span className="text-sm text-crm-text">{calEventMeta[e.type].label}</span>
+                <span className="text-sm text-crm-text">
+                  {e.type === "todo" ? `${calEventMeta.todo.label}: ${e.label}` : calEventMeta[e.type].label}
+                </span>
                 {isSoon && (
                   <span className="rounded-full bg-crm-amber/15 px-2 py-0.5 text-[11px] font-medium text-crm-amber">
                     {d === 0 ? "oggi" : d === 1 ? "domani" : `tra ${d} gg`}

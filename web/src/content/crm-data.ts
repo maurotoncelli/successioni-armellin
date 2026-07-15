@@ -652,7 +652,7 @@ export const alerts: Alert[] = [
   { kind: "ferma", text: "SUC-2026-0005 - ferma da 5 giorni", practiceId: "p8" },
 ];
 
-export type CalEventType = "apertura" | "consegna" | "scadenza" | "invio";
+export type CalEventType = "apertura" | "consegna" | "scadenza" | "invio" | "todo";
 
 export type CalEvent = {
   dateStr: string; // YYYY-MM-DD
@@ -660,6 +660,8 @@ export type CalEvent = {
   label: string;
   practiceId: string;
   code: string;
+  /** Evento superato/assolto (es. consegna di una pratica gia inviata): niente evidenza di urgenza. */
+  done?: boolean;
 };
 
 export const calEventMeta: Record<
@@ -670,6 +672,7 @@ export const calEventMeta: Record<
   consegna: { label: "Consegna prevista", chip: "bg-crm-accent/15 text-crm-accent", dot: "bg-crm-accent" },
   scadenza: { label: "Scadenza 12 mesi", chip: "bg-crm-rose/15 text-crm-rose", dot: "bg-crm-rose" },
   invio: { label: "Invio AdE", chip: "bg-crm-green/15 text-crm-green", dot: "bg-crm-green" },
+  todo: { label: "Promemoria (to-do)", chip: "bg-crm-amber/15 text-crm-amber", dot: "bg-crm-amber" },
 };
 
 function addOneYear(dateStr: string): string {

@@ -142,6 +142,26 @@ Lingua del progetto: **italiano**. Scrivere sempre in italiano con l'utente.
   email nostra al cliente (Stripe manda la sua), ANNULLATA senza template email
   (la copre l'email esito recesso).
 
+### Blocco 12 — Calendario CRM irrobustito (FATTO 15/07)
+- Audit: gli eventi derivati c'erano (apertura, consegna, invio AdE, scadenza
+  12 mesi) ma "poche voci" perche' molte pratiche di prova non hanno date e i
+  TO-DO CON DATA non finivano sul calendario. Migliorie in `lib/crm.ts` +
+  `components/crm/calendar.tsx` + tipi in `content/crm-data.ts`:
+  1. Nuovo tipo evento `todo` (ambra): i promemoria con scadenza delle pratiche
+     appaiono su calendario (mese+agenda) e in "Scadenze in arrivo" della Home
+     (esclusi quelli spuntati; sul calendario i fatti restano al 50% opacita).
+  2. Flag `done` sugli eventi: consegna prevista e scadenza 12 mesi diventano
+     "assolte" quando la dichiarazione e' INVIATA/CHIUSA -> niente ring
+     rosso/ambra ne' badge urgenza su pratiche gia' inviate (prima una pratica
+     INVIATA con due_date passata risultava "scaduta").
+  3. `dateOnly()` difensivo su tutte le date (accetta solo YYYY-MM-DD valide,
+     tronca eventuali orari) cosi un formato sporco non fa sparire l'evento.
+- Dati verificati in produzione (query 15/07): 18 pratiche, 8 con apertura,
+  5 con consegna, 2 con invio, 8 con data decesso, 12 con to-do. La sensazione
+  di "poche voci" viene dalle pratiche di test senza date: la pulizia (Blocco 6)
+  la risolvera'. NB: 0006 e 0010 (pagate, COMPLETO) sono senza due_date perche'
+  pagate prima dell'auto-SLA: sono test, non backfillate apposta.
+
 ### Blocco 11 — Video "Come funziona" (SCRIPT PRONTO 15/07, riprese da fare)
 - Script completo + testo voce fuori campo in
   `blueprint/15_Video_Come_Funziona_Script.md`. Video di processo lato cliente
