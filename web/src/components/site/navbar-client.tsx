@@ -33,14 +33,18 @@ export function NavbarClient({
   return (
     <header className="sticky top-0 z-40 border-b border-primary/10 bg-bg/90 backdrop-blur">
       <nav className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-6 px-5 sm:px-8">
-        <Link href="/" className="flex items-center gap-2" aria-label="Home">
+        <Link
+          href="/"
+          className="flex min-w-0 items-center gap-2.5"
+          aria-label="Home"
+        >
           <span
             aria-hidden
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent font-display text-[15px] font-bold leading-none text-white"
+            className="inline-flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-accent font-sans text-sm font-bold leading-none text-white [aspect-ratio:1]"
           >
             A
           </span>
-          <span className="font-serif text-lg font-semibold text-primary">
+          <span className="whitespace-nowrap font-serif text-lg font-semibold leading-none text-primary">
             Armellin
             <span className="hidden font-sans text-sm font-normal text-text-muted sm:inline">
               {" "}

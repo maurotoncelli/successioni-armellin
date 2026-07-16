@@ -56,7 +56,7 @@ export function Footer() {
           <div className="flex items-center gap-2">
             <span
               aria-hidden
-              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent font-display text-[15px] font-bold leading-none text-white"
+              className="inline-flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-accent font-sans text-sm font-bold leading-none text-white [aspect-ratio:1]"
             >
               A
             </span>
