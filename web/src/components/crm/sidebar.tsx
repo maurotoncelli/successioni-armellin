@@ -10,6 +10,7 @@ import {
   BarChart3,
   FileEdit,
   Lightbulb,
+  PauseCircle,
   ExternalLink,
   LogOut,
 } from "lucide-react";
@@ -101,6 +102,18 @@ export function Sidebar() {
         >
           <Lightbulb className="h-[18px] w-[18px]" />
           Migliorie sito
+        </Link>
+        <Link
+          href="/crm/modalita-offline"
+          className={cn(
+            "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+            pathname.startsWith("/crm/modalita-offline")
+              ? "bg-crm-accent/15 text-crm-accent"
+              : "text-crm-text2 hover:bg-crm-hover hover:text-crm-text",
+          )}
+        >
+          <PauseCircle className="h-[18px] w-[18px]" />
+          Modalità offline
         </Link>
       </nav>
 

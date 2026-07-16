@@ -13,6 +13,8 @@ const mobileNav = [
   { href: "/crm/contatti", label: "Contatti" },
   { href: "/crm/statistiche", label: "Statistiche" },
   { href: "/crm/listino", label: "Listino e contenuti" },
+  { href: "/crm/migliorie", label: "Migliorie sito" },
+  { href: "/crm/modalita-offline", label: "Modalità offline" },
 ];
 
 export function Topbar({ notificationCount = 0 }: { notificationCount?: number }) {
