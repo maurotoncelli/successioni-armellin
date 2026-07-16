@@ -155,13 +155,13 @@
       { "voce": "Abilitazione Entratel", "dettaglio": "Intermediario per l'invio telematico all'Agenzia delle Entrate" },
       { "voce": "Partita IVA", "dettaglio": "02432220503" }
     ] },
-    { "collection": "chi_siamo", "key": "team_title", "locale": "it", "is_published": true, "value": "Il meglio dei due mondi: geometra + commercialisti" },
-    { "collection": "chi_siamo", "key": "team_body", "locale": "it", "is_published": true, "value": "La dichiarazione la predispongo e la trasmetto io, che sono pienamente titolato a farlo. Per la parte fiscale mi avvalgo della supervisione di commercialisti: così unisci la precisione catastale di un geometra alla sicurezza sui numeri. Una sola pratica, due competenze." },
+    { "collection": "chi_siamo", "key": "team_title", "locale": "it", "is_published": true, "value": "Geometra sui catastali, commercialisti sui numeri" },
+    { "collection": "chi_siamo", "key": "team_body", "locale": "it", "is_published": true, "value": "Predispongo e trasmetto io la dichiarazione: sono abilitato a farlo. Per la parte fiscale mi avvalgo della supervisione di commercialisti. Così hai il controllo tecnico sui dati catastali e la sicurezza sui calcoli, senza spezzare la pratica tra studi diversi." },
     { "collection": "chi_siamo", "key": "team_membri", "locale": "it", "is_published": false, "value": [
       { "ruolo": "Geometra abilitato Entratel", "nome": "Lorenzo Armellin", "focus": "Predispone e invia la pratica, controllo catastale", "foto": { "asset_key": "ritratto_lorenzo" } },
       { "ruolo": "Supervisione fiscale", "nome": "Commercialista (da confermare)", "focus": "Verifica della parte fiscale/imposte", "foto": { "asset_key": "ritratto_commercialista" } }
     ] },
-    { "collection": "chi_siamo", "key": "perche_geometra_body", "locale": "it", "is_published": true, "value": "Molti si aspettano un commercialista, un CAF o un notaio. Per la successione, però, la parte più delicata sono i dati catastali: ed è esattamente il mestiere del geometra. Per il deposito serve un intermediario abilitato (Entratel) - lo sono. Il notaio serve solo per atti successivi, non per la dichiarazione." },
+    { "collection": "chi_siamo", "key": "perche_geometra_body", "locale": "it", "is_published": true, "value": "Molti si aspettano un commercialista, un CAF o un notaio. Nella successione, però, il punto più delicato sono i dati catastali: è il mestiere del geometra. Per il deposito serve un intermediario Entratel — lo sono. Il notaio interviene solo per atti successivi, non per la dichiarazione." },
     { "collection": "chi_siamo", "key": "studio_title", "locale": "it", "is_published": true, "value": "Dove mi trovi" },
     { "collection": "chi_siamo", "key": "studio_indirizzo", "locale": "it", "is_published": true, "value": { "via": "Via Vittorio Veneto 31", "cap": "56025", "citta": "Pontedera (PI)" } },
     { "collection": "chi_siamo", "key": "studio_nota", "locale": "it", "is_published": true, "value": "Tutto si fa a distanza, ma lo studio esiste davvero: è qui." },

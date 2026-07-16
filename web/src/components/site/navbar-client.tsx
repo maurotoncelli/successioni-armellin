@@ -34,7 +34,10 @@ export function NavbarClient({
     <header className="sticky top-0 z-40 border-b border-primary/10 bg-bg/90 backdrop-blur">
       <nav className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-6 px-5 sm:px-8">
         <Link href="/" className="flex items-center gap-2" aria-label="Home">
-          <span className="grid h-9 w-9 place-items-center rounded-md bg-accent font-display text-lg font-bold text-white">
+          <span
+            aria-hidden
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent font-display text-[15px] font-bold leading-none text-white"
+          >
             A
           </span>
           <span className="font-serif text-lg font-semibold text-primary">

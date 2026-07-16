@@ -200,24 +200,20 @@ export default function HomePage() {
         />
         <div className="mx-auto mt-12 max-w-4xl">
           <div className="relative grid grid-cols-[1.2fr_1fr_1fr] overflow-hidden rounded-2xl border border-primary/10 bg-bg shadow-md sm:grid-cols-[1.5fr_1fr_1fr]">
-            {/* Intestazioni */}
-            <div className="flex items-end border-b border-primary/10 p-4 sm:p-5">
-              <span className="text-xs font-semibold uppercase tracking-wide text-text-muted/70">
+            {/* Intestazioni: solo etichette colonna, senza X/logo (i segni restano nelle righe) */}
+            <div className="flex items-end border-b border-primary/10 bg-bg-muted/40 p-4 sm:p-5">
+              <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-text-muted/80">
                 Confronto
               </span>
             </div>
-            <div className="flex items-end justify-center border-b border-primary/10 p-4 sm:p-5">
-              <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-text-muted">
-                <X className="h-3.5 w-3.5 text-error/60" />
+            <div className="flex items-end justify-center border-b border-primary/10 bg-bg-muted/40 p-4 sm:p-5">
+              <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-text-muted">
                 Fai-da-te
               </span>
             </div>
             <div className="relative flex items-end justify-center border-b border-accent/20 bg-sand p-4 sm:p-5">
               <span className="absolute -top-px left-0 right-0 h-1 bg-accent" />
-              <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-accent-dark">
-                <span className="grid h-4 w-4 place-items-center rounded-full bg-accent text-[9px] font-bold text-white">
-                  A
-                </span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-accent-dark">
                 Con noi
               </span>
             </div>
