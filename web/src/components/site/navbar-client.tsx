@@ -32,7 +32,7 @@ export function NavbarClient({
 
   return (
     <header className="sticky top-0 z-40 border-b border-primary/10 bg-bg/90 backdrop-blur">
-      <nav className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-5 sm:px-8">
+      <nav className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-6 px-5 sm:px-8">
         <Link href="/" className="flex items-center gap-2" aria-label="Home">
           <span className="grid h-9 w-9 place-items-center rounded-md bg-accent font-display text-lg font-bold text-white">
             A
@@ -46,12 +46,12 @@ export function NavbarClient({
           </span>
         </Link>
 
-        <ul className="hidden items-center gap-6 xl:flex">
+        <ul className="hidden items-center gap-1 xl:flex 2xl:gap-2">
           {menu.map((item) => (
             <li key={item.href}>
               <Link
                 href={item.href}
-                className="whitespace-nowrap text-sm font-medium text-text transition-colors hover:text-accent"
+                className="whitespace-nowrap rounded-md px-2.5 py-2 text-sm font-medium text-text transition-colors hover:bg-primary/5 hover:text-accent 2xl:px-3"
               >
                 {item.label}
               </Link>
@@ -72,13 +72,17 @@ export function NavbarClient({
           <span className="h-5 w-px bg-primary/15" aria-hidden />
           <a
             href={ctaPhone.href}
+            aria-label={ctaPhone.label}
+            title={ctaPhone.label}
             className={buttonClasses({
               variant: "outline",
               className: "whitespace-nowrap",
             })}
           >
             <Phone className="h-4 w-4 shrink-0" />
-            {ctaPhone.label}
+            {/* Sotto i 1536px il pulsante resta solo icona: libera spazio e
+                le voci di menu respirano. */}
+            <span className="hidden 2xl:inline">{ctaPhone.label}</span>
           </a>
           {!hideQuoteCta && (
             <Link

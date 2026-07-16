@@ -70,7 +70,9 @@ export default function ComeFunzionaPage() {
 
       <Section>
         <SectionHeading title={text("come_funziona", "deliverable_title")} />
-        <ul className="mx-auto mt-10 grid max-w-2xl gap-3">
+        {/* w-fit: il blocco si centra sulla larghezza reale delle voci, cosi
+            l'elenco risulta allineato al titolo centrato della sezione. */}
+        <ul className="mx-auto mt-10 grid w-fit max-w-2xl gap-3">
           {deliverable.map((item) => (
             <li key={item} className="flex items-start gap-2.5">
               <Check className="mt-1 h-5 w-5 shrink-0 text-success" />

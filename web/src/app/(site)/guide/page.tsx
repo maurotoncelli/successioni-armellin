@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Calculator, ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
 import { Section } from "@/components/ui/section";
@@ -53,22 +54,32 @@ export default async function GuidePage() {
         {toolBanner.href && (
           <Link
             href={toolBanner.href}
-            className="group mb-10 flex flex-col gap-4 rounded-2xl border border-accent/30 bg-sand p-6 transition-colors hover:border-accent sm:flex-row sm:items-center"
+            className="group mb-10 flex flex-col overflow-hidden rounded-2xl border border-accent/30 bg-sand transition-all hover:-translate-y-0.5 hover:border-accent hover:shadow-md sm:flex-row sm:items-stretch"
           >
-            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-accent/15">
-              <Calculator className="h-6 w-6 text-accent" />
-            </span>
-            <span className="flex-1">
-              <span className="block font-serif text-lg font-semibold text-primary">
+            <span className="flex flex-1 flex-col justify-center gap-3 p-6 sm:p-8">
+              <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-accent-dark">
+                <Calculator className="h-4 w-4" />
+                Strumento gratuito
+              </span>
+              <span className="block font-serif text-xl font-semibold text-primary sm:text-2xl">
                 {toolBanner.title}
               </span>
-              <span className="mt-1 block text-sm text-text-muted">
+              <span className="block max-w-xl text-sm leading-relaxed text-text-muted">
                 {toolBanner.body}
               </span>
+              <span className="mt-1 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-dark">
+                {toolBanner.cta_label}
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </span>
             </span>
-            <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent-dark">
-              {toolBanner.cta_label}
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            <span className="relative block h-40 shrink-0 sm:h-auto sm:w-64 md:w-80">
+              <Image
+                src="/images/strumento-valore-catastale.png"
+                alt="Illustrazione: casa, calcolatrice e documento con simbolo euro"
+                fill
+                sizes="(max-width: 640px) 100vw, 320px"
+                className="object-cover object-center"
+              />
             </span>
           </Link>
         )}

@@ -80,14 +80,17 @@ export async function getPackages(): Promise<Package[]> {
 export async function getAddons(): Promise<Addon[]> {
   if (!isSupabaseConfigured) return fixtureAddons;
   try {
+    // Legge TUTTE le righe e filtra le attive dopo: se la tabella e' popolata
+    // ma tutti gli addon sono disattivati dal CRM, il risultato e' [] (il sito
+    // nasconde il blocco). Il fallback alle fixture resta solo per tabella
+    // davvero vuota o errore.
     const { data, error } = await getPublicClient()
       .from("addons")
       .select("*")
-      .eq("is_active", true)
       .order("sort_order", { ascending: true });
     if (error) throw error;
     if (!data || data.length === 0) return fixtureAddons;
-    return data.map(mapAddon);
+    return data.filter((row) => row.is_active).map(mapAddon);
   } catch (err) {
     console.error("[cms] getAddons fallback su fixture:", err);
     return fixtureAddons;

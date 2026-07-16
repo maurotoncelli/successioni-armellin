@@ -17,6 +17,7 @@ import { PackageCards } from "@/components/site/package-cards";
 import { Reviews } from "@/components/site/reviews";
 import { CtaBand } from "@/components/site/cta-band";
 import { cta, list, text } from "@/lib/content";
+import { cn } from "@/lib/utils";
 
 const vantaggiIcons = [House, ShieldCheck, HeartHandshake];
 
@@ -53,10 +54,15 @@ export default function HomePage() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[78%_center]"
+          // Il volto sta a ~62% orizzontale / ~20% verticale dell'immagine:
+          // su schermi stretti il crop deve inseguirlo, altrimenti resta
+          // fuori inquadratura (si vedeva solo la libreria).
+          className="object-cover object-[62%_22%] sm:object-[68%_30%] lg:object-[78%_center]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/85 to-primary/25" />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent" />
+        {/* Scrim per la leggibilita del testo: forte solo a sinistra, la foto
+            resta pulita sulla destra (prima il velo blu copriva tutto). */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/70 via-40% to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/45 via-transparent to-transparent" />
         <div className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-accent/10 blur-3xl" />
         <Container className="relative py-16 sm:py-20">
           <div className="max-w-2xl">
@@ -193,32 +199,55 @@ export default function HomePage() {
           intro={text("home", "faidate_intro")}
         />
         <div className="mx-auto mt-12 max-w-4xl">
-          <div className="relative grid grid-cols-[1.3fr_1fr_1fr] overflow-hidden rounded-2xl border border-primary/10 bg-bg shadow-sm sm:grid-cols-[1.5fr_1fr_1fr]">
+          <div className="relative grid grid-cols-[1.2fr_1fr_1fr] overflow-hidden rounded-2xl border border-primary/10 bg-bg shadow-md sm:grid-cols-[1.5fr_1fr_1fr]">
             {/* Intestazioni */}
-            <div className="border-b border-primary/10 p-4 sm:p-5" />
-            <div className="border-b border-primary/10 p-4 text-center sm:p-5">
-              <span className="text-xs font-semibold uppercase tracking-wide text-text-muted">
+            <div className="flex items-end border-b border-primary/10 p-4 sm:p-5">
+              <span className="text-xs font-semibold uppercase tracking-wide text-text-muted/70">
+                Confronto
+              </span>
+            </div>
+            <div className="flex items-end justify-center border-b border-primary/10 p-4 sm:p-5">
+              <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-text-muted">
+                <X className="h-3.5 w-3.5 text-error/60" />
                 Fai-da-te
               </span>
             </div>
-            <div className="relative border-b border-accent/20 bg-sand p-4 text-center sm:p-5">
+            <div className="relative flex items-end justify-center border-b border-accent/20 bg-sand p-4 sm:p-5">
               <span className="absolute -top-px left-0 right-0 h-1 bg-accent" />
-              <span className="text-xs font-semibold uppercase tracking-wide text-accent-dark">
+              <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-accent-dark">
+                <span className="grid h-4 w-4 place-items-center rounded-full bg-accent text-[9px] font-bold text-white">
+                  A
+                </span>
                 Con noi
               </span>
             </div>
 
-            {/* Righe */}
-            {confronto.map((row) => (
+            {/* Righe (zebra: sfondo alternato per leggibilita) */}
+            {confronto.map((row, i) => (
               <div key={row.voce} className="contents">
-                <div className="flex items-center border-t border-primary/[0.06] p-4 text-sm font-medium text-primary sm:p-5">
+                <div
+                  className={cn(
+                    "flex items-center border-t border-primary/[0.06] p-4 text-sm font-medium text-primary sm:p-5",
+                    i % 2 === 1 && "bg-primary/[0.025]",
+                  )}
+                >
                   {row.voce}
                 </div>
-                <div className="flex items-center justify-center gap-2 border-t border-primary/[0.06] p-4 text-center text-sm text-text-muted sm:p-5">
+                <div
+                  className={cn(
+                    "flex items-center justify-center gap-2 border-t border-primary/[0.06] p-4 text-center text-sm text-text-muted sm:p-5",
+                    i % 2 === 1 && "bg-primary/[0.025]",
+                  )}
+                >
                   <X className="h-4 w-4 shrink-0 text-error/70" />
                   <span>{row.faidate}</span>
                 </div>
-                <div className="flex items-center justify-center gap-2 border-t border-accent/15 bg-sand p-4 text-center text-sm font-medium text-primary sm:p-5">
+                <div
+                  className={cn(
+                    "flex items-center justify-center gap-2 border-t border-accent/15 bg-sand p-4 text-center text-sm font-semibold text-primary sm:p-5",
+                    i % 2 === 1 && "brightness-[0.985]",
+                  )}
+                >
                   <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-success/15 text-success">
                     <Check className="h-3 w-3" strokeWidth={3} />
                   </span>
@@ -226,6 +255,14 @@ export default function HomePage() {
                 </div>
               </div>
             ))}
+
+            {/* Chiusura: CTA a tutta larghezza sotto il confronto */}
+            <div className="col-span-3 border-t border-primary/10 bg-bg-muted/60 p-5 text-center">
+              <ButtonLink href={heroCtaPrimary.href} variant="primary">
+                {heroCtaPrimary.label}
+                <ArrowRight className="h-4 w-4" />
+              </ButtonLink>
+            </div>
           </div>
         </div>
       </Section>

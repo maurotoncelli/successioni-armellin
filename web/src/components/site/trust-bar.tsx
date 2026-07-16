@@ -5,24 +5,22 @@ export function TrustBar() {
   const items = list<string>("home", "trustbar_items");
   if (items.length === 0) return null;
 
+  // Griglia a celle uguali (2/3/6 colonne): ogni voce occupa lo stesso spazio
+  // e le righe restano allineate, al posto del flex-wrap che creava righe
+  // sbilanciate di larghezze diverse.
   return (
-    <div className="bg-sand text-primary">
-      <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-center gap-x-4 gap-y-3 px-5 py-5 sm:px-8">
-        {items.map((item, i) => (
-          <span key={item} className="inline-flex items-center">
-            {i > 0 && (
-              <span
-                aria-hidden
-                className="mr-4 hidden h-3.5 w-px bg-primary/15 sm:inline-block"
-              />
-            )}
-            <span className="inline-flex items-center gap-2 text-sm">
-              <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-accent text-white shadow-sm">
-                <Check className="h-3 w-3" strokeWidth={3} />
-              </span>
-              <span className="font-semibold tracking-tight text-primary">
-                {item}
-              </span>
+    <div className="border-y border-primary/5 bg-sand text-primary">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-2 gap-x-2 gap-y-4 px-5 py-6 sm:grid-cols-3 sm:px-8 lg:grid-cols-6">
+        {items.map((item) => (
+          <span
+            key={item}
+            className="flex flex-col items-center gap-2 text-center"
+          >
+            <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-accent text-white shadow-sm">
+              <Check className="h-3.5 w-3.5" strokeWidth={3} />
+            </span>
+            <span className="text-xs font-semibold leading-snug tracking-tight text-primary sm:text-sm">
+              {item}
             </span>
           </span>
         ))}

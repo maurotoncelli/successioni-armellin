@@ -13,23 +13,78 @@ import { cta, list, text } from "@/lib/content";
   numero mostrato coincide con quello delle pratiche vere.
 */
 
+const pageTitle =
+  "Calcolo del valore catastale per la successione (gratis, online)";
+const pageDescription = text(
+  "strumenti",
+  "catastale_hero_subtitle",
+  "Calcola in un click il valore catastale di case e terreni ai fini dell'imposta di successione: rendita rivalutata per i coefficienti ufficiali.",
+);
+
 export const metadata: Metadata = {
-  title: "Calcolo del valore catastale per la successione",
-  description: text(
-    "strumenti",
-    "catastale_hero_subtitle",
-    "Calcola in un click il valore catastale di case e terreni ai fini dell'imposta di successione: rendita rivalutata per i coefficienti ufficiali.",
-  ),
+  title: pageTitle,
+  description: pageDescription,
+  alternates: { canonical: "/strumenti/valore-catastale" },
+  openGraph: {
+    title: pageTitle,
+    description: pageDescription,
+    url: "/strumenti/valore-catastale",
+    type: "website",
+    locale: "it_IT",
+  },
 };
 
 type FormulaRow = { tipo: string; formula: string };
+type FaqRow = { q: string; a: string };
 
 export default function ValoreCatastalePage() {
   const formulaRows = list<FormulaRow>("strumenti", "catastale_formule");
+  const faqRows = list<FaqRow>("strumenti", "catastale_faq");
   const ctaButton = cta("strumenti", "catastale_cta_button");
+
+  // Structured data: lo strumento come applicazione gratuita + FAQ visibili
+  // in pagina (Google richiede che il markup rispecchi contenuto reale).
+  const appLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "Calcolo del valore catastale per la successione",
+    description: pageDescription,
+    url: "https://www.successioniarmellin.it/strumenti/valore-catastale",
+    applicationCategory: "FinanceApplication",
+    operatingSystem: "Web",
+    inLanguage: "it-IT",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
+    provider: {
+      "@type": "ProfessionalService",
+      name: "Successioni Armellin - Geom. Lorenzo Armellin",
+      url: "https://www.successioniarmellin.it",
+    },
+  };
+  const faqLd =
+    faqRows.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqRows.map((row) => ({
+            "@type": "Question",
+            name: row.q,
+            acceptedAnswer: { "@type": "Answer", text: row.a },
+          })),
+        }
+      : null;
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(appLd) }}
+      />
+      {faqLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+        />
+      )}
       <PageHero
         eyebrow={text("strumenti", "catastale_hero_eyebrow", "Strumenti")}
         title={text(
@@ -140,6 +195,33 @@ export default function ValoreCatastalePage() {
           </div>
         </div>
       </Section>
+
+      {faqRows.length > 0 && (
+        <Section tone="muted">
+          <SectionHeading
+            title={text(
+              "strumenti",
+              "catastale_faq_title",
+              "Domande frequenti sul valore catastale",
+            )}
+          />
+          <div className="mx-auto mt-10 max-w-2xl space-y-3">
+            {faqRows.map((row) => (
+              <details
+                key={row.q}
+                className="group rounded-xl border border-primary/10 bg-bg p-5 open:shadow-sm"
+              >
+                <summary className="cursor-pointer list-none font-medium text-primary marker:hidden">
+                  {row.q}
+                </summary>
+                <p className="mt-3 text-sm leading-relaxed text-text-muted">
+                  {row.a}
+                </p>
+              </details>
+            ))}
+          </div>
+        </Section>
+      )}
 
       <CtaBand
         title={text(

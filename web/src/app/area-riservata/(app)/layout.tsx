@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LifeBuoy, LogOut } from "lucide-react";
+import { ArrowLeft, LifeBuoy, LogOut } from "lucide-react";
 import { AreaSidebar, AreaBottomBar } from "@/components/area/nav";
 import { AreaDataProvider } from "@/components/area/area-context";
 import { requireClientView } from "@/lib/area";
@@ -37,6 +37,13 @@ export default async function AreaAppLayout({
             </div>
 
             <div className="ml-auto flex items-center gap-1">
+              <Link
+                href="/"
+                className="inline-flex items-center gap-1.5 rounded-[10px] px-3 py-2 text-sm font-medium text-text-muted hover:bg-bg-muted hover:text-text"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                <span className="hidden sm:inline">Torna al sito</span>
+              </Link>
               <Link
                 href="/contatti"
                 className="inline-flex items-center gap-1.5 rounded-[10px] px-3 py-2 text-sm font-medium text-text-muted hover:bg-bg-muted hover:text-text"

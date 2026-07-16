@@ -75,6 +75,7 @@ export function mapPractice(row: PracticeRow): Practice {
     dueDate: row.due_date,
     submittedAt: row.submitted_at,
     createdAt: (row.created_at ?? "").slice(0, 10),
+    paidAt: row.paid_at,
     stateTaxes: row.state_taxes === null ? null : Number(row.state_taxes),
     callNotes: row.call_notes,
     paymentNotes: row.payment_notes,
@@ -276,6 +277,15 @@ function addOneYear(dateStr: string): string {
   return `${y + 1}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
 }
 
+function addDays(dateStr: string, days: number): string {
+  const d = new Date(`${dateStr}T00:00:00Z`);
+  d.setUTCDate(d.getUTCDate() + days);
+  return d.toISOString().slice(0, 10);
+}
+
+/** Giorni di recesso del consumatore dal pagamento (art. 52 Codice del Consumo). */
+export const WITHDRAWAL_DAYS = 14;
+
 /*
   Normalizza a "YYYY-MM-DD": alcune colonne testuali (e i vecchi dati) possono
   contenere anche l'ora ("2026-07-15 09:30") che non matcherebbe mai la cella
@@ -315,6 +325,23 @@ export function calendarEvents(practices: Practice[]): CalEvent[] {
         code: p.code,
         done: fulfilled,
       });
+
+    // Fine della finestra di recesso (14 giorni dal pagamento): finche' e'
+    // aperta il rimborso e' un diritto del cliente, meglio averla sott'occhio.
+    // Passata la data (o pratica chiusa) l'evento resta come storia, spento.
+    const paid = dateOnly(p.paidAt);
+    if (paid && p.paymentStatus === "PAID") {
+      const withdrawalEnd = addDays(paid, WITHDRAWAL_DAYS);
+      const today = new Date().toISOString().slice(0, 10);
+      events.push({
+        dateStr: withdrawalEnd,
+        type: "recesso",
+        label: "Fine recesso (14 gg)",
+        practiceId: p.id,
+        code: p.code,
+        done: p.status === "CHIUSA" || withdrawalEnd < today,
+      });
+    }
 
     // Promemoria (to-do) con data: sono lavoro pianificato, vanno sul calendario.
     for (const t of p.tasks) {

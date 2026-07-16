@@ -24,9 +24,9 @@ export const packages: Package[] = [
   {
     key: "SEMPLICE",
     name: "Successione Semplice",
-    tagline: "Per i casi lineari, senza immobili",
+    tagline: "Solo conti e liquidità, nessun immobile",
     description:
-      "La dichiarazione di successione predisposta e inviata all'Agenzia delle Entrate, quando non ci sono immobili da gestire.",
+      "La dichiarazione di successione predisposta e inviata all'Agenzia delle Entrate per i casi senza immobili: conti correnti, libretti e liquidità.",
     features: [
       "Predisposizione della dichiarazione",
       "Invio telematico all'Agenzia delle Entrate",
@@ -41,13 +41,13 @@ export const packages: Package[] = [
   },
   {
     key: "COMPLETO",
-    name: "Successione Completa",
-    tagline: "Con immobili e voltura catastale",
+    name: "Successione con Immobili",
+    tagline: "Da 1 a 3 immobili, voltura catastale inclusa",
     description:
-      "Tutto incluso quando ci sono immobili: controllo dei dati catastali, dichiarazione e voltura catastale. Copre fino a 5 eredi, da 1 a 3 immobili e fino a 5 conti bancari.",
+      "Il pacchetto per chi eredita una casa o pochi immobili: controllo dei dati catastali, dichiarazione, invio e voltura catastale. Copre fino a 5 eredi e 5 conti bancari.",
     features: [
       "Tutto quello del pacchetto Semplice",
-      "Fino a 5 eredi, 1-3 immobili, fino a 5 conti",
+      "Da 1 a 3 immobili, fino a 5 eredi e 5 conti",
       "Controllo dei dati catastali da geometra",
       "Voltura catastale inclusa",
     ],
@@ -59,14 +59,14 @@ export const packages: Package[] = [
   },
   {
     key: "ZERO_STRESS",
-    name: "Zero Stress",
-    tagline: "Ce ne occupiamo noi, dall'inizio alla fine",
+    name: "Successione Estesa",
+    tagline: "Da 3 a 8 immobili, con recupero documenti",
     description:
-      "La massima tranquillità per i casi più corposi: da 3 a 8 immobili, fino a 5 conti e 5 eredi. Recuperiamo noi i documenti mancanti e ti aggiorniamo a ogni step.",
+      "Per i patrimoni più articolati: più immobili da gestire e documenti da recuperare. Ce ne occupiamo noi, con priorità di lavorazione e aggiornamenti a ogni step.",
     features: [
-      "Tutto quello del pacchetto Completo",
-      "Da 3 a 8 immobili, fino a 5 conti e 5 eredi",
-      "Recupero documenti presso enti e banche",
+      "Tutto quello del pacchetto con Immobili",
+      "Da 3 a 8 immobili, fino a 5 eredi e 5 conti",
+      "Recupero dei documenti mancanti presso enti e banche",
       "Priorità di lavorazione",
     ],
     price: 790,

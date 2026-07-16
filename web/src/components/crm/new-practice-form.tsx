@@ -97,8 +97,8 @@ export function NewPracticeForm() {
               <select name="selectedPackage" className={inputClass} defaultValue="">
                 <option value="">— da definire —</option>
                 <option value="SEMPLICE">Semplice</option>
-                <option value="COMPLETO">Completo</option>
-                <option value="ZERO_STRESS">Zero Stress</option>
+                <option value="COMPLETO">Con Immobili</option>
+                <option value="ZERO_STRESS">Estesa</option>
               </select>
             </Field>
           </div>

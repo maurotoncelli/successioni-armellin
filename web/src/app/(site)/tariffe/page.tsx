@@ -68,7 +68,9 @@ export default async function TariffePage() {
 
       <Section>
         <SectionHeading title={text("tariffe", "deliverable_title")} />
-        <ul className="mx-auto mt-10 grid max-w-2xl gap-3">
+        {/* w-fit: il blocco si centra sulla larghezza reale delle voci, cosi
+            l'elenco risulta allineato al titolo centrato della sezione. */}
+        <ul className="mx-auto mt-10 grid w-fit max-w-2xl gap-3">
           {deliverable.map((item) => (
             <li key={item} className="flex items-start gap-2.5">
               <Check className="mt-1 h-5 w-5 shrink-0 text-success" />
@@ -78,17 +80,21 @@ export default async function TariffePage() {
         </ul>
       </Section>
 
-      <Section tone="sand">
-        <SectionHeading
-          title={text("tariffe", "addon_intro")}
-          intro={text("tariffe", "addon_subtitle")}
-        />
-        <AddonCards
-          addons={addons}
-          contactText={text("tariffe", "addon_contact_text")}
-          contact={addonContact}
-        />
-      </Section>
+      {/* Il blocco sparisce se dal CRM (listino) tutti gli addon sono
+          disattivati; i singoli disattivati sono gia' filtrati a monte. */}
+      {addons.length > 0 && (
+        <Section tone="sand">
+          <SectionHeading
+            title={text("tariffe", "addon_intro")}
+            intro={text("tariffe", "addon_subtitle")}
+          />
+          <AddonCards
+            addons={addons}
+            contactText={text("tariffe", "addon_contact_text")}
+            contact={addonContact}
+          />
+        </Section>
+      )}
 
       <Section>
         <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">

@@ -63,7 +63,14 @@ export function Footer() {
           </div>
           <p className="mt-4 max-w-sm text-sm leading-relaxed">{trustLine}</p>
           <address className="mt-4 not-italic text-sm leading-relaxed">
-            {studio.indirizzo}
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(studio.indirizzo)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-white/30 underline-offset-2 transition-colors hover:text-white"
+            >
+              {studio.indirizzo}
+            </a>
             {studio.albo && (
               <>
                 <br />

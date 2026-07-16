@@ -131,6 +131,8 @@ export type Practice = {
   dueDate: string | null;
   submittedAt: string | null;
   createdAt: string;
+  /** Data pagamento (da paid_at): fa partire i 14 giorni di recesso. */
+  paidAt?: string | null;
   // imposte
   stateTaxes: number | null;
   // appunti
@@ -652,7 +654,13 @@ export const alerts: Alert[] = [
   { kind: "ferma", text: "SUC-2026-0005 - ferma da 5 giorni", practiceId: "p8" },
 ];
 
-export type CalEventType = "apertura" | "consegna" | "scadenza" | "invio" | "todo";
+export type CalEventType =
+  | "apertura"
+  | "consegna"
+  | "scadenza"
+  | "invio"
+  | "todo"
+  | "recesso";
 
 export type CalEvent = {
   dateStr: string; // YYYY-MM-DD
@@ -673,6 +681,7 @@ export const calEventMeta: Record<
   scadenza: { label: "Scadenza 12 mesi", chip: "bg-crm-rose/15 text-crm-rose", dot: "bg-crm-rose" },
   invio: { label: "Invio AdE", chip: "bg-crm-green/15 text-crm-green", dot: "bg-crm-green" },
   todo: { label: "Promemoria (to-do)", chip: "bg-crm-amber/15 text-crm-amber", dot: "bg-crm-amber" },
+  recesso: { label: "Fine recesso (14 gg)", chip: "bg-crm-rose/10 text-crm-rose", dot: "bg-crm-rose/70" },
 };
 
 function addOneYear(dateStr: string): string {

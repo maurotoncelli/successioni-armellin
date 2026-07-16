@@ -35,6 +35,110 @@ Sezione **8-quater** = sessione 15/07 (blocchi post-incontro con Lorenzo).
 Sezione **9** = TODO APERTI (leggila per prima!).
 Lingua del progetto: **italiano**. Scrivere sempre in italiano con l'utente.
 
+## 8-sexies. Sessione 16/07 (seconda tornata) — migliorie sito + SEO + CRM (FATTE, NON committate)
+Mauro ha approvato i nuovi nomi pacchetti (vedi 8-quinquies): **APPLICATI IN
+PRODUZIONE** via `node scripts/update-prod-content.mjs` (16/07 ~11:30, verificato
+con curl: il DB ora ha "Successione con Immobili" e "Successione Estesa"; le
+pagine statiche mostreranno i nuovi nomi al prossimo deploy/revalidate).
+Poi seconda lista di richieste, tutto implementato (build ok, verifica visiva
+locale mobile/tablet/desktop):
+
+1. **"Commercialisti" al plurale** (impressione di studio strutturato) in tutti
+   i testi pubblici: trust_line footer, trustbar, chisono_estratto, microtrust
+   tariffe/checkout, team_title/team_body chi-sono, valore_body come-funziona,
+   reviewed_by articoli (content_entries + articles.ts). NON toccati legal.ts/
+   mandato.ts e "Molti si aspettano un commercialista..." (li' il singolare e'
+   corretto).
+2. **Hero home**: velo blu alleggerito (`from-primary via-primary/70 via-40%
+   to-transparent`, prima copriva tutta la foto) + crop responsive del volto:
+   `object-[62%_22%]` mobile, `[68%_30%]` sm, `[78%_center]` lg (prima su
+   mobile si vedeva solo la libreria).
+3. **Trust bar home** riorganizzata: da flex-wrap sbilanciato a griglia
+   omogenea 2/3/6 colonne, icona sopra e testo centrato sotto.
+4. **Tabella comparativa home**: titolo senza "gratis" ("Si può fare da soli
+   sul sito dell'Agenzia delle Entrate. Allora perché noi?"), design rifatto:
+   header con icone (X rossa / badge "A" oro), righe zebra, colonna "Con noi"
+   in evidenza, riga finale con CTA preventivo.
+5. **FAQ "agevolazione prima casa"**: VERIFICATA presente in produzione
+   (DB faqs) e nelle fixture. E' data-driven (tabella faqs Supabase).
+6. **Addon disattivabili dal CRM**: `getAddons` ora legge tutte le righe e
+   filtra `is_active` client-side -> se Lorenzo li disattiva TUTTI dal listino
+   la sezione "Servizi aggiuntivi" su /tariffe SPARISCE (renderizzata solo se
+   addons.length > 0); il singolo disattivato sparisce da solo. Il fallback
+   fixture resta solo per tabella vuota/errore.
+7. **Banner strumento in /guide** ridisegnato: card grande con NUOVA
+   illustrazione brand (`web/public/images/strumento-valore-catastale.png`,
+   generata AI: casa+calcolatrice+documento nei colori navy/oro/sand),
+   eyebrow "Strumento gratuito", titolo piu' grande.
+8. **SEO /strumenti/valore-catastale**: canonical + Open Graph, JSON-LD
+   `WebApplication` (gratis) + `FAQPage`, nuova sezione FAQ visibile in pagina
+   (4 domande data-driven: `strumenti.catastale_faq` + `catastale_faq_title`).
+   Title arricchito "(gratis, online)". Era gia' in sitemap con priority 0.8.
+9. **SEO immagini**: audit alt fatto (tutte le <Image> del sito hanno alt
+   descrittivi). Aggiunti Open Graph di DEFAULT nel root layout (siteName,
+   locale it_IT, og:image = logo 512) + twitter card. **TODO GO-LIVE: le foto
+   attuali sono FINTE/placeholder ("immagine indicativa" negli alt): al
+   go-live sostituirle con foto vere di Lorenzo + creare og-image 1200x630
+   reale.**
+10. **Footer**: l'indirizzo dello studio ora e' un link a Google Maps
+    (`google.com/maps/search/?api=1&query=...`, target _blank).
+11. **Calendario CRM - recesso 14 giorni**: nuovo tipo evento `recesso`
+    ("Fine recesso (14 gg)", chip rosa) generato per ogni pratica PAGATA:
+    data = `paid_at` + 14 (art. 52 Cod. Consumo, cost. `WITHDRAWAL_DAYS` in
+    lib/crm.ts). `mapPractice` ora mappa `paid_at` -> `paidAt` (campo nuovo
+    opzionale su Practice). Evento `done` (spento) quando la finestra e'
+    passata o pratica CHIUSA. Legenda auto-aggiornata (deriva da calEventMeta).
+12. **4a scheda su misura**: testi resi piu' espliciti sui casi complessi
+    ("Per le successioni più complesse", body con testamento/8+ immobili/
+    terreni/aziende, feature "Per i casi che i pacchetti non coprono").
+- Seed risincronizzato. **NON committato: chiedere a Mauro prima di push.**
+
+## 8-quinquies. Sessione 16/07 — 5 lavoretti UI/contenuti (FATTI, NON committati)
+Richieste di Mauro del 16/07 mattina. Tutto implementato e verificato in locale
+(build ok + controllo visivo su localhost:3000). **NON committato, DB produzione
+NON toccato**: vedi "resta da fare" in fondo al blocco.
+
+1. **"Torna al sito" nell'area personale**: nuovo link (freccia + label) nel
+   header di `web/src/app/area-riservata/(app)/layout.tsx`, accanto ad
+   Assistenza/Esci. Su mobile resta solo l'icona (come le altre azioni).
+2. **Rinomina pacchetti** (problema: "Zero Stress"/"Completa" facevano credere
+   che tutto fosse gia' incluso — timore espresso da Lorenzo il 14/07):
+   - SEMPLICE -> "Successione Semplice" (invariato), tagline "Solo conti e
+     liquidita', nessun immobile";
+   - COMPLETO -> **"Successione con Immobili"**, tagline "Da 1 a 3 immobili,
+     voltura catastale inclusa";
+   - ZERO_STRESS -> **"Successione Estesa"**, tagline "Da 3 a 8 immobili, con
+     recupero documenti". Descrizioni/feature riallineate (perimetro immobili
+     esplicito, niente "tutto incluso"). Prezzi INVARIATI.
+   - Aggiornati: fixture `web/src/content/site.ts`, label CRM
+     (`new-practice-form.tsx`, `brogliaccio/[id]/page.tsx`) e lo script
+     `web/scripts/update-prod-content.mjs` (packageUpdates completi per i 3
+     pacchetti). ATTENZIONE: in produzione i pacchetti vengono dal DB Supabase,
+     quindi la rinomina online richiede di ESEGUIRE lo script.
+3. **4a scheda "Preventivo personalizzato"** nella griglia pacchetti
+   (`web/src/components/site/package-cards.tsx`, usata da home e /tariffe):
+   card tratteggiata senza prezzo ("Su misura"), CTA verso /preventivo. Griglia
+   da md:grid-cols-3 a md:grid-cols-2 xl:grid-cols-4. Testi data-driven nella
+   NUOVA collection `pacchetti` (chiavi `su_misura_*`) in content_entries.
+   Nota: resta anche la card "Casi particolari" in fondo a /tariffe.
+4. **Navbar piu' ariosa** (`navbar-client.tsx`): container max-w-6xl ->
+   max-w-7xl; voci menu con padding pillola + hover bg (px-2.5/gap-1, a 2xl
+   px-3/gap-2); "Parla con Lorenzo" diventa SOLO icona telefono sotto i 1536px
+   (label da 2xl in su, aria-label/title presenti). Verificato niente overflow
+   a 1280px.
+5. **"Cosa ricevi a fine pratica" allineata**: la lista era flush a sinistra
+   sotto il titolo centrato; ora `w-fit mx-auto` centra il blocco sulla
+   larghezza reale delle voci. Fixato su /tariffe E /come-funziona.
+6. **Chi sono - "Le mie credenziali" vuota**: l'entry `chi_siamo.credenziali_list`
+   era `is_published: false` (il loader scarta le non pubblicate) -> pubblicata.
+   Ora compaiono le 3 card (Albo, Entratel, P.IVA).
+- `seed/content_entries.it.json` risincronizzato (copia esatta del file web).
+- **RESTA DA FARE (serve ok di Mauro)**: (a) commit+push per il deploy;
+  (b) eseguire `node scripts/update-prod-content.mjs` (cwd web/, prima `--dry`)
+  per rinominare i pacchetti nel DB produzione — i NUOVI NOMI vanno prima
+  confermati da Lorenzo; (c) valutare se rinominare anche l'etichetta interna
+  ZERO_STRESS (chiave DB: NON toccarla, e' solo un identificatore).
+
 ## 8-quater. Sessione 15/07 — blocchi post-incontro Lorenzo (piano confermato da Mauro)
 
 ### Blocco 1 — Recesso/rimborso chiude la pratica (FATTO)

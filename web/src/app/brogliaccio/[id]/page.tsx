@@ -11,8 +11,8 @@ export const dynamic = "force-dynamic";
 
 const packageLabel: Record<Exclude<PackageType, null>, string> = {
   SEMPLICE: "Semplice",
-  COMPLETO: "Completo",
-  ZERO_STRESS: "Zero Stress",
+  COMPLETO: "Con Immobili",
+  ZERO_STRESS: "Estesa",
 };
 
 /*
