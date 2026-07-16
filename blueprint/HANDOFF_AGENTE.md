@@ -1,6 +1,6 @@
 # HANDOFF per il prossimo agente
 
-> Documento di passaggio di consegne. Aggiornato: **2026-07-14 sera**.
+> Documento di passaggio di consegne. Aggiornato: **2026-07-16 pomeriggio**.
 > Scopo: permettere a un nuovo agente (senza contesto) di riprendere il lavoro.
 > Riferimenti chiave: @RUNBOOK_GoLive (procedura go-live), @SPEC_Env_Vars,
 > @DOMANDE_PER_LORENZO, @PROSSIMO_INCONTRO_LORENZO, @07_Stack.
@@ -8,7 +8,85 @@
 > fiscali Lorenzo): nel file **`ACCESSI_LOCALE.md`** in root (git-ignored, NON
 > committato). Non è nel repo.
 
-## 0. TL;DR (stato 14/07 sera)
+## 8-nonies. Sessione 16/07 (pomeriggio) — modalità offline sito + GA4 Measurement Protocol
+
+### Modalità offline (commit `4ba8a65`) — FATTO, data-driven, in produzione
+
+**Cosa fa:** dal CRM Lorenzo può mettere in pausa il **solo sito pubblico**
+(vacanza / manutenzione / messaggio custom). Area personale e CRM **non** vengono
+bloccati.
+
+**Dove nel CRM:** sidebar Sito → **Modalità offline** (`/crm/modalita-offline`),
+anche nel menu mobile topbar.
+
+**Cosa è data-driven (runtime, senza redeploy):**
+- Stato salvato in Storage privato NO-DDL:
+  `practice-docs/site/_offline.json`
+- Campi: `enabled`, `preset` (`vacation` | `maintenance` | `custom`), `title`,
+  `body`, `reopenDate` (YYYY-MM-DD, opzionale), `showContactButtons`, `updatedAt`
+- Lettura sito: `getSiteOfflineState()` in `web/src/lib/site-offline.ts`
+  (`unstable_cache` + tag `site:offline`)
+- Salvataggio CRM: `saveSiteOfflineState` + server action
+  `saveOfflineMode` → `updateTag("site:offline")` + `revalidatePath("/", "layout")`
+  (invalidazione immediata, no contenuto stale)
+
+**Cosa è data-driven da content (build-time JSON, non editabile dal toggle):**
+- Telefono / email / WhatsApp dei pulsanti contatto: `settings.phone|email|whatsapp`
+  da `content_entries` (`SiteOfflineNotice`)
+
+**Cosa è in codice (preset / UX fissa):**
+- Testi modello Vacanza/Manutenzione: `web/src/lib/site-offline-shared.ts`
+  (`OFFLINE_PRESETS`) — il CRM li applica poi li puoi sovrascrivere (diventa
+  `custom`)
+- Link **Area personale** sulla pagina offline: **sempre presente**
+  (“Hai già una pratica? Accedi all'area personale” → `/area-riservata`)
+- Navbar/footer restano montati in `(site)/layout.tsx`: in navbar c’è ancora
+  il link Area personale; le voci di menu portano a pagine che mostrano lo
+  stesso messaggio offline (il gate sostituisce `{children}`)
+
+**Scope del gate (importante):**
+- Solo `web/src/app/(site)/layout.tsx` → overlay `SiteOfflineNotice`
+- **NON** avvolge `/area-riservata` né `/crm` / `/crm-login`
+- Con offline ON: nascosto anche `MobileCta` (barra mobile preventivo)
+
+**UI pubblica offline:**
+- Titolo + messaggio dal JSON
+- Se `showContactButtons`: email / WhatsApp / telefono
+- Link area personale (sempre)
+- Icona vacanza vs manutenzione in base al `preset`
+
+**UI CRM editor:** `web/src/components/crm/offline-mode-editor.tsx`
+- Toggle on/off, modelli, data riapertura (manutenzione), titolo/body,
+  checkbox contatti, anteprima, “Salva e pubblica”
+
+**File chiave:**
+- `web/src/lib/site-offline.ts` / `site-offline-shared.ts`
+- `web/src/app/crm/modalita-offline/page.tsx` + `actions.ts`
+- `web/src/components/crm/offline-mode-editor.tsx`
+- `web/src/components/site/site-offline-notice.tsx`
+- `web/src/app/(site)/layout.tsx`
+
+**Come testare:** CRM → attiva Vacanza → apri sito in anonimo → vedi messaggio;
+apri `/area-riservata` e `/crm` → devono funzionare; disattiva → sito normale.
+
+### GA4 purchase server-side (commit `cf7a78d`) — FATTO
+- Measurement Protocol dal webhook Stripe (`sendGa4Purchase` in
+  `web/src/lib/analytics-server.ts`)
+- Env: `NEXT_PUBLIC_GA4_MEASUREMENT_ID` + `GA4_API_SECRET` (su Vercel, Sensitive)
+- Client `purchase` su `/checkout/conferma` solo se **manca** `GA4_API_SECRET`
+  (evita doppio conteggio)
+- Spec aggiornata: `@SPEC_Env_Vars`
+
+### Altri fix 16/07 pomeriggio (commit `1ded9de`)
+- Copy Chi sono: titolo “Geometra sui catastali, commercialisti sui numeri” +
+  body/`perche_geometra_body` (content_entries + seed)
+- Banner qualità foto in area documenti
+- Logo nav/footer: cerchio dorato (`rounded-full`)
+- Tabella confronto home: intestazioni senza X/logo (segni solo nelle righe)
+
+---
+
+## 0. TL;DR (stato 14/07 sera; offline/GA4 → vedi 8-nonies)
 Il sito e **online e OPERATIVO in produzione** su `https://www.successioniarmellin.it`.
 **Il 14/07 e' stato completato ed eseguito con successo il primo ACQUISTO REALE da 290 EUR**
 (pratica `SUC-2026-0022`, carta vera, Stripe LIVE): checkout -> webhook -> PAGATO ->
