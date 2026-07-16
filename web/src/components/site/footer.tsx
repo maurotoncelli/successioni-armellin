@@ -54,12 +54,27 @@ export function Footer() {
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-4">
         <div className="md:col-span-2">
           <div className="flex items-center gap-2">
-            <span
+            <svg
               aria-hidden
-              className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-accent font-sans text-sm font-bold text-white"
+              width="36"
+              height="36"
+              viewBox="0 0 36 36"
+              className="h-9 w-9 shrink-0 text-accent"
             >
-              A
-            </span>
+              <circle cx="18" cy="18" r="18" fill="currentColor" />
+              <text
+                x="18"
+                y="18"
+                textAnchor="middle"
+                dominantBaseline="central"
+                fill="white"
+                fontSize="15"
+                fontWeight="700"
+                fontFamily="ui-sans-serif, system-ui, sans-serif"
+              >
+                A
+              </text>
+            </svg>
             <span className="font-serif text-lg font-semibold text-white">
               {studio.ragione_sociale}
             </span>

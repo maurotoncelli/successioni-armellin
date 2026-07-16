@@ -32,32 +32,47 @@ export function NavbarClient({
 
   return (
     <header className="sticky top-0 z-40 border-b border-primary/10 bg-bg/90 backdrop-blur">
-      <nav className="mx-auto flex h-16 w-full max-w-7xl items-center gap-4 px-5 sm:gap-6 sm:px-8">
+      <nav className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-3 px-5 sm:px-8">
         <Link
           href="/"
           className="flex shrink-0 items-center gap-2.5"
           aria-label="Home"
         >
-          <span
+          <svg
             aria-hidden
-            className="grid h-9 w-9 place-items-center rounded-full bg-accent font-sans text-sm font-bold text-white"
+            width="36"
+            height="36"
+            viewBox="0 0 36 36"
+            className="h-9 w-9 shrink-0 text-accent"
           >
-            A
-          </span>
+            <circle cx="18" cy="18" r="18" fill="currentColor" />
+            <text
+              x="18"
+              y="18"
+              textAnchor="middle"
+              dominantBaseline="central"
+              fill="white"
+              fontSize="15"
+              fontWeight="700"
+              fontFamily="ui-sans-serif, system-ui, sans-serif"
+            >
+              A
+            </text>
+          </svg>
           <span className="font-serif text-lg font-semibold text-primary">
             Armellin
-            <span className="ml-1.5 hidden font-sans text-sm font-normal text-text-muted lg:inline">
+            <span className="ml-1.5 hidden font-sans text-sm font-normal text-text-muted xl:inline">
               · Successioni
             </span>
           </span>
         </Link>
 
-        <ul className="hidden min-w-0 flex-1 items-center justify-center gap-0.5 xl:flex 2xl:gap-1">
+        <ul className="hidden items-center xl:flex">
           {menu.map((item) => (
             <li key={item.href}>
               <Link
                 href={item.href}
-                className="block whitespace-nowrap rounded-md px-2 py-2 text-sm font-medium text-text transition-colors hover:bg-primary/5 hover:text-accent 2xl:px-3"
+                className="block whitespace-nowrap rounded-md px-2 py-2 text-sm font-medium text-text transition-colors hover:bg-primary/5 hover:text-accent 2xl:px-2.5"
               >
                 {item.label}
               </Link>
@@ -65,16 +80,17 @@ export function NavbarClient({
           ))}
         </ul>
 
-        <div className="ml-auto hidden shrink-0 items-center gap-3 xl:flex">
+        {/* Azioni compatte: la nav e' max-w-7xl (1280px), testi lunghi qui
+            facevano overfloware Contatti sopra Area personale. */}
+        <div className="hidden shrink-0 items-center gap-2 xl:flex 2xl:gap-3">
           <Link
             href="/area-riservata"
             className="inline-flex items-center gap-1.5 whitespace-nowrap text-sm font-medium text-primary hover:text-accent"
           >
             <UserRound className="h-4 w-4 shrink-0" />
-            {areaLabel}
+            <span className="max-2xl:sr-only">{areaLabel}</span>
           </Link>
           <LanguageSwitcher align="right" />
-          {/* Separatore: a destra le AZIONI (concettualmente diverse dalle voci di menu). */}
           <span className="h-5 w-px bg-primary/15" aria-hidden />
           <a
             href={ctaPhone.href}
@@ -82,13 +98,10 @@ export function NavbarClient({
             title={ctaPhone.label}
             className={buttonClasses({
               variant: "outline",
-              className: "whitespace-nowrap",
+              className: "shrink-0",
             })}
           >
             <Phone className="h-4 w-4 shrink-0" />
-            {/* Sotto i 1536px il pulsante resta solo icona: libera spazio e
-                le voci di menu respirano. */}
-            <span className="hidden 2xl:inline">{ctaPhone.label}</span>
           </a>
           {!hideQuoteCta && (
             <Link
@@ -98,12 +111,13 @@ export function NavbarClient({
                 className: "whitespace-nowrap",
               })}
             >
-              {cta.label}
+              <span className="2xl:hidden">Preventivo</span>
+              <span className="hidden 2xl:inline">{cta.label}</span>
             </Link>
           )}
         </div>
 
-        <div className="ml-auto flex items-center gap-1 xl:hidden">
+        <div className="flex items-center gap-1 xl:hidden">
           <LanguageSwitcher align="right" />
           <button
             type="button"
