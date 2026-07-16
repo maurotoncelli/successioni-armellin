@@ -50,12 +50,12 @@ teneteli minimi.
   CAM: lei che legge, si rilassa appena.
 - **VO**: «Si comincia dal sito: prezzi chiari, un percorso guidato, e dietro non
   c'è un software ma una persona: Lorenzo, geometra abilitato all'invio
-  telematico, con la supervisione fiscale di un commercialista.»
+  telematico, con la supervisione fiscale di commercialisti.»
 
 ### Scena 3 — Il preventivo online (0:22–0:45) · SCR
 - **Video**: il questionario del preventivo, si vede che risponde a 3-4 domande
-  (non tutte!) con click fluidi. Poi la schermata dell'esito: **Pacchetto
-  Semplice — 490 €**, con la nota che le imposte sono a parte.
+  (non tutte!) con click fluidi. Poi la schermata dell'esito: **Successione
+  con Immobili — 490 €**, con la nota che le imposte sono a parte.
 - **VO**: «Rispondi a poche domande, ci vogliono cinque minuti. E l'esito è
   immediato: nella maggior parte dei casi un prezzo chiaro, deciso prima — qui
   quattrocentonovanta euro, tutto compreso tranne le imposte, che si versano
@@ -122,7 +122,7 @@ fare tutto da casa.
 
 Si comincia dal sito: prezzi chiari, un percorso guidato, e dietro non c'è un
 software ma una persona: Lorenzo, geometra abilitato all'invio telematico, con
-la supervisione fiscale di un commercialista.
+la supervisione fiscale di commercialisti.
 
 Rispondi a poche domande, ci vogliono cinque minuti. E l'esito è immediato:
 nella maggior parte dei casi un prezzo chiaro, deciso prima — qui
@@ -165,7 +165,7 @@ gratis, e bastano cinque minuti.
   il 16:9). Per il 9:16 registrare da iPhone/Android in modalità registrazione
   schermo nativa.
 - La schermata dell'esito preventivo deve mostrare il prezzo REALE del listino
-  (490 € Pacchetto Semplice): coerenza totale tra video e sito.
+  (490 € "Successione con Immobili"): coerenza totale tra video e sito.
 - Recensione finale: farla vera o dichiaratamente simulata, ma sobria (2-3
   secondi): una recensione "recitata" troppo in evidenza ottiene l'effetto opposto.
 
