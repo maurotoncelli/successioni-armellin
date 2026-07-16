@@ -44,6 +44,10 @@ type Props = {
   requirePhone?: boolean;
   /** Nota sotto il pulsante (es. "ti ricontattiamo noi entro un giorno lavorativo"). */
   footnote?: string;
+  /** Campo note (soprattutto per preventivo su misura). */
+  showNotes?: boolean;
+  notesLabel?: string;
+  notesPlaceholder?: string;
 };
 
 export function SoftLead({
@@ -60,11 +64,15 @@ export function SoftLead({
   successBodyNoEmail,
   requirePhone = false,
   footnote,
+  showNotes = false,
+  notesLabel = "Nota (facoltativa)",
+  notesPlaceholder,
 }: Props) {
   const [open, setOpen] = useState(kind === "custom_quote");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [notes, setNotes] = useState("");
   const [privacy, setPrivacy] = useState(false);
   const [marketing, setMarketing] = useState(false);
   const [done, setDone] = useState(false);
@@ -95,6 +103,7 @@ export function SoftLead({
         name,
         email,
         phone,
+        notes: notes.trim() || undefined,
         marketing,
         kind,
       });
@@ -168,6 +177,22 @@ export function SoftLead({
           onChange={setPhone}
         />
       </div>
+
+      {showNotes && (
+        <div className="mt-3">
+          <label className="mb-1.5 block text-sm font-medium text-primary">
+            {notesLabel}
+          </label>
+          <textarea
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+            rows={3}
+            maxLength={800}
+            placeholder={notesPlaceholder}
+            className="w-full resize-y rounded-[10px] border border-primary/20 bg-bg px-3 py-2.5 text-sm focus:border-accent focus:outline-none"
+          />
+        </div>
+      )}
 
       <div className="mt-4 space-y-3">
         <label className="flex items-start gap-3 text-sm text-text">

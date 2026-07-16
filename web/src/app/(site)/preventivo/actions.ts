@@ -29,6 +29,8 @@ export type LeadInput = {
   name: string;
   email: string;
   phone: string;
+  /** Nota libera del visitatore (opzionale, tipicamente su misura). */
+  notes?: string;
   marketing: boolean;
   /** Da dove arriva il lead: opt-in email sul risultato o richiesta su misura. */
   kind?: "email_quote" | "custom_quote";
@@ -121,9 +123,13 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
           input.hasRealEstate === "si" ? (input.realEstateCount ?? null) : null,
         requires_custom_quote: isCustom,
         suggested_package: suggestedPackage(esito, input.hasRealEstate),
-        notes: isCustom
-          ? "Richiesta di preventivo su misura dal sito."
-          : "Lead dal preventivo del sito (opt-in email).",
+        notes: (() => {
+          const base = isCustom
+            ? "Richiesta di preventivo su misura dal sito."
+            : "Lead dal preventivo del sito (opt-in email).";
+          const extra = input.notes?.trim();
+          return extra ? `${base}\n\nNota del cliente:\n${extra}` : base;
+        })(),
         communications: [],
         tasks: [
           {
@@ -204,6 +210,7 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
         phone: input.phone.trim(),
         custom: isCustom,
         packageLabel,
+        clientNote: input.notes?.trim() || undefined,
       });
       if (sentAdmin.sent) {
         log.push({ action: "notifica_admin_inviata", at: nowStamp });

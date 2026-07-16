@@ -163,6 +163,8 @@ export async function notifyAdminNewLead(input: {
   phone: string;
   custom: boolean; // true = richiesta preventivo su misura
   packageLabel?: string; // pacchetto suggerito (lead da opt-in email)
+  /** Nota libera lasciata dal visitatore nel form. */
+  clientNote?: string;
 }): Promise<{ sent: boolean; subject: string }> {
   const admins = adminNotifyRecipients();
   const subject = input.custom
@@ -179,6 +181,9 @@ export async function notifyAdminNewLead(input: {
   ]
     .filter(Boolean)
     .join("<br/>");
+  const noteHtml = input.clientNote?.trim()
+    ? `<p style="margin:12px 0 0;padding:10px 12px;background:#f6f4ef;border-radius:8px"><strong>Nota del cliente:</strong><br/>${esc(input.clientNote.trim())}</p>`
+    : "";
   const html = emailLayout({
     heading: input.custom
       ? "Nuova richiesta di preventivo su misura"
@@ -186,9 +191,9 @@ export async function notifyAdminNewLead(input: {
     bodyHtml: `<p style="margin:0 0 10px">${rows}</p>
       <p style="margin:0">${
         input.custom
-          ? "Il cliente aspetta di essere ricontattato per il preventivo dedicato."
+          ? "Il cliente aspetta di essere ricontattato per studiare il caso insieme e ricevere il preventivo dedicato."
           : "Ha richiesto il riepilogo del preventivo via email."
-      }</p>`,
+      }</p>${noteHtml}`,
     ctaLabel: "Apri la pratica",
     ctaHref: crmPracticeUrl(input.practiceId),
   });

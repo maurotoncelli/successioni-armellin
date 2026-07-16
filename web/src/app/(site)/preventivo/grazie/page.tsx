@@ -58,6 +58,13 @@ export default async function GraziePage({
     cta_chiama: "tel:+393201570567",
     cta_whatsapp: "https://wa.me/393201570567",
   });
+  const waPrefill = text(
+    "grazie",
+    "esito_c_whatsapp_prefill",
+    "Ciao Lorenzo, ho compilato il questionario sul sito e mi risulta un preventivo su misura. Vorrei approfondire il mio caso insieme a te.",
+  );
+  const waBase = String(tel.cta_whatsapp || "https://wa.me/393201570567");
+  const waHref = `${waBase}${waBase.includes("?") ? "&" : "?"}text=${encodeURIComponent(waPrefill)}`;
 
   // Lista documenti data-driven (stessi nomi della checklist); fallback statico.
   const docsFromContent = list<DocItem>("documenti", "lista");
@@ -213,7 +220,7 @@ export default async function GraziePage({
                   {text("grazie", "esito_c_body")}
                 </p>
                 <div className="mt-5 flex flex-wrap gap-3">
-                  <ButtonLink href={tel.cta_whatsapp} variant="primary">
+                  <ButtonLink href={waHref} variant="primary">
                     <MessageCircle className="h-4 w-4" />
                     {text("grazie", "esito_c_whatsapp", "Scrivi su WhatsApp")}
                   </ButtonLink>
@@ -236,17 +243,17 @@ export default async function GraziePage({
               title={text(
                 "grazie",
                 "soft_custom_title",
-                "Richiedi il preventivo su misura",
+                "Lascia i recapiti: ti richiamiamo noi",
               )}
               description={text(
                 "grazie",
                 "soft_custom_desc",
-                "Lasciaci i tuoi recapiti: Lorenzo studia il tuo caso e ti manda un preventivo dedicato, senza impegno.",
+                "Le risposte del questionario ci bastano per partire. Lascia email e telefono: Lorenzo ti ricontatta per approfondire insieme i dettagli.",
               )}
               submitLabel={text(
                 "grazie",
                 "soft_custom_submit",
-                "Richiedi il preventivo su misura",
+                "Richiedi di essere ricontattato",
               )}
               consensoPrivacy={text("preventivo", "consenso_privacy")}
               consensoMarketing={text("preventivo", "consenso_marketing")}
@@ -258,13 +265,24 @@ export default async function GraziePage({
               successBody={text(
                 "grazie",
                 "soft_custom_ok_body",
-                "Lorenzo ti ricontatta a breve con il preventivo su misura.",
+                "Lorenzo ti ricontatta a breve per approfondire il caso e prepararti il preventivo su misura.",
               )}
               requirePhone
+              showNotes
+              notesLabel={text(
+                "grazie",
+                "soft_custom_notes_label",
+                "Nota per Lorenzo (facoltativa)",
+              )}
+              notesPlaceholder={text(
+                "grazie",
+                "soft_custom_notes_placeholder",
+                "Es. tipo di immobili, terreni, aziende/quote, urgenze o dubbi…",
+              )}
               footnote={text(
                 "grazie",
                 "soft_custom_footnote",
-                "Inviando la richiesta non ti impegni a nulla: ti ricontattiamo noi entro un giorno lavorativo per il preventivo su misura.",
+                "Nessun impegno: ti ricontattiamo entro un giorno lavorativo per studiare il caso insieme.",
               )}
             />
           ) : (
