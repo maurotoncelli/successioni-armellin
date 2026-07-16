@@ -246,6 +246,25 @@ salvato su DB), footer con P.IVA/C.F./Albo/PEC/ODR, foro consumatore.
 - [ ] **Svuotare `ADMIN_PASSWORD`** dopo aver verificato l'accesso reale + 2FA. (Mauro)
 - [ ] Verificare region UE + retention backup Supabase. (Mauro)
 
+## 8) Media e contenuti pre-go-live (appunti 16/07)
+
+### Video "Come funziona" — sottotitoli multilingua (OBBLIGATORIO)
+Decisione Mauro 16/07. Dettaglio tecnico in `@15_Video_Come_Funziona_Script` §6.1.
+- [ ] Master video **senza** sottotitoli impressi (hard-burn) + file WebVTT (o SRT)
+      per **ogni lingua del language switcher** del sito
+      (IT, EN, AR, DE, ES, RU, TR, ZH, HI, SQ, FR).
+- [ ] Player: selezione **automatica** dei sottotitoli = lingua corrente del sito
+      (quando l'utente cambia lingua, i sottotitoli seguono).
+- [ ] Player: selezione **manuale** sempre disponibile (menu del player); la lingua
+      auto-scelta resta modificabile dall'utente in ogni momento.
+- [ ] Fallback: se manca la track della lingua corrente → italiano.
+- [ ] VO audio resta in italiano; le altre lingue = solo sottotitoli.
+
+### Foto / Open Graph (già segnalato)
+- [ ] Sostituire le immagini placeholder ("immagine indicativa") con foto vere
+      di Lorenzo / studio.
+- [ ] Creare og-image 1200×630 reale (oggi fallback sul logo 512).
+
 ---
 
 ## Riepilogo record DNS - su CLOUDFLARE dal 13/07 (tutti DNS-only, verificati)

@@ -1,8 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, ArrowRight, Minus, Plus, Sparkles } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Info,
+  Minus,
+  Plus,
+  Sparkles,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import {
@@ -23,12 +30,11 @@ import { trackEvent } from "@/lib/analytics";
   risposte via query string. I contatti si chiedono solo dopo, e solo se serve
   (pagamento, opt-in email, preventivo su misura).
 
-  Ridisegno (richiesta Lorenzo):
-  - Il testamento e' la PRIMA domanda ("si" -> preventivo su misura, coerente
-    con le condizioni di vendita).
-  - Gli eredi si indicano per tipo e numero (es. coniuge + 2 figli), non piu
-    come parentela di chi compila: l'esonero art. 28 c.7 TUS vale solo se
-    TUTTI gli eredi sono coniuge/linea retta.
+  Ridisegno:
+  - Il testamento e' la PRIMA domanda (informativa: NON forza il preventivo su
+    misura; i pacchetti coprono anche le successioni testamentarie).
+  - Gli eredi si indicano per tipo e numero (es. coniuge + 2 figli): l'esonero
+    art. 28 c.7 TUS vale solo se TUTTI gli eredi sono coniuge/linea retta.
 */
 
 type Props = {
@@ -46,7 +52,7 @@ function OptionGroup({
   value,
   onChange,
 }: {
-  label: string;
+  label: React.ReactNode;
   options: Choice[];
   value: string;
   onChange: (v: string) => void;
@@ -72,6 +78,63 @@ function OptionGroup({
         ))}
       </div>
     </fieldset>
+  );
+}
+
+/** Pallino info accanto a "de cuius": tooltip su hover/focus, tap-to-toggle su touch. */
+function DeCuiusInfo() {
+  const tipId = useId();
+  const [open, setOpen] = useState(false);
+
+  return (
+    <span className="relative inline-flex items-center">
+      <button
+        type="button"
+        aria-label="Cosa significa de cuius"
+        aria-describedby={tipId}
+        aria-expanded={open}
+        onClick={() => setOpen((v) => !v)}
+        onBlur={() => setOpen(false)}
+        className={cn(
+          "ml-0.5 inline-grid h-4 w-4 shrink-0 place-items-center rounded-full",
+          "border border-primary/30 bg-bg text-[10px] font-bold leading-none text-primary",
+          "transition-colors hover:border-accent hover:bg-accent/10 hover:text-accent",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40",
+        )}
+      >
+        <Info className="h-2.5 w-2.5" strokeWidth={2.5} aria-hidden />
+      </button>
+      <span
+        id={tipId}
+        role="tooltip"
+        className={cn(
+          // Sopra il pallino (non copre i bottoni Sì/No), centrato e con
+          // max-width che resta dentro lo schermo su mobile.
+          "absolute bottom-full left-1/2 z-20 mb-2 w-[min(18rem,calc(100vw-2.5rem))] -translate-x-1/2",
+          "rounded-lg border border-primary/15 bg-primary px-3 py-2 text-xs font-normal leading-relaxed text-white shadow-lg",
+          "pointer-events-none transition-opacity",
+          open
+            ? "opacity-100"
+            : "opacity-0 group-hover/decuius:opacity-100 group-focus-within/decuius:opacity-100",
+        )}
+      >
+        <span className="font-semibold">De cuius</span> (dal latino) è la persona
+        deceduta di cui si apre la successione: il defunto o la defunta.
+      </span>
+    </span>
+  );
+}
+
+function WillQuestionLabel() {
+  return (
+    <span className="group/decuius inline-flex flex-wrap items-center gap-x-1">
+      <span>Il</span>
+      <span className="inline-flex items-center">
+        <span className="font-semibold">de cuius</span>
+        <DeCuiusInfo />
+      </span>
+      <span>ha lasciato un testamento?</span>
+    </span>
   );
 }
 
@@ -184,9 +247,7 @@ export function PreventivoForm({
 
   const progress = ((step + 1) / total) * 100;
 
-  // Avanti abilitato solo quando TUTTE le domande dello step hanno risposta:
-  // testamento/altri beni/soglia 100k cambiano l'esito (esonero o su misura),
-  // quindi non possono restare senza risposta.
+  // Avanti abilitato solo quando TUTTE le domande dello step hanno risposta.
   const stepValid =
     (step === 0 && hasWill !== "") ||
     (step === 1 && heirsTotal > 0) ||
@@ -253,16 +314,22 @@ export function PreventivoForm({
           {step === 0 && (
             <>
               <OptionGroup
-                label="La persona mancata ha lasciato un testamento?"
+                label={<WillQuestionLabel />}
                 options={yesNo}
                 value={hasWill}
                 onChange={setHasWill}
               />
               {hasWill === "si" && (
-                <p className="rounded-[10px] border border-accent/20 bg-sand/40 p-4 text-sm text-text-muted">
-                  Con un testamento ogni caso fa storia a sé: alla fine ti
-                  proponiamo un preventivo su misura, preparato da Lorenzo sul
-                  tuo caso specifico.
+                <p className="rounded-[10px] border border-primary/10 bg-bg-muted/60 p-4 text-sm text-text-muted">
+                  Nessun problema: i pacchetti standard coprono anche i casi con
+                  testamento. Nella checklist documenti ti chiederemo la copia
+                  del testamento pubblicato.
+                </p>
+              )}
+              {hasWill === "nonso" && (
+                <p className="rounded-[10px] border border-primary/10 bg-bg-muted/60 p-4 text-sm text-text-muted">
+                  Va bene anche così: se emerge dopo, lo gestiamo in corso di
+                  pratica. Continua con le altre domande.
                 </p>
               )}
             </>

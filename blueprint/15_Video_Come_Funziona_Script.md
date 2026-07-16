@@ -188,6 +188,24 @@ gratis, e bastano cinque minuti.
   anche la home (versione breve).
 - `<video>` self-hosted (MP4 H.264 + poster) o embed Vimeo/Mux; due sorgenti
   (16:9 desktop, 9:16 mobile) con `<source media>` o swap via CSS/JS.
-- Sottotitoli: track WebVTT `it` (o sottotitoli impressi nel montaggio).
 - Lazy-load sotto la piega; nessun autoplay con audio (eventuale autoplay muto
   solo per la versione breve in home).
+
+### 6.1 Sottotitoli multilingua (REQUISITO GO-LIVE — decisione Mauro 16/07)
+
+I video **devono** avere sottotitoli in **tutte le lingue del sito** (stesso set
+del language switcher: IT, EN, AR, DE, ES, RU, TR, ZH, HI, SQ, FR), non solo IT.
+
+Comportamento obbligatorio del player:
+1. **Selezione automatica**: al cambio lingua del sito (cookie/switcher), i
+   sottotitoli del video passano alla stessa lingua.
+2. **Selezione manuale**: l'utente può comunque scegliere a mano un'altra
+   lingua dei sottotitoli dal menu del player (la lingua auto-selezionata resta
+   opzionabile / modificabile in ogni momento).
+3. Formato: track WebVTT per lingua (`it.vtt`, `en.vtt`, …), **non** hard-burn
+   nel montaggio (altrimenti non si può switchare).
+4. Default se manca la track della lingua corrente: fallback su italiano.
+
+Nota produzione: al montaggio consegnare il master **senza** sottotitoli
+impressi + i file VTT (o un SRT per lingua da convertire). La VO resta in
+italiano; le altre lingue sono solo sottotitoli.

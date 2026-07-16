@@ -34,7 +34,7 @@
       { "label": "Garanzia", "href": "/garanzia" },
       { "label": "Recesso", "href": "/recesso" }
     ] },
-    { "collection": "footer", "key": "credit", "locale": "it", "is_published": true, "value": "Realizzato da AT STUDIO" },
+    { "collection": "footer", "key": "credit", "locale": "it", "is_published": true, "value": "Realizzato da AT STUDIO · Mauro Toncelli" },
     { "collection": "footer", "key": "strumenti_link", "locale": "it", "is_published": true, "value": { "label": "Calcolo valore catastale", "href": "/strumenti/valore-catastale" } },
 
     { "collection": "settings", "key": "phone", "locale": "it", "is_published": true, "value": "320 1570567" },
@@ -124,7 +124,7 @@
     { "collection": "tariffe", "key": "addon_subtitle", "locale": "it", "is_published": true, "value": "Tocca un servizio per saperne di più. Per ora li attiviamo su richiesta: ne parliamo insieme e te li inseriamo nella pratica." },
     { "collection": "tariffe", "key": "addon_contact_text", "locale": "it", "is_published": true, "value": "Questo servizio si aggiunge su richiesta, con un preventivo dedicato. Chiamaci o scrivici: valutiamo insieme il tuo caso e te lo inseriamo nella pratica, senza sorprese." },
     { "collection": "tariffe", "key": "rate_text", "locale": "it", "is_published": true, "value": "L'onorario si può pagare a rate al checkout (PayPal Pay in 3, Klarna, Scalapay, dove disponibili). Si rateizza l'onorario, non le imposte, che seguono le scadenze di legge." },
-    { "collection": "tariffe", "key": "su_misura_text", "locale": "it", "is_published": true, "value": "Più immobili, terreni agricoli, annessi, testamento o eredi all'estero? Ogni caso è diverso: ti facciamo un preventivo su misura, senza sorprese." },
+    { "collection": "tariffe", "key": "su_misura_text", "locale": "it", "is_published": true, "value": "Più di 8 immobili, terreni agricoli, aziende o quote societarie? Ogni caso è diverso: ti facciamo un preventivo su misura, senza sorprese." },
     { "collection": "tariffe", "key": "su_misura_cta", "locale": "it", "is_published": true, "value": { "label": "Richiedi un preventivo su misura", "href": "/preventivo" } },
     { "collection": "tariffe", "key": "ti_serve_title", "locale": "it", "is_published": true, "value": "Forse non ti serve nemmeno. Te lo diciamo gratis." },
     { "collection": "tariffe", "key": "ti_serve_body", "locale": "it", "is_published": true, "value": "In alcuni casi (eredi diretti, solo liquidità modesta entro le soglie di legge, nessun immobile) la dichiarazione potrebbe non essere dovuta. Verifichiamo il tuo caso prima di farti pagare: se non ti serve, te lo diciamo. La verifica definitiva è sempre sul caso concreto." },
@@ -140,7 +140,7 @@
     { "collection": "pacchetti", "key": "su_misura_title", "locale": "it", "is_published": true, "value": "Preventivo personalizzato" },
     { "collection": "pacchetti", "key": "su_misura_tagline", "locale": "it", "is_published": true, "value": "Per le successioni più complesse" },
     { "collection": "pacchetti", "key": "su_misura_price_label", "locale": "it", "is_published": true, "value": "Su misura" },
-    { "collection": "pacchetti", "key": "su_misura_body", "locale": "it", "is_published": true, "value": "C'è un testamento, più di 8 immobili, terreni agricoli o un'azienda? I casi più complessi non stanno in un pacchetto standard: studiamo il tuo e ti prepariamo un preventivo dedicato, senza sorprese." },
+    { "collection": "pacchetti", "key": "su_misura_body", "locale": "it", "is_published": true, "value": "Più di 8 immobili, terreni agricoli, aziende o quote societarie? I casi più complessi non stanno in un pacchetto standard: studiamo il tuo e ti prepariamo un preventivo dedicato, senza sorprese." },
     { "collection": "pacchetti", "key": "su_misura_features", "locale": "it", "is_published": true, "value": ["Per i casi che i pacchetti non coprono", "Prima valutazione gratuita del tuo caso", "Prezzo chiaro e definito prima di iniziare", "Stesso servizio e stessa assistenza dei pacchetti"] },
     { "collection": "pacchetti", "key": "su_misura_cta", "locale": "it", "is_published": true, "value": { "label": "Richiedi il preventivo", "href": "/preventivo" } },
 
@@ -333,7 +333,7 @@
     { "collection": "grazie", "key": "esito_b_riallineamento", "locale": "it", "is_published": true, "value": "Prima di pagare, dai un'occhiata alla {guida} alla scelta del pacchetto o fai due parole con Lorenzo: se hai scelto quello sbagliato, cambiarlo è semplice e si regola solo la differenza." },
     { "collection": "grazie", "key": "esito_b_guida", "locale": "it", "is_published": true, "value": { "label": "guida", "href": "/tariffe" } },
     { "collection": "grazie", "key": "esito_c_title", "locale": "it", "is_published": true, "value": "Il tuo caso merita un preventivo su misura" },
-    { "collection": "grazie", "key": "esito_c_body", "locale": "it", "is_published": true, "value": "Hai elementi particolari (più immobili, terreni/annessi, altri beni, testamento o eredi all'estero). Per non farti pagare né più né meno del giusto, Lorenzo ti prepara un preventivo dedicato." },
+    { "collection": "grazie", "key": "esito_c_body", "locale": "it", "is_published": true, "value": "Hai elementi particolari (molti immobili, terreni agricoli, altri beni come quote o aziende). Per non farti pagare né più né meno del giusto, Lorenzo ti prepara un preventivo dedicato." },
     { "collection": "grazie", "key": "esito_c_cta", "locale": "it", "is_published": true, "value": { "label": "Chiama per il preventivo su misura", "href": "tel:+393201570567" } },
     { "collection": "grazie", "key": "esito_c_whatsapp", "locale": "it", "is_published": true, "value": "Scrivi su WhatsApp" },
     { "collection": "grazie", "key": "soft_email_title", "locale": "it", "is_published": true, "value": "Preferisci pensarci? Ricevi questo preventivo via email" },

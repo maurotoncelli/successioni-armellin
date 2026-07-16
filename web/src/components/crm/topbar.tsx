@@ -102,6 +102,9 @@ export function Topbar({ notificationCount = 0 }: { notificationCount?: number }
               </Link>
             );
           })}
+          <p className="px-3 pt-3 text-[10px] leading-snug text-crm-muted">
+            Realizzato da AT STUDIO · Mauro Toncelli
+          </p>
         </nav>
       )}
     </header>

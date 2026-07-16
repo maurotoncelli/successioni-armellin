@@ -121,6 +121,12 @@ export function Sidebar() {
             Esci
           </button>
         </form>
+        <p className="px-3 pt-3 text-[10px] leading-snug text-crm-muted">
+          Realizzato da{" "}
+          <span className="font-medium text-crm-text2">AT STUDIO</span>
+          <br />
+          Mauro Toncelli
+        </p>
       </div>
     </aside>
   );

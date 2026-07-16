@@ -87,15 +87,17 @@ export function decodeHeirs(raw: string | undefined): HeirsComposition | null {
 }
 
 export function computeEsito(input: {
-  hasWill: string;
+  /** Conservato per analytics/CRM: NON influenza l'esito (i pacchetti
+   *  coprono anche le successioni con testamento; Riunione 2 + conferma Mauro). */
+  hasWill?: string;
   allDirectLine: boolean;
   hasRealEstate: string;
   hasOther: string;
   over100k?: string;
 }): Esito {
-  // Successione testamentaria -> preventivo su misura (coerente con le
-  // condizioni di vendita: i pacchetti coprono le successioni legittime).
-  if (input.hasWill === "si") return "c";
+  // Su misura solo per casi davvero fuori standard: altri beni (quote,
+  // aziende…) oppure immobili "non so" (troppo incerto per un prezzo fisso).
+  // Il testamento resta nei pacchetti (serve solo come documento in checklist).
   if (input.hasOther === "si" || input.hasRealEstate === "nonso") return "c";
   if (input.hasRealEstate === "no" && input.allDirectLine) {
     // L'esonero art. 28 c.7 TUS vale solo con attivo ereditario <= 100.000 EUR:

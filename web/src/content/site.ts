@@ -163,6 +163,30 @@ export const faqs: Faq[] = [
       "Dipende dal tuo caso: ti diamo una lista personalizzata. Se ti manca qualcosa, spesso lo possiamo recuperare noi (visure, atti di provenienza).",
   },
   {
+    category: "Documenti e Area personale",
+    question: "Posso caricare i documenti con la foto del telefono?",
+    answer:
+      "Sì. Nell'Area personale puoi caricare PDF, JPG o PNG (anche foto fatte col telefono), fino a 10 MB ciascuno e fino a 10 file per ogni voce della checklist. Per fronte/retro o documenti multipagina basta caricare più foto sulla stessa voce.",
+  },
+  {
+    category: "Documenti e Area personale",
+    question: "Ci sono modelli pronti da scaricare e compilare?",
+    answer:
+      "Sì. Sotto alcune voci della checklist trovi i modelli già pronti (ad esempio la dichiarazione sostitutiva di certificato di morte e stato di famiglia del defunto, o l'autocertificazione stato di famiglia di ciascun erede): li scarichi, li compili, li firmi e li ricarichi.",
+  },
+  {
+    category: "Documenti e Area personale",
+    question: "Cosa succede se un documento viene rifiutato?",
+    answer:
+      "Lorenzo lo verifica uno per uno. Se qualcosa non va (foto sfocata, pagina mancante, documento sbagliato) la voce torna \"da rifare\" con una nota che spiega cosa correggere: ricarichi il file corretto e la pratica riparte senza dover rifare tutto.",
+  },
+  {
+    category: "Documenti e Area personale",
+    question: "Come faccio a sapere quando i documenti sono ok?",
+    answer:
+      "Nell'Area personale vedi lo stato di ogni voce (da caricare, caricato, approvato, da rifare). Quando hai finito premi «Ho finito»: ricevi aggiornamenti via email a ogni passaggio e puoi sempre controllare a che punto è la pratica.",
+  },
+  {
     category: "Dopo il servizio",
     question: "Cosa ricevo a fine pratica?",
     answer:

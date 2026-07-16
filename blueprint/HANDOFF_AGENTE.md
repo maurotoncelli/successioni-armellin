@@ -35,6 +35,30 @@ Sezione **8-quater** = sessione 15/07 (blocchi post-incontro con Lorenzo).
 Sezione **9** = TODO APERTI (leggila per prima!).
 Lingua del progetto: **italiano**. Scrivere sempre in italiano con l'utente.
 
+## 8-octies. Appunti go-live video (16/07) — da fare all'integrazione
+- Sottotitoli video **multilingua** (tutte le lingue del switcher): auto-sync
+  con la lingua del sito + scelta manuale sempre disponibile. Vedi
+  `@RUNBOOK_GoLive` §8 e `@15_Video_Come_Funziona_Script` §6.1.
+- Footer indirizzo: gia' link Google Maps (fatto in 8-sexies).
+
+## 8-septies. Sessione 16/07 (terza tornata) — quiz testamento + FAQ documenti + credits CRM
+1. **Quiz preventivo**: il testamento NON forza piu' l'esito C (su misura).
+   In `lib/quote.ts` `computeEsito` ignora `hasWill` per il routing (resta
+   tracciato per analytics/CRM/checklist). Su misura solo con `hasOther=si`
+   o `hasRealEstate=nonso`. Nota informativa se "si": i pacchetti standard
+   coprono anche i casi con testamento.
+2. **Domanda**: "Il de cuius ha lasciato un testamento?" con pallino info
+   (tooltip hover/focus + tap su mobile) che spiega "de cuius" = il defunto.
+   Verificato desktop e mobile.
+3. **Copy allineati**: rimossi i riferimenti al testamento come trigger del
+   su misura (tariffe.su_misura_text, pacchetti.su_misura_body, grazie.esito_c_body).
+4. **4 FAQ documenti** (categoria "Documenti e Area personale"): foto telefono,
+   modelli pronti, documento rifiutato, stato approvazione. Inserite in
+   fixture `site.ts` + DB produzione via `update-prod-content.mjs`.
+5. **Credits**: footer sito "Realizzato da AT STUDIO · Mauro Toncelli"; nel
+   CRM sidebar (desktop) e menu mobile topbar.
+- Build ok. **NON committato** (chiedere a Mauro).
+
 ## 8-sexies. Sessione 16/07 (seconda tornata) — migliorie sito + SEO + CRM (FATTE, NON committate)
 Mauro ha approvato i nuovi nomi pacchetti (vedi 8-quinquies): **APPLICATI IN
 PRODUZIONE** via `node scripts/update-prod-content.mjs` (16/07 ~11:30, verificato

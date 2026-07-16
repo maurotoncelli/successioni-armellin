@@ -21,7 +21,7 @@ export async function PackageCards() {
     body: text(
       "pacchetti",
       "su_misura_body",
-      "Testamento, molti immobili, terreni o aziende? I casi più complessi non stanno in un pacchetto standard: ti prepariamo un preventivo dedicato, senza sorprese.",
+      "Più di 8 immobili, terreni agricoli, aziende o quote societarie? I casi più complessi non stanno in un pacchetto standard: ti prepariamo un preventivo dedicato, senza sorprese.",
     ),
     features: list<string>("pacchetti", "su_misura_features"),
     cta: cta("pacchetti", "su_misura_cta", {

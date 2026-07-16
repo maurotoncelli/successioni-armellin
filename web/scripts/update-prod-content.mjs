@@ -97,15 +97,53 @@ const faqUpdates = [
   },
 ];
 
-const newFaq = {
-  locale: "it",
-  question: "Cos'è l'agevolazione prima casa in successione?",
-  answer:
-    "Se almeno un erede ha i requisiti prima casa sull'immobile ereditato, le imposte ipotecaria e catastale si pagano in misura fissa (200 euro ciascuna) invece che in percentuale sul valore catastale. Verifichiamo noi se ti spetta e la indichiamo in dichiarazione.",
-  category: "Costi e imposte",
-  sort_order: 5,
-  is_published: true,
-};
+const newFaqs = [
+  {
+    locale: "it",
+    question: "Cos'è l'agevolazione prima casa in successione?",
+    answer:
+      "Se almeno un erede ha i requisiti prima casa sull'immobile ereditato, le imposte ipotecaria e catastale si pagano in misura fissa (200 euro ciascuna) invece che in percentuale sul valore catastale. Verifichiamo noi se ti spetta e la indichiamo in dichiarazione.",
+    category: "Costi e imposte",
+    sort_order: 5,
+    is_published: true,
+  },
+  {
+    locale: "it",
+    question: "Posso caricare i documenti con la foto del telefono?",
+    answer:
+      "Sì. Nell'Area personale puoi caricare PDF, JPG o PNG (anche foto fatte col telefono), fino a 10 MB ciascuno e fino a 10 file per ogni voce della checklist. Per fronte/retro o documenti multipagina basta caricare più foto sulla stessa voce.",
+    category: "Documenti e Area personale",
+    sort_order: 10,
+    is_published: true,
+  },
+  {
+    locale: "it",
+    question: "Ci sono modelli pronti da scaricare e compilare?",
+    answer:
+      "Sì. Sotto alcune voci della checklist trovi i modelli già pronti (ad esempio la dichiarazione sostitutiva di certificato di morte e stato di famiglia del defunto, o l'autocertificazione stato di famiglia di ciascun erede): li scarichi, li compili, li firmi e li ricarichi.",
+    category: "Documenti e Area personale",
+    sort_order: 11,
+    is_published: true,
+  },
+  {
+    locale: "it",
+    question: "Cosa succede se un documento viene rifiutato?",
+    answer:
+      "Lorenzo lo verifica uno per uno. Se qualcosa non va (foto sfocata, pagina mancante, documento sbagliato) la voce torna \"da rifare\" con una nota che spiega cosa correggere: ricarichi il file corretto e la pratica riparte senza dover rifare tutto.",
+    category: "Documenti e Area personale",
+    sort_order: 12,
+    is_published: true,
+  },
+  {
+    locale: "it",
+    question: "Come faccio a sapere quando i documenti sono ok?",
+    answer:
+      "Nell'Area personale vedi lo stato di ogni voce (da caricare, caricato, approvato, da rifare). Quando hai finito premi «Ho finito»: ricevi aggiornamenti via email a ogni passaggio e puoi sempre controllare a che punto è la pratica.",
+    category: "Documenti e Area personale",
+    sort_order: 13,
+    is_published: true,
+  },
+];
 
 async function updateFaqs() {
   const { data: rows, error } = await admin.from("faqs").select("id, question");
@@ -131,14 +169,16 @@ async function updateFaqs() {
     }
   }
 
-  const exists = rows.some((r) => r.question === newFaq.question);
-  if (exists) {
-    console.log("faqs: FAQ prima casa gia presente, salto insert");
-  } else {
-    console.log(`faqs: inserisco "${newFaq.question}"`);
-    if (!dry) {
-      const { error: e } = await admin.from("faqs").insert(newFaq);
-      if (e) throw e;
+  for (const faq of newFaqs) {
+    const exists = rows.some((r) => r.question === faq.question);
+    if (exists) {
+      console.log(`faqs: "${faq.question}" gia presente, salto insert`);
+    } else {
+      console.log(`faqs: inserisco "${faq.question}"`);
+      if (!dry) {
+        const { error: e } = await admin.from("faqs").insert(faq);
+        if (e) throw e;
+      }
     }
   }
 }
