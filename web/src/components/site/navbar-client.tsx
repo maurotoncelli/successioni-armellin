@@ -32,33 +32,32 @@ export function NavbarClient({
 
   return (
     <header className="sticky top-0 z-40 border-b border-primary/10 bg-bg/90 backdrop-blur">
-      <nav className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-6 px-5 sm:px-8">
+      <nav className="mx-auto flex h-16 w-full max-w-7xl items-center gap-4 px-5 sm:gap-6 sm:px-8">
         <Link
           href="/"
-          className="flex min-w-0 items-center gap-2.5"
+          className="flex shrink-0 items-center gap-2.5"
           aria-label="Home"
         >
           <span
             aria-hidden
-            className="inline-flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-accent font-sans text-sm font-bold leading-none text-white [aspect-ratio:1]"
+            className="grid h-9 w-9 place-items-center rounded-full bg-accent font-sans text-sm font-bold text-white"
           >
             A
           </span>
-          <span className="whitespace-nowrap font-serif text-lg font-semibold leading-none text-primary">
+          <span className="font-serif text-lg font-semibold text-primary">
             Armellin
-            <span className="hidden font-sans text-sm font-normal text-text-muted sm:inline">
-              {" "}
+            <span className="ml-1.5 hidden font-sans text-sm font-normal text-text-muted lg:inline">
               · Successioni
             </span>
           </span>
         </Link>
 
-        <ul className="hidden items-center gap-1 xl:flex 2xl:gap-2">
+        <ul className="hidden min-w-0 flex-1 items-center justify-center gap-0.5 xl:flex 2xl:gap-1">
           {menu.map((item) => (
             <li key={item.href}>
               <Link
                 href={item.href}
-                className="whitespace-nowrap rounded-md px-2.5 py-2 text-sm font-medium text-text transition-colors hover:bg-primary/5 hover:text-accent 2xl:px-3"
+                className="block whitespace-nowrap rounded-md px-2 py-2 text-sm font-medium text-text transition-colors hover:bg-primary/5 hover:text-accent 2xl:px-3"
               >
                 {item.label}
               </Link>
@@ -66,7 +65,7 @@ export function NavbarClient({
           ))}
         </ul>
 
-        <div className="hidden items-center gap-3 xl:flex">
+        <div className="ml-auto hidden shrink-0 items-center gap-3 xl:flex">
           <Link
             href="/area-riservata"
             className="inline-flex items-center gap-1.5 whitespace-nowrap text-sm font-medium text-primary hover:text-accent"
@@ -104,7 +103,7 @@ export function NavbarClient({
           )}
         </div>
 
-        <div className="flex items-center gap-1 xl:hidden">
+        <div className="ml-auto flex items-center gap-1 xl:hidden">
           <LanguageSwitcher align="right" />
           <button
             type="button"
