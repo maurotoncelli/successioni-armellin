@@ -55,7 +55,7 @@ Variabili effettivamente lette dal codice in questa fase (template in `web/.env.
 ## Analytics / consensi
 - NEXT_PUBLIC_GA4_MEASUREMENT_ID (public) — LETTA DAL CODICE; se assente GA4 e disattivato (no-op). Con Consent Mode v2 (default negato) + banner consensi. Eventi: generate_lead, begin_checkout, purchase.
 - NEXT_PUBLIC_GTM_ID (public) — opzionale (alternativa/aggiunta a GA4 diretto).
-- GA4_API_SECRET (server, Measurement Protocol) — futuro: invio `purchase` server-side dal webhook Stripe (piu affidabile).
+- GA4_API_SECRET (server, Measurement Protocol) — LETTA DAL CODICE; invio `purchase` server-side dal webhook Stripe. Se assente, fallback sull'evento client in `/checkout/conferma`. Creare in GA4 Admin → Data streams → Measurement Protocol API secrets.
 - CMP: banner consensi minimale gia implementato (localStorage + Consent Mode). Per un CMP certificato (IAB TCF) valutare provider esterno se richiesto.
 
 ## Fatturazione (Opzione L)

@@ -8,6 +8,7 @@ import { pushCrmNotification } from "@/lib/crm-notifications";
 import { issueInvoiceForPractice, isInvoicingConfigured } from "@/lib/invoice";
 import { slaDueDate } from "@/lib/cms";
 import { generateChecklist } from "@/lib/checklist";
+import { sendGa4Purchase } from "@/lib/analytics-server";
 import type { PracticeRow, PaymentStatusKey } from "@/lib/supabase/types";
 
 /*
@@ -262,6 +263,20 @@ async function handleCheckoutCompleted(
   if (clientEmail) {
     await notifyStatusChange(clientEmail, "PAGATO");
   }
+
+  // Purchase GA4 via Measurement Protocol (fonte di verita server-side).
+  // Best-effort: non deve far fallire il webhook. transaction_id = session Stripe
+  // (stesso id usato dal fallback client se GA4_API_SECRET non e configurato).
+  const amountTotal =
+    typeof session.amount_total === "number"
+      ? session.amount_total / 100
+      : Number(row.price) || 0;
+  await sendGa4Purchase({
+    transactionId: session.id,
+    value: amountTotal,
+    currency: session.currency ?? "EUR",
+    packageKey: row.selected_package ?? undefined,
+  });
 
   // Fatturazione automatica dell'onorario (Opzione L), solo se attivata via env.
   // Best-effort: un eventuale errore NON deve far fallire il webhook (Stripe
