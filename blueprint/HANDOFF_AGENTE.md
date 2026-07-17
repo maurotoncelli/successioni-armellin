@@ -1,6 +1,6 @@
 # HANDOFF per il prossimo agente
 
-> Documento di passaggio di consegne. Aggiornato: **2026-07-16 pomeriggio**.
+> Documento di passaggio di consegne. Aggiornato: **2026-07-17 sera**.
 > Scopo: permettere a un nuovo agente (senza contesto) di riprendere il lavoro.
 > Riferimenti chiave: @RUNBOOK_GoLive (procedura go-live), @SPEC_Env_Vars,
 > @DOMANDE_PER_LORENZO, @PROSSIMO_INCONTRO_LORENZO, @07_Stack.
@@ -8,11 +8,48 @@
 > fiscali Lorenzo): nel file **`ACCESSI_LOCALE.md`** in root (git-ignored, NON
 > committato). Non è nel repo.
 
+## 8-undecies. Sessione 17/07 sera — backlog Mauro chiuso (codice) + tipologiche/template
+
+**Stato:** i 12 fix codice urgenti del 17/07 + tornate successive sono **fatti e
+su `main`** (ultimo batch tipologiche/template: `0b5357e`; Come funziona icone:
+`f4dc565`/`c266c0b`). Resta soprattutto asset/ops Lorenzo e mail follow-up GMB.
+
+### Tipologie documenti CRM (`/crm/tipologie-documenti`) — FATTO
+- Menu sidebar/topbar **Sito → Tipologie di documenti**
+- Attiva/disattiva voci in checklist automatica; tipi custom
+- **Modelli PDF** per tipologia: default (morte + stato famiglia in
+  `public/templates/`), rinomina/rimuovi, **upload PDF** → Storage
+  `site/doc-templates/...`, download area via `/api/doc-templates/download`
+- Stato in Storage NO-DDL: `practice-docs/site/_document-types.json`
+- File: `lib/document-types.ts`, `lib/document-types-shared.ts`,
+  `lib/doc-templates.ts`, `lib/checklist.ts` (async + catalogo),
+  `components/crm/document-types-editor.tsx`
+- Flag “Verificato” **rimosso** (non aveva effetto operativo)
+
+### Altri fatti 17/07 sera (sintesi)
+- Esito A: niente SoftLead email; questionari tracciati (notifica `preventivo` +
+  contatore Statistiche); filtri notifiche CRM Importanti/Tutte
+- Meta SEO rafforzata; prezzi **senza IVA** (forfettario); banner GMB area
+  (`settings.review_url` = `https://g.page/r/CVRoWf5CoiTDEAE/review`)
+- Quiz testamento: tono neutro (niente “Nessun problema”)
+- Come funziona: visita studio + step **compatti** con icone SVG custom
+  (`come-funziona-icons.tsx`), numerini leggibili
+- Mobile spacing sito (Section/PageHero/home/cards/footer)
+
+### Aperto dopo 17/07 (prossimo agente)
+- [ ] Mail follow-up chiusura pratica con link GMB (stesso URL review)
+- [ ] Foto Pontedera vera; recensioni GMB reali (~20); video; SMS/WhatsApp
+- [ ] Tabella comparativa riga extra; traduzioni/legal; QA cross-browser; Lenis
+- [ ] Check costi pacchetti con Lorenzo; test AI XML su pratica reale
+
+---
+
 ## 8-decies. Backlog Mauro 17/07 — priorità e nota CRITICA su lead/account
 
 Lista lunga ricevuta il 17/07. **Priorità #1 (trattata sotto):** dove finisce
 la pratica se il lead non è ancora registrato / se paga senza account, e se può
-"perdere" la pratica. Il resto è backlog (non tutto fatto).
+"perdere" la pratica. Il resto è backlog (dettaglio sotto; codice urgente chiuso
+il 17/07 sera — vedi §8-undecies).
 
 ### CRITICO — Lead / pagamento senza registrazione (come funziona)
 
@@ -86,18 +123,14 @@ File chiave: `preventivo/actions.ts`, `checkout/actions.ts`,
 - [x] Questionari completati contati (Storage + notifica `preventivo`) anche senza email
 - [x] Notifiche CRM: filtri Importanti/Tutte + chip per tipo; badge esclude questionari
 
-**Tornata 17/07 sera (2):**
-- [x] CRM → **Tipologie di documenti** (`/crm/tipologie-documenti`):
-      attiva/disattiva in checklist auto + tipi custom + **gestione modelli PDF**
-      (default autocertificazioni + upload); Storage `_document-types.json`;
-      `generateChecklist` rispetta il catalogo (tolto flag “Verificato”)
+**Tornata 17/07 sera (2) — commits fino a `0b5357e`:**
+- [x] CRM → Tipologie documenti + gestione template PDF (vedi §8-undecies)
 - [x] Meta description SEO rafforzata (professionista reale + online)
 - [x] Prezzi: copy **senza IVA** (forfettario) su tariffe / card / ordine area
-- [x] Banner recensione GMB in evidenza (dashboard + conclusa) con URL
-      `https://g.page/r/CVRoWf5CoiTDEAE/review` (`settings.review_url` pubblicato)
-- [x] Quiz testamento: tolto “Nessun problema…” (tono neutro)
-- [x] Come funziona: step con illustrazioni SVG + icone
-- [ ] Mail follow-up chiusura con stesso link GMB (se non già agganciata)
+- [x] Banner recensione GMB in evidenza (dashboard + conclusa); URL pubblicato
+- [x] Quiz testamento: tolto “Nessun problema…”
+- [x] Come funziona: step compatti + icone SVG custom (non illustrazioni grandi)
+- [ ] Mail follow-up chiusura con stesso link GMB
 
 **Serve asset / decisione Lorenzo / ops**
 - [ ] Foto Pontedera vera
