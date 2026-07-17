@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Check } from "lucide-react";
+import { Check, MapPin, ExternalLink } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { Card } from "@/components/ui/card";
 import { CtaBand } from "@/components/site/cta-band";
-import { cta, list, text } from "@/lib/content";
+import { cta, list, obj, text } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Come funziona",
@@ -12,12 +12,26 @@ export const metadata: Metadata = {
 };
 
 type Step = { numero: number; titolo: string; testo: string; dettaglio: string };
+type Address = { via: string; cap: string; citta: string };
+type OpeningHour = { giorni: string; orario: string };
 
 export default function ComeFunzionaPage() {
   const steps = list<Step>("come_funziona", "steps");
   const deliverable = list<string>("come_funziona", "deliverable_list");
   const finalButton = cta("come_funziona", "cta_button");
   const finalPhone = cta("come_funziona", "cta_phone");
+  const address = obj<Address>("settings", "address", {
+    via: "",
+    cap: "",
+    citta: "",
+  });
+  const hours = list<OpeningHour>("settings", "opening_hours");
+  const indirizzo = [address.via, `${address.cap} ${address.citta}`.trim()]
+    .filter(Boolean)
+    .join(", ");
+  const mapLink = indirizzo
+    ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(indirizzo)}`
+    : "/contatti";
 
   return (
     <>
@@ -66,6 +80,51 @@ export default function ComeFunzionaPage() {
         <p className="mt-8 text-center leading-relaxed text-text-muted">
           {text("come_funziona", "distanza_body")}
         </p>
+
+        {/* Alternativa in studio: copy da content, indirizzo/orari da settings. */}
+        <div className="mx-auto mt-8 max-w-2xl rounded-2xl border border-primary/10 bg-bg p-5 sm:mt-10 sm:p-7">
+          <div className="flex flex-col items-start gap-4 sm:flex-row sm:gap-5">
+            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-accent/15 text-accent">
+              <MapPin className="h-5 w-5" />
+            </span>
+            <div className="min-w-0 flex-1">
+              <h3 className="text-xl">
+                {text("come_funziona", "visita_title")}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-text-muted">
+                {text("come_funziona", "visita_body")}
+              </p>
+              {indirizzo && (
+                <p className="mt-4 text-sm font-medium text-primary">
+                  {indirizzo}
+                </p>
+              )}
+              {hours.length > 0 && (
+                <ul className="mt-2 space-y-0.5 text-sm text-text-muted">
+                  {hours.map((h) => (
+                    <li key={h.giorni}>
+                      <span className="font-medium text-text">{h.giorni}:</span>{" "}
+                      {h.orario}
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <a
+                href={mapLink}
+                target={indirizzo ? "_blank" : undefined}
+                rel={indirizzo ? "noopener noreferrer" : undefined}
+                className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:text-accent-dark"
+              >
+                {text(
+                  "come_funziona",
+                  "visita_maps_label",
+                  "Apri in Google Maps",
+                )}
+                <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+            </div>
+          </div>
+        </div>
       </Section>
 
       <Section>

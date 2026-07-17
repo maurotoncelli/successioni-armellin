@@ -79,7 +79,7 @@ File chiave: `preventivo/actions.ts`, `checkout/actions.ts`,
 9. [x] Link GA4 in Statistiche CRM (non sidebar) (17/07)
 10. [x] Prefisso telefono profilo (+xy) (17/07)
 11. [x] Mobile spacing sito (Section/PageHero/home/cards/footer) (17/07)
-12. [ ] Come funziona: blocco visita in studio (copy + indirizzo settings)
+12. [x] Come funziona: blocco visita in studio (copy + settings.address/orari) (17/07)
 
 **Serve asset / decisione Lorenzo / ops**
 - [ ] Foto Pontedera vera
