@@ -58,7 +58,7 @@ export default async function OrdinePage() {
             </div>
           </div>
           <p className="mt-3 text-xs text-text-muted">
-            Importi comprensivi di IVA/Cassa dove dovuti. Le imposte sono
+            Onorario senza IVA (regime forfettario). Le imposte sono
             separate (vedi sotto).
           </p>
 

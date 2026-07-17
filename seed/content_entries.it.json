@@ -42,7 +42,7 @@
     { "collection": "settings", "key": "whatsapp", "locale": "it", "is_published": true, "value": "https://wa.me/393201570567" },
     { "collection": "settings", "key": "email", "locale": "it", "is_published": true, "value": "studio@successioniarmellin.it" },
     { "collection": "settings", "key": "pec", "locale": "it", "is_published": true, "value": "lorenzo.armellin@geopec.it" },
-    { "collection": "settings", "key": "review_url", "locale": "it", "is_published": false, "value": "" },
+    { "collection": "settings", "key": "review_url", "locale": "it", "is_published": true, "value": "https://g.page/r/CVRoWf5CoiTDEAE/review" },
     { "collection": "settings", "key": "address", "locale": "it", "is_published": true, "value": { "via": "Via Vittorio Veneto 31", "cap": "56025", "citta": "Pontedera (PI)" } },
     { "collection": "settings", "key": "opening_hours", "locale": "it", "is_published": true, "value": [
       { "giorni": "Lun-Ven", "orario": "9:00-13:00 / 14:30-18:30" },
@@ -108,7 +108,7 @@
     { "collection": "tariffe", "key": "hero_subtitle", "locale": "it", "is_published": true, "value": "Un onorario fisso per pacchetto, deciso prima. Le imposte sono separate e te le calcoliamo noi. Per i casi particolari, un preventivo su misura." },
     { "collection": "tariffe", "key": "card_badge_popolare", "locale": "it", "is_published": true, "value": "Il più scelto" },
     { "collection": "tariffe", "key": "box_trasparenza_title", "locale": "it", "is_published": true, "value": "Come si compone il prezzo" },
-    { "collection": "tariffe", "key": "box_trasparenza_body", "locale": "it", "is_published": true, "value": "Il prezzo del pacchetto è l'onorario professionale (IVA e Cassa indicate a parte). Le imposte (successione, ipotecaria, catastale, bolli) sono separate, a carico dell'erede, e si versano con F24: te le calcoliamo e comunichiamo PRIMA dell'invio." },
+    { "collection": "tariffe", "key": "box_trasparenza_body", "locale": "it", "is_published": true, "value": "Il prezzo del pacchetto è l'onorario professionale senza IVA: lo studio opera in regime forfettario (operazione non soggetta a IVA). Le imposte di successione (ipotecaria, catastale, bolli) sono separate, a carico dell'erede, e si versano con F24: te le calcoliamo e comunichiamo PRIMA dell'invio." },
     { "collection": "tariffe", "key": "sovrapprezzo_title", "locale": "it", "is_published": true, "value": "Quando il prezzo può variare (lo diciamo prima)" },
     { "collection": "tariffe", "key": "sovrapprezzo_list", "locale": "it", "is_published": false, "value": [
       { "voce": "Immobile aggiuntivo", "importo": "+60 EUR cad. (da confermare)" },

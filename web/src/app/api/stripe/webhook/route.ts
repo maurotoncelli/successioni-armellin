@@ -197,7 +197,7 @@ async function handleCheckoutCompleted(
   const existingChecklist = asArray<unknown>(row.checklist);
   let checklist = row.checklist;
   if (existingChecklist.length === 0) {
-    checklist = generateChecklist({
+    checklist = await generateChecklist({
       hasRealEstate: row.has_real_estate,
       realEstateCount: row.real_estate_count,
       hasWill: row.has_will,

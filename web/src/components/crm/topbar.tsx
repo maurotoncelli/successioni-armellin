@@ -13,6 +13,7 @@ const mobileNav = [
   { href: "/crm/contatti", label: "Contatti" },
   { href: "/crm/statistiche", label: "Statistiche" },
   { href: "/crm/listino", label: "Listino e contenuti" },
+  { href: "/crm/tipologie-documenti", label: "Tipologie di documenti" },
   { href: "/crm/migliorie", label: "Migliorie sito" },
   { href: "/crm/modalita-offline", label: "Modalità offline" },
 ];

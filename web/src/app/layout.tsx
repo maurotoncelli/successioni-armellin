@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s | Geom. Lorenzo Armellin",
   },
   description:
-    "La tua pratica di successione, senza muoverti da casa. Prezzo chiaro, tutto online, seguito dal Geom. Lorenzo Armellin, specializzato in successioni.",
+    "Dichiarazione di successione online con un professionista reale: Geom. Lorenzo Armellin, iscritto all'Albo. Preventivo chiaro, documenti e pratica da casa — anche di persona a Pontedera.",
   // Default Open Graph/Twitter per tutte le pagine (le pagine possono
   // sovrascrivere). TODO go-live: sostituire il logo con una vera immagine
   // social 1200x630 quando ci saranno le foto reali.

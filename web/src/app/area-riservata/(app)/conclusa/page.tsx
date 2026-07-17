@@ -1,9 +1,10 @@
-import { Download, FileCheck, Lock, Star } from "lucide-react";
+import { Download, FileCheck, Lock } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { buttonClasses } from "@/components/ui/button";
 import { PageHeading } from "@/components/area/ui";
 import { NoPracticeState } from "@/components/area/empty";
 import { FinalDocsClient } from "@/components/area/final-docs";
+import { ReviewBanner } from "@/components/area/review-banner";
 import { requireClientView } from "@/lib/area";
 import { getSafeExtras } from "@/lib/practice-extras";
 import { finalDocuments } from "@/content/area-data";
@@ -24,8 +25,6 @@ export default async function ConclusaPage() {
   const extras = await getSafeExtras(p.id);
   const realDocs = extras.finalDocuments ?? [];
   const concluded = p.status === "CHIUSA";
-  // Link recensione (es. profilo Google) data-driven: finche' non e'
-  // configurato in settings.review_url la card non mostra un link morto.
   const reviewUrl = text("settings", "review_url");
 
   return (
@@ -38,6 +37,12 @@ export default async function ConclusaPage() {
             : "Qui troverai i documenti quando la pratica sarà conclusa."
         }
       />
+
+      {concluded && reviewUrl && (
+        <div className="mb-6">
+          <ReviewBanner reviewUrl={reviewUrl} />
+        </div>
+      )}
 
       {realDocs.length > 0 ? (
         <FinalDocsClient docs={realDocs} />
@@ -80,25 +85,6 @@ export default async function ConclusaPage() {
         </>
       )}
 
-      {concluded && realDocs.length > 0 && (
-        <Card className="mt-6 border-accent/30 bg-accent/5 text-center">
-          <Star className="mx-auto h-6 w-6 text-accent" />
-          <p className="mt-2 font-medium text-text">Grazie per la fiducia.</p>
-          <p className="mt-1 text-sm text-text-muted">
-            Se ti sei trovato bene, una recensione ci aiuta tantissimo.
-          </p>
-          {reviewUrl && (
-            <a
-              href={reviewUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={buttonClasses({ className: "mt-4" })}
-            >
-              Lascia una recensione
-            </a>
-          )}
-        </Card>
-      )}
     </div>
   );
 }

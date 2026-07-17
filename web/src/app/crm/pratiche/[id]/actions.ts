@@ -843,7 +843,7 @@ export async function registerOfflinePayment(
 
   // Checklist documenti auto-generata al pagamento, come nel webhook Stripe.
   if (!Array.isArray(data.checklist) || data.checklist.length === 0) {
-    patch.checklist = generateChecklist({
+    patch.checklist = await generateChecklist({
       hasRealEstate: Boolean(data.has_real_estate),
       realEstateCount: data.real_estate_count,
       hasWill: Boolean(data.has_will),
@@ -1079,7 +1079,7 @@ export async function createChecklistNow(
   const { error } = await admin
     .from("practices")
     .update({
-      checklist: generateChecklist({
+      checklist: await generateChecklist({
         hasRealEstate: Boolean(data.has_real_estate),
         realEstateCount: data.real_estate_count,
         hasWill: Boolean(data.has_will),

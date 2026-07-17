@@ -4,7 +4,9 @@ import { Card } from "@/components/ui/card";
 import { buttonClasses } from "@/components/ui/button";
 import { PageHeading, StatusTracker } from "@/components/area/ui";
 import { NoPracticeState } from "@/components/area/empty";
+import { ReviewBanner } from "@/components/area/review-banner";
 import { requireClientView } from "@/lib/area";
+import { text } from "@/lib/content";
 import {
   clientSteps,
   currentStepIndex,
@@ -67,6 +69,8 @@ export default async function DashboardPage() {
 
   const step = currentStepIndex(p.status);
   const action = nextAction(p);
+  const reviewUrl = text("settings", "review_url");
+  const concluded = p.status === "CHIUSA";
 
   const visibleDocs = p.checklist.filter(
     (d) => toClientDocState(d.status) !== null,
@@ -81,6 +85,12 @@ export default async function DashboardPage() {
         title={`Ciao, ${p.clientName.split(" ")[0]}`}
         subtitle={`Pratica ${p.code} · defunto ${p.deceasedName}`}
       />
+
+      {concluded && reviewUrl && (
+        <div className="mb-6">
+          <ReviewBanner reviewUrl={reviewUrl} compact />
+        </div>
+      )}
 
       {/* Prossima azione */}
       <Card className="border-accent/30 bg-accent/5">

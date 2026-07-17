@@ -60,7 +60,7 @@ export async function PackageCards() {
                 <span className="font-display text-4xl font-bold text-primary">
                   {pkg.price}&euro;
                 </span>
-                <span className="text-sm text-text-muted">onorario</span>
+                <span className="text-sm text-text-muted">onorario senza IVA</span>
               </div>
               {pkg.slaDays && (
                 <p className="mt-1 text-sm text-text-muted">

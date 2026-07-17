@@ -321,9 +321,9 @@ export function PreventivoForm({
               />
               {hasWill === "si" && (
                 <p className="rounded-[10px] border border-primary/10 bg-bg-muted/60 p-4 text-sm text-text-muted">
-                  Nessun problema: i pacchetti standard coprono anche i casi con
-                  testamento. Nella checklist documenti ti chiederemo la copia
-                  del testamento pubblicato.
+                  I pacchetti standard coprono anche i casi con testamento. Nella
+                  checklist documenti ti chiederemo la copia del testamento
+                  pubblicato.
                 </p>
               )}
               {hasWill === "nonso" && (

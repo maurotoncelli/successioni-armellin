@@ -86,14 +86,23 @@ File chiave: `preventivo/actions.ts`, `checkout/actions.ts`,
 - [x] Questionari completati contati (Storage + notifica `preventivo`) anche senza email
 - [x] Notifiche CRM: filtri Importanti/Tutte + chip per tipo; badge esclude questionari
 
+**Tornata 17/07 sera (2):**
+- [x] CRM → **Tipologie di documenti** (`/crm/tipologie-documenti`): check
+      verificato + attiva/disattiva in checklist auto + tipi custom (Storage
+      `_document-types.json`); `generateChecklist` rispetta il catalogo
+- [x] Meta description SEO rafforzata (professionista reale + online)
+- [x] Prezzi: copy **senza IVA** (forfettario) su tariffe / card / ordine area
+- [x] Banner recensione GMB in evidenza (dashboard + conclusa) con URL
+      `https://g.page/r/CVRoWf5CoiTDEAE/review` (`settings.review_url` pubblicato)
+- [x] Quiz testamento: tolto “Nessun problema…” (tono neutro)
+- [x] Come funziona: step con illustrazioni SVG + icone
+- [ ] Mail follow-up chiusura con stesso link GMB (se non già agganciata)
+
 **Serve asset / decisione Lorenzo / ops**
 - [ ] Foto Pontedera vera
 - [ ] Recensioni GMB reali (+ accumulare ~20)
-- [ ] Mail follow-up + banner recensione GMB (serve URL review confermato)
 - [ ] Blocco “lingua / traduzione live” → solo quando Lorenzo attrezzato
-- [ ] Chiarire IVA sì/no (decisione commerciale → copy)
 - [ ] Tabella comparativa: riga extra (contenuto da concordare)
-- [ ] Tipologie documenti in CRM (feature media)
 - [ ] SMS Twilio / WhatsApp Business
 - [ ] Video welcome + video 2′ attrice
 - [ ] Check costi 290/490/790 con Lorenzo

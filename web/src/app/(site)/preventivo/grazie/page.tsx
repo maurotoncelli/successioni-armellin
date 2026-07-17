@@ -20,7 +20,8 @@ export const metadata: Metadata = {
 };
 
 function resolveEsito(value?: string): Esito {
-  if (value === "a" || value === "c") return value;
+  const v = (value ?? "").trim().toLowerCase();
+  if (v === "a" || v === "c") return v;
   return "b";
 }
 
