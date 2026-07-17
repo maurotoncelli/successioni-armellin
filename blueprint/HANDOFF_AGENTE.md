@@ -68,9 +68,9 @@ File chiave: `preventivo/actions.ts`, `checkout/actions.ts`,
 ### Backlog restante (da smaltire a blocchi)
 
 **Fix codice immediati (agente, senza Lorenzo)** — ordine urgenza:
-1. [ ] Add-on disattivi: verificare perché il blocco resta visibile (cache/fixture)
-2. [ ] Esito A: nascondere “Intanto ecco cosa ti servirà”
-3. [ ] Testi “5 minuti” → “1 minuto” (content_entries + seed)
+1. [x] Add-on disattivi: RLS anonima vedeva [] → fallback fixture; ora lettura admin (17/07)
+2. [x] Esito A: nascondere “Intanto ecco cosa ti servirà” (17/07)
+3. [x] Testi “5 minuti” → “1 minuto” (content_entries + seed) (17/07)
 4. [ ] Preferenze notifiche profilo: allineare bottoni
 5. [ ] Documenti area: badge “da caricare” non in doppia fila (desktop)
 6. [ ] Chi sono: titolone “Lorenzo Armellin” + sottotitolo attuale

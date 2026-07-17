@@ -224,7 +224,7 @@
     { "collection": "come_funziona", "key": "hero_title", "locale": "it", "is_published": true, "value": "Come funziona: semplice, da casa, in 3 passi" },
     { "collection": "come_funziona", "key": "hero_subtitle", "locale": "it", "is_published": true, "value": "Niente code, niente uffici. Ti guidiamo noi passo passo: tu pensi alla tua famiglia, alla burocrazia pensiamo noi." },
     { "collection": "come_funziona", "key": "steps", "locale": "it", "is_published": true, "value": [
-      { "numero": 1, "titolo": "Rispondi a poche domande", "testo": "Compili un breve questionario online (5 minuti). Ti diciamo subito di cosa hai bisogno e quanto costa - e se per il tuo caso la successione non è nemmeno dovuta, te lo diciamo gratis.", "dettaglio": "Esito immediato: prezzo, oppure preventivo su misura per i casi complessi." },
+      { "numero": 1, "titolo": "Rispondi a poche domande", "testo": "Compili un breve questionario online (1 minuto). Ti diciamo subito di cosa hai bisogno e quanto costa - e se per il tuo caso la successione non è nemmeno dovuta, te lo diciamo gratis.", "dettaglio": "Esito immediato: prezzo, oppure preventivo su misura per i casi complessi." },
       { "numero": 2, "titolo": "Carichi i documenti", "testo": "Dalla tua area personale carichi i documenti, anche da foto col telefono. Ti diamo la lista esatta, personalizzata sul tuo caso. Se ti manca qualcosa, spesso lo possiamo recuperare noi.", "dettaglio": "Una persona reale controlla tutto: niente moduli lasciati a metà." },
       { "numero": 3, "titolo": "Pensiamo a tutto noi", "testo": "Lorenzo predispone e invia la dichiarazione all'Agenzia delle Entrate. Ti comunichiamo prima le imposte da versare. A fine pratica ricevi ricevute e documenti finali nella tua area.", "dettaglio": "Dove previsto, ci occupiamo anche della voltura catastale." }
     ] },
@@ -235,7 +235,7 @@
     { "collection": "come_funziona", "key": "distanza_body", "locale": "it", "is_published": true, "value": "Non devi andare in nessun ufficio né in banca: questionario, documenti, comunicazioni e invio all'Agenzia avvengono online. C'è sempre una chiamata con Lorenzo per spiegarti tutto." },
     { "collection": "come_funziona", "key": "deliverable_title", "locale": "it", "is_published": true, "value": "Cosa hai in mano alla fine" },
     { "collection": "come_funziona", "key": "deliverable_list", "locale": "it", "is_published": true, "value": ["Ricevuta di presentazione/registrazione AdE", "Copia della dichiarazione", "Esito F24 / attestazione", "Esito voltura catastale (dove prevista)", "Fattura"] },
-    { "collection": "come_funziona", "key": "cta_title", "locale": "it", "is_published": true, "value": "Iniziamo? Bastano cinque minuti." },
+    { "collection": "come_funziona", "key": "cta_title", "locale": "it", "is_published": true, "value": "Iniziamo? Basta un minuto." },
     { "collection": "come_funziona", "key": "cta_button", "locale": "it", "is_published": true, "value": { "label": "Calcola il preventivo gratis", "href": "/preventivo" } },
     { "collection": "come_funziona", "key": "cta_phone", "locale": "it", "is_published": true, "value": { "label": "Parla con Lorenzo", "href": "tel:+393201570567" } },
 
@@ -252,7 +252,7 @@
     { "collection": "contatti", "key": "form_nota", "locale": "it", "is_published": false, "value": "Ti rispondiamo entro 1 giorno lavorativo." },
     { "collection": "contatti", "key": "form_success", "locale": "it", "is_published": true, "value": "Grazie! Ti ricontattiamo a breve." },
     { "collection": "contatti", "key": "mappa_nota", "locale": "it", "is_published": true, "value": "Si lavora tutto a distanza, ma lo studio esiste: passa pure a trovarci su appuntamento." },
-    { "collection": "contatti", "key": "cta_body", "locale": "it", "is_published": true, "value": "Preferisci partire subito? Calcola il preventivo gratis, ci vogliono 5 minuti." },
+    { "collection": "contatti", "key": "cta_body", "locale": "it", "is_published": true, "value": "Preferisci partire subito? Calcola il preventivo gratis, ci vuole 1 minuto." },
     { "collection": "contatti", "key": "cta_button", "locale": "it", "is_published": true, "value": { "label": "Calcola il preventivo", "href": "/preventivo" } },
 
     { "collection": "guide", "key": "hero_eyebrow", "locale": "it", "is_published": true, "value": "Guide" },
@@ -311,7 +311,7 @@
     { "collection": "article", "key": "cta_box", "locale": "it", "is_published": true, "value": { "titolo": "Vuoi che ce ne occupiamo noi?", "button": { "label": "Calcola il preventivo gratis", "href": "/preventivo" }, "phone": "tel:+393201570567" } },
     { "collection": "article", "key": "fonti", "locale": "it", "is_published": true, "value": "Fonti ufficiali: Agenzia delle Entrate, Normattiva (link nei singoli articoli)." },
 
-    { "collection": "preventivo", "key": "intro_title", "locale": "it", "is_published": true, "value": "Calcola il tuo preventivo gratis, in 5 minuti" },
+    { "collection": "preventivo", "key": "intro_title", "locale": "it", "is_published": true, "value": "Calcola il tuo preventivo gratis, in 1 minuto" },
     { "collection": "preventivo", "key": "intro_subtitle", "locale": "it", "is_published": true, "value": "Rispondi a poche domande: ti diciamo subito quanto costa o, se il tuo caso è particolare, ti facciamo un preventivo su misura. Nessun impegno." },
     { "collection": "preventivo", "key": "progress_label", "locale": "it", "is_published": true, "value": "Passo {n} di 3" },
     { "collection": "preventivo", "key": "step1_title", "locale": "it", "is_published": true, "value": "Partiamo dalle basi" },

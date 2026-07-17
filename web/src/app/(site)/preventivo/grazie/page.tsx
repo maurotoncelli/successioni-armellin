@@ -330,20 +330,24 @@ export default async function GraziePage({
           )}
         </div>
 
-        <Card className="mt-6">
-          <h2 className="text-xl">{text("grazie", "documenti_title")}</h2>
-          <DocList
-            items={docItems.slice(0, 5)}
-            faqLabel={faqLink.label}
-            faqHref={faqLink.href}
-          />
-          <p className="mt-4 text-sm text-text-muted">
-            {text("grazie", "documenti_disclaimer")}
-          </p>
-          <p className="mt-1 text-sm font-medium text-accent">
-            {text("grazie", "documenti_hook")}
-          </p>
-        </Card>
+        {/* Esito A = forse non serve la dichiarazione: non mostrare la lista
+            documenti "Intanto ecco cosa ti servira". */}
+        {esito !== "a" && (
+          <Card className="mt-6">
+            <h2 className="text-xl">{text("grazie", "documenti_title")}</h2>
+            <DocList
+              items={docItems.slice(0, 5)}
+              faqLabel={faqLink.label}
+              faqHref={faqLink.href}
+            />
+            <p className="mt-4 text-sm text-text-muted">
+              {text("grazie", "documenti_disclaimer")}
+            </p>
+            <p className="mt-1 text-sm font-medium text-accent">
+              {text("grazie", "documenti_hook")}
+            </p>
+          </Card>
+        )}
       </div>
     </Section>
   );

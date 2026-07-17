@@ -80,11 +80,14 @@ export async function getPackages(): Promise<Package[]> {
 export async function getAddons(): Promise<Addon[]> {
   if (!isSupabaseConfigured) return fixtureAddons;
   try {
-    // Legge TUTTE le righe e filtra le attive dopo: se la tabella e' popolata
-    // ma tutti gli addon sono disattivati dal CRM, il risultato e' [] (il sito
-    // nasconde il blocco). Il fallback alle fixture resta solo per tabella
-    // davvero vuota o errore.
-    const { data, error } = await getPublicClient()
+    // IMPORTANTE: la RLS pubblica vede SOLO is_active=true. Se Lorenzo spegne
+    // tutti gli addon, il client anonimo riceve [] e NON dobbiamo ricadere sulle
+    // fixture (altrimenti il blocco "Servizi aggiuntivi" resta visibile).
+    // Con service_role leggiamo tutte le righe e distinguiamo:
+    // - tabella popolata, zero attivi → [] (nascondi blocco)
+    // - tabella vuota → fixture
+    const client = isAdminConfigured ? getAdminClient() : getPublicClient();
+    const { data, error } = await client
       .from("addons")
       .select("*")
       .order("sort_order", { ascending: true });

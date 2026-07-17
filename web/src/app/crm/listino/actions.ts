@@ -115,6 +115,7 @@ export async function saveAddon(
   }
 
   revalidatePath("/tariffe");
+  revalidatePath("/");
   revalidatePath("/crm/listino");
   return { ok: true, message: "Salvato e pubblicato." };
 }
