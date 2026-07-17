@@ -49,7 +49,7 @@ export default function ContattiPage() {
       />
 
       <Section>
-        <div className="grid gap-10 lg:grid-cols-2">
+        <div className="grid gap-6 lg:grid-cols-2 lg:gap-10">
           <div className="space-y-4">
             <ContactInfo
               icon={<Phone className="h-5 w-5 text-accent" />}
@@ -101,7 +101,7 @@ export default function ContattiPage() {
           intro={text("contatti", "mappa_nota")}
         />
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-2">
+        <div className="mt-6 grid gap-6 sm:mt-10 lg:grid-cols-2">
           {/* Foto di Pontedera: responsive (mobile/tablet/desktop) via object-cover
               + sizes; il container cambia altezza per breakpoint. */}
           <figure className="relative h-64 overflow-hidden rounded-2xl border border-primary/10 shadow-sm sm:h-80 lg:h-[460px]">

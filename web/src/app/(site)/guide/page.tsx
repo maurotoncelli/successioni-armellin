@@ -54,7 +54,7 @@ export default async function GuidePage() {
         {toolBanner.href && (
           <Link
             href={toolBanner.href}
-            className="group mb-10 flex flex-col overflow-hidden rounded-2xl border border-accent/30 bg-sand transition-all hover:-translate-y-0.5 hover:border-accent hover:shadow-md sm:flex-row sm:items-stretch"
+            className="group mb-6 flex flex-col overflow-hidden rounded-2xl border border-accent/30 bg-sand transition-all hover:-translate-y-0.5 hover:border-accent hover:shadow-md sm:mb-10 sm:flex-row sm:items-stretch"
           >
             <span className="flex flex-1 flex-col justify-center gap-3 p-6 sm:p-8">
               <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-accent-dark">

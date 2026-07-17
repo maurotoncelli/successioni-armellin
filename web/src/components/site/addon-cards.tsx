@@ -36,7 +36,7 @@ export function AddonCards({
   const [openKey, setOpenKey] = useState<string | null>(null);
 
   return (
-    <div className="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-2">
+    <div className="mx-auto mt-6 grid max-w-3xl gap-4 sm:mt-10 sm:grid-cols-2">
       {addons.map((addon) => {
         const open = openKey === addon.key;
         const panelId = `addon-panel-${addon.key}`;

@@ -16,7 +16,7 @@ export default function PreventivoPage() {
   ];
 
   return (
-    <div className="bg-bg-muted py-14 sm:py-20">
+    <div className="bg-bg-muted py-10 sm:py-14 lg:py-20">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
           <h1 className="text-3xl sm:text-4xl">
@@ -27,7 +27,7 @@ export default function PreventivoPage() {
           </p>
         </div>
 
-        <div className="mt-10">
+        <div className="mt-6 sm:mt-10">
           <PreventivoForm
             stepTitles={stepTitles}
             progressLabel={text("preventivo", "progress_label", "Passo {n} di 3")}

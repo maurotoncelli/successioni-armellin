@@ -51,7 +51,7 @@ export function Footer() {
 
   return (
     <footer className="mt-auto bg-primary text-white/80">
-      <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-4">
+      <div className="mx-auto grid w-full max-w-6xl gap-8 px-5 py-10 sm:gap-10 sm:px-8 sm:py-14 md:grid-cols-4">
         <div className="md:col-span-2">
           <div className="flex items-center gap-2">
             <svg

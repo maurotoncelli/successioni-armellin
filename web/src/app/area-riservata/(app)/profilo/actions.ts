@@ -23,7 +23,10 @@ export async function updatePhone(raw: string): Promise<UpdatePhoneResult> {
 
   const phone = normalizePhone(raw);
   if (!phone) {
-    return { ok: false, error: "Numero non valido: usa il formato 320 1234567 o +39..." };
+    return {
+      ok: false,
+      error: "Numero non valido: scegli il prefisso (+39, +49…) e il numero nazionale.",
+    };
   }
 
   const { contactId } = await ensureProfile(view.user);

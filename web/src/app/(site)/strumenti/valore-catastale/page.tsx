@@ -101,7 +101,7 @@ export default function ValoreCatastalePage() {
       />
 
       <Section>
-        <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-2 lg:items-start">
+        <div className="mx-auto grid max-w-5xl gap-6 lg:grid-cols-2 lg:items-start lg:gap-10">
           <CatastaleCalculator
             labels={{
               fabbricato: text("strumenti", "catastale_tab_fabbricato", "Fabbricato"),
@@ -205,7 +205,7 @@ export default function ValoreCatastalePage() {
               "Domande frequenti sul valore catastale",
             )}
           />
-          <div className="mx-auto mt-10 max-w-2xl space-y-3">
+          <div className="mx-auto mt-6 max-w-2xl space-y-3 sm:mt-10">
             {faqRows.map((row) => (
               <details
                 key={row.q}

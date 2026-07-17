@@ -7,6 +7,7 @@ import { buttonClasses } from "@/components/ui/button";
 import { PageHeading } from "@/components/area/ui";
 import { useAreaData } from "@/components/area/area-context";
 import { signOut } from "../../actions";
+import { DIAL_CODES, splitPhone } from "@/lib/phone";
 import { updatePhone, updatePassword } from "./actions";
 
 export default function ProfiloPage() {
@@ -70,14 +71,24 @@ export default function ProfiloPage() {
 function PhoneRow({ initial }: { initial: string }) {
   const [phone, setPhone] = useState(initial);
   const [editing, setEditing] = useState(false);
-  const [draft, setDraft] = useState(initial);
+  const split = splitPhone(initial);
+  const [dial, setDial] = useState(split.dial);
+  const [national, setNational] = useState(split.national);
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
+
+  function beginEdit() {
+    const next = splitPhone(phone);
+    setDial(next.dial);
+    setNational(next.national);
+    setError(null);
+    setEditing(true);
+  }
 
   function save() {
     setError(null);
     startTransition(async () => {
-      const res = await updatePhone(draft);
+      const res = await updatePhone(`${dial}${national}`);
       if (res.ok) {
         setPhone(res.phone);
         setEditing(false);
@@ -94,10 +105,7 @@ function PhoneRow({ initial }: { initial: string }) {
         <dd className="flex items-center gap-2 font-medium text-text">
           {phone || <span className="text-text-muted">non inserito</span>}
           <button
-            onClick={() => {
-              setDraft(phone);
-              setEditing(true);
-            }}
+            onClick={beginEdit}
             title={phone ? "Modifica numero" : "Aggiungi numero"}
             className="text-text-muted hover:text-accent-dark"
           >
@@ -108,42 +116,76 @@ function PhoneRow({ initial }: { initial: string }) {
     );
   }
 
+  const knownDial = DIAL_CODES.some((d) => d.code === dial);
+
   return (
     <div>
-      <div className="flex items-center justify-between gap-3">
-        <dt className="shrink-0 text-text-muted">Telefono</dt>
-        <dd className="flex min-w-0 items-center gap-1.5">
-          <input
-            type="tel"
-            value={draft}
-            onChange={(e) => setDraft(e.target.value)}
-            placeholder="320 1234567"
-            autoFocus
-            className="w-40 rounded-lg border border-primary/20 px-2.5 py-1.5 text-sm focus:border-accent focus:outline-none"
-          />
-          <button
-            onClick={save}
-            disabled={pending}
-            title="Salva"
-            className="grid h-7 w-7 place-items-center rounded-lg bg-accent/10 text-accent-dark hover:bg-accent/20 disabled:opacity-50"
-          >
-            {pending ? (
-              <Loader2 className="h-4 w-4 animate-spin" />
-            ) : (
-              <Check className="h-4 w-4" />
+      <div className="flex items-start justify-between gap-3">
+        <dt className="shrink-0 pt-1.5 text-text-muted">Telefono</dt>
+        <dd className="min-w-0">
+          <div className="flex flex-wrap items-center justify-end gap-1.5">
+            <select
+              value={knownDial ? dial : "__other__"}
+              onChange={(e) => {
+                const v = e.target.value;
+                if (v === "__other__") setDial("+");
+                else setDial(v);
+              }}
+              aria-label="Prefisso internazionale"
+              className="rounded-lg border border-primary/20 bg-white px-2 py-1.5 text-sm focus:border-accent focus:outline-none"
+            >
+              {DIAL_CODES.map((d) => (
+                <option key={d.code} value={d.code}>
+                  {d.label}
+                </option>
+              ))}
+              <option value="__other__">Altro…</option>
+            </select>
+            {!knownDial && (
+              <input
+                type="tel"
+                value={dial}
+                onChange={(e) => setDial(e.target.value.replace(/[^\d+]/g, ""))}
+                placeholder="+xy"
+                aria-label="Prefisso personalizzato"
+                className="w-16 rounded-lg border border-primary/20 px-2 py-1.5 text-sm focus:border-accent focus:outline-none"
+              />
             )}
-          </button>
-          <button
-            onClick={() => {
-              setEditing(false);
-              setError(null);
-            }}
-            disabled={pending}
-            title="Annulla"
-            className="grid h-7 w-7 place-items-center rounded-lg text-text-muted hover:bg-bg-muted disabled:opacity-50"
-          >
-            <X className="h-4 w-4" />
-          </button>
+            <input
+              type="tel"
+              value={national}
+              onChange={(e) => setNational(e.target.value)}
+              placeholder="320 1234567"
+              autoFocus
+              className="w-36 rounded-lg border border-primary/20 px-2.5 py-1.5 text-sm focus:border-accent focus:outline-none"
+            />
+            <button
+              onClick={save}
+              disabled={pending}
+              title="Salva"
+              className="grid h-7 w-7 place-items-center rounded-lg bg-accent/10 text-accent-dark hover:bg-accent/20 disabled:opacity-50"
+            >
+              {pending ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : (
+                <Check className="h-4 w-4" />
+              )}
+            </button>
+            <button
+              onClick={() => {
+                setEditing(false);
+                setError(null);
+              }}
+              disabled={pending}
+              title="Annulla"
+              className="grid h-7 w-7 place-items-center rounded-lg text-text-muted hover:bg-bg-muted disabled:opacity-50"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+          <p className="mt-1 text-right text-[11px] text-text-muted">
+            Scegli il prefisso paese (+39, +49…) poi il numero nazionale.
+          </p>
         </dd>
       </div>
       {error && <p className="mt-1.5 text-right text-xs text-error">{error}</p>}
@@ -287,20 +329,20 @@ function Toggle({
   onChange: (v: boolean) => void;
 }) {
   return (
-    <label className="flex items-center justify-between text-sm text-text">
-      {label}
+    <label className="flex items-center justify-between gap-4 text-sm text-text">
+      <span className="min-w-0 leading-snug">{label}</span>
       <button
         type="button"
         role="switch"
         aria-checked={checked}
         onClick={() => onChange(!checked)}
-        className={`relative h-6 w-11 rounded-full transition-colors ${
-          checked ? "bg-accent" : "bg-bg-muted"
+        className={`relative h-6 w-11 shrink-0 rounded-full transition-colors ${
+          checked ? "bg-accent" : "bg-primary/15"
         }`}
       >
         <span
-          className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-transform ${
-            checked ? "translate-x-[22px]" : "translate-x-0.5"
+          className={`absolute top-0.5 left-0.5 h-5 w-5 rounded-full bg-white shadow transition-transform ${
+            checked ? "translate-x-5" : "translate-x-0"
           }`}
         />
       </button>

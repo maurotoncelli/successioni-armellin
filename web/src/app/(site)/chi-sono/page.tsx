@@ -37,7 +37,7 @@ export default function ChiSonoPage() {
       />
 
       <Section>
-        <div className="grid items-start gap-10 md:grid-cols-2">
+        <div className="grid items-start gap-6 md:grid-cols-2 md:gap-10">
           <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-primary/10 shadow-sm">
             <Image
               src="/images/lorenzo-ritratto.png"
@@ -61,7 +61,7 @@ export default function ChiSonoPage() {
 
       <Section tone="sand">
         <SectionHeading title={text("chi_siamo", "credenziali_title")} />
-        <div className="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-3">
+        <div className="mx-auto mt-6 grid max-w-3xl gap-4 sm:mt-10 sm:grid-cols-3">
           {credenziali.map((c) => (
             <Card key={c.voce} className="text-center">
               <BadgeCheck className="mx-auto h-8 w-8 text-accent" />
@@ -113,7 +113,7 @@ export default function ChiSonoPage() {
 
       <Section tone="muted">
         <SectionHeading title={text("chi_siamo", "recensioni_title")} />
-        <div className="mt-12">
+        <div className="mt-8 sm:mt-12">
           <Reviews />
         </div>
       </Section>

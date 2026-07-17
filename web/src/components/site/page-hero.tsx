@@ -14,9 +14,9 @@ export function PageHero({
 }) {
   return (
     <div className="bg-primary text-white">
-      <Container className="py-16 sm:py-20">
+      <Container className="py-10 sm:py-14 lg:py-20">
         {back && (
-          <div className="mb-6">
+          <div className="mb-4 sm:mb-6">
             <BackLink tone="onDark" />
           </div>
         )}
@@ -26,9 +26,9 @@ export function PageHero({
               {eyebrow}
             </p>
           )}
-          <h1 className="text-4xl text-white sm:text-5xl">{title}</h1>
+          <h1 className="text-3xl text-white sm:text-4xl lg:text-5xl">{title}</h1>
           {subtitle && (
-            <p className="mt-5 text-lg leading-relaxed text-white/80">
+            <p className="mt-4 text-base leading-relaxed text-white/80 sm:mt-5 sm:text-lg">
               {subtitle}
             </p>
           )}

@@ -147,7 +147,7 @@ export function GuideIndex({
         </div>
       </div>
 
-      <div className="mt-10">
+      <div className="mt-6 sm:mt-10">
         {filtered.length > 0 ? (
           <div className="grid gap-6 md:grid-cols-2">
             {filtered.map((article) => (

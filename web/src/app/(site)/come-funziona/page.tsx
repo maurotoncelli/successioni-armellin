@@ -28,7 +28,7 @@ export default function ComeFunzionaPage() {
       />
 
       <Section>
-        <div className="mx-auto max-w-3xl space-y-8">
+        <div className="mx-auto max-w-3xl space-y-6 sm:space-y-8">
           {steps.map((step) => (
             <div key={step.numero} className="flex gap-5">
               <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-primary font-display text-xl font-bold text-white">
@@ -72,7 +72,7 @@ export default function ComeFunzionaPage() {
         <SectionHeading title={text("come_funziona", "deliverable_title")} />
         {/* w-fit: il blocco si centra sulla larghezza reale delle voci, cosi
             l'elenco risulta allineato al titolo centrato della sezione. */}
-        <ul className="mx-auto mt-10 grid w-fit max-w-2xl gap-3">
+        <ul className="mx-auto mt-6 grid w-fit max-w-2xl gap-3 sm:mt-10">
           {deliverable.map((item) => (
             <li key={item} className="flex items-start gap-2.5">
               <Check className="mt-1 h-5 w-5 shrink-0 text-success" />

@@ -31,7 +31,7 @@ export async function PackageCards() {
   };
 
   return (
-    <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+    <div className="grid gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-4">
       {packages
         .slice()
         .sort((a, b) => a.sortOrder - b.sortOrder)
@@ -41,7 +41,7 @@ export async function PackageCards() {
             <div
               key={pkg.key}
               className={cn(
-                "group relative flex flex-col rounded-2xl border bg-bg p-7 shadow-sm",
+                "group relative flex flex-col rounded-2xl border bg-bg p-5 shadow-sm sm:p-7",
                 "transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-lg hover:ring-2 hover:ring-accent/40",
                 featured
                   ? "border-accent ring-1 ring-accent"
@@ -85,7 +85,7 @@ export async function PackageCards() {
               <ButtonLink
                 href="/preventivo"
                 variant={featured ? "primary" : "outline"}
-                className="mt-7 w-full"
+                className="mt-5 w-full sm:mt-7"
               >
                 Scegli {pkg.name}
               </ButtonLink>
@@ -95,7 +95,7 @@ export async function PackageCards() {
 
       <div
         className={cn(
-          "group relative flex flex-col rounded-2xl border border-dashed border-primary/25 bg-bg-muted/60 p-7 shadow-sm",
+          "group relative flex flex-col rounded-2xl border border-dashed border-primary/25 bg-bg-muted/60 p-5 shadow-sm sm:p-7",
           "transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-lg hover:ring-2 hover:ring-accent/40",
         )}
       >
@@ -122,7 +122,11 @@ export async function PackageCards() {
           ))}
         </ul>
 
-        <ButtonLink href={custom.cta.href} variant="outline" className="mt-7 w-full">
+        <ButtonLink
+          href={custom.cta.href}
+          variant="outline"
+          className="mt-5 w-full sm:mt-7"
+        >
           {custom.cta.label}
         </ButtonLink>
       </div>

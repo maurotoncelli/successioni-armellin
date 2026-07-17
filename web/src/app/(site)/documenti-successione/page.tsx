@@ -32,7 +32,7 @@ export default function DocumentiPage() {
           title={text("documenti", "evergreen_title")}
           intro={text("documenti", "evergreen_intro")}
         />
-        <div className="mx-auto mt-12 grid max-w-4xl gap-4 sm:grid-cols-2">
+        <div className="mx-auto mt-8 grid max-w-4xl gap-4 sm:mt-12 sm:grid-cols-2">
           {items.map((doc) => (
             <Card key={doc.name} className="flex gap-4">
               <FileText className="h-6 w-6 shrink-0 text-accent" />

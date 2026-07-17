@@ -14,11 +14,11 @@ export function CtaBand({
   phone?: { label: string; href: string };
 }) {
   return (
-    <Section tone="primary" className="text-center">
+    <Section tone="primary" className="!py-12 text-center sm:!py-16 lg:!py-20">
       <div className="mx-auto max-w-2xl">
         <h2 className="text-3xl text-white sm:text-4xl">{title}</h2>
         {subtitle && <p className="mt-4 text-lg text-white/80">{subtitle}</p>}
-        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:mt-8 sm:flex-row">
           <ButtonLink href={button.href} variant="primary" size="lg">
             {button.label}
           </ButtonLink>

@@ -209,7 +209,7 @@ function KanbanView({
     <div>
       <div
         ref={boardRef}
-        className="crm-scroll-hidden flex gap-4 overflow-x-auto pb-3"
+        className="crm-scroll-hidden flex gap-2 overflow-x-auto pb-3 xl:gap-2.5"
       >
         {pipelineOrder.map((status) => {
           const columnItems = practices.filter((p) => p.status === status);
@@ -217,7 +217,9 @@ function KanbanView({
           return (
             <div
               key={status}
-              className="w-72 shrink-0"
+              // Desktop pieno: le 7 colonne si dividono lo spazio (no scroll
+              // orizzontale). Sotto xl restano a larghezza fissa con scroll.
+              className="w-56 shrink-0 xl:w-0 xl:min-w-0 xl:flex-1 xl:shrink"
               onDragOver={(e) => {
                 e.preventDefault();
                 if (overStatus !== status) setOverStatus(status);
@@ -235,11 +237,11 @@ function KanbanView({
                 if (id) onMove(id, status);
               }}
             >
-              <div className="mb-2 flex items-center justify-between px-1">
-                <h2 className="text-xs font-semibold uppercase tracking-wide text-crm-text2">
+              <div className="mb-2 flex items-center justify-between gap-1 px-0.5">
+                <h2 className="truncate text-[11px] font-semibold uppercase tracking-wide text-crm-text2 xl:text-xs">
                   {statusLabels[status]}
                 </h2>
-                <span className="rounded-full bg-crm-surface px-2 py-0.5 text-xs text-crm-muted">
+                <span className="shrink-0 rounded-full bg-crm-surface px-1.5 py-0.5 text-[11px] text-crm-muted">
                   {columnItems.length}
                 </span>
               </div>
@@ -292,12 +294,14 @@ function KanbanCard({
         e.dataTransfer.effectAllowed = "move";
       }}
       className={cn(
-        "block cursor-grab rounded-[12px] border border-crm-border bg-crm-surface p-3.5 transition-colors hover:border-crm-accent/40 active:cursor-grabbing",
+        "block cursor-grab rounded-[12px] border border-crm-border bg-crm-surface p-2.5 transition-colors hover:border-crm-accent/40 active:cursor-grabbing xl:p-3",
         moving && "opacity-50",
       )}
     >
-      <div className="flex items-center justify-between">
-        <span className="font-mono text-xs text-crm-accent">{practice.code}</span>
+      <div className="flex items-center justify-between gap-1">
+        <span className="truncate font-mono text-[11px] text-crm-accent xl:text-xs">
+          {practice.code}
+        </span>
         {moving ? (
           <Loader2 className="h-3.5 w-3.5 animate-spin text-crm-muted" />
         ) : (

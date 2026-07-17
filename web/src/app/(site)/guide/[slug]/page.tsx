@@ -111,7 +111,7 @@ export default async function ArticlePage({
       />
 
       <div className="bg-primary text-white">
-        <Container className="py-14 sm:py-16">
+        <Container className="py-10 sm:py-14 lg:py-16">
           <nav
             aria-label="Percorso"
             className="flex flex-wrap items-center gap-1.5 text-sm text-white/70"
@@ -149,7 +149,7 @@ export default async function ArticlePage({
       </div>
 
       <Section>
-        <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[minmax(0,1fr)_300px]">
+        <div className="mx-auto grid max-w-5xl gap-6 lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-10">
           <article className="min-w-0">
             <ArticleBody blocks={article.body} />
 

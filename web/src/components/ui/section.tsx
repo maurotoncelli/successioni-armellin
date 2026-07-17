@@ -27,7 +27,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={cn("py-16 sm:py-20", toneClasses[tone], className)}
+      className={cn("py-10 sm:py-16 lg:py-20", toneClasses[tone], className)}
     >
       <Container className={containerClassName}>{children}</Container>
     </section>

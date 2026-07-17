@@ -68,7 +68,7 @@ export default async function CheckoutPage({
   const recessoLink = cta("checkout", "recesso_link");
 
   return (
-    <div className="bg-bg-muted py-14 sm:py-20">
+    <div className="bg-bg-muted py-10 sm:py-14 lg:py-20">
       <Container>
         <div className="mx-auto max-w-4xl">
           <div className="text-center">
@@ -87,7 +87,7 @@ export default async function CheckoutPage({
             </p>
           )}
 
-          <div className="mt-10 grid gap-6 lg:grid-cols-5">
+          <div className="mt-6 grid gap-6 sm:mt-10 lg:grid-cols-5">
             {/* Riepilogo */}
             <div className="lg:col-span-2">
               <Card>

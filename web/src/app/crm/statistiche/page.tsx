@@ -3,38 +3,88 @@ import {
   CircleDollarSign,
   TrendingUp,
   Receipt,
+  ExternalLink,
 } from "lucide-react";
-import { statusLabels } from "@/content/crm-data";
+import { statusLabels, type PackageType } from "@/content/crm-data";
 import { getPractices, deriveKpi, statusCounts } from "@/lib/crm";
+import { getPackages } from "@/lib/cms";
 import { CrmCard, SectionTitle } from "@/components/crm/ui";
 
 export const dynamic = "force-dynamic";
 
+const GA4_URL = "https://analytics.google.com/analytics/web/";
+
+type PackageKey = Exclude<PackageType, null>;
+
 export default async function StatistichePage() {
-  const practices = await getPractices();
+  const [practices, packages] = await Promise.all([
+    getPractices(),
+    getPackages(),
+  ]);
   const kpi = deriveKpi(practices);
   const byStatus = statusCounts(practices);
   const maxCount = Math.max(...byStatus.map((s) => s.count), 1);
 
+  const nameByKey = new Map(packages.map((p) => [p.key, p.name]));
   const paid = practices.filter((p) => p.paymentStatus === "PAID");
-  const byPackage = (["SEMPLICE", "COMPLETO", "ZERO_STRESS"] as const).map(
-    (pkg) => ({
-      pkg,
-      count: paid.filter((p) => p.selectedPackage === pkg).length,
+  const byPackage: {
+    key: PackageKey;
+    name: string;
+    count: number;
+    total: number;
+  }[] = packages.map((pkg) => ({
+    key: pkg.key,
+    name: pkg.name,
+    count: paid.filter((p) => p.selectedPackage === pkg.key).length,
+    total: paid
+      .filter((p) => p.selectedPackage === pkg.key)
+      .reduce((s, p) => s + p.price, 0),
+  }));
+
+  // Pacchetti presenti nelle pratiche ma non più in listino attivo
+  const orphanKeys = new Set<PackageKey>();
+  for (const p of paid) {
+    const key = p.selectedPackage;
+    if (key && !nameByKey.has(key)) orphanKeys.add(key);
+  }
+  for (const key of orphanKeys) {
+    byPackage.push({
+      key,
+      name: key.replaceAll("_", " "),
+      count: paid.filter((p) => p.selectedPackage === key).length,
       total: paid
-        .filter((p) => p.selectedPackage === pkg)
+        .filter((p) => p.selectedPackage === key)
         .reduce((s, p) => s + p.price, 0),
-    }),
-  );
+    });
+  }
+
+  const measurementId = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID;
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-xl font-semibold text-crm-text">Statistiche</h1>
-        <p className="text-sm text-crm-text2">
-          KPI operativi e finanziari (dati simulati).
-        </p>
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <h1 className="text-xl font-semibold text-crm-text">Statistiche</h1>
+          <p className="text-sm text-crm-text2">
+            KPI operativi e finanziari (dati simulati).
+          </p>
+        </div>
+        <a
+          href={GA4_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 rounded-lg border border-crm-border bg-crm-surface px-3 py-2 text-sm font-medium text-crm-text transition-colors hover:border-crm-accent/40 hover:text-crm-accent"
+        >
+          Apri Google Analytics
+          <ExternalLink className="h-3.5 w-3.5" />
+        </a>
       </div>
+
+      {measurementId && (
+        <p className="text-xs text-crm-muted">
+          Property collegata: <span className="font-mono">{measurementId}</span>
+        </p>
+      )}
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <KpiCard
@@ -87,12 +137,10 @@ export default async function StatistichePage() {
           <div className="mt-4 space-y-3">
             {byPackage.map((b) => (
               <div
-                key={b.pkg}
+                key={b.key}
                 className="flex items-center justify-between rounded-lg border border-crm-border bg-crm-bg2/40 px-3 py-2.5 text-sm"
               >
-                <span className="text-crm-text">
-                  {b.pkg.replace("_", " ")}
-                </span>
+                <span className="text-crm-text">{b.name}</span>
                 <span className="text-crm-text2">
                   {b.count} pratiche ·{" "}
                   <span className="font-medium text-crm-text">{b.total} €</span>

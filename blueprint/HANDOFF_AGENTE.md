@@ -71,14 +71,14 @@ File chiave: `preventivo/actions.ts`, `checkout/actions.ts`,
 1. [x] Add-on disattivi: RLS anonima vedeva [] → fallback fixture; ora lettura admin (17/07)
 2. [x] Esito A: nascondere “Intanto ecco cosa ti servirà” (17/07)
 3. [x] Testi “5 minuti” → “1 minuto” (content_entries + seed) (17/07)
-4. [ ] Preferenze notifiche profilo: allineare bottoni
-5. [ ] Documenti area: badge “da caricare” non in doppia fila (desktop)
-6. [ ] Chi sono: titolone “Lorenzo Armellin” + sottotitolo attuale
-7. [ ] Statistiche CRM: nomi pacchetti da DB/CMS non hardcoded
-8. [ ] Kanban: colonne più compatte a desktop pieno
-9. [ ] Link GA4 nel CRM (sidebar)
-10. [ ] Prefisso telefono profilo (+xy)
-11. [ ] Mobile spacing sito (passata di compattezza)
+4. [x] Preferenze notifiche profilo: allineare bottoni (17/07)
+5. [x] Documenti area: badge “da caricare” non in doppia fila (desktop) (17/07)
+6. [x] Chi sono: già ok così (titolo presente; niente da fare) (17/07)
+7. [x] Statistiche CRM: nomi pacchetti da `getPackages()` / CMS (17/07)
+8. [x] Kanban: colonne più compatte a desktop pieno (flex-1 da xl) (17/07)
+9. [x] Link GA4 in Statistiche CRM (non sidebar) (17/07)
+10. [x] Prefisso telefono profilo (+xy) (17/07)
+11. [x] Mobile spacing sito (Section/PageHero/home/cards/footer) (17/07)
 12. [ ] Come funziona: blocco visita in studio (copy + indirizzo settings)
 
 **Serve asset / decisione Lorenzo / ops**

@@ -35,7 +35,7 @@ export default async function FaqPage() {
       />
 
       <Section>
-        <div className="mx-auto max-w-3xl space-y-12">
+        <div className="mx-auto max-w-3xl space-y-8 sm:space-y-12">
           {grouped.map(([category, items]) => (
             <div key={category}>
               <h2 className="text-2xl">{category}</h2>

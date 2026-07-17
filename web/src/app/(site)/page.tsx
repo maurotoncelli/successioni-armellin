@@ -47,7 +47,7 @@ export default function HomePage() {
       {/* Hero: foto di Lorenzo (placeholder) di sfondo, testo sovrapposto.
           Il soggetto e spostato a destra e il gradiente navy da sinistra
           garantisce la leggibilita del testo (titolo bianco). */}
-      <section className="relative flex min-h-[560px] items-center overflow-hidden bg-primary text-white sm:min-h-[600px]">
+      <section className="relative flex min-h-[420px] items-center overflow-hidden bg-primary text-white sm:min-h-[520px] lg:min-h-[600px]">
         <Image
           src="/images/lorenzo-hero.png"
           alt="Geom. Lorenzo Armellin nel suo studio (immagine indicativa)"
@@ -64,19 +64,19 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/70 via-40% to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-primary/45 via-transparent to-transparent" />
         <div className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-accent/10 blur-3xl" />
-        <Container className="relative py-16 sm:py-20">
+        <Container className="relative py-12 sm:py-16 lg:py-20">
           <div className="max-w-2xl">
             <p className="flex items-center gap-3 text-sm font-medium uppercase tracking-[0.18em] text-accent">
               <span className="h-px w-8 bg-accent/60" />
               {text("home", "hero_specialization_badge")}
             </p>
-            <h1 className="mt-5 font-display text-4xl text-white drop-shadow-sm sm:text-5xl lg:text-6xl">
+            <h1 className="mt-4 font-display text-3xl text-white drop-shadow-sm sm:mt-5 sm:text-5xl lg:text-6xl">
               {text("home", "hero_title")}
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/90">
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-white/90 sm:mt-6 sm:text-lg">
               {text("home", "hero_subtitle")}
             </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row">
               <ButtonLink href={heroCtaPrimary.href} variant="primary" size="lg">
                 {heroCtaPrimary.label}
                 <ArrowRight className="h-4 w-4" />
@@ -132,7 +132,7 @@ export default function HomePage() {
           title={text("home", "problema_title")}
           intro={text("home", "problema_intro")}
         />
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-8 grid gap-6 sm:mt-12 md:grid-cols-3">
           {vantaggi.map((v, i) => {
             const Icon = vantaggiIcons[i % vantaggiIcons.length];
             return (
@@ -156,7 +156,7 @@ export default function HomePage() {
           eyebrow={text("home", "come_funziona_eyebrow", "Semplice")}
           title={text("home", "come_funziona_title")}
         />
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-8 grid gap-6 sm:mt-12 md:grid-cols-3">
           {steps.map((step, i) => (
             <div key={step.titolo} className="relative">
               <span className="font-display text-5xl font-bold text-accent/30">
@@ -169,7 +169,7 @@ export default function HomePage() {
             </div>
           ))}
         </div>
-        <p className="mt-10 text-center text-sm text-text-muted">
+        <p className="mt-6 text-center text-sm text-text-muted sm:mt-10">
           {text("home", "come_funziona_sla_note")}
         </p>
       </Section>
@@ -181,10 +181,10 @@ export default function HomePage() {
           title={text("home", "tariffe_title")}
           intro={text("home", "tariffe_intro")}
         />
-        <div className="mt-12">
+        <div className="mt-8 sm:mt-12">
           <PackageCards />
         </div>
-        <div className="mt-10 text-center">
+        <div className="mt-6 text-center sm:mt-10">
           <ButtonLink href={tariffeCta.href} variant="outline" size="lg">
             {tariffeCta.label}
             <ArrowRight className="h-4 w-4" />
@@ -198,7 +198,7 @@ export default function HomePage() {
           title={text("home", "faidate_title")}
           intro={text("home", "faidate_intro")}
         />
-        <div className="mx-auto mt-12 max-w-4xl">
+        <div className="mx-auto mt-8 max-w-4xl sm:mt-12">
           <div className="relative grid grid-cols-[1.2fr_1fr_1fr] overflow-hidden rounded-2xl border border-primary/10 bg-bg shadow-md sm:grid-cols-[1.5fr_1fr_1fr]">
             {/* Intestazioni: solo etichette colonna, senza X/logo (i segni restano nelle righe) */}
             <div className="flex items-end border-b border-primary/10 bg-bg-muted/40 p-4 sm:p-5">
@@ -269,14 +269,14 @@ export default function HomePage() {
           title={text("home", "recensioni_title")}
           intro={text("home", "recensioni_intro")}
         />
-        <div className="mt-12">
+        <div className="mt-8 sm:mt-12">
           <Reviews />
         </div>
       </Section>
 
       {/* Chi sono (estratto) */}
       <Section tone="sand">
-        <div className="grid items-center gap-10 md:grid-cols-2">
+        <div className="grid items-center gap-6 md:grid-cols-2 md:gap-10">
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-primary/10 shadow-sm">
             <Image
               src="/images/lorenzo-ritratto.png"
