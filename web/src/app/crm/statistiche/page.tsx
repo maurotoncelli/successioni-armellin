@@ -4,10 +4,12 @@ import {
   TrendingUp,
   Receipt,
   ExternalLink,
+  ClipboardList,
 } from "lucide-react";
 import { statusLabels, type PackageType } from "@/content/crm-data";
 import { getPractices, deriveKpi, statusCounts } from "@/lib/crm";
 import { getPackages } from "@/lib/cms";
+import { getQuoteStats } from "@/lib/quote-stats";
 import { CrmCard, SectionTitle } from "@/components/crm/ui";
 
 export const dynamic = "force-dynamic";
@@ -17,11 +19,13 @@ const GA4_URL = "https://analytics.google.com/analytics/web/";
 type PackageKey = Exclude<PackageType, null>;
 
 export default async function StatistichePage() {
-  const [practices, packages] = await Promise.all([
+  const [practices, packages, quoteStats] = await Promise.all([
     getPractices(),
     getPackages(),
+    getQuoteStats(),
   ]);
   const kpi = deriveKpi(practices);
+  const leadsFromSite = practices.filter((p) => p.status === "LEAD").length;
   const byStatus = statusCounts(practices);
   const maxCount = Math.max(...byStatus.map((s) => s.count), 1);
 
@@ -86,11 +90,17 @@ export default async function StatistichePage() {
         </p>
       )}
 
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
         <KpiCard
           icon={<Briefcase className="h-5 w-5" />}
           value={practices.length}
           label="Pratiche totali"
+        />
+        <KpiCard
+          icon={<ClipboardList className="h-5 w-5" />}
+          value={quoteStats.totalCompleted}
+          label="Questionari completati"
+          hint={`A ${quoteStats.byEsito.a} · B ${quoteStats.byEsito.b} · C ${quoteStats.byEsito.c} · lead aperti ${leadsFromSite}`}
         />
         <KpiCard
           icon={<CircleDollarSign className="h-5 w-5" />}
@@ -162,10 +172,12 @@ function KpiCard({
   icon,
   value,
   label,
+  hint,
 }: {
   icon: React.ReactNode;
   value: string | number;
   label: string;
+  hint?: string;
 }) {
   return (
     <CrmCard>
@@ -174,6 +186,7 @@ function KpiCard({
       </span>
       <p className="mt-3 text-2xl font-semibold text-crm-text">{value}</p>
       <p className="text-xs text-crm-text2">{label}</p>
+      {hint && <p className="mt-1 text-[11px] text-crm-muted">{hint}</p>}
     </CrmCard>
   );
 }

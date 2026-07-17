@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { Sidebar } from "@/components/crm/sidebar";
 import { Topbar } from "@/components/crm/topbar";
 import { requireAdmin } from "@/lib/admin";
-import { countCrmNotifications } from "@/lib/crm-notifications";
+import {
+  countCrmNotifications,
+  CRM_NOTIF_BADGE_EXCLUDE,
+} from "@/lib/crm-notifications";
 
 export const metadata: Metadata = {
   title: "CRM Flowdesk - Armellin",
@@ -17,7 +20,10 @@ export default async function CrmLayout({
   // Gate del CRM: emergenza / aperto (transizione) / auth reale ADMIN + 2FA.
   await requireAdmin();
 
-  const notificationCount = await countCrmNotifications();
+  // Badge: esclude i questionari (rumore); restano nella lista con filtro Tutte.
+  const notificationCount = await countCrmNotifications({
+    excludeKinds: CRM_NOTIF_BADGE_EXCLUDE,
+  });
 
   return (
     <div className="theme-crm flex min-h-screen">

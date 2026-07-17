@@ -81,6 +81,11 @@ File chiave: `preventivo/actions.ts`, `checkout/actions.ts`,
 11. [x] Mobile spacing sito (Section/PageHero/home/cards/footer) (17/07)
 12. [x] Come funziona: blocco visita in studio (copy + settings.address/orari) (17/07)
 
+**Post-12 (17/07 sera):**
+- [x] Esito A: niente SoftLead “Preferisci pensarci? … via email”
+- [x] Questionari completati contati (Storage + notifica `preventivo`) anche senza email
+- [x] Notifiche CRM: filtri Importanti/Tutte + chip per tipo; badge esclude questionari
+
 **Serve asset / decisione Lorenzo / ops**
 - [ ] Foto Pontedera vera
 - [ ] Recensioni GMB reali (+ accumulare ~20)

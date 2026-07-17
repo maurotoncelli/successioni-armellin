@@ -8,6 +8,7 @@ import { documentsList, type DocItem } from "@/content/site";
 import { BackLink } from "@/components/site/back-link";
 import { DocList } from "@/components/site/doc-list";
 import { SoftLead, type SoftLeadAnswers } from "@/components/site/soft-lead";
+import { TrackQuoteComplete } from "@/components/site/track-quote-complete";
 import { getPackages, getAddons } from "@/lib/cms";
 import { buildOrder } from "@/lib/order";
 import { decodeHeirs, isPackageKey, totalHeirs, type Esito } from "@/lib/quote";
@@ -132,8 +133,25 @@ export default async function GraziePage({
     );
   }
 
+  const trackFingerprint = [
+    esito,
+    sp.pkg ?? "",
+    sp.comp ?? "",
+    sp.heirs ?? "",
+    sp.hasre ?? "",
+    sp.will ?? "",
+    sp.other ?? "",
+    sp.k100 ?? "",
+    sp.recount ?? "",
+  ].join("|");
+
   return (
     <Section tone="muted">
+      <TrackQuoteComplete
+        esito={esito}
+        packageLabel={suggestedPkg?.name}
+        fingerprint={trackFingerprint}
+      />
       <div className="mx-auto max-w-2xl">
         <div className="mb-6">
           <BackLink fallbackHref="/preventivo" />
@@ -234,9 +252,10 @@ export default async function GraziePage({
           )}
         </Card>
 
-        {/* Cattura contatto OPZIONALE, sempre dopo il valore mostrato. */}
-        <div className="mt-6">
-          {esito === "c" ? (
+        {/* Cattura contatto OPZIONALE dopo il valore. Esito A (esonero): niente
+            form email — resta solo verifica gratuita telefono/WhatsApp. */}
+        {esito === "c" && (
+          <div className="mt-6">
             <SoftLead
               kind="custom_quote"
               answers={answers}
@@ -285,7 +304,10 @@ export default async function GraziePage({
                 "Nessun impegno: ti ricontattiamo entro un giorno lavorativo per studiare il caso insieme.",
               )}
             />
-          ) : (
+          </div>
+        )}
+        {esito === "b" && (
+          <div className="mt-6">
             <SoftLead
               kind="email_quote"
               answers={answers}
@@ -327,8 +349,8 @@ export default async function GraziePage({
                 "Abbiamo registrato la tua richiesta: ti invieremo il riepilogo del preventivo a breve.",
               )}
             />
-          )}
-        </div>
+          </div>
+        )}
 
         {/* Esito A = forse non serve la dichiarazione: non mostrare la lista
             documenti "Intanto ecco cosa ti servira". */}

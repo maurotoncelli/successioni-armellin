@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useMemo, useState, useTransition } from "react";
 import Link from "next/link";
 import {
   Bell,
   CircleDollarSign,
+  ClipboardList,
   FileCheck2,
   Landmark,
   OctagonAlert,
@@ -14,30 +15,89 @@ import {
   X,
 } from "lucide-react";
 import { CrmCard, SectionTitle } from "@/components/crm/ui";
-import type { CrmNotification } from "@/lib/crm-notifications";
+import type {
+  CrmNotification,
+  CrmNotificationKind,
+} from "@/lib/crm-notifications";
 import {
   dismissNotification,
   dismissAllNotifications,
 } from "@/app/crm/notifications/actions";
+import { cn } from "@/lib/utils";
 
 /*
   Centro notifiche della Home CRM: eventi puntuali (pagamenti, lead, recesso,
-  documenti, mandato) che Lorenzo puo ELIMINARE una volta letti, uno alla volta
-  o tutti insieme. Complementare agli "Alert automatici", che invece derivano
-  dallo stato delle pratiche e restano finche la condizione persiste.
+  documenti, mandato, questionari) eliminabili. Filtro locale (localStorage):
+  "Importanti" nasconde i questionari preventivo; "Tutte" + chip per tipo.
 */
 
+const STORAGE_KEY = "crm-notif-filter-v1";
+
+type FilterMode = "important" | "all";
+
+type FilterState = {
+  mode: FilterMode;
+  /** Kind nascosti quando mode === "all". */
+  hiddenKinds: CrmNotificationKind[];
+};
+
+const DEFAULT_FILTER: FilterState = { mode: "important", hiddenKinds: [] };
+
+const KIND_ORDER: CrmNotificationKind[] = [
+  "pagamento",
+  "rimborso",
+  "lead",
+  "recesso",
+  "documenti",
+  "mandato",
+  "iban",
+  "preventivo",
+];
+
 const kindMeta: Record<
-  CrmNotification["kind"],
-  { icon: typeof Bell; cls: string }
+  CrmNotificationKind,
+  { icon: typeof Bell; cls: string; label: string }
 > = {
-  pagamento: { icon: CircleDollarSign, cls: "bg-crm-green/15 text-crm-green" },
-  rimborso: { icon: Undo2, cls: "bg-crm-amber/15 text-crm-amber" },
-  lead: { icon: UserPlus, cls: "bg-crm-purple/15 text-crm-purple" },
-  recesso: { icon: OctagonAlert, cls: "bg-crm-rose/15 text-crm-rose" },
-  documenti: { icon: FileCheck2, cls: "bg-crm-accent/15 text-crm-accent" },
-  mandato: { icon: PenLine, cls: "bg-crm-accent/15 text-crm-accent" },
-  iban: { icon: Landmark, cls: "bg-crm-green/15 text-crm-green" },
+  pagamento: {
+    icon: CircleDollarSign,
+    cls: "bg-crm-green/15 text-crm-green",
+    label: "Pagamenti",
+  },
+  rimborso: {
+    icon: Undo2,
+    cls: "bg-crm-amber/15 text-crm-amber",
+    label: "Rimborsi",
+  },
+  lead: {
+    icon: UserPlus,
+    cls: "bg-crm-purple/15 text-crm-purple",
+    label: "Lead",
+  },
+  recesso: {
+    icon: OctagonAlert,
+    cls: "bg-crm-rose/15 text-crm-rose",
+    label: "Recesso",
+  },
+  documenti: {
+    icon: FileCheck2,
+    cls: "bg-crm-accent/15 text-crm-accent",
+    label: "Documenti",
+  },
+  mandato: {
+    icon: PenLine,
+    cls: "bg-crm-accent/15 text-crm-accent",
+    label: "Mandato",
+  },
+  iban: {
+    icon: Landmark,
+    cls: "bg-crm-green/15 text-crm-green",
+    label: "IBAN",
+  },
+  preventivo: {
+    icon: ClipboardList,
+    cls: "bg-crm-bg2 text-crm-text2",
+    label: "Questionari",
+  },
 };
 
 function formatWhen(iso: string): string {
@@ -53,19 +113,69 @@ function formatWhen(iso: string): string {
   return `${d.toLocaleDateString("it-IT", { day: "numeric", month: "short" })} ${time}`;
 }
 
+function loadFilter(): FilterState {
+  if (typeof window === "undefined") return DEFAULT_FILTER;
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return DEFAULT_FILTER;
+    const parsed = JSON.parse(raw) as Partial<FilterState>;
+    return {
+      mode: parsed.mode === "all" ? "all" : "important",
+      hiddenKinds: Array.isArray(parsed.hiddenKinds)
+        ? (parsed.hiddenKinds.filter((k) =>
+            KIND_ORDER.includes(k as CrmNotificationKind),
+          ) as CrmNotificationKind[])
+        : [],
+    };
+  } catch {
+    return DEFAULT_FILTER;
+  }
+}
+
 export function NotificationsPanel({
   notifications,
 }: {
   notifications: CrmNotification[];
 }) {
-  // Rimozione ottimistica: l'elemento sparisce subito, il server conferma.
   const [hidden, setHidden] = useState<Set<string>>(new Set());
   const [clearedAll, setClearedAll] = useState(false);
+  const [filter, setFilter] = useState<FilterState>(DEFAULT_FILTER);
+  const [hydrated, setHydrated] = useState(false);
   const [, startTransition] = useTransition();
 
-  const visible = clearedAll
-    ? []
-    : notifications.filter((n) => !hidden.has(n.id));
+  useEffect(() => {
+    setFilter(loadFilter());
+    setHydrated(true);
+  }, []);
+
+  useEffect(() => {
+    if (!hydrated) return;
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(filter));
+    } catch {
+      /* ignore */
+    }
+  }, [filter, hydrated]);
+
+  const presentKinds = useMemo(() => {
+    const set = new Set(notifications.map((n) => n.kind));
+    return KIND_ORDER.filter((k) => set.has(k));
+  }, [notifications]);
+
+  const visible = useMemo(() => {
+    if (clearedAll) return [];
+    return notifications.filter((n) => {
+      if (hidden.has(n.id)) return false;
+      if (filter.mode === "important" && n.kind === "preventivo") return false;
+      if (filter.mode === "all" && filter.hiddenKinds.includes(n.kind))
+        return false;
+      return true;
+    });
+  }, [notifications, hidden, clearedAll, filter]);
+
+  const hiddenByFilter = clearedAll
+    ? 0
+    : notifications.filter((n) => !hidden.has(n.id)).length - visible.length;
 
   function dismiss(id: string) {
     setHidden((prev) => new Set(prev).add(id));
@@ -89,9 +199,18 @@ export function NotificationsPanel({
     });
   }
 
+  function toggleKind(kind: CrmNotificationKind) {
+    setFilter((prev) => {
+      const hiddenKinds = prev.hiddenKinds.includes(kind)
+        ? prev.hiddenKinds.filter((k) => k !== kind)
+        : [...prev.hiddenKinds, kind];
+      return { ...prev, mode: "all", hiddenKinds };
+    });
+  }
+
   return (
     <CrmCard>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-2">
         <div className="flex items-center gap-2">
           <Bell className="h-4 w-4 text-crm-accent" />
           <SectionTitle>Notifiche</SectionTitle>
@@ -105,17 +224,72 @@ export function NotificationsPanel({
           <button
             type="button"
             onClick={dismissAll}
-            className="text-xs font-medium text-crm-muted transition-colors hover:text-crm-rose"
+            className="shrink-0 text-xs font-medium text-crm-muted transition-colors hover:text-crm-rose"
           >
             Elimina tutte
           </button>
         )}
       </div>
 
+      <div className="mt-3 flex flex-wrap items-center gap-1.5">
+        <button
+          type="button"
+          onClick={() => setFilter((f) => ({ ...f, mode: "important" }))}
+          className={cn(
+            "rounded-full px-2.5 py-1 text-[11px] font-medium transition-colors",
+            filter.mode === "important"
+              ? "bg-crm-accent text-white"
+              : "bg-crm-bg2 text-crm-text2 hover:bg-crm-hover",
+          )}
+        >
+          Importanti
+        </button>
+        <button
+          type="button"
+          onClick={() => setFilter((f) => ({ ...f, mode: "all" }))}
+          className={cn(
+            "rounded-full px-2.5 py-1 text-[11px] font-medium transition-colors",
+            filter.mode === "all"
+              ? "bg-crm-accent text-white"
+              : "bg-crm-bg2 text-crm-text2 hover:bg-crm-hover",
+          )}
+        >
+          Tutte
+        </button>
+        {filter.mode === "all" &&
+          presentKinds.map((kind) => {
+            const on = !filter.hiddenKinds.includes(kind);
+            return (
+              <button
+                key={kind}
+                type="button"
+                onClick={() => toggleKind(kind)}
+                title={on ? `Nascondi ${kindMeta[kind].label}` : `Mostra ${kindMeta[kind].label}`}
+                className={cn(
+                  "rounded-full px-2.5 py-1 text-[11px] font-medium transition-colors",
+                  on
+                    ? "bg-crm-surface text-crm-text ring-1 ring-crm-border"
+                    : "bg-crm-bg2/60 text-crm-muted line-through",
+                )}
+              >
+                {kindMeta[kind].label}
+              </button>
+            );
+          })}
+      </div>
+
+      {filter.mode === "important" && (
+        <p className="mt-2 text-[11px] text-crm-muted">
+          Nasconde i questionari preventivo. Passa a Tutte per vederli o
+          filtrare per tipo.
+        </p>
+      )}
+
       {visible.length === 0 ? (
         <p className="mt-4 text-sm text-crm-muted">
-          Nessuna nuova notifica. Qui arrivano pagamenti, nuovi lead, documenti
-          inviati e richieste di recesso.
+          {hiddenByFilter > 0
+            ? `${hiddenByFilter} notifiche nascoste dal filtro. Passa a Tutte o riattiva i tipi.`
+            : "Nessuna nuova notifica. Qui arrivano pagamenti, lead, documenti, recesso e (in Tutte) i questionari completati."}
         </p>
       ) : (
         <ul className="mt-4 space-y-2">

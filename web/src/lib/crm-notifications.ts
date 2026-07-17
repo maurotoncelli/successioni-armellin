@@ -20,7 +20,12 @@ export type CrmNotificationKind =
   | "recesso"
   | "documenti"
   | "mandato"
-  | "iban";
+  | "iban"
+  /** Questionario preventivo completato (anche senza email/pagamento). */
+  | "preventivo";
+
+/** Tipi “rumore” esclusi dal badge topbar (restano nella lista con filtro Tutte). */
+export const CRM_NOTIF_BADGE_EXCLUDE: CrmNotificationKind[] = ["preventivo"];
 
 export type CrmNotification = {
   id: string;
@@ -86,7 +91,7 @@ export async function pushCrmNotification(input: {
   }
 }
 
-export async function listCrmNotifications(limit = 30): Promise<CrmNotification[]> {
+export async function listCrmNotifications(limit = 50): Promise<CrmNotification[]> {
   if (!isAdminConfigured) return [];
   try {
     const { data, error } = await getAdminClient()
@@ -102,12 +107,19 @@ export async function listCrmNotifications(limit = 30): Promise<CrmNotification[
   }
 }
 
-export async function countCrmNotifications(): Promise<number> {
+export async function countCrmNotifications(
+  opts?: { excludeKinds?: CrmNotificationKind[] },
+): Promise<number> {
   if (!isAdminConfigured) return 0;
   try {
-    const { count, error } = await getAdminClient()
+    let q = getAdminClient()
       .from("crm_notifications")
       .select("id", { count: "exact", head: true });
+    const exclude = opts?.excludeKinds ?? [];
+    for (const kind of exclude) {
+      q = q.neq("kind", kind);
+    }
+    const { count, error } = await q;
     if (error) throw error;
     return count ?? 0;
   } catch (err) {
