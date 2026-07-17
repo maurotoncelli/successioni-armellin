@@ -56,51 +56,46 @@ File chiave: `preventivo/actions.ts`, `checkout/actions.ts`,
 `api/stripe/webhook/route.ts`, `lib/contacts.ts`, `lib/area-access-link.ts`,
 `lib/profiles.ts`, `lib/area.ts`, `area-riservata/(app)/claim/actions.ts`.
 
-### Backlog restante (da smaltire a blocchi, non tutto insieme)
+### Fatto 17/07 (lead/account) — commits `b8ab62c` + `c91293d`
+- [x] SoftLead → checkout riusa `practice=`
+- [x] Email/telefono sulle card Kanban CRM
+- [x] Avviso stessa email su `/checkout/conferma`
+- [x] Magic link + codice pratica in email PAGATO
+- [x] Upsert contatto per email
+- [x] Recovery area vuota (codice + email)
+- [x] Handoff aggiornato
 
-**Contenuti / fiducia**
-- [ ] Foto Pontedera vera (sostituire quella attuale)
-- [ ] Recensioni Google My Business reali al posto delle finte
-- [ ] Accumulare ~20 recensioni GMB (operativo Lorenzo)
-- [ ] Mail follow-up chiusura: link recensione GMB verificato
-- [ ] Banner recensione GMB in area cliente dopo pratica conclusa
-- [ ] Blocco “Ti seguiamo anche nella tua lingua” → confermare **solo** quando
-      Lorenzo è attrezzato per traduzione live
-- [ ] Chi sono: titolone “Lorenzo Armellin”, attuale titolo → sottotitolo
-- [ ] Questionario: “1 minuto” non “5” nei testi
-- [ ] Chiarire prezzi IVA inclusa/esclusa
-- [ ] Come funziona: alternativa visita in studio (via…)
-- [ ] Meta/sottotesto SEO: professionista reale + si fa online
-- [ ] Tabella comparativa: eventuale riga in più
-- [ ] Esito A (“forse non serve la dichiarazione”): nascondere tab “Intanto ecco cosa ti servirà”
+### Backlog restante (da smaltire a blocchi)
 
-**Prodotto / CRM / area**
-- [ ] Mobile sito: compattare spazi (scroll troppo lungo)
-- [ ] Add-on “Servizi aggiuntivi”: se tutti disattivi sparisce il blocco; se uno
-      disattivo sparisce lui — **Mauro vede ancora il blocco → verificare/fix**
-- [ ] Nomi pacchetti: sito ↔ CRM ↔ statistiche allineati (una sola fonte)
-- [ ] Area documenti desktop: stato “da caricare” non in doppia fila
-- [ ] Imposte comunicate: check canale (mail?) + vale la pena notifiche lato cliente?
-- [ ] Profilo telefono: prefisso +xy per stranieri
-- [ ] Preferenze notifiche email/WhatsApp: allineare bottoni
-- [ ] CRM: menu “Tipologie di documenti” (checklist tipologica per Lorenzo)
-- [ ] CRM Kanban: 7 colonne più strette a schermo intero (no scroll orizzontale);
-      soluzione smart su mobile
-- [ ] CRM pratiche aperte: email già aggiunta in card (17/07); verificare home/liste
-- [ ] GA4: embed o link diretto analytics nel CRM
-- [ ] SMS Twilio (o simile) per stati pratica — ora solo email
-- [ ] WhatsApp Business (nuovo numero se Lorenzo vuole) per automatiche
+**Fix codice immediati (agente, senza Lorenzo)** — ordine urgenza:
+1. [ ] Add-on disattivi: verificare perché il blocco resta visibile (cache/fixture)
+2. [ ] Esito A: nascondere “Intanto ecco cosa ti servirà”
+3. [ ] Testi “5 minuti” → “1 minuto” (content_entries + seed)
+4. [ ] Preferenze notifiche profilo: allineare bottoni
+5. [ ] Documenti area: badge “da caricare” non in doppia fila (desktop)
+6. [ ] Chi sono: titolone “Lorenzo Armellin” + sottotitolo attuale
+7. [ ] Statistiche CRM: nomi pacchetti da DB/CMS non hardcoded
+8. [ ] Kanban: colonne più compatte a desktop pieno
+9. [ ] Link GA4 nel CRM (sidebar)
+10. [ ] Prefisso telefono profilo (+xy)
+11. [ ] Mobile spacing sito (passata di compattezza)
+12. [ ] Come funziona: blocco visita in studio (copy + indirizzo settings)
 
-**Go-live / QA**
-- [ ] Video welcome Lorenzo entro luglio
-- [ ] Video “come si fa” 2′ con attrice entro fine luglio
-- [ ] Check Lorenzo pratiche/costi 290/490/790 + su misura
-- [ ] Test AI precompilazione XML su documenti reali (pratica già fatta)
-- [ ] Traduzioni a testi ultimati
-- [ ] Legal: privacy/cookie/garanzia/recesso allineati (togliere “soddisfatti o rimborsati”?)
-- [ ] Cross-browser: Chrome/Safari/Firefox × desktop/mobile/tablet
-- [ ] (Ultima, dopo traduzioni) micro-animazioni stile Lenis **solo sito pubblico**,
-      con rollback facile alla versione statica
+**Serve asset / decisione Lorenzo / ops**
+- [ ] Foto Pontedera vera
+- [ ] Recensioni GMB reali (+ accumulare ~20)
+- [ ] Mail follow-up + banner recensione GMB (serve URL review confermato)
+- [ ] Blocco “lingua / traduzione live” → solo quando Lorenzo attrezzato
+- [ ] Chiarire IVA sì/no (decisione commerciale → copy)
+- [ ] Tabella comparativa: riga extra (contenuto da concordare)
+- [ ] Tipologie documenti in CRM (feature media)
+- [ ] SMS Twilio / WhatsApp Business
+- [ ] Video welcome + video 2′ attrice
+- [ ] Check costi 290/490/790 con Lorenzo
+- [ ] Test AI XML su pratica reale
+- [ ] Traduzioni + legal go-live
+- [ ] Cross-browser QA
+- [ ] Micro-animazioni Lenis (ultima, con rollback)
 
 ---
 
