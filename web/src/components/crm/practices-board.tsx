@@ -310,11 +310,22 @@ function KanbanCard({
         )}
       </div>
       <p className="mt-1.5 text-sm font-medium text-crm-text">
-        {practice.clientName}
+        {practice.clientName.trim() || "Senza nome"}
       </p>
+      {practice.clientEmail.trim() ? (
+        <p className="mt-0.5 truncate text-xs text-crm-muted" title={practice.clientEmail}>
+          {practice.clientEmail}
+        </p>
+      ) : practice.clientPhone.trim() ? (
+        <p className="mt-0.5 truncate text-xs text-crm-muted">
+          {practice.clientPhone}
+        </p>
+      ) : (
+        <p className="mt-0.5 text-xs text-crm-amber/90">Nessun contatto ancora</p>
+      )}
       <div className="mt-0.5 flex items-center gap-1 text-xs text-crm-muted">
         <Home className="h-3 w-3" />
-        Defunto: {practice.deceasedName}
+        Defunto: {practice.deceasedName.trim() || "—"}
       </div>
       <div className="mt-3 flex items-center justify-between">
         <ActionBadge owner={practice.actionOwner} />
@@ -356,8 +367,17 @@ function ListView({ practices }: { practices: Practice[] }) {
                   {p.code}
                 </Link>
               </td>
-              <td className="px-4 py-3 text-crm-text">{p.clientName}</td>
-              <td className="px-4 py-3 text-crm-text2">{p.deceasedName}</td>
+              <td className="px-4 py-3 text-crm-text">
+                <div>{p.clientName.trim() || "Senza nome"}</div>
+                {(p.clientEmail.trim() || p.clientPhone.trim()) && (
+                  <div className="mt-0.5 text-xs text-crm-muted">
+                    {p.clientEmail.trim() || p.clientPhone.trim()}
+                  </div>
+                )}
+              </td>
+              <td className="px-4 py-3 text-crm-text2">
+                {p.deceasedName.trim() || "—"}
+              </td>
               <td className="px-4 py-3">
                 <StatusPill status={p.status} />
               </td>

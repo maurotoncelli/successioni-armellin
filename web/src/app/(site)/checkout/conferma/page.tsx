@@ -63,9 +63,19 @@ export default async function ConfermaPage({
         <Card className="mt-8 text-left">
           <p className="leading-relaxed text-text-muted">
             {paid
-              ? "Il tuo pagamento è andato a buon fine e la tua pratica è ora attiva. A breve riceverai un'email con il riepilogo e le istruzioni per accedere alla tua area personale, dove caricare i documenti."
+              ? "Il tuo pagamento è andato a buon fine e la tua pratica è ora attiva. A breve riceverai un'email con il riepilogo e le istruzioni per l'area personale, dove caricare i documenti."
               : "Abbiamo ricevuto l'ordine. La conferma definitiva del pagamento arriva dal nostro sistema in pochi istanti: riceverai un'email appena è tutto a posto. Puoi già accedere all'area personale."}
           </p>
+          {paid && (
+            <p className="mt-3 rounded-[10px] border border-accent/25 bg-sand/40 px-3 py-2.5 text-sm text-text">
+              Accedi all&apos;area personale con la{" "}
+              <strong className="font-medium text-primary">
+                stessa email usata per il pagamento
+              </strong>
+              : è così che ritrovi la pratica. Se usi un&apos;altra email (o
+              Google con un account diverso), non la vedrai.
+            </p>
+          )}
           <div className="mt-6 flex flex-wrap gap-3">
             <ButtonLink href="/area-riservata" variant="primary">
               Vai all&apos;area personale

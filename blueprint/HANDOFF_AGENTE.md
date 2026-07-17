@@ -8,6 +8,95 @@
 > fiscali Lorenzo): nel file **`ACCESSI_LOCALE.md`** in root (git-ignored, NON
 > committato). Non è nel repo.
 
+## 8-decies. Backlog Mauro 17/07 — priorità e nota CRITICA su lead/account
+
+Lista lunga ricevuta il 17/07. **Priorità #1 (trattata sotto):** dove finisce
+la pratica se il lead non è ancora registrato / se paga senza account, e se può
+"perdere" la pratica. Il resto è backlog (non tutto fatto).
+
+### CRITICO — Lead / pagamento senza registrazione (come funziona)
+
+**Non serve un account per nascere come lead o per pagare.** L’account area
+personale si crea al primo login (magic link / Google / telefono / password).
+
+| Momento | Cosa viene creato | Auth account? |
+|--------|-------------------|---------------|
+| SoftLead (email/su misura sul risultato quiz) | `contacts` + `practices` LEAD con email/telefono | No |
+| Checkout diretto dal sito (senza SoftLead) | Pratica “anonima” al click Paga; email da Stripe al webhook | No |
+| Webhook Stripe `paid` | Pratica → PAGATO; aggancio/creazione `contact` per email Stripe | No |
+| Login area personale | `auth.users` + `profiles.contact_id` collegato per **stessa email** (o telefono) | Sì |
+
+**Come il cliente ritrova la pratica:** login con la **stessa email del pagamento
+(o del SoftLead)**. La RLS mostra solo pratiche con `contact_id` = contatto del profilo.
+
+**Rischio reale:** se dopo il pagamento accede con un’email diversa (es. Google
+personale ≠ email Stripe), l’area risulta vuota. Mitigazioni già presenti:
+- webhook crea/aggancia contatto dall’email Stripe;
+- `ensureProfile` ricollega se l’email auth ≠ email del contatto agganciato;
+- empty state + (dal 17/07) avviso su `/checkout/conferma`.
+
+**Bug fixato il 17/07:** l’email SoftLead “Procedi al checkout” **non** passava
+`practice=<id>` → si creava una **seconda** pratica anonima. Ora il link include
+`practice=`. Card Kanban CRM: mostrano email/telefono sotto il nome (i lead senza
+nome non sembrano più “pratiche misteriose”).
+
+**Gap residui (non ancora chiusi):**
+- login solo telefono dopo checkout solo-email → match debole;
+- contatti duplicati stessa email (sempre insert, prende il più recente);
+- se il webhook fallisce la creazione contatto → pratica pagata senza `contact_id`
+  (log `contatto_non_agganciato`) finché Lorenzo non la sistema a mano.
+
+File chiave: `preventivo/actions.ts` (`createLead`), `checkout/actions.ts`,
+`api/stripe/webhook/route.ts`, `lib/profiles.ts`, `lib/area.ts`.
+
+### Backlog restante (da smaltire a blocchi, non tutto insieme)
+
+**Contenuti / fiducia**
+- [ ] Foto Pontedera vera (sostituire quella attuale)
+- [ ] Recensioni Google My Business reali al posto delle finte
+- [ ] Accumulare ~20 recensioni GMB (operativo Lorenzo)
+- [ ] Mail follow-up chiusura: link recensione GMB verificato
+- [ ] Banner recensione GMB in area cliente dopo pratica conclusa
+- [ ] Blocco “Ti seguiamo anche nella tua lingua” → confermare **solo** quando
+      Lorenzo è attrezzato per traduzione live
+- [ ] Chi sono: titolone “Lorenzo Armellin”, attuale titolo → sottotitolo
+- [ ] Questionario: “1 minuto” non “5” nei testi
+- [ ] Chiarire prezzi IVA inclusa/esclusa
+- [ ] Come funziona: alternativa visita in studio (via…)
+- [ ] Meta/sottotesto SEO: professionista reale + si fa online
+- [ ] Tabella comparativa: eventuale riga in più
+- [ ] Esito A (“forse non serve la dichiarazione”): nascondere tab “Intanto ecco cosa ti servirà”
+
+**Prodotto / CRM / area**
+- [ ] Mobile sito: compattare spazi (scroll troppo lungo)
+- [ ] Add-on “Servizi aggiuntivi”: se tutti disattivi sparisce il blocco; se uno
+      disattivo sparisce lui — **Mauro vede ancora il blocco → verificare/fix**
+- [ ] Nomi pacchetti: sito ↔ CRM ↔ statistiche allineati (una sola fonte)
+- [ ] Area documenti desktop: stato “da caricare” non in doppia fila
+- [ ] Imposte comunicate: check canale (mail?) + vale la pena notifiche lato cliente?
+- [ ] Profilo telefono: prefisso +xy per stranieri
+- [ ] Preferenze notifiche email/WhatsApp: allineare bottoni
+- [ ] CRM: menu “Tipologie di documenti” (checklist tipologica per Lorenzo)
+- [ ] CRM Kanban: 7 colonne più strette a schermo intero (no scroll orizzontale);
+      soluzione smart su mobile
+- [ ] CRM pratiche aperte: email già aggiunta in card (17/07); verificare home/liste
+- [ ] GA4: embed o link diretto analytics nel CRM
+- [ ] SMS Twilio (o simile) per stati pratica — ora solo email
+- [ ] WhatsApp Business (nuovo numero se Lorenzo vuole) per automatiche
+
+**Go-live / QA**
+- [ ] Video welcome Lorenzo entro luglio
+- [ ] Video “come si fa” 2′ con attrice entro fine luglio
+- [ ] Check Lorenzo pratiche/costi 290/490/790 + su misura
+- [ ] Test AI precompilazione XML su documenti reali (pratica già fatta)
+- [ ] Traduzioni a testi ultimati
+- [ ] Legal: privacy/cookie/garanzia/recesso allineati (togliere “soddisfatti o rimborsati”?)
+- [ ] Cross-browser: Chrome/Safari/Firefox × desktop/mobile/tablet
+- [ ] (Ultima, dopo traduzioni) micro-animazioni stile Lenis **solo sito pubblico**,
+      con rollback facile alla versione statica
+
+---
+
 ## 8-nonies. Sessione 16/07 (pomeriggio) — modalità offline sito + GA4 Measurement Protocol
 
 ### Modalità offline (commit `4ba8a65`) — FATTO, data-driven, in produzione

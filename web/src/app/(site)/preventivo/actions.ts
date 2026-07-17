@@ -174,7 +174,13 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
           if (order && pkg) {
             packageLabel = `${pkg.name} (${order.total.toLocaleString("it-IT")} €)`;
             const base = siteBase();
-            const params = new URLSearchParams({ pkg: pkgKey });
+            // Importante: riusa la pratica SoftLead (practice=), altrimenti il
+            // checkout creerebbe una SECONDA pratica anonima e il lead originale
+            // resterebbe orfano / duplicato.
+            const params = new URLSearchParams({
+              pkg: pkgKey,
+              practice: practice.id,
+            });
             if (input.realEstateCount)
               params.set("recount", String(input.realEstateCount));
             recap = {
