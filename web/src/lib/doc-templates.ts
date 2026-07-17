@@ -1,49 +1,77 @@
 /*
-  Modelli (template) scaricabili abbinati alle voci della checklist documenti.
-  Il cliente li scarica dall'area personale, li compila, li firma e li ricarica
-  nella stessa voce. I PDF stanno in public/templates/:
-  - quelli "dello studio" sono generati da scripts/generate-doc-templates.mjs;
-  - dichiarazione-sostitutiva-eredi-ade.pdf e' il modello ufficiale
-    dell'Agenzia delle Entrate (artt. 46-47 DPR 445/2000), scaricato dal sito.
-  L'abbinamento avviene per etichetta (regex) cosi funziona anche sulle
-  checklist gia generate e su quelle personalizzate da Lorenzo nel CRM.
+  Modelli scaricabili abbinati alle voci checklist.
+  Default in document-types-shared; override CRM in Storage (_document-types.json).
+  L'abbinamento per etichetta resta per le checklist gia generate.
 */
+
+import {
+  BUILTIN_DOCUMENT_TYPES,
+  DEFAULT_TEMPLATES_BY_TYPE,
+  LABEL_TEMPLATE_FALLBACKS,
+  type DocumentTypeState,
+  type ManagedDocTemplate,
+} from "@/lib/document-types-shared";
 
 export type DocTemplate = {
   href: string;
   name: string;
 };
 
-// I pattern coprono anche le etichette VECCHIE delle checklist gia generate
-// ("Autocertificazione stato di famiglia / albero genealogico").
-const RULES: { pattern: RegExp; templates: DocTemplate[] }[] = [
-  {
-    pattern: /certificato di morte/i,
-    templates: [
-      {
-        href: "/templates/dichiarazione-sostitutiva-morte-stato-famiglia-defunto.pdf",
-        name: "Dichiarazione sostitutiva di certificato di morte e stato di famiglia del defunto (artt. 46-47 DPR 445/2000)",
-      },
-    ],
-  },
-  {
-    pattern: /stato di famiglia|albero genealogico/i,
-    templates: [
-      {
-        href: "/templates/autocertificazione-stato-famiglia-erede.pdf",
-        name: "Autocertificazione stato di famiglia di ciascun erede (artt. 46-47 DPR 445/2000)",
-      },
-      {
-        href: "/templates/dichiarazione-sostitutiva-eredi-ade.pdf",
-        name: "In alternativa: modello ufficiale dell'Agenzia delle Entrate",
-      },
-    ],
-  },
-];
+function toPublic(t: ManagedDocTemplate): DocTemplate {
+  const href = t.storagePath
+    ? `/api/doc-templates/download?path=${encodeURIComponent(t.storagePath)}`
+    : t.href;
+  return { href, name: t.name };
+}
 
-export function templatesForLabel(label: string): DocTemplate[] {
-  for (const rule of RULES) {
-    if (rule.pattern.test(label)) return rule.templates;
+function resolveTypeId(
+  label: string,
+  state?: DocumentTypeState | null,
+): string | null {
+  const all = [
+    ...BUILTIN_DOCUMENT_TYPES,
+    ...(state?.custom ?? []),
+  ];
+  const exact = all.find(
+    (t) => t.label.trim().toLowerCase() === label.trim().toLowerCase(),
+  );
+  if (exact) return exact.id;
+
+  // Visure generate come "Visura catastale - immobile N"
+  if (/^visura catastale/i.test(label)) return "visura";
+
+  for (const fb of LABEL_TEMPLATE_FALLBACKS) {
+    if (fb.pattern.test(label)) return fb.typeId;
   }
-  return [];
+  return null;
+}
+
+function templatesForTypeId(
+  typeId: string,
+  state?: DocumentTypeState | null,
+): ManagedDocTemplate[] {
+  if (state && Object.prototype.hasOwnProperty.call(state.templatesByTypeId, typeId)) {
+    return state.templatesByTypeId[typeId] ?? [];
+  }
+  return DEFAULT_TEMPLATES_BY_TYPE[typeId] ?? [];
+}
+
+/**
+ * Sync: solo default (senza override CRM). Usato come fallback client-side
+ * se la pagina non ha passato i template risolti.
+ */
+export function templatesForLabel(label: string): DocTemplate[] {
+  const typeId = resolveTypeId(label, null);
+  if (!typeId) return [];
+  return templatesForTypeId(typeId, null).map(toPublic);
+}
+
+/** Con stato CRM: risolve override + href Storage. */
+export function templatesForLabelWithState(
+  label: string,
+  state: DocumentTypeState,
+): DocTemplate[] {
+  const typeId = resolveTypeId(label, state);
+  if (!typeId) return [];
+  return templatesForTypeId(typeId, state).map(toPublic);
 }

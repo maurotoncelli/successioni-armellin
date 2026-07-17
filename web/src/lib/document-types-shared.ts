@@ -10,11 +10,24 @@ export type DocumentTypeDef = {
   builtin: boolean;
 };
 
+/** Modello PDF scaricabile abbinato a una tipologia. */
+export type ManagedDocTemplate = {
+  id: string;
+  name: string;
+  /**
+   * Link pubblico (`/templates/...`) oppure path Storage
+   * (`site/doc-templates/...`) servito da /api/doc-templates/download.
+   */
+  href: string;
+  /** Se valorizzato, il file e' su Storage (non in public/). */
+  storagePath?: string | null;
+};
+
 export type DocumentTypeState = {
   /** id -> attivo in generazione checklist (default true se assente). */
   active: Record<string, boolean>;
-  /** id -> Lorenzo ha spuntato “verificato / mi serve”. */
-  checked: Record<string, boolean>;
+  /** id tipologia -> modelli scaricabili (se assente: default builtin). */
+  templatesByTypeId: Record<string, ManagedDocTemplate[]>;
   custom: DocumentTypeDef[];
   updatedAt: string | null;
 };
@@ -99,4 +112,36 @@ export const BUILTIN_DOCUMENT_TYPES: DocumentTypeDef[] = [
     when: "minors",
     builtin: true,
   },
+];
+
+/** Default template per tipologia (file in public/templates/). */
+export const DEFAULT_TEMPLATES_BY_TYPE: Record<string, ManagedDocTemplate[]> = {
+  morte: [
+    {
+      id: "morte-sostitutiva",
+      name: "Dichiarazione sostitutiva di certificato di morte e stato di famiglia del defunto (artt. 46-47 DPR 445/2000)",
+      href: "/templates/dichiarazione-sostitutiva-morte-stato-famiglia-defunto.pdf",
+    },
+  ],
+  stato_famiglia: [
+    {
+      id: "stato-famiglia-erede",
+      name: "Autocertificazione stato di famiglia di ciascun erede (artt. 46-47 DPR 445/2000)",
+      href: "/templates/autocertificazione-stato-famiglia-erede.pdf",
+    },
+    {
+      id: "stato-famiglia-ade",
+      name: "In alternativa: modello ufficiale dell'Agenzia delle Entrate",
+      href: "/templates/dichiarazione-sostitutiva-eredi-ade.pdf",
+    },
+  ],
+};
+
+/** Pattern legacy per checklist gia generate (etichette vecchie). */
+export const LABEL_TEMPLATE_FALLBACKS: {
+  pattern: RegExp;
+  typeId: string;
+}[] = [
+  { pattern: /certificato di morte/i, typeId: "morte" },
+  { pattern: /stato di famiglia|albero genealogico/i, typeId: "stato_famiglia" },
 ];

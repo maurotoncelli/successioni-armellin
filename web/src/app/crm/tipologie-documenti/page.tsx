@@ -22,11 +22,12 @@ export default async function TipologieDocumentiPage() {
           </h1>
         </div>
         <p className="mt-1 text-sm text-crm-muted">
-          Elenco di tutto ciò che può finire in checklist. Spunta{" "}
-          <strong className="font-medium text-crm-text2">Verificato</strong> per
-          tenere sotto controllo cosa ti serve; disattiva{" "}
+          Elenco di tutto ciò che può finire in checklist. Disattiva{" "}
           <strong className="font-medium text-crm-text2">In checklist auto</strong>{" "}
-          se una voce non deve più generarsi. Puoi aggiungere tipi custom.
+          se una voce non deve generarsi; gestisci i{" "}
+          <strong className="font-medium text-crm-text2">modelli PDF</strong>{" "}
+          (autocertificazioni ecc.) che il cliente scarica dall&apos;area
+          personale. Puoi anche aggiungere tipologie custom.
         </p>
       </div>
 

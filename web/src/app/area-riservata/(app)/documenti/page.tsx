@@ -6,6 +6,8 @@ import { NoPracticeState } from "@/components/area/empty";
 import { requireClientView } from "@/lib/area";
 import { isPracticeCancelled, toClientDocState } from "@/content/area-data";
 import { listItemFiles } from "@/lib/documents";
+import { getDocumentTypesState } from "@/lib/document-types";
+import { templatesForLabelWithState } from "@/lib/doc-templates";
 
 export default async function DocumentiPage() {
   const view = await requireClientView();
@@ -38,6 +40,7 @@ export default async function DocumentiPage() {
     );
   }
 
+  const docTypesState = await getDocumentTypesState();
   const items: DocItem[] = practice.checklist.flatMap((d, index) => {
     const state = toClientDocState(d.status);
     if (!state) return [];
@@ -50,6 +53,7 @@ export default async function DocumentiPage() {
         reason: d.reason,
         help: d.help,
         files: listItemFiles(d).map((f) => f.name),
+        templates: templatesForLabelWithState(d.label, docTypesState),
       },
     ];
   });

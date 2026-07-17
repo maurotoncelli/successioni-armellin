@@ -3,32 +3,50 @@ import { getAdminClient, isAdminConfigured } from "@/lib/supabase/admin";
 import { DOC_BUCKET, ensureDocBucket } from "@/lib/documents";
 import {
   BUILTIN_DOCUMENT_TYPES,
+  DEFAULT_TEMPLATES_BY_TYPE,
   type DocWhen,
   type DocumentTypeDef,
   type DocumentTypeState,
+  type ManagedDocTemplate,
 } from "@/lib/document-types-shared";
 
-export type { DocWhen, DocumentTypeDef, DocumentTypeState };
-export { BUILTIN_DOCUMENT_TYPES, WHEN_LABELS } from "@/lib/document-types-shared";
+export type { DocWhen, DocumentTypeDef, DocumentTypeState, ManagedDocTemplate };
+export {
+  BUILTIN_DOCUMENT_TYPES,
+  DEFAULT_TEMPLATES_BY_TYPE,
+  WHEN_LABELS,
+  LABEL_TEMPLATE_FALLBACKS,
+} from "@/lib/document-types-shared";
 
 /*
-  Catalogo tipologie documenti per checklist automatica.
-  NO-DDL: override Lorenzo in Storage `practice-docs/site/_document-types.json`
-  (attiva/disattiva, verificato, tipi custom).
+  Catalogo tipologie documenti + modelli PDF.
+  NO-DDL: Storage `practice-docs/site/_document-types.json`
 */
 
 const STORAGE_PATH = "site/_document-types.json";
 
 const EMPTY_STATE: DocumentTypeState = {
   active: {},
-  checked: {},
+  templatesByTypeId: {},
   custom: [],
   updatedAt: null,
 };
 
+function normalizeTemplate(raw: unknown): ManagedDocTemplate | null {
+  if (!raw || typeof raw !== "object") return null;
+  const t = raw as Partial<ManagedDocTemplate>;
+  if (!t.id || !t.name || !t.href) return null;
+  return {
+    id: String(t.id),
+    name: String(t.name),
+    href: String(t.href),
+    storagePath: t.storagePath ? String(t.storagePath) : null,
+  };
+}
+
 function normalize(raw: unknown): DocumentTypeState {
   if (!raw || typeof raw !== "object") return { ...EMPTY_STATE, custom: [] };
-  const o = raw as Partial<DocumentTypeState>;
+  const o = raw as Partial<DocumentTypeState> & { checked?: unknown };
   const custom = Array.isArray(o.custom)
     ? o.custom
         .filter((c) => c && typeof c === "object" && typeof c.id === "string")
@@ -45,15 +63,23 @@ function normalize(raw: unknown): DocumentTypeState {
           builtin: false,
         }))
     : [];
+
+  const templatesByTypeId: Record<string, ManagedDocTemplate[]> = {};
+  if (o.templatesByTypeId && typeof o.templatesByTypeId === "object") {
+    for (const [typeId, list] of Object.entries(o.templatesByTypeId)) {
+      if (!Array.isArray(list)) continue;
+      templatesByTypeId[typeId] = list
+        .map(normalizeTemplate)
+        .filter((t): t is ManagedDocTemplate => Boolean(t));
+    }
+  }
+
   return {
     active:
       o.active && typeof o.active === "object"
         ? (o.active as Record<string, boolean>)
         : {},
-    checked:
-      o.checked && typeof o.checked === "object"
-        ? (o.checked as Record<string, boolean>)
-        : {},
+    templatesByTypeId,
     custom,
     updatedAt: typeof o.updatedAt === "string" ? o.updatedAt : null,
   };
@@ -81,7 +107,7 @@ export async function saveDocumentTypesState(
   }
   const next: DocumentTypeState = {
     active: state.active,
-    checked: state.checked,
+    templatesByTypeId: state.templatesByTypeId,
     custom: state.custom.map((c) => ({ ...c, builtin: false })),
     updatedAt: new Date().toISOString(),
   };
@@ -104,18 +130,35 @@ export async function saveDocumentTypesState(
   }
 }
 
-/** Catalogo effettivo (builtin + custom) con flag active/checked risolti. */
 export function resolveDocumentCatalog(state: DocumentTypeState): Array<
-  DocumentTypeDef & { active: boolean; checked: boolean }
+  DocumentTypeDef & { active: boolean; templates: ManagedDocTemplate[] }
 > {
   const all = [...BUILTIN_DOCUMENT_TYPES, ...state.custom];
   return all.map((t) => ({
     ...t,
     active: state.active[t.id] !== false,
-    checked: Boolean(state.checked[t.id]),
+    templates: resolveTemplatesForTypeId(state, t.id),
   }));
 }
 
 export function isTypeActive(state: DocumentTypeState, id: string): boolean {
   return state.active[id] !== false;
+}
+
+/** Template effettivi per typeId (override salvato oppure default). */
+export function resolveTemplatesForTypeId(
+  state: DocumentTypeState,
+  typeId: string,
+): ManagedDocTemplate[] {
+  if (Object.prototype.hasOwnProperty.call(state.templatesByTypeId, typeId)) {
+    return state.templatesByTypeId[typeId] ?? [];
+  }
+  return DEFAULT_TEMPLATES_BY_TYPE[typeId] ?? [];
+}
+
+export function publicTemplateHref(t: ManagedDocTemplate): string {
+  if (t.storagePath) {
+    return `/api/doc-templates/download?path=${encodeURIComponent(t.storagePath)}`;
+  }
+  return t.href;
 }

@@ -153,7 +153,7 @@ export async function generateChecklist(
 export function generateChecklistSync(input: ChecklistInput): ChecklistItem[] {
   return generateChecklistFromState(input, {
     active: {},
-    checked: {},
+    templatesByTypeId: {},
     custom: [],
     updatedAt: null,
   });

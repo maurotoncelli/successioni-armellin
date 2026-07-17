@@ -29,6 +29,8 @@ export type DocItem = {
   help?: string;
   /** Nomi dei file caricati per la voce (max MAX_FILES). */
   files: string[];
+  /** Modelli scaricabili (risolti server-side dal catalogo CRM). */
+  templates?: { href: string; name: string }[];
 };
 
 const ACCEPT = ".pdf,.jpg,.jpeg,.png";
@@ -223,7 +225,7 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
                     {d.help}
                   </p>
                 )}
-                <DocTemplates label={d.label} />
+                <DocTemplates label={d.label} templates={d.templates} />
                 {d.files.length > 0 && (
                   <ul className="mt-2 space-y-1">
                     {d.files.map((name, fileIdx) => (
@@ -344,8 +346,17 @@ function DocStateBadge({ state }: { state: ClientDocState }) {
   Modelli precompilati abbinati alla voce: il cliente li scarica, li compila,
   li firma e li ricarica nella stessa voce (vedi lib/doc-templates).
 */
-function DocTemplates({ label }: { label: string }) {
-  const templates = templatesForLabel(label);
+function DocTemplates({
+  label,
+  templates: fromServer,
+}: {
+  label: string;
+  templates?: { href: string; name: string }[];
+}) {
+  // Se la pagina ha passato l'elenco (anche vuoto), rispettalo: evita di
+  // ripristinare i default quando Lorenzo ha rimosso tutti i modelli.
+  const templates =
+    fromServer !== undefined ? fromServer : templatesForLabel(label);
   if (templates.length === 0) return null;
   return (
     <div className="mt-2 rounded-xl border border-accent/25 bg-accent/5 px-3 py-2.5">

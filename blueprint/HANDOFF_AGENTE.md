@@ -87,9 +87,10 @@ File chiave: `preventivo/actions.ts`, `checkout/actions.ts`,
 - [x] Notifiche CRM: filtri Importanti/Tutte + chip per tipo; badge esclude questionari
 
 **Tornata 17/07 sera (2):**
-- [x] CRM → **Tipologie di documenti** (`/crm/tipologie-documenti`): check
-      verificato + attiva/disattiva in checklist auto + tipi custom (Storage
-      `_document-types.json`); `generateChecklist` rispetta il catalogo
+- [x] CRM → **Tipologie di documenti** (`/crm/tipologie-documenti`):
+      attiva/disattiva in checklist auto + tipi custom + **gestione modelli PDF**
+      (default autocertificazioni + upload); Storage `_document-types.json`;
+      `generateChecklist` rispetta il catalogo (tolto flag “Verificato”)
 - [x] Meta description SEO rafforzata (professionista reale + online)
 - [x] Prezzi: copy **senza IVA** (forfettario) su tariffe / card / ordine area
 - [x] Banner recensione GMB in evidenza (dashboard + conclusa) con URL
