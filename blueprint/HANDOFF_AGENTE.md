@@ -40,14 +40,21 @@ personale ≠ email Stripe), l’area risulta vuota. Mitigazioni già presenti:
 `practice=`. Card Kanban CRM: mostrano email/telefono sotto il nome (i lead senza
 nome non sembrano più “pratiche misteriose”).
 
-**Gap residui (non ancora chiusi):**
-- login solo telefono dopo checkout solo-email → match debole;
-- contatti duplicati stessa email (sempre insert, prende il più recente);
-- se il webhook fallisce la creazione contatto → pratica pagata senza `contact_id`
-  (log `contatto_non_agganciato`) finché Lorenzo non la sistema a mano.
+**Mitigazioni aggiunte il 17/07 (dopo accordo Mauro):**
+1. Email PAGATO: CTA = **magic link** Supabase sulla email Stripe + codice pratica
+   (`createAreaAccessLink`, `notifyStatusChange` opts).
+2. **Upsert contatto per email** (`lib/contacts.ts`) in SoftLead e webhook.
+3. Area vuota: form **codice pratica + email** per collegare il profilo
+   (`claim/actions.ts`, `ClaimPracticeForm`) — solo se email login = email pratica.
 
-File chiave: `preventivo/actions.ts` (`createLead`), `checkout/actions.ts`,
-`api/stripe/webhook/route.ts`, `lib/profiles.ts`, `lib/area.ts`.
+**Gap residui:**
+- login solo telefono dopo checkout solo-email → match ancora debole;
+- se upsert contatto fallisce al webhook → pratica senza `contact_id` finché
+  Lorenzo non sistema / cliente usa recovery.
+
+File chiave: `preventivo/actions.ts`, `checkout/actions.ts`,
+`api/stripe/webhook/route.ts`, `lib/contacts.ts`, `lib/area-access-link.ts`,
+`lib/profiles.ts`, `lib/area.ts`, `area-riservata/(app)/claim/actions.ts`.
 
 ### Backlog restante (da smaltire a blocchi, non tutto insieme)
 

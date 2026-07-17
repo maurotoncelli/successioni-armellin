@@ -8,12 +8,13 @@ import { isPracticeCancelled, toClientDocState } from "@/content/area-data";
 import { listItemFiles } from "@/lib/documents";
 
 export default async function DocumentiPage() {
-  const { practice } = await requireClientView();
+  const view = await requireClientView();
+  const practice = view.practice;
   if (!practice) {
     return (
       <div>
         <PageHeading title="I tuoi documenti" subtitle="Checklist documenti." />
-        <NoPracticeState />
+        <NoPracticeState defaultEmail={view.user.email ?? ""} />
       </div>
     );
   }

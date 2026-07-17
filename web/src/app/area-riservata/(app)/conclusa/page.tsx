@@ -10,12 +10,13 @@ import { finalDocuments } from "@/content/area-data";
 import { text } from "@/lib/content";
 
 export default async function ConclusaPage() {
-  const { practice: p } = await requireClientView();
+  const view = await requireClientView();
+  const p = view.practice;
   if (!p) {
     return (
       <div>
         <PageHeading title="Documenti finali" subtitle="Disponibili a pratica conclusa." />
-        <NoPracticeState />
+        <NoPracticeState defaultEmail={view.user.email ?? ""} />
       </div>
     );
   }

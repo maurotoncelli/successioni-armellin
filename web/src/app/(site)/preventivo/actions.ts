@@ -15,6 +15,7 @@ import { getPackages, getAddons } from "@/lib/cms";
 import { buildOrder } from "@/lib/order";
 import { notifyAdminNewLead, notifyLeadRecap, siteBase } from "@/lib/notifications";
 import { pushCrmNotification } from "@/lib/crm-notifications";
+import { upsertContactByEmail } from "@/lib/contacts";
 import type { Communication, LogEvent } from "@/content/crm-data";
 
 export type LeadInput = {
@@ -87,29 +88,25 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
           ? "Preventivo via email (sito)"
           : "Form sito";
 
-    const { data: contact, error: contactErr } = await admin
-      .from("contacts")
-      .insert({
-        first_name: first || fullName || "Contatto",
-        last_name: last,
-        email: input.email.trim() || null,
-        phone: input.phone.trim() || null,
-        source,
-        marketing_consent: input.marketing,
-        last_activity: isoDate(),
-      })
-      .select("id")
-      .single();
-    if (contactErr) throw contactErr;
+    const emailNorm = input.email.trim();
+    const contactId = await upsertContactByEmail({
+      email: emailNorm,
+      firstName: first || fullName || "Contatto",
+      lastName: last,
+      phone: input.phone.trim() || null,
+      source,
+      marketingConsent: input.marketing,
+    });
+    if (!contactId) throw new Error("Impossibile creare/aggiornare il contatto.");
 
     const { data: practice, error: practiceErr } = await admin
       .from("practices")
       .insert({
         status: "LEAD",
         action_owner: "ADMIN",
-        contact_id: contact.id,
+        contact_id: contactId,
         client_name: fullName || "Nuovo lead",
-        client_email: input.email.trim(),
+        client_email: emailNorm,
         client_phone: input.phone.trim(),
         // Nel campo relation salviamo la composizione degli eredi in chiaro
         // (es. "Coniuge + 2 figli"): e' l'informazione utile per Lorenzo.

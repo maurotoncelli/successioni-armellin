@@ -9,6 +9,8 @@ import { issueInvoiceForPractice, isInvoicingConfigured } from "@/lib/invoice";
 import { slaDueDate } from "@/lib/cms";
 import { generateChecklist } from "@/lib/checklist";
 import { sendGa4Purchase } from "@/lib/analytics-server";
+import { upsertContactByEmail } from "@/lib/contacts";
+import { createAreaAccessLink } from "@/lib/area-access-link";
 import type { PracticeRow, PaymentStatusKey } from "@/lib/supabase/types";
 
 /*
@@ -147,40 +149,20 @@ async function handleCheckoutCompleted(
 
   // Aggancio all'anagrafica (contacts): le pratiche nate dal checkout diretto
   // non hanno contact_id, ma la RLS dell'area personale mostra al cliente solo
-  // le pratiche con il SUO contact_id. Senza questo aggancio, il cliente
-  // pagante troverebbe l'area vuota. Trova il contatto per email o crealo.
+  // le pratiche con il SUO contact_id. Upsert per email (no duplicati).
   let contactId = row.contact_id;
   if (!contactId && clientEmail) {
-    const { data: found } = await admin
-      .from("contacts")
-      .select("id")
-      .ilike("email", clientEmail)
-      .order("last_activity", { ascending: false })
-      .limit(1);
-    contactId = found?.[0]?.id ?? null;
+    const fullName = (backfill.client_name ?? row.client_name ?? "").trim();
+    const [first, ...rest] = fullName.split(/\s+/);
+    contactId = await upsertContactByEmail({
+      email: clientEmail,
+      firstName: first || "Cliente",
+      lastName: rest.join(" "),
+      phone: backfill.client_phone ?? row.client_phone ?? null,
+      source: "Checkout sito",
+    });
     if (!contactId) {
-      const fullName = (backfill.client_name ?? row.client_name ?? "").trim();
-      const [first, ...rest] = fullName.split(/\s+/);
-      const { data: created, error: contactErr } = await admin
-        .from("contacts")
-        .insert({
-          first_name: first || "Cliente",
-          last_name: rest.join(" "),
-          email: clientEmail,
-          phone: backfill.client_phone ?? row.client_phone ?? null,
-          source: "Checkout sito",
-          marketing_consent: false,
-          last_activity: new Date().toISOString().slice(0, 10),
-        })
-        .select("id")
-        .single();
-      if (contactErr) {
-        // Non blocchiamo la registrazione del pagamento (verita' = Stripe),
-        // ma senza contact_id il cliente non vede la pratica in area
-        // personale: va tracciato in modo visibile per Lorenzo.
-        console.error("[stripe-webhook] creazione contatto fallita:", contactErr);
-      }
-      contactId = created?.id ?? null;
+      console.error("[stripe-webhook] upsert contatto fallito per", clientEmail);
     }
   }
 
@@ -261,7 +243,12 @@ async function handleCheckoutCompleted(
   // documenti (@05, transizione "Pagato" = auto via webhook). La comunicazione
   // e gia registrata sopra; qui parte l'email vera (no-op se Resend non attivo).
   if (clientEmail) {
-    await notifyStatusChange(clientEmail, "PAGATO");
+    // Magic link sulla stessa email Stripe: un click e entra nella pratica giusta.
+    const accessLink = await createAreaAccessLink(clientEmail);
+    await notifyStatusChange(clientEmail, "PAGATO", {
+      ctaHref: accessLink ?? undefined,
+      practiceCode: row.code,
+    });
   }
 
   // Purchase GA4 via Measurement Protocol (fonte di verita server-side).

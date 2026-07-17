@@ -14,12 +14,13 @@ import {
 } from "@/content/area-data";
 
 export default async function DashboardPage() {
-  const { practice: p } = await requireClientView();
+  const view = await requireClientView();
+  const p = view.practice;
   if (!p) {
     return (
       <div>
         <PageHeading title="Area personale" subtitle="Benvenuto." />
-        <NoPracticeState />
+        <NoPracticeState defaultEmail={view.user.email ?? ""} />
       </div>
     );
   }

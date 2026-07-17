@@ -7,7 +7,8 @@ import { requireClientView } from "@/lib/area";
 import { getSafeExtras } from "@/lib/practice-extras";
 
 export default async function RecessoPage() {
-  const { practice } = await requireClientView();
+  const view = await requireClientView();
+  const practice = view.practice;
   if (!practice) {
     return (
       <div>
@@ -15,7 +16,7 @@ export default async function RecessoPage() {
           title="Richiesta di recesso"
           subtitle="Puoi richiedere il recesso finché la pratica non è completata."
         />
-        <NoPracticeState />
+        <NoPracticeState defaultEmail={view.user.email ?? ""} />
       </div>
     );
   }

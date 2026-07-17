@@ -18,12 +18,13 @@ const paymentLabels: Record<string, string> = {
 };
 
 export default async function OrdinePage() {
-  const { practice: p } = await requireClientView();
+  const view = await requireClientView();
+  const p = view.practice;
   if (!p) {
     return (
       <div>
         <PageHeading title="Il tuo acquisto" subtitle="Riepilogo ordine." />
-        <NoPracticeState />
+        <NoPracticeState defaultEmail={view.user.email ?? ""} />
       </div>
     );
   }

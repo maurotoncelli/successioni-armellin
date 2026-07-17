@@ -6,12 +6,13 @@ import { requireClientView } from "@/lib/area";
 import { getSafeExtras } from "@/lib/practice-extras";
 
 export default async function DatiPage() {
-  const { practice } = await requireClientView();
+  const view = await requireClientView();
+  const practice = view.practice;
   if (!practice) {
     return (
       <div>
         <PageHeading title="I tuoi dati" subtitle="Dati aggiuntivi." />
-        <NoPracticeState />
+        <NoPracticeState defaultEmail={view.user.email ?? ""} />
       </div>
     );
   }

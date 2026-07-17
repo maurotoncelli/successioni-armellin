@@ -7,12 +7,13 @@ import { getSafeExtras } from "@/lib/practice-extras";
 import { buildMandatoParagraphs, buildMandatoText } from "@/content/mandato";
 
 export default async function MandatoPage() {
-  const { practice, account } = await requireClientView();
+  const view = await requireClientView();
+  const { practice, account } = view;
   if (!practice) {
     return (
       <div>
         <PageHeading title="Mandato e consensi" subtitle="Firma l'incarico." />
-        <NoPracticeState />
+        <NoPracticeState defaultEmail={view.user.email ?? ""} />
       </div>
     );
   }

@@ -75,14 +75,23 @@ const statusEmails: Partial<Record<PracticeStatus, StatusEmail>> = {
 export async function notifyStatusChange(
   to: string,
   status: PracticeStatus,
+  opts?: {
+    /** Override CTA (es. magic link post-pagamento). */
+    ctaHref?: string;
+    practiceCode?: string;
+  },
 ): Promise<{ sent: boolean; subject: string } | null> {
   const tpl = statusEmails[status];
   if (!tpl) return null;
+  const codeNote =
+    status === "PAGATO" && opts?.practiceCode
+      ? `<p style="margin:12px 0 0">Codice pratica: <strong>${esc(opts.practiceCode)}</strong> — conservalo. Per entrare nell'area personale usa questa stessa email.</p>`
+      : "";
   const html = emailLayout({
     heading: tpl.heading,
-    bodyHtml: `<p style="margin:0">${tpl.body}</p>`,
+    bodyHtml: `<p style="margin:0">${tpl.body}</p>${codeNote}`,
     ctaLabel: tpl.cta,
-    ctaHref: areaUrl(),
+    ctaHref: opts?.ctaHref || areaUrl(),
   });
   const { sent } = await sendEmail({ to, subject: tpl.subject, html });
   return { sent, subject: tpl.subject };
