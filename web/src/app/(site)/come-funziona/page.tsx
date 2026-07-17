@@ -62,13 +62,13 @@ export default function ComeFunzionaPage() {
             const Icon = stepIcons[i] ?? IconQuiz;
             return (
               <div key={step.numero} className="flex gap-3.5 md:flex-col">
-                <div className="relative shrink-0">
+                <div className="flex shrink-0 items-center gap-2">
+                  <span className="grid h-10 w-10 place-items-center rounded-full bg-primary font-display text-base font-bold text-white shadow-sm">
+                    {step.numero}
+                  </span>
                   <IconBadge tone={i === 1 ? "accent" : "primary"}>
                     <Icon className="h-5 w-5" />
                   </IconBadge>
-                  <span className="absolute -left-1.5 -top-1.5 grid h-5 w-5 place-items-center rounded-full bg-primary font-display text-[10px] font-bold text-white ring-2 ring-bg">
-                    {step.numero}
-                  </span>
                 </div>
                 <div className="min-w-0">
                   <h3 className="text-base leading-snug sm:text-lg">{step.titolo}</h3>
