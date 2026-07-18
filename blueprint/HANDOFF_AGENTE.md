@@ -15,8 +15,8 @@ Chat correlata (i18n AR + messaggi/mandato/comms):
 
 ## 8-unvicies. Sessione 18/07 — SEO Fase A (URL `/ar` + hreflang)
 
-**Commit i18n UX:** `4fb16fc` su `main` (locale, non pushato salvo richiesta).  
-**SEO Fase A:** in corso / da committare dopo verifica.
+**Pushati su `origin/main`:** `4fb16fc` (i18n UX) + `c2193f1` (SEO path).  
+Deploy Vercel automatico. Ulteriori polish metadata/nav locale in commit successivi.
 
 ### Cosa fa
 - Prefisso path **`/ar/...`** per il sito pubblico (IT resta senza prefisso).
@@ -24,19 +24,24 @@ Chat correlata (i18n AR + messaggi/mandato/comms):
 - Area/CRM/API: niente prefisso (redirect se `/ar/area-riservata`).
 - Switcher: AR → URL `/ar`; IT → path nudo; altre lingue ancora `?lang=`.
 - `hreflang` it/ar/x-default nel layout sito; sitemap IT+AR con alternates.
+- Nav/footer/guide link con `localePath` (crawlable `/ar/...`).
 - Helper: `web/src/lib/seo-locale.ts`.
 
-### Smoke
-1. `/ar` e `/ar/tariffe` → UI AR, `html lang=ar`.
-2. `/tariffe` anonimo → IT.
-3. Switcher IT↔AR cambia path (non solo cookie).
-4. `/sitemap.xml` contiene URL `/ar/...`.
-5. Area `/area-riservata?lang=ar` resta senza prefisso `/ar`.
+### TODO Mauro — Search Console (manuale, 5 min)
+1. [Google Search Console](https://search.google.com/search-console) → proprietà `www.successioniarmellin.it`
+2. Sitemap → aggiungi/reinvia `https://www.successioniarmellin.it/sitemap.xml`
+3. Ispezione URL: prova `https://www.successioniarmellin.it/ar` e una `/ar/tariffe`
+4. Tra 1–2 settimane: Controlla copertura / pagine con `hreflang`
+
+### Smoke post-deploy
+1. `https://www.successioniarmellin.it/ar` → UI AR
+2. `https://www.successioniarmellin.it/tariffe` (incognito) → IT
+3. `/sitemap.xml` contiene `/ar/...`
+4. Area senza prefisso `/ar`
 
 ### Next (piano SEO)
-- Fase B: `/en` stesso pattern.
-- Search Console: inviare sitemap dopo deploy.
-- Non spingere Ads AR finché non ci sono impression.
+- Fase B: `/en` stesso pattern (solo se dati AR/lead stranieri).
+- Non spingere Ads AR finché non ci sono impression in GSC.
 
 ---
 

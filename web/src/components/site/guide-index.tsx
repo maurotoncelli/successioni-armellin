@@ -37,13 +37,18 @@ function ArticleCard({
   article,
   labels,
   dateLocale,
+  hrefPrefix = "",
 }: {
   article: ArticlePreview;
   labels: GuideUiLabels;
   dateLocale: string;
+  hrefPrefix?: string;
 }) {
   return (
-    <Link href={`/guide/${article.slug}`} className="group block h-full">
+    <Link
+      href={`${hrefPrefix}/guide/${article.slug}`}
+      className="group block h-full"
+    >
       <Card className="flex h-full flex-col transition-shadow group-hover:shadow-md">
         <div className="flex items-center justify-between gap-2">
           <span className="text-xs font-semibold uppercase tracking-wide text-accent">
@@ -87,12 +92,15 @@ export function GuideIndex({
   showSearch = true,
   labels = GUIDE_UI_IT,
   dateLocale = "it-IT",
+  hrefPrefix = "",
 }: {
   articles: ArticlePreview[];
   categorie: Categoria[];
   showSearch?: boolean;
   labels?: GuideUiLabels;
   dateLocale?: string;
+  /** Prefisso SEO path, es. `/ar` (senza slash finale). */
+  hrefPrefix?: string;
 }) {
   const [query, setQuery] = useState("");
   const [activeCat, setActiveCat] = useState<string | null>(null);
@@ -175,6 +183,7 @@ export function GuideIndex({
                 article={article}
                 labels={labels}
                 dateLocale={dateLocale}
+                hrefPrefix={hrefPrefix}
               />
             ))}
           </div>

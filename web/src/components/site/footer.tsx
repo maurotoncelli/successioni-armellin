@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getRequestLocale, t, tList, tObj } from "@/lib/locale";
+import { localePath } from "@/lib/seo-locale";
 import { LanguageSwitcher } from "./language-switcher";
 import { CookiePreferencesLink } from "@/components/analytics/cookie-preferences-link";
 import {
@@ -38,21 +39,28 @@ export async function Footer() {
     indirizzo: "",
   });
   const trustLine = await t("footer", "trust_line");
-  const legalMenu = await tList<{ label: string; href: string }>(
-    "footer",
-    "legal_menu",
-  );
+  const legalMenu = (
+    await tList<{ label: string; href: string }>("footer", "legal_menu")
+  ).map((item) => ({ ...item, href: localePath(item.href, locale) }));
   const odr = await tObj<{ label: string; href: string }>("footer", "odr", {
     label: "",
     href: "",
   });
   const credit = await t("footer", "credit");
-  const menu = await tList<{ label: string; href: string }>("navbar", "menu");
-  const toolsLink = await tObj<{ label: string; href: string }>(
+  const menu = (
+    await tList<{ label: string; href: string }>("navbar", "menu")
+  ).map((item) => ({ ...item, href: localePath(item.href, locale) }));
+  const toolsLinkRaw = await tObj<{ label: string; href: string }>(
     "footer",
     "strumenti_link",
     { label: "", href: "" },
   );
+  const toolsLink = {
+    ...toolsLinkRaw,
+    href: toolsLinkRaw.href
+      ? localePath(toolsLinkRaw.href, locale)
+      : toolsLinkRaw.href,
+  };
   const email = await t("settings", "email");
   const phone = await t("settings", "phone");
   const pec = await t("settings", "pec");
@@ -155,7 +163,10 @@ export async function Footer() {
           {areaNote && (
             <p className="mt-4 max-w-sm text-xs leading-relaxed text-white/60">
               {areaNote}{" "}
-              <Link href="/privacy" className="underline hover:text-accent">
+              <Link
+                href={localePath("/privacy", locale)}
+                className="underline hover:text-accent"
+              >
                 {await t("home", "app_scopo_privacy_label", "Privacy Policy")}
               </Link>
               .

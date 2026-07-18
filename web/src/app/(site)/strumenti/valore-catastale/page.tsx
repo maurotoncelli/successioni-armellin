@@ -18,12 +18,14 @@ import { buildLocaleAlternates, localePath } from "@/lib/seo-locale";
   numero mostrato coincide con quello delle pratiche vere.
 */
 
-const pageTitle =
-  "Calcolo del valore catastale per la successione (gratis, online)";
-
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getRequestLocale();
   const bare = "/strumenti/valore-catastale";
+  const pageTitle = await t(
+    "strumenti",
+    "catastale_meta_title",
+    "Calcolo del valore catastale per la successione (gratis, online)",
+  );
   const pageDescription = await t(
     "strumenti",
     "catastale_hero_subtitle",
@@ -47,6 +49,13 @@ type FormulaRow = { tipo: string; formula: string };
 type FaqRow = { q: string; a: string };
 
 export default async function ValoreCatastalePage() {
+  const locale = await getRequestLocale();
+  const bare = "/strumenti/valore-catastale";
+  const pageTitle = await t(
+    "strumenti",
+    "catastale_meta_title",
+    "Calcolo del valore catastale per la successione (gratis, online)",
+  );
   const pageDescription = await t(
     "strumenti",
     "catastale_hero_subtitle",
@@ -55,18 +64,19 @@ export default async function ValoreCatastalePage() {
   const formulaRows = await tList<FormulaRow>("strumenti", "catastale_formule");
   const faqRows = await tList<FaqRow>("strumenti", "catastale_faq");
   const ctaButton = await tCta("strumenti", "catastale_cta_button");
+  const pageUrl = `https://www.successioniarmellin.it${localePath(bare, locale)}`;
 
   // Structured data: lo strumento come applicazione gratuita + FAQ visibili
   // in pagina (Google richiede che il markup rispecchi contenuto reale).
   const appLd = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    name: "Calcolo del valore catastale per la successione",
+    name: pageTitle,
     description: pageDescription,
-    url: "https://www.successioniarmellin.it/strumenti/valore-catastale",
+    url: pageUrl,
     applicationCategory: "FinanceApplication",
     operatingSystem: "Web",
-    inLanguage: "it-IT",
+    inLanguage: locale === "ar" ? "ar" : "it-IT",
     offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
     provider: {
       "@type": "ProfessionalService",

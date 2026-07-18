@@ -13,6 +13,7 @@ import {
 import { getArticles } from "@/lib/cms";
 import { get } from "@/lib/content";
 import { getRequestLocale, t, tCta, tList, tObj } from "@/lib/locale";
+import { localePath } from "@/lib/seo-locale";
 import { GUIDE_UI_IT } from "@/lib/site-ui-labels";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -66,7 +67,7 @@ export default async function GuidePage() {
       <Section>
         {toolBanner.href && (
           <Link
-            href={toolBanner.href}
+            href={localePath(toolBanner.href, locale)}
             className="group mb-6 flex flex-col overflow-hidden rounded-2xl border border-accent/30 bg-sand transition-all hover:-translate-y-0.5 hover:border-accent hover:shadow-md sm:mb-10 sm:flex-row sm:items-stretch"
           >
             <span className="flex flex-1 flex-col justify-center gap-3 p-6 sm:p-8">
@@ -102,6 +103,7 @@ export default async function GuidePage() {
           showSearch={showSearch}
           labels={guideUi}
           dateLocale={dateLocale}
+          hrefPrefix={locale === "ar" ? "/ar" : ""}
         />
       </Section>
 

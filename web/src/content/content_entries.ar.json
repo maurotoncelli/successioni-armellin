@@ -1882,6 +1882,13 @@
     },
     {
       "collection": "strumenti",
+      "key": "catastale_meta_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "حساب القيمة الكادسترالية للتصريحة (مجاني، أونلاين)"
+    },
+    {
+      "collection": "strumenti",
       "key": "catastale_hero_title",
       "locale": "ar",
       "is_published": true,
@@ -4767,6 +4774,20 @@
       "locale": "ar",
       "is_published": true,
       "value": "النسخة الإيطالية من هذا المستند هي المعتمدة قانونًا: أي ترجمة هي للتيسير فقط، وعند الاختلاف تسود النسخة الإيطالية."
+    },
+    {
+      "collection": "home",
+      "key": "meta_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تركات أونلاين | المهندس لورنزو أرميلين"
+    },
+    {
+      "collection": "home",
+      "key": "meta_description",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تصريحة الميراث أونلاين مع مهني حقيقي: المهندس لورنزو أرميلين، مسجّل في النقابة. عرض سعر واضح ومستندات ومعاملة من بيتك — وأيضًا حضوريًا في بونتيديرا."
     }
   ]
 }

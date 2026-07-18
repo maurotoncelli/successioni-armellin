@@ -1882,6 +1882,13 @@
     },
     {
       "collection": "strumenti",
+      "key": "catastale_meta_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Calcolo del valore catastale per la successione (gratis, online)"
+    },
+    {
+      "collection": "strumenti",
       "key": "catastale_hero_title",
       "locale": "it",
       "is_published": true,
@@ -4767,6 +4774,20 @@
       "locale": "it",
       "is_published": true,
       "value": "La versione italiana di questo documento fa fede: eventuali traduzioni hanno valore di mera cortesia e, in caso di discrepanza, prevale l'italiano."
+    },
+    {
+      "collection": "home",
+      "key": "meta_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Successioni Online | Geom. Lorenzo Armellin"
+    },
+    {
+      "collection": "home",
+      "key": "meta_description",
+      "locale": "it",
+      "is_published": true,
+      "value": "Dichiarazione di successione online con un professionista reale: Geom. Lorenzo Armellin, iscritto all'Albo. Preventivo chiaro, documenti e pratica da casa — anche di persona a Pontedera."
     }
   ]
 }

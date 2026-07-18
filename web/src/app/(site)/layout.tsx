@@ -9,18 +9,39 @@ import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import { ConsentBanner } from "@/components/analytics/consent-banner";
 import { ContactTracker } from "@/components/analytics/contact-tracker";
 import { getSiteOfflineState } from "@/lib/site-offline";
-import { getRequestLocale, tObj } from "@/lib/locale";
+import { getRequestLocale, t, tObj } from "@/lib/locale";
 import { COOKIE_UI_IT, type CookieUiLabels } from "@/lib/site-ui-labels";
 import { buildLocaleAlternates } from "@/lib/seo-locale";
 
 export async function generateMetadata(): Promise<Metadata> {
   const barePath = (await headers()).get("x-pathname") || "/";
   const locale = await getRequestLocale();
+  const defaultTitle = await t(
+    "home",
+    "meta_title",
+    "Successioni Online | Geom. Lorenzo Armellin",
+  );
+  const defaultDescription = await t(
+    "home",
+    "meta_description",
+    "Dichiarazione di successione online con un professionista reale: Geom. Lorenzo Armellin, iscritto all'Albo. Preventivo chiaro, documenti e pratica da casa — anche di persona a Pontedera.",
+  );
+  const titleTemplate =
+    locale === "ar"
+      ? "%s | المهندس لورنزو أرميلين"
+      : "%s | Geom. Lorenzo Armellin";
+
   return {
+    title: {
+      default: defaultTitle,
+      template: titleTemplate,
+    },
+    description: defaultDescription,
     alternates: buildLocaleAlternates(barePath, locale),
     openGraph: {
       locale: locale === "ar" ? "ar_AR" : "it_IT",
       alternateLocale: locale === "ar" ? ["it_IT"] : ["ar_AR"],
+      siteName: "Successioni Armellin",
     },
   };
 }

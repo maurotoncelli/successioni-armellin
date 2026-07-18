@@ -8,6 +8,7 @@ import type { Cta } from "@/lib/content";
 import { buttonClasses } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { LanguageSwitcher } from "./language-switcher";
+import { stripSeoLocalePrefix } from "@/lib/seo-locale";
 
 type MenuItem = { label: string; href: string };
 
@@ -22,6 +23,7 @@ export function NavbarClient({
   menuOpenLabel = "Apri menu",
   menuCloseLabel = "Chiudi menu",
   langAriaLabel = "Seleziona lingua",
+  homeHref = "/",
 }: {
   menu: MenuItem[];
   cta: Cta;
@@ -33,20 +35,24 @@ export function NavbarClient({
   menuOpenLabel?: string;
   menuCloseLabel?: string;
   langAriaLabel?: string;
+  homeHref?: string;
 }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const barePath = pathname
+    ? stripSeoLocalePrefix(pathname).pathname
+    : "";
 
   // Quando l'utente sta gia calcolando o pagando, il CTA "Calcola il preventivo
   // gratis" e fuorviante: lo nascondiamo su /preventivo e /checkout.
   const hideQuoteCta =
-    pathname?.startsWith("/preventivo") || pathname?.startsWith("/checkout");
+    barePath.startsWith("/preventivo") || barePath.startsWith("/checkout");
 
   return (
     <header className="sticky top-0 z-40 border-b border-primary/10 bg-bg/90 backdrop-blur">
       <nav className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-3 px-5 sm:px-8">
         <Link
-          href="/"
+          href={homeHref}
           className="flex shrink-0 items-center gap-2.5"
           aria-label="Home"
         >

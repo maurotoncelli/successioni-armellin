@@ -1,10 +1,15 @@
 import { getRequestLocale, t, tCta, tList, tObj } from "@/lib/locale";
+import { localePath } from "@/lib/seo-locale";
 import { NavbarClient } from "./navbar-client";
 import { CHROME_UI_IT, type ChromeUiLabels } from "@/lib/site-ui-labels";
 
 export async function Navbar() {
   const locale = await getRequestLocale();
-  const menu = await tList<{ label: string; href: string }>("navbar", "menu");
+  const menuRaw = await tList<{ label: string; href: string }>("navbar", "menu");
+  const menu = menuRaw.map((item) => ({
+    ...item,
+    href: localePath(item.href, locale),
+  }));
   const mainCta = await tCta("navbar", "cta", {
     label: "Calcola il preventivo gratis",
     href: "/preventivo",
@@ -25,7 +30,7 @@ export async function Navbar() {
   return (
     <NavbarClient
       menu={menu}
-      cta={mainCta}
+      cta={{ ...mainCta, href: localePath(mainCta.href, locale) }}
       ctaPhone={phoneCta}
       areaLabel={areaLabel}
       ctaShort={ctaShort}
@@ -34,6 +39,7 @@ export async function Navbar() {
       menuOpenLabel={chrome.menu_open}
       menuCloseLabel={chrome.menu_close}
       langAriaLabel={chrome.lang_aria}
+      homeHref={localePath("/", locale)}
     />
   );
 }
