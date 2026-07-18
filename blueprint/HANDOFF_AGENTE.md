@@ -109,16 +109,17 @@ Messaggio tipo: `feat(i18n): UI <lingue> sito/area (+ overlays/comms)`.
 - Non RTL salvo `ar` (zh/hi/ru/de/es = LTR).
 
 ### Riferimenti commit
-- TR+FR+SQ: (questo commit, messaggio `feat(i18n): UI turca, francese e albanese…`)  
+- TR+FR+SQ: **`d736cfa`** (`feat(i18n): UI turca, francese e albanese…`) — locale, **non pushato**  
 - EN: `6150fd6` · AR UX: `4fb16fc` · SEO `/ar`: `c2193f1` / `a16cedb`
 
 ---
 
-## 8-sexiestricies. Sessione 18/07 — i18n TR+FR+SQ (committato)
+## 8-sexiestricies. Sessione 18/07 — i18n TR+FR+SQ (committato `d736cfa`)
 
 Parity 0 content + overlay + SEED + comms per **tr**, **fr**, **sq**.  
 Script pipeline: `*_map_*`, `build_*_content.mjs`, `build_overlay_*.mjs`, `overlay_*_*`, `it_need_*`, `articles_it.json`, `legal_it.json`.  
-`comms-copy.ts` a mappe per `CommsLocale`. SEO path non attivati. `tsc` ok.
+`comms-copy.ts` a mappe per `CommsLocale`. SEO path non attivati. `tsc` ok.  
+**Push:** chiedere Mauro.
 
 ---
 
