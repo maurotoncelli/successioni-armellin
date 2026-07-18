@@ -4,7 +4,6 @@ import { AreaSidebar, AreaBottomBar } from "@/components/area/nav";
 import { AreaDataProvider } from "@/components/area/area-context";
 import { NotificationsBell } from "@/components/area/notifications-bell";
 import { requireClientView } from "@/lib/area";
-import { ensureProfile } from "@/lib/profiles";
 import {
   countUnreadClientNotifications,
   listClientNotifications,
@@ -18,8 +17,7 @@ export default async function AreaAppLayout({
   children: React.ReactNode;
 }>) {
   const view = await requireClientView();
-  const { account, practice, user } = view;
-  const { contactId } = await ensureProfile(user);
+  const { account, practice, user, contactId } = view;
 
   const [notifications, unreadCount, seenAt] = await Promise.all([
     contactId ? listClientNotifications(contactId, 20) : Promise.resolve([]),

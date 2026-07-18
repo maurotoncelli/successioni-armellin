@@ -1,6 +1,5 @@
 import "server-only";
 import { getAdminClient, isAdminConfigured } from "@/lib/supabase/admin";
-import { createServerSupabase } from "@/lib/supabase/ssr";
 import type { ClientNotificationRow } from "@/lib/supabase/types";
 import type { PracticeStatus } from "@/content/crm-data";
 import type {
@@ -12,7 +11,7 @@ export type { ClientNotification, ClientNotificationKind };
 
 /*
   Notifiche in-app area personale (@06): eventi azionabili, segnabili come letti.
-  Scrittura best-effort via service_role; lettura/mark-read via RLS del cliente.
+  Scrittura/lettura/mark-read via service_role (scoped su contact_id del profilo).
   Diverso dallo storico Comunicazioni (practices.communications).
 */
 
@@ -176,14 +175,21 @@ export async function countUnreadClientNotifications(
   }
 }
 
-/** Mark read via sessione cliente (RLS). */
-export async function markClientNotificationRead(id: string): Promise<boolean> {
+/**
+ * Segna letta via service_role dopo aver verificato che la notifica
+ * appartiene al contactId del profilo (evita UPDATE RLS su tutte le colonne).
+ */
+export async function markClientNotificationRead(
+  id: string,
+  contactId: string,
+): Promise<boolean> {
+  if (!id || !contactId || !isAdminConfigured) return false;
   try {
-    const supabase = await createServerSupabase();
-    const { error } = await supabase
+    const { error } = await getAdminClient()
       .from("client_notifications")
       .update({ read_at: new Date().toISOString() })
       .eq("id", id)
+      .eq("contact_id", contactId)
       .is("read_at", null);
     if (error) throw error;
     return true;
@@ -196,10 +202,9 @@ export async function markClientNotificationRead(id: string): Promise<boolean> {
 export async function markAllClientNotificationsRead(
   contactId: string,
 ): Promise<boolean> {
-  if (!contactId) return false;
+  if (!contactId || !isAdminConfigured) return false;
   try {
-    const supabase = await createServerSupabase();
-    const { error } = await supabase
+    const { error } = await getAdminClient()
       .from("client_notifications")
       .update({ read_at: new Date().toISOString() })
       .eq("contact_id", contactId)
@@ -218,13 +223,15 @@ export async function getNotifyEmailPreference(
 ): Promise<boolean> {
   if (!contactId || !isAdminConfigured) return true;
   try {
+    // limit(1) senza maybeSingle: evita errore se per caso ci sono 2 profili
+    // agganciati allo stesso contatto.
     const { data } = await getAdminClient()
       .from("profiles")
       .select("notify_email")
       .eq("contact_id", contactId)
-      .limit(1)
-      .maybeSingle();
-    if (data && typeof data.notify_email === "boolean") return data.notify_email;
+      .limit(1);
+    const row = data?.[0];
+    if (row && typeof row.notify_email === "boolean") return row.notify_email;
     return true;
   } catch {
     return true;

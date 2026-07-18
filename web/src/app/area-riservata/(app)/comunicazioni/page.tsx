@@ -1,3 +1,4 @@
+import { after } from "next/server";
 import { Mail, MessageCircle, Phone } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { PageHeading } from "@/components/area/ui";
@@ -48,7 +49,11 @@ export default async function ComunicazioniPage() {
   }
 
   const items = outboundClientComms(p.communications);
-  await setCommsSeenAt(view.user.id);
+  // Dopo la response: evita revalidatePath in render e aggiorna il badge layout.
+  const userId = view.user.id;
+  after(() => {
+    void setCommsSeenAt(userId);
+  });
 
   return (
     <div>

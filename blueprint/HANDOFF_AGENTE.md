@@ -1,6 +1,6 @@
 # HANDOFF per il prossimo agente
 
-> Documento di passaggio di consegne. Aggiornato: **2026-07-17 sera**.
+> Documento di passaggio di consegne. Aggiornato: **2026-07-18 mattina**.
 > Scopo: permettere a un nuovo agente (senza contesto) di riprendere il lavoro.
 > Riferimenti chiave: @RUNBOOK_GoLive (procedura go-live), @SPEC_Env_Vars,
 > @DOMANDE_PER_LORENZO, @PROSSIMO_INCONTRO_LORENZO, @07_Stack.
@@ -8,11 +8,69 @@
 > fiscali Lorenzo): nel file **`ACCESSI_LOCALE.md`** in root (git-ignored, NON
 > committato). Non è nel repo.
 
+## 8-duodecies. Sessione 18/07 — area notifiche + cleanup
+
+**Stato:** feature notifiche cliente **su `main`** (`0294a6c`); batch UI/imposte/GMB
+`48ae056`; cleanup bugfix + handoff **su `main`** (18/07 mattina).
+
+### Feature area personale (commit `0294a6c`) — FATTO
+Due canali distinti (@06):
+1. **Campanella alert** — tabella `client_notifications` (kind, title, body, href,
+   read_at, practice_id, contact_id). Migrazione
+   `supabase/migrations/20260718120000_client_notifications.sql` **già applicata
+   in prod**. Profilo: `notify_email`, `notify_whatsapp`, `comms_seen_at`.
+2. **Storico Comunicazioni** — pagina `/area-riservata/comunicazioni` da
+   `practices.communications` (solo OUTBOUND email/WA/phone); badge “nuove” via
+   `comms_seen_at`.
+
+File chiave:
+- `web/src/lib/client-notifications.ts` (+ `-shared.ts`)
+- `web/src/lib/client-comms.ts`
+- `web/src/components/area/notifications-bell.tsx`
+- `web/src/app/area-riservata/(app)/comunicazioni/page.tsx`
+- `web/src/app/area-riservata/(app)/notifiche/actions.ts`
+- Hook push: CRM `pratiche/[id]/actions.ts` + webhook Stripe (PAGATO/stato/
+  imposte/reject/finali/recesso)
+
+**Preferenza email soft:** `notify_email` spegne **solo** la mail recensione GMB
+a 48h (`getNotifyEmailPreference`); le email transazionali restano sempre on.
+Dashboard “prossima azione” resta CTA unica; la campanella è complemento.
+
+### Batch UI/CRM/GMB (commit `48ae056`) — FATTO
+- CRM “Comunica al cliente” → stile primary `crm-gradient`
+- Tabella home: riga «Tempo da investire»
+- Avvisi imposte (CRM se email manca/falla; CTA IBAN area)
+- Follow-up chiusura: mail GMB via Resend `scheduled_at: "in 48 hours"`
+  (`notifyReviewRequest` in `notifications.ts`, da `changeStatus`)
+
+### Cleanup / bugfix 18/07 mattina — FATTO (su `main`)
+File: `client-comms.ts`, `client-notifications.ts`, `area.ts`,
+`area-riservata/(app)/layout.tsx`, `notifiche/actions.ts`, `comunicazioni/page.tsx`.
+
+| Fix | Dettaglio |
+|-----|-----------|
+| `parseCommStamp` UTC | Stamp CRM da `toISOString` senza `Z` erano letti come locali → badge “nuove” sballato |
+| Mark-read service_role | Update scoped su `contactId` sessione (no UPDATE JWT su tutte le colonne) |
+| `ClientView.contactId` | Layout usa `view.contactId` (niente doppio `ensureProfile`) |
+| `setCommsSeenAt` + `after()` | `revalidatePath` layout **dopo** la response (no revalidate in render) |
+| `getNotifyEmailPreference` | `limit(1)` se profili duplicati sullo stesso contatto |
+
+`npx tsc --noEmit` + eslint sui file toccati: ok. **Non** committare `bozza video/`.
+
+### Aperto dopo 18/07
+- [ ] Foto Pontedera; recensioni GMB reali (~20); video; SMS/WhatsApp
+- [ ] Traduzioni/legal; QA cross-browser; Lenis
+- [ ] Check costi pacchetti con Lorenzo; test AI XML su pratica reale
+- Opzionale hardening: policy RLS UPDATE su `client_notifications` ristretta a
+  `read_at` (oggi mitiga il mark-read via service_role)
+
+---
+
 ## 8-undecies. Sessione 17/07 sera — backlog Mauro chiuso (codice) + tipologiche/template
 
 **Stato:** i 12 fix codice urgenti del 17/07 + tornate successive sono **fatti e
 su `main`** (ultimo batch tipologiche/template: `0b5357e`; Come funziona icone:
-`f4dc565`/`c266c0b`). Resta soprattutto asset/ops Lorenzo e mail follow-up GMB.
+`f4dc565`/`c266c0b`). Proseguimento 18/07 → §8-duodecies.
 
 ### Tipologie documenti CRM (`/crm/tipologie-documenti`) — FATTO
 - Menu sidebar/topbar **Sito → Tipologie di documenti**
@@ -36,13 +94,11 @@ su `main`** (ultimo batch tipologiche/template: `0b5357e`; Come funziona icone:
   (`come-funziona-icons.tsx`), numerini leggibili
 - Mobile spacing sito (Section/PageHero/home/cards/footer)
 
-### Aperto dopo 17/07 (prossimo agente)
+### Aperto dopo 17/07 → chiuso/spostato il 18/07
 - [x] Mail follow-up chiusura pratica con link GMB (48h via Resend, 18/07)
 - [x] Tabella comparativa: riga «Tempo da investire» (18/07)
 - [x] Area cliente: campanella notifiche + pagina Comunicazioni (18/07)
-- [ ] Foto Pontedera vera; recensioni GMB reali (~20); video; SMS/WhatsApp
-- [ ] Traduzioni/legal; QA cross-browser; Lenis
-- [ ] Check costi pacchetti con Lorenzo; test AI XML su pratica reale
+- Resto asset/ops/traduzioni → vedi §8-duodecies «Aperto dopo 18/07»
 
 ---
 
@@ -953,7 +1009,8 @@ renderizzate in UI; blocco `#guida` su /tariffe non renderizzato.
 - **Rigenerare le chiavi Supabase** (anon/service_role passate in chat) e **revocare
   i token** Cloudflare (`cfut_`) e Supabase Management (`sbp_`) in ACCESSI_LOCALE.
 - **Rimuovere `ADMIN_PASSWORD`** da Vercel dopo il primo login admin riuscito con 2FA.
-- Toggle preferenze notifiche nel profilo cliente: oggi cosmetico, da collegare.
+- Preferenze notifiche profilo: `notify_email` collegato (18/07) **solo** alla
+  mail soft GMB; WhatsApp resta cosmetico finché non c’è canale ops.
 - VirusTotal API sugli upload: miglioria post-lancio (runbook).
 
 ## 10. Note operative

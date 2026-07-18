@@ -25,6 +25,8 @@ export type ClientView = {
   user: User;
   practice: Practice | null;
   account: Account;
+  /** Contatto anagrafica collegato al profilo (null se non ancora agganciato). */
+  contactId: string | null;
 };
 
 export const getSessionUser = cache(async (): Promise<User | null> => {
@@ -74,8 +76,6 @@ export const getClientView = cache(async (): Promise<ClientView | null> => {
         notifyWhatsapp = prof.notify_whatsapp;
     }
   }
-  void contactId;
-
   const account: Account = practice
     ? {
         name: practice.clientName,
@@ -94,7 +94,7 @@ export const getClientView = cache(async (): Promise<ClientView | null> => {
         notifyWhatsapp,
       };
 
-  return { user, practice, account };
+  return { user, practice, account, contactId };
 });
 
 // Da usare nei layout/pagine dell'area: forza il login se non c'e sessione.
