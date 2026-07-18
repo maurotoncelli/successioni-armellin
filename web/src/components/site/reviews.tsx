@@ -56,10 +56,11 @@ export async function Reviews() {
           >
             <div
               className="flex gap-0.5 text-accent"
+              role="img"
               aria-label={`${review.rating} ${ratingOf}`}
             >
               {Array.from({ length: review.rating }).map((_, i) => (
-                <Star key={i} className="h-4 w-4 fill-accent" />
+                <Star key={i} className="h-4 w-4 fill-accent" aria-hidden />
               ))}
             </div>
             <p className="mt-4 flex-1 text-sm leading-relaxed text-text">
