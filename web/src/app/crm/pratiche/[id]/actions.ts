@@ -1195,6 +1195,7 @@ export async function updateWithdrawal(
 
   // Rimborso automatico su Stripe: PRIMA di segnare l'esito, cosi un errore
   // Stripe non lascia il recesso "accettato" senza rimborso partito.
+  let refundCreated = false;
   let refundSucceeded = false;
   if (status === "ACCEPTED" && opts?.refundStripe) {
     if (!isStripeConfigured) {
@@ -1218,6 +1219,9 @@ export async function updateWithdrawal(
         payment_intent: data.stripe_payment_intent_id,
         metadata: { practice_id: practiceId, practice_code: data.code ?? "" },
       });
+      // Create ok = rimborso emesso verso la rete carte; l'accredito al cliente
+      // arriva di norma in 5-10 gg lav. (anche se status API e' ancora pending).
+      refundCreated = true;
       refundSucceeded = refund.status === "succeeded";
       log.push({ action: "rimborso_stripe_avviato", at: now });
     } catch (err) {
@@ -1264,6 +1268,7 @@ export async function updateWithdrawal(
       data.client_email,
       status,
       note?.trim() ?? "",
+      { refundIssued: refundCreated },
     );
     if (notice.sent) {
       communications.push({
@@ -1282,11 +1287,15 @@ export async function updateWithdrawal(
       kind: "recesso",
       title:
         status === "ACCEPTED"
-          ? "Recesso accettato"
+          ? refundCreated
+            ? "Recesso accettato: rimborso emesso"
+            : "Recesso accettato"
           : "Esito sulla richiesta di recesso",
       body:
         status === "ACCEPTED"
-          ? "La pratica è stata annullata. Controlla i dettagli in area personale."
+          ? refundCreated
+            ? "Rimborso emesso: di norma lo vedi sulla carta entro 5-10 giorni lavorativi."
+            : "La pratica è stata annullata. Se è dovuto un rimborso, una volta emesso lo vedi sulla carta entro 5-10 giorni lavorativi."
           : "Abbiamo valutato la tua richiesta di recesso.",
       href: "/area-riservata/recesso",
       dedupeMinutes: 30,

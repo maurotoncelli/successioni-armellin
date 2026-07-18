@@ -288,7 +288,11 @@ export async function notifyWithdrawalOutcome(
   to: string,
   outcome: "ACCEPTED" | "REJECTED" | "IN_REVIEW",
   note: string,
+  opts?: { refundIssued?: boolean },
 ): Promise<{ sent: boolean; subject: string }> {
+  const acceptedBody = opts?.refundIssued
+    ? "La tua richiesta di recesso e stata accettata e abbiamo emesso il rimborso sull'importo dovuto. Lo vedrai sulla carta usata per il pagamento di norma entro <strong>5-10 giorni lavorativi</strong> (tempi della tua banca o dell'emittente della carta; a volte compare come storno della spesa originale)."
+    : "La tua richiesta di recesso e stata accettata. Se e dovuto un rimborso, lo emettiamo con lo stesso metodo di pagamento: una volta emesso, la banca lo accredita di norma entro <strong>5-10 giorni lavorativi</strong>.";
   const map = {
     IN_REVIEW: {
       subject: "Stiamo valutando la tua richiesta di recesso",
@@ -296,9 +300,13 @@ export async function notifyWithdrawalOutcome(
       body: "Abbiamo preso in carico la tua richiesta di recesso e la stiamo valutando. Ti aggiorniamo a breve con l'esito.",
     },
     ACCEPTED: {
-      subject: "Recesso accettato",
-      heading: "Recesso accettato",
-      body: "La tua richiesta di recesso e stata accettata. Se previsto, procederemo con il rimborso secondo quanto stabilito.",
+      subject: opts?.refundIssued
+        ? "Recesso accettato: rimborso emesso"
+        : "Recesso accettato",
+      heading: opts?.refundIssued
+        ? "Recesso accettato, rimborso emesso"
+        : "Recesso accettato",
+      body: acceptedBody,
     },
     REJECTED: {
       subject: "Esito della tua richiesta di recesso",

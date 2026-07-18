@@ -48,7 +48,13 @@ export default async function RecessoPage() {
       </Card>
 
       <Card className="mt-6">
-        <WithdrawalForm current={withdrawal} />
+        <WithdrawalForm
+          current={withdrawal}
+          refunded={
+            practice.paymentStatus === "REFUNDED" ||
+            practice.paymentStatus === "PARTIALLY_REFUNDED"
+          }
+        />
       </Card>
     </div>
   );

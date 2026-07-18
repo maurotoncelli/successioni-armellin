@@ -70,6 +70,14 @@ export default async function OrdinePage() {
                 {paymentLabels[p.paymentStatus]}
               </dd>
             </div>
+            {(p.paymentStatus === "REFUNDED" ||
+              p.paymentStatus === "PARTIALLY_REFUNDED") && (
+              <p className="text-xs leading-relaxed text-text-muted">
+                Rimborso emesso: di norma lo vedi sulla carta entro 5-10 giorni
+                lavorativi (tempi della tua banca o dell&apos;emittente della
+                carta).
+              </p>
+            )}
             <div className="flex justify-between">
               <dt className="text-text-muted">Metodo</dt>
               <dd className="font-medium text-text">

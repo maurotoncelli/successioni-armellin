@@ -110,7 +110,8 @@ export function WithdrawalPanel({
                   {typeof amount === "number" && amount > 0
                     ? ` (${amount.toLocaleString("it-IT")} €)`
                     : ""}
-                  . Il rimborso non è annullabile.
+                  . Il rimborso non è annullabile: al cliente comunichiamo che
+                  l&apos;accredito arriva di norma in 5-10 giorni lavorativi.
                 </span>
               </label>
             )}

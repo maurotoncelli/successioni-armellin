@@ -49,8 +49,8 @@ export default async function DashboardPage() {
               </h2>
               <p className="mt-1 text-sm text-text-muted">
                 {refunded
-                  ? "Il recesso è stato accettato e il rimborso è stato emesso: lo vedrai sulla carta usata per il pagamento entro pochi giorni lavorativi."
-                  : "Il recesso è stato accettato. Se è previsto un rimborso, lo riceverai sulla carta usata per il pagamento."}{" "}
+                  ? "Il recesso è stato accettato e il rimborso è stato emesso: di norma lo vedi sulla carta usata per il pagamento entro 5-10 giorni lavorativi (tempi della tua banca o dell&apos;emittente della carta)."
+                  : "Il recesso è stato accettato. Se è dovuto un rimborso, una volta emesso lo vedi sulla carta di norma entro 5-10 giorni lavorativi."}{" "}
                 Non c&apos;è nient&apos;altro da fare: qui sotto trovi il
                 riepilogo del tuo acquisto, che resta consultabile.
               </p>

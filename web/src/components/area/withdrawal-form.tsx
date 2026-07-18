@@ -6,6 +6,10 @@ import { Check, Loader2, AlertCircle, Clock } from "lucide-react";
 import { buttonClasses } from "@/components/ui/button";
 import { submitWithdrawal } from "@/app/area-riservata/(app)/recesso/actions";
 import type { WithdrawalInfo } from "@/lib/practice-extras";
+import {
+  refundIssuedMessage,
+  refundPendingAfterAcceptMessage,
+} from "@/lib/refund-copy";
 
 const statusLabel: Record<WithdrawalInfo["status"], string> = {
   REQUESTED: "Inviata",
@@ -14,7 +18,14 @@ const statusLabel: Record<WithdrawalInfo["status"], string> = {
   REJECTED: "Respinta",
 };
 
-export function WithdrawalForm({ current }: { current?: WithdrawalInfo }) {
+export function WithdrawalForm({
+  current,
+  refunded = false,
+}: {
+  current?: WithdrawalInfo;
+  /** true se il pagamento risulta gia rimborsato (totale o parziale). */
+  refunded?: boolean;
+}) {
   const router = useRouter();
   const [reason, setReason] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -34,6 +45,13 @@ export function WithdrawalForm({ current }: { current?: WithdrawalInfo }) {
               Lorenzo ha ricevuto la tua richiesta e ti ricontatterà. Stato
               attuale: <strong>{statusLabel[status]}</strong>.
             </p>
+            {status === "ACCEPTED" && (
+              <p className="mt-2 text-text-muted">
+                {refunded
+                  ? refundIssuedMessage()
+                  : refundPendingAfterAcceptMessage()}
+              </p>
+            )}
             {current?.outcomeNote && status !== "REQUESTED" && (
               <p className="mt-2 rounded bg-bg-muted p-2 text-text">
                 {current.outcomeNote}
