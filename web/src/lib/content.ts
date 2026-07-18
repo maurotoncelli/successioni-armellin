@@ -63,8 +63,8 @@ type Source = { entries: Entry[] };
 */
 const sources: Partial<Record<Locale, Source>> = {
   it: itRaw as Source,
-  // Prep multilingua: `ar` ha il sito pubblico tradotto; le altre lingue
-  // (en/de/…) per ora solo area_login → il resto ricade sull'italiano.
+  // Prep multilingua: `ar` e `en` hanno parity content_entries; le altre
+  // (de/es/…) per ora solo area_login → il resto ricade sull'italiano.
   en: enRaw as Source,
   de: deRaw as Source,
   es: esRaw as Source,

@@ -106,6 +106,67 @@ const SEED_AR: LocaleCatalogI18n = {
   },
 };
 
+/** Seed inglese (cortesia; allineato ai nomi listino IT correnti). */
+const SEED_EN: LocaleCatalogI18n = {
+  packages: {
+    SEMPLICE: {
+      name: "Simple succession",
+      tagline: "Accounts and cash only, no property",
+      description:
+        "Preparation and filing of the succession declaration with Agenzia delle Entrate for cases without property: current accounts, passbooks and cash.",
+      features: [
+        "Declaration preparation",
+        "Electronic filing with Agenzia delle Entrate",
+        "Taxes calculated and notified before filing",
+        "Help from a real person",
+      ],
+      badge: null,
+    },
+    COMPLETO: {
+      name: "Succession with property",
+      tagline: "From 1 to 3 properties, with cadastral transfer",
+      description:
+        "The package for those inheriting a home or a few properties: cadastral data check, declaration, filing and ownership transfer. Covers up to 5 heirs and 5 bank accounts.",
+      features: [
+        "Everything in the Simple package",
+        "From 1 to 3 properties, up to 5 heirs and 5 accounts",
+        "Cadastral data check by a surveyor",
+        "Cadastral transfer included",
+      ],
+      badge: "Most chosen",
+    },
+    ZERO_STRESS: {
+      name: "Extended succession",
+      tagline: "From 3 to 8 properties, with document retrieval",
+      description:
+        "For more complex estates: more properties and documents to retrieve. We handle it, with priority processing and updates at every step.",
+      features: [
+        "Everything in the property package",
+        "From 3 to 8 properties, up to 5 heirs and 5 accounts",
+        "Retrieval of missing documents from authorities and banks",
+        "Priority processing",
+      ],
+      badge: null,
+    },
+  },
+  addons: {
+    RIUNIONE_USUFRUTTO: {
+      name: "Usufruct reunion",
+      description: "Cadastral update after usufruct ends.",
+    },
+    ADEGUAMENTO_IMU: {
+      name: "IMU adjustment and recalculation",
+      description:
+        "IMU recalculation after succession and update for the new owners.",
+    },
+    VOLTURA_EXTRA: {
+      name: "Extra cadastral transfer",
+      description:
+        "Cadastral transfer for properties beyond what the package includes.",
+    },
+  },
+};
+
 function normalizePackageCopy(raw: unknown): PackageCopyI18n | null {
   if (!raw || typeof raw !== "object") return null;
   const o = raw as Record<string, unknown>;
@@ -160,7 +221,7 @@ function normalizeState(raw: unknown): PackagesI18nState {
   if (!raw || typeof raw !== "object") {
     return {
       ...EMPTY_PACKAGES_I18N,
-      locales: { ar: SEED_AR },
+      locales: { ar: SEED_AR, en: SEED_EN },
     };
   }
   const o = raw as Partial<PackagesI18nState>;
@@ -174,6 +235,9 @@ function normalizeState(raw: unknown): PackagesI18nState {
   if (!locales.ar || Object.keys(locales.ar.packages).length === 0) {
     locales.ar = SEED_AR;
   }
+  if (!locales.en || Object.keys(locales.en.packages).length === 0) {
+    locales.en = SEED_EN;
+  }
   return {
     updatedAt: typeof o.updatedAt === "string" ? o.updatedAt : null,
     locales,
@@ -182,7 +246,7 @@ function normalizeState(raw: unknown): PackagesI18nState {
 
 async function readFromStorage(): Promise<PackagesI18nState> {
   if (!isAdminConfigured) {
-    return normalizeState({ locales: { ar: SEED_AR } });
+    return normalizeState({ locales: { ar: SEED_AR, en: SEED_EN } });
   }
   try {
     const admin = getAdminClient();
@@ -190,12 +254,12 @@ async function readFromStorage(): Promise<PackagesI18nState> {
       .from(DOC_BUCKET)
       .download(STORAGE_PATH);
     if (error || !data) {
-      return normalizeState({ locales: { ar: SEED_AR } });
+      return normalizeState({ locales: { ar: SEED_AR, en: SEED_EN } });
     }
     return normalizeState(JSON.parse(await data.text()));
   } catch (err) {
     console.error("[packages-i18n] read:", err);
-    return normalizeState({ locales: { ar: SEED_AR } });
+    return normalizeState({ locales: { ar: SEED_AR, en: SEED_EN } });
   }
 }
 

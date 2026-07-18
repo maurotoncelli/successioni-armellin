@@ -76,6 +76,28 @@ const STATUS_CLIENT: Record<
       body: "يمكنك تنزيل المستندات النهائية من منطقتك الشخصية.",
     },
   },
+  en: {
+    PAGATO: {
+      title: "Payment received",
+      body: "Your case is started. Upload the required documents.",
+    },
+    ATTESA_DOC: {
+      title: "More documents are needed",
+      body: "Complete the list in your client area to continue.",
+    },
+    LAVORAZIONE: {
+      title: "We're working on your case",
+      body: "We have everything we need. We'll update you when there's news.",
+    },
+    INVIATA: {
+      title: "Declaration filed with the Agency",
+      body: "When the receipt arrives you'll find it among the final documents.",
+    },
+    CHIUSA: {
+      title: "Case completed",
+      body: "You can download the final documents from your client area.",
+    },
+  },
 };
 
 const STATUS_EMAIL: Record<
@@ -146,6 +168,38 @@ const STATUS_EMAIL: Record<
       cta: "تنزيل المستندات",
     },
   },
+  en: {
+    PAGATO: {
+      subject: "Payment received: upload your documents now",
+      heading: "Thank you, we've received the payment",
+      body: "Your case is officially started. Next step: upload the required documents in your client area — we guide you step by step; it only takes a few minutes.",
+      cta: "Upload documents",
+    },
+    ATTESA_DOC: {
+      subject: "Some documents are still needed to proceed",
+      heading: "We still need some documents",
+      body: "To continue with your succession we need to complete the document list. You'll find everything, with instructions, in your client area.",
+      cta: "Complete documents",
+    },
+    LAVORAZIONE: {
+      subject: "We're working on your case",
+      heading: "We've got this",
+      body: "We have everything we need and are preparing your succession declaration. We'll update you when there's news — nothing for you to do.",
+      cta: "View status",
+    },
+    INVIATA: {
+      subject: "Case filed with Agenzia delle Entrate",
+      heading: "Filed with Agenzia delle Entrate",
+      body: "Your succession declaration has been transmitted. When we receive the registration receipt you'll find it in your client area.",
+      cta: "Go to client area",
+    },
+    CHIUSA: {
+      subject: "Your case is completed",
+      heading: "All done!",
+      body: "Your succession is completed. In your client area you'll find the final documents (filing receipt, declaration, searches) to download and keep.",
+      cta: "Download documents",
+    },
+  },
 };
 
 export function statusClientCopy(
@@ -175,6 +229,12 @@ export function documentRejectedNotif(
       body: reason,
     };
   }
+  if (locale === "en") {
+    return {
+      title: `Document to re-upload: ${docLabel}`,
+      body: reason,
+    };
+  }
   return {
     title: `Documento da rifare: ${docLabel}`,
     body: reason,
@@ -185,11 +245,19 @@ export function taxesNotif(amount: number, locale: CommsLocale = "it") {
   const n =
     locale === "ar"
       ? amount.toLocaleString("ar")
-      : amount.toLocaleString("it-IT");
+      : locale === "en"
+        ? amount.toLocaleString("en-GB")
+        : amount.toLocaleString("it-IT");
   if (locale === "ar") {
     return {
       title: `أُبلغت الضرائب: ${n} €`,
       body: "منفصلة عن الأتعاب وتُدفع للدولة (F24). أدخل IBAN إن طُلب.",
+    };
+  }
+  if (locale === "en") {
+    return {
+      title: `Taxes notified: ${n} €`,
+      body: "They are separate from the fee and paid to the State (F24). Enter the IBAN if requested.",
     };
   }
   return {
@@ -203,6 +271,12 @@ export function finalDocsNotif(locale: CommsLocale = "it") {
     return {
       title: "المستندات النهائية جاهزة",
       body: "يمكنك تنزيلها من منطقتك الشخصية.",
+    };
+  }
+  if (locale === "en") {
+    return {
+      title: "Final documents ready",
+      body: "You can download them from your client area.",
     };
   }
   return {
@@ -230,6 +304,22 @@ export function withdrawalNotif(
     return {
       title: "نتيجة طلب العدول",
       body: "قيّمنا طلب العدول الخاص بك.",
+    };
+  }
+  if (locale === "en") {
+    if (outcome === "ACCEPTED") {
+      return {
+        title: refundIssued
+          ? "Withdrawal accepted: refund issued"
+          : "Withdrawal accepted",
+        body: refundIssued
+          ? "Refund issued: you normally see it on the card within 5–10 business days."
+          : "The case has been cancelled. If a refund is due, once issued you see it on the card within 5–10 business days.",
+      };
+    }
+    return {
+      title: "Outcome of your withdrawal request",
+      body: "We have reviewed your withdrawal request.",
     };
   }
   if (outcome === "ACCEPTED") {
@@ -271,6 +361,15 @@ export function reviewEmail(locale: CommsLocale = "it"): {
       ctaLabel: "اكتب على Google",
     };
   }
+  if (locale === "en") {
+    return {
+      subject: "A minute for a review?",
+      heading: "Would you leave us a review?",
+      bodyHtml: `<p style="margin:0 0 10px">Your succession case is completed. If you had a good experience with Lorenzo, a Google review helps us a lot — it takes a minute.</p>
+      <p style="margin:0;font-size:13px;color:#8a938c">Thank you, even just for reading.</p>`,
+      ctaLabel: "Write on Google",
+    };
+  }
   return {
     subject: "Un minuto per una recensione?",
     heading: "Ci aiuti con una recensione?",
@@ -287,7 +386,9 @@ export function taxesEmail(
   const formatted =
     locale === "ar"
       ? `${amount.toLocaleString("ar")} €`
-      : `${amount.toLocaleString("it-IT")} €`;
+      : locale === "en"
+        ? `${amount.toLocaleString("en-GB")} €`
+        : `${amount.toLocaleString("it-IT")} €`;
   if (locale === "ar") {
     return {
       subject: "ضرائب ميراثك",
@@ -296,6 +397,16 @@ export function taxesEmail(
       <p style="margin:0 0 10px;font-size:22px;font-weight:700;color:#1f6f5c">${formatted}</p>
       <p style="margin:0 0 10px">هذه المبالغ <strong>ليست أتعابنا</strong>: تُدفع للدولة. في منطقتك الشخصية تجد التفاصيل ويمكنك إدخال IBAN للخصم.</p>`,
       ctaLabel: "إلى المنطقة الشخصية",
+    };
+  }
+  if (locale === "en") {
+    return {
+      subject: "The taxes for your succession",
+      heading: "Taxes calculated",
+      bodyHtml: `<p style="margin:0 0 10px">We have calculated the taxes due for your succession (F24 form, self-assessment):</p>
+      <p style="margin:0 0 10px;font-size:22px;font-weight:700;color:#1f6f5c">${formatted}</p>
+      <p style="margin:0 0 10px">These amounts <strong>are not our fee</strong>: they are paid to the State. In your client area you'll find the details and can enter the IBAN for the debit.</p>`,
+      ctaLabel: "Go to client area",
     };
   }
   return {
@@ -315,6 +426,14 @@ export function finalDocsEmail(locale: CommsLocale = "it") {
       heading: "مستندات جاهزة للتنزيل",
       bodyHtml: `<p style="margin:0">حمّلنا المستندات النهائية لمعاملتك (إيصال التقديم والتصريح والكشوف). تجدها في منطقتك الشخصية جاهزة للتنزيل والحفظ.</p>`,
       ctaLabel: "تنزيل المستندات",
+    };
+  }
+  if (locale === "en") {
+    return {
+      subject: "Your succession final documents are ready",
+      heading: "Documents ready to download",
+      bodyHtml: `<p style="margin:0">We have uploaded the final documents for your case (filing receipt, declaration, searches). You'll find them in your client area, ready to download and keep.</p>`,
+      ctaLabel: "Download documents",
     };
   }
   return {
@@ -368,6 +487,39 @@ export function withdrawalEmail(
     };
   }
 
+  if (locale === "en") {
+    const acceptedBodyEn = opts.refundIssued
+      ? "Your withdrawal request was accepted and we issued the refund on the amount due. You'll normally see it on the card used for payment within <strong>5–10 business days</strong> (your bank or card issuer's timing; sometimes it appears as a reversal of the original charge)."
+      : "Your withdrawal request was accepted. If a refund is due, we issue it with the same payment method: once issued, the bank normally credits it within <strong>5–10 business days</strong>.";
+    const mapEn = {
+      IN_REVIEW: {
+        subject: "We're reviewing your withdrawal request",
+        heading: "Request in progress",
+        body: "We've received your withdrawal request and are reviewing it. We'll update you shortly with the outcome.",
+      },
+      ACCEPTED: {
+        subject: opts.refundIssued
+          ? "Withdrawal accepted: refund issued"
+          : "Withdrawal accepted",
+        heading: opts.refundIssued
+          ? "Withdrawal accepted, refund issued"
+          : "Withdrawal accepted",
+        body: acceptedBodyEn,
+      },
+      REJECTED: {
+        subject: "Outcome of your withdrawal request",
+        heading: "Withdrawal request",
+        body: "We have reviewed your withdrawal request. You'll find the reasons below; we're available for any clarification.",
+      },
+    }[outcome];
+    return {
+      subject: mapEn.subject,
+      heading: mapEn.heading,
+      bodyHtml: `<p style="margin:0 0 10px">${mapEn.body}</p>${noteBlock}`,
+      ctaLabel: "Go to client area",
+    };
+  }
+
   const acceptedBody = opts.refundIssued
     ? "La tua richiesta di recesso e stata accettata e abbiamo emesso il rimborso sull'importo dovuto. Lo vedrai sulla carta usata per il pagamento di norma entro <strong>5-10 giorni lavorativi</strong> (tempi della tua banca o dell'emittente della carta; a volte compare come storno della spesa originale)."
     : "La tua richiesta di recesso e stata accettata. Se e dovuto un rimborso, lo emettiamo con lo stesso metodo di pagamento: una volta emesso, la banca lo accredita di norma entro <strong>5-10 giorni lavorativi</strong>.";
@@ -410,6 +562,15 @@ export function invoiceEmail(number: string, locale: CommsLocale = "it") {
       ctaLabel: "تنزيل الفاتورة",
     };
   }
+  if (locale === "en") {
+    return {
+      subject: `Your invoice is available (no. ${number})`,
+      heading: "Invoice available",
+      bodyHtml: `<p style="margin:0 0 10px">We have issued the fee invoice <strong>no. ${number}</strong> for your succession case.</p>
+      <p style="margin:0">You'll find it and can download it in your client area, under "Your purchase".</p>`,
+      ctaLabel: "Download invoice",
+    };
+  }
   return {
     subject: `La tua fattura e disponibile (n. ${number})`,
     heading: "Fattura disponibile",
@@ -435,6 +596,16 @@ export function documentRejectedEmail(
       ctaLabel: "إعادة تحميل المستند",
     };
   }
+  if (locale === "en") {
+    return {
+      subject: `A document must be re-uploaded: ${docLabel}`,
+      heading: "A document must be redone",
+      bodyHtml: `<p style="margin:0 0 10px">The document <strong>${esc(docLabel)}</strong> needs a correction:</p>
+      <p style="margin:0 0 10px;padding:10px 12px;background:#fdecea;border-radius:8px;color:#9b2c20">${esc(reason)}</p>
+      <p style="margin:0">You can re-upload it from your client area — it's quick.</p>`,
+      ctaLabel: "Re-upload document",
+    };
+  }
   return {
     subject: `Un documento va ricaricato: ${docLabel}`,
     heading: "Un documento va rifatto",
@@ -448,6 +619,7 @@ export function documentRejectedEmail(
 /** Subject storico comunicazioni webhook (allineato a email PAGATO). */
 export function paymentReceivedCommSubject(locale: CommsLocale = "it"): string {
   if (locale === "ar") return "تم استلام الدفع: معاملتك نشطة";
+  if (locale === "en") return "Payment received: your case is active";
   return "Pagamento ricevuto: la tua pratica e attiva";
 }
 
@@ -463,76 +635,72 @@ export function presentNotificationCopy(
   for (const status of Object.keys(STATUS_CLIENT.it) as PracticeStatus[]) {
     const it = STATUS_CLIENT.it[status];
     const ar = STATUS_CLIENT.ar[status];
-    if (!it || !ar) continue;
-    if (
-      (title === it.title && body === it.body) ||
-      (title === ar.title && body === ar.body)
-    ) {
+    const en = STATUS_CLIENT.en[status];
+    if (!it) continue;
+    const known = [it, ar, en].filter(Boolean) as Array<{
+      title: string;
+      body: string;
+    }>;
+    if (known.some((k) => title === k.title && body === k.body)) {
       const next = STATUS_CLIENT[locale][status] ?? it;
       return { title: next.title, body: next.body };
     }
-    if (title === it.title || title === ar.title) {
+    if (known.some((k) => title === k.title)) {
       const next = STATUS_CLIENT[locale][status] ?? it;
       return { title: next.title, body: next.body };
     }
   }
 
-  const docIt = "Documento da rifare: ";
-  const docAr = "مستند يجب إعادة تحميله: ";
-  if (title.startsWith(docIt) || title.startsWith(docAr)) {
-    const label = title.startsWith(docIt)
-      ? title.slice(docIt.length)
-      : title.slice(docAr.length);
-    return documentRejectedNotif(label, body, locale);
-  }
-
-  const taxIt = "Imposte comunicate: ";
-  const taxAr = "أُبلغت الضرائب: ";
-  if (title.startsWith(taxIt) || title.startsWith(taxAr)) {
-    const rest = title.startsWith(taxIt)
-      ? title.slice(taxIt.length)
-      : title.slice(taxAr.length);
-    const amount = Number(rest.replace(/[^\d.,]/g, "").replace(",", "."));
-    if (Number.isFinite(amount) && amount > 0) {
-      return taxesNotif(amount, locale);
-    }
-  }
-
-  const finals = [
-    finalDocsNotif("it"),
-    finalDocsNotif("ar"),
-    withdrawalNotif("ACCEPTED", false, "it"),
-    withdrawalNotif("ACCEPTED", true, "it"),
-    withdrawalNotif("REJECTED", false, "it"),
-    withdrawalNotif("ACCEPTED", false, "ar"),
-    withdrawalNotif("ACCEPTED", true, "ar"),
-    withdrawalNotif("REJECTED", false, "ar"),
+  const docPrefixes = [
+    "Documento da rifare: ",
+    "مستند يجب إعادة تحميله: ",
+    "Document to re-upload: ",
   ];
-  for (const cand of finals) {
-    if (title === cand.title) {
-      // Prefer exact title remaps via withdrawal/final helpers already listed
-      if (title === finalDocsNotif("it").title || title === finalDocsNotif("ar").title) {
-        return finalDocsNotif(locale);
-      }
-      if (
-        title === withdrawalNotif("ACCEPTED", true, "it").title ||
-        title === withdrawalNotif("ACCEPTED", true, "ar").title
-      ) {
-        return { ...withdrawalNotif("ACCEPTED", true, locale), body };
-      }
-      if (
-        title === withdrawalNotif("ACCEPTED", false, "it").title ||
-        title === withdrawalNotif("ACCEPTED", false, "ar").title
-      ) {
-        return { ...withdrawalNotif("ACCEPTED", false, locale), body };
-      }
-      if (
-        title === withdrawalNotif("REJECTED", false, "it").title ||
-        title === withdrawalNotif("REJECTED", false, "ar").title
-      ) {
-        return { ...withdrawalNotif("REJECTED", false, locale), body };
+  for (const prefix of docPrefixes) {
+    if (title.startsWith(prefix)) {
+      return documentRejectedNotif(title.slice(prefix.length), body, locale);
+    }
+  }
+
+  const taxPrefixes = [
+    "Imposte comunicate: ",
+    "أُبلغت الضرائب: ",
+    "Taxes notified: ",
+  ];
+  for (const prefix of taxPrefixes) {
+    if (title.startsWith(prefix)) {
+      const rest = title.slice(prefix.length);
+      const amount = Number(rest.replace(/[^\d.,]/g, "").replace(",", "."));
+      if (Number.isFinite(amount) && amount > 0) {
+        return taxesNotif(amount, locale);
       }
     }
+  }
+
+  const finalTitles = [
+    finalDocsNotif("it").title,
+    finalDocsNotif("ar").title,
+    finalDocsNotif("en").title,
+  ];
+  if (finalTitles.includes(title)) return finalDocsNotif(locale);
+
+  for (const refund of [true, false] as const) {
+    const titles = [
+      withdrawalNotif("ACCEPTED", refund, "it").title,
+      withdrawalNotif("ACCEPTED", refund, "ar").title,
+      withdrawalNotif("ACCEPTED", refund, "en").title,
+    ];
+    if (titles.includes(title)) {
+      return { ...withdrawalNotif("ACCEPTED", refund, locale), body };
+    }
+  }
+  const rejectedTitles = [
+    withdrawalNotif("REJECTED", false, "it").title,
+    withdrawalNotif("REJECTED", false, "ar").title,
+    withdrawalNotif("REJECTED", false, "en").title,
+  ];
+  if (rejectedTitles.includes(title)) {
+    return { ...withdrawalNotif("REJECTED", false, locale), body };
   }
 
   return { title, body };
@@ -543,57 +711,88 @@ export function presentCommSubject(
   subject: string,
   locale: CommsLocale,
 ): string {
-  const pairs: Array<[string, string]> = [];
+  const groups: string[][] = [];
   for (const status of Object.keys(STATUS_EMAIL.it) as PracticeStatus[]) {
-    const it = STATUS_EMAIL.it[status]?.subject;
-    const ar = STATUS_EMAIL.ar[status]?.subject;
-    if (it && ar) pairs.push([it, ar]);
+    const subjects = [
+      STATUS_EMAIL.it[status]?.subject,
+      STATUS_EMAIL.ar[status]?.subject,
+      STATUS_EMAIL.en[status]?.subject,
+    ].filter((s): s is string => !!s);
+    if (subjects.length) groups.push(subjects);
   }
-  pairs.push([
+  groups.push([
     paymentReceivedCommSubject("it"),
     paymentReceivedCommSubject("ar"),
+    paymentReceivedCommSubject("en"),
   ]);
-  pairs.push([reviewEmail("it").subject, reviewEmail("ar").subject]);
-  pairs.push([taxesEmail(0, "it").subject, taxesEmail(0, "ar").subject]);
-  pairs.push([finalDocsEmail("it").subject, finalDocsEmail("ar").subject]);
+  groups.push([
+    reviewEmail("it").subject,
+    reviewEmail("ar").subject,
+    reviewEmail("en").subject,
+  ]);
+  groups.push([
+    taxesEmail(0, "it").subject,
+    taxesEmail(0, "ar").subject,
+    taxesEmail(0, "en").subject,
+  ]);
+  groups.push([
+    finalDocsEmail("it").subject,
+    finalDocsEmail("ar").subject,
+    finalDocsEmail("en").subject,
+  ]);
   for (const refund of [false, true]) {
-    pairs.push([
+    groups.push([
       withdrawalEmail("ACCEPTED", "", { refundIssued: refund }, "it", (s) => s)
         .subject,
       withdrawalEmail("ACCEPTED", "", { refundIssued: refund }, "ar", (s) => s)
         .subject,
+      withdrawalEmail("ACCEPTED", "", { refundIssued: refund }, "en", (s) => s)
+        .subject,
     ]);
   }
-  pairs.push([
+  groups.push([
     withdrawalEmail("IN_REVIEW", "", {}, "it", (s) => s).subject,
     withdrawalEmail("IN_REVIEW", "", {}, "ar", (s) => s).subject,
+    withdrawalEmail("IN_REVIEW", "", {}, "en", (s) => s).subject,
   ]);
-  pairs.push([
+  groups.push([
     withdrawalEmail("REJECTED", "", {}, "it", (s) => s).subject,
     withdrawalEmail("REJECTED", "", {}, "ar", (s) => s).subject,
+    withdrawalEmail("REJECTED", "", {}, "en", (s) => s).subject,
   ]);
 
-  for (const [it, ar] of pairs) {
-    if (subject === it || subject === ar) {
-      return locale === "ar" ? ar : it;
+  for (const group of groups) {
+    if (group.includes(subject)) {
+      if (locale === "ar") return group[1] ?? group[0];
+      if (locale === "en") return group[2] ?? group[0];
+      return group[0];
     }
   }
 
-  const docIt = "Un documento va ricaricato: ";
-  const docAr = "مستند يجب إعادة تحميله: ";
-  if (subject.startsWith(docIt) || subject.startsWith(docAr)) {
-    const label = subject.startsWith(docIt)
-      ? subject.slice(docIt.length)
-      : subject.slice(docAr.length);
-    return documentRejectedEmail(label, "", locale, (s) => s).subject;
+  const docPrefixes = [
+    "Un documento va ricaricato: ",
+    "مستند يجب إعادة تحميله: ",
+    "A document must be re-uploaded: ",
+  ];
+  for (const prefix of docPrefixes) {
+    if (subject.startsWith(prefix)) {
+      return documentRejectedEmail(
+        subject.slice(prefix.length),
+        "",
+        locale,
+        (s) => s,
+      ).subject;
+    }
   }
 
   const invIt = /^La tua fattura e disponibile \(n\. (.+)\)$/;
   const invAr = /^فاتورتك متاحة \(رقم (.+)\)$/;
+  const invEn = /^Your invoice is available \(no\. (.+)\)$/;
   const mIt = subject.match(invIt);
   const mAr = subject.match(invAr);
-  if (mIt || mAr) {
-    return invoiceEmail((mIt ?? mAr)![1], locale).subject;
+  const mEn = subject.match(invEn);
+  if (mIt || mAr || mEn) {
+    return invoiceEmail((mIt ?? mAr ?? mEn)![1], locale).subject;
   }
 
   return subject;

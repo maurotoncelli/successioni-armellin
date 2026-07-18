@@ -131,6 +131,7 @@ export type ProfiloUiLabels = {
   comms_lang_notice: string;
   comms_lang_it: string;
   comms_lang_ar: string;
+  comms_lang_en: string;
   logout: string;
 };
 
@@ -304,6 +305,7 @@ export const PROFILO_UI_IT: ProfiloUiLabels = {
     "Le traduzioni sono automatiche / di cortesia. I documenti ufficiali e i testi che fanno fede restano in italiano.",
   comms_lang_it: "Italiano",
   comms_lang_ar: "العربية",
+  comms_lang_en: "English",
   logout: "Esci",
 };
 

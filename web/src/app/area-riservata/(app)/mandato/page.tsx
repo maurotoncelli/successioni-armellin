@@ -62,13 +62,14 @@ export default async function MandatoPage() {
   };
   const paragraphs = buildMandatoParagraphs(mandatoParams, locale);
   const isAr = locale === "ar";
+  const isCourtesy = locale === "ar" || locale === "en";
 
   return (
     <div>
       <PageHeading title={title} subtitle={subtitle} />
 
       <Card>
-        {isAr && (
+        {isCourtesy && (
           <p className="mb-4 rounded-lg border border-accent/25 bg-sand px-3 py-2 text-sm text-primary">
             {langNote}
           </p>
@@ -76,7 +77,7 @@ export default async function MandatoPage() {
         <div
           className="max-h-72 overflow-y-auto rounded-lg border border-primary/10 bg-bg-muted p-4 text-sm leading-relaxed text-text-muted"
           dir={isAr ? "rtl" : "ltr"}
-          lang={isAr ? "ar" : "it"}
+          lang={isAr ? "ar" : locale === "en" ? "en" : "it"}
         >
           <p className="font-semibold text-text">
             {fillTemplate(mandateUi.heading, { code: account.practiceCode })}
