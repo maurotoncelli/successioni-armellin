@@ -156,10 +156,12 @@ export function LanguageSwitcher({
         <ul
           role="listbox"
           className={cn(
-            // end/start logici: in RTL `right-0` spinge il menu fuori
-            // dallo schermo quando lo switcher è sul bordo sinistro.
+            // In RTL lo switcher sta a sinistra: `right-0` fa uscire il
+            // dropdown dallo schermo → allinea a sinistra (rtl:left-0).
             "absolute z-50 max-h-80 w-44 max-w-[calc(100vw-1.5rem)] overflow-auto rounded-xl border border-primary/10 bg-bg p-1 shadow-lg",
-            align === "right" ? "end-0" : "start-0",
+            align === "right"
+              ? "right-0 rtl:right-auto rtl:left-0"
+              : "left-0 rtl:left-auto rtl:right-0",
             dropUp ? "bottom-full mb-1" : "mt-1",
           )}
         >
