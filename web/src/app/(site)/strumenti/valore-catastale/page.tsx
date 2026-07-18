@@ -9,6 +9,7 @@ import { PageHero } from "@/components/site/page-hero";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { CtaBand } from "@/components/site/cta-band";
 import { CatastaleCalculator } from "@/components/site/catastale-calculator";
+import { buildLocaleAlternates, localePath } from "@/lib/seo-locale";
 
 /*
   Strumento pubblico: calcolo del valore catastale ai fini della successione
@@ -21,6 +22,8 @@ const pageTitle =
   "Calcolo del valore catastale per la successione (gratis, online)";
 
 export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getRequestLocale();
+  const bare = "/strumenti/valore-catastale";
   const pageDescription = await t(
     "strumenti",
     "catastale_hero_subtitle",
@@ -29,13 +32,13 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: pageTitle,
     description: pageDescription,
-    alternates: { canonical: "/strumenti/valore-catastale" },
+    alternates: buildLocaleAlternates(bare, locale),
     openGraph: {
       title: pageTitle,
       description: pageDescription,
-      url: "/strumenti/valore-catastale",
+      url: localePath(bare, locale),
       type: "website",
-      locale: "it_IT",
+      locale: locale === "ar" ? "ar_AR" : "it_IT",
     },
   };
 }

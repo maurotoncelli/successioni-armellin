@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { stripSeoLocalePrefix } from "@/lib/seo-locale";
 
 export function HideOnPaths({
   prefixes,
@@ -10,6 +11,9 @@ export function HideOnPaths({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  if (pathname && prefixes.some((p) => pathname.startsWith(p))) return null;
+  const bare = pathname ? stripSeoLocalePrefix(pathname).pathname : "";
+  if (bare && prefixes.some((p) => bare === p || bare.startsWith(`${p}/`))) {
+    return null;
+  }
   return <>{children}</>;
 }

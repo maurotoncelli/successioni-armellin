@@ -3,14 +3,19 @@
 import { useEffect, useRef, useState } from "react";
 import { Globe, Check, ChevronDown } from "lucide-react";
 import { LOCALES, isLocale, type Locale } from "@/lib/content";
+import {
+  barePathFromLocation,
+  isSeoExemptPath,
+  isSeoPathLocale,
+  localePath,
+} from "@/lib/seo-locale";
 import { cn } from "@/lib/utils";
 
 /*
-  Selettore lingua (data driven sui LOCALES del content system).
-  - Mostra TUTTE le lingue target. Oggi IT + AR (sito pubblico); le altre
-    lingue ricadono sull'italiano finche non avranno content_entries completi.
-  - Salva la scelta in un cookie "lang" (persistente) e aggiorna il parametro
-    ?lang= della pagina corrente, cosi le pagine locale-aware reagiscono subito.
+  Selettore lingua:
+  - AR (SEO): naviga a /ar/... (URL indicizzabili)
+  - IT: URL senza prefisso
+  - Altre lingue: cookie + ?lang= finché non avranno prefisso SEO (Fase B+)
 */
 
 const LANGUAGE_LABELS: Record<Locale, string> = {
@@ -27,8 +32,19 @@ const LANGUAGE_LABELS: Record<Locale, string> = {
   hi: "हिन्दी",
 };
 
-// Ordine di visualizzazione (IT prima, poi per diffusione attesa tra i clienti).
-const ORDER: Locale[] = ["it", "en", "fr", "de", "es", "sq", "ar", "zh", "ru", "tr", "hi"];
+const ORDER: Locale[] = [
+  "it",
+  "en",
+  "fr",
+  "de",
+  "es",
+  "sq",
+  "ar",
+  "zh",
+  "ru",
+  "tr",
+  "hi",
+];
 
 function setLangCookie(locale: string) {
   const oneYear = 60 * 60 * 24 * 365;
@@ -43,18 +59,17 @@ export function LanguageSwitcher({
   className,
   ariaLabel = "Seleziona lingua",
 }: {
-  // Se assente (es. nella navbar statica) la lingua attiva si rileva dal cookie.
   locale?: string;
   align?: "left" | "right";
-  // "onDark": testo chiaro per sfondi scuri (es. footer).
   tone?: "default" | "onDark";
-  // Apre il menu verso l'alto (utile nel footer, in fondo alla pagina).
   dropUp?: boolean;
   className?: string;
   ariaLabel?: string;
 }) {
   const [open, setOpen] = useState(false);
-  const [current, setCurrent] = useState<Locale>(isLocale(locale) ? locale : "it");
+  const [current, setCurrent] = useState<Locale>(
+    isLocale(locale) ? locale : "it",
+  );
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -84,10 +99,30 @@ export function LanguageSwitcher({
 
   const select = (loc: Locale) => {
     setLangCookie(loc);
-    const url = new URL(window.location.href);
-    if (loc === "it") url.searchParams.delete("lang");
-    else url.searchParams.set("lang", loc);
-    window.location.assign(url.toString());
+    const { pathname, search } = window.location;
+    const { barePath } = barePathFromLocation(pathname);
+    const params = new URLSearchParams(search);
+    params.delete("lang");
+
+    // Area/CRM: niente prefisso SEO, solo cookie (+ ?lang per coerenza).
+    if (isSeoExemptPath(barePath)) {
+      if (loc !== "it") params.set("lang", loc);
+      const q = params.toString();
+      window.location.assign(`${barePath}${q ? `?${q}` : ""}`);
+      return;
+    }
+
+    if (isSeoPathLocale(loc)) {
+      const next = localePath(barePath, loc);
+      const q = params.toString();
+      window.location.assign(`${next}${q ? `?${q}` : ""}`);
+      return;
+    }
+
+    // IT o lingue non-SEO: path nudo; ?lang= solo se ≠ it.
+    if (loc !== "it") params.set("lang", loc);
+    const q = params.toString();
+    window.location.assign(`${barePath}${q ? `?${q}` : ""}`);
   };
 
   const items = ORDER.filter((l) => (LOCALES as readonly string[]).includes(l));
@@ -110,7 +145,10 @@ export function LanguageSwitcher({
         <Globe className="h-4 w-4" />
         <span className="uppercase">{current}</span>
         <ChevronDown
-          className={cn("h-3.5 w-3.5 transition-transform", open && "rotate-180")}
+          className={cn(
+            "h-3.5 w-3.5 transition-transform",
+            open && "rotate-180",
+          )}
         />
       </button>
 
@@ -142,7 +180,9 @@ export function LanguageSwitcher({
                 >
                   <span>{LANGUAGE_LABELS[loc]}</span>
                   <span className="flex items-center gap-1.5">
-                    <span className="text-xs uppercase text-text-muted">{loc}</span>
+                    <span className="text-xs uppercase text-text-muted">
+                      {loc}
+                    </span>
                     {active && <Check className="h-3.5 w-3.5 text-accent" />}
                   </span>
                 </button>

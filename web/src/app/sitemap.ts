@@ -1,9 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getArticles } from "@/lib/cms";
-
-const BASE = (
-  process.env.NEXT_PUBLIC_SITE_URL || "https://www.successioniarmellin.it"
-).replace(/\/$/, "");
+import { absoluteUrl, localePath } from "@/lib/seo-locale";
 
 // Route pubbliche indicizzabili (checkout e /preventivo/grazie sono noindex).
 const STATIC_ROUTES: { path: string; priority: number }[] = [
@@ -24,18 +21,44 @@ const STATIC_ROUTES: { path: string; priority: number }[] = [
   { path: "/termini-condizioni", priority: 0.2 },
 ];
 
+function entry(
+  barePath: string,
+  priority: number,
+  lastModified?: string | Date,
+): MetadataRoute.Sitemap {
+  const itPath = barePath === "/" ? "/" : barePath;
+  const arPath = localePath(barePath, "ar");
+  const base = {
+    lastModified,
+    priority,
+    alternates: {
+      languages: {
+        it: absoluteUrl(itPath),
+        ar: absoluteUrl(arPath),
+        "x-default": absoluteUrl(itPath),
+      },
+    },
+  };
+  return [
+    { url: absoluteUrl(itPath), ...base },
+    { url: absoluteUrl(arPath), ...base },
+  ];
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const articles = await getArticles();
 
-  return [
-    ...STATIC_ROUTES.map((r) => ({
-      url: `${BASE}${r.path}`,
-      priority: r.priority,
-    })),
-    ...articles.map((a) => ({
-      url: `${BASE}/guide/${a.slug}`,
-      lastModified: a.updatedAt || a.publishedAt,
-      priority: 0.7,
-    })),
-  ];
+  const staticEntries = STATIC_ROUTES.flatMap((r) =>
+    entry(r.path, r.priority),
+  );
+
+  const articleEntries = articles.flatMap((a) =>
+    entry(
+      `/guide/${a.slug}`,
+      0.7,
+      a.updatedAt || a.publishedAt || undefined,
+    ),
+  );
+
+  return [...staticEntries, ...articleEntries];
 }

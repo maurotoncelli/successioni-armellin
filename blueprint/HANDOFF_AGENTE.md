@@ -1,6 +1,6 @@
 # HANDOFF per il prossimo agente
 
-> Documento di passaggio di consegne. Aggiornato: **2026-07-18 ~14:10**.
+> Documento di passaggio di consegne. Aggiornato: **2026-07-18 ~14:20**.
 > Scopo: permettere a un nuovo agente (senza contesto) di riprendere il lavoro.
 > Riferimenti chiave: @RUNBOOK_GoLive (procedura go-live), @SPEC_Env_Vars,
 > @DOMANDE_PER_LORENZO, @PROSSIMO_INCONTRO_LORENZO, @07_Stack.
@@ -10,6 +10,33 @@
 
 Chat correlata (i18n AR + messaggi/mandato/comms):  
 [i18n arabo guide e comunicazioni](ade7ada3-dbfb-4e6d-bb5c-b116b43f3859)
+
+---
+
+## 8-unvicies. Sessione 18/07 — SEO Fase A (URL `/ar` + hreflang)
+
+**Commit i18n UX:** `4fb16fc` su `main` (locale, non pushato salvo richiesta).  
+**SEO Fase A:** in corso / da committare dopo verifica.
+
+### Cosa fa
+- Prefisso path **`/ar/...`** per il sito pubblico (IT resta senza prefisso).
+- Proxy: rewrite `/ar/tariffe` → `/tariffe` + `x-locale`/`x-pathname`; redirect `?lang=ar` e cookie `ar` su path nudi → `/ar/...`.
+- Area/CRM/API: niente prefisso (redirect se `/ar/area-riservata`).
+- Switcher: AR → URL `/ar`; IT → path nudo; altre lingue ancora `?lang=`.
+- `hreflang` it/ar/x-default nel layout sito; sitemap IT+AR con alternates.
+- Helper: `web/src/lib/seo-locale.ts`.
+
+### Smoke
+1. `/ar` e `/ar/tariffe` → UI AR, `html lang=ar`.
+2. `/tariffe` anonimo → IT.
+3. Switcher IT↔AR cambia path (non solo cookie).
+4. `/sitemap.xml` contiene URL `/ar/...`.
+5. Area `/area-riservata?lang=ar` resta senza prefisso `/ar`.
+
+### Next (piano SEO)
+- Fase B: `/en` stesso pattern.
+- Search Console: inviare sitemap dopo deploy.
+- Non spingere Ads AR finché non ci sono impression.
 
 ---
 
