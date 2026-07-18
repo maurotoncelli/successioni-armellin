@@ -98,7 +98,7 @@ export default async function AreaAppLayout({
       <div
         className="flex min-h-screen flex-col"
         dir={rtl ? "rtl" : "ltr"}
-        lang={rtl ? "ar" : "it"}
+        lang={locale}
       >
         <header className="sticky top-0 z-30 border-b border-primary/10 bg-bg/95 backdrop-blur">
           <div className="flex h-14 items-center gap-3 px-4">

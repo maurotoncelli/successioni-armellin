@@ -33,9 +33,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "https://www.successioniarmellin.it",
   ),
+  // Template neutro qui; il brand lo aggiunge solo (site)/layout.
+  // Evita doppio "| Geom. Lorenzo Armellin" su home/lingue.
   title: {
     default: "Successioni Online | Geom. Lorenzo Armellin",
-    template: "%s | Geom. Lorenzo Armellin",
+    template: "%s",
   },
   description:
     "Dichiarazione di successione online con un professionista reale: Geom. Lorenzo Armellin, iscritto all'Albo. Preventivo chiaro, documenti e pratica da casa — anche di persona a Pontedera.",
@@ -60,8 +62,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Allineato a getRequestLocale: x-locale (proxy su ?lang=) prima del cookie,
-  // cosi il primo hit con ?lang=ar ha gia dir=rtl e font arabo.
+  // Allineato a getRequestLocale: x-locale (proxy su prefisso /en|/ar|… o ?lang=)
+  // prima del cookie — cosi lang/dir sono corretti al primo hit.
   const locale = coerceLocale(
     (await headers()).get("x-locale"),
     (await cookies()).get("lang")?.value,
@@ -70,7 +72,7 @@ export default async function RootLayout({
 
   return (
     <html
-      lang={rtl ? "ar" : "it"}
+      lang={locale}
       dir={rtl ? "rtl" : "ltr"}
       className={`${inter.variable} ${lora.variable} ${playfair.variable} ${notoArabic.variable} h-full antialiased`}
     >

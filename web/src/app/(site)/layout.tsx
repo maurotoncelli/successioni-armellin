@@ -40,10 +40,11 @@ export async function generateMetadata(): Promise<Metadata> {
     "meta_description",
     "Dichiarazione di successione online con un professionista reale: Geom. Lorenzo Armellin, iscritto all'Albo. Preventivo chiaro, documenti e pratica da casa — anche di persona a Pontedera.",
   );
-  const titleTemplate =
-    locale === "ar"
-      ? "%s | المهندس لورنزو أرميلين"
-      : "%s | Geom. Lorenzo Armellin";
+  // Template solo qui (non nel root): meta_title home include già il brand
+  // come `default`; le pagine figlie usano titolo corto + questo template.
+  const brandSuffix =
+    locale === "ar" ? "المهندس لورنزو أرميلين" : "Geom. Lorenzo Armellin";
+  const titleTemplate = `%s | ${brandSuffix}`;
   const ogLocale = OG_LOCALE[locale] || "it_IT";
   const alternateLocale = [
     "it_IT",

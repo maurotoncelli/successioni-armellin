@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { t, tCta, tList } from "@/lib/locale";
 import Image from "next/image";
@@ -27,6 +28,16 @@ type HomeStep = {
 };
 
 const vantaggiIcons = [House, ShieldCheck, HeartHandshake];
+
+/** absolute: meta_title include già il brand — evita doppio template. */
+export async function generateMetadata(): Promise<Metadata> {
+  const title = await t(
+    "home",
+    "meta_title",
+    "Successioni Online | Geom. Lorenzo Armellin",
+  );
+  return { title: { absolute: title } };
+}
 
 export default async function HomePage() {
   const heroCtaPrimary = await tCta("home", "hero_cta_primary");
