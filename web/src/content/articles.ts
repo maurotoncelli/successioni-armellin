@@ -412,6 +412,7 @@ export const articles: Article[] = [
         type: "table",
         headers: ["Aspetto", "Fai-da-te", "Con noi"],
         rows: [
+          ["Tempo da investire", "Ore e SPID a carico tuo", "Ce ne occupiamo noi"],
           ["Controllo dei dati catastali", "A carico tuo", "Lo fa un geometra"],
           ["Calcolo delle imposte", "Da solo", "Lo facciamo noi, prima dell'invio"],
           ["Assistenza", "Nessuna", "Una persona reale"],

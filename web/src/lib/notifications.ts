@@ -87,14 +87,39 @@ export async function notifyStatusChange(
     status === "PAGATO" && opts?.practiceCode
       ? `<p style="margin:12px 0 0">Codice pratica: <strong>${esc(opts.practiceCode)}</strong> — conservalo. Per entrare nell'area personale usa questa stessa email.</p>`
       : "";
+  const defaultCta =
+    status === "CHIUSA" ? `${areaUrl()}/conclusa` : areaUrl();
   const html = emailLayout({
     heading: tpl.heading,
     bodyHtml: `<p style="margin:0">${tpl.body}</p>${codeNote}`,
     ctaLabel: tpl.cta,
-    ctaHref: opts?.ctaHref || areaUrl(),
+    ctaHref: opts?.ctaHref || defaultCta,
   });
   const { sent } = await sendEmail({ to, subject: tpl.subject, html });
   return { sent, subject: tpl.subject };
+}
+
+/** Follow-up recensione Google (GMB), tipicamente 48h dopo la chiusura (@09). */
+export async function notifyReviewRequest(
+  to: string,
+  reviewUrl: string,
+  opts?: { delay?: string },
+): Promise<{ sent: boolean; subject: string }> {
+  const subject = "Un minuto per una recensione?";
+  const html = emailLayout({
+    heading: "Ci aiuti con una recensione?",
+    bodyHtml: `<p style="margin:0 0 10px">La tua pratica di successione è conclusa. Se ti sei trovato bene con Lorenzo, una recensione su Google ci aiuta tantissimo — ci vuole un minuto.</p>
+      <p style="margin:0;font-size:13px;color:#8a938c">Grazie di cuore, anche solo per aver letto.</p>`,
+    ctaLabel: "Scrivi su Google",
+    ctaHref: reviewUrl,
+  });
+  const { sent } = await sendEmail({
+    to,
+    subject,
+    html,
+    scheduledAt: opts?.delay ?? "in 48 hours",
+  });
+  return { sent, subject };
 }
 
 export async function notifyTaxesCommunicated(

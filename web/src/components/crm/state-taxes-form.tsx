@@ -19,12 +19,14 @@ export function StateTaxesForm({
   const router = useRouter();
   const [value, setValue] = useState(current != null ? String(current) : "");
   const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
   const [ok, setOk] = useState(false);
   const [pending, startTransition] = useTransition();
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
+    setWarning(null);
     setOk(false);
     const amount = Number(value.replace(",", "."));
     if (!Number.isFinite(amount) || amount < 0) {
@@ -34,9 +36,13 @@ export function StateTaxesForm({
     startTransition(async () => {
       const res = await setStateTaxes(practiceId, amount);
       if (res.ok) {
-        setOk(true);
+        if (res.warning) {
+          setWarning(res.warning);
+        } else {
+          setOk(true);
+          setTimeout(() => setOk(false), 2000);
+        }
         router.refresh();
-        setTimeout(() => setOk(false), 2000);
       } else setError(res.error);
     });
   }
@@ -63,7 +69,7 @@ export function StateTaxesForm({
       <button
         type="submit"
         disabled={pending}
-        className="inline-flex items-center gap-1.5 rounded-lg border border-crm-border bg-crm-surface px-3 py-1.5 text-sm text-crm-text hover:border-crm-accent/40 disabled:opacity-50"
+        className="inline-flex items-center gap-1.5 rounded-lg crm-gradient px-3 py-1.5 text-sm font-semibold text-white disabled:opacity-50"
       >
         {pending ? (
           <Loader2 className="h-3.5 w-3.5 animate-spin" />
@@ -73,6 +79,9 @@ export function StateTaxesForm({
         {current != null ? "Aggiorna e avvisa" : "Comunica al cliente"}
       </button>
       {error && <p className="w-full text-xs text-crm-rose">{error}</p>}
+      {warning && (
+        <p className="w-full text-xs text-crm-amber">{warning}</p>
+      )}
     </form>
   );
 }

@@ -85,6 +85,7 @@
     { "collection": "home", "key": "faidate_title", "locale": "it", "is_published": true, "value": "Si può fare da soli sul sito dell'Agenzia delle Entrate. Allora perché noi?" },
     { "collection": "home", "key": "faidate_intro", "locale": "it", "is_published": true, "value": "È vero, esiste la successione precompilata gratuita: è un'opzione onesta. Ma richiede SPID e competenza, non valida i dati e gli errori (e le sanzioni) restano a carico tuo." },
     { "collection": "home", "key": "faidate_confronto", "locale": "it", "is_published": true, "value": [
+      { "voce": "Tempo da investire", "faidate": "Ore e SPID a carico tuo", "noi": "Ce ne occupiamo noi" },
       { "voce": "Controllo dati catastali", "faidate": "A carico tuo", "noi": "Lo fa un geometra" },
       { "voce": "Calcolo imposte", "faidate": "Da solo", "noi": "Lo facciamo noi, prima" },
       { "voce": "Assistenza", "faidate": "Nessuna", "noi": "Una persona reale" },

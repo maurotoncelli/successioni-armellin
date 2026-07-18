@@ -17,6 +17,8 @@ export async function sendEmail(input: {
   to: string | string[];
   subject: string;
   html: string;
+  /** Resend schedule: linguaggio naturale ("in 48 hours") o ISO 8601. */
+  scheduledAt?: string;
 }): Promise<{ sent: boolean }> {
   const key = process.env.RESEND_API_KEY;
   if (!key) {
@@ -37,6 +39,7 @@ export async function sendEmail(input: {
         to,
         subject: input.subject,
         html: input.html,
+        ...(input.scheduledAt ? { scheduled_at: input.scheduledAt } : {}),
       }),
     });
     if (!res.ok) {

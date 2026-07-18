@@ -31,8 +31,9 @@ export default async function OrdinePage() {
 
   const packages = await getPackages();
   const pkg = packages.find((x) => x.key === p.selectedPackage);
-  const { invoice } = await getSafeExtras(p.id);
+  const { invoice, iban } = await getSafeExtras(p.id);
   const cancelled = isPracticeCancelled(p);
+  const needsIban = Boolean(p.stateTaxes) && !iban && !cancelled;
 
   return (
     <div>
@@ -134,14 +135,29 @@ export default async function OrdinePage() {
                   imposte che si versano allo Stato (modello F24, autoliquidazione).
                   Te le calcoliamo e comunichiamo prima dell&apos;invio.
                 </p>
-                {!cancelled && (
-                  <Link
-                    href="/area-riservata/dati"
-                    className="mt-2 inline-block text-sm font-medium text-accent-dark hover:underline"
-                  >
-                    Inserisci l&apos;IBAN per l&apos;addebito
-                  </Link>
-                )}
+                {needsIban ? (
+                  <div className="mt-3 rounded-[10px] border border-accent/30 bg-sand/60 p-3">
+                    <p className="text-sm text-text">
+                      Per l&apos;addebito delle imposte serve il tuo IBAN.
+                    </p>
+                    <Link
+                      href="/area-riservata/dati"
+                      className="mt-2 inline-flex text-sm font-semibold text-accent-dark hover:underline"
+                    >
+                      Inserisci l&apos;IBAN ora →
+                    </Link>
+                  </div>
+                ) : iban && !cancelled ? (
+                  <p className="mt-2 text-sm text-text-muted">
+                    IBAN registrato (•••• {iban.last4}).{" "}
+                    <Link
+                      href="/area-riservata/dati"
+                      className="font-medium text-accent-dark hover:underline"
+                    >
+                      Modifica
+                    </Link>
+                  </p>
+                ) : null}
               </>
             ) : (
               <p className="mt-1 text-sm text-text-muted">

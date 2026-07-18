@@ -37,9 +37,10 @@ su `main`** (ultimo batch tipologiche/template: `0b5357e`; Come funziona icone:
 - Mobile spacing sito (Section/PageHero/home/cards/footer)
 
 ### Aperto dopo 17/07 (prossimo agente)
-- [ ] Mail follow-up chiusura pratica con link GMB (stesso URL review)
+- [x] Mail follow-up chiusura pratica con link GMB (48h via Resend, 18/07)
 - [ ] Foto Pontedera vera; recensioni GMB reali (~20); video; SMS/WhatsApp
-- [ ] Tabella comparativa riga extra; traduzioni/legal; QA cross-browser; Lenis
+- [x] Tabella comparativa: riga «Tempo da investire» (18/07)
+- [ ] Traduzioni/legal; QA cross-browser; Lenis
 - [ ] Check costi pacchetti con Lorenzo; test AI XML su pratica reale
 
 ---
@@ -130,13 +131,13 @@ File chiave: `preventivo/actions.ts`, `checkout/actions.ts`,
 - [x] Banner recensione GMB in evidenza (dashboard + conclusa); URL pubblicato
 - [x] Quiz testamento: tolto “Nessun problema…”
 - [x] Come funziona: step compatti + icone SVG custom (non illustrazioni grandi)
-- [ ] Mail follow-up chiusura con stesso link GMB
+- [x] Mail follow-up chiusura con stesso link GMB (48h via Resend, 18/07)
 
 **Serve asset / decisione Lorenzo / ops**
 - [ ] Foto Pontedera vera
 - [ ] Recensioni GMB reali (+ accumulare ~20)
 - [ ] Blocco “lingua / traduzione live” → solo quando Lorenzo attrezzato
-- [ ] Tabella comparativa: riga extra (contenuto da concordare)
+- [x] Tabella comparativa: riga «Tempo da investire» (18/07)
 - [ ] SMS Twilio / WhatsApp Business
 - [ ] Video welcome + video 2′ attrice
 - [ ] Check costi 290/490/790 con Lorenzo

@@ -7,6 +7,7 @@ import { NoPracticeState } from "@/components/area/empty";
 import { ReviewBanner } from "@/components/area/review-banner";
 import { requireClientView } from "@/lib/area";
 import { text } from "@/lib/content";
+import { getSafeExtras } from "@/lib/practice-extras";
 import {
   clientSteps,
   currentStepIndex,
@@ -67,6 +68,7 @@ export default async function DashboardPage() {
     );
   }
 
+  const { iban } = await getSafeExtras(p.id);
   const step = currentStepIndex(p.status);
   const action = nextAction(p);
   const reviewUrl = text("settings", "review_url");
@@ -162,7 +164,7 @@ export default async function DashboardPage() {
             <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary">
               <Landmark className="h-5 w-5" />
             </span>
-            <div>
+            <div className="flex-1">
               <h2 className="text-sm font-semibold text-text">
                 Imposte comunicate: {p.stateTaxes} €
               </h2>
@@ -170,12 +172,26 @@ export default async function DashboardPage() {
                 Sono separate dal nostro onorario e si versano allo Stato
                 (modello F24).
               </p>
-              <Link
-                href="/area-riservata/ordine"
-                className="mt-2 inline-block text-sm font-medium text-accent-dark hover:underline"
-              >
-                Vedi dettaglio
-              </Link>
+              {!iban ? (
+                <div className="mt-3 rounded-[10px] border border-accent/30 bg-sand/60 p-3">
+                  <p className="text-sm text-text">
+                    Per l&apos;addebito serve il tuo IBAN.
+                  </p>
+                  <Link
+                    href="/area-riservata/dati"
+                    className="mt-2 inline-flex text-sm font-semibold text-accent-dark hover:underline"
+                  >
+                    Inserisci l&apos;IBAN ora →
+                  </Link>
+                </div>
+              ) : (
+                <Link
+                  href="/area-riservata/ordine"
+                  className="mt-2 inline-block text-sm font-medium text-accent-dark hover:underline"
+                >
+                  Vedi dettaglio
+                </Link>
+              )}
             </div>
           </div>
         </Card>

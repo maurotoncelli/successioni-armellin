@@ -36,7 +36,9 @@ import {
   notifyTaxesCommunicated,
   notifyFinalDocsReady,
   notifyWithdrawalOutcome,
+  notifyReviewRequest,
 } from "@/lib/notifications";
+import { text } from "@/lib/content";
 import { getAdminClient } from "@/lib/supabase/admin";
 import type { PracticeRow } from "@/lib/supabase/types";
 import type {
@@ -271,7 +273,9 @@ function stamp(): string {
   return new Date().toISOString().slice(0, 16).replace("T", " ");
 }
 
-export type WorkflowResult = { ok: true } | { ok: false; error: string };
+export type WorkflowResult =
+  | { ok: true; warning?: string }
+  | { ok: false; error: string };
 
 // Esito del cambio stato: alla CHIUSURA include i dati per la celebrazione
 // nel CRM (suono + annuncio "pratica conclusa n. X").
@@ -339,13 +343,14 @@ export async function changeStatus(
   if (status === "INVIATA" && !data.submitted_at) patch.submitted_at = stamp();
 
   // Notifica email al cliente sui passaggi rilevanti + traccia in cronologia.
+  const communications: Communication[] = Array.isArray(data.communications)
+    ? [...(data.communications as Communication[])]
+    : [];
+  let communicationsDirty = false;
   const notice = data.client_email
     ? await notifyStatusChange(data.client_email, status)
     : null;
   if (notice?.sent) {
-    const communications: Communication[] = Array.isArray(data.communications)
-      ? (data.communications as Communication[])
-      : [];
     communications.push({
       channel: "EMAIL",
       direction: "OUTBOUND",
@@ -353,9 +358,29 @@ export async function changeStatus(
       subject: notice.subject,
       occurredAt: stamp(),
     });
-    patch.communications = communications;
     log.push({ action: "email_inviata", at: stamp() });
+    communicationsDirty = true;
   }
+
+  // Follow-up recensione GMB a 48h (Resend scheduled_at), stesso URL del banner area.
+  if (status === "CHIUSA" && data.client_email) {
+    const reviewUrl = text("settings", "review_url", "").trim();
+    if (reviewUrl.startsWith("http")) {
+      const review = await notifyReviewRequest(data.client_email, reviewUrl);
+      if (review.sent) {
+        communications.push({
+          channel: "EMAIL",
+          direction: "OUTBOUND",
+          source: "AUTO",
+          subject: `${review.subject} (invio tra 48h)`,
+          occurredAt: stamp(),
+        });
+        log.push({ action: "email_recensione_programmata", at: stamp() });
+        communicationsDirty = true;
+      }
+    }
+  }
+  if (communicationsDirty) patch.communications = communications;
   patch.log = log;
 
   const { error } = await admin.from("practices").update(patch).eq("id", practiceId);
@@ -774,7 +799,16 @@ export async function setStateTaxes(
   revalidatePath(`/crm/pratiche/${practiceId}`);
   revalidatePath("/area-riservata/ordine");
   revalidatePath("/area-riservata/dashboard");
-  return { ok: true };
+
+  let warning: string | undefined;
+  if (!data.client_email) {
+    warning =
+      "Importo salvato, ma manca l'email del cliente: nessuna mail inviata.";
+  } else if (!notice?.sent) {
+    warning =
+      "Importo salvato, ma l'email al cliente non è partita. Controlla Resend o riprova.";
+  }
+  return warning ? { ok: true, warning } : { ok: true };
 }
 
 export type OfflineMethod = "BANK_TRANSFER" | "CASH" | "OTHER";
