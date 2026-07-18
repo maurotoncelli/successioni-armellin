@@ -1,14 +1,18 @@
 import type { Metadata } from "next";
+import { t, tCta, tObj } from "@/lib/locale";
 import { PageHero } from "@/components/site/page-hero";
 import { Section } from "@/components/ui/section";
 import { Card } from "@/components/ui/card";
 import { ButtonLink } from "@/components/ui/button";
-import { cta, text } from "@/lib/content";
+import { CHROME_UI_IT } from "@/lib/site-ui-labels";
 
-export const metadata: Metadata = {
-  title: "Diritto di recesso",
-  description: text("recesso", "hero_subtitle"),
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const chrome = await tObj("site_ui", "chrome_ui", CHROME_UI_IT);
+  return {
+    title: chrome.meta_recesso,
+    description: await t("recesso", "hero_subtitle"),
+  };
+}
 
 const blocks: { titleKey: string; bodyKey: string }[] = [
   { titleKey: "cosa_title", bodyKey: "cosa_body" },
@@ -19,26 +23,33 @@ const blocks: { titleKey: string; bodyKey: string }[] = [
   { titleKey: "garanzia_title", bodyKey: "garanzia_body" },
 ];
 
-export default function RecessoPage() {
-  const comeCtaArea = cta("recesso", "come_cta_area");
-  const garanziaLink = cta("recesso", "garanzia_link");
+export default async function RecessoPage() {
+  const comeCtaArea = await tCta("recesso", "come_cta_area");
+  const garanziaLink = await tCta("recesso", "garanzia_link");
+  const resolvedBlocks = await Promise.all(
+    blocks.map(async (block) => ({
+      titleKey: block.titleKey,
+      title: await t("recesso", block.titleKey),
+      body: await t("recesso", block.bodyKey),
+    })),
+  );
 
   return (
     <>
       <PageHero
-        eyebrow={text("recesso", "hero_eyebrow", "Le tue tutele")}
-        title={text("recesso", "hero_title")}
-        subtitle={text("recesso", "hero_subtitle")}
+        eyebrow={await t("recesso", "hero_eyebrow", "Le tue tutele")}
+        title={await t("recesso", "hero_title")}
+        subtitle={await t("recesso", "hero_subtitle")}
         back
       />
 
       <Section>
         <div className="mx-auto max-w-3xl space-y-6">
-          {blocks.map((block) => (
+          {resolvedBlocks.map((block) => (
             <Card key={block.titleKey}>
-              <h2 className="text-xl">{text("recesso", block.titleKey)}</h2>
+              <h2 className="text-xl">{block.title}</h2>
               <p className="mt-3 leading-relaxed text-text-muted">
-                {text("recesso", block.bodyKey)}
+                {block.body}
               </p>
             </Card>
           ))}
@@ -53,7 +64,7 @@ export default function RecessoPage() {
           </div>
 
           <p className="text-sm italic text-text-muted">
-            {text("recesso", "tc_link")}
+            {await t("recesso", "tc_link")}
           </p>
         </div>
       </Section>

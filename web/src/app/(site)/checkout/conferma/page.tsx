@@ -5,11 +5,23 @@ import { Card } from "@/components/ui/card";
 import { ButtonLink } from "@/components/ui/button";
 import { getStripe, isStripeConfigured } from "@/lib/stripe";
 import { PurchaseEvent } from "@/components/analytics/purchase-event";
+import { t, tObj } from "@/lib/locale";
+import {
+  CONFERMA_UI_IT,
+  type ConfermaUiLabels,
+} from "@/lib/site-ui-labels";
 
-export const metadata: Metadata = {
-  title: "Pagamento ricevuto",
-  robots: { index: false },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const ui = await tObj<ConfermaUiLabels>(
+    "site_ui",
+    "conferma_ui",
+    CONFERMA_UI_IT,
+  );
+  return {
+    title: ui.meta_title,
+    robots: { index: false },
+  };
+}
 
 export const dynamic = "force-dynamic";
 
@@ -38,6 +50,11 @@ export default async function ConfermaPage({
   const { session_id } = await searchParams;
   const info = await getPaymentInfo(session_id);
   const paid = info.paid;
+  const ui = await tObj<ConfermaUiLabels>(
+    "site_ui",
+    "conferma_ui",
+    CONFERMA_UI_IT,
+  );
 
   return (
     <Section tone="muted">
@@ -57,39 +74,33 @@ export default async function ConfermaPage({
           <Clock className="mx-auto h-12 w-12 text-accent" />
         )}
         <h1 className="mt-4 text-3xl sm:text-4xl">
-          {paid ? "Pagamento ricevuto, grazie!" : "Stiamo confermando il pagamento"}
+          {paid ? ui.title_paid : ui.title_pending}
         </h1>
 
-        <Card className="mt-8 text-left">
+        <Card className="mt-8 text-start">
           <p className="leading-relaxed text-text-muted">
-            {paid
-              ? "Il tuo pagamento è andato a buon fine e la tua pratica è ora attiva. A breve riceverai un'email con il riepilogo e le istruzioni per l'area personale, dove caricare i documenti."
-              : "Abbiamo ricevuto l'ordine. La conferma definitiva del pagamento arriva dal nostro sistema in pochi istanti: riceverai un'email appena è tutto a posto. Puoi già accedere all'area personale."}
+            {paid ? ui.body_paid : ui.body_pending}
           </p>
           {paid && (
             <p className="mt-3 rounded-[10px] border border-accent/25 bg-sand/40 px-3 py-2.5 text-sm text-text">
-              Accedi all&apos;area personale con la{" "}
+              {ui.email_note_before}{" "}
               <strong className="font-medium text-primary">
-                stessa email usata per il pagamento
+                {ui.email_note_strong}
               </strong>
-              : è così che ritrovi la pratica. Se usi un&apos;altra email (o
-              Google con un account diverso), non la vedrai.
+              {ui.email_note_after}
             </p>
           )}
           <div className="mt-6 flex flex-wrap gap-3">
             <ButtonLink href="/area-riservata" variant="primary">
-              Vai all&apos;area personale
+              {ui.cta_area}
             </ButtonLink>
             <ButtonLink href="/" variant="outline">
-              Torna alla home
+              {ui.cta_home}
             </ButtonLink>
           </div>
         </Card>
 
-        <p className="mt-6 text-sm text-text-muted">
-          Le imposte sono separate dall&apos;onorario: te le calcoliamo e
-          comunichiamo prima dell&apos;invio.
-        </p>
+        <p className="mt-6 text-sm text-text-muted">{ui.taxes_note}</p>
       </div>
     </Section>
   );

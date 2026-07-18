@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { getClientView } from "@/lib/area";
+import { actionText } from "@/lib/action-locale";
 import { getWithdrawal, requestWithdrawal } from "@/lib/practice-extras";
 import { notifyAdminWithdrawalRequest } from "@/lib/notifications";
 import { pushCrmNotification } from "@/lib/crm-notifications";
@@ -20,7 +21,7 @@ export async function submitWithdrawal(
   reason: string,
 ): Promise<WithdrawalResult> {
   const view = await getClientView();
-  if (!view?.practice) return { ok: false, error: "Sessione non valida." };
+  if (!view?.practice) return { ok: false, error: await actionText("area_errors", "session_invalid", "Sessione non valida.") };
   const p = view.practice;
 
   // Guardie server-side (la UI blocca gia, ma l'azione e invocabile comunque):
@@ -28,14 +29,14 @@ export async function submitWithdrawal(
   if (p.status === "CHIUSA" || p.status === "ANNULLATA") {
     return {
       ok: false,
-      error: "La pratica è già conclusa: il recesso non è più applicabile.",
+      error: await actionText("area_errors", "withdrawal_blocked", "La pratica è già conclusa: il recesso non è più applicabile."),
     };
   }
   const current = await getWithdrawal(p.id);
   if (current?.status === "REQUESTED" || current?.status === "IN_REVIEW") {
     return {
       ok: false,
-      error: "C'è già una richiesta di recesso in corso di valutazione.",
+      error: await actionText("area_errors", "withdrawal_pending", "C'è già una richiesta di recesso in corso di valutazione."),
     };
   }
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getRequestLocale, t, tCta, tObj } from "@/lib/locale";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -16,7 +17,7 @@ import { ButtonLink } from "@/components/ui/button";
 import { BackLink } from "@/components/site/back-link";
 import { ArticleBody } from "@/components/site/article-body";
 import { getArticle, getArticles, getRelatedArticles } from "@/lib/cms";
-import { cta, obj, text } from "@/lib/content";
+import { GUIDE_UI_IT } from "@/lib/site-ui-labels";
 
 type Params = { slug: string };
 
@@ -31,8 +32,10 @@ export async function generateMetadata({
   params: Promise<Params>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const article = await getArticle(slug);
-  if (!article) return { title: "Guida non trovata" };
+  const locale = await getRequestLocale();
+  const article = await getArticle(slug, locale);
+  const ui = await tObj("site_ui", "guide_ui", GUIDE_UI_IT);
+  if (!article) return { title: ui.meta_not_found };
   return {
     title: article.title,
     description: article.excerpt,
@@ -46,10 +49,10 @@ export async function generateMetadata({
   };
 }
 
-function formatDate(iso: string): string {
+function formatDate(iso: string, dateLocale: string): string {
   const d = new Date(`${iso}T00:00:00`);
   if (Number.isNaN(d.getTime())) return iso;
-  return d.toLocaleDateString("it-IT", {
+  return d.toLocaleDateString(dateLocale, {
     day: "numeric",
     month: "long",
     year: "numeric",
@@ -62,17 +65,33 @@ export default async function ArticlePage({
   params: Promise<Params>;
 }) {
   const { slug } = await params;
-  const article = await getArticle(slug);
+  const locale = await getRequestLocale();
+  const article = await getArticle(slug, locale);
   if (!article) notFound();
 
-  const related = await getRelatedArticles(slug);
-  const ctaBox = obj("article", "cta_box", {
+  const dateLocale = locale === "ar" ? "ar" : "it-IT";
+  const guideUi = await tObj("site_ui", "guide_ui", GUIDE_UI_IT);
+  const knowLorenzo = (
+    await tCta("home", "chisono_cta", {
+      label: "Conosci Lorenzo",
+      href: "/chi-sono",
+    })
+  ).label;
+  const talkLorenzo = (
+    await tCta("navbar", "cta_phone", {
+      label: "Parla con Lorenzo",
+      href: "tel:+393201570567",
+    })
+  ).label;
+
+  const related = await getRelatedArticles(slug, 3, locale);
+  const ctaBox = await tObj("article", "cta_box", {
     titolo: "Vuoi che ce ne occupiamo noi?",
     button: { label: "Calcola il preventivo gratis", href: "/preventivo" },
     phone: "tel:+393201570567",
   });
-  const disclaimer = text("article", "disclaimer");
-  const authorBox = obj("article", "autore_box", {
+  const disclaimer = await t("article", "disclaimer");
+  const authorBox = await tObj("article", "autore_box", {
     autore: article.author,
     ruolo: "Geometra abilitato Entratel",
     reviewed_by: article.reviewedBy,
@@ -87,14 +106,19 @@ export default async function ArticlePage({
     datePublished: article.publishedAt,
     dateModified: article.updatedAt,
     author: { "@type": "Person", name: article.author },
-    inLanguage: "it-IT",
+    inLanguage: locale === "ar" ? "ar" : "it-IT",
     articleSection: article.category,
   };
   const breadcrumbLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Guide", item: "/guide" },
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: guideUi.breadcrumb_guides,
+        item: "/guide",
+      },
       { "@type": "ListItem", position: 2, name: article.title },
     ],
   };
@@ -113,13 +137,13 @@ export default async function ArticlePage({
       <div className="bg-primary text-white">
         <Container className="py-10 sm:py-14 lg:py-16">
           <nav
-            aria-label="Percorso"
+            aria-label={guideUi.breadcrumb_aria}
             className="flex flex-wrap items-center gap-1.5 text-sm text-white/70"
           >
             <Link href="/guide" className="hover:text-white">
-              Guide
+              {guideUi.breadcrumb_guides}
             </Link>
-            <ChevronRight className="h-4 w-4" />
+            <ChevronRight className="h-4 w-4 rtl:rotate-180" />
             <span className="text-white/90">{article.category}</span>
           </nav>
 
@@ -140,9 +164,17 @@ export default async function ArticlePage({
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <Clock className="h-4 w-4" />
-                {article.readingMinutes} min di lettura
+                {guideUi.reading_minutes.replace(
+                  "{n}",
+                  String(article.readingMinutes),
+                )}
               </span>
-              <span>Aggiornato il {formatDate(article.updatedAt)}</span>
+              <span>
+                {guideUi.updated.replace(
+                  "{date}",
+                  formatDate(article.updatedAt, dateLocale),
+                )}
+              </span>
             </div>
           </div>
         </Container>
@@ -162,7 +194,7 @@ export default async function ArticlePage({
             {article.sources.length > 0 && (
               <div className="mt-8">
                 <h2 className="text-base font-semibold text-primary">
-                  Fonti ufficiali
+                  {guideUi.sources}
                 </h2>
                 <ul className="mt-3 space-y-2 text-sm">
                   {article.sources.map((src) => (
@@ -182,7 +214,7 @@ export default async function ArticlePage({
             )}
 
             <div className="mt-10">
-              <BackLink label="Torna alle guide" fallbackHref="/guide" />
+              <BackLink label={guideUi.back} fallbackHref="/guide" />
             </div>
           </article>
 
@@ -191,7 +223,7 @@ export default async function ArticlePage({
               <div className="flex items-center gap-2 text-accent">
                 <ShieldCheck className="h-5 w-5" />
                 <span className="text-xs font-semibold uppercase tracking-wide">
-                  Chi ha scritto questa guida
+                  {guideUi.author_heading}
                 </span>
               </div>
               <p className="mt-3 font-semibold text-primary">
@@ -205,8 +237,8 @@ export default async function ArticlePage({
                 href={authorBox.link}
                 className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-accent"
               >
-                Conosci Lorenzo
-                <ArrowRight className="h-4 w-4" />
+                {knowLorenzo}
+                <ArrowRight className="h-4 w-4 rtl:rotate-180" />
               </Link>
             </Card>
 
@@ -219,7 +251,7 @@ export default async function ArticlePage({
                 {ctaBox.phone && ctaBox.phone !== "tel:+39" && (
                   <ButtonLink href={ctaBox.phone} variant="outline">
                     <Phone className="h-4 w-4" />
-                    Parla con Lorenzo
+                    {talkLorenzo}
                   </ButtonLink>
                 )}
               </div>
@@ -230,7 +262,7 @@ export default async function ArticlePage({
 
       {related.length > 0 && (
         <Section tone="muted">
-          <h2 className="text-2xl text-primary">Guide correlate</h2>
+          <h2 className="text-2xl text-primary">{guideUi.related}</h2>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {related.map((rel) => (
               <Link
@@ -249,8 +281,8 @@ export default async function ArticlePage({
                     {rel.excerpt}
                   </p>
                   <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
-                    Leggi
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    {guideUi.read}
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 rtl:rotate-180" />
                   </span>
                 </Card>
               </Link>

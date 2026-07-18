@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getRequestLocale, navPageTitle, t, tCta, tList, tObj } from "@/lib/locale";
 import { Check, Info } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
 import { Section, SectionHeading } from "@/components/ui/section";
@@ -7,42 +8,49 @@ import { PackageCards } from "@/components/site/package-cards";
 import { CtaBand } from "@/components/site/cta-band";
 import { AddonCards } from "@/components/site/addon-cards";
 import { getAddons } from "@/lib/cms";
-import { cta, list, obj, text } from "@/lib/content";
 
-export const metadata: Metadata = {
-  title: "Tariffe",
-  description: text("tariffe", "hero_subtitle"),
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: await navPageTitle("/tariffe", "Tariffe"),
+    description: await t("tariffe", "hero_subtitle"),
+  };
+}
 
 export default async function TariffePage() {
-  const deliverable = list<string>("tariffe", "deliverable_list");
-  const finalCta = cta("tariffe", "cta_finale_button");
-  const addons = await getAddons();
+  const locale = await getRequestLocale();
+  const deliverable = await tList<string>("tariffe", "deliverable_list");
+  const finalCta = await tCta("tariffe", "cta_finale_button");
+  const addons = await getAddons(locale);
 
-  const telefono = obj("contatti", "telefono", {
+  const telefono = await tObj("contatti", "telefono", {
     numero: "",
     cta_chiama: "tel:+393201570567",
   });
-  const emailObj = obj("contatti", "email", { generale: "" });
+  const emailObj = await tObj("contatti", "email", { generale: "" });
   const addonContact = {
     phoneHref: telefono.cta_chiama || "tel:+393201570567",
-    phoneLabel: "Chiama Lorenzo",
+    phoneLabel: await t("tariffe", "addon_phone_label", "Chiama Lorenzo"),
     emailHref: emailObj.generale ? `mailto:${emailObj.generale}` : "/contatti",
-    emailLabel: "Scrivici via email",
+    emailLabel: await t("tariffe", "addon_email_label", "Scrivici via email"),
   };
+  const addonDiscover = await t(
+    "tariffe",
+    "addon_discover",
+    "Scopri come attivarlo",
+  );
 
   return (
     <>
       <PageHero
-        eyebrow={text("tariffe", "hero_eyebrow", "Prezzi chiari")}
-        title={text("tariffe", "hero_title")}
-        subtitle={text("tariffe", "hero_subtitle")}
+        eyebrow={await t("tariffe", "hero_eyebrow", "Prezzi chiari")}
+        title={await t("tariffe", "hero_title")}
+        subtitle={await t("tariffe", "hero_subtitle")}
       />
 
       <Section>
         <PackageCards />
         <p className="mt-8 text-center text-sm text-text-muted">
-          {text("tariffe", "rate_text")}
+          {await t("tariffe", "rate_text")}
         </p>
       </Section>
 
@@ -51,23 +59,23 @@ export default async function TariffePage() {
           <Card>
             <div className="flex items-center gap-2 text-primary">
               <Info className="h-5 w-5 text-accent" />
-              <h3 className="text-xl">{text("tariffe", "box_trasparenza_title")}</h3>
+              <h3 className="text-xl">{await t("tariffe", "box_trasparenza_title")}</h3>
             </div>
             <p className="mt-3 text-sm leading-relaxed text-text-muted">
-              {text("tariffe", "box_trasparenza_body")}
+              {await t("tariffe", "box_trasparenza_body")}
             </p>
           </Card>
           <Card>
-            <h3 className="text-xl">{text("tariffe", "sla_title")}</h3>
+            <h3 className="text-xl">{await t("tariffe", "sla_title")}</h3>
             <p className="mt-3 text-sm leading-relaxed text-text-muted">
-              {text("tariffe", "sla_note")}
+              {await t("tariffe", "sla_note")}
             </p>
           </Card>
         </div>
       </Section>
 
       <Section>
-        <SectionHeading title={text("tariffe", "deliverable_title")} />
+        <SectionHeading title={await t("tariffe", "deliverable_title")} />
         {/* w-fit: il blocco si centra sulla larghezza reale delle voci, cosi
             l'elenco risulta allineato al titolo centrato della sezione. */}
         <ul className="mx-auto mt-6 grid w-fit max-w-2xl gap-3 sm:mt-10">
@@ -85,13 +93,14 @@ export default async function TariffePage() {
       {addons.length > 0 && (
         <Section tone="sand">
           <SectionHeading
-            title={text("tariffe", "addon_intro")}
-            intro={text("tariffe", "addon_subtitle")}
+            title={await t("tariffe", "addon_intro")}
+            intro={await t("tariffe", "addon_subtitle")}
           />
           <AddonCards
             addons={addons}
-            contactText={text("tariffe", "addon_contact_text")}
+            contactText={await t("tariffe", "addon_contact_text")}
             contact={addonContact}
+            discoverLabel={addonDiscover}
           />
         </Section>
       )}
@@ -99,25 +108,27 @@ export default async function TariffePage() {
       <Section>
         <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
           <Card className="bg-bg-muted">
-            <h3 className="text-xl">{text("tariffe", "ti_serve_title")}</h3>
+            <h3 className="text-xl">{await t("tariffe", "ti_serve_title")}</h3>
             <p className="mt-3 text-sm leading-relaxed text-text-muted">
-              {text("tariffe", "ti_serve_body")}
+              {await t("tariffe", "ti_serve_body")}
             </p>
           </Card>
           <Card className="bg-bg-muted">
-            <h3 className="text-xl">Casi particolari</h3>
+            <h3 className="text-xl">
+              {await t("pacchetti", "su_misura_title", "Preventivo personalizzato")}
+            </h3>
             <p className="mt-3 text-sm leading-relaxed text-text-muted">
-              {text("tariffe", "su_misura_text")}
+              {await t("tariffe", "su_misura_text")}
             </p>
           </Card>
         </div>
         <p className="mt-6 text-center text-sm text-text-muted sm:mt-10">
-          {text("tariffe", "microtrust")}
+          {await t("tariffe", "microtrust")}
         </p>
       </Section>
 
       <CtaBand
-        title={text("tariffe", "cta_finale_title")}
+        title={await t("tariffe", "cta_finale_title")}
         button={finalCta}
       />
     </>

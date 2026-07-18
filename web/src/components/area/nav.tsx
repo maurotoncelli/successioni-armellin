@@ -11,27 +11,31 @@ import {
   Download,
   Settings,
   Inbox,
+  type LucideIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import type { AreaNavIconKey, AreaNavItem } from "@/components/area/nav-shared";
 
-const items = [
-  { href: "/area-riservata/dashboard", label: "Home", icon: LayoutDashboard, primary: true },
-  { href: "/area-riservata/documenti", label: "Documenti", icon: FolderOpen, primary: true },
-  { href: "/area-riservata/ordine", label: "Acquisto", icon: Receipt, primary: true },
-  { href: "/area-riservata/comunicazioni", label: "Comunicazioni", icon: Inbox, primary: false },
-  { href: "/area-riservata/dati", label: "I tuoi dati", icon: CreditCard, primary: false },
-  { href: "/area-riservata/mandato", label: "Mandato", icon: FileSignature, primary: false },
-  { href: "/area-riservata/conclusa", label: "Documenti finali", icon: Download, primary: false },
-  { href: "/area-riservata/profilo", label: "Profilo", icon: Settings, primary: true },
-];
+export type { AreaNavItem };
 
-export function AreaSidebar() {
+const ICONS: Record<AreaNavIconKey, LucideIcon> = {
+  home: LayoutDashboard,
+  documenti: FolderOpen,
+  ordine: Receipt,
+  comunicazioni: Inbox,
+  dati: CreditCard,
+  mandato: FileSignature,
+  conclusa: Download,
+  profilo: Settings,
+};
+
+export function AreaSidebar({ items }: { items: AreaNavItem[] }) {
   const pathname = usePathname();
   return (
-    <nav className="hidden w-60 shrink-0 flex-col gap-1 border-r border-primary/10 bg-bg p-3 lg:flex">
+    <nav className="hidden w-60 shrink-0 flex-col gap-1 border-e border-primary/10 bg-bg p-3 lg:flex">
       {items.map((item) => {
         const active = pathname === item.href;
-        const Icon = item.icon;
+        const Icon = ICONS[item.icon];
         return (
           <Link
             key={item.href}
@@ -52,14 +56,14 @@ export function AreaSidebar() {
   );
 }
 
-export function AreaBottomBar() {
+export function AreaBottomBar({ items }: { items: AreaNavItem[] }) {
   const pathname = usePathname();
   const primary = items.filter((i) => i.primary);
   return (
     <nav className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-4 border-t border-primary/10 bg-bg/95 backdrop-blur lg:hidden">
       {primary.map((item) => {
         const active = pathname === item.href;
-        const Icon = item.icon;
+        const Icon = ICONS[item.icon];
         return (
           <Link
             key={item.href}

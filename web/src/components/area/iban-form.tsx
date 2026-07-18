@@ -5,13 +5,20 @@ import { useRouter } from "next/navigation";
 import { ShieldCheck, Check, Loader2, AlertCircle } from "lucide-react";
 import { buttonClasses } from "@/components/ui/button";
 import { saveIbanAction } from "@/app/area-riservata/(app)/dati/actions";
+import {
+  IBAN_UI_IT,
+  fillTemplate,
+  type IbanUiLabels,
+} from "@/lib/area-ui-labels";
 
 export function IbanForm({
   initialLast4,
   clearedAt,
+  labels = IBAN_UI_IT,
 }: {
   initialLast4?: string;
   clearedAt?: string;
+  labels?: IbanUiLabels;
 }) {
   const router = useRouter();
   const [iban, setIban] = useState("");
@@ -37,8 +44,7 @@ export function IbanForm({
       {savedLast4 && (
         <div className="flex items-center gap-2 rounded-lg border border-success/30 bg-success/10 p-3 text-sm text-text">
           <Check className="h-4 w-4 shrink-0 text-success" />
-          IBAN salvato in modo cifrato (termina con ••{savedLast4}). Puoi
-          aggiornarlo inserendone uno nuovo.
+          {fillTemplate(labels.saved, { last4: savedLast4 })}
         </div>
       )}
 
@@ -46,16 +52,14 @@ export function IbanForm({
         <div className="flex items-start gap-2 rounded-lg border border-success/30 bg-success/10 p-3 text-sm text-text">
           <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-success" />
           <span>
-            L&apos;IBAN e stato utilizzato per il versamento (F24) e poi{" "}
-            <strong>cancellato per sicurezza</strong> il {clearedAt.slice(0, 10)}.
-            Se serve di nuovo puoi reinserirlo.
+            {fillTemplate(labels.cleared, { date: clearedAt.slice(0, 10) })}
           </span>
         </div>
       )}
 
       <div>
         <label htmlFor="iban" className="mb-1.5 block text-sm font-medium text-text">
-          IBAN dell&apos;erede
+          {labels.label}
         </label>
         <input
           id="iban"
@@ -69,8 +73,7 @@ export function IbanForm({
         />
         <p className="mt-1.5 flex items-start gap-1.5 text-xs text-text-muted">
           <ShieldCheck className="mt-0.5 h-3.5 w-3.5 shrink-0" />
-          Dato sensibile: serve solo per l&apos;eventuale addebito delle imposte
-          (F24). Conservato in modo cifrato.
+          {labels.hint}
         </p>
       </div>
 
@@ -83,7 +86,7 @@ export function IbanForm({
 
       <button type="submit" disabled={pending || !iban.trim()} className={buttonClasses()}>
         {pending && <Loader2 className="h-4 w-4 animate-spin" />}
-        Salva
+        {labels.save}
       </button>
     </form>
   );

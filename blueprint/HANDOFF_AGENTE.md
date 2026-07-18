@@ -1,12 +1,293 @@
 # HANDOFF per il prossimo agente
 
-> Documento di passaggio di consegne. Aggiornato: **2026-07-18 ~11:45**.
+> Documento di passaggio di consegne. Aggiornato: **2026-07-18 ~14:10**.
 > Scopo: permettere a un nuovo agente (senza contesto) di riprendere il lavoro.
 > Riferimenti chiave: @RUNBOOK_GoLive (procedura go-live), @SPEC_Env_Vars,
 > @DOMANDE_PER_LORENZO, @PROSSIMO_INCONTRO_LORENZO, @07_Stack.
 > Credenziali/dati sensibili (Google/Stripe/Resend/Supabase/OpenAI/Cloudflare + dati
 > fiscali Lorenzo): nel file **`ACCESSI_LOCALE.md`** in root (git-ignored, NON
 > committato). Non è nel repo.
+
+Chat correlata (i18n AR + messaggi/mandato/comms):  
+[i18n arabo guide e comunicazioni](ade7ada3-dbfb-4e6d-bb5c-b116b43f3859)
+
+---
+
+## ★ SPUNTI OBBLIGATORI — prossime traduzioni (oltre AR)
+
+> Leggere PRIMA di aggiungere EN/DE/… o di toccare copy. Evita i bug già visti su AR.
+
+1. **Mai hardcodare UI in JSX** — ogni stringa utente in `content_entries.<locale>.json` via `t` / `tCta` / `tObj` / `tList`. I fallback IT nei call-site sono solo safety net (se li vedi in AR = chiave mancante o wire dimenticato).
+2. **Overlay dedicati** (non bastano le entry):  
+   `articles.<locale>.ts` · `legal.<locale>.ts` · `mandato.<locale>.ts` · seed/`packages-i18n` (o CRM «Aggiorna traduzioni») · `comms-copy.ts` (email/notif).
+3. **Template, non concatenazioni** — `{name}`, `{n}`, `{extra}`, `{fee}` nella frase intera. Vietato `"Pacchetto " + name` (rompe RTL e le altre lingue).
+4. **RTL** (AR oggi): frecce `rtl:rotate-180` / usare `ms-`/`me-` al posto di `ml-`/`mr-` dove conta; niente `+ testo` misto LTR; smoke `?lang=xx` al **primo hit** (cookie assente).
+5. **Due lingue distinte** — `lang` UI (cookie) ≠ `profiles.comms_locale` (email/campanella). Non confonderle.
+6. **Fede legale = IT** — mandato download/firma e documenti ufficiali restano IT; anteprima/cortesia sì.
+7. **CRM sempre IT/LTR** — non tradurre `web/src/app/crm/**`. Email **admin** sempre IT (nomi pacchetto IT anche se UI cliente è AR).
+8. **Dati runtime IT** — checklist documenti, `line_items` snapshot, messaggio offline Storage: fuori da content_entries finché non si traduce catalogo/CMS.
+9. **Parity chiavi** — nuova entry IT ⇒ stessa chiave in ogni locale pubblicato + sync `seed/content_entries.it.json`.
+10. **Smoke minimo nuova lingua** — home (tabella fai-da-te + pacchetti) · preventivo/grazie · checkout · FAQ/guide · area (nav, mandato anteprima, errori upload) · profilo comms.
+
+---
+
+## 8-vicies. Sessione 18/07 — polish i18n AR + check logico
+
+**Branch:** `main` — modifiche locali **NON committate**. `tsc --noEmit` ok.
+**NON committare** `bozza video/`.
+
+### Fix applicati
+| Fix | Dettaglio |
+|-----|-----------|
+| RTL primo hit | Root layout = `x-locale` + cookie |
+| API area errori | `actionText` completo + `request_invalid` / `max_files` |
+| Tariffe / BackLink / metadata | localizzati |
+| Order surcharge + SoftLead email cliente | locale UI |
+| Home fai-da-te headers | `home.faidate_col_*` |
+| Grazie esito B | `esito_b_package_line` / `esito_b_taxes_note` |
+| Navbar tagline | `navbar.brand_tagline` (niente «· Successioni» hardcoded) |
+| Grazie esito A WhatsApp | `grazie.esito_a_whatsapp` |
+| Freccia Indietro quiz | `rtl:rotate-180` |
+| Email admin lead | nome pacchetto **sempre IT** (`getPackages("it")`) |
+
+### Check logico (18/07 pomeriggio) — esito
+
+**OK (non regressioni):** parity content IT/AR; mandato anteprima AR / download IT; `comms_locale` indipendente; FAQ/guide/pacchetti passano locale; niente `t()` su CTA-oggetto; `actionText` chiavi presenti.
+
+**Aperti (accettati / da decidere, non bloccanti UI):**
+| Tema | Note |
+|------|------|
+| `line_items` snapshot | creati in IT al checkout; area ordine li mostra così (incoerenza con “Cosa include” AR) |
+| Stripe Checkout | oggi `locale: "it"` fisso — UX AR paga su Stripe IT |
+| Offline sito | title/body da Storage CRM (IT) |
+| FAQ AR | da `content faq.items`; edit CRM IT non aggiorna AR |
+| `<html lang>` su CRM | se cookie sito = AR, html può restare ar mentre wrapper CRM forza LTR |
+| Alt hero home | ancora IT (placeholder) |
+| OG `locale` | fisso `it_IT` (SEO) |
+
+### Commit
+Chiedere a Mauro. Escludere `bozza video/`.
+
+---
+
+## 8-noviesdecies. Sessione 18/07 — HANDOFF i18n AR (stato consolidato)
+
+**Branch:** `main` (allineato a `origin/main` come tracking, ma **molte modifiche
+locali NON committate / NON pushate**).  
+**Verifica:** `cd web && npx tsc --noEmit` ok.  
+**NON committare** la cartella `bozza video/` (asset video/audio untracked).
+
+### Obiettivo prodotto (confermato Mauro)
+Con `lang=ar` (cookie / `?lang=`), un parlante arabo non deve vedere UI italiana
+su sito pubblico + area personale. CRM resta IT/LTR. **Italiano = fede legale**
+(mandato, legali, documenti ufficiali). Traduzioni = cortesia / automatiche
+dove indicato.
+
+### Cosa è CHIUSO in questa linea di lavoro
+
+| Area | Cosa | File chiave |
+|------|------|-------------|
+| Locale infra | cookie + `?lang=` → header `x-locale`; RTL/Noto Arabic | `locale.ts`, `proxy.ts`, root layout |
+| UI chrome IT+AR | `content_entries` + `t`/`tCta`/`tObj`; fallback `site-ui-labels` / `area-ui-labels` | `content_entries.*.json`, `action-locale.ts` |
+| Pacchetti/add-on | overlay Storage + seed AR + bottone AI CRM | `packages-i18n.ts`, CRM listino |
+| FAQ | `getFaqs(locale)` — non-IT da content prima del DB | `cms.ts`, `faq.items` AR |
+| Guide | body/title/excerpt AR + categoria da `guide.categorie` | `articles.ar.ts`, `articles-i18n.ts`, `getArticles(locale)` |
+| Legali | privacy/termini/cookie/garanzia AR cortesia | `legal.ar.ts`, `legal-docs.ts` |
+| Mandato | anteprima AR + notice; **download/firma sempre IT** | `mandato.ar.ts`, area mandato page |
+| CTA bug | `t()` su oggetti CTA → `tCta().label` (Conosci/Parla Lorenzo) | `guide/[slug]/page.tsx` |
+| Comms locale | preferenza scritta ≠ UI; email+notif AR | vedi sotto |
+
+### Preferenza lingua comunicazioni — FATTO + DDL APPLICATO IN PROD
+
+- Colonna `profiles.comms_locale` (`text not null default 'it'`).
+- Migration file: `supabase/migrations/20260718140000_comms_locale.sql`.
+- **Applicata sul progetto Supabase `cfhsyrlpbrdofwtljepv`** il 18/07 via
+  Management API (PAT in `ACCESSI_LOCALE.md`). Verificata su
+  `information_schema` (`comms_locale` presente, default `'it'`).
+- UI: Profilo → card «Lingua delle comunicazioni scritte» + avviso traduzione
+  automatica (`profilo_ui.comms_lang_*`, `updateCommsLocale`).
+- Runtime: `comms-locale.ts` / `comms-locale-shared.ts` / `comms-copy.ts`;
+  `notifications.ts` (email cliente localizzate); push notifiche CRM/webhook/
+  invoice leggono `comms_locale`.
+- Display: campanella + `/comunicazioni` ripresentano titoli noti nella
+  preferenza corrente (`presentNotificationCopy` / `presentCommSubject`).
+- **Indipendente** da `lang` UI. Admin email restano IT. Fede legale resta IT.
+
+### Come verificare (smoke)
+1. Sito `?lang=ar`: home pacchetti AR, `/guide` titoli AR, `/faq` domande AR,
+   legali AR con note fede IT.
+2. Area con `lang=ar`: nav/chrome AR; mandato anteprima AR; download .txt IT.
+3. Profilo → imposta comunicazioni `العربية` → titoli campanella/Comunicazioni
+   noti in AR; prossima email/evento in AR (se Resend attivo).
+4. CRM listino → «Aggiorna traduzioni multilingua» (serve `OPENAI_API_KEY`).
+
+### Gap residui (non bloccanti i18n UI) — aggiornati in §8-vicies
+| Gap | Note |
+|-----|------|
+| Checklist tipologiche / help documenti | catalogo tradotto (CMS) — ancora aperto |
+| Label surcharge / lead email | **chiusi** in §8-vicies |
+| Line items ordine / snapshot | label a snapshot (storico IT) — aperto |
+| Altre lingue ≠ AR | ricadono su IT finché non ci sono content/seed |
+| Qualità copy AR YMYL | revisione umana consigliata su mandato/legali/guide |
+
+### Commit (quando Mauro chiede)
+- Un commit (o pochi) su `main` / branch feature — **chiedere prima**.
+- Includere migration + seed IT allineato a `web/src/content/content_entries.it.json`.
+- **Escludere** `bozza video/`.
+- Non pushare force; non toccare git config.
+
+### File nuovi importanti (untracked / da includere al commit)
+```
+supabase/migrations/20260718140000_comms_locale.sql
+web/src/content/articles.ar.ts
+web/src/content/legal.ar.ts
+web/src/content/mandato.ar.ts
+web/src/lib/articles-i18n.ts
+web/src/lib/comms-*.ts
+web/src/lib/packages-i18n*.ts
+web/src/lib/legal-docs.ts
+web/src/lib/locale.ts
+web/src/lib/action-locale.ts
+web/src/lib/area-ui-labels.ts
+web/src/lib/site-ui-labels.ts
+web/src/app/area-riservata/(app)/profilo/profilo-client.tsx
+web/src/components/crm/refresh-translations-button.tsx
+```
+
+---
+
+## 8-octiesdecies. Sessione 18/07 — mandato AR + lingua comunicazioni
+
+**Stato:** consolidato in §8-noviesdecies. Migration **già applicata** in Supabase.
+
+Dettaglio tecnico invariato: mandato cortesia AR; `comms_locale` su profilo;
+template in `comms-copy.ts` + `notifications.ts`.
+
+---
+
+## 8-septiesdecies. Sessione 18/07 — footer + legali AR
+
+**Stato:** consolidato in §8-noviesdecies.
+
+Footer chrome keys + `legal.ar.ts` + `getLegalDoc`. Recesso pubblico già
+content-aware.
+
+---
+
+## 8-sexiesdecies. Sessione 18/07 — listino i18n (pacchetti/add-on + AI CRM)
+
+**Stato:** consolidato in §8-noviesdecies.
+
+Storage `_packages-i18n.json` + seed AR + bottone CRM OpenAI.
+
+---
+
+## 8-quindecies. Sessione 18/07 pomeriggio (2) — i18n arabo UI residua
+
+**Stato:** consolidato in §8-noviesdecies (UI/errors data-driven chiusi).
+
+### Inventario gap (aggiornato)
+| Gap | Dove | Stato |
+|-----|------|--------|
+| Nomi/feature pacchetti | checkout, tariffe | **chiuso** packages-i18n |
+| Checklist / help | area documenti | aperto |
+| Corpo mandato | mandato | **chiuso** cortesia AR |
+| Notifiche / email | campanella, Resend | **chiuso** comms_locale |
+| Line items ordine | area ordine | aperto |
+| Articoli guide | /guide | **chiuso** articles.ar |
+
+### Commit
+- Chiedere Mauro. Escludere `bozza video/`.
+
+---
+
+## 8-quaterdecies. Sessione 18/07 pomeriggio — i18n arabo (sito + area)
+
+**Stato:** proseguito in §8-quindecies (UI residua chiusa). Infrastruttura + P0 sotto.
+`npx tsc --noEmit` in `web/` ok. **Non** committare `bozza video/`.
+
+Chat correlata: [Handoff i18n arabo area](5da5905a-2327-4e0b-a7f8-debcc977d900).
+
+### Obiettivo utente
+Con `lang=ar` (cookie / `?lang=`) un arabofono non deve vedere UI italiana
+su sito pubblico e area personale. Altre lingue restano fallback IT.
+
+### Infrastruttura — FATTO
+| Pezzo | Dettaglio |
+|-------|-----------|
+| Locale richiesta | `web/src/lib/locale.ts` → `getRequestLocale()`, `t` / `tCta` / `tList` / `tObj`, `isRtl()` |
+| Actions/API | `web/src/lib/action-locale.ts` → `getActionLocale()`, `actionText()` |
+| Root layout | `lang`/`dir` da cookie; Noto Sans Arabic; CRM forzato `dir=ltr lang=it` |
+| Content | `content_entries.ar.json` parity con IT (sito + `area` + `area_login` + nuovi blob) |
+| `obj()` | merge shallow con fallback IT (`web/src/lib/content.ts`) |
+| Switcher | cookie `lang` path `/` + `?lang=` |
+
+### Content nuovi (collection)
+- **`area`**: chiavi pagine + blob UI `docs_ui`, `mandate_ui`, `iban_ui`, `claim_ui`,
+  `withdrawal_ui`, `invoice_ui`, `final_docs_ui`, `profilo_ui`, `ordine_ui`,
+  `documenti_page_ui`, `final_docs_preview` (+ nav/chrome/dashboard già presenti)
+- **`site_ui`**: `preventivo_ui`, `checkout_ui`, `conferma_ui`, `contact_ui`,
+  `soft_lead_ui`, `guide_ui`, `chrome_ui`, `offline_ui`, `cookie_ui`, `contatti_map_ui`
+- **`area_errors`**: messaggi errori actions/API (IT+AR; estesi in §8-quindecies)
+- **`strumenti.catastale_categorie`**: label select calcolatore
+
+Fallback TypeScript (default props):  
+`web/src/lib/area-ui-labels.ts`, `web/src/lib/site-ui-labels.ts`.
+
+Script patch (ri-eseguibili):  
+`web/scripts/patch-area-ui-labels.mjs`, `web/scripts/patch-site-ui-labels.mjs`.
+
+### Area personale — FATTO (UI form + pagine)
+Client con prop `labels` da server `tObj`:
+- `documents.tsx`, `mandate-form.tsx`, `iban-form.tsx`, `withdrawal-form.tsx`,
+  `claim-practice-form.tsx`, `invoice-download.tsx`, `final-docs.tsx`,
+  `profilo-client.tsx` (nuovo; page server sottile)
+- `empty.tsx` passa `claimLabels`
+- Pagine: documenti, mandato, dati, recesso, ordine, conclusa, profilo, dashboard,
+  comunicazioni (date `ar` / `it-IT`)
+- Nav labels da content; `nav-shared.ts` (icone string key, no Lucide cross RSC)
+- Errors: documenti/mandato/ordine/conclusa/dati/recesso actions + upload/delete
+  mandate/docs API usano `actionText("area_errors", …)`
+
+### Sito pubblico — FATTO (P0)
+- Quiz `preventivo-form.tsx` + page
+- `checkout-panel.tsx` + page + `checkout/conferma/page.tsx`
+- `contact-form.tsx`, `soft-lead.tsx` (+ grazie passa `fieldLabels`)
+- Navbar/footer aria lingua/menu via `chrome_ui`
+
+### Backlog i18n UI — CHIUSO in §8-quindecies
+Guide, contatti mappa, offline, catastale categorie, login/profilo/claim errors,
+auth callback, checkout residui, cookie banner.
+
+**Dati / prodotto** — inventario in §8-quindecies (non UI; non implementare ora).
+
+### Commit / push
+- **Non fatto.** Chiedere a Mauro prima di commit.
+- Diff grosso: principalmente `content_entries.it.json` / `.ar.json` + wiring locale.
+- Anche `seed/content_entries.it.json` modificato (allineare se serve seed).
+- Escludere sempre `bozza video/`.
+
+### Come verificare
+1. Dev `web/`: aprire sito con `?lang=ar` (o switcher → العربية)
+2. Percorso: home → preventivo → grazie → checkout; area riservata (docs, mandato, dati, profilo)
+3. Controllare `dir=rtl`, font arabo, niente bottoni IT nei form
+4. `cd web && npx tsc --noEmit`
+
+### Note tecniche utili
+- Cookie `lang`; CRM sempre IT/LTR
+- Border gold: se serve, `[border-color:var(--color-accent)]` (globale `*` border-color)
+- `buildAreaNavItems` vive in `nav-shared.ts` (non in client nav)
+- FAQ: `getFaqs(locale)` — non-IT da content `faq.items` prima del DB
+- Rimborsi 5–10 gg: già su `main` (`0c591f6`); copy area anche in `withdrawal_ui` / cancelled_*
+
+### Aperto non-i18n (da § precedenti)
+- [ ] ~20 recensioni GMB; Places sync opzionale
+- [ ] Video Come funziona (`bozza video/` fuori git) + integrazione
+- [ ] SMS/WhatsApp; QA cross-browser; Lenis
+- [ ] Check costi pacchetti con Lorenzo; test AI XML
+- Opzionale: RLS UPDATE `client_notifications` su `read_at`
+
+---
 
 ## 8-terdecies. Sessione 18/07 tarda mattina — recensioni Google + foto Pontedera
 

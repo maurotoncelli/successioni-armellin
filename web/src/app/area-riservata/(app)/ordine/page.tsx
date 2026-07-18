@@ -8,28 +8,101 @@ import { requireClientView } from "@/lib/area";
 import { isPracticeCancelled } from "@/content/area-data";
 import { getPackages } from "@/lib/cms";
 import { getSafeExtras } from "@/lib/practice-extras";
-
-const paymentLabels: Record<string, string> = {
-  PAID: "Pagato",
-  PENDING: "In attesa",
-  PARTIALLY_REFUNDED: "Rimborsato in parte",
-  REFUNDED: "Rimborsato",
-  NONE: "—",
-};
+import { getRequestLocale, t, tObj } from "@/lib/locale";
+import {
+  CLAIM_UI_IT,
+  INVOICE_UI_IT,
+  ORDINE_UI_IT,
+  fillTemplate,
+  type ClaimUiLabels,
+  type InvoiceUiLabels,
+  type OrdineUiLabels,
+} from "@/lib/area-ui-labels";
 
 export default async function OrdinePage() {
   const view = await requireClientView();
+  const [
+    title,
+    subtitle,
+    summaryLabel,
+    totalLabel,
+    noIva,
+    paymentStatusLabel,
+    methodLabel,
+    cardLabel,
+    transferLabel,
+    paidLabel,
+    pendingLabel,
+    partialLabel,
+    refundedLabel,
+    refundNote,
+    emptyTitle,
+    emptyBody,
+    ordineUi,
+    invoiceUi,
+    claimUi,
+  ] = await Promise.all([
+    t("area", "ordine_title", "Il tuo acquisto"),
+    t(
+      "area",
+      "ordine_subtitle",
+      "Cosa hai acquistato e cosa include. Puoi consultarlo quando vuoi.",
+    ),
+    t("area", "ordine_summary", "Riepilogo ordine"),
+    t("area", "ordine_total", "Totale onorario"),
+    t(
+      "area",
+      "ordine_no_iva",
+      "Onorario senza IVA (regime forfettario). Le imposte sono separate (vedi sotto).",
+    ),
+    t("area", "ordine_payment_status", "Stato pagamento"),
+    t("area", "ordine_method", "Metodo"),
+    t("area", "ordine_card", "Carta (online)"),
+    t("area", "ordine_transfer", "Bonifico"),
+    t("area", "ordine_paid", "Pagato"),
+    t("area", "ordine_pending", "In attesa"),
+    t("area", "ordine_partial", "Rimborsato in parte"),
+    t("area", "ordine_refunded", "Rimborsato"),
+    t(
+      "area",
+      "ordine_refund_note",
+      "Rimborso emesso: di norma lo vedi sulla carta entro 5-10 giorni lavorativi (tempi della tua banca o dell'emittente della carta).",
+    ),
+    t("area", "empty_title", "Nessuna pratica collegata a questo accesso"),
+    t(
+      "area",
+      "empty_body",
+      "Se hai già pagato un preventivo, collega la pratica con l'email usata al checkout. Altrimenti calcola un preventivo dal sito.",
+    ),
+    tObj<OrdineUiLabels>("area", "ordine_ui", ORDINE_UI_IT),
+    tObj<InvoiceUiLabels>("area", "invoice_ui", INVOICE_UI_IT),
+    tObj<ClaimUiLabels>("area", "claim_ui", CLAIM_UI_IT),
+  ]);
+
+  const paymentLabels: Record<string, string> = {
+    PAID: paidLabel,
+    PENDING: pendingLabel,
+    PARTIALLY_REFUNDED: partialLabel,
+    REFUNDED: refundedLabel,
+    NONE: "—",
+  };
+
   const p = view.practice;
   if (!p) {
     return (
       <div>
-        <PageHeading title="Il tuo acquisto" subtitle="Riepilogo ordine." />
-        <NoPracticeState defaultEmail={view.user.email ?? ""} />
+        <PageHeading title={title} subtitle={subtitle} />
+        <NoPracticeState
+          defaultEmail={view.user.email ?? ""}
+          title={emptyTitle}
+          body={emptyBody}
+          claimLabels={claimUi}
+        />
       </div>
     );
   }
 
-  const packages = await getPackages();
+  const packages = await getPackages(await getRequestLocale());
   const pkg = packages.find((x) => x.key === p.selectedPackage);
   const { invoice, iban } = await getSafeExtras(p.id);
   const cancelled = isPracticeCancelled(p);
@@ -37,15 +110,12 @@ export default async function OrdinePage() {
 
   return (
     <div>
-      <PageHeading
-        title="Il tuo acquisto"
-        subtitle="Cosa hai acquistato e cosa include. Puoi consultarlo quando vuoi."
-      />
+      <PageHeading title={title} subtitle={subtitle} />
 
       <div className="grid gap-6 md:grid-cols-2">
         {/* Riepilogo ordine */}
         <Card>
-          <h2 className="text-sm font-semibold text-text">Riepilogo ordine</h2>
+          <h2 className="text-sm font-semibold text-text">{summaryLabel}</h2>
           <div className="mt-3 space-y-2 text-sm">
             {p.lineItems.map((item, i) => (
               <div key={i} className="flex justify-between text-text-muted">
@@ -54,18 +124,15 @@ export default async function OrdinePage() {
               </div>
             ))}
             <div className="flex justify-between border-t border-primary/10 pt-2 font-semibold text-text">
-              <span>Totale onorario</span>
+              <span>{totalLabel}</span>
               <span>{p.price} €</span>
             </div>
           </div>
-          <p className="mt-3 text-xs text-text-muted">
-            Onorario senza IVA (regime forfettario). Le imposte sono
-            separate (vedi sotto).
-          </p>
+          <p className="mt-3 text-xs text-text-muted">{noIva}</p>
 
           <dl className="mt-4 space-y-2 border-t border-primary/10 pt-4 text-sm">
             <div className="flex justify-between">
-              <dt className="text-text-muted">Stato pagamento</dt>
+              <dt className="text-text-muted">{paymentStatusLabel}</dt>
               <dd className="font-medium text-success">
                 {paymentLabels[p.paymentStatus]}
               </dd>
@@ -73,40 +140,38 @@ export default async function OrdinePage() {
             {(p.paymentStatus === "REFUNDED" ||
               p.paymentStatus === "PARTIALLY_REFUNDED") && (
               <p className="text-xs leading-relaxed text-text-muted">
-                Rimborso emesso: di norma lo vedi sulla carta entro 5-10 giorni
-                lavorativi (tempi della tua banca o dell&apos;emittente della
-                carta).
+                {refundNote}
               </p>
             )}
             <div className="flex justify-between">
-              <dt className="text-text-muted">Metodo</dt>
+              <dt className="text-text-muted">{methodLabel}</dt>
               <dd className="font-medium text-text">
                 {p.paymentMethod === "STRIPE"
-                  ? "Carta (online)"
+                  ? cardLabel
                   : p.paymentMethod === "BANK_TRANSFER"
-                    ? "Bonifico"
+                    ? transferLabel
                     : "—"}
               </dd>
             </div>
           </dl>
 
           {invoice?.hasFile ? (
-            <InvoiceDownload number={invoice.number} />
+            <InvoiceDownload number={invoice.number} labels={invoiceUi} />
           ) : invoice ? (
             <p className="mt-4 text-sm text-text-muted">
-              Fattura n. {invoice.number} emessa. Il PDF sara disponibile a breve.
+              {fillTemplate(invoiceUi.issued_soon, { number: invoice.number })}
             </p>
           ) : (
-            <p className="mt-4 text-sm text-text-muted">
-              La fattura sara disponibile qui non appena emessa.
-            </p>
+            <p className="mt-4 text-sm text-text-muted">{invoiceUi.pending}</p>
           )}
         </Card>
 
         {/* Cosa include */}
         <Card>
           <h2 className="text-sm font-semibold text-text">
-            Cosa include {pkg ? `"${pkg.name}"` : "il pacchetto"}
+            {pkg
+              ? fillTemplate(ordineUi.includes_named, { name: pkg.name })
+              : ordineUi.includes_generic}
           </h2>
           {pkg ? (
             <ul className="mt-3 space-y-2">
@@ -119,7 +184,7 @@ export default async function OrdinePage() {
             </ul>
           ) : (
             <p className="mt-3 text-sm text-text-muted">
-              Dettaglio non disponibile.
+              {ordineUi.includes_missing}
             </p>
           )}
         </Card>
@@ -132,45 +197,46 @@ export default async function OrdinePage() {
             <Landmark className="h-5 w-5" />
           </span>
           <div className="flex-1">
-            <h2 className="text-sm font-semibold text-text">Imposte</h2>
+            <h2 className="text-sm font-semibold text-text">
+              {ordineUi.taxes_title}
+            </h2>
             {p.stateTaxes ? (
               <>
                 <p className="mt-1 text-2xl font-semibold text-text">
                   {p.stateTaxes} €
                 </p>
                 <p className="mt-1 text-sm text-text-muted">
-                  Queste somme <strong>non sono il nostro onorario</strong>: sono
-                  imposte che si versano allo Stato (modello F24, autoliquidazione).
-                  Te le calcoliamo e comunichiamo prima dell&apos;invio.
+                  {ordineUi.taxes_body}
                 </p>
                 {needsIban ? (
                   <div className="mt-3 rounded-[10px] border border-accent/30 bg-sand/60 p-3">
                     <p className="text-sm text-text">
-                      Per l&apos;addebito delle imposte serve il tuo IBAN.
+                      {ordineUi.taxes_need_iban}
                     </p>
                     <Link
                       href="/area-riservata/dati"
                       className="mt-2 inline-flex text-sm font-semibold text-accent-dark hover:underline"
                     >
-                      Inserisci l&apos;IBAN ora →
+                      {ordineUi.taxes_iban_cta}
                     </Link>
                   </div>
                 ) : iban && !cancelled ? (
                   <p className="mt-2 text-sm text-text-muted">
-                    IBAN registrato (•••• {iban.last4}).{" "}
+                    {fillTemplate(ordineUi.taxes_iban_saved, {
+                      last4: iban.last4,
+                    })}{" "}
                     <Link
                       href="/area-riservata/dati"
                       className="font-medium text-accent-dark hover:underline"
                     >
-                      Modifica
+                      {ordineUi.taxes_iban_edit}
                     </Link>
                   </p>
                 ) : null}
               </>
             ) : (
               <p className="mt-1 text-sm text-text-muted">
-                Le imposte ti verranno calcolate e comunicate prima
-                dell&apos;invio.
+                {ordineUi.taxes_pending}
               </p>
             )}
           </div>
@@ -181,12 +247,12 @@ export default async function OrdinePage() {
       {!cancelled && (
         <div className="mt-6 text-center">
           <p className="text-sm text-text-muted">
-            Hai cambiato idea?{" "}
+            {ordineUi.withdrawal_prompt}{" "}
             <Link
               href="/area-riservata/recesso"
               className="font-medium text-accent-dark hover:underline"
             >
-              Richiedi il recesso
+              {ordineUi.withdrawal_cta}
             </Link>
           </p>
         </div>

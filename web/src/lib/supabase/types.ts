@@ -164,6 +164,8 @@ export type ProfileRow = {
   role: RoleKey;
   notify_email: boolean;
   notify_whatsapp: boolean;
+  /** Lingua comunicazioni scritte (it|ar), distinta dalla UI. */
+  comms_locale: string;
   comms_seen_at: string | null;
   created_at: string;
   updated_at: string;

@@ -1,4 +1,4 @@
-import { list } from "@/lib/content";
+import { tList } from "@/lib/locale";
 import {
   IconTrustAlbo,
   IconTrustEntratel,
@@ -17,8 +17,8 @@ const trustIcons = [
   IconTrustSsl,
 ] as const;
 
-export function TrustBar() {
-  const items = list<string>("home", "trustbar_items");
+export async function TrustBar() {
+  const items = await tList<string>("home", "trustbar_items");
   if (items.length === 0) return null;
 
   return (

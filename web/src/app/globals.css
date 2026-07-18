@@ -22,6 +22,8 @@
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-lora), ui-serif, Georgia, serif;
   --font-display: var(--font-playfair), ui-serif, Georgia, serif;
+  --font-arabic: var(--font-noto-arabic), "Noto Sans Arabic", ui-sans-serif,
+    sans-serif;
 
   --radius-sm: 6px;
   --radius-md: 10px;
@@ -73,6 +75,17 @@ body {
   font-family: var(--font-sans);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Arabo: Noto Sans Arabic per corpo e titoli (Playfair/Lora non hanno glifi RTL). */
+html[lang="ar"] body,
+html[lang="ar"] body h1,
+html[lang="ar"] body h2,
+html[lang="ar"] body h3,
+html[lang="ar"] body h4,
+html[lang="ar"] .font-display,
+html[lang="ar"] .font-serif {
+  font-family: var(--font-arabic), "Noto Sans Arabic", ui-sans-serif, sans-serif;
   text-rendering: optimizeLegibility;
 }
 

@@ -10,6 +10,13 @@ import {
 } from "@/content/site";
 import { articles as fixtureArticles, type Article } from "@/content/articles";
 import type { PackageRow, AddonRow, FaqRow } from "@/lib/supabase/types";
+import { DEFAULT_LOCALE, list } from "@/lib/content";
+import {
+  applyAddonI18n,
+  applyPackageI18n,
+  getPackagesI18nState,
+} from "@/lib/packages-i18n";
+import { applyArticleI18n, applyArticlesI18n } from "@/lib/articles-i18n";
 
 /*
   Layer di accesso ai contenuti CMS (pacchetti, add-on, FAQ).
@@ -60,7 +67,7 @@ function mapFaq(row: FaqRow): Faq {
   };
 }
 
-export async function getPackages(): Promise<Package[]> {
+async function fetchPackagesIt(): Promise<Package[]> {
   if (!isSupabaseConfigured) return fixturePackages;
   try {
     const { data, error } = await getPublicClient()
@@ -77,7 +84,7 @@ export async function getPackages(): Promise<Package[]> {
   }
 }
 
-export async function getAddons(): Promise<Addon[]> {
+async function fetchAddonsIt(): Promise<Addon[]> {
   if (!isSupabaseConfigured) return fixtureAddons;
   try {
     // IMPORTANTE: la RLS pubblica vede SOLO is_active=true. Se Lorenzo spegne
@@ -100,21 +107,89 @@ export async function getAddons(): Promise<Addon[]> {
   }
 }
 
-export async function getFaqs(): Promise<Faq[]> {
-  if (!isSupabaseConfigured) return fixtureFaqs;
+/**
+ * Pacchetti pubblici. `locale` ≠ IT: overlay traduzioni da Storage
+ * (`_packages-i18n.json`) con fallback IT.
+ */
+export async function getPackages(
+  locale: string = DEFAULT_LOCALE,
+): Promise<Package[]> {
+  const base = await fetchPackagesIt();
+  if (locale === DEFAULT_LOCALE) return base;
+  const i18n = await getPackagesI18nState();
+  return base.map((pkg) => applyPackageI18n(pkg, locale, i18n));
+}
+
+/**
+ * Add-on pubblici. Stesso overlay i18n dei pacchetti.
+ */
+export async function getAddons(
+  locale: string = DEFAULT_LOCALE,
+): Promise<Addon[]> {
+  const base = await fetchAddonsIt();
+  if (locale === DEFAULT_LOCALE) return base;
+  const i18n = await getPackagesI18nState();
+  return base.map((addon) => applyAddonI18n(addon, locale, i18n));
+}
+
+/**
+ * FAQ pubbliche per locale.
+ * - IT: DB (CRM listino) → content `faq.items` → fixture
+ * - altre lingue: content `faq.items` → DB locale → fallback IT
+ * Così le traduzioni (es. arabo) vivono nel content senza duplicare
+ * subito tutte le righe nel CRM, e Lorenzo continua a editare l'IT dal listino.
+ */
+export async function getFaqs(locale: string = "it"): Promise<Faq[]> {
+  if (locale === "it") {
+    const fromDb = await fetchFaqsFromDb("it");
+    if (fromDb.length > 0) return fromDb;
+    const fromContent = listFaqItems("it");
+    if (fromContent.length > 0) return fromContent;
+    return fixtureFaqs;
+  }
+
+  const fromContent = listFaqItems(locale);
+  if (fromContent.length > 0) return fromContent;
+
+  const fromDb = await fetchFaqsFromDb(locale);
+  if (fromDb.length > 0) return fromDb;
+
+  const itDb = await fetchFaqsFromDb("it");
+  if (itDb.length > 0) return itDb;
+  const itContent = listFaqItems("it");
+  if (itContent.length > 0) return itContent;
+  return fixtureFaqs;
+}
+
+function listFaqItems(locale: string): Faq[] {
+  const items = list<{
+    question?: string;
+    answer?: string;
+    category?: string;
+  }>("faq", "items", locale);
+  return items
+    .filter((x) => x.question && x.answer)
+    .map((x) => ({
+      question: x.question!,
+      answer: x.answer!,
+      category: x.category ?? "",
+    }));
+}
+
+async function fetchFaqsFromDb(locale: string): Promise<Faq[]> {
+  if (!isSupabaseConfigured) return [];
   try {
     const { data, error } = await getPublicClient()
       .from("faqs")
       .select("*")
       .eq("is_published", true)
-      .eq("locale", "it")
+      .eq("locale", locale)
       .order("sort_order", { ascending: true });
     if (error) throw error;
-    if (!data || data.length === 0) return fixtureFaqs;
-    return data.map(mapFaq);
+    return (data ?? []).map(mapFaq);
   } catch (err) {
-    console.error("[cms] getFaqs fallback su fixture:", err);
-    return fixtureFaqs;
+    console.error("[cms] fetchFaqsFromDb:", locale, err);
+    return [];
   }
 }
 
@@ -123,6 +198,7 @@ export async function getFaqs(): Promise<Faq[]> {
   Fonte attuale: fixture locali (`@/content/articles`). In Fase 4 diventeranno
   una tabella Supabase `articles` con identica forma: l'accesso resta qui, cosi
   le pagine non cambiano. Ordinati per data (in evidenza prima, poi recenti).
+  Locale ≠ IT: overlay AR (articles.ar.ts) + categoria da guide.categorie.
 */
 function sortArticles(items: Article[]): Article[] {
   return [...items].sort((a, b) => {
@@ -131,12 +207,19 @@ function sortArticles(items: Article[]): Article[] {
   });
 }
 
-export async function getArticles(): Promise<Article[]> {
-  return sortArticles(fixtureArticles);
+export async function getArticles(
+  locale: string = DEFAULT_LOCALE,
+): Promise<Article[]> {
+  return applyArticlesI18n(sortArticles(fixtureArticles), locale);
 }
 
-export async function getArticle(slug: string): Promise<Article | null> {
-  return fixtureArticles.find((a) => a.slug === slug) ?? null;
+export async function getArticle(
+  slug: string,
+  locale: string = DEFAULT_LOCALE,
+): Promise<Article | null> {
+  const base = fixtureArticles.find((a) => a.slug === slug);
+  if (!base) return null;
+  return applyArticleI18n(base, locale);
 }
 
 /* Articoli correlati: prima quelli indicati esplicitamente, poi stessa
@@ -144,6 +227,7 @@ export async function getArticle(slug: string): Promise<Article | null> {
 export async function getRelatedArticles(
   slug: string,
   limit = 3,
+  locale: string = DEFAULT_LOCALE,
 ): Promise<Article[]> {
   const current = fixtureArticles.find((a) => a.slug === slug);
   if (!current) return [];
@@ -167,7 +251,7 @@ export async function getRelatedArticles(
       }
     }
   }
-  return picked.slice(0, limit);
+  return applyArticlesI18n(picked.slice(0, limit), locale);
 }
 
 /*

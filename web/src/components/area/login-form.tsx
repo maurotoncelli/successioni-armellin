@@ -258,7 +258,7 @@ export function LoginForm({ locale }: { locale: string }) {
                 ) : (
                   <>
                     {t("email_cta", "Inviami il link di accesso")}
-                    <ArrowRight className="h-4 w-4" />
+                    <ArrowRight className="h-4 w-4 rtl:rotate-180" />
                   </>
                 )}
               </button>
@@ -389,7 +389,7 @@ export function LoginForm({ locale }: { locale: string }) {
                 ) : (
                   <>
                     {t("phone_cta", "Inviami il codice via SMS")}
-                    <ArrowRight className="h-4 w-4" />
+                    <ArrowRight className="h-4 w-4 rtl:rotate-180" />
                   </>
                 )}
               </button>
@@ -462,7 +462,7 @@ export function LoginForm({ locale }: { locale: string }) {
                 ) : (
                   <>
                     {t("password_cta", "Accedi")}
-                    <ArrowRight className="h-4 w-4" />
+                    <ArrowRight className="h-4 w-4 rtl:rotate-180" />
                   </>
                 )}
               </button>

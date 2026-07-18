@@ -59,15 +59,23 @@ export function emailLayout(opts: {
   bodyHtml: string;
   ctaLabel?: string;
   ctaHref?: string;
+  /** Lingua comunicazioni: ar → dir=rtl + footer cortesia. */
+  locale?: string;
 }): string {
+  const ar = opts.locale === "ar";
+  const dir = ar ? "rtl" : "ltr";
+  const lang = ar ? "ar" : "it";
+  const footer = ar
+    ? "Geom. Lorenzo Armellin · أُرسلت هذه الرسالة تلقائيًا؛ يمكنك الرد للتواصل معنا. (ترجمة تلقائية للتيسير — المستندات الرسمية بالإيطالية.)"
+    : "Geom. Lorenzo Armellin · Questo messaggio e stato inviato automaticamente, puoi rispondere per contattarci.";
   const cta =
     opts.ctaLabel && opts.ctaHref
       ? `<tr><td style="padding:8px 0 24px">
            <a href="${opts.ctaHref}" style="display:inline-block;background:#1f6f5c;color:#fff;text-decoration:none;padding:12px 22px;border-radius:10px;font-weight:600">${opts.ctaLabel}</a>
          </td></tr>`
       : "";
-  return `<!doctype html><html><body style="margin:0;background:#f4f5f3;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#1a1f1c">
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f5f3;padding:24px 0">
+  return `<!doctype html><html lang="${lang}" dir="${dir}"><body style="margin:0;background:#f4f5f3;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#1a1f1c" dir="${dir}">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f5f3;padding:24px 0" dir="${dir}">
       <tr><td align="center">
         <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#fff;border-radius:14px;overflow:hidden;border:1px solid #e6e8e4">
           <tr><td style="background:#1f6f5c;padding:18px 28px;color:#fff;font-weight:700;font-size:16px">Successioni Armellin</td></tr>
@@ -79,7 +87,7 @@ export function emailLayout(opts: {
             </table>
           </td></tr>
           <tr><td style="padding:18px 28px;background:#fafbf9;border-top:1px solid #eef0ec;font-size:12px;color:#8a938c">
-            Geom. Lorenzo Armellin · Questo messaggio e stato inviato automaticamente, puoi rispondere per contattarci.
+            ${footer}
           </td></tr>
         </table>
       </td></tr>

@@ -1,36 +1,4772 @@
 {
   "_meta": {
-    "purpose": "Traduzione parziale (prep multilingua). Contiene solo la collection 'area_login'. Tutte le altre chiavi ricadono sull'italiano (IT fa fede). Lingua RTL.",
+    "purpose": "ترجمة عربية بالذكاء الاصطناعي لمحتوى الموقع العام (اختبار). مستمدة من content_entries.it.json؛ IT يبقى المرجع. مخصّصة للمتحدثين بالعربية المقيمين في إيطاليا.",
     "locale": "ar",
-    "version": 1,
-    "updated_at": "2026-06-22"
+    "schema": "ogni entry: { collection, key, locale, value, is_published }. value tipizzato secondo SPEC_Content_Blocks (string|richtext|bool|cta{label,href}|image_ref{asset_key}|list|object).",
+    "exclusions": "NON inclusi i contenuti data-driven gestiti in tabelle dedicate: packages, addons, faqs (Q&A), articles, document_catalog, media_assets (qui solo asset_key di riferimento).",
+    "version": 2,
+    "updated_at": "2026-07-18"
   },
   "entries": [
-    { "collection": "area_login", "key": "header_title", "locale": "ar", "is_published": true, "value": "المنطقة الخاصة" },
-    { "collection": "area_login", "key": "header_subtitle", "locale": "ar", "is_published": true, "value": "سجّل الدخول لمتابعة ملف الميراث الخاص بك." },
-    { "collection": "area_login", "key": "tab_email", "locale": "ar", "is_published": true, "value": "البريد الإلكتروني" },
-    { "collection": "area_login", "key": "tab_phone", "locale": "ar", "is_published": true, "value": "الهاتف" },
-    { "collection": "area_login", "key": "email_label", "locale": "ar", "is_published": true, "value": "بريدك الإلكتروني" },
-    { "collection": "area_login", "key": "email_hint", "locale": "ar", "is_published": true, "value": "استخدم البريد الإلكتروني الذي دفعت به." },
-    { "collection": "area_login", "key": "email_cta", "locale": "ar", "is_published": true, "value": "أرسل لي رابط الدخول" },
-    { "collection": "area_login", "key": "email_sending", "locale": "ar", "is_published": true, "value": "جارٍ الإرسال…" },
-    { "collection": "area_login", "key": "phone_label", "locale": "ar", "is_published": true, "value": "رقم هاتفك" },
-    { "collection": "area_login", "key": "phone_hint", "locale": "ar", "is_published": true, "value": "استخدم الرقم الذي طلبت به. سنرسل لك رمزًا عبر الرسائل القصيرة." },
-    { "collection": "area_login", "key": "phone_cta", "locale": "ar", "is_published": true, "value": "أرسل الرمز عبر الرسائل القصيرة" },
-    { "collection": "area_login", "key": "phone_sending", "locale": "ar", "is_published": true, "value": "جارٍ الإرسال…" },
-    { "collection": "area_login", "key": "sent_email_title", "locale": "ar", "is_published": true, "value": "تحقق من بريدك الإلكتروني" },
-    { "collection": "area_login", "key": "sent_email_body", "locale": "ar", "is_published": true, "value": "لقد أرسلنا رابط الدخول إلى {contact}. ينتهي الرابط خلال دقائق قليلة." },
-    { "collection": "area_login", "key": "sent_phone_title", "locale": "ar", "is_published": true, "value": "تحقق من رسائلك القصيرة" },
-    { "collection": "area_login", "key": "sent_phone_body", "locale": "ar", "is_published": true, "value": "لقد أرسلنا رمزًا من 6 أرقام إلى {contact}. أدخله بالأسفل." },
-    { "collection": "area_login", "key": "otp_toggle", "locale": "ar", "is_published": true, "value": "لقد استلمت رمزًا، أدخله" },
-    { "collection": "area_login", "key": "otp_label", "locale": "ar", "is_published": true, "value": "رمز من 6 أرقام" },
-    { "collection": "area_login", "key": "otp_cta", "locale": "ar", "is_published": true, "value": "تأكيد الرمز" },
-    { "collection": "area_login", "key": "otp_verifying", "locale": "ar", "is_published": true, "value": "جارٍ التحقق…" },
-    { "collection": "area_login", "key": "resend", "locale": "ar", "is_published": true, "value": "إعادة الإرسال" },
-    { "collection": "area_login", "key": "error_link", "locale": "ar", "is_published": true, "value": "رابط الدخول غير صالح أو منتهي الصلاحية. اطلب رابطًا جديدًا." },
-    { "collection": "area_login", "key": "secure_note", "locale": "ar", "is_published": true, "value": "دخول آمن" },
-    { "collection": "area_login", "key": "back_to_site", "locale": "ar", "is_published": true, "value": "العودة إلى الموقع" },
-    { "collection": "area_login", "key": "privacy_link", "locale": "ar", "is_published": true, "value": { "label": "الخصوصية", "href": "/privacy" } },
-    { "collection": "area_login", "key": "termini_link", "locale": "ar", "is_published": true, "value": { "label": "الشروط", "href": "/termini-condizioni" } }
+    {
+      "collection": "navbar",
+      "key": "menu",
+      "locale": "ar",
+      "is_published": true,
+      "value": [
+        {
+          "label": "كيف يعمل",
+          "href": "/come-funziona"
+        },
+        {
+          "label": "الأسعار",
+          "href": "/tariffe"
+        },
+        {
+          "label": "من أنا",
+          "href": "/chi-sono"
+        },
+        {
+          "label": "أدلة",
+          "href": "/guide"
+        },
+        {
+          "label": "الأسئلة الشائعة",
+          "href": "/faq"
+        },
+        {
+          "label": "تواصل معنا",
+          "href": "/contatti"
+        }
+      ]
+    },
+    {
+      "collection": "navbar",
+      "key": "brand_tagline",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تركات"
+    },
+    {
+      "collection": "navbar",
+      "key": "logo",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "asset_key": "logo_studio"
+      }
+    },
+    {
+      "collection": "navbar",
+      "key": "cta",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "احسب العرض مجانًا",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "navbar",
+      "key": "cta_phone",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "تحدّث مع Lorenzo",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "navbar",
+      "key": "lang_switcher",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "enabled": true,
+        "locales": [
+          "it",
+          "en",
+          "ar",
+          "de",
+          "es",
+          "ru",
+          "tr",
+          "zh",
+          "hi",
+          "sq",
+          "fr"
+        ]
+      }
+    },
+    {
+      "collection": "globals",
+      "key": "mobile_cta",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "احسب العرض مجانًا",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "footer",
+      "key": "studio",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "ragione_sociale": "Geom. Lorenzo Armellin",
+        "forma_giuridica": "مؤسسة فردية - نظام جزافي (عملية بدون ضريبة القيمة المضافة، المادة 1 الفقرات 54-89 من القانون 190/2014)",
+        "piva": "02432220503",
+        "cf": "RMLLNZ90E27G843J",
+        "albo": "نقابة المساحين والمساحين الحاصلين على شهادات جامعية في بيزا، رقم 1969 - مسجّل منذ 21/01/2022",
+        "indirizzo": "Via Vittorio Veneto 31, 56025 Pontedera (PI)"
+      }
+    },
+    {
+      "collection": "footer",
+      "key": "trust_line",
+      "locale": "ar",
+      "is_published": true,
+      "value": "مساح معتمد Entratel - بإشراف ضريبي من محاسبين قانونيين"
+    },
+    {
+      "collection": "footer",
+      "key": "area_app_note",
+      "locale": "ar",
+      "is_published": true,
+      "value": "يتيح هذا الموقع إدارة ملف الميراث عبر الإنترنت: في المنطقة الشخصية يتابع العملاء حالة الملف، ويحمّلون المستندات المطلوبة ويوقّعون التفويض. يتم الدخول بالبريد الإلكتروني أو الهاتف أو حساب Google: من حساب Google نستخدم الاسم وعنوان البريد فقط للتعرّف عليك، ولا نقرأ أو نشارك أي بيانات أخرى. التفاصيل في"
+    },
+    {
+      "collection": "footer",
+      "key": "odr",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "حل النزاعات عبر الإنترنت (ODR)",
+        "href": "https://ec.europa.eu/consumers/odr"
+      }
+    },
+    {
+      "collection": "footer",
+      "key": "legal_menu",
+      "locale": "ar",
+      "is_published": true,
+      "value": [
+        {
+          "label": "الخصوصية",
+          "href": "/privacy"
+        },
+        {
+          "label": "سياسة ملفات تعريف الارتباط",
+          "href": "/cookie-policy"
+        },
+        {
+          "label": "الشروط والأحكام",
+          "href": "/termini-condizioni"
+        },
+        {
+          "label": "الضمان",
+          "href": "/garanzia"
+        },
+        {
+          "label": "حق الانسحاب",
+          "href": "/recesso"
+        }
+      ]
+    },
+    {
+      "collection": "footer",
+      "key": "credit",
+      "locale": "ar",
+      "is_published": true,
+      "value": "من إعداد AT STUDIO · Mauro Toncelli"
+    },
+    {
+      "collection": "footer",
+      "key": "strumenti_link",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "حساب القيمة العقارية",
+        "href": "/strumenti/valore-catastale"
+      }
+    },
+    {
+      "collection": "settings",
+      "key": "phone",
+      "locale": "ar",
+      "is_published": true,
+      "value": "320 1570567"
+    },
+    {
+      "collection": "settings",
+      "key": "area_label",
+      "locale": "ar",
+      "is_published": true,
+      "value": "المنطقة الشخصية"
+    },
+    {
+      "collection": "settings",
+      "key": "whatsapp",
+      "locale": "ar",
+      "is_published": true,
+      "value": "https://wa.me/393201570567"
+    },
+    {
+      "collection": "settings",
+      "key": "email",
+      "locale": "ar",
+      "is_published": true,
+      "value": "studio@successioniarmellin.it"
+    },
+    {
+      "collection": "settings",
+      "key": "pec",
+      "locale": "ar",
+      "is_published": true,
+      "value": "lorenzo.armellin@geopec.it"
+    },
+    {
+      "collection": "settings",
+      "key": "review_url",
+      "locale": "ar",
+      "is_published": true,
+      "value": "https://g.page/r/CVRoWf5CoiTDEAE/review"
+    },
+    {
+      "collection": "settings",
+      "key": "address",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "via": "Via Vittorio Veneto 31",
+        "cap": "56025",
+        "citta": "Pontedera (PI)"
+      }
+    },
+    {
+      "collection": "settings",
+      "key": "opening_hours",
+      "locale": "ar",
+      "is_published": true,
+      "value": [
+        {
+          "giorni": "الإثنين–الجمعة",
+          "orario": "9:00-13:00 / 14:30-18:30"
+        },
+        {
+          "giorni": "السبت–الأحد",
+          "orario": "مغلق"
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "hero_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "ملف الميراث الخاص بك، دون مغادرة المنزل."
+    },
+    {
+      "collection": "home",
+      "key": "hero_subtitle",
+      "locale": "ar",
+      "is_published": true,
+      "value": "يتولى ذلك Geom. Lorenzo Armellin، المتخصص في المواريث: سعر واضح، كل شيء عبر الإنترنت (وإن رغبت أيضًا شخصيًا)، وشخص حقيقي يتابعك. نحسب الضرائب نحن، قبل أن تدفع."
+    },
+    {
+      "collection": "home",
+      "key": "hero_cta_primary",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "احسب العرض مجانًا",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "hero_cta_secondary",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "اكتشف كيف يعمل",
+        "href": "#come-funziona"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "hero_image",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "asset_key": "hero_home"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "hero_specialization_badge",
+      "locale": "ar",
+      "is_published": true,
+      "value": "المساح المتخصص في المواريث"
+    },
+    {
+      "collection": "home",
+      "key": "trustbar_items",
+      "locale": "ar",
+      "is_published": true,
+      "value": [
+        "مساح مسجّل في النقابة",
+        "معتمد Entratel (إرسال إلكتروني إلى Agenzia delle Entrate)",
+        "إشراف ضريبي من محاسبين قانونيين",
+        "مدفوعات آمنة عبر Stripe",
+        "متوافق مع GDPR",
+        "SSL"
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "social_proof_stats",
+      "locale": "ar",
+      "is_published": false,
+      "value": [
+        {
+          "valore": "أكثر من X",
+          "label": "ملفات ميراث تمت متابعتها"
+        },
+        {
+          "valore": "X سنوات",
+          "label": "من الخبرة"
+        },
+        {
+          "valore": "4,X/5",
+          "label": "متوسط تقييم Google"
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "problema_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "ميراث واحد، ألف سؤال. نرفعه عن كاهلك."
+    },
+    {
+      "collection": "home",
+      "key": "problema_intro",
+      "locale": "ar",
+      "is_published": true,
+      "value": "نعلم أنه يأتي في لحظة صعبة. البيروقراطية نتولاها نحن."
+    },
+    {
+      "collection": "home",
+      "key": "problema_vantaggi",
+      "locale": "ar",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "بدون طوابير",
+          "testo": "أنجز كل شيء من المنزل، حتى من الهاتف."
+        },
+        {
+          "titolo": "بدون أخطاء وغرامات",
+          "testo": "مراجعة فنية لبيانات السجل العقاري من مساح معتمد."
+        },
+        {
+          "titolo": "مساعدة بشرية",
+          "testo": "تتحدث دائمًا مع شخص حقيقي، وليس مع روبوت."
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_eyebrow",
+      "locale": "ar",
+      "is_published": true,
+      "value": "بسيط"
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "كيف يعمل، في 3 خطوات"
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_steps",
+      "locale": "ar",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "أجب عن بضعة أسئلة",
+          "testo": "نخبرك فورًا بما تحتاجه وكم يكلف.",
+          "immagine": {
+            "src": "/images/come-funziona-step-1-quiz.jpg",
+            "alt": "شخص أمام الحاسوب يجيب عن أسئلة العرض عبر الإنترنت"
+          }
+        },
+        {
+          "titolo": "حمّل المستندات",
+          "testo": "من منطقتك الشخصية، حتى من الصور. نعطيك القائمة الدقيقة.",
+          "immagine": {
+            "src": "/images/come-funziona-step-2-documenti.jpg",
+            "alt": "شخص يصوّر مستندًا بالهاتف الذكي"
+          }
+        },
+        {
+          "titolo": "نتولى كل شيء",
+          "testo": "نُعدّ ونرسل التصريح؛ وأنت تستلم الإيصالات.",
+          "immagine": {
+            "src": "/images/come-funziona-step-3-lorenzo.jpg",
+            "alt": "Geom. Lorenzo Armellin أمام الحاسوب أثناء إعداد الملف"
+          }
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_sla_note",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الإرسال خلال 10-15 يوم عمل (حسب الباقة) من استلام جميع المستندات الكاملة."
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "ما هو Successioni Armellin"
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "Successioni Armellin هو التطبيق الويب لمكتب Geom. Lorenzo Armellin لإدارة تصريح الميراث عبر الإنترنت: تحسب عرض سعر بسعر واضح، وتدفع بأمان بالبطاقة، وفي منطقتك الشخصية تحمّل المستندات المطلوبة، وتوقّع التفويض، وتتابع الملف خطوة بخطوة حتى الإرسال إلى Agenzia delle Entrate (وكالة الضرائب الإيطالية). للدخول إلى المنطقة الشخصية يمكنك استخدام بريدك الإلكتروني أو هاتفك أو حساب Google: في هذه الحالة نستخدم حصريًا اسمك وعنوان بريدك لإنشاء ملفك الشخصي والتعرّف عليه، ولا يُقرأ أو يُشارك أي بيان آخر من حسابك."
+    },
+    {
+      "collection": "home",
+      "key": "tariffe_eyebrow",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الأسعار"
+    },
+    {
+      "collection": "home",
+      "key": "tariffe_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أسعار واضحة، بلا مفاجآت"
+    },
+    {
+      "collection": "home",
+      "key": "tariffe_intro",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تدفع أتعابًا ثابتة. الضرائب منفصلة، على عاتق الوارث، ونحسبها نحن."
+    },
+    {
+      "collection": "home",
+      "key": "tariffe_cta",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "اطلع على الباقات",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "faidate_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "يمكن القيام بذلك وحدك على موقع Agenzia delle Entrate. فلماذا نحن؟"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_col_us",
+      "locale": "ar",
+      "is_published": true,
+      "value": "معنا"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_col_diy",
+      "locale": "ar",
+      "is_published": true,
+      "value": "افعلها بنفسك"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_col_corner",
+      "locale": "ar",
+      "is_published": true,
+      "value": "مقارنة"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_intro",
+      "locale": "ar",
+      "is_published": true,
+      "value": "صحيح، يوجد تصريح ميراث مملوء مسبقًا مجانًا: خيار نزيه. لكنه يتطلب SPID وخبرة، ولا يتحقق من البيانات، والأخطاء (والغرامات) تبقى على عاتقك."
+    },
+    {
+      "collection": "home",
+      "key": "faidate_confronto",
+      "locale": "ar",
+      "is_published": true,
+      "value": [
+        {
+          "voce": "الوقت المطلوب",
+          "faidate": "ساعات وSPID على عاتقك",
+          "noi": "نتولاه نحن"
+        },
+        {
+          "voce": "مراجعة بيانات السجل العقاري",
+          "faidate": "على عاتقك",
+          "noi": "يتولاها مساح"
+        },
+        {
+          "voce": "حساب الضرائب",
+          "faidate": "وحدك",
+          "noi": "نحسبها نحن، مسبقًا"
+        },
+        {
+          "voce": "المساعدة",
+          "faidate": "لا توجد",
+          "noi": "شخص حقيقي"
+        },
+        {
+          "voce": "خطر الغرامات",
+          "faidate": "عليك",
+          "noi": "مُدار"
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "ماذا يقول العملاء"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_intro",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تقييمات حقيقية من Google."
+    },
+    {
+      "collection": "home",
+      "key": "chisono_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "من يتولى ملفك"
+    },
+    {
+      "collection": "home",
+      "key": "chisono_estratto",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أنا Lorenzo Armellin، مساح معتمد لإرسال تصاريح الميراث إلى Agenzia delle Entrate. بإشراف ضريبي من محاسبين قانونيين، أجمع بين الدقة في بيانات السجل العقاري والأمان في الأرقام."
+    },
+    {
+      "collection": "home",
+      "key": "chisono_video",
+      "locale": "ar",
+      "is_published": false,
+      "value": {
+        "asset_key": "video_benvenuto_lorenzo"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "chisono_cta",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "تعرّف على Lorenzo",
+        "href": "/chi-sono"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "faq_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الأسئلة الشائعة"
+    },
+    {
+      "collection": "home",
+      "key": "faq_cta",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "جميع الأسئلة",
+        "href": "/faq"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "cta_finale_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "هل أنت مستعد لرفع الهمّ عن كاهلك؟"
+    },
+    {
+      "collection": "home",
+      "key": "cta_finale_subtitle",
+      "locale": "ar",
+      "is_published": true,
+      "value": "عرض مجاني خلال دقائق. راضٍ أو نسترد المبلغ."
+    },
+    {
+      "collection": "home",
+      "key": "cta_finale_button",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "احسب العرض مجانًا",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "cta_finale_phone",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "أو اتصل بـ Lorenzo",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "hero_eyebrow",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أسعار واضحة"
+    },
+    {
+      "collection": "tariffe",
+      "key": "hero_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أسعار واضحة. ما تراه هو ما تدفعه."
+    },
+    {
+      "collection": "tariffe",
+      "key": "hero_subtitle",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أتعاب ثابتة لكل باقة، تُحدَّد مسبقًا. الضرائب منفصلة ونحسبها نحن. للحالات الخاصة، عرض مخصّص."
+    },
+    {
+      "collection": "tariffe",
+      "key": "card_badge_popolare",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الأكثر اختيارًا"
+    },
+    {
+      "collection": "tariffe",
+      "key": "box_trasparenza_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "ممّ يتكوّن السعر"
+    },
+    {
+      "collection": "tariffe",
+      "key": "box_trasparenza_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "سعر الباقة هو الأتعاب المهنية بدون ضريبة القيمة المضافة: يعمل المكتب بنظام جزافي (عملية غير خاضعة لضريبة القيمة المضافة). ضرائب الميراث (الرهن العقاري، السجل العقاري، الطوابع) منفصلة، على عاتق الوارث، وتُدفع عبر F24: نحسبها ونُبلغك بها قبل الإرسال."
+    },
+    {
+      "collection": "tariffe",
+      "key": "sovrapprezzo_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "متى قد يتغيّر السعر (نخبرك مسبقًا)"
+    },
+    {
+      "collection": "tariffe",
+      "key": "sovrapprezzo_list",
+      "locale": "ar",
+      "is_published": false,
+      "value": [
+        {
+          "voce": "عقار إضافي",
+          "importo": "+60 EUR للواحد (للتأكيد)"
+        },
+        {
+          "voce": "أراضٍ/ملحقات زراعية",
+          "importo": "حسب التعقيد"
+        },
+        {
+          "voce": "ورثة فوق الحد القياسي",
+          "importo": "حسب التعقيد"
+        }
+      ]
+    },
+    {
+      "collection": "tariffe",
+      "key": "sla_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "مواعيد التسليم"
+    },
+    {
+      "collection": "tariffe",
+      "key": "sla_note",
+      "locale": "ar",
+      "is_published": true,
+      "value": "كل باقة تشير إلى إرسال التصريح خلال عدد محدد من أيام العمل من اكتمال المستندات (وليس من الدفع): هكذا يكون وعدًا يمكننا حقًا الوفاء به. تُستثنى أوقات الجهات الثالثة (الوكالة، السجل العقاري، البنوك)."
+    },
+    {
+      "collection": "tariffe",
+      "key": "deliverable_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "ما تستلمه في نهاية الملف"
+    },
+    {
+      "collection": "tariffe",
+      "key": "deliverable_list",
+      "locale": "ar",
+      "is_published": true,
+      "value": [
+        "إيصال التقديم/التسجيل من الوكالة",
+        "نسخة من تصريح الميراث",
+        "شهادة / نتيجة F24",
+        "نتيجة نقل الملكية في السجل العقاري (حيث ينطبق)",
+        "فاتورتنا"
+      ]
+    },
+    {
+      "collection": "tariffe",
+      "key": "esempio_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "اطلع على مثال للمستندات النهائية"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_intro",
+      "locale": "ar",
+      "is_published": true,
+      "value": "خدمات إضافية، إن احتجتها"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_subtitle",
+      "locale": "ar",
+      "is_published": true,
+      "value": "المس خدمة لمعرفة المزيد. حاليًا نفعّلها عند الطلب: نتحدث معًا وندرجها في ملفك."
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_contact_text",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تُضاف هذه الخدمة عند الطلب، بعرض مخصّص. اتصل بنا أو اكتب لنا: نقيّم حالتك معًا وندرجها في الملف، بلا مفاجآت."
+    },
+    {
+      "collection": "tariffe",
+      "key": "rate_text",
+      "locale": "ar",
+      "is_published": true,
+      "value": "يمكن دفع الأتعاب على أقساط عند الدفع (PayPal Pay in 3، Klarna، Scalapay، حيث تتوفر). تُقسَّط الأتعاب وليس الضرائب، التي تتبع المواعيد القانونية."
+    },
+    {
+      "collection": "tariffe",
+      "key": "su_misura_text",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أكثر من 8 عقارات، أراضٍ زراعية، شركات أو حصص؟ كل حالة مختلفة: نُعدّ لك عرضًا مخصّصًا، بلا مفاجآت."
+    },
+    {
+      "collection": "tariffe",
+      "key": "su_misura_cta",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "اطلب عرضًا مخصّصًا",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "ti_serve_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "ربما لا تحتاجه أصلًا. نخبرك مجانًا."
+    },
+    {
+      "collection": "tariffe",
+      "key": "ti_serve_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "في بعض الحالات (ورثة مباشرون، سيولة متواضعة فقط ضمن الحدود القانونية، بدون عقارات) قد لا يكون التصريح واجبًا. نتحقق من حالتك قبل أن تدفع: إن لم تكن بحاجة إليه، نخبرك. التحقق النهائي دائمًا على الحالة الفعلية."
+    },
+    {
+      "collection": "tariffe",
+      "key": "ti_serve_cta",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "تحقق من حالتك مجانًا",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "لا تعرف أيها تختار؟"
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "اقرأ الدليل السريع لاختيار الباقة، أو تحدث مع Lorenzo: خلال دقائق تفهم الأنسب. وإن غيّرت رأيك، تغيير الباقة بسيط وتُسوّى الفرق فقط."
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_cta_guida",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "دليل الاختيار",
+        "href": "#guida"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_cta_call",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "تحدّث مع Lorenzo",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "microtrust",
+      "locale": "ar",
+      "is_published": true,
+      "value": "مساح معتمد Entratel، بإشراف ضريبي من محاسبين قانونيين."
+    },
+    {
+      "collection": "tariffe",
+      "key": "cta_finale_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "دقائق قليلة لمعرفة التكلفة، بلا التزام."
+    },
+    {
+      "collection": "tariffe",
+      "key": "cta_finale_button",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "احسب العرض مجانًا",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "عرض مخصّص"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_tagline",
+      "locale": "ar",
+      "is_published": true,
+      "value": "للمواريث الأكثر تعقيدًا"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_price_label",
+      "locale": "ar",
+      "is_published": true,
+      "value": "مخصّص"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أكثر من 8 عقارات، أراضٍ زراعية، شركات أو حصص؟ الحالات الأكثر تعقيدًا لا تناسب باقة قياسية: ندرس حالتك ونُعدّ لك عرضًا مخصّصًا، بلا مفاجآت."
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_features",
+      "locale": "ar",
+      "is_published": true,
+      "value": [
+        "للحالات التي لا تغطيها الباقات",
+        "تقييم أولي مجاني لحالتك",
+        "سعر واضح ومحدد قبل البدء",
+        "نفس الخدمة ونفس المساعدة كما في الباقات"
+      ]
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_cta",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "اطلب العرض",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "hero_eyebrow",
+      "locale": "ar",
+      "is_published": true,
+      "value": "من أنا"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "hero_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "مرحبًا، أنا Lorenzo Armellin."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "hero_subtitle",
+      "locale": "ar",
+      "is_published": true,
+      "value": "مساح معتمد لإرسال تصاريح الميراث إلى Agenzia delle Entrate. خلف هذا الموقع ليس برنامجًا: هناك شخص يتابع ملفك."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "hero_ritratto",
+      "locale": "ar",
+      "is_published": false,
+      "value": {
+        "asset_key": "ritratto_lorenzo"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "bio_body",
+      "locale": "ar",
+      "is_published": false,
+      "value": "أعمل على المواريث كل يوم. كمساح، قوتي في مراجعة بيانات السجل العقاري - القطع، الوحدات الفرعية، الملحقات، سندات الملكية - وهو النقطة التي تتعطل عندها معظم الملفات. هدفي بسيط: أرفع عنك عبئًا في لحظة صعبة أصلًا، بأسعار واضحة ودون أن أجعل لك تطوف بين المكاتب والبنوك."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "credenziali_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "مؤهلاتي"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "credenziali_list",
+      "locale": "ar",
+      "is_published": true,
+      "value": [
+        {
+          "voce": "التسجيل في نقابة المساحين",
+          "dettaglio": "نقابة بيزا رقم 1969 - مسجّل منذ 21/01/2022"
+        },
+        {
+          "voce": "اعتماد Entratel",
+          "dettaglio": "وسيط للإرسال الإلكتروني إلى Agenzia delle Entrate"
+        },
+        {
+          "voce": "رقم الضريبة (Partita IVA)",
+          "dettaglio": "02432220503"
+        }
+      ]
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "team_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "مساح على بيانات السجل العقاري، ومحاسبون على الأرقام"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "team_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أعدّ وأرسل التصريح بنفسي: أنا معتمد لذلك. للجانب الضريبي أستعين بإشراف محاسبين قانونيين. هكذا تحصل على المراجعة الفنية لبيانات السجل العقاري والأمان في الحسابات، دون تقسيم الملف بين مكاتب مختلفة."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "team_membri",
+      "locale": "ar",
+      "is_published": false,
+      "value": [
+        {
+          "ruolo": "مساح معتمد Entratel",
+          "nome": "Lorenzo Armellin",
+          "focus": "يعدّ ويرسل الملف، مراجعة السجل العقاري",
+          "foto": {
+            "asset_key": "ritratto_lorenzo"
+          }
+        },
+        {
+          "ruolo": "إشراف ضريبي",
+          "nome": "محاسب قانوني (للتأكيد)",
+          "focus": "التحقق من الجانب الضريبي/الضرائب",
+          "foto": {
+            "asset_key": "ritratto_commercialista"
+          }
+        }
+      ]
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "perche_geometra_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "كثيرون يتوقعون محاسبًا أو CAF أو كاتب عدل. في الميراث، النقطة الأدق هي بيانات السجل العقاري: وهذه مهنة المساح. للإيداع يلزم وسيط Entratel — وأنا كذلك. يتدخل كاتب العدل فقط للأعمال اللاحقة، وليس للتصريح."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أين تجدني"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_indirizzo",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "via": "Via Vittorio Veneto 31",
+        "cap": "56025",
+        "citta": "Pontedera (PI)"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_nota",
+      "locale": "ar",
+      "is_published": true,
+      "value": "كل شيء عن بُعد، لكن المكتب موجود حقًا: هنا."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_maps_label",
+      "locale": "ar",
+      "is_published": true,
+      "value": "افتح في Google Maps"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_foto_alt",
+      "locale": "ar",
+      "is_published": true,
+      "value": "كاتدرائية Pontedera"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "ritratto_alt",
+      "locale": "ar",
+      "is_published": true,
+      "value": "Geom. Lorenzo Armellin"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_ref",
+      "locale": "ar",
+      "is_published": false,
+      "value": {
+        "asset_key": "video_benvenuto_lorenzo"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_caption",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تحية وكلمتان عن طريقة عملي (60 ثانية)."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_badge",
+      "locale": "ar",
+      "is_published": true,
+      "value": "فيديو قريبًا"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_alt",
+      "locale": "ar",
+      "is_published": true,
+      "value": "فيديو ترحيبي من Geom. Lorenzo Armellin"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "motto_latino",
+      "locale": "ar",
+      "is_published": false,
+      "value": "(شعار لاتيني أنيق عن الميراث/العائلة/الموثوقية)"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "motto_traduzione",
+      "locale": "ar",
+      "is_published": false,
+      "value": "(ترجمة عربية)"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "recensioni_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "ماذا يقولون عني"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "cta_finale_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "هل تريد أن أتولى الأمر؟"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "cta_finale_button",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "احسب العرض مجانًا",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "cta_finale_phone",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "اتصل بي",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "documenti",
+      "key": "hero_eyebrow",
+      "locale": "ar",
+      "is_published": true,
+      "value": "دليل المستندات"
+    },
+    {
+      "collection": "documenti",
+      "key": "hero_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "ما المستندات اللازمة للميراث؟"
+    },
+    {
+      "collection": "documenti",
+      "key": "hero_subtitle",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أجب عن بضعة أسئلة ونخبرك فورًا، مجانًا، بما تحتاجه في حالتك. بلا التزام. وإن نقصك شيء، غالبًا يمكننا استرجاعه نحن."
+    },
+    {
+      "collection": "documenti",
+      "key": "interattiva_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أنشئ قائمتك المخصّصة"
+    },
+    {
+      "collection": "documenti",
+      "key": "interattiva_domande",
+      "locale": "ar",
+      "is_published": true,
+      "value": [
+        "هل توجد عقارات (منازل، أراضٍ، مواقف)؟",
+        "هل يوجد وصية؟",
+        "هل يوجد ورثة قاصرون؟",
+        "هل توجد حسابات/استثمارات؟",
+        "هل توجد أراضٍ زراعية/قطع/ملحقات؟",
+        "هل توجد أموال أخرى (حصص، شركات، مركبات)؟"
+      ]
+    },
+    {
+      "collection": "documenti",
+      "key": "interattiva_risultato_intro",
+      "locale": "ar",
+      "is_published": true,
+      "value": "إليك ما ستحتاجه:"
+    },
+    {
+      "collection": "documenti",
+      "key": "evergreen_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "المستندات المعتادة لتصريح الميراث"
+    },
+    {
+      "collection": "documenti",
+      "key": "evergreen_intro",
+      "locale": "ar",
+      "is_published": true,
+      "value": "فيما يلي المستندات الأكثر شيوعًا. ليست كلها لازمة دائمًا: يعتمد ذلك على حالتك (لهذا توجد الأداة أعلاه)."
+    },
+    {
+      "collection": "documenti",
+      "key": "hook_recupero",
+      "locale": "ar",
+      "is_published": true,
+      "value": "لا تجد مستندًا؟ غالبًا يمكننا استرجاعه نحن: كشوف السجل العقاري، سندات الملكية، البيانات الناقصة. هذا جزء من عملنا."
+    },
+    {
+      "collection": "documenti",
+      "key": "disclaimer_ymyl",
+      "locale": "ar",
+      "is_published": true,
+      "value": "هذه القائمة إرشادية وتتكيّف مع البيانات التي تدخلها. القائمة النهائية يؤكّدها Lorenzo بعد التحقق من حالتك الفعلية."
+    },
+    {
+      "collection": "documenti",
+      "key": "cta_preventivo",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "احسب العرض",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "documenti",
+      "key": "cta_pdf",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "حمّل القائمة (PDF)",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "documenti",
+      "key": "cta_email",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "استلمها عبر البريد",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "faq",
+      "key": "hero_eyebrow",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الأسئلة الشائعة"
+    },
+    {
+      "collection": "faq",
+      "key": "hero_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أسئلة شائعة عن المواريث"
+    },
+    {
+      "collection": "faq",
+      "key": "hero_subtitle",
+      "locale": "ar",
+      "is_published": true,
+      "value": "إجابات واضحة على الأسئلة التي تُطرح علينا أكثر. إن لم تجد سؤالك، اكتب لنا أو اتصل بـ Lorenzo: نجيب الجميع."
+    },
+    {
+      "collection": "faq",
+      "key": "hero_search",
+      "locale": "ar",
+      "is_published": true,
+      "value": true
+    },
+    {
+      "collection": "faq",
+      "key": "cat_capire_intro",
+      "locale": "ar",
+      "is_published": true,
+      "value": "ما هو، متى يلزم، وما المخاطر."
+    },
+    {
+      "collection": "faq",
+      "key": "cat_costi_intro",
+      "locale": "ar",
+      "is_published": true,
+      "value": "كم يكلف، وما المشمول، وكيف تعمل الضرائب."
+    },
+    {
+      "collection": "faq",
+      "key": "cat_perche_intro",
+      "locale": "ar",
+      "is_published": true,
+      "value": "يمكن القيام بذلك مجانًا وحدك: إليك لماذا يستحق التفويض رغم ذلك."
+    },
+    {
+      "collection": "faq",
+      "key": "cat_come_intro",
+      "locale": "ar",
+      "is_published": true,
+      "value": "العملية والمستندات والمواعيد، خطوة بخطوة."
+    },
+    {
+      "collection": "faq",
+      "key": "cat_dopo_intro",
+      "locale": "ar",
+      "is_published": true,
+      "value": "ما تستلمه، وكيف نعامل بياناتك، وحمايتك."
+    },
+    {
+      "collection": "faq",
+      "key": "cta_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "لم تجد الإجابة؟"
+    },
+    {
+      "collection": "faq",
+      "key": "cta_button",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "احسب العرض مجانًا",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "faq",
+      "key": "cta_phone",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "اسأل Lorenzo",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "recesso",
+      "key": "hero_eyebrow",
+      "locale": "ar",
+      "is_published": true,
+      "value": "حمايتك"
+    },
+    {
+      "collection": "recesso",
+      "key": "hero_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "حقك في الانسحاب، بشرح بسيط"
+    },
+    {
+      "collection": "recesso",
+      "key": "hero_subtitle",
+      "locale": "ar",
+      "is_published": true,
+      "value": "نريد أن تكون مطمئنًا. هنا نشرح بكلمات واضحة كيف تلغي وتحصل على استرداد. النص الرسمي في شروط البيع."
+    },
+    {
+      "collection": "recesso",
+      "key": "cosa_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "لديك 14 يومًا لإعادة النظر"
+    },
+    {
+      "collection": "recesso",
+      "key": "cosa_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "كمستهلك لديك الحق في الانسحاب خلال 14 يومًا من الشراء، دون تقديم تفسيرات. إنه حقك القانوني."
+    },
+    {
+      "collection": "recesso",
+      "key": "avvio_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "إن طلبت منا البدء فورًا"
+    },
+    {
+      "collection": "recesso",
+      "key": "avvio_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "غالبًا يكون الميراث عاجلًا (هناك مهلة 12 شهرًا). إن طلبت منا البدء قبل 14 يومًا، نطلب موافقة صريحة: يعني أنه بمجرد اكتمال الخدمة، لم يعد حق الانسحاب ينطبق. أما إن بدأ العمل ولم يكتمل، فانظر النقطة أدناه."
+    },
+    {
+      "collection": "recesso",
+      "key": "iniziato_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "وماذا لو غيّرت رأيي أثناء العمل؟"
+    },
+    {
+      "collection": "recesso",
+      "key": "iniziato_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "يمكنك الانسحاب رغم ذلك: تدفع فقط جزء العمل المنجز حتى ذلك الحين، بالتناسب، ونسترد الباقي. بلا غرامات خفية."
+    },
+    {
+      "collection": "recesso",
+      "key": "come_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "كيف تطلب الانسحاب"
+    },
+    {
+      "collection": "recesso",
+      "key": "come_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "بأبسط طريقة: من منطقتك الشخصية تجد زر «اطلب الانسحاب». أو يمكنك الكتابة عبر البريد/PEC. يمكنك استخدام النموذج أدناه، لكنه غير إلزامي."
+    },
+    {
+      "collection": "recesso",
+      "key": "come_cta_area",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "اطلب الانسحاب من المنطقة الشخصية",
+        "href": "/area-riservata/recesso"
+      }
+    },
+    {
+      "collection": "recesso",
+      "key": "rimborso_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "متى أستلم الاسترداد"
+    },
+    {
+      "collection": "recesso",
+      "key": "rimborso_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "نصدره ضمن المهل القانونية (عادة 14 يومًا من الطلب)، بنفس طريقة الدفع التي استخدمتها. بعد إصداره على البطاقة، تودعه البنك عادة خلال 5-10 أيام عمل (مواعيد Stripe/الجهة المصدرة). الضرائب المدفوعة فعلًا للخزينة تتبع قواعد الوكالة، ولا تعتمد علينا."
+    },
+    {
+      "collection": "recesso",
+      "key": "garanzia_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الانسحاب والضمان: أمران مختلفان"
+    },
+    {
+      "collection": "recesso",
+      "key": "garanzia_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الانسحاب حق قانوني لك خلال أول 14 يومًا. ضماننا «راضٍ أو نسترد المبلغ» وعد إضافي نقدّمه نحن: إن لم تكن راضيًا عن عملنا، نتحدث ونجد حلًا. التفاصيل في صفحة الضمان."
+    },
+    {
+      "collection": "recesso",
+      "key": "garanzia_link",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "اقرأ الضمان",
+        "href": "/garanzia"
+      }
+    },
+    {
+      "collection": "recesso",
+      "key": "tc_link",
+      "locale": "ar",
+      "is_published": true,
+      "value": "هذه الصفحة تشرح الانسحاب ببساطة. النص الذي يُعتدّ به موجود في شروط البيع."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_eyebrow",
+      "locale": "ar",
+      "is_published": true,
+      "value": "العملية"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "كيف يعمل: بسيط، من المنزل، في 3 خطوات"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_subtitle",
+      "locale": "ar",
+      "is_published": true,
+      "value": "بلا طوابير، بلا مكاتب. نرشدك خطوة بخطوة: أنت تهتم بعائلتك، والبيروقراطية نتولاها نحن."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps",
+      "locale": "ar",
+      "is_published": true,
+      "value": [
+        {
+          "numero": 1,
+          "titolo": "أجب عن بضعة أسئلة",
+          "testo": "تملأ استبيانًا قصيرًا عبر الإنترنت (دقيقة واحدة). نخبرك فورًا بما تحتاجه وكم يكلف - وإن كانت الحالة لا تستوجب الميراث أصلًا، نخبرك مجانًا.",
+          "dettaglio": "نتيجة فورية: السعر، أو عرض مخصّص للحالات المعقدة."
+        },
+        {
+          "numero": 2,
+          "titolo": "حمّل المستندات",
+          "testo": "من منطقتك الشخصية تحمّل المستندات، حتى من صور بالهاتف. نعطيك القائمة الدقيقة، مخصّصة لحالتك. إن نقصك شيء، غالبًا يمكننا استرجاعه نحن.",
+          "dettaglio": "شخص حقيقي يراجع كل شيء: بلا نماذج متروكة نصف مكتملة."
+        },
+        {
+          "numero": 3,
+          "titolo": "نتولى كل شيء",
+          "testo": "Lorenzo يعدّ ويرسل التصريح إلى Agenzia delle Entrate. نُبلغك مسبقًا بالضرائب الواجب دفعها. في نهاية الملف تستلم الإيصالات والمستندات النهائية في منطقتك.",
+          "dettaglio": "حيث ينطبق، نتولى أيضًا نقل الملكية في السجل العقاري."
+        }
+      ]
+    },
+    {
+      "collection": "come_funziona",
+      "key": "sla_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "كم من الوقت يستغرق"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "sla_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "المواعيد تعتمد على الباقة وتبدأ من حصولنا على جميع المستندات كاملة وصحيحة (وليس من الدفع): هكذا يكون وعدًا يمكننا حقًا الوفاء به. تُستثنى أوقات الجهات الثالثة (الوكالة، السجل العقاري، البنوك)."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "valore_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "ما نفعله مما لا يفعله البرنامج"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "valore_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "نتحقق يدويًا من بيانات السجل العقاري - القطع، الوحدات الفرعية، الملحقات، سندات الملكية - وهي النقطة التي تتعطل عندها الملفات. بإشراف ضريبي من محاسبين على الأرقام. هذا الفرق بين نموذج مملوء وملف مُنجز جيدًا."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "distanza_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "كل شيء عبر الإنترنت"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "distanza_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "لا تحتاج إلى الذهاب لأي مكتب أو بنك: الاستبيان والمستندات والمراسلات والإرسال إلى الوكالة تتم عبر الإنترنت. دائمًا هناك مكالمة مع Lorenzo لشرح كل شيء."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "visita_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تفضل الحضور شخصيًا؟"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "visita_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "كل شيء عن بُعد، لكن إن رغبت نستقبلك في المكتب بموعد: بلا طوابير، فقط الوقت لتوضيح المستندات والخطوات معًا. اتصل أو اكتب ونحدد موعدًا."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "visita_maps_label",
+      "locale": "ar",
+      "is_published": true,
+      "value": "افتح في Google Maps"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "deliverable_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "ما يكون بين يديك في النهاية"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "deliverable_list",
+      "locale": "ar",
+      "is_published": true,
+      "value": [
+        "إيصال التقديم/التسجيل من AdE",
+        "نسخة من التصريح",
+        "نتيجة F24 / شهادة",
+        "نتيجة نقل الملكية في السجل العقاري (حيث ينطبق)",
+        "فاتورة"
+      ]
+    },
+    {
+      "collection": "come_funziona",
+      "key": "cta_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "نبدأ؟ دقيقة واحدة تكفي."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "cta_button",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "احسب العرض مجانًا",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "cta_phone",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "تحدّث مع Lorenzo",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "contatti",
+      "key": "hero_eyebrow",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تواصل معنا"
+    },
+    {
+      "collection": "contatti",
+      "key": "hero_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تحدث معنا"
+    },
+    {
+      "collection": "contatti",
+      "key": "hero_subtitle",
+      "locale": "ar",
+      "is_published": true,
+      "value": "لديك سؤال أو تريد معرفة إن كنت بحاجة لتصريح الميراث؟ اكتب لنا أو اتصل بنا: يجيبك شخص حقيقي، وليس روبوتًا."
+    },
+    {
+      "collection": "contatti",
+      "key": "telefono",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "الهاتف / WhatsApp",
+        "numero": "+39 320 1570567",
+        "cta_chiama": "tel:+393201570567",
+        "cta_whatsapp": "https://wa.me/393201570567"
+      }
+    },
+    {
+      "collection": "contatti",
+      "key": "email",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "generale": "studio@successioniarmellin.it",
+        "pec": "lorenzo.armellin@geopec.it"
+      }
+    },
+    {
+      "collection": "contatti",
+      "key": "studio",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "via": "Via Vittorio Veneto 31",
+        "cap": "56025",
+        "citta": "Pontedera (PI)"
+      }
+    },
+    {
+      "collection": "contatti",
+      "key": "orari",
+      "locale": "ar",
+      "is_published": false,
+      "value": [
+        {
+          "giorni": "الإثنين–الجمعة",
+          "orario": "9:00-13:00 / 14:30-18:30"
+        },
+        {
+          "giorni": "السبت–الأحد",
+          "orario": "مغلق"
+        }
+      ]
+    },
+    {
+      "collection": "contatti",
+      "key": "canali_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "نتابعك أيضًا بلغتك"
+    },
+    {
+      "collection": "contatti",
+      "key": "canali_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "اكتب لنا على WhatsApp أو عبر البريد بلغتك: نتفاهم بلا مشكلة. إن فضّلت التحدث، يمكننا إجراء مكالمة مع ترجمة فورية؛ والنقاط المهمة (المبالغ، المواعيد، المستندات) نؤكّدها دائمًا كتابيًا. المستندات الرسمية تبقى بالإيطالية."
+    },
+    {
+      "collection": "contatti",
+      "key": "form_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "اكتب لنا"
+    },
+    {
+      "collection": "contatti",
+      "key": "form_nota",
+      "locale": "ar",
+      "is_published": false,
+      "value": "نرد خلال يوم عمل واحد."
+    },
+    {
+      "collection": "contatti",
+      "key": "form_success",
+      "locale": "ar",
+      "is_published": true,
+      "value": "شكرًا! سنتواصل معك قريبًا."
+    },
+    {
+      "collection": "contatti",
+      "key": "mappa_nota",
+      "locale": "ar",
+      "is_published": true,
+      "value": "نعمل كله عن بُعد، لكن المكتب موجود: زرنا بموعد."
+    },
+    {
+      "collection": "contatti",
+      "key": "cta_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تفضل البدء فورًا؟ احسب العرض مجانًا، يستغرق دقيقة واحدة."
+    },
+    {
+      "collection": "contatti",
+      "key": "cta_button",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "احسب العرض",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "guide",
+      "key": "hero_eyebrow",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أدلة"
+    },
+    {
+      "collection": "guide",
+      "key": "hero_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أدلة المواريث: واضحة، محدّثة، بلا بيروقراطية"
+    },
+    {
+      "collection": "guide",
+      "key": "hero_subtitle",
+      "locale": "ar",
+      "is_published": true,
+      "value": "كل ما تحتاج معرفته عن الميراث والضرائب والمستندات، مشروح ببساطة ممن ينجز الملفات فعليًا."
+    },
+    {
+      "collection": "guide",
+      "key": "hero_search",
+      "locale": "ar",
+      "is_published": true,
+      "value": true
+    },
+    {
+      "collection": "guide",
+      "key": "categorie",
+      "locale": "ar",
+      "is_published": true,
+      "value": [
+        {
+          "nome": "فهم الميراث",
+          "slug": "basi"
+        },
+        {
+          "nome": "الضرائب والتكاليف",
+          "slug": "imposte"
+        },
+        {
+          "nome": "المستندات",
+          "slug": "documenti"
+        },
+        {
+          "nome": "حالات خاصة",
+          "slug": "casi"
+        },
+        {
+          "nome": "أدلة محلية (توسكانا)",
+          "slug": "locali"
+        },
+        {
+          "nome": "ورثة أجانب / من الخارج",
+          "slug": "stranieri"
+        }
+      ]
+    },
+    {
+      "collection": "guide",
+      "key": "in_evidenza_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "مميز"
+    },
+    {
+      "collection": "guide",
+      "key": "cta_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تحتاج مساعدة في حالتك؟"
+    },
+    {
+      "collection": "guide",
+      "key": "cta_button",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "احسب العرض مجانًا",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "guide",
+      "key": "strumenti_banner",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "title": "أداة: احسب القيمة العقارية",
+        "body": "كم تساوي منزلًا أو أرضًا لأغراض الميراث؟ أدخل الريع من الكشف واحصل فورًا على القيمة التي تُحسب عليها الضرائب.",
+        "cta_label": "افتح الحاسبة",
+        "href": "/strumenti/valore-catastale"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_hero_eyebrow",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أدوات"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_hero_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "كم يساوي العقار لأغراض الميراث؟"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_hero_subtitle",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أدخل الريع العقاري (تجده في الكشف) واحصل فورًا على القيمة العقارية التي تُحسب عليها ضرائب الميراث. مجانًا، دون ترك بيانات."
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_tab_fabbricato",
+      "locale": "ar",
+      "is_published": true,
+      "value": "مبنى"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_tab_terreno",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أرض زراعية"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_rendita",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الريع العقاري (€)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_help_rendita",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تجده في كشف السجل العقاري، عمود «Rendita». إن نقصك، غالبًا يمكننا استرجاعه نحن."
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_rd",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الدخل الملكي (€)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_help_rd",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تجده في كشف السجل العقاري للأرض. ينطبق على الأراضي غير القابلة للبناء."
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_categoria",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الفئة العقارية"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_prima_casa",
+      "locale": "ar",
+      "is_published": true,
+      "value": "ستكون «المسكن الأول» للوارث (إعفاء: معامل مخفّض إلى 110)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_risultato",
+      "locale": "ar",
+      "is_published": true,
+      "value": "القيمة العقارية لأغراض الميراث"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_formula",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الحساب:"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_come_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "كيف يعمل الحساب"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_come_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "لتصريح الميراث لا تُقيَّم العقارات بسعر السوق بل بالقيمة العقارية: الريع المعاد تقييمه بنسبة 5% مضروبًا في معامل يحدده القانون. للأراضي الزراعية: الدخل الملكي المعاد تقييمه بنسبة 25% مضروبًا في 90."
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_formule",
+      "locale": "ar",
+      "is_published": true,
+      "value": [
+        {
+          "tipo": "المسكن الأول (إعفاء)",
+          "formula": "rendita × 1,05 × 110"
+        },
+        {
+          "tipo": "مساكن وملحقات (المجموعتان A و C)",
+          "formula": "rendita × 1,05 × 120"
+        },
+        {
+          "tipo": "المجموعة B (مدارس، داخليات…)",
+          "formula": "rendita × 1,05 × 168"
+        },
+        {
+          "tipo": "A/10 والمجموعة D (مكاتب، مستودعات…)",
+          "formula": "rendita × 1,05 × 60"
+        },
+        {
+          "tipo": "C/1 والمجموعة E (محلات…)",
+          "formula": "rendita × 1,05 × 40,8"
+        },
+        {
+          "tipo": "أراضٍ زراعية (غير قابلة للبناء)",
+          "formula": "reddito dominicale × 1,25 × 90"
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_note",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الأراضي القابلة للبناء استثناء: تُصرَّح بالقيمة السوقية، وليس العقارية. النتيجة إرشادية: الإعفاءات والحالات الخاصة يجب التحقق منها على الحالة الفعلية — وهذا بالضبط عملنا."
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_cta_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تريد معرفة تكلفة الميراث كاملة، بما فيها الضرائب؟"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_cta_button",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "احسب العرض مجانًا",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_faq_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أسئلة شائعة عن القيمة العقارية"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_faq",
+      "locale": "ar",
+      "is_published": true,
+      "value": [
+        {
+          "q": "أين أجد الريع العقاري لعقاري؟",
+          "a": "في كشف السجل العقاري، عمود «Rendita». يمكنك طلبه مجانًا على موقع Agenzia delle Entrate (بـ SPID) أو، إن كنت عميلنا، نسترجعه نحن."
+        },
+        {
+          "q": "هل القيمة العقارية هي سعر السوق للمنزل؟",
+          "a": "لا: القيمة العقارية أقل بكثير عادة من قيمة السوق. وهي القيمة التي تُحسب عليها ضرائب الرهن والسجل العقاري في تصريح الميراث، وتُحصل من الريع المعاد تقييمه مضروبًا في معامل قانوني."
+        },
+        {
+          "q": "كيف يعمل إعفاء المسكن الأول في الحساب؟",
+          "a": "إن كان العقار «مسكنًا أول» للوارث، ينزل المعامل إلى 110 (بدل 120 للمساكن) وتُدفع ضرائب الرهن والسجل بمبلغ ثابت (200 يورو لكل منهما) بدل النسبة المئوية."
+        },
+        {
+          "q": "هل ينطبق أيضًا على الأراضي؟",
+          "a": "للأراضي الزراعية (غير القابلة للبناء) نعم: الدخل الملكي المعاد تقييمه بنسبة 25% مضروبًا في 90. أما الأراضي القابلة للبناء فتُصرَّح بالقيمة السوقية."
+        }
+      ]
+    },
+    {
+      "collection": "article",
+      "key": "autore_box",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "autore": "Geom. Lorenzo Armellin",
+        "ruolo": "مساح معتمد Entratel",
+        "reviewed_by": "مراجعة الجانب الضريبي من محاسبين قانونيين",
+        "foto": {
+          "asset_key": "ritratto_lorenzo"
+        },
+        "link": "/chi-sono"
+      }
+    },
+    {
+      "collection": "article",
+      "key": "disclaimer",
+      "locale": "ar",
+      "is_published": true,
+      "value": "معلومات هذا الدليل إرشادية ولأغراض إعلامية. كل ميراث حالة بذاتها: التقييم النهائي دائمًا على الحالة الفعلية. نتحقق من وضعك مجانًا."
+    },
+    {
+      "collection": "article",
+      "key": "cta_box",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "titolo": "هل تريد أن نتولى الأمر؟",
+        "button": {
+          "label": "احسب العرض مجانًا",
+          "href": "/preventivo"
+        },
+        "phone": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "article",
+      "key": "fonti",
+      "locale": "ar",
+      "is_published": true,
+      "value": "مصادر رسمية: Agenzia delle Entrate، Normattiva (روابط في كل مقال)."
+    },
+    {
+      "collection": "preventivo",
+      "key": "intro_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "احسب عرضك مجانًا، خلال دقيقة واحدة"
+    },
+    {
+      "collection": "preventivo",
+      "key": "intro_subtitle",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أجب عن بضعة أسئلة: نخبرك فورًا بالتكلفة أو، إن كانت حالتك خاصة، نُعدّ عرضًا مخصّصًا. بلا التزام."
+    },
+    {
+      "collection": "preventivo",
+      "key": "progress_label",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الخطوة {n} من 3"
+    },
+    {
+      "collection": "preventivo",
+      "key": "step1_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "نبدأ بالأساسيات"
+    },
+    {
+      "collection": "preventivo",
+      "key": "step2_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "من هم الورثة"
+    },
+    {
+      "collection": "preventivo",
+      "key": "step3_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "ما يشمله الميراث"
+    },
+    {
+      "collection": "preventivo",
+      "key": "step4_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أين نرسل لك العرض"
+    },
+    {
+      "collection": "preventivo",
+      "key": "help_text",
+      "locale": "ar",
+      "is_published": true,
+      "value": [
+        "البيانات تُستخدم فقط لتقدير حالتك.",
+        "لا تعرف إجابة؟ اختر «لا أعرف»، نتولاه نحن."
+      ]
+    },
+    {
+      "collection": "preventivo",
+      "key": "consenso_privacy",
+      "locale": "ar",
+      "is_published": true,
+      "value": "قرأت إشعار الخصوصية وأوافق على معالجة البيانات."
+    },
+    {
+      "collection": "preventivo",
+      "key": "consenso_marketing",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أريد تلقي نصائح مفيدة وتحديثات (اختياري)."
+    },
+    {
+      "collection": "preventivo",
+      "key": "cta_submit",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "اعرض النتيجة فورًا",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "preventivo",
+      "key": "trust_items",
+      "locale": "ar",
+      "is_published": true,
+      "value": [
+        "مجانًا وبلا التزام",
+        "يجيبك Lorenzo، شخص حقيقي",
+        "بيانات آمنة، خوادم في الاتحاد الأوروبي (GDPR)"
+      ]
+    },
+    {
+      "collection": "grazie",
+      "key": "header_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "إليك النتيجة لحالتك"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_a_whatsapp",
+      "locale": "ar",
+      "is_published": true,
+      "value": "واتساب"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_a_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "ربما لا تحتاج إلى تقديم التصريح"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_taxes_note",
+      "locale": "ar",
+      "is_published": true,
+      "value": "+ الضرائب محسوبة حسب حالتك: نخبرك بها قبل أن تدفع."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_package_line",
+      "locale": "ar",
+      "is_published": true,
+      "value": "باقة {name}"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_a_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "بناءً على ما أخبرتنا به، قد تندرج حالتك ضمن الإعفاء القانوني. لا نريد بيعك خدمة لا تحتاجها: لنتحقق معًا، مجانًا. التأكيد النهائي على الحالة الفعلية."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_a_cta",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "اتصل للتحقق المجاني",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "إليك الباقة المناسبة لك"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_cta",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "تابع إلى الدفع",
+        "href": "/checkout"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_riallineamento",
+      "locale": "ar",
+      "is_published": true,
+      "value": "قبل الدفع، ألقِ نظرة على {guida} لاختيار الباقة أو تحدث مع Lorenzo: إن اخترت الباقة الخطأ، تغييرها بسيط وتُسوّى الفرق فقط."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_guida",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "الدليل",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "حالتك تستحق عرضًا مخصّصًا"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "من إجاباتك يتبيّن حالة بعناصر خاصة (عقارات كثيرة، أراضٍ زراعية، حصص، شركات…). لا يمكننا إغلاق سعر هنا: يجب دراسته مع Lorenzo، حتى تدفع لا أكثر ولا أقل مما ينبغي. اترك بيانات الاتصال أدناه (وإن رغبت، ملاحظة) أو اكتب لنا: نتصل بك لتوضيح التفاصيل وإعداد العرض المخصّص."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_cta",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "اتصل بـ Lorenzo",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_whatsapp",
+      "locale": "ar",
+      "is_published": true,
+      "value": "اكتب على WhatsApp"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_whatsapp_prefill",
+      "locale": "ar",
+      "is_published": true,
+      "value": "مرحبًا Lorenzo، ملأت الاستبيان على الموقع ويظهر لي عرض مخصّص. أودّ مناقشة حالتي معك."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تفضل التفكير؟ استلم هذا العرض عبر البريد"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_desc",
+      "locale": "ar",
+      "is_published": true,
+      "value": "نرسل لك ملخص العرض لتجدّه متى شئت. بلا ضغط."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_submit",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أرسل لي العرض عبر البريد"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_ok_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تم! تحقق من صندوق البريد"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_ok_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أرسلنا لك ملخص العرض. متى شئت، تابع من هناك."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_ok_title_noemail",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تم تسجيل الطلب!"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_ok_body_noemail",
+      "locale": "ar",
+      "is_published": true,
+      "value": "سجّلنا طلبك: سنرسل لك ملخص العرض قريبًا."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "اترك بيانات الاتصال: نتصل نحن"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_desc",
+      "locale": "ar",
+      "is_published": true,
+      "value": "إجابات الاستبيان تكفينا للبدء. اترك البريد والهاتف: Lorenzo يتواصل معك لتعميق التفاصيل معًا وإرسال العرض المخصّص، بلا التزام. إن رغبت، أضف ملاحظة أدناه."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_notes_label",
+      "locale": "ar",
+      "is_published": true,
+      "value": "ملاحظة لـ Lorenzo (اختيارية)"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_notes_placeholder",
+      "locale": "ar",
+      "is_published": true,
+      "value": "مثال: نوع العقارات، الأراضي، الشركات/الحصص، استعجالات أو تساؤلات…"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_footnote",
+      "locale": "ar",
+      "is_published": true,
+      "value": "بلا التزام: نتواصل خلال يوم عمل (عادة في نفس اليوم) لدراسة الحالة معًا وإعداد العرض."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_submit",
+      "locale": "ar",
+      "is_published": true,
+      "value": "اطلب إعادة الاتصال"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_ok_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تم استلام الطلب!"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_ok_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "Lorenzo يتواصل معك قريبًا لتعميق الحالة وإعداد العرض المخصّص."
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "في الأثناء، إليك ما ستحتاجه"
+    },
+    {
+      "collection": "documenti",
+      "key": "lista",
+      "locale": "ar",
+      "is_published": true,
+      "value": [
+        {
+          "name": "وثيقة الهوية والرقم الضريبي",
+          "description": "لجميع الورثة والمتوفى.",
+          "when": "دائمًا"
+        },
+        {
+          "name": "شهادة الوفاة",
+          "description": "أو الإقرار البديل لشهادة الوفاة وحالة الأسرة للمتوفى: النموذج نقدّمه نحن.",
+          "when": "دائمًا"
+        },
+        {
+          "name": "إقرار ذاتي بحالة الأسرة لكل وارث",
+          "description": "يُستخدم لتحديد الورثة: نموذج لكل واحد، نقدّمه نحن.",
+          "when": "دائمًا"
+        },
+        {
+          "name": "كشوف السجل العقاري",
+          "description": "للعقارات في الميراث. يمكننا استرجاعها نحن.",
+          "when": "إن وجدت عقارات"
+        },
+        {
+          "name": "سندات الملكية",
+          "description": "عقود موثقة، هبات أو تصاريح ميراث سابقة.",
+          "when": "إن وجدت عقارات"
+        },
+        {
+          "name": "الوصية",
+          "description": "نسخة من الوصية المنشورة، إن وُجدت.",
+          "when": "إن وجدت وصية"
+        },
+        {
+          "name": "شهادة أرصدة الحسابات",
+          "description": "رصيد الحسابات والدفاتر والأوراق المالية في تاريخ الوفاة.",
+          "when": "إن وجدت حسابات/استثمارات"
+        }
+      ]
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_disclaimer",
+      "locale": "ar",
+      "is_published": true,
+      "value": "قائمة إرشادية: القائمة النهائية يؤكّدها Lorenzo بعد الاطلاع على حالتك."
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_faq_link",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "تعمّق في الأسئلة الشائعة",
+        "href": "/faq"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_hook",
+      "locale": "ar",
+      "is_published": true,
+      "value": "ينقصك شيء؟ غالبًا يمكننا استرجاعه نحن."
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_cta_pdf",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "حمّل القائمة (PDF)",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_cta_email",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "استلمها عبر البريد",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "next_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أرسلنا لك ملخصًا عبر البريد. من هنا فصاعدًا نتابعك نحن: شخص حقيقي، وليس روبوتًا."
+    },
+    {
+      "collection": "checkout",
+      "key": "header_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أكمل الطلب"
+    },
+    {
+      "collection": "checkout",
+      "key": "header_subtitle",
+      "locale": "ar",
+      "is_published": true,
+      "value": "خطوة أخرى ونتولى الأمر نحن."
+    },
+    {
+      "collection": "checkout",
+      "key": "riepilogo_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "طلبك"
+    },
+    {
+      "collection": "checkout",
+      "key": "modifica_link",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "تعديل",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "checkout",
+      "key": "prezzo_imposte_nota",
+      "locale": "ar",
+      "is_published": true,
+      "value": "مهم: هذه هي الأتعاب المهنية. الضرائب (الميراث، الرهن، السجل العقاري، الطوابع) منفصلة، على عاتق الوارث، ونحسبها ونُبلغك بها قبل الإرسال."
+    },
+    {
+      "collection": "checkout",
+      "key": "microtrust",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تدفع لمساح معتمد Entratel، بإشراف ضريبي من محاسبين قانونيين. مدفوعات آمنة عبر Stripe."
+    },
+    {
+      "collection": "checkout",
+      "key": "pagamento_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "كيف تريد الدفع"
+    },
+    {
+      "collection": "checkout",
+      "key": "pagamento_metodi",
+      "locale": "ar",
+      "is_published": true,
+      "value": [
+        "بطاقة",
+        "PayPal",
+        "تحويل بنكي (بمساعدة)"
+      ]
+    },
+    {
+      "collection": "checkout",
+      "key": "rate_nota",
+      "locale": "ar",
+      "is_published": true,
+      "value": "يمكنك الدفع على أقساط (PayPal Pay in 3، Klarna، Scalapay، حيث تتوفر). تُقسَّط الأتعاب وليس الضرائب."
+    },
+    {
+      "collection": "checkout",
+      "key": "consenso_tc",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أوافق على شروط البيع وإشعار الخصوصية."
+    },
+    {
+      "collection": "checkout",
+      "key": "consenso_avvio",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أطلب البدء الفوري بالعمل وأُقرّ بأنه، باكتمال الخدمة خلال 14 يومًا، أفقد حق الانسحاب."
+    },
+    {
+      "collection": "checkout",
+      "key": "recesso_link",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "كيف يعمل الانسحاب",
+        "href": "/recesso"
+      }
+    },
+    {
+      "collection": "checkout",
+      "key": "cta_pay",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "ادفع بأمان",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "checkout",
+      "key": "cta_nota",
+      "locale": "ar",
+      "is_published": true,
+      "value": "معاملة مشفّرة. لا نحتفظ ببيانات البطاقة."
+    },
+    {
+      "collection": "checkout",
+      "key": "trust_items",
+      "locale": "ar",
+      "is_published": true,
+      "value": [
+        "راضٍ أو نسترد المبلغ",
+        "خوادم في الاتحاد الأوروبي، متوافق مع GDPR",
+        "مساعدة من شخص حقيقي"
+      ]
+    },
+    {
+      "collection": "checkout",
+      "key": "success_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تم الدفع بنجاح! مرحبًا بك."
+    },
+    {
+      "collection": "checkout",
+      "key": "error_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "فشل الدفع"
+    },
+    {
+      "collection": "legale",
+      "key": "privacy_title",
+      "locale": "ar",
+      "is_published": false,
+      "value": "إشعار الخصوصية"
+    },
+    {
+      "collection": "legale",
+      "key": "cookie_title",
+      "locale": "ar",
+      "is_published": false,
+      "value": "سياسة ملفات تعريف الارتباط"
+    },
+    {
+      "collection": "legale",
+      "key": "tc_title",
+      "locale": "ar",
+      "is_published": false,
+      "value": "شروط البيع"
+    },
+    {
+      "collection": "legale",
+      "key": "garanzia_title",
+      "locale": "ar",
+      "is_published": false,
+      "value": "ضماننا"
+    },
+    {
+      "collection": "legale",
+      "key": "garanzia_cta",
+      "locale": "ar",
+      "is_published": false,
+      "value": {
+        "label": "احسب العرض مجانًا",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "sistema",
+      "key": "e404_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "هذه الصفحة غير موجودة (أو لم تعد موجودة)"
+    },
+    {
+      "collection": "sistema",
+      "key": "e404_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "لكن يمكننا مساعدتك رغم ذلك."
+    },
+    {
+      "collection": "sistema",
+      "key": "e404_cta",
+      "locale": "ar",
+      "is_published": true,
+      "value": [
+        {
+          "label": "الذهاب إلى الصفحة الرئيسية",
+          "href": "/"
+        },
+        {
+          "label": "احسب العرض",
+          "href": "/preventivo"
+        }
+      ]
+    },
+    {
+      "collection": "sistema",
+      "key": "e500_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "حدث خطأ ما"
+    },
+    {
+      "collection": "sistema",
+      "key": "e500_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أعد المحاولة بعد قليل. إن استمرت المشكلة، اكتب لنا أو اتصل بنا."
+    },
+    {
+      "collection": "sistema",
+      "key": "manutenzione_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "نجري صيانة"
+    },
+    {
+      "collection": "sistema",
+      "key": "manutenzione_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "نعود عبر الإنترنت قريبًا. للطوارئ، تواصل معنا."
+    },
+    {
+      "collection": "sistema",
+      "key": "sessione_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "انتهت الجلسة"
+    },
+    {
+      "collection": "sistema",
+      "key": "sessione_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "لأمانك قمنا بتسجيل خروجك. سجّل الدخول مجددًا للمتابعة."
+    },
+    {
+      "collection": "area_errors",
+      "key": "request_invalid",
+      "locale": "ar",
+      "is_published": true,
+      "value": "طلب غير صالح."
+    },
+    {
+      "collection": "area_errors",
+      "key": "max_files",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الحد الأقصى {n} ملفات لكل مستند: احذف ملفًا لتحميل آخر."
+    },
+    {
+      "collection": "area_login",
+      "key": "header_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "المنطقة الشخصية"
+    },
+    {
+      "collection": "area_login",
+      "key": "header_subtitle",
+      "locale": "ar",
+      "is_published": true,
+      "value": "سجّل الدخول لمتابعة ملف الميراث الخاص بك."
+    },
+    {
+      "collection": "area_login",
+      "key": "tab_email",
+      "locale": "ar",
+      "is_published": true,
+      "value": "البريد الإلكتروني"
+    },
+    {
+      "collection": "area_login",
+      "key": "tab_phone",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الهاتف"
+    },
+    {
+      "collection": "area_login",
+      "key": "tab_password",
+      "locale": "ar",
+      "is_published": true,
+      "value": "كلمة المرور"
+    },
+    {
+      "collection": "area_login",
+      "key": "google_cta",
+      "locale": "ar",
+      "is_published": true,
+      "value": "المتابعة مع Google"
+    },
+    {
+      "collection": "area_login",
+      "key": "oppure",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أو"
+    },
+    {
+      "collection": "area_login",
+      "key": "password_label",
+      "locale": "ar",
+      "is_published": true,
+      "value": "كلمة مرورك"
+    },
+    {
+      "collection": "area_login",
+      "key": "password_hint",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تُنشأ من الملف الشخصي بعد أول دخول. ليس لديك واحدة؟ استخدم البريد."
+    },
+    {
+      "collection": "area_login",
+      "key": "password_cta",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تسجيل الدخول"
+    },
+    {
+      "collection": "area_login",
+      "key": "password_verifying",
+      "locale": "ar",
+      "is_published": true,
+      "value": "جارٍ تسجيل الدخول…"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_label",
+      "locale": "ar",
+      "is_published": true,
+      "value": "بريدك الإلكتروني"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_placeholder",
+      "locale": "ar",
+      "is_published": true,
+      "value": "nome@email.it"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_hint",
+      "locale": "ar",
+      "is_published": true,
+      "value": "استخدم البريد الإلكتروني الذي دفعت به."
+    },
+    {
+      "collection": "area_login",
+      "key": "email_cta",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أرسل لي رابط الدخول"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_sending",
+      "locale": "ar",
+      "is_published": true,
+      "value": "جارٍ الإرسال…"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_label",
+      "locale": "ar",
+      "is_published": true,
+      "value": "رقم هاتفك"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_placeholder",
+      "locale": "ar",
+      "is_published": true,
+      "value": "+39 333 123 4567"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_hint",
+      "locale": "ar",
+      "is_published": true,
+      "value": "استخدم الرقم الذي طلبت به. سنرسل لك رمزًا عبر الرسائل القصيرة."
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_cta",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أرسل لي الرمز عبر الرسائل القصيرة"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_sending",
+      "locale": "ar",
+      "is_published": true,
+      "value": "جارٍ الإرسال…"
+    },
+    {
+      "collection": "area_login",
+      "key": "sent_email_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تحقق من بريدك الإلكتروني"
+    },
+    {
+      "collection": "area_login",
+      "key": "sent_email_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أرسلنا رابط الدخول إلى {contact}. ينتهي الرابط خلال دقائق قليلة."
+    },
+    {
+      "collection": "area_login",
+      "key": "sent_phone_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تحقق من رسائلك القصيرة"
+    },
+    {
+      "collection": "area_login",
+      "key": "sent_phone_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أرسلنا رمزًا من 6 أرقام إلى الرقم {contact}. أدخله أدناه."
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_toggle",
+      "locale": "ar",
+      "is_published": true,
+      "value": "استلمت رمزًا، أدخلْه"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_label",
+      "locale": "ar",
+      "is_published": true,
+      "value": "رمز من 6 أرقام"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_placeholder",
+      "locale": "ar",
+      "is_published": true,
+      "value": "123456"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_cta",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تأكيد الرمز"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_verifying",
+      "locale": "ar",
+      "is_published": true,
+      "value": "جارٍ التحقق…"
+    },
+    {
+      "collection": "area_login",
+      "key": "resend",
+      "locale": "ar",
+      "is_published": true,
+      "value": "إعادة الإرسال"
+    },
+    {
+      "collection": "area_login",
+      "key": "error_link",
+      "locale": "ar",
+      "is_published": true,
+      "value": "رابط الدخول غير صالح أو منتهي الصلاحية. اطلب رابطًا جديدًا."
+    },
+    {
+      "collection": "area_login",
+      "key": "secure_note",
+      "locale": "ar",
+      "is_published": true,
+      "value": "دخول آمن"
+    },
+    {
+      "collection": "area_login",
+      "key": "back_to_site",
+      "locale": "ar",
+      "is_published": true,
+      "value": "العودة إلى الموقع"
+    },
+    {
+      "collection": "area_login",
+      "key": "privacy_link",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "الخصوصية",
+        "href": "/privacy"
+      }
+    },
+    {
+      "collection": "area_login",
+      "key": "termini_link",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "الشروط",
+        "href": "/termini-condizioni"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_legal_prefix",
+      "locale": "ar",
+      "is_published": true,
+      "value": "مزيد من التفاصيل حول كيفية تعاملنا مع بياناتك:"
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_privacy_label",
+      "locale": "ar",
+      "is_published": true,
+      "value": "سياسة الخصوصية"
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_terms_label",
+      "locale": "ar",
+      "is_published": true,
+      "value": "شروط الخدمة"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "price_suffix",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أتعاب بدون ضريبة القيمة المضافة"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "sla_line",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الإرسال خلال {n} أيام عمل من اكتمال المستندات"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "cta_choose",
+      "locale": "ar",
+      "is_published": true,
+      "value": "اختر {name}"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_price_note",
+      "locale": "ar",
+      "is_published": true,
+      "value": "يُحدَّد معًا قبل البدء"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_discover",
+      "locale": "ar",
+      "is_published": true,
+      "value": "اكتشف كيفية تفعيله"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_phone_label",
+      "locale": "ar",
+      "is_published": true,
+      "value": "اتصل بلورنزو"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_email_label",
+      "locale": "ar",
+      "is_published": true,
+      "value": "راسلنا عبر البريد"
+    },
+    {
+      "collection": "navbar",
+      "key": "cta_short",
+      "locale": "ar",
+      "is_published": true,
+      "value": "عرض سعر"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_rating_of",
+      "locale": "ar",
+      "is_published": true,
+      "value": "من 5"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_count_one",
+      "locale": "ar",
+      "is_published": true,
+      "value": "مراجعة واحدة على Google"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_count_many",
+      "locale": "ar",
+      "is_published": true,
+      "value": "{n} مراجعات على Google"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_from",
+      "locale": "ar",
+      "is_published": true,
+      "value": "مراجعات من"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_write",
+      "locale": "ar",
+      "is_published": true,
+      "value": "اكتب مراجعة"
+    },
+    {
+      "collection": "faq",
+      "key": "items",
+      "locale": "ar",
+      "is_published": true,
+      "value": [
+        {
+          "category": "فهم الميراث",
+          "question": "ما هي تصريحة الميراث؟",
+          "answer": "هي الإجراء الضريبي الذي تُبلَّغ به Agenzia delle Entrate عن تركة المتوفى المنقولة إلى الورثة. تُقدَّم عادةً خلال 12 شهرًا من الوفاة."
+        },
+        {
+          "category": "فهم الميراث",
+          "question": "ما هو الموعد النهائي لتقديمها؟",
+          "answer": "عادةً خلال 12 شهرًا من تاريخ الوفاة. التأخير قد يترتب عليه غرامات: نتولى نحن الالتزام بالمواعيد الصحيحة."
+        },
+        {
+          "category": "التكاليف والضرائب",
+          "question": "كم تكلفة خدمتكم؟",
+          "answer": "تدفع أتعابًا ثابتة حسب الباقة. الضرائب منفصلة وعلى عاتق الوارث، ونحسبها ونُعلمك بها قبل الإرسال."
+        },
+        {
+          "category": "التكاليف والضرائب",
+          "question": "هل الضرائب مشمولة في السعر؟",
+          "answer": "لا: سعر الباقة هو الأتعاب المهنية. ضرائب الميراث (والمسجّل العقاري والكاتاسترو والطوابع) تُدفع عبر F24 وهي منفصلة. نحسبها نحن مسبقًا."
+        },
+        {
+          "category": "التكاليف والضرائب",
+          "question": "ما هي تسهيلات المسكن الأول في الميراث؟",
+          "answer": "إذا استوفى وارث واحد على الأقل شروط المسكن الأول على العقار الموروث، تُدفع ضرائب المسجّل والكاتاسترو بمبلغ ثابت (200 يورو لكل منهما) بدل النسبة على القيمة الكاتاسترية. نتحقق مما إذا كنت مستحقًا ونشير إليها في التصريح."
+        },
+        {
+          "category": "لماذا لا بمفردك",
+          "question": "هل يمكنني إنجازها مجانًا وحدي على موقع الوكالة؟",
+          "answer": "نعم، توجد تصريحة مسبقة التعبئة مجانية وهو خيار صادق. لكنها تتطلب SPID وخبرة: لا تتحقق من البيانات الكاتاسترية وأي أخطاء (والغرامات) تبقى على عاتقك."
+        },
+        {
+          "category": "كيف يعمل",
+          "question": "هل يجب أن أذهب إلى مكتب؟",
+          "answer": "لا. الاستبيان والمستندات والمراسلات والإرسال إلى الوكالة كلها عبر الإنترنت. هناك دائمًا مكالمة مع Lorenzo لشرح كل شيء."
+        },
+        {
+          "category": "كيف يعمل",
+          "question": "ما المستندات المطلوبة؟",
+          "answer": "يعتمد على حالتك: نعطيك قائمة مخصّصة. إن نقصك شيء، غالبًا يمكننا استرداده نحن (كشوف، سندات ملكية)."
+        },
+        {
+          "category": "المستندات والمنطقة الشخصية",
+          "question": "هل يمكنني رفع المستندات بصورة من الهاتف؟",
+          "answer": "نعم. في المنطقة الشخصية يمكنك رفع PDF أو JPG أو PNG (حتى صور بالهاتف)، حتى 10 ميجابايت لكل ملف وحتى 10 ملفات لكل بند في القائمة. للوجه/الظهر أو المستندات متعددة الصفحات ارفع عدة صور على نفس البند."
+        },
+        {
+          "category": "المستندات والمنطقة الشخصية",
+          "question": "هل توجد نماذج جاهزة للتحميل والتعبئة؟",
+          "answer": "نعم. تحت بعض بنود القائمة تجد نماذج جاهزة (مثل التصريح البديل لشهادة الوفاة وحالة الأسرة للمتوفى، أو التصريح الذاتي لحالة أسرة كل وارث): تحمّلها وتعبئها وتوقّعها ثم تعيد رفعها."
+        },
+        {
+          "category": "المستندات والمنطقة الشخصية",
+          "question": "ماذا يحدث إذا رُفض مستند؟",
+          "answer": "يراجعها Lorenzo واحدًا تلو الآخر. إن وُجدت مشكلة (صورة غير واضحة، صفحة ناقصة، مستند خاطئ) يعود البند «للإعادة» مع ملاحظة توضح ما يجب تصحيحه: تعيد رفع الملف الصحيح وتستأنف المعاملة دون إعادة كل شيء."
+        },
+        {
+          "category": "المستندات والمنطقة الشخصية",
+          "question": "كيف أعرف أن المستندات أصبحت صحيحة؟",
+          "answer": "في المنطقة الشخصية ترى حالة كل بند (للرفع، مرفوع، موافق عليه، للإعادة). عند الانتهاء اضغط «انتهيت»: تصلك تحديثات بالبريد في كل خطوة ويمكنك دائمًا متابعة تقدّم المعاملة."
+        },
+        {
+          "category": "بعد الخدمة",
+          "question": "ماذا أستلم في نهاية المعاملة؟",
+          "answer": "إيصال التقديم/التسجيل، نسخة من التصريح، نتيجة F24، وعند الاقتضاء نتيجة نقل الملكية الكاتاستري، بالإضافة إلى فاتورتنا."
+        }
+      ]
+    },
+    {
+      "collection": "area",
+      "key": "nav_home",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الرئيسية"
+    },
+    {
+      "collection": "area",
+      "key": "nav_documenti",
+      "locale": "ar",
+      "is_published": true,
+      "value": "المستندات"
+    },
+    {
+      "collection": "area",
+      "key": "nav_ordine",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الشراء"
+    },
+    {
+      "collection": "area",
+      "key": "nav_comunicazioni",
+      "locale": "ar",
+      "is_published": true,
+      "value": "المراسلات"
+    },
+    {
+      "collection": "area",
+      "key": "nav_dati",
+      "locale": "ar",
+      "is_published": true,
+      "value": "بياناتك"
+    },
+    {
+      "collection": "area",
+      "key": "nav_mandato",
+      "locale": "ar",
+      "is_published": true,
+      "value": "التوكيل"
+    },
+    {
+      "collection": "area",
+      "key": "nav_conclusa",
+      "locale": "ar",
+      "is_published": true,
+      "value": "المستندات النهائية"
+    },
+    {
+      "collection": "area",
+      "key": "nav_profilo",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الملف الشخصي"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_brand",
+      "locale": "ar",
+      "is_published": true,
+      "value": "Studio Armellin"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_practice",
+      "locale": "ar",
+      "is_published": true,
+      "value": "معاملة {code}"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_back",
+      "locale": "ar",
+      "is_published": true,
+      "value": "العودة إلى الموقع"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_help",
+      "locale": "ar",
+      "is_published": true,
+      "value": "المساعدة"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_logout",
+      "locale": "ar",
+      "is_published": true,
+      "value": "خروج"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_notifications",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الإشعارات"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_notifications_empty",
+      "locale": "ar",
+      "is_published": true,
+      "value": "لا إشعارات"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_notifications_mark_all",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تعليم الكل كمقروء"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_comms_new",
+      "locale": "ar",
+      "is_published": true,
+      "value": "جديد"
+    },
+    {
+      "collection": "area",
+      "key": "welcome_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "المنطقة الشخصية"
+    },
+    {
+      "collection": "area",
+      "key": "welcome_subtitle",
+      "locale": "ar",
+      "is_published": true,
+      "value": "مرحبًا."
+    },
+    {
+      "collection": "area",
+      "key": "hello",
+      "locale": "ar",
+      "is_published": true,
+      "value": "مرحبًا، {name}"
+    },
+    {
+      "collection": "area",
+      "key": "practice_deceased",
+      "locale": "ar",
+      "is_published": true,
+      "value": "معاملة {code} · المتوفى {name}"
+    },
+    {
+      "collection": "area",
+      "key": "next_action_label",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الإجراء التالي"
+    },
+    {
+      "collection": "area",
+      "key": "tracker_heading",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أين وصلت معاملتك"
+    },
+    {
+      "collection": "area",
+      "key": "docs_heading",
+      "locale": "ar",
+      "is_published": true,
+      "value": "المستندات"
+    },
+    {
+      "collection": "area",
+      "key": "docs_progress",
+      "locale": "ar",
+      "is_published": true,
+      "value": "{uploaded} من {total} مرفوعة"
+    },
+    {
+      "collection": "area",
+      "key": "docs_cta",
+      "locale": "ar",
+      "is_published": true,
+      "value": "إلى المستندات"
+    },
+    {
+      "collection": "area",
+      "key": "summary_heading",
+      "locale": "ar",
+      "is_published": true,
+      "value": "ملخص"
+    },
+    {
+      "collection": "area",
+      "key": "summary_package",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الباقة"
+    },
+    {
+      "collection": "area",
+      "key": "summary_price",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الأتعاب"
+    },
+    {
+      "collection": "area",
+      "key": "summary_taxes",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الضرائب المبلَّغ عنها"
+    },
+    {
+      "collection": "area",
+      "key": "summary_iban_missing",
+      "locale": "ar",
+      "is_published": true,
+      "value": "IBAN ناقص: أضفه للضرائب"
+    },
+    {
+      "collection": "area",
+      "key": "summary_cta_ordine",
+      "locale": "ar",
+      "is_published": true,
+      "value": "عرض الشراء"
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تم إلغاء هذه المعاملة."
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_refunded",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تم قبول الانسحاب وصدر الاسترداد: عادة تراه على البطاقة المستخدمة خلال 5-10 أيام عمل (أوقات بنكك أو جهة إصدار البطاقة)."
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_pending",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تم قبول الانسحاب. إن وُجد استرداد مستحق، بعد إصداره تراه على البطاقة عادة خلال 5-10 أيام عمل."
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_footer",
+      "locale": "ar",
+      "is_published": true,
+      "value": "لا يوجد شيء آخر للقيام به: أدناه ملخص مشترياتك ويمكنك الرجوع إليه."
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_cta",
+      "locale": "ar",
+      "is_published": true,
+      "value": "عرض مشترياتك"
+    },
+    {
+      "collection": "area",
+      "key": "client_steps",
+      "locale": "ar",
+      "is_published": true,
+      "value": [
+        "مستندات للرفع",
+        "قيد المعالجة",
+        "أُرسلت إلى الوكالة",
+        "مختتمة"
+      ]
+    },
+    {
+      "collection": "area",
+      "key": "action_closed_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "معاملتك مختتمة."
+    },
+    {
+      "collection": "area",
+      "key": "action_closed_cta",
+      "locale": "ar",
+      "is_published": true,
+      "value": "حمّل المستندات النهائية"
+    },
+    {
+      "collection": "area",
+      "key": "action_docs_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تنقص بعض المستندات للمتابعة."
+    },
+    {
+      "collection": "area",
+      "key": "action_docs_cta",
+      "locale": "ar",
+      "is_published": true,
+      "value": "ارفع المستندات"
+    },
+    {
+      "collection": "area",
+      "key": "action_working_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "نعمل على معاملتك."
+    },
+    {
+      "collection": "area",
+      "key": "action_working_cta",
+      "locale": "ar",
+      "is_published": true,
+      "value": "عرض الحالة"
+    },
+    {
+      "collection": "area",
+      "key": "action_idle_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "كل شيء على ما يرام، لا إجراء مطلوب الآن."
+    },
+    {
+      "collection": "area",
+      "key": "action_idle_cta",
+      "locale": "ar",
+      "is_published": true,
+      "value": "عرض مشترياتك"
+    },
+    {
+      "collection": "area",
+      "key": "doc_state_da_caricare",
+      "locale": "ar",
+      "is_published": true,
+      "value": "للرفع"
+    },
+    {
+      "collection": "area",
+      "key": "doc_state_caricato",
+      "locale": "ar",
+      "is_published": true,
+      "value": "مرفوع"
+    },
+    {
+      "collection": "area",
+      "key": "doc_state_da_rifare",
+      "locale": "ar",
+      "is_published": true,
+      "value": "للإعادة"
+    },
+    {
+      "collection": "area",
+      "key": "empty_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "لا معاملة مرتبطة بهذا الدخول"
+    },
+    {
+      "collection": "area",
+      "key": "empty_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "إذا دفعت عرض سعر مسبقًا، اربط المعاملة بالبريد المستخدم عند الدفع. وإلا احسب عرض سعر من الموقع."
+    },
+    {
+      "collection": "area",
+      "key": "empty_claim_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "هل لديك معاملة بالفعل؟"
+    },
+    {
+      "collection": "area",
+      "key": "empty_claim_cta",
+      "locale": "ar",
+      "is_published": true,
+      "value": "اربط المعاملة"
+    },
+    {
+      "collection": "area",
+      "key": "documenti_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "مستنداتك"
+    },
+    {
+      "collection": "area",
+      "key": "documenti_subtitle",
+      "locale": "ar",
+      "is_published": true,
+      "value": "ارفع المستندات المطلوبة. يمكنك أيضًا التصوير بالهاتف."
+    },
+    {
+      "collection": "area",
+      "key": "documenti_photo_tip",
+      "locale": "ar",
+      "is_published": true,
+      "value": "صور واضحة، الورقة كاملة في الإطار، بلا وهج. PDF وJPG/PNG حتى 10 ميجابايت."
+    },
+    {
+      "collection": "area",
+      "key": "ordine_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "مشترياتك"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_subtitle",
+      "locale": "ar",
+      "is_published": true,
+      "value": "ماذا اشتريت وما يشمله. يمكنك الرجوع إليه متى شئت."
+    },
+    {
+      "collection": "area",
+      "key": "ordine_summary",
+      "locale": "ar",
+      "is_published": true,
+      "value": "ملخص الطلب"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_total",
+      "locale": "ar",
+      "is_published": true,
+      "value": "إجمالي الأتعاب"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_no_iva",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أتعاب بدون ضريبة القيمة المضافة (نظام forfettario). الضرائب منفصلة (انظر أدناه)."
+    },
+    {
+      "collection": "area",
+      "key": "ordine_payment_status",
+      "locale": "ar",
+      "is_published": true,
+      "value": "حالة الدفع"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_method",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الطريقة"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_card",
+      "locale": "ar",
+      "is_published": true,
+      "value": "بطاقة (عبر الإنترنت)"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_transfer",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تحويل بنكي"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_paid",
+      "locale": "ar",
+      "is_published": true,
+      "value": "مدفوع"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_pending",
+      "locale": "ar",
+      "is_published": true,
+      "value": "قيد الانتظار"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_partial",
+      "locale": "ar",
+      "is_published": true,
+      "value": "مسترد جزئيًا"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_refunded",
+      "locale": "ar",
+      "is_published": true,
+      "value": "مسترد"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_refund_note",
+      "locale": "ar",
+      "is_published": true,
+      "value": "صدر الاسترداد: عادة تراه على البطاقة خلال 5-10 أيام عمل (أوقات بنكك أو جهة إصدار البطاقة)."
+    },
+    {
+      "collection": "area",
+      "key": "dati_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "بياناتك"
+    },
+    {
+      "collection": "area",
+      "key": "dati_subtitle",
+      "locale": "ar",
+      "is_published": true,
+      "value": "بعض البيانات الإضافية التي نحتاجها للمعاملة."
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "المراسلات"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_subtitle",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الرسائل والتحديثات حول معاملتك."
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_empty",
+      "locale": "ar",
+      "is_published": true,
+      "value": "لا مراسلات حتى الآن."
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_channel_email",
+      "locale": "ar",
+      "is_published": true,
+      "value": "بريد"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_channel_phone",
+      "locale": "ar",
+      "is_published": true,
+      "value": "مكالمة"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_channel_wa",
+      "locale": "ar",
+      "is_published": true,
+      "value": "واتساب"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_channel_inperson",
+      "locale": "ar",
+      "is_published": true,
+      "value": "حضوريًا"
+    },
+    {
+      "collection": "area",
+      "key": "mandato_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "التوكيل والموافقات"
+    },
+    {
+      "collection": "area",
+      "key": "mandato_subtitle",
+      "locale": "ar",
+      "is_published": true,
+      "value": "اقرأ ووقّع التوكيل المهني لمعاملتك."
+    },
+    {
+      "collection": "area",
+      "key": "mandato_lang_note",
+      "locale": "ar",
+      "is_published": true,
+      "value": "النسخة الإيطالية من التفويض هي المعتمدة قانونًا. الترجمة للتيسير فقط؛ ملف التنزيل للتوقيع يبقى بالإيطالية."
+    },
+    {
+      "collection": "area",
+      "key": "conclusa_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "المستندات النهائية"
+    },
+    {
+      "collection": "area",
+      "key": "conclusa_subtitle_open",
+      "locale": "ar",
+      "is_published": true,
+      "value": "معاملتك مختتمة. هنا المستندات للتحميل."
+    },
+    {
+      "collection": "area",
+      "key": "conclusa_subtitle_closed",
+      "locale": "ar",
+      "is_published": true,
+      "value": "ستتوفر المستندات النهائية عند اختتام المعاملة."
+    },
+    {
+      "collection": "area",
+      "key": "profilo_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الملف الشخصي"
+    },
+    {
+      "collection": "area",
+      "key": "profilo_subtitle",
+      "locale": "ar",
+      "is_published": true,
+      "value": "بيانات الاتصال والأمان والتفضيلات."
+    },
+    {
+      "collection": "area",
+      "key": "recesso_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "طلب الانسحاب"
+    },
+    {
+      "collection": "area",
+      "key": "recesso_subtitle",
+      "locale": "ar",
+      "is_published": true,
+      "value": "يمكنك طلب الانسحاب ما دامت المعاملة غير مكتملة."
+    },
+    {
+      "collection": "area",
+      "key": "recesso_window_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أنت ضمن 14 يومًا من إبرام العقد."
+    },
+    {
+      "collection": "area",
+      "key": "recesso_rule_1",
+      "locale": "ar",
+      "is_published": true,
+      "value": "إن لم نبدأ بعد: استرداد كامل للأتعاب."
+    },
+    {
+      "collection": "area",
+      "key": "recesso_rule_2",
+      "locale": "ar",
+      "is_published": true,
+      "value": "إن بدأنا ولم نُنهَ: استرداد بنسبة العمل المنجز."
+    },
+    {
+      "collection": "area",
+      "key": "recesso_rule_3",
+      "locale": "ar",
+      "is_published": true,
+      "value": "إن اكتملت الخدمة: لا ينطبق الانسحاب (المادة 59)."
+    },
+    {
+      "collection": "area",
+      "key": "review_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "المعالجة مختتمة: هل تترك لنا مراجعة؟"
+    },
+    {
+      "collection": "area",
+      "key": "review_cta",
+      "locale": "ar",
+      "is_published": true,
+      "value": "اترك مراجعة على Google"
+    },
+    {
+      "collection": "area",
+      "key": "review_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "إذا أعجبك التعامل مع Lorenzo، مراجعة على Google تساعدنا كثيرًا."
+    },
+    {
+      "collection": "area",
+      "key": "chrome_comms_all",
+      "locale": "ar",
+      "is_published": true,
+      "value": "عرض كل المراسلات"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_comms_new_count",
+      "locale": "ar",
+      "is_published": true,
+      "value": "({n} جديدة)"
+    },
+    {
+      "collection": "area",
+      "key": "docs_ui",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "counter": "المستندات: {uploaded} من {total}",
+        "all_uploaded": "تم تحميل الكل",
+        "missing_n": "ينقص {n}",
+        "optional": "(اختياري)",
+        "delete_file": "حذف هذا الملف",
+        "uploading": "جاري التحميل…",
+        "upload": "تحميل",
+        "reupload": "أعد التحميل",
+        "add_another": "أضف ملفًا آخر",
+        "multi_page_hint": "وجه/ظهر أو صورة لكل صفحة: ندمجها نحن",
+        "done_title": "تم!",
+        "done_body": "تلقّى Lorenzo مستنداتك وهو يراجعها. سنُعلمك إن نقص شيء — يمكنك الاطمئنان.",
+        "submit_cta": "انتهيت — أرسل إلى Lorenzo",
+        "missing_one": "ينقص مستند واحد",
+        "missing_many": "ينقص {n} مستندات",
+        "templates_title": "تحتاج النموذج؟ نقدّمه لك:",
+        "templates_help": "نزّل النموذج، اطبعه واملأه بالكامل، وقّعه ثم أعد تحميله هنا (صورة واضحة مقبولة)، مع نسخة من وثيقة هوية الموقّع.",
+        "err_file_too_big": "الملف كبير جدًا (الحد الأقصى 10 ميجابايت).",
+        "err_too_many": "يمكنك تحميل 10 ملفات كحد أقصى لكل بند.",
+        "err_upload_failed": "فشل التحميل.",
+        "err_upload_network": "فشل التحميل، تحقق من الاتصال.",
+        "err_delete_failed": "فشل الحذف.",
+        "err_delete_network": "فشل الحذف، أعد المحاولة.",
+        "state_da_caricare": "بانتظار التحميل",
+        "state_caricato": "تم التحميل",
+        "state_da_rifare": "يجب إعادة التحميل"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "mandate_ui",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "signed_title": "تم توقيع التفويض.",
+        "signed_paper": "تم استلام التفويض الورقي الموقّع.",
+        "signed_electronic": "تم تسجيل التوقيع الإلكتروني (التاريخ والوقت).",
+        "signed_thanks": "شكرًا، يمكننا متابعة معاملتك.",
+        "accept_checkbox": "قرأت وأوافق على التفويض والشروط وإشعار الخصوصية.",
+        "accept_cta": "أوافق وأوقّع عبر الإنترنت",
+        "paper_title": "تفضل التوقيع الورقي؟",
+        "paper_body": "نزّل التفويض، وقّعه يدويًا ثم أعد تحميله: هذا مناسب لنا تمامًا.",
+        "download_blank": "تنزيل التفويض",
+        "upload_signed": "تحميل التفويض الموقّع",
+        "err_file_too_big": "الملف كبير جدًا (الحد الأقصى 10 ميجابايت).",
+        "err_upload_failed": "فشل التحميل.",
+        "err_upload_network": "فشل التحميل، تحقق من الاتصال.",
+        "heading": "تفويض مهني - المعاملة {code}"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "iban_ui",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "saved": "تم حفظ IBAN بشكل مشفّر (ينتهي بـ ••{last4}). يمكنك تحديثه بإدخال رقم جديد.",
+        "cleared": "استُخدم IBAN للسداد (F24) ثم حُذف لأسباب أمنية في {date}. إن لزم يمكنك إدخاله مجددًا.",
+        "label": "IBAN الوريث",
+        "hint": "بيان حسّاس: يُستخدم فقط لاحتمال خصم الضرائب (F24). يُحفظ مشفّرًا.",
+        "save": "حفظ"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "claim_ui",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "title": "لديك معاملة بالفعل؟ اربط هذا الدخول",
+        "body": "أدخل رمز المعاملة (مثل SUC-2026-0022) والبريد المستخدم للدفع أو العرض. يجب أن يطابق بريد هذا الدخول.",
+        "code_label": "رمز المعاملة",
+        "email_label": "بريد الشراء / العرض",
+        "needs_email": "اخرج من هذا الحساب وادخل بـ {email} (استخدم الرابط في بريد الدفع، أو اطلب رابط دخول جديد من صفحة تسجيل الدخول).",
+        "linking": "جاري الربط…",
+        "cta": "اربط المعاملة"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "withdrawal_ui",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "status_requested": "مُرسلة",
+        "status_in_review": "قيد المعالجة",
+        "status_accepted": "مقبولة",
+        "status_rejected": "مرفوضة",
+        "registered_title": "تم تسجيل الطلب.",
+        "registered_body": "تلقّى Lorenzo طلبك وسيتواصل معك. الحالة الحالية: {status}.",
+        "rejected_prev": "رُفض طلب سابق",
+        "rejected_retry": "يمكنك إرسال طلب جديد.",
+        "reason_label": "السبب (اختياري)",
+        "reason_placeholder": "إن رغبت، أخبرنا لماذا…",
+        "cta": "اطلب الانسحاب",
+        "alt_contact": "بدلًا من ذلك يمكنك الكتابة إلى studio@successioniarmellin.it أو عبر PEC.",
+        "refund_issued": "تم إصدار الاسترداد على البطاقة المستخدمة للدفع: عادةً يظهر خلال 5-10 أيام عمل (حسب بنكك أو جهة إصدار البطاقة؛ وقد يظهر كإلغاء للعملية الأصلية).",
+        "refund_pending": "إن كان الاسترداد مستحقًا، نصدره بنفس وسيلة الدفع. بعد الإصدار، يضيفه البنك عادةً خلال 5-10 أيام عمل."
+      }
+    },
+    {
+      "collection": "area",
+      "key": "invoice_ui",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "download": "تنزيل الفاتورة",
+        "number": "فاتورة رقم {number}",
+        "issued_soon": "صدرت الفاتورة رقم {number}. سيكون ملف PDF متاحًا قريبًا.",
+        "pending": "ستتوفر الفاتورة هنا فور إصدارها."
+      }
+    },
+    {
+      "collection": "area",
+      "key": "final_docs_ui",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "download_zip": "تنزيل الكل (ZIP)",
+        "download": "تنزيل",
+        "not_ready": "المستندات النهائية غير متاحة بعد. أدناه معاينة لما ستستلمه عند اختتام المعاملة."
+      }
+    },
+    {
+      "collection": "area",
+      "key": "profilo_ui",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "contacts": "بيانات الاتصال",
+        "name": "الاسم",
+        "email": "البريد",
+        "phone": "الهاتف",
+        "phone_empty": "غير مُدخل",
+        "phone_edit": "تعديل الرقم",
+        "phone_add": "إضافة رقم",
+        "dial_aria": "مفتاح الدولة",
+        "dial_other": "آخر…",
+        "dial_custom_aria": "مفتاح مخصص",
+        "phone_hint": "اختر مفتاح الدولة (+39، +49…) ثم الرقم المحلي.",
+        "save": "حفظ",
+        "cancel": "إلغاء",
+        "security": "الأمان",
+        "password_intro": "إن رغبت، يمكنك إنشاء كلمة مرور للدخول أسرع دون انتظار رابط البريد.",
+        "password_saved": "تم حفظ كلمة المرور: من الدخول التالي يمكنك استخدامها مع الطرق الأخرى.",
+        "password_change": "تغيير كلمة المرور",
+        "password_create": "إنشاء أو تغيير كلمة المرور",
+        "password_new": "كلمة مرور جديدة (8 أحرف على الأقل)",
+        "password_confirm": "أعد كلمة المرور",
+        "password_mismatch": "كلمتا المرور غير متطابقتين.",
+        "password_save": "حفظ كلمة المرور",
+        "prefs_title": "تفضيلات الإشعارات",
+        "prefs_body": "رسائل البريد التشغيلية (الدفع، المستندات، الضرائب، الإغلاق) تبقى دائمًا مفعّلة. هنا يمكنك إيقاف الرسائل الاختيارية فقط، مثل طلب المراجعة.",
+        "prefs_email": "بريد اختياري (مثل المراجعة)",
+        "prefs_wa": "WhatsApp (قريبًا)",
+        "prefs_saved": "تم حفظ التفضيلات.",
+        "comms_lang_title": "لغة المراسلات المكتوبة",
+        "comms_lang_body": "البريد والرسائل عن المعاملة (الدفع، المستندات، العدول). مستقلة عن لغة الواجهة.",
+        "comms_lang_notice": "الترجمات تلقائية / للتيسير. المستندات الرسمية والنصوص المعتمدة قانونًا تبقى بالإيطالية.",
+        "comms_lang_it": "Italiano",
+        "comms_lang_ar": "العربية",
+        "logout": "خروج"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "ordine_ui",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "includes_named": "ماذا تشمل \"{name}\"",
+        "includes_generic": "ماذا تشمل الباقة",
+        "includes_missing": "التفاصيل غير متاحة.",
+        "taxes_title": "الضرائب",
+        "taxes_body": "هذه المبالغ ليست أتعابنا: هي ضرائب تُدفع للدولة (نموذج F24، تصفية ذاتية). نحسبها ونبلّغك بها قبل الإرسال.",
+        "taxes_need_iban": "لخصم الضرائب نحتاج IBAN الخاص بك.",
+        "taxes_iban_cta": "أدخل IBAN الآن ←",
+        "taxes_iban_saved": "IBAN مسجّل (•••• {last4}).",
+        "taxes_iban_edit": "تعديل",
+        "taxes_pending": "سيُحسب مبلغ الضرائب ويُبلَّغ به قبل الإرسال.",
+        "withdrawal_prompt": "غيّرت رأيك؟",
+        "withdrawal_cta": "اطلب الانسحاب"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "documenti_page_ui",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "cancelled_subtitle": "أُلغيت المعاملة: لا حاجة لتحميل شيء.",
+        "cancelled_body": "أُلغيت هذه المعاملة، لذلك تعطّل تحميل المستندات. ستُحذف وثائق الهوية والملفات الأخرى من أنظمتنا وفق سياسة الخصوصية."
+      }
+    },
+    {
+      "collection": "area",
+      "key": "final_docs_preview",
+      "locale": "ar",
+      "is_published": true,
+      "value": [
+        {
+          "label": "إيصال التقديم - وكالة الضرائب",
+          "description": "شهادة إلكترونية برقم بروتوكول التسجيل."
+        },
+        {
+          "label": "إقرار التركة (نسخة)",
+          "description": "النموذج المقدَّم إلى الوكالة."
+        },
+        {
+          "label": "كشوف عقارية محدّثة (نقل ملكية)",
+          "description": "العقارات المسجّلة بأسماء الورثة."
+        },
+        {
+          "label": "فاتورة الأتعاب",
+          "description": "المستند الضريبي لأتعابنا."
+        }
+      ]
+    },
+    {
+      "collection": "site_ui",
+      "key": "preventivo_ui",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "yes": "نعم",
+        "no": "لا",
+        "unknown": "لا أعلم",
+        "will_q_before": "هل ترك",
+        "will_q_term": "de cuius",
+        "will_q_after": "وصية؟",
+        "will_tip_aria": "ماذا يعني de cuius",
+        "will_tip": "De cuius (من اللاتينية) هو الشخص المتوفى الذي تُفتح بشأنه التركة: المتوفى أو المتوفاة.",
+        "will_yes_note": "الباقات القياسية تغطي أيضًا الحالات التي توجد فيها وصية. في قائمة المستندات سنطلب نسخة من الوصية المُعلنة.",
+        "will_unknown_note": "لا بأس: إن ظهرت لاحقًا نعالجها أثناء المعاملة. تابع الأسئلة الأخرى.",
+        "heirs_legend": "من هم الورثة؟ حدّد العدد لكل نوع.",
+        "heirs_hint": "احسب كل من يرث، بما فيهم أنت إن كنت من الورثة.",
+        "heir_coniuge": "الزوج/الزوجة (أو الشريك المدني)",
+        "heir_figli": "الأبناء",
+        "heir_genitori": "الوالدان",
+        "heir_fratelli": "الإخوة/الأخوات",
+        "heir_nipoti": "الأحفاد/أبناء الإخوة",
+        "heir_altri": "ورثة آخرون",
+        "less": "أقل {label}",
+        "more": "أكثر {label}",
+        "real_estate_q": "هل توجد عقارات (منازل، أراضٍ، مرآب)؟",
+        "real_estate_count": "كم عقارًا إجمالًا؟",
+        "real_estate_placeholder": "مثلًا 2",
+        "real_estate_hint": "احسب المنازل والأراضي والمرائب والحصص: كل عقار إضافي قد يؤثر على العرض.",
+        "over_100k_q": "هل تتجاوز القيمة الإجمالية للتركة (حسابات، أوراق مالية، إلخ) 100.000 يورو؟",
+        "other_assets_q": "هل توجد أصول أخرى (حصص شركات، أسهم، شركات، قوارب…)؟",
+        "back": "رجوع",
+        "next": "التالي"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "checkout_ui",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "stripe_blurb": "دفع آمن عبر Stripe: بطاقة ائتمان/خصم، وتقسيط حيث يتوفر. سيتم توجيهك إلى صفحة Stripe المحمية.",
+        "err_start": "تعذّر بدء الدفع.",
+        "err_not_configured": "الدفعات غير مفعّلة بعد. أعد المحاولة لاحقًا أو تواصل معنا.",
+        "err_retry": "تعذّر بدء الدفع. أعد المحاولة بعد قليل.",
+        "err_network": "خطأ في الشبكة. أعد المحاولة بعد قليل.",
+        "need_quote_before": "للدفع، ابدأ من",
+        "need_quote_link": "حساب العرض",
+        "need_quote_after": ": هكذا نقترح الحزمة المناسبة.",
+        "loading": "جارٍ بدء الدفع…",
+        "cancelled": "أُلغي الدفع. لم يُخصم أي مبلغ: يمكنك إعادة المحاولة متى شئت.",
+        "total_fee": "إجمالي الأتعاب",
+        "empty_order": "لا توجد ممارسة بحزمة للدفع. احسب العرض أولًا: نقترح الحزمة المناسبة ونربط الدفع بممارستك.",
+        "empty_cta": "اذهب إلى العرض ←",
+        "meta_title": "أكمل الطلب",
+        "extra_property": "عقارات إضافية ({extra} × {fee}€)"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "conferma_ui",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "title_paid": "تم استلام الدفع، شكرًا!",
+        "title_pending": "نؤكّد الدفع",
+        "body_paid": "تم الدفع بنجاح ومعاملتك نشطة الآن. ستصلك قريبًا رسالة بريد بالملخص وتعليمات المنطقة الشخصية لتحميل المستندات.",
+        "body_pending": "استلمنا الطلب. التأكيد النهائي للدفع يصل من نظامنا خلال لحظات: ستصلك رسالة بريد عند اكتمال كل شيء. يمكنك الدخول إلى المنطقة الشخصية الآن.",
+        "email_note_before": "ادخل إلى المنطقة الشخصية بنفس",
+        "email_note_strong": "البريد المستخدم للدفع",
+        "email_note_after": ": هكذا تعثر على المعاملة. إن استخدمت بريدًا آخر (أو Google بحساب مختلف) فلن تراها.",
+        "cta_area": "إلى المنطقة الشخصية",
+        "cta_home": "العودة للرئيسية",
+        "taxes_note": "الضرائب منفصلة عن الأتعاب: نحسبها ونبلّغك بها قبل الإرسال.",
+        "meta_title": "تم استلام الدفع"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "contact_ui",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "name": "الاسم واللقب",
+        "email": "البريد",
+        "phone": "الهاتف (اختياري)",
+        "message": "الرسالة",
+        "submit": "إرسال الرسالة"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "soft_lead_ui",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "name": "الاسم واللقب (اختياري)",
+        "email": "البريد",
+        "phone": "الهاتف",
+        "phone_optional": "الهاتف (اختياري)",
+        "submitting": "جاري الإرسال…",
+        "err_save": "تعذّر تسجيل الطلب حاليًا. أعد المحاولة لاحقًا أو اتصل بنا.",
+        "notes": "ملاحظة (اختياري)"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "guide_ui",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "search_placeholder": "ابحث في الأدلة (مثل الضرائب، المستندات، الإعفاء)",
+        "search_aria": "ابحث في الأدلة",
+        "all": "الكل",
+        "free_tool": "أداة مجانية",
+        "back": "العودة إلى الأدلة",
+        "author_heading": "من كتب هذا الدليل",
+        "related": "أدلة ذات صلة",
+        "featured": "مميز",
+        "reading_minutes": "{n} دقائق قراءة",
+        "read_guide": "اقرأ الدليل",
+        "read": "اقرأ",
+        "empty": "لم يُعثر على دليل لبحثك. جرّب كلمة أخرى أو راسلنا: نجيب الجميع.",
+        "updated": "حدّث في {date}",
+        "sources": "مصادر رسمية",
+        "breadcrumb_aria": "المسار",
+        "breadcrumb_guides": "الأدلة",
+        "meta_title": "أدلة المواريث",
+        "meta_not_found": "الدليل غير موجود",
+        "tool_alt": "رسم توضيحي: منزل وآلة حاسبة ومستند برمز اليورو"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "chrome_ui",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "lang_aria": "اختر اللغة",
+        "menu_open": "فتح القائمة",
+        "menu_close": "إغلاق القائمة",
+        "back": "رجوع",
+        "meta_result": "نتيجتك",
+        "meta_recesso": "حق الانسحاب",
+        "meta_documenti": "مستندات التصريحة"
+      }
+    },
+    {
+      "collection": "area_errors",
+      "key": "session_invalid",
+      "locale": "ar",
+      "is_published": true,
+      "value": "جلسة غير صالحة."
+    },
+    {
+      "collection": "area_errors",
+      "key": "session_expired",
+      "locale": "ar",
+      "is_published": true,
+      "value": "انتهت الجلسة. سجّل الدخول مجددًا."
+    },
+    {
+      "collection": "area_errors",
+      "key": "not_authorized",
+      "locale": "ar",
+      "is_published": true,
+      "value": "غير مصرح."
+    },
+    {
+      "collection": "area_errors",
+      "key": "upload_failed",
+      "locale": "ar",
+      "is_published": true,
+      "value": "فشل التحميل."
+    },
+    {
+      "collection": "area_errors",
+      "key": "delete_failed",
+      "locale": "ar",
+      "is_published": true,
+      "value": "فشل الحذف."
+    },
+    {
+      "collection": "area_errors",
+      "key": "file_too_big",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الملف كبير جدًا (الحد الأقصى 10 ميجابايت)."
+    },
+    {
+      "collection": "area_errors",
+      "key": "file_bad_type",
+      "locale": "ar",
+      "is_published": true,
+      "value": "صيغة غير مسموحة."
+    },
+    {
+      "collection": "area_errors",
+      "key": "invoice_unavailable",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الفاتورة غير متاحة بعد."
+    },
+    {
+      "collection": "area_errors",
+      "key": "file_unavailable",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الملف غير متاح."
+    },
+    {
+      "collection": "area_errors",
+      "key": "practice_cancelled",
+      "locale": "ar",
+      "is_published": true,
+      "value": "المعاملة ملغاة: العملية غير متاحة."
+    },
+    {
+      "collection": "area_errors",
+      "key": "mandate_failed",
+      "locale": "ar",
+      "is_published": true,
+      "value": "فشل التوقيع."
+    },
+    {
+      "collection": "area_errors",
+      "key": "withdrawal_blocked",
+      "locale": "ar",
+      "is_published": true,
+      "value": "لم يعد الانسحاب ممكنًا."
+    },
+    {
+      "collection": "area_errors",
+      "key": "withdrawal_pending",
+      "locale": "ar",
+      "is_published": true,
+      "value": "لديك طلب قيد المعالجة بالفعل."
+    },
+    {
+      "collection": "area_errors",
+      "key": "iban_invalid",
+      "locale": "ar",
+      "is_published": true,
+      "value": "رقم IBAN غير صالح. تحقّق وأعد المحاولة."
+    },
+    {
+      "collection": "area_errors",
+      "key": "phone_invalid",
+      "locale": "ar",
+      "is_published": true,
+      "value": "رقم غير صالح."
+    },
+    {
+      "collection": "area_errors",
+      "key": "password_short",
+      "locale": "ar",
+      "is_published": true,
+      "value": "يجب أن تكون كلمة المرور 8 أحرف على الأقل."
+    },
+    {
+      "collection": "area_errors",
+      "key": "password_failed",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تعذّر الحفظ، أعد المحاولة."
+    },
+    {
+      "collection": "area_errors",
+      "key": "prefs_failed",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تعذّر الحفظ، أعد المحاولة."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_unavailable",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الخدمة غير متاحة. أعد المحاولة لاحقًا."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_code_required",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أدخل رمز المعاملة."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_email_required",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أدخل البريد المستخدم للشراء."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_email_mismatch",
+      "locale": "ar",
+      "is_published": true,
+      "value": "البريد لا يطابق هذا الدخول."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_not_found",
+      "locale": "ar",
+      "is_published": true,
+      "value": "لم تُعثر على ممارسة بهذا الرمز. تحقّق وأعد المحاولة."
+    },
+    {
+      "collection": "area_errors",
+      "key": "docs_submit_failed",
+      "locale": "ar",
+      "is_published": true,
+      "value": "فشل الإرسال. أعد المحاولة."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_email_required",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أدخل بريدك."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_bad_credentials",
+      "locale": "ar",
+      "is_published": true,
+      "value": "البريد أو كلمة المرور غير صحيحة. إن لم تنشئ كلمة مرور من قبل، ادخل عبر الرابط في البريد."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_google_unavailable",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تسجيل الدخول عبر Google غير متاح حاليًا. استخدم البريد أو الهاتف."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_link_invalid",
+      "locale": "ar",
+      "is_published": true,
+      "value": "رابط غير صالح."
+    },
+    {
+      "collection": "area_errors",
+      "key": "auth_failed",
+      "locale": "ar",
+      "is_published": true,
+      "value": "فشل الدخول. أعد المحاولة."
+    },
+    {
+      "collection": "area_errors",
+      "key": "auth_not_configured",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الدخول غير مفعّل بعد: Supabase Auth غير مُعدّ."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_otp_required",
+      "locale": "ar",
+      "is_published": true,
+      "value": "البريد الإلكتروني والرمز مطلوبان."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_phone_otp_required",
+      "locale": "ar",
+      "is_published": true,
+      "value": "رقم الهاتف والرمز مطلوبان."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_password_required",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أدخل البريد الإلكتروني وكلمة المرور."
+    },
+    {
+      "collection": "area_errors",
+      "key": "password_same",
+      "locale": "ar",
+      "is_published": true,
+      "value": "يجب أن تكون كلمة المرور الجديدة مختلفة عن الحالية."
+    },
+    {
+      "collection": "area_errors",
+      "key": "no_practice",
+      "locale": "ar",
+      "is_published": true,
+      "value": "لا توجد ممارسة مرتبطة بحسابك."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_fields_required",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أدخل رمز الممارسة والبريد الإلكتروني."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_auth_required",
+      "locale": "ar",
+      "is_published": true,
+      "value": "يجب تسجيل الدخول لربط الممارسة."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_no_email",
+      "locale": "ar",
+      "is_published": true,
+      "value": "هذا الدخول بلا بريد. اخرج وسجّل الدخول بالبريد المستخدم للشراء (رابط سحري)."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_wrong_account",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أنت متصل باسم {current}. لهذه الممارسة يجب الدخول بـ {expected}."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_link_failed",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تعذّر ربط جهة الاتصال. تواصل مع المكتب."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_practice_email_mismatch",
+      "locale": "ar",
+      "is_published": true,
+      "value": "البريد لا يطابق المسجّل على الممارسة. استخدم بريد الدفع أو العرض."
+    },
+    {
+      "collection": "area_errors",
+      "key": "service_unavailable",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الخدمة غير متاحة."
+    },
+    {
+      "collection": "area_errors",
+      "key": "phone_invalid_detail",
+      "locale": "ar",
+      "is_published": true,
+      "value": "رقم غير صالح: اختر المفتاح الدولي (+39، +49…) ثم الرقم الوطني."
+    },
+    {
+      "collection": "area_login",
+      "key": "callback_loading",
+      "locale": "ar",
+      "is_published": true,
+      "value": "جارٍ تسجيل الدخول…"
+    },
+    {
+      "collection": "area_login",
+      "key": "callback_failed",
+      "locale": "ar",
+      "is_published": true,
+      "value": "فشل الدخول، جارٍ إعادة التوجيه…"
+    },
+    {
+      "collection": "site_ui",
+      "key": "offline_ui",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "email_cta": "راسلنا عبر البريد",
+        "whatsapp": "واتساب",
+        "already_practice": "هل لديك ممارسة بالفعل؟",
+        "area_cta": "ادخل إلى المنطقة الشخصية"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "cookie_ui",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "body": "نستخدم ملفات تعريف ارتباط تقنية (ضرورية) وبموافقتك ملفات إحصائية لتحسين الموقع. يمكنك قبول أو رفض غير الضرورية.",
+        "policy_label": "سياسة ملفات تعريف الارتباط",
+        "accept_all": "قبول الكل",
+        "necessary_only": "الضرورية فقط",
+        "preferences": "تفضيلات ملفات تعريف الارتباط"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "contatti_map_ui",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "meta_title": "اتصل بنا",
+        "email_label": "البريد الإلكتروني",
+        "studio_label": "المكتب",
+        "map_eyebrow": "أين تجدنا",
+        "map_title": "المكتب في {citta}",
+        "maps_cta": "افتح في خرائط Google",
+        "map_iframe_title": "خريطة المكتب - {address}",
+        "photo_caption": "كاتدرائية Pontedera",
+        "photo_credit": "صورة: SeesaTheDoctor / Wikimedia (CC BY 4.0)"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_categorie",
+      "locale": "ar",
+      "is_published": true,
+      "value": [
+        {
+          "value": "A",
+          "label": "سكن – المجموعة A (باستثناء A/10)"
+        },
+        {
+          "value": "A10",
+          "label": "A/10 – مكاتب واستوديوهات خاصة"
+        },
+        {
+          "value": "B",
+          "label": "المجموعة B (مدارس، مكاتب عامة…)"
+        },
+        {
+          "value": "C",
+          "label": "المجموعة C – ملحقات (كراج، أقبية…)، باستثناء C/1"
+        },
+        {
+          "value": "C1",
+          "label": "C/1 – محلات ومتاجر"
+        },
+        {
+          "value": "D",
+          "label": "المجموعة D (مصانع، فنادق، مستودعات…)"
+        },
+        {
+          "value": "E",
+          "label": "المجموعة E (محطات، مبانٍ خاصة…)"
+        }
+      ]
+    },
+    {
+      "collection": "footer",
+      "key": "nav_heading",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تصفح"
+    },
+    {
+      "collection": "footer",
+      "key": "legal_heading",
+      "locale": "ar",
+      "is_published": true,
+      "value": "قانوني"
+    },
+    {
+      "collection": "footer",
+      "key": "rights_reserved",
+      "locale": "ar",
+      "is_published": true,
+      "value": "جميع الحقوق محفوظة."
+    },
+    {
+      "collection": "footer",
+      "key": "label_forma",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الشكل القانوني"
+    },
+    {
+      "collection": "footer",
+      "key": "label_piva",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الرقم الضريبي"
+    },
+    {
+      "collection": "footer",
+      "key": "label_cf",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الرقم الضريبي الشخصي"
+    },
+    {
+      "collection": "footer",
+      "key": "label_rea",
+      "locale": "ar",
+      "is_published": true,
+      "value": "REA"
+    },
+    {
+      "collection": "footer",
+      "key": "label_pec",
+      "locale": "ar",
+      "is_published": true,
+      "value": "PEC"
+    },
+    {
+      "collection": "footer",
+      "key": "label_tel",
+      "locale": "ar",
+      "is_published": true,
+      "value": "هاتف"
+    },
+    {
+      "collection": "legale",
+      "key": "updated_prefix",
+      "locale": "ar",
+      "is_published": true,
+      "value": "آخر تحديث:"
+    },
+    {
+      "collection": "legale",
+      "key": "lang_note",
+      "locale": "ar",
+      "is_published": true,
+      "value": "النسخة الإيطالية من هذا المستند هي المعتمدة قانونًا: أي ترجمة هي للتيسير فقط، وعند الاختلاف تسود النسخة الإيطالية."
+    }
   ]
 }

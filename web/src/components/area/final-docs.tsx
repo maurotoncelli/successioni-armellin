@@ -5,10 +5,20 @@ import { Download, FileCheck, Loader2, AlertCircle, FolderArchive } from "lucide
 import { Card } from "@/components/ui/card";
 import { buttonClasses } from "@/components/ui/button";
 import { getFinalDocUrl } from "@/app/area-riservata/(app)/conclusa/actions";
+import {
+  FINAL_DOCS_UI_IT,
+  type FinalDocsUiLabels,
+} from "@/lib/area-ui-labels";
 
 type Doc = { label: string; fileName: string; uploadedAt: string };
 
-export function FinalDocsClient({ docs }: { docs: Doc[] }) {
+export function FinalDocsClient({
+  docs,
+  labels = FINAL_DOCS_UI_IT,
+}: {
+  docs: Doc[];
+  labels?: FinalDocsUiLabels;
+}) {
   const [busy, setBusy] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -38,7 +48,7 @@ export function FinalDocsClient({ docs }: { docs: Doc[] }) {
           className={buttonClasses({ className: "w-full sm:w-auto" })}
         >
           <FolderArchive className="h-4 w-4" />
-          Scarica tutto (ZIP)
+          {labels.download_zip}
         </a>
       )}
       {docs.map((doc, i) => (
@@ -63,7 +73,7 @@ export function FinalDocsClient({ docs }: { docs: Doc[] }) {
             ) : (
               <Download className="h-4 w-4" />
             )}
-            <span className="hidden sm:inline">Scarica</span>
+            <span className="hidden sm:inline">{labels.download}</span>
           </button>
         </Card>
       ))}

@@ -1,14 +1,28 @@
 import "server-only";
 import { sendEmail, emailLayout } from "@/lib/email";
 import type { PracticeStatus } from "@/content/crm-data";
+import {
+  coerceCommsLocale,
+  type CommsLocale,
+} from "@/lib/comms-locale-shared";
+import {
+  documentRejectedEmail,
+  finalDocsEmail,
+  invoiceEmail,
+  reviewEmail,
+  statusEmailCopy,
+  taxesEmail,
+  withdrawalEmail,
+} from "@/lib/comms-copy";
 
 /*
   Notifiche email di alto livello legate agli eventi della pratica (@05).
   Ogni funzione ritorna { sent, subject } cosi l'azione chiamante puo
   registrare una comunicazione AUTO in cronologia quando l'email parte davvero.
+  Locale: preferenza comunicazioni scritte (profiles.comms_locale), default IT.
+  Le email ADMIN restano sempre in italiano.
 */
 
-// Base assoluta obbligatoria: nelle email i link relativi sono morti.
 export function siteBase(): string {
   return (
     process.env.NEXT_PUBLIC_SITE_URL || "https://www.successioniarmellin.it"
@@ -23,8 +37,6 @@ function crmPracticeUrl(practiceId: string): string {
   return `${siteBase()}/crm/pratiche/${practiceId}`;
 }
 
-// I testi liberi (motivazioni, nomi, note) finiscono in template HTML:
-// vanno sempre escapati, sono input di utenti o comunque non controllati.
 function esc(s: string): string {
   return s
     .replaceAll("&", "&amp;")
@@ -33,59 +45,27 @@ function esc(s: string): string {
     .replaceAll('"', "&quot;");
 }
 
-function eur(n: number): string {
-  return `${n.toLocaleString("it-IT")} €`;
+function resolveLocale(locale?: string): CommsLocale {
+  return coerceCommsLocale(locale);
 }
-
-type StatusEmail = { subject: string; heading: string; body: string; cta: string };
-
-const statusEmails: Partial<Record<PracticeStatus, StatusEmail>> = {
-  PAGATO: {
-    subject: "Pagamento ricevuto: ora carica i documenti",
-    heading: "Grazie, abbiamo ricevuto il pagamento",
-    body: "La tua pratica e ufficialmente avviata. Il prossimo passo e caricare i documenti richiesti nella tua area personale: ti guidiamo passo passo, e ci vogliono pochi minuti.",
-    cta: "Carica i documenti",
-  },
-  ATTESA_DOC: {
-    subject: "Mancano alcuni documenti per procedere",
-    heading: "Ci servono ancora alcuni documenti",
-    body: "Per andare avanti con la tua successione abbiamo bisogno di completare la lista dei documenti. Trovi tutto, con le istruzioni, nella tua area personale.",
-    cta: "Completa i documenti",
-  },
-  LAVORAZIONE: {
-    subject: "Stiamo lavorando alla tua pratica",
-    heading: "Ci pensiamo noi",
-    body: "Abbiamo tutto il necessario e stiamo predisponendo la tua dichiarazione di successione. Ti aggiorniamo appena ci sono novita: non devi fare nulla.",
-    cta: "Vedi lo stato",
-  },
-  INVIATA: {
-    subject: "Pratica inviata all'Agenzia delle Entrate",
-    heading: "Inviata all'Agenzia delle Entrate",
-    body: "La tua dichiarazione di successione e stata trasmessa. Appena riceviamo la ricevuta di registrazione la trovi nella tua area personale.",
-    cta: "Vai all'area personale",
-  },
-  CHIUSA: {
-    subject: "La tua pratica e conclusa",
-    heading: "Tutto fatto!",
-    body: "La tua successione e conclusa. Nella tua area personale trovi i documenti finali (ricevuta di presentazione, dichiarazione, visure) da scaricare e conservare.",
-    cta: "Scarica i documenti",
-  },
-};
 
 export async function notifyStatusChange(
   to: string,
   status: PracticeStatus,
   opts?: {
-    /** Override CTA (es. magic link post-pagamento). */
     ctaHref?: string;
     practiceCode?: string;
+    locale?: string;
   },
 ): Promise<{ sent: boolean; subject: string } | null> {
-  const tpl = statusEmails[status];
+  const locale = resolveLocale(opts?.locale);
+  const tpl = statusEmailCopy(status, locale);
   if (!tpl) return null;
   const codeNote =
     status === "PAGATO" && opts?.practiceCode
-      ? `<p style="margin:12px 0 0">Codice pratica: <strong>${esc(opts.practiceCode)}</strong> — conservalo. Per entrare nell'area personale usa questa stessa email.</p>`
+      ? locale === "ar"
+        ? `<p style="margin:12px 0 0">رمز المعاملة: <strong>${esc(opts.practiceCode)}</strong> — احتفظ به. للدخول إلى المنطقة الشخصية استخدم نفس هذا البريد.</p>`
+        : `<p style="margin:12px 0 0">Codice pratica: <strong>${esc(opts.practiceCode)}</strong> — conservalo. Per entrare nell'area personale usa questa stessa email.</p>`
       : "";
   const defaultCta =
     status === "CHIUSA" ? `${areaUrl()}/conclusa` : areaUrl();
@@ -94,68 +74,70 @@ export async function notifyStatusChange(
     bodyHtml: `<p style="margin:0">${tpl.body}</p>${codeNote}`,
     ctaLabel: tpl.cta,
     ctaHref: opts?.ctaHref || defaultCta,
+    locale,
   });
   const { sent } = await sendEmail({ to, subject: tpl.subject, html });
   return { sent, subject: tpl.subject };
 }
 
-/** Follow-up recensione Google (GMB), tipicamente 48h dopo la chiusura (@09). */
 export async function notifyReviewRequest(
   to: string,
   reviewUrl: string,
-  opts?: { delay?: string },
+  opts?: { delay?: string; locale?: string },
 ): Promise<{ sent: boolean; subject: string }> {
-  const subject = "Un minuto per una recensione?";
+  const locale = resolveLocale(opts?.locale);
+  const tpl = reviewEmail(locale);
   const html = emailLayout({
-    heading: "Ci aiuti con una recensione?",
-    bodyHtml: `<p style="margin:0 0 10px">La tua pratica di successione è conclusa. Se ti sei trovato bene con Lorenzo, una recensione su Google ci aiuta tantissimo — ci vuole un minuto.</p>
-      <p style="margin:0;font-size:13px;color:#8a938c">Grazie di cuore, anche solo per aver letto.</p>`,
-    ctaLabel: "Scrivi su Google",
+    heading: tpl.heading,
+    bodyHtml: tpl.bodyHtml,
+    ctaLabel: tpl.ctaLabel,
     ctaHref: reviewUrl,
+    locale,
   });
   const { sent } = await sendEmail({
     to,
-    subject,
+    subject: tpl.subject,
     html,
     scheduledAt: opts?.delay ?? "in 48 hours",
   });
-  return { sent, subject };
+  return { sent, subject: tpl.subject };
 }
 
 export async function notifyTaxesCommunicated(
   to: string,
   amount: number,
+  opts?: { locale?: string },
 ): Promise<{ sent: boolean; subject: string }> {
-  const subject = "Le imposte della tua successione";
+  const locale = resolveLocale(opts?.locale);
+  const tpl = taxesEmail(amount, locale);
   const html = emailLayout({
-    heading: "Imposte calcolate",
-    bodyHtml: `<p style="margin:0 0 10px">Abbiamo calcolato le imposte dovute per la tua successione (modello F24, autoliquidazione):</p>
-      <p style="margin:0 0 10px;font-size:22px;font-weight:700;color:#1f6f5c">${eur(amount)}</p>
-      <p style="margin:0 0 10px">Queste somme <strong>non sono il nostro onorario</strong>: si versano allo Stato. Nella tua area personale trovi il dettaglio e puoi inserire l'IBAN per l'addebito.</p>`,
-    ctaLabel: "Vai all'area personale",
+    heading: tpl.heading,
+    bodyHtml: tpl.bodyHtml,
+    ctaLabel: tpl.ctaLabel,
     ctaHref: `${areaUrl()}/ordine`,
+    locale,
   });
-  const { sent } = await sendEmail({ to, subject, html });
-  return { sent, subject };
+  const { sent } = await sendEmail({ to, subject: tpl.subject, html });
+  return { sent, subject: tpl.subject };
 }
 
 export async function notifyFinalDocsReady(
   to: string,
+  opts?: { locale?: string },
 ): Promise<{ sent: boolean; subject: string }> {
-  const subject = "I documenti finali della tua successione sono pronti";
+  const locale = resolveLocale(opts?.locale);
+  const tpl = finalDocsEmail(locale);
   const html = emailLayout({
-    heading: "Documenti pronti da scaricare",
-    bodyHtml: `<p style="margin:0">Abbiamo caricato i documenti finali della tua pratica (ricevuta di presentazione, dichiarazione, visure). Li trovi nella tua area personale, pronti da scaricare e conservare.</p>`,
-    ctaLabel: "Scarica i documenti",
+    heading: tpl.heading,
+    bodyHtml: tpl.bodyHtml,
+    ctaLabel: tpl.ctaLabel,
     ctaHref: `${areaUrl()}/conclusa`,
+    locale,
   });
-  const { sent } = await sendEmail({ to, subject, html });
-  return { sent, subject };
+  const { sent } = await sendEmail({ to, subject: tpl.subject, html });
+  return { sent, subject: tpl.subject };
 }
 
-// Destinatari delle notifiche operative: ADMIN_NOTIFY_EMAILS se impostata
-// (es. solo Lorenzo), altrimenti tutta l'allowlist ADMIN_EMAILS. Cosi chi ha
-// accesso al CRM (ADMIN_EMAILS) non riceve per forza anche le email.
 function adminNotifyRecipients(): string[] {
   return (process.env.ADMIN_NOTIFY_EMAILS || process.env.ADMIN_EMAILS || "")
     .split(",")
@@ -180,24 +162,18 @@ export async function notifyAdminWithdrawalRequest(
     ctaLabel: "Apri la pratica",
     ctaHref: crmPracticeUrl(practiceId),
   });
-  // Invio a TUTTI gli indirizzi admin (Resend accetta piu destinatari in `to`).
   const { sent } = await sendEmail({ to: admins, subject, html });
   return { sent, subject };
 }
 
-/*
-  Nuovo lead dal sito (opt-in email o richiesta preventivo su misura):
-  notifica IMMEDIATA a Lorenzo con recapiti e link alla pratica nel CRM.
-*/
 export async function notifyAdminNewLead(input: {
   practiceId: string;
   practiceCode: string;
   clientName: string;
   email: string;
   phone: string;
-  custom: boolean; // true = richiesta preventivo su misura
-  packageLabel?: string; // pacchetto suggerito (lead da opt-in email)
-  /** Nota libera lasciata dal visitatore nel form. */
+  custom: boolean;
+  packageLabel?: string;
   clientNote?: string;
 }): Promise<{ sent: boolean; subject: string }> {
   const admins = adminNotifyRecipients();
@@ -235,23 +211,32 @@ export async function notifyAdminNewLead(input: {
   return { sent, subject };
 }
 
-/*
-  Email al VISITATORE che lascia i contatti sul preventivo: riepilogo del
-  pacchetto (opt-in email) o conferma di presa in carico (su misura).
-*/
 export async function notifyLeadRecap(
   to: string,
   input:
-    | { kind: "custom" }
-    | { kind: "esonero" }
+    | { kind: "custom"; locale?: string }
+    | { kind: "esonero"; locale?: string }
     | {
         kind: "package";
         packageLabel: string;
         total: number;
         checkoutUrl: string;
+        locale?: string;
       },
 ): Promise<{ sent: boolean; subject: string }> {
+  const locale = resolveLocale(input.locale);
   if (input.kind === "custom") {
+    if (locale === "ar") {
+      const subject = "استلمنا طلب عرض السعر المخصّص";
+      const html = emailLayout({
+        heading: "تم استلام الطلب!",
+        bodyHtml: `<p style="margin:0 0 10px">شكرًا لثقتك. لورنزو ينظر إلى حالتك: يتواصل معك <strong>خلال يوم عمل واحد</strong> (غالبًا في اليوم نفسه) بعرض مخصّص، دون التزام.</p>
+        <p style="margin:0">إن فضّلت التعجيل، رد على هذا البريد أو راسلنا على WhatsApp.</p>`,
+        locale,
+      });
+      const { sent } = await sendEmail({ to, subject, html });
+      return { sent, subject };
+    }
     const subject = "Abbiamo ricevuto la tua richiesta di preventivo su misura";
     const html = emailLayout({
       heading: "Richiesta ricevuta!",
@@ -262,11 +247,36 @@ export async function notifyLeadRecap(
     return { sent, subject };
   }
   if (input.kind === "esonero") {
+    if (locale === "ar") {
+      const subject = "ملخص تقييمك الأولي";
+      const html = emailLayout({
+        heading: "ربما لا يلزمك تقديم التصريح",
+        bodyHtml: `<p style="margin:0 0 10px">بناءً على إجاباتك، قد تدخل حالتك في <strong>إعفاء قانوني</strong> من تصريحة الميراث. لا نريد بيع خدمة لا تحتاجها: التأكيد النهائي يكون على الحالة الملموسة، مجانًا.</p>
+        <p style="margin:0">رد على هذا البريد أو اتصل بنا متى شئت: نتحقق معًا في دقائق.</p>`,
+        locale,
+      });
+      const { sent } = await sendEmail({ to, subject, html });
+      return { sent, subject };
+    }
     const subject = "Il riepilogo della tua pre-valutazione";
     const html = emailLayout({
       heading: "Forse non devi fare la dichiarazione",
       bodyHtml: `<p style="margin:0 0 10px">In base alle tue risposte, il tuo caso potrebbe rientrare nell'<strong>esonero di legge</strong> dalla dichiarazione di successione. Non vogliamo venderti un servizio che non ti serve: la conferma definitiva va fatta sul caso concreto, gratis.</p>
         <p style="margin:0">Rispondi a questa email o chiamaci quando vuoi: verifichiamo insieme in pochi minuti.</p>`,
+    });
+    const { sent } = await sendEmail({ to, subject, html });
+    return { sent, subject };
+  }
+  if (locale === "ar") {
+    const subject = "ملخص عرض السعر الخاص بك";
+    const html = emailLayout({
+      heading: "إليك عرض السعر",
+      bodyHtml: `<p style="margin:0 0 10px">بناءً على إجاباتك، الحزمة المناسبة لحالتك هي:</p>
+      <p style="margin:0 0 10px;font-size:18px"><strong>${input.packageLabel}</strong> — <span style="font-size:22px;font-weight:700;color:#1f6f5c">${input.total.toLocaleString("ar")} €</span></p>
+      <p style="margin:0">سعر واضح مسبقًا (الضرائب منفصلة: نحسبها نحن). عندما تريد، تابع من هنا:</p>`,
+      ctaLabel: "تابع عندما تكون جاهزًا",
+      ctaHref: input.checkoutUrl,
+      locale,
     });
     const { sent } = await sendEmail({ to, subject, html });
     return { sent, subject };
@@ -288,73 +298,60 @@ export async function notifyWithdrawalOutcome(
   to: string,
   outcome: "ACCEPTED" | "REJECTED" | "IN_REVIEW",
   note: string,
-  opts?: { refundIssued?: boolean },
+  opts?: { refundIssued?: boolean; locale?: string },
 ): Promise<{ sent: boolean; subject: string }> {
-  const acceptedBody = opts?.refundIssued
-    ? "La tua richiesta di recesso e stata accettata e abbiamo emesso il rimborso sull'importo dovuto. Lo vedrai sulla carta usata per il pagamento di norma entro <strong>5-10 giorni lavorativi</strong> (tempi della tua banca o dell'emittente della carta; a volte compare come storno della spesa originale)."
-    : "La tua richiesta di recesso e stata accettata. Se e dovuto un rimborso, lo emettiamo con lo stesso metodo di pagamento: una volta emesso, la banca lo accredita di norma entro <strong>5-10 giorni lavorativi</strong>.";
-  const map = {
-    IN_REVIEW: {
-      subject: "Stiamo valutando la tua richiesta di recesso",
-      heading: "Richiesta in gestione",
-      body: "Abbiamo preso in carico la tua richiesta di recesso e la stiamo valutando. Ti aggiorniamo a breve con l'esito.",
-    },
-    ACCEPTED: {
-      subject: opts?.refundIssued
-        ? "Recesso accettato: rimborso emesso"
-        : "Recesso accettato",
-      heading: opts?.refundIssued
-        ? "Recesso accettato, rimborso emesso"
-        : "Recesso accettato",
-      body: acceptedBody,
-    },
-    REJECTED: {
-      subject: "Esito della tua richiesta di recesso",
-      heading: "Richiesta di recesso",
-      body: "Abbiamo valutato la tua richiesta di recesso. Trovi di seguito le motivazioni; restiamo a disposizione per chiarimenti.",
-    },
-  }[outcome];
+  const locale = resolveLocale(opts?.locale);
+  const tpl = withdrawalEmail(
+    outcome,
+    note,
+    { refundIssued: opts?.refundIssued },
+    locale,
+    esc,
+  );
   const html = emailLayout({
-    heading: map.heading,
-    bodyHtml: `<p style="margin:0 0 10px">${map.body}</p>
-      ${note ? `<p style="margin:0;padding:10px 12px;background:#f4f5f3;border-radius:8px">${esc(note)}</p>` : ""}`,
-    ctaLabel: "Vai all'area personale",
+    heading: tpl.heading,
+    bodyHtml: tpl.bodyHtml,
+    ctaLabel: tpl.ctaLabel,
     ctaHref: `${areaUrl()}/recesso`,
+    locale,
   });
-  const { sent } = await sendEmail({ to, subject: map.subject, html });
-  return { sent, subject: map.subject };
+  const { sent } = await sendEmail({ to, subject: tpl.subject, html });
+  return { sent, subject: tpl.subject };
 }
 
 export async function notifyInvoiceReady(
   to: string,
   number: string,
+  opts?: { locale?: string },
 ): Promise<{ sent: boolean; subject: string }> {
-  const subject = `La tua fattura e disponibile (n. ${number})`;
+  const locale = resolveLocale(opts?.locale);
+  const tpl = invoiceEmail(number, locale);
   const html = emailLayout({
-    heading: "Fattura disponibile",
-    bodyHtml: `<p style="margin:0 0 10px">Abbiamo emesso la fattura dell'onorario <strong>n. ${number}</strong> per la tua pratica di successione.</p>
-      <p style="margin:0">La trovi e la puoi scaricare nella tua area personale, nella sezione "Il tuo acquisto".</p>`,
-    ctaLabel: "Scarica la fattura",
+    heading: tpl.heading,
+    bodyHtml: tpl.bodyHtml,
+    ctaLabel: tpl.ctaLabel,
     ctaHref: `${areaUrl()}/ordine`,
+    locale,
   });
-  const { sent } = await sendEmail({ to, subject, html });
-  return { sent, subject };
+  const { sent } = await sendEmail({ to, subject: tpl.subject, html });
+  return { sent, subject: tpl.subject };
 }
 
 export async function notifyDocumentRejected(
   to: string,
   docLabel: string,
   reason: string,
+  opts?: { locale?: string },
 ): Promise<{ sent: boolean; subject: string }> {
-  const subject = `Un documento va ricaricato: ${docLabel}`;
+  const locale = resolveLocale(opts?.locale);
+  const tpl = documentRejectedEmail(docLabel, reason, locale, esc);
   const html = emailLayout({
-    heading: "Un documento va rifatto",
-    bodyHtml: `<p style="margin:0 0 10px">Il documento <strong>${esc(docLabel)}</strong> ha bisogno di una correzione:</p>
-      <p style="margin:0 0 10px;padding:10px 12px;background:#fdecea;border-radius:8px;color:#9b2c20">${esc(reason)}</p>
-      <p style="margin:0">Puoi ricaricarlo dalla tua area personale, e una cosa veloce.</p>`,
-    ctaLabel: "Ricarica il documento",
+    heading: tpl.heading,
+    bodyHtml: tpl.bodyHtml,
+    ctaLabel: tpl.ctaLabel,
     ctaHref: `${areaUrl()}/documenti`,
+    locale,
   });
-  const { sent } = await sendEmail({ to, subject, html });
-  return { sent, subject };
+  const { sent } = await sendEmail({ to, subject: tpl.subject, html });
+  return { sent, subject: tpl.subject };
 }

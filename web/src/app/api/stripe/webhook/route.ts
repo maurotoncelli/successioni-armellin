@@ -6,6 +6,8 @@ import { getAdminClient, isAdminConfigured } from "@/lib/supabase/admin";
 import { notifyStatusChange } from "@/lib/notifications";
 import { pushCrmNotification } from "@/lib/crm-notifications";
 import { pushClientStatusNotification } from "@/lib/client-notifications";
+import { getCommsLocaleForContact } from "@/lib/comms-locale";
+import { paymentReceivedCommSubject } from "@/lib/comms-copy";
 import { issueInvoiceForPractice, isInvoicingConfigured } from "@/lib/invoice";
 import { slaDueDate } from "@/lib/cms";
 import { generateChecklist } from "@/lib/checklist";
@@ -167,12 +169,13 @@ async function handleCheckoutCompleted(
     }
   }
 
+  const commsLocale = await getCommsLocaleForContact(contactId);
   const communications = asArray<Record<string, unknown>>(row.communications);
   communications.unshift({
     channel: "EMAIL",
     direction: "OUTBOUND",
     source: "AUTO",
-    subject: "Pagamento ricevuto: la tua pratica e attiva",
+    subject: paymentReceivedCommSubject(commsLocale),
     occurredAt: stamp,
   });
 
@@ -249,6 +252,7 @@ async function handleCheckoutCompleted(
     await notifyStatusChange(clientEmail, "PAGATO", {
       ctaHref: accessLink ?? undefined,
       practiceCode: row.code,
+      locale: commsLocale,
     });
   }
   await pushClientStatusNotification(practiceId, "PAGATO");

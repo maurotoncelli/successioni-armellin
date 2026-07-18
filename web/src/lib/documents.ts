@@ -28,6 +28,10 @@ export const ALLOWED_DOC_TYPES = ["application/pdf", "image/jpeg", "image/png"];
 // essere generoso.
 export const MAX_FILES_PER_ITEM = 10;
 
+/** Codici errore stabili: le route API li mappano a `area_errors` localizzati. */
+export const DOC_ERR_MAX_FILES = "AREA_MAX_FILES";
+export const DOC_ERR_ITEM_NOT_FOUND = "AREA_ITEM_NOT_FOUND";
+
 type Admin = ReturnType<typeof getAdminClient>;
 
 export async function ensureDocBucket(admin: Admin) {
@@ -148,14 +152,12 @@ export async function uploadDocument(
 
   const checklist = await getChecklist(admin, practiceId);
   const item = checklist[index];
-  if (!item) throw new Error("Voce della checklist non trovata.");
+  if (!item) throw new Error(DOC_ERR_ITEM_NOT_FOUND);
   const wasRejected = item.status === "RIFIUTATO";
 
   const files = listItemFiles(item);
   if (files.length >= MAX_FILES_PER_ITEM) {
-    throw new Error(
-      `Massimo ${MAX_FILES_PER_ITEM} file per documento: elimina un file per caricarne un altro.`,
-    );
+    throw new Error(DOC_ERR_MAX_FILES);
   }
 
   const upload = await compressUpload(file);

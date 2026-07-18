@@ -33,28 +33,40 @@ const kindMeta: Record<
   recesso: { icon: Undo2, cls: "bg-red-50 text-red-700" },
 };
 
-function formatWhen(iso: string): string {
+function formatWhen(iso: string, dateLocale: string): string {
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return "";
   const today = new Date();
   const sameDay = d.toDateString() === today.toDateString();
-  const time = d.toLocaleTimeString("it-IT", {
+  const time = d.toLocaleTimeString(dateLocale, {
     hour: "2-digit",
     minute: "2-digit",
   });
-  if (sameDay) return `oggi ${time}`;
-  return `${d.toLocaleDateString("it-IT", { day: "numeric", month: "short" })} ${time}`;
+  if (sameDay) return time;
+  return `${d.toLocaleDateString(dateLocale, { day: "numeric", month: "short" })} ${time}`;
 }
+
+export type NotificationsBellLabels = {
+  title: string;
+  empty: string;
+  markAll: string;
+  commsNew: string;
+  commsAll?: string;
+  commsNewCount?: string;
+};
 
 export function NotificationsBell({
   initialItems,
   unreadCount,
   commsNewCount,
+  labels,
+  dateLocale = "it-IT",
 }: {
   initialItems: ClientNotification[];
   unreadCount: number;
-  /** Novità nello storico comunicazioni (badge secondario sul link). */
   commsNewCount: number;
+  labels: NotificationsBellLabels;
+  dateLocale?: string;
 }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -67,7 +79,6 @@ export function NotificationsBell({
   const [pending, startTransition] = useTransition();
   const rootRef = useRef<HTMLDivElement>(null);
 
-  // Sincronizza con i props server dopo refresh (senza useEffect → setState).
   if (
     initialItems !== syncedFrom.initialItems ||
     unreadCount !== syncedFrom.unreadCount
@@ -107,7 +118,10 @@ export function NotificationsBell({
     startTransition(async () => {
       await markAllNotificationsReadAction();
       setItems((prev) =>
-        prev.map((x) => ({ ...x, readAt: x.readAt ?? new Date().toISOString() })),
+        prev.map((x) => ({
+          ...x,
+          readAt: x.readAt ?? new Date().toISOString(),
+        })),
       );
       setUnread(0);
       router.refresh();
@@ -115,6 +129,8 @@ export function NotificationsBell({
   }
 
   const showBadge = unread > 0;
+  const commsAll = labels.commsAll ?? labels.title;
+  const newCountTpl = labels.commsNewCount ?? "({n})";
 
   return (
     <div ref={rootRef} className="relative">
@@ -122,24 +138,20 @@ export function NotificationsBell({
         type="button"
         onClick={() => setOpen((v) => !v)}
         className="relative inline-flex items-center justify-center rounded-[10px] px-3 py-2 text-text-muted hover:bg-bg-muted hover:text-text"
-        aria-label={
-          showBadge
-            ? `Notifiche, ${unread} non lette`
-            : "Notifiche"
-        }
+        aria-label={labels.title}
       >
         <Bell className="h-5 w-5" />
         {showBadge && (
-          <span className="absolute right-1.5 top-1.5 grid h-4 min-w-4 place-items-center rounded-full bg-accent px-1 text-[10px] font-bold text-white">
+          <span className="absolute end-1.5 top-1.5 grid h-4 min-w-4 place-items-center rounded-full bg-accent px-1 text-[10px] font-bold text-white">
             {unread > 9 ? "9+" : unread}
           </span>
         )}
       </button>
 
       {open && (
-        <div className="absolute right-0 z-50 mt-2 w-[min(100vw-2rem,22rem)] overflow-hidden rounded-2xl border border-primary/10 bg-bg shadow-xl">
+        <div className="absolute end-0 z-50 mt-2 w-[min(100vw-2rem,22rem)] overflow-hidden rounded-2xl border border-primary/10 bg-bg shadow-xl">
           <div className="flex items-center justify-between border-b border-primary/10 px-4 py-3">
-            <p className="text-sm font-semibold text-text">Novità</p>
+            <p className="text-sm font-semibold text-text">{labels.commsNew}</p>
             {unread > 0 && (
               <button
                 type="button"
@@ -148,7 +160,7 @@ export function NotificationsBell({
                 className="inline-flex items-center gap-1 text-xs font-medium text-accent-dark hover:underline disabled:opacity-50"
               >
                 <CheckCheck className="h-3.5 w-3.5" />
-                Segna tutte lette
+                {labels.markAll}
               </button>
             )}
           </div>
@@ -156,7 +168,7 @@ export function NotificationsBell({
           <ul className="max-h-80 overflow-y-auto">
             {items.length === 0 && (
               <li className="px-4 py-8 text-center text-sm text-text-muted">
-                Nessuna notifica per ora.
+                {labels.empty}
               </li>
             )}
             {items.map((n) => {
@@ -169,7 +181,7 @@ export function NotificationsBell({
                     type="button"
                     onClick={() => openItem(n)}
                     className={cn(
-                      "flex w-full items-start gap-3 px-4 py-3 text-left hover:bg-bg-muted",
+                      "flex w-full items-start gap-3 px-4 py-3 text-start hover:bg-bg-muted",
                       unreadRow && "bg-sand/40",
                     )}
                   >
@@ -192,7 +204,7 @@ export function NotificationsBell({
                           {n.title}
                         </span>
                         <span className="shrink-0 text-[11px] text-text-muted">
-                          {formatWhen(n.createdAt)}
+                          {formatWhen(n.createdAt, dateLocale)}
                         </span>
                       </span>
                       {n.body && (
@@ -213,8 +225,10 @@ export function NotificationsBell({
               onClick={() => setOpen(false)}
               className="text-sm font-medium text-accent-dark hover:underline"
             >
-              Vedi tutte le comunicazioni
-              {commsNewCount > 0 ? ` (${commsNewCount} nuove)` : ""}
+              {commsAll}
+              {commsNewCount > 0
+                ? ` ${newCountTpl.replace("{n}", String(commsNewCount))}`
+                : ""}
             </Link>
           </div>
         </div>

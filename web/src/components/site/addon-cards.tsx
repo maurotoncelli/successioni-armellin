@@ -28,10 +28,12 @@ export function AddonCards({
   addons,
   contactText,
   contact,
+  discoverLabel = "Scopri come attivarlo",
 }: {
   addons: AddonItem[];
   contactText: string;
   contact: AddonContact;
+  discoverLabel?: string;
 }) {
   const [openKey, setOpenKey] = useState<string | null>(null);
 
@@ -118,7 +120,7 @@ export function AddonCards({
             {!open && (
               <span className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-text-muted transition-colors group-hover:text-accent">
                 <Plus className="h-3.5 w-3.5" />
-                Scopri come attivarlo
+                {discoverLabel}
               </span>
             )}
           </div>

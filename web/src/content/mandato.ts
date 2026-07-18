@@ -1,7 +1,11 @@
 import { obj, text } from "@/lib/content";
+import {
+  buildMandatoParagraphsAr,
+  buildMandatoTextAr,
+} from "@/content/mandato.ar";
 
 /*
-  Testo del MANDATO PROFESSIONALE (unica fonte di verita).
+  Testo del MANDATO PROFESSIONALE (unica fonte di verita IT).
   Usato sia dalla pagina /area-riservata/mandato (rendering) sia dal download
   .txt nel form di firma: prima era duplicato in due punti con refusi.
 
@@ -11,6 +15,8 @@ import { obj, text } from "@/lib/content";
 
   I dati del professionista arrivano da footer.studio / settings (stessa fonte
   di verita di footer e documenti legali).
+
+  Locale ≠ IT: cortesia AR (mandato.ar.ts). Download .txt di firma resta IT.
 */
 
 export type MandatoParams = {
@@ -18,7 +24,15 @@ export type MandatoParams = {
   signerName: string;
 };
 
-export function buildMandatoParagraphs({
+export function buildMandatoParagraphs(
+  params: MandatoParams,
+  locale: string = "it",
+): string[] {
+  if (locale === "ar") return buildMandatoParagraphsAr(params);
+  return buildMandatoParagraphsIt(params);
+}
+
+function buildMandatoParagraphsIt({
   practiceCode,
   signerName,
 }: MandatoParams): string[] {
@@ -60,10 +74,20 @@ export function buildMandatoParagraphs({
   ];
 }
 
+/** Testo per download/firma: sempre italiano (fa fede). */
 export function buildMandatoText(params: MandatoParams): string {
   return (
     `MANDATO PROFESSIONALE - Pratica ${params.practiceCode}\n\n` +
-    buildMandatoParagraphs(params).join("\n\n") +
+    buildMandatoParagraphsIt(params).join("\n\n") +
     `\n\nLuogo e data: _________________________\n\nFirma del Cliente: _________________________\n`
   );
+}
+
+/** Anteprima scaricabile in lingua UI (cortesia); non sostituisce il .txt di fede. */
+export function buildMandatoTextLocalized(
+  params: MandatoParams,
+  locale: string = "it",
+): string {
+  if (locale === "ar") return buildMandatoTextAr(params);
+  return buildMandatoText(params);
 }

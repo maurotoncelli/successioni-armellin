@@ -16,6 +16,8 @@ import { buildOrder } from "@/lib/order";
 import { notifyAdminNewLead, notifyLeadRecap, siteBase } from "@/lib/notifications";
 import { pushCrmNotification } from "@/lib/crm-notifications";
 import { upsertContactByEmail } from "@/lib/contacts";
+import { getActionLocale } from "@/lib/action-locale";
+import { obj } from "@/lib/content";
 import type { Communication, LogEvent } from "@/content/crm-data";
 
 export type LeadInput = {
@@ -149,27 +151,42 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
     let emailSent = false;
     try {
       // Pacchetto suggerito con prezzo (per il riepilogo e per Lorenzo).
-      let packageLabel: string | undefined;
+      // Locale da cookie UI (qui non c'è ancora account / comms_locale).
+      const locale = await getActionLocale();
+      const checkoutUi = obj(
+        "site_ui",
+        "checkout_ui",
+        {
+          extra_property: "Immobili aggiuntivi ({extra} × {fee}€)",
+        },
+        locale,
+      );
+
+      // packageLabel admin = sempre IT (CRM/Lorenzo); recap cliente = locale UI.
+      let packageLabelAdmin: string | undefined;
       let recap: Parameters<typeof notifyLeadRecap>[1] | null = null;
       if (isCustom) {
-        recap = { kind: "custom" };
+        recap = { kind: "custom", locale };
       } else if (esito === "a") {
-        recap = { kind: "esonero" };
+        recap = { kind: "esonero", locale };
       } else {
         const pkgKey = suggestedPackage(esito, input.hasRealEstate);
         if (pkgKey) {
-          const [packages, addons] = await Promise.all([
-            getPackages(),
-            getAddons(),
+          const [packagesUi, addonsUi, packagesIt] = await Promise.all([
+            getPackages(locale),
+            getAddons(locale),
+            getPackages("it"),
           ]);
           const order = buildOrder(
             { packageKey: pkgKey, realEstateCount: input.realEstateCount },
-            packages,
-            addons,
+            packagesUi,
+            addonsUi,
+            { extraProperty: checkoutUi.extra_property },
           );
-          const pkg = packages.find((p) => p.key === pkgKey);
-          if (order && pkg) {
-            packageLabel = `${pkg.name} (${order.total.toLocaleString("it-IT")} €)`;
+          const pkgUi = packagesUi.find((p) => p.key === pkgKey);
+          const pkgIt = packagesIt.find((p) => p.key === pkgKey);
+          if (order && pkgUi) {
+            packageLabelAdmin = `${pkgIt?.name ?? pkgUi.name} (${order.total.toLocaleString("it-IT")} €)`;
             const base = siteBase();
             // Importante: riusa la pratica SoftLead (practice=), altrimenti il
             // checkout creerebbe una SECONDA pratica anonima e il lead originale
@@ -182,9 +199,10 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
               params.set("recount", String(input.realEstateCount));
             recap = {
               kind: "package",
-              packageLabel: pkg.name,
+              packageLabel: pkgUi.name,
               total: order.total,
               checkoutUrl: `${base}/checkout?${params.toString()}`,
+              locale,
             };
           }
         }
@@ -212,7 +230,7 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
         email: input.email.trim(),
         phone: input.phone.trim(),
         custom: isCustom,
-        packageLabel,
+        packageLabel: packageLabelAdmin,
         clientNote: input.notes?.trim() || undefined,
       });
       if (sentAdmin.sent) {

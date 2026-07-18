@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import { LegalDocView } from "@/components/site/legal-doc";
-import { getLegalDoc } from "@/content/legal";
+import { getLegalDoc } from "@/lib/legal-docs";
+import { getRequestLocale } from "@/lib/locale";
 
-const doc = getLegalDoc("termini");
+export async function generateMetadata(): Promise<Metadata> {
+  const doc = getLegalDoc("termini", await getRequestLocale());
+  return { title: doc.title, description: doc.intro };
+}
 
-export const metadata: Metadata = { title: doc.title, description: doc.intro };
-
-export default function TerminiPage() {
+export default async function TerminiPage() {
+  const doc = getLegalDoc("termini", await getRequestLocale());
   return <LegalDocView doc={doc} />;
 }

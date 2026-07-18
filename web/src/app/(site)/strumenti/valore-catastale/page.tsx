@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
+import { getRequestLocale, t, tCta, tList } from "@/lib/locale";
+import {
+  CATASTALE_CATEGORIE_IT,
+  type CatastaleCategoria,
+} from "@/lib/site-ui-labels";
 import { Info } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { CtaBand } from "@/components/site/cta-band";
 import { CatastaleCalculator } from "@/components/site/catastale-calculator";
-import { cta, list, text } from "@/lib/content";
 
 /*
   Strumento pubblico: calcolo del valore catastale ai fini della successione
@@ -15,32 +19,39 @@ import { cta, list, text } from "@/lib/content";
 
 const pageTitle =
   "Calcolo del valore catastale per la successione (gratis, online)";
-const pageDescription = text(
-  "strumenti",
-  "catastale_hero_subtitle",
-  "Calcola in un click il valore catastale di case e terreni ai fini dell'imposta di successione: rendita rivalutata per i coefficienti ufficiali.",
-);
 
-export const metadata: Metadata = {
-  title: pageTitle,
-  description: pageDescription,
-  alternates: { canonical: "/strumenti/valore-catastale" },
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  const pageDescription = await t(
+    "strumenti",
+    "catastale_hero_subtitle",
+    "Calcola in un click il valore catastale di case e terreni ai fini dell'imposta di successione: rendita rivalutata per i coefficienti ufficiali.",
+  );
+  return {
     title: pageTitle,
     description: pageDescription,
-    url: "/strumenti/valore-catastale",
-    type: "website",
-    locale: "it_IT",
-  },
-};
+    alternates: { canonical: "/strumenti/valore-catastale" },
+    openGraph: {
+      title: pageTitle,
+      description: pageDescription,
+      url: "/strumenti/valore-catastale",
+      type: "website",
+      locale: "it_IT",
+    },
+  };
+}
 
 type FormulaRow = { tipo: string; formula: string };
 type FaqRow = { q: string; a: string };
 
-export default function ValoreCatastalePage() {
-  const formulaRows = list<FormulaRow>("strumenti", "catastale_formule");
-  const faqRows = list<FaqRow>("strumenti", "catastale_faq");
-  const ctaButton = cta("strumenti", "catastale_cta_button");
+export default async function ValoreCatastalePage() {
+  const pageDescription = await t(
+    "strumenti",
+    "catastale_hero_subtitle",
+    "Calcola in un click il valore catastale di case e terreni ai fini dell'imposta di successione: rendita rivalutata per i coefficienti ufficiali.",
+  );
+  const formulaRows = await tList<FormulaRow>("strumenti", "catastale_formule");
+  const faqRows = await tList<FaqRow>("strumenti", "catastale_faq");
+  const ctaButton = await tCta("strumenti", "catastale_cta_button");
 
   // Structured data: lo strumento come applicazione gratuita + FAQ visibili
   // in pagina (Google richiede che il markup rispecchi contenuto reale).
@@ -86,13 +97,13 @@ export default function ValoreCatastalePage() {
         />
       )}
       <PageHero
-        eyebrow={text("strumenti", "catastale_hero_eyebrow", "Strumenti")}
-        title={text(
+        eyebrow={await t("strumenti", "catastale_hero_eyebrow", "Strumenti")}
+        title={await t(
           "strumenti",
           "catastale_hero_title",
           "Quanto vale un immobile ai fini della successione?",
         )}
-        subtitle={text(
+        subtitle={await t(
           "strumenti",
           "catastale_hero_subtitle",
           "Inserisci la rendita catastale (la trovi nella visura) e ottieni subito il valore catastale su cui si calcolano le imposte di successione.",
@@ -103,61 +114,68 @@ export default function ValoreCatastalePage() {
       <Section>
         <div className="mx-auto grid max-w-5xl gap-6 lg:grid-cols-2 lg:items-start lg:gap-10">
           <CatastaleCalculator
+            categorie={await tList<CatastaleCategoria>(
+              "strumenti",
+              "catastale_categorie",
+            ).then((rows) =>
+              rows.length > 0 ? rows : CATASTALE_CATEGORIE_IT,
+            )}
+            numberLocale={(await getRequestLocale()) === "ar" ? "ar" : "it-IT"}
             labels={{
-              fabbricato: text("strumenti", "catastale_tab_fabbricato", "Fabbricato"),
-              terreno: text(
+              fabbricato: await t("strumenti", "catastale_tab_fabbricato", "Fabbricato"),
+              terreno: await t(
                 "strumenti",
                 "catastale_tab_terreno",
                 "Terreno agricolo",
               ),
-              rendita: text(
+              rendita: await t(
                 "strumenti",
                 "catastale_label_rendita",
                 "Rendita catastale (€)",
               ),
-              renditaHelp: text(
+              renditaHelp: await t(
                 "strumenti",
                 "catastale_help_rendita",
                 "La trovi nella visura catastale, colonna \"Rendita\". Se ti manca, spesso la possiamo recuperare noi.",
               ),
-              redditoDominicale: text(
+              redditoDominicale: await t(
                 "strumenti",
                 "catastale_label_rd",
                 "Reddito dominicale (€)",
               ),
-              redditoDominicaleHelp: text(
+              redditoDominicaleHelp: await t(
                 "strumenti",
                 "catastale_help_rd",
                 "La trovi nella visura catastale del terreno. Vale per i terreni NON edificabili.",
               ),
-              categoria: text(
+              categoria: await t(
                 "strumenti",
                 "catastale_label_categoria",
                 "Categoria catastale",
               ),
-              primaCasa: text(
+              primaCasa: await t(
                 "strumenti",
                 "catastale_label_prima_casa",
                 "Per l'erede sarà \"prima casa\" (agevolazione: coefficiente ridotto a 110)",
               ),
-              risultato: text(
+              risultato: await t(
                 "strumenti",
                 "catastale_label_risultato",
                 "Valore catastale ai fini della successione",
               ),
-              formulaIntro: text("strumenti", "catastale_label_formula", "Calcolo:"),
+              formulaIntro: await t("strumenti", "catastale_label_formula", "Calcolo:"),
             }}
           />
 
           <div>
             <SectionHeading
               align="left"
-              title={text(
+              title={await t(
                 "strumenti",
                 "catastale_come_title",
                 "Come funziona il calcolo",
               )}
-              intro={text(
+              intro={await t(
                 "strumenti",
                 "catastale_come_body",
                 "Per la dichiarazione di successione gli immobili non si valutano a prezzo di mercato ma a valore catastale: la rendita rivalutata del 5% moltiplicata per un coefficiente stabilito per legge (per i terreni: reddito dominicale rivalutato del 25% per 90).",
@@ -185,7 +203,7 @@ export default function ValoreCatastalePage() {
             <div className="mt-6 flex items-start gap-3 rounded-xl border border-primary/10 bg-bg-muted p-4 text-sm text-text-muted">
               <Info className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
               <p>
-                {text(
+                {await t(
                   "strumenti",
                   "catastale_note",
                   "I terreni edificabili fanno eccezione: si dichiarano a valore venale (di mercato), non catastale. Il risultato è indicativo: eventuali agevolazioni e casi particolari vanno verificati sul caso concreto — è esattamente il lavoro che facciamo noi.",
@@ -199,7 +217,7 @@ export default function ValoreCatastalePage() {
       {faqRows.length > 0 && (
         <Section tone="muted">
           <SectionHeading
-            title={text(
+            title={await t(
               "strumenti",
               "catastale_faq_title",
               "Domande frequenti sul valore catastale",
@@ -224,7 +242,7 @@ export default function ValoreCatastalePage() {
       )}
 
       <CtaBand
-        title={text(
+        title={await t(
           "strumenti",
           "catastale_cta_title",
           "Vuoi sapere quanto costa tutta la successione, imposte incluse?",

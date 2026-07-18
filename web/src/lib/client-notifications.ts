@@ -6,6 +6,8 @@ import type {
   ClientNotification,
   ClientNotificationKind,
 } from "@/lib/client-notifications-shared";
+import { getCommsLocaleForPractice } from "@/lib/comms-locale";
+import { statusClientCopy } from "@/lib/comms-copy";
 
 export type { ClientNotification, ClientNotificationKind };
 
@@ -13,6 +15,7 @@ export type { ClientNotification, ClientNotificationKind };
   Notifiche in-app area personale (@06): eventi azionabili, segnabili come letti.
   Scrittura/lettura/mark-read via service_role (scoped su contact_id del profilo).
   Diverso dallo storico Comunicazioni (practices.communications).
+  Titoli/body nella lingua preferita comunicazioni (profiles.comms_locale).
 */
 
 function mapRow(row: ClientNotificationRow): ClientNotification {
@@ -27,36 +30,6 @@ function mapRow(row: ClientNotificationRow): ClientNotification {
     createdAt: row.created_at,
   };
 }
-
-const STATUS_CLIENT: Partial<
-  Record<PracticeStatus, { title: string; body: string; href: string }>
-> = {
-  PAGATO: {
-    title: "Pagamento ricevuto",
-    body: "La pratica è avviata. Carica i documenti richiesti.",
-    href: "/area-riservata/documenti",
-  },
-  ATTESA_DOC: {
-    title: "Servono ancora dei documenti",
-    body: "Completa la lista in area personale per andare avanti.",
-    href: "/area-riservata/documenti",
-  },
-  LAVORAZIONE: {
-    title: "Stiamo lavorando alla tua pratica",
-    body: "Abbiamo tutto il necessario. Ti aggiorniamo appena ci sono novità.",
-    href: "/area-riservata/dashboard",
-  },
-  INVIATA: {
-    title: "Dichiarazione inviata all'Agenzia",
-    body: "Appena arriva la ricevuta la trovi tra i documenti finali.",
-    href: "/area-riservata/dashboard",
-  },
-  CHIUSA: {
-    title: "Pratica conclusa",
-    body: "Puoi scaricare i documenti finali dalla tua area personale.",
-    href: "/area-riservata/conclusa",
-  },
-};
 
 export async function pushClientNotification(input: {
   kind: ClientNotificationKind;
@@ -102,7 +75,10 @@ export async function pushClientNotification(input: {
 /** Risolve contact_id dalla pratica e invia notifica (no-op se manca contatto). */
 export async function pushClientNotificationForPractice(
   practiceId: string,
-  input: Omit<Parameters<typeof pushClientNotification>[0], "contactId" | "practiceId">,
+  input: Omit<
+    Parameters<typeof pushClientNotification>[0],
+    "contactId" | "practiceId"
+  >,
 ): Promise<void> {
   if (!isAdminConfigured) return;
   try {
@@ -126,7 +102,8 @@ export async function pushClientStatusNotification(
   practiceId: string,
   status: PracticeStatus,
 ): Promise<void> {
-  const tpl = STATUS_CLIENT[status];
+  const locale = await getCommsLocaleForPractice(practiceId);
+  const tpl = statusClientCopy(status, locale);
   if (!tpl) return;
   await pushClientNotificationForPractice(practiceId, {
     kind: status === "CHIUSA" ? "finali" : "stato",
@@ -175,10 +152,6 @@ export async function countUnreadClientNotifications(
   }
 }
 
-/**
- * Segna letta via service_role dopo aver verificato che la notifica
- * appartiene al contactId del profilo (evita UPDATE RLS su tutte le colonne).
- */
 export async function markClientNotificationRead(
   id: string,
   contactId: string,
@@ -223,8 +196,6 @@ export async function getNotifyEmailPreference(
 ): Promise<boolean> {
   if (!contactId || !isAdminConfigured) return true;
   try {
-    // limit(1) senza maybeSingle: evita errore se per caso ci sono 2 profili
-    // agganciati allo stesso contatto.
     const { data } = await getAdminClient()
       .from("profiles")
       .select("notify_email")

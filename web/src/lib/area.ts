@@ -8,6 +8,7 @@ import { ensureProfile } from "@/lib/profiles";
 import { mapPractice } from "@/lib/crm";
 import type { Practice } from "@/content/crm-data";
 import type { Account } from "@/lib/area-types";
+import { coerceCommsLocale } from "@/lib/comms-locale-shared";
 
 /*
   Layer dati dell'AREA RISERVATA (cliente loggato).
@@ -64,16 +65,18 @@ export const getClientView = cache(async (): Promise<ClientView | null> => {
 
   let notifyEmail = true;
   let notifyWhatsapp = false;
+  let commsLocale: Account["commsLocale"] = "it";
   if (isAdminConfigured) {
     const { data: prof } = await getAdminClient()
       .from("profiles")
-      .select("notify_email, notify_whatsapp")
+      .select("notify_email, notify_whatsapp, comms_locale")
       .eq("id", user.id)
       .maybeSingle();
     if (prof) {
       if (typeof prof.notify_email === "boolean") notifyEmail = prof.notify_email;
       if (typeof prof.notify_whatsapp === "boolean")
         notifyWhatsapp = prof.notify_whatsapp;
+      commsLocale = coerceCommsLocale(prof.comms_locale);
     }
   }
   const account: Account = practice
@@ -84,6 +87,7 @@ export const getClientView = cache(async (): Promise<ClientView | null> => {
         practiceCode: practice.code,
         notifyEmail,
         notifyWhatsapp,
+        commsLocale,
       }
     : {
         name: user.email?.split("@")[0] ?? "Cliente",
@@ -92,6 +96,7 @@ export const getClientView = cache(async (): Promise<ClientView | null> => {
         practiceCode: "—",
         notifyEmail,
         notifyWhatsapp,
+        commsLocale,
       };
 
   return { user, practice, account, contactId };

@@ -2,6 +2,7 @@ import "server-only";
 import { getAdminClient } from "@/lib/supabase/admin";
 import { storeInvoice, getInvoiceRaw, type InvoiceInfo } from "@/lib/practice-extras";
 import { notifyInvoiceReady } from "@/lib/notifications";
+import { getCommsLocaleForPractice } from "@/lib/comms-locale";
 import type { PracticeRow } from "@/lib/supabase/types";
 import type { Communication, LogEvent } from "@/content/crm-data";
 
@@ -160,7 +161,10 @@ async function recordSideEffects(
 
   let emailSent = false;
   if (notifyClient && row.client_email) {
-    const notice = await notifyInvoiceReady(row.client_email, invoice.number);
+    const locale = await getCommsLocaleForPractice(row.id);
+    const notice = await notifyInvoiceReady(row.client_email, invoice.number, {
+      locale,
+    });
     emailSent = notice.sent;
     if (emailSent) {
       communications.push({

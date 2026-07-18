@@ -1,8 +1,12 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { requireAdmin } from "@/lib/admin";
 import { getAdminClient, isAdminConfigured } from "@/lib/supabase/admin";
 import type { PackageKey } from "@/lib/supabase/types";
+import { isAiConfigured } from "@/lib/extraction";
+import { refreshPackagesTranslations } from "@/lib/packages-i18n";
+import { getPackagesAdmin, getAddonsAdmin } from "@/lib/cms";
 
 /*
   Server action del mini-CMS: scrivono via service_role (admin) e invalidano la
@@ -75,8 +79,62 @@ export async function savePackage(
 
   revalidatePath("/tariffe");
   revalidatePath("/");
+  revalidatePath("/checkout");
   revalidatePath("/crm/listino");
   return { ok: true, message: "Salvato e pubblicato." };
+}
+
+export async function refreshListinoTranslations(): Promise<ActionResult> {
+  // Traduce ~10 lingue via OpenAI: puo richiedere fino a ~1-2 minuti.
+  await requireAdmin();
+  if (!isAdminConfigured) {
+    return {
+      ok: false,
+      message: "Database non collegato: configura Supabase.",
+    };
+  }
+  if (!isAiConfigured) {
+    return {
+      ok: false,
+      message:
+        "OpenAI non configurato (OPENAI_API_KEY). Stessa chiave dell'estrazione AI.",
+    };
+  }
+
+  const [packages, addons] = await Promise.all([
+    getPackagesAdmin(),
+    getAddonsAdmin(),
+  ]);
+
+  const result = await refreshPackagesTranslations({
+    packages: packages.map((p) => ({
+      key: p.key,
+      name: p.name,
+      tagline: p.tagline ?? "",
+      description: p.description,
+      features: Array.isArray(p.features) ? p.features : [],
+      badge: p.badge,
+    })),
+    addons: addons.map((a) => ({
+      key: a.key,
+      name: a.name,
+      description: a.description ?? "",
+    })),
+  });
+
+  if (!result.ok) {
+    return { ok: false, message: result.error };
+  }
+
+  revalidatePath("/tariffe");
+  revalidatePath("/");
+  revalidatePath("/checkout");
+  revalidatePath("/preventivo/grazie");
+  revalidatePath("/crm/listino");
+  return {
+    ok: true,
+    message: `Traduzioni aggiornate (${result.locales.join(", ")}).`,
+  };
 }
 
 export async function saveAddon(

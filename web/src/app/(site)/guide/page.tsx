@@ -11,24 +11,37 @@ import {
   type Categoria,
 } from "@/components/site/guide-index";
 import { getArticles } from "@/lib/cms";
-import { cta, get, list, obj, text } from "@/lib/content";
+import { get } from "@/lib/content";
+import { getRequestLocale, t, tCta, tList, tObj } from "@/lib/locale";
+import { GUIDE_UI_IT } from "@/lib/site-ui-labels";
 
-export const metadata: Metadata = {
-  title: "Guide alle successioni",
-  description: text("guide", "hero_subtitle"),
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const ui = await tObj("site_ui", "guide_ui", GUIDE_UI_IT);
+  return {
+    title: ui.meta_title,
+    description: await t("guide", "hero_subtitle"),
+  };
+}
 
 export default async function GuidePage() {
-  const articles = await getArticles();
-  const categorie = list<Categoria>("guide", "categorie");
-  const showSearch = get<boolean>("guide", "hero_search", true);
-  const ctaButton = cta("guide", "cta_button");
-  const toolBanner = obj<{
+  const locale = await getRequestLocale();
+  const articles = await getArticles(locale);
+  const categorie = await tList<Categoria>("guide", "categorie");
+  const showSearch = get<boolean>("guide", "hero_search", true, locale);
+  const ctaButton = await tCta("guide", "cta_button");
+  const guideUi = await tObj("site_ui", "guide_ui", GUIDE_UI_IT);
+  const dateLocale = locale === "ar" ? "ar" : "it-IT";
+  const toolBanner = await tObj<{
     title: string;
     body: string;
     cta_label: string;
     href: string;
-  }>("guide", "strumenti_banner", { title: "", body: "", cta_label: "", href: "" });
+  }>("guide", "strumenti_banner", {
+    title: "",
+    body: "",
+    cta_label: "",
+    href: "",
+  });
 
   const previews: ArticlePreview[] = articles.map((a) => ({
     slug: a.slug,
@@ -45,9 +58,9 @@ export default async function GuidePage() {
   return (
     <>
       <PageHero
-        eyebrow={text("guide", "hero_eyebrow", "Guide")}
-        title={text("guide", "hero_title")}
-        subtitle={text("guide", "hero_subtitle")}
+        eyebrow={await t("guide", "hero_eyebrow", "Guide")}
+        title={await t("guide", "hero_title")}
+        subtitle={await t("guide", "hero_subtitle")}
       />
 
       <Section>
@@ -59,7 +72,7 @@ export default async function GuidePage() {
             <span className="flex flex-1 flex-col justify-center gap-3 p-6 sm:p-8">
               <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-accent-dark">
                 <Calculator className="h-4 w-4" />
-                Strumento gratuito
+                {guideUi.free_tool}
               </span>
               <span className="block font-serif text-xl font-semibold text-primary sm:text-2xl">
                 {toolBanner.title}
@@ -69,13 +82,13 @@ export default async function GuidePage() {
               </span>
               <span className="mt-1 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-dark">
                 {toolBanner.cta_label}
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 rtl:rotate-180" />
               </span>
             </span>
             <span className="relative block h-40 shrink-0 sm:h-auto sm:w-64 md:w-80">
               <Image
                 src="/images/strumento-valore-catastale.png"
-                alt="Illustrazione: casa, calcolatrice e documento con simbolo euro"
+                alt={guideUi.tool_alt}
                 fill
                 sizes="(max-width: 640px) 100vw, 320px"
                 className="object-cover object-center"
@@ -87,10 +100,12 @@ export default async function GuidePage() {
           articles={previews}
           categorie={categorie}
           showSearch={showSearch}
+          labels={guideUi}
+          dateLocale={dateLocale}
         />
       </Section>
 
-      <CtaBand title={text("guide", "cta_title")} button={ctaButton} />
+      <CtaBand title={await t("guide", "cta_title")} button={ctaButton} />
     </>
   );
 }

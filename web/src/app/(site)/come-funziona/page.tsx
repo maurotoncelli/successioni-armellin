@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { navPageTitle, t, tCta, tList, tObj } from "@/lib/locale";
 import { PageHero } from "@/components/site/page-hero";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { CtaBand } from "@/components/site/cta-band";
@@ -13,12 +14,13 @@ import {
   IconUploadDocs,
   IconVerify,
 } from "@/components/site/come-funziona-icons";
-import { cta, list, obj, text } from "@/lib/content";
 
-export const metadata: Metadata = {
-  title: "Come funziona",
-  description: text("come_funziona", "hero_subtitle"),
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: await navPageTitle("/come-funziona", "Come funziona"),
+    description: await t("come_funziona", "hero_subtitle"),
+  };
+}
 
 type Step = { numero: number; titolo: string; testo: string; dettaglio: string };
 type Address = { via: string; cap: string; citta: string };
@@ -26,17 +28,17 @@ type OpeningHour = { giorni: string; orario: string };
 
 const stepIcons = [IconQuiz, IconUploadDocs, IconSendPractice] as const;
 
-export default function ComeFunzionaPage() {
-  const steps = list<Step>("come_funziona", "steps");
-  const deliverable = list<string>("come_funziona", "deliverable_list");
-  const finalButton = cta("come_funziona", "cta_button");
-  const finalPhone = cta("come_funziona", "cta_phone");
-  const address = obj<Address>("settings", "address", {
+export default async function ComeFunzionaPage() {
+  const steps = await tList<Step>("come_funziona", "steps");
+  const deliverable = await tList<string>("come_funziona", "deliverable_list");
+  const finalButton = await tCta("come_funziona", "cta_button");
+  const finalPhone = await tCta("come_funziona", "cta_phone");
+  const address = await tObj<Address>("settings", "address", {
     via: "",
     cap: "",
     citta: "",
   });
-  const hours = list<OpeningHour>("settings", "opening_hours");
+  const hours = await tList<OpeningHour>("settings", "opening_hours");
   const indirizzo = [address.via, `${address.cap} ${address.citta}`.trim()]
     .filter(Boolean)
     .join(", ");
@@ -47,9 +49,9 @@ export default function ComeFunzionaPage() {
   return (
     <>
       <PageHero
-        eyebrow={text("come_funziona", "hero_eyebrow", "Il processo")}
-        title={text("come_funziona", "hero_title")}
-        subtitle={text("come_funziona", "hero_subtitle")}
+        eyebrow={await t("come_funziona", "hero_eyebrow", "Il processo")}
+        title={await t("come_funziona", "hero_title")}
+        subtitle={await t("come_funziona", "hero_subtitle")}
       />
 
       {/* Sequenza: nodi numerati collegati da una linea (da md). */}
@@ -98,28 +100,28 @@ export default function ComeFunzionaPage() {
           <div className="rounded-2xl border border-primary/10 bg-bg p-6 shadow-sm">
             <IconTimeline className="h-9 w-9 text-accent" />
             <h3 className="mt-5 text-xl">
-              {text("come_funziona", "sla_title")}
+              {await t("come_funziona", "sla_title")}
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-text-muted">
-              {text("come_funziona", "sla_body")}
+              {await t("come_funziona", "sla_body")}
             </p>
           </div>
           <div className="rounded-2xl border border-primary/10 bg-bg p-6 shadow-sm">
             <IconVerify className="h-9 w-9 text-primary" />
             <h3 className="mt-5 text-xl">
-              {text("come_funziona", "valore_title")}
+              {await t("come_funziona", "valore_title")}
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-text-muted">
-              {text("come_funziona", "valore_body")}
+              {await t("come_funziona", "valore_body")}
             </p>
           </div>
           <div className="rounded-2xl border border-primary/10 bg-bg p-6 shadow-sm">
             <IconRemote className="h-9 w-9 text-primary" />
             <h3 className="mt-5 text-xl">
-              {text("come_funziona", "distanza_title", "Tutto online")}
+              {await t("come_funziona", "distanza_title", "Tutto online")}
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-text-muted">
-              {text("come_funziona", "distanza_body")}
+              {await t("come_funziona", "distanza_body")}
             </p>
           </div>
         </div>
@@ -129,10 +131,10 @@ export default function ComeFunzionaPage() {
             <IconStudio className="h-10 w-10 shrink-0 text-accent" />
             <div className="min-w-0 flex-1">
               <h3 className="text-xl sm:text-2xl">
-                {text("come_funziona", "visita_title")}
+                {await t("come_funziona", "visita_title")}
               </h3>
               <p className="mt-2 max-w-2xl text-sm leading-relaxed text-text-muted sm:text-base">
-                {text("come_funziona", "visita_body")}
+                {await t("come_funziona", "visita_body")}
               </p>
               <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                 <div>
@@ -160,7 +162,7 @@ export default function ComeFunzionaPage() {
                   rel={indirizzo ? "noopener noreferrer" : undefined}
                   className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-dark"
                 >
-                  {text(
+                  {await t(
                     "come_funziona",
                     "visita_maps_label",
                     "Apri in Google Maps",
@@ -174,7 +176,7 @@ export default function ComeFunzionaPage() {
       </Section>
 
       <Section>
-        <SectionHeading title={text("come_funziona", "deliverable_title")} />
+        <SectionHeading title={await t("come_funziona", "deliverable_title")} />
         <ul className="mx-auto mt-6 grid w-fit max-w-2xl gap-3.5 sm:mt-8">
           {deliverable.map((item) => (
             <li key={item} className="flex items-start gap-3">
@@ -186,7 +188,7 @@ export default function ComeFunzionaPage() {
       </Section>
 
       <CtaBand
-        title={text("come_funziona", "cta_title")}
+        title={await t("come_funziona", "cta_title")}
         button={finalButton}
         phone={finalPhone}
       />

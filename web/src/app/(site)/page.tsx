@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { t, tCta, tList } from "@/lib/locale";
 import Image from "next/image";
 import {
   ArrowRight,
@@ -16,7 +17,7 @@ import { TrustBar } from "@/components/site/trust-bar";
 import { PackageCards } from "@/components/site/package-cards";
 import { Reviews } from "@/components/site/reviews";
 import { CtaBand } from "@/components/site/cta-band";
-import { cta, list, text } from "@/lib/content";
+
 import { cn } from "@/lib/utils";
 
 type HomeStep = {
@@ -27,23 +28,23 @@ type HomeStep = {
 
 const vantaggiIcons = [House, ShieldCheck, HeartHandshake];
 
-export default function HomePage() {
-  const heroCtaPrimary = cta("home", "hero_cta_primary");
-  const heroCtaSecondary = cta("home", "hero_cta_secondary");
-  const vantaggi = list<{ titolo: string; testo: string }>(
+export default async function HomePage() {
+  const heroCtaPrimary = await tCta("home", "hero_cta_primary");
+  const heroCtaSecondary = await tCta("home", "hero_cta_secondary");
+  const vantaggi = await tList<{ titolo: string; testo: string }>(
     "home",
     "problema_vantaggi",
   );
-  const steps = list<HomeStep>("home", "come_funziona_steps");
-  const confronto = list<{ voce: string; faidate: string; noi: string }>(
+  const steps = await tList<HomeStep>("home", "come_funziona_steps");
+  const confronto = await tList<{ voce: string; faidate: string; noi: string }>(
     "home",
     "faidate_confronto",
   );
-  const tariffeCta = cta("home", "tariffe_cta");
-  const chisonoCta = cta("home", "chisono_cta");
-  const faqCta = cta("home", "faq_cta");
-  const finalButton = cta("home", "cta_finale_button");
-  const finalPhone = cta("home", "cta_finale_phone");
+  const tariffeCta = await tCta("home", "tariffe_cta");
+  const chisonoCta = await tCta("home", "chisono_cta");
+  const faqCta = await tCta("home", "faq_cta");
+  const finalButton = await tCta("home", "cta_finale_button");
+  const finalPhone = await tCta("home", "cta_finale_phone");
 
   return (
     <>
@@ -71,18 +72,18 @@ export default function HomePage() {
           <div className="max-w-2xl">
             <p className="flex items-center gap-3 text-sm font-medium uppercase tracking-[0.18em] text-accent">
               <span className="h-px w-8 bg-accent/60" />
-              {text("home", "hero_specialization_badge")}
+              {await t("home", "hero_specialization_badge")}
             </p>
             <h1 className="mt-4 font-display text-3xl text-white drop-shadow-sm sm:mt-5 sm:text-5xl lg:text-6xl">
-              {text("home", "hero_title")}
+              {await t("home", "hero_title")}
             </h1>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-white/90 sm:mt-6 sm:text-lg">
-              {text("home", "hero_subtitle")}
+              {await t("home", "hero_subtitle")}
             </p>
             <div className="mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row">
               <ButtonLink href={heroCtaPrimary.href} variant="primary" size="lg">
                 {heroCtaPrimary.label}
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-4 w-4 rtl:rotate-180" />
               </ButtonLink>
               <ButtonLink
                 href={heroCtaSecondary.href}
@@ -105,26 +106,26 @@ export default function HomePage() {
       <Section className="!py-10 sm:!py-12">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-2xl sm:text-3xl">
-            {text("home", "app_scopo_title")}
+            {await t("home", "app_scopo_title")}
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-text-muted sm:text-base">
-            {text("home", "app_scopo_body")}
+            {await t("home", "app_scopo_body")}
           </p>
           <p className="mt-3 text-sm text-text-muted">
-            Maggiori dettagli su come trattiamo i tuoi dati:{" "}
-            <a
-              href="https://www.successioniarmellin.it/privacy"
+            {await t("home", "app_scopo_legal_prefix")}{" "}
+            <Link
+              href="/privacy"
               className="font-medium text-accent underline hover:text-accent-dark"
             >
-              Privacy Policy
-            </a>
+              {await t("home", "app_scopo_privacy_label")}
+            </Link>
             {" · "}
-            <a
-              href="https://www.successioniarmellin.it/termini-condizioni"
+            <Link
+              href="/termini-condizioni"
               className="font-medium text-accent underline hover:text-accent-dark"
             >
-              Termini di servizio
-            </a>
+              {await t("home", "app_scopo_terms_label")}
+            </Link>
           </p>
         </div>
       </Section>
@@ -132,8 +133,8 @@ export default function HomePage() {
       {/* Problema / Soluzione */}
       <Section>
         <SectionHeading
-          title={text("home", "problema_title")}
-          intro={text("home", "problema_intro")}
+          title={await t("home", "problema_title")}
+          intro={await t("home", "problema_intro")}
         />
         <div className="mt-8 grid gap-6 sm:mt-12 md:grid-cols-3">
           {vantaggi.map((v, i) => {
@@ -156,8 +157,8 @@ export default function HomePage() {
       {/* Come funziona — sequenza collegata + foto data-driven. */}
       <Section id="come-funziona" tone="sand">
         <SectionHeading
-          eyebrow={text("home", "come_funziona_eyebrow", "Semplice")}
-          title={text("home", "come_funziona_title")}
+          eyebrow={await t("home", "come_funziona_eyebrow", "Semplice")}
+          title={await t("home", "come_funziona_title")}
         />
         <ol className="relative mx-auto mt-8 grid max-w-5xl gap-10 sm:mt-12 md:grid-cols-3 md:gap-0">
           <div
@@ -201,16 +202,16 @@ export default function HomePage() {
           })}
         </ol>
         <p className="mt-8 text-center text-sm text-text-muted sm:mt-10">
-          {text("home", "come_funziona_sla_note")}
+          {await t("home", "come_funziona_sla_note")}
         </p>
       </Section>
 
       {/* Tariffe (estratto) */}
       <Section>
         <SectionHeading
-          eyebrow={text("home", "tariffe_eyebrow", "Tariffe")}
-          title={text("home", "tariffe_title")}
-          intro={text("home", "tariffe_intro")}
+          eyebrow={await t("home", "tariffe_eyebrow", "Tariffe")}
+          title={await t("home", "tariffe_title")}
+          intro={await t("home", "tariffe_intro")}
         />
         <div className="mt-8 sm:mt-12">
           <PackageCards />
@@ -218,7 +219,7 @@ export default function HomePage() {
         <div className="mt-6 text-center sm:mt-10">
           <ButtonLink href={tariffeCta.href} variant="outline" size="lg">
             {tariffeCta.label}
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight className="h-4 w-4 rtl:rotate-180" />
           </ButtonLink>
         </div>
       </Section>
@@ -226,26 +227,26 @@ export default function HomePage() {
       {/* Fai da te */}
       <Section tone="muted">
         <SectionHeading
-          title={text("home", "faidate_title")}
-          intro={text("home", "faidate_intro")}
+          title={await t("home", "faidate_title")}
+          intro={await t("home", "faidate_intro")}
         />
         <div className="mx-auto mt-8 max-w-4xl sm:mt-12">
           <div className="relative grid grid-cols-[1.2fr_1fr_1fr] overflow-hidden rounded-2xl border border-primary/10 bg-bg shadow-md sm:grid-cols-[1.5fr_1fr_1fr]">
             {/* Intestazioni: solo etichette colonna, senza X/logo (i segni restano nelle righe) */}
             <div className="flex items-end border-b border-primary/10 bg-bg-muted/40 p-4 sm:p-5">
               <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-text-muted/80">
-                Confronto
+                {await t("home", "faidate_col_corner", "Confronto")}
               </span>
             </div>
             <div className="flex items-end justify-center border-b border-primary/10 bg-bg-muted/40 p-4 sm:p-5">
               <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-text-muted">
-                Fai-da-te
+                {await t("home", "faidate_col_diy", "Fai-da-te")}
               </span>
             </div>
             <div className="relative flex items-end justify-center border-b border-accent/20 bg-sand p-4 sm:p-5">
               <span className="absolute -top-px left-0 right-0 h-1 bg-accent" />
               <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-accent-dark">
-                Con noi
+                {await t("home", "faidate_col_us", "Con noi")}
               </span>
             </div>
 
@@ -287,7 +288,7 @@ export default function HomePage() {
             <div className="col-span-3 border-t border-primary/10 bg-bg-muted/60 p-5 text-center">
               <ButtonLink href={heroCtaPrimary.href} variant="primary">
                 {heroCtaPrimary.label}
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-4 w-4 rtl:rotate-180" />
               </ButtonLink>
             </div>
           </div>
@@ -297,8 +298,8 @@ export default function HomePage() {
       {/* Recensioni */}
       <Section>
         <SectionHeading
-          title={text("home", "recensioni_title")}
-          intro={text("home", "recensioni_intro")}
+          title={await t("home", "recensioni_title")}
+          intro={await t("home", "recensioni_intro")}
         />
         <div className="mt-8 sm:mt-12">
           <Reviews />
@@ -319,10 +320,10 @@ export default function HomePage() {
           </div>
           <div>
             <h2 className="text-3xl sm:text-4xl">
-              {text("home", "chisono_title")}
+              {await t("home", "chisono_title")}
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-text-muted">
-              {text("home", "chisono_estratto")}
+              {await t("home", "chisono_estratto")}
             </p>
             <div className="mt-8">
               <ButtonLink href={chisonoCta.href} variant="secondary">
@@ -335,21 +336,21 @@ export default function HomePage() {
 
       {/* FAQ (estratto) */}
       <Section>
-        <SectionHeading title={text("home", "faq_title")} />
+        <SectionHeading title={await t("home", "faq_title")} />
         <div className="mt-8 text-center">
           <Link
             href={faqCta.href}
             className="inline-flex items-center gap-1.5 font-semibold text-accent hover:text-accent-dark"
           >
             {faqCta.label}
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight className="h-4 w-4 rtl:rotate-180" />
           </Link>
         </div>
       </Section>
 
       <CtaBand
-        title={text("home", "cta_finale_title")}
-        subtitle={text("home", "cta_finale_subtitle")}
+        title={await t("home", "cta_finale_title")}
+        subtitle={await t("home", "cta_finale_subtitle")}
         button={finalButton}
         phone={finalPhone}
       />

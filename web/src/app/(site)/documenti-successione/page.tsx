@@ -1,36 +1,40 @@
 import type { Metadata } from "next";
+import { t, tCta, tList, tObj } from "@/lib/locale";
 import { FileText, Sparkles } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { Card } from "@/components/ui/card";
 import { ButtonLink } from "@/components/ui/button";
 import { documentsList, type DocItem } from "@/content/site";
-import { cta, list, text } from "@/lib/content";
+import { CHROME_UI_IT } from "@/lib/site-ui-labels";
 
-export const metadata: Metadata = {
-  title: "Documenti per la successione",
-  description: text("documenti", "hero_subtitle"),
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const chrome = await tObj("site_ui", "chrome_ui", CHROME_UI_IT);
+  return {
+    title: chrome.meta_documenti,
+    description: await t("documenti", "hero_subtitle"),
+  };
+}
 
-export default function DocumentiPage() {
-  const ctaPreventivo = cta("documenti", "cta_preventivo");
+export default async function DocumentiPage() {
+  const ctaPreventivo = await tCta("documenti", "cta_preventivo");
   // Lista data-driven (documenti.lista); fallback alla lista statica.
-  const docs = list<DocItem>("documenti", "lista");
+  const docs = await tList<DocItem>("documenti", "lista");
   const items = docs.length > 0 ? docs : documentsList;
 
   return (
     <>
       <PageHero
-        eyebrow={text("documenti", "hero_eyebrow", "Guida ai documenti")}
-        title={text("documenti", "hero_title")}
-        subtitle={text("documenti", "hero_subtitle")}
+        eyebrow={await t("documenti", "hero_eyebrow", "Guida ai documenti")}
+        title={await t("documenti", "hero_title")}
+        subtitle={await t("documenti", "hero_subtitle")}
         back
       />
 
       <Section>
         <SectionHeading
-          title={text("documenti", "evergreen_title")}
-          intro={text("documenti", "evergreen_intro")}
+          title={await t("documenti", "evergreen_title")}
+          intro={await t("documenti", "evergreen_intro")}
         />
         <div className="mx-auto mt-8 grid max-w-4xl gap-4 sm:mt-12 sm:grid-cols-2">
           {items.map((doc) => (
@@ -52,7 +56,7 @@ export default function DocumentiPage() {
         <div className="mx-auto max-w-3xl text-center">
           <Sparkles className="mx-auto h-8 w-8 text-accent" />
           <p className="mt-4 text-lg leading-relaxed text-primary">
-            {text("documenti", "hook_recupero")}
+            {await t("documenti", "hook_recupero")}
           </p>
           <div className="mt-8">
             <ButtonLink href={ctaPreventivo.href} variant="primary" size="lg">
@@ -60,7 +64,7 @@ export default function DocumentiPage() {
             </ButtonLink>
           </div>
           <p className="mt-8 text-sm text-text-muted">
-            {text("documenti", "disclaimer_ymyl")}
+            {await t("documenti", "disclaimer_ymyl")}
           </p>
         </div>
       </Section>

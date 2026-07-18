@@ -1,6 +1,8 @@
 /*
   Fixture locali del prototipo per i contenuti STRUTTURATI che nel modello reale
-  vivono in tabelle dedicate (packages, addons, faqs) e non nel seed content_entries.
+  vivono in tabelle dedicate (packages, addons, faqs). Le FAQ pubbliche
+  possono anche essere in content_entries `faq.items` per le traduzioni
+  (getFaqs: content → DB → fixture).
   Valori [BOZZA] segnaposto, allineati a blueprint/SPEC_Data_Model.md.
   In Fase 4 verranno sostituiti da letture Supabase. NON sono prezzi/copy definitivi.
 */

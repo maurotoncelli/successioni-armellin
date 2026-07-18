@@ -4,6 +4,10 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Clock, Search, Star } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import {
+  GUIDE_UI_IT,
+  type GuideUiLabels,
+} from "@/lib/site-ui-labels";
 
 export type ArticlePreview = {
   slug: string;
@@ -19,17 +23,25 @@ export type ArticlePreview = {
 
 export type Categoria = { nome: string; slug: string };
 
-function formatDate(iso: string): string {
+function formatDate(iso: string, dateLocale: string): string {
   const d = new Date(`${iso}T00:00:00`);
   if (Number.isNaN(d.getTime())) return "";
-  return d.toLocaleDateString("it-IT", {
+  return d.toLocaleDateString(dateLocale, {
     day: "numeric",
     month: "long",
     year: "numeric",
   });
 }
 
-function ArticleCard({ article }: { article: ArticlePreview }) {
+function ArticleCard({
+  article,
+  labels,
+  dateLocale,
+}: {
+  article: ArticlePreview;
+  labels: GuideUiLabels;
+  dateLocale: string;
+}) {
   return (
     <Link href={`/guide/${article.slug}`} className="group block h-full">
       <Card className="flex h-full flex-col transition-shadow group-hover:shadow-md">
@@ -40,7 +52,7 @@ function ArticleCard({ article }: { article: ArticlePreview }) {
           {article.featured && (
             <span className="inline-flex items-center gap-1 rounded-full bg-accent/10 px-2 py-0.5 text-xs font-medium text-accent">
               <Star className="h-3 w-3" />
-              In evidenza
+              {labels.featured}
             </span>
           )}
         </div>
@@ -53,13 +65,16 @@ function ArticleCard({ article }: { article: ArticlePreview }) {
         <div className="mt-4 flex items-center justify-between text-xs text-text-muted">
           <span className="inline-flex items-center gap-1.5">
             <Clock className="h-3.5 w-3.5" />
-            {article.readingMinutes} min di lettura
+            {labels.reading_minutes.replace(
+              "{n}",
+              String(article.readingMinutes),
+            )}
           </span>
-          <span>{formatDate(article.publishedAt)}</span>
+          <span>{formatDate(article.publishedAt, dateLocale)}</span>
         </div>
         <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
-          Leggi la guida
-          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          {labels.read_guide}
+          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 rtl:rotate-180" />
         </span>
       </Card>
     </Link>
@@ -70,10 +85,14 @@ export function GuideIndex({
   articles,
   categorie,
   showSearch = true,
+  labels = GUIDE_UI_IT,
+  dateLocale = "it-IT",
 }: {
   articles: ArticlePreview[];
   categorie: Categoria[];
   showSearch?: boolean;
+  labels?: GuideUiLabels;
+  dateLocale?: string;
 }) {
   const [query, setQuery] = useState("");
   const [activeCat, setActiveCat] = useState<string | null>(null);
@@ -102,14 +121,14 @@ export function GuideIndex({
       <div className="flex flex-col gap-5">
         {showSearch && (
           <div className="relative mx-auto w-full max-w-xl">
-            <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-text-muted" />
+            <Search className="pointer-events-none absolute start-4 top-1/2 h-5 w-5 -translate-y-1/2 text-text-muted" />
             <input
               type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Cerca tra le guide (es. imposte, documenti, esonero)"
-              aria-label="Cerca tra le guide"
-              className="w-full rounded-full border border-primary/15 bg-bg py-3 pl-12 pr-4 text-sm text-primary shadow-sm outline-none transition-colors placeholder:text-text-muted focus:border-accent"
+              placeholder={labels.search_placeholder}
+              aria-label={labels.search_aria}
+              className="w-full rounded-full border border-primary/15 bg-bg py-3 ps-12 pe-4 text-sm text-primary shadow-sm outline-none transition-colors placeholder:text-text-muted focus:border-accent"
             />
           </div>
         )}
@@ -126,7 +145,7 @@ export function GuideIndex({
                 : "border border-primary/15 bg-bg-muted text-text-muted hover:border-accent hover:text-accent")
             }
           >
-            Tutte
+            {labels.all}
           </button>
           {usedCategorie.map((cat) => (
             <button
@@ -151,14 +170,16 @@ export function GuideIndex({
         {filtered.length > 0 ? (
           <div className="grid gap-6 md:grid-cols-2">
             {filtered.map((article) => (
-              <ArticleCard key={article.slug} article={article} />
+              <ArticleCard
+                key={article.slug}
+                article={article}
+                labels={labels}
+                dateLocale={dateLocale}
+              />
             ))}
           </div>
         ) : (
-          <p className="py-12 text-center text-text-muted">
-            Nessuna guida trovata per la tua ricerca. Prova con un altro termine
-            o scrivici: rispondiamo a tutti.
-          </p>
+          <p className="py-12 text-center text-text-muted">{labels.empty}</p>
         )}
       </div>
     </div>

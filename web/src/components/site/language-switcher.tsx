@@ -7,8 +7,8 @@ import { cn } from "@/lib/utils";
 
 /*
   Selettore lingua (data driven sui LOCALES del content system).
-  - Mostra TUTTE le lingue target. Oggi solo l'area login e tradotta: le altre
-    pagine ricadono sull'italiano (predisposizione multilingua).
+  - Mostra TUTTE le lingue target. Oggi IT + AR (sito pubblico); le altre
+    lingue ricadono sull'italiano finche non avranno content_entries completi.
   - Salva la scelta in un cookie "lang" (persistente) e aggiorna il parametro
     ?lang= della pagina corrente, cosi le pagine locale-aware reagiscono subito.
 */
@@ -41,6 +41,7 @@ export function LanguageSwitcher({
   tone = "default",
   dropUp = false,
   className,
+  ariaLabel = "Seleziona lingua",
 }: {
   // Se assente (es. nella navbar statica) la lingua attiva si rileva dal cookie.
   locale?: string;
@@ -50,6 +51,7 @@ export function LanguageSwitcher({
   // Apre il menu verso l'alto (utile nel footer, in fondo alla pagina).
   dropUp?: boolean;
   className?: string;
+  ariaLabel?: string;
 }) {
   const [open, setOpen] = useState(false);
   const [current, setCurrent] = useState<Locale>(isLocale(locale) ? locale : "it");
@@ -97,7 +99,7 @@ export function LanguageSwitcher({
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        aria-label="Seleziona lingua"
+        aria-label={ariaLabel}
         className={cn(
           "inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium transition-colors",
           tone === "onDark"

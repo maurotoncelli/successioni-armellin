@@ -1,15 +1,19 @@
 import { AlertTriangle, Database } from "lucide-react";
 import { getPackagesAdmin, getAddonsAdmin, getFaqsAdmin } from "@/lib/cms";
 import { isAdminConfigured } from "@/lib/supabase/admin";
+import { isAiConfigured } from "@/lib/extraction";
+import { getPackagesI18nStateFresh } from "@/lib/packages-i18n";
 import { ListinoEditor } from "@/components/crm/listino-editor";
+import { RefreshTranslationsButton } from "@/components/crm/refresh-translations-button";
 
 export const dynamic = "force-dynamic";
 
 export default async function ListinoPage() {
-  const [packages, addons, faqs] = await Promise.all([
+  const [packages, addons, faqs, i18n] = await Promise.all([
     getPackagesAdmin(),
     getAddonsAdmin(),
     getFaqsAdmin(),
+    getPackagesI18nStateFresh(),
   ]);
 
   return (
@@ -48,6 +52,11 @@ export default async function ListinoPage() {
           Database collegato
         </div>
       )}
+
+      <RefreshTranslationsButton
+        lastUpdatedAt={i18n.updatedAt}
+        aiConfigured={isAiConfigured}
+      />
 
       <ListinoEditor packages={packages} addons={addons} faqs={faqs} />
     </div>

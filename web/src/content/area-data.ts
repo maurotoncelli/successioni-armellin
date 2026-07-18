@@ -3,17 +3,20 @@
   I DATI veri della pratica del cliente loggato arrivano da Supabase con RLS
   (vedi lib/area.ts, @06/@11). Qui restano solo: mappatura stati client-friendly,
   step della pratica, "prossima azione" e l'elenco fac-simile dei documenti finali.
+  Le stringhe utente passano da content_entries (`area.*`) via i caller.
 */
 
 import { type Practice, type RequirementStatus } from "@/content/crm-data";
 
-// Etichette di stato "client-friendly" (non i nomi interni Kanban)
-export const clientSteps = [
+export const clientStepsFallback = [
   "Documenti da caricare",
   "In lavorazione",
   "Inviata all'Agenzia",
   "Conclusa",
 ] as const;
+
+/** @deprecated usa steps passati dal content; tenuto per compat. */
+export const clientSteps = clientStepsFallback;
 
 export function currentStepIndex(status: Practice["status"]): number {
   switch (status) {
@@ -33,26 +36,26 @@ export function currentStepIndex(status: Practice["status"]): number {
   }
 }
 
-// Pratica "storica": annullata (recesso accettato) o rimborsata per intero.
-// L'area personale resta consultabile ma in sola lettura (niente upload).
 export function isPracticeCancelled(p: Practice): boolean {
   return p.status === "ANNULLATA" || p.paymentStatus === "REFUNDED";
 }
 
 export type ClientDocState = "DA_CARICARE" | "CARICATO" | "DA_RIFARE";
 
-export const clientDocMeta: Record<
+export type ClientDocLabels = Record<
   ClientDocState,
   { label: string; tone: "warning" | "success" | "error" }
-> = {
+>;
+
+export const clientDocMetaFallback: ClientDocLabels = {
   DA_CARICARE: { label: "Da caricare", tone: "warning" },
   CARICATO: { label: "Caricato", tone: "success" },
   DA_RIFARE: { label: "Da rifare", tone: "error" },
 };
 
-// Mappa lo stato interno (CRM) nei 3 stati semplici lato cliente.
-// "Approvato" e interno: per il cliente conta come "Caricato".
-// "Non applicabile" non viene mostrato (return null).
+/** @deprecated */
+export const clientDocMeta = clientDocMetaFallback;
+
 export function toClientDocState(
   status: RequirementStatus,
 ): ClientDocState | null {
@@ -69,7 +72,6 @@ export function toClientDocState(
   }
 }
 
-// Documenti finali (mostrati a pratica conclusa). Mock per il prototipo.
 export const finalDocuments = [
   {
     label: "Ricevuta di presentazione - Agenzia delle Entrate",
@@ -89,36 +91,60 @@ export const finalDocuments = [
   },
 ];
 
-// Riepilogo "prossima azione" per la dashboard, derivato dallo stato.
-export function nextAction(p: Practice): {
+export type NextActionLabels = {
+  closed_title: string;
+  closed_cta: string;
+  docs_title: string;
+  docs_cta: string;
+  working_title: string;
+  working_cta: string;
+  idle_title: string;
+  idle_cta: string;
+};
+
+export function nextAction(
+  p: Practice,
+  labels?: Partial<NextActionLabels>,
+): {
   title: string;
   cta: string;
   href: string;
 } {
+  const L: NextActionLabels = {
+    closed_title: labels?.closed_title ?? "La tua pratica è conclusa.",
+    closed_cta: labels?.closed_cta ?? "Scarica i documenti finali",
+    docs_title: labels?.docs_title ?? "Mancano alcuni documenti per procedere.",
+    docs_cta: labels?.docs_cta ?? "Carica i documenti",
+    working_title: labels?.working_title ?? "Stiamo lavorando alla tua pratica.",
+    working_cta: labels?.working_cta ?? "Vedi lo stato",
+    idle_title:
+      labels?.idle_title ?? "Tutto in ordine, non serve nessuna azione adesso.",
+    idle_cta: labels?.idle_cta ?? "Vedi il tuo acquisto",
+  };
   const hasMissingDocs = p.checklist.some(
     (d) => d.required && (d.status === "ATTESO" || d.status === "RIFIUTATO"),
   );
   if (p.status === "CHIUSA")
     return {
-      title: "La tua pratica e conclusa.",
-      cta: "Scarica i documenti finali",
+      title: L.closed_title,
+      cta: L.closed_cta,
       href: "/area-riservata/conclusa",
     };
   if (hasMissingDocs)
     return {
-      title: "Mancano alcuni documenti per procedere.",
-      cta: "Carica i documenti",
+      title: L.docs_title,
+      cta: L.docs_cta,
       href: "/area-riservata/documenti",
     };
   if (p.status === "LAVORAZIONE")
     return {
-      title: "Stiamo lavorando alla tua pratica.",
-      cta: "Vedi lo stato",
+      title: L.working_title,
+      cta: L.working_cta,
       href: "/area-riservata/dashboard",
     };
   return {
-    title: "Tutto in ordine, non serve nessuna azione adesso.",
-    cta: "Vedi il tuo acquisto",
+    title: L.idle_title,
+    cta: L.idle_cta,
     href: "/area-riservata/ordine",
   };
 }

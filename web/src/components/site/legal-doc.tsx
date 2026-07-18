@@ -4,6 +4,7 @@ import { ArticleBody } from "@/components/site/article-body";
 import { Section } from "@/components/ui/section";
 import { ButtonLink } from "@/components/ui/button";
 import { obj, text } from "@/lib/content";
+import { t } from "@/lib/locale";
 import type { ArticleBlock } from "@/content/articles";
 import type { LegalDoc } from "@/content/legal";
 
@@ -14,6 +15,7 @@ import type { LegalDoc } from "@/content/legal";
   vengono sostituiti con i valori di `footer.studio` / `settings` (unica fonte di
   verita). Cosi i dati anagrafici (P.IVA, C.F., PEC, ...) si confermano una volta
   sola e restano allineati su footer, privacy, condizioni e cookie policy.
+  Le traduzioni (es. AR) sono di cortesia: IT fa fede (notice su ogni documento).
 */
 
 type StudioIdentity = {
@@ -26,6 +28,7 @@ type StudioIdentity = {
   indirizzo?: string;
 };
 
+// Identita studio: sempre IT (numeri/P.IVA invariati; testi legali fanno fede in italiano).
 function legalVars(): Record<string, string> {
   const studio = obj<StudioIdentity>("footer", "studio", {});
   return {
@@ -48,7 +51,10 @@ function interp(value: string, vars: Record<string, string>): string {
   );
 }
 
-function interpBlock(block: ArticleBlock, vars: Record<string, string>): ArticleBlock {
+function interpBlock(
+  block: ArticleBlock,
+  vars: Record<string, string>,
+): ArticleBlock {
   switch (block.type) {
     case "h2":
     case "h3":
@@ -74,9 +80,14 @@ function interpBlock(block: ArticleBlock, vars: Record<string, string>): Article
   }
 }
 
-export function LegalDocView({ doc }: { doc: LegalDoc }) {
+export async function LegalDocView({ doc }: { doc: LegalDoc }) {
   const vars = legalVars();
   const blocks = doc.body.map((b) => interpBlock(b, vars));
+  const updatedPrefix = await t(
+    "legale",
+    "updated_prefix",
+    "Ultimo aggiornamento:",
+  );
 
   const noticeBlock: ArticleBlock | null = doc.notice
     ? {
@@ -87,16 +98,24 @@ export function LegalDocView({ doc }: { doc: LegalDoc }) {
       }
     : null;
 
+  const updatedDate = doc.updatedAt
+    .replace(/^Ultimo aggiornamento:\s*/i, "")
+    .replace(/^آخر تحديث:\s*/i, "");
+
   return (
     <>
       <PageHero eyebrow={doc.eyebrow} title={doc.title} back />
       <Section>
         <div className="mx-auto max-w-3xl">
-          <p className="text-lg leading-relaxed text-text-muted">{doc.intro}</p>
+          <p className="text-lg leading-relaxed text-text-muted">
+            {interp(doc.intro, vars)}
+          </p>
 
           <div className="mt-4 flex items-center gap-2 text-sm text-text-muted">
             <CalendarClock className="h-4 w-4 text-accent" />
-            <span>Ultimo aggiornamento: {doc.updatedAt}</span>
+            <span>
+              {updatedPrefix} {updatedDate}
+            </span>
           </div>
 
           <div className="mt-8 space-y-6">

@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import { getRequestLocale, t, tCta } from "@/lib/locale";
 import { ChevronDown } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
 import { Section } from "@/components/ui/section";
 import { CtaBand } from "@/components/site/cta-band";
 import { getFaqs, type Faq } from "@/lib/cms";
-import { cta, text } from "@/lib/content";
 
-export const metadata: Metadata = {
-  title: "Domande frequenti",
-  description: text("faq", "hero_subtitle"),
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: await t("faq", "hero_title", "Domande frequenti"),
+    description: await t("faq", "hero_subtitle"),
+  };
+}
 
 function groupByCategory(items: Faq[]) {
   const map = new Map<string, Faq[]>();
@@ -22,16 +24,17 @@ function groupByCategory(items: Faq[]) {
 }
 
 export default async function FaqPage() {
-  const grouped = groupByCategory(await getFaqs());
-  const ctaButton = cta("faq", "cta_button");
-  const ctaPhone = cta("faq", "cta_phone");
+  const locale = await getRequestLocale();
+  const grouped = groupByCategory(await getFaqs(locale));
+  const ctaButton = await tCta("faq", "cta_button");
+  const ctaPhone = await tCta("faq", "cta_phone");
 
   return (
     <>
       <PageHero
-        eyebrow={text("faq", "hero_eyebrow", "FAQ")}
-        title={text("faq", "hero_title")}
-        subtitle={text("faq", "hero_subtitle")}
+        eyebrow={await t("faq", "hero_eyebrow", "FAQ")}
+        title={await t("faq", "hero_title")}
+        subtitle={await t("faq", "hero_subtitle")}
       />
 
       <Section>
@@ -58,7 +61,7 @@ export default async function FaqPage() {
       </Section>
 
       <CtaBand
-        title={text("faq", "cta_title")}
+        title={await t("faq", "cta_title")}
         button={ctaButton}
         phone={ctaPhone}
       />

@@ -22,6 +22,11 @@ import {
   type HeirsComposition,
 } from "@/lib/quote";
 import { trackEvent } from "@/lib/analytics";
+import { fillTemplate } from "@/lib/area-ui-labels";
+import {
+  PREVENTIVO_UI_IT,
+  type PreventivoUiLabels,
+} from "@/lib/site-ui-labels";
 
 /*
   Form pubblico del preventivo - versione "result-first" (no barriera contatti).
@@ -29,12 +34,6 @@ import { trackEvent } from "@/lib/analytics";
   nessuna scrittura su DB) e portiamo l'utente alla pagina risultato passando le
   risposte via query string. I contatti si chiedono solo dopo, e solo se serve
   (pagamento, opt-in email, preventivo su misura).
-
-  Ridisegno:
-  - Il testamento e' la PRIMA domanda (informativa: NON forza il preventivo su
-    misura; i pacchetti coprono anche le successioni testamentarie).
-  - Gli eredi si indicano per tipo e numero (es. coniuge + 2 figli): l'esonero
-    art. 28 c.7 TUS vale solo se TUTTI gli eredi sono coniuge/linea retta.
 */
 
 type Props = {
@@ -42,6 +41,7 @@ type Props = {
   progressLabel: string;
   submitLabel: string;
   trustItems: string[];
+  ui?: PreventivoUiLabels;
 };
 
 type Choice = { value: string; label: string };
@@ -82,7 +82,7 @@ function OptionGroup({
 }
 
 /** Pallino info accanto a "de cuius": tooltip su hover/focus, tap-to-toggle su touch. */
-function DeCuiusInfo() {
+function DeCuiusInfo({ ui }: { ui: PreventivoUiLabels }) {
   const tipId = useId();
   const [open, setOpen] = useState(false);
 
@@ -90,13 +90,13 @@ function DeCuiusInfo() {
     <span className="relative inline-flex items-center">
       <button
         type="button"
-        aria-label="Cosa significa de cuius"
+        aria-label={ui.will_tip_aria}
         aria-describedby={tipId}
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
         onBlur={() => setOpen(false)}
         className={cn(
-          "ml-0.5 inline-grid h-4 w-4 shrink-0 place-items-center rounded-full",
+          "ms-0.5 inline-grid h-4 w-4 shrink-0 place-items-center rounded-full",
           "border border-primary/30 bg-bg text-[10px] font-bold leading-none text-primary",
           "transition-colors hover:border-accent hover:bg-accent/10 hover:text-accent",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40",
@@ -108,8 +108,6 @@ function DeCuiusInfo() {
         id={tipId}
         role="tooltip"
         className={cn(
-          // Sopra il pallino (non copre i bottoni Sì/No), centrato e con
-          // max-width che resta dentro lo schermo su mobile.
           "absolute bottom-full left-1/2 z-20 mb-2 w-[min(18rem,calc(100vw-2.5rem))] -translate-x-1/2",
           "rounded-lg border border-primary/15 bg-primary px-3 py-2 text-xs font-normal leading-relaxed text-white shadow-lg",
           "pointer-events-none transition-opacity",
@@ -118,50 +116,45 @@ function DeCuiusInfo() {
             : "opacity-0 group-hover/decuius:opacity-100 group-focus-within/decuius:opacity-100",
         )}
       >
-        <span className="font-semibold">De cuius</span> (dal latino) è la persona
-        deceduta di cui si apre la successione: il defunto o la defunta.
+        {ui.will_tip}
       </span>
     </span>
   );
 }
 
-function WillQuestionLabel() {
+function WillQuestionLabel({ ui }: { ui: PreventivoUiLabels }) {
   return (
     <span className="group/decuius inline-flex flex-wrap items-center gap-x-1">
-      <span>Il</span>
+      <span>{ui.will_q_before}</span>
       <span className="inline-flex items-center">
-        <span className="font-semibold">de cuius</span>
-        <DeCuiusInfo />
+        <span className="font-semibold">{ui.will_q_term}</span>
+        <DeCuiusInfo ui={ui} />
       </span>
-      <span>ha lasciato un testamento?</span>
+      <span>{ui.will_q_after}</span>
     </span>
   );
 }
 
-const yesNo: Choice[] = [
-  { value: "si", label: "Sì" },
-  { value: "no", label: "No" },
-  { value: "nonso", label: "Non lo so" },
-];
-
 type HeirKind = keyof HeirsComposition;
-
-const heirRows: { key: HeirKind; label: string; max: number }[] = [
-  { key: "coniuge", label: "Coniuge (o unito civilmente)", max: 1 },
-  { key: "figli", label: "Figli/e", max: 15 },
-  { key: "genitori", label: "Genitori", max: 2 },
-  { key: "fratelli", label: "Fratelli/Sorelle", max: 15 },
-  { key: "nipoti", label: "Nipoti", max: 15 },
-  { key: "altri", label: "Altri eredi", max: 15 },
-];
 
 function HeirsCounter({
   value,
   onChange,
+  ui,
 }: {
   value: HeirsComposition;
   onChange: (v: HeirsComposition) => void;
+  ui: PreventivoUiLabels;
 }) {
+  const heirRows: { key: HeirKind; label: string; max: number }[] = [
+    { key: "coniuge", label: ui.heir_coniuge, max: 1 },
+    { key: "figli", label: ui.heir_figli, max: 15 },
+    { key: "genitori", label: ui.heir_genitori, max: 2 },
+    { key: "fratelli", label: ui.heir_fratelli, max: 15 },
+    { key: "nipoti", label: ui.heir_nipoti, max: 15 },
+    { key: "altri", label: ui.heir_altri, max: 15 },
+  ];
+
   function setCount(key: HeirKind, next: number, max: number) {
     onChange({ ...value, [key]: Math.max(0, Math.min(next, max)) });
   }
@@ -169,7 +162,7 @@ function HeirsCounter({
   return (
     <fieldset>
       <legend className="mb-2 text-sm font-medium text-primary">
-        Chi sono gli eredi? Indica quanti per ogni tipo.
+        {ui.heirs_legend}
       </legend>
       <div className="divide-y divide-primary/10 rounded-[10px] border border-primary/15">
         {heirRows.map((row) => {
@@ -190,7 +183,7 @@ function HeirsCounter({
               <div className="flex items-center gap-2">
                 <button
                   type="button"
-                  aria-label={`Meno ${row.label}`}
+                  aria-label={fillTemplate(ui.less, { label: row.label })}
                   onClick={() => setCount(row.key, count - 1, row.max)}
                   disabled={count === 0}
                   className="grid h-8 w-8 place-items-center rounded-full border border-primary/20 text-text transition-colors hover:border-accent/50 disabled:opacity-30"
@@ -202,7 +195,7 @@ function HeirsCounter({
                 </span>
                 <button
                   type="button"
-                  aria-label={`Più ${row.label}`}
+                  aria-label={fillTemplate(ui.more, { label: row.label })}
                   onClick={() => setCount(row.key, count + 1, row.max)}
                   disabled={count >= row.max}
                   className="grid h-8 w-8 place-items-center rounded-full border border-primary/20 text-text transition-colors hover:border-accent/50 disabled:opacity-30"
@@ -214,9 +207,7 @@ function HeirsCounter({
           );
         })}
       </div>
-      <p className="mt-2 text-xs text-text-muted">
-        Conta tutte le persone che ereditano, compreso te se sei tra gli eredi.
-      </p>
+      <p className="mt-2 text-xs text-text-muted">{ui.heirs_hint}</p>
     </fieldset>
   );
 }
@@ -226,6 +217,7 @@ export function PreventivoForm({
   progressLabel,
   submitLabel,
   trustItems,
+  ui = PREVENTIVO_UI_IT,
 }: Props) {
   const router = useRouter();
   const [step, setStep] = useState(0);
@@ -241,13 +233,16 @@ export function PreventivoForm({
   const heirsTotal = totalHeirs(heirs);
   const allDirectLine = isAllDirectLine(heirs);
 
-  // La soglia dei 100.000 EUR conta solo per l'esonero art. 28 c.7 TUS:
-  // TUTTI gli eredi coniuge/linea retta E nessun immobile.
   const askOver100k = hasRealEstate === "no" && allDirectLine;
 
   const progress = ((step + 1) / total) * 100;
 
-  // Avanti abilitato solo quando TUTTE le domande dello step hanno risposta.
+  const yesNo: Choice[] = [
+    { value: "si", label: ui.yes },
+    { value: "no", label: ui.no },
+    { value: "nonso", label: ui.unknown },
+  ];
+
   const stepValid =
     (step === 0 && hasWill !== "") ||
     (step === 1 && heirsTotal > 0) ||
@@ -314,33 +309,32 @@ export function PreventivoForm({
           {step === 0 && (
             <>
               <OptionGroup
-                label={<WillQuestionLabel />}
+                label={<WillQuestionLabel ui={ui} />}
                 options={yesNo}
                 value={hasWill}
                 onChange={setHasWill}
               />
               {hasWill === "si" && (
                 <p className="rounded-[10px] border border-primary/10 bg-bg-muted/60 p-4 text-sm text-text-muted">
-                  I pacchetti standard coprono anche i casi con testamento. Nella
-                  checklist documenti ti chiederemo la copia del testamento
-                  pubblicato.
+                  {ui.will_yes_note}
                 </p>
               )}
               {hasWill === "nonso" && (
                 <p className="rounded-[10px] border border-primary/10 bg-bg-muted/60 p-4 text-sm text-text-muted">
-                  Va bene anche così: se emerge dopo, lo gestiamo in corso di
-                  pratica. Continua con le altre domande.
+                  {ui.will_unknown_note}
                 </p>
               )}
             </>
           )}
 
-          {step === 1 && <HeirsCounter value={heirs} onChange={setHeirs} />}
+          {step === 1 && (
+            <HeirsCounter value={heirs} onChange={setHeirs} ui={ui} />
+          )}
 
           {step === 2 && (
             <>
               <OptionGroup
-                label="Ci sono immobili (case, terreni, box)?"
+                label={ui.real_estate_q}
                 options={yesNo}
                 value={hasRealEstate}
                 onChange={setHasRealEstate}
@@ -351,7 +345,7 @@ export function PreventivoForm({
                     htmlFor="realEstateCount"
                     className="mb-1.5 block text-sm font-medium text-primary"
                   >
-                    Quanti immobili in tutto?
+                    {ui.real_estate_count}
                   </label>
                   <input
                     id="realEstateCount"
@@ -359,27 +353,26 @@ export function PreventivoForm({
                     type="number"
                     min={1}
                     inputMode="numeric"
-                    placeholder="Es. 2"
+                    placeholder={ui.real_estate_placeholder}
                     value={realEstateCount}
                     onChange={(e) => setRealEstateCount(e.target.value)}
                     className="w-32 rounded-[10px] border border-primary/20 bg-bg px-3 py-2.5 text-sm focus:border-accent focus:outline-none"
                   />
                   <p className="mt-1.5 text-xs text-text-muted">
-                    Conta case, terreni, box e quote: ogni immobile in più può
-                    incidere sul preventivo.
+                    {ui.real_estate_hint}
                   </p>
                 </div>
               )}
               {askOver100k && (
                 <OptionGroup
-                  label="Il valore totale dell'eredità (conti, titoli, ecc.) supera i 100.000 euro?"
+                  label={ui.over_100k_q}
                   options={yesNo}
                   value={over100k}
                   onChange={setOver100k}
                 />
               )}
               <OptionGroup
-                label="Ci sono altri beni (quote societarie, azioni, aziende, imbarcazioni…)?"
+                label={ui.other_assets_q}
                 options={yesNo}
                 value={hasOther}
                 onChange={setHasOther}
@@ -391,8 +384,8 @@ export function PreventivoForm({
         <div className="mt-8 flex items-center justify-between gap-3">
           {step > 0 ? (
             <Button variant="ghost" onClick={back}>
-              <ArrowLeft className="h-4 w-4" />
-              Indietro
+              <ArrowLeft className="h-4 w-4 rtl:rotate-180" />
+              {ui.back}
             </Button>
           ) : (
             <span />
@@ -400,8 +393,8 @@ export function PreventivoForm({
 
           {step < total - 1 ? (
             <Button onClick={next} disabled={!stepValid}>
-              Avanti
-              <ArrowRight className="h-4 w-4" />
+              {ui.next}
+              <ArrowRight className="h-4 w-4 rtl:rotate-180" />
             </Button>
           ) : (
             <Button onClick={seeResult} disabled={!stepValid} size="lg">

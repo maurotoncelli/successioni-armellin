@@ -1,23 +1,34 @@
 import { Container } from "@/components/ui/container";
 import { BackLink } from "@/components/site/back-link";
+import { tObj } from "@/lib/locale";
+import { CHROME_UI_IT } from "@/lib/site-ui-labels";
 
-export function PageHero({
+export async function PageHero({
   eyebrow,
   title,
   subtitle,
   back,
+  backLabel,
 }: {
   eyebrow?: string;
   title: string;
   subtitle?: string;
   back?: boolean;
+  backLabel?: string;
 }) {
+  const chrome = back
+    ? await tObj("site_ui", "chrome_ui", CHROME_UI_IT)
+    : null;
+
   return (
     <div className="bg-primary text-white">
       <Container className="py-10 sm:py-14 lg:py-20">
         {back && (
           <div className="mb-4 sm:mb-6">
-            <BackLink tone="onDark" />
+            <BackLink
+              tone="onDark"
+              label={backLabel ?? chrome?.back ?? CHROME_UI_IT.back}
+            />
           </div>
         )}
         <div className="max-w-3xl">

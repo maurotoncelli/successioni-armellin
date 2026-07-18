@@ -8,6 +8,10 @@ import { trackEvent } from "@/lib/analytics";
 import { createCheckoutPractice } from "@/app/(site)/checkout/actions";
 import { LegalLinksText } from "@/components/site/legal-links-text";
 import type { PackageKey } from "@/lib/supabase/types";
+import {
+  CHECKOUT_UI_IT,
+  type CheckoutUiLabels,
+} from "@/lib/site-ui-labels";
 
 /*
   Pannello di pagamento del checkout (client): raccoglie i consensi e avvia la
@@ -37,6 +41,7 @@ type Props = {
   ctaNota: string;
   rateNota: string;
   recessoLink: { href: string; label: string };
+  ui?: CheckoutUiLabels;
 };
 
 export function CheckoutPanel({
@@ -50,6 +55,7 @@ export function CheckoutPanel({
   ctaNota,
   rateNota,
   recessoLink,
+  ui = CHECKOUT_UI_IT,
 }: Props) {
   const [tc, setTc] = useState(false);
   const [avvio, setAvvio] = useState(false);
@@ -70,7 +76,7 @@ export function CheckoutPanel({
     });
     const data = await res.json();
     if (!res.ok || !data.url) {
-      setError(data?.error?.message ?? "Impossibile avviare il pagamento.");
+      setError(data?.error?.message ?? ui.err_start);
       setLoading(false);
       return;
     }
@@ -102,8 +108,8 @@ export function CheckoutPanel({
         if (!created.ok) {
           setError(
             created.reason === "not_configured"
-              ? "Pagamenti non ancora attivi. Riprova piu tardi o contattaci."
-              : "Impossibile avviare il pagamento. Riprova tra poco.",
+              ? ui.err_not_configured
+              : ui.err_retry,
           );
           setLoading(false);
           return;
@@ -111,7 +117,7 @@ export function CheckoutPanel({
         await startStripe(created.practiceId);
       }
     } catch {
-      setError("Errore di rete. Riprova tra poco.");
+      setError(ui.err_network);
       setLoading(false);
     }
   }
@@ -119,9 +125,7 @@ export function CheckoutPanel({
   return (
     <div>
       <p className="rounded-[10px] bg-sand/60 p-3 text-sm text-text-muted">
-        Pagamento sicuro tramite Stripe: carta di credito/debito e, dove
-        disponibile, pagamento a rate. Verrai reindirizzato alla pagina protetta
-        di Stripe.
+        {ui.stripe_blurb}
       </p>
       <p className="mt-3 text-xs text-text-muted">{rateNota}</p>
 
@@ -151,11 +155,11 @@ export function CheckoutPanel({
       {!hasOrder && (
         <p className="mt-4 flex items-start gap-2 rounded-[10px] bg-amber-50 p-3 text-xs text-amber-700">
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-          Per pagare, parti dal{" "}
+          {ui.need_quote_before}{" "}
           <Link href="/preventivo" className="font-medium underline">
-            calcolo del preventivo
+            {ui.need_quote_link}
           </Link>
-          : così ti proponiamo il pacchetto giusto.
+          {ui.need_quote_after}
         </p>
       )}
 
@@ -173,7 +177,7 @@ export function CheckoutPanel({
         onClick={pay}
       >
         <Lock className="h-4 w-4" />
-        {loading ? "Avvio del pagamento…" : payLabel}
+        {loading ? ui.loading : payLabel}
       </Button>
       <p className="mt-2 text-center text-xs text-text-muted">{ctaNota}</p>
 

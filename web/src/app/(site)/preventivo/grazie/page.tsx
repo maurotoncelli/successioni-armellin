@@ -1,4 +1,11 @@
 import type { Metadata } from "next";
+import { getRequestLocale, t, tCta, tList, tObj } from "@/lib/locale";
+import {
+  CHROME_UI_IT,
+  CHECKOUT_UI_IT,
+  SOFT_LEAD_UI_IT,
+  type SoftLeadUiLabels,
+} from "@/lib/site-ui-labels";
 import Link from "next/link";
 import { CheckCircle2, Phone, CreditCard, MessageCircle } from "lucide-react";
 import { Section } from "@/components/ui/section";
@@ -12,12 +19,14 @@ import { TrackQuoteComplete } from "@/components/site/track-quote-complete";
 import { getPackages, getAddons } from "@/lib/cms";
 import { buildOrder } from "@/lib/order";
 import { decodeHeirs, isPackageKey, totalHeirs, type Esito } from "@/lib/quote";
-import { cta, list, obj, text } from "@/lib/content";
 
-export const metadata: Metadata = {
-  title: "Il tuo risultato",
-  robots: { index: false },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const chrome = await tObj("site_ui", "chrome_ui", CHROME_UI_IT);
+  return {
+    title: chrome.meta_result,
+    robots: { index: false },
+  };
+}
 
 function resolveEsito(value?: string): Esito {
   const v = (value ?? "").trim().toLowerCase();
@@ -56,11 +65,16 @@ export default async function GraziePage({
   };
 
   // Telefono / WhatsApp reali (data-driven).
-  const tel = obj("contatti", "telefono", {
+  const tel = await tObj("contatti", "telefono", {
     cta_chiama: "tel:+393201570567",
     cta_whatsapp: "https://wa.me/393201570567",
   });
-  const waPrefill = text(
+  const softLeadUi = await tObj<SoftLeadUiLabels>(
+    "site_ui",
+    "soft_lead_ui",
+    SOFT_LEAD_UI_IT,
+  );
+  const waPrefill = await t(
     "grazie",
     "esito_c_whatsapp_prefill",
     "Ciao Lorenzo, ho compilato il questionario sul sito e mi risulta un preventivo su misura. Vorrei approfondire il mio caso insieme a te.",
@@ -69,7 +83,7 @@ export default async function GraziePage({
   const waHref = `${waBase}${waBase.includes("?") ? "&" : "?"}text=${encodeURIComponent(waPrefill)}`;
 
   // Lista documenti data-driven (stessi nomi della checklist); fallback statico.
-  const docsFromContent = list<DocItem>("documenti", "lista");
+  const docsFromContent = await tList<DocItem>("documenti", "lista");
   const docItems = docsFromContent.length > 0 ? docsFromContent : documentsList;
 
   // Esito B: mostriamo SUBITO il pacchetto consigliato (nome + prezzo) senza
@@ -78,14 +92,22 @@ export default async function GraziePage({
     | { name: string; price: number; tagline: string | null; total: number }
     | null = null;
   let checkoutHref = "/checkout";
+  const chrome = await tObj("site_ui", "chrome_ui", CHROME_UI_IT);
+
   if (esito === "b") {
     const packageKey = isPackageKey(sp.pkg) ? sp.pkg : "COMPLETO";
-    const [packages, addons] = await Promise.all([getPackages(), getAddons()]);
+    const locale = await getRequestLocale();
+    const [packages, addons, checkoutUi] = await Promise.all([
+      getPackages(locale),
+      getAddons(locale),
+      tObj("site_ui", "checkout_ui", CHECKOUT_UI_IT),
+    ]);
     const pkg = packages.find((p) => p.key === packageKey);
     const order = buildOrder(
       { packageKey, realEstateCount: answers.realEstateCount },
       packages,
       addons,
+      { extraProperty: checkoutUi.extra_property },
     );
     if (pkg && order) {
       suggestedPkg = {
@@ -106,11 +128,11 @@ export default async function GraziePage({
     checkoutHref = `/checkout?${params.toString()}`;
   }
 
-  const guidaCta = cta("grazie", "esito_b_guida", {
+  const guidaCta = await tCta("grazie", "esito_b_guida", {
     label: "guida",
     href: "/tariffe",
   });
-  const faqLink = cta("grazie", "documenti_faq_link", {
+  const faqLink = await tCta("grazie", "documenti_faq_link", {
     label: "Approfondisci nelle FAQ",
     href: "/faq",
   });
@@ -155,12 +177,12 @@ export default async function GraziePage({
       />
       <div className="mx-auto max-w-2xl">
         <div className="mb-6">
-          <BackLink fallbackHref="/preventivo" />
+          <BackLink label={chrome.back} fallbackHref="/preventivo" />
         </div>
         <div className="text-center">
           <CheckCircle2 className="mx-auto h-12 w-12 text-success" />
           <h1 className="mt-4 text-3xl sm:text-4xl">
-            {text("grazie", "header_title", "Ecco il risultato per il tuo caso")}
+            {await t("grazie", "header_title", "Ecco il risultato per il tuo caso")}
           </h1>
         </div>
 
@@ -171,12 +193,18 @@ export default async function GraziePage({
                 <CreditCard className="h-7 w-7 text-accent" />
               </span>
               <div className="w-full">
-                <h2 className="text-xl">{text("grazie", "esito_b_title")}</h2>
+                <h2 className="text-xl">{await t("grazie", "esito_b_title")}</h2>
                 {suggestedPkg && (
                   <div className="mt-3 rounded-[10px] border border-accent/30 bg-sand/50 p-4">
                     <div className="flex items-baseline justify-between gap-3">
                       <span className="font-display text-lg font-semibold text-primary">
-                        Pacchetto {suggestedPkg.name}
+                        {(
+                          await t(
+                            "grazie",
+                            "esito_b_package_line",
+                            "Pacchetto {name}",
+                          )
+                        ).replace("{name}", suggestedPkg.name)}
                       </span>
                       <span className="shrink-0 font-display text-xl font-bold text-accent">
                         {suggestedPkg.total}&euro;
@@ -188,17 +216,20 @@ export default async function GraziePage({
                       </p>
                     )}
                     <p className="mt-2 text-xs text-text-muted">
-                      + imposte calcolate sul tuo caso: te le diciamo prima di
-                      farti pagare.
+                      {await t(
+                        "grazie",
+                        "esito_b_taxes_note",
+                        "+ imposte calcolate sul tuo caso: te le diciamo prima di farti pagare.",
+                      )}
                     </p>
                   </div>
                 )}
                 <p className="mt-3 leading-relaxed text-text-muted">
-                  {renderBody(text("grazie", "esito_b_riallineamento"))}
+                  {renderBody(await t("grazie", "esito_b_riallineamento"))}
                 </p>
                 <div className="mt-5">
                   <ButtonLink href={checkoutHref} variant="primary">
-                    {cta("grazie", "esito_b_cta").label}
+                    {(await tCta("grazie", "esito_b_cta")).label}
                   </ButtonLink>
                 </div>
               </div>
@@ -211,17 +242,17 @@ export default async function GraziePage({
                 <Phone className="h-7 w-7 text-accent" />
               </span>
               <div>
-                <h2 className="text-xl">{text("grazie", "esito_a_title")}</h2>
+                <h2 className="text-xl">{await t("grazie", "esito_a_title")}</h2>
                 <p className="mt-3 leading-relaxed text-text-muted">
-                  {text("grazie", "esito_a_body")}
+                  {await t("grazie", "esito_a_body")}
                 </p>
                 <div className="mt-5 flex flex-wrap gap-3">
                   <ButtonLink href={tel.cta_chiama} variant="primary">
-                    {cta("grazie", "esito_a_cta").label}
+                    {(await tCta("grazie", "esito_a_cta")).label}
                   </ButtonLink>
                   <ButtonLink href={tel.cta_whatsapp} variant="outline">
                     <MessageCircle className="h-4 w-4" />
-                    WhatsApp
+                    {await t("grazie", "esito_a_whatsapp", "WhatsApp")}
                   </ButtonLink>
                 </div>
               </div>
@@ -234,18 +265,18 @@ export default async function GraziePage({
                 <Phone className="h-7 w-7 text-accent" />
               </span>
               <div className="w-full">
-                <h2 className="text-xl">{text("grazie", "esito_c_title")}</h2>
+                <h2 className="text-xl">{await t("grazie", "esito_c_title")}</h2>
                 <p className="mt-3 leading-relaxed text-text-muted">
-                  {text("grazie", "esito_c_body")}
+                  {await t("grazie", "esito_c_body")}
                 </p>
                 <div className="mt-5 flex flex-wrap gap-3">
                   <ButtonLink href={waHref} variant="primary">
                     <MessageCircle className="h-4 w-4" />
-                    {text("grazie", "esito_c_whatsapp", "Scrivi su WhatsApp")}
+                    {await t("grazie", "esito_c_whatsapp", "Scrivi su WhatsApp")}
                   </ButtonLink>
                   <ButtonLink href={tel.cta_chiama} variant="outline">
                     <Phone className="h-4 w-4" />
-                    {cta("grazie", "esito_c_cta").label}
+                    {(await tCta("grazie", "esito_c_cta")).label}
                   </ButtonLink>
                 </div>
               </div>
@@ -260,50 +291,51 @@ export default async function GraziePage({
             <SoftLead
               kind="custom_quote"
               answers={answers}
-              title={text(
+              title={await t(
                 "grazie",
                 "soft_custom_title",
                 "Lascia i recapiti: ti richiamiamo noi",
               )}
-              description={text(
+              description={await t(
                 "grazie",
                 "soft_custom_desc",
                 "Le risposte del questionario ci bastano per partire. Lascia email e telefono: Lorenzo ti ricontatta per approfondire insieme i dettagli.",
               )}
-              submitLabel={text(
+              submitLabel={await t(
                 "grazie",
                 "soft_custom_submit",
                 "Richiedi di essere ricontattato",
               )}
-              consensoPrivacy={text("preventivo", "consenso_privacy")}
-              consensoMarketing={text("preventivo", "consenso_marketing")}
-              successTitle={text(
+              consensoPrivacy={await t("preventivo", "consenso_privacy")}
+              consensoMarketing={await t("preventivo", "consenso_marketing")}
+              successTitle={await t(
                 "grazie",
                 "soft_custom_ok_title",
                 "Richiesta ricevuta!",
               )}
-              successBody={text(
+              successBody={await t(
                 "grazie",
                 "soft_custom_ok_body",
                 "Lorenzo ti ricontatta a breve per approfondire il caso e prepararti il preventivo su misura.",
               )}
               requirePhone
               showNotes
-              notesLabel={text(
+              notesLabel={await t(
                 "grazie",
                 "soft_custom_notes_label",
                 "Nota per Lorenzo (facoltativa)",
               )}
-              notesPlaceholder={text(
+              notesPlaceholder={await t(
                 "grazie",
                 "soft_custom_notes_placeholder",
                 "Es. tipo di immobili, terreni, aziende/quote, urgenze o dubbi…",
               )}
-              footnote={text(
+              footnote={await t(
                 "grazie",
                 "soft_custom_footnote",
                 "Nessun impegno: ti ricontattiamo entro un giorno lavorativo per studiare il caso insieme.",
               )}
+              fieldLabels={softLeadUi}
             />
           </div>
         )}
@@ -312,43 +344,44 @@ export default async function GraziePage({
             <SoftLead
               kind="email_quote"
               answers={answers}
-              title={text(
+              title={await t(
                 "grazie",
                 "soft_email_title",
                 "Preferisci pensarci? Ricevi questo preventivo via email",
               )}
-              description={text(
+              description={await t(
                 "grazie",
                 "soft_email_desc",
                 "Ti inviamo il riepilogo del preventivo cosi lo ritrovi quando vuoi. Nessuna pressione.",
               )}
-              submitLabel={text(
+              submitLabel={await t(
                 "grazie",
                 "soft_email_submit",
                 "Inviami il preventivo via email",
               )}
-              consensoPrivacy={text("preventivo", "consenso_privacy")}
-              consensoMarketing={text("preventivo", "consenso_marketing")}
-              successTitle={text(
+              consensoPrivacy={await t("preventivo", "consenso_privacy")}
+              consensoMarketing={await t("preventivo", "consenso_marketing")}
+              successTitle={await t(
                 "grazie",
                 "soft_email_ok_title",
                 "Fatto! Controlla la casella email",
               )}
-              successBody={text(
+              successBody={await t(
                 "grazie",
                 "soft_email_ok_body",
                 "Ti abbiamo inviato il riepilogo del preventivo. Quando vuoi, riprendi da li.",
               )}
-              successTitleNoEmail={text(
+              successTitleNoEmail={await t(
                 "grazie",
                 "soft_email_ok_title_noemail",
                 "Richiesta registrata!",
               )}
-              successBodyNoEmail={text(
+              successBodyNoEmail={await t(
                 "grazie",
                 "soft_email_ok_body_noemail",
                 "Abbiamo registrato la tua richiesta: ti invieremo il riepilogo del preventivo a breve.",
               )}
+              fieldLabels={softLeadUi}
             />
           </div>
         )}
@@ -357,17 +390,17 @@ export default async function GraziePage({
             documenti "Intanto ecco cosa ti servira". */}
         {esito !== "a" && (
           <Card className="mt-6">
-            <h2 className="text-xl">{text("grazie", "documenti_title")}</h2>
+            <h2 className="text-xl">{await t("grazie", "documenti_title")}</h2>
             <DocList
               items={docItems.slice(0, 5)}
               faqLabel={faqLink.label}
               faqHref={faqLink.href}
             />
             <p className="mt-4 text-sm text-text-muted">
-              {text("grazie", "documenti_disclaimer")}
+              {await t("grazie", "documenti_disclaimer")}
             </p>
             <p className="mt-1 text-sm font-medium text-accent">
-              {text("grazie", "documenti_hook")}
+              {await t("grazie", "documenti_hook")}
             </p>
           </Card>
         )}

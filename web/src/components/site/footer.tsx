@@ -1,7 +1,13 @@
 import Link from "next/link";
-import { list, obj, text } from "@/lib/content";
+import { getRequestLocale, t, tList, tObj } from "@/lib/locale";
 import { LanguageSwitcher } from "./language-switcher";
 import { CookiePreferencesLink } from "@/components/analytics/cookie-preferences-link";
+import {
+  CHROME_UI_IT,
+  COOKIE_UI_IT,
+  type ChromeUiLabels,
+  type CookieUiLabels,
+} from "@/lib/site-ui-labels";
 
 type Studio = {
   ragione_sociale: string;
@@ -13,40 +19,66 @@ type Studio = {
   indirizzo: string;
 };
 
-export function Footer() {
-  const studio = obj<Studio>("footer", "studio", {
+export async function Footer() {
+  const locale = await getRequestLocale();
+  const chrome = await tObj<ChromeUiLabels>(
+    "site_ui",
+    "chrome_ui",
+    CHROME_UI_IT,
+  );
+  const cookieUi = await tObj<CookieUiLabels>(
+    "site_ui",
+    "cookie_ui",
+    COOKIE_UI_IT,
+  );
+  const studio = await tObj<Studio>("footer", "studio", {
     ragione_sociale: "Geom. Lorenzo Armellin",
     piva: "",
     albo: "",
     indirizzo: "",
   });
-  const trustLine = text("footer", "trust_line");
-  const legalMenu = list<{ label: string; href: string }>("footer", "legal_menu");
-  const odr = obj<{ label: string; href: string }>("footer", "odr", {
+  const trustLine = await t("footer", "trust_line");
+  const legalMenu = await tList<{ label: string; href: string }>(
+    "footer",
+    "legal_menu",
+  );
+  const odr = await tObj<{ label: string; href: string }>("footer", "odr", {
     label: "",
     href: "",
   });
-  const credit = text("footer", "credit");
-  const menu = list<{ label: string; href: string }>("navbar", "menu");
-  const toolsLink = obj<{ label: string; href: string }>("footer", "strumenti_link", {
-    label: "",
-    href: "",
-  });
-  const email = text("settings", "email");
-  const phone = text("settings", "phone");
-  const pec = text("settings", "pec");
-  const areaLabel = text("settings", "area_label", "Area personale");
-  const areaNote = text("footer", "area_app_note");
+  const credit = await t("footer", "credit");
+  const menu = await tList<{ label: string; href: string }>("navbar", "menu");
+  const toolsLink = await tObj<{ label: string; href: string }>(
+    "footer",
+    "strumenti_link",
+    { label: "", href: "" },
+  );
+  const email = await t("settings", "email");
+  const phone = await t("settings", "phone");
+  const pec = await t("settings", "pec");
+  const areaLabel = await t("settings", "area_label", "Area personale");
+  const areaNote = await t("footer", "area_app_note");
+  const navHeading = await t("footer", "nav_heading", "Naviga");
+  const legalHeading = await t("footer", "legal_heading", "Legale");
+  const rights = await t(
+    "footer",
+    "rights_reserved",
+    "Tutti i diritti riservati.",
+  );
 
-  // Dati identificativi obbligatori (professionista/e-commerce B2C): mostrati
-  // sempre, anche come placeholder "DA CONFERMARE", finche non confermati da
-  // Lorenzo (vedi blueprint/10_Legale_Compliance + DOMANDE_PER_LORENZO).
+  const labelForma = await t("footer", "label_forma", "Forma");
+  const labelPiva = await t("footer", "label_piva", "P.IVA");
+  const labelCf = await t("footer", "label_cf", "C.F.");
+  const labelRea = await t("footer", "label_rea", "REA");
+  const labelPec = await t("footer", "label_pec", "PEC");
+  const labelTel = await t("footer", "label_tel", "Tel");
+
   const legalData: { label: string; value: string }[] = [
-    { label: "Forma", value: studio.forma_giuridica ?? "" },
-    { label: "P.IVA", value: studio.piva },
-    { label: "C.F.", value: studio.cf ?? "" },
-    { label: "REA", value: studio.rea ?? "" },
-    { label: "PEC", value: pec },
+    { label: labelForma, value: studio.forma_giuridica ?? "" },
+    { label: labelPiva, value: studio.piva },
+    { label: labelCf, value: studio.cf ?? "" },
+    { label: labelRea, value: studio.rea ?? "" },
+    { label: labelPec, value: pec },
   ].filter((row) => row.value);
 
   return (
@@ -98,7 +130,7 @@ export function Footer() {
             {phone && phone !== "DA CONFERMARE" && (
               <>
                 <br />
-                Tel: {phone}
+                {labelTel}: {phone}
               </>
             )}
             {email && (
@@ -120,13 +152,11 @@ export function Footer() {
             </dl>
           )}
 
-          {/* Scopo dell'app + uso dei dati Google: richiesto dalla verifica
-              del branding OAuth (la home deve spiegare cosa fa l'applicazione). */}
           {areaNote && (
             <p className="mt-4 max-w-sm text-xs leading-relaxed text-white/60">
               {areaNote}{" "}
               <Link href="/privacy" className="underline hover:text-accent">
-                Privacy Policy
+                {await t("home", "app_scopo_privacy_label", "Privacy Policy")}
               </Link>
               .
             </p>
@@ -135,7 +165,7 @@ export function Footer() {
 
         <div>
           <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
-            Naviga
+            {navHeading}
           </h3>
           <ul className="mt-4 space-y-2 text-sm">
             {menu.map((item) => (
@@ -153,7 +183,10 @@ export function Footer() {
               </li>
             )}
             <li>
-              <Link href="/area-riservata" className="font-medium text-white hover:text-accent">
+              <Link
+                href="/area-riservata"
+                className="font-medium text-white hover:text-accent"
+              >
                 {areaLabel}
               </Link>
             </li>
@@ -162,7 +195,7 @@ export function Footer() {
 
         <div>
           <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
-            Legale
+            {legalHeading}
           </h3>
           <ul className="mt-4 space-y-2 text-sm">
             {legalMenu.map((item) => (
@@ -185,7 +218,10 @@ export function Footer() {
               </li>
             )}
             <li>
-              <CookiePreferencesLink className="cursor-pointer hover:text-accent" />
+              <CookiePreferencesLink
+                className="cursor-pointer hover:text-accent"
+                label={cookieUi.preferences}
+              />
             </li>
           </ul>
         </div>
@@ -194,12 +230,17 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-3 px-5 py-5 text-xs text-white/60 sm:flex-row sm:px-8">
           <p>
-            &copy; {new Date().getFullYear()} {studio.ragione_sociale}. Tutti i
-            diritti riservati.
+            &copy; {new Date().getFullYear()} {studio.ragione_sociale}. {rights}
           </p>
           <div className="flex items-center gap-4">
             <p>{credit}</p>
-            <LanguageSwitcher tone="onDark" align="right" dropUp />
+            <LanguageSwitcher
+              locale={locale}
+              tone="onDark"
+              align="right"
+              dropUp
+              ariaLabel={chrome.lang_aria}
+            />
           </div>
         </div>
       </div>

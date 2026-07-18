@@ -44,6 +44,13 @@ import {
   pushClientStatusNotification,
   getNotifyEmailPreference,
 } from "@/lib/client-notifications";
+import { getCommsLocaleForPractice } from "@/lib/comms-locale";
+import {
+  documentRejectedNotif,
+  finalDocsNotif,
+  taxesNotif,
+  withdrawalNotif,
+} from "@/lib/comms-copy";
 import { getAdminClient } from "@/lib/supabase/admin";
 import type { PracticeRow } from "@/lib/supabase/types";
 import type {
@@ -218,12 +225,15 @@ export async function rejectDocument(
   const label = checklist[index]?.label ?? "Documento";
   const cleanReason = reason.trim() || "Da ricaricare";
 
+  const locale = await getCommsLocaleForPractice(practiceId);
+
   // Avvisa il cliente che un documento va ricaricato.
   if (data.client_email) {
     const notice = await notifyDocumentRejected(
       data.client_email,
       label,
       cleanReason,
+      { locale },
     );
     if (notice.sent) {
       communications.push({
@@ -237,10 +247,11 @@ export async function rejectDocument(
     }
   }
 
+  const docNotif = documentRejectedNotif(label, cleanReason, locale);
   await pushClientNotificationForPractice(practiceId, {
     kind: "documento",
-    title: `Documento da rifare: ${label}`,
-    body: cleanReason,
+    title: docNotif.title,
+    body: docNotif.body,
     href: "/area-riservata/documenti",
     dedupeMinutes: 5,
   });
@@ -361,8 +372,11 @@ export async function changeStatus(
     ? [...(data.communications as Communication[])]
     : [];
   let communicationsDirty = false;
+  const statusLocale = await getCommsLocaleForPractice(practiceId);
   const notice = data.client_email
-    ? await notifyStatusChange(data.client_email, status)
+    ? await notifyStatusChange(data.client_email, status, {
+        locale: statusLocale,
+      })
     : null;
   if (notice?.sent) {
     communications.push({
@@ -382,7 +396,9 @@ export async function changeStatus(
     const reviewUrl = text("settings", "review_url", "").trim();
     const softOk = await getNotifyEmailPreference(data.contact_id);
     if (reviewUrl.startsWith("http") && softOk) {
-      const review = await notifyReviewRequest(data.client_email, reviewUrl);
+      const review = await notifyReviewRequest(data.client_email, reviewUrl, {
+        locale: statusLocale,
+      });
       if (review.sent) {
         communications.push({
           channel: "EMAIL",
@@ -794,8 +810,11 @@ export async function setStateTaxes(
   const now = stamp();
   log.push({ action: `imposte_comunicate:${amount}`, at: now });
 
+  const taxesLocale = await getCommsLocaleForPractice(practiceId);
   const notice = data.client_email
-    ? await notifyTaxesCommunicated(data.client_email, amount)
+    ? await notifyTaxesCommunicated(data.client_email, amount, {
+        locale: taxesLocale,
+      })
     : null;
   if (notice?.sent) {
     communications.push({
@@ -817,10 +836,11 @@ export async function setStateTaxes(
     return { ok: false, error: "Salvataggio non riuscito." };
   }
 
+  const taxNotif = taxesNotif(amount, taxesLocale);
   await pushClientNotificationForPractice(practiceId, {
     kind: "imposte",
-    title: `Imposte comunicate: ${amount.toLocaleString("it-IT")} €`,
-    body: "Sono separate dall'onorario e si versano allo Stato (F24). Inserisci l'IBAN se richiesto.",
+    title: taxNotif.title,
+    body: taxNotif.body,
     href: "/area-riservata/ordine",
     dedupeMinutes: 10,
   });
@@ -915,8 +935,11 @@ export async function registerOfflinePayment(
     log.push({ action: "checklist_generata", at: now });
   }
 
+  const paidLocale = await getCommsLocaleForPractice(practiceId);
   const notice = data.client_email
-    ? await notifyStatusChange(data.client_email, "PAGATO")
+    ? await notifyStatusChange(data.client_email, "PAGATO", {
+        locale: paidLocale,
+      })
     : null;
   if (notice?.sent) {
     communications.push({
@@ -959,7 +982,10 @@ export async function notifyFinalDocsReadyAction(
   if (!data) return { ok: false, error: "Pratica non trovata." };
   if (!data.client_email) return { ok: false, error: "Nessuna email cliente." };
 
-  const notice = await notifyFinalDocsReady(data.client_email);
+  const finalLocale = await getCommsLocaleForPractice(practiceId);
+  const notice = await notifyFinalDocsReady(data.client_email, {
+    locale: finalLocale,
+  });
   if (!notice.sent) {
     return {
       ok: false,
@@ -982,10 +1008,11 @@ export async function notifyFinalDocsReadyAction(
     .update({ communications, log })
     .eq("id", practiceId);
 
+  const ready = finalDocsNotif(finalLocale);
   await pushClientNotificationForPractice(practiceId, {
     kind: "finali",
-    title: "Documenti finali pronti",
-    body: "Puoi scaricarli dalla tua area personale.",
+    title: ready.title,
+    body: ready.body,
     href: "/area-riservata/conclusa",
     dedupeMinutes: 60,
   });
@@ -1260,6 +1287,7 @@ export async function updateWithdrawal(
       ? (data?.status ? ownerByStatus[data.status] : "ADMIN")
       : "ADMIN";
 
+  const wdLocale = await getCommsLocaleForPractice(practiceId);
   if (
     data?.client_email &&
     (status === "IN_REVIEW" || status === "ACCEPTED" || status === "REJECTED")
@@ -1268,7 +1296,7 @@ export async function updateWithdrawal(
       data.client_email,
       status,
       note?.trim() ?? "",
-      { refundIssued: refundCreated },
+      { refundIssued: refundCreated, locale: wdLocale },
     );
     if (notice.sent) {
       communications.push({
@@ -1283,20 +1311,15 @@ export async function updateWithdrawal(
   }
 
   if (status === "ACCEPTED" || status === "REJECTED") {
+    const wdNotif = withdrawalNotif(
+      status,
+      refundCreated,
+      wdLocale,
+    );
     await pushClientNotificationForPractice(practiceId, {
       kind: "recesso",
-      title:
-        status === "ACCEPTED"
-          ? refundCreated
-            ? "Recesso accettato: rimborso emesso"
-            : "Recesso accettato"
-          : "Esito sulla richiesta di recesso",
-      body:
-        status === "ACCEPTED"
-          ? refundCreated
-            ? "Rimborso emesso: di norma lo vedi sulla carta entro 5-10 giorni lavorativi."
-            : "La pratica è stata annullata. Se è dovuto un rimborso, una volta emesso lo vedi sulla carta entro 5-10 giorni lavorativi."
-          : "Abbiamo valutato la tua richiesta di recesso.",
+      title: wdNotif.title,
+      body: wdNotif.body,
       href: "/area-riservata/recesso",
       dedupeMinutes: 30,
     });

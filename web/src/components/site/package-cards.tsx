@@ -1,30 +1,40 @@
 import { Check, MessageCircle } from "lucide-react";
+import { getRequestLocale, t, tCta, tList } from "@/lib/locale";
 import { getPackages } from "@/lib/cms";
 import { ButtonLink } from "@/components/ui/button";
-import { cta, list, text } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
 export async function PackageCards() {
-  const packages = await getPackages();
+  const locale = await getRequestLocale();
+  const packages = await getPackages(locale);
+  const priceSuffix = await t("pacchetti", "price_suffix", "onorario senza IVA");
+  const slaLine = await t(
+    "pacchetti",
+    "sla_line",
+    "Invio entro {n} giorni lavorativi dai documenti completi",
+  );
+  const ctaChoose = await t("pacchetti", "cta_choose", "Scegli {name}");
+  const customPriceNote = await t(
+    "pacchetti",
+    "su_misura_price_note",
+    "Definito insieme, prima di iniziare",
+  );
 
-  // Quarta scheda "su misura": non e' un pacchetto acquistabile (niente prezzo,
-  // il preventivo viene emesso dopo consulenza) ma va mostrata accanto agli
-  // altri per chiarire che i casi fuori standard hanno comunque una strada.
   const custom = {
-    title: text("pacchetti", "su_misura_title", "Preventivo personalizzato"),
-    tagline: text(
+    title: await t("pacchetti", "su_misura_title", "Preventivo personalizzato"),
+    tagline: await t(
       "pacchetti",
       "su_misura_tagline",
       "Per le successioni più complesse",
     ),
-    priceLabel: text("pacchetti", "su_misura_price_label", "Su misura"),
-    body: text(
+    priceLabel: await t("pacchetti", "su_misura_price_label", "Su misura"),
+    body: await t(
       "pacchetti",
       "su_misura_body",
       "Più di 8 immobili, terreni agricoli, aziende o quote societarie? I casi più complessi non stanno in un pacchetto standard: ti prepariamo un preventivo dedicato, senza sorprese.",
     ),
-    features: list<string>("pacchetti", "su_misura_features"),
-    cta: cta("pacchetti", "su_misura_cta", {
+    features: await tList<string>("pacchetti", "su_misura_features"),
+    cta: await tCta("pacchetti", "su_misura_cta", {
       label: "Richiedi il preventivo",
       href: "/preventivo",
     }),
@@ -60,14 +70,13 @@ export async function PackageCards() {
                 <span className="font-display text-4xl font-bold text-primary">
                   {pkg.price}&euro;
                 </span>
-                <span className="text-sm text-text-muted">onorario senza IVA</span>
+                <span className="text-sm text-text-muted">{priceSuffix}</span>
               </div>
-              {pkg.slaDays && (
+              {pkg.slaDays ? (
                 <p className="mt-1 text-sm text-text-muted">
-                  Invio entro {pkg.slaDays} giorni lavorativi dai documenti
-                  completi
+                  {slaLine.replace("{n}", String(pkg.slaDays))}
                 </p>
-              )}
+              ) : null}
 
               <p className="mt-5 text-sm leading-relaxed text-text">
                 {pkg.description}
@@ -87,7 +96,7 @@ export async function PackageCards() {
                 variant={featured ? "primary" : "outline"}
                 className="mt-5 w-full sm:mt-7"
               >
-                Scegli {pkg.name}
+                {ctaChoose.replace("{name}", pkg.name)}
               </ButtonLink>
             </div>
           );
@@ -107,9 +116,7 @@ export async function PackageCards() {
             {custom.priceLabel}
           </span>
         </div>
-        <p className="mt-1 text-sm text-text-muted">
-          Definito insieme, prima di iniziare
-        </p>
+        <p className="mt-1 text-sm text-text-muted">{customPriceNote}</p>
 
         <p className="mt-5 text-sm leading-relaxed text-text">{custom.body}</p>
 

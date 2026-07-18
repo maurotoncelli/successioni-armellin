@@ -475,6 +475,10 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
   },
 };
 
+/**
+ * Preferisci `getLegalDoc` da `@/lib/legal-docs` (evita import circolare con legal.ar).
+ * Mantenuto per compatibilita: solo IT.
+ */
 export function getLegalDoc(slug: LegalSlug): LegalDoc {
   return legalDocs[slug];
 }

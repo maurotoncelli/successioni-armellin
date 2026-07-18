@@ -8,11 +8,26 @@ import { buttonClasses } from "@/components/ui/button";
 export function ReviewBanner({
   reviewUrl,
   compact = false,
+  labels,
 }: {
   reviewUrl: string;
   compact?: boolean;
+  labels?: {
+    title?: string;
+    cta?: string;
+    body?: string;
+  };
 }) {
   if (!reviewUrl) return null;
+
+  const title =
+    labels?.title ?? "La pratica è conclusa: lasciaci una recensione?";
+  const compactTitle =
+    labels?.cta ?? labels?.title ?? "Lascia una recensione su Google";
+  const body =
+    labels?.body ??
+    "Se ti sei trovato bene con Lorenzo, una recensione su Google ci aiuta tantissimo — ci vuole un minuto.";
+  const cta = labels?.cta ?? "Scrivi su Google";
 
   return (
     <div
@@ -42,13 +57,11 @@ export function ReviewBanner({
             </span>
             {!compact && (
               <p className="mt-3 text-lg font-semibold text-text sm:text-xl">
-                La pratica è conclusa: lasciaci una recensione?
+                {title}
               </p>
             )}
             {compact && (
-              <p className="text-base font-semibold text-text">
-                Lascia una recensione su Google
-              </p>
+              <p className="text-base font-semibold text-text">{compactTitle}</p>
             )}
           </div>
           <p
@@ -58,8 +71,7 @@ export function ReviewBanner({
                 : "mx-auto mt-2 max-w-md text-sm text-text-muted sm:text-base"
             }
           >
-            Se ti sei trovato bene con Lorenzo, una recensione su Google ci
-            aiuta tantissimo — ci vuole un minuto.
+            {body}
           </p>
         </div>
         <a
@@ -74,7 +86,7 @@ export function ReviewBanner({
           })}
         >
           <Star className="h-4 w-4" />
-          Scrivi su Google
+          {cta}
         </a>
       </div>
     </div>

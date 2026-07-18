@@ -22,6 +22,11 @@ export type OrderInput = {
   realEstateCount?: number | null;
 };
 
+export type OrderLabels = {
+  /** Template con `{extra}` e `{fee}` (default IT). */
+  extraProperty?: string;
+};
+
 export type ComputedOrder = {
   packageKey: PackageKey;
   lineItems: OrderLineItem[];
@@ -30,10 +35,14 @@ export type ComputedOrder = {
 
 const INCLUDED_PROPERTIES = 3; // oltre il 3o immobile scatta il sovrapprezzo (@01)
 
+const EXTRA_PROPERTY_LABEL_IT =
+  "Immobili aggiuntivi ({extra} × {fee}€)";
+
 export function buildOrder(
   input: OrderInput,
   packages: Package[],
   addons: Addon[],
+  labels?: OrderLabels,
 ): ComputedOrder | null {
   const pkg = packages.find((p) => p.key === input.packageKey);
   if (!pkg) return null;
@@ -46,10 +55,13 @@ export function buildOrder(
   const count = input.realEstateCount ?? 0;
   if (pkg.extraPropertyFee && count > INCLUDED_PROPERTIES) {
     const extra = count - INCLUDED_PROPERTIES;
+    const tpl = labels?.extraProperty ?? EXTRA_PROPERTY_LABEL_IT;
     lineItems.push({
       type: "SURCHARGE",
       key: "EXTRA_PROPERTY",
-      label: `Immobili aggiuntivi (${extra} × ${pkg.extraPropertyFee}€)`,
+      label: tpl
+        .replace("{extra}", String(extra))
+        .replace("{fee}", String(pkg.extraPropertyFee)),
       amount: extra * pkg.extraPropertyFee,
     });
   }

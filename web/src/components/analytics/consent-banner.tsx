@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Cookie } from "lucide-react";
 import { buttonClasses } from "@/components/ui/button";
 import { CONSENT_KEY, updateConsent, type ConsentChoice } from "@/lib/analytics";
+import { COOKIE_UI_IT, type CookieUiLabels } from "@/lib/site-ui-labels";
 
 /*
   Banner consensi cookie (CMP minimale). Mostra il banner finche l'utente non
@@ -16,7 +17,11 @@ import { CONSENT_KEY, updateConsent, type ConsentChoice } from "@/lib/analytics"
 
 export const REOPEN_CONSENT_EVENT = "cookie-preferences:open";
 
-export function ConsentBanner() {
+export function ConsentBanner({
+  labels = COOKIE_UI_IT,
+}: {
+  labels?: CookieUiLabels;
+}) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -54,14 +59,12 @@ export function ConsentBanner() {
           </span>
           <div className="min-w-0 flex-1 text-sm text-text-muted">
             <p>
-              Usiamo cookie tecnici (necessari) e, con il tuo consenso, cookie di
-              statistica per migliorare il sito. Puoi accettare o rifiutare quelli
-              non necessari.{" "}
+              {labels.body}{" "}
               <Link
                 href="/cookie-policy"
                 className="font-medium text-primary underline underline-offset-2"
               >
-                Cookie policy
+                {labels.policy_label}
               </Link>
               .
             </p>
@@ -70,7 +73,7 @@ export function ConsentBanner() {
                 onClick={() => choose("granted")}
                 className={buttonClasses({ className: "py-2 text-sm" })}
               >
-                Accetta tutti
+                {labels.accept_all}
               </button>
               <button
                 onClick={() => choose("denied")}
@@ -79,7 +82,7 @@ export function ConsentBanner() {
                   className: "py-2 text-sm",
                 })}
               >
-                Solo necessari
+                {labels.necessary_only}
               </button>
             </div>
           </div>

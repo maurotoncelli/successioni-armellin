@@ -16,11 +16,23 @@ export function NavbarClient({
   cta,
   ctaPhone,
   areaLabel,
+  ctaShort = "Preventivo",
+  brandTagline = "Successioni",
+  locale,
+  menuOpenLabel = "Apri menu",
+  menuCloseLabel = "Chiudi menu",
+  langAriaLabel = "Seleziona lingua",
 }: {
   menu: MenuItem[];
   cta: Cta;
   ctaPhone: Cta;
   areaLabel: string;
+  ctaShort?: string;
+  brandTagline?: string;
+  locale?: string;
+  menuOpenLabel?: string;
+  menuCloseLabel?: string;
+  langAriaLabel?: string;
 }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
@@ -61,8 +73,8 @@ export function NavbarClient({
           </svg>
           <span className="font-serif text-lg font-semibold text-primary">
             Armellin
-            <span className="ml-1.5 hidden font-sans text-sm font-normal text-text-muted xl:inline">
-              · Successioni
+            <span className="ms-1.5 hidden font-sans text-sm font-normal text-text-muted xl:inline">
+              · {brandTagline}
             </span>
           </span>
         </Link>
@@ -90,7 +102,11 @@ export function NavbarClient({
             <UserRound className="h-4 w-4 shrink-0" />
             <span className="max-2xl:sr-only">{areaLabel}</span>
           </Link>
-          <LanguageSwitcher align="right" />
+          <LanguageSwitcher
+            locale={locale}
+            align="right"
+            ariaLabel={langAriaLabel}
+          />
           <span className="h-5 w-px bg-primary/15" aria-hidden />
           <a
             href={ctaPhone.href}
@@ -111,18 +127,22 @@ export function NavbarClient({
                 className: "whitespace-nowrap",
               })}
             >
-              <span className="2xl:hidden">Preventivo</span>
+              <span className="2xl:hidden">{ctaShort}</span>
               <span className="hidden 2xl:inline">{cta.label}</span>
             </Link>
           )}
         </div>
 
         <div className="flex items-center gap-1 xl:hidden">
-          <LanguageSwitcher align="right" />
+          <LanguageSwitcher
+            locale={locale}
+            align="right"
+            ariaLabel={langAriaLabel}
+          />
           <button
             type="button"
             className="inline-flex items-center justify-center rounded-md p-2 text-primary"
-            aria-label={open ? "Chiudi menu" : "Apri menu"}
+            aria-label={open ? menuCloseLabel : menuOpenLabel}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
           >

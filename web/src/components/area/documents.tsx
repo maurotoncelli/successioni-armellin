@@ -15,10 +15,15 @@ import {
 } from "lucide-react";
 import { buttonClasses } from "@/components/ui/button";
 import { ToneBadge } from "@/components/area/ui";
-import { clientDocMeta, type ClientDocState } from "@/content/area-data";
+import type { ClientDocState } from "@/content/area-data";
 import { submitDocuments } from "@/app/area-riservata/(app)/documenti/actions";
 import { templatesForLabel } from "@/lib/doc-templates";
 import { cn } from "@/lib/utils";
+import {
+  DOCS_UI_IT,
+  fillTemplate,
+  type DocsUiLabels,
+} from "@/lib/area-ui-labels";
 
 export type DocItem = {
   index: number; // indice nella checklist della pratica (chiave per le azioni server)
@@ -37,7 +42,13 @@ const ACCEPT = ".pdf,.jpg,.jpeg,.png";
 const MAX_BYTES = 10 * 1024 * 1024;
 const MAX_FILES = 10;
 
-export function DocumentsClient({ initial }: { initial: DocItem[] }) {
+export function DocumentsClient({
+  initial,
+  labels = DOCS_UI_IT,
+}: {
+  initial: DocItem[];
+  labels?: DocsUiLabels;
+}) {
   const router = useRouter();
   const [docs, setDocs] = useState<DocItem[]>(initial);
   const [uploading, setUploading] = useState<number | null>(null);
@@ -75,7 +86,7 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
     if (!file || index === null) return;
 
     if (file.size > MAX_BYTES) {
-      setError("File troppo grande (massimo 10 MB).");
+      setError(labels.err_file_too_big);
       return;
     }
 
@@ -92,19 +103,24 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
       });
       const data = (await res.json()) as { error?: string; files?: string[] };
       if (!res.ok) {
-        setError(data.error ?? "Caricamento non riuscito.");
+        setError(data.error ?? labels.err_upload_failed);
         return;
       }
       setDocs((prev) =>
         prev.map((d) =>
           d.index === index
-            ? { ...d, state: "CARICATO", reason: undefined, files: data.files ?? d.files }
+            ? {
+                ...d,
+                state: "CARICATO",
+                reason: undefined,
+                files: data.files ?? d.files,
+              }
             : d,
         ),
       );
       router.refresh();
     } catch {
-      setError("Caricamento non riuscito, controlla la connessione.");
+      setError(labels.err_upload_network);
     } finally {
       setUploading(null);
     }
@@ -122,7 +138,7 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
       });
       if (!res.ok) {
         const data = (await res.json()) as { error?: string };
-        setError(data.error ?? "Eliminazione non riuscita.");
+        setError(data.error ?? labels.err_delete_failed);
         return;
       }
       setDocs((prev) =>
@@ -139,7 +155,7 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
       );
       router.refresh();
     } catch {
-      setError("Eliminazione non riuscita, riprova.");
+      setError(labels.err_delete_network);
     } finally {
       setUploading(null);
     }
@@ -180,10 +196,15 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
       <div className="mb-5 rounded-2xl border border-primary/10 bg-bg p-5 shadow-sm">
         <div className="flex items-center justify-between text-sm">
           <span className="font-medium text-text">
-            Documenti: {uploadedRequired} di {requiredDocs.length}
+            {fillTemplate(labels.counter, {
+              uploaded: uploadedRequired,
+              total: requiredDocs.length,
+            })}
           </span>
           <span className="text-text-muted">
-            {complete ? "Tutti caricati" : `Mancano ${missing}`}
+            {complete
+              ? labels.all_uploaded
+              : fillTemplate(labels.missing_n, { n: missing })}
           </span>
         </div>
         <div className="mt-3 h-2 overflow-hidden rounded-full bg-bg-muted">
@@ -216,7 +237,9 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="font-medium text-text">{d.label}</span>
                   {!d.required && (
-                    <span className="text-xs text-text-muted">(facoltativo)</span>
+                    <span className="text-xs text-text-muted">
+                      {labels.optional}
+                    </span>
                   )}
                 </div>
                 {d.help && (
@@ -225,7 +248,11 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
                     {d.help}
                   </p>
                 )}
-                <DocTemplates label={d.label} templates={d.templates} />
+                <DocTemplates
+                  label={d.label}
+                  templates={d.templates}
+                  labels={labels}
+                />
                 {d.files.length > 0 && (
                   <ul className="mt-2 space-y-1">
                     {d.files.map((name, fileIdx) => (
@@ -238,8 +265,8 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
                         <button
                           onClick={() => removeFile(d.index, fileIdx)}
                           disabled={uploading === d.index}
-                          title="Elimina questo file"
-                          className="ml-1 text-text-muted hover:text-error disabled:opacity-50"
+                          title={labels.delete_file}
+                          className="ms-1 text-text-muted hover:text-error disabled:opacity-50"
                         >
                           <Trash2 className="h-3.5 w-3.5" />
                         </button>
@@ -253,7 +280,7 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
                   </p>
                 )}
               </div>
-              <DocStateBadge state={d.state} />
+              <DocStateBadge state={d.state} labels={labels} />
             </div>
 
             {d.files.length < MAX_FILES && (
@@ -274,22 +301,22 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
                   {uploading === d.index ? (
                     <>
                       <Loader2 className="h-4 w-4 animate-spin" />
-                      Caricamento…
+                      {labels.uploading}
                     </>
                   ) : (
                     <>
                       <Upload className="h-4 w-4" />
                       {d.state === "DA_RIFARE"
-                        ? "Ricarica"
+                        ? labels.reupload
                         : d.files.length > 0
-                          ? "Aggiungi un altro file"
-                          : "Carica"}
+                          ? labels.add_another
+                          : labels.upload}
                     </>
                   )}
                 </button>
                 {d.files.length > 0 && d.state !== "DA_RIFARE" && (
                   <span className="text-xs text-text-muted">
-                    fronte/retro o una foto per pagina: le uniamo noi
+                    {labels.multi_page_hint}
                   </span>
                 )}
               </div>
@@ -302,9 +329,8 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
         <div className="mt-5 flex items-start gap-3 rounded-2xl border border-success/30 bg-success/10 p-4">
           <PartyPopper className="mt-0.5 h-5 w-5 shrink-0 text-success" />
           <p className="text-sm text-text">
-            <span className="font-semibold">Fatto!</span> Lorenzo ha ricevuto i
-            tuoi documenti e li sta controllando. Ti avvisiamo se manca qualcosa —
-            puoi stare tranquillo.
+            <span className="font-semibold">{labels.done_title}</span>{" "}
+            {labels.done_body}
           </p>
         </div>
       )}
@@ -323,12 +349,14 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
               ) : (
                 <Check className="h-5 w-5" />
               )}
-              Ho finito — invia a Lorenzo
+              {labels.submit_cta}
             </button>
           ) : (
             <div className="flex items-center justify-center gap-2 rounded-[10px] bg-bg-muted py-3.5 text-sm font-medium text-text-muted">
               <AlertCircle className="h-4 w-4" />
-              {missing === 1 ? "Manca 1 documento" : `Mancano ${missing} documenti`}
+              {missing === 1
+                ? labels.missing_one
+                : fillTemplate(labels.missing_many, { n: missing })}
             </div>
           )}
         </div>
@@ -337,8 +365,22 @@ export function DocumentsClient({ initial }: { initial: DocItem[] }) {
   );
 }
 
-function DocStateBadge({ state }: { state: ClientDocState }) {
-  const meta = clientDocMeta[state];
+function DocStateBadge({
+  state,
+  labels,
+}: {
+  state: ClientDocState;
+  labels: DocsUiLabels;
+}) {
+  const map = {
+    DA_CARICARE: {
+      label: labels.state_da_caricare,
+      tone: "warning" as const,
+    },
+    CARICATO: { label: labels.state_caricato, tone: "success" as const },
+    DA_RIFARE: { label: labels.state_da_rifare, tone: "error" as const },
+  };
+  const meta = map[state];
   return <ToneBadge tone={meta.tone}>{meta.label}</ToneBadge>;
 }
 
@@ -349,9 +391,11 @@ function DocStateBadge({ state }: { state: ClientDocState }) {
 function DocTemplates({
   label,
   templates: fromServer,
+  labels,
 }: {
   label: string;
   templates?: { href: string; name: string }[];
+  labels: DocsUiLabels;
 }) {
   // Se la pagina ha passato l'elenco (anche vuoto), rispettalo: evita di
   // ripristinare i default quando Lorenzo ha rimosso tutti i modelli.
@@ -360,9 +404,7 @@ function DocTemplates({
   if (templates.length === 0) return null;
   return (
     <div className="mt-2 rounded-xl border border-accent/25 bg-accent/5 px-3 py-2.5">
-      <p className="text-xs font-medium text-text">
-        Ti serve il modulo? Te lo diamo noi:
-      </p>
+      <p className="text-xs font-medium text-text">{labels.templates_title}</p>
       <ul className="mt-1.5 space-y-1">
         {templates.map((t) => (
           <li key={t.href}>
@@ -380,9 +422,7 @@ function DocTemplates({
         ))}
       </ul>
       <p className="mt-1.5 text-[11px] leading-4 text-text-muted">
-        Scarica il modello, stampalo e compilalo in ogni parte, firmalo e
-        ricaricalo qui (va bene anche una foto ben leggibile), insieme alla
-        copia del documento d&apos;identita di chi firma.
+        {labels.templates_help}
       </p>
     </div>
   );

@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { getClientView } from "@/lib/area";
+import { actionText } from "@/lib/action-locale";
 import { isPracticeCancelled } from "@/content/area-data";
 import { saveIban } from "@/lib/practice-extras";
 import { pushCrmNotification } from "@/lib/crm-notifications";
@@ -13,21 +14,29 @@ export type IbanResult =
 // Salvataggio IBAN (cifrato) da parte del cliente loggato.
 export async function saveIbanAction(iban: string): Promise<IbanResult> {
   const view = await getClientView();
-  if (!view?.practice) return { ok: false, error: "Sessione non valida." };
+  if (!view?.practice) return { ok: false, error: await actionText("area_errors", "session_invalid", "Sessione non valida.") };
   if (isPracticeCancelled(view.practice)) {
-    return { ok: false, error: "La pratica è annullata: azione non disponibile." };
+    return { ok: false, error: await actionText("area_errors", "practice_cancelled", "La pratica è annullata: azione non disponibile.") };
   }
   const res = await saveIban(view.practice.id, iban);
-  if (res.ok) {
-    await pushCrmNotification({
-      kind: "iban",
-      title: `IBAN inserito dal cliente (…${res.last4})`,
-      body: `${view.practice.clientName || "Il cliente"} ha salvato l'IBAN per l'addebito delle imposte.`,
-      practiceId: view.practice.id,
-      practiceCode: view.practice.code,
-      dedupeMinutes: 10,
-    });
-    revalidatePath("/area-riservata/dati");
+  if (!res.ok) {
+    return {
+      ok: false,
+      error: await actionText(
+        "area_errors",
+        "iban_invalid",
+        "IBAN non valido. Controlla e riprova.",
+      ),
+    };
   }
+  await pushCrmNotification({
+    kind: "iban",
+    title: `IBAN inserito dal cliente (…${res.last4})`,
+    body: `${view.practice.clientName || "Il cliente"} ha salvato l'IBAN per l'addebito delle imposte.`,
+    practiceId: view.practice.id,
+    practiceCode: view.practice.code,
+    dedupeMinutes: 10,
+  });
+  revalidatePath("/area-riservata/dati");
   return res;
 }

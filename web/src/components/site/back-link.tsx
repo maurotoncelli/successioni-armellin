@@ -37,7 +37,7 @@ export function BackLink({
         className,
       )}
     >
-      <ArrowLeft className="h-4 w-4" />
+      <ArrowLeft className="h-4 w-4 rtl:rotate-180" />
       {label}
     </button>
   );

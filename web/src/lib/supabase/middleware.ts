@@ -13,8 +13,12 @@ const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 export async function updateSession(
   request: NextRequest,
+  extraRequestHeaders?: Headers,
 ): Promise<NextResponse> {
-  const response = NextResponse.next({ request });
+  const requestHeaders = extraRequestHeaders ?? new Headers(request.headers);
+  const response = NextResponse.next({
+    request: { headers: requestHeaders },
+  });
 
   if (!url || !anonKey) return response;
 

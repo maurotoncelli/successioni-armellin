@@ -9,4 +9,6 @@ export type Account = {
   notifyEmail: boolean;
   /** Preferenza futura WhatsApp (canale non ancora attivo). */
   notifyWhatsapp: boolean;
+  /** Lingua email/notifiche scritte (it|ar). Distinta dalla lingua UI. */
+  commsLocale: "it" | "ar";
 };

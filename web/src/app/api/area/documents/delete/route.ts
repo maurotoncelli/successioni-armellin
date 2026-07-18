@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getClientView } from "@/lib/area";
+import { actionText } from "@/lib/action-locale";
 import { isPracticeCancelled } from "@/content/area-data";
 import { removeDocument } from "@/lib/documents";
 
@@ -7,11 +8,26 @@ import { removeDocument } from "@/lib/documents";
 export async function POST(req: Request) {
   const view = await getClientView();
   if (!view?.practice) {
-    return NextResponse.json({ error: "Non autorizzato." }, { status: 401 });
+    return NextResponse.json(
+      {
+        error: await actionText(
+          "area_errors",
+          "not_authorized",
+          "Non autorizzato.",
+        ),
+      },
+      { status: 401 },
+    );
   }
   if (isPracticeCancelled(view.practice)) {
     return NextResponse.json(
-      { error: "La pratica è annullata: i documenti non sono più modificabili." },
+      {
+        error: await actionText(
+          "area_errors",
+          "practice_cancelled",
+          "Pratica annullata: operazione non disponibile.",
+        ),
+      },
       { status: 403 },
     );
   }
@@ -23,10 +39,28 @@ export async function POST(req: Request) {
     index = Number(body.index);
     fileIdx = body.fileIdx === undefined ? undefined : Number(body.fileIdx);
   } catch {
-    return NextResponse.json({ error: "Richiesta non valida." }, { status: 400 });
+    return NextResponse.json(
+      {
+        error: await actionText(
+          "area_errors",
+          "request_invalid",
+          "Richiesta non valida.",
+        ),
+      },
+      { status: 400 },
+    );
   }
   if (Number.isNaN(index) || (fileIdx !== undefined && Number.isNaN(fileIdx))) {
-    return NextResponse.json({ error: "Richiesta non valida." }, { status: 400 });
+    return NextResponse.json(
+      {
+        error: await actionText(
+          "area_errors",
+          "request_invalid",
+          "Richiesta non valida.",
+        ),
+      },
+      { status: 400 },
+    );
   }
 
   try {
@@ -34,6 +68,15 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("[area] elimina documento:", err);
-    return NextResponse.json({ error: "Eliminazione non riuscita." }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: await actionText(
+          "area_errors",
+          "delete_failed",
+          "Eliminazione non riuscita.",
+        ),
+      },
+      { status: 500 },
+    );
   }
 }

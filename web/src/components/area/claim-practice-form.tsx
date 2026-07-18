@@ -5,8 +5,15 @@ import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import { claimPracticeByCode } from "@/app/area-riservata/(app)/claim/actions";
 import { Button } from "@/components/ui/button";
+import { CLAIM_UI_IT, type ClaimUiLabels } from "@/lib/area-ui-labels";
 
-export function ClaimPracticeForm({ defaultEmail = "" }: { defaultEmail?: string }) {
+export function ClaimPracticeForm({
+  defaultEmail = "",
+  labels = CLAIM_UI_IT,
+}: {
+  defaultEmail?: string;
+  labels?: ClaimUiLabels;
+}) {
   const router = useRouter();
   const [code, setCode] = useState("");
   const [email, setEmail] = useState(defaultEmail);
@@ -32,19 +39,13 @@ export function ClaimPracticeForm({ defaultEmail = "" }: { defaultEmail?: string
   return (
     <form
       onSubmit={submit}
-      className="mt-6 rounded-2xl border border-primary/15 bg-bg p-5 text-left"
+      className="mt-6 rounded-2xl border border-primary/15 bg-bg p-5 text-start"
     >
-      <p className="text-sm font-medium text-primary">
-        Hai già una pratica? Collega questo accesso
-      </p>
-      <p className="mt-1 text-xs text-text-muted">
-        Inserisci il codice pratica (es. SUC-2026-0022) e l&apos;email usata per
-        il pagamento o per il preventivo. Deve coincidere con l&apos;email di
-        questo login.
-      </p>
+      <p className="text-sm font-medium text-primary">{labels.title}</p>
+      <p className="mt-1 text-xs text-text-muted">{labels.body}</p>
 
       <label className="mt-4 block text-sm font-medium text-primary">
-        Codice pratica
+        {labels.code_label}
         <input
           value={code}
           onChange={(e) => setCode(e.target.value)}
@@ -56,7 +57,7 @@ export function ClaimPracticeForm({ defaultEmail = "" }: { defaultEmail?: string
       </label>
 
       <label className="mt-3 block text-sm font-medium text-primary">
-        Email dell&apos;acquisto / preventivo
+        {labels.email_label}
         <input
           type="email"
           value={email}
@@ -73,10 +74,14 @@ export function ClaimPracticeForm({ defaultEmail = "" }: { defaultEmail?: string
       )}
       {needsEmail && (
         <p className="mt-2 text-xs text-text-muted">
-          Esci da questo account e accedi con{" "}
-          <strong className="text-primary">{needsEmail}</strong> (usa il link
-          nell&apos;email di pagamento, oppure richiedi un nuovo magic link dalla
-          pagina di login).
+          {labels.needs_email.split("{email}").map((part, i, arr) => (
+            <span key={i}>
+              {part}
+              {i < arr.length - 1 && (
+                <strong className="text-primary">{needsEmail}</strong>
+              )}
+            </span>
+          ))}
         </p>
       )}
 
@@ -84,10 +89,10 @@ export function ClaimPracticeForm({ defaultEmail = "" }: { defaultEmail?: string
         {pending ? (
           <>
             <Loader2 className="h-4 w-4 animate-spin" />
-            Collegamento…
+            {labels.linking}
           </>
         ) : (
-          "Collega la pratica"
+          labels.cta
         )}
       </Button>
     </form>

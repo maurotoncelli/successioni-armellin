@@ -25,8 +25,9 @@ export default async function CrmLayout({
     excludeKinds: CRM_NOTIF_BADGE_EXCLUDE,
   });
 
+  // CRM sempre italiano LTR, anche se il cookie lingua del sito e' arabo.
   return (
-    <div className="theme-crm flex min-h-screen">
+    <div className="theme-crm flex min-h-screen" dir="ltr" lang="it">
       <Sidebar />
       <div className="flex min-w-0 flex-1 flex-col">
         <Topbar notificationCount={notificationCount} />

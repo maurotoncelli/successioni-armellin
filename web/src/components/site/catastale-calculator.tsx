@@ -12,6 +12,10 @@ import {
   MOLTIPLICATORE_TERRENI,
 } from "@/lib/catasto";
 import { trackEvent } from "@/lib/analytics";
+import {
+  CATASTALE_CATEGORIE_IT,
+  type CatastaleCategoria,
+} from "@/lib/site-ui-labels";
 
 /*
   Calcolatore pubblico del valore catastale ai fini successori (@09 SEO).
@@ -19,17 +23,6 @@ import { trackEvent } from "@/lib/analytics";
   usata dal generatore della dichiarazione, quindi risultato identico a
   quello che Lorenzo usa nelle pratiche vere.
 */
-
-// Le categorie sono accoppiate alla logica dei moltiplicatori: restano qui.
-const CATEGORIE = [
-  { value: "A", label: "Abitazione – gruppo A (esclusa A/10)" },
-  { value: "A10", label: "A/10 – Uffici e studi privati" },
-  { value: "B", label: "Gruppo B (collegi, scuole, uffici pubblici…)" },
-  { value: "C", label: "Gruppo C – pertinenze (box, cantine…), esclusa C/1" },
-  { value: "C1", label: "C/1 – Negozi e botteghe" },
-  { value: "D", label: "Gruppo D (opifici, alberghi, capannoni…)" },
-  { value: "E", label: "Gruppo E (stazioni, edifici speciali…)" },
-] as const;
 
 type Tipo = "fabbricato" | "terreno";
 
@@ -50,8 +43,8 @@ function parseImporto(raw: string): number | null {
   return Number.isFinite(n) && n > 0 ? n : null;
 }
 
-function eur(n: number): string {
-  return `${n.toLocaleString("it-IT")} €`;
+function eur(n: number, numberLocale: string): string {
+  return `${n.toLocaleString(numberLocale)} €`;
 }
 
 type Props = {
@@ -67,9 +60,15 @@ type Props = {
     risultato: string;
     formulaIntro: string;
   };
+  categorie?: CatastaleCategoria[];
+  numberLocale?: string;
 };
 
-export function CatastaleCalculator({ labels }: Props) {
+export function CatastaleCalculator({
+  labels,
+  categorie = CATASTALE_CATEGORIE_IT,
+  numberLocale = "it-IT",
+}: Props) {
   const [tipo, setTipo] = useState<Tipo>("fabbricato");
   const [rendita, setRendita] = useState("");
   const [categoria, setCategoria] = useState<string>("A");
@@ -83,15 +82,15 @@ export function CatastaleCalculator({ labels }: Props) {
     if (tipo === "terreno") {
       return {
         valore: valoreCatastaleTerreno(importo),
-        formula: `${importo.toLocaleString("it-IT")} € × ${RIVALUTAZIONE_REDDITO_DOMINICALE.toLocaleString("it-IT")} × ${MOLTIPLICATORE_TERRENI}`,
+        formula: `${importo.toLocaleString(numberLocale)} € × ${RIVALUTAZIONE_REDDITO_DOMINICALE.toLocaleString(numberLocale)} × ${MOLTIPLICATORE_TERRENI}`,
       };
     }
     const mult = moltiplicatoreFabbricato(categoria, primaCasa);
     return {
       valore: valoreCatastaleFabbricato(importo, categoria, primaCasa),
-      formula: `${importo.toLocaleString("it-IT")} € × ${RIVALUTAZIONE_RENDITA.toLocaleString("it-IT")} × ${mult.toLocaleString("it-IT")}`,
+      formula: `${importo.toLocaleString(numberLocale)} € × ${RIVALUTAZIONE_RENDITA.toLocaleString(numberLocale)} × ${mult.toLocaleString(numberLocale)}`,
     };
-  }, [tipo, importo, categoria, primaCasa]);
+  }, [tipo, importo, categoria, primaCasa, numberLocale]);
 
   // Un solo evento per sessione di calcolo (primo risultato mostrato).
   // Effetto e non render body: trackEvent e un side effect (gtag).
@@ -166,7 +165,7 @@ export function CatastaleCalculator({ labels }: Props) {
                 disabled={primaCasa}
                 className="w-full rounded-[10px] border border-primary/20 bg-bg px-3 py-2.5 text-sm focus:border-accent focus:outline-none disabled:opacity-50"
               >
-                {CATEGORIE.map((c) => (
+                {categorie.map((c) => (
                   <option key={c.value} value={c.value}>
                     {c.label}
                   </option>
@@ -201,7 +200,7 @@ export function CatastaleCalculator({ labels }: Props) {
         {result ? (
           <>
             <p className="mt-2 font-display text-3xl font-bold text-primary">
-              {eur(result.valore)}
+              {eur(result.valore, numberLocale)}
             </p>
             <p className="mt-1 text-xs text-text-muted">
               {labels.formulaIntro} {result.formula}

@@ -6,15 +6,28 @@ import { isPracticeCancelled } from "@/content/area-data";
 import { getAdminClient } from "@/lib/supabase/admin";
 import { pushCrmNotification } from "@/lib/crm-notifications";
 import type { Communication, LogEvent } from "@/content/crm-data";
+import { actionText } from "@/lib/action-locale";
 
 export type SubmitResult = { ok: true } | { ok: false; error: string };
 
 // "Ho finito - invia a Lorenzo": passa la palla all'admin e registra l'evento.
 export async function submitDocuments(): Promise<SubmitResult> {
   const view = await getClientView();
-  if (!view?.practice) return { ok: false, error: "Sessione non valida." };
+  if (!view?.practice) {
+    return {
+      ok: false,
+      error: await actionText("area_errors", "session_invalid", "Sessione non valida."),
+    };
+  }
   if (isPracticeCancelled(view.practice)) {
-    return { ok: false, error: "La pratica è annullata: azione non disponibile." };
+    return {
+      ok: false,
+      error: await actionText(
+        "area_errors",
+        "practice_cancelled",
+        "La pratica è annullata: azione non disponibile.",
+      ),
+    };
   }
 
   const admin = getAdminClient();
@@ -47,7 +60,14 @@ export async function submitDocuments(): Promise<SubmitResult> {
     .eq("id", practiceId);
   if (error) {
     console.error("[area] submitDocuments:", error.message);
-    return { ok: false, error: "Invio non riuscito, riprova." };
+    return {
+      ok: false,
+      error: await actionText(
+        "area_errors",
+        "docs_submit_failed",
+        "Invio non riuscito, riprova.",
+      ),
+    };
   }
 
   await pushCrmNotification({

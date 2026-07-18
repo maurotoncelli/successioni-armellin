@@ -8,6 +8,10 @@ import { createLead } from "@/app/(site)/preventivo/actions";
 import { LegalLinksText } from "@/components/site/legal-links-text";
 import { trackEvent } from "@/lib/analytics";
 import type { HeirsComposition } from "@/lib/quote";
+import {
+  SOFT_LEAD_UI_IT,
+  type SoftLeadUiLabels,
+} from "@/lib/site-ui-labels";
 
 /*
   Cattura contatto OPZIONALE sulla pagina risultato: l'utente ha gia visto
@@ -48,6 +52,7 @@ type Props = {
   showNotes?: boolean;
   notesLabel?: string;
   notesPlaceholder?: string;
+  fieldLabels?: SoftLeadUiLabels;
 };
 
 export function SoftLead({
@@ -65,9 +70,12 @@ export function SoftLead({
   requirePhone = false,
   footnote,
   showNotes = false,
-  notesLabel = "Nota (facoltativa)",
+  notesLabel,
   notesPlaceholder,
+  fieldLabels = SOFT_LEAD_UI_IT,
 }: Props) {
+  const resolvedNotesLabel =
+    notesLabel ?? fieldLabels.notes ?? SOFT_LEAD_UI_IT.notes ?? "Nota (facoltativa)";
   const [open, setOpen] = useState(kind === "custom_quote");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -113,9 +121,7 @@ export function SoftLead({
         setDone(true);
       } else {
         // Senza DB configurato non possiamo salvare: messaggio onesto.
-        setError(
-          "Al momento non riusciamo a registrare la richiesta. Riprova piu tardi o chiamaci.",
-        );
+        setError(fieldLabels.err_save);
       }
     });
   }
@@ -158,12 +164,12 @@ export function SoftLead({
 
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
         <Field
-          label="Nome e cognome (facoltativo)"
+          label={fieldLabels.name}
           value={name}
           onChange={setName}
         />
         <Field
-          label="Email"
+          label={fieldLabels.email}
           type="email"
           value={email}
           onChange={setEmail}
@@ -171,7 +177,9 @@ export function SoftLead({
       </div>
       <div className="mt-3">
         <Field
-          label={requirePhone ? "Telefono" : "Telefono (facoltativo)"}
+          label={
+            requirePhone ? fieldLabels.phone : fieldLabels.phone_optional
+          }
           type="tel"
           value={phone}
           onChange={setPhone}
@@ -181,7 +189,7 @@ export function SoftLead({
       {showNotes && (
         <div className="mt-3">
           <label className="mb-1.5 block text-sm font-medium text-primary">
-            {notesLabel}
+            {resolvedNotesLabel}
           </label>
           <textarea
             value={notes}
@@ -229,7 +237,7 @@ export function SoftLead({
         className={cn("mt-5 w-full")}
         size="lg"
       >
-        {pending ? "Invio in corso…" : submitLabel}
+        {pending ? fieldLabels.submitting : submitLabel}
       </Button>
       {footnote && (
         <p className="mt-3 text-center text-xs text-text-muted">{footnote}</p>

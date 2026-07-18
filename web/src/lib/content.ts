@@ -63,8 +63,8 @@ type Source = { entries: Entry[] };
 */
 const sources: Partial<Record<Locale, Source>> = {
   it: itRaw as Source,
-  // Prep multilingua: per ora questi file traducono SOLO la collection
-  // "area_login". Tutte le altre chiavi ricadono sull'italiano (vedi lookup()).
+  // Prep multilingua: `ar` ha il sito pubblico tradotto; le altre lingue
+  // (en/de/…) per ora solo area_login → il resto ricade sull'italiano.
   en: enRaw as Source,
   de: deRaw as Source,
   es: esRaw as Source,
@@ -176,5 +176,9 @@ export function obj<T extends object>(
   locale: string = DEFAULT_LOCALE,
 ): T {
   const value = get<unknown>(collection, key, fallback, locale);
-  return value && typeof value === "object" ? (value as T) : fallback;
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    return fallback;
+  }
+  // Merge shallow: chiavi mancanti nella traduzione restano in italiano.
+  return { ...fallback, ...(value as T) };
 }

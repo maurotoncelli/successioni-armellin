@@ -7,6 +7,8 @@ import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import { ConsentBanner } from "@/components/analytics/consent-banner";
 import { ContactTracker } from "@/components/analytics/contact-tracker";
 import { getSiteOfflineState } from "@/lib/site-offline";
+import { tObj } from "@/lib/locale";
+import { COOKIE_UI_IT, type CookieUiLabels } from "@/lib/site-ui-labels";
 
 export default async function SiteLayout({
   children,
@@ -16,6 +18,11 @@ export default async function SiteLayout({
   const gaId = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID;
   const offline = await getSiteOfflineState();
   const offlineOn = offline.enabled;
+  const cookieUi = await tObj<CookieUiLabels>(
+    "site_ui",
+    "cookie_ui",
+    COOKIE_UI_IT,
+  );
 
   return (
     <div className="flex min-h-full flex-col bg-bg text-text">
@@ -31,7 +38,7 @@ export default async function SiteLayout({
           <MobileCta />
         </HideOnPaths>
       )}
-      <ConsentBanner />
+      <ConsentBanner labels={cookieUi} />
     </div>
   );
 }

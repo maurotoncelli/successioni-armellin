@@ -2,8 +2,18 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import {
+  CONTACT_UI_IT,
+  type ContactUiLabels,
+} from "@/lib/site-ui-labels";
 
-export function ContactForm({ successMessage }: { successMessage: string }) {
+export function ContactForm({
+  successMessage,
+  labels = CONTACT_UI_IT,
+}: {
+  successMessage: string;
+  labels?: ContactUiLabels;
+}) {
   const [sent, setSent] = useState(false);
 
   if (sent) {
@@ -23,16 +33,16 @@ export function ContactForm({ successMessage }: { successMessage: string }) {
       }}
     >
       <div className="grid gap-4 sm:grid-cols-2">
-        <Field label="Nome e cognome" name="name" />
-        <Field label="Email" name="email" type="email" />
+        <Field label={labels.name} name="name" />
+        <Field label={labels.email} name="email" type="email" />
       </div>
-      <Field label="Telefono (facoltativo)" name="phone" required={false} />
+      <Field label={labels.phone} name="phone" required={false} />
       <div>
         <label
           htmlFor="message"
           className="mb-1.5 block text-sm font-medium text-primary"
         >
-          Messaggio
+          {labels.message}
         </label>
         <textarea
           id="message"
@@ -43,7 +53,7 @@ export function ContactForm({ successMessage }: { successMessage: string }) {
         />
       </div>
       <Button type="submit" size="lg" className="w-full sm:w-auto">
-        Invia messaggio
+        {labels.submit}
       </Button>
     </form>
   );

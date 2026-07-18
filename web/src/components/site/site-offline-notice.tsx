@@ -1,16 +1,19 @@
 import { Mail, MessageCircle, Phone, Plane, Wrench } from "lucide-react";
-import { text } from "@/lib/content";
+import { t, tObj } from "@/lib/locale";
+
 import { buttonClasses } from "@/components/ui/button";
 import type { SiteOfflineState } from "@/lib/site-offline-shared";
+import { OFFLINE_UI_IT, type OfflineUiLabels } from "@/lib/site-ui-labels";
 
-export function SiteOfflineNotice({ state }: { state: SiteOfflineState }) {
-  const phone = text("settings", "phone", "320 1570567");
-  const email = text("settings", "email", "studio@successioniarmellin.it");
-  const whatsapp = text(
+export async function SiteOfflineNotice({ state }: { state: SiteOfflineState }) {
+  const phone = await t("settings", "phone", "320 1570567");
+  const email = await t("settings", "email", "studio@successioniarmellin.it");
+  const whatsapp = await t(
     "settings",
     "whatsapp",
     "https://wa.me/393201570567",
   );
+  const ui = await tObj<OfflineUiLabels>("site_ui", "offline_ui", OFFLINE_UI_IT);
   const phoneHref = `tel:+39${phone.replace(/\D/g, "")}`;
   const Icon = state.preset === "maintenance" ? Wrench : Plane;
 
@@ -36,7 +39,7 @@ export function SiteOfflineNotice({ state }: { state: SiteOfflineState }) {
             })}
           >
             <Mail className="h-4 w-4" />
-            Scrivici via email
+            {ui.email_cta}
           </a>
           <a
             href={whatsapp}
@@ -48,7 +51,7 @@ export function SiteOfflineNotice({ state }: { state: SiteOfflineState }) {
             })}
           >
             <MessageCircle className="h-4 w-4" />
-            WhatsApp
+            {ui.whatsapp}
           </a>
           <a
             href={phoneHref}
@@ -64,12 +67,12 @@ export function SiteOfflineNotice({ state }: { state: SiteOfflineState }) {
       )}
 
       <p className="mt-10 text-sm text-text-muted">
-        Hai già una pratica?{" "}
+        {ui.already_practice}{" "}
         <a
           href="/area-riservata"
           className="font-medium text-accent underline-offset-2 hover:underline"
         >
-          Accedi all&apos;area personale
+          {ui.area_cta}
         </a>
       </p>
     </div>

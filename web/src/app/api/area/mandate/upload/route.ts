@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getClientView } from "@/lib/area";
+import { actionText } from "@/lib/action-locale";
 import { isPracticeCancelled } from "@/content/area-data";
 import { attachMandateFile } from "@/lib/practice-extras";
 import { ALLOWED_DOC_TYPES, MAX_DOC_BYTES } from "@/lib/documents";
@@ -9,11 +10,26 @@ import { pushCrmNotification } from "@/lib/crm-notifications";
 export async function POST(req: Request) {
   const view = await getClientView();
   if (!view?.practice) {
-    return NextResponse.json({ error: "Non autorizzato." }, { status: 401 });
+    return NextResponse.json(
+      {
+        error: await actionText(
+          "area_errors",
+          "not_authorized",
+          "Non autorizzato.",
+        ),
+      },
+      { status: 401 },
+    );
   }
   if (isPracticeCancelled(view.practice)) {
     return NextResponse.json(
-      { error: "La pratica è annullata: i caricamenti sono disattivati." },
+      {
+        error: await actionText(
+          "area_errors",
+          "practice_cancelled",
+          "Pratica annullata: operazione non disponibile.",
+        ),
+      },
       { status: 403 },
     );
   }
@@ -21,17 +37,38 @@ export async function POST(req: Request) {
   const form = await req.formData();
   const file = form.get("file");
   if (!(file instanceof File)) {
-    return NextResponse.json({ error: "Richiesta non valida." }, { status: 400 });
+    return NextResponse.json(
+      {
+        error: await actionText(
+          "area_errors",
+          "request_invalid",
+          "Richiesta non valida.",
+        ),
+      },
+      { status: 400 },
+    );
   }
   if (!ALLOWED_DOC_TYPES.includes(file.type)) {
     return NextResponse.json(
-      { error: "Formato non ammesso. Usa PDF, JPG o PNG." },
+      {
+        error: await actionText(
+          "area_errors",
+          "file_bad_type",
+          "Formato non ammesso. Usa PDF, JPG o PNG.",
+        ),
+      },
       { status: 415 },
     );
   }
   if (file.size > MAX_DOC_BYTES) {
     return NextResponse.json(
-      { error: "File troppo grande (massimo 10 MB)." },
+      {
+        error: await actionText(
+          "area_errors",
+          "file_too_big",
+          "File troppo grande (massimo 10 MB).",
+        ),
+      },
       { status: 413 },
     );
   }
@@ -49,7 +86,13 @@ export async function POST(req: Request) {
   } catch (err) {
     console.error("[area] upload mandato:", err);
     return NextResponse.json(
-      { error: "Caricamento non riuscito, riprova." },
+      {
+        error: await actionText(
+          "area_errors",
+          "upload_failed",
+          "Caricamento non riuscito.",
+        ),
+      },
       { status: 500 },
     );
   }

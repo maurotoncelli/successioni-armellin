@@ -1,12 +1,25 @@
 import { Star } from "lucide-react";
+import { t } from "@/lib/locale";
 import { Card } from "@/components/ui/card";
 import { getSiteReviews } from "@/lib/google-reviews";
-import { text } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
 export async function Reviews() {
   const { reviews, rating, totalCount, mapsUri } = await getSiteReviews();
-  const writeReviewUrl = text("settings", "review_url").trim();
+  const writeReviewUrl = (await t("settings", "review_url")).trim();
+  const ratingOf = await t("home", "recensioni_rating_of", "su 5");
+  const countOne = await t(
+    "home",
+    "recensioni_count_one",
+    "{n} recensione su Google",
+  );
+  const countMany = await t(
+    "home",
+    "recensioni_count_many",
+    "{n} recensioni su Google",
+  );
+  const fromLabel = await t("home", "recensioni_from", "Recensioni da");
+  const writeLabel = await t("home", "recensioni_write", "Scrivi una recensione");
   const cols =
     reviews.length >= 3
       ? "md:grid-cols-3"
@@ -21,13 +34,15 @@ export async function Reviews() {
           {rating != null && (
             <span className="inline-flex items-center gap-1 font-medium text-text">
               <Star className="h-4 w-4 fill-accent text-accent" aria-hidden />
-              {rating.toFixed(1).replace(".", ",")} su 5
+              {rating.toFixed(1).replace(".", ",")} {ratingOf}
             </span>
           )}
           {totalCount != null && (
             <span>
-              {totalCount} {totalCount === 1 ? "recensione" : "recensioni"} su
-              Google
+              {(totalCount === 1 ? countOne : countMany).replace(
+                "{n}",
+                String(totalCount),
+              )}
             </span>
           )}
         </p>
@@ -35,10 +50,13 @@ export async function Reviews() {
 
       <div className={cn("grid gap-6", cols)}>
         {reviews.map((review) => (
-          <Card key={`${review.author}-${review.text.slice(0, 24)}`} className="flex flex-col">
+          <Card
+            key={`${review.author}-${review.text.slice(0, 24)}`}
+            className="flex flex-col"
+          >
             <div
               className="flex gap-0.5 text-accent"
-              aria-label={`${review.rating} su 5`}
+              aria-label={`${review.rating} ${ratingOf}`}
             >
               {Array.from({ length: review.rating }).map((_, i) => (
                 <Star key={i} className="h-4 w-4 fill-accent" />
@@ -72,7 +90,7 @@ export async function Reviews() {
       </div>
 
       <p className="mt-6 text-center text-xs text-text-muted">
-        Recensioni da{" "}
+        {fromLabel}{" "}
         <a
           href={mapsUri}
           target="_blank"
@@ -90,7 +108,7 @@ export async function Reviews() {
               rel="noopener noreferrer"
               className="font-medium text-primary hover:underline"
             >
-              Scrivi una recensione
+              {writeLabel}
             </a>
           </>
         ) : null}

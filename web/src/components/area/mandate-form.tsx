@@ -13,6 +13,10 @@ import {
 import { buttonClasses } from "@/components/ui/button";
 import { signMandate } from "@/app/area-riservata/(app)/mandato/actions";
 import type { SafeExtras } from "@/lib/practice-extras";
+import {
+  MANDATE_UI_IT,
+  type MandateUiLabels,
+} from "@/lib/area-ui-labels";
 
 type MandateState = SafeExtras["mandate"];
 
@@ -21,12 +25,14 @@ export function MandateForm({
   practiceCode,
   mandateText,
   initial,
+  labels = MANDATE_UI_IT,
 }: {
   signerName: string;
   practiceCode: string;
   /** Testo completo del mandato (da @/content/mandato, unica fonte di verita). */
   mandateText: string;
   initial: MandateState;
+  labels?: MandateUiLabels;
 }) {
   const router = useRouter();
   const [mandate, setMandate] = useState<MandateState>(initial);
@@ -67,7 +73,7 @@ export function MandateForm({
     e.target.value = "";
     if (!file) return;
     if (file.size > 10 * 1024 * 1024) {
-      setError("File troppo grande (massimo 10 MB).");
+      setError(labels.err_file_too_big);
       return;
     }
     setUploading(true);
@@ -78,7 +84,7 @@ export function MandateForm({
       const res = await fetch("/api/area/mandate/upload", { method: "POST", body });
       const data = (await res.json()) as { error?: string };
       if (!res.ok) {
-        setError(data.error ?? "Caricamento non riuscito.");
+        setError(data.error ?? labels.err_upload_failed);
         return;
       }
       setMandate({
@@ -89,7 +95,7 @@ export function MandateForm({
       });
       router.refresh();
     } catch {
-      setError("Caricamento non riuscito, controlla la connessione.");
+      setError(labels.err_upload_network);
     } finally {
       setUploading(false);
     }
@@ -101,12 +107,12 @@ export function MandateForm({
         <div className="flex items-start gap-3 rounded-lg border border-success/30 bg-success/10 p-4">
           <Check className="mt-0.5 h-5 w-5 shrink-0 text-success" />
           <div className="text-sm text-text">
-            <p className="font-semibold">Mandato firmato.</p>
+            <p className="font-semibold">{labels.signed_title}</p>
             <p className="mt-0.5 text-text-muted">
               {mandate.method === "PAPER"
-                ? "Mandato cartaceo firmato ricevuto."
-                : "Firma elettronica registrata (data e ora)."}{" "}
-              Grazie, possiamo procedere con la tua pratica.
+                ? labels.signed_paper
+                : labels.signed_electronic}{" "}
+              {labels.signed_thanks}
             </p>
           </div>
         </div>
@@ -138,7 +144,7 @@ export function MandateForm({
           onChange={(e) => setAccepted(e.target.checked)}
           className="mt-0.5 h-4 w-4 rounded border-primary/30 text-accent focus:ring-accent"
         />
-        Ho letto e accetto il mandato, le condizioni e l&apos;informativa privacy.
+        {labels.accept_checkbox}
       </label>
       <button disabled={!accepted || pending} onClick={eSign} className={buttonClasses()}>
         {pending ? (
@@ -146,21 +152,19 @@ export function MandateForm({
         ) : (
           <FileSignature className="h-4 w-4" />
         )}
-        Accetto e firmo online
+        {labels.accept_cta}
       </button>
 
       <div className="rounded-lg border border-primary/10 bg-bg-muted p-4">
-        <p className="text-sm font-medium text-text">Preferisci la firma cartacea?</p>
-        <p className="mt-0.5 text-sm text-text-muted">
-          Scarica il mandato, firmalo a mano e ricaricalo: per noi va benissimo.
-        </p>
+        <p className="text-sm font-medium text-text">{labels.paper_title}</p>
+        <p className="mt-0.5 text-sm text-text-muted">{labels.paper_body}</p>
         <div className="mt-3 flex flex-wrap gap-2">
           <button
             onClick={downloadBlank}
             className="inline-flex items-center gap-2 rounded-[10px] border border-primary/20 px-4 py-2 text-sm font-medium text-primary hover:bg-primary/5"
           >
             <Download className="h-4 w-4" />
-            Scarica il mandato
+            {labels.download_blank}
           </button>
           <button
             onClick={() => fileInputRef.current?.click()}
@@ -172,7 +176,7 @@ export function MandateForm({
             ) : (
               <Upload className="h-4 w-4" />
             )}
-            Carica il mandato firmato
+            {labels.upload_signed}
           </button>
         </div>
       </div>

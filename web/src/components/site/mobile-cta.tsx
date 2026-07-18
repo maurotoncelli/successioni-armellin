@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { Phone } from "lucide-react";
-import { cta } from "@/lib/content";
+import { tCta } from "@/lib/locale";
 
-export function MobileCta() {
-  const mobileCta = cta("globals", "mobile_cta", {
+export async function MobileCta() {
+  const mobileCta = await tCta("globals", "mobile_cta", {
     label: "Calcola il preventivo gratis",
     href: "/preventivo",
   });
-  const phone = cta("navbar", "cta_phone", {
+  const phone = await tCta("navbar", "cta_phone", {
     label: "Chiama",
     href: "tel:+393201570567",
   });
@@ -22,7 +22,7 @@ export function MobileCta() {
       </Link>
       <a
         href={phone.href}
-        aria-label="Chiama"
+        aria-label={phone.label}
         className="grid w-12 place-items-center rounded-[10px] border border-primary/20 text-primary"
       >
         <Phone className="h-5 w-5" />
