@@ -1,36 +1,4802 @@
 {
   "_meta": {
-    "purpose": "Traduzione parziale (prep multilingua). Contiene solo la collection 'area_login'. Tutte le altre chiavi ricadono sull'italiano (IT fa fede).",
+    "purpose": "Chinese (Simplified) courtesy translation of public site + area UI. Same keys as IT; IT remains legally authoritative (@07/@10).",
     "locale": "zh",
-    "version": 1,
-    "updated_at": "2026-06-22"
+    "schema": "ogni entry: { collection, key, locale, value, is_published }. value tipizzato secondo SPEC_Content_Blocks.",
+    "exclusions": "NON inclusi i contenuti data-driven gestiti in tabelle dedicate: packages, addons, faqs (Q&A), articles, document_catalog, media_assets (qui solo asset_key di riferimento).",
+    "version": 2,
+    "updated_at": "2026-07-18"
   },
   "entries": [
-    { "collection": "area_login", "key": "header_title", "locale": "zh", "is_published": true, "value": "客户专区" },
-    { "collection": "area_login", "key": "header_subtitle", "locale": "zh", "is_published": true, "value": "登录以跟进您的继承事务。" },
-    { "collection": "area_login", "key": "tab_email", "locale": "zh", "is_published": true, "value": "邮箱" },
-    { "collection": "area_login", "key": "tab_phone", "locale": "zh", "is_published": true, "value": "电话" },
-    { "collection": "area_login", "key": "email_label", "locale": "zh", "is_published": true, "value": "您的邮箱" },
-    { "collection": "area_login", "key": "email_hint", "locale": "zh", "is_published": true, "value": "请使用您付款时所用的邮箱。" },
-    { "collection": "area_login", "key": "email_cta", "locale": "zh", "is_published": true, "value": "给我发送登录链接" },
-    { "collection": "area_login", "key": "email_sending", "locale": "zh", "is_published": true, "value": "正在发送…" },
-    { "collection": "area_login", "key": "phone_label", "locale": "zh", "is_published": true, "value": "您的电话号码" },
-    { "collection": "area_login", "key": "phone_hint", "locale": "zh", "is_published": true, "value": "请使用您下单时的号码。我们将通过短信向您发送验证码。" },
-    { "collection": "area_login", "key": "phone_cta", "locale": "zh", "is_published": true, "value": "通过短信发送验证码" },
-    { "collection": "area_login", "key": "phone_sending", "locale": "zh", "is_published": true, "value": "正在发送…" },
-    { "collection": "area_login", "key": "sent_email_title", "locale": "zh", "is_published": true, "value": "请查看您的邮箱" },
-    { "collection": "area_login", "key": "sent_email_body", "locale": "zh", "is_published": true, "value": "我们已向 {contact} 发送了登录链接。链接将在几分钟后过期。" },
-    { "collection": "area_login", "key": "sent_phone_title", "locale": "zh", "is_published": true, "value": "请查看您的短信" },
-    { "collection": "area_login", "key": "sent_phone_body", "locale": "zh", "is_published": true, "value": "我们已向 {contact} 发送了 6 位验证码。请在下方输入。" },
-    { "collection": "area_login", "key": "otp_toggle", "locale": "zh", "is_published": true, "value": "我收到了验证码，输入它" },
-    { "collection": "area_login", "key": "otp_label", "locale": "zh", "is_published": true, "value": "6 位验证码" },
-    { "collection": "area_login", "key": "otp_cta", "locale": "zh", "is_published": true, "value": "验证验证码" },
-    { "collection": "area_login", "key": "otp_verifying", "locale": "zh", "is_published": true, "value": "正在验证…" },
-    { "collection": "area_login", "key": "resend", "locale": "zh", "is_published": true, "value": "重新发送" },
-    { "collection": "area_login", "key": "error_link", "locale": "zh", "is_published": true, "value": "登录链接无效或已过期。请重新申请。" },
-    { "collection": "area_login", "key": "secure_note", "locale": "zh", "is_published": true, "value": "安全登录" },
-    { "collection": "area_login", "key": "back_to_site", "locale": "zh", "is_published": true, "value": "返回网站" },
-    { "collection": "area_login", "key": "privacy_link", "locale": "zh", "is_published": true, "value": { "label": "隐私", "href": "/privacy" } },
-    { "collection": "area_login", "key": "termini_link", "locale": "zh", "is_published": true, "value": { "label": "条款", "href": "/termini-condizioni" } }
+    {
+      "collection": "navbar",
+      "key": "menu",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        {
+          "label": "如何运作",
+          "href": "/come-funziona"
+        },
+        {
+          "label": "价格",
+          "href": "/tariffe"
+        },
+        {
+          "label": "关于我",
+          "href": "/chi-sono"
+        },
+        {
+          "label": "指南",
+          "href": "/guide"
+        },
+        {
+          "label": "FAQ",
+          "href": "/faq"
+        },
+        {
+          "label": "联系方式",
+          "href": "/contatti"
+        }
+      ]
+    },
+    {
+      "collection": "navbar",
+      "key": "brand_tagline",
+      "locale": "zh",
+      "is_published": true,
+      "value": "遗产继承"
+    },
+    {
+      "collection": "navbar",
+      "key": "logo",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "asset_key": "logo_studio"
+      }
+    },
+    {
+      "collection": "navbar",
+      "key": "cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "免费计算报价",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "navbar",
+      "key": "cta_phone",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "与 Lorenzo 沟通",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "navbar",
+      "key": "lang_switcher",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "enabled": true,
+        "locales": [
+          "it",
+          "en",
+          "ar",
+          "de",
+          "es",
+          "ru",
+          "tr",
+          "zh",
+          "hi",
+          "sq",
+          "fr"
+        ]
+      }
+    },
+    {
+      "collection": "globals",
+      "key": "mobile_cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "免费计算报价",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "footer",
+      "key": "studio",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "ragione_sociale": "Geom. Lorenzo Armellin",
+        "forma_giuridica": "个体经营 - 定额税制（不含增值税业务，art. 1 c. 54-89 L. 190/2014）",
+        "piva": "02432220503",
+        "cf": "RMLLNZ90E27G843J",
+        "albo": "比萨测绘师及测绘师学士协会第 1969 号 - 2022年1月21日注册",
+        "indirizzo": "Via Vittorio Veneto 31, 56025 Pontedera (PI)"
+      }
+    },
+    {
+      "collection": "footer",
+      "key": "trust_line",
+      "locale": "zh",
+      "is_published": true,
+      "value": "Entratel 授权 Geom. — 经会计师税务监督"
+    },
+    {
+      "collection": "footer",
+      "key": "area_app_note",
+      "locale": "zh",
+      "is_published": true,
+      "value": "本网站可在线管理遗产继承案件：客户在个人区跟踪案件状态、上传所需文件并签署委托书。可通过邮箱、电话或 Google 账户登录：对于 Google 账户，我们仅使用姓名和邮箱地址进行识别，不读取或共享其他数据。详情见"
+    },
+    {
+      "collection": "footer",
+      "key": "odr",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "在线争议解决（ODR）",
+        "href": "https://ec.europa.eu/consumers/odr"
+      }
+    },
+    {
+      "collection": "footer",
+      "key": "legal_menu",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        {
+          "label": "Privacy",
+          "href": "/privacy"
+        },
+        {
+          "label": "Cookie Policy",
+          "href": "/cookie-policy"
+        },
+        {
+          "label": "条款与条件",
+          "href": "/termini-condizioni"
+        },
+        {
+          "label": "保障",
+          "href": "/garanzia"
+        },
+        {
+          "label": "撤回",
+          "href": "/recesso"
+        }
+      ]
+    },
+    {
+      "collection": "footer",
+      "key": "credit",
+      "locale": "zh",
+      "is_published": true,
+      "value": "由 AT STUDIO · Mauro Toncelli 制作"
+    },
+    {
+      "collection": "footer",
+      "key": "strumenti_link",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "地籍价值计算",
+        "href": "/strumenti/valore-catastale"
+      }
+    },
+    {
+      "collection": "settings",
+      "key": "phone",
+      "locale": "zh",
+      "is_published": true,
+      "value": "320 1570567"
+    },
+    {
+      "collection": "settings",
+      "key": "area_label",
+      "locale": "zh",
+      "is_published": true,
+      "value": "个人区"
+    },
+    {
+      "collection": "settings",
+      "key": "whatsapp",
+      "locale": "zh",
+      "is_published": true,
+      "value": "https://wa.me/393201570567"
+    },
+    {
+      "collection": "settings",
+      "key": "email",
+      "locale": "zh",
+      "is_published": true,
+      "value": "studio@successioniarmellin.it"
+    },
+    {
+      "collection": "settings",
+      "key": "pec",
+      "locale": "zh",
+      "is_published": true,
+      "value": "lorenzo.armellin@geopec.it"
+    },
+    {
+      "collection": "settings",
+      "key": "review_url",
+      "locale": "zh",
+      "is_published": true,
+      "value": "https://g.page/r/CVRoWf5CoiTDEAE/review"
+    },
+    {
+      "collection": "settings",
+      "key": "address",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "via": "Via Vittorio Veneto 31",
+        "cap": "56025",
+        "citta": "Pontedera (PI)"
+      }
+    },
+    {
+      "collection": "settings",
+      "key": "opening_hours",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        {
+          "giorni": "周一至周五",
+          "orario": "9:00-13:00 / 14:30-18:30"
+        },
+        {
+          "giorni": "周六至周日",
+          "orario": "已关闭"
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "hero_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您的遗产继承案件，无需出门。"
+    },
+    {
+      "collection": "home",
+      "key": "hero_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "由专攻遗产继承的 Geom. Lorenzo Armellin 办理：价格清晰，全程在线（如需也可面谈），真人跟进。税款由我们在付款前计算。"
+    },
+    {
+      "collection": "home",
+      "key": "hero_cta_primary",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "免费计算报价",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "hero_cta_secondary",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "了解如何运作",
+        "href": "#come-funziona"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "hero_image",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "asset_key": "hero_home"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "hero_specialization_badge",
+      "locale": "zh",
+      "is_published": true,
+      "value": "专攻遗产继承的测绘师"
+    },
+    {
+      "collection": "home",
+      "key": "trustbar_items",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        "注册测绘师",
+        "Entratel 授权（AdE 电子提交）",
+        "会计师税务监督",
+        "Stripe 安全支付",
+        "符合 GDPR",
+        "SSL"
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "social_proof_stats",
+      "locale": "zh",
+      "is_published": false,
+      "value": [
+        {
+          "valore": "oltre X",
+          "label": "件遗产继承案件"
+        },
+        {
+          "valore": "X anni",
+          "label": "年经验"
+        },
+        {
+          "valore": "4,X/5",
+          "label": "Google 平均评分"
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "problema_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "遗产继承，疑问重重。我们为您分担。"
+    },
+    {
+      "collection": "home",
+      "key": "problema_intro",
+      "locale": "zh",
+      "is_published": true,
+      "value": "我们理解这发生在艰难时刻。行政手续交给我们。"
+    },
+    {
+      "collection": "home",
+      "key": "problema_vantaggi",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "无需排队",
+          "testo": "在家即可完成，手机也可以。"
+        },
+        {
+          "titolo": "零错误零处罚",
+          "testo": "由授权测绘师进行地籍数据技术核查。"
+        },
+        {
+          "titolo": "人工客服",
+          "testo": "您始终与真人沟通，而非机器人。"
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_eyebrow",
+      "locale": "zh",
+      "is_published": true,
+      "value": "简单"
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "三步了解如何运作"
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_steps",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "回答几个简单问题",
+          "testo": "我们立即告知您需要什么以及费用多少。",
+          "immagine": {
+            "src": "/images/come-funziona-step-1-quiz.jpg",
+            "alt": "在电脑前回答在线报价问题的人"
+          }
+        },
+        {
+          "titolo": "您上传文件",
+          "testo": "在个人区上传，也可拍照。我们提供准确清单。",
+          "immagine": {
+            "src": "/images/come-funziona-step-2-documenti.jpg",
+            "alt": "用手机拍摄文件的人"
+          }
+        },
+        {
+          "titolo": "一切由我们打理",
+          "testo": "我们准备并提交申报；您收到回执。",
+          "immagine": {
+            "src": "/images/come-funziona-step-3-lorenzo.jpg",
+            "alt": "Geom. Lorenzo Armellin 在电脑前准备案件"
+          }
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_sla_note",
+      "locale": "zh",
+      "is_published": true,
+      "value": "文件全部齐全后 10-15 个工作日内提交（视套餐而定）。"
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "什么是 Successioni Armellin"
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "Successioni Armellin 是 Geom. Lorenzo Armellin 事务所的网页应用，用于在线管理遗产继承申报：计算清晰报价，安全刷卡支付，在个人区上传所需文件、签署委托书并逐步跟踪案件直至提交至 Agenzia delle Entrate。登录个人区可使用邮箱、电话或 Google 账户：此时我们仅使用您的姓名和邮箱地址创建并识别个人资料，不读取或共享账户其他数据。"
+    },
+    {
+      "collection": "home",
+      "key": "tariffe_eyebrow",
+      "locale": "zh",
+      "is_published": true,
+      "value": "价格"
+    },
+    {
+      "collection": "home",
+      "key": "tariffe_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "价格透明，无隐藏费用"
+    },
+    {
+      "collection": "home",
+      "key": "tariffe_intro",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您支付固定专业服务费。税款另计，由继承人承担，由我们计算。"
+    },
+    {
+      "collection": "home",
+      "key": "tariffe_cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "查看套餐",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "faidate_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "可在 Agenzia delle Entrate 网站自行办理。那为何选择我们？"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_col_us",
+      "locale": "zh",
+      "is_published": true,
+      "value": "由我们办理"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_col_diy",
+      "locale": "zh",
+      "is_published": true,
+      "value": "自助办理"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_col_corner",
+      "locale": "zh",
+      "is_published": true,
+      "value": "对比"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_intro",
+      "locale": "zh",
+      "is_published": true,
+      "value": "确实存在免费预填遗产继承申报：这是诚实的选项。但需要 SPID 和专业知识，不校验数据，错误（及处罚）由您自行承担。"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_confronto",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        {
+          "voce": "所需时间",
+          "faidate": "工时与 SPID 由您自行负责",
+          "noi": "由我们负责办理"
+        },
+        {
+          "voce": "地籍数据核查",
+          "faidate": "由您自行负责",
+          "noi": "由测绘师办理"
+        },
+        {
+          "voce": "税款计算",
+          "faidate": "自行办理",
+          "noi": "由我们提前办理"
+        },
+        {
+          "voce": "客服",
+          "faidate": "无",
+          "noi": "真人服务"
+        },
+        {
+          "voce": "处罚风险",
+          "faidate": "您的",
+          "noi": "已处理"
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "客户怎么说"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_intro",
+      "locale": "zh",
+      "is_published": true,
+      "value": "来自 Google 的真实评价。"
+    },
+    {
+      "collection": "home",
+      "key": "chisono_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "负责您案件的人员"
+    },
+    {
+      "collection": "home",
+      "key": "chisono_estratto",
+      "locale": "zh",
+      "is_published": true,
+      "value": "我是 Lorenzo Armellin，获授权向 Agenzia delle Entrate 提交遗产继承的测绘师。在会计师税务监督下，我将地籍数据的精确性与数字安全相结合。"
+    },
+    {
+      "collection": "home",
+      "key": "chisono_video",
+      "locale": "zh",
+      "is_published": false,
+      "value": {
+        "asset_key": "video_benvenuto_lorenzo"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "chisono_cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "认识 Lorenzo",
+        "href": "/chi-sono"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "faq_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "常见问题"
+    },
+    {
+      "collection": "home",
+      "key": "faq_cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "全部问题",
+        "href": "/faq"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "cta_finale_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "准备好让我们帮您处理了吗？"
+    },
+    {
+      "collection": "home",
+      "key": "cta_finale_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "几分钟免费报价。满意保障或退款。"
+    },
+    {
+      "collection": "home",
+      "key": "cta_finale_button",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "免费计算报价",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "cta_finale_phone",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "或致电 Lorenzo",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "hero_eyebrow",
+      "locale": "zh",
+      "is_published": true,
+      "value": "价格透明"
+    },
+    {
+      "collection": "tariffe",
+      "key": "hero_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "价格透明。所见即所付。"
+    },
+    {
+      "collection": "tariffe",
+      "key": "hero_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "每套餐固定专业服务费，事先确定。税款另计，由我们计算。特殊情形提供定制报价。"
+    },
+    {
+      "collection": "tariffe",
+      "key": "card_badge_popolare",
+      "locale": "zh",
+      "is_published": true,
+      "value": "最受欢迎"
+    },
+    {
+      "collection": "tariffe",
+      "key": "box_trasparenza_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "价格构成说明"
+    },
+    {
+      "collection": "tariffe",
+      "key": "box_trasparenza_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "套餐价格是不含增值税的专业服务费：事务所适用定额税制（不征收增值税）。继承相关税款（抵押权税、地籍税、印花税）另行计算，由继承人承担，通过 F24 缴纳：我们在提交前计算并告知。"
+    },
+    {
+      "collection": "tariffe",
+      "key": "sovrapprezzo_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "价格可能变动的情况（我们会提前说明）"
+    },
+    {
+      "collection": "tariffe",
+      "key": "sovrapprezzo_list",
+      "locale": "zh",
+      "is_published": false,
+      "value": [
+        {
+          "voce": "额外房产",
+          "importo": "每件 +60 欧元（待确认）"
+        },
+        {
+          "voce": "农业用地/附属地块",
+          "importo": "视复杂程度而定"
+        },
+        {
+          "voce": "超出标准限额的继承人",
+          "importo": "视复杂程度而定"
+        }
+      ]
+    },
+    {
+      "collection": "tariffe",
+      "key": "sla_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "交付时间"
+    },
+    {
+      "collection": "tariffe",
+      "key": "sla_note",
+      "locale": "zh",
+      "is_published": true,
+      "value": "每个套餐标明自文件齐全之日起若干工作日内提交申报（非自付款日起）：这样才是我们能真正兑现的承诺。不含第三方机构（Agenzia、Catasto、银行）的处理时间。"
+    },
+    {
+      "collection": "tariffe",
+      "key": "deliverable_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "案件完成后您将获得"
+    },
+    {
+      "collection": "tariffe",
+      "key": "deliverable_list",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        "Agenzia delle Entrate 提交/登记回执",
+        "遗产继承申报副本",
+        "F24 证明 / 结果",
+        "地籍过户结果（如适用）",
+        "我们的发票"
+      ]
+    },
+    {
+      "collection": "tariffe",
+      "key": "esempio_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "查看最终文件示例"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_intro",
+      "locale": "zh",
+      "is_published": true,
+      "value": "附加服务（如需要）"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "点击服务了解更多。目前按需提供：我们一起讨论并纳入案件。"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_contact_text",
+      "locale": "zh",
+      "is_published": true,
+      "value": "此服务按需增加，并提供专项报价。请致电或写信：我们共同评估您的情况并纳入案件，无意外费用。"
+    },
+    {
+      "collection": "tariffe",
+      "key": "rate_text",
+      "locale": "zh",
+      "is_published": true,
+      "value": "专业服务费可在结账时分期（PayPal Pay in 3、Klarna、Scalapay，视可用性）。分期的是专业服务费，税款按法定期限缴纳。"
+    },
+    {
+      "collection": "tariffe",
+      "key": "su_misura_text",
+      "locale": "zh",
+      "is_published": true,
+      "value": "超过 8 处房产、农业用地、企业或公司股份？每案不同：我们提供定制报价，无意外。"
+    },
+    {
+      "collection": "tariffe",
+      "key": "su_misura_cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "申请定制报价",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "ti_serve_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "也许您根本不需要。我们免费告知。"
+    },
+    {
+      "collection": "tariffe",
+      "key": "ti_serve_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "某些情况下（直系继承人、仅有法定门槛内的少量现金、无房产）可能无需申报。付款前我们核查您的情况：若不需要，我们会告知。最终核实始终基于具体案件。"
+    },
+    {
+      "collection": "tariffe",
+      "key": "ti_serve_cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "免费核查您的情况",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "不确定选哪个？"
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "阅读套餐选择快速指南，或与 Lorenzo 简短沟通：几分钟即可选对。若改变主意，更换套餐很简单，只需补差价。"
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_cta_guida",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "选择指南",
+        "href": "#guida"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_cta_call",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "与 Lorenzo 沟通",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "microtrust",
+      "locale": "zh",
+      "is_published": true,
+      "value": "Entratel 授权测绘师，经会计师税务监督。"
+    },
+    {
+      "collection": "tariffe",
+      "key": "cta_finale_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "几分钟了解费用，无义务。"
+    },
+    {
+      "collection": "tariffe",
+      "key": "cta_finale_button",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "免费计算报价",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "定制报价"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_tagline",
+      "locale": "zh",
+      "is_published": true,
+      "value": "针对较复杂的遗产继承"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_price_label",
+      "locale": "zh",
+      "is_published": true,
+      "value": "定制"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "超过 8 处房产、农业用地、企业或公司股份？更复杂的情形不适合标准套餐：我们研究您的情况并准备专项报价，无意外。"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_features",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        "针对套餐未涵盖的情形",
+        "免费初步评估您的情况",
+        "开始前价格透明且确定",
+        "与套餐相同的服务与客服"
+      ]
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "申请报价",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "hero_eyebrow",
+      "locale": "zh",
+      "is_published": true,
+      "value": "关于我"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "hero_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您好，我是 Lorenzo Armellin。"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "hero_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "获授权向 Agenzia delle Entrate 提交遗产继承申报的测绘师。网站背后不是软件：是跟进您案件的真人。"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "hero_ritratto",
+      "locale": "zh",
+      "is_published": false,
+      "value": {
+        "asset_key": "ritratto_lorenzo"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "bio_body",
+      "locale": "zh",
+      "is_published": false,
+      "value": "我每天都办理遗产继承。作为测绘师，我的优势是核查地籍数据——地块、分户、附属物、权属文件——这正是多数案件卡住的地方。我的目标很简单：在本已艰难的时刻为您减负，价格清晰，无需奔波于机构与银行之间。"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "credenziali_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "我的登录信息"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "credenziali_list",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        {
+          "voce": "测绘师协会注册",
+          "dettaglio": "比萨测绘师协会第 1969 号 - 2022年1月21日注册"
+        },
+        {
+          "voce": "Entratel 授权",
+          "dettaglio": "向 Agenzia delle Entrate 电子提交的中介"
+        },
+        {
+          "voce": "增值税号",
+          "dettaglio": "02432220503"
+        }
+      ]
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "team_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "测绘师负责地籍，会计师负责数字"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "team_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "由我准备并提交申报：我获授权办理。税务部分由会计师监督。这样您既有地籍数据的技术把关，又有计算上的保障，无需在不同事务所间拆分案件。"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "team_membri",
+      "locale": "zh",
+      "is_published": false,
+      "value": [
+        {
+          "ruolo": "Entratel 授权测绘师",
+          "nome": "Lorenzo Armellin",
+          "focus": "准备并提交案件，地籍核查",
+          "foto": {
+            "asset_key": "ritratto_lorenzo"
+          }
+        },
+        {
+          "ruolo": "税务监督",
+          "nome": "会计师（待确认）",
+          "focus": "税务/税款部分核查",
+          "foto": {
+            "asset_key": "ritratto_commercialista"
+          }
+        }
+      ]
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "perche_geometra_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "许多人以为需要会计师、CAF 或公证人。但在遗产继承中，最关键的是地籍数据：这正是测绘师的专长。提交需要 Entratel 中介——我具备该资格。公证人仅参与后续文书，不负责申报。"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "工作室地址"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_indirizzo",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "via": "Via Vittorio Veneto 31",
+        "cap": "56025",
+        "citta": "Pontedera (PI)"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_nota",
+      "locale": "zh",
+      "is_published": true,
+      "value": "一切远程办理，但工作室真实存在：就在这里。"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_maps_label",
+      "locale": "zh",
+      "is_published": true,
+      "value": "在 Google 地图中打开"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_foto_alt",
+      "locale": "zh",
+      "is_published": true,
+      "value": "蓬泰代拉大教堂"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "ritratto_alt",
+      "locale": "zh",
+      "is_published": true,
+      "value": "Geom. Lorenzo Armellin"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_ref",
+      "locale": "zh",
+      "is_published": false,
+      "value": {
+        "asset_key": "video_benvenuto_lorenzo"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_caption",
+      "locale": "zh",
+      "is_published": true,
+      "value": "问候并简要介绍我的工作方式（60 秒）。"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_badge",
+      "locale": "zh",
+      "is_published": true,
+      "value": "视频即将上线"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_alt",
+      "locale": "zh",
+      "is_published": true,
+      "value": "Geom. Lorenzo Armellin 欢迎视频"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "motto_latino",
+      "locale": "zh",
+      "is_published": false,
+      "value": "（关于继承/家庭/可靠性的拉丁格言）"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "motto_traduzione",
+      "locale": "zh",
+      "is_published": false,
+      "value": "（意大利语译文）"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "recensioni_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "客户评价"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "cta_finale_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "需要我来办理吗？"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "cta_finale_button",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "免费计算报价",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "cta_finale_phone",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "给我打电话",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "documenti",
+      "key": "hero_eyebrow",
+      "locale": "zh",
+      "is_published": true,
+      "value": "文件指南"
+    },
+    {
+      "collection": "documenti",
+      "key": "hero_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "遗产继承需要哪些文件？"
+    },
+    {
+      "collection": "documenti",
+      "key": "hero_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "回答几个简单问题，我们立即免费告知您需要什么。无义务。若缺失，我们通常可以帮您获取。"
+    },
+    {
+      "collection": "documenti",
+      "key": "interattiva_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "构建您的个性化清单"
+    },
+    {
+      "collection": "documenti",
+      "key": "interattiva_domande",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        "是否有房产（住宅、土地、车库）？",
+        "是否有遗嘱？",
+        "是否有未成年继承人？",
+        "是否有账户/投资？",
+        "是否有农业用地/地块/附属地块？",
+        "是否有其他资产（股份、企业、车辆）？"
+      ]
+    },
+    {
+      "collection": "documenti",
+      "key": "interattiva_risultato_intro",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您需要准备："
+    },
+    {
+      "collection": "documenti",
+      "key": "evergreen_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "遗产继承申报的典型文件"
+    },
+    {
+      "collection": "documenti",
+      "key": "evergreen_intro",
+      "locale": "zh",
+      "is_published": true,
+      "value": "以下是最常见的文件。并非总是全部需要：视您的情况而定（可用上方工具）。"
+    },
+    {
+      "collection": "documenti",
+      "key": "hook_recupero",
+      "locale": "zh",
+      "is_published": true,
+      "value": "找不到文件？我们通常可以帮您获取：地籍查册、权属文件、缺失数据。这是我们的工作之一。"
+    },
+    {
+      "collection": "documenti",
+      "key": "disclaimer_ymyl",
+      "locale": "zh",
+      "is_published": true,
+      "value": "此清单仅供参考，会根据您输入的信息调整。Lorenzo 核实具体情况后确认最终清单。"
+    },
+    {
+      "collection": "documenti",
+      "key": "cta_preventivo",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "计算报价",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "documenti",
+      "key": "cta_pdf",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "下载清单（PDF）",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "documenti",
+      "key": "cta_email",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "通过邮件接收",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "faq",
+      "key": "hero_eyebrow",
+      "locale": "zh",
+      "is_published": true,
+      "value": "FAQ"
+    },
+    {
+      "collection": "faq",
+      "key": "hero_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "遗产继承常见问题"
+    },
+    {
+      "collection": "faq",
+      "key": "hero_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "最常见问题的清晰解答。若未找到您的，请邮件或致电 Lorenzo：我们都会回复。"
+    },
+    {
+      "collection": "faq",
+      "key": "hero_search",
+      "locale": "zh",
+      "is_published": true,
+      "value": true
+    },
+    {
+      "collection": "faq",
+      "key": "cat_capire_intro",
+      "locale": "zh",
+      "is_published": true,
+      "value": "是什么、何时需要、有何风险。"
+    },
+    {
+      "collection": "faq",
+      "key": "cat_costi_intro",
+      "locale": "zh",
+      "is_published": true,
+      "value": "费用多少、包含什么、税款如何运作。"
+    },
+    {
+      "collection": "faq",
+      "key": "cat_perche_intro",
+      "locale": "zh",
+      "is_published": true,
+      "value": "可以自行免费办理：但委托仍更划算的原因。"
+    },
+    {
+      "collection": "faq",
+      "key": "cat_come_intro",
+      "locale": "zh",
+      "is_published": true,
+      "value": "流程、文件与时间，逐步说明。"
+    },
+    {
+      "collection": "faq",
+      "key": "cat_dopo_intro",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您将获得什么、我们如何处理您的数据及您的权益保障。"
+    },
+    {
+      "collection": "faq",
+      "key": "cta_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "没找到答案？"
+    },
+    {
+      "collection": "faq",
+      "key": "cta_button",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "免费计算报价",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "faq",
+      "key": "cta_phone",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "咨询 Lorenzo",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "recesso",
+      "key": "hero_eyebrow",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您的权益保障"
+    },
+    {
+      "collection": "recesso",
+      "key": "hero_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您的撤回权，简明说明"
+    },
+    {
+      "collection": "recesso",
+      "key": "hero_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "我们希望您安心。此处简明说明如何取消及退款。正式文本见销售条件。"
+    },
+    {
+      "collection": "recesso",
+      "key": "cosa_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您有 14 天撤回期"
+    },
+    {
+      "collection": "recesso",
+      "key": "cosa_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "作为消费者，您有权在购买后 14 天内撤回，无需说明理由。这是您的法定权利。"
+    },
+    {
+      "collection": "recesso",
+      "key": "avvio_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "若您要求立即开始"
+    },
+    {
+      "collection": "recesso",
+      "key": "avvio_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "遗产继承往往紧急（有 12 个月期限）。若您要求在 14 天内开始，我们需要明确同意：这意味着服务完成后撤回权不再适用。若仅已开始但未完成，见下一点。"
+    },
+    {
+      "collection": "recesso",
+      "key": "iniziato_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "办理过程中改变主意怎么办？"
+    },
+    {
+      "collection": "recesso",
+      "key": "iniziato_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您仍可撤回：仅按已完成工作量比例支付，其余退还。无隐藏罚金。"
+    },
+    {
+      "collection": "recesso",
+      "key": "come_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "如何申请撤回"
+    },
+    {
+      "collection": "recesso",
+      "key": "come_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "最简单的方式：在个人区找到「申请撤回」按钮。也可通过邮件/PEC 联系我们。可使用下方示例表格，但非强制。"
+    },
+    {
+      "collection": "recesso",
+      "key": "come_cta_area",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "在个人区申请撤回",
+        "href": "/area-riservata/recesso"
+      }
+    },
+    {
+      "collection": "recesso",
+      "key": "rimborso_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "何时收到退款"
+    },
+    {
+      "collection": "recesso",
+      "key": "rimborso_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "我们在法定期限内发出（通常自请求起 14 天），使用您原有的支付方式。发卡后银行通常 5-10 个工作日内到账（Stripe/发卡机构时限）。已向国库缴纳的税款按 Agenzia 规则处理，不由我们决定。"
+    },
+    {
+      "collection": "recesso",
+      "key": "garanzia_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "撤回与保障：两回事"
+    },
+    {
+      "collection": "recesso",
+      "key": "garanzia_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "撤回是您前 14 天的法定权利。我们的「满意保障或退款」是额外承诺：若对我们的工作不满意，我们一起沟通并找到解决方案。详见保障页面。"
+    },
+    {
+      "collection": "recesso",
+      "key": "garanzia_link",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "阅读保障说明",
+        "href": "/garanzia"
+      }
+    },
+    {
+      "collection": "recesso",
+      "key": "tc_link",
+      "locale": "zh",
+      "is_published": true,
+      "value": "本页简明说明撤回。具有法律效力的是销售条件中的文本。"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_eyebrow",
+      "locale": "zh",
+      "is_published": true,
+      "value": "办理流程"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "如何运作：简单、在家、三步完成"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "无需排队，无需跑机构。我们逐步引导：您照顾家人，行政手续交给我们。"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        {
+          "numero": 1,
+          "titolo": "回答几个简单问题",
+          "testo": "填写简短在线问卷（1 分钟）。我们立即告知您需要什么及费用——若您的情况甚至无需办理遗产继承，我们免费告知。",
+          "dettaglio": "即时结果：价格，或复杂情形的定制报价。"
+        },
+        {
+          "numero": 2,
+          "titolo": "您上传文件",
+          "testo": "在个人区上传文件，也可用手机拍照。我们提供针对您情况的准确清单。若缺失，我们通常可以帮您获取。",
+          "dettaglio": "真人全程核查：不会留下半填的表格。"
+        },
+        {
+          "numero": 3,
+          "titolo": "一切由我们打理",
+          "testo": "Lorenzo 准备并向 Agenzia delle Entrate 提交申报。我们事先告知应缴税款。案件完成后，您可在个人区收到回执与最终文件。",
+          "dettaglio": "如适用，我们也办理地籍过户。"
+        }
+      ]
+    },
+    {
+      "collection": "come_funziona",
+      "key": "sla_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "需要多长时间"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "sla_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "时限取决于套餐，自我们收到全部完整正确的文件起算（非自付款日起）：这样才是我们能真正兑现的承诺。不含第三方机构（Agenzia、Catasto、银行）的处理时间。"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "valore_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "软件做不到的事，我们来做"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "valore_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "我们手工核查地籍数据——地块、分户、附属物、权属文件——这正是案件卡住的关键节点。数字由会计师税务监督。这就是填表与办好案件的区别。"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "distanza_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "全程在线"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "distanza_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "无需前往任何机构或银行：问卷、文件、沟通及向 Agenzia delle Entrate 提交均在线完成。Lorenzo 总会致电为您讲解。"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "visita_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "偏好面对面？"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "visita_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "一切远程办理，如需也可预约到工作室面谈：无需排队，只花时间一起理清文件与步骤。致电或写信即可约时间。"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "visita_maps_label",
+      "locale": "zh",
+      "is_published": true,
+      "value": "在 Google 地图中打开"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "deliverable_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "最终您将持有"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "deliverable_list",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        "AdE 提交/登记回执",
+        "申报副本",
+        "F24 结果 / 证明",
+        "地籍过户结果（如适用）",
+        "发票"
+      ]
+    },
+    {
+      "collection": "come_funziona",
+      "key": "cta_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "开始吧？只需一分钟。"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "cta_button",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "免费计算报价",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "cta_phone",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "与 Lorenzo 沟通",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "contatti",
+      "key": "hero_eyebrow",
+      "locale": "zh",
+      "is_published": true,
+      "value": "联系方式"
+    },
+    {
+      "collection": "contatti",
+      "key": "hero_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "与我们沟通"
+    },
+    {
+      "collection": "contatti",
+      "key": "hero_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "有疑问或想了解是否需要办理遗产继承？邮件或致电：真人回复，非机器人。"
+    },
+    {
+      "collection": "contatti",
+      "key": "telefono",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "电话 / WhatsApp",
+        "numero": "+39 320 1570567",
+        "cta_chiama": "tel:+393201570567",
+        "cta_whatsapp": "https://wa.me/393201570567"
+      }
+    },
+    {
+      "collection": "contatti",
+      "key": "email",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "generale": "studio@successioniarmellin.it",
+        "pec": "lorenzo.armellin@geopec.it"
+      }
+    },
+    {
+      "collection": "contatti",
+      "key": "studio",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "via": "Via Vittorio Veneto 31",
+        "cap": "56025",
+        "citta": "Pontedera (PI)"
+      }
+    },
+    {
+      "collection": "contatti",
+      "key": "orari",
+      "locale": "zh",
+      "is_published": false,
+      "value": [
+        {
+          "giorni": "周一至周五",
+          "orario": "9:00-13:00 / 14:30-18:30"
+        },
+        {
+          "giorni": "周六至周日",
+          "orario": "已关闭"
+        }
+      ]
+    },
+    {
+      "collection": "contatti",
+      "key": "canali_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "我们也用您的语言为您服务"
+    },
+    {
+      "collection": "contatti",
+      "key": "canali_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "欢迎用您的语言通过 WhatsApp 或邮件联系我们：沟通无障碍。若偏好通话，可安排实时翻译；重要事项（金额、期限、文件）我们始终书面确认。正式文件仍为意大利语。"
+    },
+    {
+      "collection": "contatti",
+      "key": "form_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "联系我们"
+    },
+    {
+      "collection": "contatti",
+      "key": "form_nota",
+      "locale": "zh",
+      "is_published": false,
+      "value": "我们将在 1 个工作日内回复。"
+    },
+    {
+      "collection": "contatti",
+      "key": "form_success",
+      "locale": "zh",
+      "is_published": true,
+      "value": "谢谢！我们会尽快联系您。"
+    },
+    {
+      "collection": "contatti",
+      "key": "mappa_nota",
+      "locale": "zh",
+      "is_published": true,
+      "value": "一切远程办理，但工作室真实存在：欢迎预约来访。"
+    },
+    {
+      "collection": "contatti",
+      "key": "cta_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "想马上开始？免费计算报价，只需 1 分钟。"
+    },
+    {
+      "collection": "contatti",
+      "key": "cta_button",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "计算报价",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "guide",
+      "key": "hero_eyebrow",
+      "locale": "zh",
+      "is_published": true,
+      "value": "指南"
+    },
+    {
+      "collection": "guide",
+      "key": "hero_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "遗产继承指南：清晰、最新、无官腔"
+    },
+    {
+      "collection": "guide",
+      "key": "hero_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "关于遗产继承、税款与文件的一切，由真正办理案件的人简明讲解。"
+    },
+    {
+      "collection": "guide",
+      "key": "hero_search",
+      "locale": "zh",
+      "is_published": true,
+      "value": true
+    },
+    {
+      "collection": "guide",
+      "key": "categorie",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        {
+          "nome": "了解遗产继承",
+          "slug": "基础"
+        },
+        {
+          "nome": "税款与费用",
+          "slug": "税款"
+        },
+        {
+          "nome": "文件",
+          "slug": "文件"
+        },
+        {
+          "nome": "特殊情形",
+          "slug": "案例"
+        },
+        {
+          "nome": "本地指南（托斯卡纳）",
+          "slug": "本地"
+        },
+        {
+          "nome": "外籍继承人 / 海外继承人",
+          "slug": "外籍"
+        }
+      ]
+    },
+    {
+      "collection": "guide",
+      "key": "in_evidenza_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "精选"
+    },
+    {
+      "collection": "guide",
+      "key": "cta_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您的案件需要帮助吗？"
+    },
+    {
+      "collection": "guide",
+      "key": "cta_button",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "免费计算报价",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "guide",
+      "key": "strumenti_banner",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "title": "工具：计算地籍价值",
+        "body": "遗产继承中住宅或土地价值多少？输入查册租金，立即获得计税价值。",
+        "cta_label": "打开计算器",
+        "href": "/strumenti/valore-catastale"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_hero_eyebrow",
+      "locale": "zh",
+      "is_published": true,
+      "value": "工具"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_meta_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "遗产继承地籍价值计算（免费、在线）"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_hero_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "遗产继承中房产价值如何确定？"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_hero_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "输入地籍租金（在查册中）立即获得遗产继承计税的地籍价值。免费，无需留数据。"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_tab_fabbricato",
+      "locale": "zh",
+      "is_published": true,
+      "value": "建筑物"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_tab_terreno",
+      "locale": "zh",
+      "is_published": true,
+      "value": "农业用地"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_rendita",
+      "locale": "zh",
+      "is_published": true,
+      "value": "地籍租金（€）"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_help_rendita",
+      "locale": "zh",
+      "is_published": true,
+      "value": "在地籍查册的「Rendita」栏。若缺失，我们通常可以帮您获取。"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_rd",
+      "locale": "zh",
+      "is_published": true,
+      "value": "地役收入（€）"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_help_rd",
+      "locale": "zh",
+      "is_published": true,
+      "value": "可在土地地籍查册中找到。适用于不可建设土地。"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_categoria",
+      "locale": "zh",
+      "is_published": true,
+      "value": "地籍类别"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_prima_casa",
+      "locale": "zh",
+      "is_published": true,
+      "value": "对继承人而言为「首套住房」（优惠：系数降至 110）"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_risultato",
+      "locale": "zh",
+      "is_published": true,
+      "value": "遗产继承相关的地籍价值"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_formula",
+      "locale": "zh",
+      "is_published": true,
+      "value": "计算："
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_come_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "计算方式说明"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_come_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "遗产继承申报中，房产不按市价而按地籍价值评估：租金重估 5% 再乘以法定系数。农业用地：地役收入重估 25% 再乘以 90。"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_formule",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        {
+          "tipo": "首套住房（优惠）",
+          "formula": "rendita × 1,05 × 110"
+        },
+        {
+          "tipo": "住宅及附属物（A 类与 C 类）",
+          "formula": "rendita × 1,05 × 120"
+        },
+        {
+          "tipo": "B 类（学校、学院等）",
+          "formula": "rendita × 1,05 × 168"
+        },
+        {
+          "tipo": "A/10 及 D 类（办公室、厂房等）",
+          "formula": "rendita × 1,05 × 60"
+        },
+        {
+          "tipo": "C/1 及 E 类（商铺等）",
+          "formula": "rendita × 1,05 × 40,8"
+        },
+        {
+          "tipo": "农业用地（不可建设）",
+          "formula": "reddito dominicale × 1,25 × 90"
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_note",
+      "locale": "zh",
+      "is_published": true,
+      "value": "可建设土地例外：按市场价值申报，而非地籍价值。结果仅供参考：优惠及特殊情形须按具体案件核实——这正是我们的工作。"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_cta_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "想了解整个遗产继承的费用（含税款）吗？"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_cta_button",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "免费计算报价",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_faq_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "地籍价值常见问题"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_faq",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        {
+          "q": "在哪里找到房产的地籍租金？",
+          "a": "在地籍查册的「Rendita」栏。可在 Agenzia delle Entrate 网站免费申请（需 SPID），若您是我们的客户，我们可帮您获取。"
+        },
+        {
+          "q": "地籍价值等于房屋市场价吗？",
+          "a": "不是：地籍价值几乎总是远低于市价。它是遗产继承申报中计算抵押权税和地籍税的基数，由重估租金乘以法定系数得出。"
+        },
+        {
+          "q": "计算中首套住房优惠如何运作？",
+          "a": "若对继承人而言该房产为「首套住房」，系数降至 110（住宅通常为 120），抵押权税和地籍税按固定金额缴纳（各 200 欧元）而非按比例。"
+        },
+        {
+          "q": "农业用地也适用吗？",
+          "a": "农业用地（不可建设）适用：地役收入重估 25% 再乘以 90。可建设土地则按市场价值（市价）申报。"
+        }
+      ]
+    },
+    {
+      "collection": "article",
+      "key": "autore_box",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "autore": "Geom. Lorenzo Armellin",
+        "ruolo": "Entratel 授权测绘师",
+        "reviewed_by": "税务部分经会计师审核",
+        "foto": {
+          "asset_key": "ritratto_lorenzo"
+        },
+        "link": "/chi-sono"
+      }
+    },
+    {
+      "collection": "article",
+      "key": "disclaimer",
+      "locale": "zh",
+      "is_published": true,
+      "value": "本指南信息仅供参考。每宗遗产继承情况不同：最终评估始终基于具体案件。我们免费核查您的情况。"
+    },
+    {
+      "collection": "article",
+      "key": "cta_box",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "titolo": "需要我们来办理吗？",
+        "button": {
+          "label": "免费计算报价",
+          "href": "/preventivo"
+        },
+        "phone": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "article",
+      "key": "fonti",
+      "locale": "zh",
+      "is_published": true,
+      "value": "官方来源：Agenzia delle Entrate、Normattiva（各文章中有链接）。"
+    },
+    {
+      "collection": "preventivo",
+      "key": "intro_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "免费计算报价，只需 1 分钟"
+    },
+    {
+      "collection": "preventivo",
+      "key": "intro_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "回答几个简单问题：立即告知费用，或若情况特殊提供定制报价。无义务。"
+    },
+    {
+      "collection": "preventivo",
+      "key": "progress_label",
+      "locale": "zh",
+      "is_published": true,
+      "value": "第 {n} 步，共 3 步"
+    },
+    {
+      "collection": "preventivo",
+      "key": "step1_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "从基础开始"
+    },
+    {
+      "collection": "preventivo",
+      "key": "step2_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "继承人有哪些"
+    },
+    {
+      "collection": "preventivo",
+      "key": "step3_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "遗产包含哪些内容"
+    },
+    {
+      "collection": "preventivo",
+      "key": "step4_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "报价发送至"
+    },
+    {
+      "collection": "preventivo",
+      "key": "help_text",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        "数据仅用于评估您的情况。",
+        "不确定答案？选择「我不确定」，交给我们。"
+      ]
+    },
+    {
+      "collection": "preventivo",
+      "key": "consenso_privacy",
+      "locale": "zh",
+      "is_published": true,
+      "value": "我已阅读隐私政策并同意数据处理。"
+    },
+    {
+      "collection": "preventivo",
+      "key": "consenso_marketing",
+      "locale": "zh",
+      "is_published": true,
+      "value": "我希望收到实用建议与更新（选填）。"
+    },
+    {
+      "collection": "preventivo",
+      "key": "cta_submit",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "立即查看结果",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "preventivo",
+      "key": "trust_items",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        "免费且无义务",
+        "由 Lorenzo 真人回复",
+        "数据安全，欧盟服务器（GDPR）"
+      ]
+    },
+    {
+      "collection": "grazie",
+      "key": "header_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您的情况结果如下"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_a_whatsapp",
+      "locale": "zh",
+      "is_published": true,
+      "value": "WhatsApp"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_a_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "也许您无需申报"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_taxes_note",
+      "locale": "zh",
+      "is_published": true,
+      "value": "+ 根据您情况计算的税款：付款前告知您。"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_package_line",
+      "locale": "zh",
+      "is_published": true,
+      "value": "套餐 {name}"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_a_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "根据您提供的信息，您的情况可能符合法定豁免。我们不想向您推销不需要的服务：一起免费核查。最终确认基于具体案件。"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_a_cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "致电免费核查",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "这是适合您的套餐"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "继续支付",
+        "href": "/checkout"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_riallineamento",
+      "locale": "zh",
+      "is_published": true,
+      "value": "付款前，请查看套餐选择{guida}或与 Lorenzo 简短沟通：若选错，更换很简单，只需补差价。"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_guida",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "指南",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您的情况适合定制报价"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "根据您的回答，您的情况含特殊要素（多处房产、农业用地、股份、企业等）。此处无法直接定价：需与 Lorenzo 共同研究，以便您不多付也不少付。请在下方留下联系方式（如需可加备注）或写信：我们回电澄清细节并准备专项报价。"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "致电 Lorenzo",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_whatsapp",
+      "locale": "zh",
+      "is_published": true,
+      "value": "通过 WhatsApp 联系"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_whatsapp_prefill",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您好 Lorenzo，我已在网站填写问卷，显示需要定制报价。希望与您进一步讨论我的情况。"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "需要时间考虑？通过邮件接收此报价"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_desc",
+      "locale": "zh",
+      "is_published": true,
+      "value": "我们发送报价摘要，方便您随时查阅。无压力。"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_submit",
+      "locale": "zh",
+      "is_published": true,
+      "value": "通过邮件发送报价"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_ok_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "完成！请查收邮件"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_ok_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "我们已发送报价摘要。随时可从那里继续。"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_ok_title_noemail",
+      "locale": "zh",
+      "is_published": true,
+      "value": "请求已登记！"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_ok_body_noemail",
+      "locale": "zh",
+      "is_published": true,
+      "value": "我们已登记您的请求：即将发送报价摘要。"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "留下联系方式：我们会回电"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_desc",
+      "locale": "zh",
+      "is_published": true,
+      "value": "问卷答案足以让我们起步。留下邮箱和电话：Lorenzo 将联系您深入了解细节并发送专项报价，无义务。如需可在下方添加备注。"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_notes_label",
+      "locale": "zh",
+      "is_published": true,
+      "value": "给 Lorenzo 的备注（选填）"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_notes_placeholder",
+      "locale": "zh",
+      "is_published": true,
+      "value": "例：房产类型、土地、企业/股份、紧急事项或疑问…"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_footnote",
+      "locale": "zh",
+      "is_published": true,
+      "value": "无义务：1 个工作日内联系您（通常当天），共同研究情况并准备报价。"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_submit",
+      "locale": "zh",
+      "is_published": true,
+      "value": "请求回电"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_ok_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "请求已收到！"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_ok_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "Lorenzo 将尽快联系您，深入了解情况并准备定制报价。"
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "与此同时，您需要准备："
+    },
+    {
+      "collection": "documenti",
+      "key": "lista",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        {
+          "name": "身份证件与税号",
+          "description": "所有继承人及被继承人。",
+          "when": "始终"
+        },
+        {
+          "name": "死亡证明",
+          "description": "或被继承人死亡及家庭状况替代声明：我们提供表格。",
+          "when": "始终"
+        },
+        {
+          "name": "各继承人的家庭状况自我证明",
+          "description": "用于确认继承人：每人一份表格，我们提供。",
+          "when": "始终"
+        },
+        {
+          "name": "地籍查册",
+          "description": "遗产继承中的房产查册。我们可以帮您获取。",
+          "when": "如有房产"
+        },
+        {
+          "name": "权属来源文件",
+          "description": "公证书、赠与或先前的遗产继承申报。",
+          "when": "如有房产"
+        },
+        {
+          "name": "遗嘱",
+          "description": "已公布遗嘱副本（如有）。",
+          "when": "如有遗嘱"
+        },
+        {
+          "name": "账户余额证明",
+          "description": "被继承人死亡日期的账户、存折及证券余额。",
+          "when": "如有账户/投资"
+        }
+      ]
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_disclaimer",
+      "locale": "zh",
+      "is_published": true,
+      "value": "参考清单：Lorenzo 查看您的情况后确认最终清单。"
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_faq_link",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "详见常见问题",
+        "href": "/faq"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_hook",
+      "locale": "zh",
+      "is_published": true,
+      "value": "缺少什么？我们通常可以帮您获取。"
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_cta_pdf",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "下载清单（PDF）",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_cta_email",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "通过邮件接收",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "next_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "我们已通过邮件发送摘要。此后由我们跟进：真人，非机器人。"
+    },
+    {
+      "collection": "checkout",
+      "key": "header_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "完成订单"
+    },
+    {
+      "collection": "checkout",
+      "key": "header_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "还差一步，就由我们办理。"
+    },
+    {
+      "collection": "checkout",
+      "key": "riepilogo_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您的订单"
+    },
+    {
+      "collection": "checkout",
+      "key": "modifica_link",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "编辑",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "checkout",
+      "key": "prezzo_imposte_nota",
+      "locale": "zh",
+      "is_published": true,
+      "value": "重要：这是专业服务费。税款（继承税、抵押权税、地籍税、印花税）另行计算，由继承人承担，我们在提交前计算并告知。"
+    },
+    {
+      "collection": "checkout",
+      "key": "microtrust",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您支付给 Entratel 授权测绘师，经会计师税务监督。Stripe 安全支付。"
+    },
+    {
+      "collection": "checkout",
+      "key": "pagamento_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "选择支付方式"
+    },
+    {
+      "collection": "checkout",
+      "key": "pagamento_metodi",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        "银行卡",
+        "PayPal",
+        "银行转账（协助办理）"
+      ]
+    },
+    {
+      "collection": "checkout",
+      "key": "rate_nota",
+      "locale": "zh",
+      "is_published": true,
+      "value": "可分期支付（PayPal Pay in 3、Klarna、Scalapay，视可用性）。分期的是专业服务费，非税款。"
+    },
+    {
+      "collection": "checkout",
+      "key": "consenso_tc",
+      "locale": "zh",
+      "is_published": true,
+      "value": "我接受销售条件与隐私政策。"
+    },
+    {
+      "collection": "checkout",
+      "key": "consenso_avvio",
+      "locale": "zh",
+      "is_published": true,
+      "value": "我要求立即开始办理，并知悉若服务在 14 天内完成，我将失去撤回权。"
+    },
+    {
+      "collection": "checkout",
+      "key": "recesso_link",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "撤回如何运作",
+        "href": "/recesso"
+      }
+    },
+    {
+      "collection": "checkout",
+      "key": "cta_pay",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "安全支付",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "checkout",
+      "key": "cta_nota",
+      "locale": "zh",
+      "is_published": true,
+      "value": "加密交易。我们不保存银行卡数据。"
+    },
+    {
+      "collection": "checkout",
+      "key": "trust_items",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        "满意保障或退款",
+        "欧盟服务器，符合 GDPR",
+        "真人客服"
+      ]
+    },
+    {
+      "collection": "checkout",
+      "key": "success_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "支付成功！欢迎。"
+    },
+    {
+      "collection": "checkout",
+      "key": "error_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "支付失败"
+    },
+    {
+      "collection": "legale",
+      "key": "privacy_title",
+      "locale": "zh",
+      "is_published": false,
+      "value": "隐私政策"
+    },
+    {
+      "collection": "legale",
+      "key": "cookie_title",
+      "locale": "zh",
+      "is_published": false,
+      "value": "Cookie Policy"
+    },
+    {
+      "collection": "legale",
+      "key": "tc_title",
+      "locale": "zh",
+      "is_published": false,
+      "value": "销售条件"
+    },
+    {
+      "collection": "legale",
+      "key": "garanzia_title",
+      "locale": "zh",
+      "is_published": false,
+      "value": "我们的保障"
+    },
+    {
+      "collection": "legale",
+      "key": "garanzia_cta",
+      "locale": "zh",
+      "is_published": false,
+      "value": {
+        "label": "免费计算报价",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "sistema",
+      "key": "e404_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "此页面不存在（或已删除）"
+    },
+    {
+      "collection": "sistema",
+      "key": "e404_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "但我们仍然可以帮您。"
+    },
+    {
+      "collection": "sistema",
+      "key": "e404_cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        {
+          "label": "返回首页",
+          "href": "/"
+        },
+        {
+          "label": "计算报价",
+          "href": "/preventivo"
+        }
+      ]
+    },
+    {
+      "collection": "sistema",
+      "key": "e500_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "出了点问题"
+    },
+    {
+      "collection": "sistema",
+      "key": "e500_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "请稍后重试。若问题仍在，请邮件或致电联系我们。"
+    },
+    {
+      "collection": "sistema",
+      "key": "manutenzione_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "网站维护中"
+    },
+    {
+      "collection": "sistema",
+      "key": "manutenzione_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "我们即将恢复上线。如有紧急事项，请联系我们。"
+    },
+    {
+      "collection": "sistema",
+      "key": "sessione_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "会话已过期"
+    },
+    {
+      "collection": "sistema",
+      "key": "sessione_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "为保障安全已退出登录。请重新登录以继续。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "request_invalid",
+      "locale": "zh",
+      "is_published": true,
+      "value": "请求无效。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "max_files",
+      "locale": "zh",
+      "is_published": true,
+      "value": "每项最多 {n} 个文件：删除一个才能上传新的。"
+    },
+    {
+      "collection": "area_login",
+      "key": "header_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "个人区"
+    },
+    {
+      "collection": "area_login",
+      "key": "header_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "登录以跟踪您的遗产继承案件。"
+    },
+    {
+      "collection": "area_login",
+      "key": "tab_email",
+      "locale": "zh",
+      "is_published": true,
+      "value": "Email"
+    },
+    {
+      "collection": "area_login",
+      "key": "tab_phone",
+      "locale": "zh",
+      "is_published": true,
+      "value": "电话"
+    },
+    {
+      "collection": "area_login",
+      "key": "tab_password",
+      "locale": "zh",
+      "is_published": true,
+      "value": "Password"
+    },
+    {
+      "collection": "area_login",
+      "key": "google_cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": "使用 Google 继续"
+    },
+    {
+      "collection": "area_login",
+      "key": "oppure",
+      "locale": "zh",
+      "is_published": true,
+      "value": "或"
+    },
+    {
+      "collection": "area_login",
+      "key": "password_label",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您的密码"
+    },
+    {
+      "collection": "area_login",
+      "key": "password_hint",
+      "locale": "zh",
+      "is_published": true,
+      "value": "首次登录后在个人资料中创建。没有？请用邮箱。"
+    },
+    {
+      "collection": "area_login",
+      "key": "password_cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": "登录"
+    },
+    {
+      "collection": "area_login",
+      "key": "password_verifying",
+      "locale": "zh",
+      "is_published": true,
+      "value": "登录中…"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_label",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您的邮箱"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_placeholder",
+      "locale": "zh",
+      "is_published": true,
+      "value": "nome@email.it"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_hint",
+      "locale": "zh",
+      "is_published": true,
+      "value": "请使用支付时的邮箱。"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": "发送登录链接"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_sending",
+      "locale": "zh",
+      "is_published": true,
+      "value": "发送中…"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_label",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您的电话号码"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_placeholder",
+      "locale": "zh",
+      "is_published": true,
+      "value": "+39 333 123 4567"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_hint",
+      "locale": "zh",
+      "is_published": true,
+      "value": "请使用下单时的号码。我们将通过短信发送验证码。"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": "通过短信发送验证码"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_sending",
+      "locale": "zh",
+      "is_published": true,
+      "value": "发送中…"
+    },
+    {
+      "collection": "area_login",
+      "key": "sent_email_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "请查收邮件"
+    },
+    {
+      "collection": "area_login",
+      "key": "sent_email_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "我们已向 {contact} 发送登录链接。链接几分钟后过期。"
+    },
+    {
+      "collection": "area_login",
+      "key": "sent_phone_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "查看短信"
+    },
+    {
+      "collection": "area_login",
+      "key": "sent_phone_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "我们已向 {contact} 发送 6 位验证码。请在下方输入。"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_toggle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "我已收到验证码，请输入"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_label",
+      "locale": "zh",
+      "is_published": true,
+      "value": "6 位验证码"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_placeholder",
+      "locale": "zh",
+      "is_published": true,
+      "value": "123456"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": "验证码"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_verifying",
+      "locale": "zh",
+      "is_published": true,
+      "value": "验证中…"
+    },
+    {
+      "collection": "area_login",
+      "key": "resend",
+      "locale": "zh",
+      "is_published": true,
+      "value": "重新发送"
+    },
+    {
+      "collection": "area_login",
+      "key": "error_link",
+      "locale": "zh",
+      "is_published": true,
+      "value": "登录链接无效或已过期。请申请新链接。"
+    },
+    {
+      "collection": "area_login",
+      "key": "secure_note",
+      "locale": "zh",
+      "is_published": true,
+      "value": "安全登录"
+    },
+    {
+      "collection": "area_login",
+      "key": "back_to_site",
+      "locale": "zh",
+      "is_published": true,
+      "value": "返回网站"
+    },
+    {
+      "collection": "area_login",
+      "key": "privacy_link",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "Privacy",
+        "href": "/privacy"
+      }
+    },
+    {
+      "collection": "area_login",
+      "key": "termini_link",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "条款",
+        "href": "/termini-condizioni"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_legal_prefix",
+      "locale": "zh",
+      "is_published": true,
+      "value": "有关我们如何处理您数据的更多详情："
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_privacy_label",
+      "locale": "zh",
+      "is_published": true,
+      "value": "Privacy Policy"
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_terms_label",
+      "locale": "zh",
+      "is_published": true,
+      "value": "服务条款"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "price_suffix",
+      "locale": "zh",
+      "is_published": true,
+      "value": "专业服务费（不含增值税）"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "sla_line",
+      "locale": "zh",
+      "is_published": true,
+      "value": "文件齐全后 {n} 个工作日内提交"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "cta_choose",
+      "locale": "zh",
+      "is_published": true,
+      "value": "选择 {name}"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_price_note",
+      "locale": "zh",
+      "is_published": true,
+      "value": "开始前共同确定"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_discover",
+      "locale": "zh",
+      "is_published": true,
+      "value": "了解如何启用"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_phone_label",
+      "locale": "zh",
+      "is_published": true,
+      "value": "致电 Lorenzo"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_email_label",
+      "locale": "zh",
+      "is_published": true,
+      "value": "发送邮件联系我们"
+    },
+    {
+      "collection": "navbar",
+      "key": "cta_short",
+      "locale": "zh",
+      "is_published": true,
+      "value": "报价"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_rating_of",
+      "locale": "zh",
+      "is_published": true,
+      "value": "满分5"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_count_one",
+      "locale": "zh",
+      "is_published": true,
+      "value": "Google {n} 条评价"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_count_many",
+      "locale": "zh",
+      "is_published": true,
+      "value": "Google {n} 条评价"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_from",
+      "locale": "zh",
+      "is_published": true,
+      "value": "评价来自"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_write",
+      "locale": "zh",
+      "is_published": true,
+      "value": "撰写评价"
+    },
+    {
+      "collection": "faq",
+      "key": "items",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        {
+          "category": "了解遗产继承",
+          "question": "什么是遗产继承申报？",
+          "answer": "这是向 Agenzia delle Entrate 申报被继承人转移给继承人的遗产的税务手续。通常须在死亡之日起 12 个月内提交。"
+        },
+        {
+          "category": "了解遗产继承",
+          "question": "何时必须提交？",
+          "answer": "通常为被继承人死亡之日起 12 个月内。逾期提交可能面临处罚：我们按时办理。"
+        },
+        {
+          "category": "费用与税款",
+          "question": "你们的服务多少钱？",
+          "answer": "按套餐支付固定专业服务费。税款另计，由继承人承担，提交前我们计算并告知。"
+        },
+        {
+          "category": "费用与税款",
+          "question": "价格包含税款吗？",
+          "answer": "不是：套餐价格是专业服务费。税款（继承税、抵押权税、地籍税、印花税）通过 F24 缴纳，另行计算。我们事先为您计算。"
+        },
+        {
+          "category": "费用与税款",
+          "question": "遗产继承中的首套住房优惠是什么？",
+          "answer": "若至少一名继承人对继承房产符合首套住房条件，抵押权税和地籍税按固定金额缴纳（各 200 欧元），而非按地籍价值比例。我们核实您是否符合并在申报中注明。"
+        },
+        {
+          "category": "为何不建议自行办理",
+          "question": "我可以在 Agenzia delle Entrate 网站免费自行办理吗？",
+          "answer": "是的，存在免费预填遗产继承申报，这是诚实的选项。但需要 SPID 和专业知识：不校验地籍数据，错误（及处罚）由您承担。"
+        },
+        {
+          "category": "如何运作",
+          "question": "需要去某个办事机构吗？",
+          "answer": "不需要。问卷、文件、沟通及向 Agenzia delle Entrate 提交均在线完成。Lorenzo 总会致电为您讲解。"
+        },
+        {
+          "category": "如何运作",
+          "question": "需要哪些文件？",
+          "answer": "视您的情况而定：我们提供个性化清单。若缺失，我们通常可以帮您获取（查册、权属文件）。"
+        },
+        {
+          "category": "文件与个人区",
+          "question": "可以用手机拍照上传文件吗？",
+          "answer": "可以。在个人区可上传 PDF、JPG 或 PNG（含手机照片），每个最大 10 MB，清单每项最多 10 个文件。正反面或多页文件可在同一项下上传多张照片。"
+        },
+        {
+          "category": "文件与个人区",
+          "question": "有可直接下载填写的表格吗？",
+          "answer": "可以。清单部分条目下有现成表格（如被继承人死亡及家庭状况替代声明，或各继承人家庭状况自我证明）：下载、填写、签名后重新上传。"
+        },
+        {
+          "category": "文件与个人区",
+          "question": "文件被拒绝会怎样？",
+          "answer": "Lorenzo 逐一核查。若有问题（模糊照片、缺页、文件错误），该项会变为「需重做」并附说明：重新上传正确文件后案件继续，无需全部重做。"
+        },
+        {
+          "category": "文件与个人区",
+          "question": "如何知道文件是否合格？",
+          "answer": "在个人区可查看每项状态（待上传、已上传、已批准、需重做）。完成后点击「已完成」：每个步骤都会收到邮件更新，随时可查看案件进展。"
+        },
+        {
+          "category": "服务完成后",
+          "question": "案件完成后我会收到什么？",
+          "answer": "提交/登记回执、申报副本、F24 结果及（如适用）地籍过户结果，以及我们的发票。"
+        }
+      ]
+    },
+    {
+      "collection": "area",
+      "key": "nav_home",
+      "locale": "zh",
+      "is_published": true,
+      "value": "Home"
+    },
+    {
+      "collection": "area",
+      "key": "nav_documenti",
+      "locale": "zh",
+      "is_published": true,
+      "value": "文件"
+    },
+    {
+      "collection": "area",
+      "key": "nav_ordine",
+      "locale": "zh",
+      "is_published": true,
+      "value": "购买"
+    },
+    {
+      "collection": "area",
+      "key": "nav_comunicazioni",
+      "locale": "zh",
+      "is_published": true,
+      "value": "消息通知"
+    },
+    {
+      "collection": "area",
+      "key": "nav_dati",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您的信息"
+    },
+    {
+      "collection": "area",
+      "key": "nav_mandato",
+      "locale": "zh",
+      "is_published": true,
+      "value": "委托书"
+    },
+    {
+      "collection": "area",
+      "key": "nav_conclusa",
+      "locale": "zh",
+      "is_published": true,
+      "value": "最终文件"
+    },
+    {
+      "collection": "area",
+      "key": "nav_profilo",
+      "locale": "zh",
+      "is_published": true,
+      "value": "个人资料"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_brand",
+      "locale": "zh",
+      "is_published": true,
+      "value": "Studio Armellin"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_practice",
+      "locale": "zh",
+      "is_published": true,
+      "value": "案件 {code}"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_back",
+      "locale": "zh",
+      "is_published": true,
+      "value": "返回网站"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_help",
+      "locale": "zh",
+      "is_published": true,
+      "value": "客服"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_logout",
+      "locale": "zh",
+      "is_published": true,
+      "value": "退出"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_notifications",
+      "locale": "zh",
+      "is_published": true,
+      "value": "通知"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_notifications_empty",
+      "locale": "zh",
+      "is_published": true,
+      "value": "暂无通知"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_notifications_mark_all",
+      "locale": "zh",
+      "is_published": true,
+      "value": "全部标记为已读"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_comms_new",
+      "locale": "zh",
+      "is_published": true,
+      "value": "更新"
+    },
+    {
+      "collection": "area",
+      "key": "welcome_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "个人区"
+    },
+    {
+      "collection": "area",
+      "key": "welcome_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "欢迎。"
+    },
+    {
+      "collection": "area",
+      "key": "hello",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您好，{name}"
+    },
+    {
+      "collection": "area",
+      "key": "practice_deceased",
+      "locale": "zh",
+      "is_published": true,
+      "value": "案件 {code} · 被继承人 {name}"
+    },
+    {
+      "collection": "area",
+      "key": "next_action_label",
+      "locale": "zh",
+      "is_published": true,
+      "value": "下一步操作"
+    },
+    {
+      "collection": "area",
+      "key": "tracker_heading",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您的案件进展"
+    },
+    {
+      "collection": "area",
+      "key": "docs_heading",
+      "locale": "zh",
+      "is_published": true,
+      "value": "文件"
+    },
+    {
+      "collection": "area",
+      "key": "docs_progress",
+      "locale": "zh",
+      "is_published": true,
+      "value": "已上传 {uploaded}/{total}"
+    },
+    {
+      "collection": "area",
+      "key": "docs_cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": "前往文件"
+    },
+    {
+      "collection": "area",
+      "key": "summary_heading",
+      "locale": "zh",
+      "is_published": true,
+      "value": "摘要"
+    },
+    {
+      "collection": "area",
+      "key": "summary_package",
+      "locale": "zh",
+      "is_published": true,
+      "value": "套餐"
+    },
+    {
+      "collection": "area",
+      "key": "summary_price",
+      "locale": "zh",
+      "is_published": true,
+      "value": "专业服务费"
+    },
+    {
+      "collection": "area",
+      "key": "summary_taxes",
+      "locale": "zh",
+      "is_published": true,
+      "value": "已告知的税款"
+    },
+    {
+      "collection": "area",
+      "key": "summary_iban_missing",
+      "locale": "zh",
+      "is_published": true,
+      "value": "缺少 IBAN：请添加以便缴纳税款"
+    },
+    {
+      "collection": "area",
+      "key": "summary_cta_ordine",
+      "locale": "zh",
+      "is_published": true,
+      "value": "查看购买"
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "此案件已取消。"
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_refunded",
+      "locale": "zh",
+      "is_published": true,
+      "value": "撤回已接受且退款已发出：通常 5-10 个工作日内到用于支付的银行卡（取决于银行或发卡机构）。"
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_pending",
+      "locale": "zh",
+      "is_published": true,
+      "value": "撤回已接受。如有应退款项，发出后通常 5-10 个工作日内到账。"
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_footer",
+      "locale": "zh",
+      "is_published": true,
+      "value": "无需其他操作：下方是您的购买摘要，可随时查阅。"
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": "查看您的购买"
+    },
+    {
+      "collection": "area",
+      "key": "client_steps",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        "待上传文件",
+        "处理中",
+        "已提交至 Agenzia delle Entrate",
+        "已完成"
+      ]
+    },
+    {
+      "collection": "area",
+      "key": "action_closed_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您的案件已完成。"
+    },
+    {
+      "collection": "area",
+      "key": "action_closed_cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": "下载最终文件"
+    },
+    {
+      "collection": "area",
+      "key": "action_docs_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "尚缺部分文件，无法继续。"
+    },
+    {
+      "collection": "area",
+      "key": "action_docs_cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": "上传文件"
+    },
+    {
+      "collection": "area",
+      "key": "action_working_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "我们正在处理您的案件。"
+    },
+    {
+      "collection": "area",
+      "key": "action_working_cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": "查看状态"
+    },
+    {
+      "collection": "area",
+      "key": "action_idle_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "一切正常，目前无需操作。"
+    },
+    {
+      "collection": "area",
+      "key": "action_idle_cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": "查看您的购买"
+    },
+    {
+      "collection": "area",
+      "key": "doc_state_da_caricare",
+      "locale": "zh",
+      "is_published": true,
+      "value": "待上传"
+    },
+    {
+      "collection": "area",
+      "key": "doc_state_caricato",
+      "locale": "zh",
+      "is_published": true,
+      "value": "已上传"
+    },
+    {
+      "collection": "area",
+      "key": "doc_state_da_rifare",
+      "locale": "zh",
+      "is_published": true,
+      "value": "需重做"
+    },
+    {
+      "collection": "area",
+      "key": "empty_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "此登录未关联任何案件"
+    },
+    {
+      "collection": "area",
+      "key": "empty_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "若已支付报价，请用结账时的邮箱关联案件。否则请在网站计算报价。"
+    },
+    {
+      "collection": "area",
+      "key": "empty_claim_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "已有案件？"
+    },
+    {
+      "collection": "area",
+      "key": "empty_claim_cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": "关联案件"
+    },
+    {
+      "collection": "area",
+      "key": "documenti_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您的文件"
+    },
+    {
+      "collection": "area",
+      "key": "documenti_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "上传所需文件。也可用手机拍照。"
+    },
+    {
+      "collection": "area",
+      "key": "documenti_photo_tip",
+      "locale": "zh",
+      "is_published": true,
+      "value": "照片清晰、整页入镜、无反光。PDF 与 JPG/PNG 最大 10 MB。"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您的购买"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您购买了什么及包含内容。随时可查阅。"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_summary",
+      "locale": "zh",
+      "is_published": true,
+      "value": "订单摘要"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_total",
+      "locale": "zh",
+      "is_published": true,
+      "value": "专业服务费合计"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_no_iva",
+      "locale": "zh",
+      "is_published": true,
+      "value": "专业服务费不含增值税（定额税制）。税款另计（见下文）。"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_payment_status",
+      "locale": "zh",
+      "is_published": true,
+      "value": "支付状态"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_method",
+      "locale": "zh",
+      "is_published": true,
+      "value": "方式"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_card",
+      "locale": "zh",
+      "is_published": true,
+      "value": "银行卡（在线）"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_transfer",
+      "locale": "zh",
+      "is_published": true,
+      "value": "银行转账"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_paid",
+      "locale": "zh",
+      "is_published": true,
+      "value": "已支付"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_pending",
+      "locale": "zh",
+      "is_published": true,
+      "value": "待处理"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_partial",
+      "locale": "zh",
+      "is_published": true,
+      "value": "部分退款"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_refunded",
+      "locale": "zh",
+      "is_published": true,
+      "value": "已退款"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_refund_note",
+      "locale": "zh",
+      "is_published": true,
+      "value": "退款已发出：通常 5-10 个工作日内到账（取决于银行或发卡机构）。"
+    },
+    {
+      "collection": "area",
+      "key": "dati_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您的信息"
+    },
+    {
+      "collection": "area",
+      "key": "dati_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "办理案件所需的若干补充信息。"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "消息通知"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您案件的消息与更新。"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_empty",
+      "locale": "zh",
+      "is_published": true,
+      "value": "暂无消息。"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_channel_email",
+      "locale": "zh",
+      "is_published": true,
+      "value": "Email"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_channel_phone",
+      "locale": "zh",
+      "is_published": true,
+      "value": "通话"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_channel_wa",
+      "locale": "zh",
+      "is_published": true,
+      "value": "WhatsApp"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_channel_inperson",
+      "locale": "zh",
+      "is_published": true,
+      "value": "面对面"
+    },
+    {
+      "collection": "area",
+      "key": "mandato_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "委托书与同意书"
+    },
+    {
+      "collection": "area",
+      "key": "mandato_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "阅读并签署您案件的专业委托书。"
+    },
+    {
+      "collection": "area",
+      "key": "mandato_lang_note",
+      "locale": "zh",
+      "is_published": true,
+      "value": "委托书意大利语版本具有法律效力。译文仅供参考；下载签署的文件仍为意大利语。"
+    },
+    {
+      "collection": "area",
+      "key": "conclusa_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "最终文件"
+    },
+    {
+      "collection": "area",
+      "key": "conclusa_subtitle_open",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您的案件已完成。在此下载文件。"
+    },
+    {
+      "collection": "area",
+      "key": "conclusa_subtitle_closed",
+      "locale": "zh",
+      "is_published": true,
+      "value": "最终文件将在案件完成后提供。"
+    },
+    {
+      "collection": "area",
+      "key": "profilo_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "个人资料"
+    },
+    {
+      "collection": "area",
+      "key": "profilo_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "联系信息、安全与偏好。"
+    },
+    {
+      "collection": "area",
+      "key": "recesso_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "撤回申请"
+    },
+    {
+      "collection": "area",
+      "key": "recesso_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "案件完成前可申请撤回。"
+    },
+    {
+      "collection": "area",
+      "key": "recesso_window_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您处于合同签订后 14 天内。"
+    },
+    {
+      "collection": "area",
+      "key": "recesso_rule_1",
+      "locale": "zh",
+      "is_published": true,
+      "value": "若我们尚未开始：全额退还专业服务费。"
+    },
+    {
+      "collection": "area",
+      "key": "recesso_rule_2",
+      "locale": "zh",
+      "is_published": true,
+      "value": "若已开始但未完成：按已完成工作量比例退款。"
+    },
+    {
+      "collection": "area",
+      "key": "recesso_rule_3",
+      "locale": "zh",
+      "is_published": true,
+      "value": "若服务已完成：不适用撤回（art. 59）。"
+    },
+    {
+      "collection": "area",
+      "key": "review_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "案件已完成：愿意留下评价吗？"
+    },
+    {
+      "collection": "area",
+      "key": "review_cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": "在 Google 留下评价"
+    },
+    {
+      "collection": "area",
+      "key": "review_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "若您对 Lorenzo 满意，Google 评价对我们帮助很大。"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_comms_all",
+      "locale": "zh",
+      "is_published": true,
+      "value": "查看全部消息"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_comms_new_count",
+      "locale": "zh",
+      "is_published": true,
+      "value": "（{n} 条新消息）"
+    },
+    {
+      "collection": "area",
+      "key": "docs_ui",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "counter": "文件：{uploaded}/{total}",
+        "all_uploaded": "已全部上传",
+        "missing_n": "还差 {n} 项",
+        "optional": "（选填）",
+        "delete_file": "删除此文件",
+        "uploading": "加载中…",
+        "upload": "上传",
+        "reupload": "重新上传",
+        "add_another": "添加另一个文件",
+        "multi_page_hint": "正反面或每页一张照片：由我们合并",
+        "done_title": "完成！",
+        "done_body": "Lorenzo 已收到您的文件并正在核查。如有缺失会通知您 — 请放心。",
+        "submit_cta": "已完成 — 发送给 Lorenzo",
+        "missing_one": "还差 1 份文件",
+        "missing_many": "还差 {n} 份文件",
+        "templates_title": "需要表格？我们提供：",
+        "templates_help": "下载表格，打印并完整填写，签名后在此重新上传（清晰照片亦可），并附上签名人身份证件副本。",
+        "err_file_too_big": "文件过大（最大 10 MB）。",
+        "err_too_many": "每项最多上传 10 个文件。",
+        "err_upload_failed": "上传失败。",
+        "err_upload_network": "上传失败，请检查网络连接。",
+        "err_delete_failed": "删除失败。",
+        "err_delete_network": "删除失败，请重试。",
+        "state_da_caricare": "待上传",
+        "state_caricato": "已上传",
+        "state_da_rifare": "需重做"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "mandate_ui",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "signed_title": "委托书已签署。",
+        "signed_paper": "已收到纸质签署的委托书。",
+        "signed_electronic": "电子签名已记录（日期与时间）。",
+        "signed_thanks": "谢谢，我们可以继续办理您的案件。",
+        "accept_checkbox": "我已阅读并接受委托书、条件与隐私政策。",
+        "accept_cta": "在线接受并签署",
+        "paper_title": "偏好纸质签名？",
+        "paper_body": "下载委托书，手写签名后重新上传：完全可以。",
+        "download_blank": "下载委托书",
+        "upload_signed": "上传已签署的委托书",
+        "err_file_too_big": "文件过大（最大 10 MB）。",
+        "err_upload_failed": "上传失败。",
+        "err_upload_network": "上传失败，请检查网络连接。",
+        "heading": "专业委托书 - 案件 {code}"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "iban_ui",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "saved": "IBAN 已加密保存（末尾 ••{last4}）。可输入新 IBAN 更新。",
+        "cleared": "IBAN 已用于缴款（F24），并于 {date} 为安全起见删除。如需可重新输入。",
+        "label": "继承人 IBAN",
+        "hint": "敏感数据：仅用于可能的税款扣缴（F24）。加密保存。",
+        "save": "保存"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "claim_ui",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "title": "已有案件？关联此登录",
+        "body": "输入案件编号（如 SUC-2026-0022）及支付或报价所用邮箱。须与当前登录邮箱一致。",
+        "code_label": "案件编号",
+        "email_label": "购买/报价所用邮箱",
+        "needs_email": "退出此账户并使用 {email} 登录（使用付款邮件中的链接，或在登录页申请新 magic link）。",
+        "linking": "连接中…",
+        "cta": "关联案件"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "withdrawal_ui",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "status_requested": "已提交",
+        "status_in_review": "处理中",
+        "status_accepted": "已接受",
+        "status_rejected": "已拒绝",
+        "registered_title": "请求已登记。",
+        "registered_body": "Lorenzo 已收到您的请求并将联系您。当前状态：{status}。",
+        "rejected_prev": "先前的请求已被拒绝",
+        "rejected_retry": "您可以重新发送。",
+        "reason_label": "原因（选填）",
+        "reason_placeholder": "如有需要，请告诉我们原因…",
+        "cta": "申请撤回",
+        "alt_contact": "也可发邮件至 studio@successioniarmellin.it 或通过 PEC。",
+        "refund_issued": "退款已发至用于支付的银行卡：通常 5-10 个工作日内到账（取决于银行或发卡机构；有时显示为原交易冲正）。",
+        "refund_pending": "如有应退款项，以相同支付方式发出。发出后银行通常 5-10 个工作日内到账。"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "invoice_ui",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "download": "下载发票",
+        "number": "发票编号 {number}",
+        "issued_soon": "发票编号 {number} 已开具。PDF 即将提供。",
+        "pending": "发票开具后将在此提供。"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "final_docs_ui",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "download_zip": "全部下载（ZIP）",
+        "download": "下载",
+        "not_ready": "最终文件尚未提供。下方预览案件完成后您将收到的内容。"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "profilo_ui",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "contacts": "联系信息",
+        "name": "姓名",
+        "email": "Email",
+        "phone": "电话",
+        "phone_empty": "未填写",
+        "phone_edit": "修改号码",
+        "phone_add": "添加号码",
+        "dial_aria": "国际区号",
+        "dial_other": "其他…",
+        "dial_custom_aria": "自定义区号",
+        "phone_hint": "选择国家区号（+39、+49 等），再输入本国号码。",
+        "save": "保存",
+        "cancel": "取消",
+        "security": "安全",
+        "password_intro": "如需，可创建密码以便更快登录，无需等待邮件链接。",
+        "password_saved": "密码已保存：下次登录可与其他方式一起使用。",
+        "password_change": "更改密码",
+        "password_create": "创建或更改密码",
+        "password_new": "新密码（至少 8 个字符）",
+        "password_confirm": "再次输入密码",
+        "password_mismatch": "两次密码不一致。",
+        "password_save": "保存密码",
+        "prefs_title": "通知偏好",
+        "prefs_body": "业务邮件（支付、文件、税款、结案）始终发送。此处仅可关闭可选消息，如评价邀请。",
+        "prefs_email": "可选邮件（如评价邀请）",
+        "prefs_wa": "WhatsApp（即将上线）",
+        "prefs_saved": "偏好已保存。",
+        "comms_lang_title": "书面沟通语言",
+        "comms_lang_body": "案件相关邮件与消息（支付、文件、撤回）。与界面语言无关。",
+        "comms_lang_notice": "译文为自动/参考译文。正式文件及具有法律效力的文本仍为意大利语。",
+        "comms_lang_it": "意大利语",
+        "comms_lang_ar": "العربية",
+        "logout": "退出",
+        "comms_lang_en": "English",
+        "comms_lang_tr": "Türkçe",
+        "comms_lang_fr": "Français",
+        "comms_lang_sq": "Shqip",
+        "comms_lang_de": "Deutsch",
+        "comms_lang_es": "Español",
+        "comms_lang_ru": "Русский",
+        "comms_lang_zh": "中文",
+        "comms_lang_hi": "हिन्दी"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "ordine_ui",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "includes_named": "「{name}」包含内容",
+        "includes_generic": "套餐包含内容",
+        "includes_missing": "详情不可用。",
+        "taxes_title": "税款",
+        "taxes_body": "这些金额不是我们的专业服务费：是向国家缴纳的税款（F24 表格、自行申报）。提交前我们计算并告知。",
+        "taxes_need_iban": "缴纳税款需要您的 IBAN。",
+        "taxes_iban_cta": "立即填写 IBAN →",
+        "taxes_iban_saved": "已登记 IBAN（•••• {last4}）。",
+        "taxes_iban_edit": "编辑",
+        "taxes_pending": "税款将在提交前计算并告知您。",
+        "withdrawal_prompt": "改变主意了？",
+        "withdrawal_cta": "申请撤回"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "documenti_page_ui",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "cancelled_subtitle": "案件已取消：无需上传任何文件。",
+        "cancelled_body": "此案件已取消，因此文件上传已停用。身份证件及其他已上传文件将按隐私政策从我们的系统中删除。"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "final_docs_preview",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        {
+          "label": "提交回执 - Agenzia delle Entrate",
+          "description": "带登记协议号的电子证明。"
+        },
+        {
+          "label": "遗产继承申报（副本）",
+          "description": "提交至 Agenzia delle Entrate 的表格。"
+        },
+        {
+          "label": "更新地籍查册（过户）",
+          "description": "登记在继承人名下的房产。"
+        },
+        {
+          "label": "专业服务费发票",
+          "description": "我们报酬的税务文件。"
+        }
+      ]
+    },
+    {
+      "collection": "site_ui",
+      "key": "preventivo_ui",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "yes": "是",
+        "no": "否",
+        "unknown": "我不确定",
+        "will_q_before": "这",
+        "will_q_term": "de cuius",
+        "will_q_after": "是否留有遗嘱？",
+        "will_tip_aria": "de cuius 是什么意思",
+        "will_tip": "De cuius（拉丁语）指开启遗产继承的已故之人：被继承人。",
+        "will_yes_note": "标准套餐也涵盖有遗嘱的情形。文件清单中会要求已公布遗嘱副本。",
+        "will_unknown_note": "这样也可以：若之后出现，我们在办理过程中处理。请继续其他问题。",
+        "heirs_legend": "继承人有哪些？请按类型填写人数。",
+        "heirs_hint": "统计所有继承人，若您也是继承人则包括您。",
+        "heir_coniuge": "配偶（或民事结合伴侣）",
+        "heir_figli": "子女",
+        "heir_genitori": "父母",
+        "heir_fratelli": "兄弟姐妹",
+        "heir_nipoti": "孙辈",
+        "heir_altri": "其他继承人",
+        "less": "收起 {label}",
+        "more": "更多 {label}",
+        "real_estate_q": "是否有房产（住宅、土地、车库）？",
+        "real_estate_count": "共有多少处房产？",
+        "real_estate_placeholder": "例：2",
+        "real_estate_hint": "统计住宅、土地、车库及份额：每增加一处房产可能影响报价。",
+        "over_100k_q": "遗产总价值（账户、证券等）是否超过 100,000 欧元？",
+        "other_assets_q": "是否有其他资产（公司股份、股票、企业、船舶等）？",
+        "back": "返回",
+        "next": "下一步"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "checkout_ui",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "stripe_blurb": "Stripe 安全支付：信用卡/借记卡，及可用的分期支付。将跳转至 Stripe 安全页面。",
+        "err_start": "无法启动支付。",
+        "err_not_configured": "支付尚未启用。请稍后重试或联系我们。",
+        "err_retry": "无法启动支付。请稍后重试。",
+        "err_network": "网络错误。请稍后重试。",
+        "need_quote_before": "如需支付，请从",
+        "need_quote_link": "报价计算",
+        "need_quote_after": "：以便为您推荐合适的套餐。",
+        "loading": "正在启动支付…",
+        "cancelled": "支付已取消。未扣款：您可随时重试。",
+        "total_fee": "专业服务费合计",
+        "empty_order": "未找到待支付套餐的案件。请先计算报价：我们推荐合适套餐并将支付关联至您的案件。",
+        "empty_cta": "前往报价 →",
+        "meta_title": "完成订单",
+        "extra_property": "额外房产（{extra} × {fee}€）"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "conferma_ui",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "title_paid": "已收到付款，谢谢！",
+        "title_pending": "正在确认付款",
+        "body_paid": "您的付款已成功，案件现已激活。您即将收到含摘要及个人区说明的邮件，可在此上传文件。",
+        "body_pending": "我们已收到订单。系统将在片刻内确认付款：一切就绪后您会收到邮件。您已可登录个人区。",
+        "email_note_before": "使用以下方式登录个人区：",
+        "email_note_strong": "与支付时相同的邮箱",
+        "email_note_after": "：这样即可找到案件。若使用其他邮箱（或不同的 Google 账户），将无法看到。",
+        "cta_area": "前往个人区",
+        "cta_home": "返回首页",
+        "taxes_note": "税款与专业服务费分开：提交前我们计算并告知您。",
+        "meta_title": "已收到付款"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "contact_ui",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "name": "姓名",
+        "email": "Email",
+        "phone": "电话（选填）",
+        "message": "消息",
+        "submit": "发送消息"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "soft_lead_ui",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "name": "姓名（选填）",
+        "email": "Email",
+        "phone": "电话",
+        "phone_optional": "电话（选填）",
+        "submitting": "发送中…",
+        "err_save": "目前无法登记请求。请稍后重试或致电。",
+        "notes": "备注（选填）"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "guide_ui",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "search_placeholder": "搜索指南（如税款、文件、豁免）",
+        "search_aria": "搜索指南",
+        "all": "全部",
+        "free_tool": "免费工具",
+        "back": "返回指南",
+        "author_heading": "本指南作者",
+        "related": "相关指南",
+        "featured": "精选",
+        "reading_minutes": "阅读约 {n} 分钟",
+        "read_guide": "阅读指南",
+        "read": "阅读",
+        "empty": "未找到相关指南。请换关键词或联系我们：我们都会回复。",
+        "updated": "更新于 {date}",
+        "sources": "官方来源",
+        "breadcrumb_aria": "流程",
+        "breadcrumb_guides": "指南",
+        "meta_title": "遗产继承指南",
+        "meta_not_found": "未找到指南",
+        "tool_alt": "插图：房屋、计算器与带欧元符号的文件"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "chrome_ui",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "lang_aria": "选择语言",
+        "menu_open": "打开菜单",
+        "menu_close": "关闭菜单",
+        "back": "返回",
+        "meta_result": "您的结果",
+        "meta_recesso": "撤回权",
+        "meta_documenti": "遗产继承所需文件"
+      }
+    },
+    {
+      "collection": "area_errors",
+      "key": "session_invalid",
+      "locale": "zh",
+      "is_published": true,
+      "value": "会话无效。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "session_expired",
+      "locale": "zh",
+      "is_published": true,
+      "value": "会话已过期。请重新登录。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "not_authorized",
+      "locale": "zh",
+      "is_published": true,
+      "value": "未授权。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "upload_failed",
+      "locale": "zh",
+      "is_published": true,
+      "value": "上传失败。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "delete_failed",
+      "locale": "zh",
+      "is_published": true,
+      "value": "删除失败。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "file_too_big",
+      "locale": "zh",
+      "is_published": true,
+      "value": "文件过大（最大 10 MB）。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "file_bad_type",
+      "locale": "zh",
+      "is_published": true,
+      "value": "格式不支持。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "invoice_unavailable",
+      "locale": "zh",
+      "is_published": true,
+      "value": "发票暂不可用。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "file_unavailable",
+      "locale": "zh",
+      "is_published": true,
+      "value": "文件不可用。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "practice_cancelled",
+      "locale": "zh",
+      "is_published": true,
+      "value": "案件已取消：操作不可用。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "mandate_failed",
+      "locale": "zh",
+      "is_published": true,
+      "value": "签名失败。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "withdrawal_blocked",
+      "locale": "zh",
+      "is_published": true,
+      "value": "撤回不再适用。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "withdrawal_pending",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您已有进行中的请求。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "iban_invalid",
+      "locale": "zh",
+      "is_published": true,
+      "value": "IBAN 无效。请检查后重试。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "phone_invalid",
+      "locale": "zh",
+      "is_published": true,
+      "value": "号码无效。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "password_short",
+      "locale": "zh",
+      "is_published": true,
+      "value": "密码至少 8 个字符。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "password_failed",
+      "locale": "zh",
+      "is_published": true,
+      "value": "保存失败，请重试。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "prefs_failed",
+      "locale": "zh",
+      "is_published": true,
+      "value": "保存失败，请重试。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_unavailable",
+      "locale": "zh",
+      "is_published": true,
+      "value": "服务暂不可用。请稍后重试。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_code_required",
+      "locale": "zh",
+      "is_published": true,
+      "value": "请输入案件编号。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_email_required",
+      "locale": "zh",
+      "is_published": true,
+      "value": "请输入购买时使用的邮箱。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_email_mismatch",
+      "locale": "zh",
+      "is_published": true,
+      "value": "邮箱与当前登录不匹配。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_not_found",
+      "locale": "zh",
+      "is_published": true,
+      "value": "未找到此编号的案件。请检查后重试。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "docs_submit_failed",
+      "locale": "zh",
+      "is_published": true,
+      "value": "发送失败。请重试。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_email_required",
+      "locale": "zh",
+      "is_published": true,
+      "value": "请输入您的邮箱。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_bad_credentials",
+      "locale": "zh",
+      "is_published": true,
+      "value": "邮箱或密码错误。若从未创建密码，请用邮件链接登录。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_google_unavailable",
+      "locale": "zh",
+      "is_published": true,
+      "value": "Google 登录暂不可用。请使用邮箱或电话。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_link_invalid",
+      "locale": "zh",
+      "is_published": true,
+      "value": "链接无效。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "auth_failed",
+      "locale": "zh",
+      "is_published": true,
+      "value": "登录失败。请重试。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "auth_not_configured",
+      "locale": "zh",
+      "is_published": true,
+      "value": "登录尚未启用：Supabase Auth 未配置。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_otp_required",
+      "locale": "zh",
+      "is_published": true,
+      "value": "邮箱和编号为必填项。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_phone_otp_required",
+      "locale": "zh",
+      "is_published": true,
+      "value": "号码和编号为必填项。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_password_required",
+      "locale": "zh",
+      "is_published": true,
+      "value": "请输入邮箱和密码。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "password_same",
+      "locale": "zh",
+      "is_published": true,
+      "value": "新密码须与当前密码不同。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "no_practice",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您的账户未关联任何案件。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_fields_required",
+      "locale": "zh",
+      "is_published": true,
+      "value": "请输入案件编号和邮箱。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_auth_required",
+      "locale": "zh",
+      "is_published": true,
+      "value": "关联案件前须先登录。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_no_email",
+      "locale": "zh",
+      "is_published": true,
+      "value": "此登录无邮箱。请退出并使用购买时的邮箱登录（magic link）。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_wrong_account",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您以 {current} 登录。此案件须使用 {expected} 登录。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_link_failed",
+      "locale": "zh",
+      "is_published": true,
+      "value": "无法关联联系方式。请联系工作室。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_practice_email_mismatch",
+      "locale": "zh",
+      "is_published": true,
+      "value": "邮箱与案件登记不符。请使用支付或报价时的邮箱。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "service_unavailable",
+      "locale": "zh",
+      "is_published": true,
+      "value": "服务暂不可用。"
+    },
+    {
+      "collection": "area_errors",
+      "key": "phone_invalid_detail",
+      "locale": "zh",
+      "is_published": true,
+      "value": "号码无效：请选择区号（+39、+49 等）并输入本国号码。"
+    },
+    {
+      "collection": "area_login",
+      "key": "callback_loading",
+      "locale": "zh",
+      "is_published": true,
+      "value": "登录中…"
+    },
+    {
+      "collection": "area_login",
+      "key": "callback_failed",
+      "locale": "zh",
+      "is_published": true,
+      "value": "登录失败，正在跳转…"
+    },
+    {
+      "collection": "site_ui",
+      "key": "offline_ui",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "email_cta": "发送邮件联系我们",
+        "whatsapp": "WhatsApp",
+        "already_practice": "已有案件？",
+        "area_cta": "登录个人区"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "cookie_ui",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "body": "我们使用必要的技术 cookie，经您同意还使用统计 cookie 以改进网站。您可接受或拒绝非必要 cookie。",
+        "policy_label": "Cookie 政策",
+        "accept_all": "全部接受",
+        "necessary_only": "仅必要项",
+        "preferences": "Cookie 偏好"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "contatti_map_ui",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "meta_title": "联系方式",
+        "email_label": "Email",
+        "studio_label": "工作室",
+        "map_eyebrow": "我们的地址",
+        "map_title": "{citta} 工作室",
+        "maps_cta": "在 Google 地图中打开",
+        "map_iframe_title": "工作室地图 - {address}",
+        "photo_caption": "蓬泰代拉大教堂",
+        "photo_credit": "照片：SeesaTheDoctor / Wikimedia (CC BY 4.0)"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_categorie",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        {
+          "value": "A",
+          "label": "住宅 – A 类（不含 A/10）"
+        },
+        {
+          "value": "A10",
+          "label": "A/10 – 办公室与私人工作室"
+        },
+        {
+          "value": "B",
+          "label": "B 类（学院、学校、公共办公室等）"
+        },
+        {
+          "value": "C",
+          "label": "C 类 – 附属物（车库、地窖等），不含 C/1"
+        },
+        {
+          "value": "C1",
+          "label": "C/1 – 商铺与作坊"
+        },
+        {
+          "value": "D",
+          "label": "D 类（工厂、酒店、厂房等）"
+        },
+        {
+          "value": "E",
+          "label": "E 类（车站、特殊建筑等）"
+        }
+      ]
+    },
+    {
+      "collection": "footer",
+      "key": "nav_heading",
+      "locale": "zh",
+      "is_published": true,
+      "value": "浏览"
+    },
+    {
+      "collection": "footer",
+      "key": "legal_heading",
+      "locale": "zh",
+      "is_published": true,
+      "value": "法律"
+    },
+    {
+      "collection": "footer",
+      "key": "rights_reserved",
+      "locale": "zh",
+      "is_published": true,
+      "value": "保留所有权利。"
+    },
+    {
+      "collection": "footer",
+      "key": "label_forma",
+      "locale": "zh",
+      "is_published": true,
+      "value": "形式"
+    },
+    {
+      "collection": "footer",
+      "key": "label_piva",
+      "locale": "zh",
+      "is_published": true,
+      "value": "P.IVA"
+    },
+    {
+      "collection": "footer",
+      "key": "label_cf",
+      "locale": "zh",
+      "is_published": true,
+      "value": "C.F."
+    },
+    {
+      "collection": "footer",
+      "key": "label_rea",
+      "locale": "zh",
+      "is_published": true,
+      "value": "REA"
+    },
+    {
+      "collection": "footer",
+      "key": "label_pec",
+      "locale": "zh",
+      "is_published": true,
+      "value": "PEC"
+    },
+    {
+      "collection": "footer",
+      "key": "label_tel",
+      "locale": "zh",
+      "is_published": true,
+      "value": "Tel"
+    },
+    {
+      "collection": "legale",
+      "key": "updated_prefix",
+      "locale": "zh",
+      "is_published": true,
+      "value": "最后更新："
+    },
+    {
+      "collection": "legale",
+      "key": "lang_note",
+      "locale": "zh",
+      "is_published": true,
+      "value": "本文件意大利语版本具有法律效力：译文仅供参考，如有出入以意大利语为准。"
+    },
+    {
+      "collection": "home",
+      "key": "meta_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "Successioni Online | Geom. Lorenzo Armellin"
+    },
+    {
+      "collection": "home",
+      "key": "meta_description",
+      "locale": "zh",
+      "is_published": true,
+      "value": "由真人专业人士在线办理遗产继承申报：Geom. Lorenzo Armellin，协会注册。报价清晰，文件与案件可在家完成——也可在 Pontedera 面谈。"
+    }
   ]
 }

@@ -428,6 +428,11 @@ function CommsLocalePrefs({
             { value: "tr" as const, label: labels.comms_lang_tr },
             { value: "fr" as const, label: labels.comms_lang_fr },
             { value: "sq" as const, label: labels.comms_lang_sq },
+            { value: "de" as const, label: labels.comms_lang_de },
+            { value: "es" as const, label: labels.comms_lang_es },
+            { value: "ru" as const, label: labels.comms_lang_ru },
+            { value: "zh" as const, label: labels.comms_lang_zh },
+            { value: "hi" as const, label: labels.comms_lang_hi },
             { value: "ar" as const, label: labels.comms_lang_ar },
           ] as const
         ).map((opt) => {

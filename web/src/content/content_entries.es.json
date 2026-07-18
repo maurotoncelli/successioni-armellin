@@ -1,36 +1,4802 @@
 {
   "_meta": {
-    "purpose": "Traduzione parziale (prep multilingua). Contiene solo la collection 'area_login'. Tutte le altre chiavi ricadono sull'italiano (IT fa fede).",
+    "purpose": "Spanish courtesy translation of public site + area UI. Same keys as IT; IT remains legally authoritative (@07/@10).",
     "locale": "es",
-    "version": 1,
-    "updated_at": "2026-06-22"
+    "schema": "ogni entry: { collection, key, locale, value, is_published }. value tipizzato secondo SPEC_Content_Blocks.",
+    "exclusions": "NON inclusi i contenuti data-driven gestiti in tabelle dedicate: packages, addons, faqs (Q&A), articles, document_catalog, media_assets (qui solo asset_key di riferimento).",
+    "version": 2,
+    "updated_at": "2026-07-18"
   },
   "entries": [
-    { "collection": "area_login", "key": "header_title", "locale": "es", "is_published": true, "value": "Área privada" },
-    { "collection": "area_login", "key": "header_subtitle", "locale": "es", "is_published": true, "value": "Accede para seguir tu trámite de sucesión." },
-    { "collection": "area_login", "key": "tab_email", "locale": "es", "is_published": true, "value": "Correo" },
-    { "collection": "area_login", "key": "tab_phone", "locale": "es", "is_published": true, "value": "Teléfono" },
-    { "collection": "area_login", "key": "email_label", "locale": "es", "is_published": true, "value": "Tu correo electrónico" },
-    { "collection": "area_login", "key": "email_hint", "locale": "es", "is_published": true, "value": "Usa el correo con el que realizaste el pago." },
-    { "collection": "area_login", "key": "email_cta", "locale": "es", "is_published": true, "value": "Enviarme el enlace de acceso" },
-    { "collection": "area_login", "key": "email_sending", "locale": "es", "is_published": true, "value": "Enviando…" },
-    { "collection": "area_login", "key": "phone_label", "locale": "es", "is_published": true, "value": "Tu número de teléfono" },
-    { "collection": "area_login", "key": "phone_hint", "locale": "es", "is_published": true, "value": "Usa el número con el que hiciste el pedido. Te enviaremos un código por SMS." },
-    { "collection": "area_login", "key": "phone_cta", "locale": "es", "is_published": true, "value": "Enviarme el código por SMS" },
-    { "collection": "area_login", "key": "phone_sending", "locale": "es", "is_published": true, "value": "Enviando…" },
-    { "collection": "area_login", "key": "sent_email_title", "locale": "es", "is_published": true, "value": "Revisa tu correo" },
-    { "collection": "area_login", "key": "sent_email_body", "locale": "es", "is_published": true, "value": "Hemos enviado un enlace de acceso a {contact}. El enlace caduca en unos minutos." },
-    { "collection": "area_login", "key": "sent_phone_title", "locale": "es", "is_published": true, "value": "Revisa tus SMS" },
-    { "collection": "area_login", "key": "sent_phone_body", "locale": "es", "is_published": true, "value": "Hemos enviado un código de 6 cifras al {contact}. Introdúcelo abajo." },
-    { "collection": "area_login", "key": "otp_toggle", "locale": "es", "is_published": true, "value": "He recibido un código, introducirlo" },
-    { "collection": "area_login", "key": "otp_label", "locale": "es", "is_published": true, "value": "Código de 6 cifras" },
-    { "collection": "area_login", "key": "otp_cta", "locale": "es", "is_published": true, "value": "Verificar código" },
-    { "collection": "area_login", "key": "otp_verifying", "locale": "es", "is_published": true, "value": "Verificando…" },
-    { "collection": "area_login", "key": "resend", "locale": "es", "is_published": true, "value": "Enviar de nuevo" },
-    { "collection": "area_login", "key": "error_link", "locale": "es", "is_published": true, "value": "El enlace de acceso no es válido o ha caducado. Solicita uno nuevo." },
-    { "collection": "area_login", "key": "secure_note", "locale": "es", "is_published": true, "value": "Acceso seguro" },
-    { "collection": "area_login", "key": "back_to_site", "locale": "es", "is_published": true, "value": "Volver al sitio" },
-    { "collection": "area_login", "key": "privacy_link", "locale": "es", "is_published": true, "value": { "label": "Privacidad", "href": "/privacy" } },
-    { "collection": "area_login", "key": "termini_link", "locale": "es", "is_published": true, "value": { "label": "Términos", "href": "/termini-condizioni" } }
+    {
+      "collection": "navbar",
+      "key": "menu",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        {
+          "label": "Cómo funciona",
+          "href": "/come-funziona"
+        },
+        {
+          "label": "Tarifas",
+          "href": "/tariffe"
+        },
+        {
+          "label": "Quién soy",
+          "href": "/chi-sono"
+        },
+        {
+          "label": "Guías",
+          "href": "/guide"
+        },
+        {
+          "label": "FAQ",
+          "href": "/faq"
+        },
+        {
+          "label": "Contacto",
+          "href": "/contatti"
+        }
+      ]
+    },
+    {
+      "collection": "navbar",
+      "key": "brand_tagline",
+      "locale": "es",
+      "is_published": true,
+      "value": "Sucesiones"
+    },
+    {
+      "collection": "navbar",
+      "key": "logo",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "asset_key": "logo_studio"
+      }
+    },
+    {
+      "collection": "navbar",
+      "key": "cta",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Calcula el presupuesto gratis",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "navbar",
+      "key": "cta_phone",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Habla con Lorenzo",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "navbar",
+      "key": "lang_switcher",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "enabled": true,
+        "locales": [
+          "it",
+          "en",
+          "ar",
+          "de",
+          "es",
+          "ru",
+          "tr",
+          "zh",
+          "hi",
+          "sq",
+          "fr"
+        ]
+      }
+    },
+    {
+      "collection": "globals",
+      "key": "mobile_cta",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Calcula el presupuesto gratis",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "footer",
+      "key": "studio",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "ragione_sociale": "Geom. Lorenzo Armellin",
+        "forma_giuridica": "Empresario individual - régimen forfettario (operación sin IVA, art. 1 párrs. 54-89 L. 190/2014)",
+        "piva": "02432220503",
+        "cf": "RMLLNZ90E27G843J",
+        "albo": "Colegio de Geometras y Geometras Laureados de Pisa, n.º 1969 - inscrito desde el 21/01/2022",
+        "indirizzo": "Via Vittorio Veneto 31, 56025 Pontedera (PI)"
+      }
+    },
+    {
+      "collection": "footer",
+      "key": "trust_line",
+      "locale": "es",
+      "is_published": true,
+      "value": "Geom. habilitado Entratel - con supervisión fiscal de asesores fiscales"
+    },
+    {
+      "collection": "footer",
+      "key": "area_app_note",
+      "locale": "es",
+      "is_published": true,
+      "value": "Este sitio permite gestionar en línea tu expediente de sucesión: en el Área personal los clientes siguen el estado del expediente, suben los documentos solicitados y firman el mandato. El acceso es con correo, teléfono o cuenta Google: de la cuenta Google solo usamos nombre y correo para identificarte, ningún otro dato se lee ni comparte. Detalles en la"
+    },
+    {
+      "collection": "footer",
+      "key": "odr",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Resolución de conflictos en línea (ODR)",
+        "href": "https://ec.europa.eu/consumers/odr"
+      }
+    },
+    {
+      "collection": "footer",
+      "key": "legal_menu",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        {
+          "label": "Privacy",
+          "href": "/privacy"
+        },
+        {
+          "label": "Cookie Policy",
+          "href": "/cookie-policy"
+        },
+        {
+          "label": "Términos y Condiciones",
+          "href": "/termini-condizioni"
+        },
+        {
+          "label": "Garantía",
+          "href": "/garanzia"
+        },
+        {
+          "label": "Desistimiento",
+          "href": "/recesso"
+        }
+      ]
+    },
+    {
+      "collection": "footer",
+      "key": "credit",
+      "locale": "es",
+      "is_published": true,
+      "value": "Realizado por AT STUDIO · Mauro Toncelli"
+    },
+    {
+      "collection": "footer",
+      "key": "strumenti_link",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Cálculo del valor catastral",
+        "href": "/strumenti/valore-catastale"
+      }
+    },
+    {
+      "collection": "settings",
+      "key": "phone",
+      "locale": "es",
+      "is_published": true,
+      "value": "320 1570567"
+    },
+    {
+      "collection": "settings",
+      "key": "area_label",
+      "locale": "es",
+      "is_published": true,
+      "value": "Área personal"
+    },
+    {
+      "collection": "settings",
+      "key": "whatsapp",
+      "locale": "es",
+      "is_published": true,
+      "value": "https://wa.me/393201570567"
+    },
+    {
+      "collection": "settings",
+      "key": "email",
+      "locale": "es",
+      "is_published": true,
+      "value": "studio@successioniarmellin.it"
+    },
+    {
+      "collection": "settings",
+      "key": "pec",
+      "locale": "es",
+      "is_published": true,
+      "value": "lorenzo.armellin@geopec.it"
+    },
+    {
+      "collection": "settings",
+      "key": "review_url",
+      "locale": "es",
+      "is_published": true,
+      "value": "https://g.page/r/CVRoWf5CoiTDEAE/review"
+    },
+    {
+      "collection": "settings",
+      "key": "address",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "via": "Via Vittorio Veneto 31",
+        "cap": "56025",
+        "citta": "Pontedera (PI)"
+      }
+    },
+    {
+      "collection": "settings",
+      "key": "opening_hours",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        {
+          "giorni": "Lun–vie",
+          "orario": "9:00-13:00 / 14:30-18:30"
+        },
+        {
+          "giorni": "Sáb–dom",
+          "orario": "Cerrado"
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "hero_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Tu expediente de sucesión, sin salir de casa."
+    },
+    {
+      "collection": "home",
+      "key": "hero_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "Se encarga el Geom. Lorenzo Armellin, especializado en sucesiones: precio claro, todo en línea (y en persona si quieres), una persona real que te acompaña. Calculamos los impuestos nosotros, antes de cobrarte."
+    },
+    {
+      "collection": "home",
+      "key": "hero_cta_primary",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Calcula el presupuesto gratis",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "hero_cta_secondary",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Descubre cómo funciona",
+        "href": "#come-funziona"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "hero_image",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "asset_key": "hero_home"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "hero_specialization_badge",
+      "locale": "es",
+      "is_published": true,
+      "value": "El geometra especializado en sucesiones"
+    },
+    {
+      "collection": "home",
+      "key": "trustbar_items",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        "Geometra inscrito en el Colegio",
+        "Habilitado Entratel (envío telemático AdE)",
+        "Supervisión fiscal de asesores fiscales",
+        "Pagos seguros con Stripe",
+        "Conforme al RGPD",
+        "SSL"
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "social_proof_stats",
+      "locale": "es",
+      "is_published": false,
+      "value": [
+        {
+          "valore": "oltre X",
+          "label": "sucesiones tramitadas"
+        },
+        {
+          "valore": "X anni",
+          "label": "de experiencia"
+        },
+        {
+          "valore": "4,X/5",
+          "label": "valoración media en Google"
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "problema_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Una sucesión, mil dudas. Te la quitamos de encima."
+    },
+    {
+      "collection": "home",
+      "key": "problema_intro",
+      "locale": "es",
+      "is_published": true,
+      "value": "Sabemos que llega en un momento difícil. De la burocracia nos encargamos nosotros."
+    },
+    {
+      "collection": "home",
+      "key": "problema_vantaggi",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "Sin colas",
+          "testo": "Hazlo todo desde casa, también por teléfono."
+        },
+        {
+          "titolo": "Cero errores y sanciones",
+          "testo": "Control técnico de datos catastrales por un geometra habilitado."
+        },
+        {
+          "titolo": "Asistencia humana",
+          "testo": "Siempre hablas con una persona real, no con un bot."
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_eyebrow",
+      "locale": "es",
+      "is_published": true,
+      "value": "Sencillo"
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Cómo funciona, en 3 pasos"
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_steps",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "Responde a unas preguntas",
+          "testo": "Te decimos al instante qué necesitas y cuánto cuesta.",
+          "immagine": {
+            "src": "/images/come-funziona-step-1-quiz.jpg",
+            "alt": "Persona en el ordenador respondiendo las preguntas del presupuesto en línea"
+          }
+        },
+        {
+          "titolo": "Subes los documentos",
+          "testo": "Desde tu área personal, también con fotos. Te damos la lista exacta.",
+          "immagine": {
+            "src": "/images/come-funziona-step-2-documenti.jpg",
+            "alt": "Persona fotografiando un documento con el móvil"
+          }
+        },
+        {
+          "titolo": "Nos ocupamos de todo",
+          "testo": "Preparamos y enviamos la declaración; tú recibes los recibos.",
+          "immagine": {
+            "src": "/images/come-funziona-step-3-lorenzo.jpg",
+            "alt": "Geom. Lorenzo Armellin en el ordenador preparando el expediente"
+          }
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_sla_note",
+      "locale": "es",
+      "is_published": true,
+      "value": "Envío en 10-15 días laborables (según paquete) desde que tenemos todos los documentos completos."
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Qué es Successioni Armellin"
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "Successioni Armellin es la aplicación web del estudio del Geom. Lorenzo Armellin para gestionar en línea la declaración de sucesión: calculas un presupuesto con precio claro, pagas de forma segura con tarjeta y en tu Área personal subes los documentos solicitados, firmas el mandato y sigues el expediente paso a paso hasta el envío a la Agenzia delle Entrate. Para acceder al Área personal puedes usar tu correo, teléfono o cuenta Google: en ese caso utilizamos exclusivamente tu nombre y correo para crear y reconocer tu perfil; ningún otro dato de tu cuenta se lee ni comparte."
+    },
+    {
+      "collection": "home",
+      "key": "tariffe_eyebrow",
+      "locale": "es",
+      "is_published": true,
+      "value": "Tarifas"
+    },
+    {
+      "collection": "home",
+      "key": "tariffe_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Precios claros, sin sorpresas"
+    },
+    {
+      "collection": "home",
+      "key": "tariffe_intro",
+      "locale": "es",
+      "is_published": true,
+      "value": "Pagas unos honorarios fijos. Los impuestos son aparte, a cargo del heredero, y los calculamos nosotros."
+    },
+    {
+      "collection": "home",
+      "key": "tariffe_cta",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Ver paquetes",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "faidate_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Se puede hacer por uno mismo en el sitio de la Agenzia delle Entrate. ¿Entonces por qué nosotros?"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_col_us",
+      "locale": "es",
+      "is_published": true,
+      "value": "Con nosotros"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_col_diy",
+      "locale": "es",
+      "is_published": true,
+      "value": "Hazlo tú mismo"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_col_corner",
+      "locale": "es",
+      "is_published": true,
+      "value": "Comparación"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_intro",
+      "locale": "es",
+      "is_published": true,
+      "value": "Es cierto, existe la sucesión precompilada gratuita: es una opción honesta. Pero requiere SPID y competencia, no valida los datos y los errores (y sanciones) quedan a tu cargo."
+    },
+    {
+      "collection": "home",
+      "key": "faidate_confronto",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        {
+          "voce": "Tiempo necesario",
+          "faidate": "Horas y SPID a tu cargo",
+          "noi": "Nos encargamos nosotros"
+        },
+        {
+          "voce": "Control de datos catastrales",
+          "faidate": "A tu cargo",
+          "noi": "Lo hace un geometra"
+        },
+        {
+          "voce": "Cálculo de impuestos",
+          "faidate": "Por tu cuenta",
+          "noi": "Lo hacemos nosotros, antes"
+        },
+        {
+          "voce": "Asistencia",
+          "faidate": "Ninguna",
+          "noi": "Una persona real"
+        },
+        {
+          "voce": "Riesgo de sanciones",
+          "faidate": "Tu",
+          "noi": "Gestionado"
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Lo que dicen los clientes"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_intro",
+      "locale": "es",
+      "is_published": true,
+      "value": "Reseñas reales de Google."
+    },
+    {
+      "collection": "home",
+      "key": "chisono_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Quién se encarga de tu expediente"
+    },
+    {
+      "collection": "home",
+      "key": "chisono_estratto",
+      "locale": "es",
+      "is_published": true,
+      "value": "Soy Lorenzo Armellin, geometra habilitado para transmitir sucesiones a la Agenzia delle Entrate. Con supervisión fiscal de asesores fiscales, uno la precisión catastral con la seguridad en los números."
+    },
+    {
+      "collection": "home",
+      "key": "chisono_video",
+      "locale": "es",
+      "is_published": false,
+      "value": {
+        "asset_key": "video_benvenuto_lorenzo"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "chisono_cta",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Conoce a Lorenzo",
+        "href": "/chi-sono"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "faq_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Preguntas frecuentes"
+    },
+    {
+      "collection": "home",
+      "key": "faq_cta",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Todas las preguntas",
+        "href": "/faq"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "cta_finale_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "¿Listo para quitarte este peso de encima?"
+    },
+    {
+      "collection": "home",
+      "key": "cta_finale_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "Presupuesto gratis en pocos minutos. Satisfechos o reembolsados."
+    },
+    {
+      "collection": "home",
+      "key": "cta_finale_button",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Calcula el presupuesto gratis",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "cta_finale_phone",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "O llama a Lorenzo",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "hero_eyebrow",
+      "locale": "es",
+      "is_published": true,
+      "value": "Precios claros"
+    },
+    {
+      "collection": "tariffe",
+      "key": "hero_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Precios claros. Lo que ves es lo que pagas."
+    },
+    {
+      "collection": "tariffe",
+      "key": "hero_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "Unos honorarios fijos por paquete, acordados antes. Los impuestos son aparte y los calculamos nosotros. Para casos particulares, un presupuesto a medida."
+    },
+    {
+      "collection": "tariffe",
+      "key": "card_badge_popolare",
+      "locale": "es",
+      "is_published": true,
+      "value": "El más elegido"
+    },
+    {
+      "collection": "tariffe",
+      "key": "box_trasparenza_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Cómo se compone el precio"
+    },
+    {
+      "collection": "tariffe",
+      "key": "box_trasparenza_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "El precio del paquete son los honorarios profesionales sin IVA: el estudio opera en régimen forfettario (operación no sujeta a IVA). Los impuestos de sucesión (hipotecario, catastral, timbres) son aparte, a cargo del heredero, y se pagan con F24: los calculamos y comunicamos ANTES del envío."
+    },
+    {
+      "collection": "tariffe",
+      "key": "sovrapprezzo_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Cuándo puede variar el precio (te lo decimos antes)"
+    },
+    {
+      "collection": "tariffe",
+      "key": "sovrapprezzo_list",
+      "locale": "es",
+      "is_published": false,
+      "value": [
+        {
+          "voce": "Inmueble adicional",
+          "importo": "+60 EUR c/u. (por confirmar)"
+        },
+        {
+          "voce": "Terrenos/anexos agrícolas",
+          "importo": "según complejidad"
+        },
+        {
+          "voce": "Herederos por encima del umbral estándar",
+          "importo": "según complejidad"
+        }
+      ]
+    },
+    {
+      "collection": "tariffe",
+      "key": "sla_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Plazos de entrega"
+    },
+    {
+      "collection": "tariffe",
+      "key": "sla_note",
+      "locale": "es",
+      "is_published": true,
+      "value": "Cada paquete indica el envío de la declaración en un número preciso de días laborables desde la documentación COMPLETA (no desde el pago): así es una promesa que realmente podemos cumplir. Quedan excluidos los plazos de terceros (Agenzia, Catasto, bancos)."
+    },
+    {
+      "collection": "tariffe",
+      "key": "deliverable_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Qué recibes al final del expediente"
+    },
+    {
+      "collection": "tariffe",
+      "key": "deliverable_list",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        "Recibo de presentación/registro de la Agenzia",
+        "Copia de la declaración de sucesión",
+        "Certificación / resultado F24",
+        "Resultado de la voltura catastral (donde corresponda)",
+        "Nuestra factura"
+      ]
+    },
+    {
+      "collection": "tariffe",
+      "key": "esempio_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Mira un ejemplo de los documentos finales"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_intro",
+      "locale": "es",
+      "is_published": true,
+      "value": "Servicios adicionales, si los necesitas"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "Toca un servicio para saber más. Por ahora los activamos bajo solicitud: lo hablamos juntos y los incluimos en el expediente."
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_contact_text",
+      "locale": "es",
+      "is_published": true,
+      "value": "Este servicio se añade bajo solicitud, con un presupuesto dedicado. Llámanos o escríbenos: evaluamos tu caso juntos y lo incluimos en el expediente, sin sorpresas."
+    },
+    {
+      "collection": "tariffe",
+      "key": "rate_text",
+      "locale": "es",
+      "is_published": true,
+      "value": "Los honorarios se pueden pagar a plazos en el checkout (PayPal Pay in 3, Klarna, Scalapay, donde estén disponibles). Se fraccionan los honorarios, no los impuestos, que siguen los plazos legales."
+    },
+    {
+      "collection": "tariffe",
+      "key": "su_misura_text",
+      "locale": "es",
+      "is_published": true,
+      "value": "¿Más de 8 inmuebles, terrenos agrícolas, empresas o participaciones? Cada caso es distinto: te hacemos un presupuesto a medida, sin sorpresas."
+    },
+    {
+      "collection": "tariffe",
+      "key": "su_misura_cta",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Solicita un presupuesto a medida",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "ti_serve_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Quizá ni siquiera lo necesitas. Te lo decimos gratis."
+    },
+    {
+      "collection": "tariffe",
+      "key": "ti_serve_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "En algunos casos (herederos directos, solo liquidez modesta dentro de los umbrales legales, ningún inmueble) la declaración podría no ser obligatoria. Verificamos tu caso antes de cobrarte: si no lo necesitas, te lo decimos. La verificación definitiva siempre es sobre el caso concreto."
+    },
+    {
+      "collection": "tariffe",
+      "key": "ti_serve_cta",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Verifica gratis tu caso",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "¿No sabes cuál elegir?"
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "Lee la guía rápida para elegir paquete, o charla con Lorenzo: en pocos minutos entiendes cuál es el adecuado. Y si cambias de idea, cambiar de paquete es sencillo y solo ajustas la diferencia."
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_cta_guida",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Guía para elegir",
+        "href": "#guida"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_cta_call",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Habla con Lorenzo",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "microtrust",
+      "locale": "es",
+      "is_published": true,
+      "value": "Geometra habilitado Entratel, con supervisión fiscal de asesores fiscales."
+    },
+    {
+      "collection": "tariffe",
+      "key": "cta_finale_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Unos minutos para saber cuánto cuesta, sin compromiso."
+    },
+    {
+      "collection": "tariffe",
+      "key": "cta_finale_button",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Calcula el presupuesto gratis",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Presupuesto personalizado"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_tagline",
+      "locale": "es",
+      "is_published": true,
+      "value": "Para sucesiones más complejas"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_price_label",
+      "locale": "es",
+      "is_published": true,
+      "value": "A medida"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "¿Más de 8 inmuebles, terrenos agrícolas, empresas o participaciones? Los casos más complejos no caben en un paquete estándar: estudiamos el tuyo y te preparamos un presupuesto dedicado, sin sorpresas."
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_features",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        "Para casos que los paquetes no cubren",
+        "Primera evaluación gratuita de tu caso",
+        "Precio claro y definido antes de empezar",
+        "El mismo servicio y la misma asistencia que los paquetes"
+      ]
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_cta",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Solicita el presupuesto",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "hero_eyebrow",
+      "locale": "es",
+      "is_published": true,
+      "value": "Quién soy"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "hero_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Hola, soy Lorenzo Armellin."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "hero_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "Geometra habilitado para transmitir declaraciones de sucesión a la Agenzia delle Entrate. Detrás de este sitio no hay un software: hay una persona que sigue tu expediente."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "hero_ritratto",
+      "locale": "es",
+      "is_published": false,
+      "value": {
+        "asset_key": "ritratto_lorenzo"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "bio_body",
+      "locale": "es",
+      "is_published": false,
+      "value": "Me ocupo de sucesiones cada día. Como geometra, mi fortaleza es el control de datos catastrales — parcelas, subalternos, anexos, actos de procedencia — donde se bloquea la mayoría de expedientes. Mi objetivo es sencillo: quitarte un peso en un momento ya difícil, con precios claros y sin hacerte ir de oficina en oficina y de banco en banco."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "credenziali_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Mis credenciales"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "credenziali_list",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        {
+          "voce": "Inscripción en el Colegio de Geometras",
+          "dettaglio": "Colegio de Pisa n.º 1969 - inscrito desde el 21/01/2022"
+        },
+        {
+          "voce": "Habilitación Entratel",
+          "dettaglio": "Intermediario para el envío telemático a la Agenzia delle Entrate"
+        },
+        {
+          "voce": "Partita IVA",
+          "dettaglio": "02432220503"
+        }
+      ]
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "team_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Geometra en lo catastral, asesores fiscales en los números"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "team_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "Yo preparo y transmito la declaración: estoy habilitado para hacerlo. En la parte fiscal cuento con la supervisión de asesores fiscales. Así tienes control técnico de los datos catastrales y seguridad en los cálculos, sin dividir el expediente entre distintos estudios."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "team_membri",
+      "locale": "es",
+      "is_published": false,
+      "value": [
+        {
+          "ruolo": "Geometra habilitado Entratel",
+          "nome": "Lorenzo Armellin",
+          "focus": "Prepara y envía el expediente, control catastral",
+          "foto": {
+            "asset_key": "ritratto_lorenzo"
+          }
+        },
+        {
+          "ruolo": "Supervisión fiscal",
+          "nome": "Asesor fiscal (por confirmar)",
+          "focus": "Verificación de la parte fiscal/impuestos",
+          "foto": {
+            "asset_key": "ritratto_commercialista"
+          }
+        }
+      ]
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "perche_geometra_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "Muchos esperan un asesor fiscal, un CAF o un notario. En la sucesión, sin embargo, lo más delicado son los datos catastrales: es el oficio del geometra. Para el depósito hace falta un intermediario Entratel — yo lo soy. El notario interviene solo en actos posteriores, no en la declaración."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Dónde encontrarme"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_indirizzo",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "via": "Via Vittorio Veneto 31",
+        "cap": "56025",
+        "citta": "Pontedera (PI)"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_nota",
+      "locale": "es",
+      "is_published": true,
+      "value": "Todo se hace a distancia, pero el estudio existe de verdad: está aquí."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_maps_label",
+      "locale": "es",
+      "is_published": true,
+      "value": "Abrir en Google Maps"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_foto_alt",
+      "locale": "es",
+      "is_published": true,
+      "value": "Duomo di Pontedera"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "ritratto_alt",
+      "locale": "es",
+      "is_published": true,
+      "value": "Geom. Lorenzo Armellin"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_ref",
+      "locale": "es",
+      "is_published": false,
+      "value": {
+        "asset_key": "video_benvenuto_lorenzo"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_caption",
+      "locale": "es",
+      "is_published": true,
+      "value": "Un saludo y unas palabras sobre cómo trabajo (60 segundos)."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_badge",
+      "locale": "es",
+      "is_published": true,
+      "value": "Vídeo próximamente"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_alt",
+      "locale": "es",
+      "is_published": true,
+      "value": "Vídeo de bienvenida del Geom. Lorenzo Armellin"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "motto_latino",
+      "locale": "es",
+      "is_published": false,
+      "value": "(lema latino elegante sobre herencia/familia/confianza)"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "motto_traduzione",
+      "locale": "es",
+      "is_published": false,
+      "value": "(traducción italiana)"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "recensioni_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Lo que dicen de mí"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "cta_finale_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "¿Quieres que me encargue yo?"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "cta_finale_button",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Calcula el presupuesto gratis",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "cta_finale_phone",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Llámame",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "documenti",
+      "key": "hero_eyebrow",
+      "locale": "es",
+      "is_published": true,
+      "value": "Guía de documentos"
+    },
+    {
+      "collection": "documenti",
+      "key": "hero_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "¿Qué documentos hacen falta para la sucesión?"
+    },
+    {
+      "collection": "documenti",
+      "key": "hero_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "Responde a unas preguntas y te decimos al instante, gratis, qué necesitarás en tu caso. Sin compromiso. Y si te falta algo, a menudo podemos recuperarlo nosotros."
+    },
+    {
+      "collection": "documenti",
+      "key": "interattiva_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Crea tu lista personalizada"
+    },
+    {
+      "collection": "documenti",
+      "key": "interattiva_domande",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        "¿Hay inmuebles (viviendas, terrenos, trasteros)?",
+        "¿Hay testamento?",
+        "¿Hay herederos menores?",
+        "¿Hay cuentas/inversiones?",
+        "¿Hay terrenos agrícolas/parcelas/anexos?",
+        "¿Hay otros bienes (participaciones, empresas, vehículos)?"
+      ]
+    },
+    {
+      "collection": "documenti",
+      "key": "interattiva_risultato_intro",
+      "locale": "es",
+      "is_published": true,
+      "value": "Esto es lo que necesitarás:"
+    },
+    {
+      "collection": "documenti",
+      "key": "evergreen_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Los documentos habituales para la declaración de sucesión"
+    },
+    {
+      "collection": "documenti",
+      "key": "evergreen_intro",
+      "locale": "es",
+      "is_published": true,
+      "value": "A continuación los documentos más habituales. No siempre hacen falta todos: depende de tu caso (para eso está la herramienta de arriba)."
+    },
+    {
+      "collection": "documenti",
+      "key": "hook_recupero",
+      "locale": "es",
+      "is_published": true,
+      "value": "¿No encuentras un documento? A menudo podemos recuperarlo nosotros: notas catastrales, actos de procedencia, datos faltantes. Forma parte de nuestro trabajo."
+    },
+    {
+      "collection": "documenti",
+      "key": "disclaimer_ymyl",
+      "locale": "es",
+      "is_published": true,
+      "value": "Esta lista es orientativa y se adapta a los datos que introduces. Lorenzo confirma la lista definitiva tras verificar tu caso concreto."
+    },
+    {
+      "collection": "documenti",
+      "key": "cta_preventivo",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Calcula el presupuesto",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "documenti",
+      "key": "cta_pdf",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Descargar la lista (PDF)",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "documenti",
+      "key": "cta_email",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Recíbelo por correo",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "faq",
+      "key": "hero_eyebrow",
+      "locale": "es",
+      "is_published": true,
+      "value": "FAQ"
+    },
+    {
+      "collection": "faq",
+      "key": "hero_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Preguntas frecuentes sobre sucesiones"
+    },
+    {
+      "collection": "faq",
+      "key": "hero_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "Respuestas claras a las preguntas más frecuentes. Si no encuentras la tuya, escríbenos o llama a Lorenzo: respondemos a todos."
+    },
+    {
+      "collection": "faq",
+      "key": "hero_search",
+      "locale": "es",
+      "is_published": true,
+      "value": true
+    },
+    {
+      "collection": "faq",
+      "key": "cat_capire_intro",
+      "locale": "es",
+      "is_published": true,
+      "value": "Qué es, cuándo hace falta y qué se arriesga."
+    },
+    {
+      "collection": "faq",
+      "key": "cat_costi_intro",
+      "locale": "es",
+      "is_published": true,
+      "value": "Cuánto cuesta, qué incluye y cómo funcionan los impuestos."
+    },
+    {
+      "collection": "faq",
+      "key": "cat_perche_intro",
+      "locale": "es",
+      "is_published": true,
+      "value": "Se puede hacer gratis por uno mismo: por qué conviene delegar igualmente."
+    },
+    {
+      "collection": "faq",
+      "key": "cat_come_intro",
+      "locale": "es",
+      "is_published": true,
+      "value": "El proceso, los documentos y los plazos, paso a paso."
+    },
+    {
+      "collection": "faq",
+      "key": "cat_dopo_intro",
+      "locale": "es",
+      "is_published": true,
+      "value": "Qué recibes, cómo tratamos tus datos y tus garantías."
+    },
+    {
+      "collection": "faq",
+      "key": "cta_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "¿No encontraste la respuesta?"
+    },
+    {
+      "collection": "faq",
+      "key": "cta_button",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Calcula el presupuesto gratis",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "faq",
+      "key": "cta_phone",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Pregunta a Lorenzo",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "recesso",
+      "key": "hero_eyebrow",
+      "locale": "es",
+      "is_published": true,
+      "value": "Tus garantías"
+    },
+    {
+      "collection": "recesso",
+      "key": "hero_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Tu derecho de desistimiento, explicado de forma sencilla"
+    },
+    {
+      "collection": "recesso",
+      "key": "hero_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "Queremos que estés tranquilo/a. Aquí te explicamos con claridad cómo funciona cancelar y obtener reembolso. El texto formal está en las Condiciones de venta."
+    },
+    {
+      "collection": "recesso",
+      "key": "cosa_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Tienes 14 días para cambiar de idea"
+    },
+    {
+      "collection": "recesso",
+      "key": "cosa_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "Como consumidor/a tienes derecho a desistir en 14 días desde la compra, sin dar explicaciones. Es un derecho legal."
+    },
+    {
+      "collection": "recesso",
+      "key": "avvio_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Si nos pides empezar de inmediato"
+    },
+    {
+      "collection": "recesso",
+      "key": "avvio_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "A menudo la sucesión es urgente (hay un plazo de 12 meses). Si nos pides empezar antes de los 14 días, pedimos consentimiento explícito: significa que, una vez completado el servicio, el derecho de desistimiento ya no aplica. Si la tramitación solo ha empezado pero no terminado, ver el punto siguiente."
+    },
+    {
+      "collection": "recesso",
+      "key": "iniziato_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "¿Y si cambio de idea mientras trabajáis?"
+    },
+    {
+      "collection": "recesso",
+      "key": "iniziato_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "Puedes desistir igualmente: pagas solo la parte del trabajo ya realizado hasta ese momento, proporcionalmente, y te reembolsamos el resto. Sin penalizaciones ocultas."
+    },
+    {
+      "collection": "recesso",
+      "key": "come_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Cómo solicitar el desistimiento"
+    },
+    {
+      "collection": "recesso",
+      "key": "come_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "De la forma más sencilla: en tu área personal encuentras el botón «Solicitar desistimiento». Alternativamente puedes escribirnos por correo/PEC. Puedes usar el modelo tipo abajo, pero no es obligatorio."
+    },
+    {
+      "collection": "recesso",
+      "key": "come_cta_area",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Solicitar el desistimiento desde el área personal",
+        "href": "/area-riservata/recesso"
+      }
+    },
+    {
+      "collection": "recesso",
+      "key": "rimborso_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Cuándo recibo el reembolso"
+    },
+    {
+      "collection": "recesso",
+      "key": "rimborso_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "Lo emitimos en los plazos legales (normalmente 14 días desde la solicitud), con el mismo método de pago que usaste. Una vez emitido en la tarjeta, el banco normalmente lo abona en 5-10 días laborables (plazos Stripe/emisor). Los impuestos ya pagados al Erario siguen las reglas de la Agenzia, no dependen de nosotros."
+    },
+    {
+      "collection": "recesso",
+      "key": "garanzia_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Desistimiento y garantía: dos cosas distintas"
+    },
+    {
+      "collection": "recesso",
+      "key": "garanzia_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "El desistimiento es tu derecho legal en los primeros 14 días. Nuestra garantía «Satisfechos o reembolsados» es una promesa extra que hacemos nosotros: si no estás satisfecho/a con nuestro trabajo, lo hablamos y buscamos una solución. Detalles en la página Garantía."
+    },
+    {
+      "collection": "recesso",
+      "key": "garanzia_link",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Lee la Garantía",
+        "href": "/garanzia"
+      }
+    },
+    {
+      "collection": "recesso",
+      "key": "tc_link",
+      "locale": "es",
+      "is_published": true,
+      "value": "Esta página explica el desistimiento de forma sencilla. El texto vinculante está en las Condiciones de venta."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_eyebrow",
+      "locale": "es",
+      "is_published": true,
+      "value": "El proceso"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Cómo funciona: sencillo, desde casa, en 3 pasos"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "Sin colas, sin oficinas. Te guiamos paso a paso: tú piensa en tu familia, de la burocracia nos encargamos nosotros."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        {
+          "numero": 1,
+          "titolo": "Responde a unas preguntas",
+          "testo": "Completas un breve cuestionario en línea (1 minuto). Te decimos al instante qué necesitas y cuánto cuesta — y si en tu caso ni siquiera hace falta la sucesión, te lo decimos gratis.",
+          "dettaglio": "Resultado inmediato: precio, o presupuesto a medida para casos complejos."
+        },
+        {
+          "numero": 2,
+          "titolo": "Subes los documentos",
+          "testo": "Desde tu área personal subes los documentos, también con fotos del móvil. Te damos la lista exacta, personalizada para tu caso. Si te falta algo, a menudo podemos recuperarlo nosotros.",
+          "dettaglio": "Una persona real lo revisa todo: nada de formularios a medias."
+        },
+        {
+          "numero": 3,
+          "titolo": "Nos ocupamos de todo",
+          "testo": "Lorenzo prepara y envía la declaración a la Agenzia delle Entrate. Te comunicamos antes los impuestos a pagar. Al final recibes recibos y documentos finales en tu área.",
+          "dettaglio": "Donde corresponda, también nos encargamos de la voltura catastral."
+        }
+      ]
+    },
+    {
+      "collection": "come_funziona",
+      "key": "sla_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Cuánto tiempo se tarda"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "sla_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "Los plazos dependen del paquete y empiezan cuando tenemos TODOS los documentos completos y correctos (no desde el pago): así es una promesa que realmente podemos cumplir. Quedan excluidos los plazos de terceros (Agenzia, Catasto, bancos)."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "valore_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Qué hacemos que un software no hace"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "valore_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "Verificamos manualmente los datos catastrales — parcelas, subalternos, anexos, actos de procedencia — donde suelen bloquearse los expedientes. Con supervisión fiscal de asesores fiscales en los números. Es la diferencia entre un formulario rellenado y un expediente bien hecho."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "distanza_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Todo en línea"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "distanza_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "No tienes que ir a ninguna oficina ni al banco: cuestionario, documentos, comunicaciones y envío a la Agenzia son en línea. Siempre hay una llamada con Lorenzo para explicártelo todo."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "visita_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "¿Prefieres en persona?"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "visita_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "Todo se hace a distancia, pero si quieres te recibimos en el estudio con cita: sin colas, solo tiempo para aclarar juntos documentos y pasos. Llama o escribe y fijamos hora."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "visita_maps_label",
+      "locale": "es",
+      "is_published": true,
+      "value": "Abrir en Google Maps"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "deliverable_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Qué tienes al final"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "deliverable_list",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        "Recibo de presentación/registro AdE",
+        "Copia de la declaración",
+        "Resultado F24 / certificación",
+        "Resultado de la voltura catastral (donde corresponda)",
+        "Factura"
+      ]
+    },
+    {
+      "collection": "come_funziona",
+      "key": "cta_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "¿Empezamos? Solo un minuto."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "cta_button",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Calcula el presupuesto gratis",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "cta_phone",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Habla con Lorenzo",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "contatti",
+      "key": "hero_eyebrow",
+      "locale": "es",
+      "is_published": true,
+      "value": "Contacto"
+    },
+    {
+      "collection": "contatti",
+      "key": "hero_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Habla con nosotros"
+    },
+    {
+      "collection": "contatti",
+      "key": "hero_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "¿Tienes una pregunta o quieres saber si necesitas la sucesión? Escríbenos o llámanos: te responde una persona real, no un bot."
+    },
+    {
+      "collection": "contatti",
+      "key": "telefono",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Teléfono / WhatsApp",
+        "numero": "+39 320 1570567",
+        "cta_chiama": "tel:+393201570567",
+        "cta_whatsapp": "https://wa.me/393201570567"
+      }
+    },
+    {
+      "collection": "contatti",
+      "key": "email",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "generale": "studio@successioniarmellin.it",
+        "pec": "lorenzo.armellin@geopec.it"
+      }
+    },
+    {
+      "collection": "contatti",
+      "key": "studio",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "via": "Via Vittorio Veneto 31",
+        "cap": "56025",
+        "citta": "Pontedera (PI)"
+      }
+    },
+    {
+      "collection": "contatti",
+      "key": "orari",
+      "locale": "es",
+      "is_published": false,
+      "value": [
+        {
+          "giorni": "Lun–vie",
+          "orario": "9:00-13:00 / 14:30-18:30"
+        },
+        {
+          "giorni": "Sáb–dom",
+          "orario": "Cerrado"
+        }
+      ]
+    },
+    {
+      "collection": "contatti",
+      "key": "canali_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Te acompañamos también en tu idioma"
+    },
+    {
+      "collection": "contatti",
+      "key": "canali_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "Escríbenos por WhatsApp o correo en tu idioma: nos entendemos sin problema. Si prefieres hablar, podemos hacer una llamada con traducción en tiempo real; los puntos importantes (importes, plazos, documentos) siempre te los confirmamos por escrito. Los documentos oficiales permanecen en italiano."
+    },
+    {
+      "collection": "contatti",
+      "key": "form_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Escríbenos"
+    },
+    {
+      "collection": "contatti",
+      "key": "form_nota",
+      "locale": "es",
+      "is_published": false,
+      "value": "Respondemos en 1 día laborable."
+    },
+    {
+      "collection": "contatti",
+      "key": "form_success",
+      "locale": "es",
+      "is_published": true,
+      "value": "¡Gracias! Te contactaremos en breve."
+    },
+    {
+      "collection": "contatti",
+      "key": "mappa_nota",
+      "locale": "es",
+      "is_published": true,
+      "value": "Todo se trabaja a distancia, pero el estudio existe: pásate a visitarnos con cita."
+    },
+    {
+      "collection": "contatti",
+      "key": "cta_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "¿Prefieres empezar ya? Calcula el presupuesto gratis, tarda 1 minuto."
+    },
+    {
+      "collection": "contatti",
+      "key": "cta_button",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Calcula el presupuesto",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "guide",
+      "key": "hero_eyebrow",
+      "locale": "es",
+      "is_published": true,
+      "value": "Guías"
+    },
+    {
+      "collection": "guide",
+      "key": "hero_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Guías sobre sucesiones: claras, actualizadas, sin burocratese"
+    },
+    {
+      "collection": "guide",
+      "key": "hero_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "Todo lo que hay que saber sobre sucesión, impuestos y documentos, explicado de forma sencilla por quienes realmente tramitan estos expedientes."
+    },
+    {
+      "collection": "guide",
+      "key": "hero_search",
+      "locale": "es",
+      "is_published": true,
+      "value": true
+    },
+    {
+      "collection": "guide",
+      "key": "categorie",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        {
+          "nome": "Entender la sucesión",
+          "slug": "bases"
+        },
+        {
+          "nome": "Impuestos y costes",
+          "slug": "impuestos"
+        },
+        {
+          "nome": "Documentos",
+          "slug": "documentos"
+        },
+        {
+          "nome": "Casos particulares",
+          "slug": "casos"
+        },
+        {
+          "nome": "Guías locales (Toscana)",
+          "slug": "locales"
+        },
+        {
+          "nome": "Herederos extranjeros / en el extranjero",
+          "slug": "extranjeros"
+        }
+      ]
+    },
+    {
+      "collection": "guide",
+      "key": "in_evidenza_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Destacado"
+    },
+    {
+      "collection": "guide",
+      "key": "cta_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "¿Necesitas ayuda con tu caso?"
+    },
+    {
+      "collection": "guide",
+      "key": "cta_button",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Calcula el presupuesto gratis",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "guide",
+      "key": "strumenti_banner",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "title": "Herramienta: calcula el valor catastral",
+        "body": "¿Cuánto vale una vivienda o un terreno a efectos de sucesión? Introduce la renta de la nota y obtén al instante el valor sobre el que se calculan los impuestos.",
+        "cta_label": "Abrir la calculadora",
+        "href": "/strumenti/valore-catastale"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_hero_eyebrow",
+      "locale": "es",
+      "is_published": true,
+      "value": "Herramientas"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_meta_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Cálculo del valor catastral para la sucesión (gratis, en línea)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_hero_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "¿Cuánto vale un inmueble a efectos de sucesión?"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_hero_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "Introduce la renta catastral (la encuentras en la nota) y obtén al instante el valor catastral sobre el que se calculan los impuestos de sucesión. Gratis, sin dejar datos."
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_tab_fabbricato",
+      "locale": "es",
+      "is_published": true,
+      "value": "Inmueble"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_tab_terreno",
+      "locale": "es",
+      "is_published": true,
+      "value": "Terreno agrícola"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_rendita",
+      "locale": "es",
+      "is_published": true,
+      "value": "Renta catastral (€)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_help_rendita",
+      "locale": "es",
+      "is_published": true,
+      "value": "La encuentras en la nota catastral, columna «Rendita». Si no la tienes, a menudo podemos recuperarla nosotros."
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_rd",
+      "locale": "es",
+      "is_published": true,
+      "value": "Renta dominical (€)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_help_rd",
+      "locale": "es",
+      "is_published": true,
+      "value": "Lo encuentras en la nota catastral del terreno. Aplica a terrenos NO edificables."
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_categoria",
+      "locale": "es",
+      "is_published": true,
+      "value": "Categoría catastral"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_prima_casa",
+      "locale": "es",
+      "is_published": true,
+      "value": "Para el heredero será «primera vivienda» (beneficio: coeficiente reducido a 110)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_risultato",
+      "locale": "es",
+      "is_published": true,
+      "value": "Valor catastral a efectos de sucesión"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_formula",
+      "locale": "es",
+      "is_published": true,
+      "value": "Cálculo:"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_come_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Cómo funciona el cálculo"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_come_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "Para la declaración de sucesión los inmuebles no se valoran a precio de mercado sino a valor catastral: la renta revalorizada un 5 % multiplicada por un coeficiente fijado por ley. Para terrenos agrícolas: renta dominical revalorizada un 25 % por 90."
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_formule",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        {
+          "tipo": "Primera vivienda (beneficio)",
+          "formula": "rendita × 1,05 × 110"
+        },
+        {
+          "tipo": "Viviendas y anexos (grupos A y C)",
+          "formula": "rendita × 1,05 × 120"
+        },
+        {
+          "tipo": "Grupo B (escuelas, colegios…)",
+          "formula": "rendita × 1,05 × 168"
+        },
+        {
+          "tipo": "A/10 y grupo D (oficinas, naves…)",
+          "formula": "rendita × 1,05 × 60"
+        },
+        {
+          "tipo": "C/1 y grupo E (tiendas…)",
+          "formula": "rendita × 1,05 × 40,8"
+        },
+        {
+          "tipo": "Terrenos agrícolas (no edificables)",
+          "formula": "reddito dominicale × 1,25 × 90"
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_note",
+      "locale": "es",
+      "is_published": true,
+      "value": "Los terrenos edificables son una excepción: se declaran a valor venal (de mercado), no catastral. El resultado es orientativo: posibles beneficios y casos particulares deben verificarse en el caso concreto — es exactamente el trabajo que hacemos nosotros."
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_cta_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "¿Quieres saber cuánto cuesta toda la sucesión, impuestos incluidos?"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_cta_button",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Calcula el presupuesto gratis",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_faq_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Preguntas frecuentes sobre el valor catastral"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_faq",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        {
+          "q": "¿Dónde encuentro la renta catastral de mi inmueble?",
+          "a": "En la nota catastral, columna «Rendita». Puedes solicitarla gratis en el sitio de la Agenzia delle Entrate (con SPID) o, si eres cliente nuestro, la recuperamos nosotros."
+        },
+        {
+          "q": "¿El valor catastral es el precio de mercado de la vivienda?",
+          "a": "No: el valor catastral casi siempre es mucho más bajo que el valor de mercado. Es el valor sobre el que se calculan los impuestos hipotecario y catastral en la declaración de sucesión, y se obtiene de la renta revalorizada multiplicada por un coeficiente legal."
+        },
+        {
+          "q": "¿Cómo funciona el beneficio de primera vivienda en el cálculo?",
+          "a": "Si para el heredero el inmueble será «primera vivienda», el coeficiente baja a 110 (en lugar de 120 para viviendas) y los impuestos hipotecario y catastral se pagan en cuota fija (200 euros cada uno) en lugar de porcentaje."
+        },
+        {
+          "q": "¿También aplica a los terrenos?",
+          "a": "Para terrenos agrícolas (no edificables) sí: renta dominical revalorizada un 25 % multiplicada por 90. Los terrenos edificables se declaran a valor venal, es decir de mercado."
+        }
+      ]
+    },
+    {
+      "collection": "article",
+      "key": "autore_box",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "autore": "Geom. Lorenzo Armellin",
+        "ruolo": "Geometra habilitado Entratel",
+        "reviewed_by": "Revisado en la parte fiscal por asesores fiscales",
+        "foto": {
+          "asset_key": "ritratto_lorenzo"
+        },
+        "link": "/chi-sono"
+      }
+    },
+    {
+      "collection": "article",
+      "key": "disclaimer",
+      "locale": "es",
+      "is_published": true,
+      "value": "La información de esta guía es orientativa y con fines informativos. Cada sucesión es un caso único: la valoración definitiva siempre es sobre el caso concreto. Verificamos gratis tu situación."
+    },
+    {
+      "collection": "article",
+      "key": "cta_box",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "titolo": "¿Quieres que nos encarguemos nosotros?",
+        "button": {
+          "label": "Calcula el presupuesto gratis",
+          "href": "/preventivo"
+        },
+        "phone": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "article",
+      "key": "fonti",
+      "locale": "es",
+      "is_published": true,
+      "value": "Fuentes oficiales: Agenzia delle Entrate, Normattiva (enlaces en cada artículo)."
+    },
+    {
+      "collection": "preventivo",
+      "key": "intro_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Calcula tu presupuesto gratis, en 1 minuto"
+    },
+    {
+      "collection": "preventivo",
+      "key": "intro_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "Responde a unas preguntas: te decimos al instante cuánto cuesta o, si tu caso es especial, te hacemos un presupuesto a medida. Sin compromiso."
+    },
+    {
+      "collection": "preventivo",
+      "key": "progress_label",
+      "locale": "es",
+      "is_published": true,
+      "value": "Paso {n} de 3"
+    },
+    {
+      "collection": "preventivo",
+      "key": "step1_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Empecemos por lo básico"
+    },
+    {
+      "collection": "preventivo",
+      "key": "step2_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Quiénes son los herederos"
+    },
+    {
+      "collection": "preventivo",
+      "key": "step3_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Qué forma parte de la herencia"
+    },
+    {
+      "collection": "preventivo",
+      "key": "step4_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Dónde te enviamos el presupuesto"
+    },
+    {
+      "collection": "preventivo",
+      "key": "help_text",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        "Los datos sirven solo para estimar tu caso.",
+        "¿No sabes una respuesta? Elige «No lo sé», nosotros nos encargamos."
+      ]
+    },
+    {
+      "collection": "preventivo",
+      "key": "consenso_privacy",
+      "locale": "es",
+      "is_published": true,
+      "value": "He leído la política de privacidad y consiento el tratamiento de datos."
+    },
+    {
+      "collection": "preventivo",
+      "key": "consenso_marketing",
+      "locale": "es",
+      "is_published": true,
+      "value": "Quiero recibir consejos útiles y novedades (opcional)."
+    },
+    {
+      "collection": "preventivo",
+      "key": "cta_submit",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Ver el resultado al instante",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "preventivo",
+      "key": "trust_items",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        "Gratis y sin compromiso",
+        "Te responde Lorenzo, una persona real",
+        "Datos seguros, servidores en la UE (RGPD)"
+      ]
+    },
+    {
+      "collection": "grazie",
+      "key": "header_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Este es el resultado para tu caso"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_a_whatsapp",
+      "locale": "es",
+      "is_published": true,
+      "value": "WhatsApp"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_a_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Quizá no tengas que presentar la declaración"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_taxes_note",
+      "locale": "es",
+      "is_published": true,
+      "value": "+ impuestos calculados para tu caso: te los decimos antes de cobrarte."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_package_line",
+      "locale": "es",
+      "is_published": true,
+      "value": "Paquete {name}"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_a_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "Según lo que nos has contado, tu caso podría encajar en la exención legal. No queremos venderte un servicio que no necesitas: verifiquémoslo juntos, gratis. La confirmación definitiva es sobre el caso concreto."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_a_cta",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Llama para la verificación gratuita",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Este es el paquete adecuado para ti"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_cta",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Proceder al pago",
+        "href": "/checkout"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_riallineamento",
+      "locale": "es",
+      "is_published": true,
+      "value": "Antes de pagar, echa un vistazo a la {guida} para elegir paquete o habla con Lorenzo: si elegiste el incorrecto, cambiarlo es sencillo y solo se ajusta la diferencia."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_guida",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "guía",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Tu caso merece un presupuesto a medida"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "De tus respuestas emerge un caso con elementos particulares (muchos inmuebles, terrenos agrícolas, participaciones, empresas…). No podemos cerrar un precio aquí: hay que estudiarlo con Lorenzo, para que pagues ni más ni menos de lo justo. Deja tus datos abajo (y, si quieres, una nota) o escríbenos: te llamamos para aclarar detalles y prepararte el presupuesto dedicado."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_cta",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Llama a Lorenzo",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_whatsapp",
+      "locale": "es",
+      "is_published": true,
+      "value": "Escríbenos por WhatsApp"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_whatsapp_prefill",
+      "locale": "es",
+      "is_published": true,
+      "value": "Hola Lorenzo, he cumplimentado el cuestionario en el sitio y me sale un presupuesto a medida. Me gustaría profundizar en mi caso contigo."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "¿Prefieres pensarlo? Recibe este presupuesto por correo"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_desc",
+      "locale": "es",
+      "is_published": true,
+      "value": "Te enviamos el resumen del presupuesto para que lo recuperes cuando quieras. Sin presión."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_submit",
+      "locale": "es",
+      "is_published": true,
+      "value": "Envíame el presupuesto por correo"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_ok_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "¡Hecho! Revisa tu bandeja de correo"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_ok_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "Te hemos enviado el resumen del presupuesto. Cuando quieras, retoma desde ahí."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_ok_title_noemail",
+      "locale": "es",
+      "is_published": true,
+      "value": "¡Solicitud registrada!"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_ok_body_noemail",
+      "locale": "es",
+      "is_published": true,
+      "value": "Hemos registrado tu solicitud: te enviaremos el resumen del presupuesto en breve."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Deja tus datos: te llamamos nosotros"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_desc",
+      "locale": "es",
+      "is_published": true,
+      "value": "Las respuestas del cuestionario nos bastan para empezar. Deja correo y teléfono: Lorenzo te contactará para profundizar juntos y enviarte el presupuesto dedicado, sin compromiso. Si quieres, añade una nota abajo."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_notes_label",
+      "locale": "es",
+      "is_published": true,
+      "value": "Nota para Lorenzo (opcional)"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_notes_placeholder",
+      "locale": "es",
+      "is_published": true,
+      "value": "P. ej. tipo de inmuebles, terrenos, empresas/participaciones, urgencias o dudas…"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_footnote",
+      "locale": "es",
+      "is_published": true,
+      "value": "Sin compromiso: te contactamos en un día laborable (normalmente el mismo día) para estudiar el caso juntos y preparar el presupuesto."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_submit",
+      "locale": "es",
+      "is_published": true,
+      "value": "Solicita que te contactemos"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_ok_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "¡Solicitud recibida!"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_ok_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "Lorenzo te contactará en breve para profundizar en el caso y prepararte el presupuesto a medida."
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Mientras tanto, esto es lo que necesitarás"
+    },
+    {
+      "collection": "documenti",
+      "key": "lista",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        {
+          "name": "Documento de identidad y código fiscal",
+          "description": "De todos los herederos y del fallecido/a.",
+          "when": "Siempre"
+        },
+        {
+          "name": "Certificado de defunción",
+          "description": "O la declaración sustitutiva del certificado de defunción y estado civil del fallecido: el modelo te lo damos nosotros.",
+          "when": "Siempre"
+        },
+        {
+          "name": "Autocertificación del estado civil de cada heredero",
+          "description": "Sirve para identificar a los herederos: un modelo por cada uno, te lo damos nosotros.",
+          "when": "Siempre"
+        },
+        {
+          "name": "Notas catastrales",
+          "description": "De los inmuebles en sucesión. Podemos recuperarlas nosotros.",
+          "when": "Si hay inmuebles"
+        },
+        {
+          "name": "Actos de procedencia",
+          "description": "Escrituras, donaciones o declaraciones de sucesión anteriores.",
+          "when": "Si hay inmuebles"
+        },
+        {
+          "name": "Testamento",
+          "description": "Copia del testamento publicado, si existe.",
+          "when": "Si hay testamento"
+        },
+        {
+          "name": "Certificación de saldo de cuentas",
+          "description": "Saldos de cuentas, libretas y títulos a la fecha del fallecimiento.",
+          "when": "Si hay cuentas/inversiones"
+        }
+      ]
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_disclaimer",
+      "locale": "es",
+      "is_published": true,
+      "value": "Lista orientativa: la definitiva la confirma Lorenzo tras revisar tu caso."
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_faq_link",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Más información en las FAQ",
+        "href": "/faq"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_hook",
+      "locale": "es",
+      "is_published": true,
+      "value": "¿Te falta algo? A menudo podemos recuperarlo nosotros."
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_cta_pdf",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Descargar la lista (PDF)",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_cta_email",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Recíbelo por correo",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "next_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "Te hemos enviado un resumen por correo. A partir de aquí te acompañamos nosotros: una persona real, no un bot."
+    },
+    {
+      "collection": "checkout",
+      "key": "header_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Completar el pedido"
+    },
+    {
+      "collection": "checkout",
+      "key": "header_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "Un paso más y nos encargamos nosotros."
+    },
+    {
+      "collection": "checkout",
+      "key": "riepilogo_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Tu pedido"
+    },
+    {
+      "collection": "checkout",
+      "key": "modifica_link",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Editar",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "checkout",
+      "key": "prezzo_imposte_nota",
+      "locale": "es",
+      "is_published": true,
+      "value": "IMPORTANTE: esto son los honorarios profesionales. Los impuestos (sucesión, hipotecario, catastral, timbres) son APARTE, a cargo del heredero, y los calculamos y comunicamos ANTES del envío."
+    },
+    {
+      "collection": "checkout",
+      "key": "microtrust",
+      "locale": "es",
+      "is_published": true,
+      "value": "Pagas a un geometra habilitado Entratel, con supervisión fiscal de asesores fiscales. Pagos seguros con Stripe."
+    },
+    {
+      "collection": "checkout",
+      "key": "pagamento_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Cómo quieres pagar"
+    },
+    {
+      "collection": "checkout",
+      "key": "pagamento_metodi",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        "Tarjeta",
+        "PayPal",
+        "Transferencia (asistida)"
+      ]
+    },
+    {
+      "collection": "checkout",
+      "key": "rate_nota",
+      "locale": "es",
+      "is_published": true,
+      "value": "Puedes pagar a plazos (PayPal Pay in 3, Klarna, Scalapay, donde estén disponibles). Se fraccionan los honorarios, no los impuestos."
+    },
+    {
+      "collection": "checkout",
+      "key": "consenso_tc",
+      "locale": "es",
+      "is_published": true,
+      "value": "Acepto las Condiciones de venta y la política de privacidad."
+    },
+    {
+      "collection": "checkout",
+      "key": "consenso_avvio",
+      "locale": "es",
+      "is_published": true,
+      "value": "Solicito el inicio inmediato de la tramitación y reconozco que, al completarse el servicio en 14 días, pierdo el derecho de desistimiento."
+    },
+    {
+      "collection": "checkout",
+      "key": "recesso_link",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Cómo funciona el desistimiento",
+        "href": "/recesso"
+      }
+    },
+    {
+      "collection": "checkout",
+      "key": "cta_pay",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Paga de forma segura",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "checkout",
+      "key": "cta_nota",
+      "locale": "es",
+      "is_published": true,
+      "value": "Transacción cifrada. No guardamos los datos de la tarjeta."
+    },
+    {
+      "collection": "checkout",
+      "key": "trust_items",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        "Satisfechos o reembolsados",
+        "Servidores en la UE, conforme al RGPD",
+        "Asistencia de una persona real"
+      ]
+    },
+    {
+      "collection": "checkout",
+      "key": "success_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "¡Pago realizado! Bienvenido/a."
+    },
+    {
+      "collection": "checkout",
+      "key": "error_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Pago no realizado"
+    },
+    {
+      "collection": "legale",
+      "key": "privacy_title",
+      "locale": "es",
+      "is_published": false,
+      "value": "Política de privacidad"
+    },
+    {
+      "collection": "legale",
+      "key": "cookie_title",
+      "locale": "es",
+      "is_published": false,
+      "value": "Cookie Policy"
+    },
+    {
+      "collection": "legale",
+      "key": "tc_title",
+      "locale": "es",
+      "is_published": false,
+      "value": "Condiciones de venta"
+    },
+    {
+      "collection": "legale",
+      "key": "garanzia_title",
+      "locale": "es",
+      "is_published": false,
+      "value": "Nuestra garantía"
+    },
+    {
+      "collection": "legale",
+      "key": "garanzia_cta",
+      "locale": "es",
+      "is_published": false,
+      "value": {
+        "label": "Calcula el presupuesto gratis",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "sistema",
+      "key": "e404_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Esta página no existe (o ya no existe)"
+    },
+    {
+      "collection": "sistema",
+      "key": "e404_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "Pero podemos ayudarte igualmente."
+    },
+    {
+      "collection": "sistema",
+      "key": "e404_cta",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        {
+          "label": "Ir al inicio",
+          "href": "/"
+        },
+        {
+          "label": "Calcula el presupuesto",
+          "href": "/preventivo"
+        }
+      ]
+    },
+    {
+      "collection": "sistema",
+      "key": "e500_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Algo ha ido mal"
+    },
+    {
+      "collection": "sistema",
+      "key": "e500_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "Inténtalo en un momento. Si persiste, escríbenos o llámanos."
+    },
+    {
+      "collection": "sistema",
+      "key": "manutenzione_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Estamos en mantenimiento"
+    },
+    {
+      "collection": "sistema",
+      "key": "manutenzione_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "Volvemos en línea en breve. Para urgencias, contáctanos."
+    },
+    {
+      "collection": "sistema",
+      "key": "sessione_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Sesión caducada"
+    },
+    {
+      "collection": "sistema",
+      "key": "sessione_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "Por tu seguridad te hemos desconectado. Accede de nuevo para continuar."
+    },
+    {
+      "collection": "area_errors",
+      "key": "request_invalid",
+      "locale": "es",
+      "is_published": true,
+      "value": "Solicitud no válida."
+    },
+    {
+      "collection": "area_errors",
+      "key": "max_files",
+      "locale": "es",
+      "is_published": true,
+      "value": "Máximo {n} archivos por documento: elimina uno para subir otro."
+    },
+    {
+      "collection": "area_login",
+      "key": "header_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Área personal"
+    },
+    {
+      "collection": "area_login",
+      "key": "header_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "Accede para seguir tu expediente de sucesión."
+    },
+    {
+      "collection": "area_login",
+      "key": "tab_email",
+      "locale": "es",
+      "is_published": true,
+      "value": "Email"
+    },
+    {
+      "collection": "area_login",
+      "key": "tab_phone",
+      "locale": "es",
+      "is_published": true,
+      "value": "Teléfono"
+    },
+    {
+      "collection": "area_login",
+      "key": "tab_password",
+      "locale": "es",
+      "is_published": true,
+      "value": "Password"
+    },
+    {
+      "collection": "area_login",
+      "key": "google_cta",
+      "locale": "es",
+      "is_published": true,
+      "value": "Continuar con Google"
+    },
+    {
+      "collection": "area_login",
+      "key": "oppure",
+      "locale": "es",
+      "is_published": true,
+      "value": "o"
+    },
+    {
+      "collection": "area_login",
+      "key": "password_label",
+      "locale": "es",
+      "is_published": true,
+      "value": "Tu contraseña"
+    },
+    {
+      "collection": "area_login",
+      "key": "password_hint",
+      "locale": "es",
+      "is_published": true,
+      "value": "Se crea desde el perfil, tras el primer acceso. ¿No la tienes? Usa el correo."
+    },
+    {
+      "collection": "area_login",
+      "key": "password_cta",
+      "locale": "es",
+      "is_published": true,
+      "value": "Acceder"
+    },
+    {
+      "collection": "area_login",
+      "key": "password_verifying",
+      "locale": "es",
+      "is_published": true,
+      "value": "Accediendo…"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_label",
+      "locale": "es",
+      "is_published": true,
+      "value": "Tu correo electrónico"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_placeholder",
+      "locale": "es",
+      "is_published": true,
+      "value": "nome@email.it"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_hint",
+      "locale": "es",
+      "is_published": true,
+      "value": "Usa el correo con el que realizaste el pago."
+    },
+    {
+      "collection": "area_login",
+      "key": "email_cta",
+      "locale": "es",
+      "is_published": true,
+      "value": "Envíame el enlace de acceso"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_sending",
+      "locale": "es",
+      "is_published": true,
+      "value": "Enviando…"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_label",
+      "locale": "es",
+      "is_published": true,
+      "value": "Tu número de teléfono"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_placeholder",
+      "locale": "es",
+      "is_published": true,
+      "value": "+39 333 123 4567"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_hint",
+      "locale": "es",
+      "is_published": true,
+      "value": "Usa el número con el que realizaste el pedido. Te enviaremos un código por SMS."
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_cta",
+      "locale": "es",
+      "is_published": true,
+      "value": "Envíame el código por SMS"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_sending",
+      "locale": "es",
+      "is_published": true,
+      "value": "Enviando…"
+    },
+    {
+      "collection": "area_login",
+      "key": "sent_email_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Revisa tu correo"
+    },
+    {
+      "collection": "area_login",
+      "key": "sent_email_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "Te hemos enviado un enlace de acceso a {contact}. El enlace caduca en pocos minutos."
+    },
+    {
+      "collection": "area_login",
+      "key": "sent_phone_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Revisa los SMS"
+    },
+    {
+      "collection": "area_login",
+      "key": "sent_phone_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "Te hemos enviado un código de 6 cifras al número {contact}. Introdúcelo abajo."
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_toggle",
+      "locale": "es",
+      "is_published": true,
+      "value": "He recibido un código, lo introduzco"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_label",
+      "locale": "es",
+      "is_published": true,
+      "value": "Código de 6 cifras"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_placeholder",
+      "locale": "es",
+      "is_published": true,
+      "value": "123456"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_cta",
+      "locale": "es",
+      "is_published": true,
+      "value": "Verificar código"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_verifying",
+      "locale": "es",
+      "is_published": true,
+      "value": "Comprobando…"
+    },
+    {
+      "collection": "area_login",
+      "key": "resend",
+      "locale": "es",
+      "is_published": true,
+      "value": "Enviar de nuevo"
+    },
+    {
+      "collection": "area_login",
+      "key": "error_link",
+      "locale": "es",
+      "is_published": true,
+      "value": "El enlace de acceso no es válido o ha caducado. Solicita uno nuevo."
+    },
+    {
+      "collection": "area_login",
+      "key": "secure_note",
+      "locale": "es",
+      "is_published": true,
+      "value": "Acceso seguro"
+    },
+    {
+      "collection": "area_login",
+      "key": "back_to_site",
+      "locale": "es",
+      "is_published": true,
+      "value": "Volver al sitio"
+    },
+    {
+      "collection": "area_login",
+      "key": "privacy_link",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Privacy",
+        "href": "/privacy"
+      }
+    },
+    {
+      "collection": "area_login",
+      "key": "termini_link",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Condiciones",
+        "href": "/termini-condizioni"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_legal_prefix",
+      "locale": "es",
+      "is_published": true,
+      "value": "Más detalles sobre cómo tratamos tus datos:"
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_privacy_label",
+      "locale": "es",
+      "is_published": true,
+      "value": "Privacy Policy"
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_terms_label",
+      "locale": "es",
+      "is_published": true,
+      "value": "Condiciones del servicio"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "price_suffix",
+      "locale": "es",
+      "is_published": true,
+      "value": "honorarios sin IVA"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "sla_line",
+      "locale": "es",
+      "is_published": true,
+      "value": "Envío en {n} días laborables desde documentos completos"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "cta_choose",
+      "locale": "es",
+      "is_published": true,
+      "value": "Elige {name}"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_price_note",
+      "locale": "es",
+      "is_published": true,
+      "value": "Acordado juntos, antes de empezar"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_discover",
+      "locale": "es",
+      "is_published": true,
+      "value": "Descubre cómo activarlo"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_phone_label",
+      "locale": "es",
+      "is_published": true,
+      "value": "Llama a Lorenzo"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_email_label",
+      "locale": "es",
+      "is_published": true,
+      "value": "Escríbenos por correo"
+    },
+    {
+      "collection": "navbar",
+      "key": "cta_short",
+      "locale": "es",
+      "is_published": true,
+      "value": "Presupuesto"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_rating_of",
+      "locale": "es",
+      "is_published": true,
+      "value": "de 5"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_count_one",
+      "locale": "es",
+      "is_published": true,
+      "value": "{n} reseña en Google"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_count_many",
+      "locale": "es",
+      "is_published": true,
+      "value": "{n} reseñas en Google"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_from",
+      "locale": "es",
+      "is_published": true,
+      "value": "Reseñas de"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_write",
+      "locale": "es",
+      "is_published": true,
+      "value": "Escribe una reseña"
+    },
+    {
+      "collection": "faq",
+      "key": "items",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        {
+          "category": "Entender la sucesión",
+          "question": "¿Qué es la declaración de sucesión?",
+          "answer": "Es el cumplimiento fiscal con el que se comunica a la Agenzia delle Entrate el patrimonio del fallecido transferido a los herederos. Debe presentarse normalmente en 12 meses desde el fallecimiento."
+        },
+        {
+          "category": "Entender la sucesión",
+          "question": "¿Hasta cuándo hay que presentarla?",
+          "answer": "Generalmente en 12 meses desde la fecha del fallecimiento. Presentarla tarde puede conllevar sanciones: nos encargamos nosotros en los plazos correctos."
+        },
+        {
+          "category": "Costes e impuestos",
+          "question": "¿Cuánto cuesta vuestro servicio?",
+          "answer": "Pagas unos honorarios fijos según el paquete. Los impuestos son aparte, a cargo del heredero, y los calculamos y comunicamos antes del envío."
+        },
+        {
+          "category": "Costes e impuestos",
+          "question": "¿Los impuestos están incluidos en el precio?",
+          "answer": "No: el precio del paquete son los honorarios profesionales. Los impuestos (sucesión, hipotecario, catastral, timbres) se pagan con F24 y son aparte. Los calculamos nosotros antes."
+        },
+        {
+          "category": "Costes e impuestos",
+          "question": "¿Qué es el beneficio de primera vivienda en sucesión?",
+          "answer": "Si al menos un heredero cumple los requisitos de primera vivienda sobre el inmueble heredado, los impuestos hipotecario y catastral se pagan en cuota fija (200 euros cada uno) en lugar de porcentaje sobre el valor catastral. Verificamos nosotros si te corresponde y lo indicamos en la declaración."
+        },
+        {
+          "category": "Por qué no hacerlo solo",
+          "question": "¿Puedo hacerlo gratis yo solo en el sitio de la Agenzia?",
+          "answer": "Sí, existe la sucesión precompilada gratuita y es una opción honesta. Pero requiere SPID y competencia: no valida los datos catastrales y los posibles errores (y sanciones) quedan a tu cargo."
+        },
+        {
+          "category": "Cómo funciona",
+          "question": "¿Tengo que ir a alguna oficina?",
+          "answer": "No. Cuestionario, documentos, comunicaciones y envío a la Agenzia son en línea. Siempre hay una llamada con Lorenzo para explicártelo todo."
+        },
+        {
+          "category": "Cómo funciona",
+          "question": "¿Qué documentos hacen falta?",
+          "answer": "Depende de tu caso: te damos una lista personalizada. Si te falta algo, a menudo podemos recuperarlo nosotros (notas, actos de procedencia)."
+        },
+        {
+          "category": "Documentos y Área personal",
+          "question": "¿Puedo subir los documentos con fotos del móvil?",
+          "answer": "Sí. En el Área personal puedes subir PDF, JPG o PNG (también fotos hechas con el móvil), hasta 10 MB cada uno y hasta 10 archivos por ítem de la checklist. Para anverso/reverso o documentos multipágina basta subir más fotos en el mismo ítem."
+        },
+        {
+          "category": "Documentos y Área personal",
+          "question": "¿Hay modelos listos para descargar y cumplimentar?",
+          "answer": "Sí. Bajo algunos ítems de la checklist encontrarás modelos listos (por ejemplo la declaración sustitutiva del certificado de defunción y estado civil del fallecido, o la autocertificación del estado civil de cada heredero): los descargas, cumplimentas, firmas y vuelves a subirlos."
+        },
+        {
+          "category": "Documentos y Área personal",
+          "question": "¿Qué pasa si se rechaza un documento?",
+          "answer": "Lorenzo lo verifica uno a uno. Si algo no va bien (foto borrosa, página faltante, documento incorrecto) el ítem vuelve a «a rehacer» con una nota que explica qué corregir: subes el archivo correcto y el expediente continúa sin empezar de cero."
+        },
+        {
+          "category": "Documentos y Área personal",
+          "question": "¿Cómo sé cuándo los documentos están correctos?",
+          "answer": "En el Área personal ves el estado de cada ítem (por subir, subido, aprobado, a rehacer). Cuando termines pulsa «He terminado»: recibes actualizaciones por correo en cada paso y siempre puedes ver en qué punto está el expediente."
+        },
+        {
+          "category": "Después del servicio",
+          "question": "¿Qué recibo al final del expediente?",
+          "answer": "Recibo de presentación/registro, copia de la declaración, resultado F24 y, donde corresponda, resultado de la voltura catastral, además de nuestra factura."
+        }
+      ]
+    },
+    {
+      "collection": "area",
+      "key": "nav_home",
+      "locale": "es",
+      "is_published": true,
+      "value": "Home"
+    },
+    {
+      "collection": "area",
+      "key": "nav_documenti",
+      "locale": "es",
+      "is_published": true,
+      "value": "Documentos"
+    },
+    {
+      "collection": "area",
+      "key": "nav_ordine",
+      "locale": "es",
+      "is_published": true,
+      "value": "Compra"
+    },
+    {
+      "collection": "area",
+      "key": "nav_comunicazioni",
+      "locale": "es",
+      "is_published": true,
+      "value": "Comunicaciones"
+    },
+    {
+      "collection": "area",
+      "key": "nav_dati",
+      "locale": "es",
+      "is_published": true,
+      "value": "Tus datos"
+    },
+    {
+      "collection": "area",
+      "key": "nav_mandato",
+      "locale": "es",
+      "is_published": true,
+      "value": "Mandato"
+    },
+    {
+      "collection": "area",
+      "key": "nav_conclusa",
+      "locale": "es",
+      "is_published": true,
+      "value": "Documentos finales"
+    },
+    {
+      "collection": "area",
+      "key": "nav_profilo",
+      "locale": "es",
+      "is_published": true,
+      "value": "Perfil"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_brand",
+      "locale": "es",
+      "is_published": true,
+      "value": "Studio Armellin"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_practice",
+      "locale": "es",
+      "is_published": true,
+      "value": "Expediente {code}"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_back",
+      "locale": "es",
+      "is_published": true,
+      "value": "Volver al sitio"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_help",
+      "locale": "es",
+      "is_published": true,
+      "value": "Asistencia"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_logout",
+      "locale": "es",
+      "is_published": true,
+      "value": "Salir"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_notifications",
+      "locale": "es",
+      "is_published": true,
+      "value": "Notificaciones"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_notifications_empty",
+      "locale": "es",
+      "is_published": true,
+      "value": "Sin notificaciones"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_notifications_mark_all",
+      "locale": "es",
+      "is_published": true,
+      "value": "Marcar todas como leídas"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_comms_new",
+      "locale": "es",
+      "is_published": true,
+      "value": "Novedades"
+    },
+    {
+      "collection": "area",
+      "key": "welcome_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Área personal"
+    },
+    {
+      "collection": "area",
+      "key": "welcome_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "Bienvenido/a."
+    },
+    {
+      "collection": "area",
+      "key": "hello",
+      "locale": "es",
+      "is_published": true,
+      "value": "Hola, {name}"
+    },
+    {
+      "collection": "area",
+      "key": "practice_deceased",
+      "locale": "es",
+      "is_published": true,
+      "value": "Expediente {code} · fallecido/a {name}"
+    },
+    {
+      "collection": "area",
+      "key": "next_action_label",
+      "locale": "es",
+      "is_published": true,
+      "value": "Próxima acción"
+    },
+    {
+      "collection": "area",
+      "key": "tracker_heading",
+      "locale": "es",
+      "is_published": true,
+      "value": "En qué punto está tu expediente"
+    },
+    {
+      "collection": "area",
+      "key": "docs_heading",
+      "locale": "es",
+      "is_published": true,
+      "value": "Documentos"
+    },
+    {
+      "collection": "area",
+      "key": "docs_progress",
+      "locale": "es",
+      "is_published": true,
+      "value": "{uploaded} de {total} subidos"
+    },
+    {
+      "collection": "area",
+      "key": "docs_cta",
+      "locale": "es",
+      "is_published": true,
+      "value": "Ir a documentos"
+    },
+    {
+      "collection": "area",
+      "key": "summary_heading",
+      "locale": "es",
+      "is_published": true,
+      "value": "Resumen"
+    },
+    {
+      "collection": "area",
+      "key": "summary_package",
+      "locale": "es",
+      "is_published": true,
+      "value": "Paquete"
+    },
+    {
+      "collection": "area",
+      "key": "summary_price",
+      "locale": "es",
+      "is_published": true,
+      "value": "Honorarios"
+    },
+    {
+      "collection": "area",
+      "key": "summary_taxes",
+      "locale": "es",
+      "is_published": true,
+      "value": "Impuestos comunicados"
+    },
+    {
+      "collection": "area",
+      "key": "summary_iban_missing",
+      "locale": "es",
+      "is_published": true,
+      "value": "IBAN faltante: añádelo para los impuestos"
+    },
+    {
+      "collection": "area",
+      "key": "summary_cta_ordine",
+      "locale": "es",
+      "is_published": true,
+      "value": "Ver compra"
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Este expediente ha sido anulado."
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_refunded",
+      "locale": "es",
+      "is_published": true,
+      "value": "Desistimiento aceptado y reembolso emitido: normalmente lo ves en la tarjeta usada para el pago en 5-10 días laborables (plazos de tu banco o emisor de la tarjeta)."
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_pending",
+      "locale": "es",
+      "is_published": true,
+      "value": "Desistimiento aceptado. Si corresponde un reembolso, una vez emitido normalmente lo ves en la tarjeta en 5-10 días laborables."
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_footer",
+      "locale": "es",
+      "is_published": true,
+      "value": "No hay nada más que hacer: abajo encuentras el resumen de tu compra, que sigue disponible."
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_cta",
+      "locale": "es",
+      "is_published": true,
+      "value": "Ver tu compra"
+    },
+    {
+      "collection": "area",
+      "key": "client_steps",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        "Documentos por subir",
+        "En tramitación",
+        "Enviada a la Agenzia",
+        "Concluida"
+      ]
+    },
+    {
+      "collection": "area",
+      "key": "action_closed_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Tu expediente está concluido."
+    },
+    {
+      "collection": "area",
+      "key": "action_closed_cta",
+      "locale": "es",
+      "is_published": true,
+      "value": "Descargar los documentos finales"
+    },
+    {
+      "collection": "area",
+      "key": "action_docs_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Faltan algunos documentos para continuar."
+    },
+    {
+      "collection": "area",
+      "key": "action_docs_cta",
+      "locale": "es",
+      "is_published": true,
+      "value": "Sube los documentos"
+    },
+    {
+      "collection": "area",
+      "key": "action_working_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Estamos trabajando en tu expediente."
+    },
+    {
+      "collection": "area",
+      "key": "action_working_cta",
+      "locale": "es",
+      "is_published": true,
+      "value": "Ver estado"
+    },
+    {
+      "collection": "area",
+      "key": "action_idle_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Todo en orden, no hace falta ninguna acción ahora."
+    },
+    {
+      "collection": "area",
+      "key": "action_idle_cta",
+      "locale": "es",
+      "is_published": true,
+      "value": "Ver tu compra"
+    },
+    {
+      "collection": "area",
+      "key": "doc_state_da_caricare",
+      "locale": "es",
+      "is_published": true,
+      "value": "Por subir"
+    },
+    {
+      "collection": "area",
+      "key": "doc_state_caricato",
+      "locale": "es",
+      "is_published": true,
+      "value": "Subido"
+    },
+    {
+      "collection": "area",
+      "key": "doc_state_da_rifare",
+      "locale": "es",
+      "is_published": true,
+      "value": "A rehacer"
+    },
+    {
+      "collection": "area",
+      "key": "empty_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Ningún expediente vinculado a este acceso"
+    },
+    {
+      "collection": "area",
+      "key": "empty_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "Si ya pagaste un presupuesto, vincula el expediente con el correo usado en el checkout. Si no, calcula un presupuesto en el sitio."
+    },
+    {
+      "collection": "area",
+      "key": "empty_claim_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "¿Ya tienes un expediente?"
+    },
+    {
+      "collection": "area",
+      "key": "empty_claim_cta",
+      "locale": "es",
+      "is_published": true,
+      "value": "Vincula el expediente"
+    },
+    {
+      "collection": "area",
+      "key": "documenti_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Tus documentos"
+    },
+    {
+      "collection": "area",
+      "key": "documenti_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "Sube los documentos solicitados. También puedes hacer fotos con el móvil."
+    },
+    {
+      "collection": "area",
+      "key": "documenti_photo_tip",
+      "locale": "es",
+      "is_published": true,
+      "value": "Fotos nítidas, hoja completa en cuadro, sin reflejos. PDF y JPG/PNG hasta 10 MB."
+    },
+    {
+      "collection": "area",
+      "key": "ordine_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Tu compra"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "Qué has comprado y qué incluye. Puedes consultarlo cuando quieras."
+    },
+    {
+      "collection": "area",
+      "key": "ordine_summary",
+      "locale": "es",
+      "is_published": true,
+      "value": "Resumen del pedido"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_total",
+      "locale": "es",
+      "is_published": true,
+      "value": "Total honorarios"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_no_iva",
+      "locale": "es",
+      "is_published": true,
+      "value": "Honorarios sin IVA (régimen forfettario). Los impuestos son aparte (ver abajo)."
+    },
+    {
+      "collection": "area",
+      "key": "ordine_payment_status",
+      "locale": "es",
+      "is_published": true,
+      "value": "Estado del pago"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_method",
+      "locale": "es",
+      "is_published": true,
+      "value": "Método"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_card",
+      "locale": "es",
+      "is_published": true,
+      "value": "Tarjeta (en línea)"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_transfer",
+      "locale": "es",
+      "is_published": true,
+      "value": "Transferencia"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_paid",
+      "locale": "es",
+      "is_published": true,
+      "value": "Pagado"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_pending",
+      "locale": "es",
+      "is_published": true,
+      "value": "Pendiente"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_partial",
+      "locale": "es",
+      "is_published": true,
+      "value": "Reembolsado parcialmente"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_refunded",
+      "locale": "es",
+      "is_published": true,
+      "value": "Reembolsado"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_refund_note",
+      "locale": "es",
+      "is_published": true,
+      "value": "Reembolso emitido: normalmente lo ves en la tarjeta en 5-10 días laborables (plazos de tu banco o emisor de la tarjeta)."
+    },
+    {
+      "collection": "area",
+      "key": "dati_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Tus datos"
+    },
+    {
+      "collection": "area",
+      "key": "dati_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "Algunos datos adicionales que necesitamos para el expediente."
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Comunicaciones"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "Mensajes y actualizaciones sobre tu expediente."
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_empty",
+      "locale": "es",
+      "is_published": true,
+      "value": "Sin comunicaciones por ahora."
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_channel_email",
+      "locale": "es",
+      "is_published": true,
+      "value": "Email"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_channel_phone",
+      "locale": "es",
+      "is_published": true,
+      "value": "Llamada"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_channel_wa",
+      "locale": "es",
+      "is_published": true,
+      "value": "WhatsApp"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_channel_inperson",
+      "locale": "es",
+      "is_published": true,
+      "value": "En persona"
+    },
+    {
+      "collection": "area",
+      "key": "mandato_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Mandato y consentimientos"
+    },
+    {
+      "collection": "area",
+      "key": "mandato_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "Lee y firma el mandato profesional para tu expediente."
+    },
+    {
+      "collection": "area",
+      "key": "mandato_lang_note",
+      "locale": "es",
+      "is_published": true,
+      "value": "La versión italiana del mandato es vinculante. La traducción es solo de cortesía; el archivo descargado para firmar permanece en italiano."
+    },
+    {
+      "collection": "area",
+      "key": "conclusa_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Documentos finales"
+    },
+    {
+      "collection": "area",
+      "key": "conclusa_subtitle_open",
+      "locale": "es",
+      "is_published": true,
+      "value": "Tu expediente está concluido. Aquí encuentras los documentos para descargar."
+    },
+    {
+      "collection": "area",
+      "key": "conclusa_subtitle_closed",
+      "locale": "es",
+      "is_published": true,
+      "value": "Los documentos finales estarán disponibles al concluir el expediente."
+    },
+    {
+      "collection": "area",
+      "key": "profilo_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Perfil"
+    },
+    {
+      "collection": "area",
+      "key": "profilo_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "Contacto, seguridad y preferencias."
+    },
+    {
+      "collection": "area",
+      "key": "recesso_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Solicitud de desistimiento"
+    },
+    {
+      "collection": "area",
+      "key": "recesso_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "Puedes solicitar el desistimiento mientras el expediente no esté completado."
+    },
+    {
+      "collection": "area",
+      "key": "recesso_window_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Estás dentro de los 14 días desde la conclusión del contrato."
+    },
+    {
+      "collection": "area",
+      "key": "recesso_rule_1",
+      "locale": "es",
+      "is_published": true,
+      "value": "Si aún no hemos empezado: reembolso íntegro de los honorarios."
+    },
+    {
+      "collection": "area",
+      "key": "recesso_rule_2",
+      "locale": "es",
+      "is_published": true,
+      "value": "Si hemos empezado pero no concluido: reembolso proporcional al trabajo ya realizado."
+    },
+    {
+      "collection": "area",
+      "key": "recesso_rule_3",
+      "locale": "es",
+      "is_published": true,
+      "value": "Si el servicio ya está completado: no corresponde desistimiento (art. 59)."
+    },
+    {
+      "collection": "area",
+      "key": "review_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Expediente concluido: ¿nos dejas una reseña?"
+    },
+    {
+      "collection": "area",
+      "key": "review_cta",
+      "locale": "es",
+      "is_published": true,
+      "value": "Deja una reseña en Google"
+    },
+    {
+      "collection": "area",
+      "key": "review_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "Si te has sentido bien con Lorenzo, una reseña en Google nos ayuda muchísimo."
+    },
+    {
+      "collection": "area",
+      "key": "chrome_comms_all",
+      "locale": "es",
+      "is_published": true,
+      "value": "Ver todas las comunicaciones"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_comms_new_count",
+      "locale": "es",
+      "is_published": true,
+      "value": "({n} nuevas)"
+    },
+    {
+      "collection": "area",
+      "key": "docs_ui",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "counter": "Documentos: {uploaded} de {total}",
+        "all_uploaded": "Todos subidos",
+        "missing_n": "Faltan {n}",
+        "optional": "(opcional)",
+        "delete_file": "Eliminar este archivo",
+        "uploading": "Subiendo…",
+        "upload": "Subir",
+        "reupload": "Volver a subir",
+        "add_another": "Añadir otro archivo",
+        "multi_page_hint": "anverso/reverso o una foto por página: las unimos nosotros",
+        "done_title": "¡Hecho!",
+        "done_body": "Lorenzo ha recibido tus documentos y los está revisando. Te avisamos si falta algo — puedes estar tranquilo/a.",
+        "submit_cta": "He terminado — enviar a Lorenzo",
+        "missing_one": "Falta 1 documento",
+        "missing_many": "Faltan {n} documentos",
+        "templates_title": "¿Necesitas el formulario? Te lo damos nosotros:",
+        "templates_help": "Descarga el modelo, imprímelo y complétalo en todas sus partes, fírmalo y vuelve a subirlo aquí (también vale una foto bien legible), junto con copia del documento de identidad de quien firma.",
+        "err_file_too_big": "Archivo demasiado grande (máximo 10 MB).",
+        "err_too_many": "Puedes subir como máximo 10 archivos por ítem.",
+        "err_upload_failed": "Subida no realizada.",
+        "err_upload_network": "Subida no realizada, comprueba la conexión.",
+        "err_delete_failed": "Eliminación no realizada.",
+        "err_delete_network": "Eliminación no realizada, inténtalo de nuevo.",
+        "state_da_caricare": "Por subir",
+        "state_caricato": "Subido",
+        "state_da_rifare": "A rehacer"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "mandate_ui",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "signed_title": "Mandato firmado.",
+        "signed_paper": "Mandato en papel firmado recibido.",
+        "signed_electronic": "Firma electrónica registrada (fecha y hora).",
+        "signed_thanks": "Gracias, podemos continuar con tu expediente.",
+        "accept_checkbox": "He leído y acepto el mandato, las condiciones y la política de privacidad.",
+        "accept_cta": "Acepto y firmo en línea",
+        "paper_title": "¿Prefieres la firma en papel?",
+        "paper_body": "Descarga el mandato, fírmalo a mano y vuelve a subirlo: para nosotros está perfecto.",
+        "download_blank": "Descargar el mandato",
+        "upload_signed": "Sube el mandato firmado",
+        "err_file_too_big": "Archivo demasiado grande (máximo 10 MB).",
+        "err_upload_failed": "Subida no realizada.",
+        "err_upload_network": "Subida no realizada, comprueba la conexión.",
+        "heading": "Mandato profesional - Expediente {code}"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "iban_ui",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "saved": "IBAN guardado cifrado (termina en ••{last4}). Puedes actualizarlo introduciendo uno nuevo.",
+        "cleared": "El IBAN se utilizó para el pago (F24) y luego se eliminó por seguridad el {date}. Si hace falta de nuevo, puedes volver a introducirlo.",
+        "label": "IBAN del heredero",
+        "hint": "Dato sensible: sirve solo para el posible cargo de impuestos (F24). Guardado cifrado.",
+        "save": "Guardar"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "claim_ui",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "title": "¿Ya tienes un expediente? Vincula este acceso",
+        "body": "Introduce el código de expediente (p. ej. SUC-2026-0022) y el correo usado para el pago o el presupuesto. Debe coincidir con el correo de este acceso.",
+        "code_label": "Código de expediente",
+        "email_label": "Correo de la compra / presupuesto",
+        "needs_email": "Sal de esta cuenta y accede con {email} (usa el enlace del correo de pago, o solicita un nuevo magic link desde la página de acceso).",
+        "linking": "Vinculando…",
+        "cta": "Vincula el expediente"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "withdrawal_ui",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "status_requested": "Enviada",
+        "status_in_review": "En gestión",
+        "status_accepted": "Aceptada",
+        "status_rejected": "Rechazada",
+        "registered_title": "Solicitud registrada.",
+        "registered_body": "Lorenzo ha recibido tu solicitud y te contactará. Estado actual: {status}.",
+        "rejected_prev": "Una solicitud anterior fue rechazada",
+        "rejected_retry": "Puedes enviar una nueva.",
+        "reason_label": "Motivo (opcional)",
+        "reason_placeholder": "Si quieres, cuéntanos por qué…",
+        "cta": "Solicitar desistimiento",
+        "alt_contact": "Alternativamente puedes escribir a studio@successioniarmellin.it o por PEC.",
+        "refund_issued": "El reembolso se emitió en la tarjeta usada para el pago: normalmente lo ves abonado en 5-10 días laborables (plazos de tu banco o emisor; a veces aparece como reversión del cargo original).",
+        "refund_pending": "Si corresponde un reembolso, lo emitimos con el mismo método de pago. Una vez emitido, el banco normalmente lo abona en 5-10 días laborables."
+      }
+    },
+    {
+      "collection": "area",
+      "key": "invoice_ui",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "download": "Descargar factura",
+        "number": "Factura n.º {number}",
+        "issued_soon": "Factura n.º {number} emitida. El PDF estará disponible en breve.",
+        "pending": "La factura estará disponible aquí en cuanto se emita."
+      }
+    },
+    {
+      "collection": "area",
+      "key": "final_docs_ui",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "download_zip": "Descargar todo (ZIP)",
+        "download": "Descargar",
+        "not_ready": "Los documentos finales aún no están disponibles. Abajo tienes una vista previa de lo que recibirás al concluir el expediente."
+      }
+    },
+    {
+      "collection": "area",
+      "key": "profilo_ui",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "contacts": "Datos de contacto",
+        "name": "Nombre",
+        "email": "Email",
+        "phone": "Teléfono",
+        "phone_empty": "no indicado",
+        "phone_edit": "Modificar número",
+        "phone_add": "Añadir número",
+        "dial_aria": "Prefijo internacional",
+        "dial_other": "Otro…",
+        "dial_custom_aria": "Prefijo personalizado",
+        "phone_hint": "Elige el prefijo del país (+39, +49…) y luego el número nacional.",
+        "save": "Guardar",
+        "cancel": "Cancelar",
+        "security": "Seguridad",
+        "password_intro": "Si quieres, puedes crear una contraseña para acceder más rápido, sin esperar el enlace por correo.",
+        "password_saved": "Contraseña guardada: en el próximo acceso puedes usarla junto con otros métodos.",
+        "password_change": "Cambiar contraseña",
+        "password_create": "Crear o cambiar contraseña",
+        "password_new": "Nueva contraseña (mínimo 8 caracteres)",
+        "password_confirm": "Repite la contraseña",
+        "password_mismatch": "Las dos contraseñas no coinciden.",
+        "password_save": "Guardar contraseña",
+        "prefs_title": "Preferencias de notificaciones",
+        "prefs_body": "Los correos operativos (pago, documentos, impuestos, cierre) siguen siempre activos. Aquí puedes desactivar solo los mensajes opcionales, como la solicitud de reseña.",
+        "prefs_email": "Correos opcionales (p. ej. reseña)",
+        "prefs_wa": "WhatsApp (próximamente)",
+        "prefs_saved": "Preferencias guardadas.",
+        "comms_lang_title": "Idioma de las comunicaciones escritas",
+        "comms_lang_body": "Correos y mensajes sobre el expediente (pagos, documentos, desistimiento). Es independiente del idioma de la interfaz.",
+        "comms_lang_notice": "Las traducciones son automáticas / de cortesía. Los documentos oficiales y los textos vinculantes permanecen en italiano.",
+        "comms_lang_it": "Italiano",
+        "comms_lang_ar": "العربية",
+        "logout": "Salir",
+        "comms_lang_en": "English",
+        "comms_lang_tr": "Türkçe",
+        "comms_lang_fr": "Français",
+        "comms_lang_sq": "Shqip",
+        "comms_lang_de": "Deutsch",
+        "comms_lang_es": "Español",
+        "comms_lang_ru": "Русский",
+        "comms_lang_zh": "中文",
+        "comms_lang_hi": "हिन्दी"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "ordine_ui",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "includes_named": "Qué incluye \"{name}\"",
+        "includes_generic": "Qué incluye el paquete",
+        "includes_missing": "Detalle no disponible.",
+        "taxes_title": "Impuestos",
+        "taxes_body": "Estas cantidades no son nuestros honorarios: son impuestos que se pagan al Estado (modelo F24, autoliquidación). Los calculamos y comunicamos antes del envío.",
+        "taxes_need_iban": "Para el cargo de impuestos hace falta tu IBAN.",
+        "taxes_iban_cta": "Introduce el IBAN ahora →",
+        "taxes_iban_saved": "IBAN registrado (•••• {last4}).",
+        "taxes_iban_edit": "Editar",
+        "taxes_pending": "Los impuestos se calcularán y comunicarán antes del envío.",
+        "withdrawal_prompt": "¿Has cambiado de idea?",
+        "withdrawal_cta": "Solicitar el desistimiento"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "documenti_page_ui",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "cancelled_subtitle": "El expediente ha sido anulado: no hace falta subir nada.",
+        "cancelled_body": "Este expediente ha sido anulado, por lo que la subida de documentos está desactivada. Los documentos de identidad y demás archivos subidos se eliminarán de nuestros sistemas según la política de privacidad."
+      }
+    },
+    {
+      "collection": "area",
+      "key": "final_docs_preview",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        {
+          "label": "Recibo de presentación - Agenzia delle Entrate",
+          "description": "Certificación telemática con protocolo de registro."
+        },
+        {
+          "label": "Declaración de sucesión (copia)",
+          "description": "El modelo presentado a la Agenzia."
+        },
+        {
+          "label": "Notas catastrales actualizadas (volture)",
+          "description": "Los inmuebles a nombre de los herederos."
+        },
+        {
+          "label": "Factura de honorarios",
+          "description": "Documento fiscal de nuestros honorarios."
+        }
+      ]
+    },
+    {
+      "collection": "site_ui",
+      "key": "preventivo_ui",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "yes": "Sí",
+        "no": "No",
+        "unknown": "No lo sé",
+        "will_q_before": "El",
+        "will_q_term": "de cuius",
+        "will_q_after": "¿dejó testamento?",
+        "will_tip_aria": "Qué significa de cuius",
+        "will_tip": "De cuius (del latín) es la persona fallecida cuya sucesión se abre: el/la fallecido/a.",
+        "will_yes_note": "Los paquetes estándar cubren también casos con testamento. En la checklist de documentos pediremos copia del testamento publicado.",
+        "will_unknown_note": "También está bien así: si surge después, lo gestionamos durante el expediente. Continúa con las demás preguntas.",
+        "heirs_legend": "¿Quiénes son los herederos? Indica cuántos de cada tipo.",
+        "heirs_hint": "Cuenta a todas las personas que heredan, incluido tú si eres heredero/a.",
+        "heir_coniuge": "Cónyuge (o pareja de hecho)",
+        "heir_figli": "Hijos/as",
+        "heir_genitori": "Padres",
+        "heir_fratelli": "Hermanos/Hermanas",
+        "heir_nipoti": "Nietos",
+        "heir_altri": "Otros herederos",
+        "less": "Menos {label}",
+        "more": "Más {label}",
+        "real_estate_q": "¿Hay inmuebles (viviendas, terrenos, trasteros)?",
+        "real_estate_count": "¿Cuántos inmuebles en total?",
+        "real_estate_placeholder": "Ej. 2",
+        "real_estate_hint": "Cuenta viviendas, terrenos, trasteros y participaciones: cada inmueble extra puede afectar al presupuesto.",
+        "over_100k_q": "¿El valor total de la herencia (cuentas, títulos, etc.) supera los 100.000 euros?",
+        "other_assets_q": "¿Hay otros bienes (participaciones, acciones, empresas, embarcaciones…)?",
+        "back": "Atrás",
+        "next": "Siguiente"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "checkout_ui",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "stripe_blurb": "Pago seguro con Stripe: tarjeta de crédito/débito y, donde esté disponible, pago a plazos. Serás redirigido/a a la página protegida de Stripe.",
+        "err_start": "No se puede iniciar el pago.",
+        "err_not_configured": "Pagos aún no activos. Inténtalo más tarde o contáctanos.",
+        "err_retry": "No se puede iniciar el pago. Inténtalo en un momento.",
+        "err_network": "Error de red. Inténtalo en un momento.",
+        "need_quote_before": "Para pagar, empieza por el",
+        "need_quote_link": "cálculo del presupuesto",
+        "need_quote_after": ": así te proponemos el paquete adecuado.",
+        "loading": "Iniciando el pago…",
+        "cancelled": "Pago anulado. No se ha realizado ningún cargo: puedes reintentarlo cuando quieras.",
+        "total_fee": "Total honorarios",
+        "empty_order": "No hay ningún expediente con un paquete pendiente de pago. Calcula primero el presupuesto: te proponemos el paquete adecuado y vinculamos el pago a tu expediente.",
+        "empty_cta": "Ir al presupuesto →",
+        "meta_title": "Completar el pedido",
+        "extra_property": "Inmuebles adicionales ({extra} × {fee}€)"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "conferma_ui",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "title_paid": "¡Pago recibido, gracias!",
+        "title_pending": "Estamos confirmando el pago",
+        "body_paid": "Tu pago se ha realizado correctamente y tu expediente ya está activo. En breve recibirás un correo con el resumen e instrucciones para el área personal, donde subir los documentos.",
+        "body_pending": "Hemos recibido el pedido. La confirmación definitiva del pago llega de nuestro sistema en unos instantes: recibirás un correo en cuanto esté todo listo. Ya puedes acceder al área personal.",
+        "email_note_before": "Accede al área personal con la",
+        "email_note_strong": "mismo correo usado para el pago",
+        "email_note_after": ": así recuperas el expediente. Si usas otro correo (o Google con otra cuenta), no lo verás.",
+        "cta_area": "Ir al área personal",
+        "cta_home": "Volver al inicio",
+        "taxes_note": "Los impuestos son aparte de los honorarios: los calculamos y comunicamos antes del envío.",
+        "meta_title": "Pago recibido"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "contact_ui",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "name": "Nombre y apellidos",
+        "email": "Email",
+        "phone": "Teléfono (opcional)",
+        "message": "Mensaje",
+        "submit": "Enviar mensaje"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "soft_lead_ui",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "name": "Nombre y apellidos (opcional)",
+        "email": "Email",
+        "phone": "Teléfono",
+        "phone_optional": "Teléfono (opcional)",
+        "submitting": "Enviando…",
+        "err_save": "Por ahora no podemos registrar la solicitud. Inténtalo más tarde o llámanos.",
+        "notes": "Nota (opcional)"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "guide_ui",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "search_placeholder": "Busca en las guías (p. ej. impuestos, documentos, exención)",
+        "search_aria": "Buscar en las guías",
+        "all": "Todas",
+        "free_tool": "Herramienta gratuita",
+        "back": "Volver a las guías",
+        "author_heading": "Quién escribió esta guía",
+        "related": "Guías relacionadas",
+        "featured": "Destacado",
+        "reading_minutes": "{n} min de lectura",
+        "read_guide": "Lee la guía",
+        "read": "Leer",
+        "empty": "Ninguna guía encontrada para tu búsqueda. Prueba con otro término o escríbenos: respondemos a todos.",
+        "updated": "Actualizado el {date}",
+        "sources": "Fuentes oficiales",
+        "breadcrumb_aria": "Recorrido",
+        "breadcrumb_guides": "Guías",
+        "meta_title": "Guías sobre sucesiones",
+        "meta_not_found": "Guía no encontrada",
+        "tool_alt": "Ilustración: vivienda, calculadora y documento con símbolo del euro"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "chrome_ui",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "lang_aria": "Seleccionar idioma",
+        "menu_open": "Abrir menú",
+        "menu_close": "Cerrar menú",
+        "back": "Atrás",
+        "meta_result": "Tu resultado",
+        "meta_recesso": "Derecho de desistimiento",
+        "meta_documenti": "Documentos para la sucesión"
+      }
+    },
+    {
+      "collection": "area_errors",
+      "key": "session_invalid",
+      "locale": "es",
+      "is_published": true,
+      "value": "Sesión no válida."
+    },
+    {
+      "collection": "area_errors",
+      "key": "session_expired",
+      "locale": "es",
+      "is_published": true,
+      "value": "Sesión caducada. Accede de nuevo."
+    },
+    {
+      "collection": "area_errors",
+      "key": "not_authorized",
+      "locale": "es",
+      "is_published": true,
+      "value": "No autorizado."
+    },
+    {
+      "collection": "area_errors",
+      "key": "upload_failed",
+      "locale": "es",
+      "is_published": true,
+      "value": "Subida no realizada."
+    },
+    {
+      "collection": "area_errors",
+      "key": "delete_failed",
+      "locale": "es",
+      "is_published": true,
+      "value": "Eliminación no realizada."
+    },
+    {
+      "collection": "area_errors",
+      "key": "file_too_big",
+      "locale": "es",
+      "is_published": true,
+      "value": "Archivo demasiado grande (máximo 10 MB)."
+    },
+    {
+      "collection": "area_errors",
+      "key": "file_bad_type",
+      "locale": "es",
+      "is_published": true,
+      "value": "Formato no permitido."
+    },
+    {
+      "collection": "area_errors",
+      "key": "invoice_unavailable",
+      "locale": "es",
+      "is_published": true,
+      "value": "Factura aún no disponible."
+    },
+    {
+      "collection": "area_errors",
+      "key": "file_unavailable",
+      "locale": "es",
+      "is_published": true,
+      "value": "Archivo no disponible."
+    },
+    {
+      "collection": "area_errors",
+      "key": "practice_cancelled",
+      "locale": "es",
+      "is_published": true,
+      "value": "Expediente anulado: operación no disponible."
+    },
+    {
+      "collection": "area_errors",
+      "key": "mandate_failed",
+      "locale": "es",
+      "is_published": true,
+      "value": "Firma no realizada."
+    },
+    {
+      "collection": "area_errors",
+      "key": "withdrawal_blocked",
+      "locale": "es",
+      "is_published": true,
+      "value": "El desistimiento ya no es aplicable."
+    },
+    {
+      "collection": "area_errors",
+      "key": "withdrawal_pending",
+      "locale": "es",
+      "is_published": true,
+      "value": "Ya tienes una solicitud en curso."
+    },
+    {
+      "collection": "area_errors",
+      "key": "iban_invalid",
+      "locale": "es",
+      "is_published": true,
+      "value": "IBAN no válido. Comprueba e inténtalo de nuevo."
+    },
+    {
+      "collection": "area_errors",
+      "key": "phone_invalid",
+      "locale": "es",
+      "is_published": true,
+      "value": "Número no válido."
+    },
+    {
+      "collection": "area_errors",
+      "key": "password_short",
+      "locale": "es",
+      "is_published": true,
+      "value": "La contraseña debe tener al menos 8 caracteres."
+    },
+    {
+      "collection": "area_errors",
+      "key": "password_failed",
+      "locale": "es",
+      "is_published": true,
+      "value": "Guardado no realizado, inténtalo de nuevo."
+    },
+    {
+      "collection": "area_errors",
+      "key": "prefs_failed",
+      "locale": "es",
+      "is_published": true,
+      "value": "Guardado no realizado, inténtalo de nuevo."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_unavailable",
+      "locale": "es",
+      "is_published": true,
+      "value": "Servicio no disponible. Inténtalo más tarde."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_code_required",
+      "locale": "es",
+      "is_published": true,
+      "value": "Introduce el código de expediente."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_email_required",
+      "locale": "es",
+      "is_published": true,
+      "value": "Introduce el correo usado para la compra."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_email_mismatch",
+      "locale": "es",
+      "is_published": true,
+      "value": "El correo no coincide con este acceso."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_not_found",
+      "locale": "es",
+      "is_published": true,
+      "value": "Ningún expediente encontrado con este código. Comprueba e inténtalo de nuevo."
+    },
+    {
+      "collection": "area_errors",
+      "key": "docs_submit_failed",
+      "locale": "es",
+      "is_published": true,
+      "value": "Envío no realizado. Inténtalo de nuevo."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_email_required",
+      "locale": "es",
+      "is_published": true,
+      "value": "Introduce tu correo electrónico."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_bad_credentials",
+      "locale": "es",
+      "is_published": true,
+      "value": "Correo o contraseña incorrectos. Si nunca creaste una contraseña, accede con el enlace por correo."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_google_unavailable",
+      "locale": "es",
+      "is_published": true,
+      "value": "Acceso con Google no disponible por ahora. Usa el correo o el teléfono."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_link_invalid",
+      "locale": "es",
+      "is_published": true,
+      "value": "Enlace no válido."
+    },
+    {
+      "collection": "area_errors",
+      "key": "auth_failed",
+      "locale": "es",
+      "is_published": true,
+      "value": "Acceso no realizado. Inténtalo de nuevo."
+    },
+    {
+      "collection": "area_errors",
+      "key": "auth_not_configured",
+      "locale": "es",
+      "is_published": true,
+      "value": "Acceso aún no activo: Supabase Auth no configurado."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_otp_required",
+      "locale": "es",
+      "is_published": true,
+      "value": "Correo y código son obligatorios."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_phone_otp_required",
+      "locale": "es",
+      "is_published": true,
+      "value": "Número y código son obligatorios."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_password_required",
+      "locale": "es",
+      "is_published": true,
+      "value": "Introduce correo y contraseña."
+    },
+    {
+      "collection": "area_errors",
+      "key": "password_same",
+      "locale": "es",
+      "is_published": true,
+      "value": "La nueva contraseña debe ser distinta de la actual."
+    },
+    {
+      "collection": "area_errors",
+      "key": "no_practice",
+      "locale": "es",
+      "is_published": true,
+      "value": "Ningún expediente vinculado a tu cuenta."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_fields_required",
+      "locale": "es",
+      "is_published": true,
+      "value": "Introduce código de expediente y correo."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_auth_required",
+      "locale": "es",
+      "is_published": true,
+      "value": "Debes estar autenticado para vincular el expediente."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_no_email",
+      "locale": "es",
+      "is_published": true,
+      "value": "Este acceso no tiene correo. Sal y accede con el correo usado para la compra (magic link)."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_wrong_account",
+      "locale": "es",
+      "is_published": true,
+      "value": "Estás conectado/a como {current}. Para este expediente debes acceder con {expected}."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_link_failed",
+      "locale": "es",
+      "is_published": true,
+      "value": "No hemos podido vincular el contacto. Contacta con el estudio."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_practice_email_mismatch",
+      "locale": "es",
+      "is_published": true,
+      "value": "El correo no coincide con el registrado en el expediente. Usa el correo del pago o del presupuesto."
+    },
+    {
+      "collection": "area_errors",
+      "key": "service_unavailable",
+      "locale": "es",
+      "is_published": true,
+      "value": "Servicio no disponible."
+    },
+    {
+      "collection": "area_errors",
+      "key": "phone_invalid_detail",
+      "locale": "es",
+      "is_published": true,
+      "value": "Número no válido: elige el prefijo (+39, +49…) y el número nacional."
+    },
+    {
+      "collection": "area_login",
+      "key": "callback_loading",
+      "locale": "es",
+      "is_published": true,
+      "value": "Accediendo…"
+    },
+    {
+      "collection": "area_login",
+      "key": "callback_failed",
+      "locale": "es",
+      "is_published": true,
+      "value": "Acceso no realizado, redirigiendo…"
+    },
+    {
+      "collection": "site_ui",
+      "key": "offline_ui",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "email_cta": "Escríbenos por correo",
+        "whatsapp": "WhatsApp",
+        "already_practice": "¿Ya tienes un expediente?",
+        "area_cta": "Accede al área personal"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "cookie_ui",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "body": "Usamos cookies técnicas (necesarias) y, con tu consentimiento, cookies de estadística para mejorar el sitio. Puedes aceptar o rechazar las no necesarias.",
+        "policy_label": "Política de cookies",
+        "accept_all": "Aceptar todos",
+        "necessary_only": "Solo necesarios",
+        "preferences": "Preferencias de cookies"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "contatti_map_ui",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "meta_title": "Contacto",
+        "email_label": "Email",
+        "studio_label": "Estudio",
+        "map_eyebrow": "Dónde encontrarnos",
+        "map_title": "El estudio en {citta}",
+        "maps_cta": "Abrir en Google Maps",
+        "map_iframe_title": "Mapa del estudio - {address}",
+        "photo_caption": "Duomo di Pontedera",
+        "photo_credit": "Foto: SeesaTheDoctor / Wikimedia (CC BY 4.0)"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_categorie",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        {
+          "value": "A",
+          "label": "Vivienda – grupo A (excluida A/10)"
+        },
+        {
+          "value": "A10",
+          "label": "A/10 – Oficinas y estudios privados"
+        },
+        {
+          "value": "B",
+          "label": "Grupo B (colegios, escuelas, oficinas públicas…)"
+        },
+        {
+          "value": "C",
+          "label": "Grupo C – anexos (trasteros, sótanos…), excluida C/1"
+        },
+        {
+          "value": "C1",
+          "label": "C/1 – Tiendas y comercios"
+        },
+        {
+          "value": "D",
+          "label": "Grupo D (fábricas, hoteles, naves…)"
+        },
+        {
+          "value": "E",
+          "label": "Grupo E (estaciones, edificios especiales…)"
+        }
+      ]
+    },
+    {
+      "collection": "footer",
+      "key": "nav_heading",
+      "locale": "es",
+      "is_published": true,
+      "value": "Explorar"
+    },
+    {
+      "collection": "footer",
+      "key": "legal_heading",
+      "locale": "es",
+      "is_published": true,
+      "value": "Legal"
+    },
+    {
+      "collection": "footer",
+      "key": "rights_reserved",
+      "locale": "es",
+      "is_published": true,
+      "value": "Todos los derechos reservados."
+    },
+    {
+      "collection": "footer",
+      "key": "label_forma",
+      "locale": "es",
+      "is_published": true,
+      "value": "Formulario"
+    },
+    {
+      "collection": "footer",
+      "key": "label_piva",
+      "locale": "es",
+      "is_published": true,
+      "value": "P.IVA"
+    },
+    {
+      "collection": "footer",
+      "key": "label_cf",
+      "locale": "es",
+      "is_published": true,
+      "value": "C.F."
+    },
+    {
+      "collection": "footer",
+      "key": "label_rea",
+      "locale": "es",
+      "is_published": true,
+      "value": "REA"
+    },
+    {
+      "collection": "footer",
+      "key": "label_pec",
+      "locale": "es",
+      "is_published": true,
+      "value": "PEC"
+    },
+    {
+      "collection": "footer",
+      "key": "label_tel",
+      "locale": "es",
+      "is_published": true,
+      "value": "Tel"
+    },
+    {
+      "collection": "legale",
+      "key": "updated_prefix",
+      "locale": "es",
+      "is_published": true,
+      "value": "Última actualización:"
+    },
+    {
+      "collection": "legale",
+      "key": "lang_note",
+      "locale": "es",
+      "is_published": true,
+      "value": "La versión italiana de este documento es vinculante: las traducciones tienen valor meramente de cortesía y, en caso de discrepancia, prevalece el italiano."
+    },
+    {
+      "collection": "home",
+      "key": "meta_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Sucesiones en línea | Geom. Lorenzo Armellin"
+    },
+    {
+      "collection": "home",
+      "key": "meta_description",
+      "locale": "es",
+      "is_published": true,
+      "value": "Declaración de sucesión en línea con un profesional real: Geom. Lorenzo Armellin, inscrito en el Colegio. Presupuesto claro, documentos y expediente desde casa — también en persona en Pontedera."
+    }
   ]
 }

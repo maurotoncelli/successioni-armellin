@@ -1,36 +1,4802 @@
 {
   "_meta": {
-    "purpose": "Traduzione parziale (prep multilingua). Contiene solo la collection 'area_login'. Tutte le altre chiavi ricadono sull'italiano (IT fa fede).",
+    "purpose": "Russian courtesy translation of public site + area UI. Same keys as IT; IT remains legally authoritative (@07/@10).",
     "locale": "ru",
-    "version": 1,
-    "updated_at": "2026-06-22"
+    "schema": "ogni entry: { collection, key, locale, value, is_published }. value tipizzato secondo SPEC_Content_Blocks.",
+    "exclusions": "NON inclusi i contenuti data-driven gestiti in tabelle dedicate: packages, addons, faqs (Q&A), articles, document_catalog, media_assets (qui solo asset_key di riferimento).",
+    "version": 2,
+    "updated_at": "2026-07-18"
   },
   "entries": [
-    { "collection": "area_login", "key": "header_title", "locale": "ru", "is_published": true, "value": "Личный кабинет" },
-    { "collection": "area_login", "key": "header_subtitle", "locale": "ru", "is_published": true, "value": "Войдите, чтобы следить за вашим делом о наследстве." },
-    { "collection": "area_login", "key": "tab_email", "locale": "ru", "is_published": true, "value": "Эл. почта" },
-    { "collection": "area_login", "key": "tab_phone", "locale": "ru", "is_published": true, "value": "Телефон" },
-    { "collection": "area_login", "key": "email_label", "locale": "ru", "is_published": true, "value": "Ваша эл. почта" },
-    { "collection": "area_login", "key": "email_hint", "locale": "ru", "is_published": true, "value": "Используйте адрес, с которого вы оплатили." },
-    { "collection": "area_login", "key": "email_cta", "locale": "ru", "is_published": true, "value": "Отправить ссылку для входа" },
-    { "collection": "area_login", "key": "email_sending", "locale": "ru", "is_published": true, "value": "Отправка…" },
-    { "collection": "area_login", "key": "phone_label", "locale": "ru", "is_published": true, "value": "Ваш номер телефона" },
-    { "collection": "area_login", "key": "phone_hint", "locale": "ru", "is_published": true, "value": "Используйте номер из вашего заказа. Мы отправим код по SMS." },
-    { "collection": "area_login", "key": "phone_cta", "locale": "ru", "is_published": true, "value": "Отправить код по SMS" },
-    { "collection": "area_login", "key": "phone_sending", "locale": "ru", "is_published": true, "value": "Отправка…" },
-    { "collection": "area_login", "key": "sent_email_title", "locale": "ru", "is_published": true, "value": "Проверьте почту" },
-    { "collection": "area_login", "key": "sent_email_body", "locale": "ru", "is_published": true, "value": "Мы отправили ссылку для входа на {contact}. Ссылка действует несколько минут." },
-    { "collection": "area_login", "key": "sent_phone_title", "locale": "ru", "is_published": true, "value": "Проверьте SMS" },
-    { "collection": "area_login", "key": "sent_phone_body", "locale": "ru", "is_published": true, "value": "Мы отправили 6-значный код на номер {contact}. Введите его ниже." },
-    { "collection": "area_login", "key": "otp_toggle", "locale": "ru", "is_published": true, "value": "Я получил код, ввести его" },
-    { "collection": "area_login", "key": "otp_label", "locale": "ru", "is_published": true, "value": "6-значный код" },
-    { "collection": "area_login", "key": "otp_cta", "locale": "ru", "is_published": true, "value": "Подтвердить код" },
-    { "collection": "area_login", "key": "otp_verifying", "locale": "ru", "is_published": true, "value": "Проверка…" },
-    { "collection": "area_login", "key": "resend", "locale": "ru", "is_published": true, "value": "Отправить снова" },
-    { "collection": "area_login", "key": "error_link", "locale": "ru", "is_published": true, "value": "Ссылка для входа недействительна или истекла. Запросите новую." },
-    { "collection": "area_login", "key": "secure_note", "locale": "ru", "is_published": true, "value": "Безопасный вход" },
-    { "collection": "area_login", "key": "back_to_site", "locale": "ru", "is_published": true, "value": "Вернуться на сайт" },
-    { "collection": "area_login", "key": "privacy_link", "locale": "ru", "is_published": true, "value": { "label": "Конфиденциальность", "href": "/privacy" } },
-    { "collection": "area_login", "key": "termini_link", "locale": "ru", "is_published": true, "value": { "label": "Условия", "href": "/termini-condizioni" } }
+    {
+      "collection": "navbar",
+      "key": "menu",
+      "locale": "ru",
+      "is_published": true,
+      "value": [
+        {
+          "label": "Как это работает",
+          "href": "/come-funziona"
+        },
+        {
+          "label": "Тарифы",
+          "href": "/tariffe"
+        },
+        {
+          "label": "Обо мне",
+          "href": "/chi-sono"
+        },
+        {
+          "label": "Руководства",
+          "href": "/guide"
+        },
+        {
+          "label": "FAQ",
+          "href": "/faq"
+        },
+        {
+          "label": "Контакты",
+          "href": "/contatti"
+        }
+      ]
+    },
+    {
+      "collection": "navbar",
+      "key": "brand_tagline",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Наследство"
+    },
+    {
+      "collection": "navbar",
+      "key": "logo",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "asset_key": "logo_studio"
+      }
+    },
+    {
+      "collection": "navbar",
+      "key": "cta",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Рассчитать смету бесплатно",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "navbar",
+      "key": "cta_phone",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Поговорить с Lorenzo",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "navbar",
+      "key": "lang_switcher",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "enabled": true,
+        "locales": [
+          "it",
+          "en",
+          "ar",
+          "de",
+          "es",
+          "ru",
+          "tr",
+          "zh",
+          "hi",
+          "sq",
+          "fr"
+        ]
+      }
+    },
+    {
+      "collection": "globals",
+      "key": "mobile_cta",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Рассчитать смету бесплатно",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "footer",
+      "key": "studio",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "ragione_sociale": "Geom. Lorenzo Armellin",
+        "forma_giuridica": "Индивидуальный предприниматель — упрощённый режим (операция без НДС, ст. 1 п. 54-89 З. 190/2014)",
+        "piva": "02432220503",
+        "cf": "RMLLNZ90E27G843J",
+        "albo": "Collegio Geometri e Geometri Laureati di Pisa, n. 1969 — в реестре с 21/01/2022",
+        "indirizzo": "Via Vittorio Veneto 31, 56025 Pontedera (PI)"
+      }
+    },
+    {
+      "collection": "footer",
+      "key": "trust_line",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Geom. с допуском Entratel — с налоговым контролем бухгалтеров"
+    },
+    {
+      "collection": "footer",
+      "key": "area_app_note",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Этот сайт позволяет управлять делом по наследству онлайн: в личном кабинете клиенты следят за статусом, загружают документы и подписывают мандат. Вход — по email, телефону или аккаунту Google: из Google используем только имя и email для идентификации, другие данные не читаются и не передаются. Подробности в"
+    },
+    {
+      "collection": "footer",
+      "key": "odr",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Онлайн-разрешение споров (ODR)",
+        "href": "https://ec.europa.eu/consumers/odr"
+      }
+    },
+    {
+      "collection": "footer",
+      "key": "legal_menu",
+      "locale": "ru",
+      "is_published": true,
+      "value": [
+        {
+          "label": "Privacy",
+          "href": "/privacy"
+        },
+        {
+          "label": "Cookie Policy",
+          "href": "/cookie-policy"
+        },
+        {
+          "label": "Условия и положения",
+          "href": "/termini-condizioni"
+        },
+        {
+          "label": "Гарантия",
+          "href": "/garanzia"
+        },
+        {
+          "label": "Отказ",
+          "href": "/recesso"
+        }
+      ]
+    },
+    {
+      "collection": "footer",
+      "key": "credit",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Создано AT STUDIO · Mauro Toncelli"
+    },
+    {
+      "collection": "footer",
+      "key": "strumenti_link",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Расчёт кадастровой стоимости",
+        "href": "/strumenti/valore-catastale"
+      }
+    },
+    {
+      "collection": "settings",
+      "key": "phone",
+      "locale": "ru",
+      "is_published": true,
+      "value": "320 1570567"
+    },
+    {
+      "collection": "settings",
+      "key": "area_label",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Личный кабинет"
+    },
+    {
+      "collection": "settings",
+      "key": "whatsapp",
+      "locale": "ru",
+      "is_published": true,
+      "value": "https://wa.me/393201570567"
+    },
+    {
+      "collection": "settings",
+      "key": "email",
+      "locale": "ru",
+      "is_published": true,
+      "value": "studio@successioniarmellin.it"
+    },
+    {
+      "collection": "settings",
+      "key": "pec",
+      "locale": "ru",
+      "is_published": true,
+      "value": "lorenzo.armellin@geopec.it"
+    },
+    {
+      "collection": "settings",
+      "key": "review_url",
+      "locale": "ru",
+      "is_published": true,
+      "value": "https://g.page/r/CVRoWf5CoiTDEAE/review"
+    },
+    {
+      "collection": "settings",
+      "key": "address",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "via": "Via Vittorio Veneto 31",
+        "cap": "56025",
+        "citta": "Pontedera (PI)"
+      }
+    },
+    {
+      "collection": "settings",
+      "key": "opening_hours",
+      "locale": "ru",
+      "is_published": true,
+      "value": [
+        {
+          "giorni": "Пн–Пт",
+          "orario": "9:00-13:00 / 14:30-18:30"
+        },
+        {
+          "giorni": "Сб–Вс",
+          "orario": "Закрыто"
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "hero_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Ваше дело по наследству, не выходя из дома."
+    },
+    {
+      "collection": "home",
+      "key": "hero_subtitle",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Всё делает Geom. Lorenzo Armellin, специалист по наследству: прозрачная цена, всё онлайн (и при желании лично), живой человек сопровождает вас. Налоги рассчитываем мы, до оплаты."
+    },
+    {
+      "collection": "home",
+      "key": "hero_cta_primary",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Рассчитать смету бесплатно",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "hero_cta_secondary",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Узнайте, как это работает",
+        "href": "#come-funziona"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "hero_image",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "asset_key": "hero_home"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "hero_specialization_badge",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Геометр, специализирующийся на наследстве"
+    },
+    {
+      "collection": "home",
+      "key": "trustbar_items",
+      "locale": "ru",
+      "is_published": true,
+      "value": [
+        "Геометр, состоящий в реестре",
+        "Допуск Entratel (телематическая отправка AdE)",
+        "Налоговый контроль бухгалтеров",
+        "Безопасные платежи Stripe",
+        "Соответствует GDPR",
+        "SSL"
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "social_proof_stats",
+      "locale": "ru",
+      "is_published": false,
+      "value": [
+        {
+          "valore": "oltre X",
+          "label": "дел по наследству"
+        },
+        {
+          "valore": "X anni",
+          "label": "опыта"
+        },
+        {
+          "valore": "4,X/5",
+          "label": "средняя оценка Google"
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "problema_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Наследство — тысяча сомнений. Мы снимем это с ваших плеч."
+    },
+    {
+      "collection": "home",
+      "key": "problema_intro",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Мы знаем, что это трудный момент. О бюрократии позаботимся мы."
+    },
+    {
+      "collection": "home",
+      "key": "problema_vantaggi",
+      "locale": "ru",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "Без очередей",
+          "testo": "Всё из дома, даже с телефона."
+        },
+        {
+          "titolo": "Без ошибок и штрафов",
+          "testo": "Техническая проверка кадастровых данных геометром с допуском."
+        },
+        {
+          "titolo": "Живая поддержка",
+          "testo": "Вы всегда общаетесь с живым человеком, а не с ботом."
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_eyebrow",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Просто"
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Как это работает, в 3 шага"
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_steps",
+      "locale": "ru",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "Ответьте на несколько вопросов",
+          "testo": "Мы сразу скажем, что вам нужно и сколько это стоит.",
+          "immagine": {
+            "src": "/images/come-funziona-step-1-quiz.jpg",
+            "alt": "Человек за компьютером отвечает на вопросы онлайн-сметы"
+          }
+        },
+        {
+          "titolo": "Вы загружаете документы",
+          "testo": "Из личного кабинета, даже с фото. Мы дадим точный список.",
+          "immagine": {
+            "src": "/images/come-funziona-step-2-documenti.jpg",
+            "alt": "Человек фотографирует документ смартфоном"
+          }
+        },
+        {
+          "titolo": "Мы обо всём позаботимся",
+          "testo": "Мы готовим и отправляем декларацию; вы получаете квитанции.",
+          "immagine": {
+            "src": "/images/come-funziona-step-3-lorenzo.jpg",
+            "alt": "Geom. Lorenzo Armellin за компьютером, готовит дело"
+          }
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_sla_note",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Отправка в течение 10–15 рабочих дней (в зависимости от пакета) после получения полного комплекта документов."
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Что такое Successioni Armellin"
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Successioni Armellin — веб-приложение кабинета Geom. Lorenzo Armellin для онлайн-управления декларацией о наследстве: рассчитываете смету с прозрачной ценой, безопасно оплачиваете картой и в личном кабинете загружаете документы, подписываете мандат и следите за делом шаг за шагом до отправки в Agenzia delle Entrate. Для входа в личный кабинет можно использовать email, телефон или аккаунт Google: в этом случае мы используем исключительно ваше имя и email для создания и распознавания профиля — другие данные аккаунта не читаются и не передаются."
+    },
+    {
+      "collection": "home",
+      "key": "tariffe_eyebrow",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Тарифы"
+    },
+    {
+      "collection": "home",
+      "key": "tariffe_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Прозрачные цены, без сюрпризов"
+    },
+    {
+      "collection": "home",
+      "key": "tariffe_intro",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Вы платите фиксированный гонорар. Налоги отдельно, за счёт наследника, и мы их рассчитываем."
+    },
+    {
+      "collection": "home",
+      "key": "tariffe_cta",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Посмотреть пакеты",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "faidate_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Можно сделать самостоятельно на сайте Agenzia delle Entrate. Тогда зачем мы?"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_col_us",
+      "locale": "ru",
+      "is_published": true,
+      "value": "С нами"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_col_diy",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Сделай сам"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_col_corner",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Сравнение"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_intro",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Да, существует бесплатное предзаполненное наследство — честный вариант. Но нужны SPID и компетенция, данные не проверяются, ошибки (и штрафы) остаются на вас."
+    },
+    {
+      "collection": "home",
+      "key": "faidate_confronto",
+      "locale": "ru",
+      "is_published": true,
+      "value": [
+        {
+          "voce": "Время, которое потребуется",
+          "faidate": "Время и SPID за ваш счёт",
+          "noi": "Мы берём это на себя"
+        },
+        {
+          "voce": "Проверка кадастровых данных",
+          "faidate": "За ваш счёт",
+          "noi": "Это делает геометр"
+        },
+        {
+          "voce": "Расчёт налогов",
+          "faidate": "Самостоятельно",
+          "noi": "Мы делаем это заранее"
+        },
+        {
+          "voce": "Поддержка",
+          "faidate": "Нет",
+          "noi": "Живой человек"
+        },
+        {
+          "voce": "Риск штрафов",
+          "faidate": "Ваш",
+          "noi": "Ведётся"
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Что говорят клиенты"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_intro",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Настоящие отзывы с Google."
+    },
+    {
+      "collection": "home",
+      "key": "chisono_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Кто ведёт ваше дело"
+    },
+    {
+      "collection": "home",
+      "key": "chisono_estratto",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Я Lorenzo Armellin, геометр с правом передавать наследственные дела в Agenzia delle Entrate. С налоговым контролем бухгалтеров сочетаю точность кадастровых данных с надёжностью расчётов."
+    },
+    {
+      "collection": "home",
+      "key": "chisono_video",
+      "locale": "ru",
+      "is_published": false,
+      "value": {
+        "asset_key": "video_benvenuto_lorenzo"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "chisono_cta",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Познакомьтесь с Lorenzo",
+        "href": "/chi-sono"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "faq_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Частые вопросы"
+    },
+    {
+      "collection": "home",
+      "key": "faq_cta",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Все вопросы",
+        "href": "/faq"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "cta_finale_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Готовы снять с себя заботы?"
+    },
+    {
+      "collection": "home",
+      "key": "cta_finale_subtitle",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Бесплатная смета за несколько минут. Довольны или возмещение."
+    },
+    {
+      "collection": "home",
+      "key": "cta_finale_button",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Рассчитать смету бесплатно",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "cta_finale_phone",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Или позвоните Lorenzo",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "hero_eyebrow",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Прозрачные цены"
+    },
+    {
+      "collection": "tariffe",
+      "key": "hero_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Прозрачные цены. Что видите — то и платите."
+    },
+    {
+      "collection": "tariffe",
+      "key": "hero_subtitle",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Фиксированный гонорар за пакет, определённый заранее. Налоги отдельно, мы их рассчитываем. Для особых случаев — индивидуальная смета."
+    },
+    {
+      "collection": "tariffe",
+      "key": "card_badge_popolare",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Самый популярный"
+    },
+    {
+      "collection": "tariffe",
+      "key": "box_trasparenza_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Из чего складывается цена"
+    },
+    {
+      "collection": "tariffe",
+      "key": "box_trasparenza_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Цена пакета — профессиональный гонорар без НДС: кабинет работает в упрощённом режиме (операция без НДС). Налоги на наследство (регистрационный, кадастровый, гербовые) отдельны, за счёт наследника, уплачиваются через F24: мы рассчитаем и сообщим их ДО отправки."
+    },
+    {
+      "collection": "tariffe",
+      "key": "sovrapprezzo_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Когда цена может измениться (мы предупреждаем заранее)"
+    },
+    {
+      "collection": "tariffe",
+      "key": "sovrapprezzo_list",
+      "locale": "ru",
+      "is_published": false,
+      "value": [
+        {
+          "voce": "Дополнительный объект",
+          "importo": "+60 EUR за каждый (подлежит подтверждению)"
+        },
+        {
+          "voce": "Сельхозземли/пристройки",
+          "importo": "в зависимости от сложности"
+        },
+        {
+          "voce": "Наследники сверх стандартного порога",
+          "importo": "в зависимости от сложности"
+        }
+      ]
+    },
+    {
+      "collection": "tariffe",
+      "key": "sla_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Сроки выполнения"
+    },
+    {
+      "collection": "tariffe",
+      "key": "sla_note",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Каждый пакет указывает отправку декларации в точное число рабочих дней после ПОЛНОГО комплекта документов (не с оплаты): так мы можем реально выполнить обещание. Исключены сроки третьих сторон (Agenzia, Catasto, банки)."
+    },
+    {
+      "collection": "tariffe",
+      "key": "deliverable_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Что вы получите по завершении"
+    },
+    {
+      "collection": "tariffe",
+      "key": "deliverable_list",
+      "locale": "ru",
+      "is_published": true,
+      "value": [
+        "Квитанция о подаче/регистрации Agenzia",
+        "Копия декларации о наследстве",
+        "Подтверждение / результат F24",
+        "Результат кадастровой перерегистрации (где предусмотрено)",
+        "Наш счёт"
+      ]
+    },
+    {
+      "collection": "tariffe",
+      "key": "esempio_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Посмотреть пример итоговых документов"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_intro",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Дополнительные услуги, если нужны"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_subtitle",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Нажмите на услугу, чтобы узнать больше. Пока активируем по запросу: обсудим вместе и включим в дело."
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_contact_text",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Эта услуга добавляется по запросу с отдельной сметой. Позвоните или напишите: оценим случай вместе и включим в дело без сюрпризов."
+    },
+    {
+      "collection": "tariffe",
+      "key": "rate_text",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Гонорар можно оплатить в рассрочку при checkout (PayPal Pay in 3, Klarna, Scalapay, где доступно). Рассрочка на гонорар, не на налоги — они по законным срокам."
+    },
+    {
+      "collection": "tariffe",
+      "key": "su_misura_text",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Более 8 объектов, сельхозземли, компании или доли? Каждый случай разный: сделаем индивидуальную смету без сюрпризов."
+    },
+    {
+      "collection": "tariffe",
+      "key": "su_misura_cta",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Запросить индивидуальную смету",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "ti_serve_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Возможно, вам это и не нужно. Скажем бесплатно."
+    },
+    {
+      "collection": "tariffe",
+      "key": "ti_serve_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "В некоторых случаях (прямые наследники, только скромная ликвидность в пределах законных порогов, без недвижимости) декларация может не требоваться. Проверим ваш случай до оплаты: если не нужна — скажем. Окончательная проверка — по конкретной ситуации."
+    },
+    {
+      "collection": "tariffe",
+      "key": "ti_serve_cta",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Бесплатно проверить ваш случай",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Не знаете, что выбрать?"
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Прочитайте краткое руководство по выбору пакета или поговорите с Lorenzo: за несколько минут поймёте, какой подходит. А если передумаете — сменить пакет просто, доплатите или вернём разницу."
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_cta_guida",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Руководство по выбору",
+        "href": "#guida"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_cta_call",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Поговорить с Lorenzo",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "microtrust",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Геометр с допуском Entratel, с налоговым контролем бухгалтеров."
+    },
+    {
+      "collection": "tariffe",
+      "key": "cta_finale_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Несколько минут, чтобы узнать стоимость, без обязательств."
+    },
+    {
+      "collection": "tariffe",
+      "key": "cta_finale_button",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Рассчитать смету бесплатно",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Индивидуальная смета"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_tagline",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Для более сложных наследств"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_price_label",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Индивидуально"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Более 8 объектов, сельхозземли, компании или доли? Сложные случаи не укладываются в стандартный пакет: изучим ваш и подготовим отдельную смету без сюрпризов."
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_features",
+      "locale": "ru",
+      "is_published": true,
+      "value": [
+        "Для случаев, которые пакеты не покрывают",
+        "Бесплатная первичная оценка вашего случая",
+        "Прозрачная цена, определённая до начала",
+        "Тот же сервис и поддержка, что у пакетов"
+      ]
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_cta",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Запросить смету",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "hero_eyebrow",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Обо мне"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "hero_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Здравствуйте, я Lorenzo Armellin."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "hero_subtitle",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Геометр с правом передавать декларации о наследстве в Agenzia delle Entrate. За этим сайтом не программа: живой человек, который ведёт ваше дело."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "hero_ritratto",
+      "locale": "ru",
+      "is_published": false,
+      "value": {
+        "asset_key": "ritratto_lorenzo"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "bio_body",
+      "locale": "ru",
+      "is_published": false,
+      "value": "Я занимаюсь наследством каждый день. Как геометр, моя сила — контроль кадастровых данных: участки, subalterni, пристройки, документы о происхождении — там, где большинство дел застревает. Моя цель проста: снять с вас бремя в уже трудный момент, с прозрачными ценами и без походов по офисам и банкам."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "credenziali_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Мои учётные данные"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "credenziali_list",
+      "locale": "ru",
+      "is_published": true,
+      "value": [
+        {
+          "voce": "Регистрация в реестре геометров",
+          "dettaglio": "Collegio di Pisa n. 1969 — в реестре с 21/01/2022"
+        },
+        {
+          "voce": "Допуск Entratel",
+          "dettaglio": "Посредник для телематической отправки в Agenzia delle Entrate"
+        },
+        {
+          "voce": "P.IVA",
+          "dettaglio": "02432220503"
+        }
+      ]
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "team_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Геометр — по кадастру, бухгалтеры — по цифрам"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "team_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Я готовлю и передаю декларацию: у меня есть на это право. Для налоговой части привлекаю контроль бухгалтеров. Так вы получаете техническую проверку кадастровых данных и надёжность расчётов без разделения дела между кабинетами."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "team_membri",
+      "locale": "ru",
+      "is_published": false,
+      "value": [
+        {
+          "ruolo": "Геометр с допуском Entratel",
+          "nome": "Lorenzo Armellin",
+          "focus": "Готовит и отправляет дело, кадастровая проверка",
+          "foto": {
+            "asset_key": "ritratto_lorenzo"
+          }
+        },
+        {
+          "ruolo": "Налоговый контроль",
+          "nome": "Бухгалтер (подлежит подтверждению)",
+          "focus": "Проверка налоговой части/налогов",
+          "foto": {
+            "asset_key": "ritratto_commercialista"
+          }
+        }
+      ]
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "perche_geometra_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Многие ожидают бухгалтера, CAF или нотариуса. В наследстве самое деликатное — кадастровые данные: это работа геометра. Для подачи нужен посредник Entratel — я им являюсь. Нотариус участвует только в последующих актах, не в декларации."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Где меня найти"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_indirizzo",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "via": "Via Vittorio Veneto 31",
+        "cap": "56025",
+        "citta": "Pontedera (PI)"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_nota",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Всё делается дистанционно, но кабинет реально существует: он здесь."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_maps_label",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Открыть в Google Maps"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_foto_alt",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Duomo di Pontedera"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "ritratto_alt",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Geom. Lorenzo Armellin"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_ref",
+      "locale": "ru",
+      "is_published": false,
+      "value": {
+        "asset_key": "video_benvenuto_lorenzo"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_caption",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Приветствие и пара слов о моей работе (60 секунд)."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_badge",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Видео скоро"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_alt",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Приветственное видео Geom. Lorenzo Armellin"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "motto_latino",
+      "locale": "ru",
+      "is_published": false,
+      "value": "(элегантный латинский девиз о наследстве/семье/надёжности)"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "motto_traduzione",
+      "locale": "ru",
+      "is_published": false,
+      "value": "(итальянский перевод)"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "recensioni_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Что обо мне говорят"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "cta_finale_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Хотите, чтобы я этим занялся?"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "cta_finale_button",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Рассчитать смету бесплатно",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "cta_finale_phone",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Позвоните мне",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "documenti",
+      "key": "hero_eyebrow",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Руководство по документам"
+    },
+    {
+      "collection": "documenti",
+      "key": "hero_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Какие документы нужны для наследства?"
+    },
+    {
+      "collection": "documenti",
+      "key": "hero_subtitle",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Ответьте на несколько вопросов — сразу бесплатно скажем, что понадобится в вашем случае. Без обязательств. И если чего-то не хватает, часто можем получить сами."
+    },
+    {
+      "collection": "documenti",
+      "key": "interattiva_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Составьте свой персональный список"
+    },
+    {
+      "collection": "documenti",
+      "key": "interattiva_domande",
+      "locale": "ru",
+      "is_published": true,
+      "value": [
+        "Есть недвижимость (дома, земли, боксы)?",
+        "Есть завещание?",
+        "Есть несовершеннолетние наследники?",
+        "Есть счета/инвестиции?",
+        "Есть сельхозземли/участки/пристройки?",
+        "Есть другие активы (доли, компании, транспорт)?"
+      ]
+    },
+    {
+      "collection": "documenti",
+      "key": "interattiva_risultato_intro",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Вот что вам понадобится:"
+    },
+    {
+      "collection": "documenti",
+      "key": "evergreen_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Типичные документы для декларации о наследстве"
+    },
+    {
+      "collection": "documenti",
+      "key": "evergreen_intro",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Ниже наиболее распространённые документы. Не все всегда нужны: зависит от вашего случая (для этого инструмент выше)."
+    },
+    {
+      "collection": "documenti",
+      "key": "hook_recupero",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Не можете найти документ? Часто мы можем получить его сами: кадастровые выписки, документы о происхождении, недостающие данные. Это часть нашей работы."
+    },
+    {
+      "collection": "documenti",
+      "key": "disclaimer_ymyl",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Этот список ориентировочный и адаптируется к вашим данным. Окончательный подтвердит Lorenzo после проверки вашего конкретного случая."
+    },
+    {
+      "collection": "documenti",
+      "key": "cta_preventivo",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Рассчитать смету",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "documenti",
+      "key": "cta_pdf",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Скачать список (PDF)",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "documenti",
+      "key": "cta_email",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Получить по email",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "faq",
+      "key": "hero_eyebrow",
+      "locale": "ru",
+      "is_published": true,
+      "value": "FAQ"
+    },
+    {
+      "collection": "faq",
+      "key": "hero_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Частые вопросы о наследстве"
+    },
+    {
+      "collection": "faq",
+      "key": "hero_subtitle",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Понятные ответы на частые вопросы. Если не нашли свой — напишите или позвоните Lorenzo: отвечаем всем."
+    },
+    {
+      "collection": "faq",
+      "key": "hero_search",
+      "locale": "ru",
+      "is_published": true,
+      "value": true
+    },
+    {
+      "collection": "faq",
+      "key": "cat_capire_intro",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Что это, когда нужно и какие риски."
+    },
+    {
+      "collection": "faq",
+      "key": "cat_costi_intro",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Сколько стоит, что включено и как работают налоги."
+    },
+    {
+      "collection": "faq",
+      "key": "cat_perche_intro",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Можно сделать бесплатно самостоятельно: вот почему всё же стоит делегировать."
+    },
+    {
+      "collection": "faq",
+      "key": "cat_come_intro",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Процесс, документы и сроки, шаг за шагом."
+    },
+    {
+      "collection": "faq",
+      "key": "cat_dopo_intro",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Что вы получаете, как мы обрабатываем данные и ваши гарантии."
+    },
+    {
+      "collection": "faq",
+      "key": "cta_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Не нашли ответ?"
+    },
+    {
+      "collection": "faq",
+      "key": "cta_button",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Рассчитать смету бесплатно",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "faq",
+      "key": "cta_phone",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Спросить Lorenzo",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "recesso",
+      "key": "hero_eyebrow",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Ваши гарантии"
+    },
+    {
+      "collection": "recesso",
+      "key": "hero_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Ваше право на отказ, простым языком"
+    },
+    {
+      "collection": "recesso",
+      "key": "hero_subtitle",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Мы хотим, чтобы вы были спокойны. Здесь простым языком объясняем, как отказаться и получить возмещение. Формальный текст — в Условиях продажи."
+    },
+    {
+      "collection": "recesso",
+      "key": "cosa_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "У вас 14 дней, чтобы передумать"
+    },
+    {
+      "collection": "recesso",
+      "key": "cosa_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Как потребитель вы имеете право отказаться в течение 14 дней с момента покупки без объяснения причин. Это ваше законное право."
+    },
+    {
+      "collection": "recesso",
+      "key": "avvio_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Если вы просите начать сразу"
+    },
+    {
+      "collection": "recesso",
+      "key": "avvio_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Наследство часто срочно (срок 12 месяцев). Если просите начать до 14 дней, запросим явное согласие: это значит, что после завершения услуги право на отказ больше не действует. Если работа только начата, но не завершена — см. пункт ниже."
+    },
+    {
+      "collection": "recesso",
+      "key": "iniziato_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "А если я передумаю, пока вы работаете?"
+    },
+    {
+      "collection": "recesso",
+      "key": "iniziato_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Отказ возможен: вы платите только пропорционально уже выполненной работе, остальное возмещаем. Никаких скрытых штрафов."
+    },
+    {
+      "collection": "recesso",
+      "key": "come_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Как запросить отказ"
+    },
+    {
+      "collection": "recesso",
+      "key": "come_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Проще всего: в личном кабинете кнопка «Запросить отказ». Альтернативно — email/PEC. Можно использовать типовую форму ниже, но это необязательно."
+    },
+    {
+      "collection": "recesso",
+      "key": "come_cta_area",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Запросить отказ из личного кабинета",
+        "href": "/area-riservata/recesso"
+      }
+    },
+    {
+      "collection": "recesso",
+      "key": "rimborso_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Когда я получу возмещение"
+    },
+    {
+      "collection": "recesso",
+      "key": "rimborso_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Оформляем в законные сроки (обычно 14 дней с запроса), тем же способом оплаты. После зачисления на карту банк обычно отражает это в течение 5–10 рабочих дней (сроки Stripe/эмитента). Уже уплаченные государству налоги регулируются правилами Agenzia, не нами."
+    },
+    {
+      "collection": "recesso",
+      "key": "garanzia_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Отказ и гарантия: две разные вещи"
+    },
+    {
+      "collection": "recesso",
+      "key": "garanzia_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Отказ — ваше законное право в первые 14 дней. Наша гарантия «Довольны или возмещение» — дополнительное обещание: если работа не устроила, обсудим и найдём решение. Подробности на странице Гарантия."
+    },
+    {
+      "collection": "recesso",
+      "key": "garanzia_link",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Читать Гарантию",
+        "href": "/garanzia"
+      }
+    },
+    {
+      "collection": "recesso",
+      "key": "tc_link",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Эта страница простым языком объясняет отказ. Юридически значимый текст — в Условиях продажи."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_eyebrow",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Процесс"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Как это работает: просто, из дома, в 3 шага"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_subtitle",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Никаких очередей и офисов. Мы ведём вас шаг за шагом: вы думаете о семье, о бюрократии — мы."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps",
+      "locale": "ru",
+      "is_published": true,
+      "value": [
+        {
+          "numero": 1,
+          "titolo": "Ответьте на несколько вопросов",
+          "testo": "Заполните короткую онлайн-анкету (1 минута). Сразу скажем, что нужно и сколько стоит — и если наследство вам не требуется, скажем бесплатно.",
+          "dettaglio": "Мгновенный результат: цена или индивидуальная смета для сложных случаев."
+        },
+        {
+          "numero": 2,
+          "titolo": "Вы загружаете документы",
+          "testo": "В личном кабинете загружаете документы, даже фото с телефона. Дадим точный список, адаптированный к вашему случаю. Если чего-то не хватает, часто можем получить сами.",
+          "dettaglio": "Живой человек проверяет всё: никаких недозаполненных форм."
+        },
+        {
+          "numero": 3,
+          "titolo": "Мы обо всём позаботимся",
+          "testo": "Lorenzo готовит и отправляет декларацию в Agenzia delle Entrate. Заранее сообщим налоги к уплате. По завершении получите квитанции и итоговые документы в личном кабинете.",
+          "dettaglio": "Где предусмотрено, мы также занимаемся кадастровой перерегистрацией."
+        }
+      ]
+    },
+    {
+      "collection": "come_funziona",
+      "key": "sla_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Сколько времени это занимает"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "sla_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Сроки зависят от пакета и отсчитываются с момента получения ВСЕХ полных и правильных документов (не с оплаты): так мы можем реально выполнить обещание. Исключены сроки третьих сторон (Agenzia, Catasto, банки)."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "valore_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Что мы делаем, а программа — нет"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "valore_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Мы вручную проверяем кадастровые данные — участки, subalterni, пристройки, документы о происхождении — там, где дела чаще всего застревают. С налоговым контролем бухгалтеров по цифрам. Разница между заполненной формой и качественно выполненным делом."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "distanza_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Всё онлайн"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "distanza_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Не нужно идти ни в какой офис и ни в банк: анкета, документы, сообщения и отправка в Agenzia — онлайн. Всегда есть звонок с Lorenzo, чтобы всё объяснить."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "visita_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Предпочитаете лично?"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "visita_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Всё делается дистанционно, но при желании примем в кабинете по записи: без очередей, только время, чтобы вместе разобрать документы и шаги. Позвоните или напишите — назначим время."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "visita_maps_label",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Открыть в Google Maps"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "deliverable_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Что у вас будет в итоге"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "deliverable_list",
+      "locale": "ru",
+      "is_published": true,
+      "value": [
+        "Квитанция о подаче/регистрации AdE",
+        "Копия декларации",
+        "Результат F24 / подтверждение",
+        "Результат кадастровой перерегистрации (где предусмотрено)",
+        "Счёт"
+      ]
+    },
+    {
+      "collection": "come_funziona",
+      "key": "cta_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Начнём? Достаточно минуты."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "cta_button",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Рассчитать смету бесплатно",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "cta_phone",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Поговорить с Lorenzo",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "contatti",
+      "key": "hero_eyebrow",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Контакты"
+    },
+    {
+      "collection": "contatti",
+      "key": "hero_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Свяжитесь с нами"
+    },
+    {
+      "collection": "contatti",
+      "key": "hero_subtitle",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Есть вопрос или хотите понять, нужно ли вам наследство? Напишите или позвоните: ответит живой человек, не бот."
+    },
+    {
+      "collection": "contatti",
+      "key": "telefono",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Телефон / WhatsApp",
+        "numero": "+39 320 1570567",
+        "cta_chiama": "tel:+393201570567",
+        "cta_whatsapp": "https://wa.me/393201570567"
+      }
+    },
+    {
+      "collection": "contatti",
+      "key": "email",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "generale": "studio@successioniarmellin.it",
+        "pec": "lorenzo.armellin@geopec.it"
+      }
+    },
+    {
+      "collection": "contatti",
+      "key": "studio",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "via": "Via Vittorio Veneto 31",
+        "cap": "56025",
+        "citta": "Pontedera (PI)"
+      }
+    },
+    {
+      "collection": "contatti",
+      "key": "orari",
+      "locale": "ru",
+      "is_published": false,
+      "value": [
+        {
+          "giorni": "Пн–Пт",
+          "orario": "9:00-13:00 / 14:30-18:30"
+        },
+        {
+          "giorni": "Сб–Вс",
+          "orario": "Закрыто"
+        }
+      ]
+    },
+    {
+      "collection": "contatti",
+      "key": "canali_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Мы сопровождаем вас и на вашем языке"
+    },
+    {
+      "collection": "contatti",
+      "key": "canali_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Пишите нам в WhatsApp или по email на вашем языке: мы поймём друг друга без проблем. Если предпочитаете говорить — можем созвониться с переводом в реальном времени; важное (суммы, сроки, документы) всегда подтверждаем письменно. Официальные документы остаются на итальянском."
+    },
+    {
+      "collection": "contatti",
+      "key": "form_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Напишите нам"
+    },
+    {
+      "collection": "contatti",
+      "key": "form_nota",
+      "locale": "ru",
+      "is_published": false,
+      "value": "Ответим в течение 1 рабочего дня."
+    },
+    {
+      "collection": "contatti",
+      "key": "form_success",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Спасибо! Мы скоро свяжемся с вами."
+    },
+    {
+      "collection": "contatti",
+      "key": "mappa_nota",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Всё делается дистанционно, но кабинет существует: приходите по записи."
+    },
+    {
+      "collection": "contatti",
+      "key": "cta_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Хотите начать сразу? Рассчитайте смету бесплатно — это займёт 1 минуту."
+    },
+    {
+      "collection": "contatti",
+      "key": "cta_button",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Рассчитать смету",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "guide",
+      "key": "hero_eyebrow",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Руководства"
+    },
+    {
+      "collection": "guide",
+      "key": "hero_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Руководства по наследству: понятные, актуальные, без бюрократии"
+    },
+    {
+      "collection": "guide",
+      "key": "hero_subtitle",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Всё, что нужно знать о наследстве, налогах и документах, простым языком от тех, кто реально ведёт такие дела."
+    },
+    {
+      "collection": "guide",
+      "key": "hero_search",
+      "locale": "ru",
+      "is_published": true,
+      "value": true
+    },
+    {
+      "collection": "guide",
+      "key": "categorie",
+      "locale": "ru",
+      "is_published": true,
+      "value": [
+        {
+          "nome": "Понять наследство",
+          "slug": "основы"
+        },
+        {
+          "nome": "Налоги и расходы",
+          "slug": "налоги"
+        },
+        {
+          "nome": "Документы",
+          "slug": "документы"
+        },
+        {
+          "nome": "Особые случаи",
+          "slug": "случаи"
+        },
+        {
+          "nome": "Местные руководства (Тоскана)",
+          "slug": "местные"
+        },
+        {
+          "nome": "Иностранные наследники / из-за рубежа",
+          "slug": "иностранцы"
+        }
+      ]
+    },
+    {
+      "collection": "guide",
+      "key": "in_evidenza_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "На главной"
+    },
+    {
+      "collection": "guide",
+      "key": "cta_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Нужна помощь с вашим случаем?"
+    },
+    {
+      "collection": "guide",
+      "key": "cta_button",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Рассчитать смету бесплатно",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "guide",
+      "key": "strumenti_banner",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "title": "Инструмент: расчёт кадастровой стоимости",
+        "body": "Сколько стоит дом или земля для наследства? Введите rendita из выписки и сразу получите стоимость для расчёта налогов.",
+        "cta_label": "Открыть калькулятор",
+        "href": "/strumenti/valore-catastale"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_hero_eyebrow",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Инструменты"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_meta_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Расчёт кадастровой стоимости для наследства (бесплатно, онлайн)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_hero_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Сколько стоит объект для наследства?"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_hero_subtitle",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Введите кадастровый доход (найдёте в выписке) и сразу получите кадастровую стоимость для расчёта налогов на наследство. Бесплатно, без указания данных."
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_tab_fabbricato",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Здание"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_tab_terreno",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Сельхозземля"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_rendita",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Кадастровый доход (€)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_help_rendita",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Найдёте в кадастровой выписке, столбец «Rendita». Если нет — часто можем получить сами."
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_rd",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Доминикальный доход (€)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_help_rd",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Найдёте в кадастровой выписке на землю. Для земель, НЕ предназначенных для застройки."
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_categoria",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Кадастровая категория"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_prima_casa",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Для наследника это будет «первая квартира» (льгота: коэффициент снижен до 110)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_risultato",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Кадастровая стоимость для наследства"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_formula",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Расчёт:"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_come_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Как работает расчёт"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_come_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Для декларации о наследстве недвижимость оценивается не по рыночной, а по кадастровой стоимости: rendita с переоценкой 5%, умноженная на коэффициент по закону. Для сельхозземель: доминикальный доход с переоценкой 25% × 90."
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_formule",
+      "locale": "ru",
+      "is_published": true,
+      "value": [
+        {
+          "tipo": "Первая квартира (льгота)",
+          "formula": "rendita × 1,05 × 110"
+        },
+        {
+          "tipo": "Жильё и пристройки (группы A и C)",
+          "formula": "rendita × 1,05 × 120"
+        },
+        {
+          "tipo": "Группа B (школы, колледжи…)",
+          "formula": "rendita × 1,05 × 168"
+        },
+        {
+          "tipo": "A/10 и группа D (офисы, склады…)",
+          "formula": "rendita × 1,05 × 60"
+        },
+        {
+          "tipo": "C/1 и группа E (магазины…)",
+          "formula": "rendita × 1,05 × 40,8"
+        },
+        {
+          "tipo": "Сельхозземли (не застраиваемые)",
+          "formula": "reddito dominicale × 1,25 × 90"
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_note",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Застраиваемые земли — исключение: декларируются по рыночной (кадастровой) стоимости, а не кадастровой. Результат ориентировочный: льготы и особые случаи проверяются по конкретной ситуации — именно этим мы и занимаемся."
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_cta_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Хотите узнать, сколько стоит всё наследство, включая налоги?"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_cta_button",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Рассчитать смету бесплатно",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_faq_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Частые вопросы о кадастровой стоимости"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_faq",
+      "locale": "ru",
+      "is_published": true,
+      "value": [
+        {
+          "q": "Где найти кадастровый доход моего объекта?",
+          "a": "В кадастровой выписке, столбец «Rendita». Можно запросить бесплатно на сайте Agenzia delle Entrate (с SPID) или, если вы наш клиент, получим мы."
+        },
+        {
+          "q": "Кадастровая стоимость — это рыночная цена дома?",
+          "a": "Нет: кадастровая стоимость почти всегда намного ниже рыночной. По ней рассчитываются регистрационный и кадастровый налоги в декларации о наследстве; получается из переоценённой rendita, умноженной на законный коэффициент."
+        },
+        {
+          "q": "Как льгота «первая квартира» учитывается в расчёте?",
+          "a": "Если для наследника объект будет «первая квартира», коэффициент снижается до 110 (вместо 120 для жилья), а регистрационный и кадастровый налоги уплачиваются фиксированно (по 200 евро) вместо процента."
+        },
+        {
+          "q": "Это касается и земель?",
+          "a": "Для сельхозземель (не застраиваемых) — да: доминикальный доход с переоценкой 25%, умноженный на 90. Застраиваемые земли декларируются по рыночной стоимости."
+        }
+      ]
+    },
+    {
+      "collection": "article",
+      "key": "autore_box",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "autore": "Geom. Lorenzo Armellin",
+        "ruolo": "Геометр с допуском Entratel",
+        "reviewed_by": "Налоговая часть проверена бухгалтерами",
+        "foto": {
+          "asset_key": "ritratto_lorenzo"
+        },
+        "link": "/chi-sono"
+      }
+    },
+    {
+      "collection": "article",
+      "key": "disclaimer",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Информация в этом руководстве ориентировочная и информационная. Каждое наследство — отдельный случай: окончательная оценка всегда по конкретной ситуации. Бесплатно проверим ваш случай."
+    },
+    {
+      "collection": "article",
+      "key": "cta_box",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "titolo": "Хотите, чтобы мы этим занялись?",
+        "button": {
+          "label": "Рассчитать смету бесплатно",
+          "href": "/preventivo"
+        },
+        "phone": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "article",
+      "key": "fonti",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Официальные источники: Agenzia delle Entrate, Normattiva (ссылки в статьях)."
+    },
+    {
+      "collection": "preventivo",
+      "key": "intro_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Рассчитайте смету бесплатно за 1 минуту"
+    },
+    {
+      "collection": "preventivo",
+      "key": "intro_subtitle",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Ответьте на несколько вопросов: сразу скажем стоимость или, если случай особый, сделаем индивидуальную смету. Без обязательств."
+    },
+    {
+      "collection": "preventivo",
+      "key": "progress_label",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Шаг {n} из 3"
+    },
+    {
+      "collection": "preventivo",
+      "key": "step1_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Начнём с основ"
+    },
+    {
+      "collection": "preventivo",
+      "key": "step2_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Кто наследники"
+    },
+    {
+      "collection": "preventivo",
+      "key": "step3_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Что входит в наследство"
+    },
+    {
+      "collection": "preventivo",
+      "key": "step4_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Куда отправить смету"
+    },
+    {
+      "collection": "preventivo",
+      "key": "help_text",
+      "locale": "ru",
+      "is_published": true,
+      "value": [
+        "Данные нужны только для оценки вашего случая.",
+        "Не знаете ответ? Выберите «Не знаю» — мы разберёмся."
+      ]
+    },
+    {
+      "collection": "preventivo",
+      "key": "consenso_privacy",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Я прочитал(а) политику конфиденциальности и согласен(на) на обработку данных."
+    },
+    {
+      "collection": "preventivo",
+      "key": "consenso_marketing",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Хочу получать полезные советы и обновления (необязательно)."
+    },
+    {
+      "collection": "preventivo",
+      "key": "cta_submit",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Сразу увидеть результат",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "preventivo",
+      "key": "trust_items",
+      "locale": "ru",
+      "is_published": true,
+      "value": [
+        "Бесплатно и без обязательств",
+        "Ответит Lorenzo, живой человек",
+        "Данные в безопасности, серверы в ЕС (GDPR)"
+      ]
+    },
+    {
+      "collection": "grazie",
+      "key": "header_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Вот результат для вашего случая"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_a_whatsapp",
+      "locale": "ru",
+      "is_published": true,
+      "value": "WhatsApp"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_a_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Возможно, декларация не нужна"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_taxes_note",
+      "locale": "ru",
+      "is_published": true,
+      "value": "+ налоги, рассчитанные для вашего случая: сообщим до оплаты."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_package_line",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Пакет {name}"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_a_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Исходя из ваших данных, ваш случай может попадать под законное освобождение. Не хотим продать ненужную услугу: проверим вместе бесплатно. Окончательное подтверждение — по конкретному случаю."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_a_cta",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Позвоните для бесплатной проверки",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Вот подходящий для вас пакет"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_cta",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Перейти к оплате",
+        "href": "/checkout"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_riallineamento",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Перед оплатой посмотрите {guida} по выбору пакета или поговорите с Lorenzo: если выбрали не тот, сменить просто — доплатите или вернём разницу."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_guida",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "руководство",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Ваш случай заслуживает индивидуальной сметы"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Из ваших ответов виден случай с особыми элементами (много объектов, сельхозземли, доли, компании…). Здесь нельзя назвать цену: нужно изучить вместе с Lorenzo, чтобы вы заплатили ровно столько, сколько нужно. Оставьте контакты ниже (и при желании примечание) или напишите: перезвоним, уточним детали и подготовим индивидуальную смету."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_cta",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Позвонить Lorenzo",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_whatsapp",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Написать в WhatsApp"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_whatsapp_prefill",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Здравствуйте, Lorenzo, я заполнил(а) анкету на сайте и получил(а) индивидуальную смету. Хотел(а) бы обсудить мой случай с вами."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Хотите подумать? Получите эту смету по email"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_desc",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Отправим сводку сметы, чтобы вы могли вернуться к ней когда угодно. Без давления."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_submit",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Отправьте смету по email"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_ok_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Готово! Проверьте почту"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_ok_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Мы отправили сводку сметы. Когда захотите — продолжите оттуда."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_ok_title_noemail",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Запрос зарегистрирован!"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_ok_body_noemail",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Мы зарегистрировали ваш запрос: скоро отправим сводку сметы."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Оставьте контакты: мы перезвоним"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_desc",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Ответов анкеты достаточно для начала. Оставьте email и телефон: Lorenzo свяжется, чтобы уточнить детали и отправить индивидуальную смету без обязательств. При желании добавьте примечание ниже."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_notes_label",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Примечание для Lorenzo (необязательно)"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_notes_placeholder",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Напр. тип недвижимости, земли, компании/доли, срочность или сомнения…"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_footnote",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Без обязательств: свяжемся в течение рабочего дня (обычно в тот же день), чтобы изучить случай и подготовить смету."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_submit",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Запросить обратный звонок"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_ok_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Запрос получен!"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_ok_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Lorenzo скоро свяжется с вами, чтобы уточнить случай и подготовить индивидуальную смету."
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "А пока вот что вам понадобится"
+    },
+    {
+      "collection": "documenti",
+      "key": "lista",
+      "locale": "ru",
+      "is_published": true,
+      "value": [
+        {
+          "name": "Удостоверение личности и налоговый код",
+          "description": "Всех наследников и умершего.",
+          "when": "Всегда"
+        },
+        {
+          "name": "Свидетельство о смерти",
+          "description": "Или заменяющая декларация свидетельства о смерти и состава семьи умершего: форму предоставим мы.",
+          "when": "Всегда"
+        },
+        {
+          "name": "Самосертификация состава семьи каждого наследника",
+          "description": "Нужно для определения наследников: форма на каждого, мы предоставим.",
+          "when": "Всегда"
+        },
+        {
+          "name": "Кадастровые выписки",
+          "description": "Об объектах в наследстве. Мы можем получить их сами.",
+          "when": "Если есть недвижимость"
+        },
+        {
+          "name": "Документы о происхождении",
+          "description": "Договоры купли-продажи, дарения или предыдущие декларации о наследстве.",
+          "when": "Если есть недвижимость"
+        },
+        {
+          "name": "Завещание",
+          "description": "Копия опубликованного завещания, если есть.",
+          "when": "Если есть завещание"
+        },
+        {
+          "name": "Справка об остатке на счетах",
+          "description": "Остатки на счетах, вкладных книжках и ценных бумагах на дату смерти.",
+          "when": "Если есть счета/инвестиции"
+        }
+      ]
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_disclaimer",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Ориентировочный список: окончательный подтвердит Lorenzo после изучения вашего случая."
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_faq_link",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Подробнее в FAQ",
+        "href": "/faq"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_hook",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Чего-то не хватает? Часто мы можем это получить сами."
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_cta_pdf",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Скачать список (PDF)",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_cta_email",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Получить по email",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "next_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Мы отправили сводку по email. Дальше мы сопровождаем вас: живой человек, а не бот."
+    },
+    {
+      "collection": "checkout",
+      "key": "header_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Завершить заказ"
+    },
+    {
+      "collection": "checkout",
+      "key": "header_subtitle",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Ещё один шаг — и мы возьмём это на себя."
+    },
+    {
+      "collection": "checkout",
+      "key": "riepilogo_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Ваш заказ"
+    },
+    {
+      "collection": "checkout",
+      "key": "modifica_link",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Изменить",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "checkout",
+      "key": "prezzo_imposte_nota",
+      "locale": "ru",
+      "is_published": true,
+      "value": "ВАЖНО: это профессиональный гонорар. Налоги (на наследство, регистрационный, кадастровый, гербовые) ОТДЕЛЬНЫ, за счёт наследника, мы рассчитаем и сообщим их ДО отправки."
+    },
+    {
+      "collection": "checkout",
+      "key": "microtrust",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Вы платите геометру с допуском Entratel, с налоговым контролем бухгалтеров. Безопасные платежи через Stripe."
+    },
+    {
+      "collection": "checkout",
+      "key": "pagamento_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Как вы хотите оплатить"
+    },
+    {
+      "collection": "checkout",
+      "key": "pagamento_metodi",
+      "locale": "ru",
+      "is_published": true,
+      "value": [
+        "Карта",
+        "PayPal",
+        "Перевод (с помощью)"
+      ]
+    },
+    {
+      "collection": "checkout",
+      "key": "rate_nota",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Можно оплатить в рассрочку (PayPal Pay in 3, Klarna, Scalapay, где доступно). Рассрочка на гонорар, не на налоги."
+    },
+    {
+      "collection": "checkout",
+      "key": "consenso_tc",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Принимаю Условия продажи и политику конфиденциальности."
+    },
+    {
+      "collection": "checkout",
+      "key": "consenso_avvio",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Прошу немедленно начать работу и принимаю, что при завершении услуги в течение 14 дней я теряю право на отказ."
+    },
+    {
+      "collection": "checkout",
+      "key": "recesso_link",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Как работает отказ",
+        "href": "/recesso"
+      }
+    },
+    {
+      "collection": "checkout",
+      "key": "cta_pay",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Оплатить безопасно",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "checkout",
+      "key": "cta_nota",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Шифрованная транзакция. Данные карты не храним."
+    },
+    {
+      "collection": "checkout",
+      "key": "trust_items",
+      "locale": "ru",
+      "is_published": true,
+      "value": [
+        "Довольны или возмещение",
+        "Серверы в ЕС, соответствие GDPR",
+        "Поддержка от живого человека"
+      ]
+    },
+    {
+      "collection": "checkout",
+      "key": "success_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Оплата прошла! Добро пожаловать."
+    },
+    {
+      "collection": "checkout",
+      "key": "error_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Оплата не удалась"
+    },
+    {
+      "collection": "legale",
+      "key": "privacy_title",
+      "locale": "ru",
+      "is_published": false,
+      "value": "Политика конфиденциальности"
+    },
+    {
+      "collection": "legale",
+      "key": "cookie_title",
+      "locale": "ru",
+      "is_published": false,
+      "value": "Cookie Policy"
+    },
+    {
+      "collection": "legale",
+      "key": "tc_title",
+      "locale": "ru",
+      "is_published": false,
+      "value": "Условия продажи"
+    },
+    {
+      "collection": "legale",
+      "key": "garanzia_title",
+      "locale": "ru",
+      "is_published": false,
+      "value": "Наша гарантия"
+    },
+    {
+      "collection": "legale",
+      "key": "garanzia_cta",
+      "locale": "ru",
+      "is_published": false,
+      "value": {
+        "label": "Рассчитать смету бесплатно",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "sistema",
+      "key": "e404_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Этой страницы нет (или больше нет)"
+    },
+    {
+      "collection": "sistema",
+      "key": "e404_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Но мы всё равно можем помочь."
+    },
+    {
+      "collection": "sistema",
+      "key": "e404_cta",
+      "locale": "ru",
+      "is_published": true,
+      "value": [
+        {
+          "label": "На главную",
+          "href": "/"
+        },
+        {
+          "label": "Рассчитать смету",
+          "href": "/preventivo"
+        }
+      ]
+    },
+    {
+      "collection": "sistema",
+      "key": "e500_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Что-то пошло не так"
+    },
+    {
+      "collection": "sistema",
+      "key": "e500_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Попробуйте позже. Если проблема останется — напишите или позвоните."
+    },
+    {
+      "collection": "sistema",
+      "key": "manutenzione_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Проводится техническое обслуживание"
+    },
+    {
+      "collection": "sistema",
+      "key": "manutenzione_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Скоро вернёмся онлайн. По срочным вопросам — свяжитесь с нами."
+    },
+    {
+      "collection": "sistema",
+      "key": "sessione_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Сессия истекла"
+    },
+    {
+      "collection": "sistema",
+      "key": "sessione_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Для вашей безопасности мы отключили сессию. Войдите снова, чтобы продолжить."
+    },
+    {
+      "collection": "area_errors",
+      "key": "request_invalid",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Недействительный запрос."
+    },
+    {
+      "collection": "area_errors",
+      "key": "max_files",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Максимум {n} файлов на документ: удалите файл, чтобы загрузить другой."
+    },
+    {
+      "collection": "area_login",
+      "key": "header_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Личный кабинет"
+    },
+    {
+      "collection": "area_login",
+      "key": "header_subtitle",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Войдите, чтобы следить за делом по наследству."
+    },
+    {
+      "collection": "area_login",
+      "key": "tab_email",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Email"
+    },
+    {
+      "collection": "area_login",
+      "key": "tab_phone",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Телефон"
+    },
+    {
+      "collection": "area_login",
+      "key": "tab_password",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Password"
+    },
+    {
+      "collection": "area_login",
+      "key": "google_cta",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Продолжить с Google"
+    },
+    {
+      "collection": "area_login",
+      "key": "oppure",
+      "locale": "ru",
+      "is_published": true,
+      "value": "или"
+    },
+    {
+      "collection": "area_login",
+      "key": "password_label",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Ваш пароль"
+    },
+    {
+      "collection": "area_login",
+      "key": "password_hint",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Создаётся в профиле после первого входа. Нет? Используйте email."
+    },
+    {
+      "collection": "area_login",
+      "key": "password_cta",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Войти"
+    },
+    {
+      "collection": "area_login",
+      "key": "password_verifying",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Вход…"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_label",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Ваш email"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_placeholder",
+      "locale": "ru",
+      "is_published": true,
+      "value": "nome@email.it"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_hint",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Используйте email, с которым оплачивали."
+    },
+    {
+      "collection": "area_login",
+      "key": "email_cta",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Отправьте ссылку для входа"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_sending",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Отправка…"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_label",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Ваш номер телефона"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_placeholder",
+      "locale": "ru",
+      "is_published": true,
+      "value": "+39 333 123 4567"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_hint",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Используйте номер, с которым оформляли заказ. Отправим код по SMS."
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_cta",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Отправьте код по SMS"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_sending",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Отправка…"
+    },
+    {
+      "collection": "area_login",
+      "key": "sent_email_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Проверьте email"
+    },
+    {
+      "collection": "area_login",
+      "key": "sent_email_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Мы отправили ссылку для входа на {contact}. Ссылка действует несколько минут."
+    },
+    {
+      "collection": "area_login",
+      "key": "sent_phone_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Проверьте SMS"
+    },
+    {
+      "collection": "area_login",
+      "key": "sent_phone_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Мы отправили 6-значный код на номер {contact}. Введите его ниже."
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_toggle",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Я получил код, введите его"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_label",
+      "locale": "ru",
+      "is_published": true,
+      "value": "6-значный код"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_placeholder",
+      "locale": "ru",
+      "is_published": true,
+      "value": "123456"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_cta",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Проверить код"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_verifying",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Проверка…"
+    },
+    {
+      "collection": "area_login",
+      "key": "resend",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Отправить снова"
+    },
+    {
+      "collection": "area_login",
+      "key": "error_link",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Ссылка для входа недействительна или истекла. Запросите новую."
+    },
+    {
+      "collection": "area_login",
+      "key": "secure_note",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Безопасный вход"
+    },
+    {
+      "collection": "area_login",
+      "key": "back_to_site",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Вернуться на сайт"
+    },
+    {
+      "collection": "area_login",
+      "key": "privacy_link",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Privacy",
+        "href": "/privacy"
+      }
+    },
+    {
+      "collection": "area_login",
+      "key": "termini_link",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Условия",
+        "href": "/termini-condizioni"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_legal_prefix",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Подробнее о том, как мы обрабатываем ваши данные:"
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_privacy_label",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Privacy Policy"
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_terms_label",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Условия обслуживания"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "price_suffix",
+      "locale": "ru",
+      "is_published": true,
+      "value": "гонорар без НДС"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "sla_line",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Отправка в течение {n} рабочих дней после полного комплекта документов"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "cta_choose",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Выбрать {name}"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_price_note",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Определяется вместе, до начала"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_discover",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Узнайте, как активировать"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_phone_label",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Позвонить Lorenzo"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_email_label",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Напишите нам по email"
+    },
+    {
+      "collection": "navbar",
+      "key": "cta_short",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Смета"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_rating_of",
+      "locale": "ru",
+      "is_published": true,
+      "value": "из 5"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_count_one",
+      "locale": "ru",
+      "is_published": true,
+      "value": "{n} отзыв на Google"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_count_many",
+      "locale": "ru",
+      "is_published": true,
+      "value": "{n} отзывов на Google"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_from",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Отзывы с"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_write",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Написать отзыв"
+    },
+    {
+      "collection": "faq",
+      "key": "items",
+      "locale": "ru",
+      "is_published": true,
+      "value": [
+        {
+          "category": "Понять наследство",
+          "question": "Что такое декларация о наследстве?",
+          "answer": "Это налоговая обязанность, сообщающая Agenzia delle Entrate об имуществе умершего, переданном наследникам. Обычно подаётся в течение 12 месяцев с даты смерти."
+        },
+        {
+          "category": "Понять наследство",
+          "question": "До какого срока подаётся?",
+          "answer": "Как правило, в течение 12 месяцев с даты смерти. Просрочка может повлечь штрафы: мы занимаемся этим в правильные сроки."
+        },
+        {
+          "category": "Расходы и налоги",
+          "question": "Сколько стоит ваша услуга?",
+          "answer": "Вы платите фиксированный гонорар по пакету. Налоги отдельно, за счёт наследника, мы рассчитываем и сообщаем до отправки."
+        },
+        {
+          "category": "Расходы и налоги",
+          "question": "Налоги включены в цену?",
+          "answer": "Нет: цена пакета — профессиональный гонорар. Налоги (на наследство, регистрационный, кадастровый, гербовые) уплачиваются через F24 и отделены. Мы рассчитаем их заранее."
+        },
+        {
+          "category": "Расходы и налоги",
+          "question": "Что такое льгота «первая квартира» при наследстве?",
+          "answer": "Если хотя бы один наследник соответствует требованиям «первая квартира» для унаследованного объекта, регистрационный и кадастровый налоги уплачиваются фиксированно (по 200 евро) вместо процента от кадастровой стоимости. Мы проверим право и укажем в декларации."
+        },
+        {
+          "category": "Почему не самостоятельно",
+          "question": "Могу ли я сделать это бесплатно на сайте Agenzia?",
+          "answer": "Да, существует бесплатное предзаполненное наследство — честный вариант. Но нужны SPID и компетенция: кадастровые данные не проверяются, ошибки (и штрафы) остаются на вас."
+        },
+        {
+          "category": "Как это работает",
+          "question": "Нужно ли идти в какой-то офис?",
+          "answer": "Нет. Анкета, документы, сообщения и отправка в Agenzia — онлайн. Всегда есть звонок с Lorenzo, чтобы всё объяснить."
+        },
+        {
+          "category": "Как это работает",
+          "question": "Какие документы нужны?",
+          "answer": "Зависит от вашего случая: дадим персональный список. Если чего-то не хватает, часто можем получить сами (выписки, документы о происхождении)."
+        },
+        {
+          "category": "Документы и личный кабинет",
+          "question": "Можно загрузить документы фото с телефона?",
+          "answer": "Да. В личном кабинете можно загружать PDF, JPG или PNG (в том числе фото с телефона), до 10 МБ каждый и до 10 файлов на пункт чек-листа. Для лицевой/оборотной стороны или многостраничных документов — несколько фото на один пункт."
+        },
+        {
+          "category": "Документы и личный кабинет",
+          "question": "Есть готовые формы для скачивания и заполнения?",
+          "answer": "Да. Под некоторыми пунктами чек-листа есть готовые формы (например, заменяющая декларация свидетельства о смерти и состава семьи умершего или самосертификация состава семьи каждого наследника): скачайте, заполните, подпишите и загрузите."
+        },
+        {
+          "category": "Документы и личный кабинет",
+          "question": "Что если документ отклонят?",
+          "answer": "Lorenzo проверяет каждый пункт. Если что-то не так (размытое фото, отсутствует страница, неверный документ), пункт возвращается в «нужно переделать» с пояснением: загрузите правильный файл — и дело продолжается без переделки всего."
+        },
+        {
+          "category": "Документы и личный кабинет",
+          "question": "Как узнать, что документы в порядке?",
+          "answer": "В личном кабинете видите статус каждого пункта (нужно загрузить, загружено, одобрено, нужно переделать). Когда закончите — нажмите «Готово»: получаете обновления по email на каждом этапе и всегда можете проверить статус дела."
+        },
+        {
+          "category": "После услуги",
+          "question": "Что я получу по завершении?",
+          "answer": "Квитанция о подаче/регистрации, копия декларации, результат F24 и, где предусмотрено, результат кадастровой перерегистрации, а также наш счёт."
+        }
+      ]
+    },
+    {
+      "collection": "area",
+      "key": "nav_home",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Home"
+    },
+    {
+      "collection": "area",
+      "key": "nav_documenti",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Документы"
+    },
+    {
+      "collection": "area",
+      "key": "nav_ordine",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Покупка"
+    },
+    {
+      "collection": "area",
+      "key": "nav_comunicazioni",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Сообщения"
+    },
+    {
+      "collection": "area",
+      "key": "nav_dati",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Ваши данные"
+    },
+    {
+      "collection": "area",
+      "key": "nav_mandato",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Мандат"
+    },
+    {
+      "collection": "area",
+      "key": "nav_conclusa",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Итоговые документы"
+    },
+    {
+      "collection": "area",
+      "key": "nav_profilo",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Профиль"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_brand",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Studio Armellin"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_practice",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Дело {code}"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_back",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Вернуться на сайт"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_help",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Поддержка"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_logout",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Выйти"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_notifications",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Уведомления"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_notifications_empty",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Нет уведомлений"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_notifications_mark_all",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Отметить все прочитанными"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_comms_new",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Новости"
+    },
+    {
+      "collection": "area",
+      "key": "welcome_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Личный кабинет"
+    },
+    {
+      "collection": "area",
+      "key": "welcome_subtitle",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Добро пожаловать."
+    },
+    {
+      "collection": "area",
+      "key": "hello",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Здравствуйте, {name}"
+    },
+    {
+      "collection": "area",
+      "key": "practice_deceased",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Дело {code} · умерший {name}"
+    },
+    {
+      "collection": "area",
+      "key": "next_action_label",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Следующее действие"
+    },
+    {
+      "collection": "area",
+      "key": "tracker_heading",
+      "locale": "ru",
+      "is_published": true,
+      "value": "На каком этапе ваше дело"
+    },
+    {
+      "collection": "area",
+      "key": "docs_heading",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Документы"
+    },
+    {
+      "collection": "area",
+      "key": "docs_progress",
+      "locale": "ru",
+      "is_published": true,
+      "value": "{uploaded} из {total} загружено"
+    },
+    {
+      "collection": "area",
+      "key": "docs_cta",
+      "locale": "ru",
+      "is_published": true,
+      "value": "К документам"
+    },
+    {
+      "collection": "area",
+      "key": "summary_heading",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Сводка"
+    },
+    {
+      "collection": "area",
+      "key": "summary_package",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Пакет"
+    },
+    {
+      "collection": "area",
+      "key": "summary_price",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Гонорар"
+    },
+    {
+      "collection": "area",
+      "key": "summary_taxes",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Налоги сообщены"
+    },
+    {
+      "collection": "area",
+      "key": "summary_iban_missing",
+      "locale": "ru",
+      "is_published": true,
+      "value": "IBAN отсутствует: добавьте для налогов"
+    },
+    {
+      "collection": "area",
+      "key": "summary_cta_ordine",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Посмотреть покупку"
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Это дело было отменено."
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_refunded",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Отказ принят и возмещение оформлено: обычно появляется на карте оплаты в течение 5–10 рабочих дней (сроки вашего банка или эмитента карты)."
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_pending",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Отказ принят. Если положено возмещение, после оформления оно обычно появляется на карте в течение 5–10 рабочих дней."
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_footer",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Больше ничего делать не нужно: ниже сводка вашей покупки, она останется доступной."
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_cta",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Посмотреть покупку"
+    },
+    {
+      "collection": "area",
+      "key": "client_steps",
+      "locale": "ru",
+      "is_published": true,
+      "value": [
+        "Документы для загрузки",
+        "В работе",
+        "Отправлено в Agenzia",
+        "Завершена"
+      ]
+    },
+    {
+      "collection": "area",
+      "key": "action_closed_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Ваше дело завершено."
+    },
+    {
+      "collection": "area",
+      "key": "action_closed_cta",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Скачать итоговые документы"
+    },
+    {
+      "collection": "area",
+      "key": "action_docs_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Не хватает некоторых документов для продолжения."
+    },
+    {
+      "collection": "area",
+      "key": "action_docs_cta",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Загрузить документы"
+    },
+    {
+      "collection": "area",
+      "key": "action_working_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Мы работаем над вашим делом."
+    },
+    {
+      "collection": "area",
+      "key": "action_working_cta",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Посмотреть статус"
+    },
+    {
+      "collection": "area",
+      "key": "action_idle_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Всё в порядке, сейчас ничего делать не нужно."
+    },
+    {
+      "collection": "area",
+      "key": "action_idle_cta",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Посмотреть покупку"
+    },
+    {
+      "collection": "area",
+      "key": "doc_state_da_caricare",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Нужно загрузить"
+    },
+    {
+      "collection": "area",
+      "key": "doc_state_caricato",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Загружено"
+    },
+    {
+      "collection": "area",
+      "key": "doc_state_da_rifare",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Нужно переделать"
+    },
+    {
+      "collection": "area",
+      "key": "empty_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "К этому доступу не привязано дел"
+    },
+    {
+      "collection": "area",
+      "key": "empty_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Если уже оплатили смету, привяжите дело с email, использованным при оплате. Иначе рассчитайте смету на сайте."
+    },
+    {
+      "collection": "area",
+      "key": "empty_claim_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "У вас уже есть дело?"
+    },
+    {
+      "collection": "area",
+      "key": "empty_claim_cta",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Привязать дело"
+    },
+    {
+      "collection": "area",
+      "key": "documenti_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Ваши документы"
+    },
+    {
+      "collection": "area",
+      "key": "documenti_subtitle",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Загрузите необходимые документы. Можно сфотографировать телефоном."
+    },
+    {
+      "collection": "area",
+      "key": "documenti_photo_tip",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Чёткие фото, весь лист в кадре, без бликов. PDF и JPG/PNG до 10 МБ."
+    },
+    {
+      "collection": "area",
+      "key": "ordine_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Ваша покупка"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_subtitle",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Что вы купили и что включено. Можете просмотреть в любое время."
+    },
+    {
+      "collection": "area",
+      "key": "ordine_summary",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Сводка заказа"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_total",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Итого гонорар"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_no_iva",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Гонорар без НДС (упрощённый режим). Налоги отдельно (см. ниже)."
+    },
+    {
+      "collection": "area",
+      "key": "ordine_payment_status",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Статус оплаты"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_method",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Способ"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_card",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Карта (онлайн)"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_transfer",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Банковский перевод"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_paid",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Оплачено"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_pending",
+      "locale": "ru",
+      "is_published": true,
+      "value": "В ожидании"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_partial",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Частично возмещено"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_refunded",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Возмещено"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_refund_note",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Возмещение оформлено: обычно появляется на карте в течение 5–10 рабочих дней (сроки вашего банка или эмитента карты)."
+    },
+    {
+      "collection": "area",
+      "key": "dati_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Ваши данные"
+    },
+    {
+      "collection": "area",
+      "key": "dati_subtitle",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Дополнительные данные, необходимые для дела."
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Сообщения"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_subtitle",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Сообщения и обновления по вашему делу."
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_empty",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Пока нет сообщений."
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_channel_email",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Email"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_channel_phone",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Звонок"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_channel_wa",
+      "locale": "ru",
+      "is_published": true,
+      "value": "WhatsApp"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_channel_inperson",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Лично"
+    },
+    {
+      "collection": "area",
+      "key": "mandato_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Мандат и согласия"
+    },
+    {
+      "collection": "area",
+      "key": "mandato_subtitle",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Прочитайте и подпишите профессиональный мандат для вашего дела."
+    },
+    {
+      "collection": "area",
+      "key": "mandato_lang_note",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Юридически значима итальянская версия мандата. Перевод только справочный; файл для подписи остаётся на итальянском."
+    },
+    {
+      "collection": "area",
+      "key": "conclusa_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Итоговые документы"
+    },
+    {
+      "collection": "area",
+      "key": "conclusa_subtitle_open",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Ваше дело завершено. Здесь документы для скачивания."
+    },
+    {
+      "collection": "area",
+      "key": "conclusa_subtitle_closed",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Итоговые документы будут доступны по завершении дела."
+    },
+    {
+      "collection": "area",
+      "key": "profilo_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Профиль"
+    },
+    {
+      "collection": "area",
+      "key": "profilo_subtitle",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Контакты, безопасность и настройки."
+    },
+    {
+      "collection": "area",
+      "key": "recesso_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Запрос об отказе"
+    },
+    {
+      "collection": "area",
+      "key": "recesso_subtitle",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Можно запросить отказ, пока дело не завершено."
+    },
+    {
+      "collection": "area",
+      "key": "recesso_window_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Вы в пределах 14 дней с момента заключения договора."
+    },
+    {
+      "collection": "area",
+      "key": "recesso_rule_1",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Если мы ещё не начали: полное возмещение гонорара."
+    },
+    {
+      "collection": "area",
+      "key": "recesso_rule_2",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Если начали, но не завершили: пропорциональное возмещение за уже выполненную работу."
+    },
+    {
+      "collection": "area",
+      "key": "recesso_rule_3",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Если услуга уже оказана: отказ не предусмотрен (ст. 59)."
+    },
+    {
+      "collection": "area",
+      "key": "review_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Дело завершено: оставите отзыв?"
+    },
+    {
+      "collection": "area",
+      "key": "review_cta",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Оставить отзыв на Google"
+    },
+    {
+      "collection": "area",
+      "key": "review_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Если вам понравилась работа с Lorenzo, отзыв на Google нам очень поможет."
+    },
+    {
+      "collection": "area",
+      "key": "chrome_comms_all",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Все сообщения"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_comms_new_count",
+      "locale": "ru",
+      "is_published": true,
+      "value": "({n} новых)"
+    },
+    {
+      "collection": "area",
+      "key": "docs_ui",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "counter": "Документы: {uploaded} из {total}",
+        "all_uploaded": "Всё загружено",
+        "missing_n": "Не хватает {n}",
+        "optional": "(необязательно)",
+        "delete_file": "Удалить этот файл",
+        "uploading": "Загрузка…",
+        "upload": "Загрузить",
+        "reupload": "Перезагрузить",
+        "add_another": "Добавить ещё файл",
+        "multi_page_hint": "лицо/оборот или фото на страницу: мы объединим",
+        "done_title": "Готово!",
+        "done_body": "Lorenzo получил ваши документы и проверяет их. Предупредим, если чего-то не хватает — можете быть спокойны.",
+        "submit_cta": "Готово — отправить Lorenzo",
+        "missing_one": "Не хватает 1 документа",
+        "missing_many": "Не хватает {n} документов",
+        "templates_title": "Нужна форма? Мы предоставим:",
+        "templates_help": "Скачайте форму, распечатайте и заполните полностью, подпишите и загрузите сюда (подойдёт и чёткое фото), вместе с копией удостоверения подписанта.",
+        "err_file_too_big": "Файл слишком большой (максимум 10 МБ).",
+        "err_too_many": "Можно загрузить максимум 10 файлов на пункт.",
+        "err_upload_failed": "Загрузка не удалась.",
+        "err_upload_network": "Загрузка не удалась, проверьте соединение.",
+        "err_delete_failed": "Удаление не удалось.",
+        "err_delete_network": "Удаление не удалось, попробуйте снова.",
+        "state_da_caricare": "Нужно загрузить",
+        "state_caricato": "Загружено",
+        "state_da_rifare": "Нужно переделать"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "mandate_ui",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "signed_title": "Мандат подписан.",
+        "signed_paper": "Подписанный бумажный мандат получен.",
+        "signed_electronic": "Электронная подпись зарегистрирована (дата и время).",
+        "signed_thanks": "Спасибо, можем продолжить ваше дело.",
+        "accept_checkbox": "Я прочитал(а) и принимаю мандат, условия и политику конфиденциальности.",
+        "accept_cta": "Принимаю и подписываю онлайн",
+        "paper_title": "Предпочитаете бумажную подпись?",
+        "paper_body": "Скачайте мандат, подпишите от руки и загрузите снова: нам подходит.",
+        "download_blank": "Скачать мандат",
+        "upload_signed": "Загрузить подписанный мандат",
+        "err_file_too_big": "Файл слишком большой (максимум 10 МБ).",
+        "err_upload_failed": "Загрузка не удалась.",
+        "err_upload_network": "Загрузка не удалась, проверьте соединение.",
+        "heading": "Профессиональный мандат — дело {code}"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "iban_ui",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "saved": "IBAN сохранён в зашифрованном виде (заканчивается на ••{last4}). Можете обновить, указав новый.",
+        "cleared": "IBAN использовался для платежа (F24) и затем удалён в целях безопасности {date}. При необходимости можно указать снова.",
+        "label": "IBAN наследника",
+        "hint": "Конфиденциальные данные: нужны только для возможного списания налогов (F24). Хранятся в зашифрованном виде.",
+        "save": "Сохранить"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "claim_ui",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "title": "Уже есть дело? Привяжите этот доступ",
+        "body": "Введите код дела (напр. SUC-2026-0022) и email, использованный при оплате или для сметы. Должен совпадать с email этого входа.",
+        "code_label": "Код дела",
+        "email_label": "Email покупки / сметы",
+        "needs_email": "Выйдите из этого аккаунта и войдите с {email} (используйте ссылку из email об оплате или запросите новый magic link на странице входа).",
+        "linking": "Подключение…",
+        "cta": "Привязать дело"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "withdrawal_ui",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "status_requested": "Отправлено",
+        "status_in_review": "В обработке",
+        "status_accepted": "Принято",
+        "status_rejected": "Отклонено",
+        "registered_title": "Запрос зарегистрирован.",
+        "registered_body": "Lorenzo получил ваш запрос и свяжется с вами. Текущий статус: {status}.",
+        "rejected_prev": "Предыдущий запрос был отклонён",
+        "rejected_retry": "Можете отправить новую.",
+        "reason_label": "Причина (необязательно)",
+        "reason_placeholder": "Если хотите, расскажите почему…",
+        "cta": "Запросить отказ",
+        "alt_contact": "Альтернативно можно написать на studio@successioniarmellin.it или через PEC.",
+        "refund_issued": "Возмещение оформлено на карту оплаты: обычно зачисляется в течение 5–10 рабочих дней (сроки вашего банка или эмитента карты; иногда отображается как стorno исходной траты).",
+        "refund_pending": "Если положено возмещение, оформляем тем же способом оплаты. После оформления банк обычно зачисляет в течение 5–10 рабочих дней."
+      }
+    },
+    {
+      "collection": "area",
+      "key": "invoice_ui",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "download": "Скачать счёт",
+        "number": "Счёт № {number}",
+        "issued_soon": "Счёт № {number} выставлен. PDF скоро будет доступен.",
+        "pending": "Счёт будет доступен здесь сразу после выставления."
+      }
+    },
+    {
+      "collection": "area",
+      "key": "final_docs_ui",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "download_zip": "Скачать всё (ZIP)",
+        "download": "Скачать",
+        "not_ready": "Итоговые документы пока недоступны. Ниже предпросмотр того, что вы получите по завершении."
+      }
+    },
+    {
+      "collection": "area",
+      "key": "profilo_ui",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "contacts": "Контактные данные",
+        "name": "Имя",
+        "email": "Email",
+        "phone": "Телефон",
+        "phone_empty": "не указано",
+        "phone_edit": "Изменить номер",
+        "phone_add": "Добавить номер",
+        "dial_aria": "Международный код",
+        "dial_other": "Другое…",
+        "dial_custom_aria": "Пользовательский код",
+        "phone_hint": "Выберите код страны (+39, +49…), затем национальный номер.",
+        "save": "Сохранить",
+        "cancel": "Отмена",
+        "security": "Безопасность",
+        "password_intro": "При желании можно создать пароль для более быстрого входа, без ожидания ссылки по email.",
+        "password_saved": "Пароль сохранён: при следующем входе можно использовать вместе с другими способами.",
+        "password_change": "Сменить пароль",
+        "password_create": "Создать или сменить пароль",
+        "password_new": "Новый пароль (минимум 8 символов)",
+        "password_confirm": "Повторите пароль",
+        "password_mismatch": "Пароли не совпадают.",
+        "password_save": "Сохранить пароль",
+        "prefs_title": "Настройки уведомлений",
+        "prefs_body": "Операционные email (оплата, документы, налоги, закрытие) всегда активны. Здесь можно отключить только необязательные сообщения, например запрос отзыва.",
+        "prefs_email": "Необязательные email (напр. отзыв)",
+        "prefs_wa": "WhatsApp (скоро)",
+        "prefs_saved": "Настройки сохранены.",
+        "comms_lang_title": "Язык письменных сообщений",
+        "comms_lang_body": "Email и сообщения по делу (оплаты, документы, отказ). Не зависит от языка интерфейса.",
+        "comms_lang_notice": "Переводы автоматические / справочные. Официальные документы и юридически значимые тексты остаются на итальянском.",
+        "comms_lang_it": "Итальянский",
+        "comms_lang_ar": "العربية",
+        "logout": "Выйти",
+        "comms_lang_en": "English",
+        "comms_lang_tr": "Türkçe",
+        "comms_lang_fr": "Français",
+        "comms_lang_sq": "Shqip",
+        "comms_lang_de": "Deutsch",
+        "comms_lang_es": "Español",
+        "comms_lang_ru": "Русский",
+        "comms_lang_zh": "中文",
+        "comms_lang_hi": "हिन्दी"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "ordine_ui",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "includes_named": "Что входит в «{name}»",
+        "includes_generic": "Что входит в пакет",
+        "includes_missing": "Детали недоступны.",
+        "taxes_title": "Налоги",
+        "taxes_body": "Эти суммы — не наш гонорар: это налоги, уплачиваемые государству (форма F24, самоисчисление). Мы рассчитаем и сообщим их до отправки.",
+        "taxes_need_iban": "Для списания налогов нужен ваш IBAN.",
+        "taxes_iban_cta": "Укажите IBAN сейчас →",
+        "taxes_iban_saved": "IBAN зарегистрирован (•••• {last4}).",
+        "taxes_iban_edit": "Изменить",
+        "taxes_pending": "Налоги будут рассчитаны и сообщены до отправки.",
+        "withdrawal_prompt": "Передумали?",
+        "withdrawal_cta": "Запросить отказ"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "documenti_page_ui",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "cancelled_subtitle": "Дело отменено: загружать ничего не нужно.",
+        "cancelled_body": "Это дело отменено, загрузка документов отключена. Удостоверения личности и другие загруженные файлы будут удалены из наших систем согласно политике конфиденциальности."
+      }
+    },
+    {
+      "collection": "area",
+      "key": "final_docs_preview",
+      "locale": "ru",
+      "is_published": true,
+      "value": [
+        {
+          "label": "Квитанция о подаче — Agenzia delle Entrate",
+          "description": "Телематическое подтверждение с протоколом регистрации."
+        },
+        {
+          "label": "Декларация о наследстве (копия)",
+          "description": "Форма, поданная в Agenzia."
+        },
+        {
+          "label": "Актуальные кадастровые выписки (перерегистрация)",
+          "description": "Объекты, оформленные на наследников."
+        },
+        {
+          "label": "Счёт за гонорар",
+          "description": "Налоговый документ нашего вознаграждения."
+        }
+      ]
+    },
+    {
+      "collection": "site_ui",
+      "key": "preventivo_ui",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "yes": "Да",
+        "no": "Нет",
+        "unknown": "Не знаю",
+        "will_q_before": "Этот",
+        "will_q_term": "de cuius",
+        "will_q_after": "оставил(а) завещание?",
+        "will_tip_aria": "Что означает de cuius",
+        "will_tip": "De cuius (с латинского) — умерший человек, в отношении которого открывается наследство.",
+        "will_yes_note": "Стандартные пакеты покрывают и случаи с завещанием. В чек-листе документов запросим копию опубликованного завещания.",
+        "will_unknown_note": "Так тоже подходит: если выяснится позже, разберёмся в ходе дела. Продолжайте с другими вопросами.",
+        "heirs_legend": "Кто наследники? Укажите количество по каждому типу.",
+        "heirs_hint": "Учитывайте всех, кто наследует, включая вас, если вы среди наследников.",
+        "heir_coniuge": "Супруг(а) (или в гражданском браке)",
+        "heir_figli": "Дети",
+        "heir_genitori": "Родители",
+        "heir_fratelli": "Братья/Сёстры",
+        "heir_nipoti": "Внуки",
+        "heir_altri": "Другие наследники",
+        "less": "Меньше {label}",
+        "more": "Больше {label}",
+        "real_estate_q": "Есть недвижимость (дома, земли, боксы)?",
+        "real_estate_count": "Сколько всего объектов?",
+        "real_estate_placeholder": "Напр. 2",
+        "real_estate_hint": "Считайте дома, земли, боксы и доли: каждый дополнительный объект может повлиять на смету.",
+        "over_100k_q": "Общая стоимость наследства (счета, ценные бумаги и т.д.) превышает 100 000 евро?",
+        "other_assets_q": "Есть другие активы (доли в компаниях, акции, предприятия, суда…)?",
+        "back": "Назад",
+        "next": "Далее"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "checkout_ui",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "stripe_blurb": "Безопасная оплата через Stripe: кредитная/дебетовая карта и, где доступно, рассрочка. Вы будете перенаправлены на защищённую страницу Stripe.",
+        "err_start": "Не удалось начать оплату.",
+        "err_not_configured": "Платежи пока не активны. Попробуйте позже или свяжитесь с нами.",
+        "err_retry": "Не удалось начать оплату. Попробуйте позже.",
+        "err_network": "Ошибка сети. Попробуйте позже.",
+        "need_quote_before": "Для оплаты начните с",
+        "need_quote_link": "расчёт сметы",
+        "need_quote_after": ": так мы предложим подходящий пакет.",
+        "loading": "Запуск оплаты…",
+        "cancelled": "Оплата отменена. Списания не было: можете повторить когда угодно.",
+        "total_fee": "Итого гонорар",
+        "empty_order": "Не найдено дела с пакетом для оплаты. Сначала рассчитайте смету: предложим подходящий пакет и привяжем оплату к вашему делу.",
+        "empty_cta": "К смете →",
+        "meta_title": "Завершить заказ",
+        "extra_property": "Дополнительные объекты ({extra} × {fee}€)"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "conferma_ui",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "title_paid": "Оплата получена, спасибо!",
+        "title_pending": "Подтверждаем оплату",
+        "body_paid": "Оплата прошла успешно, ваше дело активно. Скоро получите email со сводкой и инструкциями для личного кабинета, где загружать документы.",
+        "body_pending": "Мы получили заказ. Окончательное подтверждение оплаты придёт от нашей системы через несколько мгновений: получите email, когда всё готово. Уже можно войти в личный кабинет.",
+        "email_note_before": "Войти в личный кабинет с",
+        "email_note_strong": "тот же email, что при оплате",
+        "email_note_after": ": так вы найдёте дело. Если используете другой email (или Google с другим аккаунтом), не увидите его.",
+        "cta_area": "В личный кабинет",
+        "cta_home": "Вернуться на главную",
+        "taxes_note": "Налоги отделены от гонорара: мы рассчитаем и сообщим их до отправки.",
+        "meta_title": "Оплата получена"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "contact_ui",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "name": "Имя и фамилия",
+        "email": "Email",
+        "phone": "Телефон (необязательно)",
+        "message": "Сообщение",
+        "submit": "Отправить сообщение"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "soft_lead_ui",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "name": "Имя и фамилия (необязательно)",
+        "email": "Email",
+        "phone": "Телефон",
+        "phone_optional": "Телефон (необязательно)",
+        "submitting": "Отправка…",
+        "err_save": "Сейчас не можем зарегистрировать запрос. Попробуйте позже или позвоните.",
+        "notes": "Примечание (необязательно)"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "guide_ui",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "search_placeholder": "Поиск по руководствам (напр. налоги, документы, освобождение)",
+        "search_aria": "Поиск по руководствам",
+        "all": "Все",
+        "free_tool": "Бесплатный инструмент",
+        "back": "К руководствам",
+        "author_heading": "Кто написал это руководство",
+        "related": "Связанные руководства",
+        "featured": "На главной",
+        "reading_minutes": "{n} мин чтения",
+        "read_guide": "Читать руководство",
+        "read": "Читать",
+        "empty": "По вашему запросу руководств не найдено. Попробуйте другой термин или напишите нам — отвечаем всем.",
+        "updated": "Обновлено {date}",
+        "sources": "Официальные источники",
+        "breadcrumb_aria": "Путь",
+        "breadcrumb_guides": "Руководства",
+        "meta_title": "Руководства по наследству",
+        "meta_not_found": "Руководство не найдено",
+        "tool_alt": "Иллюстрация: дом, калькулятор и документ со знаком евро"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "chrome_ui",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "lang_aria": "Выбрать язык",
+        "menu_open": "Открыть меню",
+        "menu_close": "Закрыть меню",
+        "back": "Назад",
+        "meta_result": "Ваш результат",
+        "meta_recesso": "Право на отказ",
+        "meta_documenti": "Документы для наследства"
+      }
+    },
+    {
+      "collection": "area_errors",
+      "key": "session_invalid",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Недействительная сессия."
+    },
+    {
+      "collection": "area_errors",
+      "key": "session_expired",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Сессия истекла. Войдите снова."
+    },
+    {
+      "collection": "area_errors",
+      "key": "not_authorized",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Нет доступа."
+    },
+    {
+      "collection": "area_errors",
+      "key": "upload_failed",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Загрузка не удалась."
+    },
+    {
+      "collection": "area_errors",
+      "key": "delete_failed",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Удаление не удалось."
+    },
+    {
+      "collection": "area_errors",
+      "key": "file_too_big",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Файл слишком большой (максимум 10 МБ)."
+    },
+    {
+      "collection": "area_errors",
+      "key": "file_bad_type",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Формат не допускается."
+    },
+    {
+      "collection": "area_errors",
+      "key": "invoice_unavailable",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Счёт пока недоступен."
+    },
+    {
+      "collection": "area_errors",
+      "key": "file_unavailable",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Файл недоступен."
+    },
+    {
+      "collection": "area_errors",
+      "key": "practice_cancelled",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Дело отменено: операция недоступна."
+    },
+    {
+      "collection": "area_errors",
+      "key": "mandate_failed",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Подпись не удалась."
+    },
+    {
+      "collection": "area_errors",
+      "key": "withdrawal_blocked",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Отказ больше не применим."
+    },
+    {
+      "collection": "area_errors",
+      "key": "withdrawal_pending",
+      "locale": "ru",
+      "is_published": true,
+      "value": "У вас уже есть активный запрос."
+    },
+    {
+      "collection": "area_errors",
+      "key": "iban_invalid",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Недействительный IBAN. Проверьте и попробуйте снова."
+    },
+    {
+      "collection": "area_errors",
+      "key": "phone_invalid",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Недействительный номер."
+    },
+    {
+      "collection": "area_errors",
+      "key": "password_short",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Пароль должен содержать не менее 8 символов."
+    },
+    {
+      "collection": "area_errors",
+      "key": "password_failed",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Сохранение не удалось, попробуйте снова."
+    },
+    {
+      "collection": "area_errors",
+      "key": "prefs_failed",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Сохранение не удалось, попробуйте снова."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_unavailable",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Сервис недоступен. Попробуйте позже."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_code_required",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Введите код дела."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_email_required",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Введите email, использованный при покупке."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_email_mismatch",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Email не соответствует этому доступу."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_not_found",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Дело с этим кодом не найдено. Проверьте и попробуйте снова."
+    },
+    {
+      "collection": "area_errors",
+      "key": "docs_submit_failed",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Отправка не удалась. Попробуйте снова."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_email_required",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Введите ваш email."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_bad_credentials",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Неверный email или пароль. Если вы никогда не создавали пароль, войдите по ссылке из email."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_google_unavailable",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Вход через Google сейчас недоступен. Используйте email или телефон."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_link_invalid",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Недействительная ссылка."
+    },
+    {
+      "collection": "area_errors",
+      "key": "auth_failed",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Вход не удался. Попробуйте снова."
+    },
+    {
+      "collection": "area_errors",
+      "key": "auth_not_configured",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Доступ ещё не активен: Supabase Auth не настроен."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_otp_required",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Email и код обязательны."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_phone_otp_required",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Номер и код обязательны."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_password_required",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Введите email и пароль."
+    },
+    {
+      "collection": "area_errors",
+      "key": "password_same",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Новый пароль должен отличаться от текущего."
+    },
+    {
+      "collection": "area_errors",
+      "key": "no_practice",
+      "locale": "ru",
+      "is_published": true,
+      "value": "К вашему аккаунту не привязано дел."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_fields_required",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Введите код дела и email."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_auth_required",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Для привязки дела нужна авторизация."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_no_email",
+      "locale": "ru",
+      "is_published": true,
+      "value": "У этого доступа нет email. Выйдите и войдите с email, использованным при покупке (magic link)."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_wrong_account",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Вы вошли как {current}. Для этого дела нужен вход с {expected}."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_link_failed",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Не удалось привязать контакт. Свяжитесь с кабинетом."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_practice_email_mismatch",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Email не совпадает с зарегистрированным для дела. Используйте email оплаты или сметы."
+    },
+    {
+      "collection": "area_errors",
+      "key": "service_unavailable",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Сервис недоступен."
+    },
+    {
+      "collection": "area_errors",
+      "key": "phone_invalid_detail",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Недействительный номер: выберите код (+39, +49…) и национальный номер."
+    },
+    {
+      "collection": "area_login",
+      "key": "callback_loading",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Вход…"
+    },
+    {
+      "collection": "area_login",
+      "key": "callback_failed",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Вход не удался, перенаправляем…"
+    },
+    {
+      "collection": "site_ui",
+      "key": "offline_ui",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "email_cta": "Напишите нам по email",
+        "whatsapp": "WhatsApp",
+        "already_practice": "У вас уже есть дело?",
+        "area_cta": "Войти в личный кабинет"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "cookie_ui",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "body": "Мы используем технические cookie (необходимые) и, с вашего согласия, статистические для улучшения сайта. Можете принять или отклонить необязательные.",
+        "policy_label": "Политика cookie",
+        "accept_all": "Принять все",
+        "necessary_only": "Только необходимые",
+        "preferences": "Настройки cookie"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "contatti_map_ui",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "meta_title": "Контакты",
+        "email_label": "Email",
+        "studio_label": "Кабинет",
+        "map_eyebrow": "Где нас найти",
+        "map_title": "Кабинет в {citta}",
+        "maps_cta": "Открыть в Google Maps",
+        "map_iframe_title": "Карта кабинета — {address}",
+        "photo_caption": "Duomo di Pontedera",
+        "photo_credit": "Фото: SeesaTheDoctor / Wikimedia (CC BY 4.0)"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_categorie",
+      "locale": "ru",
+      "is_published": true,
+      "value": [
+        {
+          "value": "A",
+          "label": "Жильё — группа A (кроме A/10)"
+        },
+        {
+          "value": "A10",
+          "label": "A/10 – Офисы и частные кабинеты"
+        },
+        {
+          "value": "B",
+          "label": "Группа B (колледжи, школы, госучреждения…)"
+        },
+        {
+          "value": "C",
+          "label": "Группа C — пристройки (боксы, погреба…), кроме C/1"
+        },
+        {
+          "value": "C1",
+          "label": "C/1 – Магазины и лавки"
+        },
+        {
+          "value": "D",
+          "label": "Группа D (фабрики, отели, склады…)"
+        },
+        {
+          "value": "E",
+          "label": "Группа E (станции, особые здания…)"
+        }
+      ]
+    },
+    {
+      "collection": "footer",
+      "key": "nav_heading",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Перейти"
+    },
+    {
+      "collection": "footer",
+      "key": "legal_heading",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Юридическое"
+    },
+    {
+      "collection": "footer",
+      "key": "rights_reserved",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Все права защищены."
+    },
+    {
+      "collection": "footer",
+      "key": "label_forma",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Форма"
+    },
+    {
+      "collection": "footer",
+      "key": "label_piva",
+      "locale": "ru",
+      "is_published": true,
+      "value": "P.IVA"
+    },
+    {
+      "collection": "footer",
+      "key": "label_cf",
+      "locale": "ru",
+      "is_published": true,
+      "value": "C.F."
+    },
+    {
+      "collection": "footer",
+      "key": "label_rea",
+      "locale": "ru",
+      "is_published": true,
+      "value": "REA"
+    },
+    {
+      "collection": "footer",
+      "key": "label_pec",
+      "locale": "ru",
+      "is_published": true,
+      "value": "PEC"
+    },
+    {
+      "collection": "footer",
+      "key": "label_tel",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Tel"
+    },
+    {
+      "collection": "legale",
+      "key": "updated_prefix",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Последнее обновление:"
+    },
+    {
+      "collection": "legale",
+      "key": "lang_note",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Юридически значима итальянская версия этого документа: переводы носят справочный характер; при расхождениях действует итальянский текст."
+    },
+    {
+      "collection": "home",
+      "key": "meta_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Наследство онлайн | Geom. Lorenzo Armellin"
+    },
+    {
+      "collection": "home",
+      "key": "meta_description",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Декларация о наследстве онлайн с реальным профессионалом: Geom. Lorenzo Armellin, состоящий в реестре. Прозрачная смета, документы и дело из дома — также лично в Pontedera."
+    }
   ]
 }

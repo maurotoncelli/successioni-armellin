@@ -167,6 +167,116 @@ const STATUS_CLIENT: Record<
       body: "Mund t'i shkarkoni dokumentet përfundimtare nga zona personale.",
     },
   },
+  de: {
+    PAGATO: {
+      title: "Zahlung eingegangen",
+      body: "Ihr Vorgang ist gestartet. Laden Sie die erforderlichen Unterlagen hoch.",
+    },
+    ATTESA_DOC: {
+      title: "Weitere Unterlagen erforderlich",
+      body: "Vervollständigen Sie die Liste in Ihrem Persönlichen Bereich, um fortzufahren.",
+    },
+    LAVORAZIONE: {
+      title: "Wir bearbeiten Ihren Vorgang",
+      body: "Wir haben alles, was wir brauchen. Wir informieren Sie, sobald es Neuigkeiten gibt.",
+    },
+    INVIATA: {
+      title: "Erklärung an die Agentur übermittelt",
+      body: "Sobald die Quittung eintrifft, finden Sie sie unter den finalen Dokumenten.",
+    },
+    CHIUSA: {
+      title: "Vorgang abgeschlossen",
+      body: "Sie können die finalen Dokumente aus Ihrem Persönlichen Bereich herunterladen.",
+    },
+  },
+  es: {
+    PAGATO: {
+      title: "Pago recibido",
+      body: "Su expediente está iniciado. Suba los documentos requeridos.",
+    },
+    ATTESA_DOC: {
+      title: "Aún faltan documentos",
+      body: "Complete la lista en su área personal para continuar.",
+    },
+    LAVORAZIONE: {
+      title: "Estamos trabajando en su expediente",
+      body: "Tenemos todo lo necesario. Le informaremos en cuanto haya novedades.",
+    },
+    INVIATA: {
+      title: "Declaración enviada a la Agencia",
+      body: "Cuando llegue el recibo, lo encontrará entre los documentos finales.",
+    },
+    CHIUSA: {
+      title: "Expediente concluido",
+      body: "Puede descargar los documentos finales desde su área personal.",
+    },
+  },
+  ru: {
+    PAGATO: {
+      title: "Оплата получена",
+      body: "Ваше дело запущено. Загрузите необходимые документы.",
+    },
+    ATTESA_DOC: {
+      title: "Нужны дополнительные документы",
+      body: "Завершите список в личном кабинете, чтобы продолжить.",
+    },
+    LAVORAZIONE: {
+      title: "Мы работаем над вашим делом",
+      body: "У нас есть всё необходимое. Мы сообщим, как только появятся новости.",
+    },
+    INVIATA: {
+      title: "Декларация отправлена в Агентство",
+      body: "Когда поступит квитанция, вы найдёте её среди итоговых документов.",
+    },
+    CHIUSA: {
+      title: "Дело завершено",
+      body: "Вы можете скачать итоговые документы из личного кабинета.",
+    },
+  },
+  zh: {
+    PAGATO: {
+      title: "已收到付款",
+      body: "您的案件已启动。请上传所需文件。",
+    },
+    ATTESA_DOC: {
+      title: "仍需补充文件",
+      body: "请在个人区完成文件清单以继续办理。",
+    },
+    LAVORAZIONE: {
+      title: "我们正在处理您的案件",
+      body: "我们已备齐所需材料。如有进展会及时通知您。",
+    },
+    INVIATA: {
+      title: "申报已提交至税务机关",
+      body: "收到回执后，您可在最终文件中查看。",
+    },
+    CHIUSA: {
+      title: "案件已办结",
+      body: "您可从个人区下载最终文件。",
+    },
+  },
+  hi: {
+    PAGATO: {
+      title: "भुगतान प्राप्त हुआ",
+      body: "आपका प्रकरण शुरू हो गया है। आवश्यक दस्तावेज़ अपलोड करें।",
+    },
+    ATTESA_DOC: {
+      title: "अभी भी कुछ दस्तावेज़ चाहिए",
+      body: "आगे बढ़ने के लिए व्यक्तिगत क्षेत्र में सूची पूरी करें।",
+    },
+    LAVORAZIONE: {
+      title: "हम आपके प्रकरण पर काम कर रहे हैं",
+      body: "हमारे पास सब कुछ है। कोई अपडेट होते ही हम सूचित करेंगे।",
+    },
+    INVIATA: {
+      title: "घोषणा एजेंसी को भेज दी गई",
+      body: "रसीद आने पर आप इसे अंतिम दस्तावेज़ों में पाएँगे।",
+    },
+    CHIUSA: {
+      title: "प्रकरण पूरा हुआ",
+      body: "आप अंतिम दस्तावेज़ व्यक्तिगत क्षेत्र से डाउनलोड कर सकते हैं।",
+    },
+  },
 };
 
 const STATUS_EMAIL: Record<
@@ -365,6 +475,166 @@ const STATUS_EMAIL: Record<
       cta: "Shkarko dokumentet",
     },
   },
+  de: {
+    PAGATO: {
+      subject: "Zahlung eingegangen: laden Sie jetzt Ihre Unterlagen hoch",
+      heading: "Danke, wir haben die Zahlung erhalten",
+      body: "Ihr Vorgang ist offiziell gestartet. Nächster Schritt: Laden Sie die erforderlichen Unterlagen in Ihrem Persönlichen Bereich hoch — wir führen Sie Schritt für Schritt; es dauert nur wenige Minuten.",
+      cta: "Unterlagen hochladen",
+    },
+    ATTESA_DOC: {
+      subject: "Es fehlen noch Unterlagen, um fortzufahren",
+      heading: "Wir benötigen noch einige Unterlagen",
+      body: "Um mit Ihrer Erbschaft fortzufahren, müssen wir die Unterlagenliste vervollständigen. Alles mit Anleitungen finden Sie in Ihrem Persönlichen Bereich.",
+      cta: "Unterlagen vervollständigen",
+    },
+    LAVORAZIONE: {
+      subject: "Wir bearbeiten Ihren Vorgang",
+      heading: "Wir kümmern uns darum",
+      body: "Wir haben alles, was wir brauchen, und bereiten Ihre Erbschaftserklärung vor. Wir informieren Sie, sobald es Neuigkeiten gibt — Sie müssen nichts tun.",
+      cta: "Status ansehen",
+    },
+    INVIATA: {
+      subject: "Vorgang an Agenzia delle Entrate übermittelt",
+      heading: "An Agenzia delle Entrate übermittelt",
+      body: "Ihre Erbschaftserklärung wurde übermittelt. Sobald wir die Registrierungsquittung erhalten, finden Sie sie in Ihrem Persönlichen Bereich.",
+      cta: "Zum Persönlichen Bereich",
+    },
+    CHIUSA: {
+      subject: "Ihr Vorgang ist abgeschlossen",
+      heading: "Alles erledigt!",
+      body: "Ihre Erbschaft ist abgeschlossen. In Ihrem Persönlichen Bereich finden Sie die finalen Dokumente (Einreichungsquittung, Erklärung, Auszüge) zum Herunterladen und Aufbewahren.",
+      cta: "Dokumente herunterladen",
+    },
+  },
+  es: {
+    PAGATO: {
+      subject: "Pago recibido: suba ahora sus documentos",
+      heading: "Gracias, hemos recibido el pago",
+      body: "Su expediente está oficialmente iniciado. Siguiente paso: suba los documentos requeridos en su área personal — le guiamos paso a paso; solo le llevará unos minutos.",
+      cta: "Subir documentos",
+    },
+    ATTESA_DOC: {
+      subject: "Aún faltan algunos documentos para continuar",
+      heading: "Aún necesitamos algunos documentos",
+      body: "Para continuar con su sucesión debemos completar la lista de documentos. Encontrará todo, con instrucciones, en su área personal.",
+      cta: "Completar documentos",
+    },
+    LAVORAZIONE: {
+      subject: "Estamos trabajando en su expediente",
+      heading: "Nos encargamos nosotros",
+      body: "Tenemos todo lo necesario y estamos preparando su declaración de sucesión. Le informaremos en cuanto haya novedades — no tiene que hacer nada.",
+      cta: "Ver estado",
+    },
+    INVIATA: {
+      subject: "Expediente enviado a Agenzia delle Entrate",
+      heading: "Enviado a Agenzia delle Entrate",
+      body: "Su declaración de sucesión ha sido transmitida. Cuando recibamos el recibo de registro, lo encontrará en su área personal.",
+      cta: "Ir al área personal",
+    },
+    CHIUSA: {
+      subject: "Su expediente está concluido",
+      heading: "¡Todo listo!",
+      body: "Su sucesión está concluida. En su área personal encontrará los documentos finales (recibo de presentación, declaración, visuras) para descargar y conservar.",
+      cta: "Descargar documentos",
+    },
+  },
+  ru: {
+    PAGATO: {
+      subject: "Оплата получена: загрузите документы сейчас",
+      heading: "Спасибо, мы получили оплату",
+      body: "Ваше дело официально запущено. Следующий шаг: загрузите необходимые документы в личном кабинете — мы проведём вас шаг за шагом; это займёт всего несколько минут.",
+      cta: "Загрузить документы",
+    },
+    ATTESA_DOC: {
+      subject: "Для продолжения нужны ещё документы",
+      heading: "Нам ещё нужны некоторые документы",
+      body: "Чтобы продолжить оформление наследства, нужно завершить список документов. Всё с инструкциями вы найдёте в личном кабинете.",
+      cta: "Дополнить документы",
+    },
+    LAVORAZIONE: {
+      subject: "Мы работаем над вашим делом",
+      heading: "Мы всё сделаем",
+      body: "У нас есть всё необходимое, и мы готовим вашу декларацию о наследстве. Мы сообщим, как только появятся новости — от вас ничего не требуется.",
+      cta: "Посмотреть статус",
+    },
+    INVIATA: {
+      subject: "Дело отправлено в Agenzia delle Entrate",
+      heading: "Отправлено в Agenzia delle Entrate",
+      body: "Ваша декларация о наследстве передана. Когда мы получим квитанцию о регистрации, вы найдёте её в личном кабинете.",
+      cta: "Перейти в личный кабинет",
+    },
+    CHIUSA: {
+      subject: "Ваше дело завершено",
+      heading: "Всё готово!",
+      body: "Оформление наследства завершено. В личном кабинете вы найдёте итоговые документы (квитанцию о подаче, декларацию, выписки) для скачивания и хранения.",
+      cta: "Скачать документы",
+    },
+  },
+  zh: {
+    PAGATO: {
+      subject: "已收到付款：请立即上传文件",
+      heading: "谢谢，我们已收到付款",
+      body: "您的案件已正式启动。下一步：在个人区上传所需文件 — 我们会逐步引导您，只需几分钟。",
+      cta: "上传文件",
+    },
+    ATTESA_DOC: {
+      subject: "仍需一些文件才能继续",
+      heading: "我们还需要一些文件",
+      body: "要继续办理继承，我们需要完成文件清单。您可在个人区找到全部说明与指引。",
+      cta: "补全文件",
+    },
+    LAVORAZIONE: {
+      subject: "我们正在处理您的案件",
+      heading: "交给我们即可",
+      body: "我们已备齐所需材料，正在准备您的继承申报。如有进展会及时通知您 — 您无需做任何事。",
+      cta: "查看状态",
+    },
+    INVIATA: {
+      subject: "案件已提交至 Agenzia delle Entrate",
+      heading: "已提交至 Agenzia delle Entrate",
+      body: "您的继承申报已传送。收到登记回执后，您可在个人区查看。",
+      cta: "前往个人区",
+    },
+    CHIUSA: {
+      subject: "您的案件已办结",
+      heading: "全部完成！",
+      body: "您的继承已办结。在个人区可下载并保存最终文件（提交回执、申报书、查册材料）。",
+      cta: "下载文件",
+    },
+  },
+  hi: {
+    PAGATO: {
+      subject: "भुगतान प्राप्त: अभी दस्तावेज़ अपलोड करें",
+      heading: "धन्यवाद, हमें भुगतान मिल गया",
+      body: "आपका प्रकरण आधिकारिक रूप से शुरू हो गया है। अगला कदम: व्यक्तिगत क्षेत्र में आवश्यक दस्तावेज़ अपलोड करें — हम चरण दर चरण मार्गदर्शन करेंगे; इसमें कुछ मिनट लगते हैं।",
+      cta: "दस्तावेज़ अपलोड करें",
+    },
+    ATTESA_DOC: {
+      subject: "आगे बढ़ने के लिए अभी भी कुछ दस्तावेज़ चाहिए",
+      heading: "हमें अभी भी कुछ दस्तावेज़ चाहिए",
+      body: "आपकी उत्तराधिकार प्रक्रिया जारी रखने के लिए दस्तावेज़ सूची पूरी करनी होगी। निर्देश सहित सब कुछ व्यक्तिगत क्षेत्र में मिलेगा।",
+      cta: "दस्तावेज़ पूरे करें",
+    },
+    LAVORAZIONE: {
+      subject: "हम आपके प्रकरण पर काम कर रहे हैं",
+      heading: "हम संभाल लेंगे",
+      body: "हमारे पास सब कुछ है और हम आपकी उत्तराधिकार घोषणा तैयार कर रहे हैं। कोई अपडेट होते ही सूचित करेंगे — आपको कुछ नहीं करना।",
+      cta: "स्थिति देखें",
+    },
+    INVIATA: {
+      subject: "प्रकरण Agenzia delle Entrate को भेजा गया",
+      heading: "Agenzia delle Entrate को भेजा गया",
+      body: "आपकी उत्तराधिकार घोषणा भेज दी गई है। पंजीकरण रसीद मिलते ही आप इसे व्यक्तिगत क्षेत्र में पाएँगे।",
+      cta: "व्यक्तिगत क्षेत्र पर जाएँ",
+    },
+    CHIUSA: {
+      subject: "आपका प्रकरण पूरा हुआ",
+      heading: "सब हो गया!",
+      body: "आपका उत्तराधिकार पूरा हो गया है। व्यक्तिगत क्षेत्र में अंतिम दस्तावेज़ (जमा रसीद, घोषणा, विसुरे) डाउनलोड और सहेजने के लिए मिलेंगे।",
+      cta: "दस्तावेज़ डाउनलोड करें",
+    },
+  },
 };
 
 export function statusClientCopy(
@@ -395,6 +665,11 @@ export function documentRejectedNotif(
     tr: `Yeniden yüklenecek belge: ${docLabel}`,
     fr: `Document à recharger : ${docLabel}`,
     sq: `Dokument për t'u ringarkuar: ${docLabel}`,
+    de: `Dokument erneut hochladen: ${docLabel}`,
+    es: `Documento a volver a subir: ${docLabel}`,
+    ru: `Документ нужно загрузить заново: ${docLabel}`,
+    zh: `需重新上传的文件：${docLabel}`,
+    hi: `दस्तावेज़ फिर अपलोड करें: ${docLabel}`,
   };
   return { title: titles[locale] ?? titles.it, body: reason };
 }
@@ -407,6 +682,11 @@ export function taxesNotif(amount: number, locale: CommsLocale = "it") {
     tr: "tr-TR",
     fr: "fr-FR",
     sq: "sq-AL",
+    de: "de-DE",
+    es: "es-ES",
+    ru: "ru-RU",
+    zh: "zh-CN",
+    hi: "hi-IN",
   };
   const n = amount.toLocaleString(localeTag[locale] ?? "it-IT");
   const copy: Record<CommsLocale, { title: string; body: string }> = {
@@ -433,6 +713,26 @@ export function taxesNotif(amount: number, locale: CommsLocale = "it") {
     sq: {
       title: `Taksat u njoftuan: ${n} €`,
       body: "Janë të ndara nga shpërblimi dhe paguhen te Shteti (F24). Vendosni IBAN nëse kërkohet.",
+    },
+    de: {
+      title: `Steuern mitgeteilt: ${n} €`,
+      body: "Sie sind vom Honorar getrennt und werden an den Staat gezahlt (F24). Geben Sie die IBAN ein, falls angefordert.",
+    },
+    es: {
+      title: `Impuestos comunicados: ${n} €`,
+      body: "Son independientes del honorario y se pagan al Estado (F24). Introduzca el IBAN si se solicita.",
+    },
+    ru: {
+      title: `Сообщены налоги: ${n} €`,
+      body: "Они отделены от гонорара и уплачиваются государству (F24). Укажите IBAN, если потребуется.",
+    },
+    zh: {
+      title: `已通知税款：${n} €`,
+      body: "与律师费分开，向国家缴纳（F24）。如需请填写 IBAN。",
+    },
+    hi: {
+      title: `कर सूचित: ${n} €`,
+      body: "ये शुल्क से अलग हैं और राज्य को दिए जाते हैं (F24)। अनुरोध हो तो IBAN दर्ज करें।",
     },
   };
   return copy[locale] ?? copy.it;
@@ -463,6 +763,26 @@ export function finalDocsNotif(locale: CommsLocale = "it") {
     sq: {
       title: "Dokumentet përfundimtare janë gati",
       body: "Mund t'i shkarkoni nga zona personale.",
+    },
+    de: {
+      title: "Finale Dokumente bereit",
+      body: "Sie können sie aus Ihrem Persönlichen Bereich herunterladen.",
+    },
+    es: {
+      title: "Documentos finales listos",
+      body: "Puede descargarlos desde su área personal.",
+    },
+    ru: {
+      title: "Итоговые документы готовы",
+      body: "Вы можете скачать их из личного кабинета.",
+    },
+    zh: {
+      title: "最终文件已就绪",
+      body: "您可从个人区下载。",
+    },
+    hi: {
+      title: "अंतिम दस्तावेज़ तैयार",
+      body: "आप इन्हें व्यक्तिगत क्षेत्र से डाउनलोड कर सकते हैं।",
     },
   };
   return copy[locale] ?? copy.it;
@@ -520,6 +840,40 @@ export function withdrawalNotif(
         bodyRefund:
           "Rimbursimi u lëshua: zakonisht e shihni në kartë brenda 5–10 ditëve pune.",
       },
+      de: {
+        title: "Widerruf angenommen",
+        titleRefund: "Widerruf angenommen: Erstattung ausgestellt",
+        body: "Der Vorgang wurde storniert. Falls eine Erstattung fällig ist, sehen Sie sie nach Ausstellung in der Regel innerhalb von 5–10 Werktagen auf der Karte.",
+        bodyRefund:
+          "Erstattung ausgestellt: Sie sehen sie in der Regel innerhalb von 5–10 Werktagen auf der Karte.",
+      },
+      es: {
+        title: "Desistimiento aceptado",
+        titleRefund: "Desistimiento aceptado: reembolso emitido",
+        body: "El expediente ha sido anulado. Si corresponde un reembolso, una vez emitido lo verá en la tarjeta en 5–10 días laborables.",
+        bodyRefund:
+          "Reembolso emitido: normalmente lo verá en la tarjeta en 5–10 días laborables.",
+      },
+      ru: {
+        title: "Отказ принят",
+        titleRefund: "Отказ принят: возврат оформлен",
+        body: "Дело отменено. Если положен возврат, после оформления вы увидите его на карте в течение 5–10 рабочих дней.",
+        bodyRefund:
+          "Возврат оформлен: обычно вы увидите его на карте в течение 5–10 рабочих дней.",
+      },
+      zh: {
+        title: "撤回已接受",
+        titleRefund: "撤回已接受：退款已发出",
+        body: "案件已取消。如有应退款项，发出后通常 5–10 个工作日内可在卡上看到。",
+        bodyRefund: "退款已发出：通常 5–10 个工作日内可在卡上看到。",
+      },
+      hi: {
+        title: "वापसी स्वीकार",
+        titleRefund: "वापसी स्वीकार: रिफंड जारी",
+        body: "प्रकरण रद्द हो गया। यदि रिफंड देय है, जारी होने के बाद आप इसे 5–10 कार्य दिवसों में कार्ड पर देखेंगे।",
+        bodyRefund:
+          "रिफंड जारी: आमतौर पर 5–10 कार्य दिवसों में कार्ड पर दिखता है।",
+      },
     };
     const c = accepted[locale] ?? accepted.it;
     return refundIssued
@@ -550,6 +904,26 @@ export function withdrawalNotif(
     sq: {
       title: "Rezultati i kërkesës suaj për tërheqje",
       body: "Kemi vlerësuar kërkesën tuaj për tërheqje.",
+    },
+    de: {
+      title: "Ergebnis Ihres Widerrufsantrags",
+      body: "Wir haben Ihren Widerrufsantrag geprüft.",
+    },
+    es: {
+      title: "Resultado de su solicitud de desistimiento",
+      body: "Hemos evaluado su solicitud de desistimiento.",
+    },
+    ru: {
+      title: "Результат вашего заявления об отказе",
+      body: "Мы рассмотрели ваше заявление об отказе.",
+    },
+    zh: {
+      title: "撤回申请结果",
+      body: "我们已审核您的撤回申请。",
+    },
+    hi: {
+      title: "आपके वापसी अनुरोध का परिणाम",
+      body: "हमने आपके वापसी अनुरोध की समीक्षा की है।",
     },
   };
   return rejected[locale] ?? rejected.it;
@@ -615,6 +989,41 @@ export function reviewEmail(locale: CommsLocale = "it"): {
       <p style="margin:0;font-size:13px;color:#8a938c">Faleminderit, edhe vetëm për leximin.</p>`,
       ctaLabel: "Shkruaj në Google",
     },
+    de: {
+      subject: "Eine Minute für eine Bewertung?",
+      heading: "Hinterlassen Sie uns eine Bewertung?",
+      bodyHtml: `<p style="margin:0 0 10px">Ihr Erbschaftsvorgang ist abgeschlossen. Wenn Sie mit Lorenzo zufrieden waren, hilft uns eine Google-Bewertung sehr — sie dauert nur eine Minute.</p>
+      <p style="margin:0;font-size:13px;color:#8a938c">Vielen Dank, auch nur fürs Lesen.</p>`,
+      ctaLabel: "Auf Google schreiben",
+    },
+    es: {
+      subject: "¿Un minuto para una reseña?",
+      heading: "¿Nos deja una reseña?",
+      bodyHtml: `<p style="margin:0 0 10px">Su expediente de sucesión está concluido. Si quedó satisfecho con Lorenzo, una reseña en Google nos ayuda mucho — solo lleva un minuto.</p>
+      <p style="margin:0;font-size:13px;color:#8a938c">Gracias, aunque solo por leer.</p>`,
+      ctaLabel: "Escribir en Google",
+    },
+    ru: {
+      subject: "Минута на отзыв?",
+      heading: "Оставите нам отзыв?",
+      bodyHtml: `<p style="margin:0 0 10px">Ваше дело по наследству завершено. Если вы остались довольны Lorenzo, отзыв в Google нам очень поможет — это займёт минуту.</p>
+      <p style="margin:0;font-size:13px;color:#8a938c">Спасибо, даже просто за прочтение.</p>`,
+      ctaLabel: "Написать в Google",
+    },
+    zh: {
+      subject: "花一分钟写评价？",
+      heading: "愿意给我们留个评价吗？",
+      bodyHtml: `<p style="margin:0 0 10px">您的继承案件已办结。若您对 Lorenzo 满意，Google 评价对我们很有帮助 — 只需一分钟。</p>
+      <p style="margin:0;font-size:13px;color:#8a938c">感谢阅读。</p>`,
+      ctaLabel: "在 Google 上撰写",
+    },
+    hi: {
+      subject: "समीक्षा के लिए एक मिनट?",
+      heading: "क्या आप हमें समीक्षा देंगे?",
+      bodyHtml: `<p style="margin:0 0 10px">आपका उत्तराधिकार प्रकरण पूरा हो गया है। यदि Lorenzo के साथ अनुभव अच्छा रहा, Google समीक्षा हमारी बहुत मदद करती है — एक मिनट लगता है।</p>
+      <p style="margin:0;font-size:13px;color:#8a938c">पढ़ने के लिए भी धन्यवाद।</p>`,
+      ctaLabel: "Google पर लिखें",
+    },
   };
   return copy[locale] ?? copy.it;
 }
@@ -630,6 +1039,11 @@ export function taxesEmail(
     tr: "tr-TR",
     fr: "fr-FR",
     sq: "sq-AL",
+    de: "de-DE",
+    es: "es-ES",
+    ru: "ru-RU",
+    zh: "zh-CN",
+    hi: "hi-IN",
   };
   const formatted = `${amount.toLocaleString(localeTag[locale] ?? "it-IT")} €`;
   const copy: Record<
@@ -684,6 +1098,46 @@ export function taxesEmail(
       <p style="margin:0 0 10px">Këto shuma <strong>nuk janë shpërblimi ynë</strong>: paguhen te Shteti. Në zonën personale gjeni detajet dhe mund të vendosni IBAN për debitimin.</p>`,
       ctaLabel: "Shko te zona personale",
     },
+    de: {
+      subject: "Die Steuern für Ihre Erbschaft",
+      heading: "Steuern berechnet",
+      bodyHtml: `<p style="margin:0 0 10px">Wir haben die fälligen Steuern für Ihre Erbschaft berechnet (Formular F24, Selbstanzeige):</p>
+      <p style="margin:0 0 10px;font-size:22px;font-weight:700;color:#1f6f5c">${formatted}</p>
+      <p style="margin:0 0 10px">Diese Beträge <strong>sind nicht unser Honorar</strong>: sie werden an den Staat gezahlt. In Ihrem Persönlichen Bereich finden Sie die Details und können die IBAN für die Abbuchung eingeben.</p>`,
+      ctaLabel: "Zum Persönlichen Bereich",
+    },
+    es: {
+      subject: "Los impuestos de su sucesión",
+      heading: "Impuestos calculados",
+      bodyHtml: `<p style="margin:0 0 10px">Hemos calculado los impuestos debidos por su sucesión (formulario F24, autoliquidación):</p>
+      <p style="margin:0 0 10px;font-size:22px;font-weight:700;color:#1f6f5c">${formatted}</p>
+      <p style="margin:0 0 10px">Estas cantidades <strong>no son nuestro honorario</strong>: se pagan al Estado. En su área personal encontrará el detalle y podrá introducir el IBAN para el cargo.</p>`,
+      ctaLabel: "Ir al área personal",
+    },
+    ru: {
+      subject: "Налоги по вашему наследству",
+      heading: "Налоги рассчитаны",
+      bodyHtml: `<p style="margin:0 0 10px">Мы рассчитали налоги по вашему наследству (форма F24, самооценка):</p>
+      <p style="margin:0 0 10px;font-size:22px;font-weight:700;color:#1f6f5c">${formatted}</p>
+      <p style="margin:0 0 10px">Эти суммы <strong>не являются нашим гонораром</strong>: они уплачиваются государству. В личном кабинете вы найдёте детали и сможете указать IBAN для списания.</p>`,
+      ctaLabel: "Перейти в личный кабинет",
+    },
+    zh: {
+      subject: "您继承案件的税款",
+      heading: "税款已计算",
+      bodyHtml: `<p style="margin:0 0 10px">我们已计算您继承应缴税款（F24 表格，自行申报）：</p>
+      <p style="margin:0 0 10px;font-size:22px;font-weight:700;color:#1f6f5c">${formatted}</p>
+      <p style="margin:0 0 10px">这些金额<strong>不是我们的律师费</strong>：应向国家缴纳。在个人区可查看明细并填写 IBAN 用于扣款。</p>`,
+      ctaLabel: "前往个人区",
+    },
+    hi: {
+      subject: "आपके उत्तराधिकार के कर",
+      heading: "कर की गणना",
+      bodyHtml: `<p style="margin:0 0 10px">हमने आपके उत्तराधिकार के देय कर की गणना की (F24 फॉर्म, स्व-मूल्यांकन):</p>
+      <p style="margin:0 0 10px;font-size:22px;font-weight:700;color:#1f6f5c">${formatted}</p>
+      <p style="margin:0 0 10px">ये राशियाँ <strong>हमारा शुल्क नहीं</strong> हैं: ये राज्य को दी जाती हैं। व्यक्तिगत क्षेत्र में विवरण मिलेगा और डेबिट के लिए IBAN दर्ज कर सकते हैं।</p>`,
+      ctaLabel: "व्यक्तिगत क्षेत्र पर जाएँ",
+    },
   };
   return copy[locale] ?? copy.it;
 }
@@ -728,6 +1182,36 @@ export function finalDocsEmail(locale: CommsLocale = "it") {
       heading: "Dokumente gati për shkarkim",
       bodyHtml: `<p style="margin:0">Kemi ngarkuar dokumentet përfundimtare të praktikës suaj (faturim dorëzimi, deklaratë, vëzhgime). I gjeni në zonën personale, gati për shkarkim dhe ruajtje.</p>`,
       ctaLabel: "Shkarko dokumentet",
+    },
+    de: {
+      subject: "Die finalen Dokumente Ihrer Erbschaft sind bereit",
+      heading: "Dokumente zum Herunterladen bereit",
+      bodyHtml: `<p style="margin:0">Wir haben die finalen Dokumente Ihres Vorgangs hochgeladen (Einreichungsquittung, Erklärung, Auszüge). Sie finden sie in Ihrem Persönlichen Bereich, bereit zum Herunterladen und Aufbewahren.</p>`,
+      ctaLabel: "Dokumente herunterladen",
+    },
+    es: {
+      subject: "Los documentos finales de su sucesión están listos",
+      heading: "Documentos listos para descargar",
+      bodyHtml: `<p style="margin:0">Hemos subido los documentos finales de su expediente (recibo de presentación, declaración, visuras). Los encontrará en su área personal, listos para descargar y conservar.</p>`,
+      ctaLabel: "Descargar documentos",
+    },
+    ru: {
+      subject: "Итоговые документы по вашему наследству готовы",
+      heading: "Документы готовы к скачиванию",
+      bodyHtml: `<p style="margin:0">Мы загрузили итоговые документы по вашему делу (квитанция о подаче, декларация, выписки). Вы найдёте их в личном кабинете, готовые к скачиванию и хранению.</p>`,
+      ctaLabel: "Скачать документы",
+    },
+    zh: {
+      subject: "您的继承最终文件已就绪",
+      heading: "文件可供下载",
+      bodyHtml: `<p style="margin:0">我们已上传您案件的最终文件（提交回执、申报书、查册材料）。您可在个人区下载并保存。</p>`,
+      ctaLabel: "下载文件",
+    },
+    hi: {
+      subject: "आपके उत्तराधिकार के अंतिम दस्तावेज़ तैयार",
+      heading: "डाउनलोड के लिए दस्तावेज़ तैयार",
+      bodyHtml: `<p style="margin:0">हमने आपके प्रकरण के अंतिम दस्तावेज़ (जमा रसीद, घोषणा, विसुरे) अपलोड कर दिए हैं। व्यक्तिगत क्षेत्र में डाउनलोड और सहेजने के लिए मिलेंगे।</p>`,
+      ctaLabel: "दस्तावेज़ डाउनलोड करें",
     },
   };
   return copy[locale] ?? copy.it;
@@ -905,6 +1389,134 @@ export function withdrawalEmail(
         cta: "Shko te zona personale",
       },
     },
+    de: {
+      IN_REVIEW: {
+        subject: "Wir prüfen Ihren Widerrufsantrag",
+        heading: "Antrag in Bearbeitung",
+        body: "Wir haben Ihren Widerrufsantrag erhalten und prüfen ihn. Wir informieren Sie in Kürze über das Ergebnis.",
+        cta: "Zum Persönlichen Bereich",
+      },
+      ACCEPTED: {
+        subject: opts.refundIssued
+          ? "Widerruf angenommen: Erstattung ausgestellt"
+          : "Widerruf angenommen",
+        heading: opts.refundIssued
+          ? "Widerruf angenommen, Erstattung ausgestellt"
+          : "Widerruf angenommen",
+        body: opts.refundIssued
+          ? "Ihr Widerrufsantrag wurde angenommen und wir haben die Erstattung des fälligen Betrags ausgestellt. Sie sehen sie in der Regel auf der für die Zahlung verwendeten Karte innerhalb von <strong>5–10 Werktagen</strong> (Fristen Ihrer Bank oder des Kartenherausgebers; manchmal erscheint sie als Storno der ursprünglichen Belastung)."
+          : "Ihr Widerrufsantrag wurde angenommen. Falls eine Erstattung fällig ist, stellen wir sie mit derselben Zahlungsmethode aus: Nach Ausstellung schreibt die Bank sie in der Regel innerhalb von <strong>5–10 Werktagen</strong> gut.",
+        cta: "Zum Persönlichen Bereich",
+      },
+      REJECTED: {
+        subject: "Ergebnis Ihres Widerrufsantrags",
+        heading: "Widerrufsantrag",
+        body: "Wir haben Ihren Widerrufsantrag geprüft. Die Gründe finden Sie unten; wir stehen für Rückfragen zur Verfügung.",
+        cta: "Zum Persönlichen Bereich",
+      },
+    },
+    es: {
+      IN_REVIEW: {
+        subject: "Estamos evaluando su solicitud de desistimiento",
+        heading: "Solicitud en gestión",
+        body: "Hemos recibido su solicitud de desistimiento y la estamos evaluando. Le informaremos en breve del resultado.",
+        cta: "Ir al área personal",
+      },
+      ACCEPTED: {
+        subject: opts.refundIssued
+          ? "Desistimiento aceptado: reembolso emitido"
+          : "Desistimiento aceptado",
+        heading: opts.refundIssued
+          ? "Desistimiento aceptado, reembolso emitido"
+          : "Desistimiento aceptado",
+        body: opts.refundIssued
+          ? "Su solicitud de desistimiento fue aceptada y hemos emitido el reembolso del importe debido. Normalmente lo verá en la tarjeta usada para el pago en <strong>5–10 días laborables</strong> (plazos de su banco o emisor de la tarjeta; a veces aparece como anulación del cargo original)."
+          : "Su solicitud de desistimiento fue aceptada. Si corresponde un reembolso, lo emitimos con el mismo método de pago: una vez emitido, el banco normalmente lo acredita en <strong>5–10 días laborables</strong>.",
+        cta: "Ir al área personal",
+      },
+      REJECTED: {
+        subject: "Resultado de su solicitud de desistimiento",
+        heading: "Solicitud de desistimiento",
+        body: "Hemos evaluado su solicitud de desistimiento. Encontrará los motivos a continuación; estamos disponibles para aclaraciones.",
+        cta: "Ir al área personal",
+      },
+    },
+    ru: {
+      IN_REVIEW: {
+        subject: "Мы рассматриваем ваше заявление об отказе",
+        heading: "Заявление в обработке",
+        body: "Мы получили ваше заявление об отказе и рассматриваем его. Скоро сообщим результат.",
+        cta: "Перейти в личный кабинет",
+      },
+      ACCEPTED: {
+        subject: opts.refundIssued
+          ? "Отказ принят: возврат оформлен"
+          : "Отказ принят",
+        heading: opts.refundIssued
+          ? "Отказ принят, возврат оформлен"
+          : "Отказ принят",
+        body: opts.refundIssued
+          ? "Ваше заявление об отказе принято, и мы оформили возврат причитающейся суммы. Обычно вы увидите его на карте, использованной для оплаты, в течение <strong>5–10 рабочих дней</strong> (сроки вашего банка или эмитента карты; иногда отображается как отмена исходного списания)."
+          : "Ваше заявление об отказе принято. Если положен возврат, мы оформляем его тем же способом оплаты: после оформления банк обычно зачисляет средства в течение <strong>5–10 рабочих дней</strong>.",
+        cta: "Перейти в личный кабинет",
+      },
+      REJECTED: {
+        subject: "Результат вашего заявления об отказе",
+        heading: "Заявление об отказе",
+        body: "Мы рассмотрели ваше заявление об отказе. Причины указаны ниже; мы готовы ответить на вопросы.",
+        cta: "Перейти в личный кабинет",
+      },
+    },
+    zh: {
+      IN_REVIEW: {
+        subject: "我们正在审核您的撤回申请",
+        heading: "申请处理中",
+        body: "我们已收到您的撤回申请并正在审核。将很快告知结果。",
+        cta: "前往个人区",
+      },
+      ACCEPTED: {
+        subject: opts.refundIssued
+          ? "撤回已接受：退款已发出"
+          : "撤回已接受",
+        heading: opts.refundIssued ? "撤回已接受，退款已发出" : "撤回已接受",
+        body: opts.refundIssued
+          ? "您的撤回申请已接受，我们已发出应退款项。通常可在付款卡上于 <strong>5–10 个工作日</strong> 内看到（取决于银行或发卡机构；有时显示为原交易撤销）。"
+          : "您的撤回申请已接受。如有应退款项，我们将按原支付方式发出：发出后银行通常在 <strong>5–10 个工作日</strong> 内入账。",
+        cta: "前往个人区",
+      },
+      REJECTED: {
+        subject: "撤回申请结果",
+        heading: "撤回申请",
+        body: "我们已审核您的撤回申请。原因见下文；如需说明请与我们联系。",
+        cta: "前往个人区",
+      },
+    },
+    hi: {
+      IN_REVIEW: {
+        subject: "हम आपके वापसी अनुरोध की समीक्षा कर रहे हैं",
+        heading: "अनुरोध प्रक्रिया में",
+        body: "हमें आपका वापसी अनुरोध मिला है और हम इसकी समीक्षा कर रहे हैं। जल्द ही परिणाम सूचित करेंगे।",
+        cta: "व्यक्तिगत क्षेत्र पर जाएँ",
+      },
+      ACCEPTED: {
+        subject: opts.refundIssued
+          ? "वापसी स्वीकार: रिफंड जारी"
+          : "वापसी स्वीकार",
+        heading: opts.refundIssued
+          ? "वापसी स्वीकार, रिफंड जारी"
+          : "वापसी स्वीकार",
+        body: opts.refundIssued
+          ? "आपका वापसी अनुरोध स्वीकार हो गया और हमने देय राशि का रिफंड जारी कर दिया। आमतौर पर भुगतान वाले कार्ड पर <strong>5–10 कार्य दिवसों</strong> में दिखता है (आपके बैंक या कार्ड जारीकर्ता के समय; कभी-कभी मूल शुल्क रद्द के रूप में)।"
+          : "आपका वापसी अनुरोध स्वीकार हो गया। यदि रिफंड देय है, हम उसी भुगतान विधि से जारी करते हैं: जारी होने के बाद बैंक आमतौर पर <strong>5–10 कार्य दिवसों</strong> में जमा करता है।",
+        cta: "व्यक्तिगत क्षेत्र पर जाएँ",
+      },
+      REJECTED: {
+        subject: "आपके वापसी अनुरोध का परिणाम",
+        heading: "वापसी अनुरोध",
+        body: "हमने आपके वापसी अनुरोध की समीक्षा की। कारण नीचे हैं; स्पष्टीकरण के लिए हम उपलब्ध हैं।",
+        cta: "व्यक्तिगत क्षेत्र पर जाएँ",
+      },
+    },
   };
 
   const row = (tables[locale] ?? tables.it)[outcome];
@@ -962,6 +1574,41 @@ export function invoiceEmail(number: string, locale: CommsLocale = "it") {
       bodyHtml: `<p style="margin:0 0 10px">Kemi lëshuar faturën e shpërblimit <strong>nr. ${number}</strong> për praktikën tuaj të trashëgimisë.</p>
       <p style="margin:0">E gjeni dhe mund ta shkarkoni në zonën personale, te seksioni «Blerja juaj».</p>`,
       ctaLabel: "Shkarko faturën",
+    },
+    de: {
+      subject: `Ihre Rechnung ist verfügbar (Nr. ${number})`,
+      heading: "Rechnung verfügbar",
+      bodyHtml: `<p style="margin:0 0 10px">Wir haben die Honorarrechnung <strong>Nr. ${number}</strong> für Ihren Erbschaftsvorgang ausgestellt.</p>
+      <p style="margin:0">Sie finden und können sie in Ihrem Persönlichen Bereich im Bereich «Ihr Kauf» herunterladen.</p>`,
+      ctaLabel: "Rechnung herunterladen",
+    },
+    es: {
+      subject: `Su factura está disponible (n.º ${number})`,
+      heading: "Factura disponible",
+      bodyHtml: `<p style="margin:0 0 10px">Hemos emitido la factura de honorarios <strong>n.º ${number}</strong> para su expediente de sucesión.</p>
+      <p style="margin:0">La encontrará y podrá descargarla en su área personal, sección «Su compra».</p>`,
+      ctaLabel: "Descargar factura",
+    },
+    ru: {
+      subject: `Ваш счёт доступен (№ ${number})`,
+      heading: "Счёт доступен",
+      bodyHtml: `<p style="margin:0 0 10px">Мы выставили счёт за гонорар <strong>№ ${number}</strong> по вашему делу о наследстве.</p>
+      <p style="margin:0">Вы найдёте и сможете скачать его в личном кабинете, раздел «Ваша покупка».</p>`,
+      ctaLabel: "Скачать счёт",
+    },
+    zh: {
+      subject: `您的发票已可用（编号 ${number}）`,
+      heading: "发票已可用",
+      bodyHtml: `<p style="margin:0 0 10px">我们已为您继承案件开具律师费发票 <strong>编号 ${number}</strong>。</p>
+      <p style="margin:0">您可在个人区「您的购买」部分查看并下载。</p>`,
+      ctaLabel: "下载发票",
+    },
+    hi: {
+      subject: `आपका चालान उपलब्ध है (नं. ${number})`,
+      heading: "चालान उपलब्ध",
+      bodyHtml: `<p style="margin:0 0 10px">हमने आपके उत्तराधिकार प्रकरण के लिए शुल्क चालान <strong>नं. ${number}</strong> जारी किया है।</p>
+      <p style="margin:0">आप इसे व्यक्तिगत क्षेत्र में «आपकी खरीद» अनुभाग में देख और डाउनलोड कर सकते हैं।</p>`,
+      ctaLabel: "चालान डाउनलोड करें",
     },
   };
   return copy[locale] ?? copy.it;
@@ -1025,6 +1672,46 @@ export function documentRejectedEmail(
       <p style="margin:0">Mund ta ringarkoni nga zona personale — është e shpejtë.</p>`,
       ctaLabel: "Ringarko dokumentin",
     },
+    de: {
+      subject: `Ein Dokument muss erneut hochgeladen werden: ${docLabel}`,
+      heading: "Ein Dokument muss überarbeitet werden",
+      bodyHtml: `<p style="margin:0 0 10px">Das Dokument <strong>${esc(docLabel)}</strong> benötigt eine Korrektur:</p>
+      <p style="margin:0 0 10px;padding:10px 12px;background:#fdecea;border-radius:8px;color:#9b2c20">${esc(reason)}</p>
+      <p style="margin:0">Sie können es aus Ihrem Persönlichen Bereich erneut hochladen — das geht schnell.</p>`,
+      ctaLabel: "Dokument erneut hochladen",
+    },
+    es: {
+      subject: `Un documento debe volver a subirse: ${docLabel}`,
+      heading: "Un documento debe corregirse",
+      bodyHtml: `<p style="margin:0 0 10px">El documento <strong>${esc(docLabel)}</strong> necesita una corrección:</p>
+      <p style="margin:0 0 10px;padding:10px 12px;background:#fdecea;border-radius:8px;color:#9b2c20">${esc(reason)}</p>
+      <p style="margin:0">Puede volver a subirlo desde su área personal — es rápido.</p>`,
+      ctaLabel: "Volver a subir documento",
+    },
+    ru: {
+      subject: `Документ нужно загрузить заново: ${docLabel}`,
+      heading: "Документ нужно исправить",
+      bodyHtml: `<p style="margin:0 0 10px">Документ <strong>${esc(docLabel)}</strong> требует исправления:</p>
+      <p style="margin:0 0 10px;padding:10px 12px;background:#fdecea;border-radius:8px;color:#9b2c20">${esc(reason)}</p>
+      <p style="margin:0">Вы можете загрузить его заново из личного кабинета — это быстро.</p>`,
+      ctaLabel: "Загрузить документ заново",
+    },
+    zh: {
+      subject: `需重新上传文件：${docLabel}`,
+      heading: "文件需重新提交",
+      bodyHtml: `<p style="margin:0 0 10px">文件 <strong>${esc(docLabel)}</strong> 需要更正：</p>
+      <p style="margin:0 0 10px;padding:10px 12px;background:#fdecea;border-radius:8px;color:#9b2c20">${esc(reason)}</p>
+      <p style="margin:0">您可从个人区重新上传 — 很快完成。</p>`,
+      ctaLabel: "重新上传文件",
+    },
+    hi: {
+      subject: `एक दस्तावेज़ फिर अपलोड करना होगा: ${docLabel}`,
+      heading: "एक दस्तावेज़ फिर तैयार करना होगा",
+      bodyHtml: `<p style="margin:0 0 10px">दस्तावेज़ <strong>${esc(docLabel)}</strong> में सुधार चाहिए:</p>
+      <p style="margin:0 0 10px;padding:10px 12px;background:#fdecea;border-radius:8px;color:#9b2c20">${esc(reason)}</p>
+      <p style="margin:0">आप इसे व्यक्तिगत क्षेत्र से फिर अपलोड कर सकते हैं — यह जल्दी होता है।</p>`,
+      ctaLabel: "दस्तावेज़ फिर अपलोड करें",
+    },
   };
   return copy[locale] ?? copy.it;
 }
@@ -1038,6 +1725,11 @@ export function paymentReceivedCommSubject(locale: CommsLocale = "it"): string {
     tr: "Ödeme alındı: işleminiz aktif",
     fr: "Paiement reçu : votre dossier est actif",
     sq: "Pagesa u mor: praktika juaj është aktive",
+    de: "Zahlung eingegangen: Ihr Vorgang ist aktiv",
+    es: "Pago recibido: su expediente está activo",
+    ru: "Оплата получена: ваше дело активно",
+    zh: "已收到付款：您的案件已激活",
+    hi: "भुगतान प्राप्त: आपका प्रकरण सक्रिय है",
   };
   return subjects[locale] ?? subjects.it;
 }
@@ -1074,6 +1766,11 @@ export function presentNotificationCopy(
     "Yeniden yüklenecek belge: ",
     "Document à recharger : ",
     "Dokument për t'u ringarkuar: ",
+    "Dokument erneut hochladen: ",
+    "Documento a volver a subir: ",
+    "Документ нужно загрузить заново: ",
+    "需重新上传的文件：",
+    "दस्तावेज़ फिर अपलोड करें: ",
   ];
   for (const prefix of docPrefixes) {
     if (title.startsWith(prefix)) {
@@ -1088,6 +1785,11 @@ export function presentNotificationCopy(
     "Vergiler bildirildi: ",
     "Impôts communiqués : ",
     "Taksat u njoftuan: ",
+    "Steuern mitgeteilt: ",
+    "Impuestos comunicados: ",
+    "Сообщены налоги: ",
+    "已通知税款：",
+    "कर सूचित: ",
   ];
   for (const prefix of taxPrefixes) {
     if (title.startsWith(prefix)) {
@@ -1171,6 +1873,11 @@ export function presentCommSubject(
     "Yeniden yüklenmesi gereken bir belge: ",
     "Un document doit être rechargé : ",
     "Një dokument duhet ringarkuar: ",
+    "Ein Dokument muss erneut hochgeladen werden: ",
+    "Un documento debe volver a subirse: ",
+    "Документ нужно загрузить заново: ",
+    "需重新上传文件：",
+    "एक दस्तावेज़ फिर अपलोड करना होगा: ",
   ];
   for (const prefix of docPrefixes) {
     if (subject.startsWith(prefix)) {
@@ -1190,6 +1897,11 @@ export function presentCommSubject(
     /^Faturanız hazır \(no\. (.+)\)$/,
     /^Votre facture est disponible \(n° (.+)\)$/,
     /^Fatura juaj është e disponueshme \(nr\. (.+)\)$/,
+    /^Ihre Rechnung ist verfügbar \(Nr\. (.+)\)$/,
+    /^Su factura está disponible \(n\.º (.+)\)$/,
+    /^Ваш счёт доступен \(№ (.+)\)$/,
+    /^您的发票已可用（编号 (.+)）$/,
+    /^आपका चालान उपलब्ध है \(नं\. (.+)\)$/,
   ];
   for (const re of invPatterns) {
     const m = subject.match(re);

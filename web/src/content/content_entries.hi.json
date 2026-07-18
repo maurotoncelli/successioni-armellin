@@ -1,36 +1,4802 @@
 {
   "_meta": {
-    "purpose": "Traduzione parziale (prep multilingua). Contiene solo la collection 'area_login'. Tutte le altre chiavi ricadono sull'italiano (IT fa fede).",
+    "purpose": "Hindi courtesy translation of public site + area UI. Same keys as IT; IT remains legally authoritative (@07/@10).",
     "locale": "hi",
-    "version": 1,
-    "updated_at": "2026-06-22"
+    "schema": "ogni entry: { collection, key, locale, value, is_published }. value tipizzato secondo SPEC_Content_Blocks.",
+    "exclusions": "NON inclusi i contenuti data-driven gestiti in tabelle dedicate: packages, addons, faqs (Q&A), articles, document_catalog, media_assets (qui solo asset_key di riferimento).",
+    "version": 2,
+    "updated_at": "2026-07-18"
   },
   "entries": [
-    { "collection": "area_login", "key": "header_title", "locale": "hi", "is_published": true, "value": "ग्राहक क्षेत्र" },
-    { "collection": "area_login", "key": "header_subtitle", "locale": "hi", "is_published": true, "value": "अपनी उत्तराधिकार प्रक्रिया देखने के लिए साइन इन करें।" },
-    { "collection": "area_login", "key": "tab_email", "locale": "hi", "is_published": true, "value": "ईमेल" },
-    { "collection": "area_login", "key": "tab_phone", "locale": "hi", "is_published": true, "value": "फ़ोन" },
-    { "collection": "area_login", "key": "email_label", "locale": "hi", "is_published": true, "value": "आपका ईमेल" },
-    { "collection": "area_login", "key": "email_hint", "locale": "hi", "is_published": true, "value": "वही ईमेल उपयोग करें जिससे आपने भुगतान किया।" },
-    { "collection": "area_login", "key": "email_cta", "locale": "hi", "is_published": true, "value": "मुझे लॉगिन लिंक भेजें" },
-    { "collection": "area_login", "key": "email_sending", "locale": "hi", "is_published": true, "value": "भेजा जा रहा है…" },
-    { "collection": "area_login", "key": "phone_label", "locale": "hi", "is_published": true, "value": "आपका फ़ोन नंबर" },
-    { "collection": "area_login", "key": "phone_hint", "locale": "hi", "is_published": true, "value": "अपने ऑर्डर वाला नंबर उपयोग करें। हम आपको SMS से कोड भेजेंगे।" },
-    { "collection": "area_login", "key": "phone_cta", "locale": "hi", "is_published": true, "value": "SMS से कोड भेजें" },
-    { "collection": "area_login", "key": "phone_sending", "locale": "hi", "is_published": true, "value": "भेजा जा रहा है…" },
-    { "collection": "area_login", "key": "sent_email_title", "locale": "hi", "is_published": true, "value": "अपना ईमेल देखें" },
-    { "collection": "area_login", "key": "sent_email_body", "locale": "hi", "is_published": true, "value": "हमने {contact} पर एक लॉगिन लिंक भेजा है। यह लिंक कुछ मिनटों में समाप्त हो जाएगा।" },
-    { "collection": "area_login", "key": "sent_phone_title", "locale": "hi", "is_published": true, "value": "अपने SMS देखें" },
-    { "collection": "area_login", "key": "sent_phone_body", "locale": "hi", "is_published": true, "value": "हमने {contact} पर 6 अंकों का कोड भेजा है। इसे नीचे दर्ज करें।" },
-    { "collection": "area_login", "key": "otp_toggle", "locale": "hi", "is_published": true, "value": "मुझे कोड मिला है, इसे दर्ज करें" },
-    { "collection": "area_login", "key": "otp_label", "locale": "hi", "is_published": true, "value": "6 अंकों का कोड" },
-    { "collection": "area_login", "key": "otp_cta", "locale": "hi", "is_published": true, "value": "कोड सत्यापित करें" },
-    { "collection": "area_login", "key": "otp_verifying", "locale": "hi", "is_published": true, "value": "सत्यापित किया जा रहा है…" },
-    { "collection": "area_login", "key": "resend", "locale": "hi", "is_published": true, "value": "फिर से भेजें" },
-    { "collection": "area_login", "key": "error_link", "locale": "hi", "is_published": true, "value": "लॉगिन लिंक अमान्य है या समाप्त हो गया है। नया अनुरोध करें।" },
-    { "collection": "area_login", "key": "secure_note", "locale": "hi", "is_published": true, "value": "सुरक्षित पहुँच" },
-    { "collection": "area_login", "key": "back_to_site", "locale": "hi", "is_published": true, "value": "साइट पर वापस जाएँ" },
-    { "collection": "area_login", "key": "privacy_link", "locale": "hi", "is_published": true, "value": { "label": "गोपनीयता", "href": "/privacy" } },
-    { "collection": "area_login", "key": "termini_link", "locale": "hi", "is_published": true, "value": { "label": "शर्तें", "href": "/termini-condizioni" } }
+    {
+      "collection": "navbar",
+      "key": "menu",
+      "locale": "hi",
+      "is_published": true,
+      "value": [
+        {
+          "label": "यह कैसे काम करता है",
+          "href": "/come-funziona"
+        },
+        {
+          "label": "दरें",
+          "href": "/tariffe"
+        },
+        {
+          "label": "मेरे बारे में",
+          "href": "/chi-sono"
+        },
+        {
+          "label": "गाइड",
+          "href": "/guide"
+        },
+        {
+          "label": "FAQ",
+          "href": "/faq"
+        },
+        {
+          "label": "संपर्क",
+          "href": "/contatti"
+        }
+      ]
+    },
+    {
+      "collection": "navbar",
+      "key": "brand_tagline",
+      "locale": "hi",
+      "is_published": true,
+      "value": "उत्तराधिकार"
+    },
+    {
+      "collection": "navbar",
+      "key": "logo",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "asset_key": "logo_studio"
+      }
+    },
+    {
+      "collection": "navbar",
+      "key": "cta",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "मुफ़्त अनुमान प्राप्त करें",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "navbar",
+      "key": "cta_phone",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "Lorenzo से बात करें",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "navbar",
+      "key": "lang_switcher",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "enabled": true,
+        "locales": [
+          "it",
+          "en",
+          "ar",
+          "de",
+          "es",
+          "ru",
+          "tr",
+          "zh",
+          "hi",
+          "sq",
+          "fr"
+        ]
+      }
+    },
+    {
+      "collection": "globals",
+      "key": "mobile_cta",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "मुफ़्त अनुमान प्राप्त करें",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "footer",
+      "key": "studio",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "ragione_sociale": "Geom. Lorenzo Armellin",
+        "forma_giuridica": "व्यक्तिगत उद्यम - forfettario (VAT रहित, अनु. 1 § 54-89 L. 190/2014)",
+        "piva": "02432220503",
+        "cf": "RMLLNZ90E27G843J",
+        "albo": "Pisa Collegio Geometri, n. 1969 - 21/01/2022 से पंजीकृत",
+        "indirizzo": "Via Vittorio Veneto 31, 56025 Pontedera (PI)"
+      }
+    },
+    {
+      "collection": "footer",
+      "key": "trust_line",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Entratel-प्राधिकृत Geom. - कर सलाहकारों का पर्यवेक्षण"
+    },
+    {
+      "collection": "footer",
+      "key": "area_app_note",
+      "locale": "hi",
+      "is_published": true,
+      "value": "यह साइट ऑनलाइन उत्तराधिकार फ़ाइल प्रबंधन: व्यक्तिगत क्षेत्र में स्थिति, दस्तावेज़, अधिदेश हस्ताक्षर। ईमेल/फ़ोन/Google लॉगिन: Google से केवल नाम/ईमेल, अन्य डेटा नहीं। विवरण"
+    },
+    {
+      "collection": "footer",
+      "key": "odr",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "ऑनलाइन विवाद समाधान (ODR)",
+        "href": "https://ec.europa.eu/consumers/odr"
+      }
+    },
+    {
+      "collection": "footer",
+      "key": "legal_menu",
+      "locale": "hi",
+      "is_published": true,
+      "value": [
+        {
+          "label": "Privacy",
+          "href": "/privacy"
+        },
+        {
+          "label": "Cookie Policy",
+          "href": "/cookie-policy"
+        },
+        {
+          "label": "नियम और शर्तें",
+          "href": "/termini-condizioni"
+        },
+        {
+          "label": "गारंटी",
+          "href": "/garanzia"
+        },
+        {
+          "label": "वापसी",
+          "href": "/recesso"
+        }
+      ]
+    },
+    {
+      "collection": "footer",
+      "key": "credit",
+      "locale": "hi",
+      "is_published": true,
+      "value": "AT STUDIO · Mauro Toncelli द्वारा"
+    },
+    {
+      "collection": "footer",
+      "key": "strumenti_link",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "भू-अभिलेख मूल्य गणना",
+        "href": "/strumenti/valore-catastale"
+      }
+    },
+    {
+      "collection": "settings",
+      "key": "phone",
+      "locale": "hi",
+      "is_published": true,
+      "value": "320 1570567"
+    },
+    {
+      "collection": "settings",
+      "key": "area_label",
+      "locale": "hi",
+      "is_published": true,
+      "value": "व्यक्तिगत क्षेत्र"
+    },
+    {
+      "collection": "settings",
+      "key": "whatsapp",
+      "locale": "hi",
+      "is_published": true,
+      "value": "https://wa.me/393201570567"
+    },
+    {
+      "collection": "settings",
+      "key": "email",
+      "locale": "hi",
+      "is_published": true,
+      "value": "studio@successioniarmellin.it"
+    },
+    {
+      "collection": "settings",
+      "key": "pec",
+      "locale": "hi",
+      "is_published": true,
+      "value": "lorenzo.armellin@geopec.it"
+    },
+    {
+      "collection": "settings",
+      "key": "review_url",
+      "locale": "hi",
+      "is_published": true,
+      "value": "https://g.page/r/CVRoWf5CoiTDEAE/review"
+    },
+    {
+      "collection": "settings",
+      "key": "address",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "via": "Via Vittorio Veneto 31",
+        "cap": "56025",
+        "citta": "Pontedera (PI)"
+      }
+    },
+    {
+      "collection": "settings",
+      "key": "opening_hours",
+      "locale": "hi",
+      "is_published": true,
+      "value": [
+        {
+          "giorni": "सोम–शुक्र",
+          "orario": "9:00-13:00 / 14:30-18:30"
+        },
+        {
+          "giorni": "शनि–रवि",
+          "orario": "बंद"
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "hero_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आपका उत्तराधिकार, घर से बिना निकले।"
+    },
+    {
+      "collection": "home",
+      "key": "hero_subtitle",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Geom. Lorenzo Armellin, उत्तराधिकार विशेषज्ञ: स्पष्ट कीमत, ऑनलाइन (व्यक्तिगत भी), वास्तविक साथ। कर पहले गणना।"
+    },
+    {
+      "collection": "home",
+      "key": "hero_cta_primary",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "मुफ़्त अनुमान प्राप्त करें",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "hero_cta_secondary",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "यह कैसे काम करता है देखें",
+        "href": "#come-funziona"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "hero_image",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "asset_key": "hero_home"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "hero_specialization_badge",
+      "locale": "hi",
+      "is_published": true,
+      "value": "उत्तराधिकार में विशेषज्ञ Geom."
+    },
+    {
+      "collection": "home",
+      "key": "trustbar_items",
+      "locale": "hi",
+      "is_published": true,
+      "value": [
+        "Albo में पंजीकृत Geom.",
+        "Entratel प्राधिकृत (AdE इलेक्ट्रॉनिक जमा)",
+        "कर सलाहकारों का पर्यवेक्षण",
+        "Stripe सुरक्षित भुगतान",
+        "GDPR अनुपालित",
+        "SSL"
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "social_proof_stats",
+      "locale": "hi",
+      "is_published": false,
+      "value": [
+        {
+          "valore": "oltre X",
+          "label": "उत्तराधिकार संभाले गए"
+        },
+        {
+          "valore": "X anni",
+          "label": "अनुभव"
+        },
+        {
+          "valore": "4,X/5",
+          "label": "Google औसत रेटिंग"
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "problema_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "एक उत्तराधिकार, हज़ार सवाल। हम बोझ उतारते हैं।"
+    },
+    {
+      "collection": "home",
+      "key": "problema_intro",
+      "locale": "hi",
+      "is_published": true,
+      "value": "जानते हैं यह कठिन समय है। अफ़सरशाही हम संभालते हैं।"
+    },
+    {
+      "collection": "home",
+      "key": "problema_vantaggi",
+      "locale": "hi",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "कोई कतार नहीं",
+          "testo": "घर से सब करें, फ़ोन से भी।"
+        },
+        {
+          "titolo": "कोई त्रुटि या जुर्माना नहीं",
+          "testo": "प्राधिकृत Geom. द्वारा भू-अभिलेख डेटा तकनीकी जाँच।"
+        },
+        {
+          "titolo": "वास्तविक व्यक्ति से सहायता",
+          "testo": "हमेशा वास्तविक व्यक्ति से बात, बॉट से नहीं।"
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_eyebrow",
+      "locale": "hi",
+      "is_published": true,
+      "value": "सरल"
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "3 चरणों में कैसे काम करता है"
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_steps",
+      "locale": "hi",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "कुछ प्रश्नों के उत्तर दें",
+          "testo": "तुरंत बताते हैं क्या चाहिए और कितना खर्च।",
+          "immagine": {
+            "src": "/images/come-funziona-step-1-quiz.jpg",
+            "alt": "ऑनलाइन अनुमान प्रश्नों के उत्तर देता/देती व्यक्ति"
+          }
+        },
+        {
+          "titolo": "आप दस्तावेज़ अपलोड करते हैं",
+          "testo": "व्यक्तिगत क्षेत्र से, फ़ोटो से भी। सटीक सूची देते हैं।",
+          "immagine": {
+            "src": "/images/come-funziona-step-2-documenti.jpg",
+            "alt": "स्मार्टफ़ोन से दस्तावेज़ की फ़ोटो लेता/लेती व्यक्ति"
+          }
+        },
+        {
+          "titolo": "हम सब संभालते हैं",
+          "testo": "हम घोषणा तैयार और जमा करते हैं; आप रसीदें पाते हैं।",
+          "immagine": {
+            "src": "/images/come-funziona-step-3-lorenzo.jpg",
+            "alt": "Geom. Lorenzo Armellin कंप्यूटर पर फ़ाइल तैयार करते हुए"
+          }
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_sla_note",
+      "locale": "hi",
+      "is_published": true,
+      "value": "सभी पूर्ण दस्तावेज़ों के बाद 10-15 कार्य दिवस (पैकेज अनुसार) में जमा।"
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Successioni Armellin क्या है"
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Successioni Armellin Geom. Lorenzo Armellin के कार्यालय की वेब ऐप: स्पष्ट अनुमान, सुरक्षित कार्ड भुगतान, व्यक्तिगत क्षेत्र में दस्तावेज़/अधिदेश, Agenzia जमा तक चरण दर चरण। लॉगिन: ईमेल/फ़ोन/Google — Google से केवल नाम/ईमेल, अन्य डेटा नहीं।"
+    },
+    {
+      "collection": "home",
+      "key": "tariffe_eyebrow",
+      "locale": "hi",
+      "is_published": true,
+      "value": "दरें"
+    },
+    {
+      "collection": "home",
+      "key": "tariffe_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "स्पष्ट कीमतें, कोई आश्चर्य नहीं"
+    },
+    {
+      "collection": "home",
+      "key": "tariffe_intro",
+      "locale": "hi",
+      "is_published": true,
+      "value": "निश्चित पेशेवर शुल्क भुगतान। कर अलग, उत्तराधिकारी के खाते, हम गणना करते हैं।"
+    },
+    {
+      "collection": "home",
+      "key": "tariffe_cta",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "पैकेज देखें",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "faidate_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Agenzia delle Entrate की साइट पर अकेले किया जा सकता है। फिर हम क्यों?"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_col_us",
+      "locale": "hi",
+      "is_published": true,
+      "value": "हमारे साथ"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_col_diy",
+      "locale": "hi",
+      "is_published": true,
+      "value": "स्वयं करें"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_col_corner",
+      "locale": "hi",
+      "is_published": true,
+      "value": "तुलना"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_intro",
+      "locale": "hi",
+      "is_published": true,
+      "value": "सच, मुफ़्त precompilata उत्तराधिकार है: ईमानदार विकल्प। SPID और विशेषज्ञता चाहिए; त्रुटि/जुर्माना आप पर।"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_confronto",
+      "locale": "hi",
+      "is_published": true,
+      "value": [
+        {
+          "voce": "आवश्यक समय",
+          "faidate": "घंटे और SPID आपकी ज़िम्मेदारी",
+          "noi": "हम इसका ध्यान रखते हैं"
+        },
+        {
+          "voce": "भू-अभिलेख डेटा जाँच",
+          "faidate": "आपकी ज़िम्मेदारी",
+          "noi": "Geom. द्वारा किया जाता है"
+        },
+        {
+          "voce": "कर गणना",
+          "faidate": "अकेले",
+          "noi": "हम पहले करते हैं"
+        },
+        {
+          "voce": "सहायता",
+          "faidate": "कोई नहीं",
+          "noi": "एक वास्तविक व्यक्ति"
+        },
+        {
+          "voce": "जुर्माने का जोखिम",
+          "faidate": "आपका",
+          "noi": "प्रबंधित"
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "ग्राहक क्या कहते हैं"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_intro",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Google की वास्तविक समीक्षाएँ।"
+    },
+    {
+      "collection": "home",
+      "key": "chisono_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आपकी फ़ाइल कौन संभालता है"
+    },
+    {
+      "collection": "home",
+      "key": "chisono_estratto",
+      "locale": "hi",
+      "is_published": true,
+      "value": "मैं Lorenzo Armellin, Agenzia को उत्तराधिकार भेजने के लिए प्राधिकृत Geom. सलाहकार पर्यवेक्षण: भू-अभिलेख सटीकता और संख्याओं में विश्वास।"
+    },
+    {
+      "collection": "home",
+      "key": "chisono_video",
+      "locale": "hi",
+      "is_published": false,
+      "value": {
+        "asset_key": "video_benvenuto_lorenzo"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "chisono_cta",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "Lorenzo से मिलें",
+        "href": "/chi-sono"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "faq_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अक्सर पूछे जाने वाले प्रश्न"
+    },
+    {
+      "collection": "home",
+      "key": "faq_cta",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "सभी प्रश्न",
+        "href": "/faq"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "cta_finale_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "इस चिंता से मुक्त होने के लिए तैयार?"
+    },
+    {
+      "collection": "home",
+      "key": "cta_finale_subtitle",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कुछ मिनट में मुफ़्त अनुमान। संतुष्ट या रिफ़ंड।"
+    },
+    {
+      "collection": "home",
+      "key": "cta_finale_button",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "मुफ़्त अनुमान प्राप्त करें",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "cta_finale_phone",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "या Lorenzo को कॉल करें",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "hero_eyebrow",
+      "locale": "hi",
+      "is_published": true,
+      "value": "स्पष्ट कीमतें"
+    },
+    {
+      "collection": "tariffe",
+      "key": "hero_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "स्पष्ट कीमतें। जो दिखे, वही भुगतान।"
+    },
+    {
+      "collection": "tariffe",
+      "key": "hero_subtitle",
+      "locale": "hi",
+      "is_published": true,
+      "value": "पैकेज पर निश्चित शुल्क, पहले तय। कर अलग, हम गणना। विशेष मामलों में अनुकूलित अनुमान।"
+    },
+    {
+      "collection": "tariffe",
+      "key": "card_badge_popolare",
+      "locale": "hi",
+      "is_published": true,
+      "value": "सबसे लोकप्रिय"
+    },
+    {
+      "collection": "tariffe",
+      "key": "box_trasparenza_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कीमत कैसे बनती है"
+    },
+    {
+      "collection": "tariffe",
+      "key": "box_trasparenza_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "पैकेज कीमत VAT-रहित पेशेवर शुल्क (forfettario)। उत्तराधिकार कर (बंधक, भू-अभिलेख, स्टाम्प) F24 से अलग, उत्तराधिकारी के खाते: जमा से पहले गणना।"
+    },
+    {
+      "collection": "tariffe",
+      "key": "sovrapprezzo_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कब कीमत बदल सकती है (पहले बताते हैं)"
+    },
+    {
+      "collection": "tariffe",
+      "key": "sovrapprezzo_list",
+      "locale": "hi",
+      "is_published": false,
+      "value": [
+        {
+          "voce": "अतिरिक्त संपत्ति",
+          "importo": "+€60 प्रत्येक (पुष्टि होनी बाकी)"
+        },
+        {
+          "voce": "कृषि भूमि/अनुलग्नक",
+          "importo": "जटिलता के अनुसार"
+        },
+        {
+          "voce": "मानक सीमा से अधिक उत्तराधिकारी",
+          "importo": "जटिलता के अनुसार"
+        }
+      ]
+    },
+    {
+      "collection": "tariffe",
+      "key": "sla_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "वितरण समय"
+    },
+    {
+      "collection": "tariffe",
+      "key": "sla_note",
+      "locale": "hi",
+      "is_published": true,
+      "value": "प्रत्येक पैकेज पूर्ण दस्तावेज़ों (भुगतान नहीं) से निश्चित कार्य दिवसों में जमा। तृतीय पक्ष (Agenzia, Catasto, बैंक) बाहर।"
+    },
+    {
+      "collection": "tariffe",
+      "key": "deliverable_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "फ़ाइल पूर्ण होने पर क्या मिलेगा"
+    },
+    {
+      "collection": "tariffe",
+      "key": "deliverable_list",
+      "locale": "hi",
+      "is_published": true,
+      "value": [
+        "Agenzia जमा/पंजीकरण रसीद",
+        "उत्तराधिकार घोषणा की प्रति",
+        "F24 प्रमाण / परिणाम",
+        "भू-अभिलेख हस्तांतरण परिणाम (जहाँ लागू)",
+        "हमारा चालान"
+      ]
+    },
+    {
+      "collection": "tariffe",
+      "key": "esempio_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अंतिम दस्तावेज़ों का उदाहरण देखें"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_intro",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अतिरिक्त सेवाएँ, यदि चाहिए"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_subtitle",
+      "locale": "hi",
+      "is_published": true,
+      "value": "सेवा टैप कर अधिक जानें। अभी अनुरोध पर: साथ चर्चा कर फ़ाइल में जोड़ेंगे।"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_contact_text",
+      "locale": "hi",
+      "is_published": true,
+      "value": "यह सेवा अनुरोध पर, समर्पित अनुमान। कॉल/लिखें: साथ मूल्यांकन, फ़ाइल में जोड़ेंगे।"
+    },
+    {
+      "collection": "tariffe",
+      "key": "rate_text",
+      "locale": "hi",
+      "is_published": true,
+      "value": "checkout पर किश्त (PayPal Pay in 3, Klarna, Scalapay)। केवल शुल्क, कर कानूनी समयसीमा।"
+    },
+    {
+      "collection": "tariffe",
+      "key": "su_misura_text",
+      "locale": "hi",
+      "is_published": true,
+      "value": "8 से अधिक संपत्तियाँ, कृषि भूमि, व्यवसाय या कंपनी हिस्सेदारी? हर मामला अलग: अनुकूलित अनुमान, बिना आश्चर्य।"
+    },
+    {
+      "collection": "tariffe",
+      "key": "su_misura_cta",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "अनुकूलित अनुमान का अनुरोध",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "ti_serve_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "शायद ज़रूरत ही नहीं। मुफ़्त बताएँगे।"
+    },
+    {
+      "collection": "tariffe",
+      "key": "ti_serve_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कुछ मामलों (प्रत्यक्ष उत्तराधिकारी, सीमा के भीतर तरलता, कोई संपत्ति नहीं) में घोषणा नहीं। भुगतान से पहले जाँच: ज़रूरत नहीं तो बताएँगे।"
+    },
+    {
+      "collection": "tariffe",
+      "key": "ti_serve_cta",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "अपना मामला मुफ़्त जाँचें",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कौन सा चुनें, पता नहीं?"
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "पैकेज चयन त्वरित गाइड या Lorenzo से बात: कुछ मिनट में सही पैकेज। विचार बदले तो बदलना सरल।"
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_cta_guida",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "चयन गाइड",
+        "href": "#guida"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_cta_call",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "Lorenzo से बात करें",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "microtrust",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Entratel-प्राधिकृत Geom., कर सलाहकारों का पर्यवेक्षण।"
+    },
+    {
+      "collection": "tariffe",
+      "key": "cta_finale_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कुछ मिनट में कीमत जानें, बिना बाध्यता।"
+    },
+    {
+      "collection": "tariffe",
+      "key": "cta_finale_button",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "मुफ़्त अनुमान प्राप्त करें",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "व्यक्तिगत अनुमान"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_tagline",
+      "locale": "hi",
+      "is_published": true,
+      "value": "जटिल उत्तराधिकार के लिए"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_price_label",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अनुकूलित"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "8+ संपत्तियाँ, कृषि भूमि, व्यवसाय/हिस्सेदारी? जटिल मामले मानक पैकेज में नहीं: अध्ययन, समर्पित अनुमान।"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_features",
+      "locale": "hi",
+      "is_published": true,
+      "value": [
+        "जो मामले पैकेज नहीं कवर करते",
+        "आपके मामले का मुफ़्त प्रारंभिक मूल्यांकन",
+        "शुरू करने से पहले स्पष्ट कीमत",
+        "पैकेज जैसी ही सेवा और सहायता"
+      ]
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_cta",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "अनुमान का अनुरोध",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "hero_eyebrow",
+      "locale": "hi",
+      "is_published": true,
+      "value": "मेरे बारे में"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "hero_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "नमस्ते, मैं Lorenzo Armellin हूँ।"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "hero_subtitle",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Agenzia को उत्तराधिकार घोषणा भेजने के लिए प्राधिकृत Geom. इस साइट के पीछे सॉफ़्टवेयर नहीं, व्यक्ति।"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "hero_ritratto",
+      "locale": "hi",
+      "is_published": false,
+      "value": {
+        "asset_key": "ritratto_lorenzo"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "bio_body",
+      "locale": "hi",
+      "is_published": false,
+      "value": "हर दिन उत्तराधिकार। Geom. के रूप में भू-अभिलेख नियंत्रण — जहाँ अधिकांश फ़ाइलें अटकती हैं। लक्ष्य: कठिन समय में बोझ हटाना, स्पष्ट कीमत, कार्यालय/बैंक चक्कर नहीं।"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "credenziali_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "मेरे क्रेडेंशियल"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "credenziali_list",
+      "locale": "hi",
+      "is_published": true,
+      "value": [
+        {
+          "voce": "Geometri Albo पंजीकरण",
+          "dettaglio": "Pisa Collegio n. 1969 - 21/01/2022 से पंजीकृत"
+        },
+        {
+          "voce": "Entratel प्राधिकरण",
+          "dettaglio": "Agenzia delle Entrate को इलेक्ट्रॉनिक जमा का मध्यस्थ"
+        },
+        {
+          "voce": "VAT नंबर",
+          "dettaglio": "02432220503"
+        }
+      ]
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "team_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Geom. भू-अभिलेख पर, सलाहकार संख्याओं पर"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "team_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "मैं स्वयं घोषणा तैयार/जमा: प्राधिकृत हूँ। कर पक्ष पर सलाहकार पर्यवेक्षण। भू-अभिलेख नियंत्रण और गणना विश्वास, बिना फ़ाइल विभाजन।"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "team_membri",
+      "locale": "hi",
+      "is_published": false,
+      "value": [
+        {
+          "ruolo": "Entratel-प्राधिकृत Geom.",
+          "nome": "Lorenzo Armellin",
+          "focus": "फ़ाइल तैयार और जमा, भू-अभिलेख जाँच",
+          "foto": {
+            "asset_key": "ritratto_lorenzo"
+          }
+        },
+        {
+          "ruolo": "कर पर्यवेक्षण",
+          "nome": "कर सलाहकार (पुष्टि होनी बाकी)",
+          "focus": "कर/वित्तीय जाँच",
+          "foto": {
+            "asset_key": "ritratto_commercialista"
+          }
+        }
+      ]
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "perche_geometra_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अक्सर सलाहकार, CAF या नोटरी की अपेक्षा। उत्तराधिकार में नाज़ुक भाग भू-अभिलेख: Geom. का काम। जमा हेतु Entratel मध्यस्थ — मैं हूँ। नोटरी बाद के अधिनियमों के लिए।"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "मुझे कहाँ मिलें"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_indirizzo",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "via": "Via Vittorio Veneto 31",
+        "cap": "56025",
+        "citta": "Pontedera (PI)"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_nota",
+      "locale": "hi",
+      "is_published": true,
+      "value": "सब दूर से, पर कार्यालय वास्तव में है: यहीं।"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_maps_label",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Google Maps में खोलें"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_foto_alt",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Pontedera Cathedral"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "ritratto_alt",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Geom. Lorenzo Armellin"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_ref",
+      "locale": "hi",
+      "is_published": false,
+      "value": {
+        "asset_key": "video_benvenuto_lorenzo"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_caption",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अभिवादन और काम के बारे में कुछ शब्द (60 सेकंड)।"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_badge",
+      "locale": "hi",
+      "is_published": true,
+      "value": "वीडियो जल्द आ रहा है"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_alt",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Geom. Lorenzo Armellin का स्वागत वीडियो"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "motto_latino",
+      "locale": "hi",
+      "is_published": false,
+      "value": "(विरासत/परिवार/विश्वसनीयता पर सुंदर लैटिन नारा)"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "motto_traduzione",
+      "locale": "hi",
+      "is_published": false,
+      "value": "(इतालवी अनुवाद)"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "recensioni_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "लोग मेरे बारे में क्या कहते हैं"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "cta_finale_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "क्या मैं इसका ध्यान रखूँ?"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "cta_finale_button",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "मुफ़्त अनुमान प्राप्त करें",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "cta_finale_phone",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "मुझे कॉल करें",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "documenti",
+      "key": "hero_eyebrow",
+      "locale": "hi",
+      "is_published": true,
+      "value": "दस्तावेज़ गाइड"
+    },
+    {
+      "collection": "documenti",
+      "key": "hero_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "उत्तराधिकार के लिए कौन से दस्तावेज़?"
+    },
+    {
+      "collection": "documenti",
+      "key": "hero_subtitle",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कुछ प्रश्न: तुरंत मुफ़्त बताएँगे क्या चाहिए। बिना बाध्यता। कुछ कम हो तो अक्सर प्राप्त कर लेंगे।"
+    },
+    {
+      "collection": "documenti",
+      "key": "interattiva_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अपनी व्यक्तिगत सूची बनाएँ"
+    },
+    {
+      "collection": "documenti",
+      "key": "interattiva_domande",
+      "locale": "hi",
+      "is_published": true,
+      "value": [
+        "क्या संपत्तियाँ हैं (घर, भूमि, गैरेज)?",
+        "क्या वसीयत है?",
+        "क्या नाबालिग उत्तराधिकारी हैं?",
+        "क्या खाते/निवेश हैं?",
+        "कृषि भूमि/प्लॉट/अनुलग्नक हैं?",
+        "अन्य संपत्ति (हिस्सेदारी, व्यवसाय, वाहन)?"
+      ]
+    },
+    {
+      "collection": "documenti",
+      "key": "interattiva_risultato_intro",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आपको यह चाहिए होगा:"
+    },
+    {
+      "collection": "documenti",
+      "key": "evergreen_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "उत्तराधिकार घोषणा के सामान्य दस्तावेज़"
+    },
+    {
+      "collection": "documenti",
+      "key": "evergreen_intro",
+      "locale": "hi",
+      "is_published": true,
+      "value": "नीचे सामान्य दस्तावेज़। सभी हमेशा नहीं: आपके मामले पर (ऊपर उपकरण है)।"
+    },
+    {
+      "collection": "documenti",
+      "key": "hook_recupero",
+      "locale": "hi",
+      "is_published": true,
+      "value": "दस्तावेज़ नहीं मिल रहा? अक्सर हम प्राप्त करते हैं: भू-अभिलेख, स्वामित्व दस्तावेज़। हमारे काम का हिस्सा।"
+    },
+    {
+      "collection": "documenti",
+      "key": "disclaimer_ymyl",
+      "locale": "hi",
+      "is_published": true,
+      "value": "संकेत सूची, आपके डेटा अनुसार। Lorenzo वास्तविक मामला देखकर अंतिम पुष्टि।"
+    },
+    {
+      "collection": "documenti",
+      "key": "cta_preventivo",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "अनुमान प्राप्त करें",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "documenti",
+      "key": "cta_pdf",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "सूची डाउनलोड करें (PDF)",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "documenti",
+      "key": "cta_email",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "ईमेल से प्राप्त करें",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "faq",
+      "key": "hero_eyebrow",
+      "locale": "hi",
+      "is_published": true,
+      "value": "FAQ"
+    },
+    {
+      "collection": "faq",
+      "key": "hero_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "उत्तराधिकार पर अक्सर पूछे जाने वाले प्रश्न"
+    },
+    {
+      "collection": "faq",
+      "key": "hero_subtitle",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अक्सर पूछे प्रश्नों के स्पष्ट उत्तर। आपका न मिले तो लिखें या Lorenzo को कॉल: सभी को जवाब।"
+    },
+    {
+      "collection": "faq",
+      "key": "hero_search",
+      "locale": "hi",
+      "is_published": true,
+      "value": true
+    },
+    {
+      "collection": "faq",
+      "key": "cat_capire_intro",
+      "locale": "hi",
+      "is_published": true,
+      "value": "क्या है, कब चाहिए और क्या जोखिम।"
+    },
+    {
+      "collection": "faq",
+      "key": "cat_costi_intro",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कीमत, क्या शामिल है और कर कैसे काम करते हैं।"
+    },
+    {
+      "collection": "faq",
+      "key": "cat_perche_intro",
+      "locale": "hi",
+      "is_published": true,
+      "value": "मुफ़्त अकेले किया जा सकता है: फिर भी सौंपना क्यों बेहतर।"
+    },
+    {
+      "collection": "faq",
+      "key": "cat_come_intro",
+      "locale": "hi",
+      "is_published": true,
+      "value": "प्रक्रिया, दस्तावेज़ और समय, चरण दर चरण।"
+    },
+    {
+      "collection": "faq",
+      "key": "cat_dopo_intro",
+      "locale": "hi",
+      "is_published": true,
+      "value": "क्या मिलेगा, डेटा उपयोग और आपकी सुरक्षा।"
+    },
+    {
+      "collection": "faq",
+      "key": "cta_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "जवाब नहीं मिला?"
+    },
+    {
+      "collection": "faq",
+      "key": "cta_button",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "मुफ़्त अनुमान प्राप्त करें",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "faq",
+      "key": "cta_phone",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "Lorenzo से पूछें",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "recesso",
+      "key": "hero_eyebrow",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आपकी सुरक्षा"
+    },
+    {
+      "collection": "recesso",
+      "key": "hero_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आपका वापसी अधिकार, सरल भाषा में"
+    },
+    {
+      "collection": "recesso",
+      "key": "hero_subtitle",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आप शांत रहें। रद्दी और रिफ़ंड सरल भाषा में। औपचारिक पाठ बिक्री की शर्तों में।"
+    },
+    {
+      "collection": "recesso",
+      "key": "cosa_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "वापसी के लिए 14 दिन हैं"
+    },
+    {
+      "collection": "recesso",
+      "key": "cosa_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "उपभोक्ता के रूप में 14 दिनों में बिना कारण वापसी। कानूनी अधिकार।"
+    },
+    {
+      "collection": "recesso",
+      "key": "avvio_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "यदि आप तुरंत शुरू करना चाहते हैं"
+    },
+    {
+      "collection": "recesso",
+      "key": "avvio_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "उत्तराधिकार अक्सर जरूरी (12 महीने)। 14 दिन से पहले शुरू: स्पष्ट सहमति — सेवा पूर्ण होने पर वापसी नहीं। केवल शुरू, पूर्ण नहीं: नीचे देखें।"
+    },
+    {
+      "collection": "recesso",
+      "key": "iniziato_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "काम चलते विचार बदलूँ तो?"
+    },
+    {
+      "collection": "recesso",
+      "key": "iniziato_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "फिर भी वापसी: उस समय तक किए काम के अनुपात में भुगतान, बाकी रिफ़ंड। कोई छिपा जुर्माना नहीं।"
+    },
+    {
+      "collection": "recesso",
+      "key": "come_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "वापसी कैसे माँगें"
+    },
+    {
+      "collection": "recesso",
+      "key": "come_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "सबसे सरल: व्यक्तिगत क्षेत्र में 'वापसी का अनुरोध'। या ईमेल/PEC। नीचे नमूना फ़ॉर्म वैकल्पिक।"
+    },
+    {
+      "collection": "recesso",
+      "key": "come_cta_area",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "व्यक्तिगत क्षेत्र से वापसी का अनुरोध",
+        "href": "/area-riservata/recesso"
+      }
+    },
+    {
+      "collection": "recesso",
+      "key": "rimborso_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "रिफ़ंड कब मिलेगा"
+    },
+    {
+      "collection": "recesso",
+      "key": "rimborso_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कानूनी समय (सामान्यतः 14 दिन) में, उसी भुगतान विधि से। कार्ड पर 5-10 कार्य दिवस। पहले से Erario को कर Agenzia नियमों से।"
+    },
+    {
+      "collection": "recesso",
+      "key": "garanzia_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "वापसी और गारंटी: दो अलग बातें"
+    },
+    {
+      "collection": "recesso",
+      "key": "garanzia_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "पहले 14 दिनों में वापसी कानूनी अधिकार। 'संतुष्ट या रिफ़ंड' अतिरिक्त वचन: असंतुष्टि पर बात कर समाधान। Garanzia पृष्ठ पर विवरण।"
+    },
+    {
+      "collection": "recesso",
+      "key": "garanzia_link",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "गारंटी पढ़ें",
+        "href": "/garanzia"
+      }
+    },
+    {
+      "collection": "recesso",
+      "key": "tc_link",
+      "locale": "hi",
+      "is_published": true,
+      "value": "यह पृष्ठ वापसी सरल भाषा में। बाध्यकारी पाठ बिक्री की शर्तों में।"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_eyebrow",
+      "locale": "hi",
+      "is_published": true,
+      "value": "प्रक्रिया"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कैसे काम करता है: सरल, घर से, 3 चरण"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_subtitle",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कोई कतार, कोई कार्यालय नहीं। चरण दर चरण मार्गदर्शन: आप परिवार, हम अफ़सरशाही।"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps",
+      "locale": "hi",
+      "is_published": true,
+      "value": [
+        {
+          "numero": 1,
+          "titolo": "कुछ प्रश्नों के उत्तर दें",
+          "testo": "1 मिनट ऑनलाइन प्रश्नावली। तुरंत बताएँगे क्या चाहिए, कीमत — और यदि उत्तराधिकार ज़रूरी नहीं, मुफ़्त।",
+          "dettaglio": "तत्काल परिणाम: कीमत, या जटिल मामलों के लिए अनुकूलित अनुमान।"
+        },
+        {
+          "numero": 2,
+          "titolo": "आप दस्तावेज़ अपलोड करते हैं",
+          "testo": "व्यक्तिगत क्षेत्र से दस्तावेज़, फ़ोन फ़ोटो से भी। सटीक व्यक्तिगत सूची। कुछ कम हो तो अक्सर प्राप्त।",
+          "dettaglio": "वास्तविक व्यक्ति सब जाँचता है: कोई अधूरा फ़ॉर्म नहीं।"
+        },
+        {
+          "numero": 3,
+          "titolo": "हम सब संभालते हैं",
+          "testo": "Lorenzo Agenzia को घोषणा तैयार/जमा। पहले कर सूचना। अंत में रसीदें और दस्तावेज़ व्यक्तिगत क्षेत्र में।",
+          "dettaglio": "जहाँ लागू, भू-अभिलेख हस्तांतरण भी संभालते हैं।"
+        }
+      ]
+    },
+    {
+      "collection": "come_funziona",
+      "key": "sla_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कितना समय लगता है"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "sla_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "समय पैकेज पर, सभी पूर्ण दस्तावेज़ों से (भुगतान से नहीं)। तृतीय पक्ष (Agenzia, Catasto, बैंक) का समय बाहर।"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "valore_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "जो सॉफ़्टवेयर नहीं करता, वह हम करते हैं"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "valore_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "भू-अभिलेख डेटा हाथ से — प्लॉट, subalterni, अनुलग्नक, स्वामित्व — जहाँ फ़ाइलें अटकती हैं। सलाहकार संख्या पर्यवेक्षण। भरा फ़ॉर्म और अच्छी फ़ाइल का अंतर।"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "distanza_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "पूरी तरह ऑनलाइन"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "distanza_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कोई कार्यालय/बैंक नहीं: प्रश्नावली, दस्तावेज़, संचार, Agenzia जमा ऑनलाइन। Lorenzo कॉल हमेशा।"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "visita_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "व्यक्तिगत रूप से पसंद?"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "visita_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "सब दूर से, चाहें तो अपॉइंटमेंट पर कार्यालय: कोई कतार, दस्तावेज़ स्पष्टीकरण। कॉल/लिखकर समय तय।"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "visita_maps_label",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Google Maps में खोलें"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "deliverable_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अंत में आपके पास क्या होगा"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "deliverable_list",
+      "locale": "hi",
+      "is_published": true,
+      "value": [
+        "AdE जमा/पंजीकरण रसीद",
+        "घोषणा की प्रति",
+        "F24 परिणाम / प्रमाण",
+        "भू-अभिलेख हस्तांतरण परिणाम (जहाँ लागू)",
+        "चालान"
+      ]
+    },
+    {
+      "collection": "come_funziona",
+      "key": "cta_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "शुरू करें? एक मिनट ही लगेगा।"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "cta_button",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "मुफ़्त अनुमान प्राप्त करें",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "cta_phone",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "Lorenzo से बात करें",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "contatti",
+      "key": "hero_eyebrow",
+      "locale": "hi",
+      "is_published": true,
+      "value": "संपर्क"
+    },
+    {
+      "collection": "contatti",
+      "key": "hero_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "हमसे बात करें"
+    },
+    {
+      "collection": "contatti",
+      "key": "hero_subtitle",
+      "locale": "hi",
+      "is_published": true,
+      "value": "प्रश्न है या जानना चाहते हैं कि उत्तराधिकार ज़रूरी? लिखें/कॉल: वास्तविक व्यक्ति जवाब देगा।"
+    },
+    {
+      "collection": "contatti",
+      "key": "telefono",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "फ़ोन / WhatsApp",
+        "numero": "+39 320 1570567",
+        "cta_chiama": "tel:+393201570567",
+        "cta_whatsapp": "https://wa.me/393201570567"
+      }
+    },
+    {
+      "collection": "contatti",
+      "key": "email",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "generale": "studio@successioniarmellin.it",
+        "pec": "lorenzo.armellin@geopec.it"
+      }
+    },
+    {
+      "collection": "contatti",
+      "key": "studio",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "via": "Via Vittorio Veneto 31",
+        "cap": "56025",
+        "citta": "Pontedera (PI)"
+      }
+    },
+    {
+      "collection": "contatti",
+      "key": "orari",
+      "locale": "hi",
+      "is_published": false,
+      "value": [
+        {
+          "giorni": "सोम–शुक्र",
+          "orario": "9:00-13:00 / 14:30-18:30"
+        },
+        {
+          "giorni": "शनि–रवि",
+          "orario": "बंद"
+        }
+      ]
+    },
+    {
+      "collection": "contatti",
+      "key": "canali_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "हम आपकी भाषा में भी साथ हैं"
+    },
+    {
+      "collection": "contatti",
+      "key": "canali_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "WhatsApp/ईमेल अपनी भाषा में। बोलना चाहें तो रीयल-टाइम अनुवाद कॉल; महत्वपूर्ण बातें लिखित। आधिकारिक दस्तावेज़ इतालवी।"
+    },
+    {
+      "collection": "contatti",
+      "key": "form_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "हमें लिखें"
+    },
+    {
+      "collection": "contatti",
+      "key": "form_nota",
+      "locale": "hi",
+      "is_published": false,
+      "value": "1 कार्य दिवस में जवाब देंगे।"
+    },
+    {
+      "collection": "contatti",
+      "key": "form_success",
+      "locale": "hi",
+      "is_published": true,
+      "value": "धन्यवाद! हम जल्द संपर्क करेंगे।"
+    },
+    {
+      "collection": "contatti",
+      "key": "mappa_nota",
+      "locale": "hi",
+      "is_published": true,
+      "value": "सब दूर से, पर कार्यालय है: अपॉइंटमेंट पर आ सकते हैं।"
+    },
+    {
+      "collection": "contatti",
+      "key": "cta_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "तुरंत शुरू? मुफ़्त अनुमान, 1 मिनट।"
+    },
+    {
+      "collection": "contatti",
+      "key": "cta_button",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "अनुमान प्राप्त करें",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "guide",
+      "key": "hero_eyebrow",
+      "locale": "hi",
+      "is_published": true,
+      "value": "गाइड"
+    },
+    {
+      "collection": "guide",
+      "key": "hero_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "उत्तराधिकार गाइड: स्पष्ट, अद्यतन, बिना अफ़सरशाही भाषा"
+    },
+    {
+      "collection": "guide",
+      "key": "hero_subtitle",
+      "locale": "hi",
+      "is_published": true,
+      "value": "उत्तराधिकार, कर और दस्तावेज़ — वास्तव में करने वालों से सरल भाषा में।"
+    },
+    {
+      "collection": "guide",
+      "key": "hero_search",
+      "locale": "hi",
+      "is_published": true,
+      "value": true
+    },
+    {
+      "collection": "guide",
+      "key": "categorie",
+      "locale": "hi",
+      "is_published": true,
+      "value": [
+        {
+          "nome": "उत्तराधिकार समझें",
+          "slug": "मूल बातें"
+        },
+        {
+          "nome": "कर और लागत",
+          "slug": "कर"
+        },
+        {
+          "nome": "दस्तावेज़",
+          "slug": "दस्तावेज़"
+        },
+        {
+          "nome": "विशेष मामले",
+          "slug": "मामले"
+        },
+        {
+          "nome": "स्थानीय गाइड (Toscana)",
+          "slug": "स्थानीय"
+        },
+        {
+          "nome": "विदेशी / विदेश में रहने वाले उत्तराधिकारी",
+          "slug": "विदेशी"
+        }
+      ]
+    },
+    {
+      "collection": "guide",
+      "key": "in_evidenza_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "विशेष"
+    },
+    {
+      "collection": "guide",
+      "key": "cta_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अपने मामले में मदद चाहिए?"
+    },
+    {
+      "collection": "guide",
+      "key": "cta_button",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "मुफ़्त अनुमान प्राप्त करें",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "guide",
+      "key": "strumenti_banner",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "title": "उपकरण: भू-अभिलेख मूल्य गणना",
+        "body": "उत्तराधिकार हेतु घर/भूमि का मूल्य? विवरण की आय दर्ज करें, कर गणना का मूल्य तुरंत।",
+        "cta_label": "कैलकुलेटर खोलें",
+        "href": "/strumenti/valore-catastale"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_hero_eyebrow",
+      "locale": "hi",
+      "is_published": true,
+      "value": "उपकरण"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_meta_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "उत्तराधिकार हेतु भू-अभिलेख मूल्य गणना (मुफ़्त, ऑनलाइन)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_hero_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "उत्तराधिकार हेतु संपत्ति का मूल्य क्या?"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_hero_subtitle",
+      "locale": "hi",
+      "is_published": true,
+      "value": "भू-अभिलेख आय (विवरण में) दर्ज करें, उत्तराधिकार कर गणना का मूल्य। मुफ़्त, बिना डेटा।"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_tab_fabbricato",
+      "locale": "hi",
+      "is_published": true,
+      "value": "भवन"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_tab_terreno",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कृषि भूमि"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_rendita",
+      "locale": "hi",
+      "is_published": true,
+      "value": "भू-अभिलेख आय (€)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_help_rendita",
+      "locale": "hi",
+      "is_published": true,
+      "value": "भू-अभिलेख विवरण में, \"Rendita\" कॉलम। न हो तो अक्सर हम प्राप्त कर लेते हैं।"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_rd",
+      "locale": "hi",
+      "is_published": true,
+      "value": "भू-आय (€)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_help_rd",
+      "locale": "hi",
+      "is_published": true,
+      "value": "भूमि के भू-अभिलेख विवरण में मिलेगा। गैर-निर्माण योग्य भूमि पर।"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_categoria",
+      "locale": "hi",
+      "is_published": true,
+      "value": "भू-अभिलेख श्रेणी"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_prima_casa",
+      "locale": "hi",
+      "is_published": true,
+      "value": "उत्तराधिकारी के लिए \"prima casa\" (छूट: गुणांक 110)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_risultato",
+      "locale": "hi",
+      "is_published": true,
+      "value": "उत्तराधिकार हेतु भू-अभिलेख मूल्य"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_formula",
+      "locale": "hi",
+      "is_published": true,
+      "value": "गणना:"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_come_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "गणना कैसे काम करती है"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_come_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "उत्तराधिकार में संपत्ति बाज़ार नहीं, भू-अभिलेख मूल्य: आय +5% × कानूनी गुणांक। कृषि भूमि: भू-आय +25% × 90।"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_formule",
+      "locale": "hi",
+      "is_published": true,
+      "value": [
+        {
+          "tipo": "प्रथम निवास (छूट)",
+          "formula": "rendita × 1,05 × 110"
+        },
+        {
+          "tipo": "निवास और अनुलग्नक (समूह A और C)",
+          "formula": "rendita × 1,05 × 120"
+        },
+        {
+          "tipo": "समूह B (स्कूल, कॉलेज…)",
+          "formula": "rendita × 1,05 × 168"
+        },
+        {
+          "tipo": "A/10 और समूह D (कार्यालय, गोदाम…)",
+          "formula": "rendita × 1,05 × 60"
+        },
+        {
+          "tipo": "C/1 और समूह E (दुकानें…)",
+          "formula": "rendita × 1,05 × 40,8"
+        },
+        {
+          "tipo": "कृषि भूमि (निर्माण योग्य नहीं)",
+          "formula": "reddito dominicale × 1,25 × 90"
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_note",
+      "locale": "hi",
+      "is_published": true,
+      "value": "निर्माण योग्य भूमि अपवाद: बाज़ार मूल्य पर, भू-अभिलेख नहीं। परिणाम संकेतात्मक: छूट/विशेष मामले वास्तविक स्थिति पर — यही हमारा काम।"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_cta_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "पूरे उत्तराधिकार की कीमत जानना चाहते हैं, कर सहित?"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_cta_button",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "मुफ़्त अनुमान प्राप्त करें",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_faq_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "भू-अभिलेख मूल्य पर FAQ"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_faq",
+      "locale": "hi",
+      "is_published": true,
+      "value": [
+        {
+          "q": "अपनी संपत्ति की भू-अभिलेख आय कहाँ मिले?",
+          "a": "भू-अभिलेख विवरण, \"Rendita\" कॉलम। Agenzia साइट (SPID) पर मुफ़्त या हम प्राप्त करें।"
+        },
+        {
+          "q": "क्या भू-अभिलेख मूल्य बाज़ार कीमत है?",
+          "a": "नहीं: भू-अभिलेख मूल्य लगभग हमेशा बाज़ार से कम। उत्तराधिकार में बंधक/भू-अभिलेख कर इसी पर; आय × कानूनी गुणांक।"
+        },
+        {
+          "q": "गणना में प्रथम निवास छूट कैसे काम करती है?",
+          "a": "उत्तराधिकारी के लिए \"prima casa\" हो तो गुणांक 110 (120 के बजाय), बंधक/भू-अभिलेख कर निश्चित €200।"
+        },
+        {
+          "q": "क्या भूमि पर भी लागू?",
+          "a": "कृषि (गैर-निर्माण) भूमि: भू-आय +25% × 90। निर्माण योग्य भूमि बाज़ार मूल्य पर।"
+        }
+      ]
+    },
+    {
+      "collection": "article",
+      "key": "autore_box",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "autore": "Geom. Lorenzo Armellin",
+        "ruolo": "Entratel-प्राधिकृत Geom.",
+        "reviewed_by": "कर पक्ष की समीक्षा कर सलाहकारों ने की",
+        "foto": {
+          "asset_key": "ritratto_lorenzo"
+        },
+        "link": "/chi-sono"
+      }
+    },
+    {
+      "collection": "article",
+      "key": "disclaimer",
+      "locale": "hi",
+      "is_published": true,
+      "value": "यह गाइड संकेतात्मक। हर उत्तराधिकार अलग: अंतिम मूल्यांकन वास्तविक मामले पर। मुफ़्त जाँच।"
+    },
+    {
+      "collection": "article",
+      "key": "cta_box",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "titolo": "क्या हम इसका ध्यान रखें?",
+        "button": {
+          "label": "मुफ़्त अनुमान प्राप्त करें",
+          "href": "/preventivo"
+        },
+        "phone": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "article",
+      "key": "fonti",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आधिकारिक स्रोत: Agenzia delle Entrate, Normattiva (लेखों में लिंक)।"
+    },
+    {
+      "collection": "preventivo",
+      "key": "intro_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "1 मिनट में मुफ़्त अनुमान"
+    },
+    {
+      "collection": "preventivo",
+      "key": "intro_subtitle",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कुछ प्रश्न: तुरंत कीमत या विशेष मामले में अनुकूलित अनुमान। कोई बाध्यता नहीं।"
+    },
+    {
+      "collection": "preventivo",
+      "key": "progress_label",
+      "locale": "hi",
+      "is_published": true,
+      "value": "चरण {n} / 3"
+    },
+    {
+      "collection": "preventivo",
+      "key": "step1_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "मूल बातों से शुरू"
+    },
+    {
+      "collection": "preventivo",
+      "key": "step2_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "उत्तराधिकारी कौन हैं"
+    },
+    {
+      "collection": "preventivo",
+      "key": "step3_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "वirasat में क्या शामिल है"
+    },
+    {
+      "collection": "preventivo",
+      "key": "step4_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अनुमान कहाँ भेजें"
+    },
+    {
+      "collection": "preventivo",
+      "key": "help_text",
+      "locale": "hi",
+      "is_published": true,
+      "value": [
+        "डेटा केवल आपके मामले का अनुमान लगाने के लिए।",
+        "जवाब नहीं पता? 'मुझे नहीं पता' चुनें, हम देखेंगे।"
+      ]
+    },
+    {
+      "collection": "preventivo",
+      "key": "consenso_privacy",
+      "locale": "hi",
+      "is_published": true,
+      "value": "मैंने गोपनीयता सूचना पढ़ी और डेटा प्रसंस्करण स्वीकार किया।"
+    },
+    {
+      "collection": "preventivo",
+      "key": "consenso_marketing",
+      "locale": "hi",
+      "is_published": true,
+      "value": "उपयोगी सलाह और अपडेट चाहिए (वैकल्पिक)।"
+    },
+    {
+      "collection": "preventivo",
+      "key": "cta_submit",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "तुरंत परिणाम देखें",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "preventivo",
+      "key": "trust_items",
+      "locale": "hi",
+      "is_published": true,
+      "value": [
+        "मुफ़्त, बिना बाध्यता",
+        "Lorenzo जवाब देते हैं — वास्तविक व्यक्ति",
+        "डेटा सुरक्षित, EU सर्वर (GDPR)"
+      ]
+    },
+    {
+      "collection": "grazie",
+      "key": "header_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आपके मामले का परिणाम"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_a_whatsapp",
+      "locale": "hi",
+      "is_published": true,
+      "value": "WhatsApp"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_a_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "शायद घोषणा की ज़रूरत नहीं"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_taxes_note",
+      "locale": "hi",
+      "is_published": true,
+      "value": "+ आपके मामले के कर: भुगतान से पहले बताते हैं।"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_package_line",
+      "locale": "hi",
+      "is_published": true,
+      "value": "पैकेज {name}"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_a_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आपके अनुसार कानूनी छूट में हो सकता है। अनावश्यक सेवा नहीं बेचते: मुफ़्त साथ जाँच। अंतिम पुष्टि वास्तविक मामले पर।"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_a_cta",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "मुफ़्त जाँच के लिए कॉल करें",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आपके लिए सही पैकेज"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_cta",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "भुगतान पर आगे बढ़ें",
+        "href": "/checkout"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_riallineamento",
+      "locale": "hi",
+      "is_published": true,
+      "value": "भुगतान से पहले {guida} देखें या Lorenzo से बात: गलत पैकेज बदलना सरल, केवल अंतर।"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_guida",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "गाइड",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आपके मामले को अनुकूलित अनुमान चाहिए"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आपके उत्तर विशेष मामला (कई संपत्तियाँ, कृषि भूमि, हिस्सेदारी, व्यवसाय…)। यहाँ कीमत तय नहीं: Lorenzo के साथ अध्ययन। संपर्क/नोट छोड़ें या लिखें: कॉल कर समर्पित अनुमान।"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_cta",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "Lorenzo को कॉल करें",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_whatsapp",
+      "locale": "hi",
+      "is_published": true,
+      "value": "WhatsApp पर लिखें"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_whatsapp_prefill",
+      "locale": "hi",
+      "is_published": true,
+      "value": "नमस्ते Lorenzo, साइट पर प्रश्नावली भरी और अनुकूलित अनुमान लगता है। मेरा मामला साथ समझना चाहूँगा/चाहूँगी।"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "सोचना चाहते हैं? यह अनुमान ईमेल से पाएँ"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_desc",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अनुमान सारांश भेजेंगे ताकि कभी भी देख सकें। कोई दबाव नहीं।"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_submit",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अनुमान ईमेल से भेजें"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_ok_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "हो गया! अपना ईमेल जाँचें"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_ok_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अनुमान सारांश भेज दिया। जब चाहें वहाँ से जारी रखें।"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_ok_title_noemail",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अनुरोध दर्ज!"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_ok_body_noemail",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अनुरोध दर्ज: जल्द अनुमान सारांश भेजेंगे।"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "संपर्क छोड़ें: हम कॉल करेंगे"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_desc",
+      "locale": "hi",
+      "is_published": true,
+      "value": "प्रश्नावली से शुरू। ईमेल/फ़ोन छोड़ें: Lorenzo विवरण समझकर समर्पित अनुमान, बिना बाध्यता। नोट वैकल्पिक।"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_notes_label",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Lorenzo के लिए नोट (वैकल्पिक)"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_notes_placeholder",
+      "locale": "hi",
+      "is_published": true,
+      "value": "उदा. संपत्ति प्रकार, भूमि, व्यवसाय/हिस्सेदारी, जरूरी या संदेह…"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_footnote",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कोई बाध्यता नहीं: 1 कार्य दिवस (अक्सर उसी दिन) में संपर्क, मामला समझकर अनुमान।"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_submit",
+      "locale": "hi",
+      "is_published": true,
+      "value": "वापस कॉल का अनुरोध"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_ok_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अनुरोध प्राप्त!"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_ok_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Lorenzo जल्द संपर्क करेंगे, मामला समझकर अनुकूलित अनुमान तैयार करेंगे।"
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "इतने में, आपको यह चाहिए होगा"
+    },
+    {
+      "collection": "documenti",
+      "key": "lista",
+      "locale": "hi",
+      "is_published": true,
+      "value": [
+        {
+          "name": "पहचान पत्र और कर कोड",
+          "description": "सभी उत्तराधिकारियों और मृतक का।",
+          "when": "हमेशा"
+        },
+        {
+          "name": "मृत्यु प्रमाणपत्र",
+          "description": "या मृतक के मृत्यु/परिवार स्थिति का विकल्प घोषणा: फ़ॉर्म हम देते हैं।",
+          "when": "हमेशा"
+        },
+        {
+          "name": "प्रत्येक उत्तराधिकारी का परिवार स्थिति स्व-प्रमाणन",
+          "description": "उत्तराधिकारी पहचानने हेतु: प्रत्येक के लिए एक फ़ॉर्म, हम देते हैं।",
+          "when": "हमेशा"
+        },
+        {
+          "name": "भू-अभिलेख विवरण",
+          "description": "उत्तराधिकार की संपत्तियों के। हम प्राप्त कर सकते हैं।",
+          "when": "यदि संपत्तियाँ हैं"
+        },
+        {
+          "name": "स्वामित्व दस्तावेज़",
+          "description": "विक्रय विलेख, दान या पिछली उत्तराधिकार घोषणाएँ।",
+          "when": "यदि संपत्तियाँ हैं"
+        },
+        {
+          "name": "वसीयत",
+          "description": "प्रकाशित वसीयत की प्रति, यदि हो।",
+          "when": "यदि वसीयत है"
+        },
+        {
+          "name": "खाता शेष प्रमाणन",
+          "description": "मृत्यु तिथि पर खातों, पासबुक और प्रतिभूतियों की शेष राशि।",
+          "when": "यदि खाते/निवेश हैं"
+        }
+      ]
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_disclaimer",
+      "locale": "hi",
+      "is_published": true,
+      "value": "संकेत सूची: Lorenzo आपका मामला देखकर अंतिम पुष्टि करेंगे।"
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_faq_link",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "FAQ में और जानें",
+        "href": "/faq"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_hook",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कुछ कम है? अक्सर हम प्राप्त कर लेते हैं।"
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_cta_pdf",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "सूची डाउनलोड करें (PDF)",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_cta_email",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "ईमेल से प्राप्त करें",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "next_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "ईमेल सारांश भेजा। अब हम साथ: वास्तविक व्यक्ति, बॉट नहीं।"
+    },
+    {
+      "collection": "checkout",
+      "key": "header_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "ऑर्डर पूरा करें"
+    },
+    {
+      "collection": "checkout",
+      "key": "header_subtitle",
+      "locale": "hi",
+      "is_published": true,
+      "value": "एक कदम और, हम संभाल लेंगे।"
+    },
+    {
+      "collection": "checkout",
+      "key": "riepilogo_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आपका ऑर्डर"
+    },
+    {
+      "collection": "checkout",
+      "key": "modifica_link",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "संपादित करें",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "checkout",
+      "key": "prezzo_imposte_nota",
+      "locale": "hi",
+      "is_published": true,
+      "value": "महत्वपूर्ण: यह पेशेवर शुल्क। कर (उत्तराधिकार, बंधक, भू-अभिलेख, स्टाम्प) अलग, उत्तराधिकारी के खाते, जमा से पहले गणना।"
+    },
+    {
+      "collection": "checkout",
+      "key": "microtrust",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Entratel-प्राधिकृत Geom. का शुल्क, सलाहकारों का पर्यवेक्षण। Stripe सुरक्षित भुगतान।"
+    },
+    {
+      "collection": "checkout",
+      "key": "pagamento_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आप कैसे भुगतान करना चाहते हैं"
+    },
+    {
+      "collection": "checkout",
+      "key": "pagamento_metodi",
+      "locale": "hi",
+      "is_published": true,
+      "value": [
+        "कार्ड",
+        "PayPal",
+        "बैंक ट्रांसफ़र (सहायता)"
+      ]
+    },
+    {
+      "collection": "checkout",
+      "key": "rate_nota",
+      "locale": "hi",
+      "is_published": true,
+      "value": "किश्तों में भुगतान (PayPal Pay in 3, Klarna, Scalapay)। केवल पेशेवर शुल्क, कर नहीं।"
+    },
+    {
+      "collection": "checkout",
+      "key": "consenso_tc",
+      "locale": "hi",
+      "is_published": true,
+      "value": "मैं बिक्री की शर्तें और गोपनीयता सूचना स्वीकार करता/करती हूँ।"
+    },
+    {
+      "collection": "checkout",
+      "key": "consenso_avvio",
+      "locale": "hi",
+      "is_published": true,
+      "value": "तत्काल कार्य शुरू का अनुरोध; 14 दिनों में सेवा पूर्ण होने पर वापसी अधिकार समाप्त।"
+    },
+    {
+      "collection": "checkout",
+      "key": "recesso_link",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "वापसी कैसे काम करती है",
+        "href": "/recesso"
+      }
+    },
+    {
+      "collection": "checkout",
+      "key": "cta_pay",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "सुरक्षित भुगतान",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "checkout",
+      "key": "cta_nota",
+      "locale": "hi",
+      "is_published": true,
+      "value": "एन्क्रिप्टेड लेनदेन। कार्ड डेटा नहीं रखते।"
+    },
+    {
+      "collection": "checkout",
+      "key": "trust_items",
+      "locale": "hi",
+      "is_published": true,
+      "value": [
+        "संतुष्ट या रिफ़ंड",
+        "EU सर्वर, GDPR अनुपालित",
+        "वास्तविक व्यक्ति से सहायता"
+      ]
+    },
+    {
+      "collection": "checkout",
+      "key": "success_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "भुगतान सफल! स्वागत है।"
+    },
+    {
+      "collection": "checkout",
+      "key": "error_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "भुगतान विफल"
+    },
+    {
+      "collection": "legale",
+      "key": "privacy_title",
+      "locale": "hi",
+      "is_published": false,
+      "value": "गोपनीयता सूचना"
+    },
+    {
+      "collection": "legale",
+      "key": "cookie_title",
+      "locale": "hi",
+      "is_published": false,
+      "value": "Cookie Policy"
+    },
+    {
+      "collection": "legale",
+      "key": "tc_title",
+      "locale": "hi",
+      "is_published": false,
+      "value": "बिक्री की शर्तें"
+    },
+    {
+      "collection": "legale",
+      "key": "garanzia_title",
+      "locale": "hi",
+      "is_published": false,
+      "value": "हमारी गारंटी"
+    },
+    {
+      "collection": "legale",
+      "key": "garanzia_cta",
+      "locale": "hi",
+      "is_published": false,
+      "value": {
+        "label": "मुफ़्त अनुमान प्राप्त करें",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "sistema",
+      "key": "e404_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "यह पृष्ठ नहीं है (या अब नहीं)"
+    },
+    {
+      "collection": "sistema",
+      "key": "e404_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "फिर भी हम मदद कर सकते हैं।"
+    },
+    {
+      "collection": "sistema",
+      "key": "e404_cta",
+      "locale": "hi",
+      "is_published": true,
+      "value": [
+        {
+          "label": "होम पर जाएँ",
+          "href": "/"
+        },
+        {
+          "label": "अनुमान प्राप्त करें",
+          "href": "/preventivo"
+        }
+      ]
+    },
+    {
+      "collection": "sistema",
+      "key": "e500_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कुछ गलत हो गया"
+    },
+    {
+      "collection": "sistema",
+      "key": "e500_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "थोड़ी देर बाद कोशिश करें। समस्या रहे तो लिखें या कॉल करें।"
+    },
+    {
+      "collection": "sistema",
+      "key": "manutenzione_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "रख-रखाव चल रहा है"
+    },
+    {
+      "collection": "sistema",
+      "key": "manutenzione_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "जल्द ऑनलाइन वापस। जरूरी हो तो संपर्क करें।"
+    },
+    {
+      "collection": "sistema",
+      "key": "sessione_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "सत्र समाप्त"
+    },
+    {
+      "collection": "sistema",
+      "key": "sessione_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आपकी सुरक्षा के लिए लॉग आउट किया। जारी रखने के लिए फिर लॉग इन।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "request_invalid",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अमान्य अनुरोध।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "max_files",
+      "locale": "hi",
+      "is_published": true,
+      "value": "प्रति दस्तावेज़ अधिकतम {n} फ़ाइलें: दूसरी अपलोड के लिए एक हटाएँ।"
+    },
+    {
+      "collection": "area_login",
+      "key": "header_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "व्यक्तिगत क्षेत्र"
+    },
+    {
+      "collection": "area_login",
+      "key": "header_subtitle",
+      "locale": "hi",
+      "is_published": true,
+      "value": "उत्तराधिकार फ़ाइल देखने के लिए लॉग इन करें।"
+    },
+    {
+      "collection": "area_login",
+      "key": "tab_email",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Email"
+    },
+    {
+      "collection": "area_login",
+      "key": "tab_phone",
+      "locale": "hi",
+      "is_published": true,
+      "value": "फ़ोन"
+    },
+    {
+      "collection": "area_login",
+      "key": "tab_password",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Password"
+    },
+    {
+      "collection": "area_login",
+      "key": "google_cta",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Google से जारी रखें"
+    },
+    {
+      "collection": "area_login",
+      "key": "oppure",
+      "locale": "hi",
+      "is_published": true,
+      "value": "या"
+    },
+    {
+      "collection": "area_login",
+      "key": "password_label",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आपका पासवर्ड"
+    },
+    {
+      "collection": "area_login",
+      "key": "password_hint",
+      "locale": "hi",
+      "is_published": true,
+      "value": "पहले लॉगिन के बाद प्रोफ़ाइल से बनाएँ। नहीं है? ईमेल उपयोग करें।"
+    },
+    {
+      "collection": "area_login",
+      "key": "password_cta",
+      "locale": "hi",
+      "is_published": true,
+      "value": "लॉग इन"
+    },
+    {
+      "collection": "area_login",
+      "key": "password_verifying",
+      "locale": "hi",
+      "is_published": true,
+      "value": "लॉगिन हो रहा है…"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_label",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आपका ईमेल"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_placeholder",
+      "locale": "hi",
+      "is_published": true,
+      "value": "nome@email.it"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_hint",
+      "locale": "hi",
+      "is_published": true,
+      "value": "भुगतान वाला ईमेल उपयोग करें।"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_cta",
+      "locale": "hi",
+      "is_published": true,
+      "value": "एक्सेस लिंक भेजें"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_sending",
+      "locale": "hi",
+      "is_published": true,
+      "value": "भेजा जा रहा है…"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_label",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आपका फ़ोन नंबर"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_placeholder",
+      "locale": "hi",
+      "is_published": true,
+      "value": "+39 333 123 4567"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_hint",
+      "locale": "hi",
+      "is_published": true,
+      "value": "ऑर्डर वाला नंबर उपयोग करें। SMS से कोड भेजेंगे।"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_cta",
+      "locale": "hi",
+      "is_published": true,
+      "value": "SMS से कोड भेजें"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_sending",
+      "locale": "hi",
+      "is_published": true,
+      "value": "भेजा जा रहा है…"
+    },
+    {
+      "collection": "area_login",
+      "key": "sent_email_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अपना ईमेल जाँचें"
+    },
+    {
+      "collection": "area_login",
+      "key": "sent_email_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "एक्सेस लिंक {contact} पर भेजा। कुछ मिनट में समाप्त।"
+    },
+    {
+      "collection": "area_login",
+      "key": "sent_phone_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "SMS जाँचें"
+    },
+    {
+      "collection": "area_login",
+      "key": "sent_phone_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "6 अंकों का कोड {contact} पर भेजा। नीचे दर्ज करें।"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_toggle",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कोड मिला, दर्ज करता/करती हूँ"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_label",
+      "locale": "hi",
+      "is_published": true,
+      "value": "6 अंकों का कोड"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_placeholder",
+      "locale": "hi",
+      "is_published": true,
+      "value": "123456"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_cta",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कोड सत्यापित करें"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_verifying",
+      "locale": "hi",
+      "is_published": true,
+      "value": "जाँच हो रही है…"
+    },
+    {
+      "collection": "area_login",
+      "key": "resend",
+      "locale": "hi",
+      "is_published": true,
+      "value": "फिर भेजें"
+    },
+    {
+      "collection": "area_login",
+      "key": "error_link",
+      "locale": "hi",
+      "is_published": true,
+      "value": "एक्सेस लिंक अमान्य या समाप्त। नया माँगें।"
+    },
+    {
+      "collection": "area_login",
+      "key": "secure_note",
+      "locale": "hi",
+      "is_published": true,
+      "value": "सुरक्षित लॉगिन"
+    },
+    {
+      "collection": "area_login",
+      "key": "back_to_site",
+      "locale": "hi",
+      "is_published": true,
+      "value": "साइट पर वापस"
+    },
+    {
+      "collection": "area_login",
+      "key": "privacy_link",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "Privacy",
+        "href": "/privacy"
+      }
+    },
+    {
+      "collection": "area_login",
+      "key": "termini_link",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "शर्तें",
+        "href": "/termini-condizioni"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_legal_prefix",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आपके डेटा के उपयोग पर अधिक विवरण:"
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_privacy_label",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Privacy Policy"
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_terms_label",
+      "locale": "hi",
+      "is_published": true,
+      "value": "सेवा की शर्तें"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "price_suffix",
+      "locale": "hi",
+      "is_published": true,
+      "value": "VAT रहित पेशेवर शुल्क"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "sla_line",
+      "locale": "hi",
+      "is_published": true,
+      "value": "पूर्ण दस्तावेज़ों के {n} कार्य दिवसों में जमा"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "cta_choose",
+      "locale": "hi",
+      "is_published": true,
+      "value": "{name} चुनें"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_price_note",
+      "locale": "hi",
+      "is_published": true,
+      "value": "शुरू करने से पहले साथ तय"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_discover",
+      "locale": "hi",
+      "is_published": true,
+      "value": "सक्रिय करना देखें"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_phone_label",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Lorenzo को कॉल करें"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_email_label",
+      "locale": "hi",
+      "is_published": true,
+      "value": "हमें ईमेल करें"
+    },
+    {
+      "collection": "navbar",
+      "key": "cta_short",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अनुमान"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_rating_of",
+      "locale": "hi",
+      "is_published": true,
+      "value": "5 में से"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_count_one",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Google पर {n} समीक्षा"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_count_many",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Google पर {n} समीक्षाएँ"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_from",
+      "locale": "hi",
+      "is_published": true,
+      "value": "समीक्षाएँ"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_write",
+      "locale": "hi",
+      "is_published": true,
+      "value": "समीक्षा लिखें"
+    },
+    {
+      "collection": "faq",
+      "key": "items",
+      "locale": "hi",
+      "is_published": true,
+      "value": [
+        {
+          "category": "उत्तराधिकार समझें",
+          "question": "उत्तराधिकार घोषणा क्या है?",
+          "answer": "कर अनुपालन: Agenzia को मृतक की विरासत उत्तराधिकारियों को हस्तांतरित की सूचना। सामान्यतः 12 महीने।"
+        },
+        {
+          "category": "उत्तराधिकार समझें",
+          "question": "कब तक जमा करनी है?",
+          "answer": "सामान्यतः मृत्यु तिथि से 12 महीने। देर से जुर्माना: हम सही समय में संभालते हैं।"
+        },
+        {
+          "category": "लागत और कर",
+          "question": "आपकी सेवा की कीमत क्या है?",
+          "answer": "पैकेज अनुसार निश्चित शुल्क। कर अलग, उत्तराधिकारी के खाते, जमा से पहले गणना और सूचना।"
+        },
+        {
+          "category": "लागत और कर",
+          "question": "क्या कर कीमत में शामिल हैं?",
+          "answer": "नहीं: पैकेज कीमत पेशेवर शुल्क। कर (उत्तराधिकार, बंधक, भू-अभिलेख, स्टाम्प) F24 से अलग। पहले हम गणना।"
+        },
+        {
+          "category": "लागत और कर",
+          "question": "उत्तराधिकार में प्रथम निवास छूट क्या है?",
+          "answer": "कम से कम एक उत्तराधिकारी \"prima casa\" योग्य हो तो बंधक/भू-अभिलेख कर निश्चित €200। हम जाँचकर घोषणा में दर्शाते हैं।"
+        },
+        {
+          "category": "अकेले क्यों नहीं",
+          "question": "Agenzia की साइट पर मुफ़्त अकेले कर सकता/सकती हूँ?",
+          "answer": "हाँ, मुफ़्त precompilata है, ईमानदार विकल्प। SPID और विशेषज्ञता; भू-अभिलेख सत्यापन नहीं, त्रुटि/जुर्माना आप पर।"
+        },
+        {
+          "category": "यह कैसे काम करता है",
+          "question": "क्या किसी कार्यालय में जाना होगा?",
+          "answer": "नहीं। प्रश्नावली, दस्तावेज़, संचार और Agenzia जमा ऑनलाइन। Lorenzo के साथ हमेशा एक कॉल।"
+        },
+        {
+          "category": "यह कैसे काम करता है",
+          "question": "कौन से दस्तावेज़ चाहिए?",
+          "answer": "आपके मामले पर: व्यक्तिगत सूची। कुछ कम हो तो अक्सर हम प्राप्त करते हैं।"
+        },
+        {
+          "category": "दस्तावेज़ और व्यक्तिगत क्षेत्र",
+          "question": "फ़ोन की फ़ोटो से दस्तावेज़ अपलोड कर सकता/सकती हूँ?",
+          "answer": "हाँ। PDF/JPG/PNG 10 MB, प्रति आइटम 10 फ़ाइलें। आगे/पीछे या बहु-पृष्ठ: एक आइटम पर कई फ़ोटो।"
+        },
+        {
+          "category": "दस्तावेज़ और व्यक्तिगत क्षेत्र",
+          "question": "डाउनलोड और भरने योग्य तैयार फ़ॉर्म हैं?",
+          "answer": "हाँ। चेकलिस्ट में तैयार फ़ॉर्म (मृत्यु/परिवार विकल्प घोषणा, उत्तराधिकारी स्व-प्रमाणन): डाउनलोड, भरें, हस्ताक्षर, अपलोड।"
+        },
+        {
+          "category": "दस्तावेज़ और व्यक्तिगत क्षेत्र",
+          "question": "दस्तावेज़ अस्वीकृत हो तो क्या होगा?",
+          "answer": "Lorenzo एक-एक जाँचते हैं। समस्या (धुंधली फ़ोटो, पृष्ठ कम, गलत दस्तावेज़) हो तो \"फिर से करें\" नोट के साथ: सही फ़ाइल अपलोड, फ़ाइल आगे बढ़े बिना सब दोहराए।"
+        },
+        {
+          "category": "दस्तावेज़ और व्यक्तिगत क्षेत्र",
+          "question": "दस्तावेज़ ठीक हैं, कैसे पता चले?",
+          "answer": "व्यक्तिगत क्षेत्र में प्रत्येक आइटम स्थिति। «हो गया» दबाएँ: ईमेल अपडेट, फ़ाइल स्थिति देखें।"
+        },
+        {
+          "category": "सेवा के बाद",
+          "question": "अंत में क्या मिलेगा?",
+          "answer": "जमा/पंजीकरण रसीद, घोषणा प्रति, F24 परिणाम, voltura (जहाँ लागू), हमारा चालान।"
+        }
+      ]
+    },
+    {
+      "collection": "area",
+      "key": "nav_home",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Home"
+    },
+    {
+      "collection": "area",
+      "key": "nav_documenti",
+      "locale": "hi",
+      "is_published": true,
+      "value": "दस्तावेज़"
+    },
+    {
+      "collection": "area",
+      "key": "nav_ordine",
+      "locale": "hi",
+      "is_published": true,
+      "value": "खरीद"
+    },
+    {
+      "collection": "area",
+      "key": "nav_comunicazioni",
+      "locale": "hi",
+      "is_published": true,
+      "value": "संदेश"
+    },
+    {
+      "collection": "area",
+      "key": "nav_dati",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आपका डेटा"
+    },
+    {
+      "collection": "area",
+      "key": "nav_mandato",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अधिदेश"
+    },
+    {
+      "collection": "area",
+      "key": "nav_conclusa",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अंतिम दस्तावेज़"
+    },
+    {
+      "collection": "area",
+      "key": "nav_profilo",
+      "locale": "hi",
+      "is_published": true,
+      "value": "प्रोफ़ाइल"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_brand",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Studio Armellin"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_practice",
+      "locale": "hi",
+      "is_published": true,
+      "value": "फ़ाइल {code}"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_back",
+      "locale": "hi",
+      "is_published": true,
+      "value": "साइट पर वापस"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_help",
+      "locale": "hi",
+      "is_published": true,
+      "value": "सहायता"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_logout",
+      "locale": "hi",
+      "is_published": true,
+      "value": "लॉग आउट"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_notifications",
+      "locale": "hi",
+      "is_published": true,
+      "value": "सूचनाएँ"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_notifications_empty",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कोई सूचना नहीं"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_notifications_mark_all",
+      "locale": "hi",
+      "is_published": true,
+      "value": "सभी पढ़ा चिह्नित करें"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_comms_new",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अपडेट"
+    },
+    {
+      "collection": "area",
+      "key": "welcome_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "व्यक्तिगत क्षेत्र"
+    },
+    {
+      "collection": "area",
+      "key": "welcome_subtitle",
+      "locale": "hi",
+      "is_published": true,
+      "value": "स्वागत है।"
+    },
+    {
+      "collection": "area",
+      "key": "hello",
+      "locale": "hi",
+      "is_published": true,
+      "value": "नमस्ते, {name}"
+    },
+    {
+      "collection": "area",
+      "key": "practice_deceased",
+      "locale": "hi",
+      "is_published": true,
+      "value": "फ़ाइल {code} · मृतक {name}"
+    },
+    {
+      "collection": "area",
+      "key": "next_action_label",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अगला कदम"
+    },
+    {
+      "collection": "area",
+      "key": "tracker_heading",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आपकी फ़ाइल कहाँ है"
+    },
+    {
+      "collection": "area",
+      "key": "docs_heading",
+      "locale": "hi",
+      "is_published": true,
+      "value": "दस्तावेज़"
+    },
+    {
+      "collection": "area",
+      "key": "docs_progress",
+      "locale": "hi",
+      "is_published": true,
+      "value": "{total} में से {uploaded} अपलोड"
+    },
+    {
+      "collection": "area",
+      "key": "docs_cta",
+      "locale": "hi",
+      "is_published": true,
+      "value": "दस्तावेज़ों पर जाएँ"
+    },
+    {
+      "collection": "area",
+      "key": "summary_heading",
+      "locale": "hi",
+      "is_published": true,
+      "value": "सारांश"
+    },
+    {
+      "collection": "area",
+      "key": "summary_package",
+      "locale": "hi",
+      "is_published": true,
+      "value": "पैकेज"
+    },
+    {
+      "collection": "area",
+      "key": "summary_price",
+      "locale": "hi",
+      "is_published": true,
+      "value": "पेशेवर शुल्क"
+    },
+    {
+      "collection": "area",
+      "key": "summary_taxes",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कर सूचित"
+    },
+    {
+      "collection": "area",
+      "key": "summary_iban_missing",
+      "locale": "hi",
+      "is_published": true,
+      "value": "IBAN नहीं: कर के लिए जोड़ें"
+    },
+    {
+      "collection": "area",
+      "key": "summary_cta_ordine",
+      "locale": "hi",
+      "is_published": true,
+      "value": "खरीद देखें"
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "यह फ़ाइल रद्द हो गई।"
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_refunded",
+      "locale": "hi",
+      "is_published": true,
+      "value": "वापसी स्वीकृत, रिफ़ंड जारी: 5-10 कार्य दिवस में भुगतान कार्ड पर।"
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_pending",
+      "locale": "hi",
+      "is_published": true,
+      "value": "वापसी स्वीकृत। रिफ़ंड देय हो तो जारी के बाद 5-10 कार्य दिवस में कार्ड पर।"
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_footer",
+      "locale": "hi",
+      "is_published": true,
+      "value": "और कुछ नहीं: नीचे खरीद सारांश, जो देखा जा सकता है।"
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_cta",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अपनी खरीद देखें"
+    },
+    {
+      "collection": "area",
+      "key": "client_steps",
+      "locale": "hi",
+      "is_published": true,
+      "value": [
+        "अपलोड करने योग्य दस्तावेज़",
+        "प्रगति में",
+        "Agenzia को भेज दी गई",
+        "पूर्ण"
+      ]
+    },
+    {
+      "collection": "area",
+      "key": "action_closed_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आपकी फ़ाइल पूर्ण हो गई।"
+    },
+    {
+      "collection": "area",
+      "key": "action_closed_cta",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अंतिम दस्तावेज़ डाउनलोड करें"
+    },
+    {
+      "collection": "area",
+      "key": "action_docs_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आगे बढ़ने के लिए कुछ दस्तावेज़ शेष।"
+    },
+    {
+      "collection": "area",
+      "key": "action_docs_cta",
+      "locale": "hi",
+      "is_published": true,
+      "value": "दस्तावेज़ अपलोड करें"
+    },
+    {
+      "collection": "area",
+      "key": "action_working_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आपकी फ़ाइल पर काम चल रहा है।"
+    },
+    {
+      "collection": "area",
+      "key": "action_working_cta",
+      "locale": "hi",
+      "is_published": true,
+      "value": "स्थिति देखें"
+    },
+    {
+      "collection": "area",
+      "key": "action_idle_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "सब ठीक, अभी कुछ करने की ज़रूरत नहीं।"
+    },
+    {
+      "collection": "area",
+      "key": "action_idle_cta",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अपनी खरीद देखें"
+    },
+    {
+      "collection": "area",
+      "key": "doc_state_da_caricare",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अपलोड करना है"
+    },
+    {
+      "collection": "area",
+      "key": "doc_state_caricato",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अपलोड हो गया"
+    },
+    {
+      "collection": "area",
+      "key": "doc_state_da_rifare",
+      "locale": "hi",
+      "is_published": true,
+      "value": "फिर से करें"
+    },
+    {
+      "collection": "area",
+      "key": "empty_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "इस लॉगिन से कोई फ़ाइल लिंक नहीं"
+    },
+    {
+      "collection": "area",
+      "key": "empty_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अनुमान भुगतान हो चुका? checkout ईमेल से फ़ाइल लिंक करें। नहीं तो साइट से अनुमान।"
+    },
+    {
+      "collection": "area",
+      "key": "empty_claim_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "पहले से फ़ाइल है?"
+    },
+    {
+      "collection": "area",
+      "key": "empty_claim_cta",
+      "locale": "hi",
+      "is_published": true,
+      "value": "फ़ाइल लिंक करें"
+    },
+    {
+      "collection": "area",
+      "key": "documenti_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आपके दस्तावेज़"
+    },
+    {
+      "collection": "area",
+      "key": "documenti_subtitle",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आवश्यक दस्तावेज़ अपलोड करें। फ़ोन से फ़ोटो भी चलेगी।"
+    },
+    {
+      "collection": "area",
+      "key": "documenti_photo_tip",
+      "locale": "hi",
+      "is_published": true,
+      "value": "स्पष्ट फ़ोटो, पूरा पृष्ठ, कोई चमक नहीं। PDF और JPG/PNG 10 MB तक।"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आपकी खरीद"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_subtitle",
+      "locale": "hi",
+      "is_published": true,
+      "value": "क्या खरीदा और क्या शामिल। कभी भी देख सकते हैं।"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_summary",
+      "locale": "hi",
+      "is_published": true,
+      "value": "ऑर्डर सारांश"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_total",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कुल पेशेवर शुल्क"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_no_iva",
+      "locale": "hi",
+      "is_published": true,
+      "value": "VAT रहित पेशेवर शुल्क (forfettario)। कर अलग (नीचे देखें)।"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_payment_status",
+      "locale": "hi",
+      "is_published": true,
+      "value": "भुगतान स्थिति"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_method",
+      "locale": "hi",
+      "is_published": true,
+      "value": "विधि"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_card",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कार्ड (ऑनलाइन)"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_transfer",
+      "locale": "hi",
+      "is_published": true,
+      "value": "बैंक ट्रांसफ़र"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_paid",
+      "locale": "hi",
+      "is_published": true,
+      "value": "भुगतान हो गया"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_pending",
+      "locale": "hi",
+      "is_published": true,
+      "value": "लंबित"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_partial",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आंशिक रिफ़ंड"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_refunded",
+      "locale": "hi",
+      "is_published": true,
+      "value": "रिफ़ंड हो गया"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_refund_note",
+      "locale": "hi",
+      "is_published": true,
+      "value": "रिफ़ंड जारी: सामान्यतः 5-10 कार्य दिवस में कार्ड पर (बैंक/कार्ड जारीकर्ता)।"
+    },
+    {
+      "collection": "area",
+      "key": "dati_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आपका डेटा"
+    },
+    {
+      "collection": "area",
+      "key": "dati_subtitle",
+      "locale": "hi",
+      "is_published": true,
+      "value": "फ़ाइल के लिए कुछ अतिरिक्त विवरण।"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "संदेश"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_subtitle",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आपकी फ़ाइल पर संदेश और अपडेट।"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_empty",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अभी कोई संदेश नहीं।"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_channel_email",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Email"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_channel_phone",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कॉल"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_channel_wa",
+      "locale": "hi",
+      "is_published": true,
+      "value": "WhatsApp"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_channel_inperson",
+      "locale": "hi",
+      "is_published": true,
+      "value": "व्यक्तिगत रूप से"
+    },
+    {
+      "collection": "area",
+      "key": "mandato_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अधिदेश और सहमति"
+    },
+    {
+      "collection": "area",
+      "key": "mandato_subtitle",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अपनी फ़ाइल के लिए पेशेवर अधिदेश पढ़ें और हस्ताक्षर करें।"
+    },
+    {
+      "collection": "area",
+      "key": "mandato_lang_note",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अधिदेश का इतालवी संस्करण बाध्यकारी। अनुवाद सुविधा; हस्ताक्षर फ़ाइल इतालवी।"
+    },
+    {
+      "collection": "area",
+      "key": "conclusa_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अंतिम दस्तावेज़"
+    },
+    {
+      "collection": "area",
+      "key": "conclusa_subtitle_open",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आपकी फ़ाइल पूर्ण। डाउनलोड योग्य दस्तावेज़ यहाँ।"
+    },
+    {
+      "collection": "area",
+      "key": "conclusa_subtitle_closed",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अंतिम दस्तावेज़ फ़ाइल पूर्ण होने पर उपलब्ध होंगे।"
+    },
+    {
+      "collection": "area",
+      "key": "profilo_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "प्रोफ़ाइल"
+    },
+    {
+      "collection": "area",
+      "key": "profilo_subtitle",
+      "locale": "hi",
+      "is_published": true,
+      "value": "संपर्क, सुरक्षा और प्राथमिकताएँ।"
+    },
+    {
+      "collection": "area",
+      "key": "recesso_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "वापसी अनुरोध"
+    },
+    {
+      "collection": "area",
+      "key": "recesso_subtitle",
+      "locale": "hi",
+      "is_published": true,
+      "value": "फ़ाइल पूर्ण होने तक वापसी माँग सकते हैं।"
+    },
+    {
+      "collection": "area",
+      "key": "recesso_window_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आप अनुबंध पूर्ण होने के 14 दिनों के भीतर हैं।"
+    },
+    {
+      "collection": "area",
+      "key": "recesso_rule_1",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अगर अभी शुरू नहीं: पूरा पेशेवर शुल्क रिफ़ंड।"
+    },
+    {
+      "collection": "area",
+      "key": "recesso_rule_2",
+      "locale": "hi",
+      "is_published": true,
+      "value": "शुरू किया पर पूर्ण नहीं: किए गए काम के अनुपात में रिफ़ंड।"
+    },
+    {
+      "collection": "area",
+      "key": "recesso_rule_3",
+      "locale": "hi",
+      "is_published": true,
+      "value": "यदि सेवा पूर्ण: वापसी नहीं (अनु. 59)।"
+    },
+    {
+      "collection": "area",
+      "key": "review_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "फ़ाइल पूर्ण: समीक्षा लिखेंगे?"
+    },
+    {
+      "collection": "area",
+      "key": "review_cta",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Google पर समीक्षा लिखें"
+    },
+    {
+      "collection": "area",
+      "key": "review_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Lorenzo के साथ अच्छा अनुभव रहा तो Google समीक्षा बहुत मदद करती है।"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_comms_all",
+      "locale": "hi",
+      "is_published": true,
+      "value": "सभी संदेश देखें"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_comms_new_count",
+      "locale": "hi",
+      "is_published": true,
+      "value": "({n} नई)"
+    },
+    {
+      "collection": "area",
+      "key": "docs_ui",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "counter": "दस्तावेज़: {total} में से {uploaded}",
+        "all_uploaded": "सभी अपलोड हो गए",
+        "missing_n": "{n} शेष",
+        "optional": "(वैकल्पिक)",
+        "delete_file": "यह फ़ाइल हटाएँ",
+        "uploading": "अपलोड हो रहा है…",
+        "upload": "अपलोड करें",
+        "reupload": "फिर अपलोड करें",
+        "add_another": "एक और फ़ाइल जोड़ें",
+        "multi_page_hint": "आगे/पीछे या प्रति पृष्ठ एक फ़ोटो: हम जोड़ देंगे",
+        "done_title": "हो गया!",
+        "done_body": "Lorenzo को दस्तावेज़ मिले, जाँच हो रही। कुछ कम हो तो बताएँगे — निश्चिंत रहें।",
+        "submit_cta": "हो गया — Lorenzo को भेजें",
+        "missing_one": "1 दस्तावेज़ शेष",
+        "missing_many": "{n} दस्तावेज़ शेष",
+        "templates_title": "फ़ॉर्म चाहिए? हम देते हैं:",
+        "templates_help": "फ़ॉर्म डाउनलोड, छापें, भरें, हस्ताक्षर, यहाँ अपलोड (स्पष्ट फ़ोटो ठीक), हस्ताक्षरकर्ता ID प्रति सहित।",
+        "err_file_too_big": "फ़ाइल बहुत बड़ी (अधिकतम 10 MB)।",
+        "err_too_many": "प्रति आइटम अधिकतम 10 फ़ाइलें।",
+        "err_upload_failed": "अपलोड विफल।",
+        "err_upload_network": "अपलोड विफल, कनेक्शन जाँचें।",
+        "err_delete_failed": "हटाना विफल।",
+        "err_delete_network": "हटाना विफल, फिर कोशिश करें।",
+        "state_da_caricare": "अपलोड करना है",
+        "state_caricato": "अपलोड हो गया",
+        "state_da_rifare": "फिर से करें"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "mandate_ui",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "signed_title": "अधिदेश पर हस्ताक्षर हो गया।",
+        "signed_paper": "हस्ताक्षरित कागज़ी अधिदेश प्राप्त।",
+        "signed_electronic": "इलेक्ट्रॉनिक हस्ताक्षर दर्ज (दिनांक और समय)।",
+        "signed_thanks": "धन्यवाद, आपकी फ़ाइल आगे बढ़ा सकते हैं।",
+        "accept_checkbox": "मैंने अधिदेश, शर्तें और गोपनीयता सूचना पढ़ी और स्वीकार की।",
+        "accept_cta": "मैं स्वीकार करता/करती हूँ और ऑनलाइन हस्ताक्षर करता/करती हूँ",
+        "paper_title": "कागज़ पर हस्ताक्षर पसंद?",
+        "paper_body": "अधिदेश डाउनलोड, हाथ से हस्ताक्षर और फिर अपलोड: हमारे लिए ठीक।",
+        "download_blank": "अधिदेश डाउनलोड करें",
+        "upload_signed": "हस्ताक्षरित अधिदेश अपलोड करें",
+        "err_file_too_big": "फ़ाइल बहुत बड़ी (अधिकतम 10 MB)।",
+        "err_upload_failed": "अपलोड विफल।",
+        "err_upload_network": "अपलोड विफल, कनेक्शन जाँचें।",
+        "heading": "पेशेवर अधिदेश - फ़ाइल {code}"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "iban_ui",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "saved": "IBAN एन्क्रिप्टेड सहेजा (••{last4} पर समाप्त)। नया दर्ज कर अपडेट करें।",
+        "cleared": "IBAN भुगतान (F24) हेतु उपयोग, {date} को सुरक्षा हेतु हटाया। फिर चाहिए तो दर्ज करें।",
+        "label": "उत्तराधिकारी का IBAN",
+        "hint": "संवेदनशील डेटा: केवल कर डेबिट (F24) हेतु। एन्क्रिप्टेड संग्रह।",
+        "save": "सहेजें"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "claim_ui",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "title": "पहले से फ़ाइल है? इस लॉगिन को लिंक करें",
+        "body": "फ़ाइल कोड (उदा. SUC-2026-0022) और भुगतान/अनुमान ईमेल दर्ज करें। इस लॉगिन ईमेल से मेल खाना चाहिए।",
+        "code_label": "फ़ाइल कोड",
+        "email_label": "खरीद / अनुमान ईमेल",
+        "needs_email": "इस खाते से लॉग आउट, {email} से लॉग इन (भुगतान ईमेल लिंक या login से नया magic link)।",
+        "linking": "लिंक हो रहा है…",
+        "cta": "फ़ाइल लिंक करें"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "withdrawal_ui",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "status_requested": "जमा हो गई",
+        "status_in_review": "प्रगति में",
+        "status_accepted": "स्वीकृत",
+        "status_rejected": "अस्वीकृत",
+        "registered_title": "अनुरोध दर्ज हो गया।",
+        "registered_body": "Lorenzo को आपका अनुरोध मिला, संपर्क करेंगे। वर्तमान स्थिति: {status}।",
+        "rejected_prev": "पिछला अनुरोध अस्वीकृत हुआ",
+        "rejected_retry": "आप नया भेज सकते हैं।",
+        "reason_label": "कारण (वैकल्पिक)",
+        "reason_placeholder": "चाहें तो कारण बताएँ…",
+        "cta": "वापसी का अनुरोध",
+        "alt_contact": "वैकल्पिक: studio@successioniarmellin.it या PEC पर लिखें।",
+        "refund_issued": "रिफ़ंड भुगतान कार्ड पर: 5-10 कार्य दिवस (कभी मूल खर्च रिवर्सल)।",
+        "refund_pending": "रिफ़ंड देय हो तो उसी भुगतान विधि से। जारी के बाद बैंक 5-10 कार्य दिवस में जमा।"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "invoice_ui",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "download": "चालान डाउनलोड करें",
+        "number": "चालान नं. {number}",
+        "issued_soon": "चालान नं. {number} जारी। PDF जल्द उपलब्ध होगा।",
+        "pending": "चालान जारी होते ही यहाँ उपलब्ध होगा।"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "final_docs_ui",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "download_zip": "सब डाउनलोड करें (ZIP)",
+        "download": "डाउनलोड",
+        "not_ready": "अंतिम दस्तावेज़ अभी नहीं। नीचे फ़ाइल पूर्ण होने पर मिलने वाले का पूर्वावलोकन।"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "profilo_ui",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "contacts": "संपर्क विवरण",
+        "name": "नाम",
+        "email": "Email",
+        "phone": "फ़ोन",
+        "phone_empty": "दर्ज नहीं",
+        "phone_edit": "नंबर बदलें",
+        "phone_add": "नंबर जोड़ें",
+        "dial_aria": "अंतरराष्ट्रीय कोड",
+        "dial_other": "अन्य…",
+        "dial_custom_aria": "कस्टम कोड",
+        "phone_hint": "देश कोड (+39, +49…) चुनें फिर राष्ट्रीय नंबर।",
+        "save": "सहेजें",
+        "cancel": "रद्द करें",
+        "security": "सुरक्षा",
+        "password_intro": "चाहें तो तेज़ लॉगिन के लिए पासवर्ड बनाएँ, ईमेल लिंक की प्रतीक्षा बिना।",
+        "password_saved": "पासवर्ड सहेजा: अगले लॉगिन से अन्य तरीकों के साथ उपयोग करें।",
+        "password_change": "पासवर्ड बदलें",
+        "password_create": "पासवर्ड बनाएँ या बदलें",
+        "password_new": "नया पासवर्ड (कम से कम 8 अक्षर)",
+        "password_confirm": "पासवर्ड दोहराएँ",
+        "password_mismatch": "दोनों पासवर्ड मेल नहीं खाते।",
+        "password_save": "पासवर्ड सहेजें",
+        "prefs_title": "सूचना प्राथमिकताएँ",
+        "prefs_body": "कार्यात्मक ईमेल (भुगतान, दस्तावेज़, कर, समापन) हमेशा सक्रिय। यहाँ केवल वैकल्पिक बंद करें।",
+        "prefs_email": "वैकल्पिक ईमेल (जैसे समीक्षा)",
+        "prefs_wa": "WhatsApp (जल्द)",
+        "prefs_saved": "प्राथमिकताएँ सहेजी गईं।",
+        "comms_lang_title": "लिखित संचार की भाषा",
+        "comms_lang_body": "प्रथा पर ईमेल और संदेश (भुगतान, दस्तावेज़, वापसी)। यह इंटरफ़ेस भाषा से स्वतंत्र है।",
+        "comms_lang_notice": "अनुवाद स्वचालित/सुविधा हेतु। आधिकारिक दस्तावेज़ और बाध्यकारी पाठ इतालवी में।",
+        "comms_lang_it": "इतालवी",
+        "comms_lang_ar": "العربية",
+        "logout": "लॉग आउट",
+        "comms_lang_en": "English",
+        "comms_lang_tr": "Türkçe",
+        "comms_lang_fr": "Français",
+        "comms_lang_sq": "Shqip",
+        "comms_lang_de": "Deutsch",
+        "comms_lang_es": "Español",
+        "comms_lang_ru": "Русский",
+        "comms_lang_zh": "中文",
+        "comms_lang_hi": "हिन्दी"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "ordine_ui",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "includes_named": "\"{name}\" में क्या शामिल है",
+        "includes_generic": "पैकेज में क्या शामिल है",
+        "includes_missing": "विवरण उपलब्ध नहीं।",
+        "taxes_title": "कर",
+        "taxes_body": "ये राशि हमारा शुल्क नहीं: राज्य को कर (F24, स्व-निर्धारण)। जमा से पहले गणना और सूचना।",
+        "taxes_need_iban": "कर डेबिट के लिए आपका IBAN चाहिए।",
+        "taxes_iban_cta": "अभी IBAN दर्ज करें →",
+        "taxes_iban_saved": "IBAN सहेजा (•••• {last4})।",
+        "taxes_iban_edit": "संपादित करें",
+        "taxes_pending": "कर जमा से पहले गणना और सूचना होगी।",
+        "withdrawal_prompt": "विचार बदला?",
+        "withdrawal_cta": "वापसी का अनुरोध करें"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "documenti_page_ui",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "cancelled_subtitle": "फ़ाइल रद्द: कुछ अपलोड करने की ज़रूरत नहीं।",
+        "cancelled_body": "फ़ाइल रद्द, अपलोड बंद। ID और फ़ाइलें गोपनीयता नीति अनुसार हटाई जाएँगी।"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "final_docs_preview",
+      "locale": "hi",
+      "is_published": true,
+      "value": [
+        {
+          "label": "जमा रसीद - Agenzia delle Entrate",
+          "description": "पंजीकरण प्रोटोकॉल के साथ इलेक्ट्रॉनिक प्रमाण।"
+        },
+        {
+          "label": "उत्तराधिकार घोषणा (प्रति)",
+          "description": "Agenzia को प्रस्तुत फ़ॉर्म।"
+        },
+        {
+          "label": "अद्यतन भू-अभिलेख विवरण (voltura)",
+          "description": "उत्तराधिकारियों के नाम संपत्तियाँ।"
+        },
+        {
+          "label": "पेशेवर शुल्क चालान",
+          "description": "हमारे शुल्क का कर दस्तावेज़।"
+        }
+      ]
+    },
+    {
+      "collection": "site_ui",
+      "key": "preventivo_ui",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "yes": "हाँ",
+        "no": "नहीं",
+        "unknown": "मुझे नहीं पता",
+        "will_q_before": "यह",
+        "will_q_term": "de cuius",
+        "will_q_after": "ने वसीयत छोड़ी?",
+        "will_tip_aria": "de cuius का क्या अर्थ है",
+        "will_tip": "De cuius (लैटिन) वह मृत व्यक्ति जिसका उत्तराधिकार खुलता है।",
+        "will_yes_note": "मानक पैकेज वसीयत वाले मामले भी कवर। चेकलिस्ट में प्रकाशित वसीयत प्रति माँगेंगे।",
+        "will_unknown_note": "ठीक है: बाद में पता चले तो फ़ाइल में संभालेंगे। अन्य प्रश्न जारी रखें।",
+        "heirs_legend": "उत्तराधिकारी कौन? प्रत्येक प्रकार की संख्या बताएँ।",
+        "heirs_hint": "सभी उत्तराधिकारी गिनें, यदि आप भी हैं तो सहित।",
+        "heir_coniuge": "पति/पत्नी (या नागरिक साझी)",
+        "heir_figli": "बच्चे",
+        "heir_genitori": "माता-पिता",
+        "heir_fratelli": "भाई-बहन",
+        "heir_nipoti": "पोते-पोतियाँ",
+        "heir_altri": "अन्य उत्तराधिकारी",
+        "less": "कम {label}",
+        "more": "और {label}",
+        "real_estate_q": "क्या संपत्तियाँ हैं (घर, भूमि, गैरेज)?",
+        "real_estate_count": "कुल कितनी संपत्तियाँ?",
+        "real_estate_placeholder": "उदा. 2",
+        "real_estate_hint": "घर, भूमि, गैरेज और हिस्सेदारी गिनें: हर अतिरिक्त संपत्ति अनुमान पर असर।",
+        "over_100k_q": "कुल विरासत (खाते, प्रतिभूतियाँ आदि) €100,000 से अधिक?",
+        "other_assets_q": "अन्य संपत्ति (कंपनी हिस्सेदारी, शेयर, व्यवसाय, नौकाएँ…)?",
+        "back": "वापस",
+        "next": "आगे"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "checkout_ui",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "stripe_blurb": "Stripe सुरक्षित भुगतान: क्रेडिट/डेबिट कार्ड, किश्तें। Stripe सुरक्षित पृष्ठ पर पुनर्निर्देशित।",
+        "err_start": "भुगतान शुरू नहीं हो सका।",
+        "err_not_configured": "भुगतान अभी सक्रिय नहीं। बाद में कोशिश करें या संपर्क करें।",
+        "err_retry": "भुगतान शुरू नहीं हो सका। थोड़ी देर बाद कोशिश करें।",
+        "err_network": "नेटवर्क त्रुटि। थोड़ी देर बाद कोशिश करें।",
+        "need_quote_before": "भुगतान के लिए, शुरू करें",
+        "need_quote_link": "अनुमान गणना",
+        "need_quote_after": ": ताकि सही पैकेज सुझा सकें।",
+        "loading": "भुगतान शुरू हो रहा है…",
+        "cancelled": "भुगतान रद्द। कोई शुल्क नहीं: जब चाहें फिर कोशिश करें।",
+        "total_fee": "कुल पेशेवर शुल्क",
+        "empty_order": "भुगतान योग्य पैकेज वाली फ़ाइल नहीं। पहले अनुमान: सही पैकेज और भुगतान लिंक।",
+        "empty_cta": "अनुमान पर जाएँ →",
+        "meta_title": "ऑर्डर पूरा करें",
+        "extra_property": "अतिरिक्त संपत्तियाँ ({extra} × €{fee})"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "conferma_ui",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "title_paid": "भुगतान प्राप्त, धन्यवाद!",
+        "title_pending": "भुगतान की पुष्टि हो रही है",
+        "body_paid": "भुगतान सफल, फ़ाइल सक्रिय। जल्द ईमेल: सारांश और व्यक्तिगत क्षेत्र निर्देश।",
+        "body_pending": "ऑर्डर प्राप्त। कुछ क्षणों में भुगतान पुष्टि: ईमेल जब सब ठीक। पहले से व्यक्तिगत क्षेत्र में लॉग इन।",
+        "email_note_before": "व्यक्तिगत क्षेत्र में लॉग इन",
+        "email_note_strong": "भुगतान में उपयोग किया गया ईमेल",
+        "email_note_after": ": इसी से फ़ाइल मिलेगी। दूसरा ईमेल (या अलग Google) हो तो नहीं दिखेगी।",
+        "cta_area": "व्यक्तिगत क्षेत्र पर जाएँ",
+        "cta_home": "होम पर वापस",
+        "taxes_note": "कर पेशेवर शुल्क से अलग: जमा से पहले गणना और सूचना।",
+        "meta_title": "भुगतान प्राप्त"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "contact_ui",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "name": "पूरा नाम",
+        "email": "Email",
+        "phone": "फ़ोन (वैकल्पिक)",
+        "message": "संदेश",
+        "submit": "संदेश भेजें"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "soft_lead_ui",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "name": "पूरा नाम (वैकल्पिक)",
+        "email": "Email",
+        "phone": "फ़ोन",
+        "phone_optional": "फ़ोन (वैकल्पिक)",
+        "submitting": "भेजा जा रहा है…",
+        "err_save": "अभी अनुरोध दर्ज नहीं हो सका। बाद में या कॉल करें।",
+        "notes": "नोट (वैकल्पिक)"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "guide_ui",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "search_placeholder": "गाइड में खोजें (जैसे कर, दस्तावेज़, छूट)",
+        "search_aria": "गाइड में खोजें",
+        "all": "सभी",
+        "free_tool": "मुफ़्त उपकरण",
+        "back": "गाइड पर वापस",
+        "author_heading": "इस गाइड के लेखक",
+        "related": "संबंधित गाइड",
+        "featured": "विशेष",
+        "reading_minutes": "{n} मिनट पढ़ना",
+        "read_guide": "गाइड पढ़ें",
+        "read": "पढ़ें",
+        "empty": "आपकी खोज के लिए कोई गाइड नहीं। दूसरा शब्द या लिखें: सभी को जवाब।",
+        "updated": "{date} को अपडेट",
+        "sources": "आधिकारिक स्रोत",
+        "breadcrumb_aria": "प्रक्रिया",
+        "breadcrumb_guides": "गाइड",
+        "meta_title": "उत्तराधिकार गाइड",
+        "meta_not_found": "गाइड नहीं मिली",
+        "tool_alt": "चित्र: घर, कैलकुलेटर और यूरो चिह्न वाला दस्तावेज़"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "chrome_ui",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "lang_aria": "भाषा चुनें",
+        "menu_open": "मेनू खोलें",
+        "menu_close": "मेनू बंद करें",
+        "back": "वापस",
+        "meta_result": "आपका परिणाम",
+        "meta_recesso": "वापसी का अधिकार",
+        "meta_documenti": "उत्तराधिकार के दस्तावेज़"
+      }
+    },
+    {
+      "collection": "area_errors",
+      "key": "session_invalid",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अमान्य सत्र।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "session_expired",
+      "locale": "hi",
+      "is_published": true,
+      "value": "सत्र समाप्त। फिर लॉग इन करें।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "not_authorized",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अधिकृत नहीं।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "upload_failed",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अपलोड विफल।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "delete_failed",
+      "locale": "hi",
+      "is_published": true,
+      "value": "हटाना विफल।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "file_too_big",
+      "locale": "hi",
+      "is_published": true,
+      "value": "फ़ाइल बहुत बड़ी (अधिकतम 10 MB)।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "file_bad_type",
+      "locale": "hi",
+      "is_published": true,
+      "value": "स्वीकृत प्रारूप नहीं।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "invoice_unavailable",
+      "locale": "hi",
+      "is_published": true,
+      "value": "चालान अभी उपलब्ध नहीं।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "file_unavailable",
+      "locale": "hi",
+      "is_published": true,
+      "value": "फ़ाइल उपलब्ध नहीं।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "practice_cancelled",
+      "locale": "hi",
+      "is_published": true,
+      "value": "फ़ाइल रद्द: कार्रवाई उपलब्ध नहीं।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "mandate_failed",
+      "locale": "hi",
+      "is_published": true,
+      "value": "हस्ताक्षर विफल।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "withdrawal_blocked",
+      "locale": "hi",
+      "is_published": true,
+      "value": "वापसी अब लागू नहीं।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "withdrawal_pending",
+      "locale": "hi",
+      "is_published": true,
+      "value": "पहले से एक अनुरोध चल रहा है।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "iban_invalid",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अमान्य IBAN। जाँचें और फिर कोशिश करें।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "phone_invalid",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अमान्य नंबर।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "password_short",
+      "locale": "hi",
+      "is_published": true,
+      "value": "पासवर्ड कम से कम 8 अक्षर का हो।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "password_failed",
+      "locale": "hi",
+      "is_published": true,
+      "value": "सहेजना विफल, फिर कोशिश करें।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "prefs_failed",
+      "locale": "hi",
+      "is_published": true,
+      "value": "सहेजना विफल, फिर कोशिश करें।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_unavailable",
+      "locale": "hi",
+      "is_published": true,
+      "value": "सेवा उपलब्ध नहीं। बाद में कोशिश करें।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_code_required",
+      "locale": "hi",
+      "is_published": true,
+      "value": "फ़ाइल कोड दर्ज करें।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_email_required",
+      "locale": "hi",
+      "is_published": true,
+      "value": "खरीद में उपयोग किया ईमेल दर्ज करें।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_email_mismatch",
+      "locale": "hi",
+      "is_published": true,
+      "value": "ईमेल इस लॉगिन से मेल नहीं खाता।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_not_found",
+      "locale": "hi",
+      "is_published": true,
+      "value": "इस कोड से कोई फ़ाइल नहीं। जाँचें और फिर कोशिश करें।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "docs_submit_failed",
+      "locale": "hi",
+      "is_published": true,
+      "value": "भेजना विफल। फिर कोशिश करें।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_email_required",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अपना ईमेल दर्ज करें।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_bad_credentials",
+      "locale": "hi",
+      "is_published": true,
+      "value": "गलत ईमेल या पासवर्ड। पासवर्ड कभी न बनाया हो तो ईमेल लिंक से लॉग इन।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_google_unavailable",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Google लॉगिन अभी उपलब्ध नहीं। ईमेल या फ़ोन उपयोग करें।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_link_invalid",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अमान्य लिंक।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "auth_failed",
+      "locale": "hi",
+      "is_published": true,
+      "value": "लॉगिन विफल। फिर कोशिश करें।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "auth_not_configured",
+      "locale": "hi",
+      "is_published": true,
+      "value": "लॉगिन अभी सक्रिय नहीं: Supabase Auth कॉन्फ़िगर नहीं।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_otp_required",
+      "locale": "hi",
+      "is_published": true,
+      "value": "ईमेल और कोड अनिवार्य हैं।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_phone_otp_required",
+      "locale": "hi",
+      "is_published": true,
+      "value": "नंबर और कोड अनिवार्य हैं।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_password_required",
+      "locale": "hi",
+      "is_published": true,
+      "value": "ईमेल और पासवर्ड दर्ज करें।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "password_same",
+      "locale": "hi",
+      "is_published": true,
+      "value": "नया पासवर्ड वर्तमान से अलग हो।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "no_practice",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आपके खाते से कोई फ़ाइल लिंक नहीं।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_fields_required",
+      "locale": "hi",
+      "is_published": true,
+      "value": "फ़ाइल कोड और ईमेल दर्ज करें।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_auth_required",
+      "locale": "hi",
+      "is_published": true,
+      "value": "फ़ाइल लिंक करने के लिए लॉग इन होना ज़रूरी।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_no_email",
+      "locale": "hi",
+      "is_published": true,
+      "value": "इस लॉगिन में ईमेल नहीं। लॉग आउट कर खरीद ईमेल से लॉग इन (magic link)।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_wrong_account",
+      "locale": "hi",
+      "is_published": true,
+      "value": "आप {current} के रूप में लॉग इन। इस फ़ाइल के लिए {expected} से लॉग इन करें।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_link_failed",
+      "locale": "hi",
+      "is_published": true,
+      "value": "संपर्क लिंक नहीं हो सका। कार्यालय से संपर्क करें।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_practice_email_mismatch",
+      "locale": "hi",
+      "is_published": true,
+      "value": "ईमेल फ़ाइल पर दर्ज से मेल नहीं। भुगतान या अनुमान ईमेल उपयोग करें।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "service_unavailable",
+      "locale": "hi",
+      "is_published": true,
+      "value": "सेवा उपलब्ध नहीं।"
+    },
+    {
+      "collection": "area_errors",
+      "key": "phone_invalid_detail",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अमान्य नंबर: कोड (+39, +49…) और राष्ट्रीय नंबर चुनें।"
+    },
+    {
+      "collection": "area_login",
+      "key": "callback_loading",
+      "locale": "hi",
+      "is_published": true,
+      "value": "लॉगिन हो रहा है…"
+    },
+    {
+      "collection": "area_login",
+      "key": "callback_failed",
+      "locale": "hi",
+      "is_published": true,
+      "value": "लॉगिन विफल, पुनर्निर्देशित…"
+    },
+    {
+      "collection": "site_ui",
+      "key": "offline_ui",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "email_cta": "हमें ईमेल करें",
+        "whatsapp": "WhatsApp",
+        "already_practice": "पहले से फ़ाइल है?",
+        "area_cta": "व्यक्तिगत क्षेत्र में लॉग इन"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "cookie_ui",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "body": "तकनीकी cookie (आवश्यक) और सहमति पर सांख्यिकी cookie। गैर-आवश्यक स्वीकार/अस्वीकार।",
+        "policy_label": "Cookie नीति",
+        "accept_all": "सभी स्वीकार करें",
+        "necessary_only": "केवल आवश्यक",
+        "preferences": "Cookie प्राथमिकताएँ"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "contatti_map_ui",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "meta_title": "संपर्क",
+        "email_label": "Email",
+        "studio_label": "कार्यालय",
+        "map_eyebrow": "हमें कहाँ मिलें",
+        "map_title": "{citta} में कार्यालय",
+        "maps_cta": "Google Maps में खोलें",
+        "map_iframe_title": "कार्यालय का नक्शा - {address}",
+        "photo_caption": "Pontedera Cathedral",
+        "photo_credit": "Photo: SeesaTheDoctor / Wikimedia (CC BY 4.0)"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_categorie",
+      "locale": "hi",
+      "is_published": true,
+      "value": [
+        {
+          "value": "A",
+          "label": "निवास – समूह A (A/10 को छोड़कर)"
+        },
+        {
+          "value": "A10",
+          "label": "A/10 – कार्यालय और निजी अध्ययन"
+        },
+        {
+          "value": "B",
+          "label": "समूह B (कॉलेज, स्कूल, सार्वजनिक कार्यालय…)"
+        },
+        {
+          "value": "C",
+          "label": "समूह C – अनुलग्नक (गैरेज, तहखाने…), C/1 को छोड़कर"
+        },
+        {
+          "value": "C1",
+          "label": "C/1 – दुकानें और व्यापार"
+        },
+        {
+          "value": "D",
+          "label": "समूह D (कारखाने, होटल, गोदाम…)"
+        },
+        {
+          "value": "E",
+          "label": "समूह E (स्टेशन, विशेष भवन…)"
+        }
+      ]
+    },
+    {
+      "collection": "footer",
+      "key": "nav_heading",
+      "locale": "hi",
+      "is_published": true,
+      "value": "ब्राउज़ करें"
+    },
+    {
+      "collection": "footer",
+      "key": "legal_heading",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कानूनी"
+    },
+    {
+      "collection": "footer",
+      "key": "rights_reserved",
+      "locale": "hi",
+      "is_published": true,
+      "value": "सर्वाधिकार सुरक्षित।"
+    },
+    {
+      "collection": "footer",
+      "key": "label_forma",
+      "locale": "hi",
+      "is_published": true,
+      "value": "फ़ॉर्म"
+    },
+    {
+      "collection": "footer",
+      "key": "label_piva",
+      "locale": "hi",
+      "is_published": true,
+      "value": "P.IVA"
+    },
+    {
+      "collection": "footer",
+      "key": "label_cf",
+      "locale": "hi",
+      "is_published": true,
+      "value": "C.F."
+    },
+    {
+      "collection": "footer",
+      "key": "label_rea",
+      "locale": "hi",
+      "is_published": true,
+      "value": "REA"
+    },
+    {
+      "collection": "footer",
+      "key": "label_pec",
+      "locale": "hi",
+      "is_published": true,
+      "value": "PEC"
+    },
+    {
+      "collection": "footer",
+      "key": "label_tel",
+      "locale": "hi",
+      "is_published": true,
+      "value": "Tel"
+    },
+    {
+      "collection": "legale",
+      "key": "updated_prefix",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अंतिम अपडेट:"
+    },
+    {
+      "collection": "legale",
+      "key": "lang_note",
+      "locale": "hi",
+      "is_published": true,
+      "value": "इस दस्तावेज़ का इतालवी बाध्यकारी: अनुवाद सुविधा; विवाद में इतालवी मान्य।"
+    },
+    {
+      "collection": "home",
+      "key": "meta_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "ऑनलाइन उत्तराधिकार | Geom. Lorenzo Armellin"
+    },
+    {
+      "collection": "home",
+      "key": "meta_description",
+      "locale": "hi",
+      "is_published": true,
+      "value": "वास्तविक पेशेवर के साथ ऑनलाइन उत्तराधिकार घोषणा: Geom. Lorenzo Armellin, Albo। स्पष्ट अनुमान, घर से — Pontedera में व्यक्तिगत भी।"
+    }
   ]
 }

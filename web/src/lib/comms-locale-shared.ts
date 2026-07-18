@@ -1,4 +1,16 @@
-export const COMMS_LOCALES = ["it", "ar", "en", "tr", "fr", "sq"] as const;
+export const COMMS_LOCALES = [
+  "it",
+  "ar",
+  "en",
+  "tr",
+  "fr",
+  "sq",
+  "de",
+  "es",
+  "ru",
+  "zh",
+  "hi",
+] as const;
 export type CommsLocale = (typeof COMMS_LOCALES)[number];
 
 export function isCommsLocale(value: unknown): value is CommsLocale {
@@ -12,10 +24,9 @@ export function coerceCommsLocale(value: unknown): CommsLocale {
   return isCommsLocale(value) ? value : "it";
 }
 
-export const COMMS_LOCALE_LABELS: Record<
-  CommsLocale,
-  { it: string; ar: string; en: string; tr: string; fr: string; sq: string }
-> = {
+type LocaleLabels = Record<CommsLocale, string>;
+
+export const COMMS_LOCALE_LABELS: Record<CommsLocale, LocaleLabels> = {
   it: {
     it: "Italiano",
     ar: "الإيطالية",
@@ -23,6 +34,11 @@ export const COMMS_LOCALE_LABELS: Record<
     tr: "İtalyanca",
     fr: "Italien",
     sq: "Italisht",
+    de: "Italienisch",
+    es: "Italiano",
+    ru: "Итальянский",
+    zh: "意大利语",
+    hi: "इतालवी",
   },
   ar: {
     it: "Arabo",
@@ -31,6 +47,11 @@ export const COMMS_LOCALE_LABELS: Record<
     tr: "Arapça",
     fr: "Arabe",
     sq: "Arabisht",
+    de: "Arabisch",
+    es: "Árabe",
+    ru: "Арабский",
+    zh: "阿拉伯语",
+    hi: "अरबी",
   },
   en: {
     it: "Inglese",
@@ -39,6 +60,11 @@ export const COMMS_LOCALE_LABELS: Record<
     tr: "İngilizce",
     fr: "Anglais",
     sq: "Anglisht",
+    de: "Englisch",
+    es: "Inglés",
+    ru: "Английский",
+    zh: "英语",
+    hi: "अंग्रेज़ी",
   },
   tr: {
     it: "Turco",
@@ -47,6 +73,11 @@ export const COMMS_LOCALE_LABELS: Record<
     tr: "Türkçe",
     fr: "Turc",
     sq: "Turqisht",
+    de: "Türkisch",
+    es: "Turco",
+    ru: "Турецкий",
+    zh: "土耳其语",
+    hi: "तुर्की",
   },
   fr: {
     it: "Francese",
@@ -55,6 +86,11 @@ export const COMMS_LOCALE_LABELS: Record<
     tr: "Fransızca",
     fr: "Français",
     sq: "Frëngjisht",
+    de: "Französisch",
+    es: "Francés",
+    ru: "Французский",
+    zh: "法语",
+    hi: "फ़्रेंच",
   },
   sq: {
     it: "Albanese",
@@ -63,5 +99,75 @@ export const COMMS_LOCALE_LABELS: Record<
     tr: "Arnavutça",
     fr: "Albanais",
     sq: "Shqip",
+    de: "Albanisch",
+    es: "Albanés",
+    ru: "Албанский",
+    zh: "阿尔巴尼亚语",
+    hi: "अल्बानियाई",
+  },
+  de: {
+    it: "Tedesco",
+    ar: "الألمانية",
+    en: "German",
+    tr: "Almanca",
+    fr: "Allemand",
+    sq: "Gjermanisht",
+    de: "Deutsch",
+    es: "Alemán",
+    ru: "Немецкий",
+    zh: "德语",
+    hi: "जर्मन",
+  },
+  es: {
+    it: "Spagnolo",
+    ar: "الإسبانية",
+    en: "Spanish",
+    tr: "İspanyolca",
+    fr: "Espagnol",
+    sq: "Spanjisht",
+    de: "Spanisch",
+    es: "Español",
+    ru: "Испанский",
+    zh: "西班牙语",
+    hi: "स्पेनिश",
+  },
+  ru: {
+    it: "Russo",
+    ar: "الروسية",
+    en: "Russian",
+    tr: "Rusça",
+    fr: "Russe",
+    sq: "Rusisht",
+    de: "Russisch",
+    es: "Ruso",
+    ru: "Русский",
+    zh: "俄语",
+    hi: "रूसी",
+  },
+  zh: {
+    it: "Cinese",
+    ar: "الصينية",
+    en: "Chinese",
+    tr: "Çince",
+    fr: "Chinois",
+    sq: "Kinezisht",
+    de: "Chinesisch",
+    es: "Chino",
+    ru: "Китайский",
+    zh: "中文",
+    hi: "चीनी",
+  },
+  hi: {
+    it: "Hindi",
+    ar: "الهندية",
+    en: "Hindi",
+    tr: "Hintçe",
+    fr: "Hindi",
+    sq: "Indisht",
+    de: "Hindi",
+    es: "Hindi",
+    ru: "Хинди",
+    zh: "印地语",
+    hi: "हिन्दी",
   },
 };

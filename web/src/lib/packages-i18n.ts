@@ -350,6 +350,309 @@ const SEED_SQ: LocaleCatalogI18n = {
   },
 };
 
+/** Seed tedesco (cortesia; allineato ai nomi listino IT correnti). */
+const SEED_DE: LocaleCatalogI18n = {
+  packages: {
+    SEMPLICE: {
+      name: "Einfache Erbschaft",
+      tagline: "Nur Konten und Liquidität, keine Immobilien",
+      description:
+        "Erstellung und Einreichung der Erbschaftserklärung bei der Agenzia delle Entrate für Fälle ohne Immobilien: Girokonten, Sparbücher und Liquidität.",
+      features: [
+        "Erstellung der Erklärung",
+        "Elektronische Einreichung bei der Agenzia delle Entrate",
+        "Steuern berechnet und vor der Einreichung mitgeteilt",
+        "Hilfe durch eine echte Person",
+      ],
+      badge: null,
+    },
+    COMPLETO: {
+      name: "Erbschaft mit Immobilien",
+      tagline: "1 bis 3 Immobilien, mit Katasterumschreibung",
+      description:
+        "Das Paket für Erben einer Wohnung oder weniger Immobilien: Prüfung der Katasterdaten, Erklärung, Einreichung und Eigentumsübertragung. Bis zu 5 Erben und 5 Bankkonten.",
+      features: [
+        "Alles aus dem einfachen Paket",
+        "1 bis 3 Immobilien, bis zu 5 Erben und 5 Konten",
+        "Prüfung der Katasterdaten durch einen Geometra",
+        "Katasterumschreibung inklusive",
+      ],
+      badge: "Am häufigsten gewählt",
+    },
+    ZERO_STRESS: {
+      name: "Erweiterte Erbschaft",
+      tagline: "3 bis 8 Immobilien, mit Dokumentenbeschaffung",
+      description:
+        "Für komplexere Erbschaften: mehr Immobilien und zu beschaffende Dokumente. Wir kümmern uns darum, mit vorrangiger Bearbeitung und Updates in jedem Schritt.",
+      features: [
+        "Alles aus dem Paket mit Immobilien",
+        "3 bis 8 Immobilien, bis zu 5 Erben und 5 Konten",
+        "Beschaffung fehlender Dokumente bei Behörden und Banken",
+        "Vorrangige Bearbeitung",
+      ],
+      badge: null,
+    },
+  },
+  addons: {
+    RIUNIONE_USUFRUTTO: {
+      name: "Zusammenlegung des Nießbrauchs",
+      description: "Katasteraktualisierung nach Erlöschen des Nießbrauchs.",
+    },
+    ADEGUAMENTO_IMU: {
+      name: "IMU-Anpassung und Neuberechnung",
+      description:
+        "IMU-Neuberechnung nach Erbschaft und Aktualisierung für die neuen Eigentümer.",
+    },
+    VOLTURA_EXTRA: {
+      name: "Zusätzliche Katasterumschreibung",
+      description:
+        "Katasterumschreibung für Immobilien über den Paketumfang hinaus.",
+    },
+  },
+};
+
+/** Seed spagnolo (cortesia; allineato ai nomi listino IT correnti). */
+const SEED_ES: LocaleCatalogI18n = {
+  packages: {
+    SEMPLICE: {
+      name: "Sucesión simple",
+      tagline: "Solo cuentas y liquidez, sin inmuebles",
+      description:
+        "Preparación y presentación de la declaración de sucesión ante la Agenzia delle Entrate para casos sin inmuebles: cuentas corrientes, libretas y liquidez.",
+      features: [
+        "Preparación de la declaración",
+        "Presentación electrónica ante la Agenzia delle Entrate",
+        "Impuestos calculados y comunicados antes de la presentación",
+        "Ayuda de una persona real",
+      ],
+      badge: null,
+    },
+    COMPLETO: {
+      name: "Sucesión con inmuebles",
+      tagline: "De 1 a 3 inmuebles, con mutación catastral",
+      description:
+        "La fórmula para quienes heredan una vivienda o algunos inmuebles: control de datos catastrales, declaración, presentación y transferencia de propiedad. Hasta 5 herederos y 5 cuentas bancarias.",
+      features: [
+        "Todo lo incluido en la fórmula Simple",
+        "De 1 a 3 inmuebles, hasta 5 herederos y 5 cuentas",
+        "Control de datos catastrales por un Geometra",
+        "Mutación catastral incluida",
+      ],
+      badge: "La más elegida",
+    },
+    ZERO_STRESS: {
+      name: "Sucesión ampliada",
+      tagline: "De 3 a 8 inmuebles, con recuperación de documentos",
+      description:
+        "Para sucesiones más complejas: más inmuebles y documentos por recuperar. Nos ocupamos nosotros, con tramitación prioritaria y actualizaciones en cada paso.",
+      features: [
+        "Todo lo incluido en la fórmula con inmuebles",
+        "De 3 a 8 inmuebles, hasta 5 herederos y 5 cuentas",
+        "Recuperación de documentos faltantes ante administraciones y bancos",
+        "Tramitación prioritaria",
+      ],
+      badge: null,
+    },
+  },
+  addons: {
+    RIUNIONE_USUFRUTTO: {
+      name: "Reunión de usufructo",
+      description: "Actualización catastral tras la extinción del usufructo.",
+    },
+    ADEGUAMENTO_IMU: {
+      name: "Ajuste y recálculo IMU",
+      description:
+        "Recálculo del IMU tras la sucesión y actualización para los nuevos propietarios.",
+    },
+    VOLTURA_EXTRA: {
+      name: "Mutación catastral adicional",
+      description:
+        "Mutación catastral para inmuebles más allá de los incluidos en la fórmula.",
+    },
+  },
+};
+
+/** Seed russo (cortesia; allineato ai nomi listino IT correnti). */
+const SEED_RU: LocaleCatalogI18n = {
+  packages: {
+    SEMPLICE: {
+      name: "Простое наследство",
+      tagline: "Только счета и ликвидность, без недвижимости",
+      description:
+        "Подготовка и подача декларации о наследстве в Agenzia delle Entrate для дел без недвижимости: расчётные счета, сберкнижки и ликвидность.",
+      features: [
+        "Подготовка декларации",
+        "Электронная подача в Agenzia delle Entrate",
+        "Налоги рассчитаны и сообщены до подачи",
+        "Помощь реального специалиста",
+      ],
+      badge: null,
+    },
+    COMPLETO: {
+      name: "Наследство с недвижимостью",
+      tagline: "От 1 до 3 объектов, с кадастровым переоформлением",
+      description:
+        "Пакет для тех, кто наследует жильё или несколько объектов: проверка кадастровых данных, декларация, подача и переход права собственности. До 5 наследников и 5 банковских счетов.",
+      features: [
+        "Всё из простого пакета",
+        "От 1 до 3 объектов, до 5 наследников и 5 счетов",
+        "Проверка кадастровых данных геометром (Geometra)",
+        "Кадастровое переоформление включено",
+      ],
+      badge: "Самый выбираемый",
+    },
+    ZERO_STRESS: {
+      name: "Расширенное наследство",
+      tagline: "От 3 до 8 объектов, с получением документов",
+      description:
+        "Для более сложных наследств: больше объектов и документов для получения. Мы берём на себя, с приоритетной обработкой и обновлениями на каждом шаге.",
+      features: [
+        "Всё из пакета с недвижимостью",
+        "От 3 до 8 объектов, до 5 наследников и 5 счетов",
+        "Получение недостающих документов в учреждениях и банках",
+        "Приоритетная обработка",
+      ],
+      badge: null,
+    },
+  },
+  addons: {
+    RIUNIONE_USUFRUTTO: {
+      name: "Воссоединение узуфрукта",
+      description: "Обновление кадастра после прекращения узуфрукта.",
+    },
+    ADEGUAMENTO_IMU: {
+      name: "Корректировка и пересчёт IMU",
+      description:
+        "Пересчёт IMU после наследства и обновление для новых собственников.",
+    },
+    VOLTURA_EXTRA: {
+      name: "Дополнительное кадастровое переоформление",
+      description:
+        "Кадастровое переоформление для объектов сверх включённых в пакет.",
+    },
+  },
+};
+
+/** Seed cinese semplificato (cortesia; allineato ai nomi listino IT correnti). */
+const SEED_ZH: LocaleCatalogI18n = {
+  packages: {
+    SEMPLICE: {
+      name: "简单继承",
+      tagline: "仅账户与流动性，无不动产",
+      description:
+        "为无不动产案件准备并向 Agenzia delle Entrate 提交继承申报：活期账户、存折与流动性资产。",
+      features: [
+        "准备申报",
+        "向 Agenzia delle Entrate 电子提交",
+        "提交前计算并告知税费",
+        "真人协助",
+      ],
+      badge: null,
+    },
+    COMPLETO: {
+      name: "含不动产的继承",
+      tagline: "1 至 3 处不动产，含地籍过户",
+      description:
+        "适合继承住房或少量不动产者：地籍数据核对、申报、提交与产权转移。最多 5 位继承人与 5 个银行账户。",
+      features: [
+        "简单套餐全部内容",
+        "1 至 3 处不动产，最多 5 位继承人与 5 个账户",
+        "由测量师（Geometra）核对地籍数据",
+        "含地籍过户",
+      ],
+      badge: "最受欢迎",
+    },
+    ZERO_STRESS: {
+      name: "扩展继承",
+      tagline: "3 至 8 处不动产，含文件调取",
+      description:
+        "适用于更复杂的继承：更多不动产与需调取的文件。由我们办理，优先处理并逐步更新。",
+      features: [
+        "含不动产套餐全部内容",
+        "3 至 8 处不动产，最多 5 位继承人与 5 个账户",
+        "向机关与银行调取缺失文件",
+        "优先处理",
+      ],
+      badge: null,
+    },
+  },
+  addons: {
+    RIUNIONE_USUFRUTTO: {
+      name: "用益权合并",
+      description: "用益权消灭后的地籍更新。",
+    },
+    ADEGUAMENTO_IMU: {
+      name: "IMU 调整与重算",
+      description: "继承后 IMU 重算并为新所有人更新。",
+    },
+    VOLTURA_EXTRA: {
+      name: "额外地籍过户",
+      description: "超出套餐范围的不动产地籍过户。",
+    },
+  },
+};
+
+/** Seed hindi (cortesia; allineato ai nomi listino IT correnti). */
+const SEED_HI: LocaleCatalogI18n = {
+  packages: {
+    SEMPLICE: {
+      name: "सरल उत्तराधिकार",
+      tagline: "केवल खाते और तरलता, कोई अचल संपत्ति नहीं",
+      description:
+        "बिना अचल संपत्ति वाले मामलों के लिए Agenzia delle Entrate को उत्तराधिकार घोषणा तैयार करना और जमा करना: चालू खाते, पासबुक और तरलता।",
+      features: [
+        "घोषणा तैयार करना",
+        "Agenzia delle Entrate को इलेक्ट्रॉनिक जमा",
+        "जमा से पहले कर गणना और सूचना",
+        "वास्तविक व्यक्ति की सहायता",
+      ],
+      badge: null,
+    },
+    COMPLETO: {
+      name: "अचल संपत्ति सहित उत्तराधिकार",
+      tagline: "1 से 3 अचल संपत्तियाँ, कैडस्ट्रल ट्रांसफ़र सहित",
+      description:
+        "घर या कुछ अचल संपत्तियाँ विरासत में पाने वालों के लिए पैकेज: कैडस्ट्रल डेटा जाँच, घोषणा, जमा और स्वामित्व हस्तांतरण। अधिकतम 5 उत्तराधिकारी और 5 बैंक खाते।",
+      features: [
+        "सरल पैकेज की सभी सुविधाएँ",
+        "1 से 3 अचल संपत्तियाँ, अधिकतम 5 उत्तराधिकारी और 5 खाते",
+        "Geometra द्वारा कैडस्ट्रल डेटा जाँच",
+        "कैडस्ट्रल ट्रांसफ़र शामिल",
+      ],
+      badge: "सबसे चुना गया",
+    },
+    ZERO_STRESS: {
+      name: "विस्तृत उत्तराधिकार",
+      tagline: "3 से 8 अचल संपत्तियाँ, दस्तावेज़ प्राप्त करने सहित",
+      description:
+        "अधिक जटिल उत्तराधिकार के लिए: अधिक अचल संपत्तियाँ और प्राप्त करने योग्य दस्तावेज़। हम संभालते हैं, प्राथमिकता प्रसंस्करण और हर चरण पर अपडेट के साथ।",
+      features: [
+        "अचल संपत्ति पैकेज की सभी सुविधाएँ",
+        "3 से 8 अचल संपत्तियाँ, अधिकतम 5 उत्तराधिकारी और 5 खाते",
+        "संस्थानों और बैंकों से गायब दस्तावेज़ प्राप्त करना",
+        "प्राथमिकता प्रसंस्करण",
+      ],
+      badge: null,
+    },
+  },
+  addons: {
+    RIUNIONE_USUFRUTTO: {
+      name: "उपभोग-अधिकार का पुनर्मिलन",
+      description: "उपभोग-अधिकार समाप्त होने के बाद कैडस्ट्रल अपडेट।",
+    },
+    ADEGUAMENTO_IMU: {
+      name: "IMU समायोजन और पुनर्गणना",
+      description:
+        "उत्तराधिकार के बाद IMU पुनर्गणना और नए मालिकों के लिए अपडेट।",
+    },
+    VOLTURA_EXTRA: {
+      name: "अतिरिक्त कैडस्ट्रल ट्रांसफ़र",
+      description:
+        "पैकेज में शामिल से अधिक अचल संपत्तियों के लिए कैडस्ट्रल ट्रांसफ़र।",
+    },
+  },
+};
+
 function normalizePackageCopy(raw: unknown): PackageCopyI18n | null {
   if (!raw || typeof raw !== "object") return null;
   const o = raw as Record<string, unknown>;
@@ -410,6 +713,11 @@ function normalizeState(raw: unknown): PackagesI18nState {
         tr: SEED_TR,
         fr: SEED_FR,
         sq: SEED_SQ,
+        de: SEED_DE,
+        es: SEED_ES,
+        ru: SEED_RU,
+        zh: SEED_ZH,
+        hi: SEED_HI,
       },
     };
   }
@@ -436,6 +744,21 @@ function normalizeState(raw: unknown): PackagesI18nState {
   if (!locales.sq || Object.keys(locales.sq.packages).length === 0) {
     locales.sq = SEED_SQ;
   }
+  if (!locales.de || Object.keys(locales.de.packages).length === 0) {
+    locales.de = SEED_DE;
+  }
+  if (!locales.es || Object.keys(locales.es.packages).length === 0) {
+    locales.es = SEED_ES;
+  }
+  if (!locales.ru || Object.keys(locales.ru.packages).length === 0) {
+    locales.ru = SEED_RU;
+  }
+  if (!locales.zh || Object.keys(locales.zh.packages).length === 0) {
+    locales.zh = SEED_ZH;
+  }
+  if (!locales.hi || Object.keys(locales.hi.packages).length === 0) {
+    locales.hi = SEED_HI;
+  }
   return {
     updatedAt: typeof o.updatedAt === "string" ? o.updatedAt : null,
     locales,
@@ -449,6 +772,11 @@ async function readFromStorage(): Promise<PackagesI18nState> {
     tr: SEED_TR,
     fr: SEED_FR,
     sq: SEED_SQ,
+    de: SEED_DE,
+    es: SEED_ES,
+    ru: SEED_RU,
+    zh: SEED_ZH,
+    hi: SEED_HI,
   };
   if (!isAdminConfigured) {
     return normalizeState({ locales: seeds });

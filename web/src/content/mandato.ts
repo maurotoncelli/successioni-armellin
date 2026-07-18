@@ -19,6 +19,26 @@ import {
   buildMandatoParagraphsSq,
   buildMandatoTextSq,
 } from "@/content/mandato.sq";
+import {
+  buildMandatoParagraphsDe,
+  buildMandatoTextDe,
+} from "@/content/mandato.de";
+import {
+  buildMandatoParagraphsEs,
+  buildMandatoTextEs,
+} from "@/content/mandato.es";
+import {
+  buildMandatoParagraphsRu,
+  buildMandatoTextRu,
+} from "@/content/mandato.ru";
+import {
+  buildMandatoParagraphsZh,
+  buildMandatoTextZh,
+} from "@/content/mandato.zh";
+import {
+  buildMandatoParagraphsHi,
+  buildMandatoTextHi,
+} from "@/content/mandato.hi";
 
 /*
   Testo del MANDATO PROFESSIONALE (unica fonte di verita IT).
@@ -32,7 +52,7 @@ import {
   I dati del professionista arrivano da footer.studio / settings (stessa fonte
   di verita di footer e documenti legali).
 
-  Locale ≠ IT: cortesia AR/EN/TR/FR/SQ. Download .txt di firma resta IT.
+  Locale ≠ IT: cortesia AR/EN/TR/FR/SQ/DE/ES/RU/ZH/HI. Download .txt di firma resta IT.
 */
 
 export type MandatoParams = {
@@ -49,6 +69,11 @@ export function buildMandatoParagraphs(
   if (locale === "tr") return buildMandatoParagraphsTr(params);
   if (locale === "fr") return buildMandatoParagraphsFr(params);
   if (locale === "sq") return buildMandatoParagraphsSq(params);
+  if (locale === "de") return buildMandatoParagraphsDe(params);
+  if (locale === "es") return buildMandatoParagraphsEs(params);
+  if (locale === "ru") return buildMandatoParagraphsRu(params);
+  if (locale === "zh") return buildMandatoParagraphsZh(params);
+  if (locale === "hi") return buildMandatoParagraphsHi(params);
   return buildMandatoParagraphsIt(params);
 }
 
@@ -113,5 +138,10 @@ export function buildMandatoTextLocalized(
   if (locale === "tr") return buildMandatoTextTr(params);
   if (locale === "fr") return buildMandatoTextFr(params);
   if (locale === "sq") return buildMandatoTextSq(params);
+  if (locale === "de") return buildMandatoTextDe(params);
+  if (locale === "es") return buildMandatoTextEs(params);
+  if (locale === "ru") return buildMandatoTextRu(params);
+  if (locale === "zh") return buildMandatoTextZh(params);
+  if (locale === "hi") return buildMandatoTextHi(params);
   return buildMandatoText(params);
 }

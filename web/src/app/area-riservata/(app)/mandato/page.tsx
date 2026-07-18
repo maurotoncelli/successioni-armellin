@@ -67,15 +67,13 @@ export default async function MandatoPage() {
     locale === "en" ||
     locale === "tr" ||
     locale === "fr" ||
-    locale === "sq";
-  const previewLang =
-    locale === "ar" ||
-    locale === "en" ||
-    locale === "tr" ||
-    locale === "fr" ||
-    locale === "sq"
-      ? locale
-      : "it";
+    locale === "sq" ||
+    locale === "de" ||
+    locale === "es" ||
+    locale === "ru" ||
+    locale === "zh" ||
+    locale === "hi";
+  const previewLang = isCourtesy ? locale : "it";
 
   return (
     <div>

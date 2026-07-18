@@ -5,11 +5,16 @@ import { getArticleEn } from "@/content/articles.en";
 import { getArticleTr } from "@/content/articles.tr";
 import { getArticleFr } from "@/content/articles.fr";
 import { getArticleSq } from "@/content/articles.sq";
+import { getArticleDe } from "@/content/articles.de";
+import { getArticleEs } from "@/content/articles.es";
+import { getArticleRu } from "@/content/articles.ru";
+import { getArticleZh } from "@/content/articles.zh";
+import { getArticleHi } from "@/content/articles.hi";
 import { DEFAULT_LOCALE, list } from "@/lib/content";
 
 /*
   Overlay lingue ≠ IT sulle guide (fixture IT in articles.ts).
-  - AR/EN/TR/FR/SQ: content/articles.<locale>.ts
+  - AR/EN/TR/FR/SQ/DE/ES/RU/ZH/HI: content/articles.<locale>.ts
   - categoria leggibile: sempre da guide.categorie (slug → nome locale)
 */
 
@@ -30,6 +35,11 @@ function getArticleOverlay(
   if (locale === "tr") return getArticleTr(slug);
   if (locale === "fr") return getArticleFr(slug);
   if (locale === "sq") return getArticleSq(slug);
+  if (locale === "de") return getArticleDe(slug);
+  if (locale === "es") return getArticleEs(slug);
+  if (locale === "ru") return getArticleRu(slug);
+  if (locale === "zh") return getArticleZh(slug);
+  if (locale === "hi") return getArticleHi(slug);
   return undefined;
 }
 
