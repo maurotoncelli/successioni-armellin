@@ -49,7 +49,7 @@ export function NavbarClient({
     barePath.startsWith("/preventivo") || barePath.startsWith("/checkout");
 
   return (
-    <header className="sticky top-0 z-40 border-b border-primary/10 bg-bg/90 backdrop-blur">
+    <header className="sticky top-0 z-40 overflow-x-clip border-b border-primary/10 bg-bg/90 backdrop-blur">
       <nav className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-3 px-5 sm:px-8">
         <Link
           href={homeHref}
@@ -139,7 +139,7 @@ export function NavbarClient({
           )}
         </div>
 
-        <div className="flex items-center gap-1 xl:hidden">
+        <div className="flex shrink-0 items-center gap-1 xl:hidden">
           <LanguageSwitcher
             locale={locale}
             align="right"
@@ -147,7 +147,7 @@ export function NavbarClient({
           />
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-md p-2 text-primary"
+            className="inline-flex shrink-0 items-center justify-center rounded-md p-2 text-primary"
             aria-label={open ? menuCloseLabel : menuOpenLabel}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
@@ -159,11 +159,11 @@ export function NavbarClient({
 
       <div
         className={cn(
-          "overflow-hidden border-t border-primary/10 bg-bg xl:hidden",
+          "overflow-x-clip border-t border-primary/10 bg-bg xl:hidden",
           open ? "block" : "hidden",
         )}
       >
-        <ul className="flex flex-col gap-1 px-5 py-4">
+        <ul className="flex w-full max-w-full flex-col gap-1 px-5 py-4">
           {menu.map((item) => (
             <li key={item.href}>
               <Link
@@ -191,7 +191,7 @@ export function NavbarClient({
               href={ctaPhone.href}
               className={buttonClasses({
                 variant: "outline",
-                className: "w-full",
+                className: "w-full max-w-full whitespace-normal",
               })}
               onClick={() => setOpen(false)}
             >
@@ -205,7 +205,7 @@ export function NavbarClient({
                 href={cta.href}
                 className={buttonClasses({
                   variant: "primary",
-                  className: "w-full",
+                  className: "w-full max-w-full whitespace-normal",
                 })}
                 onClick={() => setOpen(false)}
               >
