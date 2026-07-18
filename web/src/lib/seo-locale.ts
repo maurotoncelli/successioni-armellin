@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
-import { DEFAULT_LOCALE, isLocale, type Locale } from "@/lib/content";
+import { DEFAULT_LOCALE, LOCALES, isLocale, type Locale } from "@/lib/content";
 
 /*
-  Locale SEO con prefisso path (Fase A: solo `ar`).
-  IT resta sugli URL senza prefisso (nessun shock SEO). EN+ in Fase B.
+  Locale SEO con prefisso path.
+  IT resta sugli URL senza prefisso (nessun shock SEO).
+  Tutte le altre lingue UI → `/en/...`, `/de/...`, ecc.
 */
 
-export const SEO_PATH_LOCALES = ["ar"] as const;
+export const SEO_PATH_LOCALES = LOCALES.filter(
+  (l): l is Exclude<Locale, typeof DEFAULT_LOCALE> => l !== DEFAULT_LOCALE,
+);
 export type SeoPathLocale = (typeof SEO_PATH_LOCALES)[number];
 
 const NO_SEO_PREFIX_PREFIXES = [
@@ -30,7 +33,7 @@ export function siteBaseUrl(): string {
   ).replace(/\/$/, "");
 }
 
-/** True se il path non deve mai avere prefisso /ar (area, CRM, API…). */
+/** True se il path non deve mai avere prefisso locale (area, CRM, API…). */
 export function isSeoExemptPath(pathname: string): boolean {
   return NO_SEO_PREFIX_PREFIXES.some(
     (p) => pathname === p || pathname.startsWith(`${p}/`),
@@ -38,7 +41,7 @@ export function isSeoExemptPath(pathname: string): boolean {
 }
 
 /**
- * Estrae locale da prefisso path (`/ar/tariffe` → ar + `/tariffe`).
+ * Estrae locale da prefisso path (`/en/tariffe` → en + `/tariffe`).
  * Non tocca path exempt anche se per errore hanno prefisso.
  */
 export function stripSeoLocalePrefix(pathname: string): {
@@ -67,7 +70,7 @@ export function localePath(href: string, locale: Locale): string {
   return `/${locale}${clean}`;
 }
 
-/** Path “nudo” (senza /ar) a partire dall’URL corrente. */
+/** Path “nudo” (senza prefisso locale) a partire dall’URL corrente. */
 export function barePathFromLocation(
   pathname: string,
   search = "",
@@ -82,8 +85,28 @@ export function absoluteUrl(path: string): string {
   return `${base}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
+function languagesMap(barePath: string): Record<string, string> {
+  const clean =
+    !barePath || barePath === "/"
+      ? "/"
+      : barePath.startsWith("/")
+        ? barePath
+        : `/${barePath}`;
+
+  const itUrl = absoluteUrl(clean === "/" ? "/" : clean);
+  const languages: Record<string, string> = {
+    it: itUrl,
+    "x-default": itUrl,
+  };
+  for (const loc of SEO_PATH_LOCALES) {
+    const p = localePath(clean, loc);
+    languages[loc] = absoluteUrl(p === "/" ? `/${loc}` : p);
+  }
+  return languages;
+}
+
 /**
- * alternates.canonical + languages (it, ar, x-default) per una pagina pubblica.
+ * alternates.canonical + languages (it + tutte le SEO locales + x-default).
  * `barePath` = path senza prefisso locale (`/tariffe`, `/`).
  */
 export function buildLocaleAlternates(
@@ -97,20 +120,42 @@ export function buildLocaleAlternates(
         ? barePath
         : `/${barePath}`;
 
-  const itPath = clean;
-  const arPath = localePath(clean, "ar");
   const canonicalPath = isSeoPathLocale(currentLocale)
     ? localePath(clean, currentLocale)
-    : itPath;
+    : clean;
 
   return {
     canonical: absoluteUrl(canonicalPath === "/" ? "/" : canonicalPath),
-    languages: {
-      it: absoluteUrl(itPath === "/" ? "/" : itPath),
-      ar: absoluteUrl(arPath === "/" ? "/ar" : arPath),
-      "x-default": absoluteUrl(itPath === "/" ? "/" : itPath),
-    },
+    languages: languagesMap(clean),
   };
+}
+
+/** URL sitemap per IT + ogni locale SEO, con hreflang condiviso. */
+export function sitemapEntriesForPath(
+  barePath: string,
+  priority: number,
+  lastModified?: string | Date,
+): {
+  url: string;
+  lastModified?: string | Date;
+  priority: number;
+  alternates: { languages: Record<string, string> };
+}[] {
+  const clean =
+    !barePath || barePath === "/"
+      ? "/"
+      : barePath.startsWith("/")
+        ? barePath
+        : `/${barePath}`;
+  const languages = languagesMap(clean);
+  const base = { lastModified, priority, alternates: { languages } };
+  return [
+    { url: absoluteUrl(clean === "/" ? "/" : clean), ...base },
+    ...SEO_PATH_LOCALES.map((loc) => {
+      const p = localePath(clean, loc);
+      return { url: absoluteUrl(p === "/" ? `/${loc}` : p), ...base };
+    }),
+  ];
 }
 
 export function resolvePublicLocale(

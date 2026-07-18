@@ -11,9 +11,9 @@ import {
 /*
   Proxy (Next 16, runtime Node):
   - rinnova la sessione Supabase su /area-riservata e /crm
-  - SEO Fase A: prefisso /ar → rewrite interno + x-locale; IT senza prefisso
-  - ?lang=ar su path nudo → redirect 308 a /ar/...
-  - cookie lang=ar su path pubblico nudo → redirect a /ar/... (UX coerente)
+  - SEO: prefisso /en|/ar|/de… → rewrite interno + x-locale; IT senza prefisso
+  - ?lang=xx su path nudo → redirect 308 a /xx/... (se xx in SEO_PATH_LOCALES)
+  - cookie lang=xx su path pubblico nudo → redirect a /xx/... (UX coerente)
 */
 
 const LANG_MAX_VALUE_AGE = 60 * 60 * 24 * 365;
@@ -46,14 +46,14 @@ export async function proxy(req: NextRequest) {
   const { locale: pathLocale, pathname: barePath } =
     stripSeoLocalePrefix(rawPath);
 
-  // /ar/area-riservata (o crm/api) → togli prefisso SEO (non indicizzabili).
+  // /en/area-riservata (o crm/api) → togli prefisso SEO (non indicizzabili).
   if (pathLocale && isSeoExemptPath(barePath)) {
     const dest = req.nextUrl.clone();
     dest.pathname = barePath;
     return NextResponse.redirect(dest, 308);
   }
 
-  // ?lang=ar su URL senza prefisso → /ar/... (SEO + bookmark puliti).
+  // ?lang=xx su URL senza prefisso → /xx/... (SEO + bookmark puliti).
   if (
     isSeoPathLocale(fromQuery) &&
     !pathLocale &&
@@ -67,7 +67,7 @@ export async function proxy(req: NextRequest) {
     return res;
   }
 
-  // Cookie AR + visita path pubblico IT → /ar/... (link interni senza prefisso).
+  // Cookie lingua SEO + visita path pubblico IT → /xx/... (link interni senza prefisso).
   if (
     !pathLocale &&
     isSeoPathLocale(fromCookie) &&
@@ -84,7 +84,7 @@ export async function proxy(req: NextRequest) {
   if (!locale && isLocale(fromQuery)) locale = fromQuery;
   if (!locale && isLocale(fromCookie)) locale = fromCookie;
 
-  // Rewrite /ar/tariffe → /tariffe con header lingua (URL browser resta /ar/...).
+  // Rewrite /en/tariffe → /tariffe con header lingua (URL browser resta /en/...).
   if (pathLocale) {
     const rewriteUrl = req.nextUrl.clone();
     rewriteUrl.pathname = barePath;

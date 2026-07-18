@@ -13,9 +13,9 @@ import { cn } from "@/lib/utils";
 
 /*
   Selettore lingua:
-  - AR (SEO): naviga a /ar/... (URL indicizzabili)
+  - Lingue in SEO_PATH_LOCALES: naviga a /en/... /ar/... (URL indicizzabili)
   - IT: URL senza prefisso
-  - Altre lingue: cookie + ?lang= finché non avranno prefisso SEO (Fase B+)
+  - Area/CRM: solo cookie (+ ?lang), mai prefisso SEO
 */
 
 const LANGUAGE_LABELS: Record<Locale, string> = {

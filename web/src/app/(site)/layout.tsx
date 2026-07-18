@@ -11,7 +11,21 @@ import { ContactTracker } from "@/components/analytics/contact-tracker";
 import { getSiteOfflineState } from "@/lib/site-offline";
 import { getRequestLocale, t, tObj } from "@/lib/locale";
 import { COOKIE_UI_IT, type CookieUiLabels } from "@/lib/site-ui-labels";
-import { buildLocaleAlternates } from "@/lib/seo-locale";
+import { buildLocaleAlternates, SEO_PATH_LOCALES } from "@/lib/seo-locale";
+
+const OG_LOCALE: Record<string, string> = {
+  it: "it_IT",
+  en: "en_US",
+  ar: "ar_AR",
+  de: "de_DE",
+  es: "es_ES",
+  fr: "fr_FR",
+  ru: "ru_RU",
+  tr: "tr_TR",
+  zh: "zh_CN",
+  hi: "hi_IN",
+  sq: "sq_AL",
+};
 
 export async function generateMetadata(): Promise<Metadata> {
   const barePath = (await headers()).get("x-pathname") || "/";
@@ -30,6 +44,13 @@ export async function generateMetadata(): Promise<Metadata> {
     locale === "ar"
       ? "%s | المهندس لورنزو أرميلين"
       : "%s | Geom. Lorenzo Armellin";
+  const ogLocale = OG_LOCALE[locale] || "it_IT";
+  const alternateLocale = [
+    "it_IT",
+    ...SEO_PATH_LOCALES.map((l) => OG_LOCALE[l]).filter(
+      (v): v is string => Boolean(v) && v !== ogLocale,
+    ),
+  ];
 
   return {
     title: {
@@ -39,8 +60,8 @@ export async function generateMetadata(): Promise<Metadata> {
     description: defaultDescription,
     alternates: buildLocaleAlternates(barePath, locale),
     openGraph: {
-      locale: locale === "ar" ? "ar_AR" : "it_IT",
-      alternateLocale: locale === "ar" ? ["it_IT"] : ["ar_AR"],
+      locale: ogLocale,
+      alternateLocale,
       siteName: "Successioni Armellin",
     },
   };
