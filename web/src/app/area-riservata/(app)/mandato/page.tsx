@@ -62,7 +62,20 @@ export default async function MandatoPage() {
   };
   const paragraphs = buildMandatoParagraphs(mandatoParams, locale);
   const isAr = locale === "ar";
-  const isCourtesy = locale === "ar" || locale === "en";
+  const isCourtesy =
+    locale === "ar" ||
+    locale === "en" ||
+    locale === "tr" ||
+    locale === "fr" ||
+    locale === "sq";
+  const previewLang =
+    locale === "ar" ||
+    locale === "en" ||
+    locale === "tr" ||
+    locale === "fr" ||
+    locale === "sq"
+      ? locale
+      : "it";
 
   return (
     <div>
@@ -77,7 +90,7 @@ export default async function MandatoPage() {
         <div
           className="max-h-72 overflow-y-auto rounded-lg border border-primary/10 bg-bg-muted p-4 text-sm leading-relaxed text-text-muted"
           dir={isAr ? "rtl" : "ltr"}
-          lang={isAr ? "ar" : locale === "en" ? "en" : "it"}
+          lang={previewLang}
         >
           <p className="font-semibold text-text">
             {fillTemplate(mandateUi.heading, { code: account.practiceCode })}

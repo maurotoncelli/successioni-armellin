@@ -1,6 +1,6 @@
 # HANDOFF per il prossimo agente
 
-> Documento di passaggio di consegne. Aggiornato: **2026-07-18 ~15:15**.
+> Documento di passaggio di consegne. Aggiornato: **2026-07-18 ~15:50**.
 > Scopo: permettere a un nuovo agente (senza contesto) di riprendere il lavoro.
 > Riferimenti chiave: @RUNBOOK_GoLive (procedura go-live), @SPEC_Env_Vars,
 > @DOMANDE_PER_LORENZO, @PROSSIMO_INCONTRO_LORENZO, @07_Stack.
@@ -8,135 +8,137 @@
 > fiscali Lorenzo): nel file **`ACCESSI_LOCALE.md`** in root (git-ignored, NON
 > committato). Non è nel repo.
 
-Chat correlata (i18n AR + SEO `/ar` + GSC):  
+Chat i18n TR/FR/SQ (questa linea): chiedere all’utente il link transcript se serve.  
+Chat precedente EN/AR + SEO:  
 [i18n arabo + SEO multilanguage](b9f71084-abde-41f3-a758-ef68443d497a)
 
 **NON committare** `bozza video/` (asset untracked).  
-**NON toccare** `web/src/app/crm/**` per i18n (CRM sempre IT/LTR).
+**NON toccare** `web/src/app/crm/**` per i18n (CRM sempre IT/LTR).  
+**Traduzioni UI = agente** (niente OpenAI/API). Preferenza Mauro: subagent **Composer 2.5** per le mappe stringhe.
 
 ---
 
-## 8-duovicies. Sessione 18/07 — i18n EN (parity UI, no SEO `/en` ancora)
+## ★★ OBIETTIVO PROSSIMO AGENTE — i18n lingue residue (`de` `es` `ru` `zh` `hi`)
 
-**Branch:** `main` — modifiche locali **NON committate**. `tsc --noEmit` ok.  
-Traduzioni **fatte dall'agente** (niente OpenAI API).  
-**NON attivato** `SEO_PATH_LOCALES` per `en` (Fase B dopo ok Mauro + smoke).
+> Portare le lingue ancora a solo `area_login` allo stesso livello di **EN/TR/FR/SQ**.  
+> **Modello consigliato:** Composer 2.5 in parallelo sulle mappe (come TR/FR/SQ).  
+> **Batch ottimale:** 2–3 lingue per sessione (mappe parallele → un solo wire pass).  
+> Fare **tutte e 5 in un colpo** è possibile ma rischioso su file condivisi (`comms-copy`, `packages-i18n`, `COMMS_LOCALES`); meglio parallelizzare solo le mappe/overlay, poi unificarne il wire.  
+> **Non** attivare SEO path `/xx` senza ok Mauro.
 
-### Consegnato
-| Pezzo | Dettaglio |
-|-------|-----------|
-| `content_entries.en.json` | **parity 0 missing** vs IT (549) |
-| Overlay | `articles.en.ts` · `legal.en.ts` · `mandato.en.ts` |
-| Wire | `articles-i18n.ts`, `legal-docs.ts`, `mandato.ts` generalizzati AR+EN |
-| Pacchetti | `SEED_EN` in `packages-i18n.ts` (+ fallback Storage) |
-| Comms | `COMMS_LOCALES = it/ar/en` + copy EN in `comms-copy.ts`; profilo opzione English |
-| Content | `area.profilo_ui.comms_lang_en` anche in IT/AR/seed |
+### Baseline (dopo commit TR/FR/SQ)
 
-### Script di build (riuso)
-- `web/scripts/build_en_content.mjs` + `en_map_*.json`
-- `web/scripts/build_overlay_en.mjs` + `overlay_en_*.json`
+| Locale | `content_entries` vs IT (~549) | Overlay + SEED + comms | SEO `/xx` |
+|--------|-------------------------------|-------------------------|-----------|
+| **it** | completo (fede) | n/a | URL nudi |
+| **ar** | parity 0 | sì | **`/ar` live** |
+| **en** | parity 0 | sì | no (`?lang=en`) |
+| **tr** | parity 0 | sì | no (`?lang=tr`) |
+| **fr** | parity 0 | sì | no (`?lang=fr`) |
+| **sq** | parity 0 | sì | no (`?lang=sq`) |
+| **de, es, ru, zh, hi** | **solo `area_login` (~26)** | **assenti** | no |
 
-### Smoke da fare (prima del commit)
-1. `/?lang=en` (primo hit) → chrome UI in inglese  
-2. Home pacchetti/fai-da-te · `/preventivo` · `/faq` · una guida  
-3. Legali cortesia EN + mandato anteprima EN / download firma IT  
-4. Area: nav, profilo «English» per comunicazioni  
-5. CRM invariato IT  
-6. `cd web && npx tsc --noEmit`
+Registry già ok: `sources.<locale>` in `web/src/lib/content.ts` + switcher.  
+Gold standard LTR: **EN** + ultimo pattern TR/FR/SQ.
 
-### Next
-- Smoke + commit/push (chiedere Mauro). Messaggio stile: `feat(i18n): UI inglese sito/area (+ overlays/comms)`.  
-- **Solo dopo** ok smoke: aggiungere `"en"` a `SEO_PATH_LOCALES` + GSC.  
-- Poi DE/FR/ES (stesso playbook).
+### Playbook operativo (Composer 2.5) — lingua `xx`
 
----
+#### A) Mappe content (parallelo)
+1. Input già in repo: `web/scripts/it_need_0..8.json` (820 stringhe), `it_need_translate.json`, `en_map_*` per senso.
+2. Lanciare **3–4 Task** `subagent_type=generalPurpose` **model Composer 2.5** (`composer-2.5-fast`):
+   - batch 0–2 → `xx_map_0..2.json`
+   - batch 3–5 → `xx_map_3..5.json`
+   - batch 6–8 → `xx_map_6..8.json`
+   - overlay 0–3 → `overlay_xx_0..3.json` (array paralleli a `overlay_need_*`; peek `overlay_en_*`)
+3. Prompt obbligatori: preservare `{name}`/`{n}`/`{{token}}`, Agenzia delle Entrate, Entratel, F24, IBAN, SPID, Lorenzo, Geom., href; niente “unico in Italia”; IT fa fede su legali.
+4. Copiare `build_tr_content.mjs` → `build_xx_content.mjs` (solo prefisso file), `node scripts/build_xx_content.mjs` → parity 0 su `content_entries.xx.json`.
 
-## ★★ PLAYBOOK — prossime traduzioni (EN prima, poi altre)
+#### B) Overlay TS
+1. Copiare `build_overlay_tr.mjs` → `build_overlay_xx.mjs` (sed prefissi + notice lingua).
+2. `node scripts/build_overlay_xx.mjs` → `articles.xx.ts`, `legal.xx.ts`.
+3. Scrivere `mandato.xx.ts` (modello `mandato.en.ts` / `mandato.fr.ts`).
 
-> **Obiettivo:** EN è a parity content/overlay/comms (vedi §8-duovicies). Prossimo: smoke → commit → (opz.) SEO `/en` → poi **DE/FR/ES**.
-> Leggere anche **★ SPUNTI OBBLIGATORI** sotto prima di scrivere copy.
+#### C) Wire (un pass per lingua o batch)
+| Estendere | Come |
+|-----------|------|
+| `articles-i18n.ts` | `getArticleXx` |
+| `legal-docs.ts` | `legalDocsXx` |
+| `mandato.ts` + pagina mandato | branch `xx` + `isCourtesy` / `previewLang` |
+| `packages-i18n.ts` | `SEED_XX` + fallback `normalizeState` / `readFromStorage` |
+| `comms-locale-shared.ts` | `"xx"` in `COMMS_LOCALES` + label in **ogni** entry di `COMMS_LOCALE_LABELS` |
+| `comms-copy.ts` | blocchi `STATUS_*` + chiavi nelle `Record<CommsLocale, …>` (già a mappe) + prefissi `present*` |
+| `area-ui-labels.ts` + `profilo-client.tsx` | `comms_lang_xx` |
+| `content_entries.{it,ar,en,tr,fr,sq,xx}.json` + `seed/...it.json` | chiave `comms_lang_xx` |
 
-### Stato lingue (18/07 sera)
+#### D) Verifica
+```bash
+cd web && node -e '
+const it=require("./src/content/content_entries.it.json").entries;
+const xx=require("./src/content/content_entries.XX.json").entries;
+const itK=new Set(it.map(e=>e.collection+"."+e.key));
+const xxK=new Set(xx.map(e=>e.collection+"."+e.key));
+console.log("missing", [...itK].filter(k=>!xxK.has(k)).length);
+'
+cd web && npx tsc --noEmit
+```
+Smoke: `/?lang=xx` primo hit · home pacchetti · preventivo · guide · mandato anteprima xx / download IT · profilo lingua comms · CRM IT.
 
-| Locale | `content_entries` vs IT (~549) | Overlay guide/legal/mandato | SEO path `/xx` | Note |
-|--------|-------------------------------|-----------------------------|----------------|------|
-| **it** | completo (fede) | n/a | URL nudi | Autorità legale |
-| **ar** | **parity 0 missing** | `articles.ar.ts` · `legal.ar.ts` · `mandato.ar.ts` | **`/ar` live** | Cortesia; RTL |
-| **en** | **parity 0 missing** | `articles.en.ts` · `legal.en.ts` · `mandato.en.ts` | no (solo `?lang=` + cookie) | Cortesia; LTR; comms sì |
-| **de, es, fr, ru, tr, zh, hi, sq** | **solo `area_login` (~26)** | **assenti** | no | Fallback IT sul resto |
+#### E) Commit
+Chiedere Mauro. Escludere `bozza video/`.  
+Messaggio tipo: `feat(i18n): UI <lingue> sito/area (+ overlays/comms)`.
 
-Ordine consigliato Mauro: **EN (fatto, da commit) → DE/FR/ES → resto**.  
-Una lingua alla volta; commit/push separati se possibile.
+### Strategia “tutte le lingue insieme?”
+- **Sì sulle mappe:** lanciare in parallelo Composer 2.5 per de/es/ru/zh/hi (ognuno 3–4 task) = più veloce.
+- **No sul wire grezzo parallelo:** `comms-copy.ts` / `packages-i18n.ts` / `COMMS_LOCALES` vanno aggiornati in **un solo pass sequenziale** a fine sessione (altrimenti overwrite reciproci).
+- **Consiglio pratico:** sessione 1 = `de`+`es` (mappe //, wire unico); sessione 2 = `ru`+`zh`+`hi`. Oppure una sessione lunga con mappe tutte parallele e wire unico a fine.
 
-### Checklist operativa — nuova lingua `xx` (es. `en`)
-
-Copiare il pattern **AR**, non reinventare.
-
-#### 1) Content entries (blocco principale)
-- Partire da `web/src/content/content_entries.it.json` (o da `.ar.json` come riferimento struttura).
-- Riempire `web/src/content/content_entries.xx.json` con **stesse chiavi** `collection.key` (parity 0 missing).
-- Registry già pronto in `web/src/lib/content.ts` (`sources.en` ecc.) — non serve nuovo import se il file esiste.
-- Sync: se aggiungi chiavi IT nuove → anche `seed/content_entries.it.json`.
-- Verifica parity:
-  ```bash
-  cd web && node -e '
-  const fs=require("fs");
-  const it=JSON.parse(fs.readFileSync("src/content/content_entries.it.json","utf8")).entries;
-  const xx=JSON.parse(fs.readFileSync("src/content/content_entries.en.json","utf8")).entries;
-  const itK=new Set(it.map(e=>e.collection+"."+e.key));
-  const xxK=new Set(xx.map(e=>e.collection+"."+e.key));
-  console.log("missing", [...itK].filter(k=>!xxK.has(k)).length);
-  '
-  ```
-
-#### 2) Overlay (obbligatori per “completo come AR”)
-| File da creare | Wire in |
-|----------------|---------|
-| `web/src/content/articles.xx.ts` (mirror `articles.ar.ts`) | `web/src/lib/articles-i18n.ts` — oggi hardcodato `locale === "ar"`: generalizzare |
-| `web/src/content/legal.xx.ts` | `web/src/lib/legal-docs.ts` — oggi solo `ar` |
-| `web/src/content/mandato.xx.ts` | `web/src/content/mandato.ts` — oggi solo AR cortesia |
-
-#### 3) Pacchetti / add-on
-- CRM Listino → bottone **«Aggiorna traduzioni multilingua»** (serve `OPENAI_API_KEY` in env), **oppure** seed Storage `_packages-i18n.json` via `packages-i18n.ts`.
-- Non hardcodare nomi pacchetto in JSX.
-
-#### 4) Comms (email / campanella) — solo se si espande oltre AR
-- Oggi `COMMS_LOCALES = ["it","ar"]` in `web/src/lib/comms-locale-shared.ts`.
-- Per EN comms: aggiungere locale + copy in `comms-copy.ts` / migration se serve CHECK DB.
-- **UI lang ≠ `profiles.comms_locale`** — non unificare.
-
-#### 5) SEO path (Fase B) — **dopo** parity UI, non prima
-- Aggiungere `"en"` a `SEO_PATH_LOCALES` in `web/src/lib/seo-locale.ts`.
-- Il proxy (`web/src/proxy.ts`) e `localePath` / sitemap / hreflang seguono già `SEO_PATH_LOCALES` — verificare smoke.
-- Switcher: path prefix per SEO locales; IT nudo; altre ancora `?lang=` finché non in `SEO_PATH_LOCALES`.
-- Post-deploy: reinviare sitemap in GSC; ispezionare `/en` (quota giornaliera limitata).
-
-#### 6) Smoke minimo (obbligatorio prima del commit)
-1. `/?lang=en` (primo hit, cookie assente) → niente IT su chrome UI  
-2. Home: tabella fai-da-te + card pacchetti  
-3. `/preventivo`, `/preventivo/grazie`, `/checkout`  
-4. `/faq`, `/guide`, una guida  
-5. Legali cortesia + mandato **anteprima** EN / **download firma** IT  
-6. Area: nav, documenti upload errori, profilo “lingua comunicazioni”  
-7. CRM invariato IT  
-8. `cd web && npx tsc --noEmit`
-
-#### 7) Commit
-- Chiedere a Mauro prima di commit/push.
-- Escludere `bozza video/`, `.env`, `ACCESSI_LOCALE.md`.
-- Messaggio stile repo: `feat(i18n): UI inglese sito/area (+ SEO /en se incluso)`.
+### Termini dominio suggeriti (nuove lingue)
+| Concetto | de | es | ru | zh | hi |
+|----------|----|----|----|----|-----|
+| Area personale | Persönlicher Bereich | Área personal | Личный кабинет | 个人区 | व्यक्तिगत क्षेत्र |
+| successione | Erbschaft / Nachlass | sucesión | наследство | 遗产继承 | उत्तराधिकार |
+| preventivo | Kostenvoranschlag | presupuesto | смета | 报价 | अनुमान |
+| mandato | Mandat | mandato | мандат | 委托书 | अधिदेश |
+| recesso | Widerruf | desistimiento | отказ | 撤回 | वापसी |
 
 ### Cosa NON fare
-- Non tradurre CRM / email admin / nomi pacchetto in mail admin.
-- Non cambiare fede legale (mandato download, documenti ufficiali = IT).
-- Non dichiarare “unico in Italia” in copy SEO/YMYL.
-- Non attivare `/en` in sitemap senza content parity (Google vede IT sotto URL EN).
-- Non richiedere indicizzazione GSC su decine di URL lo stesso giorno (quota ~10).
+- Non tradurre CRM / email admin / nomi pacchetto in mail admin.  
+- Fede legale = IT (mandato download).  
+- Non attivare `/de` `/es`… in `SEO_PATH_LOCALES` senza ok.  
+- Non OpenAI per copy UI.  
+- Non RTL salvo `ar` (zh/hi/ru/de/es = LTR).
 
-### Riferimento AR “gold standard”
-- Commit: `4fb16fc` (i18n UX) · `c2193f1` / `a16cedb` (SEO `/ar`).
-- File modello: `content_entries.ar.json`, `articles.ar.ts`, `legal.ar.ts`, `mandato.ar.ts`.
-- Bug già visti e fixati: vedi §8-vicies + SPUNTI sotto.
+### Riferimenti commit
+- TR+FR+SQ: (questo commit, messaggio `feat(i18n): UI turca, francese e albanese…`)  
+- EN: `6150fd6` · AR UX: `4fb16fc` · SEO `/ar`: `c2193f1` / `a16cedb`
+
+---
+
+## 8-sexiestricies. Sessione 18/07 — i18n TR+FR+SQ (committato)
+
+Parity 0 content + overlay + SEED + comms per **tr**, **fr**, **sq**.  
+Script pipeline: `*_map_*`, `build_*_content.mjs`, `build_overlay_*.mjs`, `overlay_*_*`, `it_need_*`, `articles_it.json`, `legal_it.json`.  
+`comms-copy.ts` a mappe per `CommsLocale`. SEO path non attivati. `tsc` ok.
+
+---
+
+## 8-duovicies. Sessione 18/07 — i18n EN (FATTO, pushato)
+
+**Pushato su `origin/main`:** `6150fd6`.  
+Traduzioni agente (niente OpenAI). SEO `/en` **non** attivato.
+
+| Pezzo | Dettaglio |
+|-------|-----------|
+| `content_entries.en.json` | parity 0 missing |
+| Overlay | `articles.en.ts` · `legal.en.ts` · `mandato.en.ts` |
+| Wire | `articles-i18n` / `legal-docs` / `mandato` → AR+EN |
+| Pacchetti | `SEED_EN` |
+| Comms | `it/ar/en` + profilo English |
+
+Script riusabili come modello (mappe EN già in repo):  
+`web/scripts/build_en_content.mjs`, `build_overlay_en.mjs`, `en_map_*.json`, `overlay_en_*.json`.
+
+Backlog SEO (non bloccante TR): attivare `/en` in `SEO_PATH_LOCALES` solo dopo ok Mauro.
 
 ---
 
@@ -172,22 +174,23 @@ Deploy Vercel automatico.
 
 ---
 
-## ★ SPUNTI OBBLIGATORI — prossime traduzioni (oltre AR)
+## ★ SPUNTI OBBLIGATORI — prossime traduzioni (TR e oltre)
 
-> Leggere PRIMA di aggiungere EN/DE/… o di toccare copy. Evita i bug già visti su AR.
+> Leggere PRIMA di aggiungere TR/DE/… o di toccare copy. Evita i bug già visti su AR/EN.
 
-1. **Mai hardcodare UI in JSX** — ogni stringa utente in `content_entries.<locale>.json` via `t` / `tCta` / `tObj` / `tList`. I fallback IT nei call-site sono solo safety net (se li vedi in AR = chiave mancante o wire dimenticato).
+1. **Mai hardcodare UI in JSX** — ogni stringa utente in `content_entries.<locale>.json` via `t` / `tCta` / `tObj` / `tList`. I fallback IT nei call-site sono solo safety net.
 2. **Overlay dedicati** (non bastano le entry):  
-   `articles.<locale>.ts` · `legal.<locale>.ts` · `mandato.<locale>.ts` · seed/`packages-i18n` (o CRM «Aggiorna traduzioni») · `comms-copy.ts` (email/notif).
-3. **Template, non concatenazioni** — `{name}`, `{n}`, `{extra}`, `{fee}` nella frase intera. Vietato `"Pacchetto " + name` (rompe RTL e le altre lingue).
-4. **RTL** (AR oggi): frecce `rtl:rotate-180` / usare `ms-`/`me-` al posto di `ml-`/`mr-` dove conta; niente `+ testo` misto LTR; smoke `?lang=xx` al **primo hit** (cookie assente). EN/DE/… = LTR, niente rotate freccia.
+   `articles.<locale>.ts` · `legal.<locale>.ts` · `mandato.<locale>.ts` · `SEED_xx` in `packages-i18n.ts` · `comms-copy.ts` (email/notif).
+3. **Template, non concatenazioni** — `{name}`, `{n}`, `{extra}`, `{fee}` nella frase intera. Vietato `"Pacchetto " + name`.
+4. **RTL** solo AR: `rtl:rotate-180` / `ms-`/`me-`. TR/EN/DE = LTR. Smoke `?lang=xx` al **primo hit** (cookie assente).
 5. **Due lingue distinte** — `lang` UI (cookie) ≠ `profiles.comms_locale` (email/campanella). Non confonderle.
 6. **Fede legale = IT** — mandato download/firma e documenti ufficiali restano IT; anteprima/cortesia sì.
-7. **CRM sempre IT/LTR** — non tradurre `web/src/app/crm/**`. Email **admin** sempre IT (nomi pacchetto IT anche se UI cliente è AR).
+7. **CRM sempre IT/LTR** — non tradurre `web/src/app/crm/**`. Email **admin** sempre IT (nomi pacchetto IT anche se UI cliente è TR).
 8. **Dati runtime IT** — checklist documenti, `line_items` snapshot, messaggio offline Storage: fuori da content_entries finché non si traduce catalogo/CMS.
-9. **Parity chiavi** — nuova entry IT ⇒ stessa chiave in ogni locale pubblicato + sync `seed/content_entries.it.json`.
-10. **Smoke minimo nuova lingua** — home (tabella fai-da-te + pacchetti) · preventivo/grazie · checkout · FAQ/guide · area (nav, mandato anteprima, errori upload) · profilo comms.
-11. **Wire hardcodati AR** — `articles-i18n.ts`, `legal-docs.ts`, `mandato.ts`, `COMMS_LOCALES`: generalizzare a `xx` quando si pubblica la lingua (non lasciare solo file JSON senza overlay).
+9. **Parity chiavi** — nuova entry IT ⇒ stessa chiave in ogni locale pubblicato (IT/AR/EN/TR…) + sync `seed/content_entries.it.json`.
+10. **Smoke minimo nuova lingua** — home (fai-da-te + pacchetti) · preventivo/grazie · checkout · FAQ/guide · area (nav, mandato anteprima, errori upload) · profilo comms.
+11. **Wire** — oggi AR+EN già cablati; per TR estendere gli stessi `if (locale === …)` / registry (non lasciare solo JSON senza overlay/comms).
+12. **Traduzione = agente** — niente OpenAI/API per copy UI (decisione Mauro su EN; vale anche per TR).
 
 ---
 

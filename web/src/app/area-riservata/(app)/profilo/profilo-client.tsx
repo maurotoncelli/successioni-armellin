@@ -425,6 +425,9 @@ function CommsLocalePrefs({
           [
             { value: "it" as const, label: labels.comms_lang_it },
             { value: "en" as const, label: labels.comms_lang_en },
+            { value: "tr" as const, label: labels.comms_lang_tr },
+            { value: "fr" as const, label: labels.comms_lang_fr },
+            { value: "sq" as const, label: labels.comms_lang_sq },
             { value: "ar" as const, label: labels.comms_lang_ar },
           ] as const
         ).map((opt) => {

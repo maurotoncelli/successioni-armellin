@@ -1,36 +1,4797 @@
 {
   "_meta": {
-    "purpose": "Traduzione parziale (prep multilingua). Contiene solo la collection 'area_login'. Tutte le altre chiavi ricadono sull'italiano (IT fa fede).",
+    "purpose": "Turkish courtesy translation of public site + area UI. Same keys as IT; IT remains legally authoritative (@07/@10).",
     "locale": "tr",
-    "version": 1,
-    "updated_at": "2026-06-22"
+    "schema": "ogni entry: { collection, key, locale, value, is_published }. value tipizzato secondo SPEC_Content_Blocks.",
+    "exclusions": "NON inclusi i contenuti data-driven gestiti in tabelle dedicate: packages, addons, faqs (Q&A), articles, document_catalog, media_assets (qui solo asset_key di riferimento).",
+    "version": 2,
+    "updated_at": "2026-07-18"
   },
   "entries": [
-    { "collection": "area_login", "key": "header_title", "locale": "tr", "is_published": true, "value": "Özel Alan" },
-    { "collection": "area_login", "key": "header_subtitle", "locale": "tr", "is_published": true, "value": "Veraset işleminizi takip etmek için giriş yapın." },
-    { "collection": "area_login", "key": "tab_email", "locale": "tr", "is_published": true, "value": "E-posta" },
-    { "collection": "area_login", "key": "tab_phone", "locale": "tr", "is_published": true, "value": "Telefon" },
-    { "collection": "area_login", "key": "email_label", "locale": "tr", "is_published": true, "value": "E-postanız" },
-    { "collection": "area_login", "key": "email_hint", "locale": "tr", "is_published": true, "value": "Ödeme yaptığınız e-postayı kullanın." },
-    { "collection": "area_login", "key": "email_cta", "locale": "tr", "is_published": true, "value": "Giriş bağlantısını gönder" },
-    { "collection": "area_login", "key": "email_sending", "locale": "tr", "is_published": true, "value": "Gönderiliyor…" },
-    { "collection": "area_login", "key": "phone_label", "locale": "tr", "is_published": true, "value": "Telefon numaranız" },
-    { "collection": "area_login", "key": "phone_hint", "locale": "tr", "is_published": true, "value": "Siparişinizdeki numarayı kullanın. Size SMS ile bir kod göndereceğiz." },
-    { "collection": "area_login", "key": "phone_cta", "locale": "tr", "is_published": true, "value": "SMS ile kod gönder" },
-    { "collection": "area_login", "key": "phone_sending", "locale": "tr", "is_published": true, "value": "Gönderiliyor…" },
-    { "collection": "area_login", "key": "sent_email_title", "locale": "tr", "is_published": true, "value": "E-postanızı kontrol edin" },
-    { "collection": "area_login", "key": "sent_email_body", "locale": "tr", "is_published": true, "value": "{contact} adresine bir giriş bağlantısı gönderdik. Bağlantı birkaç dakika içinde sona erer." },
-    { "collection": "area_login", "key": "sent_phone_title", "locale": "tr", "is_published": true, "value": "SMS'lerinizi kontrol edin" },
-    { "collection": "area_login", "key": "sent_phone_body", "locale": "tr", "is_published": true, "value": "{contact} numarasına 6 haneli bir kod gönderdik. Aşağıya girin." },
-    { "collection": "area_login", "key": "otp_toggle", "locale": "tr", "is_published": true, "value": "Bir kod aldım, girmek istiyorum" },
-    { "collection": "area_login", "key": "otp_label", "locale": "tr", "is_published": true, "value": "6 haneli kod" },
-    { "collection": "area_login", "key": "otp_cta", "locale": "tr", "is_published": true, "value": "Kodu doğrula" },
-    { "collection": "area_login", "key": "otp_verifying", "locale": "tr", "is_published": true, "value": "Doğrulanıyor…" },
-    { "collection": "area_login", "key": "resend", "locale": "tr", "is_published": true, "value": "Tekrar gönder" },
-    { "collection": "area_login", "key": "error_link", "locale": "tr", "is_published": true, "value": "Giriş bağlantısı geçersiz veya süresi dolmuş. Yeni bir tane isteyin." },
-    { "collection": "area_login", "key": "secure_note", "locale": "tr", "is_published": true, "value": "Güvenli giriş" },
-    { "collection": "area_login", "key": "back_to_site", "locale": "tr", "is_published": true, "value": "Siteye dön" },
-    { "collection": "area_login", "key": "privacy_link", "locale": "tr", "is_published": true, "value": { "label": "Gizlilik", "href": "/privacy" } },
-    { "collection": "area_login", "key": "termini_link", "locale": "tr", "is_published": true, "value": { "label": "Koşullar", "href": "/termini-condizioni" } }
+    {
+      "collection": "navbar",
+      "key": "menu",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        {
+          "label": "Nasıl çalışır",
+          "href": "/come-funziona"
+        },
+        {
+          "label": "Fiyatlar",
+          "href": "/tariffe"
+        },
+        {
+          "label": "Hakkımda",
+          "href": "/chi-sono"
+        },
+        {
+          "label": "Rehberler",
+          "href": "/guide"
+        },
+        {
+          "label": "FAQ",
+          "href": "/faq"
+        },
+        {
+          "label": "İletişim",
+          "href": "/contatti"
+        }
+      ]
+    },
+    {
+      "collection": "navbar",
+      "key": "brand_tagline",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Veraset"
+    },
+    {
+      "collection": "navbar",
+      "key": "logo",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "asset_key": "logo_studio"
+      }
+    },
+    {
+      "collection": "navbar",
+      "key": "cta",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Ücretsiz ön teklif hesapla",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "navbar",
+      "key": "cta_phone",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Lorenzo ile konuşun",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "navbar",
+      "key": "lang_switcher",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "enabled": true,
+        "locales": [
+          "it",
+          "en",
+          "ar",
+          "de",
+          "es",
+          "ru",
+          "tr",
+          "zh",
+          "hi",
+          "sq",
+          "fr"
+        ]
+      }
+    },
+    {
+      "collection": "globals",
+      "key": "mobile_cta",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Ücretsiz ön teklif hesapla",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "footer",
+      "key": "studio",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "ragione_sociale": "Geom. Lorenzo Armellin",
+        "forma_giuridica": "Şahıs işletmesi — forfait rejim (KDV'siz işlem, madde 1 f. 54-89, Kanun 190/2014)",
+        "piva": "02432220503",
+        "cf": "RMLLNZ90E27G843J",
+        "albo": "Pisa Harita ve Harita Mühendisleri Odası, no. 1969 — 21/01/2022'den beri kayıtlı",
+        "indirizzo": "Via Vittorio Veneto 31, 56025 Pontedera (PI)"
+      }
+    },
+    {
+      "collection": "footer",
+      "key": "trust_line",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Entratel yetkili Geom. — mali müşavirlerin vergi denetimiyle"
+    },
+    {
+      "collection": "footer",
+      "key": "area_app_note",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bu site veraset dosyanızı çevrimiçi yönetmenizi sağlar: Kişisel alanda müşteriler dosya durumunu takip eder, istenen belgeleri yükler ve vekâletnameyi imzalar. Erişim e-posta, telefon veya Google hesabıyla yapılır: Google hesabından yalnızca ad ve e-posta adresinizi kimlik için kullanırız — başka veri okunmaz veya paylaşılmaz. Ayrıntılar:"
+    },
+    {
+      "collection": "footer",
+      "key": "odr",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Çevrimiçi uyuşmazlık çözümü (ODR)",
+        "href": "https://ec.europa.eu/consumers/odr"
+      }
+    },
+    {
+      "collection": "footer",
+      "key": "legal_menu",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        {
+          "label": "Privacy",
+          "href": "/privacy"
+        },
+        {
+          "label": "Cookie Policy",
+          "href": "/cookie-policy"
+        },
+        {
+          "label": "Koşullar ve Şartlar",
+          "href": "/termini-condizioni"
+        },
+        {
+          "label": "Garanti",
+          "href": "/garanzia"
+        },
+        {
+          "label": "Cayma",
+          "href": "/recesso"
+        }
+      ]
+    },
+    {
+      "collection": "footer",
+      "key": "credit",
+      "locale": "tr",
+      "is_published": true,
+      "value": "AT STUDIO · Mauro Toncelli tarafından geliştirildi"
+    },
+    {
+      "collection": "footer",
+      "key": "strumenti_link",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Kadastro değeri hesaplama",
+        "href": "/strumenti/valore-catastale"
+      }
+    },
+    {
+      "collection": "settings",
+      "key": "phone",
+      "locale": "tr",
+      "is_published": true,
+      "value": "320 1570567"
+    },
+    {
+      "collection": "settings",
+      "key": "area_label",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Kişisel alan"
+    },
+    {
+      "collection": "settings",
+      "key": "whatsapp",
+      "locale": "tr",
+      "is_published": true,
+      "value": "https://wa.me/393201570567"
+    },
+    {
+      "collection": "settings",
+      "key": "email",
+      "locale": "tr",
+      "is_published": true,
+      "value": "studio@successioniarmellin.it"
+    },
+    {
+      "collection": "settings",
+      "key": "pec",
+      "locale": "tr",
+      "is_published": true,
+      "value": "lorenzo.armellin@geopec.it"
+    },
+    {
+      "collection": "settings",
+      "key": "review_url",
+      "locale": "tr",
+      "is_published": true,
+      "value": "https://g.page/r/CVRoWf5CoiTDEAE/review"
+    },
+    {
+      "collection": "settings",
+      "key": "address",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "via": "Via Vittorio Veneto 31",
+        "cap": "56025",
+        "citta": "Pontedera (PI)"
+      }
+    },
+    {
+      "collection": "settings",
+      "key": "opening_hours",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        {
+          "giorni": "Pzt–Cum",
+          "orario": "9:00-13:00 / 14:30-18:30"
+        },
+        {
+          "giorni": "Cmt–Paz",
+          "orario": "Kapalı"
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "hero_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Veraset dosyanız, evden çıkmadan."
+    },
+    {
+      "collection": "home",
+      "key": "hero_subtitle",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Veraset konusunda uzmanlaşmış Geom. Lorenzo Armellin halleder: net fiyat, her şey çevrimiçi (isterseniz yüz yüze), sizi takip eden gerçek bir kişi. Vergileri ödemeden önce biz hesaplarız."
+    },
+    {
+      "collection": "home",
+      "key": "hero_cta_primary",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Ücretsiz ön teklif hesapla",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "hero_cta_secondary",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Nasıl çalıştığını keşfedin",
+        "href": "#come-funziona"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "hero_image",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "asset_key": "hero_home"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "hero_specialization_badge",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Veraset konusunda uzmanlaşmış Geom."
+    },
+    {
+      "collection": "home",
+      "key": "trustbar_items",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        "Albo'ya kayıtlı Geom.",
+        "Entratel yetkili (AdE elektronik gönderim)",
+        "Muhasebecilerin vergi denetimi",
+        "Güvenli Stripe ödemeleri",
+        "GDPR uyumlu",
+        "SSL"
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "social_proof_stats",
+      "locale": "tr",
+      "is_published": false,
+      "value": [
+        {
+          "valore": "oltre X",
+          "label": "tamamlanan veraset"
+        },
+        {
+          "valore": "X anni",
+          "label": "deneyim"
+        },
+        {
+          "valore": "4,X/5",
+          "label": "ortalama Google değerlendirmesi"
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "problema_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Veraset, bin soru. Sizin omuzlarınızdan alıyoruz."
+    },
+    {
+      "collection": "home",
+      "key": "problema_intro",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Zor bir dönemde geldiğini biliyoruz. Bürokrasiyi biz hallederiz."
+    },
+    {
+      "collection": "home",
+      "key": "problema_vantaggi",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "Sıra yok",
+          "testo": "Her şeyi evden yapın, telefondan bile."
+        },
+        {
+          "titolo": "Sıfır hata ve ceza",
+          "testo": "Yetkili bir Geom. tarafından kadastro verilerinin teknik kontrolü."
+        },
+        {
+          "titolo": "İnsan desteği",
+          "testo": "Her zaman gerçek bir kişiyle konuşursunuz, bot değil."
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_eyebrow",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Basit"
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Nasıl çalışır, 3 adımda"
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_steps",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "Birkaç soruyu yanıtlayın",
+          "testo": "Ne ihtiyacınız olduğunu ve ne kadara mal olacağını hemen söylüyoruz.",
+          "immagine": {
+            "src": "/images/come-funziona-step-1-quiz.jpg",
+            "alt": "Çevrimiçi ön teklif sorularını yanıtlayan kişi bilgisayar başında"
+          }
+        },
+        {
+          "titolo": "Belgeleri siz yüklersiniz",
+          "testo": "Kişisel alanınızdan, fotoğrafla da olur. Size tam listeyi veriyoruz.",
+          "immagine": {
+            "src": "/images/come-funziona-step-2-documenti.jpg",
+            "alt": "Akıllı telefonla belge fotoğraflayan kişi"
+          }
+        },
+        {
+          "titolo": "Her şeyi biz hallederiz",
+          "testo": "Beyannameyi hazırlayıp gönderiyoruz; makbuzları siz alırsınız.",
+          "immagine": {
+            "src": "/images/come-funziona-step-3-lorenzo.jpg",
+            "alt": "Geom. Lorenzo Armellin dosyayı hazırlarken bilgisayar başında"
+          }
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_sla_note",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Tüm belgeler tamamlandıktan sonra 10-15 iş günü içinde gönderim (pakete göre)."
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Successioni Armellin nedir"
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Successioni Armellin, Geom. Lorenzo Armellin ofisinin veraset beyannamesini çevrimiçi yönetmek için web uygulamasıdır: net fiyatlı bir ön teklif hesaplarsınız, kartla güvenle ödersiniz ve Kişisel alanınızda istenen belgeleri yükler, vekâletnameyi imzalar, dosyayı Agenzia delle Entrate'a gönderime kadar adım adım takip edersiniz. Kişisel alana e-posta, telefon veya Google hesabınızla erişebilirsiniz: bu durumda profilinizi oluşturmak ve tanımak için yalnızca adınızı ve e-posta adresinizi kullanırız — hesabınızdan başka veri okunmaz veya paylaşılmaz."
+    },
+    {
+      "collection": "home",
+      "key": "tariffe_eyebrow",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Fiyatlar"
+    },
+    {
+      "collection": "home",
+      "key": "tariffe_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Net fiyatlar, sürpriz yok"
+    },
+    {
+      "collection": "home",
+      "key": "tariffe_intro",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Sabit bir ücret ödersiniz. Vergiler ayrıdır, mirasçıya aittir ve biz sizin için hesaplarız."
+    },
+    {
+      "collection": "home",
+      "key": "tariffe_cta",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Paketleri gör",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "faidate_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Agenzia delle Entrate sitesinde kendiniz yapabilirsiniz. O halde neden biz?"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_col_us",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bizimle"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_col_diy",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Kendin yap"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_col_corner",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Karşılaştırma"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_intro",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Doğru, ücretsiz önceden doldurulmuş veraset beyanı var: dürüst bir seçenek. Ancak SPID ve uzmanlık gerektirir, verileri doğrulamaz ve hatalar (ve cezalar) size kalır."
+    },
+    {
+      "collection": "home",
+      "key": "faidate_confronto",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        {
+          "voce": "Gereken süre",
+          "faidate": "Saatler ve SPID size ait",
+          "noi": "Biz hallederiz"
+        },
+        {
+          "voce": "Kadastro verisi kontrolü",
+          "faidate": "Sizin sorumluluğunuzda",
+          "noi": "Bir geometra halleder"
+        },
+        {
+          "voce": "Vergi hesaplama",
+          "faidate": "Kendi başına",
+          "noi": "Bunu biz yapıyoruz, önceden"
+        },
+        {
+          "voce": "Destek",
+          "faidate": "Yok",
+          "noi": "Gerçek bir insan"
+        },
+        {
+          "voce": "Ceza riski",
+          "faidate": "Sizin",
+          "noi": "Yönetildi"
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Müşteriler ne diyor"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_intro",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Google'dan gerçek değerlendirmeler."
+    },
+    {
+      "collection": "home",
+      "key": "chisono_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Dosyanızla kim ilgileniyor"
+    },
+    {
+      "collection": "home",
+      "key": "chisono_estratto",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Ben Lorenzo Armellin, veraset beyannamelerini Agenzia delle Entrate'a iletmeye yetkili geometra. Mali müşavirlerin vergi denetimiyle kadastro verilerindeki hassasiyeti rakamlardaki güvenle birleştiriyorum."
+    },
+    {
+      "collection": "home",
+      "key": "chisono_video",
+      "locale": "tr",
+      "is_published": false,
+      "value": {
+        "asset_key": "video_benvenuto_lorenzo"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "chisono_cta",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Lorenzo'yu tanıyın",
+        "href": "/chi-sono"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "faq_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Sık sorulan sorular"
+    },
+    {
+      "collection": "home",
+      "key": "faq_cta",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Tüm sorular",
+        "href": "/faq"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "cta_finale_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bu yükü omuzlarınızdan almaya hazır mısınız?"
+    },
+    {
+      "collection": "home",
+      "key": "cta_finale_subtitle",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Birkaç dakikada ücretsiz ön teklif. Memnun kalmazsanız para iadesi."
+    },
+    {
+      "collection": "home",
+      "key": "cta_finale_button",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Ücretsiz ön teklif hesapla",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "cta_finale_phone",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Veya Lorenzo'yu arayın",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "hero_eyebrow",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Net fiyatlar"
+    },
+    {
+      "collection": "tariffe",
+      "key": "hero_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Net fiyatlar. Gördüğünüz kadar ödersiniz."
+    },
+    {
+      "collection": "tariffe",
+      "key": "hero_subtitle",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Paket başına sabit ücret, önceden belirlenir. Vergiler ayrıdır ve biz hesaplarız. Özel durumlar için özel ön teklif."
+    },
+    {
+      "collection": "tariffe",
+      "key": "card_badge_popolare",
+      "locale": "tr",
+      "is_published": true,
+      "value": "En çok tercih edilen"
+    },
+    {
+      "collection": "tariffe",
+      "key": "box_trasparenza_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Fiyat nasıl oluşur"
+    },
+    {
+      "collection": "tariffe",
+      "key": "box_trasparenza_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Paket fiyatı KDV hariç profesyonel ücrettir: ofis forfait rejiminde çalışır (KDV'ye tabi değildir). Veraset vergileri (ipotek, kadastro, damga) ayrıdır, mirasçıya aittir ve F24 ile ödenir: gönderimden ÖNCE hesaplayıp bildiririz."
+    },
+    {
+      "collection": "tariffe",
+      "key": "sovrapprezzo_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Fiyatın ne zaman değişebileceği (önceden söylüyoruz)"
+    },
+    {
+      "collection": "tariffe",
+      "key": "sovrapprezzo_list",
+      "locale": "tr",
+      "is_published": false,
+      "value": [
+        {
+          "voce": "Ek taşınmaz",
+          "importo": "+60 EUR adet (onaylanacak)"
+        },
+        {
+          "voce": "Tarım arazileri/ek yapılar",
+          "importo": "karmaşıklığa göre"
+        },
+        {
+          "voce": "Standart eşiğin üzerinde mirasçı",
+          "importo": "karmaşıklığa göre"
+        }
+      ]
+    },
+    {
+      "collection": "tariffe",
+      "key": "sla_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Teslim süreleri"
+    },
+    {
+      "collection": "tariffe",
+      "key": "sla_note",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Her paket, beyannamenin TAM belgelerden (ödemeden değil) itibaren belirli bir iş günü sayısı içinde gönderileceğini belirtir: böylece gerçekten tutabileceğimiz bir söz veririz. Üçüncü taraf süreleri (Agenzia, Kadastro, bankalar) hariçtir."
+    },
+    {
+      "collection": "tariffe",
+      "key": "deliverable_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "İşlem sonunda ne alırsınız"
+    },
+    {
+      "collection": "tariffe",
+      "key": "deliverable_list",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        "Agenzia delle Entrate sunum/kayıt makbuzu",
+        "Veraset beyannamesinin kopyası",
+        "F24 onayı / sonucu",
+        "Kadastro devir sonucu (uygulanabildiğinde)",
+        "Faturamız"
+      ]
+    },
+    {
+      "collection": "tariffe",
+      "key": "esempio_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Son belgelerden bir örneğe bakın"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_intro",
+      "locale": "tr",
+      "is_published": true,
+      "value": "İhtiyacınız olursa ek hizmetler"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_subtitle",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Daha fazla bilgi için bir hizmete dokunun. Şimdilik talep üzerine etkinleştiriyoruz: birlikte konuşup dosyaya ekliyoruz."
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_contact_text",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bu hizmet talep üzerine, özel bir ön teklifle eklenir. Arayın veya yazın: dosyanızı birlikte değerlendirip ekleriz, sürpriz yok."
+    },
+    {
+      "collection": "tariffe",
+      "key": "rate_text",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Ücret ödeme sırasında taksitle ödenebilir (PayPal Pay in 3, Klarna, Scalapay, mevcut olduğu yerlerde). Taksitlenen ücrettir, vergiler yasal sürelere tabidir."
+    },
+    {
+      "collection": "tariffe",
+      "key": "su_misura_text",
+      "locale": "tr",
+      "is_published": true,
+      "value": "8'den fazla gayrimenkul, tarım arazisi, işletme veya şirket payı mı? Her durum farklıdır: sürprizsiz özel ön teklif hazırlarız."
+    },
+    {
+      "collection": "tariffe",
+      "key": "su_misura_cta",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Özel ön teklif isteyin",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "ti_serve_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Belki hiç gerekmez. Ücretsiz söylüyoruz."
+    },
+    {
+      "collection": "tariffe",
+      "key": "ti_serve_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bazı durumlarda (doğrudan mirasçılar, yalnızca yasal eşikler içinde mütevazı likidite, gayrimenkul yok) beyanname gerekli olmayabilir. Ödeme yapmadan önce dosyanızı kontrol ederiz: gerekmezse söyleriz. Kesin doğrulama her zaman somut duruma dayanır."
+    },
+    {
+      "collection": "tariffe",
+      "key": "ti_serve_cta",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Dosyanızı ücretsiz kontrol edin",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Hangisini seçeceğinizi bilmiyor musunuz?"
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Paket seçimi hızlı rehberini okuyun veya Lorenzo ile konuşun: birkaç dakikada doğru olanı anlarsınız. Fikrinizi değiştirirseniz paket değiştirmek kolaydır, yalnızca fark ödenir."
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_cta_guida",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Seçim rehberi",
+        "href": "#guida"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_cta_call",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Lorenzo ile konuşun",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "microtrust",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Entratel yetkili Geom., mali müşavirlerin vergi denetimiyle."
+    },
+    {
+      "collection": "tariffe",
+      "key": "cta_finale_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Taahhütsüz, birkaç dakikada maliyeti öğrenin."
+    },
+    {
+      "collection": "tariffe",
+      "key": "cta_finale_button",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Ücretsiz ön teklif hesapla",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Kişiselleştirilmiş ön teklif"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_tagline",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Daha karmaşık verasetler için"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_price_label",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Size özel"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "8'den fazla gayrimenkul, tarım arazisi, işletme veya şirket payı mı? Karmaşık durumlar standart pakete sığmaz: dosyanızı inceler ve sürprizsiz özel ön teklif hazırlarız."
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_features",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        "Paketlerin kapsamadığı durumlar için",
+        "Dosyanızın ücretsiz ilk değerlendirmesi",
+        "Başlamadan önce net ve belirlenmiş fiyat",
+        "Paketlerle aynı hizmet ve destek"
+      ]
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_cta",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Ön teklif iste",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "hero_eyebrow",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Hakkımda"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "hero_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Merhaba, ben Lorenzo Armellin."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "hero_subtitle",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Veraset beyannamelerini Agenzia delle Entrate'a iletmeye yetkili Geom. Bu sitenin arkasında yazılım yok: dosyanızı takip eden bir kişi var."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "hero_ritratto",
+      "locale": "tr",
+      "is_published": false,
+      "value": {
+        "asset_key": "ritratto_lorenzo"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "bio_body",
+      "locale": "tr",
+      "is_published": false,
+      "value": "Her gün veraset dosyalarıyla ilgileniyorum. Geometra olarak gücüm kadastro verilerinin kontrolüdür — parseller, alt birimler, ek yapılar, mülkiyet belgeleri — dosyaların çoğunun takıldığı nokta. Amacım basit: zaten zor bir dönemde omuzlarınızdaki yükü almak, net fiyatlarla ve sizi ofisler ile bankalar arasında dolaştırmadan."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "credenziali_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Kimlik bilgilerim"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "credenziali_list",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        {
+          "voce": "Geom. Odası kaydı",
+          "dettaglio": "Pisa Odası n. 1969 - 21/01/2022'den beri kayıtlı"
+        },
+        {
+          "voce": "Entratel yetkilendirmesi",
+          "dettaglio": "Agenzia delle Entrate'a elektronik gönderim aracısı"
+        },
+        {
+          "voce": "P.IVA",
+          "dettaglio": "02432220503"
+        }
+      ]
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "team_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Geom. kadastroda, muhasebeciler rakamlarda"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "team_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Beyannameyi ben hazırlayıp iletiyorum: bunu yapmaya yetkiliyim. Vergi kısmında mali müşavirlerin denetiminden yararlanıyorum. Böylece kadastro verilerinde teknik kontrol ve hesaplarda güven elde edersiniz, dosya farklı ofisler arasında bölünmez."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "team_membri",
+      "locale": "tr",
+      "is_published": false,
+      "value": [
+        {
+          "ruolo": "Entratel yetkili Geom.",
+          "nome": "Lorenzo Armellin",
+          "focus": "Dosyayı hazırlar ve gönderir, kadastro kontrolü",
+          "foto": {
+            "asset_key": "ritratto_lorenzo"
+          }
+        },
+        {
+          "ruolo": "Vergi denetimi",
+          "nome": "Muhasebeci (onaylanacak)",
+          "focus": "Vergi/kanuni inceleme",
+          "foto": {
+            "asset_key": "ritratto_commercialista"
+          }
+        }
+      ]
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "perche_geometra_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Birçok kişi mali müşavir, CAF veya noter bekler. Verasette ise en hassas nokta kadastro verileridir: bu geometranın işidir. Sunum için Entratel aracısı gerekir — ben öyleyim. Noter yalnızca sonraki işlemlerde devreye girer, beyanname için değil."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Beni nerede bulursunuz"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_indirizzo",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "via": "Via Vittorio Veneto 31",
+        "cap": "56025",
+        "citta": "Pontedera (PI)"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_nota",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Her şey uzaktan yapılır, ancak ofis gerçekten var: burada."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_maps_label",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Google Maps'te aç"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_foto_alt",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Pontedera Katedrali"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "ritratto_alt",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Geom. Lorenzo Armellin"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_ref",
+      "locale": "tr",
+      "is_published": false,
+      "value": {
+        "asset_key": "video_benvenuto_lorenzo"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_caption",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bir selamlama ve çalışma tarzıma dair birkaç söz (60 saniye)."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_badge",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Video yakında"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_alt",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Geom. Lorenzo Armellin hoş geldiniz videosu"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "motto_latino",
+      "locale": "tr",
+      "is_published": false,
+      "value": "(miras/aile/güvenilirlik üzerine zarif Latince motto)"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "motto_traduzione",
+      "locale": "tr",
+      "is_published": false,
+      "value": "(İtalyanca çeviri)"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "recensioni_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Hakkımda söylenenler"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "cta_finale_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Ben ilgilenmemi ister misiniz?"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "cta_finale_button",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Ücretsiz ön teklif hesapla",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "cta_finale_phone",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Beni ara",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "documenti",
+      "key": "hero_eyebrow",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Belge rehberi"
+    },
+    {
+      "collection": "documenti",
+      "key": "hero_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Veraset için hangi belgeler gerekli?"
+    },
+    {
+      "collection": "documenti",
+      "key": "hero_subtitle",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Birkaç soruyu yanıtlayın, durumunuzda ne gerektiğini hemen ve ücretsiz söyleriz. Taahhüt yok. Eksik bir şey varsa çoğu zaman biz temin ederiz."
+    },
+    {
+      "collection": "documenti",
+      "key": "interattiva_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Kişisel listenizi oluşturun"
+    },
+    {
+      "collection": "documenti",
+      "key": "interattiva_domande",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        "Taşınmaz var mı (evler, araziler, garajlar)?",
+        "Vasiyetname var mı?",
+        "Reşit olmayan mirasçı var mı?",
+        "Hesap/yatırım var mı?",
+        "Tarım arazisi/parsel/ek yapı var mı?",
+        "Başka varlıklar var mı (hisseler, işletmeler, araçlar)?"
+      ]
+    },
+    {
+      "collection": "documenti",
+      "key": "interattiva_risultato_intro",
+      "locale": "tr",
+      "is_published": true,
+      "value": "İhtiyacınız olanlar:"
+    },
+    {
+      "collection": "documenti",
+      "key": "evergreen_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Veraset beyannamesi için tipik belgeler"
+    },
+    {
+      "collection": "documenti",
+      "key": "evergreen_intro",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Aşağıda en yaygın belgeler. Hepsi her zaman gerekmez: durumunuza bağlıdır (bunun için yukarıdaki aracı kullanın)."
+    },
+    {
+      "collection": "documenti",
+      "key": "hook_recupero",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bir belge bulamıyor musunuz? Çoğu zaman biz temin ederiz: kadastro kayıtları, mülkiyet belgeleri, eksik veriler. İşimizin parçası."
+    },
+    {
+      "collection": "documenti",
+      "key": "disclaimer_ymyl",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bu liste gösterge niteliğindedir ve girdiğiniz verilere göre uyarlanır. Kesin listeyi Lorenzo dosyanızı doğruladıktan sonra onaylar."
+    },
+    {
+      "collection": "documenti",
+      "key": "cta_preventivo",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Ön teklif hesapla",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "documenti",
+      "key": "cta_pdf",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Listeyi indir (PDF)",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "documenti",
+      "key": "cta_email",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "E-posta ile alın",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "faq",
+      "key": "hero_eyebrow",
+      "locale": "tr",
+      "is_published": true,
+      "value": "FAQ"
+    },
+    {
+      "collection": "faq",
+      "key": "hero_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Veraset hakkında sık sorulan sorular"
+    },
+    {
+      "collection": "faq",
+      "key": "hero_subtitle",
+      "locale": "tr",
+      "is_published": true,
+      "value": "En sık sorulan sorulara net yanıtlar. Sorunuzu bulamazsanız bize yazın veya Lorenzo'yu arayın: herkese yanıt veriyoruz."
+    },
+    {
+      "collection": "faq",
+      "key": "hero_search",
+      "locale": "tr",
+      "is_published": true,
+      "value": true
+    },
+    {
+      "collection": "faq",
+      "key": "cat_capire_intro",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Nedir, ne zaman gerekir ve riskler nelerdir."
+    },
+    {
+      "collection": "faq",
+      "key": "cat_costi_intro",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Ne kadar, neler dahil ve vergiler nasıl işler."
+    },
+    {
+      "collection": "faq",
+      "key": "cat_perche_intro",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Kendi başınıza ücretsiz yapılabilir: yine de vekâlet vermenin nedenleri."
+    },
+    {
+      "collection": "faq",
+      "key": "cat_come_intro",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Süreç, belgeler ve süreler, adım adım."
+    },
+    {
+      "collection": "faq",
+      "key": "cat_dopo_intro",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Ne alırsınız, verilerinizi nasıl işleriz ve haklarınız."
+    },
+    {
+      "collection": "faq",
+      "key": "cta_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Cevabı bulamadınız mı?"
+    },
+    {
+      "collection": "faq",
+      "key": "cta_button",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Ücretsiz ön teklif hesapla",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "faq",
+      "key": "cta_phone",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Lorenzo'ya sorun",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "recesso",
+      "key": "hero_eyebrow",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Haklarınız"
+    },
+    {
+      "collection": "recesso",
+      "key": "hero_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Cayma hakkınız, basitçe açıklanıyor"
+    },
+    {
+      "collection": "recesso",
+      "key": "hero_subtitle",
+      "locale": "tr",
+      "is_published": true,
+      "value": "İçinizin rahat olmasını istiyoruz. Burada iptal ve iade sürecini açık bir dille anlatıyoruz. Resmi metin Satış Koşulları'ndadır."
+    },
+    {
+      "collection": "recesso",
+      "key": "cosa_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Kararınızı değiştirmek için 14 gününüz var"
+    },
+    {
+      "collection": "recesso",
+      "key": "cosa_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Tüketici olarak satın almadan itibaren 14 gün içinde gerekçe göstermeden cayma hakkınız vardır. Bu yasal hakkınızdır."
+    },
+    {
+      "collection": "recesso",
+      "key": "avvio_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Hemen başlamamızı isterseniz"
+    },
+    {
+      "collection": "recesso",
+      "key": "avvio_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Veraset genellikle acildir (12 aylık bir süre vardır). 14 günden önce başlamamızı isterseniz açık onay isteriz: hizmet tamamlandığında cayma hakkı artık geçerli olmaz. İş yalnızca başlamış ama bitmemişse aşağıdaki maddeye bakın."
+    },
+    {
+      "collection": "recesso",
+      "key": "iniziato_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Siz çalışırken fikrimi değiştirirsem?"
+    },
+    {
+      "collection": "recesso",
+      "key": "iniziato_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Yine de cayabilirsiniz: o ana kadar yapılan işin orantılı kısmını ödersiniz, geri kalanını iade ederiz. Gizli ceza yok."
+    },
+    {
+      "collection": "recesso",
+      "key": "come_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Cayma nasıl talep edilir"
+    },
+    {
+      "collection": "recesso",
+      "key": "come_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "En basit yol: Kişisel alanınızda 'Cayma talep et' düğmesini bulursunuz. Alternatif olarak e-posta/PEC ile yazabilirsiniz. Aşağıdaki örnek formu kullanabilirsiniz, zorunlu değil."
+    },
+    {
+      "collection": "recesso",
+      "key": "come_cta_area",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Kişisel alandan cayma talep edin",
+        "href": "/area-riservata/recesso"
+      }
+    },
+    {
+      "collection": "recesso",
+      "key": "rimborso_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "İadeyi ne zaman alırım"
+    },
+    {
+      "collection": "recesso",
+      "key": "rimborso_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Yasal süreler içinde (genellikle talepten itibaren 14 gün) kullandığınız ödeme yöntemiyle yapılır. Karta yansıdıktan sonra banka genellikle 5-10 iş günü içinde hesaba geçirir (Stripe/sağlayıcı süreleri). Hazineye ödenmiş vergiler Agenzia kurallarına tabidir, bizden bağımsızdır."
+    },
+    {
+      "collection": "recesso",
+      "key": "garanzia_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Cayma ve garanti: iki farklı şey"
+    },
+    {
+      "collection": "recesso",
+      "key": "garanzia_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Cayma ilk 14 gün boyunca yasal hakkınızdır. 'Memnun kalmazsanız para iadesi' garantimiz bizim ek taahhüdümüzdür: işimizden memnun kalmazsanız konuşur ve bir çözüm buluruz. Ayrıntılar Garanti sayfasında."
+    },
+    {
+      "collection": "recesso",
+      "key": "garanzia_link",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Garantiyi oku",
+        "href": "/garanzia"
+      }
+    },
+    {
+      "collection": "recesso",
+      "key": "tc_link",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bu sayfa caymayı basit bir dille açıklar. Bağlayıcı metin Satış Koşulları'ndadır."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_eyebrow",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Süreç"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Nasıl çalışır: basit, evden, 3 adımda"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_subtitle",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Kuyruk yok, ofis yok. Adım adım yönlendiriyoruz: siz ailenize odaklanın, bürokrasiyi biz hallederiz."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        {
+          "numero": 1,
+          "titolo": "Birkaç soruyu yanıtlayın",
+          "testo": "Kısa bir çevrimiçi anket doldurursunuz (1 dakika). Ne gerektiğini ve ne kadar olduğunu hemen söyleriz — durumunuzda veraset gerekli değilse bunu da ücretsiz söyleriz.",
+          "dettaglio": "Anında sonuç: fiyat veya karmaşık durumlar için özel ön teklif."
+        },
+        {
+          "numero": 2,
+          "titolo": "Belgeleri siz yüklersiniz",
+          "testo": "Kişisel alanınızdan belgeleri yükleyin, telefon fotoğrafıyla da olur. Durumunuza özel tam listeyi veririz. Eksik bir şey varsa çoğu zaman biz temin ederiz.",
+          "dettaglio": "Her şeyi gerçek bir kişi kontrol eder: yarım kalmış form yok."
+        },
+        {
+          "numero": 3,
+          "titolo": "Her şeyi biz hallederiz",
+          "testo": "Lorenzo beyannameyi hazırlayıp Agenzia delle Entrate'a gönderir. Ödenecek vergileri önce bildiririz. Dosya sonunda makbuzları ve son belgeleri alanınızda alırsınız.",
+          "dettaglio": "Gerektiğinde kadastro devrini de biz hallederiz."
+        }
+      ]
+    },
+    {
+      "collection": "come_funziona",
+      "key": "sla_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Ne kadar sürer"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "sla_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Süreler pakete bağlıdır ve TÜM belgeler tam ve doğru olduğunda başlar (ödemeden değil): böylece gerçekten tutabileceğimiz bir söz veririz. Üçüncü taraf süreleri (Agenzia, Kadastro, bankalar) hariçtir."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "valore_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Yazılımın yapamadığını biz yapıyoruz"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "valore_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Parseller, alt birimler, ek yapılar, mülkiyet belgeleri — dosyaların takıldığı nokta olan kadastro verilerini elle kontrol ediyoruz. Rakamlarda mali müşavirlerin vergi denetimiyle. Bu, doldurulmuş bir form ile iyi yapılmış bir dosya arasındaki farktır."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "distanza_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Tamamen çevrimiçi"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "distanza_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Hiçbir ofise veya bankaya gitmeniz gerekmez: anket, belgeler, iletişim ve Agenzia'ya gönderim çevrimiçi yapılır. Her zaman Lorenzo ile bir görüşme olur."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "visita_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Yüz yüze mi tercih edersiniz?"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "visita_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Her şey uzaktan yapılır, ancak isterseniz randevuyla ofiste görüşebiliriz: kuyruk yok, belgeleri ve adımları birlikte netleştirmek için zaman. Arayın veya yazın, saat belirleyelim."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "visita_maps_label",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Google Maps'te aç"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "deliverable_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Sonunda elinizde ne olur"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "deliverable_list",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        "AdE sunum/kayıt makbuzu",
+        "Beyannamenin kopyası",
+        "F24 sonucu / onay",
+        "Kadastro devir sonucu (uygulanabildiğinde)",
+        "Fatura"
+      ]
+    },
+    {
+      "collection": "come_funziona",
+      "key": "cta_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Başlayalım mı? Sadece bir dakika."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "cta_button",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Ücretsiz ön teklif hesapla",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "cta_phone",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Lorenzo ile konuşun",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "contatti",
+      "key": "hero_eyebrow",
+      "locale": "tr",
+      "is_published": true,
+      "value": "İletişim"
+    },
+    {
+      "collection": "contatti",
+      "key": "hero_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bizimle konuşun"
+    },
+    {
+      "collection": "contatti",
+      "key": "hero_subtitle",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bir sorunuz mu var veya veraset gerekli mi anlamak mı istiyorsunuz? Yazın veya arayın: gerçek bir kişi yanıtlar, bot değil."
+    },
+    {
+      "collection": "contatti",
+      "key": "telefono",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Telefon / WhatsApp",
+        "numero": "+39 320 1570567",
+        "cta_chiama": "tel:+393201570567",
+        "cta_whatsapp": "https://wa.me/393201570567"
+      }
+    },
+    {
+      "collection": "contatti",
+      "key": "email",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "generale": "studio@successioniarmellin.it",
+        "pec": "lorenzo.armellin@geopec.it"
+      }
+    },
+    {
+      "collection": "contatti",
+      "key": "studio",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "via": "Via Vittorio Veneto 31",
+        "cap": "56025",
+        "citta": "Pontedera (PI)"
+      }
+    },
+    {
+      "collection": "contatti",
+      "key": "orari",
+      "locale": "tr",
+      "is_published": false,
+      "value": [
+        {
+          "giorni": "Pzt–Cum",
+          "orario": "9:00-13:00 / 14:30-18:30"
+        },
+        {
+          "giorni": "Cmt–Paz",
+          "orario": "Kapalı"
+        }
+      ]
+    },
+    {
+      "collection": "contatti",
+      "key": "canali_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Kendi dilinizde de yanınızdayız"
+    },
+    {
+      "collection": "contatti",
+      "key": "canali_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "WhatsApp veya e-postayla kendi dilinizde yazabilirsiniz: sorunsuz anlaşırız. Konuşmayı tercih ederseniz gerçek zamanlı çeviriyle görüşme yapabiliriz; önemli noktaları (tutarlar, süreler, belgeler) her zaman yazılı olarak teyit ederiz. Resmi belgeler İtalyanca kalır."
+    },
+    {
+      "collection": "contatti",
+      "key": "form_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bize yazın"
+    },
+    {
+      "collection": "contatti",
+      "key": "form_nota",
+      "locale": "tr",
+      "is_published": false,
+      "value": "1 iş günü içinde yanıtlıyoruz."
+    },
+    {
+      "collection": "contatti",
+      "key": "form_success",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Teşekkürler! Kısa sürede sizinle iletişime geçeceğiz."
+    },
+    {
+      "collection": "contatti",
+      "key": "mappa_nota",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Her şey uzaktan yapılır, ancak ofis gerçekten var: randevuyla uğrayabilirsiniz."
+    },
+    {
+      "collection": "contatti",
+      "key": "cta_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Hemen başlamak ister misiniz? Ücretsiz ön teklif hesaplayın, 1 dakika sürer."
+    },
+    {
+      "collection": "contatti",
+      "key": "cta_button",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Ön teklif hesapla",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "guide",
+      "key": "hero_eyebrow",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Rehberler"
+    },
+    {
+      "collection": "guide",
+      "key": "hero_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Veraset rehberleri: açık, güncel, bürokrasisiz"
+    },
+    {
+      "collection": "guide",
+      "key": "hero_subtitle",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Veraset, vergiler ve belgeler hakkında bilmeniz gereken her şey, dosyaları gerçekten yapan biri tarafından basitçe anlatılıyor."
+    },
+    {
+      "collection": "guide",
+      "key": "hero_search",
+      "locale": "tr",
+      "is_published": true,
+      "value": true
+    },
+    {
+      "collection": "guide",
+      "key": "categorie",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        {
+          "nome": "Veraseti anlamak",
+          "slug": "temeller"
+        },
+        {
+          "nome": "Vergiler ve maliyetler",
+          "slug": "vergiler"
+        },
+        {
+          "nome": "Belgeler",
+          "slug": "belgeler"
+        },
+        {
+          "nome": "Özel durumlar",
+          "slug": "vakalar"
+        },
+        {
+          "nome": "Yerel rehberler (Toskana)",
+          "slug": "yerel"
+        },
+        {
+          "nome": "Yabancı / yurt dışı mirasçılar",
+          "slug": "yabancılar"
+        }
+      ]
+    },
+    {
+      "collection": "guide",
+      "key": "in_evidenza_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Öne çıkan"
+    },
+    {
+      "collection": "guide",
+      "key": "cta_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Dosyanızda yardıma mı ihtiyacınız var?"
+    },
+    {
+      "collection": "guide",
+      "key": "cta_button",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Ücretsiz ön teklif hesapla",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "guide",
+      "key": "strumenti_banner",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "title": "Araç: kadastro değerini hesapla",
+        "body": "Veraset açısından bir ev veya arazi ne değerde? Kayıttaki renditayı girin ve vergilerin hesaplandığı değeri hemen alın.",
+        "cta_label": "Hesaplayıcıyı aç",
+        "href": "/strumenti/valore-catastale"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_hero_eyebrow",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Araçlar"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_meta_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Veraset için kadastro değeri hesaplama (ücretsiz, çevrimiçi)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_hero_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Veraset amaçlı bir taşınmaz ne kadar değer?"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_hero_subtitle",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Kadastro renditasını (kayıtta bulabilirsiniz) girin ve veraset vergilerinin hesaplandığı kadastro değerini hemen alın. Ücretsiz, veri bırakmadan."
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_tab_fabbricato",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bina"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_tab_terreno",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Tarım arazisi"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_rendita",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Kadastro geliri (€)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_help_rendita",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Kadastro kaydında, \"Rendita\" sütununda bulabilirsiniz. Eksikse çoğu zaman biz temin edebiliriz."
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_rd",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Dominikal gelir (€)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_help_rd",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Arazinin kadastro kaydında bulabilirsiniz. İMARLI OLMAYAN araziler için geçerlidir."
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_categoria",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Kadastro kategorisi"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_prima_casa",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Mirasçı için \"prima casa\" olacak (indirim: katsayı 110'a düşer)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_risultato",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Veraset amaçlı kadastro değeri"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_formula",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Hesaplama:"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_come_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Hesaplama nasıl çalışır"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_come_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Veraset beyannamesinde gayrimenkuller piyasa fiyatıyla değil kadastro değeriyle hesaplanır: %5 yeniden değerlenmiş rendita, kanunla belirlenen bir katsayıyla çarpılır. Tarım arazileri için: %25 yeniden değerlenmiş dominikal gelir × 90."
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_formule",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        {
+          "tipo": "İlk konut (indirim)",
+          "formula": "rendita × 1,05 × 110"
+        },
+        {
+          "tipo": "Konutlar ve eklentiler (A ve C grupları)",
+          "formula": "rendita × 1,05 × 120"
+        },
+        {
+          "tipo": "B grubu (okullar, yurtlar…)",
+          "formula": "rendita × 1,05 × 168"
+        },
+        {
+          "tipo": "A/10 ve D grubu (ofisler, depolar…)",
+          "formula": "rendita × 1,05 × 60"
+        },
+        {
+          "tipo": "C/1 ve E grubu (dükkanlar…)",
+          "formula": "rendita × 1,05 × 40,8"
+        },
+        {
+          "tipo": "Tarım arazileri (inşaata uygun değil)",
+          "formula": "reddito dominicale × 1,25 × 90"
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_note",
+      "locale": "tr",
+      "is_published": true,
+      "value": "İmarlı araziler istisnadır: kadastro değeri değil, rayiç (piyasa) değeriyle beyan edilir. Sonuç gösterge niteliğindedir: olası indirimler ve özel durumlar somut dosyada doğrulanmalıdır — tam olarak yaptığımız iş budur."
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_cta_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Vergiler dahil tüm verasetin ne kadara mal olacağını öğrenmek ister misiniz?"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_cta_button",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Ücretsiz ön teklif hesapla",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_faq_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Kadastro değeri hakkında sık sorulan sorular"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_faq",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        {
+          "q": "Taşınmazımın kadastro gelirini nerede bulurum?",
+          "a": "Kadastro kaydında \"Rendita\" sütunu. Agenzia delle Entrate sitesinden ücretsiz talep edebilirsiniz (SPID ile) veya müşterimizseniz biz temin ederiz."
+        },
+        {
+          "q": "Kadastro değeri evin piyasa fiyatı mıdır?",
+          "a": "Hayır: kadastro değeri neredeyse her zaman piyasa değerinden çok daha düşüktür. Veraset beyannamesinde ipotek ve kadastro vergilerinin hesaplandığı değer budur; yeniden değerlenmiş renditanın kanuni katsayıyla çarpılmasıyla elde edilir."
+        },
+        {
+          "q": "Hesaplamada ilk konut indirimi nasıl çalışır?",
+          "a": "Mirasçı için gayrimenkul \"prima casa\" olacaksa katsayı 110'a düşer (konutlar için 120 yerine) ve ipotek ile kadastro vergileri yüzde yerine sabit tutarda ödenir (her biri 200 euro)."
+        },
+        {
+          "q": "Araziler için de geçerli mi?",
+          "a": "Tarım arazileri (imarlı olmayan) için evet: %25 yeniden değerlenmiş dominikal gelir × 90. İmarlı araziler ise piyasa değeri (rayiç) ile beyan edilir."
+        }
+      ]
+    },
+    {
+      "collection": "article",
+      "key": "autore_box",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "autore": "Geom. Lorenzo Armellin",
+        "ruolo": "Entratel yetkili Geom.",
+        "reviewed_by": "Vergi kısmı muhasebeciler tarafından incelendi",
+        "foto": {
+          "asset_key": "ritratto_lorenzo"
+        },
+        "link": "/chi-sono"
+      }
+    },
+    {
+      "collection": "article",
+      "key": "disclaimer",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bu rehberdeki bilgiler gösterge niteliğindedir ve bilgilendirme amaçlıdır. Her veraset kendine özgüdür: kesin değerlendirme her zaman somut duruma dayanır. Durumunuzu ücretsiz kontrol ederiz."
+    },
+    {
+      "collection": "article",
+      "key": "cta_box",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "titolo": "Biz ilgilenmemizi ister misiniz?",
+        "button": {
+          "label": "Ücretsiz ön teklif hesapla",
+          "href": "/preventivo"
+        },
+        "phone": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "article",
+      "key": "fonti",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Resmi kaynaklar: Agenzia delle Entrate, Normattiva (her makaledeki bağlantılar)."
+    },
+    {
+      "collection": "preventivo",
+      "key": "intro_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "1 dakikada ücretsiz ön teklifinizi hesaplayın"
+    },
+    {
+      "collection": "preventivo",
+      "key": "intro_subtitle",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Birkaç soruyu yanıtlayın: hemen ne kadar olduğunu söyleriz veya durumunuz özel ise özel ön teklif hazırlarız. Taahhüt yok."
+    },
+    {
+      "collection": "preventivo",
+      "key": "progress_label",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Adım {n}/3"
+    },
+    {
+      "collection": "preventivo",
+      "key": "step1_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Temellerden başlayalım"
+    },
+    {
+      "collection": "preventivo",
+      "key": "step2_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Mirasçılar kimler"
+    },
+    {
+      "collection": "preventivo",
+      "key": "step3_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Mirasa neler dahildir"
+    },
+    {
+      "collection": "preventivo",
+      "key": "step4_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Ön teklifi nereye gönderelim"
+    },
+    {
+      "collection": "preventivo",
+      "key": "help_text",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        "Veriler yalnızca dosyanızı tahmin etmek içindir.",
+        "Bir yanıt bilmiyor musunuz? 'Bilmiyorum'u seçin, biz hallederiz."
+      ]
+    },
+    {
+      "collection": "preventivo",
+      "key": "consenso_privacy",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Gizlilik bildirimini okudum ve verilerin işlenmesine onay veriyorum."
+    },
+    {
+      "collection": "preventivo",
+      "key": "consenso_marketing",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Faydalı ipuçları ve güncellemeler almak istiyorum (isteğe bağlı)."
+    },
+    {
+      "collection": "preventivo",
+      "key": "cta_submit",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Sonucu hemen görün",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "preventivo",
+      "key": "trust_items",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        "Ücretsiz ve taahhütsüz",
+        "Lorenzo yanıtlıyor — gerçek bir kişi",
+        "Veriler güvende, AB sunucuları (GDPR)"
+      ]
+    },
+    {
+      "collection": "grazie",
+      "key": "header_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Dosyanız için sonuç"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_a_whatsapp",
+      "locale": "tr",
+      "is_published": true,
+      "value": "WhatsApp"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_a_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Belki beyanname vermenize gerek yok"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_taxes_note",
+      "locale": "tr",
+      "is_published": true,
+      "value": "+ durumunuza göre hesaplanan vergiler: ödeme yapmadan önce söylüyoruz."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_package_line",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Paket {name}"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_a_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Söylediklerinize göre durumunuz yasal muafiyet kapsamında olabilir. İhtiyacınız olmayan bir hizmeti satmak istemiyoruz: birlikte ücretsiz doğrulayalım. Kesin onay her zaman somut duruma dayanır."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_a_cta",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Ücretsiz kontrol için arayın",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "İşte size uygun paket"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_cta",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Ödemeye geç",
+        "href": "/checkout"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_riallineamento",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Ödemeden önce {guida} paket seçim rehberine bakın veya Lorenzo ile konuşun: yanlış seçtiyseniz değiştirmek kolaydır, yalnızca fark ödenir."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_guida",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "rehber",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Dosyanız özel bir ön teklifi hak ediyor"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Yanıtlarınızda özel unsurlar olan bir durum görünüyor (çok sayıda gayrimenkul, tarım arazisi, paylar, işletmeler…). Burada fiyat belirleyemeyiz: Lorenzo ile birlikte incelenmeli, ne fazla ne eksik ödersiniz. Aşağıya iletişim bilgilerinizi (ve isterseniz not) bırakın veya yazın: ayrıntıları netleştirmek ve özel ön teklifi hazırlamak için sizi ararız."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_cta",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Lorenzo'yu ara",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_whatsapp",
+      "locale": "tr",
+      "is_published": true,
+      "value": "WhatsApp'tan yazın"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_whatsapp_prefill",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Merhaba Lorenzo, sitedeki anketi doldurdum ve özel bir ön teklif çıktı. Dosyamı birlikte detaylandırmak istiyorum."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Düşünmek ister misiniz? Bu ön teklifi e-postayla alın"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_desc",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Ön teklif özetini gönderiyoruz, istediğiniz zaman bulabilirsiniz. Baskı yok."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_submit",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Ön teklifi e-postayla gönderin"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_ok_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Tamam! Gelen kutunuzu kontrol edin"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_ok_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Ön teklif özetini gönderdik. İstediğiniz zaman oradan devam edin."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_ok_title_noemail",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Talep kaydedildi!"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_ok_body_noemail",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Talebinizi kaydettik: ön teklif özetini kısa süre içinde göndereceğiz."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "İletişim bilgilerinizi bırakın: sizi biz arayalım"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_desc",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Anket yanıtları başlamak için yeterli. E-posta ve telefon bırakın: Lorenzo detayları birlikte netleştirmek ve taahhütsüz özel ön teklifi göndermek için sizinle iletişime geçecek. İsterseniz aşağıya not ekleyin."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_notes_label",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Lorenzo için not (isteğe bağlı)"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_notes_placeholder",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Örn. gayrimenkul türleri, araziler, şirketler/hisseler, aciliyetler veya sorular…"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_footnote",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Taahhüt yok: bir iş günü içinde (genellikle aynı gün) dosyayı birlikte incelemek ve ön teklifi hazırlamak için sizinle iletişime geçeriz."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_submit",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Geri aranma talep edin"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_ok_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Talep alındı!"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_ok_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Lorenzo dosyayı detaylandırmak ve size özel ön teklifi hazırlamak için kısa süre içinde sizinle iletişime geçecek."
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bu arada, ihtiyacınız olacaklar"
+    },
+    {
+      "collection": "documenti",
+      "key": "lista",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        {
+          "name": "Kimlik belgesi ve vergi numarası",
+          "description": "Tüm mirasçıların ve vefat edenin.",
+          "when": "Her zaman"
+        },
+        {
+          "name": "Ölüm belgesi",
+          "description": "Veya vefat edenin ölüm belgesi ve aile durumu yerine geçen beyan: formu biz veriyoruz.",
+          "when": "Her zaman"
+        },
+        {
+          "name": "Her mirasçı için aile durumu öz-beyanı",
+          "description": "Mirasçıları belirlemek için: her biri için bir form, biz veriyoruz.",
+          "when": "Her zaman"
+        },
+        {
+          "name": "Kadastro kayıt özetleri",
+          "description": "Verasetteki gayrimenkullere ait. Biz temin edebiliriz.",
+          "when": "Taşınmaz varsa"
+        },
+        {
+          "name": "Mülkiyet belgeleri",
+          "description": "Tapu senetleri, bağışlar veya önceki veraset beyannameleri.",
+          "when": "Taşınmaz varsa"
+        },
+        {
+          "name": "Vasiyetname",
+          "description": "Varsa yayımlanan vasiyetin kopyası.",
+          "when": "Vasiyetname varsa"
+        },
+        {
+          "name": "Hesap bakiye sertifikası",
+          "description": "Vefat tarihindeki hesap, cüzdan ve menkul kıymet bakiyeleri.",
+          "when": "Hesap/yatırım varsa"
+        }
+      ]
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_disclaimer",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Gösterge liste: kesin listeyi Lorenzo dosyanızı inceledikten sonra onaylar."
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_faq_link",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "SSS'de daha fazla bilgi",
+        "href": "/faq"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_hook",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bir şey mi eksik? Çoğu zaman biz temin edebiliriz."
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_cta_pdf",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Listeyi indir (PDF)",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_cta_email",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "E-posta ile alın",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "next_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "E-postayla bir özet gönderdik. Bundan sonra biz takip ediyoruz: gerçek bir kişi, bot değil."
+    },
+    {
+      "collection": "checkout",
+      "key": "header_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Siparişi tamamla"
+    },
+    {
+      "collection": "checkout",
+      "key": "header_subtitle",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bir adım daha ve biz ilgileniyoruz."
+    },
+    {
+      "collection": "checkout",
+      "key": "riepilogo_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Siparişiniz"
+    },
+    {
+      "collection": "checkout",
+      "key": "modifica_link",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Düzenle",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "checkout",
+      "key": "prezzo_imposte_nota",
+      "locale": "tr",
+      "is_published": true,
+      "value": "ÖNEMLİ: bu profesyonel ücrettir. Vergiler (veraset, ipotek, kadastro, damga) AYRIDIR, mirasçıya aittir; gönderimden ÖNCE hesaplayıp bildiririz."
+    },
+    {
+      "collection": "checkout",
+      "key": "microtrust",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Entratel yetkili bir Geom. ödersiniz, mali müşavirlerin vergi denetimiyle. Stripe ile güvenli ödeme."
+    },
+    {
+      "collection": "checkout",
+      "key": "pagamento_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Nasıl ödemek istersiniz"
+    },
+    {
+      "collection": "checkout",
+      "key": "pagamento_metodi",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        "Kart",
+        "PayPal",
+        "Havale (destekli)"
+      ]
+    },
+    {
+      "collection": "checkout",
+      "key": "rate_nota",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Taksitle ödeyebilirsiniz (PayPal Pay in 3, Klarna, Scalapay, mevcut olduğu yerlerde). Taksitlenen ücrettir, vergiler değil."
+    },
+    {
+      "collection": "checkout",
+      "key": "consenso_tc",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Satış Koşullarını ve gizlilik bildirimini kabul ediyorum."
+    },
+    {
+      "collection": "checkout",
+      "key": "consenso_avvio",
+      "locale": "tr",
+      "is_published": true,
+      "value": "İşlemin hemen başlamasını talep ediyorum ve hizmet 14 gün içinde tamamlanırsa cayma hakkımı kaybedeceğimi kabul ediyorum."
+    },
+    {
+      "collection": "checkout",
+      "key": "recesso_link",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Cayma nasıl çalışır",
+        "href": "/recesso"
+      }
+    },
+    {
+      "collection": "checkout",
+      "key": "cta_pay",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Güvenli öde",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "checkout",
+      "key": "cta_nota",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Şifreli işlem. Kart bilgilerinizi saklamıyoruz."
+    },
+    {
+      "collection": "checkout",
+      "key": "trust_items",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        "Memnun kalın veya paranız iade edilsin",
+        "AB sunucuları, GDPR uyumlu",
+        "Gerçek bir kişiden destek"
+      ]
+    },
+    {
+      "collection": "checkout",
+      "key": "success_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Ödeme başarılı! Hoş geldiniz."
+    },
+    {
+      "collection": "checkout",
+      "key": "error_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Ödeme başarısız"
+    },
+    {
+      "collection": "legale",
+      "key": "privacy_title",
+      "locale": "tr",
+      "is_published": false,
+      "value": "Gizlilik bildirimi"
+    },
+    {
+      "collection": "legale",
+      "key": "cookie_title",
+      "locale": "tr",
+      "is_published": false,
+      "value": "Cookie Policy"
+    },
+    {
+      "collection": "legale",
+      "key": "tc_title",
+      "locale": "tr",
+      "is_published": false,
+      "value": "Satış koşulları"
+    },
+    {
+      "collection": "legale",
+      "key": "garanzia_title",
+      "locale": "tr",
+      "is_published": false,
+      "value": "Garantimiz"
+    },
+    {
+      "collection": "legale",
+      "key": "garanzia_cta",
+      "locale": "tr",
+      "is_published": false,
+      "value": {
+        "label": "Ücretsiz ön teklif hesapla",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "sistema",
+      "key": "e404_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bu sayfa yok (veya artık yok)"
+    },
+    {
+      "collection": "sistema",
+      "key": "e404_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Yine de size yardımcı olabiliriz."
+    },
+    {
+      "collection": "sistema",
+      "key": "e404_cta",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        {
+          "label": "Ana sayfaya git",
+          "href": "/"
+        },
+        {
+          "label": "Ön teklif hesapla",
+          "href": "/preventivo"
+        }
+      ]
+    },
+    {
+      "collection": "sistema",
+      "key": "e500_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bir şeyler ters gitti"
+    },
+    {
+      "collection": "sistema",
+      "key": "e500_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Biraz sonra tekrar deneyin. Sorun devam ederse bize yazın veya arayın."
+    },
+    {
+      "collection": "sistema",
+      "key": "manutenzione_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bakım yapıyoruz"
+    },
+    {
+      "collection": "sistema",
+      "key": "manutenzione_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Kısa sürede tekrar çevrimiçi olacağız. Acil durumlar için bize ulaşın."
+    },
+    {
+      "collection": "sistema",
+      "key": "sessione_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Oturum süresi doldu"
+    },
+    {
+      "collection": "sistema",
+      "key": "sessione_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Güvenliğiniz için oturumunuzu kapattık. Devam etmek için tekrar giriş yapın."
+    },
+    {
+      "collection": "area_errors",
+      "key": "request_invalid",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Geçersiz talep."
+    },
+    {
+      "collection": "area_errors",
+      "key": "max_files",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Belge başına en fazla {n} dosya: yeni yüklemek için bir dosyayı silin."
+    },
+    {
+      "collection": "area_login",
+      "key": "header_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Kişisel alan"
+    },
+    {
+      "collection": "area_login",
+      "key": "header_subtitle",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Veraset dosyanızı takip etmek için giriş yapın."
+    },
+    {
+      "collection": "area_login",
+      "key": "tab_email",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Email"
+    },
+    {
+      "collection": "area_login",
+      "key": "tab_phone",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Telefon"
+    },
+    {
+      "collection": "area_login",
+      "key": "tab_password",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Password"
+    },
+    {
+      "collection": "area_login",
+      "key": "google_cta",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Google ile devam et"
+    },
+    {
+      "collection": "area_login",
+      "key": "oppure",
+      "locale": "tr",
+      "is_published": true,
+      "value": "veya"
+    },
+    {
+      "collection": "area_login",
+      "key": "password_label",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Parolanız"
+    },
+    {
+      "collection": "area_login",
+      "key": "password_hint",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Profilden, ilk girişten sonra oluşturulur. Yok mu? E-postayı kullanın."
+    },
+    {
+      "collection": "area_login",
+      "key": "password_cta",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Giriş yap"
+    },
+    {
+      "collection": "area_login",
+      "key": "password_verifying",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Giriş yapılıyor…"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_label",
+      "locale": "tr",
+      "is_published": true,
+      "value": "E-postanız"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_placeholder",
+      "locale": "tr",
+      "is_published": true,
+      "value": "nome@email.it"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_hint",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Ödeme yaptığınız e-postayı kullanın."
+    },
+    {
+      "collection": "area_login",
+      "key": "email_cta",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Erişim bağlantısını gönderin"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_sending",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Gönderiliyor…"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_label",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Telefon numaranız"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_placeholder",
+      "locale": "tr",
+      "is_published": true,
+      "value": "+39 333 123 4567"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_hint",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Siparişi verdiğiniz numarayı kullanın. SMS ile bir kod göndereceğiz."
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_cta",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Kodu SMS ile gönderin"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_sending",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Gönderiliyor…"
+    },
+    {
+      "collection": "area_login",
+      "key": "sent_email_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "E-postanızı kontrol edin"
+    },
+    {
+      "collection": "area_login",
+      "key": "sent_email_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "{contact} adresine bir erişim bağlantısı gönderdik. Bağlantının süresi birkaç dakika."
+    },
+    {
+      "collection": "area_login",
+      "key": "sent_phone_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "SMS'lerinizi kontrol edin"
+    },
+    {
+      "collection": "area_login",
+      "key": "sent_phone_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "{contact} numarasına 6 haneli bir kod gönderdik. Aşağıya girin."
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_toggle",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Kod aldım, girmek istiyorum"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_label",
+      "locale": "tr",
+      "is_published": true,
+      "value": "6 haneli kod"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_placeholder",
+      "locale": "tr",
+      "is_published": true,
+      "value": "123456"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_cta",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Kodu doğrula"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_verifying",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Doğrulanıyor…"
+    },
+    {
+      "collection": "area_login",
+      "key": "resend",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Tekrar gönder"
+    },
+    {
+      "collection": "area_login",
+      "key": "error_link",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Erişim bağlantısı geçersiz veya süresi dolmuş. Yeni bir tane isteyin."
+    },
+    {
+      "collection": "area_login",
+      "key": "secure_note",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Güvenli giriş"
+    },
+    {
+      "collection": "area_login",
+      "key": "back_to_site",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Siteye dön"
+    },
+    {
+      "collection": "area_login",
+      "key": "privacy_link",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Privacy",
+        "href": "/privacy"
+      }
+    },
+    {
+      "collection": "area_login",
+      "key": "termini_link",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Koşullar",
+        "href": "/termini-condizioni"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_legal_prefix",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Verilerinizi nasıl işlediğimize dair ayrıntılar:"
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_privacy_label",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Privacy Policy"
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_terms_label",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Hizmet koşulları"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "price_suffix",
+      "locale": "tr",
+      "is_published": true,
+      "value": "KDV hariç ücret"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "sla_line",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Belgeler tamamlandıktan sonra {n} iş günü içinde gönderim"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "cta_choose",
+      "locale": "tr",
+      "is_published": true,
+      "value": "{name} seçin"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_price_note",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Başlamadan önce birlikte belirlenir"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_discover",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Nasıl etkinleştirileceğini keşfedin"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_phone_label",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Lorenzo'yu ara"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_email_label",
+      "locale": "tr",
+      "is_published": true,
+      "value": "E-posta ile yazın"
+    },
+    {
+      "collection": "navbar",
+      "key": "cta_short",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Ön teklif"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_rating_of",
+      "locale": "tr",
+      "is_published": true,
+      "value": "5 üzerinden"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_count_one",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Google'da {n} değerlendirme"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_count_many",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Google'da {n} değerlendirme"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_from",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Yorumlar:"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_write",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Yorum yazın"
+    },
+    {
+      "collection": "faq",
+      "key": "items",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        {
+          "category": "Veraseti anlamak",
+          "question": "Veraset beyannamesi nedir?",
+          "answer": "Vefat edenin mirasçılara devredilen malvarlığını Agenzia delle Entrate'a bildiren vergi yükümlülüğüdür. Genellikle vefattan itibaren 12 ay içinde sunulmalıdır."
+        },
+        {
+          "category": "Veraseti anlamak",
+          "question": "Ne zamana kadar sunulmalı?",
+          "answer": "Genellikle vefat tarihinden itibaren 12 ay içinde. Geç sunmak ceza getirebilir: doğru sürelerde biz hallederiz."
+        },
+        {
+          "category": "Maliyetler ve vergiler",
+          "question": "Hizmetiniz ne kadar?",
+          "answer": "Pakete göre sabit ücret ödersiniz. Vergiler ayrıdır, mirasçıya aittir; gönderimden önce hesaplayıp bildiririz."
+        },
+        {
+          "category": "Maliyetler ve vergiler",
+          "question": "Vergiler fiyata dahil mi?",
+          "answer": "Hayır: paket fiyatı profesyonel ücrettir. Vergiler (veraset, ipotek, kadastro, damga) F24 ile ödenir ve ayrıdır. Önce biz hesaplarız."
+        },
+        {
+          "category": "Maliyetler ve vergiler",
+          "question": "Verasette ilk konut indirimi nedir?",
+          "answer": "En az bir mirasçı miras kalan gayrimenkulde prima casa şartlarını karşılıyorsa ipotek ve kadastro vergileri kadastro değeri üzerinden yüzde yerine sabit tutarda ödenir (her biri 200 euro). Hak kazanıp kazanmadığınızı biz kontrol eder ve beyannamede belirtiriz."
+        },
+        {
+          "category": "Neden tek başına değil",
+          "question": "Agenzia delle Entrate sitesinden ücretsiz kendim yapabilir miyim?",
+          "answer": "Evet, ücretsiz önceden doldurulmuş veraset beyanı var ve dürüst bir seçenek. Ancak SPID ve uzmanlık gerektirir: kadastro verilerini doğrulamaz ve olası hatalar (ve cezalar) size kalır."
+        },
+        {
+          "category": "Nasıl çalışır",
+          "question": "Herhangi bir ofise gitmem gerekir mi?",
+          "answer": "Hayır. Anket, belgeler, iletişim ve Agenzia'ya gönderim çevrimiçi yapılır. Her zaman Lorenzo ile bir görüşme olur, her şeyi açıklar."
+        },
+        {
+          "category": "Nasıl çalışır",
+          "question": "Hangi belgeler gerekli?",
+          "answer": "Durumunuza bağlıdır: size kişiselleştirilmiş bir liste veririz. Eksik bir şey varsa çoğu zaman biz temin ederiz (kayıtlar, mülkiyet belgeleri)."
+        },
+        {
+          "category": "Belgeler ve Kişisel alan",
+          "question": "Belgeleri telefon fotoğrafıyla yükleyebilir miyim?",
+          "answer": "Evet. Kişisel alanda PDF, JPG veya PNG yükleyebilirsiniz (telefon fotoğrafları dahil), her biri en fazla 10 MB ve kontrol listesinin her maddesi için en fazla 10 dosya. Ön/arka veya çok sayfalı belgeler için aynı maddeye birden fazla fotoğraf yüklemeniz yeterli."
+        },
+        {
+          "category": "Belgeler ve Kişisel alan",
+          "question": "İndirilip doldurulabilecek hazır formlar var mı?",
+          "answer": "Evet. Kontrol listesinin bazı maddelerinde hazır formlar bulursunuz (örneğin vefat edenin ölüm belgesi ve aile durumu yerine geçen beyan veya her mirasçı için aile durumu öz-beyanı): indirir, doldurur, imzalar ve yeniden yüklersiniz."
+        },
+        {
+          "category": "Belgeler ve Kişisel alan",
+          "question": "Bir belge reddedilirse ne olur?",
+          "answer": "Lorenzo tek tek kontrol eder. Bir sorun varsa (bulanık fotoğraf, eksik sayfa, yanlış belge) madde \"yeniden yapılacak\" durumuna döner ve ne düzeltileceğini açıklayan bir not eklenir: doğru dosyayı yeniden yüklersiniz ve her şeyi baştan yapmadan dosya devam eder."
+        },
+        {
+          "category": "Belgeler ve Kişisel alan",
+          "question": "Belgelerin uygun olduğunu nasıl anlarım?",
+          "answer": "Kişisel alanda her maddenin durumunu görürsünüz (yüklenecek, yüklendi, onaylandı, yeniden yapılacak). Bitince «Bitti»ye basın: her adımda e-posta güncellemesi alır ve dosyanın nerede olduğunu kontrol edebilirsiniz."
+        },
+        {
+          "category": "Hizmet sonrası",
+          "question": "İşlem sonunda ne alırım?",
+          "answer": "Sunum/kayıt makbuzu, beyanname kopyası, F24 sonucu ve gerektiğinde kadastro devri sonucu, ayrıca faturamız."
+        }
+      ]
+    },
+    {
+      "collection": "area",
+      "key": "nav_home",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Home"
+    },
+    {
+      "collection": "area",
+      "key": "nav_documenti",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Belgeler"
+    },
+    {
+      "collection": "area",
+      "key": "nav_ordine",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Satın alma"
+    },
+    {
+      "collection": "area",
+      "key": "nav_comunicazioni",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Mesajlar"
+    },
+    {
+      "collection": "area",
+      "key": "nav_dati",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bilgileriniz"
+    },
+    {
+      "collection": "area",
+      "key": "nav_mandato",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Vekâlet"
+    },
+    {
+      "collection": "area",
+      "key": "nav_conclusa",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Son belgeler"
+    },
+    {
+      "collection": "area",
+      "key": "nav_profilo",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Profil"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_brand",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Studio Armellin"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_practice",
+      "locale": "tr",
+      "is_published": true,
+      "value": "İşlem {code}"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_back",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Siteye dön"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_help",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Destek"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_logout",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Çıkış yap"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_notifications",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bildirimler"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_notifications_empty",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bildirim yok"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_notifications_mark_all",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Tümünü okundu işaretle"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_comms_new",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Yenilikler"
+    },
+    {
+      "collection": "area",
+      "key": "welcome_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Kişisel alan"
+    },
+    {
+      "collection": "area",
+      "key": "welcome_subtitle",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Hoş geldiniz."
+    },
+    {
+      "collection": "area",
+      "key": "hello",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Merhaba, {name}"
+    },
+    {
+      "collection": "area",
+      "key": "practice_deceased",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Dosya {code} · vefat eden {name}"
+    },
+    {
+      "collection": "area",
+      "key": "next_action_label",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Sonraki adım"
+    },
+    {
+      "collection": "area",
+      "key": "tracker_heading",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Dosyanız hangi aşamada"
+    },
+    {
+      "collection": "area",
+      "key": "docs_heading",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Belgeler"
+    },
+    {
+      "collection": "area",
+      "key": "docs_progress",
+      "locale": "tr",
+      "is_published": true,
+      "value": "{uploaded} / {total} yüklendi"
+    },
+    {
+      "collection": "area",
+      "key": "docs_cta",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Belgelere git"
+    },
+    {
+      "collection": "area",
+      "key": "summary_heading",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Özet"
+    },
+    {
+      "collection": "area",
+      "key": "summary_package",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Paket"
+    },
+    {
+      "collection": "area",
+      "key": "summary_price",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Ücret"
+    },
+    {
+      "collection": "area",
+      "key": "summary_taxes",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bildirilen vergiler"
+    },
+    {
+      "collection": "area",
+      "key": "summary_iban_missing",
+      "locale": "tr",
+      "is_published": true,
+      "value": "IBAN eksik: vergiler için ekleyin"
+    },
+    {
+      "collection": "area",
+      "key": "summary_cta_ordine",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Satın almayı görüntüle"
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bu dosya iptal edildi."
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_refunded",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Cayma kabul edildi ve iade yapıldı: genellikle ödeme kartında 5-10 iş günü içinde görürsünüz (bankanızın veya kart sağlayıcısının süreleri)."
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_pending",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Cayma kabul edildi. İade gerekiyorsa, yapıldıktan sonra genellikle kartınızda 5-10 iş günü içinde görürsünüz."
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_footer",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Yapılacak başka bir şey yok: aşağıda satın alma özetinizi bulabilirsiniz, her zaman erişilebilir."
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_cta",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Satın almanızı görüntüle"
+    },
+    {
+      "collection": "area",
+      "key": "client_steps",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        "Yüklenecek belgeler",
+        "İşleniyor",
+        "Agenzia delle Entrate'e gönderildi",
+        "Tamamlandı"
+      ]
+    },
+    {
+      "collection": "area",
+      "key": "action_closed_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Dosyanız tamamlandı."
+    },
+    {
+      "collection": "area",
+      "key": "action_closed_cta",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Son belgeleri indirin"
+    },
+    {
+      "collection": "area",
+      "key": "action_docs_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Devam etmek için bazı belgeler eksik."
+    },
+    {
+      "collection": "area",
+      "key": "action_docs_cta",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Belgeleri yükle"
+    },
+    {
+      "collection": "area",
+      "key": "action_working_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Dosyanız üzerinde çalışıyoruz."
+    },
+    {
+      "collection": "area",
+      "key": "action_working_cta",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Durumu görüntüle"
+    },
+    {
+      "collection": "area",
+      "key": "action_idle_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Her şey yolunda, şimdilik bir işlem gerekmiyor."
+    },
+    {
+      "collection": "area",
+      "key": "action_idle_cta",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Satın almanızı görüntüle"
+    },
+    {
+      "collection": "area",
+      "key": "doc_state_da_caricare",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Yüklenecek"
+    },
+    {
+      "collection": "area",
+      "key": "doc_state_caricato",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Yüklendi"
+    },
+    {
+      "collection": "area",
+      "key": "doc_state_da_rifare",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Yeniden yapılacak"
+    },
+    {
+      "collection": "area",
+      "key": "empty_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bu girişe bağlı dosya yok"
+    },
+    {
+      "collection": "area",
+      "key": "empty_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bir ön teklif ödediyseniz dosyayı ödeme sırasındaki e-postayla bağlayın. Aksi halde siteden ön teklif hesaplayın."
+    },
+    {
+      "collection": "area",
+      "key": "empty_claim_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Zaten bir işleminiz var mı?"
+    },
+    {
+      "collection": "area",
+      "key": "empty_claim_cta",
+      "locale": "tr",
+      "is_published": true,
+      "value": "İşleminizi bağlayın"
+    },
+    {
+      "collection": "area",
+      "key": "documenti_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Belgeleriniz"
+    },
+    {
+      "collection": "area",
+      "key": "documenti_subtitle",
+      "locale": "tr",
+      "is_published": true,
+      "value": "İstenen belgeleri yükleyin. Telefonla da fotoğraf çekebilirsiniz."
+    },
+    {
+      "collection": "area",
+      "key": "documenti_photo_tip",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Net fotoğraflar, tüm sayfa kadrajda, parlama yok. PDF ve JPG/PNG en fazla 10 MB."
+    },
+    {
+      "collection": "area",
+      "key": "ordine_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Satın almanız"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_subtitle",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Ne satın aldınız ve neler dahil. İstediğiniz zaman inceleyebilirsiniz."
+    },
+    {
+      "collection": "area",
+      "key": "ordine_summary",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Sipariş özeti"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_total",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Toplam ücret"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_no_iva",
+      "locale": "tr",
+      "is_published": true,
+      "value": "KDV hariç ücret (forfait rejim). Vergiler ayrıdır (aşağıya bakın)."
+    },
+    {
+      "collection": "area",
+      "key": "ordine_payment_status",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Ödeme durumu"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_method",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Yöntem"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_card",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Kart (çevrimiçi)"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_transfer",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Havale"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_paid",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Ödendi"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_pending",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Beklemede"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_partial",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Kısmen iade edildi"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_refunded",
+      "locale": "tr",
+      "is_published": true,
+      "value": "İade edildi"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_refund_note",
+      "locale": "tr",
+      "is_published": true,
+      "value": "İade yapıldı: genellikle kartınızda 5-10 iş günü içinde görürsünüz (bankanızın veya kart sağlayıcısının süreleri)."
+    },
+    {
+      "collection": "area",
+      "key": "dati_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bilgileriniz"
+    },
+    {
+      "collection": "area",
+      "key": "dati_subtitle",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Dosya için ihtiyaç duyduğumuz bazı ek bilgiler."
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Mesajlar"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_subtitle",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Dosyanızla ilgili mesajlar ve güncellemeler."
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_empty",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Şimdilik mesaj yok."
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_channel_email",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Email"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_channel_phone",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Arama"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_channel_wa",
+      "locale": "tr",
+      "is_published": true,
+      "value": "WhatsApp"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_channel_inperson",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Yüz yüze"
+    },
+    {
+      "collection": "area",
+      "key": "mandato_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Vekâlet ve onaylar"
+    },
+    {
+      "collection": "area",
+      "key": "mandato_subtitle",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Dosyanız için profesyonel vekâletnameyi okuyun ve imzalayın."
+    },
+    {
+      "collection": "area",
+      "key": "mandato_lang_note",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Vekâletnamenin İtalyanca sürümü geçerlidir. Çeviri yalnızca nezaket amaçlıdır; imza için indirilen dosya İtalyanca kalır."
+    },
+    {
+      "collection": "area",
+      "key": "conclusa_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Son belgeler"
+    },
+    {
+      "collection": "area",
+      "key": "conclusa_subtitle_open",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Dosyanız tamamlandı. İndirilecek belgeleri burada bulabilirsiniz."
+    },
+    {
+      "collection": "area",
+      "key": "conclusa_subtitle_closed",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Son belgeler dosya tamamlandığında kullanılabilir olacaktır."
+    },
+    {
+      "collection": "area",
+      "key": "profilo_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Profil"
+    },
+    {
+      "collection": "area",
+      "key": "profilo_subtitle",
+      "locale": "tr",
+      "is_published": true,
+      "value": "İletişim bilgileri, güvenlik ve tercihler."
+    },
+    {
+      "collection": "area",
+      "key": "recesso_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Cayma talebi"
+    },
+    {
+      "collection": "area",
+      "key": "recesso_subtitle",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Dosya tamamlanana kadar cayma talebinde bulunabilirsiniz."
+    },
+    {
+      "collection": "area",
+      "key": "recesso_window_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Sözleşmenin imzalanmasından itibaren 14 gün içindesiniz."
+    },
+    {
+      "collection": "area",
+      "key": "recesso_rule_1",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Henüz başlamadıysak: ücretin tam iadesi."
+    },
+    {
+      "collection": "area",
+      "key": "recesso_rule_2",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Başladık ama bitirmediysek: yapılan işe orantılı iade."
+    },
+    {
+      "collection": "area",
+      "key": "recesso_rule_3",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Hizmet zaten tamamlandıysa: cayma hakkı geçerli değildir (madde 59)."
+    },
+    {
+      "collection": "area",
+      "key": "review_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Dosya tamamlandı: bize bir değerlendirme bırakır mısınız?"
+    },
+    {
+      "collection": "area",
+      "key": "review_cta",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Google'da değerlendirme bırakın"
+    },
+    {
+      "collection": "area",
+      "key": "review_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Lorenzo ile iyi bir deneyim yaşadıysanız, Google'da bir yorum bize çok yardımcı olur."
+    },
+    {
+      "collection": "area",
+      "key": "chrome_comms_all",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Tüm mesajları görün"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_comms_new_count",
+      "locale": "tr",
+      "is_published": true,
+      "value": "({n} yeni)"
+    },
+    {
+      "collection": "area",
+      "key": "docs_ui",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "counter": "Belgeler: {uploaded} / {total}",
+        "all_uploaded": "Tümü yüklendi",
+        "missing_n": "{n} eksik",
+        "optional": "(isteğe bağlı)",
+        "delete_file": "Bu dosyayı sil",
+        "uploading": "Yükleniyor…",
+        "upload": "Yükle",
+        "reupload": "Yeniden yükle",
+        "add_another": "Başka bir dosya ekle",
+        "multi_page_hint": "ön/arka veya sayfa başına bir fotoğraf: biz birleştiririz",
+        "done_title": "Tamam!",
+        "done_body": "Lorenzo belgelerinizi aldı ve kontrol ediyor. Eksik bir şey olursa haber veririz — içiniz rahat olsun.",
+        "submit_cta": "Bitirdim — Lorenzo'ya gönder",
+        "missing_one": "1 belge eksik",
+        "missing_many": "{n} belge eksik",
+        "templates_title": "Forma mı ihtiyacınız var? Biz veriyoruz:",
+        "templates_help": "Formu indirin, yazdırıp tamamen doldurun, imzalayın ve buraya yükleyin (okunaklı bir fotoğraf da olur), imzalayanın kimlik belgesi kopyasıyla birlikte.",
+        "err_file_too_big": "Dosya çok büyük (en fazla 10 MB).",
+        "err_too_many": "Her kalem için en fazla 10 dosya yükleyebilirsiniz.",
+        "err_upload_failed": "Yükleme başarısız.",
+        "err_upload_network": "Yükleme başarısız, bağlantınızı kontrol edin.",
+        "err_delete_failed": "Silme başarısız.",
+        "err_delete_network": "Silme başarısız, tekrar deneyin.",
+        "state_da_caricare": "Yüklenecek",
+        "state_caricato": "Yüklendi",
+        "state_da_rifare": "Yeniden yapılacak"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "mandate_ui",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "signed_title": "Vekâlet imzalandı.",
+        "signed_paper": "İmzalı kağıt vekâlet alındı.",
+        "signed_electronic": "Elektronik imza kaydedildi (tarih ve saat).",
+        "signed_thanks": "Teşekkürler, dosyanızla devam edebiliriz.",
+        "accept_checkbox": "Vekâletnameyi, koşulları ve gizlilik bildirimini okudum ve kabul ediyorum.",
+        "accept_cta": "Kabul ediyor ve çevrimiçi imzalıyorum",
+        "paper_title": "Kağıt imzayı mı tercih edersiniz?",
+        "paper_body": "Vekâletnameyi indirin, elle imzalayın ve tekrar yükleyin: bizim için uygundur.",
+        "download_blank": "Vekâleti indir",
+        "upload_signed": "İmzalı vekâleti yükleyin",
+        "err_file_too_big": "Dosya çok büyük (en fazla 10 MB).",
+        "err_upload_failed": "Yükleme başarısız.",
+        "err_upload_network": "Yükleme başarısız, bağlantınızı kontrol edin.",
+        "heading": "Mesleki vekâlet - Dosya {code}"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "iban_ui",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "saved": "IBAN şifreli olarak kaydedildi (••{last4} ile bitiyor). Yeni bir IBAN girerek güncelleyebilirsiniz.",
+        "cleared": "IBAN ödeme (F24) için kullanıldı ve güvenlik için {date} tarihinde silindi. Tekrar gerekirse yeniden girebilirsiniz.",
+        "label": "Mirasçının IBAN'ı",
+        "hint": "Hassas veri: yalnızca olası vergi ödemesi (F24) için kullanılır. Şifreli olarak saklanır.",
+        "save": "Kaydet"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "claim_ui",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "title": "Zaten bir dosyanız var mı? Bu girişi bağlayın",
+        "body": "Dosya kodunu (örn. SUC-2026-0022) ve ödeme veya ön teklif için kullanılan e-postayı girin. Bu girişteki e-postayla eşleşmelidir.",
+        "code_label": "İşlem kodu",
+        "email_label": "Satın alma / ön teklif e-postası",
+        "needs_email": "Bu hesaptan çıkın ve {email} ile giriş yapın (ödeme e-postasındaki bağlantıyı kullanın veya giriş sayfasından yeni sihirli bağlantı isteyin).",
+        "linking": "Bağlanıyor…",
+        "cta": "İşleminizi bağlayın"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "withdrawal_ui",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "status_requested": "Gönderildi",
+        "status_in_review": "İşleniyor",
+        "status_accepted": "Kabul edildi",
+        "status_rejected": "Reddedildi",
+        "registered_title": "Talep kaydedildi.",
+        "registered_body": "Lorenzo talebinizi aldı ve sizinle iletişime geçecek. Güncel durum: {status}.",
+        "rejected_prev": "Önceki bir talep reddedildi",
+        "rejected_retry": "Yeni bir tane gönderebilirsiniz.",
+        "reason_label": "Gerekçe (isteğe bağlı)",
+        "reason_placeholder": "İsterseniz nedenini anlatın…",
+        "cta": "Cayma talep et",
+        "alt_contact": "Alternatif olarak studio@successioniarmellin.it adresine veya PEC ile yazabilirsiniz.",
+        "refund_issued": "İade ödeme kartına yapıldı: genellikle 5-10 iş günü içinde hesaba geçer (bankanızın veya kart sağlayıcısının süreleri; bazen orijinal harcamanın iptali olarak görünür).",
+        "refund_pending": "İade gerekiyorsa aynı ödeme yöntemiyle yapılır. Yapıldıktan sonra banka genellikle 5-10 iş günü içinde hesaba geçirir."
+      }
+    },
+    {
+      "collection": "area",
+      "key": "invoice_ui",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "download": "Faturayı indir",
+        "number": "Fatura no. {number}",
+        "issued_soon": "Fatura no. {number} düzenlendi. PDF kısa süre içinde kullanılabilir olacaktır.",
+        "pending": "Fatura düzenlenir düzenlenmez burada kullanılabilir olacak."
+      }
+    },
+    {
+      "collection": "area",
+      "key": "final_docs_ui",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "download_zip": "Tümünü indir (ZIP)",
+        "download": "İndir",
+        "not_ready": "Son belgeler henüz hazır değil. Aşağıda dosya tamamlandığında alacağınız belgelerin önizlemesini bulabilirsiniz."
+      }
+    },
+    {
+      "collection": "area",
+      "key": "profilo_ui",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "contacts": "İletişim bilgileri",
+        "name": "Ad",
+        "email": "Email",
+        "phone": "Telefon",
+        "phone_empty": "girilmedi",
+        "phone_edit": "Numarayı değiştir",
+        "phone_add": "Numara ekle",
+        "dial_aria": "Uluslararası ön ek",
+        "dial_other": "Diğer…",
+        "dial_custom_aria": "Özel ön ek",
+        "phone_hint": "Ülke kodunu (+39, +49…) seçin, ardından ulusal numarayı girin.",
+        "save": "Kaydet",
+        "cancel": "İptal",
+        "security": "Güvenlik",
+        "password_intro": "İsterseniz e-posta bağlantısını beklemeden daha hızlı giriş için bir şifre oluşturabilirsiniz.",
+        "password_saved": "Şifre kaydedildi: bir sonraki girişte diğer yöntemlerle birlikte kullanabilirsiniz.",
+        "password_change": "Parolayı değiştir",
+        "password_create": "Şifre oluştur veya değiştir",
+        "password_new": "Yeni şifre (en az 8 karakter)",
+        "password_confirm": "Parolayı tekrarlayın",
+        "password_mismatch": "İki şifre eşleşmiyor.",
+        "password_save": "Parolayı kaydet",
+        "prefs_title": "Bildirim tercihleri",
+        "prefs_body": "Operasyonel e-postalar (ödeme, belgeler, vergiler, kapanış) her zaman aktiftir. Burada yalnızca isteğe bağlı mesajları kapatabilirsiniz, örneğin yorum isteği.",
+        "prefs_email": "İsteğe bağlı e-postalar (ör. değerlendirme)",
+        "prefs_wa": "WhatsApp (yakında)",
+        "prefs_saved": "Tercihler kaydedildi.",
+        "comms_lang_title": "Yazılı iletişim dili",
+        "comms_lang_body": "Dosyayla ilgili e-posta ve mesajlar (ödemeler, belgeler, cayma). Arayüz dilinden bağımsızdır.",
+        "comms_lang_notice": "Çeviriler otomatik / nezaket amaçlıdır. Resmi belgeler ve bağlayıcı metinler İtalyanca kalır.",
+        "comms_lang_it": "İtalyanca",
+        "comms_lang_ar": "العربية",
+        "logout": "Çıkış yap",
+        "comms_lang_en": "English",
+        "comms_lang_tr": "Türkçe",
+        "comms_lang_fr": "Fransızca",
+        "comms_lang_sq": "Arnavutça"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "ordine_ui",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "includes_named": "\"{name}\" neleri kapsıyor",
+        "includes_generic": "Paket neleri kapsıyor",
+        "includes_missing": "Detay kullanılamıyor.",
+        "taxes_title": "Vergiler",
+        "taxes_body": "Bu tutarlar ücretimiz değildir: Devlete ödenen vergilerdir (F24 formu, kendi kendine beyan). Gönderimden önce hesaplayıp bildiririz.",
+        "taxes_need_iban": "Vergilerin tahsil edilmesi için IBAN'ınız gerekli.",
+        "taxes_iban_cta": "IBAN'ı şimdi girin →",
+        "taxes_iban_saved": "IBAN kaydedildi (•••• {last4}).",
+        "taxes_iban_edit": "Düzenle",
+        "taxes_pending": "Vergiler gönderimden önce hesaplanıp size bildirilecektir.",
+        "withdrawal_prompt": "Fikrinizi mi değiştirdiniz?",
+        "withdrawal_cta": "Cayma talep et"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "documenti_page_ui",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "cancelled_subtitle": "Dosya iptal edildi: yüklemeniz gereken bir şey yok.",
+        "cancelled_body": "Bu dosya iptal edildi, belge yükleme devre dışı. Kimlik belgeleri ve yüklenen diğer dosyalar gizlilik politikasına göre sistemlerimizden silinecektir."
+      }
+    },
+    {
+      "collection": "area",
+      "key": "final_docs_preview",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        {
+          "label": "Sunum makbuzu - Agenzia delle Entrate",
+          "description": "Kayıt protokol numaralı elektronik onay belgesi."
+        },
+        {
+          "label": "Veraset beyannamesi (kopya)",
+          "description": "Agenzia delle Entrate'e sunulan form."
+        },
+        {
+          "label": "Güncel kadastro kayıtları (devirler)",
+          "description": "Mirasçılar adına kayıtlı taşınmazlar."
+        },
+        {
+          "label": "Ücret faturası",
+          "description": "Ücretimizin vergi belgesi."
+        }
+      ]
+    },
+    {
+      "collection": "site_ui",
+      "key": "preventivo_ui",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "yes": "Evet",
+        "no": "Hayır",
+        "unknown": "Bilmiyorum",
+        "will_q_before": "Bu",
+        "will_q_term": "de cuius",
+        "will_q_after": "vasiyet bıraktı mı?",
+        "will_tip_aria": "De cuius ne anlama geliyor",
+        "will_tip": "De cuius (Latince) verasetin açıldığı vefat eden kişidir: erkek veya kadın.",
+        "will_yes_note": "Standart paketler vasiyetli durumları da kapsar. Belge kontrol listesinde yayımlanmış vasiyetin kopyasını isteyeceğiz.",
+        "will_unknown_note": "Bu şekilde de olur: sonradan ortaya çıkarsa dosya sürecinde hallederiz. Diğer sorularla devam edin.",
+        "heirs_legend": "Mirasçılar kimler? Her türden kaç tane olduğunu belirtin.",
+        "heirs_hint": "Mirasçı olan herkesi sayın, mirasçılardan biriyseniz kendinizi de dahil edin.",
+        "heir_coniuge": "Eş (veya medeni birliktelik)",
+        "heir_figli": "Çocuklar",
+        "heir_genitori": "Ebeveynler",
+        "heir_fratelli": "Kardeşler",
+        "heir_nipoti": "Torunlar",
+        "heir_altri": "Diğer mirasçılar",
+        "less": "Daha az {label}",
+        "more": "Daha fazla {label}",
+        "real_estate_q": "Taşınmaz var mı (evler, araziler, garajlar)?",
+        "real_estate_count": "Toplam kaç taşınmaz?",
+        "real_estate_placeholder": "Örn. 2",
+        "real_estate_hint": "Ev, arazi, garaj ve payları sayın: her ek gayrimenkul ön teklifi etkileyebilir.",
+        "over_100k_q": "Mirasın toplam değeri (hesaplar, menkul kıymetler vb.) 100.000 euroyu aşıyor mu?",
+        "other_assets_q": "Başka varlıklar var mı (şirket payları, hisse senetleri, işletmeler, tekneler…)?",
+        "back": "Geri",
+        "next": "İleri"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "checkout_ui",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "stripe_blurb": "Stripe ile güvenli ödeme: kredi/banka kartı ve mevcut olduğu yerlerde taksit. Stripe'ın korumalı sayfasına yönlendirileceksiniz.",
+        "err_start": "Ödeme başlatılamıyor.",
+        "err_not_configured": "Ödemeler henüz aktif değil. Daha sonra tekrar deneyin veya bize ulaşın.",
+        "err_retry": "Ödeme başlatılamıyor. Kısa süre sonra tekrar deneyin.",
+        "err_network": "Ağ hatası. Kısa süre sonra tekrar deneyin.",
+        "need_quote_before": "Ödeme yapmak için buradan başlayın",
+        "need_quote_link": "ön teklif hesaplaması",
+        "need_quote_after": ": böylece size doğru paketi öneririz.",
+        "loading": "Ödeme başlatılıyor…",
+        "cancelled": "Ödeme iptal edildi. Herhangi bir tahsilat yapılmadı: istediğiniz zaman tekrar deneyebilirsiniz.",
+        "total_fee": "Toplam ücret",
+        "empty_order": "Ödenecek paketli bir dosya bulunamadı. Önce ön teklif hesaplayın: doğru paketi öneririz ve ödemeyi dosyanıza bağlarız.",
+        "empty_cta": "Ön teklife git →",
+        "meta_title": "Siparişi tamamla",
+        "extra_property": "Ek taşınmazlar ({extra} × {fee}€)"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "conferma_ui",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "title_paid": "Ödeme alındı, teşekkürler!",
+        "title_pending": "Ödemeyi onaylıyoruz",
+        "body_paid": "Ödemeniz başarılı oldu ve dosyanız artık aktif. Kısa süre içinde özet ve Kişisel alana erişim talimatlarını içeren bir e-posta alacaksınız; belgeleri oraya yükleyin.",
+        "body_pending": "Siparişi aldık. Kesin ödeme onayı sistemimizden birkaç dakika içinde gelir: her şey tamam olunca e-posta alırsınız. Kişisel alana zaten giriş yapabilirsiniz.",
+        "email_note_before": "Kişisel alana şununla giriş yapın",
+        "email_note_strong": "ödeme için kullanılan aynı e-posta",
+        "email_note_after": ": dosyayı böyle bulursunuz. Başka bir e-posta (veya farklı bir Google hesabı) kullanırsanız göremezsiniz.",
+        "cta_area": "Kişisel alana git",
+        "cta_home": "Ana sayfaya dön",
+        "taxes_note": "Vergiler ücretten ayrıdır: gönderimden önce hesaplayıp bildiriyoruz.",
+        "meta_title": "Ödeme alındı"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "contact_ui",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "name": "Ad soyad",
+        "email": "Email",
+        "phone": "Telefon (isteğe bağlı)",
+        "message": "Mesaj",
+        "submit": "Mesaj gönder"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "soft_lead_ui",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "name": "Ad soyad (isteğe bağlı)",
+        "email": "Email",
+        "phone": "Telefon",
+        "phone_optional": "Telefon (isteğe bağlı)",
+        "submitting": "Gönderiliyor…",
+        "err_save": "Şu an talebi kaydedemiyoruz. Daha sonra tekrar deneyin veya bizi arayın.",
+        "notes": "Not (isteğe bağlı)"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "guide_ui",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "search_placeholder": "Rehberlerde ara (ör. vergiler, belgeler, muafiyet)",
+        "search_aria": "Rehberlerde ara",
+        "all": "Tümü",
+        "free_tool": "Ücretsiz araç",
+        "back": "Rehberlere dön",
+        "author_heading": "Bu rehberi kim yazdı",
+        "related": "İlgili rehberler",
+        "featured": "Öne çıkan",
+        "reading_minutes": "{n} dk okuma",
+        "read_guide": "Rehberi oku",
+        "read": "Oku",
+        "empty": "Aramanız için rehber bulunamadı. Başka bir terim deneyin veya bize yazın: herkese yanıt veriyoruz.",
+        "updated": "{date} tarihinde güncellendi",
+        "sources": "Resmî kaynaklar",
+        "breadcrumb_aria": "Yol",
+        "breadcrumb_guides": "Rehberler",
+        "meta_title": "Veraset rehberleri",
+        "meta_not_found": "Rehber bulunamadı",
+        "tool_alt": "İllüstrasyon: ev, hesap makinesi ve euro simgeli belge"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "chrome_ui",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "lang_aria": "Dil seçin",
+        "menu_open": "Menüyü aç",
+        "menu_close": "Menüyü kapat",
+        "back": "Geri",
+        "meta_result": "Sonucunuz",
+        "meta_recesso": "Cayma hakkı",
+        "meta_documenti": "Veraset için belgeler"
+      }
+    },
+    {
+      "collection": "area_errors",
+      "key": "session_invalid",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Geçersiz oturum."
+    },
+    {
+      "collection": "area_errors",
+      "key": "session_expired",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Oturum süresi doldu. Tekrar giriş yapın."
+    },
+    {
+      "collection": "area_errors",
+      "key": "not_authorized",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Yetkisiz."
+    },
+    {
+      "collection": "area_errors",
+      "key": "upload_failed",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Yükleme başarısız."
+    },
+    {
+      "collection": "area_errors",
+      "key": "delete_failed",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Silme başarısız."
+    },
+    {
+      "collection": "area_errors",
+      "key": "file_too_big",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Dosya çok büyük (en fazla 10 MB)."
+    },
+    {
+      "collection": "area_errors",
+      "key": "file_bad_type",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Format kabul edilmiyor."
+    },
+    {
+      "collection": "area_errors",
+      "key": "invoice_unavailable",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Fatura henüz kullanılamıyor."
+    },
+    {
+      "collection": "area_errors",
+      "key": "file_unavailable",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Dosya kullanılamıyor."
+    },
+    {
+      "collection": "area_errors",
+      "key": "practice_cancelled",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Dosya iptal edildi: işlem kullanılamıyor."
+    },
+    {
+      "collection": "area_errors",
+      "key": "mandate_failed",
+      "locale": "tr",
+      "is_published": true,
+      "value": "İmza başarısız."
+    },
+    {
+      "collection": "area_errors",
+      "key": "withdrawal_blocked",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Cayma artık uygulanamaz."
+    },
+    {
+      "collection": "area_errors",
+      "key": "withdrawal_pending",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Zaten devam eden bir talebiniz var."
+    },
+    {
+      "collection": "area_errors",
+      "key": "iban_invalid",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Geçersiz IBAN. Kontrol edip tekrar deneyin."
+    },
+    {
+      "collection": "area_errors",
+      "key": "phone_invalid",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Geçersiz numara."
+    },
+    {
+      "collection": "area_errors",
+      "key": "password_short",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Şifre en az 8 karakter olmalıdır."
+    },
+    {
+      "collection": "area_errors",
+      "key": "password_failed",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Kaydetme başarısız, tekrar deneyin."
+    },
+    {
+      "collection": "area_errors",
+      "key": "prefs_failed",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Kaydetme başarısız, tekrar deneyin."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_unavailable",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Hizmet kullanılamıyor. Daha sonra tekrar deneyin."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_code_required",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Dosya kodunu girin."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_email_required",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Satın alma için kullanılan e-postayı girin."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_email_mismatch",
+      "locale": "tr",
+      "is_published": true,
+      "value": "E-posta bu girişle eşleşmiyor."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_not_found",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bu kodla eşleşen dosya bulunamadı. Kontrol edip tekrar deneyin."
+    },
+    {
+      "collection": "area_errors",
+      "key": "docs_submit_failed",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Gönderim başarısız. Tekrar deneyin."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_email_required",
+      "locale": "tr",
+      "is_published": true,
+      "value": "E-postanızı girin."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_bad_credentials",
+      "locale": "tr",
+      "is_published": true,
+      "value": "E-posta veya şifre hatalı. Hiç şifre oluşturmadıysanız e-posta bağlantısıyla giriş yapın."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_google_unavailable",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Google ile giriş şu an kullanılamıyor. E-posta veya telefonu kullanın."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_link_invalid",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Geçersiz bağlantı."
+    },
+    {
+      "collection": "area_errors",
+      "key": "auth_failed",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Giriş başarısız. Tekrar deneyin."
+    },
+    {
+      "collection": "area_errors",
+      "key": "auth_not_configured",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Erişim henüz aktif değil: Supabase Auth yapılandırılmamış."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_otp_required",
+      "locale": "tr",
+      "is_published": true,
+      "value": "E-posta ve kod zorunludur."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_phone_otp_required",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Numara ve kod zorunludur."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_password_required",
+      "locale": "tr",
+      "is_published": true,
+      "value": "E-posta ve şifre girin."
+    },
+    {
+      "collection": "area_errors",
+      "key": "password_same",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Yeni şifre mevcut şifreden farklı olmalıdır."
+    },
+    {
+      "collection": "area_errors",
+      "key": "no_practice",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Hesabınıza bağlı dosya yok."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_fields_required",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Dosya kodu ve e-posta girin."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_auth_required",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Dosyayı bağlamak için giriş yapmış olmalısınız."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_no_email",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bu girişte e-posta yok. Çıkış yapın ve satın almada kullanılan e-postayla giriş yapın (sihirli bağlantı)."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_wrong_account",
+      "locale": "tr",
+      "is_published": true,
+      "value": "{current} olarak giriş yaptınız. Bu dosya için {expected} ile giriş yapmalısınız."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_link_failed",
+      "locale": "tr",
+      "is_published": true,
+      "value": "İletişim bilgisini bağlayamadık. Lütfen ofisle iletişime geçin."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_practice_email_mismatch",
+      "locale": "tr",
+      "is_published": true,
+      "value": "E-posta dosyada kayıtlı olanla eşleşmiyor. Ödeme veya ön teklif e-postasını kullanın."
+    },
+    {
+      "collection": "area_errors",
+      "key": "service_unavailable",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Hizmet kullanılamıyor."
+    },
+    {
+      "collection": "area_errors",
+      "key": "phone_invalid_detail",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Geçersiz numara: kodu (+39, +49…) ve ulusal numarayı seçin."
+    },
+    {
+      "collection": "area_login",
+      "key": "callback_loading",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Giriş yapılıyor…"
+    },
+    {
+      "collection": "area_login",
+      "key": "callback_failed",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Giriş başarısız, yönlendiriliyorsunuz…"
+    },
+    {
+      "collection": "site_ui",
+      "key": "offline_ui",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "email_cta": "E-posta ile yazın",
+        "whatsapp": "WhatsApp",
+        "already_practice": "Zaten bir işleminiz var mı?",
+        "area_cta": "Kişisel alana giriş yapın"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "cookie_ui",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "body": "Teknik (gerekli) çerezler ve onayınızla istatistik çerezleri kullanıyoruz. Gerekli olmayanları kabul edebilir veya reddedebilirsiniz.",
+        "policy_label": "Çerez politikası",
+        "accept_all": "Tümünü kabul et",
+        "necessary_only": "Yalnızca gerekli olanlar",
+        "preferences": "Çerez tercihleri"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "contatti_map_ui",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "meta_title": "İletişim",
+        "email_label": "Email",
+        "studio_label": "Ofis",
+        "map_eyebrow": "Bizi nerede bulursunuz",
+        "map_title": "{citta} ofisi",
+        "maps_cta": "Google Maps'te aç",
+        "map_iframe_title": "Ofis haritası - {address}",
+        "photo_caption": "Pontedera Katedrali",
+        "photo_credit": "Foto: SeesaTheDoctor / Wikimedia (CC BY 4.0)"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_categorie",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        {
+          "value": "A",
+          "label": "Konut – A grubu (A/10 hariç)"
+        },
+        {
+          "value": "A10",
+          "label": "A/10 – Ofisler ve özel bürolar"
+        },
+        {
+          "value": "B",
+          "label": "B grubu (yurtlar, okullar, kamu ofisleri…)"
+        },
+        {
+          "value": "C",
+          "label": "C grubu – eklentiler (garajlar, bodrumlar…), C/1 hariç"
+        },
+        {
+          "value": "C1",
+          "label": "C/1 – Dükkanlar ve mağazalar"
+        },
+        {
+          "value": "D",
+          "label": "D grubu (fabrikalar, oteller, depolar…)"
+        },
+        {
+          "value": "E",
+          "label": "E grubu (istasyonlar, özel binalar…)"
+        }
+      ]
+    },
+    {
+      "collection": "footer",
+      "key": "nav_heading",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Gezin"
+    },
+    {
+      "collection": "footer",
+      "key": "legal_heading",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Yasal"
+    },
+    {
+      "collection": "footer",
+      "key": "rights_reserved",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Tüm hakları saklıdır."
+    },
+    {
+      "collection": "footer",
+      "key": "label_forma",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Form"
+    },
+    {
+      "collection": "footer",
+      "key": "label_piva",
+      "locale": "tr",
+      "is_published": true,
+      "value": "P.IVA"
+    },
+    {
+      "collection": "footer",
+      "key": "label_cf",
+      "locale": "tr",
+      "is_published": true,
+      "value": "C.F."
+    },
+    {
+      "collection": "footer",
+      "key": "label_rea",
+      "locale": "tr",
+      "is_published": true,
+      "value": "REA"
+    },
+    {
+      "collection": "footer",
+      "key": "label_pec",
+      "locale": "tr",
+      "is_published": true,
+      "value": "PEC"
+    },
+    {
+      "collection": "footer",
+      "key": "label_tel",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Tel"
+    },
+    {
+      "collection": "legale",
+      "key": "updated_prefix",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Son güncelleme:"
+    },
+    {
+      "collection": "legale",
+      "key": "lang_note",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bu belgenin İtalyanca sürümü geçerlidir: çeviriler yalnızca nezaket amaçlıdır ve farklılık halinde İtalyanca geçerli olur."
+    },
+    {
+      "collection": "home",
+      "key": "meta_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Online Veraset | Geom. Lorenzo Armellin"
+    },
+    {
+      "collection": "home",
+      "key": "meta_description",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Gerçek bir profesyonelle çevrimiçi veraset beyannamesi: Geom. Lorenzo Armellin, odaya kayıtlı. Net ön teklif, belgeler ve dosya evden — Pontedera'da yüz yüze de."
+    }
   ]
 }

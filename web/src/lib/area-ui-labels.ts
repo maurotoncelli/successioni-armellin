@@ -132,6 +132,9 @@ export type ProfiloUiLabels = {
   comms_lang_it: string;
   comms_lang_ar: string;
   comms_lang_en: string;
+  comms_lang_tr: string;
+  comms_lang_fr: string;
+  comms_lang_sq: string;
   logout: string;
 };
 
@@ -306,6 +309,9 @@ export const PROFILO_UI_IT: ProfiloUiLabels = {
   comms_lang_it: "Italiano",
   comms_lang_ar: "العربية",
   comms_lang_en: "English",
+  comms_lang_tr: "Türkçe",
+  comms_lang_fr: "Français",
+  comms_lang_sq: "Shqip",
   logout: "Esci",
 };
 

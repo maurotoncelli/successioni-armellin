@@ -167,6 +167,189 @@ const SEED_EN: LocaleCatalogI18n = {
   },
 };
 
+/** Seed turco (cortesia; allineato ai nomi listino IT correnti). */
+const SEED_TR: LocaleCatalogI18n = {
+  packages: {
+    SEMPLICE: {
+      name: "Basit veraset",
+      tagline: "Yalnızca hesaplar ve nakit, gayrimenkul yok",
+      description:
+        "Gayrimenkul olmayan durumlar için Agenzia delle Entrate'e veraset beyannamesinin hazırlanması ve iletilmesi: vadesiz hesaplar, banka cüzdanları ve nakit.",
+      features: [
+        "Beyanname hazırlığı",
+        "Agenzia delle Entrate'e elektronik gönderim",
+        "Vergiler gönderimden önce hesaplanır ve bildirilir",
+        "Gerçek bir kişiden destek",
+      ],
+      badge: null,
+    },
+    COMPLETO: {
+      name: "Gayrimenkulli veraset",
+      tagline: "1 ila 3 gayrimenkul, tapu devri ile",
+      description:
+        "Ev veya birkaç gayrimenkul miras alanlar için: kadastro verisi kontrolü, beyanname, iletim ve mülkiyet devri. 5'e kadar mirasçı ve 5 banka hesabını kapsar.",
+      features: [
+        "Basit paketteki her şey",
+        "1 ila 3 gayrimenkul, 5'e kadar mirasçı ve 5 hesap",
+        "Bir Geometra tarafından kadastro verisi kontrolü",
+        "Kadastro devri dahil",
+      ],
+      badge: "En çok seçilen",
+    },
+    ZERO_STRESS: {
+      name: "Genişletilmiş veraset",
+      tagline: "3 ila 8 gayrimenkul, belge temini ile",
+      description:
+        "Daha karmaşık miraslar için: daha fazla gayrimenkul ve temin edilecek belgeler. Her adımda öncelikli işlem ve güncellemelerle biz hallederiz.",
+      features: [
+        "Gayrimenkulli paketteki her şey",
+        "3 ila 8 gayrimenkul, 5'e kadar mirasçı ve 5 hesap",
+        "Kurum ve bankalardan eksik belgelerin temini",
+        "Öncelikli işlem",
+      ],
+      badge: null,
+    },
+  },
+  addons: {
+    RIUNIONE_USUFRUTTO: {
+      name: "İntifa hakkı birleşmesi",
+      description: "İntifa hakkı sona erdikten sonra kadastro güncellemesi.",
+    },
+    ADEGUAMENTO_IMU: {
+      name: "IMU ayarlama ve yeniden hesaplama",
+      description:
+        "Veraset sonrası IMU yeniden hesaplaması ve yeni sahipler için güncelleme.",
+    },
+    VOLTURA_EXTRA: {
+      name: "Ek kadastro devri",
+      description:
+        "Paketin kapsamının ötesindeki gayrimenkuller için kadastro devri.",
+    },
+  },
+};
+
+/** Seed francese (cortesia; allineato ai nomi listino IT correnti). */
+const SEED_FR: LocaleCatalogI18n = {
+  packages: {
+    SEMPLICE: {
+      name: "Succession simple",
+      tagline: "Comptes et liquidités uniquement, sans immobilier",
+      description:
+        "Préparation et dépôt de la déclaration de succession auprès de l'Agenzia delle Entrate pour les dossiers sans immobilier : comptes courants, livrets et liquidités.",
+      features: [
+        "Préparation de la déclaration",
+        "Dépôt électronique auprès de l'Agenzia delle Entrate",
+        "Impôts calculés et notifiés avant le dépôt",
+        "Aide d'une personne réelle",
+      ],
+      badge: null,
+    },
+    COMPLETO: {
+      name: "Succession avec immobilier",
+      tagline: "De 1 à 3 biens, avec mutation cadastrale",
+      description:
+        "La formule pour ceux qui héritent d'un logement ou de quelques biens : contrôle des données cadastrales, déclaration, dépôt et transfert de propriété. Jusqu'à 5 héritiers et 5 comptes bancaires.",
+      features: [
+        "Tout ce qui est inclus dans la formule Simple",
+        "De 1 à 3 biens, jusqu'à 5 héritiers et 5 comptes",
+        "Contrôle des données cadastrales par un Geometra",
+        "Mutation cadastrale incluse",
+      ],
+      badge: "La plus choisie",
+    },
+    ZERO_STRESS: {
+      name: "Succession étendue",
+      tagline: "De 3 à 8 biens, avec récupération des documents",
+      description:
+        "Pour les successions plus complexes : davantage de biens et de documents à récupérer. Nous nous en chargeons, avec traitement prioritaire et mises à jour à chaque étape.",
+      features: [
+        "Tout ce qui est inclus dans la formule avec immobilier",
+        "De 3 à 8 biens, jusqu'à 5 héritiers et 5 comptes",
+        "Récupération des documents manquants auprès des administrations et des banques",
+        "Traitement prioritaire",
+      ],
+      badge: null,
+    },
+  },
+  addons: {
+    RIUNIONE_USUFRUTTO: {
+      name: "Réunion d'usufruit",
+      description: "Mise à jour cadastrale après extinction de l'usufruit.",
+    },
+    ADEGUAMENTO_IMU: {
+      name: "Ajustement et recalcul IMU",
+      description:
+        "Recalcul de l'IMU après succession et mise à jour pour les nouveaux propriétaires.",
+    },
+    VOLTURA_EXTRA: {
+      name: "Mutation cadastrale supplémentaire",
+      description:
+        "Mutation cadastrale pour des biens au-delà de ceux inclus dans la formule.",
+    },
+  },
+};
+
+/** Seed albanese (cortesia; allineato ai nomi listino IT correnti). */
+const SEED_SQ: LocaleCatalogI18n = {
+  packages: {
+    SEMPLICE: {
+      name: "Trashëgimi e thjeshtë",
+      tagline: "Vetëm llogari dhe likuiditet, pa pasuri të paluajtshme",
+      description:
+        "Përgatitja dhe dërgimi i deklaratës së trashëgimisë te Agenzia delle Entrate për rastet pa pasuri të paluajtshme: llogari rrjedhëse, libreza dhe likuiditet.",
+      features: [
+        "Përgatitja e deklaratës",
+        "Dërgim elektronik te Agenzia delle Entrate",
+        "Taksat llogariten dhe komunikohen para dërgimit",
+        "Ndihmë nga një person real",
+      ],
+      badge: null,
+    },
+    COMPLETO: {
+      name: "Trashëgimi me pasuri të paluajtshme",
+      tagline: "Nga 1 deri në 3 pasuri, me transferim kadastral",
+      description:
+        "Paketa për ata që trashëgojnë një shtëpi ose disa pasuri: kontroll i të dhënave kadastrale, deklaratë, dërgim dhe transferim pronësie. Deri në 5 trashëgimtarë dhe 5 llogari bankare.",
+      features: [
+        "Gjithçka në paketën e thjeshtë",
+        "Nga 1 deri në 3 pasuri, deri në 5 trashëgimtarë dhe 5 llogari",
+        "Kontroll i të dhënave kadastrale nga një Geometra",
+        "Transferim kadastral i përfshirë",
+      ],
+      badge: "Më e zgjedhura",
+    },
+    ZERO_STRESS: {
+      name: "Trashëgimi e zgjeruar",
+      tagline: "Nga 3 deri në 8 pasuri, me rikuperim dokumentesh",
+      description:
+        "Për trashëgimi më komplekse: më shumë pasuri dhe dokumente për t'u rikuperuar. Ne e trajtojmë, me përpunim prioritare dhe përditësime në çdo hap.",
+      features: [
+        "Gjithçka në paketën me pasuri të paluajtshme",
+        "Nga 3 deri në 8 pasuri, deri në 5 trashëgimtarë dhe 5 llogari",
+        "Rikuperim i dokumenteve që mungojnë nga institucionet dhe bankat",
+        "Përpunim prioritare",
+      ],
+      badge: null,
+    },
+  },
+  addons: {
+    RIUNIONE_USUFRUTTO: {
+      name: "Ribashkim i uzufruktit",
+      description: "Përditësim kadastral pas mbarimit të uzufruktit.",
+    },
+    ADEGUAMENTO_IMU: {
+      name: "Përshtatje dhe rillogaritje IMU",
+      description:
+        "Rillogaritje IMU pas trashëgimisë dhe përditësim për pronarët e rinj.",
+    },
+    VOLTURA_EXTRA: {
+      name: "Transferim kadastral shtesë",
+      description:
+        "Transferim kadastral për pasuri përtej atyre që përfshin paketa.",
+    },
+  },
+};
+
 function normalizePackageCopy(raw: unknown): PackageCopyI18n | null {
   if (!raw || typeof raw !== "object") return null;
   const o = raw as Record<string, unknown>;
@@ -221,7 +404,13 @@ function normalizeState(raw: unknown): PackagesI18nState {
   if (!raw || typeof raw !== "object") {
     return {
       ...EMPTY_PACKAGES_I18N,
-      locales: { ar: SEED_AR, en: SEED_EN },
+      locales: {
+        ar: SEED_AR,
+        en: SEED_EN,
+        tr: SEED_TR,
+        fr: SEED_FR,
+        sq: SEED_SQ,
+      },
     };
   }
   const o = raw as Partial<PackagesI18nState>;
@@ -238,6 +427,15 @@ function normalizeState(raw: unknown): PackagesI18nState {
   if (!locales.en || Object.keys(locales.en.packages).length === 0) {
     locales.en = SEED_EN;
   }
+  if (!locales.tr || Object.keys(locales.tr.packages).length === 0) {
+    locales.tr = SEED_TR;
+  }
+  if (!locales.fr || Object.keys(locales.fr.packages).length === 0) {
+    locales.fr = SEED_FR;
+  }
+  if (!locales.sq || Object.keys(locales.sq.packages).length === 0) {
+    locales.sq = SEED_SQ;
+  }
   return {
     updatedAt: typeof o.updatedAt === "string" ? o.updatedAt : null,
     locales,
@@ -245,8 +443,15 @@ function normalizeState(raw: unknown): PackagesI18nState {
 }
 
 async function readFromStorage(): Promise<PackagesI18nState> {
+  const seeds = {
+    ar: SEED_AR,
+    en: SEED_EN,
+    tr: SEED_TR,
+    fr: SEED_FR,
+    sq: SEED_SQ,
+  };
   if (!isAdminConfigured) {
-    return normalizeState({ locales: { ar: SEED_AR, en: SEED_EN } });
+    return normalizeState({ locales: seeds });
   }
   try {
     const admin = getAdminClient();
@@ -254,12 +459,12 @@ async function readFromStorage(): Promise<PackagesI18nState> {
       .from(DOC_BUCKET)
       .download(STORAGE_PATH);
     if (error || !data) {
-      return normalizeState({ locales: { ar: SEED_AR, en: SEED_EN } });
+      return normalizeState({ locales: seeds });
     }
     return normalizeState(JSON.parse(await data.text()));
   } catch (err) {
     console.error("[packages-i18n] read:", err);
-    return normalizeState({ locales: { ar: SEED_AR, en: SEED_EN } });
+    return normalizeState({ locales: seeds });
   }
 }
 

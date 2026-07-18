@@ -2,12 +2,14 @@ import "server-only";
 import type { Article } from "@/content/articles";
 import { getArticleAr } from "@/content/articles.ar";
 import { getArticleEn } from "@/content/articles.en";
+import { getArticleTr } from "@/content/articles.tr";
+import { getArticleFr } from "@/content/articles.fr";
+import { getArticleSq } from "@/content/articles.sq";
 import { DEFAULT_LOCALE, list } from "@/lib/content";
 
 /*
   Overlay lingue ≠ IT sulle guide (fixture IT in articles.ts).
-  - AR: content/articles.ar.ts
-  - EN: content/articles.en.ts
+  - AR/EN/TR/FR/SQ: content/articles.<locale>.ts
   - categoria leggibile: sempre da guide.categorie (slug → nome locale)
 */
 
@@ -25,6 +27,9 @@ function getArticleOverlay(
 ): ArticleOverlay | undefined {
   if (locale === "ar") return getArticleAr(slug);
   if (locale === "en") return getArticleEn(slug);
+  if (locale === "tr") return getArticleTr(slug);
+  if (locale === "fr") return getArticleFr(slug);
+  if (locale === "sq") return getArticleSq(slug);
   return undefined;
 }
 

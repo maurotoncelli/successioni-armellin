@@ -7,6 +7,18 @@ import {
   buildMandatoParagraphsEn,
   buildMandatoTextEn,
 } from "@/content/mandato.en";
+import {
+  buildMandatoParagraphsTr,
+  buildMandatoTextTr,
+} from "@/content/mandato.tr";
+import {
+  buildMandatoParagraphsFr,
+  buildMandatoTextFr,
+} from "@/content/mandato.fr";
+import {
+  buildMandatoParagraphsSq,
+  buildMandatoTextSq,
+} from "@/content/mandato.sq";
 
 /*
   Testo del MANDATO PROFESSIONALE (unica fonte di verita IT).
@@ -20,7 +32,7 @@ import {
   I dati del professionista arrivano da footer.studio / settings (stessa fonte
   di verita di footer e documenti legali).
 
-  Locale ≠ IT: cortesia AR/EN. Download .txt di firma resta IT.
+  Locale ≠ IT: cortesia AR/EN/TR/FR/SQ. Download .txt di firma resta IT.
 */
 
 export type MandatoParams = {
@@ -34,6 +46,9 @@ export function buildMandatoParagraphs(
 ): string[] {
   if (locale === "ar") return buildMandatoParagraphsAr(params);
   if (locale === "en") return buildMandatoParagraphsEn(params);
+  if (locale === "tr") return buildMandatoParagraphsTr(params);
+  if (locale === "fr") return buildMandatoParagraphsFr(params);
+  if (locale === "sq") return buildMandatoParagraphsSq(params);
   return buildMandatoParagraphsIt(params);
 }
 
@@ -95,5 +110,8 @@ export function buildMandatoTextLocalized(
 ): string {
   if (locale === "ar") return buildMandatoTextAr(params);
   if (locale === "en") return buildMandatoTextEn(params);
+  if (locale === "tr") return buildMandatoTextTr(params);
+  if (locale === "fr") return buildMandatoTextFr(params);
+  if (locale === "sq") return buildMandatoTextSq(params);
   return buildMandatoText(params);
 }

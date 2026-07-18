@@ -1,36 +1,4797 @@
 {
   "_meta": {
-    "purpose": "Traduzione parziale (prep multilingua). Contiene solo la collection 'area_login'. Tutte le altre chiavi ricadono sull'italiano (IT fa fede).",
+    "purpose": "Albanian courtesy translation of public site + area UI. Same keys as IT; IT remains legally authoritative (@07/@10).",
     "locale": "sq",
-    "version": 1,
-    "updated_at": "2026-06-22"
+    "schema": "ogni entry: { collection, key, locale, value, is_published }. value tipizzato secondo SPEC_Content_Blocks.",
+    "exclusions": "NON inclusi i contenuti data-driven gestiti in tabelle dedicate: packages, addons, faqs (Q&A), articles, document_catalog, media_assets (qui solo asset_key di riferimento).",
+    "version": 2,
+    "updated_at": "2026-07-18"
   },
   "entries": [
-    { "collection": "area_login", "key": "header_title", "locale": "sq", "is_published": true, "value": "Zona e klientit" },
-    { "collection": "area_login", "key": "header_subtitle", "locale": "sq", "is_published": true, "value": "Hyni për të ndjekur praktikën tuaj të trashëgimisë." },
-    { "collection": "area_login", "key": "tab_email", "locale": "sq", "is_published": true, "value": "Email" },
-    { "collection": "area_login", "key": "tab_phone", "locale": "sq", "is_published": true, "value": "Telefoni" },
-    { "collection": "area_login", "key": "email_label", "locale": "sq", "is_published": true, "value": "Email-i juaj" },
-    { "collection": "area_login", "key": "email_hint", "locale": "sq", "is_published": true, "value": "Përdorni email-in me të cilin keni paguar." },
-    { "collection": "area_login", "key": "email_cta", "locale": "sq", "is_published": true, "value": "Më dërgo lidhjen e hyrjes" },
-    { "collection": "area_login", "key": "email_sending", "locale": "sq", "is_published": true, "value": "Po dërgohet…" },
-    { "collection": "area_login", "key": "phone_label", "locale": "sq", "is_published": true, "value": "Numri juaj i telefonit" },
-    { "collection": "area_login", "key": "phone_hint", "locale": "sq", "is_published": true, "value": "Përdorni numrin e porosisë suaj. Do t'ju dërgojmë një kod me SMS." },
-    { "collection": "area_login", "key": "phone_cta", "locale": "sq", "is_published": true, "value": "Më dërgo kodin me SMS" },
-    { "collection": "area_login", "key": "phone_sending", "locale": "sq", "is_published": true, "value": "Po dërgohet…" },
-    { "collection": "area_login", "key": "sent_email_title", "locale": "sq", "is_published": true, "value": "Kontrolloni email-in tuaj" },
-    { "collection": "area_login", "key": "sent_email_body", "locale": "sq", "is_published": true, "value": "Dërguam një lidhje hyrjeje te {contact}. Lidhja skadon për pak minuta." },
-    { "collection": "area_login", "key": "sent_phone_title", "locale": "sq", "is_published": true, "value": "Kontrolloni SMS-të tuaja" },
-    { "collection": "area_login", "key": "sent_phone_body", "locale": "sq", "is_published": true, "value": "Dërguam një kod me 6 shifra te {contact}. Shkruajeni më poshtë." },
-    { "collection": "area_login", "key": "otp_toggle", "locale": "sq", "is_published": true, "value": "Mora një kod, dua ta fus" },
-    { "collection": "area_login", "key": "otp_label", "locale": "sq", "is_published": true, "value": "Kod me 6 shifra" },
-    { "collection": "area_login", "key": "otp_cta", "locale": "sq", "is_published": true, "value": "Verifiko kodin" },
-    { "collection": "area_login", "key": "otp_verifying", "locale": "sq", "is_published": true, "value": "Po verifikohet…" },
-    { "collection": "area_login", "key": "resend", "locale": "sq", "is_published": true, "value": "Dërgo përsëri" },
-    { "collection": "area_login", "key": "error_link", "locale": "sq", "is_published": true, "value": "Lidhja e hyrjes është e pavlefshme ose ka skaduar. Kërkoni një të re." },
-    { "collection": "area_login", "key": "secure_note", "locale": "sq", "is_published": true, "value": "Hyrje e sigurt" },
-    { "collection": "area_login", "key": "back_to_site", "locale": "sq", "is_published": true, "value": "Kthehu te faqja" },
-    { "collection": "area_login", "key": "privacy_link", "locale": "sq", "is_published": true, "value": { "label": "Privatësia", "href": "/privacy" } },
-    { "collection": "area_login", "key": "termini_link", "locale": "sq", "is_published": true, "value": { "label": "Kushtet", "href": "/termini-condizioni" } }
+    {
+      "collection": "navbar",
+      "key": "menu",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        {
+          "label": "Si funksionon",
+          "href": "/come-funziona"
+        },
+        {
+          "label": "Tarifat",
+          "href": "/tariffe"
+        },
+        {
+          "label": "Kush jam",
+          "href": "/chi-sono"
+        },
+        {
+          "label": "Udhëzues",
+          "href": "/guide"
+        },
+        {
+          "label": "FAQ",
+          "href": "/faq"
+        },
+        {
+          "label": "Kontakt",
+          "href": "/contatti"
+        }
+      ]
+    },
+    {
+      "collection": "navbar",
+      "key": "brand_tagline",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Trashëgimi"
+    },
+    {
+      "collection": "navbar",
+      "key": "logo",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "asset_key": "logo_studio"
+      }
+    },
+    {
+      "collection": "navbar",
+      "key": "cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Llogaritni preventivin falas",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "navbar",
+      "key": "cta_phone",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Flisni me Lorenzo",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "navbar",
+      "key": "lang_switcher",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "enabled": true,
+        "locales": [
+          "it",
+          "en",
+          "ar",
+          "de",
+          "es",
+          "ru",
+          "tr",
+          "zh",
+          "hi",
+          "sq",
+          "fr"
+        ]
+      }
+    },
+    {
+      "collection": "globals",
+      "key": "mobile_cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Llogaritni preventivin falas",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "footer",
+      "key": "studio",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "ragione_sociale": "Geom. Lorenzo Armellin",
+        "forma_giuridica": "Biznes individual — regjimi forfettari (operacion pa TVSH, art. 1 p. 54-89 L. 190/2014)",
+        "piva": "02432220503",
+        "cf": "RMLLNZ90E27G843J",
+        "albo": "Collegio Geometri e Geometri Laureati di Pisa, nr. 1969 — i regjistruar që nga 21/01/2022",
+        "indirizzo": "Via Vittorio Veneto 31, 56025 Pontedera (PI)"
+      }
+    },
+    {
+      "collection": "footer",
+      "key": "trust_line",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Geom. i autorizuar Entratel — me mbikëqyrje fiskale nga kontabilistë"
+    },
+    {
+      "collection": "footer",
+      "key": "area_app_note",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kjo faqe lejon menaxhimin online të praktikës suaj të trashëgimisë: në Zonën personale klientët ndjekin gjendjen e praktikës, ngarkojnë dokumentet e kërkuara dhe nënshkruajnë mandatin. Hyrja bëhet me email, telefon ose llogari Google: nga llogaria Google përdorim vetëm emrin dhe email-in për t'ju identifikuar, asnjë tjetër të dhënë nuk lexohet ose ndahet. Detaje në"
+    },
+    {
+      "collection": "footer",
+      "key": "odr",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Zgjidhja e mosmarrëveshjeve online (ODR)",
+        "href": "https://ec.europa.eu/consumers/odr"
+      }
+    },
+    {
+      "collection": "footer",
+      "key": "legal_menu",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        {
+          "label": "Privacy",
+          "href": "/privacy"
+        },
+        {
+          "label": "Cookie Policy",
+          "href": "/cookie-policy"
+        },
+        {
+          "label": "Termat dhe Kushtet",
+          "href": "/termini-condizioni"
+        },
+        {
+          "label": "Garanci",
+          "href": "/garanzia"
+        },
+        {
+          "label": "Tërheqje",
+          "href": "/recesso"
+        }
+      ]
+    },
+    {
+      "collection": "footer",
+      "key": "credit",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Realizuar nga AT STUDIO · Mauro Toncelli"
+    },
+    {
+      "collection": "footer",
+      "key": "strumenti_link",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Llogaritja e vlerës kadastrale",
+        "href": "/strumenti/valore-catastale"
+      }
+    },
+    {
+      "collection": "settings",
+      "key": "phone",
+      "locale": "sq",
+      "is_published": true,
+      "value": "320 1570567"
+    },
+    {
+      "collection": "settings",
+      "key": "area_label",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Zona personale"
+    },
+    {
+      "collection": "settings",
+      "key": "whatsapp",
+      "locale": "sq",
+      "is_published": true,
+      "value": "https://wa.me/393201570567"
+    },
+    {
+      "collection": "settings",
+      "key": "email",
+      "locale": "sq",
+      "is_published": true,
+      "value": "studio@successioniarmellin.it"
+    },
+    {
+      "collection": "settings",
+      "key": "pec",
+      "locale": "sq",
+      "is_published": true,
+      "value": "lorenzo.armellin@geopec.it"
+    },
+    {
+      "collection": "settings",
+      "key": "review_url",
+      "locale": "sq",
+      "is_published": true,
+      "value": "https://g.page/r/CVRoWf5CoiTDEAE/review"
+    },
+    {
+      "collection": "settings",
+      "key": "address",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "via": "Via Vittorio Veneto 31",
+        "cap": "56025",
+        "citta": "Pontedera (PI)"
+      }
+    },
+    {
+      "collection": "settings",
+      "key": "opening_hours",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        {
+          "giorni": "Hën–Pre",
+          "orario": "9:00-13:00 / 14:30-18:30"
+        },
+        {
+          "giorni": "Sht–Die",
+          "orario": "Mbyllur"
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "hero_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Praktika juaj e trashëgimisë, pa lëvizur nga shtëpia."
+    },
+    {
+      "collection": "home",
+      "key": "hero_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Merret Geom. Lorenzo Armellin, i specializuar në trashëgimi: çmim i qartë, gjithçka online (dhe nëse dëshironi edhe personalisht), një person real që ju ndjek. Taksat i llogaritim ne, para se të paguani."
+    },
+    {
+      "collection": "home",
+      "key": "hero_cta_primary",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Llogaritni preventivin falas",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "hero_cta_secondary",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Zbuloni si funksionon",
+        "href": "#come-funziona"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "hero_image",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "asset_key": "hero_home"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "hero_specialization_badge",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Geom. i specializuar në trashëgimi"
+    },
+    {
+      "collection": "home",
+      "key": "trustbar_items",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        "Geom. i regjistruar në Albo",
+        "I autorizuar Entratel (dërgim elektronik AdE)",
+        "Mbikëqyrje fiskale nga kontabilistë",
+        "Pagesa të sigurta me Stripe",
+        "Në përputhje me GDPR",
+        "SSL"
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "social_proof_stats",
+      "locale": "sq",
+      "is_published": false,
+      "value": [
+        {
+          "valore": "oltre X",
+          "label": "trashëgimi të ndjekura"
+        },
+        {
+          "valore": "X anni",
+          "label": "përvojë"
+        },
+        {
+          "valore": "4,X/5",
+          "label": "vlerësimi mesatar në Google"
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "problema_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Një trashëgim, mijë dyshime. Ju e heqim nga shpatullat."
+    },
+    {
+      "collection": "home",
+      "key": "problema_intro",
+      "locale": "sq",
+      "is_published": true,
+      "value": "E dimë se vjen në një moment të vështirë. Për burokracinë kujdesemi ne."
+    },
+    {
+      "collection": "home",
+      "key": "problema_vantaggi",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "Pa radhë",
+          "testo": "Bëni gjithçka nga shtëpia, edhe nga telefoni."
+        },
+        {
+          "titolo": "Zero gabime dhe gjoba",
+          "testo": "Kontroll teknik i të dhënave kadastrale nga një gjeometër i autorizuar."
+        },
+        {
+          "titolo": "Asistencë njerëzore",
+          "testo": "Flisni gjithmonë me një person real, jo me bot."
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_eyebrow",
+      "locale": "sq",
+      "is_published": true,
+      "value": "E thjeshtë"
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Si funksionon, në 3 hapa"
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_steps",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "Përgjigjuni disa pyetjeve",
+          "testo": "Ju tregojmë menjëherë se çfarë ju nevojitet dhe sa kushton.",
+          "immagine": {
+            "src": "/images/come-funziona-step-1-quiz.jpg",
+            "alt": "Person në kompjuter që u përgjigjet pyetjeve të preventivit online"
+          }
+        },
+        {
+          "titolo": "Ju ngarkoni dokumentet",
+          "testo": "Nga Zona juaj personale, edhe me foto. Ju japim listën e saktë.",
+          "immagine": {
+            "src": "/images/come-funziona-step-2-documenti.jpg",
+            "alt": "Person që fotografon një dokument me smartphone"
+          }
+        },
+        {
+          "titolo": "Ne kujdesemi për gjithçka",
+          "testo": "Ne e përgatisim dhe e dërgojmë deklaratën; ju merrni faturat.",
+          "immagine": {
+            "src": "/images/come-funziona-step-3-lorenzo.jpg",
+            "alt": "Geom. Lorenzo Armellin në kompjuter duke përgatitur praktikën"
+          }
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_sla_note",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Dorëzim brenda 10-15 ditëve pune (sipas paketës) nga kur kemi të gjitha dokumentet e plota."
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Çfarë është Successioni Armellin"
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Successioni Armellin është aplikacioni web i studio-s së Geom. Lorenzo Armellin për menaxhimin online të deklaratës së trashëgimisë: llogaritni preventiv me çmim të qartë, paguani në mënyrë të sigurt me kartë dhe në Zonën tuaj personale ngarkoni dokumentet e kërkuara, nënshkruani mandatin dhe ndiqni praktikën hap pas hapi deri te dërgimi te Agenzia delle Entrate. Për të hyrë në Zonën personale mund të përdorni email-in, telefonin ose llogarinë Google: në këtë rast përdorim ekskluzivisht emrin dhe email-in tuaj për të krijuar dhe njohur profilin tuaj, asnjë tjetër të dhënë e llogarisë nuk lexohet ose ndahet."
+    },
+    {
+      "collection": "home",
+      "key": "tariffe_eyebrow",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Tarifat"
+    },
+    {
+      "collection": "home",
+      "key": "tariffe_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Çmime të qarta, pa surpriza"
+    },
+    {
+      "collection": "home",
+      "key": "tariffe_intro",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Paguani një honorar fiks. Taksat janë të ndara, në ngarkim të trashëgimtarit, dhe i llogaritim ne."
+    },
+    {
+      "collection": "home",
+      "key": "tariffe_cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Shikoni paketat",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "faidate_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Mund ta bëni vetë në faqen e Agenzia delle Entrate. Atëherse pse ne?"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_col_us",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Me ne"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_col_diy",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Bëjeni vetë"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_col_corner",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Krahasim"
+    },
+    {
+      "collection": "home",
+      "key": "faidate_intro",
+      "locale": "sq",
+      "is_published": true,
+      "value": "É vërtet, ekziston trashëgimi i paraplotësuar falas: është opsion i ndershëm. Por kërkon SPID dhe njohuri, nuk i vleftëson të dhënat dhe gabimet (dhe sanksionet) mbeten në ngarkim tuaj."
+    },
+    {
+      "collection": "home",
+      "key": "faidate_confronto",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        {
+          "voce": "Koha e nevojshme",
+          "faidate": "Orët dhe SPID mbeten mbi ju",
+          "noi": "Ne merremi ne"
+        },
+        {
+          "voce": "Kontroll i të dhënave kadastrale",
+          "faidate": "Në përgjegjësi tuaj",
+          "noi": "E kryen një gjeometër"
+        },
+        {
+          "voce": "Llogaritja e taksave",
+          "faidate": "Vetë",
+          "noi": "E bëjmë ne, më parë"
+        },
+        {
+          "voce": "Asistencë",
+          "faidate": "Asnjë",
+          "noi": "Një person real"
+        },
+        {
+          "voce": "Rrezik ndëshkimesh",
+          "faidate": "Juaj",
+          "noi": "Menaxhuar"
+        }
+      ]
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Çfarë thonë klientët"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_intro",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Vlerësime të vërteta nga Google."
+    },
+    {
+      "collection": "home",
+      "key": "chisono_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kush merret me praktikën tuaj"
+    },
+    {
+      "collection": "home",
+      "key": "chisono_estratto",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Unë jam Lorenzo Armellin, gjeometër i autorizuar të transmettojë trashëgiminë te Agenzia delle Entrate. Me mbikëqyrje fiskale nga kontabilistë, bashkoj saktësinë e të dhënave kadastrale me sigurinë e numrave."
+    },
+    {
+      "collection": "home",
+      "key": "chisono_video",
+      "locale": "sq",
+      "is_published": false,
+      "value": {
+        "asset_key": "video_benvenuto_lorenzo"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "chisono_cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Njihni Lorenzo",
+        "href": "/chi-sono"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "faq_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Pyetje të shpeshta"
+    },
+    {
+      "collection": "home",
+      "key": "faq_cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Të gjitha pyetjet",
+        "href": "/faq"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "cta_finale_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Gati ta hiqni këtë shqetësim?"
+    },
+    {
+      "collection": "home",
+      "key": "cta_finale_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Preventiv falas në pak minuta. Të kënaqur ose rimbursuar."
+    },
+    {
+      "collection": "home",
+      "key": "cta_finale_button",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Llogaritni preventivin falas",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "cta_finale_phone",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Ose telefononi Lorenzo",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "hero_eyebrow",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Çmime të qarta"
+    },
+    {
+      "collection": "tariffe",
+      "key": "hero_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Çmime të qarta. Çfarë shihni është çfarë paguani."
+    },
+    {
+      "collection": "tariffe",
+      "key": "hero_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Honorar fiks për paketë, i vendosur paraprakisht. Taksat janë të ndara dhe i llogaritim ne. Për rastet e veçanta, preventiv i personalizuar."
+    },
+    {
+      "collection": "tariffe",
+      "key": "card_badge_popolare",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Më i zgjedhuri"
+    },
+    {
+      "collection": "tariffe",
+      "key": "box_trasparenza_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Si përbëhet çmimi"
+    },
+    {
+      "collection": "tariffe",
+      "key": "box_trasparenza_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Çmimi i paketës është honorari profesional pa TVSH: studio operon në regjimin forfettari (operacion jo i nënshtruar TVSH-së). Taksat e trashëgimisë (hipotekare, kadastrale, pulla) janë të ndara, në ngarkim të trashëgimtarit, dhe paguhen me F24: i llogaritim dhe i komunikojmë PARA dorëzimit."
+    },
+    {
+      "collection": "tariffe",
+      "key": "sovrapprezzo_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kur çmimi mund të ndryshojë (e themi më parë)"
+    },
+    {
+      "collection": "tariffe",
+      "key": "sovrapprezzo_list",
+      "locale": "sq",
+      "is_published": false,
+      "value": [
+        {
+          "voce": "Pronë shtesë",
+          "importo": "+60 EUR secila (për t'u konfirmuar)"
+        },
+        {
+          "voce": "Toka/anekse agricole",
+          "importo": "sipas kompleksitetit"
+        },
+        {
+          "voce": "Trashëgimtarë mbi pragun standard",
+          "importo": "sipas kompleksitetit"
+        }
+      ]
+    },
+    {
+      "collection": "tariffe",
+      "key": "sla_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Afatet e dorëzimit"
+    },
+    {
+      "collection": "tariffe",
+      "key": "sla_note",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Çdo paketë tregon dorëzimin e deklaratës brenda një numri të saktë ditësh pune nga dokumentacioni I PLOTË (jo nga pagesa): kështu është premtim që mund ta mbajmë vërtet. Përjashtohen kohët e enteve të treta (Agenzia, Kadastër, banka)."
+    },
+    {
+      "collection": "tariffe",
+      "key": "deliverable_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Çfarë merrni në fund të praktikës"
+    },
+    {
+      "collection": "tariffe",
+      "key": "deliverable_list",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        "Faturë dorëzimi/regjistrimi të Agenzia",
+        "Kopje e deklaratës së trashëgimisë",
+        "Vërtetim / rezultat F24",
+        "Rezultati i volturës kadastrale (ku parashikohet)",
+        "Fatura jonë"
+      ]
+    },
+    {
+      "collection": "tariffe",
+      "key": "esempio_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Shihni një shembull të dokumenteve përfundimtare"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_intro",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Shërbime shtesë, nëse ju duhen"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Prekni një shërbim për të mësuar më shumë. Për tani i aktivizojmë me kërkesë: flasim së bashku dhe i fusim në praktikë."
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_contact_text",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ky shërbim shtohet me kërkesë, me preventiv të dedikuar. Na telefononi ose na shkruani: vlerësojmë së bashku rastin tuaj dhe e fusim në praktikë, pa surpriza."
+    },
+    {
+      "collection": "tariffe",
+      "key": "rate_text",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Honorari mund të paguhet me këste në checkout (PayPal Pay in 3, Klarna, Scalapay, ku disponohen). Me këste ndahet honorari, jo taksat, që ndjekin afatet ligjore."
+    },
+    {
+      "collection": "tariffe",
+      "key": "su_misura_text",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Më shumë se 8 pasuri, truall bujqësor, biznese ose pjesë shoqërie? Çdo rast është ndryshe: ju bëjmë preventiv të personalizuar, pa surpriza."
+    },
+    {
+      "collection": "tariffe",
+      "key": "su_misura_cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Kërkoni një preventiv të personalizuar",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "ti_serve_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ndoshta nuk ju duhet fare. E themi falas."
+    },
+    {
+      "collection": "tariffe",
+      "key": "ti_serve_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Në disa raste (trashëgimtarë të drejtpërdrejtë, vetëm likuiditet modest brenda pragjeve ligjore, asnjë pasuri) deklarata mund të mos duhet. Verifikojmë rastin tuaj para se të paguani: nëse nuk ju nevojitet, jua themi. Verifikimi përfundimtar është gjithmonë mbi rastin konkret."
+    },
+    {
+      "collection": "tariffe",
+      "key": "ti_serve_cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Verifikoni falas rastin tuaj",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Nuk dini cilin të zgjidhni?"
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Lexoni udhëzuesin e shpejtë për zgjedhjen e paketës, ose bisedoni pak me Lorenzo: në pak minuta e kuptoni atë të duhurën. Dhe nëse ndryshoni mendje, ndryshimi i paketës është i thjeshtë dhe rregulloni vetëm diferencën."
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_cta_guida",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Udhëzues për zgjedhjen",
+        "href": "#guida"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_cta_call",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Flisni me Lorenzo",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "microtrust",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Gjeometër i autorizuar Entratel, me mbikëqyrje fiskale nga kontabilistë."
+    },
+    {
+      "collection": "tariffe",
+      "key": "cta_finale_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Disa minuta për të ditur sa kushton, pa detyrim."
+    },
+    {
+      "collection": "tariffe",
+      "key": "cta_finale_button",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Llogaritni preventivin falas",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Preventiv i personalizuar"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_tagline",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Për trashëgimitë më komplekse"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_price_label",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Në porosi"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Më shumë se 8 pasuri, truall bujqësor, biznese ose pjesë shoqërie? Rastet më komplekse nuk hyjnë në paketë standarde: studiojmë tuajin dhe ju përgatisim preventiv të dedikuar, pa surpriza."
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_features",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        "Për rastet që paketat nuk i mbulojnë",
+        "Vlerësimi i parë falas i rastit tuaj",
+        "Çmim i qartë dhe i përcaktuar para fillimit",
+        "I njëjti shërbim dhe e njëjta asistencë si paketat"
+      ]
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Kërkoni preventivin",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "hero_eyebrow",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kush jam"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "hero_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Përshëndetje, unë jam Lorenzo Armellin."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "hero_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Gjeometër i autorizuar të transmettojë deklaratat e trashëgimisë te Agenzia delle Entrate. Pas kësaj faqeje nuk ka software: ka një person që ndjek praktikën tuaj."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "hero_ritratto",
+      "locale": "sq",
+      "is_published": false,
+      "value": {
+        "asset_key": "ritratto_lorenzo"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "bio_body",
+      "locale": "sq",
+      "is_published": false,
+      "value": "Merrem me trashëgiminë çdo ditë. Si gjeometër, forca ime është kontrolli i të dhënave kadastrale — parcelat, nënalternat, aneksat, aktet e provenience — që është pika ku shumica e praktikave ngecin. Qëllimi im është i thjeshtë: t'ju heq një barrë në një moment tashmë të vështirë, me çmime të qarta dhe pa ju lëvizur midis zyrave dhe bankave."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "credenziali_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kredencialet e mia"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "credenziali_list",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        {
+          "voce": "Regjistrim në Albo dei Geometri",
+          "dettaglio": "Collegio di Pisa nr. 1969 - i regjistruar që nga 21/01/2022"
+        },
+        {
+          "voce": "Autorizim Entratel",
+          "dettaglio": "Ndërmjetës për dërgimin telematik te Agenzia delle Entrate"
+        },
+        {
+          "voce": "P.IVA",
+          "dettaglio": "02432220503"
+        }
+      ]
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "team_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Geom. për kadastralen, kontabilistë për numrat"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "team_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Unë e përgatis dhe e transmetto deklaratën: jam i autorizuar ta bëj. Për pjesën fiskale mbështetem te mbikëqyrja e kontabilistëve. Kështu keni kontroll teknik mbi të dhënat kadastrale dhe siguri mbi llogaritjet, pa e ndarë praktikën midis studiove të ndryshme."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "team_membri",
+      "locale": "sq",
+      "is_published": false,
+      "value": [
+        {
+          "ruolo": "Geom. i autorizuar Entratel",
+          "nome": "Lorenzo Armellin",
+          "focus": "Përgatit dhe dërgon praktikën, kontroll kadastral",
+          "foto": {
+            "asset_key": "ritratto_lorenzo"
+          }
+        },
+        {
+          "ruolo": "Mbikëqyrje fiskale",
+          "nome": "Kontabilist (për t'u konfirmuar)",
+          "focus": "Verifikim i pjesës fiskale/taksave",
+          "foto": {
+            "asset_key": "ritratto_commercialista"
+          }
+        }
+      ]
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "perche_geometra_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Shumë presin një kontabilist, CAF o noter. Te trashëgimi, megjithatë, pika më delikate janë të dhënat kadastrale: është puna e gjeometrit. Për depozitimin duhet ndërmjetës Entratel — unë jam. Noteri ndërhyen vetëm për akte të mëvonshme, jo për deklaratën."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ku më gjeni"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_indirizzo",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "via": "Via Vittorio Veneto 31",
+        "cap": "56025",
+        "citta": "Pontedera (PI)"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_nota",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Gjithçka bëhet nga distanca, por studio ekziston vërtet: është këtu."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_maps_label",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Hapni në Google Maps"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "studio_foto_alt",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Duomo di Pontedera"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "ritratto_alt",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Geom. Lorenzo Armellin"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_ref",
+      "locale": "sq",
+      "is_published": false,
+      "value": {
+        "asset_key": "video_benvenuto_lorenzo"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_caption",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Një përshëndetje dhe dy fjalë se si punoj (60 sekonda)."
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_badge",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Video së shpejti"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_alt",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Video mirëseardhjeje nga Geom. Lorenzo Armellin"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "motto_latino",
+      "locale": "sq",
+      "is_published": false,
+      "value": "(moto latin elegant mbi trashëgiminë/familjen/besueshmërinë)"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "motto_traduzione",
+      "locale": "sq",
+      "is_published": false,
+      "value": "(përkthim në italisht)"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "recensioni_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Çfarë thonë për mua"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "cta_finale_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Doni që ta marr unë?"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "cta_finale_button",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Llogaritni preventivin falas",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "cta_finale_phone",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Më telefononi",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "documenti",
+      "key": "hero_eyebrow",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Udhëzues për dokumentet"
+    },
+    {
+      "collection": "documenti",
+      "key": "hero_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Cilat dokumente nevojiten për trashëgiminë?"
+    },
+    {
+      "collection": "documenti",
+      "key": "hero_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Përgjigjuni disa pyetjeve dhe ju tregojmë menjëherë, falas, çfarë do t'ju duhet në rastin tuaj. Pa detyrim. Dhe nëse ju mungon diçka, shpesh mund ta sigurojmë ne."
+    },
+    {
+      "collection": "documenti",
+      "key": "interattiva_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ndërtoni listën tuaj të personalizuar"
+    },
+    {
+      "collection": "documenti",
+      "key": "interattiva_domande",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        "Ka prona (shtëpi, toka, box)?",
+        "Ka testament?",
+        "Ka trashëgimtarë të mitur?",
+        "Ka llogari/investime?",
+        "Ka toka bujqësore/parcela/anekse?",
+        "Ka pasuri të tjera (kuota, biznese, mjete)?"
+      ]
+    },
+    {
+      "collection": "documenti",
+      "key": "interattiva_risultato_intro",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ja çfarë do t'ju duhet:"
+    },
+    {
+      "collection": "documenti",
+      "key": "evergreen_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Dokumentet tipike për deklaratën e trashëgimisë"
+    },
+    {
+      "collection": "documenti",
+      "key": "evergreen_intro",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Më poshtë dokumentet më të zakonshme. Jo gjithmonë nevojiten të gjitha: varet nga rasti juaj (për këtë është mjeti më sipër)."
+    },
+    {
+      "collection": "documenti",
+      "key": "hook_recupero",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Nuk e gjeni një dokument? Shpesh mund ta sigurojmë ne: vizura kadastrale, akte provenience, të dhëna që mungojnë. Është pjesë e punës sonë."
+    },
+    {
+      "collection": "documenti",
+      "key": "disclaimer_ymyl",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kjo listë është orientuese dhe përshtatet me të dhënat që futni. Listën përfundimtare e konfirmon Lorenzo pasi të ketë verifikuar rastin tuaj konkret."
+    },
+    {
+      "collection": "documenti",
+      "key": "cta_preventivo",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Llogaritni preventivin",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "documenti",
+      "key": "cta_pdf",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Shkarkoni listën (PDF)",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "documenti",
+      "key": "cta_email",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Merrni me email",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "faq",
+      "key": "hero_eyebrow",
+      "locale": "sq",
+      "is_published": true,
+      "value": "FAQ"
+    },
+    {
+      "collection": "faq",
+      "key": "hero_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Pyetje të shpeshta për trashëgiminë"
+    },
+    {
+      "collection": "faq",
+      "key": "hero_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Përgjigje të qarta për pyetjet më të shpeshta. Nëse nuk e gjeni tuajën, na shkruani ose telefononi Lorenzo: u përgjigjemi të gjithëve."
+    },
+    {
+      "collection": "faq",
+      "key": "hero_search",
+      "locale": "sq",
+      "is_published": true,
+      "value": true
+    },
+    {
+      "collection": "faq",
+      "key": "cat_capire_intro",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Çfarë është, kur nevojitet dhe çfarë rrezikohet."
+    },
+    {
+      "collection": "faq",
+      "key": "cat_costi_intro",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Sa kushton, çfarë përfshihet dhe si funksionojnë taksat."
+    },
+    {
+      "collection": "faq",
+      "key": "cat_perche_intro",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Mund ta bëni falas vetë: ja pse ia vlen të delegoni gjithsesi."
+    },
+    {
+      "collection": "faq",
+      "key": "cat_come_intro",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Procesi, dokumentet dhe afatet, hap pas hapi."
+    },
+    {
+      "collection": "faq",
+      "key": "cat_dopo_intro",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Çfarë merrni, si i trajtojmë të dhënat tuaja dhe mbrojtjet tuaja."
+    },
+    {
+      "collection": "faq",
+      "key": "cta_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Nuk e gjetët përgjigjen?"
+    },
+    {
+      "collection": "faq",
+      "key": "cta_button",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Llogaritni preventivin falas",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "faq",
+      "key": "cta_phone",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Pyetni Lorenzo",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "recesso",
+      "key": "hero_eyebrow",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Mbrojtjet tuaja"
+    },
+    {
+      "collection": "recesso",
+      "key": "hero_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "E drejta juaj e tërheqjes, e shpjeguar thjesht"
+    },
+    {
+      "collection": "recesso",
+      "key": "hero_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Dëshirojmë që të jeni i qetë. Këtu ju shpjegojmë me fjalë të thjeshta si funksionon anulimi dhe rimbursimi. Teksti zyrtar është te Kushtet e shitjes."
+    },
+    {
+      "collection": "recesso",
+      "key": "cosa_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Keni 14 ditë për ta rimenduar"
+    },
+    {
+      "collection": "recesso",
+      "key": "cosa_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Si konsumator keni të drejtë tërheqjeje brenda 14 ditëve nga blerja, pa dhënë shpjegime. Është e drejtë juaj ligjore."
+    },
+    {
+      "collection": "recesso",
+      "key": "avvio_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Nëse na kërkoni të fillojmë menjëherë"
+    },
+    {
+      "collection": "recesso",
+      "key": "avvio_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Shpesh trashëgimi është urgjent (ka afat 12-mujor). Nëse na kërkoni të fillojmë para 14 ditëve, kërkojmë pëlqim të qartë: do të thotë se, pasi shërbimi të përfundojë, e drejta e tërheqjes nuk vlen më. Nëse puna është vetëm filluar por jo mbaruar, shihni pikën më poshtë."
+    },
+    {
+      "collection": "recesso",
+      "key": "iniziato_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Po ndryshoj mendje ndërsa po punoni?"
+    },
+    {
+      "collection": "recesso",
+      "key": "iniziato_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Mund të tërhiqeni gjithsesi: paguani vetëm pjesën e punës së kryer deri atë moment, proporcionalisht, dhe ju rimbursojmë pjesën tjetër. Pa penale të fshehura."
+    },
+    {
+      "collection": "recesso",
+      "key": "come_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Si kërkohet tërheqja"
+    },
+    {
+      "collection": "recesso",
+      "key": "come_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Më thjesht: nga Zona juaj personale gjeni butonin 'Kërko tërheqje'. Alternativisht mund të na shkruani me email/PEC. Mund të përdorni modelin më poshtë, por nuk është i detyrueshëm."
+    },
+    {
+      "collection": "recesso",
+      "key": "come_cta_area",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Kërkoni tërheqjen nga Zona personale",
+        "href": "/area-riservata/recesso"
+      }
+    },
+    {
+      "collection": "recesso",
+      "key": "rimborso_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kur merrni rimbursimin"
+    },
+    {
+      "collection": "recesso",
+      "key": "rimborso_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "E lëshojmë brenda afateve ligjore (zakonisht 14 ditë nga kërkesa), me të njëjtën metodë pagese që keni përdorur. Pasi të jetë lëshuar në kartë, banka zakonisht e krediton brenda 5-10 ditëve pune (kohët Stripe/lëshues). Taksat eventuale të paguara tashmë te Erario ndjekin rregullat e Agenzia, nuk varen nga ne."
+    },
+    {
+      "collection": "recesso",
+      "key": "garanzia_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Tërheqja dhe garancia: dy gjëra të ndryshme"
+    },
+    {
+      "collection": "recesso",
+      "key": "garanzia_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Tërheqja është e drejtë juaj ligjore në 14 ditët e para. Garancia jonë 'Të kënaqur ose rimbursuar' është premtime shtesë që bëjmë ne: nëse nuk jeni të kënaqur me punën tonë, flasim dhe gjejmë zgjidhje. Detaje në faqen Garanci."
+    },
+    {
+      "collection": "recesso",
+      "key": "garanzia_link",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Lexoni Garancinë",
+        "href": "/garanzia"
+      }
+    },
+    {
+      "collection": "recesso",
+      "key": "tc_link",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kjo faqe shpjegon tërheqjen në mënyrë të thjeshtë. Teksti që bën fjalë është te Kushtet e shitjes."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_eyebrow",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Procesi"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Si funksionon: thjesht, nga shtëpia, në 3 hapa"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Pa radhë, pa zyra. Ju udhëzojmë hap pas hapi: ju mendoni për familjen, për burokracinë kujdesemi ne."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        {
+          "numero": 1,
+          "titolo": "Përgjigjuni disa pyetjeve",
+          "testo": "Plotësoni një pyetësor të shkurtër online (1 minutë). Ju tregojmë menjëherë se çfarë ju nevojitet dhe sa kushton — dhe nëse për rastin tuaj trashëgimi nuk duhet fare, jua themi falas.",
+          "dettaglio": "Rezultat i menjëhershëm: çmim, ose preventiv të personalizuar për rastet komplekse."
+        },
+        {
+          "numero": 2,
+          "titolo": "Ju ngarkoni dokumentet",
+          "testo": "Nga Zona juaj personale ngarkoni dokumentet, edhe me foto nga telefoni. Ju japim listën e saktë, të personalizuar për rastin tuaj. Nëse ju mungon diçka, shpesh mund ta sigurojmë ne.",
+          "dettaglio": "Një person real kontrollon gjithçka: asnjë formular pa përfunduar."
+        },
+        {
+          "numero": 3,
+          "titolo": "Ne kujdesemi për gjithçka",
+          "testo": "Lorenzo e përgatit dhe e dërgon deklaratën te Agenzia delle Entrate. Ju njoftojmë fillimisht taksat për pagesë. Në fund të praktikës merrni faturat dhe dokumentet përfundimtare në zonën tuaj.",
+          "dettaglio": "Ku parashikohet, merremi edhe me volturën kadastrale."
+        }
+      ]
+    },
+    {
+      "collection": "come_funziona",
+      "key": "sla_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Sa kohë duhet"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "sla_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Afatet varen nga paketa dhe fillojnë kur kemi TË GJITHA dokumentet e plota dhe të sakta (jo nga pagesa): kështu është premtim që mund ta mbajmë vërtet. Përjashtohen kohët e enteve të treta (Agenzia, Kadastër, banka)."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "valore_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Çfarë bëjmë ne që softueri nuk bën"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "valore_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Verifikojmë manualisht të dhënat kadastrale — parcelat, nënalternat, aneksat, aktet e provenience — që janë pika ku praktikat ngecin. Me mbikëqyrje fiskale nga kontabilistë mbi numrat. Kjo është ndryshimi midis një formulari të plotësuar dhe një praktike të bërë mirë."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "distanza_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Plotësisht online"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "distanza_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Nuk duhet të shkoni në asnjë zyrë as në bankë: pyetësori, dokumentet, komunikimet dhe dërgimi te Agenzia bëhen online. Gjithmonë ka një telefonatë me Lorenzo për t'ju shpjeguar gjithçka."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "visita_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Preferoni personalisht?"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "visita_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Gjithçka bëhet nga distanca, por nëse dëshironi ju presim në studio me takim: pa radhë, vetëm kohë për të sqaruar së bashku dokumentet dhe hapat. Telefononi ose shkruani dhe caktojmë orarin."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "visita_maps_label",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Hapni në Google Maps"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "deliverable_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Çfarë keni në dorë në fund"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "deliverable_list",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        "Faturë dorëzimi/regjistrimi AdE",
+        "Kopje e deklaratës",
+        "Rezultat F24 / vërtetim",
+        "Rezultati i volturës kadastrale (ku parashikohet)",
+        "Faturë"
+      ]
+    },
+    {
+      "collection": "come_funziona",
+      "key": "cta_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Të fillojmë? Mjafton një minutë."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "cta_button",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Llogaritni preventivin falas",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "cta_phone",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Flisni me Lorenzo",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "contatti",
+      "key": "hero_eyebrow",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kontakt"
+    },
+    {
+      "collection": "contatti",
+      "key": "hero_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Flisni me ne"
+    },
+    {
+      "collection": "contatti",
+      "key": "hero_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Keni një pyetje ose dëshironi të kuptoni nëse ju nevojitet trashëgimi? Na shkruani ose na telefononi: u përgjigjet një person real, jo bot."
+    },
+    {
+      "collection": "contatti",
+      "key": "telefono",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Telefon / WhatsApp",
+        "numero": "+39 320 1570567",
+        "cta_chiama": "tel:+393201570567",
+        "cta_whatsapp": "https://wa.me/393201570567"
+      }
+    },
+    {
+      "collection": "contatti",
+      "key": "email",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "generale": "studio@successioniarmellin.it",
+        "pec": "lorenzo.armellin@geopec.it"
+      }
+    },
+    {
+      "collection": "contatti",
+      "key": "studio",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "via": "Via Vittorio Veneto 31",
+        "cap": "56025",
+        "citta": "Pontedera (PI)"
+      }
+    },
+    {
+      "collection": "contatti",
+      "key": "orari",
+      "locale": "sq",
+      "is_published": false,
+      "value": [
+        {
+          "giorni": "Hën–Pre",
+          "orario": "9:00-13:00 / 14:30-18:30"
+        },
+        {
+          "giorni": "Sht–Die",
+          "orario": "Mbyllur"
+        }
+      ]
+    },
+    {
+      "collection": "contatti",
+      "key": "canali_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ju ndjekim edhe në gjuhën tuaj"
+    },
+    {
+      "collection": "contatti",
+      "key": "canali_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Na shkruani lirisht në WhatsApp ose me email në gjuhën tuaj: kuptohemi pa problem. Nëse preferoni të flisni, mund të bëjmë telefonatë me përkthim në kohë reale; pikat e rëndësishme (shuma, afate, dokumente) jua konfirmojmë gjithmonë me shkrim. Dokumentet zyrtare mbeten në italisht."
+    },
+    {
+      "collection": "contatti",
+      "key": "form_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Na shkruani"
+    },
+    {
+      "collection": "contatti",
+      "key": "form_nota",
+      "locale": "sq",
+      "is_published": false,
+      "value": "Ju përgjigjemi brenda 1 dite pune."
+    },
+    {
+      "collection": "contatti",
+      "key": "form_success",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Faleminderit! Do t'ju rikontaktojmë së shpejti."
+    },
+    {
+      "collection": "contatti",
+      "key": "mappa_nota",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Gjithçka bëhet nga distanca, por studio ekziston: na vizitoni me takim."
+    },
+    {
+      "collection": "contatti",
+      "key": "cta_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Preferoni të filloni menjëherë? Llogaritni preventivin falas, duhet 1 minutë."
+    },
+    {
+      "collection": "contatti",
+      "key": "cta_button",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Llogaritni preventivin",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "guide",
+      "key": "hero_eyebrow",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Udhëzues"
+    },
+    {
+      "collection": "guide",
+      "key": "hero_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Udhëzues për trashëgiminë: të qarta, të përditësuara, pa burokraci"
+    },
+    {
+      "collection": "guide",
+      "key": "hero_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Gjithçka që duhet të dini për trashëgiminë, taksat dhe dokumentet, shpjeguar thjesht nga ata që i bëjnë vërtet praktikat."
+    },
+    {
+      "collection": "guide",
+      "key": "hero_search",
+      "locale": "sq",
+      "is_published": true,
+      "value": true
+    },
+    {
+      "collection": "guide",
+      "key": "categorie",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        {
+          "nome": "Të kuptoni trashëgiminë",
+          "slug": "bazat"
+        },
+        {
+          "nome": "Taksat dhe kostot",
+          "slug": "taksat"
+        },
+        {
+          "nome": "Dokumente",
+          "slug": "dokumente"
+        },
+        {
+          "nome": "Raste të veçanta",
+          "slug": "raste"
+        },
+        {
+          "nome": "Udhëzues lokalë (Toskana)",
+          "slug": "lokale"
+        },
+        {
+          "nome": "Trashëgimtarë të huaj / nga jashtë",
+          "slug": "të huaj"
+        }
+      ]
+    },
+    {
+      "collection": "guide",
+      "key": "in_evidenza_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Në pah"
+    },
+    {
+      "collection": "guide",
+      "key": "cta_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Keni nevojë për ndihmë me rastin tuaj?"
+    },
+    {
+      "collection": "guide",
+      "key": "cta_button",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Llogaritni preventivin falas",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "guide",
+      "key": "strumenti_banner",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "title": "Mjet: llogarit vlerën kadastrale",
+        "body": "Sa vlen një shtëpi ose truall për trashëgiminë? Futni renditën e vizurës dhe merrni menjëherë vlerën mbi të cilën llogariten taksat.",
+        "cta_label": "Hapni kalkulatorin",
+        "href": "/strumenti/valore-catastale"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_hero_eyebrow",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Mjetet"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_meta_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Llogaritja e vlerës kadastrale për trashëgiminë (falas, online)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_hero_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Sa vlen një pronë për qëllime trashëgimi?"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_hero_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Futni renditën kadastrale (e gjeni në vizurë) dhe merrni menjëherë vlerën kadastrale mbi të cilën llogariten taksat e trashëgimisë. Falas, pa lënë të dhëna."
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_tab_fabbricato",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ndërtesë"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_tab_terreno",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Tokë bujqësore"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_rendita",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Të ardhura kadastrale (€)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_help_rendita",
+      "locale": "sq",
+      "is_published": true,
+      "value": "E gjeni në vizurën kadastrale, kolona \"Rendita\". Nëse ju mungon, shpesh mund ta sigurojmë ne."
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_rd",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Të ardhura dominikale (€)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_help_rd",
+      "locale": "sq",
+      "is_published": true,
+      "value": "E gjeni në vizurën kadastrale të truallit. Vlen për truallin JO të ndërtueshëm."
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_categoria",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kategoria kadastrale"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_prima_casa",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Për trashëgimtarin do të jetë \"prima casa\" (lehtësim: koeficienti ulet në 110)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_risultato",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Vlera kadastrale për qëllime trashëgimi"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_label_formula",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Llogaritja:"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_come_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Si funksionon llogaritja"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_come_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Për deklaratën e trashëgimisë pasuritë nuk vlerësohen me çmim tregu por me vlerë kadastrale: rendita e rivlerësuar 5% e shumëzuar me koeficient të vendosur me ligj. Për truallin bujqësor: të ardhura dominikale të rivlerësuara 25% për 90."
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_formule",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        {
+          "tipo": "Shtëpia e parë (lehtësim)",
+          "formula": "rendita × 1,05 × 110"
+        },
+        {
+          "tipo": "Banesa dhe anekse (grupet A dhe C)",
+          "formula": "rendita × 1,05 × 120"
+        },
+        {
+          "tipo": "Grupi B (shkolla, kolegje…)",
+          "formula": "rendita × 1,05 × 168"
+        },
+        {
+          "tipo": "A/10 dhe grupi D (zyra, magazina…)",
+          "formula": "rendita × 1,05 × 60"
+        },
+        {
+          "tipo": "C/1 dhe grupi E (dyqane…)",
+          "formula": "rendita × 1,05 × 40,8"
+        },
+        {
+          "tipo": "Toka bujqësore (jo të ndërtueshme)",
+          "formula": "reddito dominicale × 1,25 × 90"
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_note",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Truallit e ndërtueshëm bëjnë përjashtim: deklarohen me vlerë tregu, jo kadastrale. Rezultati është orientues: lehtësimet eventuale dhe rastet e veçanta duhen verifikuar mbi rastin konkret — pikërisht këtë punë bëjmë ne."
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_cta_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Dëshironi të dini sa kushton e gjithë trashëgimi, taksat e përfshira?"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_cta_button",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Llogaritni preventivin falas",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_faq_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Pyetje të shpeshta për vlerën kadastrale"
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_faq",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        {
+          "q": "Ku e gjej të ardhurën kadastrale të pronës sime?",
+          "a": "Në vizurën kadastrale, kolona \"Rendita\". Mund ta kërkoni falas në faqen e Agenzia delle Entrate (me SPID) ose, nëse jeni klienti ynë, e sigurojmë ne."
+        },
+        {
+          "q": "A është vlera kadastrale çmimi i tregut të shtëpisë?",
+          "a": "Jo: vlera kadastrale është pothuajse gjithmonë shumë më e ulët se vlera e tregut. Është vlera mbi të cilën llogariten taksat hipotekare dhe kadastrale në deklaratën e trashëgimisë, dhe merret nga rendita e rivlerësuar e shumëzuar me koeficient ligjor."
+        },
+        {
+          "q": "Si funksionon lehtësimi i shtëpisë së parë në llogaritje?",
+          "a": "Nëse për trashëgimtarin pasuria do të jetë \"prima casa\", koeficienti bie në 110 (në vend të 120 për banesat) dhe taksat hipotekare dhe kadastrale paguhen me shumë fikse (200 euro secila) në vend të përqindjes."
+        },
+        {
+          "q": "Vlen edhe për tokat?",
+          "a": "Për truallin bujqësor (jo të ndërtueshëm) po: të ardhura dominikale e rivlerësuar 25% e shumëzuar me 90. Truallin e ndërtueshëm në vend të kësaj deklarohet me vlerë tregu."
+        }
+      ]
+    },
+    {
+      "collection": "article",
+      "key": "autore_box",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "autore": "Geom. Lorenzo Armellin",
+        "ruolo": "Geom. i autorizuar Entratel",
+        "reviewed_by": "Rishikuar pjesa fiskale nga kontabilistë",
+        "foto": {
+          "asset_key": "ritratto_lorenzo"
+        },
+        "link": "/chi-sono"
+      }
+    },
+    {
+      "collection": "article",
+      "key": "disclaimer",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Informacionet e këtij udhëzuesi janë orientuese dhe me qëllim informues. Çdo trashëgim është rast më vete: vlerësimi përfundimtar është gjithmonë mbi rastin konkret. Verifikojmë falas situatën tuaj."
+    },
+    {
+      "collection": "article",
+      "key": "cta_box",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "titolo": "Doni që ta marrim ne?",
+        "button": {
+          "label": "Llogaritni preventivin falas",
+          "href": "/preventivo"
+        },
+        "phone": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "article",
+      "key": "fonti",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Burime zyrtare: Agenzia delle Entrate, Normattiva (lidhje në artikujt përkatës)."
+    },
+    {
+      "collection": "preventivo",
+      "key": "intro_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Llogaritni preventivin tuaj falas, në 1 minutë"
+    },
+    {
+      "collection": "preventivo",
+      "key": "intro_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Përgjigjuni disa pyetjeve: ju tregojmë menjëherë sa kushton ose, nëse rasti juaj është i veçantë, ju bëjmë preventiv të personalizuar. Pa detyrim."
+    },
+    {
+      "collection": "preventivo",
+      "key": "progress_label",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Hapi {n} nga 3"
+    },
+    {
+      "collection": "preventivo",
+      "key": "step1_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Fillojmë nga bazat"
+    },
+    {
+      "collection": "preventivo",
+      "key": "step2_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kush janë trashëgimtarët"
+    },
+    {
+      "collection": "preventivo",
+      "key": "step3_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Çfarë bën pjesë nga trashëgimi"
+    },
+    {
+      "collection": "preventivo",
+      "key": "step4_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ku t'ju dërgojmë preventivin"
+    },
+    {
+      "collection": "preventivo",
+      "key": "help_text",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        "Të dhënat shërbejnë vetëm për të vlerësuar rastin tuaj.",
+        "Nuk e dini përgjigjen? Zgjidhni 'Nuk e di', ne kujdesemi ne."
+      ]
+    },
+    {
+      "collection": "preventivo",
+      "key": "consenso_privacy",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kam lexuar njoftimin e privatësisë dhe pranoj përpunimin e të dhënave."
+    },
+    {
+      "collection": "preventivo",
+      "key": "consenso_marketing",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Dua të marr këshilla të dobishme dhe përditësime (opsionale)."
+    },
+    {
+      "collection": "preventivo",
+      "key": "cta_submit",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Shihni menjëherë rezultatin",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "preventivo",
+      "key": "trust_items",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        "Falas dhe pa detyrim",
+        "Ju përgjigjet Lorenzo, një person real",
+        "Të dhënat të sigurta, serverë në BE (GDPR)"
+      ]
+    },
+    {
+      "collection": "grazie",
+      "key": "header_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ja rezultati për rastin tuaj"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_a_whatsapp",
+      "locale": "sq",
+      "is_published": true,
+      "value": "WhatsApp"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_a_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ndoshta nuk duhet të bëni deklaratën"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_taxes_note",
+      "locale": "sq",
+      "is_published": true,
+      "value": "+ taksa të llogaritura për rastin tuaj: ju tregojmë para se të paguani."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_package_line",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Paketë {name}"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_a_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Bazuar në atë që na thatë, rasti juaj mund të bjerë në përjashtimin ligjor. Nuk dëshirojmë t'ju shesim shërbim që nuk ju nevojitet: ta verifikojmë së bashku, falas. Konfirmimi përfundimtar është mbi rastin konkret."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_a_cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Telefononi për verifikimin falas",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ja paketa e duhur për ju"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Vazhdoni me pagesën",
+        "href": "/checkout"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_riallineamento",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Para se të paguani, hidhni një sy {guida} për zgjedhjen e paketës ose bisedoni pak me Lorenzo: nëse keni zgjedhur gabim, ndryshimi është i thjeshtë dhe rregullohet vetëm diferenca."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_guida",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "udhëzues",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Rasti juaj meriton një preventiv të personalizuar"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Nga përgjigjet tuaja del një rast me elemente të veçanta (shumë pasuri, truall bujqësor, pjesë, biznese…). Nuk mund të caktojmë çmim këtu: duhet studiuar së bashku me Lorenzo, që të paguani as më shumë as më pak se sa duhet. Lini kontaktet më poshtë (dhe, nëse dëshironi, një shënim) ose na shkruani: do t'ju telefonojmë për të sqaruar detajet dhe përgatitur preventivin e dedikuar."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Telefononi Lorenzo",
+        "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_whatsapp",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Shkruani në WhatsApp"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_c_whatsapp_prefill",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Përshëndetje Lorenzo, plotësova pyetësorin në faqe dhe më del një preventiv i personalizuar. Dëshiroj ta thelloj rastin tim së bashku me ty."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Preferoni ta mendoni? Merrni këtë preventiv me email"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_desc",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ju dërgojmë përmbledhjen e preventivit që ta gjeni kur të doni. Pa presion."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_submit",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Më dërgoni preventivin me email"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_ok_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "U krye! Kontrolloni kutinë e email-it"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_ok_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ju dërguamë përmbledhjen e preventivit. Kur të doni, vazhdoni prej andej."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_ok_title_noemail",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kërkesa u regjistrua!"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_ok_body_noemail",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Regjistruamë kërkesën tuaj: do t'ju dërgojmë përmbledhjen e preventivit së shpejti."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Lini kontaktet: ju telefonojmë ne"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_desc",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Përgjigjet e pyetësorit na mjaftojnë për të filluar. Lini email dhe telefon: Lorenzo do t'ju kontaktojë për të thelluar së bashku detajet dhe për t'ju dërguar preventivin e dedikuar, pa detyrim. Nëse dëshironi, shtoni një shënim më poshtë."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_notes_label",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Shënim për Lorenzo (opsional)"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_notes_placeholder",
+      "locale": "sq",
+      "is_published": true,
+      "value": "P.sh. lloji i pasurive, truall, biznese/pjesë, urgjenca o dyshime…"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_footnote",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Pa detyrim: ju kontaktojmë brenda një dite pune (zakonisht brenda ditës) për të studiuar rastin së bashku dhe përgatitur preventivin."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_submit",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kërkoni të rikontaktoheni"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_ok_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kërkesa u mor!"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_custom_ok_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Lorenzo do t'ju kontaktojë së shpejti për të thelluar rastin dhe për t'ju përgatitur preventivin e personalizuar."
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ndërkohë, ja çfarë do t'ju duhet"
+    },
+    {
+      "collection": "documenti",
+      "key": "lista",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        {
+          "name": "Dokument identiteti dhe kod fiskal",
+          "description": "Të gjithë trashëgimtarëve dhe të ndjerit.",
+          "when": "Gjithmonë"
+        },
+        {
+          "name": "Certifikatë vdekjeje",
+          "description": "Ose deklaratën zëvendësuese të certifikatës së vdekjes dhe gjendjes familjare të të ndjerit: modelin ju e jepim ne.",
+          "when": "Gjithmonë"
+        },
+        {
+          "name": "Vetëvërtetim i gjendjes familjare për çdo trashëgimtar",
+          "description": "Shërben për të identifikuar trashëgimtarët: një model për secilin, ju e jepim ne.",
+          "when": "Gjithmonë"
+        },
+        {
+          "name": "Ekstrakte kadastrale",
+          "description": "Të pasurive të paluajtshme në trashëgim. Mund t'i sigurojmë ne.",
+          "when": "Nëse ka prona"
+        },
+        {
+          "name": "Akte të proveniencës",
+          "description": "Aktet noteriale, dhuratat ose deklaratat e mëparshme të trashëgimisë.",
+          "when": "Nëse ka prona"
+        },
+        {
+          "name": "Testament",
+          "description": "Kopje e testamenteve të publikuara, nëse ka.",
+          "when": "Nëse ka testament"
+        },
+        {
+          "name": "Vërtetim i bilancit të llogarive",
+          "description": "Gjendja e llogarive, librezeve dhe titujve në datën e vdekjes.",
+          "when": "Nëse ka llogari/investime"
+        }
+      ]
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_disclaimer",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Listë orientuese: atë përfundimtare e konfirmon Lorenzo pasi të ketë parë rastin tuaj."
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_faq_link",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Mësoni më shumë te FAQ",
+        "href": "/faq"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_hook",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ju mungon diçka? Shpesh mund ta sigurojmë ne."
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_cta_pdf",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Shkarkoni listën (PDF)",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "documenti_cta_email",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Merrni me email",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "grazie",
+      "key": "next_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ju dërguamë një përmbledhje me email. Nga këtu e tutje ju ndjekim ne: një person real, jo bot."
+    },
+    {
+      "collection": "checkout",
+      "key": "header_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Përfundoni porosinë"
+    },
+    {
+      "collection": "checkout",
+      "key": "header_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Edhe një hap dhe merremi ne."
+    },
+    {
+      "collection": "checkout",
+      "key": "riepilogo_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Porosia juaj"
+    },
+    {
+      "collection": "checkout",
+      "key": "modifica_link",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Ndryshoni",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "checkout",
+      "key": "prezzo_imposte_nota",
+      "locale": "sq",
+      "is_published": true,
+      "value": "E RËNDËSISHME: ky është honorari profesional. Taksat (trashëgimi, hipotekare, kadastrale, pulla) janë TË NDARA, në ngarkim të trashëgimtarit, dhe i llogaritim dhe i komunikojmë PARA dorëzimit."
+    },
+    {
+      "collection": "checkout",
+      "key": "microtrust",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Paguani një gjeometër të autorizuar Entratel, me mbikëqyrje fiskale nga kontabilistë. Pagesa të sigurta me Stripe."
+    },
+    {
+      "collection": "checkout",
+      "key": "pagamento_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Si dëshironi të paguani"
+    },
+    {
+      "collection": "checkout",
+      "key": "pagamento_metodi",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        "Kartë",
+        "PayPal",
+        "Transfer bankar (i asistuar)"
+      ]
+    },
+    {
+      "collection": "checkout",
+      "key": "rate_nota",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Mund të paguani me këste (PayPal Pay in 3, Klarna, Scalapay, ku disponohen). Me këste ndahet honorari, jo taksat."
+    },
+    {
+      "collection": "checkout",
+      "key": "consenso_tc",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Pranoj Kushtet e shitjes dhe njoftimin e privatësisë."
+    },
+    {
+      "collection": "checkout",
+      "key": "consenso_avvio",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kërkoj fillimin e menjëhershëm të punës dhe pranoj se, me shërbimin e përfunduar brenda 14 ditëve, humb të drejtën e tërheqjes."
+    },
+    {
+      "collection": "checkout",
+      "key": "recesso_link",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Si funksionon tërheqja",
+        "href": "/recesso"
+      }
+    },
+    {
+      "collection": "checkout",
+      "key": "cta_pay",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Paguani në mënyrë të sigurt",
+        "href": "#"
+      }
+    },
+    {
+      "collection": "checkout",
+      "key": "cta_nota",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Transaksion i enkriptuar. Nuk ruajmë të dhënat e kartës."
+    },
+    {
+      "collection": "checkout",
+      "key": "trust_items",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        "Të kënaqur ose rimbursuar",
+        "Serverë në BE, në përputhje me GDPR",
+        "Asistencë nga një person real"
+      ]
+    },
+    {
+      "collection": "checkout",
+      "key": "success_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Pagesa u krye! Mirë se vini."
+    },
+    {
+      "collection": "checkout",
+      "key": "error_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Pagesa nuk u krye"
+    },
+    {
+      "collection": "legale",
+      "key": "privacy_title",
+      "locale": "sq",
+      "is_published": false,
+      "value": "Informacion mbi privatësinë"
+    },
+    {
+      "collection": "legale",
+      "key": "cookie_title",
+      "locale": "sq",
+      "is_published": false,
+      "value": "Cookie Policy"
+    },
+    {
+      "collection": "legale",
+      "key": "tc_title",
+      "locale": "sq",
+      "is_published": false,
+      "value": "Kushtet e shitjes"
+    },
+    {
+      "collection": "legale",
+      "key": "garanzia_title",
+      "locale": "sq",
+      "is_published": false,
+      "value": "Garancia jonë"
+    },
+    {
+      "collection": "legale",
+      "key": "garanzia_cta",
+      "locale": "sq",
+      "is_published": false,
+      "value": {
+        "label": "Llogaritni preventivin falas",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "sistema",
+      "key": "e404_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kjo faqe nuk ekziston (ose nuk ekziston më)"
+    },
+    {
+      "collection": "sistema",
+      "key": "e404_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Por mund t'ju ndihmojmë gjithsesi."
+    },
+    {
+      "collection": "sistema",
+      "key": "e404_cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        {
+          "label": "Shkoni te faqja kryesore",
+          "href": "/"
+        },
+        {
+          "label": "Llogaritni preventivin",
+          "href": "/preventivo"
+        }
+      ]
+    },
+    {
+      "collection": "sistema",
+      "key": "e500_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Diçka shkoi keq"
+    },
+    {
+      "collection": "sistema",
+      "key": "e500_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Provoni përsëri pas pak. Nëse problemi vazhdon, na shkruani ose na telefononi."
+    },
+    {
+      "collection": "sistema",
+      "key": "manutenzione_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Po bëjmë mirëmbajtje"
+    },
+    {
+      "collection": "sistema",
+      "key": "manutenzione_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kthehemi online së shpejti. Për urgjenca, na kontaktoni."
+    },
+    {
+      "collection": "sistema",
+      "key": "sessione_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Sesioni ka skaduar"
+    },
+    {
+      "collection": "sistema",
+      "key": "sessione_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Për sigurinë tuaj ju shkëputëm. Hyni përsëri për të vazhduar."
+    },
+    {
+      "collection": "area_errors",
+      "key": "request_invalid",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kërkesë e pavlefshme."
+    },
+    {
+      "collection": "area_errors",
+      "key": "max_files",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Maksimumi {n} skedarë për dokument: fshini një skedar për të ngarkuar një tjetër."
+    },
+    {
+      "collection": "area_login",
+      "key": "header_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Zona personale"
+    },
+    {
+      "collection": "area_login",
+      "key": "header_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Hyni për të ndjekur praktikën tuaj të trashëgimisë."
+    },
+    {
+      "collection": "area_login",
+      "key": "tab_email",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Email"
+    },
+    {
+      "collection": "area_login",
+      "key": "tab_phone",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Telefoni"
+    },
+    {
+      "collection": "area_login",
+      "key": "tab_password",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Password"
+    },
+    {
+      "collection": "area_login",
+      "key": "google_cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Vazhdoni me Google"
+    },
+    {
+      "collection": "area_login",
+      "key": "oppure",
+      "locale": "sq",
+      "is_published": true,
+      "value": "ose"
+    },
+    {
+      "collection": "area_login",
+      "key": "password_label",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Fjalëkalimi juaj"
+    },
+    {
+      "collection": "area_login",
+      "key": "password_hint",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Krijohet nga profili, pas hyrjes së parë. Nuk e keni? Përdorni email-in."
+    },
+    {
+      "collection": "area_login",
+      "key": "password_cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Hyni"
+    },
+    {
+      "collection": "area_login",
+      "key": "password_verifying",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Hyrje…"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_label",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Email-i juaj"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_placeholder",
+      "locale": "sq",
+      "is_published": true,
+      "value": "nome@email.it"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_hint",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Përdorni email-in me të cilin keni paguar."
+    },
+    {
+      "collection": "area_login",
+      "key": "email_cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Më dërgoni lidhjen e hyrjes"
+    },
+    {
+      "collection": "area_login",
+      "key": "email_sending",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Dërgim…"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_label",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Numri juaj i telefonit"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_placeholder",
+      "locale": "sq",
+      "is_published": true,
+      "value": "+39 333 123 4567"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_hint",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Përdorni numrin me të cilin keni bërë porosinë. Do t'ju dërgojmë një kod me SMS."
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Më dërgoni kodin me SMS"
+    },
+    {
+      "collection": "area_login",
+      "key": "phone_sending",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Dërgim…"
+    },
+    {
+      "collection": "area_login",
+      "key": "sent_email_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kontrolloni email-in tuaj"
+    },
+    {
+      "collection": "area_login",
+      "key": "sent_email_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ju dërguamë një lidhje hyrjeje te {contact}. Lidhja skadon pas pak minutash."
+    },
+    {
+      "collection": "area_login",
+      "key": "sent_phone_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kontrolloni SMS-të"
+    },
+    {
+      "collection": "area_login",
+      "key": "sent_phone_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ju dërguamë një kod me 6 shifra te numri {contact}. Shkruajeni më poshtë."
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_toggle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Mora një kod, dua ta fus"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_label",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kod 6-shifror"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_placeholder",
+      "locale": "sq",
+      "is_published": true,
+      "value": "123456"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Verifikoni kodin"
+    },
+    {
+      "collection": "area_login",
+      "key": "otp_verifying",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Verifikim…"
+    },
+    {
+      "collection": "area_login",
+      "key": "resend",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Dërgoni përsëri"
+    },
+    {
+      "collection": "area_login",
+      "key": "error_link",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Lidhja e hyrjes nuk është e vlefshme ose ka skaduar. Kërkoni një të re."
+    },
+    {
+      "collection": "area_login",
+      "key": "secure_note",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Qasje e sigurt"
+    },
+    {
+      "collection": "area_login",
+      "key": "back_to_site",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kthehuni te faqja"
+    },
+    {
+      "collection": "area_login",
+      "key": "privacy_link",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Privacy",
+        "href": "/privacy"
+      }
+    },
+    {
+      "collection": "area_login",
+      "key": "termini_link",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Kushtet",
+        "href": "/termini-condizioni"
+      }
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_legal_prefix",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Më shumë detaje se si i trajtojmë të dhënat tuaja:"
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_privacy_label",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Privacy Policy"
+    },
+    {
+      "collection": "home",
+      "key": "app_scopo_terms_label",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kushtet e shërbimit"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "price_suffix",
+      "locale": "sq",
+      "is_published": true,
+      "value": "onorari pa TVSH"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "sla_line",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Dorëzim brenda {n} ditëve pune nga dokumentet e plota"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "cta_choose",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Zgjidhni {name}"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "su_misura_price_note",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Përcaktuar së bashku, para se të fillojmë"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_discover",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Zbuloni si ta aktivizoni"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_phone_label",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Telefononi Lorenzo"
+    },
+    {
+      "collection": "tariffe",
+      "key": "addon_email_label",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Na shkruani me email"
+    },
+    {
+      "collection": "navbar",
+      "key": "cta_short",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Preventiv"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_rating_of",
+      "locale": "sq",
+      "is_published": true,
+      "value": "nga 5"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_count_one",
+      "locale": "sq",
+      "is_published": true,
+      "value": "{n} vlerësim në Google"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_count_many",
+      "locale": "sq",
+      "is_published": true,
+      "value": "{n} vlerësime në Google"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_from",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Vlerësime nga"
+    },
+    {
+      "collection": "home",
+      "key": "recensioni_write",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Shkruani një vlerësim"
+    },
+    {
+      "collection": "faq",
+      "key": "items",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        {
+          "category": "Të kuptoni trashëgiminë",
+          "question": "Çfarë është deklarata e trashëgimisë?",
+          "answer": "Është detyrimi fiskal me të cilin i njoftohet Agenzia delle Entrate pasuria e të ndjerit të transferuar te trashëgimtarët. Zakonisht dorëzohet brenda 12 muajve nga vdekja."
+        },
+        {
+          "category": "Të kuptoni trashëgiminë",
+          "question": "Deri kur duhet dorëzuar?",
+          "answer": "Zakonisht brenda 12 muajve nga data e vdekjes. Dorëzimi me vonesë mund të sjellë sanksione: ne kujdesemi në afatet e duhura."
+        },
+        {
+          "category": "Kostot dhe taksat",
+          "question": "Sa kushton shërbimi juaj?",
+          "answer": "Paguani honorar fiks sipas paketës. Taksat janë të ndara, në ngarkim të trashëgimtarit, dhe i llogaritim dhe i komunikojmë para dorëzimit."
+        },
+        {
+          "category": "Kostot dhe taksat",
+          "question": "A janë taksat të përfshira në çmim?",
+          "answer": "Jo: çmimi i paketës është honorari profesional. Taksat (trashëgimi, hipotekare, kadastrale, pulla) paguhen me F24 dhe janë të ndara. I llogaritim ne fillimisht."
+        },
+        {
+          "category": "Kostot dhe taksat",
+          "question": "Çfarë është lehtësimi i shtëpisë së parë në trashëgimi?",
+          "answer": "Nëse të paktën një trashëgimtar plotëson kriteret prima casa mbi pasurinë e trashëguar, taksat hipotekare dhe kadastrale paguhen me shumë fikse (200 euro secila) në vend të përqindjes mbi vlerën kadastrale. Ne verifikojmë nëse ju takon dhe e tregojmë në deklaratë."
+        },
+        {
+          "category": "Pse jo vetë",
+          "question": "A mund ta bëj falas vetë në faqen e Agenzia?",
+          "answer": "Po, ekziston trashëgimi i paraplotësuar falas dhe është opsion i ndershëm. Por kërkon SPID dhe njohuri: nuk i vleftëson të dhënat kadastrale dhe gabimet eventuale (dhe sanksionet) mbeten në ngarkim tuaj."
+        },
+        {
+          "category": "Si funksionon",
+          "question": "Duhet të shkoj në ndonjë zyrë?",
+          "answer": "Jo. Pyetësori, dokumentet, komunikimet dhe dërgimi te Agenzia bëhen online. Gjithmonë ka një telefonatë me Lorenzo për t'ju shpjeguar gjithçka."
+        },
+        {
+          "category": "Si funksionon",
+          "question": "Cilat dokumente nevojiten?",
+          "answer": "Varet nga rasti juaj: ju japim listë të personalizuar. Nëse ju mungon diçka, shpesh mund ta sigurojmë ne (vizura, akte provenience)."
+        },
+        {
+          "category": "Dokumente dhe Zona personale",
+          "question": "A mund t'i ngarkoj dokumentet me foto nga telefoni?",
+          "answer": "Po. Në Zonën personale mund të ngarkoni PDF, JPG ose PNG (edhe foto me telefon), deri në 10 MB secili dhe deri në 10 skedarë për çdo element të listës. Për para/pas ose dokumente shumëfaqe mjafton të ngarkoni më shumë foto në të njëjtin element."
+        },
+        {
+          "category": "Dokumente dhe Zona personale",
+          "question": "Ka modele gati për t'u shkarkuar dhe plotësuar?",
+          "answer": "Po. Nën disa elemente të listës gjeni modelet e gatshme (p.sh. deklaratën zëvendësuese të certifikatës së vdekjes dhe gjendjes familjare të të ndjerit, ose vetëvërtetimin e gjendjes familjare për çdo trashëgimtar): i shkarkoni, i plotësoni, i nënshkruani dhe i ringarkoni."
+        },
+        {
+          "category": "Dokumente dhe Zona personale",
+          "question": "Çfarë ndodh nëse një dokument refuzohet?",
+          "answer": "Lorenzo i verifikon një nga një. Nëse diçka nuk shkon (foto e turbullt, faqe që mungon, dokument i gabuar) elementi kthehet \"për rishikim\" me një shënim që shpjegon çfarë të korrigjoni: ringarkoni skedarin e saktë dhe praktika vazhdon pa filluar nga e para."
+        },
+        {
+          "category": "Dokumente dhe Zona personale",
+          "question": "Si e di kur dokumentet janë në rregull?",
+          "answer": "Në Zonën personale shihni gjendjen e çdo elementi (për ngarkim, i ngarkuar, i aprovuar, për rishikim). Kur keni mbaruar shtypni «Kam mbaruar»: merrni përditësime me email në çdo hap dhe mund të kontrolloni gjithmonë ku ndodhet praktika."
+        },
+        {
+          "category": "Pas shërbimit",
+          "question": "Çfarë marr në fund të praktikës?",
+          "answer": "Faturë dorëzimi/regjistrimi, kopje e deklaratës, rezultat F24 dhe, ku parashikohet, rezultat i volturës kadastrale, përveç faturës sonë."
+        }
+      ]
+    },
+    {
+      "collection": "area",
+      "key": "nav_home",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Home"
+    },
+    {
+      "collection": "area",
+      "key": "nav_documenti",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Dokumente"
+    },
+    {
+      "collection": "area",
+      "key": "nav_ordine",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Blerje"
+    },
+    {
+      "collection": "area",
+      "key": "nav_comunicazioni",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Komunikime"
+    },
+    {
+      "collection": "area",
+      "key": "nav_dati",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Të dhënat tuaja"
+    },
+    {
+      "collection": "area",
+      "key": "nav_mandato",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Mandat"
+    },
+    {
+      "collection": "area",
+      "key": "nav_conclusa",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Dokumente finale"
+    },
+    {
+      "collection": "area",
+      "key": "nav_profilo",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Profili"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_brand",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Studio Armellin"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_practice",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Praktika {code}"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_back",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kthehuni te faqja"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_help",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Asistencë"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_logout",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Dilni"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_notifications",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Njoftimet"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_notifications_empty",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Asnjë njoftim"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_notifications_mark_all",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Shënoni të gjitha si të lexuara"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_comms_new",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Përditësime"
+    },
+    {
+      "collection": "area",
+      "key": "welcome_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Zona personale"
+    },
+    {
+      "collection": "area",
+      "key": "welcome_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Mirë se vini."
+    },
+    {
+      "collection": "area",
+      "key": "hello",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Përshëndetje, {name}"
+    },
+    {
+      "collection": "area",
+      "key": "practice_deceased",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Praktikë {code} · i ndjerë {name}"
+    },
+    {
+      "collection": "area",
+      "key": "next_action_label",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Veprimi tjetër"
+    },
+    {
+      "collection": "area",
+      "key": "tracker_heading",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ku ndodhet praktika juaj"
+    },
+    {
+      "collection": "area",
+      "key": "docs_heading",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Dokumente"
+    },
+    {
+      "collection": "area",
+      "key": "docs_progress",
+      "locale": "sq",
+      "is_published": true,
+      "value": "{uploaded} nga {total} të ngarkuara"
+    },
+    {
+      "collection": "area",
+      "key": "docs_cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Shkoni te dokumentet"
+    },
+    {
+      "collection": "area",
+      "key": "summary_heading",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Përmbledhje"
+    },
+    {
+      "collection": "area",
+      "key": "summary_package",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Paketë"
+    },
+    {
+      "collection": "area",
+      "key": "summary_price",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Onorari"
+    },
+    {
+      "collection": "area",
+      "key": "summary_taxes",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Taksat e komunikuara"
+    },
+    {
+      "collection": "area",
+      "key": "summary_iban_missing",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Mungon IBAN: shtojeni për taksat"
+    },
+    {
+      "collection": "area",
+      "key": "summary_cta_ordine",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Shikoni blerjen"
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kjo praktikë u anulua."
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_refunded",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Tërheqja u pranua dhe rimbursimi u lëshua: zakonisht e shihni në kartën e përdorur për pagesë brenda 5-10 ditëve pune (kohët e bankës ose lëshuesit të kartës)."
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_pending",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Tërheqja u pranua. Nëse duhet rimbursim, pasi të jetë lëshuar zakonisht e shihni në kartë brenda 5-10 ditëve pune."
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_footer",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Nuk ka më asgjë për të bërë: më poshtë gjeni përmbledhjen e blerjes suaj, që mbetet e disponueshme."
+    },
+    {
+      "collection": "area",
+      "key": "cancelled_cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Shikoni blerjen tuaj"
+    },
+    {
+      "collection": "area",
+      "key": "client_steps",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        "Dokumente për t'u ngarkuar",
+        "Në përpunim",
+        "Dërguar te Agenzia delle Entrate",
+        "Përfunduar"
+      ]
+    },
+    {
+      "collection": "area",
+      "key": "action_closed_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Praktika juaj është përfunduar."
+    },
+    {
+      "collection": "area",
+      "key": "action_closed_cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Shkarkoni dokumentet përfundimtare"
+    },
+    {
+      "collection": "area",
+      "key": "action_docs_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Mungojnë disa dokumente për të vazhduar."
+    },
+    {
+      "collection": "area",
+      "key": "action_docs_cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ngarkoni dokumentet"
+    },
+    {
+      "collection": "area",
+      "key": "action_working_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Po punojmë për praktikën tuaj."
+    },
+    {
+      "collection": "area",
+      "key": "action_working_cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Shikoni statusin"
+    },
+    {
+      "collection": "area",
+      "key": "action_idle_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Gjithçka në rregull, nuk nevojitet asnjë veprim tani."
+    },
+    {
+      "collection": "area",
+      "key": "action_idle_cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Shikoni blerjen tuaj"
+    },
+    {
+      "collection": "area",
+      "key": "doc_state_da_caricare",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Për t'u ngarkuar"
+    },
+    {
+      "collection": "area",
+      "key": "doc_state_caricato",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ngarkuar"
+    },
+    {
+      "collection": "area",
+      "key": "doc_state_da_rifare",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Për t'u ribërë"
+    },
+    {
+      "collection": "area",
+      "key": "empty_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Asnjë praktikë e lidhur me këtë hyrje"
+    },
+    {
+      "collection": "area",
+      "key": "empty_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Nëse keni paguar tashmë një preventiv, lidhni praktikën me email-in e përdorur në checkout. Përndryshe llogaritni preventivin nga faqja."
+    },
+    {
+      "collection": "area",
+      "key": "empty_claim_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Keni tashmë një praktikë?"
+    },
+    {
+      "collection": "area",
+      "key": "empty_claim_cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Lidhni praktikën"
+    },
+    {
+      "collection": "area",
+      "key": "documenti_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Dokumentet tuaja"
+    },
+    {
+      "collection": "area",
+      "key": "documenti_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ngarkoni dokumentet e kërkuara. Mund të bëni edhe foto me telefonin."
+    },
+    {
+      "collection": "area",
+      "key": "documenti_photo_tip",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Foto të qarta, e gjithë faqja në kornizë, pa shkëlqime. PDF dhe JPG/PNG deri në 10 MB."
+    },
+    {
+      "collection": "area",
+      "key": "ordine_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Blerja juaj"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Çfarë keni blerë dhe çfarë përfshin. Mund ta konsultoni kur të doni."
+    },
+    {
+      "collection": "area",
+      "key": "ordine_summary",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Përmbledhje e porosisë"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_total",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Onorari total"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_no_iva",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Honorar pa TVSH (regjimi forfettari). Taksat janë të ndara (shihni më poshtë)."
+    },
+    {
+      "collection": "area",
+      "key": "ordine_payment_status",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Statusi i pagesës"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_method",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Metoda"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_card",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kartë (online)"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_transfer",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Transfer bankar"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_paid",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Paguar"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_pending",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Në pritje"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_partial",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Rimbursuar pjesërisht"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_refunded",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Rimbursuar"
+    },
+    {
+      "collection": "area",
+      "key": "ordine_refund_note",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Rimbursim i lëshuar: zakonisht e shihni në kartë brenda 5-10 ditëve pune (kohët e bankës ose lëshuesit të kartës)."
+    },
+    {
+      "collection": "area",
+      "key": "dati_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Të dhënat tuaja"
+    },
+    {
+      "collection": "area",
+      "key": "dati_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Disa të dhëna shtesë që na nevojiten për praktikën."
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Komunikime"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Mesazhe dhe përditësime për praktikën tuaj."
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_empty",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Asnjë komunikim për momentin."
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_channel_email",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Email"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_channel_phone",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Telefonatë"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_channel_wa",
+      "locale": "sq",
+      "is_published": true,
+      "value": "WhatsApp"
+    },
+    {
+      "collection": "area",
+      "key": "comunicazioni_channel_inperson",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Në person"
+    },
+    {
+      "collection": "area",
+      "key": "mandato_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Mandat dhe pëlqime"
+    },
+    {
+      "collection": "area",
+      "key": "mandato_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Lexoni dhe nënshkruani mandatin profesional për praktikën tuaj."
+    },
+    {
+      "collection": "area",
+      "key": "mandato_lang_note",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Versioni italiane e mandatit bën fjalë. Përkthimi është vetëm kortezi; skedari i shkarkuar për nënshkrim mbetet në italisht."
+    },
+    {
+      "collection": "area",
+      "key": "conclusa_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Dokumente finale"
+    },
+    {
+      "collection": "area",
+      "key": "conclusa_subtitle_open",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Praktika juaj është mbyllur. Këtu gjeni dokumentet për t'i shkarkuar."
+    },
+    {
+      "collection": "area",
+      "key": "conclusa_subtitle_closed",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Dokumentet përfundimtare do të jenë të disponueshme kur praktika të mbyllet."
+    },
+    {
+      "collection": "area",
+      "key": "profilo_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Profili"
+    },
+    {
+      "collection": "area",
+      "key": "profilo_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kontakte, siguri dhe preferenca."
+    },
+    {
+      "collection": "area",
+      "key": "recesso_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kërkesë për tërheqje"
+    },
+    {
+      "collection": "area",
+      "key": "recesso_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Mund të kërkoni tërheqjen derisa praktika të mos jetë përfunduar."
+    },
+    {
+      "collection": "area",
+      "key": "recesso_window_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Jeni brenda 14 ditëve nga mbyllja e kontratës."
+    },
+    {
+      "collection": "area",
+      "key": "recesso_rule_1",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Nëse ende nuk kemi filluar: rimbursim i plotë i honorarit."
+    },
+    {
+      "collection": "area",
+      "key": "recesso_rule_2",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Nëse kemi filluar por nuk kemi përfunduar: rimbursim proporcional për punën e kryer."
+    },
+    {
+      "collection": "area",
+      "key": "recesso_rule_3",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Nëse shërbimi është tashmë i përfunduar: tërheqja nuk vlen (art. 59)."
+    },
+    {
+      "collection": "area",
+      "key": "review_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Praktika është përfunduar: na lini një vlerësim?"
+    },
+    {
+      "collection": "area",
+      "key": "review_cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Lini një vlerësim në Google"
+    },
+    {
+      "collection": "area",
+      "key": "review_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Nëse keni qenë të kënaqur me Lorenzo, një recensione në Google na ndihmon shumë."
+    },
+    {
+      "collection": "area",
+      "key": "chrome_comms_all",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Shihni të gjitha komunikimet"
+    },
+    {
+      "collection": "area",
+      "key": "chrome_comms_new_count",
+      "locale": "sq",
+      "is_published": true,
+      "value": "({n} të reja)"
+    },
+    {
+      "collection": "area",
+      "key": "docs_ui",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "counter": "Dokumente: {uploaded} nga {total}",
+        "all_uploaded": "Të gjitha të ngarkuara",
+        "missing_n": "Mungojnë {n}",
+        "optional": "(opsionale)",
+        "delete_file": "Fshini këtë skedar",
+        "uploading": "Ngarkim…",
+        "upload": "Ngarkoni",
+        "reupload": "Ringarkoni",
+        "add_another": "Shtoni një skedar tjetër",
+        "multi_page_hint": "para/pas ose një foto për faqe: i bashkojmë ne",
+        "done_title": "U krye!",
+        "done_body": "Lorenzo mori dokumentet tuaja dhe po i kontrollon. Do t'ju njoftojmë nëse mungon diçka — mund të jeni i qetë.",
+        "submit_cta": "Kam mbaruar — dërgo te Lorenzo",
+        "missing_one": "Mungon 1 dokument",
+        "missing_many": "Mungojnë {n} dokumente",
+        "templates_title": "Ju duhet moduli? Ne jua japim:",
+        "templates_help": "Shkarkoni modelin, printojeni dhe plotësojeni plotësisht, nënshkruajeni dhe ringarkojeni këtu (shkon edhe foto e lexueshme mirë), së bashku me kopjen e dokumentit të identitetit të nënshkruesit.",
+        "err_file_too_big": "Skedari shumë i madh (maksimumi 10 MB).",
+        "err_too_many": "Mund të ngarkoni maksimumi 10 skedarë për çdo zë.",
+        "err_upload_failed": "Ngarkimi nuk u krye.",
+        "err_upload_network": "Ngarkimi nuk u krye, kontrolloni lidhjen.",
+        "err_delete_failed": "Fshirja nuk u krye.",
+        "err_delete_network": "Fshirja nuk u krye, provoni përsëri.",
+        "state_da_caricare": "Për t'u ngarkuar",
+        "state_caricato": "Ngarkuar",
+        "state_da_rifare": "Për t'u ribërë"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "mandate_ui",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "signed_title": "Mandati i firmosur.",
+        "signed_paper": "Mandati në letër i firmosur u mor.",
+        "signed_electronic": "Firmë elektronike e regjistruar (data dhe ora).",
+        "signed_thanks": "Faleminderit, mund të vazhdojmë me praktikën tuaj.",
+        "accept_checkbox": "Kam lexuar dhe pranoj mandatin, kushtet dhe njoftimin e privatësisë.",
+        "accept_cta": "Pranoj dhe firmos online",
+        "paper_title": "Preferoni firmën në letër?",
+        "paper_body": "Shkarkoni mandatin, nënshkruajeni me dorë dhe ringarkojeni: për ne shkon mirë.",
+        "download_blank": "Shkarkoni mandatin",
+        "upload_signed": "Ngarkoni mandatin e firmosur",
+        "err_file_too_big": "Skedari shumë i madh (maksimumi 10 MB).",
+        "err_upload_failed": "Ngarkimi nuk u krye.",
+        "err_upload_network": "Ngarkimi nuk u krye, kontrolloni lidhjen.",
+        "heading": "Mandat profesional - Praktikë {code}"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "iban_ui",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "saved": "IBAN i ruajtur i enkriptuar (përfundon me ••{last4}). Mund ta përditësoni duke futur një të ri.",
+        "cleared": "IBAN u përdor për pagesën (F24) dhe pastaj u fshi për siguri më {date}. Nëse nevojitet përsëri, mund ta rifutni.",
+        "label": "IBAN i trashëgimtarit",
+        "hint": "Të dhënë sensitive: shërben vetëm për ngarkimin eventual të taksave (F24). Ruhet i enkriptuar.",
+        "save": "Ruaj"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "claim_ui",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "title": "Keni tashmë një praktikë? Lidhni këtë hyrje",
+        "body": "Futni kodin e praktikës (p.sh. SUC-2026-0022) dhe email-in e përdorur për pagesën ose preventivin. Duhet të përputhet me email-in e kësaj hyrjeje.",
+        "code_label": "Kodi i praktikës",
+        "email_label": "Email i blerjes / preventivit",
+        "needs_email": "Dilni nga kjo llogari dhe hyni me {email} (përdorni lidhjen në email-in e pagesës, ose kërkoni magic link të ri nga faqja e hyrjes).",
+        "linking": "Lidhje…",
+        "cta": "Lidhni praktikën"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "withdrawal_ui",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "status_requested": "Dërguar",
+        "status_in_review": "Në menaxhim",
+        "status_accepted": "Pranuar",
+        "status_rejected": "Refuzuar",
+        "registered_title": "Kërkesa u regjistrua.",
+        "registered_body": "Lorenzo mori kërkesën tuaj dhe do t'ju kontaktojë. Gjendja aktuale: {status}.",
+        "rejected_prev": "Një kërkesë e mëparshme u refuzua",
+        "rejected_retry": "Mund të dërgoni një të re.",
+        "reason_label": "Arsye (opsionale)",
+        "reason_placeholder": "Nëse doni, na tregoni pse…",
+        "cta": "Kërkoni tërheqje",
+        "alt_contact": "Alternativisht mund të shkruani te studio@successioniarmellin.it o përmes PEC.",
+        "refund_issued": "Rimbursimi u lëshua në kartën e përdorur për pagesë: zakonisht e shihni të kredituar brenda 5-10 ditëve pune (kohët e bankës ose lëshuesit të kartës; ndonjëherë shfaqet si anulim i shpenzimit origjinal).",
+        "refund_pending": "Nëse duhet rimbursim, e lëshojmë me të njëjtën metodë pagese. Pasi të jetë lëshuar, banka zakonisht e krediton brenda 5-10 ditëve pune."
+      }
+    },
+    {
+      "collection": "area",
+      "key": "invoice_ui",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "download": "Shkarkoni faturën",
+        "number": "Fatura nr. {number}",
+        "issued_soon": "Fatura nr. {number} u lëshua. PDF do të jetë i disponueshëm së shpejti.",
+        "pending": "Fatura do të jetë e disponueshme këtu sapo të lëshohet."
+      }
+    },
+    {
+      "collection": "area",
+      "key": "final_docs_ui",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "download_zip": "Shkarkoni gjithçka (ZIP)",
+        "download": "Shkarkoni",
+        "not_ready": "Dokumentet përfundimtare ende nuk janë të disponueshme. Më poshtë gjeni pamjen paraprake të asaj që do të merrni kur praktika të mbyllet."
+      }
+    },
+    {
+      "collection": "area",
+      "key": "profilo_ui",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "contacts": "Të dhënat e kontaktit",
+        "name": "Emri",
+        "email": "Email",
+        "phone": "Telefoni",
+        "phone_empty": "nuk u plotësua",
+        "phone_edit": "Ndryshoni numrin",
+        "phone_add": "Shtoni numrin",
+        "dial_aria": "Prefiks ndërkombëtar",
+        "dial_other": "Tjetër…",
+        "dial_custom_aria": "Prefiks i personalizuar",
+        "phone_hint": "Zgjidhni prefiksin e vendit (+39, +49…) pastaj numrin kombëtar.",
+        "save": "Ruaj",
+        "cancel": "Anuloni",
+        "security": "Siguria",
+        "password_intro": "Nëse dëshironi, mund të krijoni një fjalëkalim për të hyrë më shpejt, pa pritur lidhjen me email.",
+        "password_saved": "Fjalëkalimi u ruajt: nga hyrja e ardhshme mund ta përdorni së bashku me metodat e tjera.",
+        "password_change": "Ndryshoni fjalëkalimin",
+        "password_create": "Krijoni ose ndryshoni fjalëkalimin",
+        "password_new": "Fjalëkalim i ri (minimumi 8 karaktere)",
+        "password_confirm": "Përsëritni fjalëkalimin",
+        "password_mismatch": "Dy fjalëkalimet nuk përputhen.",
+        "password_save": "Ruani fjalëkalimin",
+        "prefs_title": "Preferencat e njoftimeve",
+        "prefs_body": "Email-et operative (pagesa, dokumente, taksa, mbyllje) mbeten gjithmonë aktive. Këtu mund të çaktivizoni vetëm mesazhet opsionale, si kërkesa për recension.",
+        "prefs_email": "Email opsionale (p.sh. vlerësim)",
+        "prefs_wa": "WhatsApp (së shpejti)",
+        "prefs_saved": "Preferencat u ruajtën.",
+        "comms_lang_title": "Gjuha e komunikimeve me shkrim",
+        "comms_lang_body": "Email dhe mesazhe për praktikën (pagesa, dokumente, tërheqje). Është e pavarur nga gjuha e ndërfaqes.",
+        "comms_lang_notice": "Përkthimet janë automatike / kortezi. Dokumentet zyrtare dhe tekstet që bëjnë fjalë mbeten në italisht.",
+        "comms_lang_it": "Italisht",
+        "comms_lang_ar": "العربية",
+        "logout": "Dilni",
+        "comms_lang_en": "English",
+        "comms_lang_tr": "Türkçe",
+        "comms_lang_fr": "Français",
+        "comms_lang_sq": "Shqip"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "ordine_ui",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "includes_named": "Çfarë përfshin \"{name}\"",
+        "includes_generic": "Çfarë përfshin paketa",
+        "includes_missing": "Detaji nuk është i disponueshëm.",
+        "taxes_title": "Taksat",
+        "taxes_body": "Këto shuma nuk janë honorari ynë: janë taksa që paguhen shtetit (modeli F24, autolikuidim). I llogaritim dhe i komunikojmë para dorëzimit.",
+        "taxes_need_iban": "Për debitimin e taksave nevojitet IBAN-i juaj.",
+        "taxes_iban_cta": "Shkruani IBAN-in tani →",
+        "taxes_iban_saved": "IBAN i regjistruar (•••• {last4}).",
+        "taxes_iban_edit": "Ndryshoni",
+        "taxes_pending": "Taksat do t'ju llogariten dhe do t'ju komunikohen para dorëzimit.",
+        "withdrawal_prompt": "Keni ndryshuar mendje?",
+        "withdrawal_cta": "Kërkoni tërheqje"
+      }
+    },
+    {
+      "collection": "area",
+      "key": "documenti_page_ui",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "cancelled_subtitle": "Praktika u anulua: nuk ka nevojë të ngarkoni asgjë.",
+        "cancelled_body": "Kjo praktikë u anulua, prandaj ngarkimi i dokumenteve është çaktivizuar. Dokumentet e identitetit dhe skedarët e tjerë të ngarkuar do të fshihen nga sistemet tona sipas politikës së privatësisë."
+      }
+    },
+    {
+      "collection": "area",
+      "key": "final_docs_preview",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        {
+          "label": "Faturë dorëzimi - Agenzia delle Entrate",
+          "description": "Vërtetim telematik me numër protokolli regjistrimi."
+        },
+        {
+          "label": "Deklarata e trashëgimisë (kopje)",
+          "description": "Modeli i dorëzuar te Agenzia."
+        },
+        {
+          "label": "Ekstrakte kadastrale të përditësuara (volture)",
+          "description": "Pronat e regjistruara te trashëgimtarët."
+        },
+        {
+          "label": "Fatura e honorarit",
+          "description": "Dokument fiskal i honorarit tonë."
+        }
+      ]
+    },
+    {
+      "collection": "site_ui",
+      "key": "preventivo_ui",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "yes": "Po",
+        "no": "Jo",
+        "unknown": "Nuk e di",
+        "will_q_before": "I",
+        "will_q_term": "de cuius",
+        "will_q_after": "ka lënë testament?",
+        "will_tip_aria": "Çfarë do të thotë de cuius",
+        "will_tip": "De cuius (nga latina) është personi i ndjerë për të cilin hapet trashëgimi: i vdehuri.",
+        "will_yes_note": "Paketat standarde mbulojnë edhe rastet me testament. Në listën e dokumenteve do t'ju kërkojmë kopjen e testamenteve të publikuar.",
+        "will_unknown_note": "Edhe kështu shkon mirë: nëse del më vonë, e menaxhojmë gjatë praktikës. Vazhdoni me pyetjet e tjera.",
+        "heirs_legend": "Kush janë trashëgimtarët? Tregoni sa për çdo lloj.",
+        "heirs_hint": "Numëroni të gjithë personat që trashëgojnë, duke përfshirë edhe ju nëse jeni midis trashëgimtarëve.",
+        "heir_coniuge": "Bashkëshort/e (ose partner/e civil)",
+        "heir_figli": "Fëmijë",
+        "heir_genitori": "Prindër",
+        "heir_fratelli": "Vëllezër/Motra",
+        "heir_nipoti": "Nipërnipat",
+        "heir_altri": "Trashëgimtarë të tjerë",
+        "less": "Më pak {label}",
+        "more": "Më shumë {label}",
+        "real_estate_q": "Ka prona (shtëpi, toka, box)?",
+        "real_estate_count": "Sa prona në total?",
+        "real_estate_placeholder": "P.sh. 2",
+        "real_estate_hint": "Numëroni shtëpi, truall, box dhe pjesë: çdo pasuri shtesë mund të ndikojë në preventiv.",
+        "over_100k_q": "A e kalon vlera totale e trashëgimisë (llogari, tituj, etj.) 100.000 euro?",
+        "other_assets_q": "Ka pasuri të tjera (pjesë shoqërie, aksione, biznese, varka…)?",
+        "back": "Kthehuni",
+        "next": "Vazhdoni"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "checkout_ui",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "stripe_blurb": "Pagesë e sigurt përmes Stripe: kartë krediti/debiti dhe, ku disponohet, pagesë me këste. Do të ridrejtoheni te faqja e mbrojtur e Stripe.",
+        "err_start": "Nuk mund të fillohet pagesa.",
+        "err_not_configured": "Pagesat ende nuk janë aktive. Provoni më vonë ose na kontaktoni.",
+        "err_retry": "Nuk mund të fillohet pagesa. Provoni përsëri pas pak.",
+        "err_network": "Gabim rrjeti. Provoni përsëri pas pak.",
+        "need_quote_before": "Për të paguar, filloni nga",
+        "need_quote_link": "llogaritja e preventivit",
+        "need_quote_after": ": kështu ju propozojmë paketën e duhur.",
+        "loading": "Fillim i pagesës…",
+        "cancelled": "Pagesa u anulua. Nuk u krye asnjë ngarkim: mund të provoni përsëri kur të doni.",
+        "total_fee": "Onorari total",
+        "empty_order": "Nuk rezulton praktikë me paketë për pagesë. Llogaritni fillimisht preventivin: ju propozojmë paketën e duhur dhe lidhim pagesën me praktikën tuaj.",
+        "empty_cta": "Shkoni te preventivi →",
+        "meta_title": "Përfundoni porosinë",
+        "extra_property": "Prona shtesë ({extra} × {fee}€)"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "conferma_ui",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "title_paid": "Pagesa u mor, faleminderit!",
+        "title_pending": "Po konfirmojmë pagesën",
+        "body_paid": "Pagesa juaj u krye me sukses dhe praktika juaj tani është aktive. Së shpejti do të merrni email me përmbledhjen dhe udhëzimet për Zonën personale, ku të ngarkoni dokumentet.",
+        "body_pending": "Morëm porosinë. Konfirmimi përfundimtar i pagesës vjen nga sistemi ynë për pak çaste: do të merrni email sapo të jetë gjithçka në rregull. Mund të hyni tashmë në Zonën personale.",
+        "email_note_before": "Hyni në Zonën personale me",
+        "email_note_strong": "i njëjti email i përdorur për pagesën",
+        "email_note_after": ": kështu e gjeni praktikën. Nëse përdorni email tjetër (ose Google me llogari tjetër), nuk do ta shihni.",
+        "cta_area": "Shkoni te Zona personale",
+        "cta_home": "Kthehuni te faqja kryesore",
+        "taxes_note": "Taksat janë të ndara nga honorari: i llogaritim dhe i komunikojmë para dorëzimit.",
+        "meta_title": "Pagesa u mor"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "contact_ui",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "name": "Emri dhe mbiemri",
+        "email": "Email",
+        "phone": "Telefoni (opsional)",
+        "message": "Mesazh",
+        "submit": "Dërgoni mesazh"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "soft_lead_ui",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "name": "Emri dhe mbiemri (opsional)",
+        "email": "Email",
+        "phone": "Telefoni",
+        "phone_optional": "Telefoni (opsional)",
+        "submitting": "Dërgim…",
+        "err_save": "Për momentin nuk arrijmë ta regjistrojmë kërkesën. Provoni më vonë ose na telefononi.",
+        "notes": "Shënim (opsional)"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "guide_ui",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "search_placeholder": "Kërkoni te udhëzuesit (p.sh. taksa, dokumente, përjashtim)",
+        "search_aria": "Kërkoni midis udhëzuesve",
+        "all": "Të gjitha",
+        "free_tool": "Mjet falas",
+        "back": "Kthehuni te udhëzuesit",
+        "author_heading": "Kush e shkroi këtë udhëzues",
+        "related": "Udhëzues të lidhur",
+        "featured": "Në pah",
+        "reading_minutes": "{n} min lexim",
+        "read_guide": "Lexoni udhëzuesin",
+        "read": "Lexoni",
+        "empty": "Nuk u gjet udhëzues për kërkimin tuaj. Provoni me një term tjetër ose na shkruani: u përgjigjemi të gjithëve.",
+        "updated": "Përditësuar më {date}",
+        "sources": "Burime zyrtare",
+        "breadcrumb_aria": "Rruga",
+        "breadcrumb_guides": "Udhëzues",
+        "meta_title": "Udhëzues për trashëgiminë",
+        "meta_not_found": "Udhëzuesi nuk u gjet",
+        "tool_alt": "Ilustrim: shtëpi, kalkulator dhe dokument me simbolin e euro"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "chrome_ui",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "lang_aria": "Zgjidhni gjuhën",
+        "menu_open": "Hapni menunë",
+        "menu_close": "Mbyllni menunë",
+        "back": "Kthehuni",
+        "meta_result": "Rezultati juaj",
+        "meta_recesso": "E drejta e tërheqjes",
+        "meta_documenti": "Dokumente për trashëgiminë"
+      }
+    },
+    {
+      "collection": "area_errors",
+      "key": "session_invalid",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Sesion i pavlefshëm."
+    },
+    {
+      "collection": "area_errors",
+      "key": "session_expired",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Sesioni ka skaduar. Hyni përsëri."
+    },
+    {
+      "collection": "area_errors",
+      "key": "not_authorized",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Nuk jeni i autorizuar."
+    },
+    {
+      "collection": "area_errors",
+      "key": "upload_failed",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ngarkimi nuk u krye."
+    },
+    {
+      "collection": "area_errors",
+      "key": "delete_failed",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Fshirja nuk u krye."
+    },
+    {
+      "collection": "area_errors",
+      "key": "file_too_big",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Skedari shumë i madh (maksimumi 10 MB)."
+    },
+    {
+      "collection": "area_errors",
+      "key": "file_bad_type",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Formati nuk lejohet."
+    },
+    {
+      "collection": "area_errors",
+      "key": "invoice_unavailable",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Fatura ende nuk është e disponueshme."
+    },
+    {
+      "collection": "area_errors",
+      "key": "file_unavailable",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Skedari nuk është i disponueshëm."
+    },
+    {
+      "collection": "area_errors",
+      "key": "practice_cancelled",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Praktikë e anuluar: veprim i padisponueshëm."
+    },
+    {
+      "collection": "area_errors",
+      "key": "mandate_failed",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Nënshkrimi dështoi."
+    },
+    {
+      "collection": "area_errors",
+      "key": "withdrawal_blocked",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Tërheqja nuk aplikohet më."
+    },
+    {
+      "collection": "area_errors",
+      "key": "withdrawal_pending",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Keni tashmë një kërkesë në vazhdim."
+    },
+    {
+      "collection": "area_errors",
+      "key": "iban_invalid",
+      "locale": "sq",
+      "is_published": true,
+      "value": "IBAN i pavlefshëm. Kontrolloni dhe provoni përsëri."
+    },
+    {
+      "collection": "area_errors",
+      "key": "phone_invalid",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Numër i pavlefshëm."
+    },
+    {
+      "collection": "area_errors",
+      "key": "password_short",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Fjalëkalimi duhet të ketë të paktën 8 karaktere."
+    },
+    {
+      "collection": "area_errors",
+      "key": "password_failed",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ruajtja nuk u krye, provoni përsëri."
+    },
+    {
+      "collection": "area_errors",
+      "key": "prefs_failed",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ruajtja nuk u krye, provoni përsëri."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_unavailable",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Shërbimi nuk është i disponueshëm. Provoni më vonë."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_code_required",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Shkruani kodin e praktikës."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_email_required",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Shkruani email-in e përdorur për blerjen."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_email_mismatch",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Email-i nuk përputhet me këtë hyrje."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_not_found",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Nuk u gjet praktikë me këtë kod. Kontrolloni dhe provoni përsëri."
+    },
+    {
+      "collection": "area_errors",
+      "key": "docs_submit_failed",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Dërgimi nuk u krye. Provoni përsëri."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_email_required",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Shkruani email-in tuaj."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_bad_credentials",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Email ose fjalëkalim i gabuar. Nëse nuk keni krijuar kurrë fjalëkalim, hyni me lidhjen me email."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_google_unavailable",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Hyrja me Google nuk është e disponueshme për momentin. Përdorni email-in ose telefonin."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_link_invalid",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Lidhje e pavlefshme."
+    },
+    {
+      "collection": "area_errors",
+      "key": "auth_failed",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Hyrja nuk u krye. Provoni përsëri."
+    },
+    {
+      "collection": "area_errors",
+      "key": "auth_not_configured",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Hyrja ende nuk është aktive: Supabase Auth nuk është konfiguruar."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_otp_required",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Email-i dhe kodi janë të detyrueshëm."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_phone_otp_required",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Numri dhe kodi janë të detyrueshëm."
+    },
+    {
+      "collection": "area_errors",
+      "key": "login_password_required",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Shkruani email-in dhe fjalëkalimin."
+    },
+    {
+      "collection": "area_errors",
+      "key": "password_same",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Fjalëkalimi i ri duhet të jetë i ndryshëm nga ai aktual."
+    },
+    {
+      "collection": "area_errors",
+      "key": "no_practice",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Asnjë praktikë e lidhur me llogarinë tuaj."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_fields_required",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Shkruani kodin e praktikës dhe email-in."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_auth_required",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Duhet të jeni të autentifikuar për të lidhur praktikën."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_no_email",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ky hyrje nuk ka email. Dilni dhe hyni me email-in e përdorur për blerjen (magic link)."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_wrong_account",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Jeni i lidhur si {current}. Për këtë praktikë duhet të hyni me {expected}."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_link_failed",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Nuk arritëm ta lidhim kontaktin. Kontaktoni studio-n."
+    },
+    {
+      "collection": "area_errors",
+      "key": "claim_practice_email_mismatch",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Email-i nuk përputhet me atë të regjistruar në praktikë. Përdorni email-in e pagesës ose të preventivit."
+    },
+    {
+      "collection": "area_errors",
+      "key": "service_unavailable",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Shërbimi nuk është i disponueshëm."
+    },
+    {
+      "collection": "area_errors",
+      "key": "phone_invalid_detail",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Numër i pavlefshëm: zgjidhni prefiksin (+39, +49…) dhe numrin kombëtar."
+    },
+    {
+      "collection": "area_login",
+      "key": "callback_loading",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Hyrje…"
+    },
+    {
+      "collection": "area_login",
+      "key": "callback_failed",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Hyrja nuk u krye, po ju ridrejtoj…"
+    },
+    {
+      "collection": "site_ui",
+      "key": "offline_ui",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "email_cta": "Na shkruani me email",
+        "whatsapp": "WhatsApp",
+        "already_practice": "Keni tashmë një praktikë?",
+        "area_cta": "Hyni në Zonën personale"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "cookie_ui",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "body": "Përdorim cookie teknike (të nevojshme) dhe, me pëlqimin tuaj, cookie statistikore për të përmirësuar faqen. Mund t'i pranoni ose refuzoni ato jo të nevojshme.",
+        "policy_label": "Politika e cookies",
+        "accept_all": "Pranoni të gjitha",
+        "necessary_only": "Vetëm të nevojshmet",
+        "preferences": "Preferencat e cookies"
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "contatti_map_ui",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "meta_title": "Kontakt",
+        "email_label": "Email",
+        "studio_label": "Studio",
+        "map_eyebrow": "Ku na gjeni",
+        "map_title": "Studio në {citta}",
+        "maps_cta": "Hapni në Google Maps",
+        "map_iframe_title": "Harta e studios - {address}",
+        "photo_caption": "Duomo di Pontedera",
+        "photo_credit": "Foto: SeesaTheDoctor / Wikimedia (CC BY 4.0)"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "catastale_categorie",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        {
+          "value": "A",
+          "label": "Banesë – grupi A (përveç A/10)"
+        },
+        {
+          "value": "A10",
+          "label": "A/10 – Zyra dhe studio private"
+        },
+        {
+          "value": "B",
+          "label": "Grupi B (kolegje, shkolla, zyra publike…)"
+        },
+        {
+          "value": "C",
+          "label": "Grupi C – anekse (box, bodrume…), përveç C/1"
+        },
+        {
+          "value": "C1",
+          "label": "C/1 – Dyqane dhe bottega"
+        },
+        {
+          "value": "D",
+          "label": "Grupi D (fabrika, hotele, magazina…)"
+        },
+        {
+          "value": "E",
+          "label": "Grupi E (stacione, ndërtesa speciale…)"
+        }
+      ]
+    },
+    {
+      "collection": "footer",
+      "key": "nav_heading",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Shfletoni"
+    },
+    {
+      "collection": "footer",
+      "key": "legal_heading",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ligjore"
+    },
+    {
+      "collection": "footer",
+      "key": "rights_reserved",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Të gjitha të drejtat e rezervuara."
+    },
+    {
+      "collection": "footer",
+      "key": "label_forma",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Formulari"
+    },
+    {
+      "collection": "footer",
+      "key": "label_piva",
+      "locale": "sq",
+      "is_published": true,
+      "value": "P.IVA"
+    },
+    {
+      "collection": "footer",
+      "key": "label_cf",
+      "locale": "sq",
+      "is_published": true,
+      "value": "C.F."
+    },
+    {
+      "collection": "footer",
+      "key": "label_rea",
+      "locale": "sq",
+      "is_published": true,
+      "value": "REA"
+    },
+    {
+      "collection": "footer",
+      "key": "label_pec",
+      "locale": "sq",
+      "is_published": true,
+      "value": "PEC"
+    },
+    {
+      "collection": "footer",
+      "key": "label_tel",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Tel"
+    },
+    {
+      "collection": "legale",
+      "key": "updated_prefix",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Përditësimi i fundit:"
+    },
+    {
+      "collection": "legale",
+      "key": "lang_note",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Versioni italiane e këtij dokumenti bën fjalë: përkthimet eventuale kanë vlerë thjesht kortezie dhe, në rast mospërputhjeje, mbizotëron italishtja."
+    },
+    {
+      "collection": "home",
+      "key": "meta_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Trashëgimi Online | Geom. Lorenzo Armellin"
+    },
+    {
+      "collection": "home",
+      "key": "meta_description",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Deklaratë trashëgimi online me profesionist real: Geom. Lorenzo Armellin, i regjistruar në Albo. Preventiv i qartë, dokumente dhe praktikë nga shtëpia — edhe personalisht në Pontedera."
+    }
   ]
 }
