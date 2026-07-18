@@ -92,7 +92,7 @@
       { "voce": "Rischio sanzioni", "faidate": "Tuo", "noi": "Gestito" }
     ] },
     { "collection": "home", "key": "recensioni_title", "locale": "it", "is_published": true, "value": "Cosa dicono i clienti" },
-    { "collection": "home", "key": "recensioni_intro", "locale": "it", "is_published": true, "value": "Persone vere, pratiche reali." },
+    { "collection": "home", "key": "recensioni_intro", "locale": "it", "is_published": true, "value": "Recensioni vere da Google." },
     { "collection": "home", "key": "chisono_title", "locale": "it", "is_published": true, "value": "Chi si occupa della tua pratica" },
     { "collection": "home", "key": "chisono_estratto", "locale": "it", "is_published": true, "value": "Sono Lorenzo Armellin, geometra abilitato a trasmettere le successioni all'Agenzia delle Entrate. Con la supervisione fiscale di commercialisti, unisco la precisione sui dati catastali alla sicurezza sui numeri." },
     { "collection": "home", "key": "chisono_video", "locale": "it", "is_published": false, "value": { "asset_key": "video_benvenuto_lorenzo" } },

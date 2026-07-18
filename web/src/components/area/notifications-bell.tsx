@@ -60,13 +60,22 @@ export function NotificationsBell({
   const [open, setOpen] = useState(false);
   const [items, setItems] = useState(initialItems);
   const [unread, setUnread] = useState(unreadCount);
+  const [syncedFrom, setSyncedFrom] = useState({
+    initialItems,
+    unreadCount,
+  });
   const [pending, startTransition] = useTransition();
   const rootRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  // Sincronizza con i props server dopo refresh (senza useEffect → setState).
+  if (
+    initialItems !== syncedFrom.initialItems ||
+    unreadCount !== syncedFrom.unreadCount
+  ) {
+    setSyncedFrom({ initialItems, unreadCount });
     setItems(initialItems);
     setUnread(unreadCount);
-  }, [initialItems, unreadCount]);
+  }
 
   useEffect(() => {
     if (!open) return;

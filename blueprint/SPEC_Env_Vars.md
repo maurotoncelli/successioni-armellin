@@ -58,6 +58,10 @@ Variabili effettivamente lette dal codice in questa fase (template in `web/.env.
 - GA4_API_SECRET (server, Measurement Protocol) — LETTA DAL CODICE; invio `purchase` server-side dal webhook Stripe. Se assente, fallback sull'evento client in `/checkout/conferma`. Creare in GA4 Admin → Data streams → Measurement Protocol API secrets.
 - CMP: banner consensi minimale gia implementato (localStorage + Consent Mode). Per un CMP certificato (IAB TCF) valutare provider esterno se richiesto.
 
+## Recensioni Google (Places API New)
+- GOOGLE_PLACES_API_KEY (server) — LETTA DAL CODICE; se assente, home/chi-sono usano i testi reali in fallback (`content/site.ts`). Abilitare **Places API (New)** su Google Cloud; chiave solo server.
+- GOOGLE_PLACE_ID (server, opzionale) — Place ID `ChIJ…`. Se vuoto, searchText su "Successioni Armellin … Pontedera". Cache 12h (`lib/google-reviews.ts`).
+
 ## Fatturazione (Opzione L)
 - FATTUREINCLOUD_ACCESS_TOKEN (server) — LETTA DAL CODICE; token OAuth/API del provider FattureInCloud (API v2). Se assente, la fatturazione automatica e disattivata (fallback graceful): nel CRM resta la **registrazione manuale** (numero + PDF dal gestionale).
 - FATTUREINCLOUD_COMPANY_ID (server) — LETTA DAL CODICE; id azienda su FattureInCloud.

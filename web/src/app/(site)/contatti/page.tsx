@@ -102,15 +102,14 @@ export default function ContattiPage() {
         />
 
         <div className="mt-6 grid gap-6 sm:mt-10 lg:grid-cols-2">
-          {/* Foto di Pontedera: responsive (mobile/tablet/desktop) via object-cover
-              + sizes; il container cambia altezza per breakpoint. */}
+          {/* Duomo di Pontedera — Wikimedia Commons, CC BY 4.0 (SeesaTheDoctor). */}
           <figure className="relative h-64 overflow-hidden rounded-2xl border border-primary/10 shadow-sm sm:h-80 lg:h-[460px]">
             <Image
-              src="/images/pontedera-studio.png"
-              alt={`Veduta di ${studio.citta} (immagine indicativa)`}
+              src="/images/pontedera-studio.jpg"
+              alt={`Duomo di ${studio.citta}`}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
+              className="object-cover object-[center_30%]"
             />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/85 via-primary/40 to-transparent p-5">
               <figcaption className="flex items-start gap-2 text-white">
@@ -118,7 +117,10 @@ export default function ContattiPage() {
                 <span>
                   <span className="block font-semibold">{indirizzo}</span>
                   <span className="block text-sm text-white/75">
-                    Immagine indicativa di {studio.citta}
+                    Duomo di Pontedera
+                  </span>
+                  <span className="mt-1 block text-[10px] text-white/55">
+                    Foto: SeesaTheDoctor / Wikimedia (CC BY 4.0)
                   </span>
                 </span>
               </figcaption>

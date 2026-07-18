@@ -201,27 +201,21 @@ export type Review = {
   text: string;
 };
 
+/** Fallback se Places API non è configurata: testi reali da Google Maps (lug 2026). */
 export const reviews: Review[] = [
   {
-    author: "Maria R.",
-    location: "Pisa",
+    author: "Antonio Tognarelli",
+    location: "Google",
     rating: 5,
     text:
-      "In un momento difficile mi hanno tolto un peso enorme. Tutto da casa, sempre disponibili a rispondere ai miei dubbi.",
+      "Lorenzo mi ha aiutato con la successione in un momento delicato, mi ha guidato per la ricerca dei documenti, si è assicurato più volte dell'esattezza dei dati e ha svolto il lavoro in modo impeccabile e veloce. Professionista impeccabile e persona di valore. Grazie Lorenzo!",
   },
   {
-    author: "Giovanni B.",
-    location: "Pontedera",
+    author: "Mauro Toncelli",
+    location: "Google",
     rating: 5,
     text:
-      "Prezzo chiaro fin dall'inizio, nessuna sorpresa. Hanno recuperato loro le visure che non trovavo.",
-  },
-  {
-    author: "Anna T.",
-    location: "Livorno",
-    rating: 5,
-    text:
-      "Professionali e umani. Mi hanno spiegato tutto con parole semplici, senza burocratese.",
+      "Sito efficiente e veloce, lorenzo sempre disponibile ed efficiente, tutto filato liscio senza intoppi. Non sono mai stato bravo con le questioni burocratiche, ma ha pensato a tutto Lorenzo e non ho dovuto preoccuparmi di niente.",
   },
 ];
 
