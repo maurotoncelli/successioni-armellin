@@ -71,9 +71,21 @@
     { "collection": "home", "key": "come_funziona_eyebrow", "locale": "it", "is_published": true, "value": "Semplice" },
     { "collection": "home", "key": "come_funziona_title", "locale": "it", "is_published": true, "value": "Come funziona, in 3 passi" },
     { "collection": "home", "key": "come_funziona_steps", "locale": "it", "is_published": true, "value": [
-      { "titolo": "1. Rispondi a poche domande", "testo": "Ti diciamo subito di cosa hai bisogno e quanto costa." },
-      { "titolo": "2. Carichi i documenti", "testo": "Dalla tua area personale, anche da foto. Ti diamo la lista esatta." },
-      { "titolo": "3. Pensiamo a tutto noi", "testo": "Predisponiamo e inviamo la dichiarazione; tu ricevi le ricevute." }
+      {
+        "titolo": "Rispondi a poche domande",
+        "testo": "Ti diciamo subito di cosa hai bisogno e quanto costa.",
+        "immagine": { "src": "/images/come-funziona-step-1-quiz.jpg", "alt": "Persona al computer che risponde alle domande del preventivo online" }
+      },
+      {
+        "titolo": "Carichi i documenti",
+        "testo": "Dalla tua area personale, anche da foto. Ti diamo la lista esatta.",
+        "immagine": { "src": "/images/come-funziona-step-2-documenti.jpg", "alt": "Persona che fotografa un documento con lo smartphone" }
+      },
+      {
+        "titolo": "Pensiamo a tutto noi",
+        "testo": "Predisponiamo e inviamo la dichiarazione; tu ricevi le ricevute.",
+        "immagine": { "src": "/images/come-funziona-step-3-lorenzo.jpg", "alt": "Geom. Lorenzo Armellin al computer mentre predispone la pratica" }
+      }
     ] },
     { "collection": "home", "key": "come_funziona_sla_note", "locale": "it", "is_published": true, "value": "Invio entro 10-15 giorni lavorativi (in base al pacchetto) da quando abbiamo tutti i documenti completi." },
     { "collection": "home", "key": "app_scopo_title", "locale": "it", "is_published": true, "value": "Cos'è Successioni Armellin" },
@@ -166,8 +178,13 @@
     { "collection": "chi_siamo", "key": "studio_title", "locale": "it", "is_published": true, "value": "Dove mi trovi" },
     { "collection": "chi_siamo", "key": "studio_indirizzo", "locale": "it", "is_published": true, "value": { "via": "Via Vittorio Veneto 31", "cap": "56025", "citta": "Pontedera (PI)" } },
     { "collection": "chi_siamo", "key": "studio_nota", "locale": "it", "is_published": true, "value": "Tutto si fa a distanza, ma lo studio esiste davvero: è qui." },
+    { "collection": "chi_siamo", "key": "studio_maps_label", "locale": "it", "is_published": true, "value": "Apri in Google Maps" },
+    { "collection": "chi_siamo", "key": "studio_foto_alt", "locale": "it", "is_published": true, "value": "Duomo di Pontedera" },
+    { "collection": "chi_siamo", "key": "ritratto_alt", "locale": "it", "is_published": true, "value": "Geom. Lorenzo Armellin" },
     { "collection": "chi_siamo", "key": "video_ref", "locale": "it", "is_published": false, "value": { "asset_key": "video_benvenuto_lorenzo" } },
     { "collection": "chi_siamo", "key": "video_caption", "locale": "it", "is_published": true, "value": "Un saluto e due parole su come lavoro (60 secondi)." },
+    { "collection": "chi_siamo", "key": "video_badge", "locale": "it", "is_published": true, "value": "Video in arrivo" },
+    { "collection": "chi_siamo", "key": "video_alt", "locale": "it", "is_published": true, "value": "Video di benvenuto del Geom. Lorenzo Armellin" },
     { "collection": "chi_siamo", "key": "motto_latino", "locale": "it", "is_published": false, "value": "(motto latino elegante su eredità/famiglia/affidabilità)" },
     { "collection": "chi_siamo", "key": "motto_traduzione", "locale": "it", "is_published": false, "value": "(traduzione italiana)" },
     { "collection": "chi_siamo", "key": "recensioni_title", "locale": "it", "is_published": true, "value": "Cosa dicono di me" },
@@ -215,7 +232,7 @@
     { "collection": "recesso", "key": "come_body", "locale": "it", "is_published": true, "value": "Nel modo più semplice: dalla tua area personale trovi il pulsante 'Richiedi recesso'. In alternativa puoi scriverci via email/PEC. Puoi usare il modulo tipo qui sotto, ma non è obbligatorio." },
     { "collection": "recesso", "key": "come_cta_area", "locale": "it", "is_published": true, "value": { "label": "Richiedi il recesso dall'area personale", "href": "/area-riservata/recesso" } },
     { "collection": "recesso", "key": "rimborso_title", "locale": "it", "is_published": true, "value": "Quando ricevo il rimborso" },
-    { "collection": "recesso", "key": "rimborso_body", "locale": "it", "is_published": true, "value": "Entro i termini di legge (di norma 14 giorni dalla richiesta), con lo stesso metodo di pagamento che hai usato. Le imposte eventualmente già versate all'Erario seguono le regole dell'Agenzia, non dipendono da noi." },
+    { "collection": "recesso", "key": "rimborso_body", "locale": "it", "is_published": true, "value": "Lo emettiamo entro i termini di legge (di norma 14 giorni dalla richiesta), con lo stesso metodo di pagamento che hai usato. Una volta emesso sulla carta, la banca lo accredita di norma entro 5-10 giorni lavorativi (tempi Stripe/emittente). Le imposte eventualmente già versate all'Erario seguono le regole dell'Agenzia, non dipendono da noi." },
     { "collection": "recesso", "key": "garanzia_title", "locale": "it", "is_published": true, "value": "Recesso e garanzia: due cose diverse" },
     { "collection": "recesso", "key": "garanzia_body", "locale": "it", "is_published": true, "value": "Il recesso è un tuo diritto di legge nei primi 14 giorni. La nostra garanzia 'Soddisfatti o Rimborsati' è una promessa in più che facciamo noi: se non sei soddisfatto del nostro lavoro, ne parliamo e troviamo una soluzione. Dettagli nella pagina Garanzia." },
     { "collection": "recesso", "key": "garanzia_link", "locale": "it", "is_published": true, "value": { "label": "Leggi la Garanzia", "href": "/garanzia" } },
@@ -233,6 +250,7 @@
     { "collection": "come_funziona", "key": "sla_body", "locale": "it", "is_published": true, "value": "I tempi dipendono dal pacchetto e partono da quando abbiamo TUTTI i documenti completi e corretti (non dal pagamento): così è una promessa che possiamo mantenere davvero. Sono esclusi i tempi di enti terzi (Agenzia, Catasto, banche)." },
     { "collection": "come_funziona", "key": "valore_title", "locale": "it", "is_published": true, "value": "Cosa facciamo che un software non fa" },
     { "collection": "come_funziona", "key": "valore_body", "locale": "it", "is_published": true, "value": "Verifichiamo a mano i dati catastali - particelle, subalterni, annessi, atti di provenienza - che sono il punto dove le pratiche si bloccano. Con la supervisione fiscale di commercialisti sui numeri. È la differenza tra un modulo riempito e una pratica fatta bene." },
+    { "collection": "come_funziona", "key": "distanza_title", "locale": "it", "is_published": true, "value": "Tutto online" },
     { "collection": "come_funziona", "key": "distanza_body", "locale": "it", "is_published": true, "value": "Non devi andare in nessun ufficio né in banca: questionario, documenti, comunicazioni e invio all'Agenzia avvengono online. C'è sempre una chiamata con Lorenzo per spiegarti tutto." },
     { "collection": "come_funziona", "key": "visita_title", "locale": "it", "is_published": true, "value": "Preferisci di persona?" },
     { "collection": "come_funziona", "key": "visita_body", "locale": "it", "is_published": true, "value": "Tutto si fa a distanza, ma se vuoi ti riceviamo in studio su appuntamento: niente code, solo il tempo per chiarire insieme documenti e passaggi. Chiama o scrivi e fissiamo un orario." },

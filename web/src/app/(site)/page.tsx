@@ -19,6 +19,12 @@ import { CtaBand } from "@/components/site/cta-band";
 import { cta, list, text } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
+type HomeStep = {
+  titolo: string;
+  testo: string;
+  immagine?: { src: string; alt: string };
+};
+
 const vantaggiIcons = [House, ShieldCheck, HeartHandshake];
 
 export default function HomePage() {
@@ -28,10 +34,7 @@ export default function HomePage() {
     "home",
     "problema_vantaggi",
   );
-  const steps = list<{ titolo: string; testo: string }>(
-    "home",
-    "come_funziona_steps",
-  );
+  const steps = list<HomeStep>("home", "come_funziona_steps");
   const confronto = list<{ voce: string; faidate: string; noi: string }>(
     "home",
     "faidate_confronto",
@@ -150,26 +153,54 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* Come funziona */}
+      {/* Come funziona — sequenza collegata + foto data-driven. */}
       <Section id="come-funziona" tone="sand">
         <SectionHeading
           eyebrow={text("home", "come_funziona_eyebrow", "Semplice")}
           title={text("home", "come_funziona_title")}
         />
-        <div className="mt-8 grid gap-6 sm:mt-12 md:grid-cols-3">
-          {steps.map((step, i) => (
-            <div key={step.titolo} className="relative">
-              <span className="font-display text-5xl font-bold text-accent/30">
-                0{i + 1}
-              </span>
-              <h3 className="mt-2 text-xl">{step.titolo}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-text-muted">
-                {step.testo}
-              </p>
-            </div>
-          ))}
-        </div>
-        <p className="mt-6 text-center text-sm text-text-muted sm:mt-10">
+        <ol className="relative mx-auto mt-8 grid max-w-5xl gap-10 sm:mt-12 md:grid-cols-3 md:gap-0">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute top-5 right-[16.5%] left-[16.5%] hidden h-px bg-gradient-to-r from-primary/20 via-accent/50 to-primary/20 md:block"
+          />
+          {steps.map((step, i) => {
+            const isLast = i === steps.length - 1;
+            return (
+              <li key={step.titolo} className="relative md:px-6 lg:px-8">
+                {!isLast && (
+                  <span
+                    aria-hidden
+                    className="absolute top-12 bottom-[-2.5rem] left-5 w-px bg-gradient-to-b from-accent/40 to-primary/15 md:hidden"
+                  />
+                )}
+                <div className="flex items-start gap-4 md:flex-col">
+                  <span className="relative z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full bg-sand font-display text-sm font-bold text-primary ring-2 ring-accent">
+                    {i + 1}
+                  </span>
+                  <div className="min-w-0 flex-1 pt-0.5 md:pt-0">
+                    {step.immagine?.src ? (
+                      <div className="relative mt-1 aspect-[4/3] overflow-hidden rounded-xl md:mt-5">
+                        <Image
+                          src={step.immagine.src}
+                          alt={step.immagine.alt}
+                          fill
+                          sizes="(max-width: 768px) 80vw, 280px"
+                          className="object-cover"
+                        />
+                      </div>
+                    ) : null}
+                    <h3 className="mt-4 text-xl leading-snug">{step.titolo}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-text-muted">
+                      {step.testo}
+                    </p>
+                  </div>
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+        <p className="mt-8 text-center text-sm text-text-muted sm:mt-10">
           {text("home", "come_funziona_sla_note")}
         </p>
       </Section>

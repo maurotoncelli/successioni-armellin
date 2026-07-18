@@ -1,6 +1,6 @@
 # HANDOFF per il prossimo agente
 
-> Documento di passaggio di consegne. Aggiornato: **2026-07-18 mattina**.
+> Documento di passaggio di consegne. Aggiornato: **2026-07-18 ~11:45**.
 > Scopo: permettere a un nuovo agente (senza contesto) di riprendere il lavoro.
 > Riferimenti chiave: @RUNBOOK_GoLive (procedura go-live), @SPEC_Env_Vars,
 > @DOMANDE_PER_LORENZO, @PROSSIMO_INCONTRO_LORENZO, @07_Stack.
@@ -8,10 +8,49 @@
 > fiscali Lorenzo): nel file **`ACCESSI_LOCALE.md`** in root (git-ignored, NON
 > committato). Non è nel repo.
 
+## 8-terdecies. Sessione 18/07 tarda mattina — recensioni Google + foto Pontedera
+
+**Stato:** su `main` commit `931ced5` (push fatto). Build/tsc ok.
+
+### Recensioni Google reali — FATTO (senza sync a pagamento)
+- Home / chi-sono: tolte le 3 fixture finte; ora i **2 testi veri** da Google Maps
+  (Antonio Tognarelli + Mauro Toncelli). Rating 5,0 · 2 recensioni pubbliche.
+- Attribution “da Google” + link Maps + CTA `settings.review_url` (g.page).
+- Intro home: “Recensioni vere da Google.”
+- File: `web/src/content/site.ts` (fallback), `web/src/components/site/reviews.tsx`,
+  `web/src/lib/google-reviews.ts` (Places API New, cache 12h).
+- **Sync automatico Places NON attivo:** Mauro ha rifiutato l’attivazione billing
+  Google Maps Platform (carta obbligatoria anche “gratis”). Env opzionali
+  `GOOGLE_PLACES_API_KEY` / `GOOGLE_PLACE_ID` documentati in `@SPEC_Env_Vars`;
+  senza chiave resta il fallback. Quando arriveranno altre recensioni →
+  aggiornare a mano `site.ts` (o attivare Places se Mauro cambia idea).
+- La recensione di Mauro **resta** (scelta esplicita).
+
+### Foto Pontedera — FATTO
+- `/contatti`: sostituito placeholder finto con **Duomo di Pontedera**
+  (`web/public/images/pontedera-studio.jpg`, da Wikimedia CC BY 4.0,
+  credit SeesaTheDoctor in figcaption). Rimosso il vecchio `.png`.
+
+### Altro stesso commit
+- Fix eslint campanella: sync props senza `setState` in `useEffect`
+  (`notifications-bell.tsx`).
+- **Non** committare `bozza video/` (WIP video Come funziona — riprese in corso;
+  script `@15_Video_Come_Funziona_Script`).
+
+### Aperto dopo 18/07 (tarda mattina)
+- [ ] Accumolare ~20 recensioni GMB; aggiornare testi in `site.ts` (o Places)
+- [ ] Video Come funziona (bozze in `bozza video/`, fuori git) + integrazione pagina
+- [ ] SMS/WhatsApp; traduzioni/legal; QA cross-browser; Lenis
+- [ ] Check costi pacchetti con Lorenzo; test AI XML su pratica reale
+- Opzionale: RLS UPDATE `client_notifications` ristretta a `read_at`
+
+---
+
 ## 8-duodecies. Sessione 18/07 — area notifiche + cleanup
 
 **Stato:** feature notifiche cliente **su `main`** (`0294a6c`); batch UI/imposte/GMB
-`48ae056`; cleanup bugfix + handoff **su `main`** (18/07 mattina).
+`48ae056`; cleanup bugfix + handoff **su `main`** (`11101e3`).
+Proseguimento tarda mattina → §8-terdecies.
 
 ### Feature area personale (commit `0294a6c`) — FATTO
 Due canali distinti (@06):
@@ -57,12 +96,10 @@ File: `client-comms.ts`, `client-notifications.ts`, `area.ts`,
 
 `npx tsc --noEmit` + eslint sui file toccati: ok. **Non** committare `bozza video/`.
 
-### Aperto dopo 18/07
-- [ ] Foto Pontedera; recensioni GMB reali (~20); video; SMS/WhatsApp
-- [ ] Traduzioni/legal; QA cross-browser; Lenis
-- [ ] Check costi pacchetti con Lorenzo; test AI XML su pratica reale
-- Opzionale hardening: policy RLS UPDATE su `client_notifications` ristretta a
-  `read_at` (oggi mitiga il mark-read via service_role)
+### Aperto dopo cleanup → aggiornato in §8-terdecies
+- [x] Foto Pontedera vera (Duomo, `931ced5`)
+- [x] Recensioni GMB reali sul sito (2 testi; sync Places rinviato)
+- Resto (video, ~20 recensioni, SMS/WA, legal, QA…) → §8-terdecies «Aperto»
 
 ---
 
@@ -191,12 +228,13 @@ File chiave: `preventivo/actions.ts`, `checkout/actions.ts`,
 - [x] Mail follow-up chiusura con stesso link GMB (48h via Resend, 18/07)
 
 **Serve asset / decisione Lorenzo / ops**
-- [ ] Foto Pontedera vera
-- [ ] Recensioni GMB reali (+ accumulare ~20)
+- [x] Foto Pontedera vera (Duomo, 18/07 — `931ced5`)
+- [x] Recensioni GMB sul sito (2 testi reali; sync Places rinviato — no billing)
+- [ ] Accumulare ~20 recensioni GMB (+ aggiornare `site.ts` o Places)
 - [ ] Blocco “lingua / traduzione live” → solo quando Lorenzo attrezzato
 - [x] Tabella comparativa: riga «Tempo da investire» (18/07)
 - [ ] SMS Twilio / WhatsApp Business
-- [ ] Video welcome + video 2′ attrice
+- [ ] Video Come funziona (bozze in `bozza video/`, fuori git) + welcome/attrice
 - [ ] Check costi 290/490/790 con Lorenzo
 - [ ] Test AI XML su pratica reale
 - [ ] Traduzioni + legal go-live

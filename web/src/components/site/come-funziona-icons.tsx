@@ -21,7 +21,7 @@ function base(props: IconProps & { children: React.ReactNode }) {
 
 const stroke = {
   stroke: "currentColor",
-  strokeWidth: 1.75,
+  strokeWidth: 2,
   strokeLinecap: "round" as const,
   strokeLinejoin: "round" as const,
 };
@@ -138,23 +138,46 @@ export function IconDeliverable(props: IconProps) {
   });
 }
 
+/** Check semplice (liste) */
+export function IconCheck(props: IconProps) {
+  return base({
+    ...props,
+    children: <path d="M7 16.5l5 5L25 9" {...stroke} />,
+  });
+}
+
+/** Link esterno / Maps */
+export function IconExternal(props: IconProps) {
+  return base({
+    ...props,
+    children: (
+      <>
+        <path d="M18 7h7v7" {...stroke} />
+        <path d="M14 18L25 7" {...stroke} />
+        <path d="M20 18v6H7V12h6" {...stroke} />
+      </>
+    ),
+  });
+}
+
+/** Wrapper colore/dimensione senza box — solo il disegno. */
 export function IconBadge({
   children,
   tone = "primary",
+  size = "md",
 }: {
   children: React.ReactNode;
-  tone?: "primary" | "accent" | "sand";
+  tone?: "primary" | "accent" | "sand" | "solid";
+  size?: "md" | "lg";
 }) {
   const toneCls =
-    tone === "accent"
-      ? "bg-accent/15 text-accent"
-      : tone === "sand"
-        ? "bg-sand text-primary"
-        : "bg-primary/10 text-primary";
+    tone === "accent" || tone === "solid"
+      ? "text-accent"
+      : "text-primary";
+  const sizeCls =
+    size === "lg" ? "[&_svg]:h-9 [&_svg]:w-9" : "[&_svg]:h-6 [&_svg]:w-6";
   return (
-    <span
-      className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl ${toneCls}`}
-    >
+    <span className={`inline-flex shrink-0 ${sizeCls} ${toneCls}`}>
       {children}
     </span>
   );
