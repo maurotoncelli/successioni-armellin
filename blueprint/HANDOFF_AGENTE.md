@@ -47,7 +47,7 @@ Chat precedente TR/FR/SQ + EN/AR + SEO:
 - SEO `/en` `/de`…: solo dopo ok Mauro (`SEO_PATH_LOCALES`).
 
 ### Riferimenti commit
-- DE+ES+RU+ZH+HI: commit di questa sessione su `main` (push)  
+- DE+ES+RU+ZH+HI: **`2172633`** (`feat(i18n): UI tedesco, spagnolo, russo, cinese e hindi…`)  
 - TR+FR+SQ: **`d736cfa`**  
 - EN: `6150fd6` · AR UX: `4fb16fc` · SEO `/ar`: `c2193f1` / `a16cedb`
 
