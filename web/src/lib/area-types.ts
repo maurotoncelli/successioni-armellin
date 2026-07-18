@@ -5,4 +5,8 @@ export type Account = {
   email: string;
   phone: string;
   practiceCode: string;
+  /** Soft email (es. recensione GMB). Le email transazionali restano sempre attive. */
+  notifyEmail: boolean;
+  /** Preferenza futura WhatsApp (canale non ancora attivo). */
+  notifyWhatsapp: boolean;
 };

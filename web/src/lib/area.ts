@@ -3,6 +3,7 @@ import { cache } from "react";
 import { redirect } from "next/navigation";
 import type { User } from "@supabase/supabase-js";
 import { createServerSupabase, isAuthConfigured } from "@/lib/supabase/ssr";
+import { getAdminClient, isAdminConfigured } from "@/lib/supabase/admin";
 import { ensureProfile } from "@/lib/profiles";
 import { mapPractice } from "@/lib/crm";
 import type { Practice } from "@/content/crm-data";
@@ -37,7 +38,7 @@ export const getClientView = cache(async (): Promise<ClientView | null> => {
   const user = await getSessionUser();
   if (!user) return null;
 
-  await ensureProfile(user);
+  const { contactId } = await ensureProfile(user);
 
   // Lettura governata dalla RLS: solo le pratiche del cliente loggato.
   const supabase = await createServerSupabase();
@@ -59,18 +60,38 @@ export const getClientView = cache(async (): Promise<ClientView | null> => {
     null;
   const practice = chosen ? mapPractice(chosen) : null;
 
+  let notifyEmail = true;
+  let notifyWhatsapp = false;
+  if (isAdminConfigured) {
+    const { data: prof } = await getAdminClient()
+      .from("profiles")
+      .select("notify_email, notify_whatsapp")
+      .eq("id", user.id)
+      .maybeSingle();
+    if (prof) {
+      if (typeof prof.notify_email === "boolean") notifyEmail = prof.notify_email;
+      if (typeof prof.notify_whatsapp === "boolean")
+        notifyWhatsapp = prof.notify_whatsapp;
+    }
+  }
+  void contactId;
+
   const account: Account = practice
     ? {
         name: practice.clientName,
         email: practice.clientEmail || user.email || "",
         phone: practice.clientPhone,
         practiceCode: practice.code,
+        notifyEmail,
+        notifyWhatsapp,
       }
     : {
         name: user.email?.split("@")[0] ?? "Cliente",
         email: user.email ?? "",
         phone: "",
         practiceCode: "—",
+        notifyEmail,
+        notifyWhatsapp,
       };
 
   return { user, practice, account };

@@ -5,6 +5,7 @@ import { getStripe, isStripeConfigured } from "@/lib/stripe";
 import { getAdminClient, isAdminConfigured } from "@/lib/supabase/admin";
 import { notifyStatusChange } from "@/lib/notifications";
 import { pushCrmNotification } from "@/lib/crm-notifications";
+import { pushClientStatusNotification } from "@/lib/client-notifications";
 import { issueInvoiceForPractice, isInvoicingConfigured } from "@/lib/invoice";
 import { slaDueDate } from "@/lib/cms";
 import { generateChecklist } from "@/lib/checklist";
@@ -250,6 +251,7 @@ async function handleCheckoutCompleted(
       practiceCode: row.code,
     });
   }
+  await pushClientStatusNotification(practiceId, "PAGATO");
 
   // Purchase GA4 via Measurement Protocol (fonte di verita server-side).
   // Best-effort: non deve far fallire il webhook. transaction_id = session Stripe

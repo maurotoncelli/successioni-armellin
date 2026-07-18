@@ -86,3 +86,28 @@ export async function updatePassword(
   }
   return { ok: true };
 }
+
+export type UpdateNotifPrefsResult = { ok: true } | { ok: false; error: string };
+
+export async function updateNotificationPrefs(input: {
+  notifyEmail: boolean;
+  notifyWhatsapp: boolean;
+}): Promise<UpdateNotifPrefsResult> {
+  const view = await getClientView();
+  if (!view) return { ok: false, error: "Sessione scaduta: accedi di nuovo." };
+  if (!isAdminConfigured) return { ok: false, error: "Servizio non disponibile." };
+
+  const { error } = await getAdminClient()
+    .from("profiles")
+    .update({
+      notify_email: input.notifyEmail,
+      notify_whatsapp: input.notifyWhatsapp,
+    })
+    .eq("id", view.user.id);
+  if (error) {
+    console.error("[area] updateNotificationPrefs:", error.message);
+    return { ok: false, error: "Salvataggio non riuscito, riprova." };
+  }
+  revalidatePath("/area-riservata/profilo");
+  return { ok: true };
+}

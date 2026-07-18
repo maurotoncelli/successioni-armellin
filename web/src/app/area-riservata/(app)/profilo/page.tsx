@@ -8,12 +8,10 @@ import { PageHeading } from "@/components/area/ui";
 import { useAreaData } from "@/components/area/area-context";
 import { signOut } from "../../actions";
 import { DIAL_CODES, splitPhone } from "@/lib/phone";
-import { updatePhone, updatePassword } from "./actions";
+import { updatePhone, updatePassword, updateNotificationPrefs } from "./actions";
 
 export default function ProfiloPage() {
   const { account } = useAreaData();
-  const [emailNotif, setEmailNotif] = useState(true);
-  const [waNotif, setWaNotif] = useState(false);
 
   return (
     <div>
@@ -39,21 +37,10 @@ export default function ProfiloPage() {
         <PasswordSection />
       </Card>
 
-      <Card className="mt-6">
-        <h2 className="text-sm font-semibold text-text">Preferenze notifiche</h2>
-        <div className="mt-3 space-y-3">
-          <Toggle
-            label="Notifiche via email"
-            checked={emailNotif}
-            onChange={setEmailNotif}
-          />
-          <Toggle
-            label="Notifiche via WhatsApp"
-            checked={waNotif}
-            onChange={setWaNotif}
-          />
-        </div>
-      </Card>
+      <NotificationPrefs
+        initialEmail={account.notifyEmail}
+        initialWhatsapp={account.notifyWhatsapp}
+      />
 
       <form action={signOut}>
         <button
@@ -319,14 +306,73 @@ function PasswordSection() {
   );
 }
 
+function NotificationPrefs({
+  initialEmail,
+  initialWhatsapp,
+}: {
+  initialEmail: boolean;
+  initialWhatsapp: boolean;
+}) {
+  const [emailNotif, setEmailNotif] = useState(initialEmail);
+  const [waNotif, setWaNotif] = useState(initialWhatsapp);
+  const [msg, setMsg] = useState<string | null>(null);
+  const [pending, startTransition] = useTransition();
+
+  function save(nextEmail: boolean, nextWa: boolean) {
+    setMsg(null);
+    startTransition(async () => {
+      const res = await updateNotificationPrefs({
+        notifyEmail: nextEmail,
+        notifyWhatsapp: nextWa,
+      });
+      if (res.ok) setMsg("Preferenze salvate.");
+      else setMsg(res.error);
+    });
+  }
+
+  return (
+    <Card className="mt-6">
+      <h2 className="text-sm font-semibold text-text">Preferenze notifiche</h2>
+      <p className="mt-1 text-xs text-text-muted">
+        Le email operative (pagamento, documenti, imposte, chiusura) restano
+        sempre attive. Qui puoi disattivare solo i messaggi facoltativi, come
+        la richiesta di recensione.
+      </p>
+      <div className="mt-3 space-y-3">
+        <Toggle
+          label="Email facoltative (es. recensione)"
+          checked={emailNotif}
+          disabled={pending}
+          onChange={(v) => {
+            setEmailNotif(v);
+            save(v, waNotif);
+          }}
+        />
+        <Toggle
+          label="WhatsApp (in arrivo)"
+          checked={waNotif}
+          disabled
+          onChange={(v) => {
+            setWaNotif(v);
+            save(emailNotif, v);
+          }}
+        />
+      </div>
+      {msg && <p className="mt-2 text-xs text-text-muted">{msg}</p>}
+    </Card>
+  );
+}
+
 function Toggle({
   label,
   checked,
   onChange,
+  disabled,
 }: {
   label: string;
   checked: boolean;
   onChange: (v: boolean) => void;
+  disabled?: boolean;
 }) {
   return (
     <label className="flex items-center justify-between gap-4 text-sm text-text">
@@ -335,8 +381,9 @@ function Toggle({
         type="button"
         role="switch"
         aria-checked={checked}
+        disabled={disabled}
         onClick={() => onChange(!checked)}
-        className={`relative h-6 w-11 shrink-0 rounded-full transition-colors ${
+        className={`relative h-6 w-11 shrink-0 rounded-full transition-colors disabled:opacity-50 ${
           checked ? "bg-accent" : "bg-primary/15"
         }`}
       >

@@ -38,8 +38,9 @@ su `main`** (ultimo batch tipologiche/template: `0b5357e`; Come funziona icone:
 
 ### Aperto dopo 17/07 (prossimo agente)
 - [x] Mail follow-up chiusura pratica con link GMB (48h via Resend, 18/07)
-- [ ] Foto Pontedera vera; recensioni GMB reali (~20); video; SMS/WhatsApp
 - [x] Tabella comparativa: riga «Tempo da investire» (18/07)
+- [x] Area cliente: campanella notifiche + pagina Comunicazioni (18/07)
+- [ ] Foto Pontedera vera; recensioni GMB reali (~20); video; SMS/WhatsApp
 - [ ] Traduzioni/legal; QA cross-browser; Lenis
 - [ ] Check costi pacchetti con Lorenzo; test AI XML su pratica reale
 

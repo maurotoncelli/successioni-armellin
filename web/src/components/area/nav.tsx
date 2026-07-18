@@ -10,6 +10,7 @@ import {
   FileSignature,
   Download,
   Settings,
+  Inbox,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -17,6 +18,7 @@ const items = [
   { href: "/area-riservata/dashboard", label: "Home", icon: LayoutDashboard, primary: true },
   { href: "/area-riservata/documenti", label: "Documenti", icon: FolderOpen, primary: true },
   { href: "/area-riservata/ordine", label: "Acquisto", icon: Receipt, primary: true },
+  { href: "/area-riservata/comunicazioni", label: "Comunicazioni", icon: Inbox, primary: false },
   { href: "/area-riservata/dati", label: "I tuoi dati", icon: CreditCard, primary: false },
   { href: "/area-riservata/mandato", label: "Mandato", icon: FileSignature, primary: false },
   { href: "/area-riservata/conclusa", label: "Documenti finali", icon: Download, primary: false },

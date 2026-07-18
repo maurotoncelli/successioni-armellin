@@ -136,6 +136,18 @@ export type CrmNotificationRow = {
   created_at: string;
 };
 
+export type ClientNotificationRow = {
+  id: string;
+  practice_id: string | null;
+  contact_id: string;
+  kind: string;
+  title: string;
+  body: string;
+  href: string;
+  read_at: string | null;
+  created_at: string;
+};
+
 export type SiteNoteRow = {
   id: string;
   title: string;
@@ -150,6 +162,9 @@ export type ProfileRow = {
   id: string;
   contact_id: string | null;
   role: RoleKey;
+  notify_email: boolean;
+  notify_whatsapp: boolean;
+  comms_seen_at: string | null;
   created_at: string;
   updated_at: string;
 };
@@ -206,6 +221,13 @@ export type Database = {
         Insert: Partial<CrmNotificationRow> &
           Pick<CrmNotificationRow, "kind" | "title">;
         Update: Partial<CrmNotificationRow>;
+        Relationships: [];
+      };
+      client_notifications: {
+        Row: ClientNotificationRow;
+        Insert: Partial<ClientNotificationRow> &
+          Pick<ClientNotificationRow, "kind" | "title" | "contact_id">;
+        Update: Partial<ClientNotificationRow>;
         Relationships: [];
       };
       site_notes: {

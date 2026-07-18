@@ -2,7 +2,14 @@ import Link from "next/link";
 import { ArrowLeft, LifeBuoy, LogOut } from "lucide-react";
 import { AreaSidebar, AreaBottomBar } from "@/components/area/nav";
 import { AreaDataProvider } from "@/components/area/area-context";
+import { NotificationsBell } from "@/components/area/notifications-bell";
 import { requireClientView } from "@/lib/area";
+import { ensureProfile } from "@/lib/profiles";
+import {
+  countUnreadClientNotifications,
+  listClientNotifications,
+} from "@/lib/client-notifications";
+import { countNewComms, getCommsSeenAt } from "@/lib/client-comms";
 import { signOut } from "../actions";
 
 export default async function AreaAppLayout({
@@ -10,7 +17,16 @@ export default async function AreaAppLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { account } = await requireClientView();
+  const view = await requireClientView();
+  const { account, practice, user } = view;
+  const { contactId } = await ensureProfile(user);
+
+  const [notifications, unreadCount, seenAt] = await Promise.all([
+    contactId ? listClientNotifications(contactId, 20) : Promise.resolve([]),
+    contactId ? countUnreadClientNotifications(contactId) : Promise.resolve(0),
+    getCommsSeenAt(user.id),
+  ]);
+  const commsNewCount = countNewComms(practice?.communications, seenAt);
 
   return (
     <AreaDataProvider account={account}>
@@ -37,6 +53,11 @@ export default async function AreaAppLayout({
             </div>
 
             <div className="ml-auto flex items-center gap-1">
+              <NotificationsBell
+                initialItems={notifications}
+                unreadCount={unreadCount}
+                commsNewCount={commsNewCount}
+              />
               <Link
                 href="/"
                 className="inline-flex items-center gap-1.5 rounded-[10px] px-3 py-2 text-sm font-medium text-text-muted hover:bg-bg-muted hover:text-text"

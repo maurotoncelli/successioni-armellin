@@ -39,6 +39,11 @@ import {
   notifyReviewRequest,
 } from "@/lib/notifications";
 import { text } from "@/lib/content";
+import {
+  pushClientNotificationForPractice,
+  pushClientStatusNotification,
+  getNotifyEmailPreference,
+} from "@/lib/client-notifications";
 import { getAdminClient } from "@/lib/supabase/admin";
 import type { PracticeRow } from "@/lib/supabase/types";
 import type {
@@ -207,13 +212,14 @@ export async function rejectDocument(
   const { communications, log } = loadArrays(data);
   log.push({ action: "documento_rifiutato", at: stamp() });
 
+  const checklist = Array.isArray(data.checklist)
+    ? (data.checklist as { label?: string }[])
+    : [];
+  const label = checklist[index]?.label ?? "Documento";
+  const cleanReason = reason.trim() || "Da ricaricare";
+
   // Avvisa il cliente che un documento va ricaricato.
   if (data.client_email) {
-    const checklist = Array.isArray(data.checklist)
-      ? (data.checklist as { label?: string }[])
-      : [];
-    const label = checklist[index]?.label ?? "Documento";
-    const cleanReason = reason.trim() || "Da ricaricare";
     const notice = await notifyDocumentRejected(
       data.client_email,
       label,
@@ -230,6 +236,14 @@ export async function rejectDocument(
       log.push({ action: "email_inviata", at: stamp() });
     }
   }
+
+  await pushClientNotificationForPractice(practiceId, {
+    kind: "documento",
+    title: `Documento da rifare: ${label}`,
+    body: cleanReason,
+    href: "/area-riservata/documenti",
+    dedupeMinutes: 5,
+  });
 
   // La palla passa al cliente: deve ricaricare il documento corretto.
   // (Torna ad ADMIN quando ricarica l'ultima voce rifiutata o preme "Ho finito".)
@@ -294,7 +308,7 @@ export async function changeStatus(
   const { data } = await admin
     .from("practices")
     .select(
-      "status, log, opened_at, submitted_at, client_email, communications, payment_status",
+      "status, log, opened_at, submitted_at, client_email, communications, payment_status, contact_id",
     )
     .eq("id", practiceId)
     .maybeSingle();
@@ -363,9 +377,11 @@ export async function changeStatus(
   }
 
   // Follow-up recensione GMB a 48h (Resend scheduled_at), stesso URL del banner area.
+  // Soft: rispetta preferenza notify_email del profilo cliente.
   if (status === "CHIUSA" && data.client_email) {
     const reviewUrl = text("settings", "review_url", "").trim();
-    if (reviewUrl.startsWith("http")) {
+    const softOk = await getNotifyEmailPreference(data.contact_id);
+    if (reviewUrl.startsWith("http") && softOk) {
       const review = await notifyReviewRequest(data.client_email, reviewUrl);
       if (review.sent) {
         communications.push({
@@ -388,9 +404,13 @@ export async function changeStatus(
     console.error("[crm] changeStatus:", error.message);
     return { ok: false, error: "Aggiornamento non riuscito." };
   }
+
+  await pushClientStatusNotification(practiceId, status);
+
   revalidatePath(`/crm/pratiche/${practiceId}`);
   revalidatePath("/crm/pratiche");
   revalidatePath("/crm");
+  revalidatePath("/area-riservata/dashboard");
 
   // Pratica CONCLUSA: dati per la celebrazione (quante chiuse in totale).
   if (status === "CHIUSA") {
@@ -796,6 +816,15 @@ export async function setStateTaxes(
     console.error("[crm] setStateTaxes:", error.message);
     return { ok: false, error: "Salvataggio non riuscito." };
   }
+
+  await pushClientNotificationForPractice(practiceId, {
+    kind: "imposte",
+    title: `Imposte comunicate: ${amount.toLocaleString("it-IT")} €`,
+    body: "Sono separate dall'onorario e si versano allo Stato (F24). Inserisci l'IBAN se richiesto.",
+    href: "/area-riservata/ordine",
+    dedupeMinutes: 10,
+  });
+
   revalidatePath(`/crm/pratiche/${practiceId}`);
   revalidatePath("/area-riservata/ordine");
   revalidatePath("/area-riservata/dashboard");
@@ -907,6 +936,7 @@ export async function registerOfflinePayment(
     console.error("[crm] registerOfflinePayment:", error.message);
     return { ok: false, error: "Registrazione non riuscita." };
   }
+  await pushClientStatusNotification(practiceId, "PAGATO");
   revalidatePath(`/crm/pratiche/${practiceId}`);
   revalidatePath("/crm/pratiche");
   revalidatePath("/crm");
@@ -951,7 +981,17 @@ export async function notifyFinalDocsReadyAction(
     .from("practices")
     .update({ communications, log })
     .eq("id", practiceId);
+
+  await pushClientNotificationForPractice(practiceId, {
+    kind: "finali",
+    title: "Documenti finali pronti",
+    body: "Puoi scaricarli dalla tua area personale.",
+    href: "/area-riservata/conclusa",
+    dedupeMinutes: 60,
+  });
+
   revalidatePath(`/crm/pratiche/${practiceId}`);
+  revalidatePath("/area-riservata/dashboard");
   return { ok: true };
 }
 
@@ -1235,6 +1275,22 @@ export async function updateWithdrawal(
       });
       log.push({ action: "email_inviata", at: now });
     }
+  }
+
+  if (status === "ACCEPTED" || status === "REJECTED") {
+    await pushClientNotificationForPractice(practiceId, {
+      kind: "recesso",
+      title:
+        status === "ACCEPTED"
+          ? "Recesso accettato"
+          : "Esito sulla richiesta di recesso",
+      body:
+        status === "ACCEPTED"
+          ? "La pratica è stata annullata. Controlla i dettagli in area personale."
+          : "Abbiamo valutato la tua richiesta di recesso.",
+      href: "/area-riservata/recesso",
+      dedupeMinutes: 30,
+    });
   }
 
   await admin
