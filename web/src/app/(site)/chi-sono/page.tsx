@@ -92,7 +92,7 @@ export default async function ChiSonoPage() {
         </div>
       </Section>
 
-      <Section tone="sand">
+      <Section tone="muted">
         <WelcomeVideo
           labels={welcomeLabels}
           poster={WELCOME_VIDEO_POSTER}
@@ -100,7 +100,7 @@ export default async function ChiSonoPage() {
         />
       </Section>
 
-      <Section>
+      <Section tone="sand">
         <SectionHeading title={await t("chi_siamo", "credenziali_title")} />
         <div className="mx-auto mt-8 grid max-w-3xl gap-4 sm:mt-10 sm:grid-cols-3">
           {credenziali.map((c, i) => {

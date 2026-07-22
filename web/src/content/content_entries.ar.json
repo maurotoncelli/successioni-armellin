@@ -1112,14 +1112,14 @@
       "key": "video_title",
       "locale": "ar",
       "is_published": true,
-      "value": "رسالة من لورينزو"
+      "value": "هل لديك دقيقة؟ استمع إليّ"
     },
     {
       "collection": "chi_siamo",
       "key": "video_caption",
       "locale": "ar",
       "is_published": true,
-      "value": "كلمات قليلة عن طريقة عملي، في نحو دقيقة."
+      "value": "أشرح لك بكلماتي كيف أتولى ملف الخلافة نيابة عنك."
     },
     {
       "collection": "chi_siamo",

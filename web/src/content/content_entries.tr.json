@@ -1112,14 +1112,14 @@
       "key": "video_title",
       "locale": "tr",
       "is_published": true,
-      "value": "Lorenzo’dan bir selam"
+      "value": "Bir dakikanız var mı? Dinleyin"
     },
     {
       "collection": "chi_siamo",
       "key": "video_caption",
       "locale": "tr",
       "is_published": true,
-      "value": "Nasıl çalıştığıma dair birkaç söz — yaklaşık bir dakika."
+      "value": "Mirası nasıl üstlendiğimi kendi sözlerimle anlatıyorum."
     },
     {
       "collection": "chi_siamo",

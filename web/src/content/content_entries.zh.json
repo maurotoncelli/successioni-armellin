@@ -1112,14 +1112,14 @@
       "key": "video_title",
       "locale": "zh",
       "is_published": true,
-      "value": "洛伦佐的问候"
+      "value": "有一分钟吗？听我说"
     },
     {
       "collection": "chi_siamo",
       "key": "video_caption",
       "locale": "zh",
       "is_published": true,
-      "value": "关于我如何工作的几句话，大约一分钟。"
+      "value": "用我自己的话，说明我如何为您处理继承手续。"
     },
     {
       "collection": "chi_siamo",

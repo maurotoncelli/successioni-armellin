@@ -50,9 +50,11 @@ export function WelcomeVideo({
   return (
     <div className={cn("mx-auto w-full max-w-3xl", className)}>
       {showTitle && (
-        <div className="mb-5 text-center sm:mb-6">
-          <h2 className="text-2xl sm:text-3xl">{labels.title}</h2>
-          <p className="mt-2 text-sm text-text-muted sm:text-base">
+        <div className="mb-6 text-center sm:mb-8">
+          <h2 className="font-display text-2xl text-primary sm:text-3xl">
+            {labels.title}
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-text-muted sm:text-base">
             {labels.caption}
           </p>
         </div>

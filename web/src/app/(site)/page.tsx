@@ -326,7 +326,7 @@ export default async function HomePage() {
         </div>
       </Section>
 
-      {/* Chi sono (estratto) + video di benvenuto */}
+      {/* Chi sono (estratto) */}
       <Section tone="sand">
         <div className="grid items-center gap-6 md:grid-cols-2 md:gap-10">
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-primary/10 shadow-sm">
@@ -352,13 +352,15 @@ export default async function HomePage() {
             </div>
           </div>
         </div>
-        <div className="mt-10 sm:mt-14">
-          <WelcomeVideo
-            labels={welcomeLabels}
-            poster={WELCOME_VIDEO_POSTER}
-            src={welcomeSrc}
-          />
-        </div>
+      </Section>
+
+      {/* Video di benvenuto — sezione propria, staccata dal blocco sopra */}
+      <Section tone="muted">
+        <WelcomeVideo
+          labels={welcomeLabels}
+          poster={WELCOME_VIDEO_POSTER}
+          src={welcomeSrc}
+        />
       </Section>
 
       {/* FAQ (estratto) */}

@@ -1112,14 +1112,14 @@
       "key": "video_title",
       "locale": "es",
       "is_published": true,
-      "value": "Un saludo de Lorenzo"
+      "value": "¿Tienes un minuto? Escúchame"
     },
     {
       "collection": "chi_siamo",
       "key": "video_caption",
       "locale": "es",
       "is_published": true,
-      "value": "Unas palabras sobre cómo trabajo, en alrededor de un minuto."
+      "value": "Te cuento en primera persona cómo me ocupo de tu expediente."
     },
     {
       "collection": "chi_siamo",

@@ -1112,14 +1112,14 @@
       "key": "video_title",
       "locale": "ru",
       "is_published": true,
-      "value": "Приветствие от Лоренцо"
+      "value": "Есть минута? Послушайте меня"
     },
     {
       "collection": "chi_siamo",
       "key": "video_caption",
       "locale": "ru",
       "is_published": true,
-      "value": "Несколько слов о том, как я работаю — около минуты."
+      "value": "Своими словами — как я беру ваше дело о наследстве на себя."
     },
     {
       "collection": "chi_siamo",

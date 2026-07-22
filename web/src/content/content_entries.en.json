@@ -1112,14 +1112,14 @@
       "key": "video_title",
       "locale": "en",
       "is_published": true,
-      "value": "A message from Lorenzo"
+      "value": "Got a minute? Hear me out"
     },
     {
       "collection": "chi_siamo",
       "key": "video_caption",
       "locale": "en",
       "is_published": true,
-      "value": "A few words on how I work — about one minute."
+      "value": "In my own words — how I take care of your succession case."
     },
     {
       "collection": "chi_siamo",

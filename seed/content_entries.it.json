@@ -1112,14 +1112,14 @@
       "key": "video_title",
       "locale": "it",
       "is_published": true,
-      "value": "Un saluto da Lorenzo"
+      "value": "Hai un minuto? Ascoltami"
     },
     {
       "collection": "chi_siamo",
       "key": "video_caption",
       "locale": "it",
       "is_published": true,
-      "value": "Due parole su come lavoro, in circa un minuto."
+      "value": "Ti spiego in prima persona come mi occupo della tua pratica."
     },
     {
       "collection": "chi_siamo",

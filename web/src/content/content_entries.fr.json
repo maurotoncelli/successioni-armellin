@@ -1112,14 +1112,14 @@
       "key": "video_title",
       "locale": "fr",
       "is_published": true,
-      "value": "Un message de Lorenzo"
+      "value": "Vous avez une minute ? Écoutez-moi"
     },
     {
       "collection": "chi_siamo",
       "key": "video_caption",
       "locale": "fr",
       "is_published": true,
-      "value": "Quelques mots sur ma façon de travailler — environ une minute."
+      "value": "Je vous explique en personne comment je m’occupe de votre dossier."
     },
     {
       "collection": "chi_siamo",
