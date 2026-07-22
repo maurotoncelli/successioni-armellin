@@ -1095,10 +1095,31 @@
     },
     {
       "collection": "chi_siamo",
+      "key": "video_duration",
+      "locale": "es",
+      "is_published": true,
+      "value": "Alrededor de 1 min"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_play",
+      "locale": "es",
+      "is_published": true,
+      "value": "Reproducir el vídeo de bienvenida"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Un saludo de Lorenzo"
+    },
+    {
+      "collection": "chi_siamo",
       "key": "video_caption",
       "locale": "es",
       "is_published": true,
-      "value": "Un saludo y unas palabras sobre cómo trabajo (60 segundos)."
+      "value": "Unas palabras sobre cómo trabajo, en alrededor de un minuto."
     },
     {
       "collection": "chi_siamo",

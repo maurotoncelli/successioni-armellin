@@ -1095,10 +1095,31 @@
     },
     {
       "collection": "chi_siamo",
+      "key": "video_duration",
+      "locale": "zh",
+      "is_published": true,
+      "value": "约 1 分钟"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_play",
+      "locale": "zh",
+      "is_published": true,
+      "value": "播放欢迎视频"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "洛伦佐的问候"
+    },
+    {
+      "collection": "chi_siamo",
       "key": "video_caption",
       "locale": "zh",
       "is_published": true,
-      "value": "问候并简要介绍我的工作方式（60 秒）。"
+      "value": "关于我如何工作的几句话，大约一分钟。"
     },
     {
       "collection": "chi_siamo",
@@ -1112,7 +1133,7 @@
       "key": "video_alt",
       "locale": "zh",
       "is_published": true,
-      "value": "Geom. Lorenzo Armellin 欢迎视频"
+      "value": "几何师 Lorenzo Armellin 的欢迎视频"
     },
     {
       "collection": "chi_siamo",

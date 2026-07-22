@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { navPageTitle, t, tCta, tList, tObj } from "@/lib/locale";
 import Image from "next/image";
-import { Play } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { Card } from "@/components/ui/card";
 import { Reviews } from "@/components/site/reviews";
 import { CtaBand } from "@/components/site/cta-band";
+import { WelcomeVideo } from "@/components/site/welcome-video";
 import {
   IconAlbo,
   IconEntratel,
@@ -16,6 +16,12 @@ import {
   IconExternal,
   IconStudio,
 } from "@/components/site/come-funziona-icons";
+import { getWelcomeVideoLabels } from "@/lib/welcome-video-labels";
+import {
+  isWelcomeVideoReady,
+  WELCOME_VIDEO_POSTER,
+  WELCOME_VIDEO_SRC,
+} from "@/lib/welcome-video";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -40,6 +46,8 @@ export default async function ChiSonoPage() {
   });
   const finalButton = await tCta("chi_siamo", "cta_finale_button");
   const finalPhone = await tCta("chi_siamo", "cta_finale_phone");
+  const welcomeLabels = await getWelcomeVideoLabels();
+  const welcomeSrc = isWelcomeVideoReady() ? WELCOME_VIDEO_SRC : null;
   const indirizzoLine = [indirizzo.via, `${indirizzo.cap} ${indirizzo.citta}`.trim()]
     .filter(Boolean)
     .join(", ");
@@ -85,6 +93,14 @@ export default async function ChiSonoPage() {
       </Section>
 
       <Section tone="sand">
+        <WelcomeVideo
+          labels={welcomeLabels}
+          poster={WELCOME_VIDEO_POSTER}
+          src={welcomeSrc}
+        />
+      </Section>
+
+      <Section>
         <SectionHeading title={await t("chi_siamo", "credenziali_title")} />
         <div className="mx-auto mt-8 grid max-w-3xl gap-4 sm:mt-10 sm:grid-cols-3">
           {credenziali.map((c, i) => {
@@ -142,36 +158,6 @@ export default async function ChiSonoPage() {
               <IconExternal className="h-4 w-4" />
             </a>
           </div>
-        </div>
-      </Section>
-
-      <Section tone="sand">
-        <div className="mx-auto max-w-3xl">
-          <figure className="group relative aspect-video overflow-hidden rounded-2xl border border-primary/10 shadow-md">
-            <Image
-              src="/images/lorenzo-video-poster.png"
-              alt={await t(
-                "chi_siamo",
-                "video_alt",
-                "Video di benvenuto del Geom. Lorenzo Armellin",
-              )}
-              fill
-              sizes="(max-width: 768px) 100vw, 768px"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-primary/25 transition-colors group-hover:bg-primary/15" />
-            <span className="absolute inset-0 grid place-items-center">
-              <span className="grid h-20 w-20 place-items-center rounded-full bg-white/90 text-primary shadow-lg transition-transform group-hover:scale-105">
-                <Play className="h-8 w-8 translate-x-0.5 fill-current" />
-              </span>
-            </span>
-            <span className="absolute bottom-3 right-3 rounded-full bg-primary/80 px-3 py-1 text-xs font-medium text-white backdrop-blur">
-              {await t("chi_siamo", "video_badge", "Video in arrivo")}
-            </span>
-          </figure>
-          <figcaption className="mt-4 text-center text-sm text-text-muted">
-            {await t("chi_siamo", "video_caption")}
-          </figcaption>
         </div>
       </Section>
 

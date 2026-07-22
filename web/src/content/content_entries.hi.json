@@ -1095,10 +1095,31 @@
     },
     {
       "collection": "chi_siamo",
+      "key": "video_duration",
+      "locale": "hi",
+      "is_published": true,
+      "value": "लगभग 1 मि"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_play",
+      "locale": "hi",
+      "is_published": true,
+      "value": "स्वागत वीडियो चलाएँ"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "लोरेंज़ो की ओर से संदेश"
+    },
+    {
+      "collection": "chi_siamo",
       "key": "video_caption",
       "locale": "hi",
       "is_published": true,
-      "value": "अभिवादन और काम के बारे में कुछ शब्द (60 सेकंड)।"
+      "value": "मैं कैसे काम करता हूँ — करीब एक मिनट में।"
     },
     {
       "collection": "chi_siamo",
@@ -1112,7 +1133,7 @@
       "key": "video_alt",
       "locale": "hi",
       "is_published": true,
-      "value": "Geom. Lorenzo Armellin का स्वागत वीडियो"
+      "value": "जियोम. लोरेंज़ो आर्मेलिन का स्वागत वीडियो"
     },
     {
       "collection": "chi_siamo",

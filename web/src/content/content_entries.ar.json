@@ -1095,24 +1095,45 @@
     },
     {
       "collection": "chi_siamo",
+      "key": "video_duration",
+      "locale": "ar",
+      "is_published": true,
+      "value": "حوالي دقيقة"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_play",
+      "locale": "ar",
+      "is_published": true,
+      "value": "تشغيل فيديو الترحيب"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "رسالة من لورينزو"
+    },
+    {
+      "collection": "chi_siamo",
       "key": "video_caption",
       "locale": "ar",
       "is_published": true,
-      "value": "تحية وكلمتان عن طريقة عملي (60 ثانية)."
+      "value": "كلمات قليلة عن طريقة عملي، في نحو دقيقة."
     },
     {
       "collection": "chi_siamo",
       "key": "video_badge",
       "locale": "ar",
       "is_published": true,
-      "value": "فيديو قريبًا"
+      "value": "الفيديو قريباً"
     },
     {
       "collection": "chi_siamo",
       "key": "video_alt",
       "locale": "ar",
       "is_published": true,
-      "value": "فيديو ترحيبي من Geom. Lorenzo Armellin"
+      "value": "فيديو ترحيبي من المهندس لورينزو أرميلين"
     },
     {
       "collection": "chi_siamo",

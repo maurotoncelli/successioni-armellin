@@ -1095,10 +1095,31 @@
     },
     {
       "collection": "chi_siamo",
+      "key": "video_duration",
+      "locale": "en",
+      "is_published": true,
+      "value": "About 1 min"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_play",
+      "locale": "en",
+      "is_published": true,
+      "value": "Play the welcome video"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_title",
+      "locale": "en",
+      "is_published": true,
+      "value": "A message from Lorenzo"
+    },
+    {
+      "collection": "chi_siamo",
       "key": "video_caption",
       "locale": "en",
       "is_published": true,
-      "value": "A hello and a few words on how I work (60 seconds)."
+      "value": "A few words on how I work — about one minute."
     },
     {
       "collection": "chi_siamo",

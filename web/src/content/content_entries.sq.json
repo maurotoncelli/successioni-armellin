@@ -1095,10 +1095,31 @@
     },
     {
       "collection": "chi_siamo",
+      "key": "video_duration",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Rreth 1 min"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_play",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Luaj videon e mirëseardhjes"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Një përshëndetje nga Lorenzo"
+    },
+    {
+      "collection": "chi_siamo",
       "key": "video_caption",
       "locale": "sq",
       "is_published": true,
-      "value": "Një përshëndetje dhe dy fjalë se si punoj (60 sekonda)."
+      "value": "Disa fjalë se si punoj — rreth një minutë."
     },
     {
       "collection": "chi_siamo",

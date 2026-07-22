@@ -1095,10 +1095,31 @@
     },
     {
       "collection": "chi_siamo",
+      "key": "video_duration",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Yaklaşık 1 dk"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_play",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Hoş geldiniz videosunu oynat"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Lorenzo’dan bir selam"
+    },
+    {
+      "collection": "chi_siamo",
       "key": "video_caption",
       "locale": "tr",
       "is_published": true,
-      "value": "Bir selamlama ve çalışma tarzıma dair birkaç söz (60 saniye)."
+      "value": "Nasıl çalıştığıma dair birkaç söz — yaklaşık bir dakika."
     },
     {
       "collection": "chi_siamo",

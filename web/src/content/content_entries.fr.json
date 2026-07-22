@@ -1095,24 +1095,45 @@
     },
     {
       "collection": "chi_siamo",
+      "key": "video_duration",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Environ 1 min"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_play",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Lire la vidéo de bienvenue"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_title",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Un message de Lorenzo"
+    },
+    {
+      "collection": "chi_siamo",
       "key": "video_caption",
       "locale": "fr",
       "is_published": true,
-      "value": "Un mot de bienvenue et quelques mots sur ma façon de travailler (60 secondes)."
+      "value": "Quelques mots sur ma façon de travailler — environ une minute."
     },
     {
       "collection": "chi_siamo",
       "key": "video_badge",
       "locale": "fr",
       "is_published": true,
-      "value": "Vidéo à venir"
+      "value": "Vidéo bientôt disponible"
     },
     {
       "collection": "chi_siamo",
       "key": "video_alt",
       "locale": "fr",
       "is_published": true,
-      "value": "Vidéo de bienvenue du Geom. Lorenzo Armellin"
+      "value": "Vidéo de bienvenue du Géom. Lorenzo Armellin"
     },
     {
       "collection": "chi_siamo",

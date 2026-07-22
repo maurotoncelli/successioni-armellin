@@ -1095,10 +1095,31 @@
     },
     {
       "collection": "chi_siamo",
+      "key": "video_duration",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Около 1 мин"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_play",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Смотреть приветственное видео"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Приветствие от Лоренцо"
+    },
+    {
+      "collection": "chi_siamo",
       "key": "video_caption",
       "locale": "ru",
       "is_published": true,
-      "value": "Приветствие и пара слов о моей работе (60 секунд)."
+      "value": "Несколько слов о том, как я работаю — около минуты."
     },
     {
       "collection": "chi_siamo",
@@ -1112,7 +1133,7 @@
       "key": "video_alt",
       "locale": "ru",
       "is_published": true,
-      "value": "Приветственное видео Geom. Lorenzo Armellin"
+      "value": "Приветственное видео геом. Лоренцо Армеллина"
     },
     {
       "collection": "chi_siamo",

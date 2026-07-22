@@ -1,6 +1,6 @@
 # HANDOFF per il prossimo agente
 
-> Documento di passaggio di consegne. Aggiornato: **2026-07-18 ~16:40**.
+> Documento di passaggio di consegne. Aggiornato: **2026-07-22**.
 > Scopo: permettere a un nuovo agente (senza contesto) di riprendere il lavoro.
 > Riferimenti chiave: @RUNBOOK_GoLive (procedura go-live), @SPEC_Env_Vars,
 > @DOMANDE_PER_LORENZO, @PROSSIMO_INCONTRO_LORENZO, @07_Stack.
@@ -18,19 +18,41 @@ Chat precedente TR/FR/SQ + EN/AR + SEO:
 
 ---
 
+## ★★ BACKLOG differito — scala CRM / lead storici (22/07)
+
+**NON implementare ora.** Target business ~30 pratiche/mese: il CRM regge.
+Rischio solo accumulo di LEAD morti (quiz/SoftLead/checkout) su anni →
+`getPractices()` (`select *` senza limite in `web/src/lib/crm.ts`) + Kanban DOM
+fino al tetto PostgREST ~1000 (troncamento silenzioso).
+
+Piano Cursor: `crm_scala_lead` (`.cursor/plans/` / piano in chat 22/07).
+
+### Trigger (uno basta → riprendere il piano)
+- pratiche totali **>~400–500**, oppure
+- board/home percepite lente, oppure
+- KPI/board incompleti vicino a ~1000
+
+### Fasi (quando Mauro chiede)
+1. **Archivio soft:** colonna `practices.archived_at` + `getPractices({ scope })`;
+   default home/Kanban/calendario = attive; tab Archivio; Archivia/Ripristina in scheda.
+2. **Auto-archivio lead morti** (preview+conferma): LEAD non pagati, inactivity 90g
+   / anonimi senza contatto 30g → setta `archived_at` (no delete Storage).
+3. **Solo se serve:** select snello liste (no jsonb pesanti) + paginazione;
+   full row solo su `/crm/pratiche/[id]`.
+
+Finché non scatta il trigger: cleanup test occasionali con
+`web/scripts/cleanup-test-practices.mjs`.
+
+---
+
 ## ★★ STATO i18n — tutte le lingue switcher a parity UI (18/07 sera)
 
 | Locale | `content_entries` vs IT (~549) | Overlay + SEED + comms | SEO `/xx` |
 |--------|-------------------------------|-------------------------|-----------|
 | **it** | completo (fede) | n/a | URL nudi |
-| **ar** | parity 0 | sì | **`/ar` live** |
-| **en** | parity 0 | sì | no (`?lang=en`) |
-| **tr** | parity 0 | sì | no (`?lang=tr`) |
-| **fr** | parity 0 | sì | no (`?lang=fr`) |
-| **sq** | parity 0 | sì | no (`?lang=sq`) |
-| **de, es, ru, zh, hi** | **parity 0** | **sì** | no (`?lang=`) |
+| **tutte le altre** (en ar de es fr ru tr zh hi sq) | parity 0 | sì | **live** (`/en`… `/ar`…) — commit `5f0d130` |
 
-`tsc --noEmit` ok. SEO path **non** attivati per le nuove lingue (serve ok Mauro).
+`SEO_PATH_LOCALES` = tutte ≠ IT. Sitemap + hreflang multilanguage. Reinviare sitemap in GSC dopo deploy.
 
 ### Cosa è stato fatto (sessione de/es/ru/zh/hi)
 - Mappe Composer 2.5: `*_map_0..8.json` + `overlay_*_0..3.json` per de/es/ru/zh/hi
@@ -44,12 +66,13 @@ Chat precedente TR/FR/SQ + EN/AR + SEO:
 
 ### Qualità / follow-up non bloccanti
 - `legal.hi.ts` privacy/cookie: ancora qualche stringa mista Hinglish in sezioni medie (cortesia; revisione umana consigliata, come AR/EN YMYL).
-- SEO `/en` `/de`…: solo dopo ok Mauro (`SEO_PATH_LOCALES`).
+- SEO path tutte le lingue: **`5f0d130`** (sitemap/hreflang/proxy).
 
 ### Riferimenti commit
-- DE+ES+RU+ZH+HI: **`2172633`** (`feat(i18n): UI tedesco, spagnolo, russo, cinese e hindi…`)  
+- SEO tutte le lingue: **`5f0d130`**
+- DE+ES+RU+ZH+HI: **`2172633`**  
 - TR+FR+SQ: **`d736cfa`**  
-- EN: `6150fd6` · AR UX: `4fb16fc` · SEO `/ar`: `c2193f1` / `a16cedb`
+- EN: `6150fd6` · AR UX: `4fb16fc` · SEO `/ar` base: `c2193f1` / `a16cedb`
 
 ---
 

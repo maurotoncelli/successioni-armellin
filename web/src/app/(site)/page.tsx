@@ -18,6 +18,13 @@ import { TrustBar } from "@/components/site/trust-bar";
 import { PackageCards } from "@/components/site/package-cards";
 import { Reviews } from "@/components/site/reviews";
 import { CtaBand } from "@/components/site/cta-band";
+import { WelcomeVideo } from "@/components/site/welcome-video";
+import { getWelcomeVideoLabels } from "@/lib/welcome-video-labels";
+import {
+  isWelcomeVideoReady,
+  WELCOME_VIDEO_POSTER,
+  WELCOME_VIDEO_SRC,
+} from "@/lib/welcome-video";
 
 import { cn } from "@/lib/utils";
 
@@ -56,6 +63,8 @@ export default async function HomePage() {
   const faqCta = await tCta("home", "faq_cta");
   const finalButton = await tCta("home", "cta_finale_button");
   const finalPhone = await tCta("home", "cta_finale_phone");
+  const welcomeLabels = await getWelcomeVideoLabels();
+  const welcomeSrc = isWelcomeVideoReady() ? WELCOME_VIDEO_SRC : null;
 
   return (
     <>
@@ -317,7 +326,7 @@ export default async function HomePage() {
         </div>
       </Section>
 
-      {/* Chi sono (estratto) */}
+      {/* Chi sono (estratto) + video di benvenuto */}
       <Section tone="sand">
         <div className="grid items-center gap-6 md:grid-cols-2 md:gap-10">
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-primary/10 shadow-sm">
@@ -342,6 +351,13 @@ export default async function HomePage() {
               </ButtonLink>
             </div>
           </div>
+        </div>
+        <div className="mt-10 sm:mt-14">
+          <WelcomeVideo
+            labels={welcomeLabels}
+            poster={WELCOME_VIDEO_POSTER}
+            src={welcomeSrc}
+          />
         </div>
       </Section>
 
