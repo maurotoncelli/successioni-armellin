@@ -85,6 +85,12 @@ export type OfflineUiLabels = {
   whatsapp: string;
   already_practice: string;
   area_cta: string;
+  vacation_title: string;
+  vacation_body: string;
+  maintenance_title: string;
+  /** Template con `{date}` (data riapertura localizzata). */
+  maintenance_body: string;
+  maintenance_body_soon: string;
 };
 
 export type CookieUiLabels = {
@@ -241,6 +247,14 @@ export const OFFLINE_UI_IT: OfflineUiLabels = {
   whatsapp: "WhatsApp",
   already_practice: "Hai già una pratica?",
   area_cta: "Accedi all'area personale",
+  vacation_title: "Siamo in vacanza",
+  vacation_body:
+    "In questo periodo non siamo operativi, ma puoi comunque scriverci: ti risponderemo non appena torniamo.",
+  maintenance_title: "Sito in manutenzione",
+  maintenance_body:
+    "Stiamo facendo alcuni aggiornamenti. Riapertura prevista per il {date}. Puoi comunque scriverci via email o WhatsApp.",
+  maintenance_body_soon:
+    "Stiamo facendo alcuni aggiornamenti. Torniamo online a breve. Puoi comunque scriverci via email o WhatsApp.",
 };
 
 export const COOKIE_UI_IT: CookieUiLabels = {

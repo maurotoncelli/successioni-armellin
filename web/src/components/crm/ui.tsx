@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { cn } from "@/lib/utils";
 import {
   actionOwnerMeta,
@@ -6,6 +5,8 @@ import {
   type ActionOwner,
   type PracticeStatus,
 } from "@/content/crm-data";
+
+export { PracticeLink } from "@/components/crm/practice-link";
 
 export function CrmCard({
   className,
@@ -91,18 +92,3 @@ export function SectionTitle({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function PracticeLink({
-  id,
-  className,
-  children,
-}: {
-  id: string;
-  className?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <Link href={`/crm/pratiche/${id}`} className={className}>
-      {children}
-    </Link>
-  );
-}

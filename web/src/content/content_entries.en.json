@@ -4638,7 +4638,12 @@
         "email_cta": "Email us",
         "whatsapp": "WhatsApp",
         "already_practice": "Already have a case?",
-        "area_cta": "Sign in to the client area"
+        "area_cta": "Sign in to the client area",
+        "vacation_title": "We're on holiday",
+        "vacation_body": "We're not operating right now, but you can still write to us: we'll reply as soon as we're back.",
+        "maintenance_title": "Site under maintenance",
+        "maintenance_body": "We're making some updates. Expected reopening on {date}. You can still email or WhatsApp us.",
+        "maintenance_body_soon": "We're making some updates. We'll be back online shortly. You can still email or WhatsApp us."
       }
     },
     {

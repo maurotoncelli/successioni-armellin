@@ -4638,7 +4638,12 @@
         "email_cta": "发送邮件联系我们",
         "whatsapp": "WhatsApp",
         "already_practice": "已有案件？",
-        "area_cta": "登录个人区"
+        "area_cta": "登录个人区",
+        "vacation_title": "我们正在休假",
+        "vacation_body": "此期间我们暂不营业，但仍可留言：我们回来后会尽快回复。",
+        "maintenance_title": "网站维护中",
+        "maintenance_body": "我们正在进行一些更新。预计于 {date} 重新开放。您仍可通过邮件或 WhatsApp 联系我们。",
+        "maintenance_body_soon": "我们正在进行一些更新，很快恢复上线。您仍可通过邮件或 WhatsApp 联系我们。"
       }
     },
     {

@@ -4638,7 +4638,12 @@
         "email_cta": "E-posta ile yazın",
         "whatsapp": "WhatsApp",
         "already_practice": "Zaten bir işleminiz var mı?",
-        "area_cta": "Kişisel alana giriş yapın"
+        "area_cta": "Kişisel alana giriş yapın",
+        "vacation_title": "Tatildeyiz",
+        "vacation_body": "Bu dönemde faaliyette değiliz ama yine de yazabilirsiniz: döner dönmez yanıtlarız.",
+        "maintenance_title": "Site bakımda",
+        "maintenance_body": "Bazı güncellemeler yapıyoruz. Planlanan yeniden açılış: {date}. E-posta veya WhatsApp ile yazabilirsiniz.",
+        "maintenance_body_soon": "Bazı güncellemeler yapıyoruz. Kısa sürede tekrar çevrimiçi olacağız. E-posta veya WhatsApp ile yazabilirsiniz."
       }
     },
     {

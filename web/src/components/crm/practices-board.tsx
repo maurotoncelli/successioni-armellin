@@ -12,6 +12,7 @@ import {
 } from "@/content/crm-data";
 import { changeStatus } from "@/app/crm/pratiche/[id]/actions";
 import { ActionBadge, StatusPill } from "@/components/crm/ui";
+import { PracticeLinkPendingHint } from "@/components/crm/practice-link";
 import { hasExternalEffect } from "@/lib/transitions";
 import { TransitionConfirm } from "@/components/crm/transition-confirm";
 import { Celebration } from "@/components/crm/celebration";
@@ -305,12 +306,15 @@ function KanbanCard({
         {moving ? (
           <Loader2 className="h-3.5 w-3.5 animate-spin text-crm-muted" />
         ) : (
-          practice.urgent && (
-            <span className="inline-flex items-center gap-1 text-xs text-crm-rose">
-              <AlertCircle className="h-3.5 w-3.5" />
-              Urgente
-            </span>
-          )
+          <>
+            <PracticeLinkPendingHint />
+            {practice.urgent && (
+              <span className="inline-flex items-center gap-1 text-xs text-crm-rose">
+                <AlertCircle className="h-3.5 w-3.5" />
+                Urgente
+              </span>
+            )}
+          </>
         )}
       </div>
       <p className="mt-1.5 text-sm font-medium text-crm-text">
@@ -366,9 +370,10 @@ function ListView({ practices }: { practices: Practice[] }) {
               <td className="px-4 py-3">
                 <Link
                   href={`/crm/pratiche/${p.id}`}
-                  className="font-mono text-xs text-crm-accent hover:underline"
+                  className="inline-flex items-center gap-1.5 font-mono text-xs text-crm-accent hover:underline"
                 >
                   {p.code}
+                  <PracticeLinkPendingHint />
                 </Link>
               </td>
               <td className="px-4 py-3 text-crm-text">

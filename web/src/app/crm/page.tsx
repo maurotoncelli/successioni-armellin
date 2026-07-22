@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   Briefcase,
   CheckCircle2,
@@ -201,13 +200,13 @@ export default async function CrmHomePage() {
                 <span className="mt-0.5 h-4 w-4 shrink-0 rounded border border-crm-border-strong" />
                 <div className="min-w-0">
                   <p className="text-sm text-crm-text">{task.title}</p>
-                  <Link
-                    href={`/crm/pratiche/${task.practiceId}`}
+                  <PracticeLink
+                    id={task.practiceId}
                     className="text-xs text-crm-accent hover:underline"
                   >
                     {task.code}
                     {task.dueDate ? ` · ${task.dueDate}` : ""}
-                  </Link>
+                  </PracticeLink>
                 </div>
               </li>
             ))}

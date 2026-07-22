@@ -4638,7 +4638,12 @@
         "email_cta": "Na shkruani me email",
         "whatsapp": "WhatsApp",
         "already_practice": "Keni tashmë një praktikë?",
-        "area_cta": "Hyni në Zonën personale"
+        "area_cta": "Hyni në Zonën personale",
+        "vacation_title": "Jemi me pushime",
+        "vacation_body": "Në këtë periudhë nuk jemi operativë, por mund të na shkruani: do t'ju përgjigjemi sapo të kthehemi.",
+        "maintenance_title": "Faqja në mirëmbajtje",
+        "maintenance_body": "Po bëjmë disa përditësime. Rihapja e parashikuar më {date}. Mund të na shkruani me email ose WhatsApp.",
+        "maintenance_body_soon": "Po bëjmë disa përditësime. Do të kthehemi së shpejti. Mund të na shkruani me email ose WhatsApp."
       }
     },
     {

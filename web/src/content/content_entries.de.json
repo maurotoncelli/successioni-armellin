@@ -4638,7 +4638,12 @@
         "email_cta": "Schreiben Sie uns per E-Mail",
         "whatsapp": "WhatsApp",
         "already_practice": "Haben Sie bereits eine Akte?",
-        "area_cta": "Im Persönlichen Bereich anmelden"
+        "area_cta": "Im Persönlichen Bereich anmelden",
+        "vacation_title": "Wir sind im Urlaub",
+        "vacation_body": "In dieser Zeit sind wir nicht erreichbar, aber Sie können uns trotzdem schreiben: Wir antworten, sobald wir zurück sind.",
+        "maintenance_title": "Website in Wartung",
+        "maintenance_body": "Wir führen einige Updates durch. Geplante Wiedereröffnung am {date}. Sie können uns weiterhin per E-Mail oder WhatsApp schreiben.",
+        "maintenance_body_soon": "Wir führen einige Updates durch. Wir sind bald wieder online. Sie können uns weiterhin per E-Mail oder WhatsApp schreiben."
       }
     },
     {

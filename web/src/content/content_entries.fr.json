@@ -4638,7 +4638,12 @@
         "email_cta": "Écrivez-nous par e-mail",
         "whatsapp": "WhatsApp",
         "already_practice": "Vous avez déjà un dossier ?",
-        "area_cta": "Accéder à l'Espace personnel"
+        "area_cta": "Accéder à l'Espace personnel",
+        "vacation_title": "Nous sommes en vacances",
+        "vacation_body": "Nous ne sommes pas opérationnels pour le moment, mais vous pouvez nous écrire : nous vous répondrons dès notre retour.",
+        "maintenance_title": "Site en maintenance",
+        "maintenance_body": "Nous effectuons quelques mises à jour. Réouverture prévue le {date}. Vous pouvez toujours nous écrire par e-mail ou WhatsApp.",
+        "maintenance_body_soon": "Nous effectuons quelques mises à jour. Nous serons de retour bientôt. Vous pouvez toujours nous écrire par e-mail ou WhatsApp."
       }
     },
     {

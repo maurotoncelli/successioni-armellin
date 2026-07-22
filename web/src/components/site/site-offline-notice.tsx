@@ -1,11 +1,16 @@
 import { Mail, MessageCircle, Phone, Plane, Wrench } from "lucide-react";
-import { t, tObj } from "@/lib/locale";
+import { getRequestLocale, t, tObj } from "@/lib/locale";
 
 import { buttonClasses } from "@/components/ui/button";
+import {
+  offlineNoticeUsesWrench,
+  resolveOfflinePublicCopy,
+} from "@/lib/offline-public-copy";
 import type { SiteOfflineState } from "@/lib/site-offline-shared";
 import { OFFLINE_UI_IT, type OfflineUiLabels } from "@/lib/site-ui-labels";
 
 export async function SiteOfflineNotice({ state }: { state: SiteOfflineState }) {
+  const locale = await getRequestLocale();
   const phone = await t("settings", "phone", "320 1570567");
   const email = await t("settings", "email", "studio@successioniarmellin.it");
   const whatsapp = await t(
@@ -14,8 +19,9 @@ export async function SiteOfflineNotice({ state }: { state: SiteOfflineState }) 
     "https://wa.me/393201570567",
   );
   const ui = await tObj<OfflineUiLabels>("site_ui", "offline_ui", OFFLINE_UI_IT);
+  const { title, body } = resolveOfflinePublicCopy(state, locale);
   const phoneHref = `tel:+39${phone.replace(/\D/g, "")}`;
-  const Icon = state.preset === "maintenance" ? Wrench : Plane;
+  const Icon = offlineNoticeUsesWrench(state) ? Wrench : Plane;
 
   return (
     <div className="mx-auto flex min-h-[60vh] max-w-2xl flex-col items-center justify-center px-5 py-16 text-center sm:px-8">
@@ -23,10 +29,10 @@ export async function SiteOfflineNotice({ state }: { state: SiteOfflineState }) 
         <Icon className="h-7 w-7" aria-hidden />
       </span>
       <h1 className="mt-6 font-display text-3xl text-primary sm:text-4xl">
-        {state.title}
+        {title}
       </h1>
       <p className="mt-4 max-w-lg text-base leading-relaxed text-text-muted sm:text-lg">
-        {state.body}
+        {body}
       </p>
 
       {state.showContactButtons && (

@@ -4638,7 +4638,12 @@
         "email_cta": "Scrivici via email",
         "whatsapp": "WhatsApp",
         "already_practice": "Hai già una pratica?",
-        "area_cta": "Accedi all'area personale"
+        "area_cta": "Accedi all'area personale",
+        "vacation_title": "Siamo in vacanza",
+        "vacation_body": "In questo periodo non siamo operativi, ma puoi comunque scriverci: ti risponderemo non appena torniamo.",
+        "maintenance_title": "Sito in manutenzione",
+        "maintenance_body": "Stiamo facendo alcuni aggiornamenti. Riapertura prevista per il {date}. Puoi comunque scriverci via email o WhatsApp.",
+        "maintenance_body_soon": "Stiamo facendo alcuni aggiornamenti. Torniamo online a breve. Puoi comunque scriverci via email o WhatsApp."
       }
     },
     {
