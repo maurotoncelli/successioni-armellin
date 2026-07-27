@@ -8,13 +8,11 @@ import {
   IconCheck,
   IconExternal,
   IconQuiz,
-  IconRemote,
   IconSendPractice,
   IconStudio,
-  IconTimeline,
   IconUploadDocs,
-  IconVerify,
 } from "@/components/site/come-funziona-icons";
+import { ComeFunzionaPanels } from "@/components/site/come-funziona-panels";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -130,43 +128,24 @@ export default async function ComeFunzionaPage() {
         </ol>
       </Section>
 
-      {/* Pannelli: icone stroke grandi, senza box colorati. */}
+      {/* Pannelli: su mobile accordion (testo al tap), da md card a 3 colonne. */}
       <Section tone="sand">
-        <div className="grid gap-3 sm:gap-4 md:grid-cols-3">
-          <div className="flex items-start gap-3.5 rounded-2xl border border-primary/10 bg-bg p-4 shadow-sm sm:block sm:p-6">
-            <IconTimeline className="h-8 w-8 shrink-0 text-accent sm:h-9 sm:w-9" />
-            <div className="min-w-0">
-              <h3 className="text-lg sm:mt-5 sm:text-xl">
-                {await t("come_funziona", "sla_title")}
-              </h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-text-muted sm:mt-2">
-                {await t("come_funziona", "sla_body")}
-              </p>
-            </div>
-          </div>
-          <div className="flex items-start gap-3.5 rounded-2xl border border-primary/10 bg-bg p-4 shadow-sm sm:block sm:p-6">
-            <IconVerify className="h-8 w-8 shrink-0 text-primary sm:h-9 sm:w-9" />
-            <div className="min-w-0">
-              <h3 className="text-lg sm:mt-5 sm:text-xl">
-                {await t("come_funziona", "valore_title")}
-              </h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-text-muted sm:mt-2">
-                {await t("come_funziona", "valore_body")}
-              </p>
-            </div>
-          </div>
-          <div className="flex items-start gap-3.5 rounded-2xl border border-primary/10 bg-bg p-4 shadow-sm sm:block sm:p-6">
-            <IconRemote className="h-8 w-8 shrink-0 text-primary sm:h-9 sm:w-9" />
-            <div className="min-w-0">
-              <h3 className="text-lg sm:mt-5 sm:text-xl">
-                {await t("come_funziona", "distanza_title", "Tutto online")}
-              </h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-text-muted sm:mt-2">
-                {await t("come_funziona", "distanza_body")}
-              </p>
-            </div>
-          </div>
-        </div>
+        <ComeFunzionaPanels
+          items={[
+            {
+              titolo: await t("come_funziona", "sla_title"),
+              testo: await t("come_funziona", "sla_body"),
+            },
+            {
+              titolo: await t("come_funziona", "valore_title"),
+              testo: await t("come_funziona", "valore_body"),
+            },
+            {
+              titolo: await t("come_funziona", "distanza_title", "Tutto online"),
+              testo: await t("come_funziona", "distanza_body"),
+            },
+          ]}
+        />
 
         <div className="mt-3 overflow-hidden rounded-2xl border border-primary/10 bg-bg shadow-sm sm:mt-4 md:mt-5">
           <div className="grid md:grid-cols-2">
