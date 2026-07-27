@@ -28,7 +28,12 @@ import {
   WELCOME_VIDEO_POSTER,
   WELCOME_VIDEO_SRC,
 } from "@/lib/welcome-video";
-import { HERO_LOOP_POSTER, HERO_LOOP_SRC } from "@/lib/hero-loop";
+import {
+  HERO_LOOP_MOBILE_POSTER,
+  HERO_LOOP_MOBILE_SRC,
+  HERO_LOOP_POSTER,
+  HERO_LOOP_SRC,
+} from "@/lib/hero-loop";
 import { siteBaseUrl } from "@/lib/seo-locale";
 
 import { cn } from "@/lib/utils";
@@ -83,13 +88,14 @@ export default async function HomePage() {
           siteUrl={siteBaseUrl()}
         />
       ) : null}
-      {/* Hero: loop muted di Lorenzo al lavoro + scrim navy a sinistra per il testo. */}
-      <section className="relative flex min-h-[420px] items-center overflow-hidden bg-primary text-white sm:min-h-[520px] lg:min-h-[600px]">
+      {/* Hero: loop muted — desktop 1920×600, mobile 9:16 dedicato. */}
+      <section className="relative flex min-h-[380px] items-center overflow-hidden bg-primary text-white sm:min-h-[420px] lg:min-h-[520px]">
         <HeroLoopVideo
           src={HERO_LOOP_SRC}
           poster={HERO_LOOP_POSTER}
-          objectPosition="center 34%"
-          className="absolute inset-0 h-full w-full object-cover"
+          mobileSrc={HERO_LOOP_MOBILE_SRC}
+          mobilePoster={HERO_LOOP_MOBILE_POSTER}
+          objectPosition="center center"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 via-42% to-primary/15" />
         <div className="absolute inset-0 bg-gradient-to-t from-primary/45 via-transparent to-transparent" />
@@ -332,8 +338,19 @@ export default async function HomePage() {
         </div>
       </Section>
 
-      {/* Recensioni */}
+      {/* Video di benvenuto — subito dopo il confronto: è qui che nasce il
+          dubbio "mi fido a pagare?", il volto che parla chiude il cerchio. */}
       <Section>
+        <WelcomeVideo
+          labels={welcomeLabels}
+          poster={WELCOME_VIDEO_POSTER}
+          src={welcomeSrc}
+          captions={welcomeCaptions}
+        />
+      </Section>
+
+      {/* Recensioni */}
+      <Section tone="muted">
         <SectionHeading
           title={await t("home", "recensioni_title")}
           intro={await t("home", "recensioni_intro")}
@@ -371,18 +388,8 @@ export default async function HomePage() {
         </div>
       </Section>
 
-      {/* Video di benvenuto — sezione propria, staccata dal blocco sopra */}
-      <Section tone="muted">
-        <WelcomeVideo
-          labels={welcomeLabels}
-          poster={WELCOME_VIDEO_POSTER}
-          src={welcomeSrc}
-          captions={welcomeCaptions}
-        />
-      </Section>
-
       {/* FAQ (estratto) */}
-      <Section>
+      <Section tone="muted">
         <SectionHeading title={await t("home", "faq_title")} />
         <div className="mt-8 text-center">
           <Link
