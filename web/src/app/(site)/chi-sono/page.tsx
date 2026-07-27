@@ -80,7 +80,7 @@ export default async function ChiSonoPage() {
         <div className="grid items-center gap-8 md:grid-cols-2 md:gap-12">
           <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-2xl border border-primary/10 shadow-sm md:mx-0 md:aspect-square md:max-w-md">
             <Image
-              src="/images/lorenzo-ritratto.png"
+              src="/images/lorenzo-ritratto.jpg"
               alt={await t(
                 "chi_siamo",
                 "ritratto_alt",
@@ -88,7 +88,7 @@ export default async function ChiSonoPage() {
               )}
               fill
               sizes="(max-width: 768px) 100vw, 28rem"
-              className="object-cover object-[center_18%]"
+              className="object-cover object-[center_25%]"
             />
           </div>
           <div className="md:py-2">

@@ -2,7 +2,7 @@ import { LOCALES, type Locale } from "@/lib/content";
 
 /** Path pubblico del video di benvenuto (stesso asset home + /chi-sono). */
 export const WELCOME_VIDEO_SRC = "/videos/benvenuto-lorenzo.mp4";
-export const WELCOME_VIDEO_POSTER = "/images/lorenzo-video-poster.png";
+export const WELCOME_VIDEO_POSTER = "/images/lorenzo-video-poster.jpg";
 export const WELCOME_VIDEO_DURATION_ISO = "PT44S";
 export const WELCOME_CAPTIONS_DIR = "/videos/captions";
 

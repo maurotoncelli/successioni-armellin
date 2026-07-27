@@ -355,8 +355,8 @@ export default async function HomePage() {
         <div className="grid items-center gap-6 md:grid-cols-2 md:gap-10">
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-primary/10 shadow-sm">
             <Image
-              src="/images/lorenzo-ritratto.png"
-              alt="Geom. Lorenzo Armellin (immagine indicativa)"
+              src="/images/lorenzo-ritratto.jpg"
+              alt="Geom. Lorenzo Armellin"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
