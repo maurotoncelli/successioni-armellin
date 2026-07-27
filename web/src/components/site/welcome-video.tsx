@@ -207,12 +207,12 @@ export function WelcomeVideo({
               className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-primary/15 bg-bg px-3 py-1.5 text-sm text-primary shadow-sm transition-colors hover:border-accent/50 focus-within:border-accent focus-within:ring-2 focus-within:ring-accent/30"
             >
               <Captions className="h-4 w-4 shrink-0 text-accent" aria-hidden />
+              <span className="font-medium">{labels.captionsLabel}</span>
               {currentFlag ? (
                 <span className="text-base leading-none" aria-hidden>
                   {currentFlag}
                 </span>
               ) : null}
-              <span className="font-medium">{labels.captionsLabel}</span>
               <select
                 id="welcome-captions-lang"
                 value={captionLang}
