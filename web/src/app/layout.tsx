@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Lora, Noto_Sans_Arabic, Playfair_Display } from "next/font/google";
+import { Fraunces, Inter, Lora, Noto_Sans_Arabic } from "next/font/google";
 import { cookies, headers } from "next/headers";
 import { coerceLocale } from "@/lib/content";
 import "./globals.css";
@@ -16,10 +16,13 @@ const lora = Lora({
   display: "swap",
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+/* Display: graziato contemporaneo (sostituisce Playfair, troppo "partecipazione").
+   opsz = alle grandi dimensioni usa il taglio display, più elegante. */
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin", "latin-ext"],
   display: "swap",
+  axes: ["opsz"],
 });
 
 const notoArabic = Noto_Sans_Arabic({
@@ -74,7 +77,7 @@ export default async function RootLayout({
     <html
       lang={locale}
       dir={rtl ? "rtl" : "ltr"}
-      className={`${inter.variable} ${lora.variable} ${playfair.variable} ${notoArabic.variable} h-full antialiased`}
+      className={`${inter.variable} ${lora.variable} ${fraunces.variable} ${notoArabic.variable} h-full antialiased`}
     >
       <body className="h-full">{children}</body>
     </html>

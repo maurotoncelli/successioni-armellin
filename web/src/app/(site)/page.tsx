@@ -217,7 +217,7 @@ export default async function HomePage() {
                   />
                 )}
                 <div className="flex items-start gap-4 md:flex-col">
-                  <span className="relative z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full bg-sand font-display text-sm font-bold text-primary ring-2 ring-accent">
+                  <span className="relative z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full bg-sand text-sm font-bold text-primary ring-2 ring-accent">
                     {i + 1}
                   </span>
                   <div className="min-w-0 flex-1 pt-0.5 md:pt-0">
