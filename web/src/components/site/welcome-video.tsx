@@ -2,9 +2,12 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
-import { Captions, Play } from "lucide-react";
+import { Captions, ChevronDown, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
-import type { WelcomeCaptionTrack } from "@/lib/welcome-video";
+import {
+  localeFlag,
+  type WelcomeCaptionTrack,
+} from "@/lib/welcome-video";
 
 export type WelcomeVideoLabels = {
   title: string;
@@ -48,12 +51,14 @@ export function WelcomeVideo({
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const defaultLang = useMemo(
-    () => captions.find((c) => c.isDefault)?.srclang ?? captions[0]?.srclang ?? "it",
+    () =>
+      captions.find((c) => c.isDefault)?.srclang ??
+      captions[0]?.srclang ??
+      "it",
     [captions],
   );
   const [captionLang, setCaptionLang] = useState<CaptionChoice>(defaultLang);
 
-  // Se cambia la lingua del sito (nuove tracks), riallinea il default.
   useEffect(() => {
     setCaptionLang(defaultLang);
   }, [defaultLang]);
@@ -68,8 +73,6 @@ export function WelcomeVideo({
     }
   }
 
-  // Avvia dopo il mount del <video>: un rAF subito dopo setState vede ancora ref=null
-  // e play() fallisce → si tornava alla facade.
   useEffect(() => {
     const el = videoRef.current;
     if (!playing || !el) return;
@@ -89,7 +92,6 @@ export function WelcomeVideo({
       el.load();
       return () => el.removeEventListener("loadeddata", tryPlay);
     }
-    // captionLang applicato in effect dedicato sotto
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playing]);
 
@@ -105,6 +107,8 @@ export function WelcomeVideo({
   }
 
   const showCaptionPicker = ready && captions.length > 0;
+  const currentFlag =
+    captionLang === "off" ? null : localeFlag(captionLang);
 
   return (
     <div className={cn("mx-auto w-full max-w-3xl", className)}>
@@ -124,7 +128,7 @@ export function WelcomeVideo({
           {playing && src ? (
             <video
               ref={videoRef}
-              className="absolute inset-0 h-full w-full object-cover"
+              className="welcome-video-player absolute inset-0 h-full w-full object-cover"
               controls
               playsInline
               preload="auto"
@@ -136,7 +140,7 @@ export function WelcomeVideo({
                   key={track.srclang}
                   kind="captions"
                   srcLang={track.srclang}
-                  label={track.label}
+                  label={`${track.flag} ${track.label}`}
                   src={track.src}
                   default={track.isDefault}
                 />
@@ -181,27 +185,37 @@ export function WelcomeVideo({
         </div>
 
         {showCaptionPicker ? (
-          <div className="mt-3 flex flex-wrap items-center justify-center gap-2 sm:justify-end">
+          <div className="mt-3 flex justify-center sm:justify-end">
             <label
               htmlFor="welcome-captions-lang"
-              className="inline-flex items-center gap-1.5 text-sm text-text-muted"
+              className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-primary/15 bg-bg px-3 py-1.5 text-sm text-primary shadow-sm transition-colors hover:border-accent/50 focus-within:border-accent focus-within:ring-2 focus-within:ring-accent/30"
             >
-              <Captions className="h-4 w-4 text-accent" aria-hidden />
-              {labels.captionsLabel}
+              <Captions className="h-4 w-4 shrink-0 text-accent" aria-hidden />
+              {currentFlag ? (
+                <span className="text-base leading-none" aria-hidden>
+                  {currentFlag}
+                </span>
+              ) : null}
+              <span className="font-medium">{labels.captionsLabel}</span>
+              <select
+                id="welcome-captions-lang"
+                value={captionLang}
+                onChange={(e) => setCaptionLang(e.target.value)}
+                className="max-w-[10rem] cursor-pointer appearance-none border-0 bg-transparent py-0 pe-5 text-sm text-primary outline-none"
+                aria-label={labels.captionsLabel}
+              >
+                <option value="off">{labels.captionsOff}</option>
+                {captions.map((track) => (
+                  <option key={track.srclang} value={track.srclang}>
+                    {track.flag} {track.label}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown
+                className="pointer-events-none -ms-4 h-3.5 w-3.5 text-text-muted"
+                aria-hidden
+              />
             </label>
-            <select
-              id="welcome-captions-lang"
-              value={captionLang}
-              onChange={(e) => setCaptionLang(e.target.value)}
-              className="rounded-lg border border-primary/15 bg-bg px-2.5 py-1.5 text-sm text-primary shadow-sm outline-none focus-visible:border-accent focus-visible:ring-2 focus-visible:ring-accent/30"
-            >
-              <option value="off">{labels.captionsOff}</option>
-              {captions.map((track) => (
-                <option key={track.srclang} value={track.srclang}>
-                  {track.label}
-                </option>
-              ))}
-            </select>
           </div>
         ) : null}
 

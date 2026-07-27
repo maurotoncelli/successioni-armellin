@@ -222,3 +222,21 @@ html[lang="ar"] .font-serif {
   background: linear-gradient(135deg, #818cf8, #a78bfa);
 }
 
+/* Video benvenuto: sottotitoli con margini (native ::cue + WebKit track box). */
+.welcome-video-player::cue {
+  color: #ffffff;
+  background-color: rgba(14, 42, 71, 0.78);
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+.welcome-video-player::-webkit-media-text-track-container {
+  /* Distacco da bordi e dalla barra controlli */
+  inset: auto 7% 14% 7% !important;
+  width: auto !important;
+}
+.welcome-video-player::-webkit-media-text-track-display {
+  padding: 0.4em 0.85em !important;
+  border-radius: 0.45em;
+  white-space: pre-wrap;
+}
+

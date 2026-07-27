@@ -22,10 +22,30 @@ const LOCALE_LABELS: Record<Locale, string> = {
   fr: "Français",
 };
 
+/** Bandiere emoji per il selettore sottotitoli (UI). */
+export const LOCALE_FLAGS: Record<Locale, string> = {
+  it: "🇮🇹",
+  en: "🇬🇧",
+  ar: "🇸🇦",
+  de: "🇩🇪",
+  es: "🇪🇸",
+  ru: "🇷🇺",
+  tr: "🇹🇷",
+  zh: "🇨🇳",
+  hi: "🇮🇳",
+  sq: "🇦🇱",
+  fr: "🇫🇷",
+};
+
+export function localeFlag(locale: string): string {
+  return (LOCALE_FLAGS as Record<string, string>)[locale] ?? "🌐";
+}
+
 export type WelcomeCaptionTrack = {
   src: string;
   srclang: Locale;
   label: string;
+  flag: string;
   /** Track pre-selezionata (lingua sito, con fallback IT). */
   isDefault: boolean;
 };
@@ -61,6 +81,7 @@ export function getWelcomeCaptionTracks(
     src: `${WELCOME_CAPTIONS_DIR}/benvenuto.${loc}.vtt`,
     srclang: loc,
     label: LOCALE_LABELS[loc],
+    flag: LOCALE_FLAGS[loc],
     isDefault: loc === preferred,
   }));
 }
