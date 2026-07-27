@@ -41,26 +41,37 @@ export function WelcomeVideo({
   const [playing, setPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  // Avvia dopo il mount del <video>: un rAF subito dopo setState vede ancora ref=null
+  // e play() fallisce → si tornava alla facade ("vedo sempre il poster").
   useEffect(() => {
     const el = videoRef.current;
-    if (!el || !playing) return;
-    // Mostra captions della track default; l'utente può cambiarle dal menu nativo.
+    if (!playing || !el) return;
+
     for (const track of Array.from(el.textTracks)) {
       const isDefault = captions.some(
         (c) => c.isDefault && c.srclang === track.language,
       );
       track.mode = isDefault ? "showing" : "disabled";
     }
+
+    const tryPlay = () => {
+      void el.play().catch(() => {
+        setPlaying(false);
+      });
+    };
+
+    if (el.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+      tryPlay();
+    } else {
+      el.addEventListener("loadeddata", tryPlay, { once: true });
+      el.load();
+      return () => el.removeEventListener("loadeddata", tryPlay);
+    }
   }, [playing, captions]);
 
   function start() {
     if (!ready) return;
     setPlaying(true);
-    requestAnimationFrame(() => {
-      void videoRef.current?.play().catch(() => {
-        setPlaying(false);
-      });
-    });
   }
 
   return (
@@ -84,10 +95,10 @@ export function WelcomeVideo({
               className="absolute inset-0 h-full w-full object-cover"
               controls
               playsInline
-              preload="metadata"
+              preload="auto"
               poster={poster}
+              src={src}
             >
-              <source src={src} type="video/mp4" />
               {captions.map((track) => (
                 <track
                   key={track.srclang}
