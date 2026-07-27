@@ -63,13 +63,15 @@ export function WelcomeVideo({
     setCaptionLang(defaultLang);
   }, [defaultLang]);
 
-  function applyCaptionTracks(el: HTMLVideoElement, choice: CaptionChoice) {
+  /** Una sola track nel DOM = UI e cue non possono divergere. */
+  const activeCaption =
+    captionLang === "off"
+      ? null
+      : (captions.find((c) => c.srclang === captionLang) ?? null);
+
+  function forceActiveTrack(el: HTMLVideoElement) {
     for (const track of Array.from(el.textTracks)) {
-      if (choice === "off") {
-        track.mode = "disabled";
-        continue;
-      }
-      track.mode = track.language === choice ? "showing" : "disabled";
+      track.mode = activeCaption ? "showing" : "disabled";
     }
   }
 
@@ -77,9 +79,8 @@ export function WelcomeVideo({
     const el = videoRef.current;
     if (!playing || !el) return;
 
-    applyCaptionTracks(el, captionLang);
-
     const tryPlay = () => {
+      forceActiveTrack(el);
       void el.play().catch(() => {
         setPlaying(false);
       });
@@ -87,19 +88,34 @@ export function WelcomeVideo({
 
     if (el.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
       tryPlay();
-    } else {
-      el.addEventListener("loadeddata", tryPlay, { once: true });
-      el.load();
-      return () => el.removeEventListener("loadeddata", tryPlay);
+      return;
     }
+
+    const onReady = () => tryPlay();
+    el.addEventListener("loadeddata", onReady, { once: true });
+    // Non chiamare el.load() qui: resetta le textTracks e il browser
+    // può riattivare una lingua diversa dal select (es. navigator.language).
+    return () => el.removeEventListener("loadeddata", onReady);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playing]);
 
+  // Cambio lingua / off: riapplica mode sulla track montata.
   useEffect(() => {
     const el = videoRef.current;
     if (!playing || !el) return;
-    applyCaptionTracks(el, captionLang);
-  }, [playing, captionLang]);
+
+    const apply = () => forceActiveTrack(el);
+    apply();
+
+    // Alcuni browser espongono la track in ritardo dopo il cambio di <track>.
+    const id = window.setTimeout(apply, 50);
+    el.textTracks.addEventListener("change", apply);
+    return () => {
+      window.clearTimeout(id);
+      el.textTracks.removeEventListener("change", apply);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [playing, captionLang, activeCaption?.src]);
 
   function start() {
     if (!ready) return;
@@ -135,16 +151,16 @@ export function WelcomeVideo({
               poster={poster}
               src={src}
             >
-              {captions.map((track) => (
+              {activeCaption ? (
                 <track
-                  key={track.srclang}
+                  key={activeCaption.srclang}
                   kind="captions"
-                  srcLang={track.srclang}
-                  label={`${track.flag} ${track.label}`}
-                  src={track.src}
-                  default={track.isDefault}
+                  srcLang={activeCaption.srclang}
+                  label={activeCaption.label}
+                  src={activeCaption.src}
+                  default
                 />
-              ))}
+              ) : null}
             </video>
           ) : (
             <button
