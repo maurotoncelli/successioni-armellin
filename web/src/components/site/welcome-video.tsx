@@ -1,9 +1,10 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Play } from "lucide-react";
 import { cn } from "@/lib/utils";
+import type { WelcomeCaptionTrack } from "@/lib/welcome-video";
 
 export type WelcomeVideoLabels = {
   title: string;
@@ -21,6 +22,8 @@ type Props = {
   poster: string;
   /** Se assente, facade non avvia il player (solo poster + badge). */
   src?: string | null;
+  /** WebVTT captions (default = lingua sito). */
+  captions?: WelcomeCaptionTrack[];
   className?: string;
   /** Titolo sopra il player (default true). */
   showTitle?: boolean;
@@ -30,12 +33,25 @@ export function WelcomeVideo({
   labels,
   poster,
   src,
+  captions = [],
   className,
   showTitle = true,
 }: Props) {
   const ready = Boolean(src);
   const [playing, setPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el || !playing) return;
+    // Mostra captions della track default; l'utente può cambiarle dal menu nativo.
+    for (const track of Array.from(el.textTracks)) {
+      const isDefault = captions.some(
+        (c) => c.isDefault && c.srclang === track.language,
+      );
+      track.mode = isDefault ? "showing" : "disabled";
+    }
+  }, [playing, captions]);
 
   function start() {
     if (!ready) return;
@@ -70,8 +86,19 @@ export function WelcomeVideo({
               playsInline
               preload="metadata"
               poster={poster}
-              src={src}
-            />
+            >
+              <source src={src} type="video/mp4" />
+              {captions.map((track) => (
+                <track
+                  key={track.srclang}
+                  kind="captions"
+                  srcLang={track.srclang}
+                  label={track.label}
+                  src={track.src}
+                  default={track.isDefault}
+                />
+              ))}
+            </video>
           ) : (
             <button
               type="button"

@@ -1,6 +1,6 @@
 # HANDOFF per il prossimo agente
 
-> Documento di passaggio di consegne. Aggiornato: **2026-07-22**.
+> Documento di passaggio di consegne. Aggiornato: **2026-07-27**.
 > Scopo: permettere a un nuovo agente (senza contesto) di riprendere il lavoro.
 > Riferimenti chiave: @RUNBOOK_GoLive (procedura go-live), @SPEC_Env_Vars,
 > @DOMANDE_PER_LORENZO, @PROSSIMO_INCONTRO_LORENZO, @07_Stack.
@@ -15,6 +15,365 @@ Chat precedente TR/FR/SQ + EN/AR + SEO:
 **NON committare** `bozza video/` (asset untracked).  
 **NON toccare** `web/src/app/crm/**` per i18n (CRM sempre IT/LTR).  
 **Traduzioni UI = agente** (niente OpenAI/API). Preferenza Mauro: subagent **Composer 2.5** per le mappe stringhe.
+
+---
+
+## ★★ VIDEO BENVENUTO (27/07) — integrazione
+
+**Asset sorgente (fuori git):**  
+`bozza video/arme ufficio video 1 min/exp/video_benvenuto_uncensored_italiano.mp4`  
+(+ TTML `…_Subtitle 1.ttml`).
+
+**In sito:**
+- MP4 compresso: `web/public/videos/benvenuto-lorenzo.mp4`
+- Captions WebVTT: `web/public/videos/captions/benvenuto.<locale>.vtt`
+- Player: `WelcomeVideo` (home + `/chi-sono`) — tracks multilinea, `default` =
+  lingua sito, scelta manuale nel menu nativo; fallback IT.
+- SEO: JSON-LD `VideoObject` quando il file è presente.
+- Gate: `isWelcomeVideoReady()` in `lib/welcome-video.ts`.
+
+**Linguaggio (decisione Mauro 27/07):** teniamo la versione **uncensored**
+inclusa la battuta *«rotture di coglioni»* (audio + VTT IT e traduzioni tono
+equivalente). **Possibile correzione futura:** cut / VTT “soft” senza quella
+espressione se Lorenzo o feedback clienti lo chiedono — non rifare ora.
+
+**Note tecniche:**
+- Master senza sub impressi; VO italiana; altre lingue = solo VTT.
+- NON committare la cartella `bozza video/` (153MB+). Il solo MP4 web in
+  `public/videos/` è l’asset da deploy.
+
+---
+
+## ★★ STRATEGIA PRICING / POSIZIONAMENTO (22/07) — da congelare con Lorenzo
+
+> Esito chat Mauro 22/07. **NON** ripetere a Lorenzo l’argomento “790 = ancora
+> psicologica”: l’ha già rifiutato più volte. Si cede sul **display**; si tiene
+> il **margine operativo** altrove. Aggiornare @01 / @DECISIONI / @PROSSIMO_INCONTRO
+> quando Lorenzo conferma formalmente.
+
+### Contesto
+- Lorenzo **non fa pace** col pacchetto pubblico **790** (Zero Stress): teme che
+  alzi la percezione di costo globale del servizio; punta al **490** come prezzo
+  tipico. Argomento ancoraggio già spiegato 4+ volte → **chiuso**, non riproporre.
+- Competitor locale diretto (Pontedera): **Avv. Giulia Pucci Casati**
+  (`dichiarazionesuccessione.it` + `successione-eredita.it` +
+  `avvocatopuccicasati.it`). Analisi sotto: modello diverso dal nostro; non
+  copiarlo alla cieca.
+
+### Strategia decidata (direzione Mauro → da validare in riunione)
+**Cedere sul listino in vetrina, non sulla logica economica delle pratiche pesanti.**
+
+1. **Vetrina pubblica = 2 pacchetti + su misura**
+   - **Semplice 290** (solo liquidità, no immobili).
+   - **Completo 490** = “il più scelto” / best value (casa + risparmi; capienza
+     attuale: fino a 5 eredi, 1–3 immobili, fino a 5 conti + volture).
+   - **Niente 790 in home / griglia principale tariffe.**
+   - Fuori capienza o casi speciali → **preventivo personalizzato** (card “Su
+     misura” già presente) e/o **add-on espliciti** (es. recupero documenti,
+     immobile oltre soglia, corsia prioritaria se serve un prezzo fisso senza
+     terzo pacchetto-hero).
+2. **Zero Stress / 790**
+   - Fuori dalla vetrina pubblica (disattivare o de-enfatizzare in CMS listino).
+   - Eventuale ripresa **solo** se dopo soft launch (6–8 settimane) i dati
+     dicono: 490 converte male **oppure** le pratiche pesanti mangiano il tempo
+     senza margine. Criterio = metriche, non opinione.
+3. **Margine sulle pratiche complesse (senza cartellino alto)**
+   - Trigger già in bibbia (@01/@DECISIONI): tanti immobili oltre Completo,
+     particelle agricole, terreni, recupero documenti oltre ciò che il 490
+     può assorbire → **preventivo CRM**, non quarto/terzo prezzo da marketing.
+   - Opzionale: add-on a carrello con prezzo chiaro invece di un “VIP 790”
+     generico (più onesto e allineato alla paura di Lorenzo sulla percezione).
+
+### Come combattere Pucci Casati (senza fare gli avvocati)
+Lei e noi **non giochiamo lo stesso gioco**:
+
+| | Pucci Casati | Armellin |
+|---|---|---|
+| Modello | Entry cheap → **upsell legale** (controversie, mediazione, passaggio generazionale, testamenti) | La dichiarazione **è** il prodotto; niente tribunalistica da vendere dopo |
+| Cartellino | **299 + IVA** (~365 reale) “servizio completo” | Forfettario: **prezzo = prezzo** (già copy “senza IVA”) |
+| Capienza entry | fino a 5 eredi / **4 immobili** / 3 beni mobili + volture | Completo: 5 eredi / **1–3 immobili** / 5 conti + volture |
+| Fuori soglia | preventivo | preventivo / add-on |
+| Architettura web | 3 domini (commodity / nicchia eredità / persona) | 1 brand (`successioniarmellin.it`) |
+| Headline velocità | 24h in sede / 7gg online | SLA realistici (doc completi → pochi gg); no promesse AdE |
+
+**Leve nostre (da spingere in copy / tariffe / ADV locale):**
+1. **Prezzo finale senza IVA da aggiungere** — tabella confronto onesta:
+   cartellino lei 299 → totale onorario ~365; noi 490 tutto incluso. Delta
+   ~125€ giustificato in **una** riga: controllo catastale reale
+   (particelle / annessi / atti), non sola compilazione.
+2. **Non inseguire il 299.** Lui non ha upsell giudiziario: un prezzo civetta
+   lo fa lavorare sottocosto. Competiamo su trasparenza e catasto, non sul
+   cartellino spezzato.
+3. **Posizionamento:** *avvocato se c’è lite; geometra se c’è da chiudere la
+   pratica pulita* + supervisione fiscale commercialista (già in trust bar).
+   Non attaccare lei; differenziare.
+4. **ADV locale Pontedera/Valdera:** studio reale + prezzo finale senza IVA +
+   volture incluse nel Completo. Lasciarle le query litigioso/controversia;
+   prendere dichiarazione + voltura + online/nazionale.
+5. **Velocità:** non copiare “24 ore”; promettere certezza e SLA dichiarati.
+
+### Formula da usare con Lorenzo (1 frase)
+> *Lei può fare 299 perché dopo vende altro. Tu vendi solo la pratica: quindi
+> un prezzo onesto e finale (senza IVA fantasma), due pacchetti in vetrina, e
+> tutto il resto a preventivo. Non competiamo sul cartellino spezzato;
+> competiamo sul “quello che paghi è quello che è” + catasto fatto bene.*
+
+---
+
+### Differenziazione copy vs Pucci — “meno sorprese sul catasto” (22/07)
+
+#### Verdetto UX (importante)
+Una persona che apre **i due siti a confronto** (lei vs noi) **non capisce da sola**
+il claim interno “meno sorprese sul catasto”. Motivi:
+
+1. **Primo sguardo = prezzo / titolo / velocità**, non il mestiere tecnico.
+   Lei: 299(+IVA), Avvocato, “24 ore”. Noi: 490, Geometra, SLA sobri.
+2. **Anche lei elenca le volture** nel “servizio completo” → al visitatore
+   “catasto” sembra incluso da entrambe le parti, non un differenziatore.
+3. **“Catasto / meno sorprese” è linguaggio da addetti.** Il cliente medio non
+   sa che le pratiche saltano su particelle, subalterni, annessi, atti di
+   provenienza. Serve una **prova concreta e concreta**, non un claim astratto.
+4. Sul nostro sito il messaggio **esiste già** ma è in secondo piano
+   (`/chi-sono`, blocco valore su `/come-funziona`, una riga generica in
+   home/tabella). Al momento del confronto prezzi **non è in vetrina**.
+
+**Conclusione:** la linea strategica interna resta giusta; come takeaway
+spontaneo da side-by-side **non atterra** finché non è visibile dove si decide
+il prezzo. Non usare il claim generico “meno sorprese sul catasto” in hero.
+Usare la versione operativa (sotto).
+
+#### Frase canonica (da ripetere, non inventare varianti vaghe)
+> Controlliamo particelle, subalterni e atti di provenienza prima dell’invio —
+> dove di solito la pratica si blocca.
+
+Variante corta (card / tabella):
+> Particelle, subalterni, atti — prima dell’invio.
+
+#### Dove inserirlo (priorità) — NON ancora implementato in content
+Metterlo **dove si decide il prezzo**, non solo in Chi sono. Tre tocchi, stessa
+idea. File target: `web/src/content/content_entries.it.json` (+ sync
+`seed/content_entries.it.json` +, se in prod le entry vengono da Supabase,
+`web/scripts/update-prod-content.mjs`). Poi overlay i18n se le lingue devono
+seguire.
+
+##### 1) PRIORITÀ #1 — Hero `/tariffe` (momento del confronto a due tab)
+Chiavi attuali:
+- `tariffe.hero_title` = «Prezzi chiari. Quello che vedi è quello che paghi.»
+  → **LASCIARE** (allinea a forfettario / anti-cartellino-spezzato).
+- `tariffe.hero_subtitle` (oggi): *«Un onorario fisso per pacchetto, deciso
+  prima. Le imposte sono separate e te le calcoliamo noi. Per i casi
+  particolari, un preventivo su misura.»*
+
+**Subtitle proposto (sostituire):**
+> Prezzo finale, senza IVA da aggiungere. Controlliamo particelle, subalterni
+> e atti di provenienza prima dell’invio — dove di solito la pratica si
+> blocca. Le imposte di Stato restano a parte e te le calcoliamo prima.
+
+Perché qui: è la pagina che aprono affiancata a `dichiarazionesuccessione.it`.
+Unisce i due vantaggi display (no IVA fantasma + prova catastale) in un colpo.
+
+##### 2) PRIORITÀ #2 — Card vantaggi home (`home.problema_vantaggi`)
+Voce attuale “Zero errori e sanzioni”:
+- titolo: «Zero errori e sanzioni»
+- testo: «Controllo tecnico dei dati catastali da un geometra abilitato.»
+
+**Testo proposto:**
+> Controlliamo particelle, subalterni e atti prima dell’invio: è lì che le
+> pratiche si bloccano.
+
+Titolo card: tenibile così, oppure (opzionale) «Zero errori sui dati catastali»
+se Mauro vuole più allineamento. Non toccare le altre due card (Zero code /
+Assistenza umana) in questa passata.
+
+##### 3) PRIORITÀ #3 — Tabella anti fai-da-te (`home.faidate_confronto`)
+Riga attuale:
+- voce: «Controllo dati catastali»
+- faidate: «A carico tuo»
+- noi: «Lo fa un geometra»
+
+**Colonna “noi” proposta:**
+> Particelle, subalterni, atti — prima dell’invio
+
+Lasciare voce e colonna fai-da-te invariate (il contrasto resta chiaro).
+
+##### 4) Approfondimento — già quasi a posto (`come_funziona.valore_body`)
+Testo attuale (OK, non riscrivere di fretta):
+> Verifichiamo a mano i dati catastali - particelle, subalterni, annessi, atti
+> di provenienza - che sono il punto dove le pratiche si bloccano. Con la
+> supervisione fiscale di commercialisti sui numeri. È la differenza tra un
+> modulo riempito e una pratica fatta bene.
+
+Ruolo: **secondo click** / chi approfondisce. Non è il punto del confronto
+prezzi; resta come prova lunga. Eventuale micro-allineo ortografico
+(trattino tipografico) solo se si tocca il file per altro.
+
+##### 5) Rinforzi opzionali (solo se serve dopo le 3 priorità)
+- `tariffe.box_trasparenza_body`: già parla di forfettario / no IVA / imposte a
+  parte. Opzionale: una frase in coda sul controllo catastale *prima* dell’invio
+  (senza allungare troppo il box).
+- Feature list del pacchetto Completo in CMS (`packages` DB / listino): una
+  bullet esplicita tipo «Verifica particelle, subalterni e atti di provenienza»
+  — utile se il visitatore legge solo le card prezzo.
+- FAQ dedicata (opzionale): «Perché un geometra e non solo un avvocato/CAF?»
+  con la frase canonica + Entratel + supervisione commercialista. Non attaccare
+  Pucci per nome.
+- ADV locale: stesso concetto in 1 riga sotto prezzo («prezzo finale senza IVA ·
+  controllo catastale prima dell’invio»).
+
+#### Cosa NON toccare / NON fare
+- **Hero home** (`home.hero_title` / subtitle / badge): resta brand + promessa
+  semplice (“successione senza muoverti…” / specializzazione). Non infilare
+  particelle/subalterni nel primo viewport (regola hero budget del progetto).
+- Claim generico **«meno sorprese sul catasto»** come headline: troppo vago,
+  non spiega il perché.
+- Confronto **nominale** con Pucci Casati / “a differenza dell’avvocato X”.
+- Copiare la sua headline **«24 ore»** solo per competere sulla velocità.
+- Inseguire il cartellino **299** abbassando il Completo senza ripensare il
+  modello (lui non ha upsell legale).
+
+#### Ordine di lavoro consigliato (quando Mauro dice “fallo”)
+1. Edit IT su `content_entries.it.json` (3 chiavi: `tariffe.hero_subtitle`,
+   testo card in `home.problema_vantaggi`, riga `home.faidate_confronto`).
+2. Sync seed IT.
+3. Se produzione legge da Supabase content/CMS: aggiornare prod con lo script
+   one-shot (dry-run prima).
+4. Smoke: `/tariffe` hero + home sezione vantaggi + tabella fai-da-te.
+5. Solo dopo: i18n overlay/AI CRM per le altre lingue (stesso significato,
+   non traduzione letterale cieca).
+6. Commit solo su richiesta esplicita.
+
+#### Checklist copy (stato)
+- [ ] `tariffe.hero_subtitle` → versione “prezzo finale + particelle/subalterni/atti”
+- [ ] `home.problema_vantaggi` card errori → testo operativo
+- [ ] `home.faidate_confronto` riga catastale → colonna noi concreta
+- [ ] (opz.) bullet Completo in listino DB
+- [ ] (opz.) FAQ geometra vs avvocato/CAF
+- [ ] i18n dopo IT stabile
+- [ ] **NON** fatto al 22/07 — solo documentato in handoff; attendere ok Mauro
+
+---
+
+### Impatti prodotto / contenuti (quando conferma pricing + copy)
+- [ ] CMS listino / `packages`: Zero Stress `is_active=false` **oppure** tenuto
+      solo per preventivo interno; home + `/tariffe` = 290 + 490 + Su misura.
+- [ ] Copy differenziazione catastale: vedi checklist sopra (hero tariffe +
+      home vantaggi + tabella fai-da-te).
+- [ ] Copy tariffe: rafforzare blocco **“prezzo finale, nessuna IVA da
+      aggiungere”** (già base forfettario) — integrato nel nuovo
+      `tariffe.hero_subtitle`; eventuale micro-confronto “altri mostrano X+IVA”
+      solo se Mauro vuole esplicitarlo (senza nominare competitor).
+- [ ] FAQ / anti-obiezione: quando serve il preventivo (soglie immobili,
+      recupero doc, agricoli/terreni) — linguaggio chiaro, no “VIP”.
+- [ ] Quiz preventivo: allineare trigger a soglie Completo (già in parte fatto;
+      verificare >3 immobili / recupero doc → esito C).
+- [ ] Seed + `update-prod-content.mjs` / i18n packages overlay dopo cambio
+      nomi/visibilità.
+- [ ] Bibbia: @01 (tabella pacchetti), @DECISIONI, @03 (3 card → 2+su misura),
+      @PROSSIMO_INCONTRO (togliere “confermare 790?” come nodo aperto; segnare
+      decisione display).
+- [ ] Condizioni di vendita / bozze legali: allineare elenco prezzi pubblici.
+
+### Stato codice oggi (22/07) — ancora ALLINEATO ALLA VECCHIA SCALETTA
+In produzione/fixture restano tipicamente **3 pacchetti** (290 / 490 / 790) +
+card Su misura. La strategia pricing + il piano copy catastale sopra sono
+**direzione di prodotto**, non ancora implementati. Non cambiare listino né
+content live senza ok esplicito di Mauro/Lorenzo.
+
+---
+
+### ★ MANCA — sezione Studio in HOME (22/07, Mauro) — BRIEF CORRETTO
+
+**Decisione prodotto (Mauro + agente 22/07):** **sì, ha senso** avere lo studio
+in home — **1 blocco**, fuori hero, **foto dello studio** (non della città).
+
+**Gap:** in homepage **non c’è** una sezione dedicata allo **studio fisico**.
+Oggi le “coordinate” dell’attività sono deboli sul primo impatto:
+
+| Dove oggi | Cosa c’è |
+|---|---|
+| Hero home | Ritratto Lorenzo (persona in ambiente) — non “lo studio” come luogo |
+| Blocco «Chi sono» home | Solo ritratto + estratto bio → `/chi-sono` |
+| `/contatti` | Foto **Duomo** (`pontedera-studio.jpg`) — cartolina città, **non lo studio** |
+| Footer | Indirizzo testuale + link Maps |
+| `/come-funziona` | Blocco “visita in studio” (copy + orari) — senza foto luogo forte |
+
+**Perché sì in home:** E-E-A-T / “non è un portale anonimo”; chiude il dubbio
+dopo prezzi/recensioni; utile vs competitor locale e ADV Toscana. Copy deve
+tenere il nazionale: *online in tutta Italia **con** uno studio vero*.
+
+**Perché NO foto città in home (ragione storica @02, ancora valida):** un utente
+di Milano/Roma che vede cartoline di Pontedera può pensare *«è uno studio locale,
+non fa per me»*. Quindi:
+- **Sì:** soggetto = **studio** (interno e/o facciata/ingresso/civico).
+- **No in home:** Duomo, piazza, skyline, gallery turistica.
+- **Grigio:** pezzo di via *solo come sfondo* della facciata, se resta
+  secondario e si legge lo studio.
+
+**Allineo bibbia:** @02 resta “no cartolina città in home”; si aggiunge
+esplicitamente **ok 1 sezione studio (foto studio)** in home. Aggiornare
+@02/@03 in implementazione.
+
+#### Dove metterla (ordine sezioni home)
+Flusso attuale: `… → Recensioni → Chi sono (ritratto) → Video welcome → FAQ → CTA`
+
+**Posizione: subito dopo «Chi sono», prima del video welcome.**
+
+Motivo: sequenza **persona → luogo → voce**; non compete col hero; arriva dopo
+prezzi/recensioni (“esiste davvero?”); ancora di realtà prima della conversione.
+
+**Non metterla:** nel hero; prima delle tariffe (sembra locale-only); solo in
+`/contatti`.
+
+#### Come metterla (layout + contenuto)
+**Layout:** split ~50/50 — foto studio dominante a sx, testo a dx; mobile foto
+sopra. Tone: `muted` se Chi sono è `sand` (o viceversa), per staccare.
+
+**Foto (DA PROCURARE — non riusare il Duomo di contatti):**
+- Base: **scatto reale dello studio** (interno e/o ingresso). Alt: es.
+  «Studio Geom. Lorenzo Armellin, Via Vittorio Veneto 31, Pontedera».
+
+**Direzione fotografica — vincolo reale + Photoshop (scelta Mauro 22/07):**
+Contesto: lo studio “fa schifo” / non verrà riordinato fisicamente per uno
+shooting. Piano operativo:
+
+1. **Scattare il vero studio** (anche disordinato) — deve restare riconoscibile
+   come *quel* posto (non un ufficio generico).
+2. **Pulizia in post (Photoshop / retocco Mauro):** togliere caos inquadro,
+   raddrizzare, sistemare luce/colore; eventuale declutter selettivo.
+   Obiettivo: ordinato e credibile, coerente con @02, **senza inventare un set**.
+3. **Vietato:** studio finto da catalogo, stock, composito IA “ufficio premium”
+   che non è il suo → sembra portale, perde E-E-A-T.
+4. **Piano B** se l’interno resta irrecuperabile anche in post: **solo
+   ingresso/facciata** (vera, anche mediocre) + ritratto Lorenzo nella sezione
+   Chi sono; niente cartolina Duomo come “foto dello studio”.
+5. Messaggio per Lorenzo se serve: non serve IKEA showroom; serve **foto vera
+   sistemata**. Un fake perfetto è peggio di un vero accettabile.
+
+**Copy (chiavi nuove tipo `home.studio_*`):**
+- Eyebrow: `Lo studio`
+- Title: `Uno studio vero a Pontedera — pratiche in tutta Italia`
+- Body: 2–3 frasi (nazionale online + puoi trovarci in studio; indirizzo).
+- Indirizzo cliccabile → Google Maps (come footer).
+- CTA: `Come arrivare` → `/contatti` o Maps.
+
+Una foto, un titolo, un paragrafo, indirizzo, una CTA. Niente iframe mappa
+enorme, stats, collage.
+
+**Implementazione (quando Mauro dice vai):**
+- [ ] Scatto reale studio → retocco PS (declutter/luce) →
+      `web/public/images/studio-armellin.jpg` (o nome chiaro)
+- [ ] Se interno KO: asset facciata/ingresso (piano B)
+- [ ] Entry `home.studio_*` in `content_entries.it.json` + seed
+- [ ] Blocco in `page.tsx` dopo Chi sono / prima `WelcomeVideo`
+- [ ] `/contatti`: stessa foto studio (Duomo ≠ “foto dello studio”)
+- [ ] i18n dopo IT; aggiornare @02/@03
+- [ ] **NON fatto** al 22/07 — solo brief in handoff
+
+#### Checklist
+- [ ] Sezione Studio in home (foto **solo studio** + copy nazionale + Maps)
+- [ ] Asset: **foto vera + Photoshop** (no set finto; no caos grezzo in vetrina)
+- [ ] Piano B facciata se serve
+- [ ] Allineo bibbia @02/@03 (no città / sì blocco studio)
 
 ---
 
@@ -39,6 +398,13 @@ Piano Cursor: `crm_scala_lead` (`.cursor/plans/` / piano in chat 22/07).
    / anonimi senza contatto 30g → setta `archived_at` (no delete Storage).
 3. **Solo se serve:** select snello liste (no jsonb pesanti) + paginazione;
    full row solo su `/crm/pratiche/[id]`.
+
+### UX lead (annotazioni Mauro 22/07 — da fare insieme o dopo la scala)
+- **Statistiche CRM:** KPI/card **«Acquisiti oggi»** (lead/pratiche nate oggi:
+  `created_at` giorno corrente, timezone Italia).
+- **Kanban / preview scheda:** mostrare la **data di acquisizione** del lead
+  (almeno nella colonna LEAD / nuovi lead) — tipicamente `created_at` formattata
+  in breve sulla card (`practices-board.tsx` / `KanbanCard`).
 
 Finché non scatta il trigger: cleanup test occasionali con
 `web/scripts/cleanup-test-practices.mjs`.
@@ -649,8 +1015,12 @@ File chiave: `preventivo/actions.ts`, `checkout/actions.ts`,
 - [ ] Blocco “lingua / traduzione live” → solo quando Lorenzo attrezzato
 - [x] Tabella comparativa: riga «Tempo da investire» (18/07)
 - [ ] SMS Twilio / WhatsApp Business
-- [ ] Video Come funziona (bozze in `bozza video/`, fuori git) + welcome/attrice
-- [ ] Check costi 290/490/790 con Lorenzo
+- [x] Video benvenuto Lorenzo: MP4 web + VTT multilinea + player tracks +
+      VideoObject (27/07) — uncensored tenuto; soft futura in §★★ VIDEO
+- [ ] Video Come funziona (bozze in `bozza video/`, fuori git) + attrice
+- [ ] Check costi / vetrina con Lorenzo: **strategia 22/07** = 290+490 in
+      pubblico, 790 fuori vetrina, complesso → preventivo/add-on (vedi
+      §★★ STRATEGIA PRICING); confermare e poi allineare CMS + bibbia
 - [ ] Test AI XML su pratica reale
 - [ ] Traduzioni + legal go-live
 - [ ] Cross-browser QA
@@ -926,8 +1296,9 @@ NON toccato**: vedi "resta da fare" in fondo al blocco.
 - **DB produzione aggiornato** con `web/scripts/update-prod-content.mjs` (one-shot):
   faqs (8 testi corretti + nuova FAQ prima casa) e packages (accenti badge/descrizione).
   Le pagine leggono faqs/packages da Supabase, NON dalle fixture.
-- Pacchetto 790: nessun cambio prezzo/nome ancora — proposte di rinomina presentate
-  a Mauro da girare a Lorenzo.
+- Pacchetto 790: **superseded dalla strategia pricing 22/07** (vedi §★★ in
+  testa): fuori vetrina pubblica; non riprendere rinomina/ancoraggio con
+  Lorenzo finché non conferma formalmente 290/490 + su misura.
 
 ### Blocco 4 — Quiz preventivo ridisegnato (FATTO)
 - **Prima domanda: "La persona mancata ha lasciato un testamento?"** — "si" ->

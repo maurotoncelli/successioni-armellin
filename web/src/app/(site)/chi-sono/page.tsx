@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { navPageTitle, t, tCta, tList, tObj } from "@/lib/locale";
+import { getRequestLocale, navPageTitle, t, tCta, tList, tObj } from "@/lib/locale";
 import Image from "next/image";
 import { PageHero } from "@/components/site/page-hero";
 import { Section, SectionHeading } from "@/components/ui/section";
@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/card";
 import { Reviews } from "@/components/site/reviews";
 import { CtaBand } from "@/components/site/cta-band";
 import { WelcomeVideo } from "@/components/site/welcome-video";
+import { WelcomeVideoJsonLd } from "@/components/site/welcome-video-jsonld";
 import {
   IconAlbo,
   IconEntratel,
@@ -18,10 +19,12 @@ import {
 } from "@/components/site/come-funziona-icons";
 import { getWelcomeVideoLabels } from "@/lib/welcome-video-labels";
 import {
+  getWelcomeCaptionTracks,
   isWelcomeVideoReady,
   WELCOME_VIDEO_POSTER,
   WELCOME_VIDEO_SRC,
 } from "@/lib/welcome-video";
+import { siteBaseUrl } from "@/lib/seo-locale";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -46,8 +49,11 @@ export default async function ChiSonoPage() {
   });
   const finalButton = await tCta("chi_siamo", "cta_finale_button");
   const finalPhone = await tCta("chi_siamo", "cta_finale_phone");
+  const locale = await getRequestLocale();
   const welcomeLabels = await getWelcomeVideoLabels();
-  const welcomeSrc = isWelcomeVideoReady() ? WELCOME_VIDEO_SRC : null;
+  const welcomeReady = isWelcomeVideoReady();
+  const welcomeSrc = welcomeReady ? WELCOME_VIDEO_SRC : null;
+  const welcomeCaptions = welcomeReady ? getWelcomeCaptionTracks(locale) : [];
   const indirizzoLine = [indirizzo.via, `${indirizzo.cap} ${indirizzo.citta}`.trim()]
     .filter(Boolean)
     .join(", ");
@@ -57,6 +63,13 @@ export default async function ChiSonoPage() {
 
   return (
     <>
+      {welcomeReady ? (
+        <WelcomeVideoJsonLd
+          name={welcomeLabels.title}
+          description={welcomeLabels.caption}
+          siteUrl={siteBaseUrl()}
+        />
+      ) : null}
       <PageHero
         eyebrow={await t("chi_siamo", "hero_eyebrow", "Chi sono")}
         title={await t("chi_siamo", "hero_title")}
@@ -97,6 +110,7 @@ export default async function ChiSonoPage() {
           labels={welcomeLabels}
           poster={WELCOME_VIDEO_POSTER}
           src={welcomeSrc}
+          captions={welcomeCaptions}
         />
       </Section>
 

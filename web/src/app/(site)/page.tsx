@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { t, tCta, tList } from "@/lib/locale";
+import { getRequestLocale, t, tCta, tList } from "@/lib/locale";
 import Image from "next/image";
 import {
   ArrowRight,
@@ -19,12 +19,15 @@ import { PackageCards } from "@/components/site/package-cards";
 import { Reviews } from "@/components/site/reviews";
 import { CtaBand } from "@/components/site/cta-band";
 import { WelcomeVideo } from "@/components/site/welcome-video";
+import { WelcomeVideoJsonLd } from "@/components/site/welcome-video-jsonld";
 import { getWelcomeVideoLabels } from "@/lib/welcome-video-labels";
 import {
+  getWelcomeCaptionTracks,
   isWelcomeVideoReady,
   WELCOME_VIDEO_POSTER,
   WELCOME_VIDEO_SRC,
 } from "@/lib/welcome-video";
+import { siteBaseUrl } from "@/lib/seo-locale";
 
 import { cn } from "@/lib/utils";
 
@@ -63,11 +66,21 @@ export default async function HomePage() {
   const faqCta = await tCta("home", "faq_cta");
   const finalButton = await tCta("home", "cta_finale_button");
   const finalPhone = await tCta("home", "cta_finale_phone");
+  const locale = await getRequestLocale();
   const welcomeLabels = await getWelcomeVideoLabels();
-  const welcomeSrc = isWelcomeVideoReady() ? WELCOME_VIDEO_SRC : null;
+  const welcomeReady = isWelcomeVideoReady();
+  const welcomeSrc = welcomeReady ? WELCOME_VIDEO_SRC : null;
+  const welcomeCaptions = welcomeReady ? getWelcomeCaptionTracks(locale) : [];
 
   return (
     <>
+      {welcomeReady ? (
+        <WelcomeVideoJsonLd
+          name={welcomeLabels.title}
+          description={welcomeLabels.caption}
+          siteUrl={siteBaseUrl()}
+        />
+      ) : null}
       {/* Hero: foto di Lorenzo (placeholder) di sfondo, testo sovrapposto.
           Il soggetto e spostato a destra e il gradiente navy da sinistra
           garantisce la leggibilita del testo (titolo bianco). */}
@@ -150,8 +163,8 @@ export default async function HomePage() {
         </div>
       </Section>
 
-      {/* Problema / Soluzione */}
-      <Section>
+      {/* Problema / Soluzione — tone muted per staccare dallo scopo app (bianco) */}
+      <Section tone="muted">
         <SectionHeading
           title={await t("home", "problema_title")}
           intro={await t("home", "problema_intro")}
@@ -360,6 +373,7 @@ export default async function HomePage() {
           labels={welcomeLabels}
           poster={WELCOME_VIDEO_POSTER}
           src={welcomeSrc}
+          captions={welcomeCaptions}
         />
       </Section>
 
