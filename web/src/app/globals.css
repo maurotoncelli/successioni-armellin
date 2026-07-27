@@ -222,21 +222,14 @@ html[lang="ar"] .font-serif {
   background: linear-gradient(135deg, #818cf8, #a78bfa);
 }
 
-/* Video benvenuto: sottotitoli in basso con un filo di margine. */
+/*
+  Video benvenuto — cue nativi solo in fullscreen (inline usa overlay React).
+  Su iOS i cue nativi in inline vanno al centro e tappano il soggetto.
+*/
 .welcome-video-player::cue {
   color: #ffffff;
   background-color: rgba(14, 42, 71, 0.78);
   font-size: 1.05rem;
   line-height: 1.45;
-}
-.welcome-video-player::-webkit-media-text-track-container {
-  /* Basso, solo un po' di aria da lati e dalla barra controlli */
-  inset: auto 3% 6% 3% !important;
-  width: auto !important;
-}
-.welcome-video-player::-webkit-media-text-track-display {
-  padding: 0.35em 0.7em !important;
-  border-radius: 0.4em;
-  white-space: pre-wrap;
 }
 

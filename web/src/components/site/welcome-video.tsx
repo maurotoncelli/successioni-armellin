@@ -38,6 +38,14 @@ type Props = {
 
 type CaptionChoice = string; // locale code or "off"
 
+function isVideoFullscreen(el: HTMLVideoElement): boolean {
+  const docFs = document.fullscreenElement;
+  if (docFs === el || el.contains(docFs)) return true;
+  // iOS Safari
+  const anyEl = el as HTMLVideoElement & { webkitDisplayingFullscreen?: boolean };
+  return Boolean(anyEl.webkitDisplayingFullscreen);
+}
+
 export function WelcomeVideo({
   labels,
   poster,
@@ -48,6 +56,8 @@ export function WelcomeVideo({
 }: Props) {
   const ready = Boolean(src);
   const [playing, setPlaying] = useState(false);
+  const [fullscreen, setFullscreen] = useState(false);
+  const [cueText, setCueText] = useState("");
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const defaultLang = useMemo(
@@ -69,10 +79,46 @@ export function WelcomeVideo({
       ? null
       : (captions.find((c) => c.srclang === captionLang) ?? null);
 
-  function forceActiveTrack(el: HTMLVideoElement) {
+  /**
+   * Inline (mobile): track hidden + overlay CSS in basso (iOS centra i cue nativi).
+   * Fullscreen: cue nativi (lì il posizionamento del browser è ok).
+   */
+  function syncTrackMode(el: HTMLVideoElement) {
+    const fs = isVideoFullscreen(el);
+    setFullscreen(fs);
     for (const track of Array.from(el.textTracks)) {
-      track.mode = activeCaption ? "showing" : "disabled";
+      if (!activeCaption) {
+        track.mode = "disabled";
+        continue;
+      }
+      track.mode = fs ? "showing" : "hidden";
     }
+    if (fs || !activeCaption) setCueText("");
+  }
+
+  function readActiveCues(el: HTMLVideoElement) {
+    if (isVideoFullscreen(el) || !activeCaption) {
+      setCueText("");
+      return;
+    }
+    const track = el.textTracks[0];
+    if (!track) {
+      setCueText("");
+      return;
+    }
+    const active = track.activeCues;
+    if (!active || active.length === 0) {
+      setCueText("");
+      return;
+    }
+    const parts: string[] = [];
+    for (let i = 0; i < active.length; i++) {
+      const cue = active[i] as TextTrackCue & { text?: string };
+      if (typeof cue.text === "string" && cue.text.trim()) {
+        parts.push(cue.text);
+      }
+    }
+    setCueText(parts.join("\n"));
   }
 
   useEffect(() => {
@@ -80,7 +126,7 @@ export function WelcomeVideo({
     if (!playing || !el) return;
 
     const tryPlay = () => {
-      forceActiveTrack(el);
+      syncTrackMode(el);
       void el.play().catch(() => {
         setPlaying(false);
       });
@@ -88,32 +134,55 @@ export function WelcomeVideo({
 
     if (el.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
       tryPlay();
-      return;
+    } else {
+      el.addEventListener("loadeddata", tryPlay, { once: true });
     }
 
-    const onReady = () => tryPlay();
-    el.addEventListener("loadeddata", onReady, { once: true });
-    // Non chiamare el.load() qui: resetta le textTracks e il browser
-    // può riattivare una lingua diversa dal select (es. navigator.language).
-    return () => el.removeEventListener("loadeddata", onReady);
+    const onEnded = () => {
+      setCueText("");
+      setPlaying(false);
+    };
+    const onFsChange = () => syncTrackMode(el);
+    const onCueChange = () => readActiveCues(el);
+    const onTimeUpdate = () => readActiveCues(el);
+
+    el.addEventListener("ended", onEnded);
+    el.addEventListener("webkitbeginfullscreen", onFsChange);
+    el.addEventListener("webkitendfullscreen", onFsChange);
+    document.addEventListener("fullscreenchange", onFsChange);
+
+    const attachCueListener = () => {
+      const track = el.textTracks[0];
+      if (!track) return;
+      track.addEventListener("cuechange", onCueChange);
+    };
+    attachCueListener();
+    const cueTimer = window.setTimeout(attachCueListener, 80);
+    el.addEventListener("timeupdate", onTimeUpdate);
+
+    return () => {
+      el.removeEventListener("ended", onEnded);
+      el.removeEventListener("webkitbeginfullscreen", onFsChange);
+      el.removeEventListener("webkitendfullscreen", onFsChange);
+      document.removeEventListener("fullscreenchange", onFsChange);
+      el.removeEventListener("timeupdate", onTimeUpdate);
+      el.removeEventListener("loadeddata", tryPlay);
+      window.clearTimeout(cueTimer);
+      const track = el.textTracks[0];
+      track?.removeEventListener("cuechange", onCueChange);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playing]);
 
-  // Cambio lingua / off: riapplica mode sulla track montata.
   useEffect(() => {
     const el = videoRef.current;
     if (!playing || !el) return;
-
-    const apply = () => forceActiveTrack(el);
-    apply();
-
-    // Alcuni browser espongono la track in ritardo dopo il cambio di <track>.
-    const id = window.setTimeout(apply, 50);
-    el.textTracks.addEventListener("change", apply);
-    return () => {
-      window.clearTimeout(id);
-      el.textTracks.removeEventListener("change", apply);
-    };
+    syncTrackMode(el);
+    const id = window.setTimeout(() => {
+      syncTrackMode(el);
+      readActiveCues(el);
+    }, 50);
+    return () => window.clearTimeout(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playing, captionLang, activeCaption?.src]);
 
@@ -125,6 +194,7 @@ export function WelcomeVideo({
   const showCaptionPicker = ready && captions.length > 0;
   const currentFlag =
     captionLang === "off" ? null : localeFlag(captionLang);
+  const showOverlay = playing && !fullscreen && Boolean(cueText);
 
   return (
     <div className={cn("mx-auto w-full max-w-3xl", className)}>
@@ -142,26 +212,35 @@ export function WelcomeVideo({
       <figure>
         <div className="relative aspect-video overflow-hidden rounded-2xl border border-primary/10 bg-primary/5 shadow-md">
           {playing && src ? (
-            <video
-              ref={videoRef}
-              className="welcome-video-player absolute inset-0 h-full w-full object-cover"
-              controls
-              playsInline
-              preload="auto"
-              poster={poster}
-              src={src}
-            >
-              {activeCaption ? (
-                <track
-                  key={activeCaption.srclang}
-                  kind="captions"
-                  srcLang={activeCaption.srclang}
-                  label={activeCaption.label}
-                  src={activeCaption.src}
-                  default
-                />
+            <>
+              <video
+                ref={videoRef}
+                className="welcome-video-player absolute inset-0 h-full w-full object-cover"
+                controls
+                playsInline
+                preload="auto"
+                poster={poster}
+                src={src}
+              >
+                {activeCaption ? (
+                  <track
+                    key={activeCaption.srclang}
+                    kind="captions"
+                    srcLang={activeCaption.srclang}
+                    label={activeCaption.label}
+                    src={activeCaption.src}
+                    default
+                  />
+                ) : null}
+              </video>
+              {showOverlay ? (
+                <div className="pointer-events-none absolute inset-x-2 bottom-11 z-10 flex justify-center sm:inset-x-3 sm:bottom-10">
+                  <p className="max-w-[94%] whitespace-pre-line rounded-md bg-primary/80 px-3 py-1.5 text-center text-[0.8rem] leading-snug text-white shadow-sm sm:text-sm">
+                    {cueText}
+                  </p>
+                </div>
               ) : null}
-            </video>
+            </>
           ) : (
             <button
               type="button"
