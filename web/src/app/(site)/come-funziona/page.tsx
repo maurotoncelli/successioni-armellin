@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { navPageTitle, t, tCta, tList, tObj } from "@/lib/locale";
 import { PageHero } from "@/components/site/page-hero";
 import { Section, SectionHeading } from "@/components/ui/section";
@@ -28,6 +29,22 @@ type OpeningHour = { giorni: string; orario: string };
 
 const stepIcons = [IconQuiz, IconUploadDocs, IconSendPractice] as const;
 
+/** Stesse foto della home (passo 3 = nuovo ritratto Lorenzo). */
+const stepImages = [
+  {
+    src: "/images/come-funziona-step-1-quiz.jpg",
+    alt: "Persona al computer che risponde alle domande del preventivo online",
+  },
+  {
+    src: "/images/come-funziona-step-2-documenti.jpg",
+    alt: "Persona che fotografa un documento con lo smartphone",
+  },
+  {
+    src: "/images/come-funziona-step-3-lorenzo.jpg",
+    alt: "Geom. Lorenzo Armellin al computer mentre predispone la pratica",
+  },
+] as const;
+
 export default async function ComeFunzionaPage() {
   const steps = await tList<Step>("come_funziona", "steps");
   const deliverable = await tList<string>("come_funziona", "deliverable_list");
@@ -52,11 +69,16 @@ export default async function ComeFunzionaPage() {
         eyebrow={await t("come_funziona", "hero_eyebrow", "Il processo")}
         title={await t("come_funziona", "hero_title")}
         subtitle={await t("come_funziona", "hero_subtitle")}
+        image={{
+          src: "/images/come-funziona-hero.jpg",
+          alt: "Geom. Lorenzo Armellin al lavoro sulla pratica di successione",
+          position: "68% center",
+        }}
       />
 
-      {/* Sequenza: nodi numerati collegati da una linea (da md). */}
+      {/* Sequenza: nodi numerati + foto (come in home). */}
       <Section>
-        <ol className="relative mx-auto grid max-w-5xl gap-10 md:grid-cols-3 md:gap-0">
+        <ol className="relative mx-auto grid max-w-5xl gap-7 sm:gap-10 md:grid-cols-3 md:gap-0">
           <div
             aria-hidden
             className="pointer-events-none absolute top-5 right-[16.5%] left-[16.5%] hidden h-px bg-gradient-to-r from-primary/20 via-accent/50 to-primary/20 md:block"
@@ -64,26 +86,40 @@ export default async function ComeFunzionaPage() {
           {steps.map((step, i) => {
             const Icon = stepIcons[i] ?? IconQuiz;
             const isLast = i === steps.length - 1;
+            const img = stepImages[i];
             return (
-              <li key={step.numero} className="relative md:px-8">
-                {/* Connettore verticale su mobile */}
+              <li key={step.numero} className="relative md:px-6 lg:px-8">
                 {!isLast && (
                   <span
                     aria-hidden
-                    className="absolute top-12 bottom-[-2.5rem] left-5 w-px bg-gradient-to-b from-accent/40 to-primary/15 md:hidden"
+                    className="absolute top-12 bottom-[-1.75rem] left-5 w-px bg-gradient-to-b from-accent/40 to-primary/15 md:hidden"
                   />
                 )}
                 <div className="flex items-start gap-4 md:flex-col">
                   <span className="relative z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full bg-bg font-display text-sm font-bold text-primary ring-2 ring-accent">
                     {step.numero}
                   </span>
-                  <div className="min-w-0 pt-0.5 md:pt-0">
-                    <Icon className="h-9 w-9 text-primary" />
-                    <h3 className="mt-4 text-xl leading-snug">{step.titolo}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-text-muted">
+                  <div className="min-w-0 flex-1 pt-0.5 md:pt-0">
+                    {img ? (
+                      <div className="relative mt-1 aspect-[4/3] overflow-hidden rounded-xl md:mt-4">
+                        <Image
+                          src={img.src}
+                          alt={img.alt}
+                          fill
+                          sizes="(max-width: 768px) 80vw, 280px"
+                          className="object-cover"
+                        />
+                      </div>
+                    ) : (
+                      <Icon className="h-9 w-9 text-primary" />
+                    )}
+                    <h3 className="mt-3 text-lg leading-snug sm:mt-4 sm:text-xl">
+                      {step.titolo}
+                    </h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-text-muted sm:mt-2">
                       {step.testo}
                     </p>
-                    <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-accent">
+                    <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-accent sm:mt-3">
                       {step.dettaglio}
                     </p>
                   </div>
@@ -96,41 +132,56 @@ export default async function ComeFunzionaPage() {
 
       {/* Pannelli: icone stroke grandi, senza box colorati. */}
       <Section tone="sand">
-        <div className="grid gap-4 md:grid-cols-3">
-          <div className="rounded-2xl border border-primary/10 bg-bg p-6 shadow-sm">
-            <IconTimeline className="h-9 w-9 text-accent" />
-            <h3 className="mt-5 text-xl">
-              {await t("come_funziona", "sla_title")}
-            </h3>
-            <p className="mt-2 text-sm leading-relaxed text-text-muted">
-              {await t("come_funziona", "sla_body")}
-            </p>
+        <div className="grid gap-3 sm:gap-4 md:grid-cols-3">
+          <div className="flex items-start gap-3.5 rounded-2xl border border-primary/10 bg-bg p-4 shadow-sm sm:block sm:p-6">
+            <IconTimeline className="h-8 w-8 shrink-0 text-accent sm:h-9 sm:w-9" />
+            <div className="min-w-0">
+              <h3 className="text-lg sm:mt-5 sm:text-xl">
+                {await t("come_funziona", "sla_title")}
+              </h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-text-muted sm:mt-2">
+                {await t("come_funziona", "sla_body")}
+              </p>
+            </div>
           </div>
-          <div className="rounded-2xl border border-primary/10 bg-bg p-6 shadow-sm">
-            <IconVerify className="h-9 w-9 text-primary" />
-            <h3 className="mt-5 text-xl">
-              {await t("come_funziona", "valore_title")}
-            </h3>
-            <p className="mt-2 text-sm leading-relaxed text-text-muted">
-              {await t("come_funziona", "valore_body")}
-            </p>
+          <div className="flex items-start gap-3.5 rounded-2xl border border-primary/10 bg-bg p-4 shadow-sm sm:block sm:p-6">
+            <IconVerify className="h-8 w-8 shrink-0 text-primary sm:h-9 sm:w-9" />
+            <div className="min-w-0">
+              <h3 className="text-lg sm:mt-5 sm:text-xl">
+                {await t("come_funziona", "valore_title")}
+              </h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-text-muted sm:mt-2">
+                {await t("come_funziona", "valore_body")}
+              </p>
+            </div>
           </div>
-          <div className="rounded-2xl border border-primary/10 bg-bg p-6 shadow-sm">
-            <IconRemote className="h-9 w-9 text-primary" />
-            <h3 className="mt-5 text-xl">
-              {await t("come_funziona", "distanza_title", "Tutto online")}
-            </h3>
-            <p className="mt-2 text-sm leading-relaxed text-text-muted">
-              {await t("come_funziona", "distanza_body")}
-            </p>
+          <div className="flex items-start gap-3.5 rounded-2xl border border-primary/10 bg-bg p-4 shadow-sm sm:block sm:p-6">
+            <IconRemote className="h-8 w-8 shrink-0 text-primary sm:h-9 sm:w-9" />
+            <div className="min-w-0">
+              <h3 className="text-lg sm:mt-5 sm:text-xl">
+                {await t("come_funziona", "distanza_title", "Tutto online")}
+              </h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-text-muted sm:mt-2">
+                {await t("come_funziona", "distanza_body")}
+              </p>
+            </div>
           </div>
         </div>
 
-        <div className="mt-4 rounded-2xl border border-primary/10 bg-bg p-6 shadow-sm sm:p-8 md:mt-5">
-          <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:gap-8">
-            <IconStudio className="h-10 w-10 shrink-0 text-accent" />
-            <div className="min-w-0 flex-1">
-              <h3 className="text-xl sm:text-2xl">
+        <div className="mt-3 overflow-hidden rounded-2xl border border-primary/10 bg-bg shadow-sm sm:mt-4 md:mt-5">
+          <div className="grid md:grid-cols-2">
+            <div className="relative min-h-44 sm:min-h-56 md:min-h-full">
+              <Image
+                src="/images/pontedera-studio.jpg"
+                alt="Studio a Pontedera"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover object-[center_30%]"
+              />
+            </div>
+            <div className="flex flex-col justify-center p-5 sm:p-8">
+              <IconStudio className="h-9 w-9 text-accent" />
+              <h3 className="mt-3 text-xl sm:mt-4 sm:text-2xl">
                 {await t("come_funziona", "visita_title")}
               </h3>
               <p className="mt-2 max-w-2xl text-sm leading-relaxed text-text-muted sm:text-base">
