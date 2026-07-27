@@ -276,6 +276,13 @@
     },
     {
       "collection": "home",
+      "key": "lead_title",
+      "locale": "fr",
+      "is_published": true,
+      "value": "La déclaration de succession en ligne, suivie par un spécialiste"
+    },
+    {
+      "collection": "home",
       "key": "hero_cta_primary",
       "locale": "fr",
       "is_published": true,
@@ -3119,6 +3126,13 @@
       "locale": "fr",
       "is_published": true,
       "value": "Calculez votre devis"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "details_label",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Ce qui est inclus"
     },
     {
       "collection": "pacchetti",

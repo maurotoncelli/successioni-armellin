@@ -276,6 +276,13 @@
     },
     {
       "collection": "home",
+      "key": "lead_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Deklarata e trashëgimisë online, e ndjekur nga një specialist"
+    },
+    {
+      "collection": "home",
       "key": "hero_cta_primary",
       "locale": "sq",
       "is_published": true,
@@ -3119,6 +3126,13 @@
       "locale": "sq",
       "is_published": true,
       "value": "Llogaritni preventivin tuaj"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "details_label",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Çfarë përfshin"
     },
     {
       "collection": "pacchetti",

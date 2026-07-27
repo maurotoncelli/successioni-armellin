@@ -276,6 +276,13 @@
     },
     {
       "collection": "home",
+      "key": "lead_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "ऑनलाइन उत्तराधिकार घोषणा, विशेषज्ञ की देखरेख में"
+    },
+    {
+      "collection": "home",
       "key": "hero_cta_primary",
       "locale": "hi",
       "is_published": true,
@@ -3119,6 +3126,13 @@
       "locale": "hi",
       "is_published": true,
       "value": "अपना अनुमान प्राप्त करें"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "details_label",
+      "locale": "hi",
+      "is_published": true,
+      "value": "इसमें क्या शामिल है"
     },
     {
       "collection": "pacchetti",

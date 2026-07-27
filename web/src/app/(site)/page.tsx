@@ -79,8 +79,9 @@ export default async function HomePage() {
           siteUrl={siteBaseUrl()}
         />
       ) : null}
-      {/* Hero: loop muted — desktop 1920×600, mobile 9:16 dedicato. */}
-      <section className="relative flex min-h-[380px] items-center overflow-hidden bg-primary text-white sm:min-h-[420px] lg:min-h-[520px]">
+      {/* Hero: loop muted — desktop 1920×600, mobile 9:16 dedicato.
+          min-h generose: senza sottotitolo lo spazio vuoto fa respirare il video. */}
+      <section className="relative flex min-h-[480px] items-center overflow-hidden bg-primary text-white sm:min-h-[540px] lg:min-h-[620px]">
         <HeroLoopVideo
           src={HERO_LOOP_SRC}
           poster={HERO_LOOP_POSTER}
@@ -117,11 +118,16 @@ export default async function HomePage() {
 
       <TrustBar />
 
-      {/* Lead: il sottotitolo tolto dall'hero — chi è Lorenzo e la promessa. */}
+      {/* Lead: il sottotitolo tolto dall'hero — titolo H2 SEO + promessa. */}
       <Section className="!py-8 sm:!py-12">
-        <p className="mx-auto max-w-3xl text-center text-base leading-relaxed text-primary/85 sm:text-lg">
-          {await t("home", "hero_subtitle")}
-        </p>
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-2xl sm:text-3xl">
+            {await t("home", "lead_title")}
+          </h2>
+          <p className="mt-3 text-base leading-relaxed text-text-muted sm:mt-4 sm:text-lg">
+            {await t("home", "hero_subtitle")}
+          </p>
+        </div>
       </Section>
 
       {/* Problema / Soluzione — tone muted per staccare dallo scopo app (bianco) */}

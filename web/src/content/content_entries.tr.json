@@ -276,6 +276,13 @@
     },
     {
       "collection": "home",
+      "key": "lead_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Uzman denetiminde çevrim içi veraset beyannamesi"
+    },
+    {
+      "collection": "home",
       "key": "hero_cta_primary",
       "locale": "tr",
       "is_published": true,
@@ -3119,6 +3126,13 @@
       "locale": "tr",
       "is_published": true,
       "value": "Ön teklifini hesapla"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "details_label",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Neler dahil"
     },
     {
       "collection": "pacchetti",

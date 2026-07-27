@@ -276,6 +276,13 @@
     },
     {
       "collection": "home",
+      "key": "lead_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "إقرار الميراث عبر الإنترنت بإشراف مختص"
+    },
+    {
+      "collection": "home",
       "key": "hero_cta_primary",
       "locale": "ar",
       "is_published": true,
@@ -3119,6 +3126,13 @@
       "locale": "ar",
       "is_published": true,
       "value": "احسب عرضك"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "details_label",
+      "locale": "ar",
+      "is_published": true,
+      "value": "ماذا يشمل"
     },
     {
       "collection": "pacchetti",

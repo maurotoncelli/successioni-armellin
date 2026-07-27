@@ -276,6 +276,13 @@
     },
     {
       "collection": "home",
+      "key": "lead_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "La dichiarazione di successione online, seguita da un geometra specializzato"
+    },
+    {
+      "collection": "home",
       "key": "hero_cta_primary",
       "locale": "it",
       "is_published": true,
@@ -3133,6 +3140,13 @@
       "locale": "it",
       "is_published": true,
       "value": "Calcola il tuo preventivo"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "details_label",
+      "locale": "it",
+      "is_published": true,
+      "value": "Cosa include"
     },
     {
       "collection": "pacchetti",

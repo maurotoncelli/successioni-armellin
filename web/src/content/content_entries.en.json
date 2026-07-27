@@ -276,6 +276,13 @@
     },
     {
       "collection": "home",
+      "key": "lead_title",
+      "locale": "en",
+      "is_published": true,
+      "value": "Your Italian inheritance declaration online, handled by a licensed specialist"
+    },
+    {
+      "collection": "home",
       "key": "hero_cta_primary",
       "locale": "en",
       "is_published": true,
@@ -3133,6 +3140,13 @@
       "locale": "en",
       "is_published": true,
       "value": "Calculate your quote"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "details_label",
+      "locale": "en",
+      "is_published": true,
+      "value": "What's included"
     },
     {
       "collection": "pacchetti",

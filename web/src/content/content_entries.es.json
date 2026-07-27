@@ -276,6 +276,13 @@
     },
     {
       "collection": "home",
+      "key": "lead_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "La declaración de sucesión en línea, gestionada por un especialista"
+    },
+    {
+      "collection": "home",
       "key": "hero_cta_primary",
       "locale": "es",
       "is_published": true,
@@ -3119,6 +3126,13 @@
       "locale": "es",
       "is_published": true,
       "value": "Calcula tu presupuesto"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "details_label",
+      "locale": "es",
+      "is_published": true,
+      "value": "Qué incluye"
     },
     {
       "collection": "pacchetti",

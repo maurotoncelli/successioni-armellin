@@ -276,6 +276,13 @@
     },
     {
       "collection": "home",
+      "key": "lead_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "在线办理遗产申报，由专业人士全程跟进"
+    },
+    {
+      "collection": "home",
       "key": "hero_cta_primary",
       "locale": "zh",
       "is_published": true,
@@ -3119,6 +3126,13 @@
       "locale": "zh",
       "is_published": true,
       "value": "计算您的报价"
+    },
+    {
+      "collection": "pacchetti",
+      "key": "details_label",
+      "locale": "zh",
+      "is_published": true,
+      "value": "包含内容"
     },
     {
       "collection": "pacchetti",

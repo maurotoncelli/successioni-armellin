@@ -1,7 +1,7 @@
-import { Check, MessageCircle } from "lucide-react";
 import { getRequestLocale, t, tCta, tList } from "@/lib/locale";
 import { getPackages } from "@/lib/cms";
 import { ButtonLink } from "@/components/ui/button";
+import { PackageCardDetails } from "@/components/site/package-card-details";
 import { cn } from "@/lib/utils";
 
 export async function PackageCards() {
@@ -16,6 +16,7 @@ export async function PackageCards() {
   // CTA onesta: porta al quiz preventivo, non al pagamento.
   // `.replace("{name}")` resta per compatibilità con eventuali valori CMS vecchi.
   const ctaChoose = await t("pacchetti", "cta_choose", "Calcola il tuo preventivo");
+  const detailsLabel = await t("pacchetti", "details_label", "Cosa include");
   const customPriceNote = await t(
     "pacchetti",
     "su_misura_price_note",
@@ -82,18 +83,12 @@ export async function PackageCards() {
                 </p>
               ) : null}
 
-              <p className="mt-5 text-sm leading-relaxed text-text">
-                {pkg.description}
-              </p>
-
-              <ul className="mt-5 flex-1 space-y-3">
-                {pkg.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-2.5 text-sm">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-success" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
+              <PackageCardDetails
+                description={pkg.description}
+                features={pkg.features}
+                icon="check"
+                toggleLabel={detailsLabel}
+              />
 
               <ButtonLink
                 href="/preventivo"
@@ -122,16 +117,12 @@ export async function PackageCards() {
         </div>
         <p className="mt-1 text-sm text-text-muted">{customPriceNote}</p>
 
-        <p className="mt-5 text-sm leading-relaxed text-text">{custom.body}</p>
-
-        <ul className="mt-5 flex-1 space-y-3">
-          {custom.features.map((feature) => (
-            <li key={feature} className="flex items-start gap-2.5 text-sm">
-              <MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-              <span>{feature}</span>
-            </li>
-          ))}
-        </ul>
+        <PackageCardDetails
+          description={custom.body}
+          features={custom.features}
+          icon="message"
+          toggleLabel={detailsLabel}
+        />
 
         <ButtonLink
           href={custom.cta.href}
