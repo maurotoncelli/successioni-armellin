@@ -86,20 +86,19 @@ export default async function HomePage() {
           garantisce la leggibilita del testo (titolo bianco). */}
       <section className="relative flex min-h-[380px] items-center overflow-hidden bg-primary text-white sm:min-h-[520px] lg:min-h-[600px]">
         <Image
-          src="/images/lorenzo-hero.png"
-          alt="Geom. Lorenzo Armellin nel suo studio (immagine indicativa)"
+          src="/images/lorenzo-hero.jpg"
+          alt="Geom. Lorenzo Armellin al lavoro sulla pratica di successione"
           fill
           priority
           sizes="100vw"
-          // Il volto sta a ~62% orizzontale / ~20% verticale dell'immagine:
-          // su schermi stretti il crop deve inseguirlo, altrimenti resta
-          // fuori inquadratura (si vedeva solo la libreria).
-          className="object-cover object-[62%_22%] sm:object-[68%_30%] lg:object-[78%_center]"
+          // Ritratto #3: Lorenzo a destra sullo schermo; su mobile inseguiamo
+          // il volto (~60%), su desktop lasciamo più aria a sinistra per il testo.
+          className="object-cover object-[58%_center] sm:object-[62%_center] lg:object-[68%_center]"
         />
         {/* Scrim per la leggibilita del testo: forte solo a sinistra, la foto
-            resta pulita sulla destra (prima il velo blu copriva tutto). */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/70 via-40% to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/45 via-transparent to-transparent" />
+            resta pulita sulla destra. */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/75 via-42% to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent" />
         <div className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-accent/10 blur-3xl" />
         <Container className="relative py-12 sm:py-16 lg:py-20">
           <div className="max-w-2xl">
