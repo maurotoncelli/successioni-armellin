@@ -207,7 +207,7 @@ export function WelcomeVideo({
                 <option value="off">{labels.captionsOff}</option>
                 {captions.map((track) => (
                   <option key={track.srclang} value={track.srclang}>
-                    {track.flag} {track.label}
+                    {track.label}
                   </option>
                 ))}
               </select>
