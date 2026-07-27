@@ -22,5 +22,7 @@ export async function getWelcomeVideoLabels(): Promise<WelcomeVideoLabels> {
     ),
     badgeSoon: await t("chi_siamo", "video_badge", "Video in arrivo"),
     duration: await t("chi_siamo", "video_duration", "Circa 1 min"),
+    captionsLabel: await t("chi_siamo", "video_captions_label", "Sottotitoli"),
+    captionsOff: await t("chi_siamo", "video_captions_off", "Nessuno"),
   };
 }

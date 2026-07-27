@@ -1137,6 +1137,20 @@
     },
     {
       "collection": "chi_siamo",
+      "key": "video_captions_label",
+      "locale": "it",
+      "is_published": true,
+      "value": "Sottotitoli"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_captions_off",
+      "locale": "it",
+      "is_published": true,
+      "value": "Nessuno"
+    },
+    {
+      "collection": "chi_siamo",
       "key": "motto_latino",
       "locale": "it",
       "is_published": false,

@@ -1137,6 +1137,20 @@
     },
     {
       "collection": "chi_siamo",
+      "key": "video_captions_off",
+      "locale": "en",
+      "is_published": true,
+      "value": "Off"
+    },
+    {
+      "collection": "chi_siamo",
+      "key": "video_captions_label",
+      "locale": "en",
+      "is_published": true,
+      "value": "Subtitles"
+    },
+    {
+      "collection": "chi_siamo",
       "key": "motto_latino",
       "locale": "en",
       "is_published": false,

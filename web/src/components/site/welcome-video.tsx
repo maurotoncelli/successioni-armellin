@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
-import { Play } from "lucide-react";
+import { Captions, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { WelcomeCaptionTrack } from "@/lib/welcome-video";
 
@@ -15,6 +15,10 @@ export type WelcomeVideoLabels = {
   badgeSoon: string;
   /** Chip quando il video è disponibile (es. "Circa 1 min"). */
   duration: string;
+  /** Label del selettore sottotitoli. */
+  captionsLabel: string;
+  /** Opzione per spegnere i sottotitoli. */
+  captionsOff: string;
 };
 
 type Props = {
@@ -29,6 +33,8 @@ type Props = {
   showTitle?: boolean;
 };
 
+type CaptionChoice = string; // locale code or "off"
+
 export function WelcomeVideo({
   labels,
   poster,
@@ -41,18 +47,34 @@ export function WelcomeVideo({
   const [playing, setPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  const defaultLang = useMemo(
+    () => captions.find((c) => c.isDefault)?.srclang ?? captions[0]?.srclang ?? "it",
+    [captions],
+  );
+  const [captionLang, setCaptionLang] = useState<CaptionChoice>(defaultLang);
+
+  // Se cambia la lingua del sito (nuove tracks), riallinea il default.
+  useEffect(() => {
+    setCaptionLang(defaultLang);
+  }, [defaultLang]);
+
+  function applyCaptionTracks(el: HTMLVideoElement, choice: CaptionChoice) {
+    for (const track of Array.from(el.textTracks)) {
+      if (choice === "off") {
+        track.mode = "disabled";
+        continue;
+      }
+      track.mode = track.language === choice ? "showing" : "disabled";
+    }
+  }
+
   // Avvia dopo il mount del <video>: un rAF subito dopo setState vede ancora ref=null
-  // e play() fallisce → si tornava alla facade ("vedo sempre il poster").
+  // e play() fallisce → si tornava alla facade.
   useEffect(() => {
     const el = videoRef.current;
     if (!playing || !el) return;
 
-    for (const track of Array.from(el.textTracks)) {
-      const isDefault = captions.some(
-        (c) => c.isDefault && c.srclang === track.language,
-      );
-      track.mode = isDefault ? "showing" : "disabled";
-    }
+    applyCaptionTracks(el, captionLang);
 
     const tryPlay = () => {
       void el.play().catch(() => {
@@ -67,12 +89,22 @@ export function WelcomeVideo({
       el.load();
       return () => el.removeEventListener("loadeddata", tryPlay);
     }
-  }, [playing, captions]);
+    // captionLang applicato in effect dedicato sotto
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [playing]);
+
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!playing || !el) return;
+    applyCaptionTracks(el, captionLang);
+  }, [playing, captionLang]);
 
   function start() {
     if (!ready) return;
     setPlaying(true);
   }
+
+  const showCaptionPicker = ready && captions.length > 0;
 
   return (
     <div className={cn("mx-auto w-full max-w-3xl", className)}>
@@ -147,6 +179,32 @@ export function WelcomeVideo({
             </button>
           )}
         </div>
+
+        {showCaptionPicker ? (
+          <div className="mt-3 flex flex-wrap items-center justify-center gap-2 sm:justify-end">
+            <label
+              htmlFor="welcome-captions-lang"
+              className="inline-flex items-center gap-1.5 text-sm text-text-muted"
+            >
+              <Captions className="h-4 w-4 text-accent" aria-hidden />
+              {labels.captionsLabel}
+            </label>
+            <select
+              id="welcome-captions-lang"
+              value={captionLang}
+              onChange={(e) => setCaptionLang(e.target.value)}
+              className="rounded-lg border border-primary/15 bg-bg px-2.5 py-1.5 text-sm text-primary shadow-sm outline-none focus-visible:border-accent focus-visible:ring-2 focus-visible:ring-accent/30"
+            >
+              <option value="off">{labels.captionsOff}</option>
+              {captions.map((track) => (
+                <option key={track.srclang} value={track.srclang}>
+                  {track.label}
+                </option>
+              ))}
+            </select>
+          </div>
+        ) : null}
+
         {!showTitle && (
           <figcaption className="mt-4 text-center text-sm text-text-muted">
             {labels.caption}
