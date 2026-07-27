@@ -1,20 +1,27 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { cn } from "@/lib/utils";
 
 /**
  * Backdrop hero: muted / autoplay / loop / playsInline.
+ * Desktop + opzionale clip mobile (source media).
  * Con prefers-reduced-motion resta sul poster (niente motion).
  */
 export function HeroLoopVideo({
   src,
   poster,
-  objectPosition = "center 36%",
+  mobileSrc,
+  mobilePoster,
+  objectPosition = "center center",
   className,
 }: {
   src: string;
   poster: string;
-  /** object-position CSS: tiene il volto in frame su crop stretto */
+  /** Clip verticale per viewport stretti (<768px). */
+  mobileSrc?: string;
+  mobilePoster?: string;
+  /** object-position CSS */
   objectPosition?: string;
   className?: string;
 }) {
@@ -24,9 +31,9 @@ export function HeroLoopVideo({
     const el = ref.current;
     if (!el) return;
 
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const sync = () => {
-      if (mq.matches) {
+    const mqMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const syncPlay = () => {
+      if (mqMotion.matches) {
         el.pause();
         el.currentTime = 0;
       } else {
@@ -36,27 +43,69 @@ export function HeroLoopVideo({
       }
     };
 
-    sync();
-    mq.addEventListener("change", sync);
-    return () => mq.removeEventListener("change", sync);
-  }, [src]);
+    // Alcuni browser non ri-valutano <source media> al resize: forziamo load.
+    const mqViewport = window.matchMedia("(max-width: 767px)");
+    const syncSource = () => {
+      el.load();
+      syncPlay();
+    };
+
+    syncPlay();
+    mqMotion.addEventListener("change", syncPlay);
+    mqViewport.addEventListener("change", syncSource);
+    return () => {
+      mqMotion.removeEventListener("change", syncPlay);
+      mqViewport.removeEventListener("change", syncSource);
+    };
+  }, [src, mobileSrc]);
 
   return (
-    <video
-      ref={ref}
-      className={className}
-      style={{ objectPosition }}
-      autoPlay
-      muted
-      loop
-      playsInline
-      preload="metadata"
-      poster={poster}
-      aria-hidden
-      disablePictureInPicture
-      tabIndex={-1}
-    >
-      <source src={src} type="video/mp4" />
-    </video>
+    <div className={cn("absolute inset-0 overflow-hidden", className)}>
+      {/* Poster responsive sotto il video (il poster= nativo è uno solo). */}
+      {mobilePoster ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={mobilePoster}
+          alt=""
+          aria-hidden
+          className="absolute inset-0 h-full w-full object-cover sm:hidden"
+          style={{ objectPosition }}
+        />
+      ) : null}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={poster}
+        alt=""
+        aria-hidden
+        className={cn(
+          "absolute inset-0 h-full w-full object-cover",
+          mobilePoster ? "hidden sm:block" : "",
+        )}
+        style={{ objectPosition }}
+      />
+      <video
+        ref={ref}
+        className="absolute inset-0 h-full w-full object-cover"
+        style={{ objectPosition }}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster={mobilePoster ?? poster}
+        aria-hidden
+        disablePictureInPicture
+        tabIndex={-1}
+      >
+        {mobileSrc ? (
+          <source
+            src={mobileSrc}
+            type="video/mp4"
+            media="(max-width: 767px)"
+          />
+        ) : null}
+        <source src={src} type="video/mp4" />
+      </video>
+    </div>
   );
 }
