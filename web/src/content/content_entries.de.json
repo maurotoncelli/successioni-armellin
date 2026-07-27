@@ -785,7 +785,7 @@
       "key": "su_misura_text",
       "locale": "de",
       "is_published": true,
-      "value": "Mehr als 8 Immobilien, Agrarflächen, Unternehmen oder Anteile? Individueller Kostenvoranschlag — ohne Überraschungen."
+      "value": "Mehr als 3 Immobilien, Agrarflächen, Unternehmen oder Anteile? Individueller Kostenvoranschlag — ohne Überraschungen."
     },
     {
       "collection": "tariffe",
@@ -3209,7 +3209,7 @@
         {
           "category": "Kosten und Steuern",
           "question": "Was kostet Ihr Service?",
-          "answer": "Festes Honorar je Paket. Steuern separat, vom Erben — berechnet und mitgeteilt vor Einreichung."
+          "answer": "Festes Honorar ohne zusätzliche MwSt.: Einfach 290€ (nur Liquidität) oder Komplett 490€ (bis 3 Immobilien). Bei komplexeren Fällen individueller Kostenvoranschlag. Staatliche Steuern separat, vom Erben — wir berechnen sie vor der Einreichung."
         },
         {
           "category": "Kosten und Steuern",

@@ -27,16 +27,16 @@ Trasformare il servizio di pratiche di successione del Geom. Lorenzo Armellin (s
 - Pagamento anticipato online (incasso prima della lavorazione) con garanzia di rimborso in caso di impedimenti.
 - Prezzi consolidati (onorario al cliente; imposte di Stato escluse e a carico dell'erede):
 
-| Pacchetto | Target | Prezzo | Capienza inclusa (Riunione 2) |
-|-----------|--------|--------|-------------------------------|
+| Pacchetto | Target | Prezzo | Capienza inclusa |
+|-----------|--------|--------|------------------|
 | Semplice (solo liquidita) | Eredita di soli conti/libretti/titoli, nessun immobile | 290 EUR | Dichiarazione, calcolo imposte, invio telematico, assistenza |
 | Completo (il piu venduto) | Famiglia che eredita casa + risparmi | 490 EUR | Fino a **5 eredi**, **1-3 immobili**, fino a **5 conti** + voltura catastale + assistenza prioritaria |
-| Zero Stress / VIP | Chi non ha documenti/tempo, piu immobili | 790 EUR (da confermare) | **3-8 immobili**, non oltre **5 conti**, fino a **5 eredi**, **recupero documenti** incluso + corsia prioritaria |
+| Su misura (card, non listino fisso) | Oltre capienza Completo / casi speciali | Preventivo | Emesso dal CRM dopo valutazione |
 
-> Nota capienza (Riunione 2): sovrapposizione a 3 immobili tra Completo e Zero Stress da chiudere. Regola operativa proposta: **Completo 1-3 immobili; Zero Stress quando gli immobili superano 3 oppure quando serve il recupero documenti**.
+> **Vetrina pubblica (27/07, conferma Lorenzo):** solo **290 + 490 + Su misura**. Zero Stress / 790 **fuori vetrina** (riga CMS disattivata). Sovrapprezzo **+60/immobile oltre il 3° disattivato** per ora: oltre 3 immobili → su misura.
 
-- **Add-on / servizi correlati** (a carrello, snapshot `line_items`): **Riunione di usufrutto 150 EUR** + **Adeguamento/ricalcolo IMU post-successione** (prezzo PROPOSTO **90 EUR**, da confermare con Lorenzo) + voltura aggiuntiva. (L'usufrutto passa da "upsell" a servizio correlato del catalogo `addons`.)
-- Casi complessi: gestiti con preventivo personalizzato (no 4o pacchetto pubblico), emesso dal CRM dopo consulenza (@04/@05). **Trigger "su misura" (Riunione 2): tanti immobili (oltre Zero Stress), particelle agricole, terreni**. NON fanno scattare il su misura (restano nei pacchetti): annessi, testamento, eredi all'estero. Il recupero documenti diventa "su misura" solo quando va oltre cio che copre il pacchetto 490.
+- **Add-on / servizi correlati** (catalogo CMS, snapshot `line_items`): **Riunione di usufrutto 150 EUR** + **Adeguamento/ricalcolo IMU post-successione** (prezzo PROPOSTO **90 EUR**, da confermare) + voltura aggiuntiva.
+- Casi complessi: preventivo personalizzato dal CRM (@04/@05). **Trigger "su misura" (27/07): oltre 3 immobili**, altri beni (quote/aziende), immobili "non so", particelle agricole/terreni. NON fanno scattare il su misura da soli: annessi, testamento, eredi all'estero entro capienza Completo.
 - Riferimento attuale (Riunione 1): oggi Lorenzo lavora a tariffa unica di ~600 EUR a successione, tutto dall'ufficio (non si reca in banca), con una chiamata di consulenza sempre inclusa; throughput fino a 2 pratiche lineari in una mattina. Con documenti completi chiude in **3-4 giorni** (Riunione 2). La scaletta a pacchetti e un riposizionamento rispetto a questa prassi.
 - Onorario medio ponderato stimato (mix 30% Semplice / 55% Completo / 15% Zero Stress): ~475 EUR.
 - **Trattamento fiscale (Riunione 2): regime forfettario, NESSUNA IVA.** I prezzi a display sono l'onorario finale "tutto incluso". Da verificare col commercialista l'eventuale contributo integrativo Cassa Geometri (CIPAG) (@13).
@@ -109,7 +109,7 @@ Trasformare il servizio di pratiche di successione del Geom. Lorenzo Armellin (s
 - Lorenzo e geometra iscritto all'albo e ABILITATO ENTRATEL come intermediario (prerequisito soddisfatto).
 - Obiettivo: attivita full-time; capacita target a regime ~25 pratiche/mese (tetto sostenibile ~30 da solo).
 - Modello a pacchetti a prezzo fisso (no tariffa oraria). **Regime forfettario, prezzi senza IVA** (Riunione 2).
-- Prezzi e capienza (Riunione 2): Semplice 290; Completo 490 (fino a 5 eredi / 1-3 immobili / fino a 5 conti); Zero Stress 790 da confermare (3-8 immobili / max 5 conti / recupero documenti). Add-on: Riunione di usufrutto 150; Adeguamento/ricalcolo IMU 90 (proposto, da confermare). Obiettivo fatturato: min 10.000 / ideale 15.000 EUR mese.
+- Prezzi e capienza (27/07): vetrina **Semplice 290 + Completo 490 + Su misura**; Zero Stress 790 fuori vetrina; +60 extra immobile disattivato (oltre 3 → su misura). Add-on catalogo: Riunione di usufrutto 150; Adeguamento/ricalcolo IMU 90 (proposto). Obiettivo fatturato: min 10.000 / ideale 15.000 EUR mese.
 - Pagamento anticipato dell'onorario, con imposte di Stato a parte e a carico dell'erede.
 - Servizio nazionale con ancoraggio locale (studio fisico a Pontedera).
 - Sviluppo in-house del sito + CRM (no SaaS CRM generalisti).

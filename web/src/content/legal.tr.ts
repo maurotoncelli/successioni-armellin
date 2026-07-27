@@ -151,7 +151,7 @@ export const legalDocsTr: Record<LegalSlug, LegalDoc> = {
         type: "ul",
         items: [
           "Aksi kararlaştırılmadıkça pakete dahil olmayan hizmetler (ör. dava, noter işlemleri, karmaşık vergi danışmanlığı, basit olmayan haller) hariçtir. Ek faaliyetler ayrıca teklif edilir.",
-          "Kişiselleştirilmiş teklif (karmaşık haller): doğası veya karmaşıklığı standart paketleri aşan dosyalar (ör. çoklu taşınmaz, tarla/tarım parselleri, şirket payları, vasiyetname ile veraset, yurt dışı mirasçılar, belge temini) için fiyat satın almadan önce bildirilen bireysel teklifle belirlenir.",
+          "Kişiselleştirilmiş teklif (karmaşık haller): sabit fiyatlı paketleri aşan dosyalar (ör. üçten fazla taşınmaz, tarla/tarım parselleri, şirket payları veya diğer standart dışı mallar, paket kapsamını aşan belge temini) için fiyat satın almadan önce bildirilen bireysel teklifle belirlenir.",
           "Çevrimiçi anket sonucu önerilen paket gösterge niteliğindedir: belgelerin kontrolünden sonra değişiklik ve mahsuplaşma prosedürü (md. 5) uygulanabilir.",
           "Zorunluluk olmama ön kontrolü: verilen bilgilerden beyanın kanunen gerekli olmadığı anlaşılırsa meslek mensubu müşteriye bildirir; kesin değerlendirme somut olayın incelenmesini gerektirir.",
         ],

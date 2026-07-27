@@ -151,7 +151,7 @@ export const legalDocsFr: Record<LegalSlug, LegalDoc> = {
         type: "ul",
         items: [
           "Sont exclus du forfait, sauf accord contraire, les services non expressément indiqués (p. ex. contentieux, actes notariés, conseils fiscaux complexes, cas non simples). Les activités supplémentaires font l'objet d'un devis séparé.",
-          "Devis personnalisé (cas complexes) : pour les dossiers qui, par nature ou complexité, dépassent les forfaits standard (p. ex. pluralité d'immeubles, terrains/parcelles agricoles, parts sociales, successions testamentaires, héritiers à l'étranger, recherche documentaire), le prix est déterminé par un devis individuel communiqué avant l'achat.",
+          "Devis personnalisé (cas complexes) : pour les dossiers qui dépassent les forfaits à prix fixe (p. ex. plus de trois biens, terrains/parcelles agricoles, parts sociales ou autres biens non standard, recherche documentaire au-delà du forfait), le prix est déterminé par un devis individuel communiqué avant l'achat.",
           "Le forfait proposé à l'issue du questionnaire en ligne est indicatif : après vérification de la documentation, la procédure de modification et de régularisation (art. 5) peut s'appliquer.",
           "Vérification préliminaire de non-obligation : lorsque les données fournies indiquent que la déclaration n'est pas due en droit, le professionnel l'indique au client ; l'évaluation définitive exige l'examen du cas concret.",
         ],

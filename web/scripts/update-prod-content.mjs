@@ -56,7 +56,7 @@ const faqUpdates = [
     match: "Quanto costa il vostro servizio?",
     question: "Quanto costa il vostro servizio?",
     answer:
-      "Paghi un onorario fisso in base al pacchetto. Le imposte sono separate, a carico dell'erede, e te le calcoliamo e comunichiamo prima dell'invio.",
+      "Onorario fisso senza IVA: Semplice 290€ (solo liquidità) o Completo 490€ (fino a 3 immobili). Se il caso è più complesso, ti facciamo un preventivo su misura. Le imposte di Stato sono separate, a carico dell'erede, e te le calcoliamo prima dell'invio.",
     sort_order: 3,
   },
   {
@@ -218,6 +218,8 @@ const packageUpdates = [
         "Voltura catastale inclusa",
       ],
       badge: "Il più scelto",
+      // 27/07: niente +60 in self-serve; oltre 3 immobili → su misura.
+      extra_property_fee: null,
     },
   },
   {
@@ -233,6 +235,9 @@ const packageUpdates = [
         "Recupero dei documenti mancanti presso enti e banche",
         "Priorità di lavorazione",
       ],
+      // 27/07: fuori vetrina pubblica (Lorenzo: solo 290 / 490 / su misura).
+      is_active: false,
+      extra_property_fee: null,
     },
   },
 ];

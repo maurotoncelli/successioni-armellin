@@ -785,7 +785,7 @@
       "key": "su_misura_text",
       "locale": "es",
       "is_published": true,
-      "value": "¿Más de 8 inmuebles, terrenos agrícolas, empresas o participaciones? Cada caso es distinto: te hacemos un presupuesto a medida, sin sorpresas."
+      "value": "¿Más de 3 inmuebles, terrenos agrícolas, empresas o participaciones? Cada caso es distinto: te hacemos un presupuesto a medida, sin sorpresas."
     },
     {
       "collection": "tariffe",
@@ -905,7 +905,7 @@
       "key": "su_misura_body",
       "locale": "es",
       "is_published": true,
-      "value": "¿Más de 8 inmuebles, terrenos agrícolas, empresas o participaciones? Los casos más complejos no caben en un paquete estándar: estudiamos el tuyo y te preparamos un presupuesto dedicado, sin sorpresas."
+      "value": "¿Más de 3 inmuebles, terrenos agrícolas, empresas o participaciones? Los casos más complejos no caben en un paquete estándar: estudiamos el tuyo y te preparamos un presupuesto dedicado, sin sorpresas."
     },
     {
       "collection": "pacchetti",
@@ -3209,7 +3209,7 @@
         {
           "category": "Costes e impuestos",
           "question": "¿Cuánto cuesta vuestro servicio?",
-          "answer": "Pagas unos honorarios fijos según el paquete. Los impuestos son aparte, a cargo del heredero, y los calculamos y comunicamos antes del envío."
+          "answer": "Honorarios fijos sin IVA que añadir: Simple 290€ (solo liquidez) o Completo 490€ (hasta 3 inmuebles). Si el caso es más complejo, presupuesto a medida. Los impuestos del Estado son aparte, a cargo del heredero, y los calculamos antes del envío."
         },
         {
           "category": "Costes e impuestos",

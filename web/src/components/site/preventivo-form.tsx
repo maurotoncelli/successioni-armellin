@@ -243,11 +243,18 @@ export function PreventivoForm({
     { value: "nonso", label: ui.unknown },
   ];
 
+  // Con immobili "si" il numero è obbligatorio: decide Completo vs su misura (>3).
+  const parsedReCount = Number.parseInt(realEstateCount, 10);
+  const reCountValid =
+    hasRealEstate !== "si" ||
+    (Number.isFinite(parsedReCount) && parsedReCount > 0);
+
   const stepValid =
     (step === 0 && hasWill !== "") ||
     (step === 1 && heirsTotal > 0) ||
     (step === 2 &&
       hasRealEstate !== "" &&
+      reCountValid &&
       hasOther !== "" &&
       (!askOver100k || over100k !== ""));
 
@@ -259,15 +266,19 @@ export function PreventivoForm({
   }
 
   function seeResult() {
+    const recount =
+      hasRealEstate === "si" && Number.isFinite(parsedReCount) && parsedReCount > 0
+        ? parsedReCount
+        : null;
     const esito = computeEsito({
       hasWill,
       allDirectLine,
       hasRealEstate,
+      realEstateCount: recount,
       hasOther,
       over100k: askOver100k ? over100k : undefined,
     });
     const pkg = suggestedPackage(esito, hasRealEstate);
-    const parsed = Number.parseInt(realEstateCount, 10);
     const params = new URLSearchParams({
       esito,
       comp: encodeHeirs(heirs),
@@ -278,9 +289,7 @@ export function PreventivoForm({
     });
     if (askOver100k && over100k) params.set("k100", over100k);
     if (pkg) params.set("pkg", pkg);
-    if (hasRealEstate === "si" && Number.isFinite(parsed) && parsed > 0) {
-      params.set("recount", String(parsed));
-    }
+    if (recount != null) params.set("recount", String(recount));
     trackEvent("quote_result", {
       esito,
       has_will: hasWill,

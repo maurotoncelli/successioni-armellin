@@ -66,11 +66,9 @@ La thank-you NON mostra sempre un prezzo: instrada verso uno di tre esiti, in ba
 ### Logica condizionale (regole)
 - **Gate di non-obbligo (precede tutto)**: se immobili = No E nessun diritto reale immobiliare E valore = "Sotto 100.000" E erede = coniuge/figlio (linea retta) E nessun testamento/complessita -> Esito A "potrebbe non servire la dichiarazione" (rif. art. 28 c.7 TUS: esonero con coniuge/parenti in linea retta + attivo <= 100.000 EUR + nessun immobile). Soglia operativa esatta da confermare con Lorenzo (lui cita ~80.000 prudenziali) - vedi DOMANDE_PER_LORENZO.
 - Se immobili = No (e fuori dal gate) -> pacchetto suggerito = Semplice (Esito B).
-- Se immobili = Si (1 / 2-3), nessun flag complessita -> pacchetto suggerito = Completo (Esito B).
-- Se immobili = piu di 3 -> Completo + maggiorazione (+60/immobile oltre il 3) (Esito B se calcolabile, altrimenti C).
-- **Flag complessita -> Esito C (preventivo personalizzato)**: terreni agricoli/particelle/annessi, altri beni (quote societarie/aziende), testamento "Si", eredi all'estero, recupero documenti, valore "Oltre 1.000.000", piu immobili in comuni diversi. Sopra la fascia di Zero Stress si va sempre su misura.
-- Flag servizio (urgenza vicino alla scadenza, recupero documenti) senza complessita patrimoniale -> evidenziare opzione Zero Stress (Esito B).
-- Zero Stress dipende dal livello di servizio (recupero documenti, urgenza), non solo dal patrimonio: proposto come scelta/upsell, non forzato.
+- Se immobili = Si (1-3), nessun flag complessita -> pacchetto suggerito = Completo (Esito B).
+- Se immobili = **piu di 3** -> **Esito C (su misura)** (27/07: niente 790 in vetrina; +60 disattivato).
+- **Flag complessita -> Esito C (preventivo personalizzato)**: altri beni (quote societarie/aziende), immobili "non so", terreni agricoli/particelle (quando in form), oltre capienza Completo. Testamento e eredi all'estero NON forzano da soli il su misura (restano nei pacchetti se entro capienza).
 
 ### Mappatura dati (form -> CRM)
 | Campo form | Campo CRM (@05) | Uso |

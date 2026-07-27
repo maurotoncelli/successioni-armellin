@@ -151,7 +151,7 @@ export const legalDocsEs: Record<LegalSlug, LegalDoc> = {
         type: "ul",
         items: [
           "Quedan excluidos del paquete, salvo acuerdo distinto, servicios no indicados expresamente (p. ej. contencioso, actos notariales, asesorías fiscales complejas, casos no lineales). Las actividades adicionales se presupuestan aparte.",
-          "Presupuesto personalizado (casos complejos): para expedientes que por naturaleza o complejidad exceden los paquetes estándar (p. ej. pluralidad de inmuebles, terrenos/parcelas agrícolas, participaciones societarias, sucesiones testamentarias, herederos en el extranjero, recuperación documental), el precio se determina mediante presupuesto individual comunicado antes de la compra.",
+          "Presupuesto personalizado (casos complejos): para expedientes que exceden los paquetes a precio fijo (p. ej. más de tres inmuebles, terrenos/parcelas agrícolas, participaciones societarias u otros bienes no estándar, recuperación documental fuera de la capacidad del paquete), el precio se determina mediante presupuesto individual comunicado antes de la compra.",
           "El paquete propuesto tras el cuestionario en línea es orientativo: tras la verificación de la documentación puede aplicarse el procedimiento de modificación y regularización (art. 5).",
           "Verificación preliminar de no obligación: cuando de los datos facilitados resulte que la declaración no es debida por ley, el profesional lo indica al cliente; la valoración definitiva requiere el examen del caso concreto.",
         ],

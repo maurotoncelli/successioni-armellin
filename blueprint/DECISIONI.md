@@ -1,19 +1,21 @@
 # DECISIONI - Vincoli congelati del progetto (aggregato)
 
 > Raccolta di tutte le "Decisioni congelate" sparse nei capitoli. E il PRIMO file da dare in pasto all'AI: definisce i vincoli non negoziabili. In caso di dubbio, queste decisioni prevalgono.
-> Stato: In revisione · Ultimo aggiornamento: 2026-06-22 (integrati esiti Riunione 1 + Riunione 2: anagrafica, pricing/capienza, su misura, fiscale forfettario, firma, auth, brand)
+> Stato: In revisione · Ultimo aggiornamento: 2026-07-27 (vetrina 290/490/su misura; Zero Stress fuori listino; +60 disattivato)
 > Ogni voce rimanda al capitolo di origine come fonte di dettaglio.
 
 ## Business e modello (@01)
 - Geometra iscritto all'albo e ABILITATO ENTRATEL (confermato Riunione 2). **Ditta individuale**, **regime forfettario (NO IVA)**; fatturazione con **Aruba**; firma digitale **CNS Aruba**; **no mediazione immobiliare** (antiriciclaggio non applicabile). Diplomato geometra, in proprio e su successioni **dal 2012**, **~100 successioni** gia gestite.
 - Attivita full-time; capacita target a regime ~25 pratiche/mese (tetto sostenibile ~30 da solo). **Obiettivo fatturato: minimo 10.000 EUR/mese, ideale 15.000 EUR/mese** (Riunione 2); crescita per fasi insieme al budget ADV. Soft launch: obiettivo gestire ~15 successioni.
-- Pacchetti a prezzo fisso (Riunione 2), prezzi = onorario finale senza IVA (forfettario):
+- Pacchetti a prezzo fisso, prezzi = onorario finale senza IVA (forfettario):
+  - **Vetrina pubblica (confermato Lorenzo 27/07): Semplice 290 + Completo 490 + Su misura**. Niente terzo pacchetto-hero.
   - **Semplice 290** (soli conti/liquidita, nessun immobile).
   - **Completo 490**: fino a **5 eredi**, **1-3 immobili**, fino a **5 conti bancari**.
-  - **Zero Stress** (790, da confermare): **3-8 immobili**, non oltre **5 conti**, **recupero documenti** incluso, fino a **5 eredi**. Aperto: sovrapposizione a 3 immobili con Completo -> regola operativa proposta: Completo 1-3, Zero Stress >3 immobili o quando serve recupero documenti.
-  - **Add-on / servizi correlati**: **Riunione di usufrutto 150** + **Adeguamento/ricalcolo IMU** (prezzo PROPOSTO 90 EUR, da confermare Lorenzo) + voltura aggiuntiva.
+  - **Zero Stress / 790**: **fuori vetrina** (`is_active=false`); resta in catalogo CMS solo per storico/CRM. Non riproporre ancoraggio psicologico sul 790.
+  - **Sovrapprezzo +60/immobile oltre il 3°**: **disattivato** per ora (oltre 3 immobili → preventivo su misura).
+  - **Add-on / servizi correlati** (catalogo, non upsell obbligatorio in checkout): **Riunione di usufrutto 150** + **Adeguamento/ricalcolo IMU** (90 EUR proposto) + voltura aggiuntiva.
 - Pagamento anticipato dell'onorario; imposte di Stato separate e a carico dell'erede.
-- Casi complessi -> **preventivo personalizzato** dal CRM dopo consulenza, NO 4o pacchetto pubblico. **Trigger "su misura" (Riunione 2): SI** = tanti immobili (oltre Zero Stress), particelle agricole, terreni; **NO** (restano nei pacchetti) = annessi, testamento, eredi all'estero; **recupero documenti** = su misura solo se in conflitto col pacchetto 490.
+- Casi complessi -> **preventivo personalizzato** dal CRM dopo consulenza, NO terzo prezzo da marketing. **Trigger "su misura" (27/07): SI** = **oltre 3 immobili**, altri beni (quote/aziende), immobili "non so", particelle agricole/terreni; **NO** (restano nei pacchetti) = annessi, testamento, eredi all'estero entro capienza Completo.
 - Cambio pacchetto con conguaglio: CONFERMATO (Riunione 2). SLA di consegna: CONFERMATI (lavorazione effettiva ~3-4 gg con documenti completi; SLA pubblici prudenziali).
 - Onesta sul non-obbligo: se la dichiarazione non e dovuta, si avvisa il cliente prima dell'acquisto (Esito A del form, @04). Criterio legale (esonero, art. 28 c.7 TUS): NON dovuta solo se TUTTE e tre: (1) eredi = coniuge/parenti in linea retta; (2) attivo lordo <= 100.000 EUR; (3) nessun immobile/diritto reale immobiliare.
 - Servizio nazionale con ancoraggio locale (studio Pontedera, **orario 9-13 / 15-19**).

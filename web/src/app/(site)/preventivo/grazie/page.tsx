@@ -18,7 +18,15 @@ import { SoftLead, type SoftLeadAnswers } from "@/components/site/soft-lead";
 import { TrackQuoteComplete } from "@/components/site/track-quote-complete";
 import { getPackages, getAddons } from "@/lib/cms";
 import { buildOrder } from "@/lib/order";
-import { decodeHeirs, isPackageKey, totalHeirs, type Esito } from "@/lib/quote";
+import {
+  computeEsito,
+  decodeHeirs,
+  isAllDirectLine,
+  isPackageKey,
+  suggestedPackage,
+  totalHeirs,
+  type Esito,
+} from "@/lib/quote";
 
 export async function generateMetadata(): Promise<Metadata> {
   const chrome = await tObj("site_ui", "chrome_ui", CHROME_UI_IT);
@@ -50,7 +58,6 @@ export default async function GraziePage({
   }>;
 }) {
   const sp = await searchParams;
-  const esito = resolveEsito(sp.esito);
 
   const recount = sp.recount ? Number.parseInt(sp.recount, 10) : null;
   const composition = decodeHeirs(sp.comp);
@@ -63,6 +70,21 @@ export default async function GraziePage({
     hasOther: sp.other ?? "no",
     over100k: sp.k100,
   };
+
+  // Ricalcolo server-side solo se il link porta le risposte del quiz (hasre):
+  // così non ci si fida della sola query (>3 immobili → C), ma i link senza
+  // parametri (bookmark/vecchie email) mantengono l'esito dichiarato.
+  const hasQuizAnswers = Boolean(sp.hasre);
+  const esito: Esito = hasQuizAnswers
+    ? computeEsito({
+        hasWill: answers.hasWill,
+        allDirectLine: composition ? isAllDirectLine(composition) : false,
+        hasRealEstate: answers.hasRealEstate,
+        realEstateCount: answers.realEstateCount,
+        hasOther: answers.hasOther,
+        over100k: answers.over100k,
+      })
+    : resolveEsito(sp.esito);
 
   // Telefono / WhatsApp reali (data-driven).
   const tel = await tObj("contatti", "telefono", {
@@ -95,7 +117,13 @@ export default async function GraziePage({
   const chrome = await tObj("site_ui", "chrome_ui", CHROME_UI_IT);
 
   if (esito === "b") {
-    const packageKey = isPackageKey(sp.pkg) ? sp.pkg : "COMPLETO";
+    // Con le risposte del quiz il pacchetto si ricava da quelle; altrimenti
+    // dall'URL (mai ZERO_STRESS, fuori vetrina).
+    const fromUrl =
+      isPackageKey(sp.pkg) && sp.pkg !== "ZERO_STRESS" ? sp.pkg : null;
+    const packageKey = hasQuizAnswers
+      ? (suggestedPackage(esito, answers.hasRealEstate) ?? "COMPLETO")
+      : (fromUrl ?? "COMPLETO");
     const locale = await getRequestLocale();
     const [packages, addons, checkoutUi] = await Promise.all([
       getPackages(locale),

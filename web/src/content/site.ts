@@ -54,11 +54,13 @@ export const packages: Package[] = [
       "Voltura catastale inclusa",
     ],
     price: 490,
-    extraPropertyFee: 60,
+    // Sovrapprezzo +60/immobile oltre il 3°: disattivato (27/07). Oltre 3 → su misura.
+    extraPropertyFee: null,
     slaDays: 15,
     badge: "Il più scelto",
     sortOrder: 2,
   },
+  // Fuori vetrina pubblica (is_active=false in CMS). Tenuto per pratiche storiche / CRM.
   {
     key: "ZERO_STRESS",
     name: "Successione Estesa",
@@ -72,7 +74,7 @@ export const packages: Package[] = [
       "Priorità di lavorazione",
     ],
     price: 790,
-    extraPropertyFee: 60,
+    extraPropertyFee: null,
     slaDays: 10,
     badge: null,
     sortOrder: 3,
@@ -132,7 +134,7 @@ export const faqs: Faq[] = [
     category: "Costi e imposte",
     question: "Quanto costa il vostro servizio?",
     answer:
-      "Paghi un onorario fisso in base al pacchetto. Le imposte sono separate, a carico dell'erede, e te le calcoliamo e comunichiamo prima dell'invio.",
+      "Onorario fisso senza IVA: Semplice 290€ (solo liquidità) o Completo 490€ (fino a 3 immobili). Se il caso è più complesso, ti facciamo un preventivo su misura. Le imposte di Stato sono separate, a carico dell'erede, e te le calcoliamo prima dell'invio.",
   },
   {
     category: "Costi e imposte",

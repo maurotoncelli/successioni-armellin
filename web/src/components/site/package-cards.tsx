@@ -31,7 +31,7 @@ export async function PackageCards() {
     body: await t(
       "pacchetti",
       "su_misura_body",
-      "Più di 8 immobili, terreni agricoli, aziende o quote societarie? I casi più complessi non stanno in un pacchetto standard: ti prepariamo un preventivo dedicato, senza sorprese.",
+      "Oltre 3 immobili, terreni agricoli, aziende o quote societarie? I casi più complessi non stanno in un pacchetto standard: ti prepariamo un preventivo dedicato, senza sorprese.",
     ),
     features: await tList<string>("pacchetti", "su_misura_features"),
     cta: await tCta("pacchetti", "su_misura_cta", {
@@ -40,8 +40,9 @@ export async function PackageCards() {
     }),
   };
 
+  // 2 pacchetti attivi + card Su misura (Zero Stress fuori vetrina).
   return (
-    <div className="grid gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-4">
+    <div className="grid gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
       {packages
         .slice()
         .sort((a, b) => a.sortOrder - b.sortOrder)

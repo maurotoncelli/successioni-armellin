@@ -785,7 +785,7 @@
       "key": "su_misura_text",
       "locale": "sq",
       "is_published": true,
-      "value": "Më shumë se 8 pasuri, truall bujqësor, biznese ose pjesë shoqërie? Çdo rast është ndryshe: ju bëjmë preventiv të personalizuar, pa surpriza."
+      "value": "Më shumë se 3 pasuri, truall bujqësor, biznese ose pjesë shoqërie? Çdo rast është ndryshe: ju bëjmë preventiv të personalizuar, pa surpriza."
     },
     {
       "collection": "tariffe",
@@ -905,7 +905,7 @@
       "key": "su_misura_body",
       "locale": "sq",
       "is_published": true,
-      "value": "Më shumë se 8 pasuri, truall bujqësor, biznese ose pjesë shoqërie? Rastet më komplekse nuk hyjnë në paketë standarde: studiojmë tuajin dhe ju përgatisim preventiv të dedikuar, pa surpriza."
+      "value": "Më shumë se 3 pasuri, truall bujqësor, biznese ose pjesë shoqërie? Rastet më komplekse nuk hyjnë në paketë standarde: studiojmë tuajin dhe ju përgatisim preventiv të dedikuar, pa surpriza."
     },
     {
       "collection": "pacchetti",

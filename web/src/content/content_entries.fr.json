@@ -785,7 +785,7 @@
       "key": "su_misura_text",
       "locale": "fr",
       "is_published": true,
-      "value": "Plus de 8 biens, terrains agricoles, entreprises ou parts sociales ? Chaque cas est différent : nous préparons un devis sur mesure, sans surprise."
+      "value": "Plus de 3 biens, terrains agricoles, entreprises ou parts sociales ? Chaque cas est différent : nous préparons un devis sur mesure, sans surprise."
     },
     {
       "collection": "tariffe",
@@ -905,7 +905,7 @@
       "key": "su_misura_body",
       "locale": "fr",
       "is_published": true,
-      "value": "Plus de 8 biens, terrains agricoles, entreprises ou parts sociales ? Les cas les plus complexes ne rentrent pas dans un forfait standard : nous étudions le vôtre et préparons un devis dédié, sans surprise."
+      "value": "Plus de 3 biens, terrains agricoles, entreprises ou parts sociales ? Les cas les plus complexes ne rentrent pas dans un forfait standard : nous étudions le vôtre et préparons un devis dédié, sans surprise."
     },
     {
       "collection": "pacchetti",
@@ -3209,7 +3209,7 @@
         {
           "category": "Frais et impôts",
           "question": "Combien coûte votre service ?",
-          "answer": "Vous payez des honoraires fixes selon le forfait. Les impôts sont séparés, à la charge de l'héritier, et nous les calculons et vous les communiquons avant l'envoi."
+          "answer": "Honoraires fixes sans TVA à ajouter : Simple 290€ (liquidités uniquement) ou Complet 490€ (jusqu'à 3 biens). Si le cas est plus complexe, devis sur mesure. Les impôts d'État sont séparés, à la charge de l'héritier, et nous les calculons avant l'envoi."
         },
         {
           "category": "Frais et impôts",

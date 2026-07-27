@@ -272,7 +272,7 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
       { type: "h2", text: "3. Pacchetti, prezzi ed esclusioni" },
       {
         type: "p",
-        text: "I pacchetti e i relativi prezzi (onorario) sono indicati nella pagina Tariffe. Il prezzo indicato si riferisce esclusivamente all'onorario professionale.",
+        text: "I pacchetti a prezzo fisso e i relativi prezzi (onorario) sono indicati nella pagina Tariffe (Semplice e Completo). Per i casi che eccedono la capienza dei pacchetti fissi è disponibile un preventivo su misura. Il prezzo indicato si riferisce esclusivamente all'onorario professionale (regime forfettario: senza IVA da aggiungere).",
       },
       {
         type: "callout",
@@ -283,8 +283,8 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
       {
         type: "ul",
         items: [
-          "Sono esclusi dal pacchetto, salvo diverso accordo, i servizi non espressamente indicati (es. contenzioso, pratiche notarili, consulenze fiscali complesse, casi non lineari). Eventuali attività aggiuntive sono preventivate a parte.",
-          "Preventivo personalizzato (casi complessi): per le pratiche che per natura o complessità eccedono i pacchetti standard (es. pluralità di immobili, terreni/particelle agricole, quote societarie, successioni testamentarie, eredi all'estero, recupero documentale), il prezzo è determinato tramite preventivo individuale comunicato prima dell'acquisto.",
+          "Sono esclusi dal pacchetto, salvo diverso accordo, i servizi non espressamente indicati (es. contenzioso, pratiche notarili, consulenze fiscali complesse, casi non lineari). Eventuali attività aggiuntive o servizi correlati (es. riunione di usufrutto) sono preventivate a parte.",
+          "Preventivo personalizzato (casi complessi): per le pratiche che eccedono i pacchetti a prezzo fisso (es. oltre tre immobili, terreni/particelle agricole, quote societarie o altri beni non standard, recupero documentale oltre la capienza del pacchetto), il prezzo è determinato tramite preventivo individuale comunicato prima dell'acquisto.",
           "Il pacchetto proposto in esito al questionario online è indicativo: dopo la verifica della documentazione può applicarsi la procedura di modifica e conguaglio (art. 5).",
           "Verifica preliminare di non obbligo: ove dai dati forniti emerga che la dichiarazione non è dovuta per legge, il professionista lo segnala al cliente; la valutazione definitiva richiede l'esame del caso concreto.",
         ],

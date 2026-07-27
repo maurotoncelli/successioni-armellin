@@ -151,7 +151,7 @@ export const legalDocsHi: Record<LegalSlug, LegalDoc> = {
         type: "ul",
         items: [
           "जब तक अन्यथा सहमति न हो, पैकेज में वे सेवाएँ शामिल नहीं हैं जो स्पष्ट रूप से निर्दिष्ट नहीं हैं (जैसे विवाद, notarial कार्य, जटिल कर परामर्श, non-linear मामले)। अतिरिक्त कार्य अलग से quote किए जाते हैं।",
-          "व्यक्तिगत अनुमान (जटिल मामले): जिन मामलों की प्रकृति या जटिलता standard पैकेज से अधिक है (जैसे कई immobili, agricultural भूमि/particelle, company shares, testamentary succession, विदेश में heirs, document recovery), कीमत खरीद से पहले individual quote से तय होती है।",
+          "व्यक्तिगत अनुमान (जटिल मामले): जो मामले निश्चित-मूल्य पैकेज से अधिक हैं (जैसे 3 से अधिक संपत्तियाँ, कृषि भूमि/particelle, company shares या अन्य non-standard संपत्ति, पैकेज क्षमता से अधिक document recovery), कीमत खरीद से पहले individual quote से तय होती है।",
           "ऑनलाइन प्रश्नावली के बाद प्रस्तावित पैकेज संकेतात्मक है: दस्तावेज़ जाँच के बाद modification और conguaglio (art. 5) procedure लागू हो सकती है।",
           "Non-obligation प्रारंभिक जाँच: यदि प्रदान data से घोषणा कानूनी रूप से आवश्यक नहीं दिखती, पेशेवर ग्राहक को सूचित करता है; अंतिम मूल्यांकन concrete case के अध्ययन पर निर्भर करता है।",
         ],

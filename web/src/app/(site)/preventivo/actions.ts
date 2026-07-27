@@ -67,6 +67,7 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
       ? isAllDirectLine(input.heirsComposition)
       : false,
     hasRealEstate: input.hasRealEstate,
+    realEstateCount: input.realEstateCount,
     hasOther: input.hasOther,
     over100k: input.over100k,
   });

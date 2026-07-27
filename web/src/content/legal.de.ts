@@ -151,7 +151,7 @@ export const legalDocsDe: Record<LegalSlug, LegalDoc> = {
         type: "ul",
         items: [
           "Nicht im Paket, sofern nicht anders vereinbart: nicht genannte Leistungen (Streit, Notariat, komplexe Steuerberatung, nicht lineare Fälle). Zusatzleistungen separat kalkuliert.",
-          "Individueller Kostenvoranschlag (komplexe Fälle): bei Übersteigen standardmäßiger Pakete (viele Immobilien, Agrarflächen, Gesellschaftsanteile, Testamentsfälle, Auslandserben, Dokumentenbeschaffung) individueller Preis vor Kauf.",
+          "Individueller Kostenvoranschlag (komplexe Fälle): bei Übersteigen der Festpreis-Pakete (z. B. mehr als drei Immobilien, Agrarflächen, Gesellschaftsanteile oder andere nicht standardmäßige Güter, Dokumentenbeschaffung über die Paketkapazität hinaus) individueller Preis vor Kauf.",
           "Nach Fragebogen vorgeschlagenes Paket ist orientierend: nach Dokumentenprüfung ggf. Änderung und Ausgleich (Art. 5).",
           "Vorprüfung Nicht-Pflicht: bei Hinweis auf fehlende Pflicht informieren wir — endgültige Bewertung am konkreten Fall.",
         ],

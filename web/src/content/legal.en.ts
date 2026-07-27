@@ -151,7 +151,7 @@ export const legalDocsEn: Record<LegalSlug, LegalDoc> = {
         type: "ul",
         items: [
           "Unless otherwise agreed, services not expressly listed are excluded from the package (e.g. notarial deeds, disputes, subsequent acts).",
-          "Custom quote (complex cases): for cases that by nature or complexity exceed standard packages, a dedicated quote is prepared.",
+          "Custom quote (complex cases): for cases that exceed fixed-price packages (e.g. more than three properties, agricultural land, company shares or other non-standard assets, document recovery beyond package scope), a dedicated quote is prepared before purchase.",
           "The package proposed after the online questionnaire is indicative: after checking documentation the professional may suggest a change, with settlement of the difference only.",
           "Preliminary check of non-obligation: where the data suggest the declaration is not required, we say so and do not sell a useless service.",
         ],

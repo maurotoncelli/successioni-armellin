@@ -86,19 +86,32 @@ export function decodeHeirs(raw: string | undefined): HeirsComposition | null {
   return totalHeirs(c) > 0 ? c : null;
 }
 
+/** Capienza pacchetto Completo in vetrina (1–3 immobili). Oltre → su misura. */
+export const COMPLETO_MAX_PROPERTIES = 3;
+
 export function computeEsito(input: {
   /** Conservato per analytics/CRM: NON influenza l'esito (i pacchetti
    *  coprono anche le successioni con testamento; Riunione 2 + conferma Mauro). */
   hasWill?: string;
   allDirectLine: boolean;
   hasRealEstate: string;
+  /** Numero immobili se hasRealEstate === "si". Oltre Completo → esito C. */
+  realEstateCount?: number | null;
   hasOther: string;
   over100k?: string;
 }): Esito {
-  // Su misura solo per casi davvero fuori standard: altri beni (quote,
-  // aziende…) oppure immobili "non so" (troppo incerto per un prezzo fisso).
+  // Su misura: altri beni (quote, aziende…), immobili "non so", oppure oltre
+  // la capienza Completo (niente 790 in vetrina; niente +60 per ora).
   // Il testamento resta nei pacchetti (serve solo come documento in checklist).
   if (input.hasOther === "si" || input.hasRealEstate === "nonso") return "c";
+  if (
+    input.hasRealEstate === "si" &&
+    typeof input.realEstateCount === "number" &&
+    Number.isFinite(input.realEstateCount) &&
+    input.realEstateCount > COMPLETO_MAX_PROPERTIES
+  ) {
+    return "c";
+  }
   if (input.hasRealEstate === "no" && input.allDirectLine) {
     // L'esonero art. 28 c.7 TUS vale solo con attivo ereditario <= 100.000 EUR:
     // sopra soglia la dichiarazione e' dovuta anche in linea retta -> Semplice.

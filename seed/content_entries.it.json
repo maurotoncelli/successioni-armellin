@@ -698,16 +698,16 @@
       "is_published": false,
       "value": [
         {
-          "voce": "Immobile aggiuntivo",
-          "importo": "+60 EUR cad. (da confermare)"
+          "voce": "Oltre 3 immobili",
+          "importo": "preventivo su misura"
         },
         {
-          "voce": "Terreni/annessi agricoli",
-          "importo": "secondo complessità"
+          "voce": "Terreni/particelle agricole",
+          "importo": "preventivo su misura"
         },
         {
-          "voce": "Eredi oltre soglia standard",
-          "importo": "secondo complessità"
+          "voce": "Quote societarie / altri beni non standard",
+          "importo": "preventivo su misura"
         }
       ]
     },
@@ -785,7 +785,7 @@
       "key": "su_misura_text",
       "locale": "it",
       "is_published": true,
-      "value": "Più di 8 immobili, terreni agricoli, aziende o quote societarie? Ogni caso è diverso: ti facciamo un preventivo su misura, senza sorprese."
+      "value": "Oltre 3 immobili, terreni agricoli, aziende o quote societarie? Ogni caso è diverso: ti facciamo un preventivo su misura, senza sorprese."
     },
     {
       "collection": "tariffe",
@@ -905,7 +905,7 @@
       "key": "su_misura_body",
       "locale": "it",
       "is_published": true,
-      "value": "Più di 8 immobili, terreni agricoli, aziende o quote societarie? I casi più complessi non stanno in un pacchetto standard: studiamo il tuo e ti prepariamo un preventivo dedicato, senza sorprese."
+      "value": "Oltre 3 immobili, terreni agricoli, aziende o quote societarie? I casi più complessi non stanno in un pacchetto standard: studiamo il tuo e ti prepariamo un preventivo dedicato, senza sorprese."
     },
     {
       "collection": "pacchetti",
@@ -3223,7 +3223,7 @@
         {
           "category": "Costi e imposte",
           "question": "Quanto costa il vostro servizio?",
-          "answer": "Paghi un onorario fisso in base al pacchetto. Le imposte sono separate, a carico dell'erede, e te le calcoliamo e comunichiamo prima dell'invio."
+          "answer": "Onorario fisso senza IVA: Semplice 290€ (solo liquidità) o Completo 490€ (fino a 3 immobili). Se il caso è più complesso, ti facciamo un preventivo su misura. Le imposte di Stato sono separate, a carico dell'erede, e te le calcoliamo prima dell'invio."
         },
         {
           "category": "Costi e imposte",

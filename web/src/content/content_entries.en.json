@@ -785,7 +785,7 @@
       "key": "su_misura_text",
       "locale": "en",
       "is_published": true,
-      "value": "More than 8 properties, agricultural land, businesses or company shares? Every case is different: we'll prepare a custom quote, no surprises."
+      "value": "More than 3 properties, agricultural land, businesses or company shares? Every case is different: we'll prepare a custom quote, no surprises."
     },
     {
       "collection": "tariffe",
@@ -905,7 +905,7 @@
       "key": "su_misura_body",
       "locale": "en",
       "is_published": true,
-      "value": "More than 8 properties, agricultural land, businesses or company shares? Complex cases don't fit a standard package: we study yours and prepare a dedicated quote, no surprises."
+      "value": "More than 3 properties, agricultural land, businesses or company shares? Complex cases don't fit a standard package: we study yours and prepare a dedicated quote, no surprises."
     },
     {
       "collection": "pacchetti",
@@ -3223,7 +3223,7 @@
         {
           "category": "Costs and taxes",
           "question": "How much does your service cost?",
-          "answer": "You pay a fixed fee based on the package. Taxes are separate, paid by the heir, and we calculate and notify them before filing."
+          "answer": "Fixed fee with no VAT to add: Simple €290 (cash/liquidity only) or Complete €490 (up to 3 properties). For more complex cases we prepare a custom quote. State taxes are separate, paid by the heir, and we calculate them before filing."
         },
         {
           "category": "Costs and taxes",

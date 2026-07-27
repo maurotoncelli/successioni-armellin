@@ -21,21 +21,21 @@ Chat precedente TR/FR/SQ + EN/AR + SEO:
 ## ★★ VIDEO BENVENUTO (27/07) — integrazione
 
 **Asset sorgente (fuori git):**  
-`bozza video/arme ufficio video 1 min/exp/video_benvenuto_uncensored_italiano.mp4`  
-(+ TTML `…_Subtitle 1.ttml`).
+`bozza video/arme ufficio video 1 min/exp/video_benvenuto_censored_italiano.mp4`  
+(+ TTML `…_Subtitle 1.ttml`).  
+(Uncensored master resta in `exp/` come archivio, **non** in sito.)
 
 **In sito:**
-- MP4 compresso: `web/public/videos/benvenuto-lorenzo.mp4`
+- MP4 compresso: `web/public/videos/benvenuto-lorenzo.mp4` (~7 MB, H.264/AAC)
 - Captions WebVTT: `web/public/videos/captions/benvenuto.<locale>.vtt`
+  (timing da TTML censored; cue «uffici» soft, senza volgarità)
 - Player: `WelcomeVideo` (home + `/chi-sono`) — tracks multilinea, `default` =
   lingua sito, scelta manuale nel menu nativo; fallback IT.
 - SEO: JSON-LD `VideoObject` quando il file è presente.
 - Gate: `isWelcomeVideoReady()` in `lib/welcome-video.ts`.
 
-**Linguaggio (decisione Mauro 27/07):** teniamo la versione **uncensored**
-inclusa la battuta *«rotture di coglioni»* (audio + VTT IT e traduzioni tono
-equivalente). **Possibile correzione futura:** cut / VTT “soft” senza quella
-espressione se Lorenzo o feedback clienti lo chiedono — non rifare ora.
+**Linguaggio (decisione Mauro 27/07 sera):** versione **censored** in vetrina
+(audio + VTT). Niente *«rotture di coglioni»* / equivalenti nelle altre lingue.
 
 **Note tecniche:**
 - Master senza sub impressi; VO italiana; altre lingue = solo VTT.
@@ -44,12 +44,13 @@ espressione se Lorenzo o feedback clienti lo chiedono — non rifare ora.
 
 ---
 
-## ★★ STRATEGIA PRICING / POSIZIONAMENTO (22/07) — da congelare con Lorenzo
+## ★★ STRATEGIA PRICING / POSIZIONAMENTO (22/07) — CONFERMATA Lorenzo 27/07
 
-> Esito chat Mauro 22/07. **NON** ripetere a Lorenzo l’argomento “790 = ancora
-> psicologica”: l’ha già rifiutato più volte. Si cede sul **display**; si tiene
-> il **margine operativo** altrove. Aggiornare @01 / @DECISIONI / @PROSSIMO_INCONTRO
-> quando Lorenzo conferma formalmente.
+> **Stato 27/07:** Lorenzo conferma vetrina **290 / 490 / su misura**. Zero Stress
+> fuori listino pubblico; **+60 extra immobile disattivato** (oltre 3 → su misura).
+> Implementato in codice + content; allineare CMS prod con
+> `node scripts/update-prod-content.mjs` (patch `is_active=false` su ZERO_STRESS +
+> `extra_property_fee=null`). **NON** ripetere a Lorenzo l’ancoraggio sul 790.
 
 ### Contesto
 - Lorenzo **non fa pace** col pacchetto pubblico **790** (Zero Stress): teme che
@@ -253,31 +254,24 @@ prezzi; resta come prova lunga. Eventuale micro-allineo ortografico
 
 ---
 
-### Impatti prodotto / contenuti (quando conferma pricing + copy)
-- [ ] CMS listino / `packages`: Zero Stress `is_active=false` **oppure** tenuto
-      solo per preventivo interno; home + `/tariffe` = 290 + 490 + Su misura.
+### Impatti prodotto / contenuti
+- [x] CMS listino / codice: Zero Stress fuori vetrina; home + `/tariffe` =
+      290 + 490 + Su misura (27/07). **Prod DB:** lanciare
+      `node scripts/update-prod-content.mjs` se non già fatto.
 - [ ] Copy differenziazione catastale: vedi checklist sopra (hero tariffe +
-      home vantaggi + tabella fai-da-te).
-- [ ] Copy tariffe: rafforzare blocco **“prezzo finale, nessuna IVA da
-      aggiungere”** (già base forfettario) — integrato nel nuovo
-      `tariffe.hero_subtitle`; eventuale micro-confronto “altri mostrano X+IVA”
-      solo se Mauro vuole esplicitarlo (senza nominare competitor).
-- [ ] FAQ / anti-obiezione: quando serve il preventivo (soglie immobili,
-      recupero doc, agricoli/terreni) — linguaggio chiaro, no “VIP”.
-- [ ] Quiz preventivo: allineare trigger a soglie Completo (già in parte fatto;
-      verificare >3 immobili / recupero doc → esito C).
-- [ ] Seed + `update-prod-content.mjs` / i18n packages overlay dopo cambio
-      nomi/visibilità.
-- [ ] Bibbia: @01 (tabella pacchetti), @DECISIONI, @03 (3 card → 2+su misura),
-      @PROSSIMO_INCONTRO (togliere “confermare 790?” come nodo aperto; segnare
-      decisione display).
-- [ ] Condizioni di vendita / bozze legali: allineare elenco prezzi pubblici.
+      home vantaggi + tabella fai-da-te) — ancora attende ok Mauro.
+- [x] Quiz: `realEstateCount > 3` → esito C; niente suggerimento ZERO_STRESS.
+- [x] +60 extra immobile disattivato (`extraPropertyFee: null`).
+- [x] Copy su misura “oltre 3” (IT + i18n content_entries).
+- [x] Bibbia @01 / @DECISIONI allineate (27/07).
+- [x] Condizioni di vendita / bozze legali / FAQ costi: allineate a 290/490/su
+      misura (27/07) — senza 790/+60; trigger su misura aggiornati.
+- [ ] @PROSSIMO_INCONTRO: togliere “confermare 790?” come nodo aperto.
 
-### Stato codice oggi (22/07) — ancora ALLINEATO ALLA VECCHIA SCALETTA
-In produzione/fixture restano tipicamente **3 pacchetti** (290 / 490 / 790) +
-card Su misura. La strategia pricing + il piano copy catastale sopra sono
-**direzione di prodotto**, non ancora implementati. Non cambiare listino né
-content live senza ok esplicito di Mauro/Lorenzo.
+### Stato codice oggi (27/07) — vetrina 290 / 490 / su misura
+Fixture pubbliche filtrano ZERO_STRESS; surcharge +60 off; quiz oltre 3 → C.
+Resta da pubblicare il patch packages su Supabase prod se lo script non è
+ancora stato eseguito dopo il deploy.
 
 ---
 
@@ -784,7 +778,8 @@ auth callback, checkout residui, cookie banner.
 - [ ] ~20 recensioni GMB; Places sync opzionale
 - [ ] Video Come funziona (`bozza video/` fuori git) + integrazione
 - [ ] SMS/WhatsApp; QA cross-browser; Lenis
-- [ ] Check costi pacchetti con Lorenzo; test AI XML
+- [x] Check costi / vetrina con Lorenzo (27/07): 290+490+su misura
+- [ ] Test AI XML
 - Opzionale: RLS UPDATE `client_notifications` su `read_at`
 
 ---
@@ -822,7 +817,8 @@ auth callback, checkout residui, cookie banner.
 - [ ] Accumolare ~20 recensioni GMB; aggiornare testi in `site.ts` (o Places)
 - [ ] Video Come funziona (bozze in `bozza video/`, fuori git) + integrazione pagina
 - [ ] SMS/WhatsApp; traduzioni/legal; QA cross-browser; Lenis
-- [ ] Check costi pacchetti con Lorenzo; test AI XML su pratica reale
+- [x] Check costi / vetrina con Lorenzo (27/07): 290+490+su misura
+- [ ] Test AI XML su pratica reale
 - Opzionale: RLS UPDATE `client_notifications` ristretta a `read_at`
 
 ---
@@ -1016,11 +1012,10 @@ File chiave: `preventivo/actions.ts`, `checkout/actions.ts`,
 - [x] Tabella comparativa: riga «Tempo da investire» (18/07)
 - [ ] SMS Twilio / WhatsApp Business
 - [x] Video benvenuto Lorenzo: MP4 web + VTT multilinea + player tracks +
-      VideoObject (27/07) — uncensored tenuto; soft futura in §★★ VIDEO
+      VideoObject (27/07) — **censored** in sito; VTT soft allineati
 - [ ] Video Come funziona (bozze in `bozza video/`, fuori git) + attrice
-- [ ] Check costi / vetrina con Lorenzo: **strategia 22/07** = 290+490 in
-      pubblico, 790 fuori vetrina, complesso → preventivo/add-on (vedi
-      §★★ STRATEGIA PRICING); confermare e poi allineare CMS + bibbia
+- [x] Check costi / vetrina con Lorenzo (27/07): 290+490+su misura; 790 fuori;
+      +60 off; codice + bibbia allineati — resta sync CMS prod via script
 - [ ] Test AI XML su pratica reale
 - [ ] Traduzioni + legal go-live
 - [ ] Cross-browser QA

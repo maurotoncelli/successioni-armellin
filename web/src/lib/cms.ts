@@ -67,8 +67,13 @@ function mapFaq(row: FaqRow): Faq {
   };
 }
 
+/** Pacchetti in vetrina pubblica (Zero Stress / 790 fuori listino). */
+function publicFixturePackages(): Package[] {
+  return fixturePackages.filter((p) => p.key !== "ZERO_STRESS");
+}
+
 async function fetchPackagesIt(): Promise<Package[]> {
-  if (!isSupabaseConfigured) return fixturePackages;
+  if (!isSupabaseConfigured) return publicFixturePackages();
   try {
     const { data, error } = await getPublicClient()
       .from("packages")
@@ -76,11 +81,11 @@ async function fetchPackagesIt(): Promise<Package[]> {
       .eq("is_active", true)
       .order("sort_order", { ascending: true });
     if (error) throw error;
-    if (!data || data.length === 0) return fixturePackages;
+    if (!data || data.length === 0) return publicFixturePackages();
     return data.map(mapPackage);
   } catch (err) {
     console.error("[cms] getPackages fallback su fixture:", err);
-    return fixturePackages;
+    return publicFixturePackages();
   }
 }
 
@@ -287,7 +292,8 @@ export async function getPackagesAdmin(): Promise<PackageRow[]> {
       sla_days: p.slaDays,
       badge: p.badge,
       sort_order: p.sortOrder,
-      is_active: true,
+      // Allineato alla vetrina: Estesa fuori listino pubblico.
+      is_active: p.key !== "ZERO_STRESS",
       updated_at: new Date().toISOString(),
     }));
   }

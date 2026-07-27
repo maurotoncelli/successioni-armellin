@@ -785,7 +785,7 @@
       "key": "su_misura_text",
       "locale": "tr",
       "is_published": true,
-      "value": "8'den fazla gayrimenkul, tarım arazisi, işletme veya şirket payı mı? Her durum farklıdır: sürprizsiz özel ön teklif hazırlarız."
+      "value": "3'den fazla gayrimenkul, tarım arazisi, işletme veya şirket payı mı? Her durum farklıdır: sürprizsiz özel ön teklif hazırlarız."
     },
     {
       "collection": "tariffe",
@@ -905,7 +905,7 @@
       "key": "su_misura_body",
       "locale": "tr",
       "is_published": true,
-      "value": "8'den fazla gayrimenkul, tarım arazisi, işletme veya şirket payı mı? Karmaşık durumlar standart pakete sığmaz: dosyanızı inceler ve sürprizsiz özel ön teklif hazırlarız."
+      "value": "3'den fazla gayrimenkul, tarım arazisi, işletme veya şirket payı mı? Karmaşık durumlar standart pakete sığmaz: dosyanızı inceler ve sürprizsiz özel ön teklif hazırlarız."
     },
     {
       "collection": "pacchetti",

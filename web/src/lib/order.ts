@@ -33,7 +33,7 @@ export type ComputedOrder = {
   total: number;
 };
 
-const INCLUDED_PROPERTIES = 3; // oltre il 3o immobile scatta il sovrapprezzo (@01)
+const INCLUDED_PROPERTIES = 3; // storico: oltre il 3o → surcharge se extraPropertyFee valorizzato
 
 const EXTRA_PROPERTY_LABEL_IT =
   "Immobili aggiuntivi ({extra} × {fee}€)";
@@ -51,7 +51,8 @@ export function buildOrder(
     { type: "PACKAGE", key: pkg.key, label: pkg.name, amount: pkg.price },
   ];
 
-  // Sovrapprezzo immobili eccedenti (solo se il pacchetto lo prevede)
+  // Sovrapprezzo immobili: disattivato in listino (extraPropertyFee = null).
+  // Se in futuro si riattiva dal CMS, la riga torna automaticamente.
   const count = input.realEstateCount ?? 0;
   if (pkg.extraPropertyFee && count > INCLUDED_PROPERTIES) {
     const extra = count - INCLUDED_PROPERTIES;

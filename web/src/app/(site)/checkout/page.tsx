@@ -57,7 +57,9 @@ export default async function CheckoutPage({
 
   // Due sorgenti: pratica esistente (link dal CRM) OPPURE parametri dal preventivo
   // pubblico (flusso "result-first": la pratica si crea al pagamento).
-  const paramPackage = isPackageKey(sp.pkg) ? sp.pkg : undefined;
+  // ZERO_STRESS fuori vetrina: mai acquistabile dal checkout pubblico via URL.
+  const paramPackage =
+    isPackageKey(sp.pkg) && sp.pkg !== "ZERO_STRESS" ? sp.pkg : undefined;
   const paramReCount = sp.recount ? Number.parseInt(sp.recount, 10) : null;
 
   const packageKey = (practice?.selectedPackage ??

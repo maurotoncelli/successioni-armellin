@@ -1,9 +1,10 @@
 import "server-only";
 import { getAdminClient, isAdminConfigured } from "@/lib/supabase/admin";
 import { getStripe, isStripeConfigured } from "@/lib/stripe";
-import { getPackages, getAddons } from "@/lib/cms";
+import { getPackagesAdmin, getAddons } from "@/lib/cms";
 import { buildOrder } from "@/lib/order";
-import type { PackageKey, PracticeRow } from "@/lib/supabase/types";
+import type { PackageKey, PackageRow, PracticeRow } from "@/lib/supabase/types";
+import type { Package } from "@/content/site";
 
 /*
   Logica condivisa di creazione della sessione di pagamento Stripe per UNA pratica.
@@ -64,10 +65,36 @@ export async function createCheckoutSession(
     };
   }
 
-  const [packages, addons] = await Promise.all([getPackages(), getAddons()]);
+  // Self-serve pubblico: Zero Stress fuori vetrina (quiz non lo propone più).
+  if (opts.packageKey === "ZERO_STRESS") {
+    return {
+      ok: false,
+      error:
+        "Questo pacchetto non è più in vetrina: richiedi un preventivo su misura.",
+    };
+  }
+
+  // Catalogo admin (include pacchetti disattivati) per pratiche storiche / CRM.
+  const [adminRows, addons] = await Promise.all([
+    getPackagesAdmin(),
+    getAddons(),
+  ]);
+  const packagesForOrder: Package[] = adminRows.map((r: PackageRow) => ({
+    key: r.key,
+    name: r.name,
+    tagline: r.tagline ?? "",
+    description: r.description,
+    features: Array.isArray(r.features) ? r.features : [],
+    price: Number(r.price),
+    extraPropertyFee:
+      r.extra_property_fee === null ? null : Number(r.extra_property_fee),
+    slaDays: r.sla_days === null ? null : Number(r.sla_days),
+    badge: r.badge,
+    sortOrder: r.sort_order,
+  }));
   const order = buildOrder(
     { packageKey, addonKeys: opts.addonKeys, realEstateCount: row.real_estate_count },
-    packages,
+    packagesForOrder,
     addons,
   );
   if (!order || order.total <= 0) {

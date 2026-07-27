@@ -151,7 +151,7 @@ export const legalDocsSq: Record<LegalSlug, LegalDoc> = {
         type: "ul",
         items: [
           "Përjashtohen nga paketa, përveç marrëveshjes së ndryshme, shërbimet që nuk janë shprehur (p.sh. kontencioz, praktika noteriale, këshillime fiskale komplekse, raste jo lineare). Aktivitetet shtesë parashikohen veç e veç.",
-          "Preventiv i personalizuar (raste komplekse): për praktikat që për natyrë ose kompleksitet tejkalojnë paketat standarde (p.sh. shumë pasuri të paluajtshme, toka/parcele bujqësore, kuota shoqërore, trashëgimi me testamente, trashëgimtarë jashtë vendit, rikuperim dokumentesh), çmimi përcaktohet me preventiv individual të komunikuar para blerjes.",
+          "Preventiv i personalizuar (raste komplekse): për praktikat që tejkalojnë paketat me çmim fiks (p.sh. më shumë se tre pasuri, toka/parcele bujqësore, kuota shoqërore ose pasuri të tjera jo standarde, rikuperim dokumentesh përtej kapacitetit të paketës), çmimi përcaktohet me preventiv individual të komunikuar para blerjes.",
           "Paketa e propozuar pas pyetësorit online është orientuese: pas verifikimit të dokumentacionit mund të aplikohet procedura e modifikimit dhe barazimit (neni 5).",
           "Verifikim paraprak i mungesës së detyrimit: kur nga të dhënat e dhëna del se deklarata nuk është e detyrueshme me ligj, profesionisti e sinjalizon klientit; vlerësimi përfundimtar kërkon shqyrtimin e rastit konkret.",
         ],
