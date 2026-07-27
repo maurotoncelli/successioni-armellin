@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { BackLink } from "@/components/site/back-link";
+import { HeroLoopVideo } from "@/components/site/hero-loop-video";
 import { tObj } from "@/lib/locale";
 import { CHROME_UI_IT } from "@/lib/site-ui-labels";
 
@@ -11,6 +12,7 @@ export async function PageHero({
   back,
   backLabel,
   image,
+  video,
 }: {
   eyebrow?: string;
   title: string;
@@ -24,25 +26,42 @@ export async function PageHero({
     /** object-position CSS, es. "70% center" */
     position?: string;
   };
+  /** Se presente: loop muted (ha priorità sull'immagine statica come media). */
+  video?: {
+    src: string;
+    poster: string;
+    /** object-position CSS per tenere il volto in frame */
+    position?: string;
+  };
 }) {
   const chrome = back
     ? await tObj("site_ui", "chrome_ui", CHROME_UI_IT)
     : null;
 
-  if (image) {
+  if (video || image) {
+    const position = video?.position ?? image?.position ?? "center 36%";
     return (
-      <section className="relative flex min-h-[280px] items-center overflow-hidden bg-primary text-white sm:min-h-[340px] lg:min-h-[400px]">
-        <Image
-          src={image.src}
-          alt={image.alt}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-          style={{ objectPosition: image.position ?? "70% center" }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 via-45% to-primary/25" />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/50 via-transparent to-transparent" />
+      <section className="relative flex min-h-[320px] items-center overflow-hidden bg-primary text-white sm:min-h-[400px] lg:min-h-[460px]">
+        {video ? (
+          <HeroLoopVideo
+            src={video.src}
+            poster={video.poster}
+            objectPosition={position}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        ) : image ? (
+          <Image
+            src={image.src}
+            alt={image.alt}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+            style={{ objectPosition: position }}
+          />
+        ) : null}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 via-45% to-primary/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/45 via-transparent to-transparent" />
         <Container className="relative py-10 sm:py-14 lg:py-16">
           {back && (
             <div className="mb-4 sm:mb-6">

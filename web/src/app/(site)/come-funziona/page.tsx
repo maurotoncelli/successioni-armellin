@@ -72,7 +72,7 @@ export default async function ComeFunzionaPage() {
         image={{
           src: "/images/come-funziona-hero.jpg",
           alt: "Geom. Lorenzo Armellin al lavoro sulla pratica di successione",
-          position: "68% center",
+          position: "center 34%",
         }}
       />
 

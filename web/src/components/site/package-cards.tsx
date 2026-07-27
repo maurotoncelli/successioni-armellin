@@ -13,7 +13,9 @@ export async function PackageCards() {
     "sla_line",
     "Invio entro {n} giorni lavorativi dai documenti completi",
   );
-  const ctaChoose = await t("pacchetti", "cta_choose", "Scegli {name}");
+  // CTA onesta: porta al quiz preventivo, non al pagamento.
+  // `.replace("{name}")` resta per compatibilità con eventuali valori CMS vecchi.
+  const ctaChoose = await t("pacchetti", "cta_choose", "Calcola il tuo preventivo");
   const customPriceNote = await t(
     "pacchetti",
     "su_misura_price_note",

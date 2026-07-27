@@ -3118,7 +3118,7 @@
       "key": "cta_choose",
       "locale": "ru",
       "is_published": true,
-      "value": "Выбрать {name}"
+      "value": "Рассчитать смету"
     },
     {
       "collection": "pacchetti",

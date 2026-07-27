@@ -3132,7 +3132,7 @@
       "key": "cta_choose",
       "locale": "it",
       "is_published": true,
-      "value": "Scegli {name}"
+      "value": "Calcola il tuo preventivo"
     },
     {
       "collection": "pacchetti",

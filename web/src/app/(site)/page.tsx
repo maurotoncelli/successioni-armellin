@@ -20,6 +20,7 @@ import { Reviews } from "@/components/site/reviews";
 import { CtaBand } from "@/components/site/cta-band";
 import { WelcomeVideo } from "@/components/site/welcome-video";
 import { WelcomeVideoJsonLd } from "@/components/site/welcome-video-jsonld";
+import { HeroLoopVideo } from "@/components/site/hero-loop-video";
 import { getWelcomeVideoLabels } from "@/lib/welcome-video-labels";
 import {
   getWelcomeCaptionTracks,
@@ -27,6 +28,7 @@ import {
   WELCOME_VIDEO_POSTER,
   WELCOME_VIDEO_SRC,
 } from "@/lib/welcome-video";
+import { HERO_LOOP_POSTER, HERO_LOOP_SRC } from "@/lib/hero-loop";
 import { siteBaseUrl } from "@/lib/seo-locale";
 
 import { cn } from "@/lib/utils";
@@ -81,24 +83,16 @@ export default async function HomePage() {
           siteUrl={siteBaseUrl()}
         />
       ) : null}
-      {/* Hero: foto di Lorenzo (placeholder) di sfondo, testo sovrapposto.
-          Il soggetto e spostato a destra e il gradiente navy da sinistra
-          garantisce la leggibilita del testo (titolo bianco). */}
-      <section className="relative flex min-h-[380px] items-center overflow-hidden bg-primary text-white sm:min-h-[520px] lg:min-h-[600px]">
-        <Image
-          src="/images/lorenzo-hero.jpg"
-          alt="Geom. Lorenzo Armellin al lavoro sulla pratica di successione"
-          fill
-          priority
-          sizes="100vw"
-          // Ritratto #3: Lorenzo a destra sullo schermo; su mobile inseguiamo
-          // il volto (~60%), su desktop lasciamo più aria a sinistra per il testo.
-          className="object-cover object-[58%_center] sm:object-[62%_center] lg:object-[68%_center]"
+      {/* Hero: loop muted di Lorenzo al lavoro + scrim navy a sinistra per il testo. */}
+      <section className="relative flex min-h-[420px] items-center overflow-hidden bg-primary text-white sm:min-h-[520px] lg:min-h-[600px]">
+        <HeroLoopVideo
+          src={HERO_LOOP_SRC}
+          poster={HERO_LOOP_POSTER}
+          objectPosition="center 34%"
+          className="absolute inset-0 h-full w-full object-cover"
         />
-        {/* Scrim per la leggibilita del testo: forte solo a sinistra, la foto
-            resta pulita sulla destra. */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/75 via-42% to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 via-42% to-primary/15" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/45 via-transparent to-transparent" />
         <div className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-accent/10 blur-3xl" />
         <Container className="relative py-12 sm:py-16 lg:py-20">
           <div className="max-w-2xl">

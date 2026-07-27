@@ -3118,7 +3118,7 @@
       "key": "cta_choose",
       "locale": "ar",
       "is_published": true,
-      "value": "اختر {name}"
+      "value": "احسب عرضك"
     },
     {
       "collection": "pacchetti",

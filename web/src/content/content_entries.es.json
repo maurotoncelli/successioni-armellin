@@ -3118,7 +3118,7 @@
       "key": "cta_choose",
       "locale": "es",
       "is_published": true,
-      "value": "Elige {name}"
+      "value": "Calcula tu presupuesto"
     },
     {
       "collection": "pacchetti",

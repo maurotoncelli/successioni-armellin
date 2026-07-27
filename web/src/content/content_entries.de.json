@@ -3118,7 +3118,7 @@
       "key": "cta_choose",
       "locale": "de",
       "is_published": true,
-      "value": "{name} wählen"
+      "value": "Kostenvoranschlag berechnen"
     },
     {
       "collection": "pacchetti",

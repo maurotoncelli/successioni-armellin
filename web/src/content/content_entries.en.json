@@ -3132,7 +3132,7 @@
       "key": "cta_choose",
       "locale": "en",
       "is_published": true,
-      "value": "Choose {name}"
+      "value": "Calculate your quote"
     },
     {
       "collection": "pacchetti",
