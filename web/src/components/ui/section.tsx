@@ -27,7 +27,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={cn("py-10 sm:py-16 lg:py-20", toneClasses[tone], className)}
+      className={cn("py-8 sm:py-16 lg:py-20", toneClasses[tone], className)}
     >
       <Container className={containerClassName}>{children}</Container>
     </section>
@@ -66,7 +66,7 @@ export function SectionHeading({
       )}
       <h2
         className={cn(
-          "text-3xl sm:text-4xl",
+          "text-2xl sm:text-4xl",
           invert && "text-white",
         )}
       >
@@ -75,7 +75,7 @@ export function SectionHeading({
       {intro && (
         <p
           className={cn(
-            "mt-4 text-lg",
+            "mt-3 text-base sm:mt-4 sm:text-lg",
             invert ? "text-white/80" : "text-text-muted",
           )}
         >

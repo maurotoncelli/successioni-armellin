@@ -23,16 +23,18 @@ export async function TrustBar() {
 
   return (
     <div className="border-y border-primary/10 bg-sand text-primary">
-      <ul className="mx-auto grid w-full max-w-6xl grid-cols-2 gap-x-4 gap-y-5 px-5 py-6 sm:grid-cols-3 sm:gap-x-6 sm:px-8 sm:py-8 lg:grid-cols-6 lg:gap-y-0">
+      {/* Mobile compatto: righe orizzontali icona+testo su 2 colonne strette;
+          da sm si torna al layout verticale centrato (3 col, poi 6 a lg). */}
+      <ul className="mx-auto grid w-full max-w-6xl grid-cols-2 gap-x-3 gap-y-2.5 px-4 py-4 sm:grid-cols-3 sm:gap-x-6 sm:gap-y-5 sm:px-8 sm:py-8 lg:grid-cols-6 lg:gap-y-0">
         {items.map((item, i) => {
           const Icon = trustIcons[i] ?? IconTrustAlbo;
           return (
             <li
               key={item}
-              className="flex flex-col items-center gap-2 px-1 text-center"
+              className="flex items-center gap-2 text-left sm:flex-col sm:items-center sm:gap-2 sm:px-1 sm:text-center"
             >
-              <Icon className="h-6 w-6 text-accent sm:h-7 sm:w-7" />
-              <span className="text-xs font-medium leading-snug text-primary sm:text-sm">
+              <Icon className="h-4.5 w-4.5 shrink-0 text-accent sm:h-7 sm:w-7" />
+              <span className="text-[11px] font-medium leading-tight text-primary sm:text-sm sm:leading-snug">
                 {item}
               </span>
             </li>

@@ -84,7 +84,7 @@ export default async function HomePage() {
       {/* Hero: foto di Lorenzo (placeholder) di sfondo, testo sovrapposto.
           Il soggetto e spostato a destra e il gradiente navy da sinistra
           garantisce la leggibilita del testo (titolo bianco). */}
-      <section className="relative flex min-h-[420px] items-center overflow-hidden bg-primary text-white sm:min-h-[520px] lg:min-h-[600px]">
+      <section className="relative flex min-h-[380px] items-center overflow-hidden bg-primary text-white sm:min-h-[520px] lg:min-h-[600px]">
         <Image
           src="/images/lorenzo-hero.png"
           alt="Geom. Lorenzo Armellin nel suo studio (immagine indicativa)"
@@ -136,7 +136,7 @@ export default async function HomePage() {
       {/* Cos'e' l'app: sezione richiesta dalla verifica branding OAuth di
           Google (la home deve spiegare in modo esplicito e ben visibile scopo
           dell'applicazione, uso dei dati Google e link alla privacy). */}
-      <Section className="!py-10 sm:!py-12">
+      <Section className="!py-8 sm:!py-12">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-2xl sm:text-3xl">
             {await t("home", "app_scopo_title")}
@@ -169,18 +169,27 @@ export default async function HomePage() {
           title={await t("home", "problema_title")}
           intro={await t("home", "problema_intro")}
         />
-        <div className="mt-8 grid gap-6 sm:mt-12 md:grid-cols-3">
+        {/* Mobile compatto: card orizzontali (icona a sinistra); da md layout
+            verticale centrato a 3 colonne. */}
+        <div className="mt-6 grid gap-3 sm:mt-12 sm:gap-6 md:grid-cols-3">
           {vantaggi.map((v, i) => {
             const Icon = vantaggiIcons[i % vantaggiIcons.length];
             return (
-              <Card key={v.titolo} className="text-center">
-                <div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-sand text-accent">
-                  <Icon className="h-6 w-6" />
+              <Card
+                key={v.titolo}
+                className="flex items-start gap-3.5 p-4 text-left sm:p-6 md:block md:text-center"
+              >
+                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-sand text-accent md:mx-auto md:h-12 md:w-12">
+                  <Icon className="h-5 w-5 md:h-6 md:w-6" />
                 </div>
-                <h3 className="mt-4 text-xl">{v.titolo}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-text-muted">
-                  {v.testo}
-                </p>
+                <div className="min-w-0">
+                  <h3 className="text-lg leading-snug md:mt-4 md:text-xl">
+                    {v.titolo}
+                  </h3>
+                  <p className="mt-1 text-sm leading-relaxed text-text-muted md:mt-2">
+                    {v.testo}
+                  </p>
+                </div>
               </Card>
             );
           })}
@@ -193,7 +202,7 @@ export default async function HomePage() {
           eyebrow={await t("home", "come_funziona_eyebrow", "Semplice")}
           title={await t("home", "come_funziona_title")}
         />
-        <ol className="relative mx-auto mt-8 grid max-w-5xl gap-10 sm:mt-12 md:grid-cols-3 md:gap-0">
+        <ol className="relative mx-auto mt-6 grid max-w-5xl gap-7 sm:mt-12 sm:gap-10 md:grid-cols-3 md:gap-0">
           <div
             aria-hidden
             className="pointer-events-none absolute top-5 right-[16.5%] left-[16.5%] hidden h-px bg-gradient-to-r from-primary/20 via-accent/50 to-primary/20 md:block"
@@ -205,7 +214,7 @@ export default async function HomePage() {
                 {!isLast && (
                   <span
                     aria-hidden
-                    className="absolute top-12 bottom-[-2.5rem] left-5 w-px bg-gradient-to-b from-accent/40 to-primary/15 md:hidden"
+                    className="absolute top-12 bottom-[-1.75rem] left-5 w-px bg-gradient-to-b from-accent/40 to-primary/15 md:hidden"
                   />
                 )}
                 <div className="flex items-start gap-4 md:flex-col">
@@ -224,8 +233,10 @@ export default async function HomePage() {
                         />
                       </div>
                     ) : null}
-                    <h3 className="mt-4 text-xl leading-snug">{step.titolo}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-text-muted">
+                    <h3 className="mt-3 text-lg leading-snug sm:mt-4 sm:text-xl">
+                      {step.titolo}
+                    </h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-text-muted sm:mt-2">
                       {step.testo}
                     </p>
                   </div>
@@ -246,7 +257,7 @@ export default async function HomePage() {
           title={await t("home", "tariffe_title")}
           intro={await t("home", "tariffe_intro")}
         />
-        <div className="mt-8 sm:mt-12">
+        <div className="mt-6 sm:mt-12">
           <PackageCards />
         </div>
         <div className="mt-6 text-center sm:mt-10">
@@ -263,7 +274,7 @@ export default async function HomePage() {
           title={await t("home", "faidate_title")}
           intro={await t("home", "faidate_intro")}
         />
-        <div className="mx-auto mt-8 max-w-4xl sm:mt-12">
+        <div className="mx-auto mt-6 max-w-4xl sm:mt-12">
           <div className="relative grid grid-cols-[1.2fr_1fr_1fr] overflow-hidden rounded-2xl border border-primary/10 bg-bg shadow-md sm:grid-cols-[1.5fr_1fr_1fr]">
             {/* Intestazioni: solo etichette colonna, senza X/logo (i segni restano nelle righe) */}
             <div className="flex items-end border-b border-primary/10 bg-bg-muted/40 p-4 sm:p-5">
@@ -288,7 +299,7 @@ export default async function HomePage() {
               <div key={row.voce} className="contents">
                 <div
                   className={cn(
-                    "flex items-center border-t border-primary/[0.06] p-4 text-sm font-medium text-primary sm:p-5",
+                    "flex items-center border-t border-primary/[0.06] p-3 text-sm font-medium text-primary sm:p-5",
                     i % 2 === 1 && "bg-primary/[0.025]",
                   )}
                 >
@@ -296,7 +307,7 @@ export default async function HomePage() {
                 </div>
                 <div
                   className={cn(
-                    "flex items-center justify-center gap-2 border-t border-primary/[0.06] p-4 text-center text-sm text-text-muted sm:p-5",
+                    "flex items-center justify-center gap-1.5 border-t border-primary/[0.06] p-3 text-center text-sm text-text-muted sm:gap-2 sm:p-5",
                     i % 2 === 1 && "bg-primary/[0.025]",
                   )}
                 >
@@ -305,7 +316,7 @@ export default async function HomePage() {
                 </div>
                 <div
                   className={cn(
-                    "flex items-center justify-center gap-2 border-t border-accent/15 bg-sand p-4 text-center text-sm font-semibold text-primary sm:p-5",
+                    "flex items-center justify-center gap-1.5 border-t border-accent/15 bg-sand p-3 text-center text-sm font-semibold text-primary sm:gap-2 sm:p-5",
                     i % 2 === 1 && "brightness-[0.985]",
                   )}
                 >
@@ -334,7 +345,7 @@ export default async function HomePage() {
           title={await t("home", "recensioni_title")}
           intro={await t("home", "recensioni_intro")}
         />
-        <div className="mt-8 sm:mt-12">
+        <div className="mt-6 sm:mt-12">
           <Reviews />
         </div>
       </Section>
@@ -352,13 +363,13 @@ export default async function HomePage() {
             />
           </div>
           <div>
-            <h2 className="text-3xl sm:text-4xl">
+            <h2 className="text-2xl sm:text-4xl">
               {await t("home", "chisono_title")}
             </h2>
-            <p className="mt-4 text-lg leading-relaxed text-text-muted">
+            <p className="mt-3 text-base leading-relaxed text-text-muted sm:mt-4 sm:text-lg">
               {await t("home", "chisono_estratto")}
             </p>
-            <div className="mt-8">
+            <div className="mt-5 sm:mt-8">
               <ButtonLink href={chisonoCta.href} variant="secondary">
                 {chisonoCta.label}
               </ButtonLink>

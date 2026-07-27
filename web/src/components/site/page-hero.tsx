@@ -22,7 +22,7 @@ export async function PageHero({
 
   return (
     <div className="bg-primary text-white">
-      <Container className="py-10 sm:py-14 lg:py-20">
+      <Container className="py-8 sm:py-14 lg:py-20">
         {back && (
           <div className="mb-4 sm:mb-6">
             <BackLink

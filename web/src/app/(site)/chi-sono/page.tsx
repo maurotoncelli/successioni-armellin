@@ -116,14 +116,24 @@ export default async function ChiSonoPage() {
 
       <Section tone="sand">
         <SectionHeading title={await t("chi_siamo", "credenziali_title")} />
-        <div className="mx-auto mt-8 grid max-w-3xl gap-4 sm:mt-10 sm:grid-cols-3">
+        {/* Mobile compatto: righe orizzontali icona+testo; da sm card verticali. */}
+        <div className="mx-auto mt-6 grid max-w-3xl gap-2.5 sm:mt-10 sm:grid-cols-3 sm:gap-4">
           {credenziali.map((c, i) => {
             const Icon = credenzialiIcons[i] ?? IconAlbo;
             return (
-              <Card key={c.voce} className="text-center">
-                <Icon className="mx-auto h-8 w-8 text-accent" />
-                <h3 className="mt-3 text-base">{c.voce}</h3>
-                <p className="mt-1 text-sm text-text-muted">{c.dettaglio}</p>
+              <Card
+                key={c.voce}
+                className="flex items-center gap-3 p-3.5 text-left sm:block sm:p-6 sm:text-center"
+              >
+                <Icon className="h-6 w-6 shrink-0 text-accent sm:mx-auto sm:h-8 sm:w-8" />
+                <div className="min-w-0">
+                  <h3 className="text-sm leading-snug sm:mt-3 sm:text-base">
+                    {c.voce}
+                  </h3>
+                  <p className="mt-0.5 text-xs text-text-muted sm:mt-1 sm:text-sm">
+                    {c.dettaglio}
+                  </p>
+                </div>
               </Card>
             );
           })}

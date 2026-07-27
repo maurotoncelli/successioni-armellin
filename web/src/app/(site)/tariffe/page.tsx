@@ -69,37 +69,46 @@ export default async function TariffePage() {
 
       <Section>
         <PackageCards />
-        <p className="mt-8 text-center text-sm text-text-muted">
+        <p className="mt-5 text-center text-sm text-text-muted sm:mt-8">
           {await t("tariffe", "rate_text")}
         </p>
       </Section>
 
       <Section tone="muted">
-        <div className="grid gap-6 md:grid-cols-2">
-          <Card className="text-center">
-            <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-accent/10 text-accent">
-              <Landmark className="h-7 w-7" />
+        {/* Mobile compatto: card orizzontali icona+testo; da sm verticali centrate. */}
+        <div className="grid gap-3 sm:gap-6 md:grid-cols-2">
+          <Card className="flex items-start gap-3.5 p-4 text-left sm:block sm:p-6 sm:text-center">
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-accent/10 text-accent sm:mx-auto sm:h-14 sm:w-14">
+              <Landmark className="h-5 w-5 sm:h-7 sm:w-7" />
             </span>
-            <h3 className="mt-5 text-xl font-medium">{await t("tariffe", "box_trasparenza_title")}</h3>
-            <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-text-muted">
-              {await t("tariffe", "box_trasparenza_body")}
-            </p>
+            <div className="min-w-0">
+              <h3 className="text-lg font-medium sm:mt-5 sm:text-xl">
+                {await t("tariffe", "box_trasparenza_title")}
+              </h3>
+              <p className="mt-1 max-w-sm text-sm leading-relaxed text-text-muted sm:mx-auto sm:mt-3">
+                {await t("tariffe", "box_trasparenza_body")}
+              </p>
+            </div>
           </Card>
-          <Card className="text-center">
-            <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-accent/10 text-accent">
-              <Timer className="h-7 w-7" />
+          <Card className="flex items-start gap-3.5 p-4 text-left sm:block sm:p-6 sm:text-center">
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-accent/10 text-accent sm:mx-auto sm:h-14 sm:w-14">
+              <Timer className="h-5 w-5 sm:h-7 sm:w-7" />
             </span>
-            <h3 className="mt-5 text-xl font-medium">{await t("tariffe", "sla_title")}</h3>
-            <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-text-muted">
-              {await t("tariffe", "sla_note")}
-            </p>
+            <div className="min-w-0">
+              <h3 className="text-lg font-medium sm:mt-5 sm:text-xl">
+                {await t("tariffe", "sla_title")}
+              </h3>
+              <p className="mt-1 max-w-sm text-sm leading-relaxed text-text-muted sm:mx-auto sm:mt-3">
+                {await t("tariffe", "sla_note")}
+              </p>
+            </div>
           </Card>
         </div>
       </Section>
 
       <Section>
         <SectionHeading title={await t("tariffe", "deliverable_title")} />
-        <ul className="mx-auto mt-8 grid w-fit max-w-2xl gap-y-5 sm:mt-10">
+        <ul className="mx-auto mt-6 grid w-fit max-w-2xl gap-y-3.5 sm:mt-10 sm:gap-y-5">
           {deliverable.map((item, index) => {
             const Icon = DELIVERABLE_ICONS[index] ?? FileText;
             return (
@@ -132,29 +141,36 @@ export default async function TariffePage() {
       )}
 
       <Section>
-        <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
-          <Card className="bg-bg-muted text-center">
-            <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-primary/10 text-primary">
-              <FolderOpen className="h-6 w-6" />
+        {/* Mobile compatto: card orizzontali icona+testo; da sm verticali centrate. */}
+        <div className="mx-auto grid max-w-4xl gap-3 sm:gap-6 md:grid-cols-2">
+          <Card className="flex items-start gap-3.5 bg-bg-muted p-4 text-left sm:block sm:p-6 sm:text-center">
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary/10 text-primary sm:mx-auto sm:h-14 sm:w-14">
+              <FolderOpen className="h-5 w-5 sm:h-6 sm:w-6" />
             </span>
-            <h3 className="mt-5 text-xl font-medium">{await t("tariffe", "ti_serve_title")}</h3>
-            <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-text-muted">
-              {await t("tariffe", "ti_serve_body")}
-            </p>
+            <div className="min-w-0">
+              <h3 className="text-lg font-medium sm:mt-5 sm:text-xl">
+                {await t("tariffe", "ti_serve_title")}
+              </h3>
+              <p className="mt-1 max-w-sm text-sm leading-relaxed text-text-muted sm:mx-auto sm:mt-3">
+                {await t("tariffe", "ti_serve_body")}
+              </p>
+            </div>
           </Card>
-          <Card className="bg-bg-muted text-center">
-            <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-primary/10 text-primary">
-              <Settings2 className="h-6 w-6" />
+          <Card className="flex items-start gap-3.5 bg-bg-muted p-4 text-left sm:block sm:p-6 sm:text-center">
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary/10 text-primary sm:mx-auto sm:h-14 sm:w-14">
+              <Settings2 className="h-5 w-5 sm:h-6 sm:w-6" />
             </span>
-            <h3 className="mt-5 text-xl font-medium">
-              {await t("pacchetti", "su_misura_title", "Preventivo personalizzato")}
-            </h3>
-            <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-text-muted">
-              {await t("tariffe", "su_misura_text")}
-            </p>
+            <div className="min-w-0">
+              <h3 className="text-lg font-medium sm:mt-5 sm:text-xl">
+                {await t("pacchetti", "su_misura_title", "Preventivo personalizzato")}
+              </h3>
+              <p className="mt-1 max-w-sm text-sm leading-relaxed text-text-muted sm:mx-auto sm:mt-3">
+                {await t("tariffe", "su_misura_text")}
+              </p>
+            </div>
           </Card>
         </div>
-        <p className="mt-8 text-center text-sm text-text-muted sm:mt-12">
+        <p className="mt-6 text-center text-sm text-text-muted sm:mt-12">
           {await t("tariffe", "microtrust")}
         </p>
       </Section>
