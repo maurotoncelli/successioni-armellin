@@ -2,19 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getRequestLocale, t, tCta, tList } from "@/lib/locale";
 import Image from "next/image";
-import {
-  ArrowRight,
-  House,
-  ShieldCheck,
-  HeartHandshake,
-  Check,
-  X,
-} from "lucide-react";
+import { ArrowRight, Check, X } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { ButtonLink } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { TrustBar } from "@/components/site/trust-bar";
+import { VantaggiCards } from "@/components/site/vantaggi-cards";
 import { PackageCards } from "@/components/site/package-cards";
 import { Reviews } from "@/components/site/reviews";
 import { CtaBand } from "@/components/site/cta-band";
@@ -43,8 +36,6 @@ type HomeStep = {
   testo: string;
   immagine?: { src: string; alt: string };
 };
-
-const vantaggiIcons = [House, ShieldCheck, HeartHandshake];
 
 /** absolute: meta_title include già il brand — evita doppio template. */
 export async function generateMetadata(): Promise<Metadata> {
@@ -101,17 +92,11 @@ export default async function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-t from-primary/45 via-transparent to-transparent" />
         <div className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-accent/10 blur-3xl" />
         <Container className="relative py-12 sm:py-16 lg:py-20">
+          {/* Hero pulita: solo titolo + CTA (badge e sottotitolo spostati sotto). */}
           <div className="max-w-2xl">
-            <p className="flex items-center gap-3 text-sm font-medium uppercase tracking-[0.18em] text-accent">
-              <span className="h-px w-8 bg-accent/60" />
-              {await t("home", "hero_specialization_badge")}
-            </p>
-            <h1 className="mt-4 font-display text-3xl text-white drop-shadow-sm sm:mt-5 sm:text-5xl lg:text-6xl">
+            <h1 className="font-display text-3xl text-white drop-shadow-sm sm:text-5xl lg:text-6xl">
               {await t("home", "hero_title")}
             </h1>
-            <p className="mt-4 max-w-xl text-base leading-relaxed text-white/90 sm:mt-6 sm:text-lg">
-              {await t("home", "hero_subtitle")}
-            </p>
             <div className="mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row">
               <ButtonLink href={heroCtaPrimary.href} variant="primary" size="lg">
                 {heroCtaPrimary.label}
@@ -132,34 +117,11 @@ export default async function HomePage() {
 
       <TrustBar />
 
-      {/* Cos'e' l'app: sezione richiesta dalla verifica branding OAuth di
-          Google (la home deve spiegare in modo esplicito e ben visibile scopo
-          dell'applicazione, uso dei dati Google e link alla privacy). */}
+      {/* Lead: il sottotitolo tolto dall'hero — chi è Lorenzo e la promessa. */}
       <Section className="!py-8 sm:!py-12">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-2xl sm:text-3xl">
-            {await t("home", "app_scopo_title")}
-          </h2>
-          <p className="mt-4 text-sm leading-relaxed text-text-muted sm:text-base">
-            {await t("home", "app_scopo_body")}
-          </p>
-          <p className="mt-3 text-sm text-text-muted">
-            {await t("home", "app_scopo_legal_prefix")}{" "}
-            <Link
-              href="/privacy"
-              className="font-medium text-accent underline hover:text-accent-dark"
-            >
-              {await t("home", "app_scopo_privacy_label")}
-            </Link>
-            {" · "}
-            <Link
-              href="/termini-condizioni"
-              className="font-medium text-accent underline hover:text-accent-dark"
-            >
-              {await t("home", "app_scopo_terms_label")}
-            </Link>
-          </p>
-        </div>
+        <p className="mx-auto max-w-3xl text-center text-base leading-relaxed text-primary/85 sm:text-lg">
+          {await t("home", "hero_subtitle")}
+        </p>
       </Section>
 
       {/* Problema / Soluzione — tone muted per staccare dallo scopo app (bianco) */}
@@ -168,31 +130,8 @@ export default async function HomePage() {
           title={await t("home", "problema_title")}
           intro={await t("home", "problema_intro")}
         />
-        {/* Mobile compatto: card orizzontali (icona a sinistra); da md layout
-            verticale centrato a 3 colonne. */}
-        <div className="mt-6 grid gap-3 sm:mt-12 sm:gap-6 md:grid-cols-3">
-          {vantaggi.map((v, i) => {
-            const Icon = vantaggiIcons[i % vantaggiIcons.length];
-            return (
-              <Card
-                key={v.titolo}
-                className="flex items-start gap-3.5 p-4 text-left sm:p-6 md:block md:text-center"
-              >
-                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-sand text-accent md:mx-auto md:h-12 md:w-12">
-                  <Icon className="h-5 w-5 md:h-6 md:w-6" />
-                </div>
-                <div className="min-w-0">
-                  <h3 className="text-lg leading-snug md:mt-4 md:text-xl">
-                    {v.titolo}
-                  </h3>
-                  <p className="mt-1 text-sm leading-relaxed text-text-muted md:mt-2">
-                    {v.testo}
-                  </p>
-                </div>
-              </Card>
-            );
-          })}
-        </div>
+        {/* Mobile: accordion compatto (testo su tap); da md card a 3 colonne. */}
+        <VantaggiCards items={vantaggi} />
       </Section>
 
       {/* Come funziona — sequenza collegata + foto data-driven. */}
@@ -399,6 +338,37 @@ export default async function HomePage() {
             {faqCta.label}
             <ArrowRight className="h-4 w-4 rtl:rotate-180" />
           </Link>
+        </div>
+      </Section>
+
+      {/* Cos'e' l'app: sezione richiesta dalla verifica branding OAuth di
+          Google (la home deve spiegare in modo esplicito scopo
+          dell'applicazione, uso dei dati Google e link alla privacy).
+          Spostata in fondo per non appesantire l'above-the-fold. */}
+      <Section className="!py-8 sm:!py-12">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-2xl sm:text-3xl">
+            {await t("home", "app_scopo_title")}
+          </h2>
+          <p className="mt-4 text-sm leading-relaxed text-text-muted sm:text-base">
+            {await t("home", "app_scopo_body")}
+          </p>
+          <p className="mt-3 text-sm text-text-muted">
+            {await t("home", "app_scopo_legal_prefix")}{" "}
+            <Link
+              href="/privacy"
+              className="font-medium text-accent underline hover:text-accent-dark"
+            >
+              {await t("home", "app_scopo_privacy_label")}
+            </Link>
+            {" · "}
+            <Link
+              href="/termini-condizioni"
+              className="font-medium text-accent underline hover:text-accent-dark"
+            >
+              {await t("home", "app_scopo_terms_label")}
+            </Link>
+          </p>
         </div>
       </Section>
 
