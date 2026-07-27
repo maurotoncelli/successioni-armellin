@@ -2,7 +2,7 @@ import {
   WELCOME_VIDEO_DURATION_ISO,
   WELCOME_VIDEO_POSTER,
   WELCOME_VIDEO_SRC,
-} from "@/lib/welcome-video";
+} from "@/lib/welcome-video-shared";
 
 type Props = {
   name: string;

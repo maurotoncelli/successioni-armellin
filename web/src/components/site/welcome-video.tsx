@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import {
   localeFlag,
   type WelcomeCaptionTrack,
-} from "@/lib/welcome-video";
+} from "@/lib/welcome-video-shared";
 
 export type WelcomeVideoLabels = {
   title: string;
