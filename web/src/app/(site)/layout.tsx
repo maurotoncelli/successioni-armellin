@@ -30,6 +30,9 @@ const OG_LOCALE: Record<string, string> = {
 export async function generateMetadata(): Promise<Metadata> {
   const barePath = (await headers()).get("x-pathname") || "/";
   const locale = await getRequestLocale();
+  // Modalita offline attiva: noindex, altrimenti Google indicizza la pagina
+  // "Sito in manutenzione" al posto dei contenuti veri (gia successo a luglio).
+  const offline = await getSiteOfflineState();
   const defaultTitle = await t(
     "home",
     "meta_title",
@@ -60,6 +63,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     description: defaultDescription,
     alternates: buildLocaleAlternates(barePath, locale),
+    ...(offline.enabled ? { robots: { index: false, follow: false } } : {}),
     openGraph: {
       locale: ogLocale,
       alternateLocale,
