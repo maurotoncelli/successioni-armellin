@@ -1,15 +1,21 @@
 import Link from "next/link";
-import { Mail, Phone, Check, Minus } from "lucide-react";
+import { Mail, Phone, Check, Minus, UserCheck } from "lucide-react";
 import { statusLabels } from "@/content/crm-data";
-import { getContacts, getPractices, practicesByContact } from "@/lib/crm";
+import {
+  getContacts,
+  getPractices,
+  getRegisteredContactIds,
+  practicesByContact,
+} from "@/lib/crm";
 import { CrmCard } from "@/components/crm/ui";
 
 export const dynamic = "force-dynamic";
 
 export default async function ContattiPage() {
-  const [contacts, practices] = await Promise.all([
+  const [contacts, practices, registeredIds] = await Promise.all([
     getContacts(),
     getPractices(),
+    getRegisteredContactIds(),
   ]);
   return (
     <div className="space-y-5">
@@ -38,20 +44,28 @@ export default async function ContattiPage() {
                     <p className="text-xs text-crm-muted">{c.source}</p>
                   </div>
                 </div>
-                <span
-                  className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] ${
-                    c.marketingConsent
-                      ? "bg-crm-green/15 text-crm-green"
-                      : "bg-white/5 text-crm-muted"
-                  }`}
-                >
-                  {c.marketingConsent ? (
-                    <Check className="h-3 w-3" />
-                  ) : (
-                    <Minus className="h-3 w-3" />
+                <div className="flex flex-col items-end gap-1">
+                  {registeredIds.has(c.id) && (
+                    <span className="inline-flex items-center gap-1 rounded-full bg-crm-accent/15 px-2 py-0.5 text-[11px] text-crm-accent">
+                      <UserCheck className="h-3 w-3" />
+                      Account
+                    </span>
                   )}
-                  Marketing
-                </span>
+                  <span
+                    className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] ${
+                      c.marketingConsent
+                        ? "bg-crm-green/15 text-crm-green"
+                        : "bg-white/5 text-crm-muted"
+                    }`}
+                  >
+                    {c.marketingConsent ? (
+                      <Check className="h-3 w-3" />
+                    ) : (
+                      <Minus className="h-3 w-3" />
+                    )}
+                    Marketing
+                  </span>
+                </div>
               </div>
 
               <div className="mt-3 space-y-1.5 text-sm text-crm-text2">

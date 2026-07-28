@@ -1815,6 +1815,12 @@ Non toccati (scelte deliberate): `action_owner: CLIENT` sulle pratiche checkout
 renderizzate in UI; blocco `#guida` su /tariffe non renderizzato.
 
 ### Con Lorenzo (prossimo incontro)
+- **Mini bio professionale su Chi sono** (fiducia): raccogliere risposte alle domande
+  (anno inizio lavoro, percorso geometra, cosa faceva prima, da quando successioni
+  in continuo, Entratel, incarichi pubblicabili, limiti su cosa non scrivere).
+  Poi copy breve data-driven (IT + altre lingue) accanto al ritratto + 1 riga
+  nell’estratto home. Evitare claim tipo “da sempre” se non verificabili
+  (albo Pisa dal 21/01/2022). Domande già predisposte in chat 28/07.
 - Test XML reale col modulo di controllo AdE (Desktop Telematico) su una pratica vera.
 - Garanzia "Soddisfatti o Rimborsati": condizioni ancora "da definire" su `/garanzia`.
 - DPA OpenAI da accettare nel pannello OpenAI (GDPR art. 28).

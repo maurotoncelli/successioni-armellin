@@ -179,6 +179,25 @@ export async function getContacts(): Promise<Contact[]> {
   }
 }
 
+/*
+  Contatti con un account di login attivo (profiles.contact_id valorizzato):
+  la pagina Contatti li marca "Account" per distinguerli dai semplici lead.
+*/
+export async function getRegisteredContactIds(): Promise<Set<string>> {
+  if (!isAdminConfigured) return new Set();
+  try {
+    const { data, error } = await getAdminClient()
+      .from("profiles")
+      .select("contact_id")
+      .not("contact_id", "is", null);
+    if (error) throw error;
+    return new Set((data ?? []).map((r) => r.contact_id as string));
+  } catch (err) {
+    console.error("[crm] getRegisteredContactIds:", err);
+    return new Set();
+  }
+}
+
 /* --- Derivazioni (KPI, alert, calendario) calcolate dalle pratiche --- */
 
 export function deriveKpi(practices: Practice[]) {

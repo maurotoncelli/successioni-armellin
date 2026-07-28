@@ -60,6 +60,39 @@ export async function findContactIdByPhone(
 
 export type EnsuredProfile = { role: RoleKey; contactId: string | null };
 
+/*
+  Chi si registra senza aver mai compilato quiz/checkout non avrebbe nessuna
+  riga in contacts e resterebbe invisibile nel CRM. Qui si crea l'anagrafica
+  minima con origine "Registrazione sito"; nome/telefono arriveranno poi da
+  profilo o pratiche. Gli admin non sono clienti: per loro non si crea nulla.
+*/
+async function createContactForUser(user: User): Promise<string | null> {
+  const email = (user.email ?? "").trim().toLowerCase();
+  const phone = (user.phone ?? "").trim();
+  if (!email && !phone) return null;
+  const meta = (user.user_metadata ?? {}) as Record<string, unknown>;
+  const fullName = String(meta.full_name ?? meta.name ?? "").trim();
+  const [first, ...rest] = fullName.split(/\s+/).filter(Boolean);
+  const { data, error } = await getAdminClient()
+    .from("contacts")
+    .insert({
+      first_name: first || "Cliente",
+      last_name: rest.join(" "),
+      email: email || null,
+      phone: phone ? (phone.startsWith("+") ? phone : `+${phone}`) : null,
+      source: "Registrazione sito",
+      marketing_consent: false,
+      last_activity: new Date().toISOString().slice(0, 10),
+    })
+    .select("id")
+    .single();
+  if (error) {
+    console.error("[profiles] createContactForUser:", error.message);
+    return null;
+  }
+  return data.id;
+}
+
 export async function ensureProfile(user: User): Promise<EnsuredProfile> {
   if (!isAdminConfigured) return { role: "CLIENT", contactId: null };
 
@@ -78,7 +111,8 @@ export async function ensureProfile(user: User): Promise<EnsuredProfile> {
     if (!existing.contact_id) {
       const contactId =
         (await findContactIdByEmail(email)) ??
-        (await findContactIdByPhone(user.phone));
+        (await findContactIdByPhone(user.phone)) ??
+        (wantAdmin ? null : await createContactForUser(user));
       if (contactId) updates.contact_id = contactId;
     } else if (email) {
       // L'email e' verificata (magic link/OTP): se il contatto agganciato ha
@@ -110,7 +144,8 @@ export async function ensureProfile(user: User): Promise<EnsuredProfile> {
 
   const contactId =
     (await findContactIdByEmail(email)) ??
-    (await findContactIdByPhone(user.phone));
+    (await findContactIdByPhone(user.phone)) ??
+    (wantAdmin ? null : await createContactForUser(user));
   const role: RoleKey = wantAdmin ? "ADMIN" : "CLIENT";
   await admin.from("profiles").insert({ id: user.id, contact_id: contactId, role });
   return { role, contactId };
