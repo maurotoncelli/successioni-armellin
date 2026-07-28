@@ -2426,6 +2426,20 @@
     },
     {
       "collection": "grazie",
+      "key": "soft_email_call_title",
+      "locale": "en",
+      "value": "Not sure yet, or have a question? Have a quick chat with Lorenzo, no obligation.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_whatsapp_prefill",
+      "locale": "en",
+      "value": "Hi Lorenzo, I just calculated the quote on the website and I have a few questions before proceeding.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
       "key": "soft_custom_title",
       "locale": "en",
       "is_published": true,

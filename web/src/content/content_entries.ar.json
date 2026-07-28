@@ -2412,6 +2412,20 @@
     },
     {
       "collection": "grazie",
+      "key": "soft_email_call_title",
+      "locale": "ar",
+      "value": "لست متأكدًا بعد أو لديك سؤال؟ تحدّث قليلًا مع Lorenzo، دون أي التزام.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_whatsapp_prefill",
+      "locale": "ar",
+      "value": "مرحبًا Lorenzo، حسبت للتو عرض السعر على الموقع ولديّ بعض الأسئلة قبل المتابعة.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
       "key": "soft_custom_title",
       "locale": "ar",
       "is_published": true,

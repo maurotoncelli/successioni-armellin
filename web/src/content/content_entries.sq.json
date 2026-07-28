@@ -2412,6 +2412,20 @@
     },
     {
       "collection": "grazie",
+      "key": "soft_email_call_title",
+      "locale": "sq",
+      "value": "Ende i pavendosur apo ke një pyetje? Bisedo shkurt me Lorenzon, pa asnjë detyrim.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_whatsapp_prefill",
+      "locale": "sq",
+      "value": "Përshëndetje Lorenzo, sapo llogarita preventivin në faqe dhe kam disa pyetje para se të vazhdoj.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
       "key": "soft_custom_title",
       "locale": "sq",
       "is_published": true,

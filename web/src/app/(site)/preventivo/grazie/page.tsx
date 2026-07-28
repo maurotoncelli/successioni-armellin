@@ -103,6 +103,13 @@ export default async function GraziePage({
   );
   const waBase = String(tel.cta_whatsapp || "https://wa.me/393201570567");
   const waHref = `${waBase}${waBase.includes("?") ? "&" : "?"}text=${encodeURIComponent(waPrefill)}`;
+  // Esito B: prefill neutro (domande sul preventivo, non "su misura").
+  const waPrefillEsitoB = await t(
+    "grazie",
+    "soft_email_whatsapp_prefill",
+    "Ciao Lorenzo, ho appena calcolato il preventivo sul sito e avrei qualche domanda prima di procedere.",
+  );
+  const waHrefEsitoB = `${waBase}${waBase.includes("?") ? "&" : "?"}text=${encodeURIComponent(waPrefillEsitoB)}`;
 
   // Lista documenti data-driven (stessi nomi della checklist); fallback statico.
   const docsFromContent = await tList<DocItem>("documenti", "lista");
@@ -411,6 +418,28 @@ export default async function GraziePage({
               )}
               fieldLabels={softLeadUi}
             />
+
+            {/* Chi e' indeciso spesso preferisce una voce: telefono e WhatsApp
+                accanto all'invito email, stessi recapiti dell'esito C. */}
+            <div className="mt-5 text-center">
+              <p className="text-sm text-text-muted">
+                {await t(
+                  "grazie",
+                  "soft_email_call_title",
+                  "Sei indeciso o hai una domanda? Fai due parole con Lorenzo, senza impegno.",
+                )}
+              </p>
+              <div className="mt-3 flex flex-wrap justify-center gap-3">
+                <ButtonLink href={tel.cta_chiama} variant="outline">
+                  <Phone className="h-4 w-4" />
+                  {(await tCta("grazie", "esito_c_cta")).label}
+                </ButtonLink>
+                <ButtonLink href={waHrefEsitoB} variant="outline">
+                  <MessageCircle className="h-4 w-4" />
+                  {await t("grazie", "esito_c_whatsapp", "Scrivi su WhatsApp")}
+                </ButtonLink>
+              </div>
+            </div>
           </div>
         )}
 

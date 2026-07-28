@@ -2412,6 +2412,20 @@
     },
     {
       "collection": "grazie",
+      "key": "soft_email_call_title",
+      "locale": "hi",
+      "value": "अभी तय नहीं कर पाए या कोई सवाल है? Lorenzo से बिना किसी बाध्यता के बात करें।",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_whatsapp_prefill",
+      "locale": "hi",
+      "value": "नमस्ते Lorenzo, मैंने अभी वेबसाइट पर अनुमान निकाला है और आगे बढ़ने से पहले कुछ सवाल पूछना चाहूँगा/चाहूँगी।",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
       "key": "soft_custom_title",
       "locale": "hi",
       "is_published": true,

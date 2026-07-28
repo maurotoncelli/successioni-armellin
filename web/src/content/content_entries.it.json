@@ -2426,6 +2426,20 @@
     },
     {
       "collection": "grazie",
+      "key": "soft_email_call_title",
+      "locale": "it",
+      "value": "Sei indeciso o hai una domanda? Fai due parole con Lorenzo, senza impegno.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_whatsapp_prefill",
+      "locale": "it",
+      "value": "Ciao Lorenzo, ho appena calcolato il preventivo sul sito e avrei qualche domanda prima di procedere.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
       "key": "soft_custom_title",
       "locale": "it",
       "is_published": true,

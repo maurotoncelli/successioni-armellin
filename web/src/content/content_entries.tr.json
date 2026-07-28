@@ -2412,6 +2412,20 @@
     },
     {
       "collection": "grazie",
+      "key": "soft_email_call_title",
+      "locale": "tr",
+      "value": "Kararsız mısınız ya da bir sorunuz mu var? Lorenzo ile kısaca görüşün, hiçbir yükümlülük yok.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_whatsapp_prefill",
+      "locale": "tr",
+      "value": "Merhaba Lorenzo, az önce sitede teklifi hesapladım ve devam etmeden önce birkaç sorum var.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
       "key": "soft_custom_title",
       "locale": "tr",
       "is_published": true,

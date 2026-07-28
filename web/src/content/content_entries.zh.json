@@ -2412,6 +2412,20 @@
     },
     {
       "collection": "grazie",
+      "key": "soft_email_call_title",
+      "locale": "zh",
+      "value": "还没决定或有疑问？和 Lorenzo 聊几句，没有任何约束。",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_whatsapp_prefill",
+      "locale": "zh",
+      "value": "你好 Lorenzo，我刚在网站上计算了报价，在继续之前有几个问题想问。",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
       "key": "soft_custom_title",
       "locale": "zh",
       "is_published": true,

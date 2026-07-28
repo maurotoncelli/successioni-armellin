@@ -2412,6 +2412,20 @@
     },
     {
       "collection": "grazie",
+      "key": "soft_email_call_title",
+      "locale": "ru",
+      "value": "Сомневаетесь или есть вопрос? Поговорите с Лоренцо — это ни к чему не обязывает.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_whatsapp_prefill",
+      "locale": "ru",
+      "value": "Здравствуйте, Лоренцо! Я только что рассчитал(а) смету на сайте, и у меня есть несколько вопросов, прежде чем продолжить.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
       "key": "soft_custom_title",
       "locale": "ru",
       "is_published": true,
