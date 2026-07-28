@@ -246,3 +246,18 @@ html[lang="ar"] .font-serif {
   height: 100%;
 }
 
+/*
+  iOS Safari: se un campo ha font < 16px, al focus la pagina zooma da sola e
+  RESTA zoomata anche dopo (visto nel quiz preventivo → esito prezzo).
+  Su schermi piccoli tutti i campi vanno a 16px, qualunque utility (text-sm
+  ha specificità maggiore, serve !important). Checkbox/radio esclusi: non
+  hanno testo e la dimensione ne cambierebbe il layout.
+*/
+@media (max-width: 1023px) {
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea {
+    font-size: 1rem !important;
+  }
+}
+
