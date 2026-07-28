@@ -27,6 +27,8 @@ export function Section({
   return (
     <section
       id={id}
+      // Apparizione graduale allo scroll: vedi scroll-reveal.tsx + globals.css.
+      data-reveal
       className={cn("py-8 sm:py-16 lg:py-20", toneClasses[tone], className)}
     >
       <Container className={containerClassName}>{children}</Container>

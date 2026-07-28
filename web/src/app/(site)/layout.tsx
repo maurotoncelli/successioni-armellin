@@ -5,6 +5,7 @@ import { Footer } from "@/components/site/footer";
 import { MobileCta } from "@/components/site/mobile-cta";
 import { HideOnPaths } from "@/components/site/hide-on-paths";
 import { SiteOfflineNotice } from "@/components/site/site-offline-notice";
+import { ScrollReveal } from "@/components/site/scroll-reveal";
 import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import { ConsentBanner } from "@/components/analytics/consent-banner";
 import { ContactTracker } from "@/components/analytics/contact-tracker";
@@ -147,6 +148,7 @@ export default async function SiteLayout({
         </HideOnPaths>
       )}
       <ConsentBanner labels={cookieUi} />
+      {!offlineOn && <ScrollReveal />}
     </div>
   );
 }

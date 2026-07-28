@@ -247,6 +247,44 @@ html[lang="ar"] .font-serif {
 }
 
 /*
+  Apparizione graduale allo scroll (vedi components/site/scroll-reveal.tsx).
+  Lo stato nascosto esiste solo con html.reveal-ready (JS attivo): senza JS
+  tutto resta visibile. A fine animazione transform torna none, cosi gli
+  elementi sticky interni (es. sidebar guide) funzionano normalmente.
+*/
+html.reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+}
+/*
+  La transition sta SOLO sullo stato rivelato: se stesse sullo stato base,
+  all'arrivo della classe reveal-ready le sezioni farebbero un fade-out
+  visibile (1 -> 0) invece di nascondersi all'istante.
+*/
+html.reveal-ready [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  html.reveal-ready [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+/* In stampa niente sezioni nascoste: si stamperebbe pagina bianca. */
+@media print {
+  html.reveal-ready [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/*
   iOS Safari: se un campo ha font < 16px, al focus la pagina zooma da sola e
   RESTA zoomata anche dopo (visto nel quiz preventivo → esito prezzo).
   Su schermi piccoli tutti i campi vanno a 16px, qualunque utility (text-sm
