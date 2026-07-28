@@ -95,8 +95,9 @@ export async function getPractices(): Promise<Practice[]> {
       .select("*")
       .order("code", { ascending: false });
     if (error) throw error;
-    if (!data || data.length === 0) return fixturePractices;
-    return data.map(mapPractice);
+    // DB attivo e vuoto = davvero nessuna pratica (post-pulizia test):
+    // niente fallback fixture, altrimenti il CRM mostra schede finte.
+    return (data ?? []).map(mapPractice);
   } catch (err) {
     console.error("[crm] getPractices fallback su fixture:", err);
     return fixturePractices;
@@ -170,8 +171,8 @@ export async function getContacts(): Promise<Contact[]> {
       .select("*")
       .order("last_activity", { ascending: false });
     if (error) throw error;
-    if (!data || data.length === 0) return fixtureContacts;
-    return data.map(mapContact);
+    // Come getPractices: tabella vuota = zero contatti reali, non fixture.
+    return (data ?? []).map(mapContact);
   } catch (err) {
     console.error("[crm] getContacts fallback su fixture:", err);
     return fixtureContacts;
