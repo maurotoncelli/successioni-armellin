@@ -81,7 +81,8 @@ export default async function HomePage() {
       ) : null}
       {/* Hero: loop muted — desktop 1920×600, mobile 9:16 dedicato.
           min-h generose: senza sottotitolo lo spazio vuoto fa respirare il video. */}
-      <section className="relative flex min-h-[480px] items-center overflow-hidden bg-primary text-white sm:min-h-[540px] lg:min-h-[620px]">
+      {/* Mobile: copy in basso (più aria al video); da sm resta centrato. */}
+      <section className="relative flex min-h-[480px] items-end overflow-hidden bg-primary text-white sm:min-h-[540px] sm:items-center lg:min-h-[620px]">
         <HeroLoopVideo
           src={HERO_LOOP_SRC}
           poster={HERO_LOOP_POSTER}
@@ -90,9 +91,9 @@ export default async function HomePage() {
           objectPosition="center center"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 via-42% to-primary/15" />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/45 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-primary/25 to-transparent sm:from-primary/45 sm:via-transparent" />
         <div className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-accent/10 blur-3xl" />
-        <Container className="relative py-12 sm:py-16 lg:py-20">
+        <Container className="relative pb-10 pt-16 sm:py-16 lg:py-20">
           {/* Hero pulita: solo titolo + CTA (badge e sottotitolo spostati sotto). */}
           <div className="max-w-2xl">
             <h1 className="font-display text-3xl text-white drop-shadow-sm sm:text-5xl lg:text-6xl">
