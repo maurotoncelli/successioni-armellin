@@ -208,6 +208,13 @@ export type Review = {
 /** Fallback se Places API non è configurata: testi reali da Google Maps (lug 2026). */
 export const reviews: Review[] = [
   {
+    author: "Andrea Vanni",
+    location: "Google",
+    rating: 5,
+    text:
+      "Avevo due immobili e c'era un po' di confusione nei dati catastali: un subalterno era sbagliato. Per fortuna Lorenzo se n'è accorto subito, io probabilmente non l'avrei mai notato. Mi ha spiegato in modo semplice cosa andava corretto e poi si è occupato lui della dichiarazione e della voltura. Nel giro di poco ho trovato tutte le ricevute nella mia area personale. Per me un servizio così vale decisamente più del classico \u201cfai da te\u201d gratuito.",
+  },
+  {
     author: "Antonio Tognarelli",
     location: "Google",
     rating: 5,
