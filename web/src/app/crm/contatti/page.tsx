@@ -11,6 +11,14 @@ import { CrmCard } from "@/components/crm/ui";
 
 export const dynamic = "force-dynamic";
 
+// Stato pagamento compatto per lo storico del contatto.
+const paymentBadge: Record<string, { label: string; cls: string }> = {
+  PAID: { label: "Pagata", cls: "bg-crm-green/15 text-crm-green" },
+  PENDING: { label: "Da pagare", cls: "bg-amber-500/15 text-amber-400" },
+  PARTIALLY_REFUNDED: { label: "Rimb. parziale", cls: "bg-white/5 text-crm-muted" },
+  REFUNDED: { label: "Rimborsata", cls: "bg-white/5 text-crm-muted" },
+};
+
 export default async function ContattiPage() {
   const [contacts, practices, registeredIds] = await Promise.all([
     getContacts(),
@@ -84,21 +92,45 @@ export default async function ContattiPage() {
                   Storico pratiche ({history.length})
                 </p>
                 <ul className="mt-2 space-y-1.5">
-                  {history.map((p) => (
-                    <li key={p.id}>
-                      <Link
-                        href={`/crm/pratiche/${p.id}`}
-                        className="flex items-center justify-between rounded-lg px-2 py-1.5 text-sm hover:bg-crm-hover"
-                      >
-                        <span className="font-mono text-xs text-crm-accent">
-                          {p.code}
-                        </span>
-                        <span className="text-xs text-crm-text2">
-                          {statusLabels[p.status]}
-                        </span>
-                      </Link>
+                  {history.length === 0 && (
+                    <li className="px-2 py-1.5 text-xs text-crm-muted">
+                      Nessuna pratica: solo account registrato.
                     </li>
-                  ))}
+                  )}
+                  {history.map((p) => {
+                    const pay = paymentBadge[p.paymentStatus];
+                    return (
+                      <li key={p.id}>
+                        <Link
+                          href={`/crm/pratiche/${p.id}`}
+                          className="flex items-center justify-between gap-2 rounded-lg px-2 py-1.5 text-sm hover:bg-crm-hover"
+                        >
+                          <span className="flex min-w-0 items-baseline gap-2">
+                            <span className="font-mono text-xs text-crm-accent">
+                              {p.code}
+                            </span>
+                            <span className="truncate text-xs text-crm-text2">
+                              {statusLabels[p.status]}
+                            </span>
+                          </span>
+                          <span className="flex shrink-0 items-center gap-2">
+                            {p.price > 0 && (
+                              <span className="text-xs font-medium text-crm-text">
+                                {p.price} €
+                              </span>
+                            )}
+                            {pay && (
+                              <span
+                                className={`rounded-full px-2 py-0.5 text-[11px] ${pay.cls}`}
+                              >
+                                {pay.label}
+                              </span>
+                            )}
+                          </span>
+                        </Link>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </CrmCard>
