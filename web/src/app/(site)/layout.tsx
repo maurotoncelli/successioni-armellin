@@ -72,6 +72,48 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+/*
+  Dati strutturati sitewide: lo studio come ProfessionalService (local SEO,
+  knowledge panel). Dati anagrafici reali del footer/contatti: le directory
+  esterne riportano una P.IVA vecchia, qui fa fede quella attuale.
+*/
+const BUSINESS_LD = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://www.successioniarmellin.it/#studio",
+  name: "Successioni Armellin - Geom. Lorenzo Armellin",
+  description:
+    "Dichiarazione di successione online seguita da un geometra iscritto all'Albo: preventivo chiaro, documenti e pratica da casa, invio telematico all'Agenzia delle Entrate.",
+  url: "https://www.successioniarmellin.it/",
+  telephone: "+393201570567",
+  email: "studio@successioniarmellin.it",
+  vatID: "IT02432220503",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Via Vittorio Veneto 31",
+    postalCode: "56025",
+    addressLocality: "Pontedera",
+    addressRegion: "PI",
+    addressCountry: "IT",
+  },
+  areaServed: { "@type": "Country", name: "Italia" },
+  priceRange: "€€",
+  knowsAbout: [
+    "Dichiarazione di successione",
+    "Volture catastali",
+    "Imposta di successione",
+  ],
+  founder: {
+    "@type": "Person",
+    name: "Lorenzo Armellin",
+    jobTitle: "Geometra",
+    memberOf: {
+      "@type": "Organization",
+      name: "Collegio Geometri e Geometri Laureati di Pisa (n. 1969)",
+    },
+  },
+};
+
 export default async function SiteLayout({
   children,
 }: Readonly<{
@@ -88,6 +130,10 @@ export default async function SiteLayout({
 
   return (
     <div className="flex min-h-full flex-col bg-bg text-text">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(BUSINESS_LD) }}
+      />
       {gaId && <GoogleAnalytics gaId={gaId} />}
       {gaId && <ContactTracker />}
       <Navbar />

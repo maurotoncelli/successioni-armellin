@@ -25,12 +25,33 @@ function groupByCategory(items: Faq[]) {
 
 export default async function FaqPage() {
   const locale = await getRequestLocale();
-  const grouped = groupByCategory(await getFaqs(locale));
+  const faqs = await getFaqs(locale);
+  const grouped = groupByCategory(faqs);
   const ctaButton = await tCta("faq", "cta_button");
   const ctaPhone = await tCta("faq", "cta_phone");
 
+  // Rich snippet FAQ: il markup rispecchia le Q&A realmente visibili in pagina.
+  const faqLd =
+    faqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: { "@type": "Answer", text: item.answer },
+          })),
+        }
+      : null;
+
   return (
     <>
+      {faqLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+        />
+      )}
       <PageHero
         eyebrow={await t("faq", "hero_eyebrow", "FAQ")}
         title={await t("faq", "hero_title")}
