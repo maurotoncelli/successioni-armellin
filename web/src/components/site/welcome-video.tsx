@@ -82,11 +82,13 @@ export function WelcomeVideo({
       : (captions.find((c) => c.srclang === captionLang) ?? null);
 
   /**
-   * Inline: sottotitoli spenti (nell'anteprima piccola disturbano).
-   * Fullscreen: cue nativi del browser nella lingua scelta.
+   * Mobile inline: sottotitoli spenti (nell'anteprima piccola disturbano),
+   * compaiono solo a schermo intero. Desktop: il player è grande abbastanza,
+   * cue nativi visibili anche in anteprima. Fullscreen: sempre visibili.
    */
   function syncTrackMode(el: HTMLVideoElement) {
     const fs = isVideoFullscreen(el);
+    const desktop = window.matchMedia("(min-width: 1024px)").matches;
     // Fullscreen (soprattutto portrait): contain evita il crop sopra/sotto del 16:9.
     el.style.objectFit = "contain";
     el.style.backgroundColor = "#000";
@@ -95,7 +97,7 @@ export function WelcomeVideo({
         track.mode = "disabled";
         continue;
       }
-      track.mode = fs ? "showing" : "hidden";
+      track.mode = fs || desktop ? "showing" : "hidden";
     }
   }
 
@@ -118,17 +120,20 @@ export function WelcomeVideo({
 
     const onEnded = () => setPlaying(false);
     const onFsChange = () => syncTrackMode(el);
+    const mql = window.matchMedia("(min-width: 1024px)");
 
     el.addEventListener("ended", onEnded);
     el.addEventListener("webkitbeginfullscreen", onFsChange);
     el.addEventListener("webkitendfullscreen", onFsChange);
     document.addEventListener("fullscreenchange", onFsChange);
+    mql.addEventListener("change", onFsChange);
 
     return () => {
       el.removeEventListener("ended", onEnded);
       el.removeEventListener("webkitbeginfullscreen", onFsChange);
       el.removeEventListener("webkitendfullscreen", onFsChange);
       document.removeEventListener("fullscreenchange", onFsChange);
+      mql.removeEventListener("change", onFsChange);
       el.removeEventListener("loadeddata", tryPlay);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
