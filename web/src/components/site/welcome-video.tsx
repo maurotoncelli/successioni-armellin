@@ -87,6 +87,9 @@ export function WelcomeVideo({
    */
   function syncTrackMode(el: HTMLVideoElement) {
     const fs = isVideoFullscreen(el);
+    // Fullscreen (soprattutto portrait): contain evita il crop sopra/sotto del 16:9.
+    el.style.objectFit = "contain";
+    el.style.backgroundColor = "#000";
     for (const track of Array.from(el.textTracks)) {
       if (!activeCaption) {
         track.mode = "disabled";
@@ -167,7 +170,7 @@ export function WelcomeVideo({
           {playing && src ? (
             <video
               ref={videoRef}
-              className="welcome-video-player absolute inset-0 h-full w-full object-cover"
+              className="welcome-video-player absolute inset-0 h-full w-full bg-black object-contain"
               controls
               playsInline
               preload="auto"
