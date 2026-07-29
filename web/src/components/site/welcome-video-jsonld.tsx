@@ -29,7 +29,8 @@ export function WelcomeVideoJsonLd({
     thumbnailUrl: `${origin}${WELCOME_VIDEO_POSTER}`,
     contentUrl: `${origin}${WELCOME_VIDEO_SRC}`,
     embedUrl: `${origin}${WELCOME_VIDEO_SRC}`,
-    uploadDate: "2026-07-27",
+    // ISO-8601 con fuso: Google rifiuta la sola data (YYYY-MM-DD).
+    uploadDate: "2026-07-27T12:00:00+02:00",
     duration: WELCOME_VIDEO_DURATION_ISO,
     inLanguage,
     isFamilyFriendly: true,

@@ -18,6 +18,7 @@ import { BackLink } from "@/components/site/back-link";
 import { ArticleBody } from "@/components/site/article-body";
 import { getArticle, getArticles, getRelatedArticles } from "@/lib/cms";
 import { GUIDE_UI_IT } from "@/lib/site-ui-labels";
+import { absoluteUrl, localePath } from "@/lib/seo-locale";
 
 type Params = { slug: string };
 
@@ -109,6 +110,8 @@ export default async function ArticlePage({
     inLanguage: locale === "ar" ? "ar" : "it-IT",
     articleSection: article.category,
   };
+  const guidesHref = localePath("/guide", locale);
+  const articleHref = localePath(`/guide/${article.slug}`, locale);
   const breadcrumbLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -117,9 +120,14 @@ export default async function ArticlePage({
         "@type": "ListItem",
         position: 1,
         name: guideUi.breadcrumb_guides,
-        item: "/guide",
+        item: absoluteUrl(guidesHref),
       },
-      { "@type": "ListItem", position: 2, name: article.title },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: article.title,
+        item: absoluteUrl(articleHref),
+      },
     ],
   };
 
