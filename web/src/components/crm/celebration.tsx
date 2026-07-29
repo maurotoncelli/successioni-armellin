@@ -22,6 +22,20 @@ const CONFETTI_COLORS = [
 
 const CONFETTI_COUNT = 60;
 
+/** Easter egg per Lorenzo ai traguardi di pratiche CHIUSA (conteggio totale). */
+const MILESTONE_MESSAGES: Record<number, string> = {
+  1: "Grande Lorenzo, hai appena sverginato questa attività!",
+  100: "Grande Loris, sei sulla direzione giusta, sembra proprio che tu abbia ingranato! Continua così.",
+  500: "Lorenzo se continui così lo sai che ti tocca comprare davvero la barca a vela?!",
+  1000:
+    "Lorenzo, sei a 1000 successioni, direi che se non hai ancora comprato un panfilo questo è il momento.",
+  2000: "Direi che è ora di portare Mauro alle Maldive con te!",
+};
+
+function milestoneMessage(closedTotal: number): string | null {
+  return MILESTONE_MESSAGES[closedTotal] ?? null;
+}
+
 function playFanfare() {
   try {
     type AudioContextCtor = typeof AudioContext;
@@ -109,6 +123,8 @@ export function Celebration({
     [],
   );
 
+  const easterEgg = milestoneMessage(closedTotal);
+
   return (
     <div
       className="fixed inset-0 z-50 grid place-items-center bg-black/60 p-4"
@@ -139,15 +155,26 @@ export function Celebration({
         <h2 className="mt-4 text-2xl font-bold text-crm-text">
           Pratica conclusa!
         </h2>
-        <p className="mt-2 text-sm text-crm-text2">
-          Un&apos;altra famiglia servita: il cliente ha ricevuto l&apos;email e
-          trova i documenti finali nella sua area.
-        </p>
-        <p className="mt-3 text-sm font-semibold text-crm-accent">
-          {closedTotal === 1
-            ? "È la prima pratica chiusa dell'anno: si comincia!"
-            : `Sono ${closedTotal} le pratiche chiuse quest'anno. Grande!`}
-        </p>
+        {easterEgg ? (
+          <>
+            <p className="mt-3 text-base font-semibold leading-relaxed text-crm-accent">
+              {easterEgg}
+            </p>
+            <p className="mt-2 text-xs text-crm-muted">
+              Pratica chiusa n. {closedTotal}
+            </p>
+          </>
+        ) : (
+          <>
+            <p className="mt-2 text-sm text-crm-text2">
+              Un&apos;altra famiglia servita: il cliente ha ricevuto l&apos;email
+              e trova i documenti finali nella sua area.
+            </p>
+            <p className="mt-3 text-sm font-semibold text-crm-accent">
+              Sono {closedTotal} le pratiche chiuse. Grande!
+            </p>
+          </>
+        )}
 
         <button
           onClick={onClose}
