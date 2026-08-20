@@ -373,15 +373,15 @@
       "value": [
         {
           "titolo": "No queues",
-          "testo": "Do everything from home, even on your phone."
+          "testo": "Everything from home, even on your phone: no queues, no counters."
         },
         {
           "titolo": "No errors or penalties",
-          "testo": "Technical check of cadastral data by a licensed surveyor."
+          "testo": "A licensed surveyor checks the cadastral data, where cases get stuck."
         },
         {
           "titolo": "Human support",
-          "testo": "You always speak with a real person, not a bot."
+          "testo": "A real person follows you from start to finish. Never a bot."
         }
       ]
     },
@@ -437,6 +437,16 @@
       "locale": "en",
       "is_published": true,
       "value": "Filing within 10–15 business days (depending on package) once we have all complete documents."
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_video_cta",
+      "locale": "en",
+      "is_published": true,
+      "value": {
+        "label": "Watch the video",
+        "href": "/come-funziona#video"
+      }
     },
     {
       "collection": "home",
@@ -689,7 +699,7 @@
       "key": "box_trasparenza_body",
       "locale": "en",
       "is_published": true,
-      "value": "The package price is the professional fee without VAT: the studio operates under the flat-rate regime (not subject to VAT). Succession taxes (mortgage, cadastral, stamps) are separate, paid by the heir via F24: we calculate and notify them BEFORE filing."
+      "value": "The package price is the **professional fee without VAT**: the studio operates under the flat-rate regime (not subject to VAT).\n\n**Succession taxes** (mortgage, cadastral, stamps) are **separate, paid by the heir** via F24: we calculate and notify them **before filing**."
     },
     {
       "collection": "tariffe",
@@ -730,7 +740,7 @@
       "key": "sla_note",
       "locale": "en",
       "is_published": true,
-      "value": "Each package states filing within a set number of business days from COMPLETE documentation (not from payment): so it's a promise we can truly keep. Third-party times (Agency, Cadastre, banks) are excluded."
+      "value": "Each package states filing within a set number of **business days** from **complete documentation** (not from payment): so it's a promise we can truly keep.\n\n**Third-party times** (Agency, Cadastre, banks) are excluded."
     },
     {
       "collection": "tariffe",
@@ -833,14 +843,14 @@
       "key": "guida_scelta_title",
       "locale": "en",
       "is_published": true,
-      "value": "Not sure which to choose?"
+      "value": "Before you choose (and after you pay)"
     },
     {
       "collection": "tariffe",
       "key": "guida_scelta_body",
       "locale": "en",
       "is_published": true,
-      "value": "Read the quick guide to choosing a package, or chat with Lorenzo: in a few minutes you'll know the right one. And if you change your mind, switching packages is simple — you only settle the difference."
+      "value": "Three minutes to understand how it works, without surprises."
     },
     {
       "collection": "tariffe",
@@ -861,6 +871,40 @@
         "label": "Talk to Lorenzo",
         "href": "tel:+393201570567"
       }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_recesso",
+      "locale": "en",
+      "is_published": true,
+      "value": {
+        "label": "How withdrawal works",
+        "href": "/recesso"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_items",
+      "locale": "en",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "Which package",
+          "testo": "**Simple** = accounts and cash only, no property. **With property** = 1 to 3 properties, cadastral transfer included. Beyond that, or special cases (land, companies, shares): a **custom quote, free**. If you're unsure, write to Lorenzo: we'll tell you."
+        },
+        {
+          "titolo": "If you pay for the wrong package",
+          "testo": "It's not a problem. We change it: you pay or we refund **only the difference**. We don't start over and you don't lose what you've already paid."
+        },
+        {
+          "titolo": "What happens after payment",
+          "testo": "Your **personal area** opens: there you upload documents (even from photos), sign the mandate, follow the case and talk to Lorenzo. No counters, no offices."
+        },
+        {
+          "titolo": "If you change your mind",
+          "testo": "You have **14 days** of statutory withdrawal. If you ask us to start immediately and the work is already done, withdrawal no longer applies — we tell you clearly beforehand."
+        }
+      ]
     },
     {
       "collection": "tariffe",
@@ -1012,7 +1056,7 @@
       "key": "team_body",
       "locale": "en",
       "is_published": true,
-      "value": "I prepare and file the declaration myself: I'm authorised to do so. For the tax side I rely on accountants' supervision. So you get technical control of cadastral data and confidence in the figures, without splitting the case across different firms."
+      "value": "I prepare and file the declaration myself: **I'm authorised to do so**. For the tax side I rely on **accountants' supervision**. So you get technical control of cadastral data and confidence in the figures, without splitting the case across different firms."
     },
     {
       "collection": "chi_siamo",
@@ -1043,7 +1087,7 @@
       "key": "perche_geometra_body",
       "locale": "en",
       "is_published": true,
-      "value": "Many expect an accountant, a CAF or a notary. In succession, though, the delicate part is cadastral data: that's a surveyor's job. Filing needs an Entratel intermediary — I am one. A notary only steps in for later deeds, not for the declaration."
+      "value": "Many expect an accountant, a CAF or a notary. In succession, though, the delicate part is **cadastral data: that's a surveyor's job**. Filing needs an **Entratel intermediary — I am one**. A notary only steps in for later deeds, not for the declaration."
     },
     {
       "collection": "chi_siamo",
@@ -1082,7 +1126,7 @@
       "key": "studio_foto_alt",
       "locale": "en",
       "is_published": true,
-      "value": "Pontedera Cathedral"
+      "value": "Via Vittorio Veneto, Pontedera"
     },
     {
       "collection": "chi_siamo",
@@ -1334,6 +1378,13 @@
     },
     {
       "collection": "faq",
+      "key": "featured_title",
+      "locale": "en",
+      "is_published": true,
+      "value": "First, the doubts that stop you"
+    },
+    {
+      "collection": "faq",
       "key": "hero_search",
       "locale": "en",
       "is_published": true,
@@ -1556,6 +1607,69 @@
     },
     {
       "collection": "come_funziona",
+      "key": "video_title",
+      "locale": "en",
+      "is_published": true,
+      "value": "Watch how it works"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_caption",
+      "locale": "en",
+      "is_published": true,
+      "value": "A woman files the succession on the site: from the quote to the documents, from home. Two minutes."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_alt",
+      "locale": "en",
+      "is_published": true,
+      "value": "Explainer video: a woman completes the succession declaration on the website"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_play",
+      "locale": "en",
+      "is_published": true,
+      "value": "Play the how-it-works video"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_badge",
+      "locale": "en",
+      "is_published": true,
+      "value": "Video coming soon"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_duration",
+      "locale": "en",
+      "is_published": true,
+      "value": "About 2 min"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_duration_placeholder",
+      "locale": "en",
+      "is_published": true,
+      "value": "Preview — final video coming soon"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_captions_label",
+      "locale": "en",
+      "is_published": true,
+      "value": "Subtitles"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_captions_off",
+      "locale": "en",
+      "is_published": true,
+      "value": "Off"
+    },
+    {
+      "collection": "come_funziona",
       "key": "steps",
       "locale": "en",
       "is_published": true,
@@ -1592,7 +1706,7 @@
       "key": "sla_body",
       "locale": "en",
       "is_published": true,
-      "value": "Timelines depend on the package and start when we have ALL complete, correct documents (not from payment): so it's a promise we can truly keep. Third-party times (Agency, Cadastre, banks) are excluded."
+      "value": "Timelines depend on the package and start when we have **all complete, correct documents** (not from payment): so it's a promise we can truly keep.\n\n**Third-party times** (Agency, Cadastre, banks) are excluded."
     },
     {
       "collection": "come_funziona",
@@ -1606,7 +1720,7 @@
       "key": "valore_body",
       "locale": "en",
       "is_published": true,
-      "value": "We manually check cadastral data — parcels, subunits, outbuildings, title deeds — where cases most often get stuck. With accountants supervising the numbers. That's the difference between a filled form and a case done properly."
+      "value": "We manually check **cadastral data** — parcels, subunits, outbuildings, title deeds — where cases most often get stuck.\n\nWith **accountants supervising the numbers**. That's the difference between a filled form and **a case done properly**."
     },
     {
       "collection": "come_funziona",
@@ -1620,7 +1734,7 @@
       "key": "distanza_body",
       "locale": "en",
       "is_published": true,
-      "value": "You don't need to go to any office or bank: questionnaire, documents, communications and filing with the Agency happen online. There's always a call with Lorenzo to explain everything."
+      "value": "You don't need to go to **any office or bank**: questionnaire, documents, communications and filing with the Agency happen **online**.\n\nThere's always **a call with Lorenzo** to explain everything."
     },
     {
       "collection": "come_funziona",
@@ -2334,7 +2448,7 @@
       "is_published": true,
       "value": {
         "label": "guide",
-        "href": "/tariffe"
+        "href": "/tariffe#guida"
       }
     },
     {
@@ -4735,7 +4849,7 @@
         "map_title": "The studio in {citta}",
         "maps_cta": "Open in Google Maps",
         "map_iframe_title": "Studio map - {address}",
-        "photo_caption": "Pontedera Cathedral",
+        "photo_caption": "Via Vittorio Veneto, Pontedera",
         "photo_credit": "Photo: SeesaTheDoctor / Wikimedia (CC BY 4.0)"
       }
     },

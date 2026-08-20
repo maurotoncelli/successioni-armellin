@@ -2,13 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getRequestLocale, t, tCta, tList } from "@/lib/locale";
 import Image from "next/image";
-import { ArrowRight, Check, X } from "lucide-react";
+import { ArrowRight, Check, Play, X } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { ButtonLink } from "@/components/ui/button";
 import { TrustBar } from "@/components/site/trust-bar";
-import { VantaggiCards } from "@/components/site/vantaggi-cards";
+import { EmpatiaBlock } from "@/components/site/empatia-block";
 import { PackageCards } from "@/components/site/package-cards";
+import { FaqAccordion } from "@/components/site/faq-accordion";
+import { getFaqs } from "@/lib/cms";
+import { pickFeaturedFaqs } from "@/lib/faq-featured";
 import { Reviews } from "@/components/site/reviews";
 import { CtaBand } from "@/components/site/cta-band";
 import { WelcomeVideo } from "@/components/site/welcome-video";
@@ -28,8 +31,6 @@ import {
   HERO_LOOP_SRC,
 } from "@/lib/hero-loop";
 import { siteBaseUrl } from "@/lib/seo-locale";
-
-import { cn } from "@/lib/utils";
 
 type HomeStep = {
   titolo: string;
@@ -59,6 +60,10 @@ export default async function HomePage() {
     "home",
     "faidate_confronto",
   );
+  const videoCta = await tCta("home", "come_funziona_video_cta", {
+    label: "Guarda il video",
+    href: "/come-funziona#video",
+  });
   const tariffeCta = await tCta("home", "tariffe_cta");
   const chisonoCta = await tCta("home", "chisono_cta");
   const faqCta = await tCta("home", "faq_cta");
@@ -69,6 +74,7 @@ export default async function HomePage() {
   const welcomeReady = isWelcomeVideoReady();
   const welcomeSrc = welcomeReady ? WELCOME_VIDEO_SRC : null;
   const welcomeCaptions = welcomeReady ? getWelcomeCaptionTracks(locale) : [];
+  const featuredFaqs = pickFeaturedFaqs(await getFaqs(locale), 3);
 
   return (
     <>
@@ -119,26 +125,17 @@ export default async function HomePage() {
 
       <TrustBar />
 
-      {/* Lead: il sottotitolo tolto dall'hero — titolo H2 SEO + promessa. */}
-      <Section className="!py-8 sm:!py-12">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-2xl sm:text-3xl">
-            {await t("home", "lead_title")}
-          </h2>
-          <p className="mt-3 text-base leading-relaxed text-text-muted sm:mt-4 sm:text-lg">
-            {await t("home", "hero_subtitle")}
-          </p>
-        </div>
-      </Section>
-
-      {/* Problema / Soluzione — tone muted per staccare dallo scopo app (bianco) */}
-      <Section tone="muted">
-        <SectionHeading
+      {/* Empatia editoriale: foto + tesi + vantaggi diseguali (catasto in picco). */}
+      <Section>
+        <EmpatiaBlock
           title={await t("home", "problema_title")}
           intro={await t("home", "problema_intro")}
+          items={vantaggi}
+          image={{
+            src: "/images/lorenzo-ritratto.jpg",
+            alt: "Geom. Lorenzo Armellin",
+          }}
         />
-        {/* Mobile: accordion compatto (testo su tap); da md card a 3 colonne. */}
-        <VantaggiCards items={vantaggi} />
       </Section>
 
       {/* Come funziona — sequenza collegata + foto data-driven. */}
@@ -193,6 +190,12 @@ export default async function HomePage() {
         <p className="mt-8 text-center text-sm text-text-muted sm:mt-10">
           {await t("home", "come_funziona_sla_note")}
         </p>
+        <div className="mt-6 text-center sm:mt-8">
+          <ButtonLink href={videoCta.href} variant="primary" size="lg">
+            <Play className="h-4 w-4" aria-hidden />
+            {videoCta.label}
+          </ButtonLink>
+        </div>
       </Section>
 
       {/* Tariffe (estratto) */}
@@ -221,50 +224,34 @@ export default async function HomePage() {
         />
         <div className="mx-auto mt-6 max-w-4xl sm:mt-12">
           <div className="relative grid grid-cols-[1.2fr_1fr_1fr] overflow-hidden rounded-2xl border border-primary/10 bg-bg shadow-md sm:grid-cols-[1.5fr_1fr_1fr]">
-            {/* Intestazioni: solo etichette colonna, senza X/logo (i segni restano nelle righe) */}
-            <div className="flex items-end border-b border-primary/10 bg-bg-muted/40 p-4 sm:p-5">
+            {/* Tre lastre distinte: label | fai-da-te (perla) | con noi (sabbia). */}
+            <div className="flex items-end border-b border-primary/10 bg-bg p-4 sm:p-5">
               <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-text-muted/80">
                 {await t("home", "faidate_col_corner", "Confronto")}
               </span>
             </div>
-            <div className="flex items-end justify-center border-b border-primary/10 bg-bg-muted/40 p-4 sm:p-5">
+            <div className="flex items-end justify-center border-b border-s border-primary/10 bg-bg-muted p-4 sm:p-5">
               <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-text-muted">
                 {await t("home", "faidate_col_diy", "Fai-da-te")}
               </span>
             </div>
-            <div className="relative flex items-end justify-center border-b border-accent/20 bg-sand p-4 sm:p-5">
+            <div className="relative flex items-end justify-center border-b border-s border-accent/20 bg-sand p-4 sm:p-5">
               <span className="absolute -top-px left-0 right-0 h-1 bg-accent" />
               <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-accent-dark">
                 {await t("home", "faidate_col_us", "Con noi")}
               </span>
             </div>
 
-            {/* Righe (zebra: sfondo alternato per leggibilita) */}
-            {confronto.map((row, i) => (
+            {confronto.map((row) => (
               <div key={row.voce} className="contents">
-                <div
-                  className={cn(
-                    "flex items-center border-t border-primary/[0.06] p-3 text-sm font-medium text-primary sm:p-5",
-                    i % 2 === 1 && "bg-primary/[0.025]",
-                  )}
-                >
+                <div className="flex items-center border-t border-primary/10 bg-bg p-3 text-sm font-medium text-primary sm:p-5">
                   {row.voce}
                 </div>
-                <div
-                  className={cn(
-                    "flex items-center justify-center gap-1.5 border-t border-primary/[0.06] p-3 text-center text-sm text-text-muted sm:gap-2 sm:p-5",
-                    i % 2 === 1 && "bg-primary/[0.025]",
-                  )}
-                >
+                <div className="flex items-center justify-center gap-1.5 border-t border-s border-primary/10 bg-bg-muted p-3 text-center text-sm text-text-muted sm:gap-2 sm:p-5">
                   <X className="h-4 w-4 shrink-0 text-error/70" />
                   <span>{row.faidate}</span>
                 </div>
-                <div
-                  className={cn(
-                    "flex items-center justify-center gap-1.5 border-t border-accent/15 bg-sand p-3 text-center text-sm font-semibold text-primary sm:gap-2 sm:p-5",
-                    i % 2 === 1 && "brightness-[0.985]",
-                  )}
-                >
+                <div className="flex items-center justify-center gap-1.5 border-t border-s border-accent/15 bg-sand p-3 text-center text-sm font-semibold text-primary sm:gap-2 sm:p-5">
                   <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-success/15 text-success">
                     <Check className="h-3 w-3" strokeWidth={3} />
                   </span>
@@ -334,10 +321,13 @@ export default async function HomePage() {
         </div>
       </Section>
 
-      {/* FAQ (estratto) */}
-      <Section tone="muted">
+      {/* FAQ: 3 obiezioni in picco, non solo un link. */}
+      <Section>
         <SectionHeading title={await t("home", "faq_title")} />
-        <div className="mt-8 text-center">
+        <div className="mx-auto mt-6 max-w-3xl sm:mt-10">
+          <FaqAccordion items={featuredFaqs} featured openFirst />
+        </div>
+        <div className="mt-6 text-center sm:mt-8">
           <Link
             href={faqCta.href}
             className="inline-flex items-center gap-1.5 font-semibold text-accent hover:text-accent-dark"
@@ -352,26 +342,26 @@ export default async function HomePage() {
           Google (la home deve spiegare in modo esplicito scopo
           dell'applicazione, uso dei dati Google e link alla privacy).
           Spostata in fondo per non appesantire l'above-the-fold. */}
-      <Section className="!py-8 sm:!py-12">
+      <Section tone="sand" className="!py-8 sm:!py-12">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-2xl sm:text-3xl">
+          <h2 className="text-2xl text-primary sm:text-3xl">
             {await t("home", "app_scopo_title")}
           </h2>
-          <p className="mt-4 text-sm leading-relaxed text-text-muted sm:text-base">
+          <p className="mt-4 text-sm leading-relaxed text-primary sm:text-base">
             {await t("home", "app_scopo_body")}
           </p>
-          <p className="mt-3 text-sm text-text-muted">
+          <p className="mt-3 text-sm text-primary">
             {await t("home", "app_scopo_legal_prefix")}{" "}
             <Link
               href="/privacy"
-              className="font-medium text-accent underline hover:text-accent-dark"
+              className="font-medium text-primary underline hover:text-secondary"
             >
               {await t("home", "app_scopo_privacy_label")}
             </Link>
             {" · "}
             <Link
               href="/termini-condizioni"
-              className="font-medium text-accent underline hover:text-accent-dark"
+              className="font-medium text-primary underline hover:text-secondary"
             >
               {await t("home", "app_scopo_terms_label")}
             </Link>

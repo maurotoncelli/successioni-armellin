@@ -31,11 +31,6 @@ export async function PackageCards() {
       "Per le successioni più complesse",
     ),
     priceLabel: await t("pacchetti", "su_misura_price_label", "Su misura"),
-    body: await t(
-      "pacchetti",
-      "su_misura_body",
-      "Oltre 3 immobili, terreni agricoli, aziende o quote societarie? I casi più complessi non stanno in un pacchetto standard: ti prepariamo un preventivo dedicato, senza sorprese.",
-    ),
     features: await tList<string>("pacchetti", "su_misura_features"),
     cta: await tCta("pacchetti", "su_misura_cta", {
       label: "Richiedi il preventivo",
@@ -75,19 +70,24 @@ export async function PackageCards() {
                 <span className="font-display text-4xl font-bold text-primary">
                   {pkg.price}&euro;
                 </span>
-                <span className="text-sm text-text-muted">{priceSuffix}</span>
               </div>
-              {pkg.slaDays ? (
-                <p className="mt-1 text-sm text-text-muted">
-                  {slaLine.replace("{n}", String(pkg.slaDays))}
-                </p>
-              ) : null}
+              <div className="mt-3 flex flex-wrap gap-2">
+                <span className="rounded-full bg-bg-muted px-2.5 py-1 text-xs font-medium text-text-muted">
+                  {priceSuffix}
+                </span>
+                {pkg.slaDays ? (
+                  <span className="rounded-full bg-bg-muted px-2.5 py-1 text-xs font-medium text-text-muted">
+                    {slaLine.replace("{n}", String(pkg.slaDays))}
+                  </span>
+                ) : null}
+              </div>
+              <div className="mt-5 border-t border-primary/10" />
 
               <PackageCardDetails
-                description={pkg.description}
                 features={pkg.features}
                 icon="check"
                 toggleLabel={detailsLabel}
+                peakFeatures={featured ? pkg.features.slice(-2) : []}
               />
 
               <ButtonLink
@@ -115,10 +115,14 @@ export async function PackageCards() {
             {custom.priceLabel}
           </span>
         </div>
-        <p className="mt-1 text-sm text-text-muted">{customPriceNote}</p>
+        <div className="mt-3">
+          <span className="rounded-full bg-bg-muted px-2.5 py-1 text-xs font-medium text-text-muted">
+            {customPriceNote}
+          </span>
+        </div>
+        <div className="mt-5 border-t border-primary/10" />
 
         <PackageCardDetails
-          description={custom.body}
           features={custom.features}
           icon="message"
           toggleLabel={detailsLabel}

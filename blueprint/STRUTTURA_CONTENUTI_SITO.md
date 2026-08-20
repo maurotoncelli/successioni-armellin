@@ -149,11 +149,12 @@
 - `tariffe.ti_serve_body` (richtext) - [BOZZA] "In alcuni casi (eredi diretti, solo liquidita modesta entro le soglie di legge, nessun immobile) la dichiarazione potrebbe non essere dovuta. Verifichiamo il tuo caso prima di farti pagare: se non ti serve, te lo diciamo. La verifica definitiva e sempre sul caso concreto."
 - `tariffe.ti_serve_cta` (cta) - [BOZZA] { label: "Verifica gratis il tuo caso", href: "/preventivo" } (Esito A @04).
 
-### 12. Guida alla scelta + chiamata di riallineamento `tariffe.guida_scelta_*`
-- `tariffe.guida_scelta_title` (string) - [BOZZA] "Non sai quale scegliere?"
-- `tariffe.guida_scelta_body` (richtext) - [BOZZA] "Leggi la guida rapida alla scelta del pacchetto, oppure fai due chiacchiere con Lorenzo: in pochi minuti capisci quello giusto. E se cambi idea, cambiare pacchetto e semplice e regoli solo la differenza."
-- `tariffe.guida_scelta_cta_guida` (cta) - [BOZZA] { label: "Guida alla scelta", href: "#guida" }.
-- `tariffe.guida_scelta_cta_call` (cta) - [BOZZA] { label: "Parla con Lorenzo", href: "tel:+39..." }.
+### 12. Guida alla scelta `tariffe.guida_scelta_*` (anchor `#guida`)
+- `tariffe.guida_scelta_title` (string) - [BOZZA] "Prima di scegliere (e dopo aver pagato)".
+- `tariffe.guida_scelta_body` (richtext) - [BOZZA] "Tre minuti per capire come funziona, senza sorprese."
+- `tariffe.guida_scelta_items` (list) - 4 voci: quale pacchetto / pacchetto sbagliato / dopo il pagamento / recesso.
+- `tariffe.guida_scelta_recesso` (cta) - [BOZZA] { label: "Come funziona il recesso", href: "/recesso" }.
+- Link `{guida}` in `/preventivo/grazie` -> `/tariffe#guida`.
 
 ### 13. Micro-trust vicino a card/CTA `tariffe.microtrust`
 - (string) - [BOZZA] "Geometra abilitato Entratel, con supervisione fiscale di un commercialista." (toglie il dubbio "e la persona giusta?" nel momento decisivo, @02).
@@ -346,8 +347,15 @@
 > Versione estesa del processo a 3 step gia accennato in home. Spiega il "come" in modo visivo e onesto, con tempi/SLA realistici (dalla documentazione completa). Riduce l'ansia ("e complicato?") e prepara alla conversione.
 
 ### 1. Hero / intro `come_funziona.hero_*`
+> Fascia navy come le altre pagine interne (chi-sono, tariffe): titolo in hero, nessuna foto.
 - `come_funziona.hero_title` (string) - [BOZZA] "Come funziona: semplice, da casa, in 3 passi".
 - `come_funziona.hero_subtitle` (richtext) - [BOZZA] "Niente code, niente uffici. Ti guidiamo noi passo passo: tu pensi alla tua famiglia, alla burocrazia pensiamo noi."
+
+### 1-bis. Video esplicativo `come_funziona.video_*` (DOPO i 3 passi illustrati)
+> Slot riservato. Script e produzione: `15_Video_Come_Funziona_Script.md`. Master ~2 min, no autoplay con audio, facade + poster, sottotitoli tutte le lingue del sito. File definitivo: `public/videos/come-funziona.mp4`. Finché manca, in pagina sta un placeholder (benvenuto Lorenzo) che tiene il posto e il ritmo.
+- `come_funziona.video_title` (string) - [BOZZA] "Guarda come funziona".
+- `come_funziona.video_caption` (richtext) - [BOZZA] "Una ragazza fa la successione sul sito: dal preventivo ai documenti, da casa. Due minuti."
+- `come_funziona.video_ref` (image_ref/video) - processo lato cliente; lazy-load, poster, VTT multilingua.
 
 ### 2. Gli step in dettaglio `come_funziona.steps_*`
 - `come_funziona.steps` (list) - [BOZZA] 3 step ampliati:

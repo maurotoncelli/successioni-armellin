@@ -85,12 +85,12 @@ export function NavbarClient({
           </span>
         </Link>
 
-        <ul className="hidden items-center xl:flex">
+        <ul className="hidden items-center gap-x-1.5 xl:flex 2xl:gap-x-2.5">
           {menu.map((item) => (
             <li key={item.href}>
               <Link
                 href={item.href}
-                className="block whitespace-nowrap rounded-md px-2 py-2 text-sm font-medium text-text transition-colors hover:bg-primary/5 hover:text-accent 2xl:px-2.5"
+                className="block whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-text transition-colors hover:bg-primary/5 hover:text-accent 2xl:px-3.5"
               >
                 {item.label}
               </Link>

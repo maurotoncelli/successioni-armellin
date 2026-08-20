@@ -42,12 +42,14 @@ export function SectionHeading({
   intro,
   align = "center",
   invert = false,
+  as: Tag = "h2",
 }: {
   eyebrow?: string;
   title: string;
   intro?: string;
   align?: "center" | "left";
   invert?: boolean;
+  as?: "h1" | "h2";
 }) {
   return (
     <div
@@ -66,14 +68,14 @@ export function SectionHeading({
           {eyebrow}
         </p>
       )}
-      <h2
+      <Tag
         className={cn(
-          "text-2xl sm:text-4xl",
+          Tag === "h1" ? "text-3xl sm:text-4xl" : "text-2xl sm:text-4xl",
           invert && "text-white",
         )}
       >
         {title}
-      </h2>
+      </Tag>
       {intro && (
         <p
           className={cn(

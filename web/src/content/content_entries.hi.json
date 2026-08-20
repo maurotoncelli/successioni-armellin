@@ -373,15 +373,15 @@
       "value": [
         {
           "titolo": "कोई कतार नहीं",
-          "testo": "घर से सब करें, फ़ोन से भी।"
+          "testo": "सब कुछ घर से, फोन से भी: न कतारें, न दफ्तर।"
         },
         {
           "titolo": "कोई त्रुटि या जुर्माना नहीं",
-          "testo": "प्राधिकृत Geom. द्वारा भू-अभिलेख डेटा तकनीकी जाँच।"
+          "testo": "अधिकृत सर्वेयर कैडस्ट्रल डेटा जाँचता है — जहाँ फाइलें सबसे ज़्यादा अटकती हैं।"
         },
         {
           "titolo": "वास्तविक व्यक्ति से सहायता",
-          "testo": "हमेशा वास्तविक व्यक्ति से बात, बॉट से नहीं।"
+          "testo": "शुरू से अंत तक एक वास्तविक व्यक्ति आपके साथ रहता है। कभी बॉट नहीं।"
         }
       ]
     },
@@ -437,6 +437,16 @@
       "locale": "hi",
       "is_published": true,
       "value": "सभी पूर्ण दस्तावेज़ों के बाद 10-15 कार्य दिवस (पैकेज अनुसार) में जमा।"
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_video_cta",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "वीडियो देखें",
+        "href": "/come-funziona#video"
+      }
     },
     {
       "collection": "home",
@@ -689,7 +699,7 @@
       "key": "box_trasparenza_body",
       "locale": "hi",
       "is_published": true,
-      "value": "पैकेज कीमत VAT-रहित पेशेवर शुल्क (forfettario)। उत्तराधिकार कर (बंधक, भू-अभिलेख, स्टाम्प) F24 से अलग, उत्तराधिकारी के खाते: जमा से पहले गणना।"
+      "value": "पैकेज कीमत **VAT-रहित पेशेवर शुल्क** (forfettario)।\n\n**उत्तराधिकार कर** (बंधक, भू-अभिलेख, स्टाम्प) F24 से **अलग, उत्तराधिकारी के खाते**: जमा से **पहले गणना**।"
     },
     {
       "collection": "tariffe",
@@ -730,7 +740,7 @@
       "key": "sla_note",
       "locale": "hi",
       "is_published": true,
-      "value": "प्रत्येक पैकेज पूर्ण दस्तावेज़ों (भुगतान नहीं) से निश्चित कार्य दिवसों में जमा। तृतीय पक्ष (Agenzia, Catasto, बैंक) बाहर।"
+      "value": "प्रत्येक पैकेज **पूर्ण दस्तावेज़ों** (भुगतान नहीं) से निश्चित **कार्य दिवसों** में जमा।\n\n**तृतीय पक्ष** (Agenzia, Catasto, बैंक) बाहर।"
     },
     {
       "collection": "tariffe",
@@ -833,14 +843,14 @@
       "key": "guida_scelta_title",
       "locale": "hi",
       "is_published": true,
-      "value": "कौन सा चुनें, पता नहीं?"
+      "value": "चुनने से पहले (और भुगतान के बाद)"
     },
     {
       "collection": "tariffe",
       "key": "guida_scelta_body",
       "locale": "hi",
       "is_published": true,
-      "value": "पैकेज चयन त्वरित गाइड या Lorenzo से बात: कुछ मिनट में सही पैकेज। विचार बदले तो बदलना सरल।"
+      "value": "तीन मिनट में समझें कैसे काम करता है, बिना सरप्राइज़।"
     },
     {
       "collection": "tariffe",
@@ -861,6 +871,40 @@
         "label": "Lorenzo से बात करें",
         "href": "tel:+393201570567"
       }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_recesso",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "वापसी कैसे काम करती है",
+        "href": "/recesso"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_items",
+      "locale": "hi",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "कौन सा पैकेज",
+          "testo": "**सरल** = केवल खाते और नकदी, कोई संपत्ति नहीं। **संपत्ति के साथ** = 1 से 3 संपत्ति, कैडस्ट्रल ट्रांसफर शामिल। उससे अधिक, या विशेष मामले: **मुफ़्त कस्टम कोट**। उलझन हो तो Lorenzo को लिखें: हम बताएँगे।"
+        },
+        {
+          "titolo": "गलत पैकेज चुका दिया तो",
+          "testo": "कोई बात नहीं। बदल जाता है: आप **केवल अंतर** चुकाते या वापस पाते हैं। शुरू से नहीं, और दिया हुआ पैसा नहीं जाता।"
+        },
+        {
+          "titolo": "भुगतान के बाद क्या होता है",
+          "testo": "**व्यक्तिगत क्षेत्र** खुलता है: वहाँ दस्तावेज़ अपलोड (फ़ोटो से भी), मैंडेट साइन, फ़ाइल देखें और Lorenzo से बात। कोई दफ़्तर नहीं।"
+        },
+        {
+          "titolo": "अगर मन बदल जाए",
+          "testo": "कानूनन **14 दिन** की वापसी है। अगर तुरंत शुरू करने को कहें और काम पूरा हो चुका हो, वापसी लागू नहीं — यह पहले साफ़ बताते हैं।"
+        }
+      ]
     },
     {
       "collection": "tariffe",
@@ -1012,7 +1056,7 @@
       "key": "team_body",
       "locale": "hi",
       "is_published": true,
-      "value": "मैं स्वयं घोषणा तैयार/जमा: प्राधिकृत हूँ। कर पक्ष पर सलाहकार पर्यवेक्षण। भू-अभिलेख नियंत्रण और गणना विश्वास, बिना फ़ाइल विभाजन।"
+      "value": "मैं स्वयं घोषणा तैयार/जमा: **प्राधिकृत हूँ**। कर पक्ष पर **सलाहकार पर्यवेक्षण**। भू-अभिलेख नियंत्रण और गणना विश्वास, बिना फ़ाइल विभाजन।"
     },
     {
       "collection": "chi_siamo",
@@ -1043,7 +1087,7 @@
       "key": "perche_geometra_body",
       "locale": "hi",
       "is_published": true,
-      "value": "अक्सर सलाहकार, CAF या नोटरी की अपेक्षा। उत्तराधिकार में नाज़ुक भाग भू-अभिलेख: Geom. का काम। जमा हेतु Entratel मध्यस्थ — मैं हूँ। नोटरी बाद के अधिनियमों के लिए।"
+      "value": "अक्सर सलाहकार, CAF या नोटरी की अपेक्षा। उत्तराधिकार में नाज़ुक भाग **भू-अभिलेख: Geom. का काम**। जमा हेतु **Entratel मध्यस्थ — मैं हूँ**। नोटरी बाद के अधिनियमों के लिए।"
     },
     {
       "collection": "chi_siamo",
@@ -1082,7 +1126,7 @@
       "key": "studio_foto_alt",
       "locale": "hi",
       "is_published": true,
-      "value": "Pontedera Cathedral"
+      "value": "Via Vittorio Veneto, Pontedera"
     },
     {
       "collection": "chi_siamo",
@@ -1320,6 +1364,13 @@
     },
     {
       "collection": "faq",
+      "key": "featured_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "पहले वे शंकाएँ जो रोकती हैं"
+    },
+    {
+      "collection": "faq",
       "key": "hero_search",
       "locale": "hi",
       "is_published": true,
@@ -1542,6 +1593,69 @@
     },
     {
       "collection": "come_funziona",
+      "key": "video_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "देखें यह कैसे काम करता है"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_caption",
+      "locale": "hi",
+      "is_published": true,
+      "value": "एक महिला साइट पर उत्तराधिकार की प्रक्रिया करती है: कोटेशन से दस्तावेज़ों तक, घर से। दो मिनट।"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_alt",
+      "locale": "hi",
+      "is_published": true,
+      "value": "व्याख्या वीडियो: एक महिला वेबसाइट पर उत्तराधिकार घोषणा पूरी करती है"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_play",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कैसे काम करता है वीडियो चलाएँ"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_badge",
+      "locale": "hi",
+      "is_published": true,
+      "value": "वीडियो जल्द आ रहा है"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_duration",
+      "locale": "hi",
+      "is_published": true,
+      "value": "लगभग 2 मिनट"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_duration_placeholder",
+      "locale": "hi",
+      "is_published": true,
+      "value": "पूर्वावलोकन — अंतिम वीडियो जल्द"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_captions_label",
+      "locale": "hi",
+      "is_published": true,
+      "value": "उपशीर्षक"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_captions_off",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कोई नहीं"
+    },
+    {
+      "collection": "come_funziona",
       "key": "steps",
       "locale": "hi",
       "is_published": true,
@@ -1578,7 +1692,7 @@
       "key": "sla_body",
       "locale": "hi",
       "is_published": true,
-      "value": "समय पैकेज पर, सभी पूर्ण दस्तावेज़ों से (भुगतान से नहीं)। तृतीय पक्ष (Agenzia, Catasto, बैंक) का समय बाहर।"
+      "value": "समय पैकेज पर, **सभी पूर्ण दस्तावेज़ों** से (भुगतान से नहीं)।\n\n**तृतीय पक्ष** (Agenzia, Catasto, बैंक) का समय बाहर।"
     },
     {
       "collection": "come_funziona",
@@ -1592,7 +1706,7 @@
       "key": "valore_body",
       "locale": "hi",
       "is_published": true,
-      "value": "भू-अभिलेख डेटा हाथ से — प्लॉट, subalterni, अनुलग्नक, स्वामित्व — जहाँ फ़ाइलें अटकती हैं। सलाहकार संख्या पर्यवेक्षण। भरा फ़ॉर्म और अच्छी फ़ाइल का अंतर।"
+      "value": "**भू-अभिलेख डेटा हाथ से** — प्लॉट, subalterni, अनुलग्नक, स्वामित्व — जहाँ फ़ाइलें अटकती हैं।\n\n**सलाहकार संख्या पर्यवेक्षण**। भरा फ़ॉर्म और **अच्छी फ़ाइल** का अंतर।"
     },
     {
       "collection": "come_funziona",
@@ -1606,7 +1720,7 @@
       "key": "distanza_body",
       "locale": "hi",
       "is_published": true,
-      "value": "कोई कार्यालय/बैंक नहीं: प्रश्नावली, दस्तावेज़, संचार, Agenzia जमा ऑनलाइन। Lorenzo कॉल हमेशा।"
+      "value": "कोई कार्यालय/बैंक नहीं: प्रश्नावली, दस्तावेज़, संचार, Agenzia जमा **ऑनलाइन**।\n\n**Lorenzo कॉल** हमेशा।"
     },
     {
       "collection": "come_funziona",
@@ -2320,7 +2434,7 @@
       "is_published": true,
       "value": {
         "label": "गाइड",
-        "href": "/tariffe"
+        "href": "/tariffe#guida"
       }
     },
     {
@@ -4721,7 +4835,7 @@
         "map_title": "{citta} में कार्यालय",
         "maps_cta": "Google Maps में खोलें",
         "map_iframe_title": "कार्यालय का नक्शा - {address}",
-        "photo_caption": "Pontedera Cathedral",
+        "photo_caption": "Via Vittorio Veneto, Pontedera",
         "photo_credit": "Photo: SeesaTheDoctor / Wikimedia (CC BY 4.0)"
       }
     },

@@ -373,15 +373,15 @@
       "value": [
         {
           "titolo": "Keine Warteschlangen",
-          "testo": "Alles von zu Hause, auch per Telefon."
+          "testo": "Alles von zu Hause, auch vom Handy: keine Schlangen, keine Ämter."
         },
         {
           "titolo": "Keine Fehler und Bußgelder",
-          "testo": "Technische Katasterdatenprüfung durch berechtigten Geometer."
+          "testo": "Ein zugelassener Geometer prüft die Katasterdaten – dort stocken die Verfahren."
         },
         {
           "titolo": "Persönlicher Support",
-          "testo": "Sie sprechen immer mit einer echten Person, nicht mit einem Bot."
+          "testo": "Eine echte Person begleitet Sie von Anfang bis Ende. Nie ein Bot."
         }
       ]
     },
@@ -437,6 +437,16 @@
       "locale": "de",
       "is_published": true,
       "value": "Einreichung innerhalb von 10–15 Werktagen (je nach Paket) nach vollständigen Dokumenten."
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_video_cta",
+      "locale": "de",
+      "is_published": true,
+      "value": {
+        "label": "Video ansehen",
+        "href": "/come-funziona#video"
+      }
     },
     {
       "collection": "home",
@@ -689,7 +699,7 @@
       "key": "box_trasparenza_body",
       "locale": "de",
       "is_published": true,
-      "value": "Paketpreis = Honorar ohne MwSt. (Pauschalregelung). Erbschaftssteuern separat, per F24, vom Erben — berechnet und mitgeteilt VOR Einreichung."
+      "value": "Paketpreis = **Honorar ohne MwSt.** (Pauschalregelung).\n\n**Erbschaftssteuern separat**, per F24, **vom Erben** — berechnet und mitgeteilt **vor Einreichung**."
     },
     {
       "collection": "tariffe",
@@ -730,7 +740,7 @@
       "key": "sla_note",
       "locale": "de",
       "is_published": true,
-      "value": "Jedes Paket: Einreichung innerhalb fester Werktage nach VOLLSTÄNDIGEN Dokumenten (nicht ab Zahlung). Dritte (Agenzia, Kataster, Banken) ausgeschlossen."
+      "value": "Jedes Paket: Einreichung innerhalb fester **Werktage** nach **vollständigen Dokumenten** (nicht ab Zahlung).\n\n**Dritte** (Agenzia, Kataster, Banken) ausgeschlossen."
     },
     {
       "collection": "tariffe",
@@ -833,14 +843,14 @@
       "key": "guida_scelta_title",
       "locale": "de",
       "is_published": true,
-      "value": "Unsicher bei der Auswahl?"
+      "value": "Bevor Sie wählen (und nachdem Sie zahlen)"
     },
     {
       "collection": "tariffe",
       "key": "guida_scelta_body",
       "locale": "de",
       "is_published": true,
-      "value": "Kurze Paketauswahlhilfe oder Gespräch mit Lorenzo — Paketwechsel einfach, nur Differenz."
+      "value": "Drei Minuten, um zu verstehen, wie es funktioniert — ohne Überraschungen."
     },
     {
       "collection": "tariffe",
@@ -861,6 +871,40 @@
         "label": "Mit Lorenzo sprechen",
         "href": "tel:+393201570567"
       }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_recesso",
+      "locale": "de",
+      "is_published": true,
+      "value": {
+        "label": "So funktioniert der Widerruf",
+        "href": "/recesso"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_items",
+      "locale": "de",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "Welches Paket",
+          "testo": "**Einfach** = nur Konten und Liquidität, keine Immobilien. **Mit Immobilien** = 1 bis 3 Immobilien, Katasterumschreibung inklusive. Darüber hinaus oder Sonderfälle (Grundstücke, Unternehmen, Anteile): **kostenloses Angebot nach Maß**. Wenn Sie unsicher sind, schreiben Sie Lorenzo: wir sagen es Ihnen."
+        },
+        {
+          "titolo": "Wenn Sie das falsche Paket zahlen",
+          "testo": "Kein Problem. Wir ändern es: Sie zahlen oder wir erstatten **nur die Differenz**. Es geht nicht von vorn los, und das bereits Gezahlte geht nicht verloren."
+        },
+        {
+          "titolo": "Was nach der Zahlung passiert",
+          "testo": "Ihr **persönlicher Bereich** öffnet sich: dort laden Sie Dokumente hoch (auch per Foto), unterschreiben das Mandat, verfolgen die Akte und sprechen mit Lorenzo. Keine Schalter, keine Ämter."
+        },
+        {
+          "titolo": "Wenn Sie es sich anders überlegen",
+          "testo": "Sie haben **14 Tage** gesetzliches Widerrufsrecht. Wenn Sie uns bitten, sofort zu beginnen und die Arbeit bereits fertig ist, gilt der Widerruf nicht mehr — wir sagen es Ihnen vorher klar."
+        }
+      ]
     },
     {
       "collection": "tariffe",
@@ -1012,7 +1056,7 @@
       "key": "team_body",
       "locale": "de",
       "is_published": true,
-      "value": "Ich erstelle und übermittle die Erklärung selbst. Steuerlicher Teil mit Steuerberater-Prüfung. Katasterkontrolle und sichere Zahlen — eine Akte, ein Ansprechpartner."
+      "value": "Ich erstelle und übermittle die Erklärung selbst. Steuerlicher Teil mit **Steuerberater-Prüfung**. Katasterkontrolle und sichere Zahlen — **eine Akte, ein Ansprechpartner**."
     },
     {
       "collection": "chi_siamo",
@@ -1043,7 +1087,7 @@
       "key": "perche_geometra_body",
       "locale": "de",
       "is_published": true,
-      "value": "Viele denken an Steuerberater oder Notar. Entscheidend sind Katasterdaten — Geometersache. Einreichung braucht Entratel-Vermittler. Notar erst für spätere Urkunden."
+      "value": "Viele denken an Steuerberater oder Notar. Entscheidend sind **Katasterdaten — Geometersache**. Einreichung braucht **Entratel-Vermittler**. Notar erst für spätere Urkunden."
     },
     {
       "collection": "chi_siamo",
@@ -1082,7 +1126,7 @@
       "key": "studio_foto_alt",
       "locale": "de",
       "is_published": true,
-      "value": "Dom von Pontedera"
+      "value": "Via Vittorio Veneto, Pontedera"
     },
     {
       "collection": "chi_siamo",
@@ -1320,6 +1364,13 @@
     },
     {
       "collection": "faq",
+      "key": "featured_title",
+      "locale": "de",
+      "is_published": true,
+      "value": "Zuerst die Zweifel, die blockieren"
+    },
+    {
+      "collection": "faq",
       "key": "hero_search",
       "locale": "de",
       "is_published": true,
@@ -1542,6 +1593,69 @@
     },
     {
       "collection": "come_funziona",
+      "key": "video_title",
+      "locale": "de",
+      "is_published": true,
+      "value": "So funktioniert es"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_caption",
+      "locale": "de",
+      "is_published": true,
+      "value": "Eine Frau macht die Erbschaftserklärung auf der Website: vom Angebot bis zu den Unterlagen, von zu Hause. Zwei Minuten."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_alt",
+      "locale": "de",
+      "is_published": true,
+      "value": "Erklärvideo: eine Frau schließt die Erbschaftserklärung auf der Website ab"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_play",
+      "locale": "de",
+      "is_published": true,
+      "value": "Video zur Funktionsweise abspielen"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_badge",
+      "locale": "de",
+      "is_published": true,
+      "value": "Video folgt in Kürze"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_duration",
+      "locale": "de",
+      "is_published": true,
+      "value": "Ca. 2 Min."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_duration_placeholder",
+      "locale": "de",
+      "is_published": true,
+      "value": "Vorschau — endgültiges Video folgt"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_captions_label",
+      "locale": "de",
+      "is_published": true,
+      "value": "Untertitel"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_captions_off",
+      "locale": "de",
+      "is_published": true,
+      "value": "Keine"
+    },
+    {
+      "collection": "come_funziona",
       "key": "steps",
       "locale": "de",
       "is_published": true,
@@ -1578,7 +1692,7 @@
       "key": "sla_body",
       "locale": "de",
       "is_published": true,
-      "value": "Fristen ab vollständigen Dokumenten (nicht ab Zahlung). Dritte (Agenzia, Kataster, Banken) ausgeschlossen."
+      "value": "Fristen ab **vollständigen Dokumenten** (nicht ab Zahlung).\n\n**Dritte** (Agenzia, Kataster, Banken) ausgeschlossen."
     },
     {
       "collection": "come_funziona",
@@ -1592,7 +1706,7 @@
       "key": "valore_body",
       "locale": "de",
       "is_published": true,
-      "value": "Manuelle Katasterprüfung — Parzellen, Untereinheiten, Anbauten, Erwerbsurkunden. Mit steuerlicher Prüfung. Der Unterschied zwischen ausgefülltem Formular und sauberer Akte."
+      "value": "**Manuelle Katasterprüfung** — Parzellen, Untereinheiten, Anbauten, Erwerbsurkunden.\n\nMit **steuerlicher Prüfung**. Der Unterschied zwischen ausgefülltem Formular und **sauberer Akte**."
     },
     {
       "collection": "come_funziona",
@@ -1606,7 +1720,7 @@
       "key": "distanza_body",
       "locale": "de",
       "is_published": true,
-      "value": "Kein Amt, keine Bank: alles online. Immer ein Gespräch mit Lorenzo."
+      "value": "Kein Amt, keine Bank: **alles online**.\n\nImmer **ein Gespräch mit Lorenzo**."
     },
     {
       "collection": "come_funziona",
@@ -2320,7 +2434,7 @@
       "is_published": true,
       "value": {
         "label": "Leitfaden",
-        "href": "/tariffe"
+        "href": "/tariffe#guida"
       }
     },
     {
@@ -4721,7 +4835,7 @@
         "map_title": "Das Büro in {citta}",
         "maps_cta": "In Google Maps öffnen",
         "map_iframe_title": "Bürokarte - {address}",
-        "photo_caption": "Dom von Pontedera",
+        "photo_caption": "Via Vittorio Veneto, Pontedera",
         "photo_credit": "Foto: SeesaTheDoctor / Wikimedia (CC BY 4.0)"
       }
     },

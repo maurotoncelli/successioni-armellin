@@ -7,6 +7,7 @@ import {
   IconTimeline,
   IconVerify,
 } from "@/components/site/come-funziona-icons";
+import { EmphBlock } from "@/components/site/emph";
 import { cn } from "@/lib/utils";
 
 const panelIcons = [
@@ -16,6 +17,9 @@ const panelIcons = [
 ];
 
 type Item = { titolo: string; testo: string };
+
+const cardClass =
+  "rounded-2xl border border-primary/10 bg-bg shadow-sm transition duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0";
 
 /**
  * Pannelli "Quanto tempo / Cosa facciamo / Tutto online".
@@ -31,10 +35,7 @@ export function ComeFunzionaPanels({ items }: { items: Item[] }) {
         const { Icon, color } = panelIcons[i % panelIcons.length];
         const isOpen = openIndex === i;
         return (
-          <div
-            key={item.titolo}
-            className="rounded-2xl border border-primary/10 bg-bg shadow-sm md:p-6"
-          >
+          <div key={item.titolo} className={cn(cardClass, "md:p-6")}>
             {/* Mobile: riga tappabile, il testo si apre solo su richiesta */}
             <h3 className="md:hidden">
               <button
@@ -44,7 +45,7 @@ export function ComeFunzionaPanels({ items }: { items: Item[] }) {
                 className="flex w-full items-center gap-3 p-3 text-left"
               >
                 <Icon className={cn("h-7 w-7 shrink-0", color)} aria-hidden />
-                <span className="min-w-0 flex-1 text-base leading-snug">
+                <span className="min-w-0 flex-1 text-base font-bold leading-snug text-primary">
                   {item.titolo}
                 </span>
                 <ChevronDown
@@ -57,18 +58,20 @@ export function ComeFunzionaPanels({ items }: { items: Item[] }) {
               </button>
             </h3>
             {isOpen ? (
-              <p className="px-3 pb-3 ps-[3.25rem] text-sm leading-relaxed text-text-muted md:hidden">
-                {item.testo}
-              </p>
+              <EmphBlock
+                className="px-3 pb-3 ps-[3.25rem] text-sm leading-relaxed text-text-muted first:mt-0 [&:not(:first-child)]:mt-2.5 md:hidden"
+                text={item.testo}
+              />
             ) : null}
 
             {/* Desktop: card classica sempre espansa */}
             <div className="hidden md:block">
               <Icon className={cn("h-9 w-9", color)} aria-hidden />
-              <h3 className="mt-5 text-xl">{item.titolo}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-text-muted">
-                {item.testo}
-              </p>
+              <h3 className="mt-5 text-xl font-bold text-primary">{item.titolo}</h3>
+              <EmphBlock
+                className="mt-2.5 text-sm leading-relaxed text-text-muted first:mt-2.5"
+                text={item.testo}
+              />
             </div>
           </div>
         );

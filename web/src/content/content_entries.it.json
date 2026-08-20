@@ -373,15 +373,15 @@
       "value": [
         {
           "titolo": "Zero code",
-          "testo": "Fai tutto da casa, anche da telefono."
+          "testo": "Tutto da casa, anche dal telefono: niente code, niente sportelli."
         },
         {
           "titolo": "Zero errori e sanzioni",
-          "testo": "Controllo tecnico dei dati catastali da un geometra abilitato."
+          "testo": "Un geometra abilitato controlla i dati catastali, dove le pratiche si bloccano."
         },
         {
           "titolo": "Assistenza umana",
-          "testo": "Parli sempre con una persona reale, non con un bot."
+          "testo": "Una persona reale ti segue dall'inizio alla fine. Mai un bot."
         }
       ]
     },
@@ -437,6 +437,16 @@
       "locale": "it",
       "is_published": true,
       "value": "Invio entro 10-15 giorni lavorativi (in base al pacchetto) da quando abbiamo tutti i documenti completi."
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_video_cta",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "label": "Guarda il video",
+        "href": "/come-funziona#video"
+      }
     },
     {
       "collection": "home",
@@ -689,7 +699,7 @@
       "key": "box_trasparenza_body",
       "locale": "it",
       "is_published": true,
-      "value": "Il prezzo del pacchetto è l'onorario professionale senza IVA: lo studio opera in regime forfettario (operazione non soggetta a IVA). Le imposte di successione (ipotecaria, catastale, bolli) sono separate, a carico dell'erede, e si versano con F24: te le calcoliamo e comunichiamo PRIMA dell'invio."
+      "value": "Il prezzo del pacchetto è l'**onorario professionale senza IVA**: lo studio opera in regime forfettario (operazione non soggetta a IVA).\n\nLe **imposte di successione** (ipotecaria, catastale, bolli) sono **separate, a carico dell'erede**, e si versano con F24: te le calcoliamo e comunichiamo **prima dell'invio**."
     },
     {
       "collection": "tariffe",
@@ -730,7 +740,7 @@
       "key": "sla_note",
       "locale": "it",
       "is_published": true,
-      "value": "Ogni pacchetto indica l'invio della dichiarazione entro un numero preciso di giorni lavorativi dalla documentazione COMPLETA (non dal pagamento): così è una promessa che possiamo davvero mantenere. Sono esclusi i tempi di enti terzi (Agenzia, Catasto, banche)."
+      "value": "Ogni pacchetto indica l'invio della dichiarazione entro un numero preciso di **giorni lavorativi** dalla **documentazione completa** (non dal pagamento): così è una promessa che possiamo davvero mantenere.\n\nSono **esclusi i tempi di enti terzi** (Agenzia, Catasto, banche)."
     },
     {
       "collection": "tariffe",
@@ -833,14 +843,14 @@
       "key": "guida_scelta_title",
       "locale": "it",
       "is_published": true,
-      "value": "Non sai quale scegliere?"
+      "value": "Prima di scegliere (e dopo aver pagato)"
     },
     {
       "collection": "tariffe",
       "key": "guida_scelta_body",
       "locale": "it",
       "is_published": true,
-      "value": "Leggi la guida rapida alla scelta del pacchetto, oppure fai due chiacchiere con Lorenzo: in pochi minuti capisci quello giusto. E se cambi idea, cambiare pacchetto è semplice e regoli solo la differenza."
+      "value": "Tre minuti per capire come funziona, senza sorprese."
     },
     {
       "collection": "tariffe",
@@ -861,6 +871,40 @@
         "label": "Parla con Lorenzo",
         "href": "tel:+393201570567"
       }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_recesso",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "label": "Come funziona il recesso",
+        "href": "/recesso"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_items",
+      "locale": "it",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "Quale pacchetto",
+          "testo": "**Semplice** = solo conti e liquidità, niente immobili. **Con immobili** = da 1 a 3 immobili, voltura inclusa. Oltre, o casi particolari (terreni, aziende, quote): **preventivo su misura, gratis**. Se non sai da che parte stare, scrivi a Lorenzo: te lo diciamo noi."
+        },
+        {
+          "titolo": "Se paghi il pacchetto sbagliato",
+          "testo": "Non è un problema. Si cambia: paghi o ti rimborsiamo **solo la differenza**. Non si ricomincia da capo e non si butta via quello già versato."
+        },
+        {
+          "titolo": "Cosa succede dopo il pagamento",
+          "testo": "Si apre l'**area personale**: lì carichi i documenti (anche da foto), firmi il mandato, segui la pratica e parli con Lorenzo. Non devi andare in nessuno sportello."
+        },
+        {
+          "titolo": "Se cambi idea",
+          "testo": "Hai **14 giorni** di recesso di legge. Se ci chiedi di partire subito e il lavoro è già finito, il recesso non si applica più — te lo diciamo prima, in modo chiaro."
+        }
+      ]
     },
     {
       "collection": "tariffe",
@@ -1012,7 +1056,7 @@
       "key": "team_body",
       "locale": "it",
       "is_published": true,
-      "value": "Predispongo e trasmetto io la dichiarazione: sono abilitato a farlo. Per la parte fiscale mi avvalgo della supervisione di commercialisti. Così hai il controllo tecnico sui dati catastali e la sicurezza sui calcoli, senza spezzare la pratica tra studi diversi."
+      "value": "Predispongo e trasmetto io la dichiarazione: **sono abilitato a farlo**. Per la parte fiscale mi avvalgo della **supervisione di commercialisti**. Così hai il controllo tecnico sui dati catastali e la sicurezza sui calcoli, senza spezzare la pratica tra studi diversi."
     },
     {
       "collection": "chi_siamo",
@@ -1043,7 +1087,7 @@
       "key": "perche_geometra_body",
       "locale": "it",
       "is_published": true,
-      "value": "Molti si aspettano un commercialista, un CAF o un notaio. Nella successione, però, il punto più delicato sono i dati catastali: è il mestiere del geometra. Per il deposito serve un intermediario Entratel — lo sono. Il notaio interviene solo per atti successivi, non per la dichiarazione."
+      "value": "Molti si aspettano un commercialista, un CAF o un notaio. Nella successione, però, il punto più delicato sono **i dati catastali: è il mestiere del geometra**. Per il deposito serve un **intermediario Entratel — lo sono**. Il notaio interviene solo per atti successivi, non per la dichiarazione."
     },
     {
       "collection": "chi_siamo",
@@ -1082,7 +1126,7 @@
       "key": "studio_foto_alt",
       "locale": "it",
       "is_published": true,
-      "value": "Duomo di Pontedera"
+      "value": "Via Vittorio Veneto, Pontedera"
     },
     {
       "collection": "chi_siamo",
@@ -1334,6 +1378,13 @@
     },
     {
       "collection": "faq",
+      "key": "featured_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Prima i dubbi che bloccano"
+    },
+    {
+      "collection": "faq",
       "key": "hero_search",
       "locale": "it",
       "is_published": true,
@@ -1556,6 +1607,69 @@
     },
     {
       "collection": "come_funziona",
+      "key": "video_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Guarda come funziona"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_caption",
+      "locale": "it",
+      "is_published": true,
+      "value": "Una ragazza fa la successione sul sito: dal preventivo ai documenti, da casa. Due minuti."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_alt",
+      "locale": "it",
+      "is_published": true,
+      "value": "Video esplicativo: una ragazza completa la dichiarazione di successione sul sito"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_play",
+      "locale": "it",
+      "is_published": true,
+      "value": "Riproduci il video su come funziona"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_badge",
+      "locale": "it",
+      "is_published": true,
+      "value": "Video in arrivo"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_duration",
+      "locale": "it",
+      "is_published": true,
+      "value": "Circa 2 min"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_duration_placeholder",
+      "locale": "it",
+      "is_published": true,
+      "value": "Anteprima — video definitivo in arrivo"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_captions_label",
+      "locale": "it",
+      "is_published": true,
+      "value": "Sottotitoli"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_captions_off",
+      "locale": "it",
+      "is_published": true,
+      "value": "Nessuno"
+    },
+    {
+      "collection": "come_funziona",
       "key": "steps",
       "locale": "it",
       "is_published": true,
@@ -1592,7 +1706,7 @@
       "key": "sla_body",
       "locale": "it",
       "is_published": true,
-      "value": "I tempi dipendono dal pacchetto e partono da quando abbiamo TUTTI i documenti completi e corretti (non dal pagamento): così è una promessa che possiamo mantenere davvero. Sono esclusi i tempi di enti terzi (Agenzia, Catasto, banche)."
+      "value": "I tempi dipendono dal pacchetto e partono da quando abbiamo **tutti i documenti completi e corretti** (non dal pagamento): così è una promessa che possiamo mantenere davvero.\n\nSono **esclusi i tempi di enti terzi** (Agenzia, Catasto, banche)."
     },
     {
       "collection": "come_funziona",
@@ -1606,7 +1720,7 @@
       "key": "valore_body",
       "locale": "it",
       "is_published": true,
-      "value": "Verifichiamo a mano i dati catastali - particelle, subalterni, annessi, atti di provenienza - che sono il punto dove le pratiche si bloccano. Con la supervisione fiscale di commercialisti sui numeri. È la differenza tra un modulo riempito e una pratica fatta bene."
+      "value": "Verifichiamo a mano i **dati catastali** — particelle, subalterni, annessi, atti di provenienza — che sono il punto dove le pratiche si bloccano.\n\nCon la **supervisione fiscale di commercialisti** sui numeri. È la differenza tra un modulo riempito e **una pratica fatta bene**."
     },
     {
       "collection": "come_funziona",
@@ -1620,7 +1734,7 @@
       "key": "distanza_body",
       "locale": "it",
       "is_published": true,
-      "value": "Non devi andare in nessun ufficio né in banca: questionario, documenti, comunicazioni e invio all'Agenzia avvengono online. C'è sempre una chiamata con Lorenzo per spiegarti tutto."
+      "value": "Non devi andare in **nessun ufficio né in banca**: questionario, documenti, comunicazioni e invio all'Agenzia avvengono **online**.\n\nC'è sempre **una chiamata con Lorenzo** per spiegarti tutto."
     },
     {
       "collection": "come_funziona",
@@ -2334,7 +2448,7 @@
       "is_published": true,
       "value": {
         "label": "guida",
-        "href": "/tariffe"
+        "href": "/tariffe#guida"
       }
     },
     {
@@ -4735,7 +4849,7 @@
         "map_title": "Lo studio a {citta}",
         "maps_cta": "Apri in Google Maps",
         "map_iframe_title": "Mappa dello studio - {address}",
-        "photo_caption": "Duomo di Pontedera",
+        "photo_caption": "Via Vittorio Veneto, Pontedera",
         "photo_credit": "Foto: SeesaTheDoctor / Wikimedia (CC BY 4.0)"
       }
     },

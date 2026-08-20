@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { getRequestLocale, t, tCta } from "@/lib/locale";
-import { ChevronDown } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
 import { Section } from "@/components/ui/section";
 import { CtaBand } from "@/components/site/cta-band";
+import { FaqAccordion } from "@/components/site/faq-accordion";
 import { getFaqs, type Faq } from "@/lib/cms";
+import { faqCategoryIntroKey, splitFeaturedFaqs } from "@/lib/faq-featured";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -26,11 +27,22 @@ function groupByCategory(items: Faq[]) {
 export default async function FaqPage() {
   const locale = await getRequestLocale();
   const faqs = await getFaqs(locale);
-  const grouped = groupByCategory(faqs);
+  const { featured, rest } = splitFeaturedFaqs(faqs);
+  const grouped = groupByCategory(rest.length > 0 ? rest : faqs);
+  const showFeaturedPeak = featured.length > 0 && rest.length > 0;
+  const groupedWithIntro = await Promise.all(
+    grouped.map(async ([category, items]) => {
+      const introKey = faqCategoryIntroKey(category);
+      return {
+        category,
+        items,
+        intro: introKey ? await t("faq", introKey) : null,
+      };
+    }),
+  );
   const ctaButton = await tCta("faq", "cta_button");
   const ctaPhone = await tCta("faq", "cta_phone");
 
-  // Rich snippet FAQ: il markup rispecchia le Q&A realmente visibili in pagina.
   const faqLd =
     faqs.length > 0
       ? {
@@ -58,23 +70,32 @@ export default async function FaqPage() {
         subtitle={await t("faq", "hero_subtitle")}
       />
 
-      <Section>
-        <div className="mx-auto max-w-3xl space-y-8 sm:space-y-12">
-          {grouped.map(([category, items]) => (
+      {showFeaturedPeak ? (
+        <Section>
+          <h2 className="font-display text-2xl text-secondary sm:text-3xl">
+            {await t("faq", "featured_title", "Prima i dubbi che bloccano")}
+          </h2>
+          <p className="mt-2 max-w-2xl text-sm text-text-muted sm:text-base">
+            {await t("faq", "cat_perche_intro")}
+          </p>
+          <div className="mx-auto mt-6 max-w-3xl sm:mt-8">
+            <FaqAccordion items={featured} featured openFirst />
+          </div>
+        </Section>
+      ) : null}
+
+      <Section tone="muted">
+        <div className="mx-auto max-w-3xl space-y-10 sm:space-y-14">
+          {groupedWithIntro.map(({ category, items, intro }) => (
             <div key={category}>
-              <h2 className="text-2xl">{category}</h2>
-              <div className="mt-5 divide-y divide-primary/10 rounded-2xl border border-primary/10">
-                {items.map((item) => (
-                  <details key={item.question} className="group">
-                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5 font-medium text-primary">
-                      {item.question}
-                      <ChevronDown className="h-5 w-5 shrink-0 text-accent transition-transform group-open:rotate-180" />
-                    </summary>
-                    <p className="px-5 pb-5 text-sm leading-relaxed text-text-muted">
-                      {item.answer}
-                    </p>
-                  </details>
-                ))}
+              <h2 className="font-display text-2xl text-secondary">{category}</h2>
+              {intro ? (
+                <p className="mt-2 text-sm text-text-muted sm:text-base">
+                  {intro}
+                </p>
+              ) : null}
+              <div className="mt-5">
+                <FaqAccordion items={items} />
               </div>
             </div>
           ))}

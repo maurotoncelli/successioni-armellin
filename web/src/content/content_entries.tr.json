@@ -373,15 +373,15 @@
       "value": [
         {
           "titolo": "Sıra yok",
-          "testo": "Her şeyi evden yapın, telefondan bile."
+          "testo": "Her şey evden, telefondan bile: kuyruk yok, gişe yok."
         },
         {
           "titolo": "Sıfır hata ve ceza",
-          "testo": "Yetkili bir Geom. tarafından kadastro verilerinin teknik kontrolü."
+          "testo": "Yetkili bir teknik uzman kadastro verilerini kontrol eder; dosyalar en çok burada takılır."
         },
         {
           "titolo": "İnsan desteği",
-          "testo": "Her zaman gerçek bir kişiyle konuşursunuz, bot değil."
+          "testo": "Baştan sona gerçek bir kişi sizinle ilgilenir. Asla bot değil."
         }
       ]
     },
@@ -437,6 +437,16 @@
       "locale": "tr",
       "is_published": true,
       "value": "Tüm belgeler tamamlandıktan sonra 10-15 iş günü içinde gönderim (pakete göre)."
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_video_cta",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Videoyu izle",
+        "href": "/come-funziona#video"
+      }
     },
     {
       "collection": "home",
@@ -689,7 +699,7 @@
       "key": "box_trasparenza_body",
       "locale": "tr",
       "is_published": true,
-      "value": "Paket fiyatı KDV hariç profesyonel ücrettir: ofis forfait rejiminde çalışır (KDV'ye tabi değildir). Veraset vergileri (ipotek, kadastro, damga) ayrıdır, mirasçıya aittir ve F24 ile ödenir: gönderimden ÖNCE hesaplayıp bildiririz."
+      "value": "Paket fiyatı **KDV hariç profesyonel ücrettir**: ofis forfait rejiminde çalışır (KDV'ye tabi değildir).\n\n**Veraset vergileri** (ipotek, kadastro, damga) **ayrıdır, mirasçıya aittir** ve F24 ile ödenir: gönderimden **önce hesaplayıp bildiririz**."
     },
     {
       "collection": "tariffe",
@@ -730,7 +740,7 @@
       "key": "sla_note",
       "locale": "tr",
       "is_published": true,
-      "value": "Her paket, beyannamenin TAM belgelerden (ödemeden değil) itibaren belirli bir iş günü sayısı içinde gönderileceğini belirtir: böylece gerçekten tutabileceğimiz bir söz veririz. Üçüncü taraf süreleri (Agenzia, Kadastro, bankalar) hariçtir."
+      "value": "Her paket, beyannamenin **tam belgelerden** (ödemeden değil) itibaren belirli bir **iş günü** sayısı içinde gönderileceğini belirtir: böylece gerçekten tutabileceğimiz bir söz veririz.\n\n**Üçüncü taraf süreleri** (Agenzia, Kadastro, bankalar) hariçtir."
     },
     {
       "collection": "tariffe",
@@ -833,14 +843,14 @@
       "key": "guida_scelta_title",
       "locale": "tr",
       "is_published": true,
-      "value": "Hangisini seçeceğinizi bilmiyor musunuz?"
+      "value": "Seçmeden önce (ve ödedikten sonra)"
     },
     {
       "collection": "tariffe",
       "key": "guida_scelta_body",
       "locale": "tr",
       "is_published": true,
-      "value": "Paket seçimi hızlı rehberini okuyun veya Lorenzo ile konuşun: birkaç dakikada doğru olanı anlarsınız. Fikrinizi değiştirirseniz paket değiştirmek kolaydır, yalnızca fark ödenir."
+      "value": "Nasıl çalıştığını anlamak için üç dakika, sürpriz yok."
     },
     {
       "collection": "tariffe",
@@ -861,6 +871,40 @@
         "label": "Lorenzo ile konuşun",
         "href": "tel:+393201570567"
       }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_recesso",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Cayma nasıl işler",
+        "href": "/recesso"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_items",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "Hangi paket",
+          "testo": "**Basit** = yalnızca hesaplar ve nakit, gayrimenkul yok. **Gayrimenkullü** = 1–3 taşınmaz, kadastro devri dahil. Daha fazlası veya özel durumlar (arazi, şirket, pay): **ücretsiz özel teklif**. Emin değilseniz Lorenzo'ya yazın: biz söyleriz."
+        },
+        {
+          "titolo": "Yanlış paketi öderseniz",
+          "testo": "Sorun değil. Değiştirilir: **yalnızca farkı** ödersiniz veya iade ederiz. Baştan başlamazsınız, ödediğiniz de yanmaz."
+        },
+        {
+          "titolo": "Ödemeden sonra ne olur",
+          "testo": "**Kişisel alan** açılır: belgeleri (fotoğraftan bile) yüklersiniz, vekâleti imzalarsınız, dosyayı izlersiniz ve Lorenzo ile konuşursunuz. Gişe yok, daire yok."
+        },
+        {
+          "titolo": "Fikrinizi değiştirirseniz",
+          "testo": "Yasal **14 günlük** cayma hakkınız vardır. Hemen başlamamızı isterseniz ve iş bitmişse cayma artık uygulanmaz — bunu önceden, açıkça söyleriz."
+        }
+      ]
     },
     {
       "collection": "tariffe",
@@ -1012,7 +1056,7 @@
       "key": "team_body",
       "locale": "tr",
       "is_published": true,
-      "value": "Beyannameyi ben hazırlayıp iletiyorum: bunu yapmaya yetkiliyim. Vergi kısmında mali müşavirlerin denetiminden yararlanıyorum. Böylece kadastro verilerinde teknik kontrol ve hesaplarda güven elde edersiniz, dosya farklı ofisler arasında bölünmez."
+      "value": "Beyannameyi ben hazırlayıp iletiyorum: **bunu yapmaya yetkiliyim**. Vergi kısmında **mali müşavirlerin denetiminden** yararlanıyorum. Böylece kadastro verilerinde teknik kontrol ve hesaplarda güven elde edersiniz, dosya farklı ofisler arasında bölünmez."
     },
     {
       "collection": "chi_siamo",
@@ -1043,7 +1087,7 @@
       "key": "perche_geometra_body",
       "locale": "tr",
       "is_published": true,
-      "value": "Birçok kişi mali müşavir, CAF veya noter bekler. Verasette ise en hassas nokta kadastro verileridir: bu geometranın işidir. Sunum için Entratel aracısı gerekir — ben öyleyim. Noter yalnızca sonraki işlemlerde devreye girer, beyanname için değil."
+      "value": "Birçok kişi mali müşavir, CAF veya noter bekler. Verasette ise en hassas nokta **kadastro verileridir: bu geometranın işidir**. Sunum için **Entratel aracısı** gerekir — ben öyleyim. Noter yalnızca sonraki işlemlerde devreye girer, beyanname için değil."
     },
     {
       "collection": "chi_siamo",
@@ -1082,7 +1126,7 @@
       "key": "studio_foto_alt",
       "locale": "tr",
       "is_published": true,
-      "value": "Pontedera Katedrali"
+      "value": "Via Vittorio Veneto, Pontedera"
     },
     {
       "collection": "chi_siamo",
@@ -1320,6 +1364,13 @@
     },
     {
       "collection": "faq",
+      "key": "featured_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Önce sizi durduran şüpheler"
+    },
+    {
+      "collection": "faq",
       "key": "hero_search",
       "locale": "tr",
       "is_published": true,
@@ -1542,6 +1593,69 @@
     },
     {
       "collection": "come_funziona",
+      "key": "video_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Nasıl çalıştığını izleyin"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_caption",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bir kadın sitede veraset işlemlerini yapıyor: tekliften belgelere, evinden. İki dakika."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_alt",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Açıklayıcı video: bir kadın sitede veraset beyannamesini tamamlıyor"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_play",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Nasıl çalışır videosunu oynat"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_badge",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Video yakında"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_duration",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Yaklaşık 2 dk"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_duration_placeholder",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Önizleme — nihai video yakında"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_captions_label",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Altyazılar"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_captions_off",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Yok"
+    },
+    {
+      "collection": "come_funziona",
       "key": "steps",
       "locale": "tr",
       "is_published": true,
@@ -1578,7 +1692,7 @@
       "key": "sla_body",
       "locale": "tr",
       "is_published": true,
-      "value": "Süreler pakete bağlıdır ve TÜM belgeler tam ve doğru olduğunda başlar (ödemeden değil): böylece gerçekten tutabileceğimiz bir söz veririz. Üçüncü taraf süreleri (Agenzia, Kadastro, bankalar) hariçtir."
+      "value": "Süreler pakete bağlıdır ve **tüm belgeler tam ve doğru** olduğunda başlar (ödemeden değil): böylece gerçekten tutabileceğimiz bir söz veririz.\n\n**Üçüncü taraf süreleri** (Agenzia, Kadastro, bankalar) hariçtir."
     },
     {
       "collection": "come_funziona",
@@ -1592,7 +1706,7 @@
       "key": "valore_body",
       "locale": "tr",
       "is_published": true,
-      "value": "Parseller, alt birimler, ek yapılar, mülkiyet belgeleri — dosyaların takıldığı nokta olan kadastro verilerini elle kontrol ediyoruz. Rakamlarda mali müşavirlerin vergi denetimiyle. Bu, doldurulmuş bir form ile iyi yapılmış bir dosya arasındaki farktır."
+      "value": "Parseller, alt birimler, ek yapılar, mülkiyet belgeleri — dosyaların takıldığı **kadastro verilerini elle** kontrol ediyoruz.\n\n**Mali müşavirlerin vergi denetimiyle**. Bu, doldurulmuş bir form ile **iyi yapılmış bir dosya** arasındaki farktır."
     },
     {
       "collection": "come_funziona",
@@ -1606,7 +1720,7 @@
       "key": "distanza_body",
       "locale": "tr",
       "is_published": true,
-      "value": "Hiçbir ofise veya bankaya gitmeniz gerekmez: anket, belgeler, iletişim ve Agenzia'ya gönderim çevrimiçi yapılır. Her zaman Lorenzo ile bir görüşme olur."
+      "value": "Hiçbir ofise veya bankaya gitmeniz gerekmez: anket, belgeler, iletişim ve Agenzia'ya gönderim **çevrimiçi** yapılır.\n\nHer zaman **Lorenzo ile bir görüşme** olur."
     },
     {
       "collection": "come_funziona",
@@ -2320,7 +2434,7 @@
       "is_published": true,
       "value": {
         "label": "rehber",
-        "href": "/tariffe"
+        "href": "/tariffe#guida"
       }
     },
     {
@@ -4721,7 +4835,7 @@
         "map_title": "{citta} ofisi",
         "maps_cta": "Google Maps'te aç",
         "map_iframe_title": "Ofis haritası - {address}",
-        "photo_caption": "Pontedera Katedrali",
+        "photo_caption": "Via Vittorio Veneto, Pontedera",
         "photo_credit": "Foto: SeesaTheDoctor / Wikimedia (CC BY 4.0)"
       }
     },

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { getRequestLocale, navPageTitle, t, tCta, tList, tObj } from "@/lib/locale";
 import Image from "next/image";
 import { PageHero } from "@/components/site/page-hero";
+import { Emph } from "@/components/site/emph";
 import { Section, SectionHeading } from "@/components/ui/section";
-import { Card } from "@/components/ui/card";
 import { Reviews } from "@/components/site/reviews";
 import { CtaBand } from "@/components/site/cta-band";
 import { WelcomeVideo } from "@/components/site/welcome-video";
@@ -96,10 +96,10 @@ export default async function ChiSonoPage() {
               {await t("chi_siamo", "team_title")}
             </h2>
             <p className="mt-5 leading-relaxed text-text-muted">
-              {await t("chi_siamo", "team_body")}
+              <Emph text={await t("chi_siamo", "team_body")} />
             </p>
             <p className="mt-4 leading-relaxed text-text-muted">
-              {await t("chi_siamo", "perche_geometra_body")}
+              <Emph text={await t("chi_siamo", "perche_geometra_body")} />
             </p>
           </div>
         </div>
@@ -114,27 +114,34 @@ export default async function ChiSonoPage() {
         />
       </Section>
 
-      <Section tone="sand">
-        <SectionHeading title={await t("chi_siamo", "credenziali_title")} />
+      {/* Banda navy: le credenziali come dichiarazione di autorevolezza
+          (stesso linguaggio della trust bar in home). */}
+      <Section tone="primary">
+        <SectionHeading
+          invert
+          title={await t("chi_siamo", "credenziali_title")}
+        />
         {/* Mobile compatto: righe orizzontali icona+testo; da sm card verticali. */}
         <div className="mx-auto mt-6 grid max-w-3xl gap-2.5 sm:mt-10 sm:grid-cols-3 sm:gap-4">
           {credenziali.map((c, i) => {
             const Icon = credenzialiIcons[i] ?? IconAlbo;
             return (
-              <Card
+              <div
                 key={c.voce}
-                className="flex items-center gap-3 p-3.5 text-left sm:block sm:p-6 sm:text-center"
+                className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.06] p-3.5 text-left shadow-lg shadow-black/25 transition duration-300 hover:-translate-y-1 hover:border-accent/40 hover:bg-white/[0.11] hover:shadow-xl hover:shadow-black/35 motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:block sm:p-6 sm:text-center"
               >
-                <Icon className="h-6 w-6 shrink-0 text-accent sm:mx-auto sm:h-8 sm:w-8" />
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-accent/15 ring-1 ring-accent/40 sm:mx-auto sm:h-12 sm:w-12">
+                  <Icon className="h-5 w-5 text-accent sm:h-6 sm:w-6" />
+                </span>
                 <div className="min-w-0">
-                  <h3 className="text-sm leading-snug sm:mt-3 sm:text-base">
+                  <h3 className="text-sm leading-snug text-white sm:mt-4 sm:text-base">
                     {c.voce}
                   </h3>
-                  <p className="mt-0.5 text-xs text-text-muted sm:mt-1 sm:text-sm">
+                  <p className="mt-0.5 text-xs text-white/60 sm:mt-1 sm:text-sm">
                     {c.dettaglio}
                   </p>
                 </div>
-              </Card>
+              </div>
             );
           })}
         </div>
@@ -144,15 +151,15 @@ export default async function ChiSonoPage() {
         <div className="grid items-center gap-8 md:grid-cols-2 md:gap-12">
           <div className="relative min-h-56 overflow-hidden rounded-2xl md:min-h-[20rem]">
             <Image
-              src="/images/pontedera-studio.jpg"
+              src="/images/studio-pontedera-via-veneto.jpg"
               alt={await t(
                 "chi_siamo",
                 "studio_foto_alt",
-                "Duomo di Pontedera",
+                "Via Vittorio Veneto, Pontedera",
               )}
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover object-[center_30%]"
+              className="object-cover object-center"
             />
           </div>
           <div>

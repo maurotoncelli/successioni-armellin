@@ -273,7 +273,7 @@ export const CONTATTI_MAP_UI_IT: ContattiMapUiLabels = {
   map_title: "Lo studio a {citta}",
   maps_cta: "Apri in Google Maps",
   map_iframe_title: "Mappa dello studio - {address}",
-  photo_caption: "Duomo di Pontedera",
+  photo_caption: "Via Vittorio Veneto, Pontedera",
   photo_credit: "Foto: SeesaTheDoctor / Wikimedia (CC BY 4.0)",
 };
 

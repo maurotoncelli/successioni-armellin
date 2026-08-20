@@ -130,14 +130,13 @@ export default async function ContattiPage() {
         />
 
         <div className="mt-6 grid gap-6 sm:mt-10 lg:grid-cols-2">
-          {/* Duomo di Pontedera — Wikimedia Commons, CC BY 4.0 (SeesaTheDoctor). */}
           <figure className="relative h-64 overflow-hidden rounded-2xl border border-primary/10 shadow-sm sm:h-80 lg:h-[460px]">
             <Image
-              src="/images/pontedera-studio.jpg"
+              src="/images/studio-pontedera-via-veneto.jpg"
               alt={mapUi.photo_caption}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
-              className="object-cover object-[center_30%]"
+              className="object-cover object-center"
             />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/85 via-primary/40 to-transparent p-5">
               <figcaption className="flex items-start gap-2 text-white">

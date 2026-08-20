@@ -132,7 +132,9 @@
 | ti_serve_body | richtext | si | esonero, verifica gratis |
 | ti_serve_cta | cta | label si | -> `/preventivo` |
 | guida_scelta_title | string | si | — |
-| guida_scelta_body | richtext | si | guida + chiamata riallineamento |
+| guida_scelta_body | richtext | si | intro della sezione `#guida` |
+| guida_scelta_items | list | si | 4 item `{titolo, testo}` |
+| guida_scelta_recesso | cta | label si | -> `/recesso` |
 | guida_scelta_cta_guida | cta | label si | -> `#guida` |
 | guida_scelta_cta_call | cta | label si | -> `tel:` |
 | microtrust | string | si | geometra Entratel + commercialista |
@@ -240,6 +242,9 @@
 |-----|------|--------------|----------------|
 | hero_title | string | si | — |
 | hero_subtitle | richtext | si | — |
+| video_title | string | si | "Guarda come funziona" — sotto hero, sopra i 3 passi |
+| video_caption | richtext | si | — |
+| video_ref | image_ref/video | no | `public/videos/come-funziona.mp4` (placeholder finché assente) |
 | steps | list | si | item `{numero, titolo, testo, icona, dettaglio}` (3) |
 | sla_title | string | si | — |
 | sla_body | richtext | si | da documentazione completa |

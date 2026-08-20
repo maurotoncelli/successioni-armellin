@@ -373,15 +373,15 @@
       "value": [
         {
           "titolo": "Zéro file d'attente",
-          "testo": "Tout faire depuis chez vous, même depuis votre téléphone."
+          "testo": "Tout depuis chez vous, même depuis le téléphone : ni files, ni guichets."
         },
         {
           "titolo": "Zéro erreur ni sanction",
-          "testo": "Contrôle technique des données cadastrales par un géomètre habilité."
+          "testo": "Un géomètre habilité contrôle les données cadastrales, là où les dossiers bloquent."
         },
         {
           "titolo": "Assistance humaine",
-          "testo": "Vous parlez toujours avec une personne réelle, pas avec un bot."
+          "testo": "Une personne réelle vous suit du début à la fin. Jamais un bot."
         }
       ]
     },
@@ -437,6 +437,16 @@
       "locale": "fr",
       "is_published": true,
       "value": "Envoi sous 10 à 15 jours ouvrables (selon le forfait) à partir du moment où nous avons tous les documents complets."
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_video_cta",
+      "locale": "fr",
+      "is_published": true,
+      "value": {
+        "label": "Voir la vidéo",
+        "href": "/come-funziona#video"
+      }
     },
     {
       "collection": "home",
@@ -689,7 +699,7 @@
       "key": "box_trasparenza_body",
       "locale": "fr",
       "is_published": true,
-      "value": "Le prix du forfait correspond aux honoraires professionnels hors TVA : le cabinet opère en régime forfaitaire (opération non assujettie à la TVA). Les impôts de succession (hypothécaire, cadastrale, timbres) sont séparés, à la charge de l'héritier, et se paient via F24 : nous les calculons et vous les communiquons AVANT l'envoi."
+      "value": "Le prix du forfait correspond aux **honoraires professionnels hors TVA** : le cabinet opère en régime forfaitaire (opération non assujettie à la TVA).\n\nLes **impôts de succession** (hypothécaire, cadastrale, timbres) sont **séparés, à la charge de l'héritier**, et se paient via F24 : nous les calculons et vous les communiquons **avant l'envoi**."
     },
     {
       "collection": "tariffe",
@@ -730,7 +740,7 @@
       "key": "sla_note",
       "locale": "fr",
       "is_published": true,
-      "value": "Chaque forfait indique l'envoi de la déclaration sous un nombre précis de jours ouvrables à partir de la documentation COMPLÈTE (pas du paiement) : c'est une promesse que nous pouvons tenir. Les délais des tiers (Agenzia, Cadastre, banques) sont exclus."
+      "value": "Chaque forfait indique l'envoi de la déclaration sous un nombre précis de **jours ouvrables** à partir de la **documentation complète** (pas du paiement) : c'est une promesse que nous pouvons tenir.\n\nLes **délais des tiers** (Agenzia, Cadastre, banques) sont exclus."
     },
     {
       "collection": "tariffe",
@@ -833,14 +843,14 @@
       "key": "guida_scelta_title",
       "locale": "fr",
       "is_published": true,
-      "value": "Vous ne savez pas lequel choisir ?"
+      "value": "Avant de choisir (et après avoir payé)"
     },
     {
       "collection": "tariffe",
       "key": "guida_scelta_body",
       "locale": "fr",
       "is_published": true,
-      "value": "Lisez le guide rapide pour choisir le forfait, ou échangez quelques mots avec Lorenzo : en quelques minutes, vous saurez lequel convient. Et si vous changez d'avis, changer de forfait est simple — vous ne réglez que la différence."
+      "value": "Trois minutes pour comprendre comment ça marche, sans surprises."
     },
     {
       "collection": "tariffe",
@@ -861,6 +871,40 @@
         "label": "Parlez à Lorenzo",
         "href": "tel:+393201570567"
       }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_recesso",
+      "locale": "fr",
+      "is_published": true,
+      "value": {
+        "label": "Comment fonctionne la rétractation",
+        "href": "/recesso"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_items",
+      "locale": "fr",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "Quel forfait",
+          "testo": "**Simple** = comptes et liquidités seulement, pas d'immeubles. **Avec immeubles** = de 1 à 3 biens, mutation cadastrale incluse. Au-delà, ou cas particuliers (terrains, sociétés, parts) : **devis sur mesure, gratuit**. Si vous hésitez, écrivez à Lorenzo : nous vous le dirons."
+        },
+        {
+          "titolo": "Si vous payez le mauvais forfait",
+          "testo": "Ce n'est pas un problème. On change : vous payez ou nous remboursons **uniquement la différence**. On ne recommence pas à zéro et vous ne perdez pas ce qui est déjà versé."
+        },
+        {
+          "titolo": "Que se passe-t-il après le paiement",
+          "testo": "Votre **espace personnel** s'ouvre : vous y déposez les documents (même depuis des photos), signez le mandat, suivez le dossier et parlez à Lorenzo. Aucun guichet, aucun bureau."
+        },
+        {
+          "titolo": "Si vous changez d'avis",
+          "testo": "Vous avez **14 jours** de rétractation légale. Si vous nous demandez de commencer tout de suite et que le travail est déjà fini, la rétractation ne s'applique plus — nous vous le disons clairement avant."
+        }
+      ]
     },
     {
       "collection": "tariffe",
@@ -1012,7 +1056,7 @@
       "key": "team_body",
       "locale": "fr",
       "is_published": true,
-      "value": "Je prépare et transmets moi-même la déclaration : j'y suis habilité. Pour la partie fiscale, je m'appuie sur la supervision d'experts-comptables. Vous avez ainsi le contrôle technique des données cadastrales et la fiabilité des calculs, sans fragmenter le dossier entre plusieurs cabinets."
+      "value": "Je prépare et transmets moi-même la déclaration : **j'y suis habilité**. Pour la partie fiscale, je m'appuie sur la **supervision d'experts-comptables**. Vous avez ainsi le contrôle technique des données cadastrales et la fiabilité des calculs, sans fragmenter le dossier entre plusieurs cabinets."
     },
     {
       "collection": "chi_siamo",
@@ -1043,7 +1087,7 @@
       "key": "perche_geometra_body",
       "locale": "fr",
       "is_published": true,
-      "value": "Beaucoup s'attendent à un expert-comptable, un CAF ou un notaire. En succession, le point le plus délicat reste les données cadastrales : c'est le métier du géomètre. Pour le dépôt, il faut un intermédiaire Entratel — je le suis. Le notaire intervient seulement pour les actes ultérieurs, pas pour la déclaration."
+      "value": "Beaucoup s'attendent à un expert-comptable, un CAF ou un notaire. En succession, le point le plus délicat reste **les données cadastrales : c'est le métier du géomètre**. Pour le dépôt, il faut un **intermédiaire Entratel — je le suis**. Le notaire intervient seulement pour les actes ultérieurs, pas pour la déclaration."
     },
     {
       "collection": "chi_siamo",
@@ -1082,7 +1126,7 @@
       "key": "studio_foto_alt",
       "locale": "fr",
       "is_published": true,
-      "value": "Duomo di Pontedera"
+      "value": "Via Vittorio Veneto, Pontedera"
     },
     {
       "collection": "chi_siamo",
@@ -1320,6 +1364,13 @@
     },
     {
       "collection": "faq",
+      "key": "featured_title",
+      "locale": "fr",
+      "is_published": true,
+      "value": "D’abord les doutes qui bloquent"
+    },
+    {
+      "collection": "faq",
       "key": "hero_search",
       "locale": "fr",
       "is_published": true,
@@ -1542,6 +1593,69 @@
     },
     {
       "collection": "come_funziona",
+      "key": "video_title",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Voir comment ça marche"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_caption",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Une femme fait la succession sur le site : du devis aux documents, depuis chez elle. Deux minutes."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_alt",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Vidéo explicative : une femme termine la déclaration de succession sur le site"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_play",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Lire la vidéo comment ça marche"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_badge",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Vidéo à venir"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_duration",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Environ 2 min"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_duration_placeholder",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Aperçu — la vidéo définitive arrive bientôt"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_captions_label",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Sous-titres"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_captions_off",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Aucun"
+    },
+    {
+      "collection": "come_funziona",
       "key": "steps",
       "locale": "fr",
       "is_published": true,
@@ -1578,7 +1692,7 @@
       "key": "sla_body",
       "locale": "fr",
       "is_published": true,
-      "value": "Les délais dépendent du forfait et commencent lorsque nous avons TOUS les documents complets et corrects (pas au paiement) : c'est une promesse que nous pouvons tenir. Les délais des tiers (Agenzia, Cadastre, banques) sont exclus."
+      "value": "Les délais dépendent du forfait et commencent lorsque nous avons **tous les documents complets et corrects** (pas au paiement) : c'est une promesse que nous pouvons tenir.\n\nLes **délais des tiers** (Agenzia, Cadastre, banques) sont exclus."
     },
     {
       "collection": "come_funziona",
@@ -1592,7 +1706,7 @@
       "key": "valore_body",
       "locale": "fr",
       "is_published": true,
-      "value": "Nous vérifions manuellement les données cadastrales — parcelles, subalternes, dépendances, actes de provenance — là où les dossiers bloquent le plus souvent. Avec la supervision fiscale d'experts-comptables sur les chiffres. C'est la différence entre un formulaire rempli et un dossier bien traité."
+      "value": "Nous vérifions manuellement les **données cadastrales** — parcelles, subalternes, dépendances, actes de provenance — là où les dossiers bloquent le plus souvent.\n\nAvec la **supervision fiscale d'experts-comptables**. C'est la différence entre un formulaire rempli et **un dossier bien traité**."
     },
     {
       "collection": "come_funziona",
@@ -1606,7 +1720,7 @@
       "key": "distanza_body",
       "locale": "fr",
       "is_published": true,
-      "value": "Vous n'avez pas besoin d'aller dans un bureau ni à la banque : questionnaire, documents, communications et envoi à l'Agenzia se font en ligne. Il y a toujours un appel avec Lorenzo pour tout vous expliquer."
+      "value": "Vous n'avez pas besoin d'aller dans **un bureau ni à la banque** : questionnaire, documents, communications et envoi à l'Agenzia se font **en ligne**.\n\nIl y a toujours **un appel avec Lorenzo** pour tout vous expliquer."
     },
     {
       "collection": "come_funziona",
@@ -2320,7 +2434,7 @@
       "is_published": true,
       "value": {
         "label": "guide",
-        "href": "/tariffe"
+        "href": "/tariffe#guida"
       }
     },
     {
@@ -4721,7 +4835,7 @@
         "map_title": "Le cabinet à {citta}",
         "maps_cta": "Ouvrir dans Google Maps",
         "map_iframe_title": "Plan du cabinet - {address}",
-        "photo_caption": "Duomo di Pontedera",
+        "photo_caption": "Via Vittorio Veneto, Pontedera",
         "photo_credit": "Photo : SeesaTheDoctor / Wikimedia (CC BY 4.0)"
       }
     },

@@ -1,24 +1,31 @@
 import type { Metadata } from "next";
 import { getRequestLocale, navPageTitle, t, tCta, tList, tObj } from "@/lib/locale";
 import {
+  ArrowRight,
+  Clock,
   FileCheck2,
   FileSignature,
   FileText,
   FolderOpen,
   Landmark,
   Map as MapIcon,
+  Package,
   Receipt,
-  Settings2,
-  Timer,
+  RefreshCcw,
+  Scale,
+  Undo2,
   type LucideIcon,
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { PageHero } from "@/components/site/page-hero";
 import { Section, SectionHeading } from "@/components/ui/section";
-import { Card } from "@/components/ui/card";
+import { ButtonLink } from "@/components/ui/button";
 import { PackageCards } from "@/components/site/package-cards";
 import { CtaBand } from "@/components/site/cta-band";
 import { AddonCards } from "@/components/site/addon-cards";
+import { Emph, EmphBlock } from "@/components/site/emph";
 import { getAddons } from "@/lib/cms";
+import Link from "next/link";
 
 /** Icone per `tariffe.deliverable_list` (ordine fisso delle voci in content). */
 const DELIVERABLE_ICONS: LucideIcon[] = [
@@ -27,6 +34,13 @@ const DELIVERABLE_ICONS: LucideIcon[] = [
   Landmark,
   MapIcon,
   Receipt,
+];
+
+const GUIDA_ICONS: { Icon: LucideIcon; accent: boolean }[] = [
+  { Icon: Package, accent: true },
+  { Icon: RefreshCcw, accent: false },
+  { Icon: FolderOpen, accent: true },
+  { Icon: Undo2, accent: false },
 ];
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -40,6 +54,7 @@ export default async function TariffePage() {
   const locale = await getRequestLocale();
   const deliverable = await tList<string>("tariffe", "deliverable_list");
   const finalCta = await tCta("tariffe", "cta_finale_button");
+  const tiServeCta = await tCta("tariffe", "ti_serve_cta");
   const addons = await getAddons(locale);
 
   const telefono = await tObj("contatti", "telefono", {
@@ -58,6 +73,14 @@ export default async function TariffePage() {
     "addon_discover",
     "Scopri come attivarlo",
   );
+  const guidaItems = await tList<{ titolo: string; testo: string }>(
+    "tariffe",
+    "guida_scelta_items",
+  );
+  const guidaRecesso = await tCta("tariffe", "guida_scelta_recesso", {
+    label: "Come funziona il recesso",
+    href: "/recesso",
+  });
 
   return (
     <>
@@ -74,53 +97,124 @@ export default async function TariffePage() {
         </p>
       </Section>
 
+      <Section id="guida" tone="sand" className="scroll-mt-24">
+        <SectionHeading
+          title={await t("tariffe", "guida_scelta_title")}
+          intro={await t("tariffe", "guida_scelta_body")}
+        />
+        <div className="mx-auto mt-8 grid max-w-4xl gap-3 sm:mt-10 sm:grid-cols-2 sm:gap-4">
+          {guidaItems.map((item, i) => {
+            const { Icon, accent } = GUIDA_ICONS[i] ?? GUIDA_ICONS[0];
+            return (
+              <article
+                key={item.titolo}
+                className={cn(
+                  "rounded-2xl border border-primary/10 border-s-4 bg-bg px-5 py-5 shadow-sm sm:px-6 sm:py-6",
+                  accent ? "border-s-accent" : "border-s-primary",
+                  "transition duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-md",
+                  "motion-reduce:transition-none motion-reduce:hover:translate-y-0",
+                )}
+              >
+                <span
+                  className={cn(
+                    "grid h-10 w-10 place-items-center rounded-full ring-1",
+                    accent
+                      ? "bg-accent/15 text-accent ring-accent/40"
+                      : "bg-primary/10 text-primary ring-primary/20",
+                  )}
+                >
+                  <Icon className="h-5 w-5" aria-hidden />
+                </span>
+                <h3 className="mt-4 text-lg font-bold text-primary sm:text-xl">
+                  {item.titolo}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-text-muted sm:text-base">
+                  <Emph text={item.testo} />
+                </p>
+              </article>
+            );
+          })}
+        </div>
+        <div className="mt-6 text-center sm:mt-8">
+          <Link
+            href={guidaRecesso.href}
+            className="inline-flex items-center gap-1.5 font-semibold text-accent hover:text-accent-dark"
+          >
+            {guidaRecesso.label}
+            <ArrowRight className="h-4 w-4 rtl:rotate-180" />
+          </Link>
+        </div>
+      </Section>
+
       <Section tone="muted">
-        {/* Mobile compatto: card orizzontali icona+testo; da sm verticali centrate. */}
-        <div className="grid gap-3 sm:gap-6 md:grid-cols-2">
-          <Card className="flex items-start gap-3.5 p-4 text-left sm:block sm:p-6 sm:text-center">
-            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-accent/10 text-accent sm:mx-auto sm:h-14 sm:w-14">
-              <Landmark className="h-5 w-5 sm:h-7 sm:w-7" />
-            </span>
-            <div className="min-w-0">
-              <h3 className="text-lg font-medium sm:mt-5 sm:text-xl">
-                {await t("tariffe", "box_trasparenza_title")}
-              </h3>
-              <p className="mt-1 max-w-sm text-sm leading-relaxed text-text-muted sm:mx-auto sm:mt-3">
-                {await t("tariffe", "box_trasparenza_body")}
-              </p>
-            </div>
-          </Card>
-          <Card className="flex items-start gap-3.5 p-4 text-left sm:block sm:p-6 sm:text-center">
-            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-accent/10 text-accent sm:mx-auto sm:h-14 sm:w-14">
-              <Timer className="h-5 w-5 sm:h-7 sm:w-7" />
-            </span>
-            <div className="min-w-0">
-              <h3 className="text-lg font-medium sm:mt-5 sm:text-xl">
-                {await t("tariffe", "sla_title")}
-              </h3>
-              <p className="mt-1 max-w-sm text-sm leading-relaxed text-text-muted sm:mx-auto sm:mt-3">
-                {await t("tariffe", "sla_note")}
-              </p>
-            </div>
-          </Card>
+        <div className="grid gap-4 md:grid-cols-2 md:gap-5">
+          <article
+            className={cn(
+              "rounded-2xl border border-primary/10 border-s-4 border-s-accent bg-bg px-5 py-6 shadow-sm sm:px-7 sm:py-8",
+              "transition duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-md",
+              "motion-reduce:transition-none motion-reduce:hover:translate-y-0",
+            )}
+          >
+            <Scale className="h-8 w-8 text-accent" aria-hidden />
+            <p className="mt-4 text-xs font-semibold uppercase tracking-[0.14em] text-accent">
+              {await t("tariffe", "hero_eyebrow", "Prezzi chiari")}
+            </p>
+            <h3 className="mt-2 text-xl font-bold text-primary sm:text-2xl">
+              {await t("tariffe", "box_trasparenza_title")}
+            </h3>
+            <EmphBlock
+              className="mt-3 text-sm leading-relaxed text-text-muted sm:text-base"
+              text={await t("tariffe", "box_trasparenza_body")}
+            />
+          </article>
+          <article
+            className={cn(
+              "rounded-2xl border border-primary/10 border-s-4 border-s-primary bg-bg px-5 py-6 shadow-sm sm:px-7 sm:py-8",
+              "transition duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-md",
+              "motion-reduce:transition-none motion-reduce:hover:translate-y-0",
+            )}
+          >
+            <Clock className="h-8 w-8 text-primary" aria-hidden />
+            <p className="mt-4 text-xs font-semibold uppercase tracking-[0.14em] text-secondary">
+              {await t("tariffe", "sla_eyebrow", "Tempi")}
+            </p>
+            <h3 className="mt-2 text-xl font-bold text-primary sm:text-2xl">
+              {await t("tariffe", "sla_title")}
+            </h3>
+            <EmphBlock
+              className="mt-3 text-sm leading-relaxed text-text-muted sm:text-base"
+              text={await t("tariffe", "sla_note")}
+            />
+          </article>
         </div>
       </Section>
 
       <Section>
-        <SectionHeading title={await t("tariffe", "deliverable_title")} />
-        <ul className="mx-auto mt-6 grid w-fit max-w-2xl gap-y-3.5 sm:mt-10 sm:gap-y-5">
-          {deliverable.map((item, index) => {
-            const Icon = DELIVERABLE_ICONS[index] ?? FileText;
-            return (
-              <li key={item} className="flex items-center gap-4">
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-success/10 text-success">
-                  <Icon className="h-5 w-5" aria-hidden />
-                </span>
-                <span className="text-base font-medium">{item}</span>
-              </li>
-            );
-          })}
-        </ul>
+        <div className="overflow-hidden rounded-2xl bg-sand">
+          <div className="border-b border-primary/10 px-5 py-6 sm:px-8 sm:py-8">
+            <h2 className="text-2xl sm:text-3xl">
+              {await t("tariffe", "deliverable_title")}
+            </h2>
+          </div>
+          <ul className="divide-y divide-primary/10">
+            {deliverable.map((item, index) => {
+              const Icon = DELIVERABLE_ICONS[index] ?? FileText;
+              return (
+                <li
+                  key={item}
+                  className="flex items-center gap-4 px-5 py-4 sm:px-8 sm:py-5"
+                >
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-bg text-accent ring-1 ring-accent/30">
+                    <Icon className="h-5 w-5" aria-hidden />
+                  </span>
+                  <span className="text-sm font-medium text-primary sm:text-base">
+                    {item}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </Section>
 
       {/* Il blocco sparisce se dal CRM (listino) tutti gli addon sono
@@ -140,37 +234,24 @@ export default async function TariffePage() {
         </Section>
       )}
 
-      <Section>
-        {/* Mobile compatto: card orizzontali icona+testo; da sm verticali centrate. */}
-        <div className="mx-auto grid max-w-4xl gap-3 sm:gap-6 md:grid-cols-2">
-          <Card className="flex items-start gap-3.5 bg-bg-muted p-4 text-left sm:block sm:p-6 sm:text-center">
-            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary/10 text-primary sm:mx-auto sm:h-14 sm:w-14">
-              <FolderOpen className="h-5 w-5 sm:h-6 sm:w-6" />
-            </span>
-            <div className="min-w-0">
-              <h3 className="text-lg font-medium sm:mt-5 sm:text-xl">
-                {await t("tariffe", "ti_serve_title")}
-              </h3>
-              <p className="mt-1 max-w-sm text-sm leading-relaxed text-text-muted sm:mx-auto sm:mt-3">
-                {await t("tariffe", "ti_serve_body")}
-              </p>
-            </div>
-          </Card>
-          <Card className="flex items-start gap-3.5 bg-bg-muted p-4 text-left sm:block sm:p-6 sm:text-center">
-            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary/10 text-primary sm:mx-auto sm:h-14 sm:w-14">
-              <Settings2 className="h-5 w-5 sm:h-6 sm:w-6" />
-            </span>
-            <div className="min-w-0">
-              <h3 className="text-lg font-medium sm:mt-5 sm:text-xl">
-                {await t("pacchetti", "su_misura_title", "Preventivo personalizzato")}
-              </h3>
-              <p className="mt-1 max-w-sm text-sm leading-relaxed text-text-muted sm:mx-auto sm:mt-3">
-                {await t("tariffe", "su_misura_text")}
-              </p>
-            </div>
-          </Card>
+      <Section tone="sand">
+        <div className="max-w-2xl">
+          <h2 className="text-2xl sm:text-4xl">
+            {await t("tariffe", "ti_serve_title")}
+          </h2>
+          <p className="mt-3 text-base leading-relaxed text-text-muted sm:mt-4 sm:text-lg">
+            {await t("tariffe", "ti_serve_body")}
+          </p>
+          <div className="mt-6 sm:mt-8">
+            <ButtonLink href={tiServeCta.href} variant="primary" size="lg">
+              {tiServeCta.label}
+            </ButtonLink>
+          </div>
         </div>
-        <p className="mt-6 text-center text-sm text-text-muted sm:mt-12">
+        <p className="mt-8 max-w-2xl text-sm leading-relaxed text-text-muted sm:mt-10">
+          {await t("tariffe", "su_misura_text")}
+        </p>
+        <p className="mt-3 text-sm text-text-muted">
           {await t("tariffe", "microtrust")}
         </p>
       </Section>

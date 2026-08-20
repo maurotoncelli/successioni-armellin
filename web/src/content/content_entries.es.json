@@ -373,15 +373,15 @@
       "value": [
         {
           "titolo": "Sin colas",
-          "testo": "Hazlo todo desde casa, también por teléfono."
+          "testo": "Todo desde casa, incluso desde el móvil: sin colas ni ventanillas."
         },
         {
           "titolo": "Cero errores y sanciones",
-          "testo": "Control técnico de datos catastrales por un geometra habilitado."
+          "testo": "Un geómetra habilitado revisa los datos catastrales, donde se atascan los expedientes."
         },
         {
           "titolo": "Asistencia humana",
-          "testo": "Siempre hablas con una persona real, no con un bot."
+          "testo": "Una persona real te acompaña de principio a fin. Nunca un bot."
         }
       ]
     },
@@ -437,6 +437,16 @@
       "locale": "es",
       "is_published": true,
       "value": "Envío en 10-15 días laborables (según paquete) desde que tenemos todos los documentos completos."
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_video_cta",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Ver el vídeo",
+        "href": "/come-funziona#video"
+      }
     },
     {
       "collection": "home",
@@ -689,7 +699,7 @@
       "key": "box_trasparenza_body",
       "locale": "es",
       "is_published": true,
-      "value": "El precio del paquete son los honorarios profesionales sin IVA: el estudio opera en régimen forfettario (operación no sujeta a IVA). Los impuestos de sucesión (hipotecario, catastral, timbres) son aparte, a cargo del heredero, y se pagan con F24: los calculamos y comunicamos ANTES del envío."
+      "value": "El precio del paquete son los **honorarios profesionales sin IVA**: el estudio opera en régimen forfettario (operación no sujeta a IVA).\n\nLos **impuestos de sucesión** (hipotecario, catastral, timbres) son **aparte, a cargo del heredero**, y se pagan con F24: los calculamos y comunicamos **antes del envío**."
     },
     {
       "collection": "tariffe",
@@ -730,7 +740,7 @@
       "key": "sla_note",
       "locale": "es",
       "is_published": true,
-      "value": "Cada paquete indica el envío de la declaración en un número preciso de días laborables desde la documentación COMPLETA (no desde el pago): así es una promesa que realmente podemos cumplir. Quedan excluidos los plazos de terceros (Agenzia, Catasto, bancos)."
+      "value": "Cada paquete indica el envío de la declaración en un número preciso de **días laborables** desde la **documentación completa** (no desde el pago): así es una promesa que realmente podemos cumplir.\n\nQuedan **excluidos los plazos de terceros** (Agenzia, Catasto, bancos)."
     },
     {
       "collection": "tariffe",
@@ -833,14 +843,14 @@
       "key": "guida_scelta_title",
       "locale": "es",
       "is_published": true,
-      "value": "¿No sabes cuál elegir?"
+      "value": "Antes de elegir (y después de pagar)"
     },
     {
       "collection": "tariffe",
       "key": "guida_scelta_body",
       "locale": "es",
       "is_published": true,
-      "value": "Lee la guía rápida para elegir paquete, o charla con Lorenzo: en pocos minutos entiendes cuál es el adecuado. Y si cambias de idea, cambiar de paquete es sencillo y solo ajustas la diferencia."
+      "value": "Tres minutos para entender cómo funciona, sin sorpresas."
     },
     {
       "collection": "tariffe",
@@ -861,6 +871,40 @@
         "label": "Habla con Lorenzo",
         "href": "tel:+393201570567"
       }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_recesso",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Cómo funciona el desistimiento",
+        "href": "/recesso"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_items",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "Qué paquete",
+          "testo": "**Simple** = solo cuentas y liquidez, sin inmuebles. **Con inmuebles** = de 1 a 3 inmuebles, cambio catastral incluido. Más allá, o casos particulares (terrenos, empresas, participaciones): **presupuesto a medida, gratis**. Si no sabes por dónde empezar, escribe a Lorenzo: te lo decimos nosotros."
+        },
+        {
+          "titolo": "Si pagas el paquete equivocado",
+          "testo": "No es un problema. Se cambia: pagas o te devolvemos **solo la diferencia**. No se empieza de cero y no se pierde lo ya abonado."
+        },
+        {
+          "titolo": "Qué ocurre después del pago",
+          "testo": "Se abre el **área personal**: allí subes los documentos (también desde fotos), firmas el mandato, sigues el expediente y hablas con Lorenzo. No tienes que ir a ninguna ventanilla."
+        },
+        {
+          "titolo": "Si cambias de opinión",
+          "testo": "Tienes **14 días** de desistimiento legal. Si nos pides empezar de inmediato y el trabajo ya está terminado, el desistimiento ya no se aplica — te lo decimos antes, con claridad."
+        }
+      ]
     },
     {
       "collection": "tariffe",
@@ -1012,7 +1056,7 @@
       "key": "team_body",
       "locale": "es",
       "is_published": true,
-      "value": "Yo preparo y transmito la declaración: estoy habilitado para hacerlo. En la parte fiscal cuento con la supervisión de asesores fiscales. Así tienes control técnico de los datos catastrales y seguridad en los cálculos, sin dividir el expediente entre distintos estudios."
+      "value": "Yo preparo y transmito la declaración: **estoy habilitado para hacerlo**. En la parte fiscal cuento con la **supervisión de asesores fiscales**. Así tienes control técnico de los datos catastrales y seguridad en los cálculos, sin dividir el expediente entre distintos estudios."
     },
     {
       "collection": "chi_siamo",
@@ -1043,7 +1087,7 @@
       "key": "perche_geometra_body",
       "locale": "es",
       "is_published": true,
-      "value": "Muchos esperan un asesor fiscal, un CAF o un notario. En la sucesión, sin embargo, lo más delicado son los datos catastrales: es el oficio del geometra. Para el depósito hace falta un intermediario Entratel — yo lo soy. El notario interviene solo en actos posteriores, no en la declaración."
+      "value": "Muchos esperan un asesor fiscal, un CAF o un notario. En la sucesión, sin embargo, lo más delicado son **los datos catastrales: es el oficio del geometra**. Para el depósito hace falta un **intermediario Entratel — yo lo soy**. El notario interviene solo en actos posteriores, no en la declaración."
     },
     {
       "collection": "chi_siamo",
@@ -1082,7 +1126,7 @@
       "key": "studio_foto_alt",
       "locale": "es",
       "is_published": true,
-      "value": "Duomo di Pontedera"
+      "value": "Via Vittorio Veneto, Pontedera"
     },
     {
       "collection": "chi_siamo",
@@ -1320,6 +1364,13 @@
     },
     {
       "collection": "faq",
+      "key": "featured_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Primero las dudas que te frenan"
+    },
+    {
+      "collection": "faq",
       "key": "hero_search",
       "locale": "es",
       "is_published": true,
@@ -1542,6 +1593,69 @@
     },
     {
       "collection": "come_funziona",
+      "key": "video_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Mira cómo funciona"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_caption",
+      "locale": "es",
+      "is_published": true,
+      "value": "Una mujer hace la sucesión en el sitio: del presupuesto a los documentos, desde casa. Dos minutos."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_alt",
+      "locale": "es",
+      "is_published": true,
+      "value": "Vídeo explicativo: una mujer completa la declaración de sucesión en el sitio"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_play",
+      "locale": "es",
+      "is_published": true,
+      "value": "Reproducir el vídeo de cómo funciona"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_badge",
+      "locale": "es",
+      "is_published": true,
+      "value": "Vídeo próximamente"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_duration",
+      "locale": "es",
+      "is_published": true,
+      "value": "Unos 2 min"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_duration_placeholder",
+      "locale": "es",
+      "is_published": true,
+      "value": "Avance — el vídeo definitivo llegará pronto"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_captions_label",
+      "locale": "es",
+      "is_published": true,
+      "value": "Subtítulos"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_captions_off",
+      "locale": "es",
+      "is_published": true,
+      "value": "Ninguno"
+    },
+    {
+      "collection": "come_funziona",
       "key": "steps",
       "locale": "es",
       "is_published": true,
@@ -1578,7 +1692,7 @@
       "key": "sla_body",
       "locale": "es",
       "is_published": true,
-      "value": "Los plazos dependen del paquete y empiezan cuando tenemos TODOS los documentos completos y correctos (no desde el pago): así es una promesa que realmente podemos cumplir. Quedan excluidos los plazos de terceros (Agenzia, Catasto, bancos)."
+      "value": "Los plazos dependen del paquete y empiezan cuando tenemos **todos los documentos completos y correctos** (no desde el pago): así es una promesa que realmente podemos cumplir.\n\nQuedan **excluidos los plazos de terceros** (Agenzia, Catasto, bancos)."
     },
     {
       "collection": "come_funziona",
@@ -1592,7 +1706,7 @@
       "key": "valore_body",
       "locale": "es",
       "is_published": true,
-      "value": "Verificamos manualmente los datos catastrales — parcelas, subalternos, anexos, actos de procedencia — donde suelen bloquearse los expedientes. Con supervisión fiscal de asesores fiscales en los números. Es la diferencia entre un formulario rellenado y un expediente bien hecho."
+      "value": "Verificamos manualmente los **datos catastrales** — parcelas, subalternos, anexos, actos de procedencia — donde suelen bloquearse los expedientes.\n\nCon **supervisión fiscal de asesores** en los números. Es la diferencia entre un formulario rellenado y **un expediente bien hecho**."
     },
     {
       "collection": "come_funziona",
@@ -1606,7 +1720,7 @@
       "key": "distanza_body",
       "locale": "es",
       "is_published": true,
-      "value": "No tienes que ir a ninguna oficina ni al banco: cuestionario, documentos, comunicaciones y envío a la Agenzia son en línea. Siempre hay una llamada con Lorenzo para explicártelo todo."
+      "value": "No tienes que ir a **ninguna oficina ni al banco**: cuestionario, documentos, comunicaciones y envío a la Agenzia son **en línea**.\n\nSiempre hay **una llamada con Lorenzo** para explicártelo todo."
     },
     {
       "collection": "come_funziona",
@@ -2320,7 +2434,7 @@
       "is_published": true,
       "value": {
         "label": "guía",
-        "href": "/tariffe"
+        "href": "/tariffe#guida"
       }
     },
     {
@@ -4721,7 +4835,7 @@
         "map_title": "El estudio en {citta}",
         "maps_cta": "Abrir en Google Maps",
         "map_iframe_title": "Mapa del estudio - {address}",
-        "photo_caption": "Duomo di Pontedera",
+        "photo_caption": "Via Vittorio Veneto, Pontedera",
         "photo_credit": "Foto: SeesaTheDoctor / Wikimedia (CC BY 4.0)"
       }
     },

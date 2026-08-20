@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { navPageTitle, t, tCta, tList, tObj } from "@/lib/locale";
+import { getRequestLocale, navPageTitle, t, tCta, tList, tObj } from "@/lib/locale";
 import { PageHero } from "@/components/site/page-hero";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { CtaBand } from "@/components/site/cta-band";
+import { WelcomeVideo } from "@/components/site/welcome-video";
+import { getComeFunzionaVideoLabels } from "@/lib/come-funziona-video-labels";
+import {
+  COME_FUNZIONA_VIDEO_POSTER,
+  getComeFunzionaCaptionTracks,
+  getComeFunzionaVideoSrc,
+} from "@/lib/come-funziona-video";
 import {
   IconCheck,
   IconExternal,
@@ -60,6 +67,10 @@ export default async function ComeFunzionaPage() {
   const mapLink = indirizzo
     ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(indirizzo)}`
     : "/contatti";
+  const locale = await getRequestLocale();
+  const processVideoLabels = await getComeFunzionaVideoLabels();
+  const processVideoSrc = getComeFunzionaVideoSrc();
+  const processVideoCaptions = getComeFunzionaCaptionTracks(locale);
 
   return (
     <>
@@ -67,14 +78,9 @@ export default async function ComeFunzionaPage() {
         eyebrow={await t("come_funziona", "hero_eyebrow", "Il processo")}
         title={await t("come_funziona", "hero_title")}
         subtitle={await t("come_funziona", "hero_subtitle")}
-        image={{
-          src: "/images/come-funziona-hero.jpg",
-          alt: "Geom. Lorenzo Armellin al lavoro sulla pratica di successione",
-          position: "center center",
-        }}
       />
 
-      {/* Sequenza: nodi numerati + foto (come in home). */}
+      {/* Sequenza: nodi numerati + foto. */}
       <Section>
         <ol className="relative mx-auto grid max-w-5xl gap-7 sm:gap-10 md:grid-cols-3 md:gap-0">
           <div
@@ -128,6 +134,18 @@ export default async function ComeFunzionaPage() {
         </ol>
       </Section>
 
+      {/* Picco visivo: video processo (script @15), dopo i 3 passi illustrati.
+          Finché manca il master, occupa lo slot il benvenuto — swap automatico
+          su come-funziona.mp4. Fondo perla per staccare dai 3 passi bianchi. */}
+      <Section id="video" tone="muted" className="scroll-mt-24">
+        <WelcomeVideo
+          labels={processVideoLabels}
+          poster={COME_FUNZIONA_VIDEO_POSTER}
+          src={processVideoSrc}
+          captions={processVideoCaptions}
+        />
+      </Section>
+
       {/* Pannelli: su mobile accordion (testo al tap), da md card a 3 colonne. */}
       <Section tone="sand">
         <ComeFunzionaPanels
@@ -151,11 +169,11 @@ export default async function ComeFunzionaPage() {
           <div className="grid md:grid-cols-2">
             <div className="relative min-h-44 sm:min-h-56 md:min-h-full">
               <Image
-                src="/images/pontedera-studio.jpg"
-                alt="Studio a Pontedera"
+                src="/images/studio-pontedera-via-veneto.jpg"
+                alt="Via Vittorio Veneto, Pontedera"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover object-[center_30%]"
+                className="object-cover object-center"
               />
             </div>
             <div className="flex flex-col justify-center p-5 sm:p-8">

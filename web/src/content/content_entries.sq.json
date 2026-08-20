@@ -373,15 +373,15 @@
       "value": [
         {
           "titolo": "Pa radhë",
-          "testo": "Bëni gjithçka nga shtëpia, edhe nga telefoni."
+          "testo": "Gjithçka nga shtëpia, edhe nga telefoni: pa radhë, pa sportele."
         },
         {
           "titolo": "Zero gabime dhe gjoba",
-          "testo": "Kontroll teknik i të dhënave kadastrale nga një gjeometër i autorizuar."
+          "testo": "Një gjeometër i licencuar kontrollon të dhënat kadastrale, aty ku praktikat bllokohen."
         },
         {
           "titolo": "Asistencë njerëzore",
-          "testo": "Flisni gjithmonë me një person real, jo me bot."
+          "testo": "Një person real të ndjek nga fillimi në fund. Kurrë një bot."
         }
       ]
     },
@@ -437,6 +437,16 @@
       "locale": "sq",
       "is_published": true,
       "value": "Dorëzim brenda 10-15 ditëve pune (sipas paketës) nga kur kemi të gjitha dokumentet e plota."
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_video_cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Shiko videon",
+        "href": "/come-funziona#video"
+      }
     },
     {
       "collection": "home",
@@ -689,7 +699,7 @@
       "key": "box_trasparenza_body",
       "locale": "sq",
       "is_published": true,
-      "value": "Çmimi i paketës është honorari profesional pa TVSH: studio operon në regjimin forfettari (operacion jo i nënshtruar TVSH-së). Taksat e trashëgimisë (hipotekare, kadastrale, pulla) janë të ndara, në ngarkim të trashëgimtarit, dhe paguhen me F24: i llogaritim dhe i komunikojmë PARA dorëzimit."
+      "value": "Çmimi i paketës është **honorari profesional pa TVSH**: studio operon në regjimin forfettari (operacion jo i nënshtruar TVSH-së).\n\n**Taksat e trashëgimisë** (hipotekare, kadastrale, pulla) janë **të ndara, në ngarkim të trashëgimtarit**, dhe paguhen me F24: i llogaritim dhe i komunikojmë **para dorëzimit**."
     },
     {
       "collection": "tariffe",
@@ -730,7 +740,7 @@
       "key": "sla_note",
       "locale": "sq",
       "is_published": true,
-      "value": "Çdo paketë tregon dorëzimin e deklaratës brenda një numri të saktë ditësh pune nga dokumentacioni I PLOTË (jo nga pagesa): kështu është premtim që mund ta mbajmë vërtet. Përjashtohen kohët e enteve të treta (Agenzia, Kadastër, banka)."
+      "value": "Çdo paketë tregon dorëzimin e deklaratës brenda një numri të saktë **ditësh pune** nga **dokumentacioni i plotë** (jo nga pagesa): kështu është premtim që mund ta mbajmë vërtet.\n\n**Përjashtohen kohët e enteve të treta** (Agenzia, Kadastër, banka)."
     },
     {
       "collection": "tariffe",
@@ -833,14 +843,14 @@
       "key": "guida_scelta_title",
       "locale": "sq",
       "is_published": true,
-      "value": "Nuk dini cilin të zgjidhni?"
+      "value": "Para se të zgjedhësh (dhe pasi të paguash)"
     },
     {
       "collection": "tariffe",
       "key": "guida_scelta_body",
       "locale": "sq",
       "is_published": true,
-      "value": "Lexoni udhëzuesin e shpejtë për zgjedhjen e paketës, ose bisedoni pak me Lorenzo: në pak minuta e kuptoni atë të duhurën. Dhe nëse ndryshoni mendje, ndryshimi i paketës është i thjeshtë dhe rregulloni vetëm diferencën."
+      "value": "Tri minuta për të kuptuar si funksionon, pa surpriza."
     },
     {
       "collection": "tariffe",
@@ -861,6 +871,40 @@
         "label": "Flisni me Lorenzo",
         "href": "tel:+393201570567"
       }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_recesso",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Si funksionon recesioni",
+        "href": "/recesso"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_items",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "Cila paketë",
+          "testo": "**E thjeshtë** = vetëm llogari dhe likuiditet, pa pasuri. **Me pasuri** = 1 deri 3 pasuri, volturë kadastrale e përfshirë. Më shumë, ose raste të veçanta: **preventiv me porosi, falas**. Nëse nuk di nga t'ia nisësh, shkruaji Lorenzo: ta themi ne."
+        },
+        {
+          "titolo": "Nëse paguan paketën e gabuar",
+          "testo": "Nuk është problem. Ndryshohet: paguan ose të kthejmë **vetëm diferencën**. Nuk fillon nga e para dhe nuk humbet ajo që ke paguar."
+        },
+        {
+          "titolo": "Çfarë ndodh pas pagesës",
+          "testo": "Hapet **zona personale**: aty ngarkon dokumentet (edhe nga foto), nënshkruan mandatin, ndjek praktikën dhe flet me Lorenzo. Asnjë sportel."
+        },
+        {
+          "titolo": "Nëse ndryshon mendje",
+          "testo": "Ke **14 ditë** të drejtë recesioni ligjor. Nëse na kërkon të nisim menjëherë dhe puna ka mbaruar, recesioni nuk zbatohet më — ta themi qartë paraprakisht."
+        }
+      ]
     },
     {
       "collection": "tariffe",
@@ -1012,7 +1056,7 @@
       "key": "team_body",
       "locale": "sq",
       "is_published": true,
-      "value": "Unë e përgatis dhe e transmetto deklaratën: jam i autorizuar ta bëj. Për pjesën fiskale mbështetem te mbikëqyrja e kontabilistëve. Kështu keni kontroll teknik mbi të dhënat kadastrale dhe siguri mbi llogaritjet, pa e ndarë praktikën midis studiove të ndryshme."
+      "value": "Unë e përgatis dhe e transmetto deklaratën: **jam i autorizuar ta bëj**. Për pjesën fiskale mbështetem te **mbikëqyrja e kontabilistëve**. Kështu keni kontroll teknik mbi të dhënat kadastrale dhe siguri mbi llogaritjet, pa e ndarë praktikën midis studiove të ndryshme."
     },
     {
       "collection": "chi_siamo",
@@ -1043,7 +1087,7 @@
       "key": "perche_geometra_body",
       "locale": "sq",
       "is_published": true,
-      "value": "Shumë presin një kontabilist, CAF o noter. Te trashëgimi, megjithatë, pika më delikate janë të dhënat kadastrale: është puna e gjeometrit. Për depozitimin duhet ndërmjetës Entratel — unë jam. Noteri ndërhyen vetëm për akte të mëvonshme, jo për deklaratën."
+      "value": "Shumë presin një kontabilist, CAF o noter. Te trashëgimi, megjithatë, pika më delikate janë **të dhënat kadastrale: është puna e gjeometrit**. Për depozitimin duhet **ndërmjetës Entratel — unë jam**. Noteri ndërhyen vetëm për akte të mëvonshme, jo për deklaratën."
     },
     {
       "collection": "chi_siamo",
@@ -1082,7 +1126,7 @@
       "key": "studio_foto_alt",
       "locale": "sq",
       "is_published": true,
-      "value": "Duomo di Pontedera"
+      "value": "Via Vittorio Veneto, Pontedera"
     },
     {
       "collection": "chi_siamo",
@@ -1320,6 +1364,13 @@
     },
     {
       "collection": "faq",
+      "key": "featured_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Së pari dyshimet që të bllokojnë"
+    },
+    {
+      "collection": "faq",
       "key": "hero_search",
       "locale": "sq",
       "is_published": true,
@@ -1542,6 +1593,69 @@
     },
     {
       "collection": "come_funziona",
+      "key": "video_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Shiko si funksionon"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_caption",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Një vajzë bën trashëgiminë në sit: nga preventivi te dokumentet, nga shtëpia. Dy minuta."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_alt",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Video shpjeguese: një vajzë plotëson deklaratën e trashëgimisë në sit"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_play",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Luaj videon si funksionon"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_badge",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Video së shpejti"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_duration",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Rreth 2 min"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_duration_placeholder",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Parapamje — videoja përfundimtare së shpejti"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_captions_label",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Titrat"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_captions_off",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Asnjë"
+    },
+    {
+      "collection": "come_funziona",
       "key": "steps",
       "locale": "sq",
       "is_published": true,
@@ -1578,7 +1692,7 @@
       "key": "sla_body",
       "locale": "sq",
       "is_published": true,
-      "value": "Afatet varen nga paketa dhe fillojnë kur kemi TË GJITHA dokumentet e plota dhe të sakta (jo nga pagesa): kështu është premtim që mund ta mbajmë vërtet. Përjashtohen kohët e enteve të treta (Agenzia, Kadastër, banka)."
+      "value": "Afatet varen nga paketa dhe fillojnë kur kemi **të gjitha dokumentet e plota dhe të sakta** (jo nga pagesa): kështu është premtim që mund ta mbajmë vërtet.\n\n**Përjashtohen kohët e enteve të treta** (Agenzia, Kadastër, banka)."
     },
     {
       "collection": "come_funziona",
@@ -1592,7 +1706,7 @@
       "key": "valore_body",
       "locale": "sq",
       "is_published": true,
-      "value": "Verifikojmë manualisht të dhënat kadastrale — parcelat, nënalternat, aneksat, aktet e provenience — që janë pika ku praktikat ngecin. Me mbikëqyrje fiskale nga kontabilistë mbi numrat. Kjo është ndryshimi midis një formulari të plotësuar dhe një praktike të bërë mirë."
+      "value": "Verifikojmë manualisht **të dhënat kadastrale** — parcelat, nënalternat, aneksat, aktet e provenience — që janë pika ku praktikat ngecin.\n\nMe **mbikëqyrje fiskale nga kontabilistë**. Kjo është ndryshimi midis një formulari të plotësuar dhe **një praktike të bërë mirë**."
     },
     {
       "collection": "come_funziona",
@@ -1606,7 +1720,7 @@
       "key": "distanza_body",
       "locale": "sq",
       "is_published": true,
-      "value": "Nuk duhet të shkoni në asnjë zyrë as në bankë: pyetësori, dokumentet, komunikimet dhe dërgimi te Agenzia bëhen online. Gjithmonë ka një telefonatë me Lorenzo për t'ju shpjeguar gjithçka."
+      "value": "Nuk duhet të shkoni në **asnjë zyrë as në bankë**: pyetësori, dokumentet, komunikimet dhe dërgimi te Agenzia bëhen **online**.\n\nGjithmonë ka **një telefonatë me Lorenzo** për t'ju shpjeguar gjithçka."
     },
     {
       "collection": "come_funziona",
@@ -2320,7 +2434,7 @@
       "is_published": true,
       "value": {
         "label": "udhëzues",
-        "href": "/tariffe"
+        "href": "/tariffe#guida"
       }
     },
     {
@@ -4721,7 +4835,7 @@
         "map_title": "Studio në {citta}",
         "maps_cta": "Hapni në Google Maps",
         "map_iframe_title": "Harta e studios - {address}",
-        "photo_caption": "Duomo di Pontedera",
+        "photo_caption": "Via Vittorio Veneto, Pontedera",
         "photo_credit": "Foto: SeesaTheDoctor / Wikimedia (CC BY 4.0)"
       }
     },

@@ -165,7 +165,7 @@ export default async function GraziePage({
 
   const guidaCta = await tCta("grazie", "esito_b_guida", {
     label: "guida",
-    href: "/tariffe",
+    href: "/tariffe#guida",
   });
   const faqLink = await tCta("grazie", "documenti_faq_link", {
     label: "Approfondisci nelle FAQ",
@@ -180,8 +180,6 @@ export default async function GraziePage({
         {parts[0]}
         <Link
           href={guidaCta.href}
-          target="_blank"
-          rel="noopener noreferrer"
           className="font-medium text-accent underline underline-offset-2 hover:text-accent-dark"
         >
           {guidaCta.label}

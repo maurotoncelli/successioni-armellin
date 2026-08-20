@@ -184,8 +184,11 @@ gratis, e bastano cinque minuti.
 
 ## 6. Integrazione nel sito (lato dev, quando il video è pronto)
 
-- Posizione: pagina **/come-funziona**, sotto l'hero / sopra i 3 passi; valutare
-  anche la home (versione breve).
+- Posizione: pagina **/come-funziona**, **subito dopo i 3 passi illustrati** (prima dei pannelli tempi/valore/online).
+  Slot già in pagina con placeholder (`benvenuto-lorenzo.mp4`) finché non c’è il
+  master. Per andare live: depositare `public/videos/come-funziona.mp4` + VTT
+  in `public/videos/captions/come-funziona.{locale}.vtt`. Valutare anche la home
+  (versione breve 60–75s).
 - `<video>` self-hosted (MP4 H.264 + poster) o embed Vimeo/Mux; due sorgenti
   (16:9 desktop, 9:16 mobile) con `<source media>` o swap via CSS/JS.
 - Lazy-load sotto la piega; nessun autoplay con audio (eventuale autoplay muto

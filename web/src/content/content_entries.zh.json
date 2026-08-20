@@ -373,15 +373,15 @@
       "value": [
         {
           "titolo": "无需排队",
-          "testo": "在家即可完成，手机也可以。"
+          "testo": "一切在家完成，手机也可以：无需排队，无需窗口。"
         },
         {
           "titolo": "零错误零处罚",
-          "testo": "由授权测绘师进行地籍数据技术核查。"
+          "testo": "持证测量师核对地籍数据——这是申报最容易卡住的环节。"
         },
         {
           "titolo": "人工客服",
-          "testo": "您始终与真人沟通，而非机器人。"
+          "testo": "从头到尾都有真人跟进，绝不是机器人。"
         }
       ]
     },
@@ -437,6 +437,16 @@
       "locale": "zh",
       "is_published": true,
       "value": "文件全部齐全后 10-15 个工作日内提交（视套餐而定）。"
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_video_cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "观看视频",
+        "href": "/come-funziona#video"
+      }
     },
     {
       "collection": "home",
@@ -689,7 +699,7 @@
       "key": "box_trasparenza_body",
       "locale": "zh",
       "is_published": true,
-      "value": "套餐价格是不含增值税的专业服务费：事务所适用定额税制（不征收增值税）。继承相关税款（抵押权税、地籍税、印花税）另行计算，由继承人承担，通过 F24 缴纳：我们在提交前计算并告知。"
+      "value": "套餐价格是**不含增值税的专业服务费**：事务所适用定额税制（不征收增值税）。\n\n**继承相关税款**（抵押权税、地籍税、印花税）另行计算，**由继承人承担**，通过 F24 缴纳：我们在**提交前**计算并告知。"
     },
     {
       "collection": "tariffe",
@@ -730,7 +740,7 @@
       "key": "sla_note",
       "locale": "zh",
       "is_published": true,
-      "value": "每个套餐标明自文件齐全之日起若干工作日内提交申报（非自付款日起）：这样才是我们能真正兑现的承诺。不含第三方机构（Agenzia、Catasto、银行）的处理时间。"
+      "value": "每个套餐标明自**文件齐全之日**起若干**工作日**内提交申报（非自付款日起）：这样才是我们能真正兑现的承诺。\n\n不含**第三方机构**（Agenzia、Catasto、银行）的处理时间。"
     },
     {
       "collection": "tariffe",
@@ -833,14 +843,14 @@
       "key": "guida_scelta_title",
       "locale": "zh",
       "is_published": true,
-      "value": "不确定选哪个？"
+      "value": "选择之前（以及付款之后）"
     },
     {
       "collection": "tariffe",
       "key": "guida_scelta_body",
       "locale": "zh",
       "is_published": true,
-      "value": "阅读套餐选择快速指南，或与 Lorenzo 简短沟通：几分钟即可选对。若改变主意，更换套餐很简单，只需补差价。"
+      "value": "三分钟看懂怎么运作，没有意外。"
     },
     {
       "collection": "tariffe",
@@ -861,6 +871,40 @@
         "label": "与 Lorenzo 沟通",
         "href": "tel:+393201570567"
       }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_recesso",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "撤回权如何运作",
+        "href": "/recesso"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_items",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "选哪个套餐",
+          "testo": "**简易** = 仅账户和现金，无房产。**含房产** = 1 至 3 处房产，含地籍过户。超出范围或特殊情况（土地、公司、股权）：**免费定制报价**。拿不准就写信给 Lorenzo：我们告诉你。"
+        },
+        {
+          "titolo": "付错套餐怎么办",
+          "testo": "没问题。可以改：你只需补或退**差额**。不用重来，已付的钱也不会白费。"
+        },
+        {
+          "titolo": "付款之后",
+          "testo": "会打开**个人专区**：在那里上传文件（手机拍照也可以）、签署委托、跟进案件并与 Lorenzo 沟通。不用去任何窗口。"
+        },
+        {
+          "titolo": "如果改变主意",
+          "testo": "依法有 **14 天** 撤回权。若你要求立即开工且工作已经完成，撤回权不再适用——我们会事先说清楚。"
+        }
+      ]
     },
     {
       "collection": "tariffe",
@@ -1012,7 +1056,7 @@
       "key": "team_body",
       "locale": "zh",
       "is_published": true,
-      "value": "由我准备并提交申报：我获授权办理。税务部分由会计师监督。这样您既有地籍数据的技术把关，又有计算上的保障，无需在不同事务所间拆分案件。"
+      "value": "由我准备并提交申报：**我获授权办理**。税务部分由**会计师监督**。这样您既有地籍数据的技术把关，又有计算上的保障，无需在不同事务所间拆分案件。"
     },
     {
       "collection": "chi_siamo",
@@ -1043,7 +1087,7 @@
       "key": "perche_geometra_body",
       "locale": "zh",
       "is_published": true,
-      "value": "许多人以为需要会计师、CAF 或公证人。但在遗产继承中，最关键的是地籍数据：这正是测绘师的专长。提交需要 Entratel 中介——我具备该资格。公证人仅参与后续文书，不负责申报。"
+      "value": "许多人以为需要会计师、CAF 或公证人。但在遗产继承中，最关键的是**地籍数据：这正是测绘师的专长**。提交需要 **Entratel 中介**——我具备该资格。公证人仅参与后续文书，不负责申报。"
     },
     {
       "collection": "chi_siamo",
@@ -1082,7 +1126,7 @@
       "key": "studio_foto_alt",
       "locale": "zh",
       "is_published": true,
-      "value": "蓬泰代拉大教堂"
+      "value": "Via Vittorio Veneto，蓬泰代拉"
     },
     {
       "collection": "chi_siamo",
@@ -1320,6 +1364,13 @@
     },
     {
       "collection": "faq",
+      "key": "featured_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "先看会拦住你的疑问"
+    },
+    {
+      "collection": "faq",
       "key": "hero_search",
       "locale": "zh",
       "is_published": true,
@@ -1542,6 +1593,69 @@
     },
     {
       "collection": "come_funziona",
+      "key": "video_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "看看如何办理"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_caption",
+      "locale": "zh",
+      "is_published": true,
+      "value": "一位女士在网站上办理继承申报：从报价到文件，足不出户。两分钟。"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_alt",
+      "locale": "zh",
+      "is_published": true,
+      "value": "说明视频：一位女士在网站上完成继承申报"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_play",
+      "locale": "zh",
+      "is_published": true,
+      "value": "播放操作说明视频"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_badge",
+      "locale": "zh",
+      "is_published": true,
+      "value": "视频即将上线"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_duration",
+      "locale": "zh",
+      "is_published": true,
+      "value": "约 2 分钟"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_duration_placeholder",
+      "locale": "zh",
+      "is_published": true,
+      "value": "预览 — 正式视频即将上线"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_captions_label",
+      "locale": "zh",
+      "is_published": true,
+      "value": "字幕"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_captions_off",
+      "locale": "zh",
+      "is_published": true,
+      "value": "无"
+    },
+    {
+      "collection": "come_funziona",
       "key": "steps",
       "locale": "zh",
       "is_published": true,
@@ -1578,7 +1692,7 @@
       "key": "sla_body",
       "locale": "zh",
       "is_published": true,
-      "value": "时限取决于套餐，自我们收到全部完整正确的文件起算（非自付款日起）：这样才是我们能真正兑现的承诺。不含第三方机构（Agenzia、Catasto、银行）的处理时间。"
+      "value": "时限取决于套餐，自我们收到**全部完整正确的文件**起算（非自付款日起）：这样才是我们能真正兑现的承诺。\n\n不含**第三方机构**（Agenzia、Catasto、银行）的处理时间。"
     },
     {
       "collection": "come_funziona",
@@ -1592,7 +1706,7 @@
       "key": "valore_body",
       "locale": "zh",
       "is_published": true,
-      "value": "我们手工核查地籍数据——地块、分户、附属物、权属文件——这正是案件卡住的关键节点。数字由会计师税务监督。这就是填表与办好案件的区别。"
+      "value": "我们**手工核查地籍数据**——地块、分户、附属物、权属文件——这正是案件卡住的关键节点。\n\n数字由**会计师税务监督**。这就是填表与**办好案件**的区别。"
     },
     {
       "collection": "come_funziona",
@@ -1606,7 +1720,7 @@
       "key": "distanza_body",
       "locale": "zh",
       "is_published": true,
-      "value": "无需前往任何机构或银行：问卷、文件、沟通及向 Agenzia delle Entrate 提交均在线完成。Lorenzo 总会致电为您讲解。"
+      "value": "无需前往任何机构或银行：问卷、文件、沟通及向 Agenzia 提交均**在线完成**。\n\n**Lorenzo 总会致电**为您讲解。"
     },
     {
       "collection": "come_funziona",
@@ -2320,7 +2434,7 @@
       "is_published": true,
       "value": {
         "label": "指南",
-        "href": "/tariffe"
+        "href": "/tariffe#guida"
       }
     },
     {
@@ -4721,7 +4835,7 @@
         "map_title": "{citta} 工作室",
         "maps_cta": "在 Google 地图中打开",
         "map_iframe_title": "工作室地图 - {address}",
-        "photo_caption": "蓬泰代拉大教堂",
+        "photo_caption": "Via Vittorio Veneto，蓬泰代拉",
         "photo_credit": "照片：SeesaTheDoctor / Wikimedia (CC BY 4.0)"
       }
     },
