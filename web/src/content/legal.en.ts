@@ -171,7 +171,7 @@ export const legalDocsEn: Record<LegalSlug, LegalDoc> = {
         ],
       },
       { type: "h2", text: "7. Performance times" },
-      { type: "p", text: "Delivery times stated on the site are estimates running from when the client has provided complete, correct documentation validated by the professional. Third-party times (Agency, Cadastre, banks) are excluded." },
+      { type: "p", text: "Delivery times stated on the site are estimates running from when the client has provided complete, correct documentation validated by the professional. As a guide: Simple package within 7 business days, package with property within 10 business days; for custom quotes the agreed term applies. Third-party times (Agency, Cadastre, banks) are excluded." },
       { type: "h2", text: "8. Right of withdrawal (Arts. 52–59 Consumer Code)" },
       {
         type: "ul",

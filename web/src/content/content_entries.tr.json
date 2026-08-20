@@ -127,7 +127,7 @@
       "key": "trust_line",
       "locale": "tr",
       "is_published": true,
-      "value": "Entratel yetkili Geom. — mali müşavirlerin vergi denetimiyle"
+      "value": "Serbest meslek icrasına yetkili geometra."
     },
     {
       "collection": "footer",
@@ -272,7 +272,7 @@
       "key": "hero_subtitle",
       "locale": "tr",
       "is_published": true,
-      "value": "Veraset konusunda uzmanlaşmış Geom. Lorenzo Armellin halleder: net fiyat, her şey çevrimiçi (isterseniz yüz yüze), sizi takip eden gerçek bir kişi. Vergileri ödemeden önce biz hesaplarız."
+      "value": "Veraset konusunda uzmanlaşmış Geom. Lorenzo Armellin halleder: net fiyat, her şey çevrimiçi (isterseniz yüz yüze), sizi takip eden gerçek bir kişi. Vergileri biz hesaplarız."
     },
     {
       "collection": "home",
@@ -377,7 +377,7 @@
         },
         {
           "titolo": "Sıfır hata ve ceza",
-          "testo": "Yetkili bir teknik uzman kadastro verilerini kontrol eder; dosyalar en çok burada takılır."
+          "testo": "Yetkili bir geometra, dosyaların takıldığı yerde kadastro verilerini ve menşe belgelerini kontrol eder."
         },
         {
           "titolo": "İnsan desteği",
@@ -436,7 +436,7 @@
       "key": "come_funziona_sla_note",
       "locale": "tr",
       "is_published": true,
-      "value": "Tüm belgeler tamamlandıktan sonra 10-15 iş günü içinde gönderim (pakete göre)."
+      "value": "Tüm belgeler tamamlandıktan sonra 7-10 iş günü içinde gönderim (pakete göre)."
     },
     {
       "collection": "home",
@@ -587,7 +587,7 @@
       "key": "chisono_estratto",
       "locale": "tr",
       "is_published": true,
-      "value": "Ben Lorenzo Armellin, veraset beyannamelerini Agenzia delle Entrate'a iletmeye yetkili geometra. Mali müşavirlerin vergi denetimiyle kadastro verilerindeki hassasiyeti rakamlardaki güvenle birleştiriyorum."
+      "value": "Ben Lorenzo Armellin, serbest meslek icrasına yetkili geometrayım. Veraset beyannamesini hazırlar ve iletirim: bunu yapmaya yetkiliyim."
     },
     {
       "collection": "home",
@@ -826,7 +826,7 @@
       "key": "ti_serve_body",
       "locale": "tr",
       "is_published": true,
-      "value": "Bazı durumlarda (doğrudan mirasçılar, yalnızca yasal eşikler içinde mütevazı likidite, gayrimenkul yok) beyanname gerekli olmayabilir. Ödeme yapmadan önce dosyanızı kontrol ederiz: gerekmezse söyleriz. Kesin doğrulama her zaman somut duruma dayanır."
+      "value": "Bazı durumlarda (doğrudan mirasçılar, yalnızca yasal eşikler içinde mütevazı likidite, gayrimenkul yok) beyanname gerekli olmayabilir. Dosyanızı ücretsiz kontrol ederiz: gerekmezse söyleriz. Kesin doğrulama her zaman somut duruma dayanır."
     },
     {
       "collection": "tariffe",
@@ -911,7 +911,7 @@
       "key": "microtrust",
       "locale": "tr",
       "is_published": true,
-      "value": "Entratel yetkili Geom., mali müşavirlerin vergi denetimiyle."
+      "value": "Serbest meslek icrasına yetkili geometra."
     },
     {
       "collection": "tariffe",
@@ -1049,14 +1049,14 @@
       "key": "team_title",
       "locale": "tr",
       "is_published": true,
-      "value": "Geom. kadastroda, muhasebeciler rakamlarda"
+      "value": "Geometra: veraset beyannamesi için doğru meslek figürü."
     },
     {
       "collection": "chi_siamo",
       "key": "team_body",
       "locale": "tr",
       "is_published": true,
-      "value": "Beyannameyi ben hazırlayıp iletiyorum: **bunu yapmaya yetkiliyim**. Vergi kısmında **mali müşavirlerin denetiminden** yararlanıyorum. Böylece kadastro verilerinde teknik kontrol ve hesaplarda güven elde edersiniz, dosya farklı ofisler arasında bölünmez."
+      "value": "Verasetin hazırlanması **kadastro, hukuk ve vergi** yetkinliği ister: bunları eğitimiyle bir araya getiren figür geometradır. Beyannameyi hazırlar ve iletirim: **bunu yapmaya yetkiliyim**."
     },
     {
       "collection": "chi_siamo",
@@ -1706,7 +1706,7 @@
       "key": "valore_body",
       "locale": "tr",
       "is_published": true,
-      "value": "Parseller, alt birimler, ek yapılar, mülkiyet belgeleri — dosyaların takıldığı **kadastro verilerini elle** kontrol ediyoruz.\n\n**Mali müşavirlerin vergi denetimiyle**. Bu, doldurulmuş bir form ile **iyi yapılmış bir dosya** arasındaki farktır."
+      "value": "Dosyaların takıldığı yerde **kadastro verilerini ve menşe belgelerini** — parseller, alt birimler, eklentiler — elle kontrol ederiz. Doldurulmuş form ile **düzgün yapılmış dosya** arasındaki fark budur."
     },
     {
       "collection": "come_funziona",
@@ -2222,7 +2222,7 @@
       "value": {
         "autore": "Geom. Lorenzo Armellin",
         "ruolo": "Entratel yetkili Geom.",
-        "reviewed_by": "Vergi kısmı muhasebeciler tarafından incelendi",
+        "reviewed_by": "",
         "foto": {
           "asset_key": "ritratto_lorenzo"
         },
@@ -2377,7 +2377,7 @@
       "key": "esito_b_taxes_note",
       "locale": "tr",
       "is_published": true,
-      "value": "+ durumunuza göre hesaplanan vergiler: ödeme yapmadan önce söylüyoruz."
+      "value": "+ durumunuza göre hesaplanan vergiler: gönderimden önce bildiririz."
     },
     {
       "collection": "grazie",
@@ -2609,7 +2609,12 @@
       "value": [
         {
           "name": "Kimlik belgesi ve vergi numarası",
-          "description": "Tüm mirasçıların ve vefat edenin.",
+          "description": "Müteveffa ve mirasçıların kimliği. Vergi kodu yalnızca mirasçılar için gerekir.",
+          "when": "Her zaman"
+        },
+        {
+          "name": "Mirasçının IBAN'ı",
+          "description": "Her zaman gerekir: iade veya vergi tahsilatı için.",
           "when": "Her zaman"
         },
         {
@@ -2738,7 +2743,7 @@
       "key": "microtrust",
       "locale": "tr",
       "is_published": true,
-      "value": "Entratel yetkili bir Geom. ödersiniz, mali müşavirlerin vergi denetimiyle. Stripe ile güvenli ödeme."
+      "value": "Serbest meslek icrasına yetkili bir geometraya ödersiniz. Stripe ile güvenli ödeme."
     },
     {
       "collection": "checkout",
@@ -3376,7 +3381,7 @@
         {
           "category": "Nasıl çalışır",
           "question": "Hangi belgeler gerekli?",
-          "answer": "Durumunuza bağlıdır: size kişiselleştirilmiş bir liste veririz. Eksik bir şey varsa çoğu zaman biz temin ederiz (kayıtlar, mülkiyet belgeleri)."
+          "answer": "Durumunuza bağlıdır: size özel liste veririz. Her zaman ölüm belgesi, mirasçı belgeleri ve mirasçının IBAN'ı gerekir. Bir şey eksikse çoğu zaman biz temin ederiz (beyannameler, menşe belgeleri)."
         },
         {
           "category": "Belgeler ve Kişisel alan",

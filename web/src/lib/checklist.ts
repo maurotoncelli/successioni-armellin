@@ -50,7 +50,7 @@ export function generateChecklistFromState(
       item(
         "Codice fiscale / tessera sanitaria degli eredi",
         true,
-        "Tessera sanitaria o codice fiscale di tutti gli eredi e del defunto.",
+        "Tessera sanitaria o codice fiscale di tutti gli eredi.",
       ),
     );
   }

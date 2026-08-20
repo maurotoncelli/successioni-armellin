@@ -52,7 +52,7 @@ export const BUILTIN_DOCUMENT_TYPES: DocumentTypeDef[] = [
     id: "cf_eredi",
     label: "Codice fiscale / tessera sanitaria degli eredi",
     required: true,
-    help: "Tessera sanitaria o codice fiscale di tutti gli eredi e del defunto.",
+    help: "Tessera sanitaria o codice fiscale di tutti gli eredi.",
     when: "always",
     builtin: true,
   },

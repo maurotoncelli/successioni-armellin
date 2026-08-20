@@ -13,7 +13,7 @@ export type ArticleDeOverlay = {
   sources: ArticleSource[];
 };
 
-const REVIEWED = "Steuerlicher Teil von Steuerberatern geprüft";
+const REVIEWED = "";
 
 const FONTE_ADE_SCHEDA: ArticleSource = {
   label: "Agenzia delle Entrate - Erbschaftserklärung",
@@ -51,7 +51,7 @@ export const articlesDe: Record<string, ArticleDeOverlay> = {
       { type: "p", text: "Elektronisch mit Software der Agenzia delle Entrate. Die Datei (.SUC) sendet der Berechtigte oder meist ein Entratel-Vermittler. Papier-Modell 4 nur in Restfällen (Tod vor 3.10.2006 oder Ausland ohne elektronische Übermittlung)." },
       { type: "h2", text: "Was droht bei Nichteinreichung (oder Fehlern)" },
       { type: "p", text: "Ausbleibende Einreichung: Bußgeld nach Steuerschuld plus Zinsen; verspätete oder unrichtige Einreichung: reduzierte oder proportionale Bußgelder. Beträge ändern sich — offizielle Quellen und Fachperson prüfen." },
-      { type: "callout", tone: "info", title: "Nicht immer Pflicht", text: "Manchmal ist keine Erklärung nötig. In unserem Befreiungs-Leitfaden erklärt; kostenlose Prüfung Ihres Falls vor Zahlung." },
+      { type: "callout", tone: "info", title: "Nicht immer Pflicht", text: "Manchmal ist keine Erklärung nötig. In unserem Befreiungs-Leitfaden erklärt; kostenlose Prüfung Ihres Falls." },
     ],
     sources: [FONTE_ADE_SCHEDA, FONTE_NORMATTIVA],
   },
@@ -137,9 +137,10 @@ export const articlesDe: Record<string, ArticleDeOverlay> = {
       {
         type: "ul",
         items: [
-          "Sterbeurkunde oder Auszug (oder Selbstauskunft wo zulässig).",
-          "Ausweis und C.F. des Verstorbenen und aller Erben.",
+          "Sterbeurkunde oder Auszug des Verstorbenen.",
+          "Ausweis des Verstorbenen und der Erben; Steuernummer der Erben.",
           "Selbstauskunft Familienstand und Verwandtschaftsgrad der Erben.",
+          "IBAN des Erben (immer erforderlich, für Erstattungen oder die Steuerabbuchung).",
         ],
       },
       { type: "h2", text: "Bei Immobilien" },
@@ -164,7 +165,6 @@ export const articlesDe: Record<string, ArticleDeOverlay> = {
         type: "ul",
         items: [
           "Saldo- und Bestandsbestätigung von Konten, Sparbüchern und Wertpapieren zum Todestag.",
-          "IBAN des Erben für Erstattungen oder Steuerabbuchung.",
         ],
       },
       { type: "callout", tone: "info", title: "Fehlt etwas? Oft können wir es beschaffen", text: "Dokumentenbeschaffung gehört zu unserer Arbeit: Katasterauszüge, Erwerbsurkunden und fehlende Daten holen wir bei Behörden und Banken ein." },

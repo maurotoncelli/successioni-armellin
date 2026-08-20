@@ -171,7 +171,7 @@ export const legalDocsDe: Record<LegalSlug, LegalDoc> = {
         ],
       },
       { type: "h2", text: "7. Ausführungsfristen" },
-      { type: "p", text: "Lieferzeiten ab vollständiger, korrekter, vom Fachmann validierter Dokumentation (nicht ab Zahlung). Bei Unvollständigkeit Frist suspendiert bis letztes fehlendes Dokument." },
+      { type: "p", text: "Lieferzeiten ab vollständiger, korrekter, vom Fachmann validierter Dokumentation (nicht ab Zahlung). Richtwerte: Paket Einfach innerhalb von 7 Werktagen, Paket mit Immobilien innerhalb von 10 Werktagen; bei individuellen Angeboten gilt die vereinbarte Frist. Bei Unvollständigkeit Frist suspendiert bis letztes fehlendes Dokument." },
       { type: "h2", text: "8. Widerrufsrecht (Art. 52–59 Verbraucherschutzgesetz)" },
       {
         type: "ul",

@@ -127,7 +127,7 @@
       "key": "trust_line",
       "locale": "zh",
       "is_published": true,
-      "value": "Entratel 授权 Geom. — 经会计师税务监督"
+      "value": "获准独立执业的测绘师。"
     },
     {
       "collection": "footer",
@@ -272,7 +272,7 @@
       "key": "hero_subtitle",
       "locale": "zh",
       "is_published": true,
-      "value": "由专攻遗产继承的 Geom. Lorenzo Armellin 办理：价格清晰，全程在线（如需也可面谈），真人跟进。税款由我们在付款前计算。"
+      "value": "由专攻遗产继承的 Geom. Lorenzo Armellin 办理：价格清晰，全程在线（如需也可面谈），真人跟进。税款由我们计算。"
     },
     {
       "collection": "home",
@@ -377,7 +377,7 @@
         },
         {
           "titolo": "零错误零处罚",
-          "testo": "持证测量师核对地籍数据——这是申报最容易卡住的环节。"
+          "testo": "获授权的测绘师核查地籍数据及产权来源文件——案件卡住的地方。"
         },
         {
           "titolo": "人工客服",
@@ -436,7 +436,7 @@
       "key": "come_funziona_sla_note",
       "locale": "zh",
       "is_published": true,
-      "value": "文件全部齐全后 10-15 个工作日内提交（视套餐而定）。"
+      "value": "文件全部齐全后 7–10 个工作日内提交（视套餐而定）。"
     },
     {
       "collection": "home",
@@ -587,7 +587,7 @@
       "key": "chisono_estratto",
       "locale": "zh",
       "is_published": true,
-      "value": "我是 Lorenzo Armellin，获授权向 Agenzia delle Entrate 提交遗产继承的测绘师。在会计师税务监督下，我将地籍数据的精确性与数字安全相结合。"
+      "value": "我是 Lorenzo Armellin，获准独立执业的测绘师。由我准备并提交遗产申报：我获授权办理。"
     },
     {
       "collection": "home",
@@ -826,7 +826,7 @@
       "key": "ti_serve_body",
       "locale": "zh",
       "is_published": true,
-      "value": "某些情况下（直系继承人、仅有法定门槛内的少量现金、无房产）可能无需申报。付款前我们核查您的情况：若不需要，我们会告知。最终核实始终基于具体案件。"
+      "value": "在某些情况下（直系继承人、仅有法定门槛内的少量流动性、无不动产）可能无需申报。我们免费核查您的情况：若不需要，会如实告知。最终核实始终针对具体案件。"
     },
     {
       "collection": "tariffe",
@@ -911,7 +911,7 @@
       "key": "microtrust",
       "locale": "zh",
       "is_published": true,
-      "value": "Entratel 授权测绘师，经会计师税务监督。"
+      "value": "获准独立执业的测绘师。"
     },
     {
       "collection": "tariffe",
@@ -1049,14 +1049,14 @@
       "key": "team_title",
       "locale": "zh",
       "is_published": true,
-      "value": "测绘师负责地籍，会计师负责数字"
+      "value": "测绘师：办理遗产申报的合适专业人士。"
     },
     {
       "collection": "chi_siamo",
       "key": "team_body",
       "locale": "zh",
       "is_published": true,
-      "value": "由我准备并提交申报：**我获授权办理**。税务部分由**会计师监督**。这样您既有地籍数据的技术把关，又有计算上的保障，无需在不同事务所间拆分案件。"
+      "value": "办理遗产申报需要**地籍、法律和税务**能力：在培养上把这些能力集于一身的，是测绘师。由我准备并提交申报：**我获授权办理**。"
     },
     {
       "collection": "chi_siamo",
@@ -1706,7 +1706,7 @@
       "key": "valore_body",
       "locale": "zh",
       "is_published": true,
-      "value": "我们**手工核查地籍数据**——地块、分户、附属物、权属文件——这正是案件卡住的关键节点。\n\n数字由**会计师税务监督**。这就是填表与**办好案件**的区别。"
+      "value": "我们人工核查**地籍数据与产权来源文件**——地块、附属单元、附属建筑——正是案件卡住之处。这就是填好的表格与**做好的案件**的差别。"
     },
     {
       "collection": "come_funziona",
@@ -2222,7 +2222,7 @@
       "value": {
         "autore": "Geom. Lorenzo Armellin",
         "ruolo": "Entratel 授权测绘师",
-        "reviewed_by": "税务部分经会计师审核",
+        "reviewed_by": "",
         "foto": {
           "asset_key": "ritratto_lorenzo"
         },
@@ -2377,7 +2377,7 @@
       "key": "esito_b_taxes_note",
       "locale": "zh",
       "is_published": true,
-      "value": "+ 根据您情况计算的税款：付款前告知您。"
+      "value": "+ 根据您情况计算的税款：提交前告知您。"
     },
     {
       "collection": "grazie",
@@ -2609,8 +2609,13 @@
       "value": [
         {
           "name": "身份证件与税号",
-          "description": "所有继承人及被继承人。",
+          "description": "逝者与继承人的身份证件。税号仅需继承人的。",
           "when": "始终"
+        },
+        {
+          "name": "继承人 IBAN",
+          "description": "一律需要，用于退款或税款扣缴。",
+          "when": "一律"
         },
         {
           "name": "死亡证明",
@@ -2738,7 +2743,7 @@
       "key": "microtrust",
       "locale": "zh",
       "is_published": true,
-      "value": "您支付给 Entratel 授权测绘师，经会计师税务监督。Stripe 安全支付。"
+      "value": "您支付的是获准独立执业的测绘师。Stripe 安全支付。"
     },
     {
       "collection": "checkout",
@@ -3376,7 +3381,7 @@
         {
           "category": "如何运作",
           "question": "需要哪些文件？",
-          "answer": "视您的情况而定：我们提供个性化清单。若缺失，我们通常可以帮您获取（查册、权属文件）。"
+          "answer": "视您的情况而定：我们提供个性化清单。一律需要死亡证明、继承人文件和继承人 IBAN。若缺材料，我们往往可以代为取得（地籍摘录、产权来源文件）。"
         },
         {
           "category": "文件与个人区",

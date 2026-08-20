@@ -692,47 +692,47 @@ export function taxesNotif(amount: number, locale: CommsLocale = "it") {
   const copy: Record<CommsLocale, { title: string; body: string }> = {
     it: {
       title: `Imposte comunicate: ${n} €`,
-      body: "Sono separate dall'onorario e si versano allo Stato (F24). Inserisci l'IBAN se richiesto.",
+      body: "Sono separate dall'onorario e si versano allo Stato (F24). Inserisci l'IBAN (serve sempre).",
     },
     ar: {
       title: `أُبلغت الضرائب: ${n} €`,
-      body: "منفصلة عن الأتعاب وتُدفع للدولة (F24). أدخل IBAN إن طُلب.",
+      body: "منفصلة عن الأتعاب وتُدفع للدولة (F24). أدخل IBAN (لازم دائمًا).",
     },
     en: {
       title: `Taxes notified: ${n} €`,
-      body: "They are separate from the fee and paid to the State (F24). Enter the IBAN if requested.",
+      body: "They are separate from the fee and paid to the State (F24). Enter the IBAN (always required).",
     },
     tr: {
       title: `Vergiler bildirildi: ${n} €`,
-      body: "Ücretten ayrıdır ve Devlete ödenir (F24). İstenirse IBAN girin.",
+      body: "Ücretten ayrıdır ve Devlete ödenir (F24). IBAN girin (her zaman gerekli).",
     },
     fr: {
       title: `Impôts communiqués : ${n} €`,
-      body: "Ils sont distincts des honoraires et se versent à l'État (F24). Saisissez l'IBAN si demandé.",
+      body: "Ils sont distincts des honoraires et se versent à l'État (F24). Saisissez l'IBAN (toujours nécessaire).",
     },
     sq: {
       title: `Taksat u njoftuan: ${n} €`,
-      body: "Janë të ndara nga shpërblimi dhe paguhen te Shteti (F24). Vendosni IBAN nëse kërkohet.",
+      body: "Janë të ndara nga shpërblimi dhe paguhen te Shteti (F24). Vendosni IBAN (duhet gjithmonë).",
     },
     de: {
       title: `Steuern mitgeteilt: ${n} €`,
-      body: "Sie sind vom Honorar getrennt und werden an den Staat gezahlt (F24). Geben Sie die IBAN ein, falls angefordert.",
+      body: "Sie sind vom Honorar getrennt und werden an den Staat gezahlt (F24). Geben Sie die IBAN ein (immer erforderlich).",
     },
     es: {
       title: `Impuestos comunicados: ${n} €`,
-      body: "Son independientes del honorario y se pagan al Estado (F24). Introduzca el IBAN si se solicita.",
+      body: "Son independientes del honorario y se pagan al Estado (F24). Introduzca el IBAN (siempre necesario).",
     },
     ru: {
       title: `Сообщены налоги: ${n} €`,
-      body: "Они отделены от гонорара и уплачиваются государству (F24). Укажите IBAN, если потребуется.",
+      body: "Они отделены от гонорара и уплачиваются государству (F24). Укажите IBAN (нужен всегда).",
     },
     zh: {
       title: `已通知税款：${n} €`,
-      body: "与律师费分开，向国家缴纳（F24）。如需请填写 IBAN。",
+      body: "与律师费分开，向国家缴纳（F24）。请填写 IBAN（始终需要）。",
     },
     hi: {
       title: `कर सूचित: ${n} €`,
-      body: "ये शुल्क से अलग हैं और राज्य को दिए जाते हैं (F24)। अनुरोध हो तो IBAN दर्ज करें।",
+      body: "ये शुल्क से अलग हैं और राज्य को दिए जाते हैं (F24)। IBAN दर्ज करें (हमेशा आवश्यक)।",
     },
   };
   return copy[locale] ?? copy.it;

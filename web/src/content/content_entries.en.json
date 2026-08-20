@@ -127,7 +127,7 @@
       "key": "trust_line",
       "locale": "en",
       "is_published": true,
-      "value": "Entratel-authorised surveyor - with tax supervision by accountants"
+      "value": "Surveyor licensed to practise as a self-employed professional."
     },
     {
       "collection": "footer",
@@ -272,7 +272,7 @@
       "key": "hero_subtitle",
       "locale": "en",
       "is_published": true,
-      "value": "Geom. Lorenzo Armellin, specialised in successions, takes care of it: clear price, fully online (or in person if you prefer), a real person who follows you. We calculate the taxes before you pay."
+      "value": "Geom. Lorenzo Armellin, specialised in successions, takes care of it: clear price, fully online (or in person if you prefer), a real person who follows you. We calculate the taxes."
     },
     {
       "collection": "home",
@@ -377,7 +377,7 @@
         },
         {
           "titolo": "No errors or penalties",
-          "testo": "A licensed surveyor checks the cadastral data, where cases get stuck."
+          "testo": "A licensed surveyor checks the cadastral data and the title deeds, where cases get stuck."
         },
         {
           "titolo": "Human support",
@@ -436,7 +436,7 @@
       "key": "come_funziona_sla_note",
       "locale": "en",
       "is_published": true,
-      "value": "Filing within 10–15 business days (depending on package) once we have all complete documents."
+      "value": "Filing within 7–10 business days (depending on package) once we have all complete documents."
     },
     {
       "collection": "home",
@@ -587,7 +587,7 @@
       "key": "chisono_estratto",
       "locale": "en",
       "is_published": true,
-      "value": "I'm Lorenzo Armellin, a surveyor authorised to file successions with Agenzia delle Entrate. With tax supervision by accountants, I combine cadastral precision with confidence in the numbers."
+      "value": "I'm Lorenzo Armellin, a surveyor licensed to practise as a self-employed professional. I prepare and file the succession declaration: I'm authorised to do so."
     },
     {
       "collection": "home",
@@ -826,7 +826,7 @@
       "key": "ti_serve_body",
       "locale": "en",
       "is_published": true,
-      "value": "In some cases (direct heirs, only modest liquidity within legal thresholds, no property) the declaration may not be required. We check your case before you pay: if you don't need it, we say so. Final verification is always on the specific case."
+      "value": "In some cases (direct heirs, only modest cash within legal thresholds, no property) the declaration may not be required. We check your case for free: if you don't need it, we say so. Final verification is always on the specific case."
     },
     {
       "collection": "tariffe",
@@ -911,7 +911,7 @@
       "key": "microtrust",
       "locale": "en",
       "is_published": true,
-      "value": "Entratel-authorised surveyor, with tax supervision by accountants."
+      "value": "Surveyor licensed to practise as a self-employed professional."
     },
     {
       "collection": "tariffe",
@@ -1049,14 +1049,14 @@
       "key": "team_title",
       "locale": "en",
       "is_published": true,
-      "value": "Surveyor on cadastral data, accountants on the numbers"
+      "value": "Surveyor: the right professional for the succession declaration."
     },
     {
       "collection": "chi_siamo",
       "key": "team_body",
       "locale": "en",
       "is_published": true,
-      "value": "I prepare and file the declaration myself: **I'm authorised to do so**. For the tax side I rely on **accountants' supervision**. So you get technical control of cadastral data and confidence in the figures, without splitting the case across different firms."
+      "value": "Drafting a succession requires **cadastral, legal and tax** skills: the professional whose training brings them all together is the surveyor. I prepare and file the declaration: **I'm authorised to do so**."
     },
     {
       "collection": "chi_siamo",
@@ -1720,7 +1720,7 @@
       "key": "valore_body",
       "locale": "en",
       "is_published": true,
-      "value": "We manually check **cadastral data** — parcels, subunits, outbuildings, title deeds — where cases most often get stuck.\n\nWith **accountants supervising the numbers**. That's the difference between a filled form and **a case done properly**."
+      "value": "We manually check the **cadastral data and title deeds** — parcels, sub-units, annexes — where cases get stuck. That's the difference between a filled-in form and **a case done properly**."
     },
     {
       "collection": "come_funziona",
@@ -2236,7 +2236,7 @@
       "value": {
         "autore": "Geom. Lorenzo Armellin",
         "ruolo": "Entratel-authorised surveyor",
-        "reviewed_by": "Tax aspects reviewed by accountants",
+        "reviewed_by": "",
         "foto": {
           "asset_key": "ritratto_lorenzo"
         },
@@ -2391,7 +2391,7 @@
       "key": "esito_b_taxes_note",
       "locale": "en",
       "is_published": true,
-      "value": "+ taxes calculated for your case: we tell you before you pay."
+      "value": "+ taxes calculated for your case: we tell you before filing."
     },
     {
       "collection": "grazie",
@@ -2623,7 +2623,12 @@
       "value": [
         {
           "name": "ID document and tax code",
-          "description": "Of all heirs and the deceased.",
+          "description": "ID of the deceased and the heirs. The tax code is required only for the heirs.",
+          "when": "Always"
+        },
+        {
+          "name": "Heir's IBAN",
+          "description": "Always required, for refunds or to debit taxes.",
           "when": "Always"
         },
         {
@@ -2752,7 +2757,7 @@
       "key": "microtrust",
       "locale": "en",
       "is_published": true,
-      "value": "You pay an Entratel-authorised surveyor, with tax supervision by accountants. Secure payments with Stripe."
+      "value": "You pay a surveyor licensed to practise as a self-employed professional. Secure payments with Stripe."
     },
     {
       "collection": "checkout",
@@ -3390,7 +3395,7 @@
         {
           "category": "How it works",
           "question": "Which documents do you need?",
-          "answer": "It depends on your case: we give you a personalised list. If something is missing, we can often retrieve it (searches, title deeds)."
+          "answer": "It depends on your case: we give you a personalised list. You always need a death certificate, the heirs' documents and the heir's IBAN. If something is missing, we can often retrieve it (searches, title deeds)."
         },
         {
           "category": "Documents and Client area",

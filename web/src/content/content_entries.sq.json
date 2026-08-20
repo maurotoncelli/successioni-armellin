@@ -127,7 +127,7 @@
       "key": "trust_line",
       "locale": "sq",
       "is_published": true,
-      "value": "Geom. i autorizuar Entratel — me mbikëqyrje fiskale nga kontabilistë"
+      "value": "Gjeometër i autorizuar për ushtrimin e profesionit të lirë."
     },
     {
       "collection": "footer",
@@ -272,7 +272,7 @@
       "key": "hero_subtitle",
       "locale": "sq",
       "is_published": true,
-      "value": "Merret Geom. Lorenzo Armellin, i specializuar në trashëgimi: çmim i qartë, gjithçka online (dhe nëse dëshironi edhe personalisht), një person real që ju ndjek. Taksat i llogaritim ne, para se të paguani."
+      "value": "Merret Geom. Lorenzo Armellin, i specializuar në trashëgimi: çmim i qartë, gjithçka online (dhe nëse dëshironi edhe personalisht), një person real që ju ndjek. Taksat i llogaritim ne."
     },
     {
       "collection": "home",
@@ -377,7 +377,7 @@
         },
         {
           "titolo": "Zero gabime dhe gjoba",
-          "testo": "Një gjeometër i licencuar kontrollon të dhënat kadastrale, aty ku praktikat bllokohen."
+          "testo": "Një gjeometër i autorizuar kontrollon të dhënat kadastrale dhe aktet e proveniencës, ku praktikat bllokohen."
         },
         {
           "titolo": "Asistencë njerëzore",
@@ -436,7 +436,7 @@
       "key": "come_funziona_sla_note",
       "locale": "sq",
       "is_published": true,
-      "value": "Dorëzim brenda 10-15 ditëve pune (sipas paketës) nga kur kemi të gjitha dokumentet e plota."
+      "value": "Dorëzim brenda 7-10 ditëve pune (sipas paketës) nga kur kemi të gjitha dokumentet e plota."
     },
     {
       "collection": "home",
@@ -587,7 +587,7 @@
       "key": "chisono_estratto",
       "locale": "sq",
       "is_published": true,
-      "value": "Unë jam Lorenzo Armellin, gjeometër i autorizuar të transmettojë trashëgiminë te Agenzia delle Entrate. Me mbikëqyrje fiskale nga kontabilistë, bashkoj saktësinë e të dhënave kadastrale me sigurinë e numrave."
+      "value": "Unë jam Lorenzo Armellin, gjeometër i autorizuar për ushtrimin e profesionit të lirë. Përgatis dhe transmetoj deklaratën e trashëgimisë: jam i autorizuar ta bëj."
     },
     {
       "collection": "home",
@@ -826,7 +826,7 @@
       "key": "ti_serve_body",
       "locale": "sq",
       "is_published": true,
-      "value": "Në disa raste (trashëgimtarë të drejtpërdrejtë, vetëm likuiditet modest brenda pragjeve ligjore, asnjë pasuri) deklarata mund të mos duhet. Verifikojmë rastin tuaj para se të paguani: nëse nuk ju nevojitet, jua themi. Verifikimi përfundimtar është gjithmonë mbi rastin konkret."
+      "value": "Në disa raste (trashëgimtarë të drejtpërdrejtë, vetëm likuiditet i modest brenda pragjeve ligjore, pa pasuri të paluajtshme) deklarata mund të mos jetë e detyrueshme. E verifikojmë rastin tuaj falas: nëse nuk ju duhet, ju e themi. Verifikimi përfundimtar është gjithmonë mbi rastin konkret."
     },
     {
       "collection": "tariffe",
@@ -911,7 +911,7 @@
       "key": "microtrust",
       "locale": "sq",
       "is_published": true,
-      "value": "Gjeometër i autorizuar Entratel, me mbikëqyrje fiskale nga kontabilistë."
+      "value": "Gjeometër i autorizuar për ushtrimin e profesionit të lirë."
     },
     {
       "collection": "tariffe",
@@ -1049,14 +1049,14 @@
       "key": "team_title",
       "locale": "sq",
       "is_published": true,
-      "value": "Geom. për kadastralen, kontabilistë për numrat"
+      "value": "Gjeometri: figura profesionale e duhur për deklaratën e trashëgimisë."
     },
     {
       "collection": "chi_siamo",
       "key": "team_body",
       "locale": "sq",
       "is_published": true,
-      "value": "Unë e përgatis dhe e transmetto deklaratën: **jam i autorizuar ta bëj**. Për pjesën fiskale mbështetem te **mbikëqyrja e kontabilistëve**. Kështu keni kontroll teknik mbi të dhënat kadastrale dhe siguri mbi llogaritjet, pa e ndarë praktikën midis studiove të ndryshme."
+      "value": "Për hartimin e trashëgimisë duhen kompetenca **kadastrale, juridike dhe fiskale**: figura që i bashkon të gjitha me formimin e saj është gjeometri. Unë e përgatis dhe e transmetoj deklaratën: **jam i autorizuar ta bëj**."
     },
     {
       "collection": "chi_siamo",
@@ -1706,7 +1706,7 @@
       "key": "valore_body",
       "locale": "sq",
       "is_published": true,
-      "value": "Verifikojmë manualisht **të dhënat kadastrale** — parcelat, nënalternat, aneksat, aktet e provenience — që janë pika ku praktikat ngecin.\n\nMe **mbikëqyrje fiskale nga kontabilistë**. Kjo është ndryshimi midis një formulari të plotësuar dhe **një praktike të bërë mirë**."
+      "value": "Kontrollojmë me dorë **të dhënat kadastrale dhe aktet e proveniencës** — parcelat, nënnjësitë, anekset — ku praktikat bllokohen. Është ndryshimi mes një moduli të mbushur dhe **një praktike të bërë mirë**."
     },
     {
       "collection": "come_funziona",
@@ -2222,7 +2222,7 @@
       "value": {
         "autore": "Geom. Lorenzo Armellin",
         "ruolo": "Geom. i autorizuar Entratel",
-        "reviewed_by": "Rishikuar pjesa fiskale nga kontabilistë",
+        "reviewed_by": "",
         "foto": {
           "asset_key": "ritratto_lorenzo"
         },
@@ -2377,7 +2377,7 @@
       "key": "esito_b_taxes_note",
       "locale": "sq",
       "is_published": true,
-      "value": "+ taksa të llogaritura për rastin tuaj: ju tregojmë para se të paguani."
+      "value": "+ taksa të llogaritura për rastin tuaj: jua komunikojmë para dërgimit."
     },
     {
       "collection": "grazie",
@@ -2609,7 +2609,12 @@
       "value": [
         {
           "name": "Dokument identiteti dhe kod fiskal",
-          "description": "Të gjithë trashëgimtarëve dhe të ndjerit.",
+          "description": "Dokumenti i identitetit i të ndjerit dhe i trashëgimtarëve. Kodi fiskal nevojitet vetëm për trashëgimtarët.",
+          "when": "Gjithmonë"
+        },
+        {
+          "name": "IBAN i trashëgimtarit",
+          "description": "Nevojitet gjithmonë, për rimbursime ose për debitimin e taksave.",
           "when": "Gjithmonë"
         },
         {
@@ -2738,7 +2743,7 @@
       "key": "microtrust",
       "locale": "sq",
       "is_published": true,
-      "value": "Paguani një gjeometër të autorizuar Entratel, me mbikëqyrje fiskale nga kontabilistë. Pagesa të sigurta me Stripe."
+      "value": "Paguani një gjeometër të autorizuar për ushtrimin e profesionit të lirë. Pagesa të sigurta me Stripe."
     },
     {
       "collection": "checkout",
@@ -3376,7 +3381,7 @@
         {
           "category": "Si funksionon",
           "question": "Cilat dokumente nevojiten?",
-          "answer": "Varet nga rasti juaj: ju japim listë të personalizuar. Nëse ju mungon diçka, shpesh mund ta sigurojmë ne (vizura, akte provenience)."
+          "answer": "Varet nga rasti juaj: ju japim një listë të personalizuar. Gjithmonë duhen certifikata e vdekjes, dokumentet e trashëgimtarëve dhe IBAN i trashëgimtarit. Nëse mungon diçka, shpesh mund ta sigurojmë ne (vizura, akte provenience)."
         },
         {
           "category": "Dokumente dhe Zona personale",

@@ -127,7 +127,7 @@
       "key": "trust_line",
       "locale": "it",
       "is_published": true,
-      "value": "Geom. abilitato Entratel - con supervisione fiscale di commercialisti"
+      "value": "Geometra abilitato all'esercizio della libera professione."
     },
     {
       "collection": "footer",
@@ -272,7 +272,7 @@
       "key": "hero_subtitle",
       "locale": "it",
       "is_published": true,
-      "value": "Ci pensa il Geom. Lorenzo Armellin, specializzato in successioni: prezzo chiaro, tutto online (e se vuoi anche di persona), una persona reale che ti segue. Le imposte le calcoliamo noi, prima di farti pagare."
+      "value": "Ci pensa il Geom. Lorenzo Armellin, specializzato in successioni: prezzo chiaro, tutto online (e se vuoi anche di persona), una persona reale che ti segue. Le imposte le calcoliamo noi."
     },
     {
       "collection": "home",
@@ -377,7 +377,7 @@
         },
         {
           "titolo": "Zero errori e sanzioni",
-          "testo": "Un geometra abilitato controlla i dati catastali, dove le pratiche si bloccano."
+          "testo": "Un geometra abilitato controlla i dati catastali e gli atti di provenienza, dove le pratiche si bloccano."
         },
         {
           "titolo": "Assistenza umana",
@@ -436,7 +436,7 @@
       "key": "come_funziona_sla_note",
       "locale": "it",
       "is_published": true,
-      "value": "Invio entro 10-15 giorni lavorativi (in base al pacchetto) da quando abbiamo tutti i documenti completi."
+      "value": "Invio entro 7-10 giorni lavorativi (in base al pacchetto) da quando abbiamo tutti i documenti completi."
     },
     {
       "collection": "home",
@@ -587,7 +587,7 @@
       "key": "chisono_estratto",
       "locale": "it",
       "is_published": true,
-      "value": "Sono Lorenzo Armellin, geometra abilitato a trasmettere le successioni all'Agenzia delle Entrate. Con la supervisione fiscale di commercialisti, unisco la precisione sui dati catastali alla sicurezza sui numeri."
+      "value": "Sono Lorenzo Armellin, geometra abilitato all'esercizio della libera professione. Predispongo e trasmetto la dichiarazione di successione: sono abilitato a farlo."
     },
     {
       "collection": "home",
@@ -826,7 +826,7 @@
       "key": "ti_serve_body",
       "locale": "it",
       "is_published": true,
-      "value": "In alcuni casi (eredi diretti, solo liquidità modesta entro le soglie di legge, nessun immobile) la dichiarazione potrebbe non essere dovuta. Verifichiamo il tuo caso prima di farti pagare: se non ti serve, te lo diciamo. La verifica definitiva è sempre sul caso concreto."
+      "value": "In alcuni casi (eredi diretti, solo liquidità modesta entro le soglie di legge, nessun immobile) la dichiarazione potrebbe non essere dovuta. Verifichiamo il tuo caso gratis: se non ti serve, te lo diciamo. La verifica definitiva è sempre sul caso concreto."
     },
     {
       "collection": "tariffe",
@@ -911,7 +911,7 @@
       "key": "microtrust",
       "locale": "it",
       "is_published": true,
-      "value": "Geometra abilitato Entratel, con supervisione fiscale di commercialisti."
+      "value": "Geometra abilitato all'esercizio della libera professione."
     },
     {
       "collection": "tariffe",
@@ -1049,14 +1049,14 @@
       "key": "team_title",
       "locale": "it",
       "is_published": true,
-      "value": "Geometra sui catastali, commercialisti sui numeri"
+      "value": "Geometra: la figura professionale giusta per la dichiarazione di successione."
     },
     {
       "collection": "chi_siamo",
       "key": "team_body",
       "locale": "it",
       "is_published": true,
-      "value": "Predispongo e trasmetto io la dichiarazione: **sono abilitato a farlo**. Per la parte fiscale mi avvalgo della **supervisione di commercialisti**. Così hai il controllo tecnico sui dati catastali e la sicurezza sui calcoli, senza spezzare la pratica tra studi diversi."
+      "value": "Per la redazione della successione occorrono competenze **catastali, giuridiche e fiscali**: la figura che le racchiude tutte per sua formazione è il geometra. Predispongo e trasmetto la dichiarazione: **sono abilitato a farlo**."
     },
     {
       "collection": "chi_siamo",
@@ -1720,7 +1720,7 @@
       "key": "valore_body",
       "locale": "it",
       "is_published": true,
-      "value": "Verifichiamo a mano i **dati catastali** — particelle, subalterni, annessi, atti di provenienza — che sono il punto dove le pratiche si bloccano.\n\nCon la **supervisione fiscale di commercialisti** sui numeri. È la differenza tra un modulo riempito e **una pratica fatta bene**."
+      "value": "Verifichiamo a mano i **dati catastali e gli atti di provenienza** — particelle, subalterni, annessi — che sono il punto dove le pratiche si bloccano. È la differenza tra un modulo riempito e **una pratica fatta bene**."
     },
     {
       "collection": "come_funziona",
@@ -2236,7 +2236,7 @@
       "value": {
         "autore": "Geom. Lorenzo Armellin",
         "ruolo": "Geometra abilitato Entratel",
-        "reviewed_by": "Rivisto sulla parte fiscale da commercialisti",
+        "reviewed_by": "",
         "foto": {
           "asset_key": "ritratto_lorenzo"
         },
@@ -2391,7 +2391,7 @@
       "key": "esito_b_taxes_note",
       "locale": "it",
       "is_published": true,
-      "value": "+ imposte calcolate sul tuo caso: te le diciamo prima di farti pagare."
+      "value": "+ imposte calcolate sul tuo caso: te le comunichiamo prima dell'invio."
     },
     {
       "collection": "grazie",
@@ -2623,7 +2623,12 @@
       "value": [
         {
           "name": "Documento d'identità e codice fiscale",
-          "description": "Di tutti gli eredi e del defunto.",
+          "description": "Documento d'identità del defunto e degli eredi. Il codice fiscale serve solo per gli eredi.",
+          "when": "Sempre"
+        },
+        {
+          "name": "IBAN dell'erede",
+          "description": "Serve sempre, per rimborsi o per l'addebito delle imposte.",
           "when": "Sempre"
         },
         {
@@ -2752,7 +2757,7 @@
       "key": "microtrust",
       "locale": "it",
       "is_published": true,
-      "value": "Paghi un geometra abilitato Entratel, con supervisione fiscale di commercialisti. Pagamenti sicuri con Stripe."
+      "value": "Paghi un geometra abilitato all'esercizio della libera professione. Pagamenti sicuri con Stripe."
     },
     {
       "collection": "checkout",
@@ -3390,7 +3395,7 @@
         {
           "category": "Come funziona",
           "question": "Quali documenti servono?",
-          "answer": "Dipende dal tuo caso: ti diamo una lista personalizzata. Se ti manca qualcosa, spesso lo possiamo recuperare noi (visure, atti di provenienza)."
+          "answer": "Dipende dal tuo caso: ti diamo una lista personalizzata. Servono sempre certificato di morte, documenti degli eredi e l'IBAN dell'erede. Se ti manca qualcosa, spesso lo possiamo recuperare noi (visure, atti di provenienza)."
         },
         {
           "category": "Documenti e Area personale",

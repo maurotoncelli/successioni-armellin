@@ -171,7 +171,7 @@ export const legalDocsHi: Record<LegalSlug, LegalDoc> = {
         ],
       },
       { type: "h2", text: "7. निष्पादन समय" },
-      { type: "p", text: "साइट पर दर्शाए delivery समय estimates हैं, payment की तारीख से नहीं बल्कि तब से जब ग्राहक ने सभी आवश्यक, पूर्ण, सही documentation पेशेवर द्वारा validated प्रदान की; third-party times excluded। जब तक documentation incomplete है term suspended रहता है और last missing document validate होने पर resume होता है।" },
+      { type: "p", text: "साइट पर दर्शाए delivery समय estimates हैं, payment की तारीख से नहीं बल्कि तब से जब ग्राहक ने सभी आवश्यक, पूर्ण, सही documentation पेशेवर द्वारा validated प्रदान की; third-party times excluded। संकेतात्मक: सरल पैकेज 7 कार्य दिवस, संपत्ति वाले पैकेज 10 कार्य दिवस; कस्टम कोट पर सहमत अवधि लागू। जब तक documentation incomplete है term suspended रहता है और last missing document validate होने पर resume होता है।" },
       { type: "h2", text: "8. recesso का अधिकार (artt. 52-59 Cod. Consumo)" },
       {
         type: "ul",

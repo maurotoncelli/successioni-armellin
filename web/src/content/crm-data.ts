@@ -302,7 +302,7 @@ export const practices: Practice[] = [
         reason: "Il file caricato e illeggibile: ricarica una scansione piu nitida o una foto a fuoco.",
         help: "E' il rogito/atto con cui il defunto aveva acquisito l'immobile.",
       },
-      { label: "IBAN dell'erede", required: false, status: "ATTESO", help: "Serve solo per l'eventuale addebito delle imposte (F24)." },
+      { label: "IBAN dell'erede", required: true, status: "ATTESO", help: "Serve sempre, per rimborsi o per l'addebito delle imposte (F24)." },
     ],
     communications: [
       {

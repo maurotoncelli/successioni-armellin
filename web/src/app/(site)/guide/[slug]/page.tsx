@@ -238,9 +238,11 @@ export default async function ArticlePage({
                 {authorBox.autore}
               </p>
               <p className="text-sm text-text-muted">{authorBox.ruolo}</p>
-              <p className="mt-2 text-sm text-text-muted">
-                {authorBox.reviewed_by}
-              </p>
+              {authorBox.reviewed_by ? (
+                <p className="mt-2 text-sm text-text-muted">
+                  {authorBox.reviewed_by}
+                </p>
+              ) : null}
               <Link
                 href={authorBox.link}
                 className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-accent"

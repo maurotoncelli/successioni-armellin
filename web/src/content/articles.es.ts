@@ -13,7 +13,7 @@ export type ArticleEsOverlay = {
   sources: ArticleSource[];
 };
 
-const REVIEWED = "Revisado en la parte fiscal por asesores fiscales";
+const REVIEWED = "";
 
 const FONTE_ADE_SCHEDA: ArticleSource = {
   label: "Agenzia delle Entrate - Declaración de sucesión",
@@ -51,7 +51,7 @@ export const articlesEs: Record<string, ArticleEsOverlay> = {
       { type: "p", text: "La declaración se transmite telemáticamente con el software de la Agenzia delle Entrate. El archivo producido (extensión .SUC) se envía directamente por el contribuyente habilitado o, más a menudo, por un intermediario habilitado Entratel. El antiguo Modelo 4 en papel queda solo para casos residuales (fallecimientos anteriores al 3 de octubre de 2006 o residentes en el extranjero imposibilitados de transmitir telemáticamente)." },
       { type: "h2", text: "Qué se arriesga si no la haces (o si la haces mal)" },
       { type: "p", text: "La omisión conlleva una sanción proporcional al impuesto debido, además de intereses; la presentación tardía o infiel conlleva sanciones reducidas o proporcionales según el caso. Los importes cambian con el tiempo: deben verificarse en fuentes oficiales y con el profesional." },
-      { type: "callout", tone: "info", title: "No siempre es obligatoria", text: "En algunos casos la declaración ni siquiera es obligatoria. Lo explicamos en la guía dedicada a la exención: verificamos gratis tu caso antes de cobrarte." },
+      { type: "callout", tone: "info", title: "No siempre es obligatoria", text: "En algunos casos la declaración ni siquiera es obligatoria. Lo explicamos en la guía dedicada a la exención: verificamos gratis tu caso." },
     ],
     sources: [FONTE_ADE_SCHEDA, FONTE_NORMATTIVA],
   },
@@ -137,9 +137,10 @@ export const articlesEs: Record<string, ArticleEsOverlay> = {
       {
         type: "ul",
         items: [
-          "Certificado o extracto de defunción del fallecido (o autocertificación donde se admita).",
-          "Documento de identidad y código fiscal del fallecido y de todos los herederos.",
+          "Certificado o extracto de defunción del fallecido.",
+          "Documento de identidad del fallecido y de los herederos; código fiscal de los herederos.",
           "Autocertificación del estado civil y grado de parentesco de los herederos.",
+          "IBAN del heredero (siempre necesario, para reembolsos o para el cargo de impuestos).",
         ],
       },
       { type: "h2", text: "Si hay inmuebles" },
@@ -164,7 +165,6 @@ export const articlesEs: Record<string, ArticleEsOverlay> = {
         type: "ul",
         items: [
           "Certificación de saldo y posición de cuentas, libretas y títulos a la fecha del fallecimiento.",
-          "IBAN del heredero para posibles reembolsos o para el cargo de impuestos.",
         ],
       },
       { type: "callout", tone: "info", title: "¿Te falta algo? A menudo podemos recuperarlo nosotros", text: "La recuperación documental forma parte de nuestro trabajo: notas catastrales, actos de procedencia y datos faltantes los obtenemos nosotros ante organismos y bancos." },

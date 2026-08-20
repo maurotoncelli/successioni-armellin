@@ -171,7 +171,7 @@ export const legalDocsTr: Record<LegalSlug, LegalDoc> = {
         ],
       },
       { type: "h2", text: "7. İfa süreleri" },
-      { type: "p", text: "Sitede belirtilen teslim süreleri, müşterinin gerekli tüm belgeleri eksiksiz, doğru ve meslek mensubu tarafından onaylanmış şekilde sağladığı andan itibaren (ödeme tarihinden değil) başlayan tahminlerdir; üçüncü kurum süreleri dahil değildir. Belgeler eksik veya tamamlama bekliyorsa süre askıda kalır; son eksik belgenin alınması/onaylanmasıyla devam eder." },
+      { type: "p", text: "Sitede belirtilen teslim süreleri, müşterinin gerekli tüm belgeleri eksiksiz, doğru ve meslek mensubu tarafından onaylanmış şekilde sağladığı andan itibaren (ödeme tarihinden değil) başlayan tahminlerdir; üçüncü kurum süreleri dahil değildir. Yaklaşık: Basit paket 7 iş günü, gayrimenkulli paket 10 iş günü içinde; özel tekliflerde kararlaştırılan süre geçerlidir. Belgeler eksik veya tamamlama bekliyorsa süre askıda kalır; son eksik belgenin alınması/onaylanmasıyla devam eder." },
       { type: "h2", text: "8. Cayma hakkı (Tüketici Kanunu md. 52-59)" },
       {
         type: "ul",

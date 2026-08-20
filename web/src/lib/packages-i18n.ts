@@ -66,11 +66,11 @@ const SEED_AR: LocaleCatalogI18n = {
       name: "خلافة مع عقارات",
       tagline: "من عقار واحد إلى 3، مع نقل الملكيّة العقارية",
       description:
-        "الحزمة لمن يرث منزلاً أو عقارات قليلة: التحقق من البيانات العقارية، الإقرار، الإرسال ونقل الملكيّة. تغطي حتى 5 ورثة و5 حسابات مصرفية.",
+        "الحزمة لمن يرث منزلاً أو عقارات قليلة: التحقق من البيانات العقارية وسندات الملكية، الإقرار، الإرسال ونقل الملكيّة. تغطي حتى 5 ورثة و5 حسابات مصرفية.",
       features: [
         "كل ما في حزمة البسيطة",
         "من عقار واحد إلى 3، حتى 5 ورثة و5 حسابات",
-        "تحقق من البيانات العقارية من مساح",
+        "تحقق من البيانات العقارية وسندات الملكية",
         "نقل الملكيّة العقارية مشمول",
       ],
       badge: "الأكثر اختيارًا",
@@ -126,11 +126,11 @@ const SEED_EN: LocaleCatalogI18n = {
       name: "Succession with property",
       tagline: "From 1 to 3 properties, with cadastral transfer",
       description:
-        "The package for those inheriting a home or a few properties: cadastral data check, declaration, filing and ownership transfer. Covers up to 5 heirs and 5 bank accounts.",
+        "The package for those inheriting a home or a few properties: cadastral data and title deeds check, declaration, filing and ownership transfer. Covers up to 5 heirs and 5 bank accounts.",
       features: [
         "Everything in the Simple package",
         "From 1 to 3 properties, up to 5 heirs and 5 accounts",
-        "Cadastral data check by a surveyor",
+        "Cadastral data and title deeds check",
         "Cadastral transfer included",
       ],
       badge: "Most chosen",
@@ -187,11 +187,11 @@ const SEED_TR: LocaleCatalogI18n = {
       name: "Gayrimenkulli veraset",
       tagline: "1 ila 3 gayrimenkul, tapu devri ile",
       description:
-        "Ev veya birkaç gayrimenkul miras alanlar için: kadastro verisi kontrolü, beyanname, iletim ve mülkiyet devri. 5'e kadar mirasçı ve 5 banka hesabını kapsar.",
+        "Ev veya birkaç gayrimenkul miras alanlar için: kadastro verisi ve menşe belgeleri kontrolü, beyanname, iletim ve mülkiyet devri. 5'e kadar mirasçı ve 5 banka hesabını kapsar.",
       features: [
         "Basit paketteki her şey",
         "1 ila 3 gayrimenkul, 5'e kadar mirasçı ve 5 hesap",
-        "Bir Geometra tarafından kadastro verisi kontrolü",
+        "Kadastro verisi ve menşe belgeleri kontrolü",
         "Kadastro devri dahil",
       ],
       badge: "En çok seçilen",
@@ -248,11 +248,11 @@ const SEED_FR: LocaleCatalogI18n = {
       name: "Succession avec immobilier",
       tagline: "De 1 à 3 biens, avec mutation cadastrale",
       description:
-        "La formule pour ceux qui héritent d'un logement ou de quelques biens : contrôle des données cadastrales, déclaration, dépôt et transfert de propriété. Jusqu'à 5 héritiers et 5 comptes bancaires.",
+        "La formule pour ceux qui héritent d'un logement ou de quelques biens : contrôle des données cadastrales et des actes de provenance, déclaration, dépôt et transfert de propriété. Jusqu'à 5 héritiers et 5 comptes bancaires.",
       features: [
         "Tout ce qui est inclus dans la formule Simple",
         "De 1 à 3 biens, jusqu'à 5 héritiers et 5 comptes",
-        "Contrôle des données cadastrales par un Geometra",
+        "Contrôle des données cadastrales et des actes de provenance",
         "Mutation cadastrale incluse",
       ],
       badge: "La plus choisie",
@@ -309,11 +309,11 @@ const SEED_SQ: LocaleCatalogI18n = {
       name: "Trashëgimi me pasuri të paluajtshme",
       tagline: "Nga 1 deri në 3 pasuri, me transferim kadastral",
       description:
-        "Paketa për ata që trashëgojnë një shtëpi ose disa pasuri: kontroll i të dhënave kadastrale, deklaratë, dërgim dhe transferim pronësie. Deri në 5 trashëgimtarë dhe 5 llogari bankare.",
+        "Paketa për ata që trashëgojnë një shtëpi ose disa pasuri: kontroll i të dhënave kadastrale dhe i akteve të proveniencës, deklaratë, dërgim dhe transferim pronësie. Deri në 5 trashëgimtarë dhe 5 llogari bankare.",
       features: [
         "Gjithçka në paketën e thjeshtë",
         "Nga 1 deri në 3 pasuri, deri në 5 trashëgimtarë dhe 5 llogari",
-        "Kontroll i të dhënave kadastrale nga një Geometra",
+        "Kontroll i të dhënave kadastrale dhe i akteve të proveniencës",
         "Transferim kadastral i përfshirë",
       ],
       badge: "Më e zgjedhura",
@@ -370,11 +370,11 @@ const SEED_DE: LocaleCatalogI18n = {
       name: "Erbschaft mit Immobilien",
       tagline: "1 bis 3 Immobilien, mit Katasterumschreibung",
       description:
-        "Das Paket für Erben einer Wohnung oder weniger Immobilien: Prüfung der Katasterdaten, Erklärung, Einreichung und Eigentumsübertragung. Bis zu 5 Erben und 5 Bankkonten.",
+        "Das Paket für Erben einer Wohnung oder weniger Immobilien: Prüfung der Katasterdaten und Herkunftsurkunden, Erklärung, Einreichung und Eigentumsübertragung. Bis zu 5 Erben und 5 Bankkonten.",
       features: [
         "Alles aus dem einfachen Paket",
         "1 bis 3 Immobilien, bis zu 5 Erben und 5 Konten",
-        "Prüfung der Katasterdaten durch einen Geometra",
+        "Prüfung der Katasterdaten und Herkunftsurkunden",
         "Katasterumschreibung inklusive",
       ],
       badge: "Am häufigsten gewählt",
@@ -431,11 +431,11 @@ const SEED_ES: LocaleCatalogI18n = {
       name: "Sucesión con inmuebles",
       tagline: "De 1 a 3 inmuebles, con mutación catastral",
       description:
-        "La fórmula para quienes heredan una vivienda o algunos inmuebles: control de datos catastrales, declaración, presentación y transferencia de propiedad. Hasta 5 herederos y 5 cuentas bancarias.",
+        "La fórmula para quienes heredan una vivienda o algunos inmuebles: control de datos catastrales y actos de procedencia, declaración, presentación y transferencia de propiedad. Hasta 5 herederos y 5 cuentas bancarias.",
       features: [
         "Todo lo incluido en la fórmula Simple",
         "De 1 a 3 inmuebles, hasta 5 herederos y 5 cuentas",
-        "Control de datos catastrales por un Geometra",
+        "Control de datos catastrales y actos de procedencia",
         "Mutación catastral incluida",
       ],
       badge: "La más elegida",
@@ -492,11 +492,11 @@ const SEED_RU: LocaleCatalogI18n = {
       name: "Наследство с недвижимостью",
       tagline: "От 1 до 3 объектов, с кадастровым переоформлением",
       description:
-        "Пакет для тех, кто наследует жильё или несколько объектов: проверка кадастровых данных, декларация, подача и переход права собственности. До 5 наследников и 5 банковских счетов.",
+        "Пакет для тех, кто наследует жильё или несколько объектов: проверка кадастровых данных и документов о происхождении, декларация, подача и переход права собственности. До 5 наследников и 5 банковских счетов.",
       features: [
         "Всё из простого пакета",
         "От 1 до 3 объектов, до 5 наследников и 5 счетов",
-        "Проверка кадастровых данных геометром (Geometra)",
+        "Проверка кадастровых данных и документов о происхождении",
         "Кадастровое переоформление включено",
       ],
       badge: "Самый выбираемый",
@@ -553,11 +553,11 @@ const SEED_ZH: LocaleCatalogI18n = {
       name: "含不动产的继承",
       tagline: "1 至 3 处不动产，含地籍过户",
       description:
-        "适合继承住房或少量不动产者：地籍数据核对、申报、提交与产权转移。最多 5 位继承人与 5 个银行账户。",
+        "适合继承住房或少量不动产者：地籍数据与权属文件核对、申报、提交与产权转移。最多 5 位继承人与 5 个银行账户。",
       features: [
         "简单套餐全部内容",
         "1 至 3 处不动产，最多 5 位继承人与 5 个账户",
-        "由测量师（Geometra）核对地籍数据",
+        "地籍数据与权属文件核对",
         "含地籍过户",
       ],
       badge: "最受欢迎",
@@ -612,11 +612,11 @@ const SEED_HI: LocaleCatalogI18n = {
       name: "अचल संपत्ति सहित उत्तराधिकार",
       tagline: "1 से 3 अचल संपत्तियाँ, कैडस्ट्रल ट्रांसफ़र सहित",
       description:
-        "घर या कुछ अचल संपत्तियाँ विरासत में पाने वालों के लिए पैकेज: कैडस्ट्रल डेटा जाँच, घोषणा, जमा और स्वामित्व हस्तांतरण। अधिकतम 5 उत्तराधिकारी और 5 बैंक खाते।",
+        "घर या कुछ अचल संपत्तियाँ विरासत में पाने वालों के लिए पैकेज: कैडस्ट्रल डेटा और स्वामित्व दस्तावेज़ जाँच, घोषणा, जमा और स्वामित्व हस्तांतरण। अधिकतम 5 उत्तराधिकारी और 5 बैंक खाते।",
       features: [
         "सरल पैकेज की सभी सुविधाएँ",
         "1 से 3 अचल संपत्तियाँ, अधिकतम 5 उत्तराधिकारी और 5 खाते",
-        "Geometra द्वारा कैडस्ट्रल डेटा जाँच",
+        "कैडस्ट्रल डेटा और स्वामित्व दस्तावेज़ जाँच",
         "कैडस्ट्रल ट्रांसफ़र शामिल",
       ],
       badge: "सबसे चुना गया",

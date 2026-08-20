@@ -13,7 +13,7 @@ export type ArticleHiOverlay = {
   sources: ArticleSource[];
 };
 
-const REVIEWED = "कर पक्ष की समीक्षा कर सलाहकारों ने की";
+const REVIEWED = "";
 
 const FONTE_ADE_SCHEDA: ArticleSource = {
   label: "Agenzia delle Entrate - उत्तराधिकार घोषणा",
@@ -51,7 +51,7 @@ export const articlesHi: Record<string, ArticleHiOverlay> = {
       { type: "p", text: "घोषणा Agenzia delle Entrate सॉफ़्टवेयर से इलेक्ट्रॉनिक। .SUC फ़ाइल प्राधिकृत contribuente या अक्सर Entratel मध्यस्थ भेजता है। पुराना Model 4 केवल अवशिष्ट (3 अक्टूबर 2006 से पहले मृत्यु या इलेक्ट्रॉनिक असंभव विदेश निवासी)।" },
       { type: "h2", text: "न करें (या गलती) तो क्या जोखिम" },
       { type: "p", text: "न जमा: देय कर के अनुपात में जुर्माना और ब्याज; देर/गलत: कम या अनुपातिक जुर्माना। राशि समय के साथ बदलती: आधिकारिक स्रोत और पेशेवर से पुष्टि।" },
-      { type: "callout", tone: "info", title: "हमेशा आवश्यक नहीं", text: "कुछ मामलों में घोषणा बाध्य नहीं। छूट गाइड में: भुगतान से पहले मुफ़्त जाँच।" },
+      { type: "callout", tone: "info", title: "हमेशा आवश्यक नहीं", text: "कुछ मामलों में घोषणा बाध्य नहीं। छूट गाइड में: मुफ़्त जाँच।" },
     ],
     sources: [FONTE_ADE_SCHEDA, FONTE_NORMATTIVA],
   },
@@ -137,9 +137,10 @@ export const articlesHi: Record<string, ArticleHiOverlay> = {
       {
         type: "ul",
         items: [
-          "मृतक मृत्यु प्रमाण/अंश (जहाँ स्व-प्रमाण)।",
-          "मृतक और सभी उत्तराधिकारी ID और codice fiscale।",
+          "मृतक का मृत्यु प्रमाण या अंश।",
+          "मृतक और उत्तराधिकारियों का पहचान पत्र; उत्तराधिकारियों का codice fiscale।",
           "उत्तराधिकारी परिवार स्थिति और रिश्ता स्व-प्रमाण।",
+          "उत्तराधिकारी का IBAN (हमेशा आवश्यक, रिफ़ंड या कर डेबिट के लिए)।",
         ],
       },
       { type: "h2", text: "यदि संपत्तियाँ हैं" },
@@ -164,7 +165,6 @@ export const articlesHi: Record<string, ArticleHiOverlay> = {
         type: "ul",
         items: [
           "मृत्यु तिथि पर खाता/पासबुक/प्रतिभूति शेष प्रमाण।",
-          "कर डेबिट या संभावित रिफ़ंड के लिए उत्तराधिकारी का IBAN।",
         ],
       },
       { type: "callout", tone: "info", title: "कुछ कम है? अक्सर हम प्राप्त कर लेते हैं", text: "दस्तावेज़ पुनर्प्राप्ति हमारे काम का हिस्सा: visure, atti और लापता डेटा हम enti/बैंकों से लाते हैं।" },

@@ -252,7 +252,7 @@ export default async function GraziePage({
                       {await t(
                         "grazie",
                         "esito_b_taxes_note",
-                        "+ imposte calcolate sul tuo caso: te le diciamo prima di farti pagare.",
+                        "+ imposte calcolate sul tuo caso: te le comunichiamo prima dell'invio.",
                       )}
                     </p>
                   </div>

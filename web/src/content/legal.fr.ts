@@ -171,7 +171,7 @@ export const legalDocsFr: Record<LegalSlug, LegalDoc> = {
         ],
       },
       { type: "h2", text: "7. Délais d'exécution" },
-      { type: "p", text: "Les délais de livraison indiqués sur le site sont des estimations courant à partir du moment où le client a fourni toute la documentation nécessaire, complète, correcte et validée par le professionnel (et non à partir de la date de paiement), et ne comprennent pas les délais des organismes tiers. Tant que la documentation est incomplète ou en attente de complément, le délai reste suspendu et reprend à la réception/validation du dernier document manquant." },
+      { type: "p", text: "Les délais de livraison indiqués sur le site sont des estimations courant à partir du moment où le client a fourni toute la documentation nécessaire, complète, correcte et validée par le professionnel (et non à partir de la date de paiement), et ne comprennent pas les délais des organismes tiers. À titre indicatif : formule Simple sous 7 jours ouvrés, formule avec immobilier sous 10 jours ouvrés ; pour les devis sur mesure, le délai convenu s'applique. Tant que la documentation est incomplète ou en attente de complément, le délai reste suspendu et reprend à la réception/validation du dernier document manquant." },
       { type: "h2", text: "8. Droit de rétractation (art. 52-59 Code consommation)" },
       {
         type: "ul",

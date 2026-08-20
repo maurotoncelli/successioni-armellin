@@ -127,7 +127,7 @@
       "key": "trust_line",
       "locale": "de",
       "is_published": true,
-      "value": "Entratel-berechtigter Geom. — mit steuerlicher Prüfung durch Steuerberater"
+      "value": "Geometer mit Zulassung zur selbstständigen Berufsausübung."
     },
     {
       "collection": "footer",
@@ -272,7 +272,7 @@
       "key": "hero_subtitle",
       "locale": "de",
       "is_published": true,
-      "value": "Geom. Lorenzo Armellin, Erbschaftsspezialist: klarer Preis, online oder persönlich. Steuern vor Zahlung berechnet."
+      "value": "Geom. Lorenzo Armellin, spezialisiert auf Erbschaften, kümmert sich darum: klarer Preis, alles online (oder persönlich, wenn Sie möchten), ein echter Ansprechpartner. Die Steuern berechnen wir."
     },
     {
       "collection": "home",
@@ -377,7 +377,7 @@
         },
         {
           "titolo": "Keine Fehler und Bußgelder",
-          "testo": "Ein zugelassener Geometer prüft die Katasterdaten – dort stocken die Verfahren."
+          "testo": "Ein zugelassener Geometer prüft die Katasterdaten und die Herkunftsurkunden — genau dort, wo Vorgänge stecken bleiben."
         },
         {
           "titolo": "Persönlicher Support",
@@ -436,7 +436,7 @@
       "key": "come_funziona_sla_note",
       "locale": "de",
       "is_published": true,
-      "value": "Einreichung innerhalb von 10–15 Werktagen (je nach Paket) nach vollständigen Dokumenten."
+      "value": "Einreichung innerhalb von 7–10 Werktagen (je nach Paket), sobald alle Unterlagen vollständig sind."
     },
     {
       "collection": "home",
@@ -587,7 +587,7 @@
       "key": "chisono_estratto",
       "locale": "de",
       "is_published": true,
-      "value": "Ich bin Lorenzo Armellin, Geometer für Erbschaftserklärungen an Agenzia delle Entrate. Katasterpräzision plus steuerliche Sicherheit."
+      "value": "Ich bin Lorenzo Armellin, Geometer mit Zulassung zur selbstständigen Berufsausübung. Ich erstelle und übermittle die Erbschaftserklärung: dazu bin ich befugt."
     },
     {
       "collection": "home",
@@ -826,7 +826,7 @@
       "key": "ti_serve_body",
       "locale": "de",
       "is_published": true,
-      "value": "Manchmal keine Erklärung nötig (direkte Erben, geringe Liquidität, keine Immobilie). Kostenlose Prüfung vor Zahlung — endgültig am konkreten Fall."
+      "value": "In manchen Fällen (direkte Erben, nur bescheidene Liquidität innerhalb der gesetzlichen Schwellen, keine Immobilie) ist die Erklärung möglicherweise nicht erforderlich. Wir prüfen Ihren Fall kostenlos: wenn Sie sie nicht brauchen, sagen wir es. Die endgültige Prüfung gilt immer für den konkreten Fall."
     },
     {
       "collection": "tariffe",
@@ -911,7 +911,7 @@
       "key": "microtrust",
       "locale": "de",
       "is_published": true,
-      "value": "Entratel-berechtigter Geometer, mit steuerlicher Prüfung durch Steuerberater."
+      "value": "Geometer mit Zulassung zur selbstständigen Berufsausübung."
     },
     {
       "collection": "tariffe",
@@ -1049,14 +1049,14 @@
       "key": "team_title",
       "locale": "de",
       "is_published": true,
-      "value": "Geometer für Kataster, Steuerberater für Zahlen"
+      "value": "Geometer: die richtige Berufsfigur für die Erbschaftserklärung."
     },
     {
       "collection": "chi_siamo",
       "key": "team_body",
       "locale": "de",
       "is_published": true,
-      "value": "Ich erstelle und übermittle die Erklärung selbst. Steuerlicher Teil mit **Steuerberater-Prüfung**. Katasterkontrolle und sichere Zahlen — **eine Akte, ein Ansprechpartner**."
+      "value": "Für die Erbschaftserklärung braucht es **katasterrechtliche, juristische und steuerliche** Kompetenz: die Ausbildung, die all das vereint, ist die des Geometers. Ich erstelle und übermittle die Erklärung: **ich bin dazu befugt**."
     },
     {
       "collection": "chi_siamo",
@@ -1706,7 +1706,7 @@
       "key": "valore_body",
       "locale": "de",
       "is_published": true,
-      "value": "**Manuelle Katasterprüfung** — Parzellen, Untereinheiten, Anbauten, Erwerbsurkunden.\n\nMit **steuerlicher Prüfung**. Der Unterschied zwischen ausgefülltem Formular und **sauberer Akte**."
+      "value": "Wir prüfen von Hand die **Katasterdaten und Herkunftsurkunden** — Flurstücke, Subalternen, Anbauten — genau dort, wo Vorgänge stecken bleiben. Das ist der Unterschied zwischen einem ausgefüllten Formular und **einer sauber gemachten Akte**."
     },
     {
       "collection": "come_funziona",
@@ -2222,7 +2222,7 @@
       "value": {
         "autore": "Geom. Lorenzo Armellin",
         "ruolo": "Entratel-berechtigter Geometer",
-        "reviewed_by": "Steuerlicher Teil von Steuerberatern geprüft",
+        "reviewed_by": "",
         "foto": {
           "asset_key": "ritratto_lorenzo"
         },
@@ -2377,7 +2377,7 @@
       "key": "esito_b_taxes_note",
       "locale": "de",
       "is_published": true,
-      "value": "+ Steuern für Ihren Fall: mitgeteilt vor der Zahlung."
+      "value": "+ für Ihren Fall berechnete Steuern: wir teilen sie vor der Einreichung mit."
     },
     {
       "collection": "grazie",
@@ -2609,7 +2609,12 @@
       "value": [
         {
           "name": "Ausweis und Steuernummer (C.F.)",
-          "description": "Von allen Erben und dem/der Verstorbenen.",
+          "description": "Ausweis des Verstorbenen und der Erben. Die Steuernummer wird nur für die Erben benötigt.",
+          "when": "Immer"
+        },
+        {
+          "name": "IBAN des Erben",
+          "description": "Immer erforderlich, für Erstattungen oder die Steuerabbuchung.",
           "when": "Immer"
         },
         {
@@ -2738,7 +2743,7 @@
       "key": "microtrust",
       "locale": "de",
       "is_published": true,
-      "value": "Entratel-berechtigter Geometer, steuerlich geprüft durch Steuerberater. Sichere Stripe-Zahlungen."
+      "value": "Sie zahlen einen Geometer mit Zulassung zur selbstständigen Berufsausübung. Sichere Zahlungen mit Stripe."
     },
     {
       "collection": "checkout",
@@ -3376,7 +3381,7 @@
         {
           "category": "So funktioniert es",
           "question": "Welche Dokumente werden benötigt?",
-          "answer": "Abhängig vom Fall: individuelle Liste. Fehlendes oft von uns beschaffbar."
+          "answer": "Es hängt von Ihrem Fall ab: Sie erhalten eine persönliche Liste. Immer nötig sind Sterbeurkunde, Unterlagen der Erben und die IBAN des Erben. Fehlt etwas, können wir es oft selbst beschaffen (Auszüge, Herkunftsurkunden)."
         },
         {
           "category": "Dokumente und Persönlicher Bereich",

@@ -13,7 +13,7 @@ export type ArticleTrOverlay = {
   sources: ArticleSource[];
 };
 
-const REVIEWED = "Vergi kısmı muhasebeciler tarafından incelendi";
+const REVIEWED = "";
 
 const FONTE_ADE_SCHEDA: ArticleSource = {
   label: "Agenzia delle Entrate - Veraset beyanı",
@@ -51,7 +51,7 @@ export const articlesTr: Record<string, ArticleTrOverlay> = {
       { type: "p", text: "Beyan, Agenzia delle Entrate yazılımıyla elektronik olarak iletilir. Oluşturulan dosya (.SUC uzantılı) yetkili mükellef tarafından veya çoğu zaman Entratel yetkili bir aracı tarafından doğrudan gönderilir. Eski kağıt Model 4 yalnızca kalıntı haller için geçerlidir (3 Ekim 2006'dan önceki vefatlar veya elektronik iletim mümkün olmayan yurt dışındaki ikamet edenler)." },
       { type: "h2", text: "Yapmazsanız (veya hata yaparsanız) ne risk alırsınız" },
       { type: "p", text: "Sunulmaması, ödenmesi gereken vergiyle orantılı bir cezayı ve faizi doğurur; geç veya hatalı sunum ise duruma göre indirilmiş veya orantılı cezalara yol açar. Tutarlar zamanla değişir: resmi kaynaklardan ve uzmanla birlikte doğrulanmalıdır." },
-      { type: "callout", tone: "info", title: "Her zaman gerekli değildir", text: "Bazı durumlarda beyan hiç zorunlu değildir. Bunu muafiyet rehberinde açıklıyoruz: ödeme yapmadan önce durumunuzu ücretsiz kontrol ediyoruz." },
+      { type: "callout", tone: "info", title: "Her zaman gerekli değildir", text: "Bazı durumlarda beyan hiç zorunlu değildir. Bunu muafiyet rehberinde açıklıyoruz: durumunuzu ücretsiz kontrol ediyoruz." },
     ],
     sources: [FONTE_ADE_SCHEDA, FONTE_NORMATTIVA],
   },
@@ -137,9 +137,10 @@ export const articlesTr: Record<string, ArticleTrOverlay> = {
       {
         type: "ul",
         items: [
-          "Vefat edenin ölüm belgesi veya özeti (izin verildiğinde öz-beyan).",
-          "Vefat edenin ve tüm mirasçıların kimlik belgesi ve vergi numarası (C.F.).",
+          "Vefat edenin ölüm belgesi veya özeti.",
+          "Vefat edenin ve mirasçıların kimlik belgesi; mirasçıların vergi numarası (C.F.).",
           "Mirasçıların aile durumu ve akrabalık derecesinin öz-beyanı.",
+          "Mirasçının IBAN'ı (her zaman gerekli, geri ödeme veya vergi tahsilatı için).",
         ],
       },
       { type: "h2", text: "Taşınmaz varsa" },
@@ -164,7 +165,6 @@ export const articlesTr: Record<string, ArticleTrOverlay> = {
         type: "ul",
         items: [
           "Vefat tarihindeki hesap, cüzdan ve menkul kıymet bakiye ve mevduat belgesi.",
-          "Geri ödeme veya vergi tahsilatı için mirasçının IBAN'ı.",
         ],
       },
       { type: "callout", tone: "info", title: "Eksik bir şey mi var? Çoğu zaman biz temin edebiliriz", text: "Belge temini işimizin parçasıdır: kadastro kayıtları, menşe belgeleri ve eksik verileri kurum ve bankalardan biz temin ederiz." },

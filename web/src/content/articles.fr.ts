@@ -13,7 +13,7 @@ export type ArticleFrOverlay = {
   sources: ArticleSource[];
 };
 
-const REVIEWED = "Partie fiscale revue par des experts-comptables";
+const REVIEWED = "";
 
 const FONTE_ADE_SCHEDA: ArticleSource = {
   label: "Agenzia delle Entrate - Déclaration de succession",
@@ -51,7 +51,7 @@ export const articlesFr: Record<string, ArticleFrOverlay> = {
       { type: "p", text: "La déclaration se transmet par voie télématique avec le logiciel de l'Agenzia delle Entrate. Le fichier produit (extension .SUC) est envoyé directement par le contribuable habilité ou, le plus souvent, par un intermédiaire habilité Entratel. L'ancien Modèle 4 papier ne reste que pour les cas résiduels (décès antérieurs au 3 octobre 2006 ou résidents à l'étranger dans l'impossibilité de transmettre par voie télématique)." },
       { type: "h2", text: "Ce que vous risquez si vous ne la déposez pas (ou si vous la faites mal)" },
       { type: "p", text: "L'absence de dépôt entraîne une sanction proportionnée à l'impôt dû, plus les intérêts ; un dépôt tardif ou inexact entraîne des sanctions réduites ou proportionnelles selon les cas. Les montants évoluent dans le temps : ils doivent être vérifiés sur les sources officielles et avec le professionnel." },
-      { type: "callout", tone: "info", title: "Ce n'est pas toujours obligatoire", text: "Dans certains cas, la déclaration n'est même pas obligatoire. Nous l'expliquons dans le guide dédié à l'exonération : nous vérifions gratuitement votre situation avant de vous faire payer." },
+      { type: "callout", tone: "info", title: "Ce n'est pas toujours obligatoire", text: "Dans certains cas, la déclaration n'est même pas obligatoire. Nous l'expliquons dans le guide dédié à l'exonération : nous vérifions gratuitement votre situation." },
     ],
     sources: [FONTE_ADE_SCHEDA, FONTE_NORMATTIVA],
   },
@@ -137,9 +137,10 @@ export const articlesFr: Record<string, ArticleFrOverlay> = {
       {
         type: "ul",
         items: [
-          "Certificat ou extrait de décès du défunt (ou autocertification lorsque admise).",
-          "Pièce d'identité et code fiscal du défunt et de tous les héritiers.",
+          "Certificat ou extrait de décès du défunt.",
+          "Pièce d'identité du défunt et des héritiers ; code fiscal des héritiers.",
           "Autocertification de l'état de famille et du degré de parenté des héritiers.",
+          "IBAN de l'héritier (toujours nécessaire, pour les remboursements ou le prélèvement des impôts).",
         ],
       },
       { type: "h2", text: "S'il y a des biens immobiliers" },
@@ -164,7 +165,6 @@ export const articlesFr: Record<string, ArticleFrOverlay> = {
         type: "ul",
         items: [
           "Attestation de solde et de position de comptes, livrets et titres à la date du décès.",
-          "IBAN de l'héritier pour d'éventuels remboursements ou pour le prélèvement des impôts.",
         ],
       },
       { type: "callout", tone: "info", title: "Il vous manque quelque chose ? Nous pouvons souvent le récupérer", text: "La recherche documentaire fait partie de notre travail : visures cadastrales, actes de provenance et données manquantes, nous les obtenons auprès des organismes et des banques." },

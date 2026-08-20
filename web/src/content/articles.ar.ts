@@ -14,8 +14,7 @@ export type ArticleArOverlay = {
   sources: ArticleSource[];
 };
 
-const REVIEWED =
-  "مراجعة الجانب الضريبي من محاسبين قانونيين";
+const REVIEWED = "";
 
 const FONTE_ADE_SCHEDA: ArticleSource = {
   label: "وكالة الإيرادات — تصريحة الميراث",
@@ -78,7 +77,7 @@ export const articlesAr: Record<string, ArticleArOverlay> = {
         type: "callout",
         tone: "info",
         title: "ليست دائمًا واجبة",
-        text: "في بعض الحالات لا تكون التصريحة واجبة أصلًا. نشرح ذلك في الدليل المخصص للإعفاء: نتحقق مجانًا من حالتك قبل أن تدفع.",
+        text: "في بعض الحالات لا تكون التصريحة واجبة أصلًا. نشرح ذلك في الدليل المخصص للإعفاء: نتحقق مجانًا من حالتك.",
       },
     ],
     sources: [FONTE_ADE_SCHEDA, FONTE_NORMATTIVA],
@@ -226,9 +225,10 @@ export const articlesAr: Record<string, ArticleArOverlay> = {
       {
         type: "ul",
         items: [
-          "شهادة أو مستخرج وفاة المتوفى (أو تصريح ذاتي حيث يُسمح).",
-          "وثيقة الهوية والرقم الضريبي للمتوفى ولجميع الورثة.",
+          "شهادة أو مستخرج وفاة المتوفى.",
+          "وثيقة هوية المتوفى والورثة؛ الرقم الضريبي للورثة.",
           "تصريح ذاتي بحالة الأسرة ودرجة قرابة الورثة.",
+          "IBAN الوريث (لازم دائمًا، لأي استرداد أو لخصم الضرائب).",
         ],
       },
       { type: "h2", text: "إن وُجدت عقارات" },
@@ -253,7 +253,6 @@ export const articlesAr: Record<string, ArticleArOverlay> = {
         type: "ul",
         items: [
           "شهادة رصيد وموجودات الحسابات والدفاتر والأوراق المالية بتاريخ الوفاة.",
-          "IBAN الوريث لأي استرداد أو لخصم الضرائب.",
         ],
       },
       {

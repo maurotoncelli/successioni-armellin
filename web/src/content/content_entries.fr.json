@@ -127,7 +127,7 @@
       "key": "trust_line",
       "locale": "fr",
       "is_published": true,
-      "value": "Geom. habilité Entratel — avec supervision fiscale d'experts-comptables"
+      "value": "Géomètre habilité à l'exercice de la profession libérale."
     },
     {
       "collection": "footer",
@@ -272,7 +272,7 @@
       "key": "hero_subtitle",
       "locale": "fr",
       "is_published": true,
-      "value": "C'est le Geom. Lorenzo Armellin, spécialisé en successions, qui s'en occupe : prix clair, tout en ligne (et en personne si vous le souhaitez), une personne réelle qui vous accompagne. Nous calculons les impôts avant le paiement."
+      "value": "C'est le Geom. Lorenzo Armellin, spécialisé en successions, qui s'en occupe : prix clair, tout en ligne (et en personne si vous le souhaitez), une personne réelle qui vous accompagne. Nous calculons les impôts."
     },
     {
       "collection": "home",
@@ -377,7 +377,7 @@
         },
         {
           "titolo": "Zéro erreur ni sanction",
-          "testo": "Un géomètre habilité contrôle les données cadastrales, là où les dossiers bloquent."
+          "testo": "Un géomètre habilité contrôle les données cadastrales et les actes de provenance, là où les dossiers se bloquent."
         },
         {
           "titolo": "Assistance humaine",
@@ -436,7 +436,7 @@
       "key": "come_funziona_sla_note",
       "locale": "fr",
       "is_published": true,
-      "value": "Envoi sous 10 à 15 jours ouvrables (selon le forfait) à partir du moment où nous avons tous les documents complets."
+      "value": "Envoi sous 7 à 10 jours ouvrables (selon le forfait) dès que nous avons tous les documents complets."
     },
     {
       "collection": "home",
@@ -587,7 +587,7 @@
       "key": "chisono_estratto",
       "locale": "fr",
       "is_published": true,
-      "value": "Je suis Lorenzo Armellin, géomètre habilité à transmettre les successions à l'Agenzia delle Entrate. Avec la supervision fiscale d'experts-comptables, j'allie la précision des données cadastrales à la fiabilité des chiffres."
+      "value": "Je suis Lorenzo Armellin, géomètre habilité à l'exercice de la profession libérale. Je prépare et transmets la déclaration de succession : j'y suis habilité."
     },
     {
       "collection": "home",
@@ -826,7 +826,7 @@
       "key": "ti_serve_body",
       "locale": "fr",
       "is_published": true,
-      "value": "Dans certains cas (héritiers directs, seulement une liquidité modeste dans les seuils légaux, aucun bien immobilier), la déclaration peut ne pas être due. Nous vérifions votre cas avant le paiement : si vous n'en avez pas besoin, nous vous le disons. La vérification définitive porte toujours sur le cas concret."
+      "value": "Dans certains cas (héritiers directs, seulement une liquidité modeste dans les seuils légaux, aucun bien immobilier), la déclaration peut ne pas être due. Nous vérifions votre cas gratuitement : si vous n'en avez pas besoin, nous vous le disons. La vérification définitive porte toujours sur le cas concret."
     },
     {
       "collection": "tariffe",
@@ -911,7 +911,7 @@
       "key": "microtrust",
       "locale": "fr",
       "is_published": true,
-      "value": "Géomètre habilité Entratel, avec supervision fiscale d'experts-comptables."
+      "value": "Géomètre habilité à l'exercice de la profession libérale."
     },
     {
       "collection": "tariffe",
@@ -1049,14 +1049,14 @@
       "key": "team_title",
       "locale": "fr",
       "is_published": true,
-      "value": "Géomètre pour le cadastre, experts-comptables pour les chiffres"
+      "value": "Géomètre : le professionnel adapté à la déclaration de succession."
     },
     {
       "collection": "chi_siamo",
       "key": "team_body",
       "locale": "fr",
       "is_published": true,
-      "value": "Je prépare et transmets moi-même la déclaration : **j'y suis habilité**. Pour la partie fiscale, je m'appuie sur la **supervision d'experts-comptables**. Vous avez ainsi le contrôle technique des données cadastrales et la fiabilité des calculs, sans fragmenter le dossier entre plusieurs cabinets."
+      "value": "Rédiger une succession exige des compétences **cadastrales, juridiques et fiscales** : la formation qui les réunit est celle du géomètre. Je prépare et transmets la déclaration : **j'y suis habilité**."
     },
     {
       "collection": "chi_siamo",
@@ -1706,7 +1706,7 @@
       "key": "valore_body",
       "locale": "fr",
       "is_published": true,
-      "value": "Nous vérifions manuellement les **données cadastrales** — parcelles, subalternes, dépendances, actes de provenance — là où les dossiers bloquent le plus souvent.\n\nAvec la **supervision fiscale d'experts-comptables**. C'est la différence entre un formulaire rempli et **un dossier bien traité**."
+      "value": "Nous vérifions à la main les **données cadastrales et les actes de provenance** — parcelles, subalternes, annexes — là où les dossiers se bloquent. C'est la différence entre un formulaire rempli et **un dossier bien fait**."
     },
     {
       "collection": "come_funziona",
@@ -2222,7 +2222,7 @@
       "value": {
         "autore": "Geom. Lorenzo Armellin",
         "ruolo": "Géomètre habilité Entratel",
-        "reviewed_by": "Partie fiscale revue par des experts-comptables",
+        "reviewed_by": "",
         "foto": {
           "asset_key": "ritratto_lorenzo"
         },
@@ -2377,7 +2377,7 @@
       "key": "esito_b_taxes_note",
       "locale": "fr",
       "is_published": true,
-      "value": "+ impôts calculés pour votre cas : nous vous les indiquons avant le paiement."
+      "value": "+ impôts calculés pour votre cas : nous vous les communiquons avant l'envoi."
     },
     {
       "collection": "grazie",
@@ -2609,7 +2609,12 @@
       "value": [
         {
           "name": "Pièce d'identité et code fiscal",
-          "description": "De tous les héritiers et du défunt.",
+          "description": "Pièce d'identité du défunt et des héritiers. Le code fiscal n'est requis que pour les héritiers.",
+          "when": "Toujours"
+        },
+        {
+          "name": "IBAN de l'héritier",
+          "description": "Toujours nécessaire, pour les remboursements ou le prélèvement des impôts.",
           "when": "Toujours"
         },
         {
@@ -2738,7 +2743,7 @@
       "key": "microtrust",
       "locale": "fr",
       "is_published": true,
-      "value": "Vous payez un géomètre habilité Entratel, avec supervision fiscale d'experts-comptables. Paiements sécurisés avec Stripe."
+      "value": "Vous payez un géomètre habilité à l'exercice de la profession libérale. Paiements sécurisés avec Stripe."
     },
     {
       "collection": "checkout",
@@ -3376,7 +3381,7 @@
         {
           "category": "Comment ça marche",
           "question": "Quels documents sont nécessaires ?",
-          "answer": "Cela dépend de votre cas : nous vous fournissons une liste personnalisée. S'il manque quelque chose, nous pouvons souvent le récupérer (extraits, actes de provenance)."
+          "answer": "Cela dépend de votre cas : nous vous donnons une liste personnalisée. Il faut toujours le certificat de décès, les documents des héritiers et l'IBAN de l'héritier. S'il manque quelque chose, nous pouvons souvent le récupérer (relevés, actes de provenance)."
         },
         {
           "category": "Documents et Espace personnel",

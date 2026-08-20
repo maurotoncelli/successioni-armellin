@@ -127,7 +127,7 @@
       "key": "trust_line",
       "locale": "es",
       "is_published": true,
-      "value": "Geom. habilitado Entratel - con supervisión fiscal de asesores fiscales"
+      "value": "Geometra habilitado para el ejercicio de la profesión liberal."
     },
     {
       "collection": "footer",
@@ -272,7 +272,7 @@
       "key": "hero_subtitle",
       "locale": "es",
       "is_published": true,
-      "value": "Se encarga el Geom. Lorenzo Armellin, especializado en sucesiones: precio claro, todo en línea (y en persona si quieres), una persona real que te acompaña. Calculamos los impuestos nosotros, antes de cobrarte."
+      "value": "Se encarga el Geom. Lorenzo Armellin, especializado en sucesiones: precio claro, todo en línea (y en persona si quieres), una persona real que te acompaña. Calculamos los impuestos nosotros."
     },
     {
       "collection": "home",
@@ -377,7 +377,7 @@
         },
         {
           "titolo": "Cero errores y sanciones",
-          "testo": "Un geómetra habilitado revisa los datos catastrales, donde se atascan los expedientes."
+          "testo": "Un geometra habilitado controla los datos catastrales y los actos de procedencia, donde se bloquean los expedientes."
         },
         {
           "titolo": "Asistencia humana",
@@ -436,7 +436,7 @@
       "key": "come_funziona_sla_note",
       "locale": "es",
       "is_published": true,
-      "value": "Envío en 10-15 días laborables (según paquete) desde que tenemos todos los documentos completos."
+      "value": "Envío en 7-10 días laborables (según paquete) desde que tenemos todos los documentos completos."
     },
     {
       "collection": "home",
@@ -587,7 +587,7 @@
       "key": "chisono_estratto",
       "locale": "es",
       "is_published": true,
-      "value": "Soy Lorenzo Armellin, geometra habilitado para transmitir sucesiones a la Agenzia delle Entrate. Con supervisión fiscal de asesores fiscales, uno la precisión catastral con la seguridad en los números."
+      "value": "Soy Lorenzo Armellin, geometra habilitado para el ejercicio de la profesión liberal. Preparo y transmito la declaración de sucesión: estoy habilitado para hacerlo."
     },
     {
       "collection": "home",
@@ -826,7 +826,7 @@
       "key": "ti_serve_body",
       "locale": "es",
       "is_published": true,
-      "value": "En algunos casos (herederos directos, solo liquidez modesta dentro de los umbrales legales, ningún inmueble) la declaración podría no ser obligatoria. Verificamos tu caso antes de cobrarte: si no lo necesitas, te lo decimos. La verificación definitiva siempre es sobre el caso concreto."
+      "value": "En algunos casos (herederos directos, solo liquidez modesta dentro de los umbrales legales, ningún inmueble) la declaración podría no ser obligatoria. Verificamos tu caso gratis: si no lo necesitas, te lo decimos. La verificación definitiva siempre es sobre el caso concreto."
     },
     {
       "collection": "tariffe",
@@ -911,7 +911,7 @@
       "key": "microtrust",
       "locale": "es",
       "is_published": true,
-      "value": "Geometra habilitado Entratel, con supervisión fiscal de asesores fiscales."
+      "value": "Geometra habilitado para el ejercicio de la profesión liberal."
     },
     {
       "collection": "tariffe",
@@ -1049,14 +1049,14 @@
       "key": "team_title",
       "locale": "es",
       "is_published": true,
-      "value": "Geometra en lo catastral, asesores fiscales en los números"
+      "value": "Geometra: la figura profesional adecuada para la declaración de sucesión."
     },
     {
       "collection": "chi_siamo",
       "key": "team_body",
       "locale": "es",
       "is_published": true,
-      "value": "Yo preparo y transmito la declaración: **estoy habilitado para hacerlo**. En la parte fiscal cuento con la **supervisión de asesores fiscales**. Así tienes control técnico de los datos catastrales y seguridad en los cálculos, sin dividir el expediente entre distintos estudios."
+      "value": "Para redactar la sucesión hacen falta competencias **catastrales, jurídicas y fiscales**: la figura que las reúne todas por su formación es el geometra. Preparo y transmito la declaración: **estoy habilitado para hacerlo**."
     },
     {
       "collection": "chi_siamo",
@@ -1706,7 +1706,7 @@
       "key": "valore_body",
       "locale": "es",
       "is_published": true,
-      "value": "Verificamos manualmente los **datos catastrales** — parcelas, subalternos, anexos, actos de procedencia — donde suelen bloquearse los expedientes.\n\nCon **supervisión fiscal de asesores** en los números. Es la diferencia entre un formulario rellenado y **un expediente bien hecho**."
+      "value": "Comprobamos a mano los **datos catastrales y los actos de procedencia** — parcelas, subalternos, anexos — donde se bloquean los expedientes. Es la diferencia entre un formulario rellenado y **un expediente bien hecho**."
     },
     {
       "collection": "come_funziona",
@@ -2222,7 +2222,7 @@
       "value": {
         "autore": "Geom. Lorenzo Armellin",
         "ruolo": "Geometra habilitado Entratel",
-        "reviewed_by": "Revisado en la parte fiscal por asesores fiscales",
+        "reviewed_by": "",
         "foto": {
           "asset_key": "ritratto_lorenzo"
         },
@@ -2377,7 +2377,7 @@
       "key": "esito_b_taxes_note",
       "locale": "es",
       "is_published": true,
-      "value": "+ impuestos calculados para tu caso: te los decimos antes de cobrarte."
+      "value": "+ impuestos calculados para tu caso: te los comunicamos antes del envío."
     },
     {
       "collection": "grazie",
@@ -2609,7 +2609,12 @@
       "value": [
         {
           "name": "Documento de identidad y código fiscal",
-          "description": "De todos los herederos y del fallecido/a.",
+          "description": "Documento de identidad del fallecido y de los herederos. El código fiscal solo hace falta para los herederos.",
+          "when": "Siempre"
+        },
+        {
+          "name": "IBAN del heredero",
+          "description": "Hace falta siempre, para reembolsos o para el cargo de impuestos.",
           "when": "Siempre"
         },
         {
@@ -2738,7 +2743,7 @@
       "key": "microtrust",
       "locale": "es",
       "is_published": true,
-      "value": "Pagas a un geometra habilitado Entratel, con supervisión fiscal de asesores fiscales. Pagos seguros con Stripe."
+      "value": "Pagas a un geometra habilitado para el ejercicio de la profesión liberal. Pagos seguros con Stripe."
     },
     {
       "collection": "checkout",
@@ -3376,7 +3381,7 @@
         {
           "category": "Cómo funciona",
           "question": "¿Qué documentos hacen falta?",
-          "answer": "Depende de tu caso: te damos una lista personalizada. Si te falta algo, a menudo podemos recuperarlo nosotros (notas, actos de procedencia)."
+          "answer": "Depende de tu caso: te damos una lista personalizada. Siempre hacen falta el certificado de defunción, los documentos de los herederos y el IBAN del heredero. Si falta algo, a menudo podemos conseguirlo nosotros (notas simples, actos de procedencia)."
         },
         {
           "category": "Documentos y Área personal",

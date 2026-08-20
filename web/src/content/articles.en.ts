@@ -13,7 +13,7 @@ export type ArticleEnOverlay = {
   sources: ArticleSource[];
 };
 
-const REVIEWED = "Tax aspects reviewed by accountants";
+const REVIEWED = "";
 
 const FONTE_ADE_SCHEDA: ArticleSource = {
   label: "Agenzia delle Entrate - Succession declaration",
@@ -51,7 +51,7 @@ export const articlesEn: Record<string, ArticleEnOverlay> = {
       { type: "p", text: "The declaration is filed electronically with Agenzia delle Entrate software. The file produced (.SUC extension) is sent by an authorised taxpayer or, more often, by an authorised Entratel intermediary. The old paper Model 4 remains only for residual cases (deaths before 3 October 2006 or residents abroad unable to file electronically)." },
       { type: "h2", text: "What you risk if you don't file (or get it wrong)" },
       { type: "p", text: "Failure to file carries a penalty linked to the tax due, plus interest; late or inaccurate filing carries reduced or proportional penalties depending on the case. Amounts change over time: check official sources and with a professional." },
-      { type: "callout", tone: "info", title: "It is not always required", text: "In some cases the declaration is not even mandatory. We explain this in the dedicated exemption guide: we check your case for free before you pay." },
+      { type: "callout", tone: "info", title: "It is not always required", text: "In some cases the declaration is not even mandatory. We explain this in the dedicated exemption guide: we check your case for free." },
     ],
     sources: [FONTE_ADE_SCHEDA, FONTE_NORMATTIVA],
   },
@@ -137,9 +137,10 @@ export const articlesEn: Record<string, ArticleEnOverlay> = {
       {
         type: "ul",
         items: [
-          "Death certificate or extract of the deceased (or self-certification where allowed).",
-          "ID document and tax code of the deceased and of all heirs.",
+          "Death certificate or extract of the deceased.",
+          "ID of the deceased and the heirs; tax code of the heirs.",
           "Self-certification of family status and degree of kinship of the heirs.",
+          "Heir's IBAN (always required, for refunds or to debit taxes).",
         ],
       },
       { type: "h2", text: "If there are properties" },
@@ -164,7 +165,6 @@ export const articlesEn: Record<string, ArticleEnOverlay> = {
         type: "ul",
         items: [
           "Certification of balance and holdings of accounts, passbooks and securities at the date of death.",
-          "Heir's IBAN for any refunds or for tax debit.",
         ],
       },
       { type: "callout", tone: "info", title: "Missing something? We can often retrieve it", text: "Document retrieval is part of our job: cadastral searches, title deeds and missing data. Ask us." },

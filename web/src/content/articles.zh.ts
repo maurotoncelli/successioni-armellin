@@ -13,7 +13,7 @@ export type ArticleZhOverlay = {
   sources: ArticleSource[];
 };
 
-const REVIEWED = "税务部分经会计师审核";
+const REVIEWED = "";
 
 const FONTE_ADE_SCHEDA: ArticleSource = {
   label: "Agenzia delle Entrate - 遗产继承申报",
@@ -51,7 +51,7 @@ export const articlesZh: Record<string, ArticleZhOverlay> = {
       { type: "p", text: "申报通过 Agenzia delle Entrate 软件以电子方式提交。生成的文件（.SUC 扩展名）由获授权纳税人直接发送，或更常见地由获授权的 Entratel 中介发送。旧的纸质 Modello 4 仅适用于残余情形（2006 年 10 月 3 日前死亡，或无法电子提交的海外居民）。" },
       { type: "h2", text: "不办理（或办错）有何风险" },
       { type: "p", text: "未提交将导致与应缴税款相应的处罚及利息；逾期或不实提交视情况适用减免或按比例处罚。金额会随时间变化：请查阅官方来源并咨询专业人士。" },
-      { type: "callout", tone: "info", title: "并非总是必须", text: "某些情况下申报甚至不是强制的。我们在豁免专项指南中说明：付款前免费核查您的情况。" },
+      { type: "callout", tone: "info", title: "并非总是必须", text: "某些情况下申报甚至不是强制的。我们在豁免专项指南中说明：免费核查您的情况。" },
     ],
     sources: [FONTE_ADE_SCHEDA, FONTE_NORMATTIVA],
   },
@@ -137,9 +137,10 @@ export const articlesZh: Record<string, ArticleZhOverlay> = {
       {
         type: "ul",
         items: [
-          "被继承人死亡证明或摘录（或在允许时的自我证明）。",
-          "被继承人及所有继承人的身份证件与税号。",
+          "被继承人死亡证明或摘录。",
+          "被继承人及继承人的身份证件；继承人的税号。",
           "继承人家庭状况及亲属关系的自我证明。",
+          "继承人 IBAN（始终需要，用于退款或税款扣缴）。",
         ],
       },
       { type: "h2", text: "如有房产" },
@@ -164,7 +165,6 @@ export const articlesZh: Record<string, ArticleZhOverlay> = {
         type: "ul",
         items: [
           "死亡之日账户、存折及证券余额证明。",
-          "继承人 IBAN，用于可能的退款或税款扣缴。",
         ],
       },
       { type: "callout", tone: "info", title: "缺少什么？我们通常可以帮您获取", text: "文件获取是我们工作的一部分：地籍查册、权属文件及缺失数据，我们向机构与银行索取。" },

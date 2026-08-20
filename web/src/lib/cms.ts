@@ -262,7 +262,8 @@ export async function getRelatedArticles(
 /*
   Data di consegna prevista calcolata dallo SLA del pacchetto, a partire da una
   data (di norma il giorno del pagamento). Ritorna null se il pacchetto non ha
-  uno SLA. Usata per popolare automaticamente `due_date` al pagamento.
+  uno SLA. Usata per popolare automaticamente `due_date` al pagamento
+  (calendario CRM). Listino: Semplice 7, Con immobili 10, su misura concordato.
 */
 export async function slaDueDate(
   packageKey: string | null,

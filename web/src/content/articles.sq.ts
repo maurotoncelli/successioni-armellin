@@ -13,7 +13,7 @@ export type ArticleSqOverlay = {
   sources: ArticleSource[];
 };
 
-const REVIEWED = "Rishikuar pjesa fiskale nga kontabilistë";
+const REVIEWED = "";
 
 const FONTE_ADE_SCHEDA: ArticleSource = {
   label: "Agenzia delle Entrate - Deklarata e trashëgimisë",
@@ -51,7 +51,7 @@ export const articlesSq: Record<string, ArticleSqOverlay> = {
       { type: "p", text: "Deklarata transmetohet në mënyrë telematike me softuerin e Agenzia delle Entrate. Skedari i prodhuar (me zgjatje .SUC) dërgohet drejtpërdrejt nga kontribuesi i autorizuar ose, më shpesh, nga një ndërmjetës i autorizuar Entratel. Modeli i vjetër 4 në letër mbetet vetëm për rastet e mbetura (vdekje para 3 tetorit 2006 ose banorë jashtë vendit të pamundur për transmetim telematik)." },
       { type: "h2", text: "Çfarë rrezikoni nëse nuk e bëni (ose e bëni gabim)" },
       { type: "p", text: "Mosparaqitja sjell një gjobë në raport me taksën e duhur, përveç interesave; paraqitja e vonuar ose jo e saktë sjell gjoba të reduktuara ose proporcionale sipas rastit. Shumat ndryshojnë me kalimin e kohës: duhet verifikuar te burimet zyrtare dhe me profesionistin." },
-      { type: "callout", tone: "info", title: "Nuk është gjithmonë e detyrueshme", text: "Në disa raste deklarata nuk është fare e detyrueshme. E shpjegojmë në udhëzuesin e dedikuar për përjashtimin: verifikojmë falas rastin tuaj para se t'ju bëjmë të paguani." },
+      { type: "callout", tone: "info", title: "Nuk është gjithmonë e detyrueshme", text: "Në disa raste deklarata nuk është fare e detyrueshme. E shpjegojmë në udhëzuesin e dedikuar për përjashtimin: verifikojmë falas rastin tuaj." },
     ],
     sources: [FONTE_ADE_SCHEDA, FONTE_NORMATTIVA],
   },
@@ -137,9 +137,10 @@ export const articlesSq: Record<string, ArticleSqOverlay> = {
       {
         type: "ul",
         items: [
-          "Certifikatë ose ekstrakt vdekjeje të të vdekurit (ose vetëdeklaratë ku lejohet).",
-          "Dokument identiteti dhe kod fiskal i të vdekurit dhe i të gjithë trashëgimtarëve.",
+          "Certifikatë ose ekstrakt vdekjeje të të vdekurit.",
+          "Dokument identiteti i të vdekurit dhe i trashëgimtarëve; kodi fiskal i trashëgimtarëve.",
           "Vetëdeklaratë e gjendjes familjare dhe e shkallës së afinitetit të trashëgimtarëve.",
+          "IBAN i trashëgimtarit (duhet gjithmonë, për rimbursime ose debitimin e taksave).",
         ],
       },
       { type: "h2", text: "Nëse ka prona" },
@@ -164,7 +165,6 @@ export const articlesSq: Record<string, ArticleSqOverlay> = {
         type: "ul",
         items: [
           "Certifikim i bilancit dhe gjendjes së llogarive, fletëve dhe titujve në datën e vdekjes.",
-          "IBAN i trashëgimtarit për rimbursime eventuale ose për debitimin e taksave.",
         ],
       },
       { type: "callout", tone: "info", title: "Ju mungon diçka? Shpesh mund ta marrim ne", text: "Rikuperimi dokumentar është pjesë e punës sonë: vërtetime kadastrale, akte provenience dhe të dhëna që mungojnë i marrim ne te entet dhe bankat." },

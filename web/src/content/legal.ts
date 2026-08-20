@@ -315,7 +315,7 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
       { type: "h2", text: "7. Tempi di esecuzione" },
       {
         type: "p",
-        text: "I tempi di consegna indicati sul sito sono stime che decorrono dal momento in cui il cliente ha fornito tutta la documentazione necessaria, completa, corretta e validata dal professionista (e non dalla data del pagamento), e non comprendono i tempi degli enti terzi. Finché la documentazione è incompleta o in attesa di integrazione, il termine resta sospeso e riprende a decorrere dalla ricezione/validazione dell'ultimo documento mancante.",
+        text: "I tempi di consegna indicati sul sito sono stime che decorrono dal momento in cui il cliente ha fornito tutta la documentazione necessaria, completa, corretta e validata dal professionista (e non dalla data del pagamento), e non comprendono i tempi degli enti terzi. Indicativamente: pacchetto Semplice entro 7 giorni lavorativi, pacchetto con immobili entro 10 giorni lavorativi; per i preventivi su misura vale il termine concordato. Finché la documentazione è incompleta o in attesa di integrazione, il termine resta sospeso e riprende a decorrere dalla ricezione/validazione dell'ultimo documento mancante.",
       },
       { type: "h2", text: "8. Diritto di recesso (artt. 52-59 Cod. Consumo)" },
       {

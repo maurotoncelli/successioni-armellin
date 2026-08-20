@@ -37,7 +37,7 @@ export const packages: Package[] = [
     ],
     price: 290,
     extraPropertyFee: null,
-    slaDays: 10,
+    slaDays: 7,
     badge: null,
     sortOrder: 1,
   },
@@ -46,17 +46,17 @@ export const packages: Package[] = [
     name: "Successione con Immobili",
     tagline: "Da 1 a 3 immobili, voltura catastale inclusa",
     description:
-      "Il pacchetto per chi eredita una casa o pochi immobili: controllo dei dati catastali, dichiarazione, invio e voltura catastale. Copre fino a 5 eredi e 5 conti bancari.",
+      "Il pacchetto per chi eredita una casa o pochi immobili: controllo dei dati catastali e atti di provenienza, dichiarazione, invio e voltura catastale. Copre fino a 5 eredi e 5 conti bancari.",
     features: [
       "Tutto quello del pacchetto Semplice",
       "Da 1 a 3 immobili, fino a 5 eredi e 5 conti",
-      "Controllo dei dati catastali da geometra",
+      "Controllo dei dati catastali e atti di provenienza",
       "Voltura catastale inclusa",
     ],
     price: 490,
     // Sovrapprezzo +60/immobile oltre il 3°: disattivato (27/07). Oltre 3 → su misura.
     extraPropertyFee: null,
-    slaDays: 15,
+    slaDays: 10,
     badge: "Il più scelto",
     sortOrder: 2,
   },
@@ -164,7 +164,7 @@ export const faqs: Faq[] = [
     category: "Come funziona",
     question: "Quali documenti servono?",
     answer:
-      "Dipende dal tuo caso: ti diamo una lista personalizzata. Se ti manca qualcosa, spesso lo possiamo recuperare noi (visure, atti di provenienza).",
+      "Dipende dal tuo caso: ti diamo una lista personalizzata. Servono sempre certificato di morte, documenti degli eredi e l'IBAN dell'erede. Se ti manca qualcosa, spesso lo possiamo recuperare noi (visure, atti di provenienza).",
   },
   {
     category: "Documenti e Area personale",
@@ -244,7 +244,13 @@ export type DocItem = {
 export const documentsList: DocItem[] = [
   {
     name: "Documento d'identità e codice fiscale",
-    description: "Di tutti gli eredi e del defunto.",
+    description:
+      "Documento d'identità del defunto e degli eredi. Il codice fiscale serve solo per gli eredi.",
+    when: "Sempre",
+  },
+  {
+    name: "IBAN dell'erede",
+    description: "Serve sempre, per rimborsi o per l'addebito delle imposte.",
     when: "Sempre",
   },
   {
