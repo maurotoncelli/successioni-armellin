@@ -60,11 +60,12 @@ export default async function ConfermaPage({
     <Section tone="muted">
       {/* Fallback client solo se il purchase server-side (MP) non e attivo:
           altrimenti doppio conteggio con client_id diversi. */}
-      {paid && session_id && !process.env.GA4_API_SECRET && (
+      {paid && session_id && (
         <PurchaseEvent
           transactionId={session_id}
           value={info.amount}
           currency={info.currency}
+          sendGa4Purchase={!process.env.GA4_API_SECRET}
         />
       )}
       <div className="mx-auto max-w-2xl text-center">

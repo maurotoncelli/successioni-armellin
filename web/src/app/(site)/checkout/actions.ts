@@ -4,6 +4,8 @@ import { revalidatePath } from "next/cache";
 import { getAdminClient, isAdminConfigured } from "@/lib/supabase/admin";
 import { isStripeConfigured } from "@/lib/stripe";
 import { decodeHeirs, heirsSummary, isPackageKey, totalHeirs } from "@/lib/quote";
+import { readRequestAttribution } from "@/lib/attribution";
+import { parseAttribution } from "@/lib/attribution-shared";
 
 /*
   Crea la pratica SOLO al momento del pagamento (flusso "result-first" del sito):
@@ -61,6 +63,7 @@ export async function createCheckoutPractice(
         selected_package: input.packageKey,
         notes: "Checkout diretto dal sito (in attesa di pagamento).",
         log: [{ action: "checkout_avviato", at: nowStamp }],
+        attribution: parseAttribution(await readRequestAttribution()),
       })
       .select("id")
       .single();

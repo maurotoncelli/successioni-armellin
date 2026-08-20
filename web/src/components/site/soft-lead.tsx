@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { createLead } from "@/app/(site)/preventivo/actions";
 import { LegalLinksText } from "@/components/site/legal-links-text";
-import { trackEvent } from "@/lib/analytics";
+import { trackAdsConversion, trackEvent } from "@/lib/analytics";
 import type { HeirsComposition } from "@/lib/quote";
 import {
   SOFT_LEAD_UI_IT,
@@ -116,6 +116,7 @@ export function SoftLead({
         kind,
       });
       trackEvent("generate_lead", { kind, esito: res.esito });
+      if (res.ok) trackAdsConversion("lead");
       if (res.ok) {
         setEmailWentOut(res.emailSent !== false);
         setDone(true);

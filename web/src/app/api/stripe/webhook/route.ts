@@ -13,6 +13,11 @@ import { slaDueDate } from "@/lib/cms";
 import { generateChecklist } from "@/lib/checklist";
 import { sendGa4Purchase } from "@/lib/analytics-server";
 import { upsertContactByEmail } from "@/lib/contacts";
+import {
+  attributionSourceLabel,
+  mergeAttribution,
+  parseAttribution,
+} from "@/lib/attribution-shared";
 import { createAreaAccessLink } from "@/lib/area-access-link";
 import type { PracticeRow, PaymentStatusKey } from "@/lib/supabase/types";
 
@@ -153,18 +158,31 @@ async function handleCheckoutCompleted(
   // Aggancio all'anagrafica (contacts): le pratiche nate dal checkout diretto
   // non hanno contact_id, ma la RLS dell'area personale mostra al cliente solo
   // le pratiche con il SUO contact_id. Upsert per email (no duplicati).
+  const attribution = mergeAttribution(
+    parseAttribution(row.attribution),
+    parseAttribution({
+      gclid: session.metadata?.gclid,
+      gbraid: session.metadata?.gbraid,
+      utm_source: session.metadata?.utm_source,
+      utm_campaign: session.metadata?.utm_campaign,
+      ga_client_id: session.metadata?.ga_client_id,
+    }),
+  );
+
   let contactId = row.contact_id;
-  if (!contactId && clientEmail) {
+  if (clientEmail) {
     const fullName = (backfill.client_name ?? row.client_name ?? "").trim();
     const [first, ...rest] = fullName.split(/\s+/);
-    contactId = await upsertContactByEmail({
+    const upserted = await upsertContactByEmail({
       email: clientEmail,
       firstName: first || "Cliente",
       lastName: rest.join(" "),
       phone: backfill.client_phone ?? row.client_phone ?? null,
-      source: "Checkout sito",
+      source: attributionSourceLabel(attribution, "Checkout sito"),
+      attribution,
     });
-    if (!contactId) {
+    if (upserted) contactId = upserted;
+    else if (!contactId) {
       console.error("[stripe-webhook] upsert contatto fallito per", clientEmail);
     }
   }
@@ -226,6 +244,7 @@ async function handleCheckoutCompleted(
       checklist,
       communications,
       log,
+      attribution,
       ...backfill,
     })
     .eq("id", practiceId);
@@ -269,6 +288,9 @@ async function handleCheckoutCompleted(
     value: amountTotal,
     currency: session.currency ?? "EUR",
     packageKey: row.selected_package ?? undefined,
+    clientId: attribution.ga_client_id,
+    email: clientEmail,
+    phone: backfill.client_phone ?? row.client_phone ?? undefined,
   });
 
   // Fatturazione automatica dell'onorario (Opzione L), solo se attivata via env.

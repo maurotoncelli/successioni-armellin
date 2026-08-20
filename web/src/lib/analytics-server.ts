@@ -4,6 +4,8 @@
  * No-op se mancano NEXT_PUBLIC_GA4_MEASUREMENT_ID o GA4_API_SECRET.
  */
 
+import { createHash } from "node:crypto";
+
 const MP_URL = "https://www.google-analytics.com/mp/collect";
 
 export function isGa4MeasurementProtocolConfigured(): boolean {
@@ -13,22 +15,39 @@ export function isGa4MeasurementProtocolConfigured(): boolean {
   );
 }
 
+function sha256Hex(value: string): string {
+  return createHash("sha256").update(value.trim().toLowerCase()).digest("hex");
+}
+
+function digitsPhone(value: string): string {
+  const digits = value.replace(/\D/g, "");
+  return digits ? `+${digits}` : "";
+}
+
 export async function sendGa4Purchase(params: {
   transactionId: string;
   value: number;
   currency?: string;
-  /** Parametro custom (pacchetto scelto). */
   packageKey?: string;
+  /** Stesso client_id del cookie _ga: serve ad attribuire il click Ads. */
+  clientId?: string;
+  email?: string;
+  phone?: string;
 }): Promise<void> {
   const measurementId = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID?.trim();
   const apiSecret = process.env.GA4_API_SECRET?.trim();
   if (!measurementId || !apiSecret) return;
   if (!params.transactionId) return;
 
+  const userData: Record<string, string> = {};
+  if (params.email?.includes("@")) {
+    userData.sha256_email_address = sha256Hex(params.email);
+  }
+  const phone = params.phone ? digitsPhone(params.phone) : "";
+  if (phone) userData.sha256_phone_number = sha256Hex(phone);
+
   const body = {
-    // Senza cookie browser: client_id sintetico. Il purchase server-side e la
-    // fonte di verita sul valore; attribution resta su begin_checkout/page_view.
-    client_id: crypto.randomUUID(),
+    client_id: params.clientId?.trim() || crypto.randomUUID(),
     events: [
       {
         name: "purchase",
@@ -41,6 +60,7 @@ export async function sendGa4Purchase(params: {
         },
       },
     ],
+    ...(Object.keys(userData).length > 0 ? { user_data: userData } : {}),
   };
 
   try {
@@ -49,7 +69,6 @@ export async function sendGa4Purchase(params: {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
-      // Non bloccare il webhook su reti lente.
       signal: AbortSignal.timeout(5000),
     });
     if (!res.ok) {
@@ -60,7 +79,6 @@ export async function sendGa4Purchase(params: {
       );
     }
   } catch (err) {
-    // Best-effort: non far fallire Stripe / la pratica.
     console.error("[ga4-mp] purchase:", err);
   }
 }

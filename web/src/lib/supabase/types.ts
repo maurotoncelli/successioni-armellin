@@ -67,6 +67,7 @@ export type ContactRow = {
   email: string | null;
   phone: string | null;
   source: string | null;
+  attribution: Record<string, unknown> | null;
   marketing_consent: boolean;
   last_activity: string | null;
   created_at: string;
@@ -115,6 +116,7 @@ export type PracticeRow = {
   communications: unknown;
   tasks: unknown;
   log: unknown;
+  attribution: Record<string, unknown> | null;
   created_at: string;
   updated_at: string;
 };

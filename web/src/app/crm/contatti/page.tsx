@@ -8,6 +8,7 @@ import {
   practicesByContact,
 } from "@/lib/crm";
 import { CrmCard } from "@/components/crm/ui";
+import { AttributionBlock } from "@/components/crm/attribution-block";
 
 export const dynamic = "force-dynamic";
 
@@ -50,6 +51,10 @@ export default async function ContattiPage() {
                       {c.firstName} {c.lastName}
                     </p>
                     <p className="text-xs text-crm-muted">{c.source}</p>
+                    <AttributionBlock
+                      source={c.source}
+                      attribution={c.attribution}
+                    />
                   </div>
                 </div>
                 <div className="flex flex-col items-end gap-1">

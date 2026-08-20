@@ -2,6 +2,12 @@ import "server-only";
 import { getAdminClient, isAdminConfigured } from "@/lib/supabase/admin";
 import { findContactIdByEmail } from "@/lib/profiles";
 import type { ContactRow } from "@/lib/supabase/types";
+import {
+  attributionSourceLabel,
+  mergeAttribution,
+  parseAttribution,
+  type Attribution,
+} from "@/lib/attribution-shared";
 
 /*
   Anagrafica contacts: upsert per email (evita duplicati SoftLead/checkout
@@ -19,6 +25,7 @@ export type UpsertContactInput = {
   phone?: string | null;
   source: string;
   marketingConsent?: boolean;
+  attribution?: Attribution | null;
 };
 
 /** Trova il contatto per email o lo crea. Aggiorna campi vuoti se gia esiste. */
@@ -34,11 +41,26 @@ export async function upsertContactByEmail(
   if (existingId) {
     const { data: row } = await admin
       .from("contacts")
-      .select("first_name, last_name, phone, marketing_consent")
+      .select("first_name, last_name, phone, marketing_consent, source, attribution")
       .eq("id", existingId)
       .maybeSingle();
 
     const patch: Partial<ContactRow> = { last_activity: isoDate() };
+    const merged = mergeAttribution(
+      parseAttribution(row?.attribution),
+      input.attribution,
+    );
+    if (Object.keys(merged).length > 0) {
+      patch.attribution = merged;
+      const labeled = attributionSourceLabel(merged, row?.source || input.source);
+      const current = row?.source ?? "";
+      const generic =
+        !current ||
+        /form sito|preventivo|checkout sito|registrazione/i.test(current);
+      if (labeled && (generic || labeled.startsWith("Google Ads"))) {
+        patch.source = labeled;
+      }
+    }
     const placeholderNames = new Set(["", "cliente", "contatto", "nuovo lead"]);
     const curFirst = (row?.first_name ?? "").trim();
     if (
@@ -75,7 +97,11 @@ export async function upsertContactByEmail(
       last_name: input.lastName?.trim() || "",
       email,
       phone: input.phone?.trim() || null,
-      source: input.source,
+      source: attributionSourceLabel(
+        parseAttribution(input.attribution),
+        input.source,
+      ),
+      attribution: parseAttribution(input.attribution),
       marketing_consent: Boolean(input.marketingConsent),
       last_activity: isoDate(),
     })

@@ -18,6 +18,36 @@ export function trackEvent(name: string, params?: Record<string, unknown>): void
   }
 }
 
+function adsId(): string {
+  return process.env.NEXT_PUBLIC_GOOGLE_ADS_ID?.trim() ?? "";
+}
+
+function adsLabel(kind: "lead" | "purchase"): string {
+  const key =
+    kind === "purchase"
+      ? "NEXT_PUBLIC_GOOGLE_ADS_PURCHASE_LABEL"
+      : "NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL";
+  return process.env[key]?.trim() ?? "";
+}
+
+/** Conversione nativa Google Ads (oltre all'evento GA4). No-op se manca AW-/label. */
+export function trackAdsConversion(
+  kind: "lead" | "purchase",
+  params?: { value?: number; currency?: string; transaction_id?: string },
+): void {
+  const id = adsId();
+  const label = adsLabel(kind);
+  if (!id || !label || typeof window === "undefined" || typeof window.gtag !== "function") {
+    return;
+  }
+  window.gtag("event", "conversion", {
+    send_to: `${id}/${label}`,
+    ...(params?.value != null ? { value: params.value } : {}),
+    currency: params?.currency ?? "EUR",
+    ...(params?.transaction_id ? { transaction_id: params.transaction_id } : {}),
+  });
+}
+
 export function updateConsent(choice: ConsentChoice): void {
   if (typeof window === "undefined" || typeof window.gtag !== "function") return;
   window.gtag("consent", "update", {

@@ -4,6 +4,7 @@ import { getStripe, isStripeConfigured } from "@/lib/stripe";
 import { getPackagesAdmin, getAddons } from "@/lib/cms";
 import { buildOrder } from "@/lib/order";
 import type { PackageKey, PackageRow, PracticeRow } from "@/lib/supabase/types";
+import { parseAttribution } from "@/lib/attribution-shared";
 import type { Package } from "@/content/site";
 
 /*
@@ -16,6 +17,19 @@ import type { Package } from "@/content/site";
 export type CheckoutResult =
   | { ok: true; url: string; total: number }
   | { ok: false; error: string };
+
+function stripeAttributionMeta(
+  raw: PracticeRow["attribution"],
+): Record<string, string> {
+  const a = parseAttribution(raw);
+  const meta: Record<string, string> = {};
+  if (a.gclid) meta.gclid = a.gclid.slice(0, 200);
+  if (a.gbraid) meta.gbraid = a.gbraid.slice(0, 200);
+  if (a.utm_source) meta.utm_source = a.utm_source.slice(0, 100);
+  if (a.utm_campaign) meta.utm_campaign = a.utm_campaign.slice(0, 100);
+  if (a.ga_client_id) meta.ga_client_id = a.ga_client_id.slice(0, 80);
+  return meta;
+}
 
 export type CreateCheckoutOptions = {
   origin: string;
@@ -129,9 +143,17 @@ export async function createCheckoutSession(
           product_data: { name: item.label },
         },
       })),
-      metadata: { practice_id: row.id, practice_code: row.code },
+      metadata: {
+        practice_id: row.id,
+        practice_code: row.code,
+        ...stripeAttributionMeta(row.attribution),
+      },
       payment_intent_data: {
-        metadata: { practice_id: row.id, practice_code: row.code },
+        metadata: {
+          practice_id: row.id,
+          practice_code: row.code,
+          ...stripeAttributionMeta(row.attribution),
+        },
       },
       success_url: `${opts.origin}/checkout/conferma?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${opts.origin}/checkout?practice=${row.id}&annullato=1`,

@@ -16,6 +16,11 @@ import { buildOrder } from "@/lib/order";
 import { notifyAdminNewLead, notifyLeadRecap, siteBase } from "@/lib/notifications";
 import { pushCrmNotification } from "@/lib/crm-notifications";
 import { upsertContactByEmail } from "@/lib/contacts";
+import { readRequestAttribution } from "@/lib/attribution";
+import {
+  attributionSourceLabel,
+  parseAttribution,
+} from "@/lib/attribution-shared";
 import { getActionLocale } from "@/lib/action-locale";
 import { obj } from "@/lib/content";
 import type { Communication, LogEvent } from "@/content/crm-data";
@@ -84,12 +89,14 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
     const fullName = input.name.trim() || `${first} ${last}`.trim();
     const nowStamp = new Date().toISOString().slice(0, 16).replace("T", " ");
     const isCustom = input.kind === "custom_quote" || esito === "c";
-    const source =
+    const fallbackSource =
       input.kind === "custom_quote"
         ? "Richiesta preventivo su misura (sito)"
         : input.kind === "email_quote"
           ? "Preventivo via email (sito)"
           : "Form sito";
+    const attribution = parseAttribution(await readRequestAttribution());
+    const source = attributionSourceLabel(attribution, fallbackSource);
 
     const emailNorm = input.email.trim();
     const contactId = await upsertContactByEmail({
@@ -99,6 +106,7 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
       phone: input.phone.trim() || null,
       source,
       marketingConsent: input.marketing,
+      attribution,
     });
     if (!contactId) throw new Error("Impossibile creare/aggiornare il contatto.");
 
@@ -139,6 +147,7 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
           },
         ],
         log: [{ action: "lead_creato", at: nowStamp }],
+        attribution,
       })
       .select("id, code")
       .single();

@@ -144,6 +144,7 @@ export type Practice = {
   communications: Communication[];
   tasks: TaskItem[];
   log: LogEvent[];
+  attribution?: Record<string, string>;
 };
 
 export const practices: Practice[] = [
@@ -618,6 +619,7 @@ export type Contact = {
   email: string;
   phone: string;
   source: string;
+  attribution?: Record<string, string>;
   marketingConsent: boolean;
   lastActivity: string;
 };

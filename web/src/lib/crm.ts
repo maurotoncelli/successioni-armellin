@@ -15,6 +15,7 @@ import {
   type LineItem,
 } from "@/content/crm-data";
 import type { ContactRow, PracticeRow } from "@/lib/supabase/types";
+import { parseAttribution } from "@/lib/attribution-shared";
 
 /*
   Layer di accesso ai dati operativi del CRM (contatti e pratiche).
@@ -38,6 +39,7 @@ function mapContact(row: ContactRow): Contact {
     email: row.email ?? "",
     phone: row.phone ?? "",
     source: row.source ?? "",
+    attribution: parseAttribution(row.attribution),
     marketingConsent: row.marketing_consent,
     lastActivity: row.last_activity ?? "",
   };
@@ -84,6 +86,7 @@ export function mapPractice(row: PracticeRow): Practice {
     communications: asArray<Communication>(row.communications),
     tasks: asArray<TaskItem>(row.tasks),
     log: asArray<LogEvent>(row.log),
+    attribution: parseAttribution(row.attribution),
   };
 }
 

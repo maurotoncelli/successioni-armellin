@@ -9,7 +9,16 @@ import Script from "next/script";
   riletto qui per ripristinare il consenso nelle visite successive.
 */
 
-export function GoogleAnalytics({ gaId }: { gaId: string }) {
+export function GoogleAnalytics({
+  gaId,
+  adsId,
+}: {
+  gaId: string;
+  adsId?: string;
+}) {
+  const adsConfig = adsId
+    ? `gtag('config','${adsId}',{allow_enhanced_conversions:true});`
+    : "";
   return (
     <>
       <Script id="ga-init" strategy="afterInteractive">
@@ -36,6 +45,7 @@ export function GoogleAnalytics({ gaId }: { gaId: string }) {
           } catch (e) {}
           gtag('js', new Date());
           gtag('config','${gaId}');
+          ${adsConfig}
         `}
       </Script>
       <Script

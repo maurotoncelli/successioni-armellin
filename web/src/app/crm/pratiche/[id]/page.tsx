@@ -14,6 +14,7 @@ import {
 import { type Communication } from "@/content/crm-data";
 import { getPractice } from "@/lib/crm";
 import { CrmCard, ActionBadge, StatusPill, SectionTitle } from "@/components/crm/ui";
+import { AttributionBlock } from "@/components/crm/attribution-block";
 import { PaymentLinkButton } from "@/components/crm/payment-link";
 import {
   CrmChecklist,
@@ -247,6 +248,7 @@ export default async function SchedaPraticaPage({
                 {p.clientPhone}
               </a>
             </div>
+            <AttributionBlock attribution={p.attribution} />
           </CrmCard>
 
           {/* Pagamento */}

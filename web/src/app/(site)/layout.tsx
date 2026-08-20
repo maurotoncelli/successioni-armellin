@@ -7,6 +7,7 @@ import { HideOnPaths } from "@/components/site/hide-on-paths";
 import { SiteOfflineNotice } from "@/components/site/site-offline-notice";
 import { ScrollReveal } from "@/components/site/scroll-reveal";
 import { GoogleAnalytics } from "@/components/analytics/google-analytics";
+import { AttributionCapture } from "@/components/analytics/attribution-capture";
 import { ConsentBanner } from "@/components/analytics/consent-banner";
 import { ContactTracker } from "@/components/analytics/contact-tracker";
 import { getSiteOfflineState } from "@/lib/site-offline";
@@ -121,6 +122,7 @@ export default async function SiteLayout({
   children: React.ReactNode;
 }>) {
   const gaId = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID;
+  const adsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID?.trim();
   const offline = await getSiteOfflineState();
   const offlineOn = offline.enabled;
   const cookieUi = await tObj<CookieUiLabels>(
@@ -135,7 +137,8 @@ export default async function SiteLayout({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(BUSINESS_LD) }}
       />
-      {gaId && <GoogleAnalytics gaId={gaId} />}
+      <AttributionCapture />
+      {gaId && <GoogleAnalytics gaId={gaId} adsId={adsId} />}
       {gaId && <ContactTracker />}
       <Navbar />
       <main className={offlineOn ? "flex-1" : "flex-1 pb-20 lg:pb-0"}>
