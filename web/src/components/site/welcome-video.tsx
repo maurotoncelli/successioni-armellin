@@ -29,11 +29,15 @@ type Props = {
   poster: string;
   /** Se assente, facade non avvia il player (solo poster + badge). */
   src?: string | null;
+  /** Variante più leggera per viewport < 1024px (scelta al tap play). */
+  srcMobile?: string | null;
   /** WebVTT captions (default = lingua sito). */
   captions?: WelcomeCaptionTrack[];
   className?: string;
   /** Titolo sopra il player (default true). */
   showTitle?: boolean;
+  /** id del <select> sottotitoli (default welcome). */
+  captionsSelectId?: string;
 };
 
 type CaptionChoice = string; // locale code or "off"
@@ -46,16 +50,31 @@ function isVideoFullscreen(el: HTMLVideoElement): boolean {
   return Boolean(anyEl.webkitDisplayingFullscreen);
 }
 
+const MOBILE_VIDEO_MQ = "(max-width: 1023px)";
+
+function pickPlaybackSrc(
+  desktopSrc: string,
+  mobileSrc: string | null | undefined,
+): string {
+  if (mobileSrc && window.matchMedia(MOBILE_VIDEO_MQ).matches) {
+    return mobileSrc;
+  }
+  return desktopSrc;
+}
+
 export function WelcomeVideo({
   labels,
   poster,
   src,
+  srcMobile,
   captions = [],
   className,
   showTitle = true,
+  captionsSelectId = "welcome-captions-lang",
 }: Props) {
   const ready = Boolean(src);
   const [playing, setPlaying] = useState(false);
+  const [playbackSrc, setPlaybackSrc] = useState(src ?? "");
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const defaultLang = useMemo(
@@ -137,7 +156,7 @@ export function WelcomeVideo({
       el.removeEventListener("loadeddata", tryPlay);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [playing]);
+  }, [playing, playbackSrc]);
 
   useEffect(() => {
     const el = videoRef.current;
@@ -149,7 +168,8 @@ export function WelcomeVideo({
   }, [playing, captionLang, activeCaption?.src]);
 
   function start() {
-    if (!ready) return;
+    if (!ready || !src) return;
+    setPlaybackSrc(pickPlaybackSrc(src, srcMobile));
     setPlaying(true);
   }
 
@@ -172,7 +192,7 @@ export function WelcomeVideo({
 
       <figure>
         <div className="relative aspect-video overflow-hidden rounded-2xl border border-primary/10 bg-primary/5 shadow-md">
-          {playing && src ? (
+          {playing && playbackSrc ? (
             <video
               ref={videoRef}
               className="welcome-video-player absolute inset-0 h-full w-full bg-black object-contain"
@@ -180,7 +200,7 @@ export function WelcomeVideo({
               playsInline
               preload="auto"
               poster={poster}
-              src={src}
+              src={playbackSrc}
             >
               {activeCaption ? (
                 <track
@@ -234,7 +254,7 @@ export function WelcomeVideo({
         {showCaptionPicker ? (
           <div className="mt-3 flex justify-center sm:justify-end">
             <label
-              htmlFor="welcome-captions-lang"
+              htmlFor={captionsSelectId}
               className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-primary/15 bg-bg px-3 py-1.5 text-sm text-primary shadow-sm transition-colors hover:border-accent/50 focus-within:border-accent focus-within:ring-2 focus-within:ring-accent/30"
             >
               <Captions className="h-4 w-4 shrink-0 text-accent" aria-hidden />
@@ -245,7 +265,7 @@ export function WelcomeVideo({
                 </span>
               ) : null}
               <select
-                id="welcome-captions-lang"
+                id={captionsSelectId}
                 value={captionLang}
                 onChange={(e) => setCaptionLang(e.target.value)}
                 className="max-w-[10rem] cursor-pointer appearance-none border-0 bg-transparent py-0 pe-5 text-sm text-primary outline-none"

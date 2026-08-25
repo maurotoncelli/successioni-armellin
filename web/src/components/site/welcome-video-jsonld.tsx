@@ -11,14 +11,22 @@ type Props = {
   siteUrl: string;
   /** BCP-47 language of the spoken audio (VO is always Italian). */
   inLanguage?: string;
+  contentPath?: string;
+  posterPath?: string;
+  duration?: string;
+  uploadDate?: string;
 };
 
-/** JSON-LD VideoObject for the welcome clip (render only when the MP4 exists). */
+/** JSON-LD VideoObject (welcome o come-funziona; render only when the MP4 exists). */
 export function WelcomeVideoJsonLd({
   name,
   description,
   siteUrl,
   inLanguage = "it",
+  contentPath = WELCOME_VIDEO_SRC,
+  posterPath = WELCOME_VIDEO_POSTER,
+  duration = WELCOME_VIDEO_DURATION_ISO,
+  uploadDate = "2026-07-27T12:00:00+02:00",
 }: Props) {
   const origin = siteUrl.replace(/\/$/, "");
   const data = {
@@ -26,12 +34,12 @@ export function WelcomeVideoJsonLd({
     "@type": "VideoObject",
     name,
     description,
-    thumbnailUrl: `${origin}${WELCOME_VIDEO_POSTER}`,
-    contentUrl: `${origin}${WELCOME_VIDEO_SRC}`,
-    embedUrl: `${origin}${WELCOME_VIDEO_SRC}`,
+    thumbnailUrl: `${origin}${posterPath}`,
+    contentUrl: `${origin}${contentPath}`,
+    embedUrl: `${origin}${contentPath}`,
     // ISO-8601 con fuso: Google rifiuta la sola data (YYYY-MM-DD).
-    uploadDate: "2026-07-27T12:00:00+02:00",
-    duration: WELCOME_VIDEO_DURATION_ISO,
+    uploadDate,
+    duration,
     inLanguage,
     isFamilyFriendly: true,
   };

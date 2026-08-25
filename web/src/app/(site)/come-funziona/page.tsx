@@ -5,12 +5,18 @@ import { PageHero } from "@/components/site/page-hero";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { CtaBand } from "@/components/site/cta-band";
 import { WelcomeVideo } from "@/components/site/welcome-video";
+import { WelcomeVideoJsonLd } from "@/components/site/welcome-video-jsonld";
 import { getComeFunzionaVideoLabels } from "@/lib/come-funziona-video-labels";
 import {
+  COME_FUNZIONA_VIDEO_DURATION_ISO,
   COME_FUNZIONA_VIDEO_POSTER,
+  COME_FUNZIONA_VIDEO_SRC,
   getComeFunzionaCaptionTracks,
   getComeFunzionaVideoSrc,
+  getComeFunzionaVideoSrcMobile,
+  isComeFunzionaVideoReady,
 } from "@/lib/come-funziona-video";
+import { siteBaseUrl } from "@/lib/seo-locale";
 import {
   IconCheck,
   IconExternal,
@@ -70,10 +76,23 @@ export default async function ComeFunzionaPage() {
   const locale = await getRequestLocale();
   const processVideoLabels = await getComeFunzionaVideoLabels();
   const processVideoSrc = getComeFunzionaVideoSrc();
+  const processVideoSrcMobile = getComeFunzionaVideoSrcMobile();
   const processVideoCaptions = getComeFunzionaCaptionTracks(locale);
+  const processVideoReady = isComeFunzionaVideoReady();
 
   return (
     <>
+      {processVideoReady ? (
+        <WelcomeVideoJsonLd
+          name={processVideoLabels.title}
+          description={processVideoLabels.caption}
+          siteUrl={siteBaseUrl()}
+          contentPath={COME_FUNZIONA_VIDEO_SRC}
+          posterPath={COME_FUNZIONA_VIDEO_POSTER}
+          duration={COME_FUNZIONA_VIDEO_DURATION_ISO}
+          uploadDate="2026-08-25T12:00:00+02:00"
+        />
+      ) : null}
       <PageHero
         eyebrow={await t("come_funziona", "hero_eyebrow", "Il processo")}
         title={await t("come_funziona", "hero_title")}
@@ -134,15 +153,16 @@ export default async function ComeFunzionaPage() {
         </ol>
       </Section>
 
-      {/* Picco visivo: video processo (script @15), dopo i 3 passi illustrati.
-          Finché manca il master, occupa lo slot il benvenuto — swap automatico
-          su come-funziona.mp4. Fondo perla per staccare dai 3 passi bianchi. */}
+      {/* Picco visivo: video processo, dopo i 3 passi illustrati.
+          Master 1080p + 720p mobile; fallback benvenuto se manca il file. */}
       <Section id="video" tone="muted" className="scroll-mt-24">
         <WelcomeVideo
           labels={processVideoLabels}
           poster={COME_FUNZIONA_VIDEO_POSTER}
           src={processVideoSrc}
+          srcMobile={processVideoSrcMobile}
           captions={processVideoCaptions}
+          captionsSelectId="come-funziona-captions-lang"
         />
       </Section>
 
