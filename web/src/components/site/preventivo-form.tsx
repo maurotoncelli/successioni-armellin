@@ -1,15 +1,8 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Info,
-  Minus,
-  Plus,
-  Sparkles,
-} from "lucide-react";
+import { ArrowLeft, ArrowRight, Minus, Plus, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import {
@@ -81,58 +74,8 @@ function OptionGroup({
   );
 }
 
-/** Pallino info accanto a "de cuius": tooltip su hover/focus, tap-to-toggle su touch. */
-function DeCuiusInfo({ ui }: { ui: PreventivoUiLabels }) {
-  const tipId = useId();
-  const [open, setOpen] = useState(false);
-
-  return (
-    <span className="relative inline-flex items-center">
-      <button
-        type="button"
-        aria-label={ui.will_tip_aria}
-        aria-describedby={tipId}
-        aria-expanded={open}
-        onClick={() => setOpen((v) => !v)}
-        onBlur={() => setOpen(false)}
-        className={cn(
-          "ms-0.5 inline-grid h-4 w-4 shrink-0 place-items-center rounded-full",
-          "border border-primary/30 bg-bg text-[10px] font-bold leading-none text-primary",
-          "transition-colors hover:border-accent hover:bg-accent/10 hover:text-accent",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40",
-        )}
-      >
-        <Info className="h-2.5 w-2.5" strokeWidth={2.5} aria-hidden />
-      </button>
-      <span
-        id={tipId}
-        role="tooltip"
-        className={cn(
-          "absolute bottom-full left-1/2 z-20 mb-2 w-[min(18rem,calc(100vw-2.5rem))] -translate-x-1/2",
-          "rounded-lg border border-primary/15 bg-primary px-3 py-2 text-xs font-normal leading-relaxed text-white shadow-lg",
-          "pointer-events-none transition-opacity",
-          open
-            ? "opacity-100"
-            : "opacity-0 group-hover/decuius:opacity-100 group-focus-within/decuius:opacity-100",
-        )}
-      >
-        {ui.will_tip}
-      </span>
-    </span>
-  );
-}
-
 function WillQuestionLabel({ ui }: { ui: PreventivoUiLabels }) {
-  return (
-    <span className="group/decuius inline-flex flex-wrap items-center gap-x-1">
-      <span>{ui.will_q_before}</span>
-      <span className="inline-flex items-center">
-        <span className="font-semibold">{ui.will_q_term}</span>
-        <DeCuiusInfo ui={ui} />
-      </span>
-      <span>{ui.will_q_after}</span>
-    </span>
-  );
+  return <span>{ui.will_q}</span>;
 }
 
 type HeirKind = keyof HeirsComposition;

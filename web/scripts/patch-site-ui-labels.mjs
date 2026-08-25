@@ -10,8 +10,9 @@ const IT = {
     yes: "Sì",
     no: "No",
     unknown: "Non lo so",
+    will_q: "Il de cuius (defunto) ha lasciato un testamento?",
     will_q_before: "Il",
-    will_q_term: "de cuius",
+    will_q_term: "de cuius (defunto)",
     will_q_after: "ha lasciato un testamento?",
     will_tip_aria: "Cosa significa de cuius",
     will_tip:
