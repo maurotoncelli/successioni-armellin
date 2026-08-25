@@ -1716,6 +1716,161 @@ export function documentRejectedEmail(
   return copy[locale] ?? copy.it;
 }
 
+export function docsReminderNotif(locale: CommsLocale = "it"): {
+  title: string;
+  body: string;
+} {
+  const copy: Record<CommsLocale, { title: string; body: string }> = {
+    it: {
+      title: "Mancano ancora dei documenti",
+      body: "Caricali dall'area personale: senza quelli non possiamo partire.",
+    },
+    ar: {
+      title: "ما زالت هناك مستندات ناقصة",
+      body: "حمّلها من المنطقة الشخصية: بدونها لا يمكننا البدء.",
+    },
+    en: {
+      title: "Some documents are still missing",
+      body: "Upload them from your client area — we cannot start without them.",
+    },
+    tr: {
+      title: "Hâlâ eksik belgeler var",
+      body: "Kişisel alandan yükleyin: onlar olmadan başlayamayız.",
+    },
+    fr: {
+      title: "Il manque encore des documents",
+      body: "Chargez-les depuis l'espace personnel : sans eux nous ne pouvons pas commencer.",
+    },
+    sq: {
+      title: "Mungojnë ende dokumente",
+      body: "Ngarkojini nga zona personale: pa to nuk mund të nisim.",
+    },
+    de: {
+      title: "Es fehlen noch Dokumente",
+      body: "Laden Sie sie im Persönlichen Bereich hoch — ohne sie können wir nicht beginnen.",
+    },
+    es: {
+      title: "Todavía faltan documentos",
+      body: "Súbalos desde el área personal: sin ellos no podemos empezar.",
+    },
+    ru: {
+      title: "Ещё не хватает документов",
+      body: "Загрузите их в личном кабинете: без них мы не можем начать.",
+    },
+    zh: {
+      title: "仍有文件未上传",
+      body: "请在个人专区上传：没有这些文件我们无法开始办理。",
+    },
+    hi: {
+      title: "कुछ दस्तावेज़ अभी बाकी हैं",
+      body: "उन्हें व्यक्तिगत क्षेत्र से अपलोड करें: उनके बिना हम शुरू नहीं कर सकते.",
+    },
+  };
+  return copy[locale] ?? copy.it;
+}
+
+export function docsReminderEmail(locale: CommsLocale = "it"): {
+  subject: string;
+  heading: string;
+  bodyHtml: string;
+  ctaLabel: string;
+} {
+  const copy: Record<
+    CommsLocale,
+    { subject: string; heading: string; bodyHtml: string; ctaLabel: string }
+  > = {
+    it: {
+      subject: "Mancano ancora dei documenti per la tua pratica",
+      heading: "Un promemoria sui documenti",
+      bodyHtml: `<p style="margin:0 0 10px">La tua pratica è avviata, ma nella lista risultano ancora dei file da caricare. Senza quelli non possiamo predisporre la dichiarazione di successione.</p>
+      <p style="margin:0 0 10px">Nell'area personale trovi ogni voce spiegata: puoi caricare una scansione o anche una foto fatta col telefono. Ci vogliono pochi minuti.</p>
+      <p style="margin:0">Quando hai finito, premi «Ho finito» e ci pensiamo noi.</p>`,
+      ctaLabel: "Carica i documenti",
+    },
+    ar: {
+      subject: "ما زالت هناك مستندات ناقصة لمعاملتك",
+      heading: "تذكير بالمستندات",
+      bodyHtml: `<p style="margin:0 0 10px">معاملتك نشطة، لكن القائمة ما زالت تتضمن ملفات للتحميل. بدونها لا يمكننا إعداد تصريحة الميراث.</p>
+      <p style="margin:0 0 10px">في المنطقة الشخصية تجد كل بند مشروحًا: يمكنك رفع مسح ضوئي أو صورة بالهاتف. يستغرق الأمر دقائق.</p>
+      <p style="margin:0">عندما تنتهي، اضغط «انتهيت» ونتولّى الباقي.</p>`,
+      ctaLabel: "تحميل المستندات",
+    },
+    en: {
+      subject: "Some documents are still missing for your case",
+      heading: "A reminder about your documents",
+      bodyHtml: `<p style="margin:0 0 10px">Your case is underway, but some files in the list still need to be uploaded. Without them we cannot prepare the succession declaration.</p>
+      <p style="margin:0 0 10px">In your client area each item is explained: you can upload a scan or even a photo from your phone. It only takes a few minutes.</p>
+      <p style="margin:0">When you are done, tap “I'm done” and we take it from there.</p>`,
+      ctaLabel: "Upload documents",
+    },
+    tr: {
+      subject: "Dosyanız için hâlâ eksik belgeler var",
+      heading: "Belgeler için bir hatırlatma",
+      bodyHtml: `<p style="margin:0 0 10px">Dosyanız açıldı ancak listede hâlâ yüklenmesi gereken dosyalar var. Onlar olmadan veraset beyanını hazırlayamayız.</p>
+      <p style="margin:0 0 10px">Kişisel alanda her kalem açıklanır: tarama veya telefonla çekilmiş bir fotoğraf yükleyebilirsiniz. Birkaç dakika yeter.</p>
+      <p style="margin:0">Bitince «Bitirdim»e basın, gerisini biz hallederiz.</p>`,
+      ctaLabel: "Belgeleri yükle",
+    },
+    fr: {
+      subject: "Il manque encore des documents pour votre dossier",
+      heading: "Un rappel sur les documents",
+      bodyHtml: `<p style="margin:0 0 10px">Votre dossier est ouvert, mais certains fichiers de la liste n'ont pas encore été chargés. Sans eux, nous ne pouvons pas préparer la déclaration de succession.</p>
+      <p style="margin:0 0 10px">Dans l'espace personnel, chaque poste est expliqué : vous pouvez charger un scan ou une photo faite au téléphone. Cela ne prend que quelques minutes.</p>
+      <p style="margin:0">Quand vous avez fini, appuyez sur « J'ai fini » et nous nous en occupons.</p>`,
+      ctaLabel: "Charger les documents",
+    },
+    sq: {
+      subject: "Mungojnë ende dokumente për praktikën tuaj",
+      heading: "Një rikujtesë për dokumentet",
+      bodyHtml: `<p style="margin:0 0 10px">Praktika juaj ka nisur, por në listë ka ende skedarë për t'u ngarkuar. Pa to nuk mund të përgatisim deklaratën e trashëgimisë.</p>
+      <p style="margin:0 0 10px">Në zonën personale çdo zë është shpjeguar: mund të ngarkoni një skanim ose një foto me telefon. Duhen vetëm disa minuta.</p>
+      <p style="margin:0">Kur të keni mbaruar, shtypni «Kam mbaruar» dhe merremi ne.</p>`,
+      ctaLabel: "Ngarko dokumentet",
+    },
+    de: {
+      subject: "Für Ihre Akte fehlen noch Dokumente",
+      heading: "Eine Erinnerung zu den Dokumenten",
+      bodyHtml: `<p style="margin:0 0 10px">Ihre Akte ist eröffnet, aber in der Liste fehlen noch Dateien. Ohne sie können wir die Erbschaftserklärung nicht vorbereiten.</p>
+      <p style="margin:0 0 10px">Im Persönlichen Bereich ist jeder Punkt erklärt: Sie können einen Scan oder ein Handyfoto hochladen. Es dauert nur wenige Minuten.</p>
+      <p style="margin:0">Wenn Sie fertig sind, tippen Sie auf „Ich bin fertig“ — den Rest übernehmen wir.</p>`,
+      ctaLabel: "Dokumente hochladen",
+    },
+    es: {
+      subject: "Todavía faltan documentos para tu expediente",
+      heading: "Un recordatorio sobre los documentos",
+      bodyHtml: `<p style="margin:0 0 10px">Tu expediente está en marcha, pero en la lista quedan archivos por subir. Sin ellos no podemos preparar la declaración de sucesión.</p>
+      <p style="margin:0 0 10px">En el área personal cada partida está explicada: puedes subir un escaneo o una foto hecha con el teléfono. Solo lleva unos minutos.</p>
+      <p style="margin:0">Cuando termines, pulsa «He terminado» y nos ocupamos nosotros.</p>`,
+      ctaLabel: "Subir documentos",
+    },
+    ru: {
+      subject: "Для вашего дела всё ещё не хватает документов",
+      heading: "Напоминание о документах",
+      bodyHtml: `<p style="margin:0 0 10px">Ваше дело открыто, но в списке ещё есть файлы для загрузки. Без них мы не можем подготовить декларацию о наследстве.</p>
+      <p style="margin:0 0 10px">В личном кабинете каждый пункт пояснён: можно загрузить скан или фото с телефона. Это займёт несколько минут.</p>
+      <p style="margin:0">Когда закончите, нажмите «Готово» — дальше займёмся мы.</p>`,
+      ctaLabel: "Загрузить документы",
+    },
+    zh: {
+      subject: "您的案件仍有文件未上传",
+      heading: "文件提醒",
+      bodyHtml: `<p style="margin:0 0 10px">您的案件已启动，但清单中仍有文件待上传。没有这些文件，我们无法准备遗产申报。</p>
+      <p style="margin:0 0 10px">在个人专区每一项都有说明：您可以上传扫描件，或用手机拍的照片。只需几分钟。</p>
+      <p style="margin:0">完成后请点击「我已完成」，后续由我们处理。</p>`,
+      ctaLabel: "上传文件",
+    },
+    hi: {
+      subject: "आपके प्रकरण के लिए कुछ दस्तावेज़ अभी बाकी हैं",
+      heading: "दस्तावेज़ों का रिमाइंडर",
+      bodyHtml: `<p style="margin:0 0 10px">आपका प्रकरण शुरू हो चुका है, लेकिन सूची में अभी अपलोड करने वाले फ़ाइल हैं। उनके बिना हम उत्तराधिकार घोषणा तैयार नहीं कर सकते.</p>
+      <p style="margin:0 0 10px">व्यक्तिगत क्षेत्र में हर मद समझाई गई है: स्कैन या फ़ोन से ली गई फ़ोटो अपलोड कर सकते हैं। कुछ ही मिनट लगते हैं.</p>
+      <p style="margin:0">जब पूरा हो जाए, «मैंने पूरा किया» दबाएँ — आगे हम सँभालेंगे.</p>`,
+      ctaLabel: "दस्तावेज़ अपलोड करें",
+    },
+  };
+  return copy[locale] ?? copy.it;
+}
+
 /** Subject storico comunicazioni webhook (allineato a email PAGATO). */
 export function paymentReceivedCommSubject(locale: CommsLocale = "it"): string {
   const subjects: Record<CommsLocale, string> = {
@@ -1819,6 +1974,11 @@ export function presentNotificationCopy(
     return { ...withdrawalNotif("REJECTED", false, locale), body };
   }
 
+  const reminderTitles = COMMS_LOCALES.map((loc) => docsReminderNotif(loc).title);
+  if (reminderTitles.includes(title)) {
+    return docsReminderNotif(locale);
+  }
+
   return { title, body };
 }
 
@@ -1839,6 +1999,7 @@ export function presentCommSubject(
     if (subjects.length) groups.push(subjects);
   }
   groups.push(COMMS_LOCALES.map((loc) => paymentReceivedCommSubject(loc)));
+  groups.push(COMMS_LOCALES.map((loc) => docsReminderEmail(loc).subject));
   groups.push(COMMS_LOCALES.map((loc) => reviewEmail(loc).subject));
   groups.push(COMMS_LOCALES.map((loc) => taxesEmail(0, loc).subject));
   groups.push(COMMS_LOCALES.map((loc) => finalDocsEmail(loc).subject));

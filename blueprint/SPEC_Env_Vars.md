@@ -38,6 +38,7 @@ Variabili effettivamente lette dal codice in questa fase (template in `web/.env.
 ## Email / WhatsApp
 - RESEND_API_KEY (server) — LETTA DAL CODICE (notifiche transazionali via API Resend). Se assente, gli invii sono saltati con fallback (nessun crash); l'app continua a registrare la comunicazione solo se l'email parte davvero.
 - EMAIL_FROM (server) — LETTA DAL CODICE; mittente delle email (richiede dominio verificato su Resend, es. `Successioni Armellin <info@successioniarmellin.it>`). Default provvisorio se assente.
+- CRON_SECRET (server) — LETTA DAL CODICE; protegge `GET /api/cron/docs-reminder` (sollecito documenti 24h / 48h). Vercel lo manda come `Authorization: Bearer`. Se assente, in produzione vale l'header `x-vercel-cron`.
 - WHATSAPP_TOKEN (server)
 - WHATSAPP_PHONE_NUMBER_ID (server)
 

@@ -7,6 +7,7 @@ import {
 } from "@/lib/comms-locale-shared";
 import {
   documentRejectedEmail,
+  docsReminderEmail,
   finalDocsEmail,
   invoiceEmail,
   reviewEmail,
@@ -345,6 +346,23 @@ export async function notifyDocumentRejected(
 ): Promise<{ sent: boolean; subject: string }> {
   const locale = resolveLocale(opts?.locale);
   const tpl = documentRejectedEmail(docLabel, reason, locale, esc);
+  const html = emailLayout({
+    heading: tpl.heading,
+    bodyHtml: tpl.bodyHtml,
+    ctaLabel: tpl.ctaLabel,
+    ctaHref: `${areaUrl()}/documenti`,
+    locale,
+  });
+  const { sent } = await sendEmail({ to, subject: tpl.subject, html });
+  return { sent, subject: tpl.subject };
+}
+
+export async function notifyDocsReminder(
+  to: string,
+  opts?: { locale?: string },
+): Promise<{ sent: boolean; subject: string }> {
+  const locale = resolveLocale(opts?.locale);
+  const tpl = docsReminderEmail(locale);
   const html = emailLayout({
     heading: tpl.heading,
     bodyHtml: tpl.bodyHtml,
