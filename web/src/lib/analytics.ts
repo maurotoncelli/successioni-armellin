@@ -22,17 +22,21 @@ function adsId(): string {
   return process.env.NEXT_PUBLIC_GOOGLE_ADS_ID?.trim() ?? "";
 }
 
-function adsLabel(kind: "lead" | "purchase"): string {
-  const key =
+function adsLabel(kind: "lead" | "purchase" | "contact"): string {
+  // Riferimenti statici a process.env: Next.js inlinea le NEXT_PUBLIC_* solo con
+  // accesso diretto per nome (process.env[dinamico] NON verrebbe sostituito lato client).
+  const label =
     kind === "purchase"
-      ? "NEXT_PUBLIC_GOOGLE_ADS_PURCHASE_LABEL"
-      : "NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL";
-  return process.env[key]?.trim() ?? "";
+      ? process.env.NEXT_PUBLIC_GOOGLE_ADS_PURCHASE_LABEL
+      : kind === "contact"
+        ? process.env.NEXT_PUBLIC_GOOGLE_ADS_CONTACT_LABEL
+        : process.env.NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL;
+  return label?.trim() ?? "";
 }
 
 /** Conversione nativa Google Ads (oltre all'evento GA4). No-op se manca AW-/label. */
 export function trackAdsConversion(
-  kind: "lead" | "purchase",
+  kind: "lead" | "purchase" | "contact",
   params?: { value?: number; currency?: string; transaction_id?: string },
 ): void {
   const id = adsId();

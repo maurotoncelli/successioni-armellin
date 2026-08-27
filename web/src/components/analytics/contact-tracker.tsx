@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { trackEvent } from "@/lib/analytics";
+import { trackEvent, trackAdsConversion } from "@/lib/analytics";
 
 /*
   Tracker globale degli "intenti di contatto" (click su telefono, WhatsApp, email)
@@ -28,6 +28,12 @@ export function ContactTracker() {
         link_url: href,
         location: window.location.pathname,
       });
+
+      // Telefono e WhatsApp = intento di contatto forte -> conversione Ads.
+      // L'email la lasciamo come semplice evento GA4 (segnale piu debole).
+      if (method === "phone" || method === "whatsapp") {
+        trackAdsConversion("contact");
+      }
     };
 
     document.addEventListener("click", handler);
