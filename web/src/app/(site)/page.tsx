@@ -85,7 +85,7 @@ export default async function HomePage() {
           siteUrl={siteBaseUrl()}
         />
       ) : null}
-      {/* Hero: loop muted — desktop 1920×600, mobile 9:16 dedicato.
+      {/* Hero: loop muted — desktop 1920×780, mobile 720×1382 dedicato.
           min-h generose: senza sottotitolo lo spazio vuoto fa respirare il video. */}
       {/* Mobile: copy in basso (più aria al video); da sm resta centrato. */}
       <section className="relative flex min-h-[480px] items-end overflow-hidden bg-primary text-white sm:min-h-[540px] sm:items-center lg:min-h-[620px]">
