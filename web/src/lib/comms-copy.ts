@@ -674,6 +674,45 @@ export function documentRejectedNotif(
   return { title: titles[locale] ?? titles.it, body: reason };
 }
 
+/*
+  Bozza precompilata pronta: Lorenzo ha preparato un documento parziale per una
+  voce della checklist. Il cliente lo scarica, completa/firma e lo ricarica.
+*/
+const DRAFT_READY_TITLE: Record<CommsLocale, string> = {
+  it: "Bozza da completare: ",
+  ar: "مسودة لإكمالها: ",
+  en: "Draft to complete: ",
+  tr: "Tamamlanacak taslak: ",
+  fr: "Brouillon à compléter : ",
+  sq: "Skicë për t'u plotësuar: ",
+  de: "Entwurf zum Ausfüllen: ",
+  es: "Borrador para completar: ",
+  ru: "Черновик для заполнения: ",
+  zh: "待完成的草稿：",
+  hi: "पूरा करने के लिए मसौदा: ",
+};
+
+const DRAFT_READY_BODY: Record<CommsLocale, string> = {
+  it: "Lorenzo ha preparato una bozza. Scaricala, completa i campi mancanti, firma e ricaricala.",
+  ar: "أعدّ لورنزو مسودة. حمّلها، أكمل الحقول الناقصة، وقّع وأعد تحميلها.",
+  en: "Lorenzo prepared a draft. Download it, fill in the missing fields, sign and re-upload it.",
+  tr: "Lorenzo bir taslak hazırladı. İndirin, eksik alanları doldurun, imzalayın ve yeniden yükleyin.",
+  fr: "Lorenzo a préparé un brouillon. Téléchargez-le, complétez les champs manquants, signez et rechargez-le.",
+  sq: "Lorenzo përgatiti një skicë. Shkarkojeni, plotësoni fushat që mungojnë, firmoseni dhe ringarkojeni.",
+  de: "Lorenzo hat einen Entwurf vorbereitet. Laden Sie ihn herunter, füllen Sie die fehlenden Felder aus, unterschreiben Sie und laden Sie ihn erneut hoch.",
+  es: "Lorenzo ha preparado un borrador. Descárguelo, complete los campos que faltan, fírmelo y vuelva a subirlo.",
+  ru: "Lorenzo подготовил черновик. Скачайте его, заполните недостающие поля, подпишите и загрузите заново.",
+  zh: "Lorenzo 已为您准备了一份草稿。请下载、填写缺失字段、签字后重新上传。",
+  hi: "Lorenzo ने एक मसौदा तैयार किया है। इसे डाउनलोड करें, छूटे हुए फ़ील्ड भरें, हस्ताक्षर करें और फिर अपलोड करें।",
+};
+
+export function draftReadyNotif(docLabel: string, locale: CommsLocale = "it") {
+  return {
+    title: (DRAFT_READY_TITLE[locale] ?? DRAFT_READY_TITLE.it) + docLabel,
+    body: DRAFT_READY_BODY[locale] ?? DRAFT_READY_BODY.it,
+  };
+}
+
 export function taxesNotif(amount: number, locale: CommsLocale = "it") {
   const localeTag: Record<CommsLocale, string> = {
     it: "it-IT",
@@ -1716,6 +1755,105 @@ export function documentRejectedEmail(
   return copy[locale] ?? copy.it;
 }
 
+const DRAFT_READY_SUBJECT: Record<CommsLocale, string> = {
+  it: "Una bozza da completare: ",
+  ar: "مسودة لإكمالها: ",
+  en: "A draft to complete: ",
+  tr: "Tamamlanacak bir taslak: ",
+  fr: "Un brouillon à compléter : ",
+  sq: "Një skicë për t'u plotësuar: ",
+  de: "Ein Entwurf zum Ausfüllen: ",
+  es: "Un borrador para completar: ",
+  ru: "Черновик для заполнения: ",
+  zh: "一份待完成的草稿：",
+  hi: "पूरा करने के लिए एक मसौदा: ",
+};
+
+export function draftReadyEmail(
+  docLabel: string,
+  locale: CommsLocale,
+  esc: (s: string) => string,
+) {
+  const copy: Record<
+    CommsLocale,
+    { heading: string; bodyHtml: string; ctaLabel: string }
+  > = {
+    it: {
+      heading: "Lorenzo ha preparato una bozza per te",
+      bodyHtml: `<p style="margin:0 0 10px">Per la voce <strong>${esc(docLabel)}</strong> Lorenzo ha preparato una bozza già in parte compilata, per aiutarti.</p>
+      <p style="margin:0">Scaricala dalla tua area personale, completa i campi mancanti se servono, firma dove richiesto e ricaricala qui.</p>`,
+      ctaLabel: "Vai ai documenti",
+    },
+    ar: {
+      heading: "أعدّ لورنزو مسودة لك",
+      bodyHtml: `<p style="margin:0 0 10px">للبند <strong>${esc(docLabel)}</strong> أعدّ لورنزو مسودة مُعبّأة جزئيًا لمساعدتك.</p>
+      <p style="margin:0">حمّلها من منطقتك الشخصية، أكمل الحقول الناقصة عند الحاجة، وقّع حيث يلزم وأعد تحميلها هنا.</p>`,
+      ctaLabel: "إلى المستندات",
+    },
+    en: {
+      heading: "Lorenzo prepared a draft for you",
+      bodyHtml: `<p style="margin:0 0 10px">For the item <strong>${esc(docLabel)}</strong> Lorenzo prepared a partly pre-filled draft to help you.</p>
+      <p style="margin:0">Download it from your client area, fill in the missing fields if needed, sign where required and re-upload it here.</p>`,
+      ctaLabel: "Go to documents",
+    },
+    tr: {
+      heading: "Lorenzo sizin için bir taslak hazırladı",
+      bodyHtml: `<p style="margin:0 0 10px"><strong>${esc(docLabel)}</strong> kalemi için Lorenzo, size yardımcı olmak amacıyla kısmen doldurulmuş bir taslak hazırladı.</p>
+      <p style="margin:0">Kişisel alanınızdan indirin, gerekirse eksik alanları doldurun, gereken yeri imzalayın ve buraya yeniden yükleyin.</p>`,
+      ctaLabel: "Belgelere git",
+    },
+    fr: {
+      heading: "Lorenzo a préparé un brouillon pour vous",
+      bodyHtml: `<p style="margin:0 0 10px">Pour l'élément <strong>${esc(docLabel)}</strong>, Lorenzo a préparé un brouillon en partie prérempli pour vous aider.</p>
+      <p style="margin:0">Téléchargez-le depuis votre espace personnel, complétez les champs manquants si nécessaire, signez où c'est requis et rechargez-le ici.</p>`,
+      ctaLabel: "Aller aux documents",
+    },
+    sq: {
+      heading: "Lorenzo përgatiti një skicë për ju",
+      bodyHtml: `<p style="margin:0 0 10px">Për zërin <strong>${esc(docLabel)}</strong> Lorenzo përgatiti një skicë pjesërisht të plotësuar, për t'ju ndihmuar.</p>
+      <p style="margin:0">Shkarkojeni nga zona personale, plotësoni fushat që mungojnë nëse duhen, firmoseni ku kërkohet dhe ringarkojeni këtu.</p>`,
+      ctaLabel: "Shko te dokumentet",
+    },
+    de: {
+      heading: "Lorenzo hat einen Entwurf für Sie vorbereitet",
+      bodyHtml: `<p style="margin:0 0 10px">Für den Punkt <strong>${esc(docLabel)}</strong> hat Lorenzo einen teilweise vorausgefüllten Entwurf vorbereitet, um Ihnen zu helfen.</p>
+      <p style="margin:0">Laden Sie ihn aus Ihrem Persönlichen Bereich herunter, füllen Sie bei Bedarf die fehlenden Felder aus, unterschreiben Sie, wo erforderlich, und laden Sie ihn hier erneut hoch.</p>`,
+      ctaLabel: "Zu den Dokumenten",
+    },
+    es: {
+      heading: "Lorenzo ha preparado un borrador para usted",
+      bodyHtml: `<p style="margin:0 0 10px">Para la partida <strong>${esc(docLabel)}</strong>, Lorenzo ha preparado un borrador parcialmente rellenado para ayudarle.</p>
+      <p style="margin:0">Descárguelo desde su área personal, complete los campos que falten si es necesario, firme donde se requiera y vuelva a subirlo aquí.</p>`,
+      ctaLabel: "Ir a los documentos",
+    },
+    ru: {
+      heading: "Lorenzo подготовил для вас черновик",
+      bodyHtml: `<p style="margin:0 0 10px">Для пункта <strong>${esc(docLabel)}</strong> Lorenzo подготовил частично заполненный черновик, чтобы помочь вам.</p>
+      <p style="margin:0">Скачайте его в личном кабинете, при необходимости заполните недостающие поля, подпишите где требуется и загрузите заново здесь.</p>`,
+      ctaLabel: "Перейти к документам",
+    },
+    zh: {
+      heading: "Lorenzo 为您准备了一份草稿",
+      bodyHtml: `<p style="margin:0 0 10px">针对项目 <strong>${esc(docLabel)}</strong>，Lorenzo 为您准备了一份已部分填写的草稿。</p>
+      <p style="margin:0">请从个人区下载，如有需要填写缺失字段，在需要处签字，然后在此重新上传。</p>`,
+      ctaLabel: "前往文件",
+    },
+    hi: {
+      heading: "Lorenzo ने आपके लिए एक मसौदा तैयार किया",
+      bodyHtml: `<p style="margin:0 0 10px">मद <strong>${esc(docLabel)}</strong> के लिए Lorenzo ने आपकी मदद हेतु आंशिक रूप से भरा मसौदा तैयार किया है।</p>
+      <p style="margin:0">इसे अपने व्यक्तिगत क्षेत्र से डाउनलोड करें, आवश्यक हो तो छूटे फ़ील्ड भरें, जहाँ ज़रूरी हो हस्ताक्षर करें और यहाँ फिर अपलोड करें।</p>`,
+      ctaLabel: "दस्तावेज़ों पर जाएँ",
+    },
+  };
+  const c = copy[locale] ?? copy.it;
+  return {
+    subject: (DRAFT_READY_SUBJECT[locale] ?? DRAFT_READY_SUBJECT.it) + docLabel,
+    heading: c.heading,
+    bodyHtml: c.bodyHtml,
+    ctaLabel: c.ctaLabel,
+  };
+}
+
 export function docsReminderNotif(locale: CommsLocale = "it"): {
   title: string;
   body: string;
@@ -1871,6 +2009,173 @@ export function docsReminderEmail(locale: CommsLocale = "it"): {
   return copy[locale] ?? copy.it;
 }
 
+/*
+  Sollecito firma mandato: stesso cron del sollecito documenti (24h/48h).
+  Se mancano anche documenti si invia UNA sola email (documenti + riga mandato);
+  se manca solo la firma parte questa email dedicata con CTA su /mandato.
+*/
+export function mandateReminderNotif(locale: CommsLocale = "it"): {
+  title: string;
+  body: string;
+} {
+  const copy: Record<CommsLocale, { title: string; body: string }> = {
+    it: {
+      title: "Manca la firma del mandato",
+      body: "Puoi firmarlo online in un minuto dalla tua area personale.",
+    },
+    ar: {
+      title: "ينقص توقيع التفويض",
+      body: "يمكنك توقيعه إلكترونيًا في دقيقة من منطقتك الشخصية.",
+    },
+    en: {
+      title: "The mandate still needs your signature",
+      body: "You can sign it online in a minute from your client area.",
+    },
+    tr: {
+      title: "Vekaletname imzanız hâlâ eksik",
+      body: "Kişisel alanınızdan bir dakikada çevrimiçi imzalayabilirsiniz.",
+    },
+    fr: {
+      title: "Il manque la signature du mandat",
+      body: "Vous pouvez le signer en ligne en une minute depuis votre espace personnel.",
+    },
+    sq: {
+      title: "Mungon firma e mandatit",
+      body: "Mund ta firmosni online për një minutë nga zona personale.",
+    },
+    de: {
+      title: "Die Unterschrift auf dem Mandat fehlt noch",
+      body: "Sie können es in einer Minute online in Ihrem Persönlichen Bereich unterschreiben.",
+    },
+    es: {
+      title: "Falta la firma del mandato",
+      body: "Puede firmarlo en línea en un minuto desde su área personal.",
+    },
+    ru: {
+      title: "Не хватает подписи на мандате",
+      body: "Вы можете подписать его онлайн за минуту в личном кабинете.",
+    },
+    zh: {
+      title: "委托书尚未签署",
+      body: "您可在个人区一分钟内在线签署。",
+    },
+    hi: {
+      title: "मैंडेट पर हस्ताक्षर अभी बाकी हैं",
+      body: "आप इसे व्यक्तिगत क्षेत्र से एक मिनट में ऑनलाइन साइन कर सकते हैं।",
+    },
+  };
+  return copy[locale] ?? copy.it;
+}
+
+export function mandateReminderEmail(locale: CommsLocale = "it"): {
+  subject: string;
+  heading: string;
+  bodyHtml: string;
+  ctaLabel: string;
+} {
+  const copy: Record<
+    CommsLocale,
+    { subject: string; heading: string; bodyHtml: string; ctaLabel: string }
+  > = {
+    it: {
+      subject: "Manca solo la firma del mandato",
+      heading: "Ci serve la tua firma",
+      bodyHtml: `<p style="margin:0 0 10px">La tua pratica è avviata, ma manca ancora la firma del mandato professionale: senza quella non possiamo presentare la dichiarazione per te.</p>
+      <p style="margin:0">Puoi firmarlo online in un minuto dalla tua area personale, oppure scaricarlo, firmarlo a mano e ricaricarlo. Fatto quello, ci pensiamo noi.</p>`,
+      ctaLabel: "Firma il mandato",
+    },
+    ar: {
+      subject: "ينقص فقط توقيع التفويض",
+      heading: "نحتاج إلى توقيعك",
+      bodyHtml: `<p style="margin:0 0 10px">معاملتك نشطة، لكن ما زال ينقص توقيع التفويض المهني: بدونه لا يمكننا تقديم التصريح نيابة عنك.</p>
+      <p style="margin:0">يمكنك توقيعه إلكترونيًا في دقيقة من منطقتك الشخصية، أو تنزيله وتوقيعه يدويًا وإعادة تحميله. بعد ذلك نتولى الباقي.</p>`,
+      ctaLabel: "وقّع التفويض",
+    },
+    en: {
+      subject: "Only the mandate signature is missing",
+      heading: "We need your signature",
+      bodyHtml: `<p style="margin:0 0 10px">Your case is underway, but the professional mandate still needs your signature: without it we cannot file the declaration on your behalf.</p>
+      <p style="margin:0">You can sign it online in a minute from your client area, or download it, sign it by hand and re-upload it. After that, we take care of the rest.</p>`,
+      ctaLabel: "Sign the mandate",
+    },
+    tr: {
+      subject: "Yalnızca vekaletname imzası eksik",
+      heading: "İmzanıza ihtiyacımız var",
+      bodyHtml: `<p style="margin:0 0 10px">Dosyanız açıldı ancak mesleki vekaletnamenin imzası hâlâ eksik: o olmadan beyannameyi sizin adınıza sunamayız.</p>
+      <p style="margin:0">Kişisel alanınızdan bir dakikada çevrimiçi imzalayabilir veya indirip elle imzalayarak yeniden yükleyebilirsiniz. Sonrasını biz hallederiz.</p>`,
+      ctaLabel: "Vekaletnameyi imzala",
+    },
+    fr: {
+      subject: "Il ne manque que la signature du mandat",
+      heading: "Nous avons besoin de votre signature",
+      bodyHtml: `<p style="margin:0 0 10px">Votre dossier est ouvert, mais il manque encore la signature du mandat professionnel : sans elle, nous ne pouvons pas déposer la déclaration en votre nom.</p>
+      <p style="margin:0">Vous pouvez le signer en ligne en une minute depuis votre espace personnel, ou le télécharger, le signer à la main et le recharger. Ensuite, nous nous occupons du reste.</p>`,
+      ctaLabel: "Signer le mandat",
+    },
+    sq: {
+      subject: "Mungon vetëm firma e mandatit",
+      heading: "Na duhet firma juaj",
+      bodyHtml: `<p style="margin:0 0 10px">Praktika juaj ka nisur, por mungon ende firma e mandatit profesional: pa të nuk mund të paraqesim deklaratën në emrin tuaj.</p>
+      <p style="margin:0">Mund ta firmosni online për një minutë nga zona personale, ose ta shkarkoni, ta firmosni me dorë dhe ta ringarkoni. Pas kësaj merremi ne.</p>`,
+      ctaLabel: "Firmos mandatin",
+    },
+    de: {
+      subject: "Es fehlt nur noch die Unterschrift auf dem Mandat",
+      heading: "Wir benötigen Ihre Unterschrift",
+      bodyHtml: `<p style="margin:0 0 10px">Ihre Akte ist eröffnet, aber die Unterschrift auf dem Mandat fehlt noch: ohne sie können wir die Erklärung nicht in Ihrem Namen einreichen.</p>
+      <p style="margin:0">Sie können es in einer Minute online in Ihrem Persönlichen Bereich unterschreiben oder es herunterladen, von Hand unterschreiben und erneut hochladen. Danach übernehmen wir den Rest.</p>`,
+      ctaLabel: "Mandat unterschreiben",
+    },
+    es: {
+      subject: "Solo falta la firma del mandato",
+      heading: "Necesitamos su firma",
+      bodyHtml: `<p style="margin:0 0 10px">Su expediente está en marcha, pero aún falta la firma del mandato profesional: sin ella no podemos presentar la declaración en su nombre.</p>
+      <p style="margin:0">Puede firmarlo en línea en un minuto desde su área personal, o descargarlo, firmarlo a mano y volver a subirlo. Después nos encargamos nosotros.</p>`,
+      ctaLabel: "Firmar el mandato",
+    },
+    ru: {
+      subject: "Не хватает только подписи на мандате",
+      heading: "Нам нужна ваша подпись",
+      bodyHtml: `<p style="margin:0 0 10px">Ваше дело открыто, но на профессиональном мандате всё ещё нет подписи: без неё мы не можем подать декларацию от вашего имени.</p>
+      <p style="margin:0">Вы можете подписать его онлайн за минуту в личном кабинете или скачать, подписать от руки и загрузить заново. Дальше мы всё сделаем сами.</p>`,
+      ctaLabel: "Подписать мандат",
+    },
+    zh: {
+      subject: "只差委托书的签名了",
+      heading: "我们需要您的签名",
+      bodyHtml: `<p style="margin:0 0 10px">您的案件已启动，但专业委托书仍未签署：没有它我们无法代您提交申报。</p>
+      <p style="margin:0">您可在个人区一分钟内在线签署，或下载后手写签名再重新上传。之后由我们处理。</p>`,
+      ctaLabel: "签署委托书",
+    },
+    hi: {
+      subject: "बस मैंडेट के हस्ताक्षर बाकी हैं",
+      heading: "हमें आपके हस्ताक्षर चाहिए",
+      bodyHtml: `<p style="margin:0 0 10px">आपका प्रकरण शुरू हो चुका है, लेकिन पेशेवर मैंडेट पर हस्ताक्षर अभी बाकी हैं: उनके बिना हम आपकी ओर से घोषणा प्रस्तुत नहीं कर सकते।</p>
+      <p style="margin:0">आप इसे व्यक्तिगत क्षेत्र से एक मिनट में ऑनलाइन साइन कर सकते हैं, या डाउनलोड कर हाथ से साइन करके फिर अपलोड कर सकते हैं। उसके बाद हम सँभाल लेंगे।</p>`,
+      ctaLabel: "मैंडेट साइन करें",
+    },
+  };
+  return copy[locale] ?? copy.it;
+}
+
+/** Riga aggiunta al sollecito documenti quando manca ANCHE la firma del mandato. */
+export function docsReminderMandateLine(locale: CommsLocale = "it"): string {
+  const lines: Record<CommsLocale, string> = {
+    it: "Ricorda anche di firmare il mandato professionale: lo trovi nella sezione «Mandato» della tua area personale.",
+    ar: "تذكّر أيضًا توقيع التفويض المهني: تجده في قسم «التفويض» بمنطقتك الشخصية.",
+    en: "Please also remember to sign the professional mandate: you'll find it in the “Mandate” section of your client area.",
+    tr: "Lütfen mesleki vekaletnameyi de imzalamayı unutmayın: kişisel alanınızın «Vekaletname» bölümünde bulursunuz.",
+    fr: "Pensez aussi à signer le mandat professionnel : vous le trouverez dans la section « Mandat » de votre espace personnel.",
+    sq: "Kujtohuni të firmosni edhe mandatin profesional: e gjeni te seksioni «Mandati» në zonën personale.",
+    de: "Denken Sie bitte auch daran, das Mandat zu unterschreiben: Sie finden es im Bereich «Mandat» Ihres Persönlichen Bereichs.",
+    es: "Recuerde también firmar el mandato profesional: lo encontrará en la sección «Mandato» de su área personal.",
+    ru: "Не забудьте также подписать профессиональный мандат: он находится в разделе «Мандат» личного кабинета.",
+    zh: "另请记得签署专业委托书：可在个人区的「委托书」部分找到。",
+    hi: "कृपया पेशेवर मैंडेट पर भी हस्ताक्षर करना याद रखें: यह व्यक्तिगत क्षेत्र के «मैंडेट» अनुभाग में मिलेगा।",
+  };
+  return lines[locale] ?? lines.it;
+}
+
 /** Subject storico comunicazioni webhook (allineato a email PAGATO). */
 export function paymentReceivedCommSubject(locale: CommsLocale = "it"): string {
   const subjects: Record<CommsLocale, string> = {
@@ -1933,6 +2238,13 @@ export function presentNotificationCopy(
     }
   }
 
+  for (const loc of COMMS_LOCALES) {
+    const prefix = DRAFT_READY_TITLE[loc];
+    if (title.startsWith(prefix)) {
+      return draftReadyNotif(title.slice(prefix.length), locale);
+    }
+  }
+
   const taxPrefixes = [
     "Imposte comunicate: ",
     "أُبلغت الضرائب: ",
@@ -1979,6 +2291,13 @@ export function presentNotificationCopy(
     return docsReminderNotif(locale);
   }
 
+  const mandateTitles = COMMS_LOCALES.map(
+    (loc) => mandateReminderNotif(loc).title,
+  );
+  if (mandateTitles.includes(title)) {
+    return mandateReminderNotif(locale);
+  }
+
   return { title, body };
 }
 
@@ -2000,6 +2319,7 @@ export function presentCommSubject(
   }
   groups.push(COMMS_LOCALES.map((loc) => paymentReceivedCommSubject(loc)));
   groups.push(COMMS_LOCALES.map((loc) => docsReminderEmail(loc).subject));
+  groups.push(COMMS_LOCALES.map((loc) => mandateReminderEmail(loc).subject));
   groups.push(COMMS_LOCALES.map((loc) => reviewEmail(loc).subject));
   groups.push(COMMS_LOCALES.map((loc) => taxesEmail(0, loc).subject));
   groups.push(COMMS_LOCALES.map((loc) => finalDocsEmail(loc).subject));
@@ -2048,6 +2368,13 @@ export function presentCommSubject(
         locale,
         (x) => x,
       ).subject;
+    }
+  }
+
+  for (const loc of COMMS_LOCALES) {
+    const prefix = DRAFT_READY_SUBJECT[loc];
+    if (subject.startsWith(prefix)) {
+      return draftReadyEmail(subject.slice(prefix.length), locale, (x) => x).subject;
     }
   }
 

@@ -31,6 +31,9 @@ export type DocsUiLabels = {
   state_da_caricare: string;
   state_caricato: string;
   state_da_rifare: string;
+  draft_title: string;
+  draft_help: string;
+  draft_download: string;
 };
 
 export type MandateUiLabels = {
@@ -197,6 +200,10 @@ export const DOCS_UI_IT: DocsUiLabels = {
   state_da_caricare: "Da caricare",
   state_caricato: "Caricato",
   state_da_rifare: "Da rifare",
+  draft_title: "Lorenzo ha preparato una bozza per te",
+  draft_help:
+    "Scaricala, controlla e completa i campi vuoti se servono, firma dove richiesto e ricaricala qui.",
+  draft_download: "Scarica la bozza",
 };
 
 export const MANDATE_UI_IT: MandateUiLabels = {

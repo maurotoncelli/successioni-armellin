@@ -4132,7 +4132,10 @@
         "err_delete_network": "删除失败，请重试。",
         "state_da_caricare": "待上传",
         "state_caricato": "已上传",
-        "state_da_rifare": "需重做"
+        "state_da_rifare": "需重做",
+        "draft_title": "Lorenzo 已为您准备了一份草稿",
+        "draft_help": "请下载，检查并在需要时填写空白字段，在需要处签字，然后在此重新上传。",
+        "draft_download": "下载草稿"
       }
     },
     {

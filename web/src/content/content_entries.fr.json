@@ -4132,7 +4132,10 @@
         "err_delete_network": "Échec de la suppression, réessayez.",
         "state_da_caricare": "À importer",
         "state_caricato": "Importé",
-        "state_da_rifare": "À refaire"
+        "state_da_rifare": "À refaire",
+        "draft_title": "Lorenzo a préparé un brouillon pour vous",
+        "draft_help": "Téléchargez-le, vérifiez et complétez les champs vides si nécessaire, signez où c'est requis et rechargez-le ici.",
+        "draft_download": "Télécharger le brouillon"
       }
     },
     {

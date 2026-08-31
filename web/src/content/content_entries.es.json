@@ -4132,7 +4132,10 @@
         "err_delete_network": "Eliminación no realizada, inténtalo de nuevo.",
         "state_da_caricare": "Por subir",
         "state_caricato": "Subido",
-        "state_da_rifare": "A rehacer"
+        "state_da_rifare": "A rehacer",
+        "draft_title": "Lorenzo ha preparado un borrador para usted",
+        "draft_help": "Descárguelo, revíselo y complete los campos vacíos si es necesario, firme donde se requiera y vuelva a subirlo aquí.",
+        "draft_download": "Descargar el borrador"
       }
     },
     {

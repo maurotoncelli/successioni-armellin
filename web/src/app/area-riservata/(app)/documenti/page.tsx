@@ -92,6 +92,7 @@ export default async function DocumentiPage() {
         help: d.help,
         files: listItemFiles(d).map((f) => f.name),
         templates: templatesForLabelWithState(d.label, docTypesState),
+        draft: d.draft ? { note: d.draft.note } : undefined,
       },
     ];
   });

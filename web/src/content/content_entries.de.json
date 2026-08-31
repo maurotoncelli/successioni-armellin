@@ -4132,7 +4132,10 @@
         "err_delete_network": "Löschen fehlgeschlagen, erneut versuchen.",
         "state_da_caricare": "Hochzuladen",
         "state_caricato": "Hochgeladen",
-        "state_da_rifare": "Zu überarbeiten"
+        "state_da_rifare": "Zu überarbeiten",
+        "draft_title": "Lorenzo hat einen Entwurf für Sie vorbereitet",
+        "draft_help": "Laden Sie ihn herunter, prüfen Sie ihn und füllen Sie bei Bedarf die leeren Felder aus, unterschreiben Sie, wo erforderlich, und laden Sie ihn hier erneut hoch.",
+        "draft_download": "Entwurf herunterladen"
       }
     },
     {

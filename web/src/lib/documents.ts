@@ -1,7 +1,12 @@
 import "server-only";
 import sharp from "sharp";
 import { getAdminClient } from "@/lib/supabase/admin";
-import type { ChecklistFile, ChecklistItem, RequirementStatus } from "@/content/crm-data";
+import type {
+  ChecklistDraft,
+  ChecklistFile,
+  ChecklistItem,
+  RequirementStatus,
+} from "@/content/crm-data";
 
 /*
   Gestione documenti della pratica su Supabase Storage (bucket PRIVATO).
@@ -253,4 +258,137 @@ export async function setDocStatus(
     reason: status === "RIFIUTATO" ? reason?.trim() || "Da ricaricare" : undefined,
   };
   await saveChecklist(admin, practiceId, checklist);
+}
+
+/* --------------------------- bozze (draft) --------------------------------
+   Bozza precompilata da Lorenzo: file separato dai `files` del cliente, in una
+   sottocartella `drafts/`. NON entra in listItemFiles, quindi non conta come
+   documento consegnato (solleciti, estrazione, EG, conteggi restano corretti).
+*/
+
+/** URL firmato temporaneo della bozza (solo se presente). */
+export async function signedDraftUrl(
+  practiceId: string,
+  index: number,
+): Promise<string | null> {
+  const admin = getAdminClient();
+  const checklist = await getChecklist(admin, practiceId);
+  const draft = checklist[index]?.draft;
+  if (!draft) return null;
+  const { data } = await admin.storage
+    .from(DOC_BUCKET)
+    .createSignedUrl(draft.path, 60);
+  return data?.signedUrl ?? null;
+}
+
+/**
+ * Carica (o sostituisce) la bozza di una voce. Non tocca lo stato della voce
+ * ne i file del cliente. Una eventuale bozza precedente viene rimossa.
+ */
+export async function setDraft(
+  practiceId: string,
+  index: number,
+  file: File,
+  note?: string,
+): Promise<ChecklistItem> {
+  const admin = getAdminClient();
+  await ensureBucket(admin);
+
+  const checklist = await getChecklist(admin, practiceId);
+  const item = checklist[index];
+  if (!item) throw new Error(DOC_ERR_ITEM_NOT_FOUND);
+
+  const upload = await compressUpload(file);
+  const path = `${practiceId}/drafts/${index}-${Date.now().toString(36)}-${sanitizeName(upload.name)}`;
+
+  const { error } = await admin.storage
+    .from(DOC_BUCKET)
+    .upload(path, upload.bytes, { contentType: upload.contentType, upsert: true });
+  if (error) throw error;
+
+  // Rimuovi la bozza precedente (path diverso per via del timestamp).
+  if (item.draft?.path && item.draft.path !== path) {
+    await admin.storage.from(DOC_BUCKET).remove([item.draft.path]);
+  }
+
+  const draft: ChecklistDraft = {
+    path,
+    name: upload.name,
+    uploadedAt: new Date().toISOString(),
+    note: note?.trim() || undefined,
+  };
+  const updated: ChecklistItem = { ...item, draft };
+  checklist[index] = updated;
+  await saveChecklist(admin, practiceId, checklist);
+  return updated;
+}
+
+/** Rimuove la bozza (file Storage + riferimento). Lascia intatti i file cliente. */
+export async function removeDraft(
+  practiceId: string,
+  index: number,
+): Promise<void> {
+  const admin = getAdminClient();
+  const checklist = await getChecklist(admin, practiceId);
+  const item = checklist[index];
+  if (!item?.draft) return;
+  await admin.storage.from(DOC_BUCKET).remove([item.draft.path]);
+  const next: ChecklistItem = { ...item };
+  delete next.draft;
+  checklist[index] = next;
+  await saveChecklist(admin, practiceId, checklist);
+}
+
+/* --------------------------- voci manuali ---------------------------------
+   Lorenzo puo' aggiungere una voce alla checklist di QUESTA pratica (non al
+   catalogo globale): utile per casi particolari o per allegare una bozza.
+*/
+
+export type NewChecklistItemInput = {
+  label: string;
+  required: boolean;
+  help?: string;
+};
+
+/** Aggiunge in coda una voce manuale (stato ATTESO). Ritorna il suo indice. */
+export async function addChecklistItem(
+  practiceId: string,
+  input: NewChecklistItemInput,
+): Promise<{ index: number; item: ChecklistItem }> {
+  const admin = getAdminClient();
+  const checklist = await getChecklist(admin, practiceId);
+  const item: ChecklistItem = {
+    label: input.label.trim(),
+    required: input.required,
+    status: "ATTESO",
+    help: input.help?.trim() || undefined,
+    source: "manual",
+  };
+  checklist.push(item);
+  await saveChecklist(admin, practiceId, checklist);
+  return { index: checklist.length - 1, item };
+}
+
+/**
+ * Rimuove una voce manuale SENZA file del cliente (la bozza viene cancellata).
+ * Non tocca le voci auto-generate ne quelle con documenti gia' caricati:
+ * ritorna false se la rimozione non e' consentita.
+ */
+export async function removeChecklistItem(
+  practiceId: string,
+  index: number,
+): Promise<boolean> {
+  const admin = getAdminClient();
+  const checklist = await getChecklist(admin, practiceId);
+  const item = checklist[index];
+  if (!item) return false;
+  if (item.source !== "manual") return false;
+  if (listItemFiles(item).length > 0) return false;
+
+  if (item.draft?.path) {
+    await admin.storage.from(DOC_BUCKET).remove([item.draft.path]);
+  }
+  checklist.splice(index, 1);
+  await saveChecklist(admin, practiceId, checklist);
+  return true;
 }

@@ -70,6 +70,8 @@ export default async function SchedaPraticaPage({
     status: c.status,
     files: listItemFiles(c).map((f) => f.name),
     reason: c.reason,
+    source: c.source ?? "auto",
+    draft: c.draft ? { name: c.draft.name, note: c.draft.note } : undefined,
   }));
 
   return (
@@ -189,7 +191,11 @@ export default async function SchedaPraticaPage({
               )}
             </div>
             {p.checklist.length > 0 ? (
-              <CrmChecklist practiceId={p.id} items={checklistItems} />
+              <CrmChecklist
+                practiceId={p.id}
+                items={checklistItems}
+                hasClientEmail={Boolean(p.clientEmail)}
+              />
             ) : (
               <div className="mt-4">
                 <p className="text-sm text-crm-muted">

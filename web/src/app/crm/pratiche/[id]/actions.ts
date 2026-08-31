@@ -5,7 +5,14 @@ import { revalidatePath } from "next/cache";
 import { createCheckoutSession } from "@/lib/payments";
 import { getStripe, isStripeConfigured } from "@/lib/stripe";
 import { requireAdmin } from "@/lib/admin";
-import { signedDocUrl, setDocStatus, listItemFiles, DOC_BUCKET } from "@/lib/documents";
+import {
+  setDocStatus,
+  listItemFiles,
+  DOC_BUCKET,
+  addChecklistItem,
+  removeChecklistItem,
+  removeDraft,
+} from "@/lib/documents";
 import {
   mandateFileUrl,
   revealIban,
@@ -33,6 +40,7 @@ import { imagesToPdf, type PdfImage } from "@/lib/image-to-pdf";
 import {
   notifyStatusChange,
   notifyDocumentRejected,
+  notifyDraftReady,
   notifyTaxesCommunicated,
   notifyFinalDocsReady,
   notifyWithdrawalOutcome,
@@ -47,6 +55,7 @@ import {
 import { getCommsLocaleForPractice } from "@/lib/comms-locale";
 import {
   documentRejectedNotif,
+  draftReadyNotif,
   finalDocsNotif,
   taxesNotif,
   withdrawalNotif,
@@ -92,16 +101,8 @@ export type DocUrlResult =
   | { ok: true; url: string }
   | { ok: false; error: string };
 
-export async function getDocumentUrl(
-  practiceId: string,
-  index: number,
-  fileIdx = 0,
-): Promise<DocUrlResult> {
-  await requireAdmin();
-  const url = await signedDocUrl(practiceId, index, fileIdx);
-  if (!url) return { ok: false, error: "Nessun file disponibile." };
-  return { ok: true, url };
-}
+// L'apertura dei documenti checklist ora passa da GET
+// /api/crm/documents/download (link diretto, non bloccato dai popup blocker).
 
 export async function getMandateUrl(practiceId: string): Promise<DocUrlResult> {
   await requireAdmin();
@@ -266,6 +267,165 @@ export async function rejectDocument(
   revalidatePath(`/crm/pratiche/${practiceId}`);
   revalidatePath("/crm/pratiche");
   revalidatePath("/crm");
+}
+
+/* ---------------------------------------------------------------------------
+   Voci extra e bozze (@06). Lorenzo puo aggiungere una voce alla checklist di
+   QUESTA pratica e allegarci una bozza precompilata: il cliente la scarica,
+   completa/firma e la ricarica. La bozza NON e un documento consegnato (non
+   entra nei file, non cambia lo stato). L'upload del file bozza passa dalla
+   rotta POST /api/crm/documents/draft; qui restano le operazioni senza file.
+--------------------------------------------------------------------------- */
+
+export type AddChecklistItemResult =
+  | { ok: true; index: number }
+  | { ok: false; error: string };
+
+export async function addChecklistItemAction(
+  practiceId: string,
+  input: { label: string; required: boolean; help?: string },
+): Promise<AddChecklistItemResult> {
+  await requireAdmin();
+  const label = input.label.trim();
+  if (!label) return { ok: false, error: "Inserisci un'etichetta per la voce." };
+
+  const { index } = await addChecklistItem(practiceId, {
+    label,
+    required: input.required,
+    help: input.help,
+  });
+
+  const admin = getAdminClient();
+  const { data } = await admin
+    .from("practices")
+    .select("log")
+    .eq("id", practiceId)
+    .maybeSingle();
+  if (data) {
+    const log: LogEvent[] = Array.isArray(data.log) ? (data.log as LogEvent[]) : [];
+    log.push({ action: "voce_checklist_aggiunta", at: stamp() });
+    await admin.from("practices").update({ log }).eq("id", practiceId);
+  }
+
+  revalidatePath(`/crm/pratiche/${practiceId}`);
+  revalidatePath("/area-riservata/documenti");
+  return { ok: true, index };
+}
+
+export async function removeChecklistItemAction(
+  practiceId: string,
+  index: number,
+): Promise<WorkflowResult> {
+  await requireAdmin();
+  const removed = await removeChecklistItem(practiceId, index);
+  if (!removed) {
+    return {
+      ok: false,
+      error:
+        "Si possono togliere solo le voci aggiunte a mano e senza file del cliente.",
+    };
+  }
+  const admin = getAdminClient();
+  const { data } = await admin
+    .from("practices")
+    .select("log")
+    .eq("id", practiceId)
+    .maybeSingle();
+  if (data) {
+    const log: LogEvent[] = Array.isArray(data.log) ? (data.log as LogEvent[]) : [];
+    log.push({ action: "voce_checklist_rimossa", at: stamp() });
+    await admin.from("practices").update({ log }).eq("id", practiceId);
+  }
+  revalidatePath(`/crm/pratiche/${practiceId}`);
+  revalidatePath("/area-riservata/documenti");
+  return { ok: true };
+}
+
+export async function removeDraftAction(
+  practiceId: string,
+  index: number,
+): Promise<WorkflowResult> {
+  await requireAdmin();
+  await removeDraft(practiceId, index);
+  const admin = getAdminClient();
+  const { data } = await admin
+    .from("practices")
+    .select("log")
+    .eq("id", practiceId)
+    .maybeSingle();
+  if (data) {
+    const log: LogEvent[] = Array.isArray(data.log) ? (data.log as LogEvent[]) : [];
+    log.push({ action: "bozza_rimossa", at: stamp() });
+    await admin.from("practices").update({ log }).eq("id", practiceId);
+  }
+  revalidatePath(`/crm/pratiche/${practiceId}`);
+  revalidatePath("/area-riservata/documenti");
+  return { ok: true };
+}
+
+/*
+  Avvisa il cliente che c'e una bozza da completare per una voce. Stesso schema
+  di rejectDocument: email + notifica in-app + action_owner CLIENT + log.
+  Richiede che la voce abbia una bozza (altrimenti non c'e nulla da segnalare).
+*/
+export async function notifyDraftReadyAction(
+  practiceId: string,
+  index: number,
+): Promise<WorkflowResult> {
+  await requireAdmin();
+  const admin = getAdminClient();
+  const { data } = await admin
+    .from("practices")
+    .select("client_email, checklist, communications, log")
+    .eq("id", practiceId)
+    .maybeSingle();
+  if (!data) return { ok: false, error: "Pratica non trovata." };
+
+  const checklist = Array.isArray(data.checklist)
+    ? (data.checklist as ChecklistItem[])
+    : [];
+  const item = checklist[index];
+  if (!item) return { ok: false, error: "Voce non trovata." };
+  if (!item.draft) return { ok: false, error: "Nessuna bozza da segnalare." };
+
+  const label = item.label || "Documento";
+  const { communications, log } = loadArrays(data);
+  const locale = await getCommsLocaleForPractice(practiceId);
+
+  if (data.client_email) {
+    const notice = await notifyDraftReady(data.client_email, label, { locale });
+    if (notice.sent) {
+      communications.push({
+        channel: "EMAIL",
+        direction: "OUTBOUND",
+        source: "AUTO",
+        subject: notice.subject,
+        occurredAt: stamp(),
+      });
+      log.push({ action: "email_inviata", at: stamp() });
+    }
+  }
+
+  const notif = draftReadyNotif(label, locale);
+  await pushClientNotificationForPractice(practiceId, {
+    kind: "documento",
+    title: notif.title,
+    body: notif.body,
+    href: "/area-riservata/documenti",
+    dedupeMinutes: 5,
+  });
+
+  log.push({ action: "bozza_notificata", at: stamp() });
+  // La palla passa al cliente: deve scaricare, completare e ricaricare.
+  await admin
+    .from("practices")
+    .update({ communications, log, action_owner: "CLIENT" })
+    .eq("id", practiceId);
+
+  revalidatePath(`/crm/pratiche/${practiceId}`);
+  revalidatePath("/crm/pratiche");
+  revalidatePath("/crm");
+  return { ok: true };
 }
 
 /* ---------------------------------------------------------------------------

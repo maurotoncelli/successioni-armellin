@@ -4146,7 +4146,10 @@
         "err_delete_network": "Deletion failed, try again.",
         "state_da_caricare": "To upload",
         "state_caricato": "Uploaded",
-        "state_da_rifare": "To redo"
+        "state_da_rifare": "To redo",
+        "draft_title": "Lorenzo has prepared a draft for you",
+        "draft_help": "Download it, check and fill in the empty fields if needed, sign where required and re-upload it here.",
+        "draft_download": "Download the draft"
       }
     },
     {

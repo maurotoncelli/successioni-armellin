@@ -66,6 +66,18 @@ export type ChecklistFile = {
   uploadedAt?: string; // ISO timestamp del caricamento
 };
 
+/**
+ * Bozza precompilata da Lorenzo per questa voce/pratica: il cliente la scarica,
+ * completa i campi mancanti, firma e ricarica il documento nei `files`.
+ * NON e' un documento consegnato: non entra in listItemFiles ne cambia lo stato.
+ */
+export type ChecklistDraft = {
+  path: string; // percorso in Storage (privato), cartella drafts/
+  name: string; // nome originale del file bozza
+  uploadedAt: string; // ISO timestamp del caricamento della bozza
+  note?: string; // promemoria di Lorenzo, mostrato al cliente
+};
+
 export type ChecklistItem = {
   label: string;
   required: boolean;
@@ -81,6 +93,13 @@ export type ChecklistItem = {
   filePath?: string; // percorso del primo file in Storage (privato)
   fileName?: string; // nome originale del primo file caricato dal cliente
   uploadedAt?: string; // ISO timestamp dell'ultimo caricamento
+  /** Bozza precompilata da Lorenzo (opzionale), distinta dai file del cliente. */
+  draft?: ChecklistDraft;
+  /**
+   * Origine della voce: "auto" (generata dai dati pratica) o "manual"
+   * (aggiunta a mano da Lorenzo su questa pratica). Assente = "auto" (legacy).
+   */
+  source?: "auto" | "manual";
 };
 
 export type Communication = {

@@ -7,9 +7,12 @@ import {
 } from "@/lib/comms-locale-shared";
 import {
   documentRejectedEmail,
+  draftReadyEmail,
   docsReminderEmail,
+  docsReminderMandateLine,
   finalDocsEmail,
   invoiceEmail,
+  mandateReminderEmail,
   reviewEmail,
   statusEmailCopy,
   taxesEmail,
@@ -357,17 +360,59 @@ export async function notifyDocumentRejected(
   return { sent, subject: tpl.subject };
 }
 
-export async function notifyDocsReminder(
+export async function notifyDraftReady(
   to: string,
+  docLabel: string,
   opts?: { locale?: string },
 ): Promise<{ sent: boolean; subject: string }> {
   const locale = resolveLocale(opts?.locale);
-  const tpl = docsReminderEmail(locale);
+  const tpl = draftReadyEmail(docLabel, locale, esc);
   const html = emailLayout({
     heading: tpl.heading,
     bodyHtml: tpl.bodyHtml,
     ctaLabel: tpl.ctaLabel,
     ctaHref: `${areaUrl()}/documenti`,
+    locale,
+  });
+  const { sent } = await sendEmail({ to, subject: tpl.subject, html });
+  return { sent, subject: tpl.subject };
+}
+
+export async function notifyDocsReminder(
+  to: string,
+  opts?: { locale?: string; includeMandate?: boolean },
+): Promise<{ sent: boolean; subject: string }> {
+  const locale = resolveLocale(opts?.locale);
+  const tpl = docsReminderEmail(locale);
+  // Se manca anche la firma del mandato, UNA sola email: sollecito documenti
+  // con una riga in piu (evita di tempestare il cliente di messaggi separati).
+  const mandateLine = opts?.includeMandate
+    ? `<p style="margin:10px 0 0;padding:10px 12px;background:#f4f5f3;border-radius:8px">${docsReminderMandateLine(locale)}</p>`
+    : "";
+  const html = emailLayout({
+    heading: tpl.heading,
+    bodyHtml: tpl.bodyHtml + mandateLine,
+    ctaLabel: tpl.ctaLabel,
+    ctaHref: `${areaUrl()}/documenti`,
+    locale,
+  });
+  const { sent } = await sendEmail({ to, subject: tpl.subject, html });
+  return { sent, subject: tpl.subject };
+}
+
+// Manca SOLO la firma del mandato (documenti a posto): email dedicata con
+// link diretto alla pagina del mandato nell'area personale.
+export async function notifyMandateReminder(
+  to: string,
+  opts?: { locale?: string },
+): Promise<{ sent: boolean; subject: string }> {
+  const locale = resolveLocale(opts?.locale);
+  const tpl = mandateReminderEmail(locale);
+  const html = emailLayout({
+    heading: tpl.heading,
+    bodyHtml: tpl.bodyHtml,
+    ctaLabel: tpl.ctaLabel,
+    ctaHref: `${areaUrl()}/mandato`,
     locale,
   });
   const { sent } = await sendEmail({ to, subject: tpl.subject, html });

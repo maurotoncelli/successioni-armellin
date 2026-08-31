@@ -4132,7 +4132,10 @@
         "err_delete_network": "Silme başarısız, tekrar deneyin.",
         "state_da_caricare": "Yüklenecek",
         "state_caricato": "Yüklendi",
-        "state_da_rifare": "Yeniden yapılacak"
+        "state_da_rifare": "Yeniden yapılacak",
+        "draft_title": "Lorenzo sizin için bir taslak hazırladı",
+        "draft_help": "İndirin, kontrol edin ve gerekirse boş alanları doldurun, gereken yeri imzalayın ve buraya yeniden yükleyin.",
+        "draft_download": "Taslağı indir"
       }
     },
     {

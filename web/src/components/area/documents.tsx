@@ -36,6 +36,8 @@ export type DocItem = {
   files: string[];
   /** Modelli scaricabili (risolti server-side dal catalogo CRM). */
   templates?: { href: string; name: string }[];
+  /** Bozza precompilata da Lorenzo per questa voce (da scaricare e ricaricare). */
+  draft?: { note?: string };
 };
 
 const ACCEPT = ".pdf,.jpg,.jpeg,.png";
@@ -248,6 +250,9 @@ export function DocumentsClient({
                     {d.help}
                   </p>
                 )}
+                {d.draft && (
+                  <DocDraft index={d.index} note={d.draft.note} labels={labels} />
+                )}
                 <DocTemplates
                   label={d.label}
                   templates={d.templates}
@@ -382,6 +387,38 @@ function DocStateBadge({
   };
   const meta = map[state];
   return <ToneBadge tone={meta.tone}>{meta.label}</ToneBadge>;
+}
+
+/*
+  Bozza precompilata da Lorenzo per questa specifica voce/pratica: il cliente la
+  scarica (GET autenticata sulla propria pratica), completa/firma e la ricarica
+  nella voce con lo stesso upload dei documenti. Ha priorita visiva sui modelli
+  vuoti del catalogo, che restano sotto come alternativa generica.
+*/
+function DocDraft({
+  index,
+  note,
+  labels,
+}: {
+  index: number;
+  note?: string;
+  labels: DocsUiLabels;
+}) {
+  return (
+    <div className="mt-2 rounded-xl border border-accent/30 bg-accent/10 px-3 py-2.5">
+      <p className="text-xs font-semibold text-text">{labels.draft_title}</p>
+      <p className="mt-1 text-xs text-text-muted">{note?.trim() || labels.draft_help}</p>
+      <a
+        href={`/api/area/documents/draft?index=${index}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-2 inline-flex items-start gap-1.5 text-xs font-medium text-accent underline underline-offset-2 hover:text-accent-dark"
+      >
+        <Download className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+        {labels.draft_download}
+      </a>
+    </div>
+  );
 }
 
 /*

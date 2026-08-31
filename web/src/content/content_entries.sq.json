@@ -4132,7 +4132,10 @@
         "err_delete_network": "Fshirja nuk u krye, provoni përsëri.",
         "state_da_caricare": "Për t'u ngarkuar",
         "state_caricato": "Ngarkuar",
-        "state_da_rifare": "Për t'u ribërë"
+        "state_da_rifare": "Për t'u ribërë",
+        "draft_title": "Lorenzo përgatiti një skicë për ju",
+        "draft_help": "Shkarkojeni, kontrolloni dhe plotësoni fushat bosh nëse duhen, firmoseni ku kërkohet dhe ringarkojeni këtu.",
+        "draft_download": "Shkarko skicën"
       }
     },
     {
