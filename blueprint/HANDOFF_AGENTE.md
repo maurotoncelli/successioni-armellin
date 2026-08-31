@@ -1,6 +1,6 @@
 # HANDOFF per il prossimo agente
 
-> Documento di passaggio di consegne. Aggiornato: **2026-07-27**.
+> Documento di passaggio di consegne. Aggiornato: **2026-08-30**.
 > Scopo: permettere a un nuovo agente (senza contesto) di riprendere il lavoro.
 > Riferimenti chiave: @RUNBOOK_GoLive (procedura go-live), @SPEC_Env_Vars,
 > @DOMANDE_PER_LORENZO, @PROSSIMO_INCONTRO_LORENZO, @07_Stack.
@@ -15,6 +15,70 @@ Chat precedente TR/FR/SQ + EN/AR + SEO:
 **NON committare** `bozza video/` (asset untracked).  
 **NON toccare** `web/src/app/crm/**` per i18n (CRM sempre IT/LTR).  
 **Traduzioni UI = agente** (niente OpenAI/API). Preferenza Mauro: subagent **Composer 2.5** per le mappe stringhe.
+
+---
+
+## ★★ SEO PRODUZIONE (29/08) — noindex OK
+
+Verificato live su `https://www.successioniarmellin.it` (codice + HTML + header HTTP).
+
+- **Sito pubblico indicizzabile**: home e pagine chiave (tariffe, preventivo, come funziona, guide, chi sono, contatti, FAQ, strumenti, documenti, privacy, cookie, garanzia + home EN/AR/DE) **senza** meta `robots=noindex` e **senza** header `X-Robots-Tag`. Modalità offline CRM **spenta** (quella mette noindex site-wide).
+- `robots.txt`: `Allow: /` + Disallow solo su `/crm`, `/crm-login`, `/area-riservata`, `/api/`, `/brogliaccio`, `/checkout`, `/preventivo/grazie`. Sitemap dichiarata.
+- Sitemap: **242 URL**, tutti su `www.successioniarmellin.it`, nessuna pagina privata.
+- Canonical + hreflang (it + x-default + 10 lingue) ok. Apex `successioniarmellin.it` → **308** verso www.
+- `noindex` **voluti** (flusso/privato): `/checkout`, `/checkout/conferma`, `/preventivo/grazie`, `/crm`, `/crm-login`, `/area-riservata`.
+
+## ★★ PULIZIA PRATICHE DI PROVA (30/08)
+
+Richiesta Mauro, due passate in produzione (Supabase). **Tabella `practices` ora vuota.**
+
+| Codice | Nome | Stato | Note |
+|---|---|---|---|
+| `SUC-2026-0033` | Lucia Jason | CHIUSA / PAID | Test su email Mauro. Pratica + 6 file Storage + contatto finto. Profilo auth Mauro sganciato, account non toccato. |
+| `SUC-2026-0032` | Pippo Gay | PAGATO / PAID | Test su email Lorenzo, `contact_id` già null. Solo pratica. |
+| `SUC-2026-0031` | test di prova | LEAD / NONE | Email finta. Pratica + contatto orfano. |
+| `SUC-2026-0034` | (anonima) | LEAD / PENDING | Checkout abbandonato. Solo pratica (eventi Stripe restano con `practice_id` null). |
+| `SUC-2026-0035` | (anonima) | LEAD / PENDING | Idem 0034. |
+
+**Contatti ancora in rubrica** (0 pratiche, non toccati): Carla Toncelli, Mauro V., Francesca Baldacci, Matilde Maria Francesca Bandecca. Chiedere a Mauro se vanno tenuti.
+
+Script bulk `web/scripts/cleanup-test-practices.mjs` **non** usato in `--delete`. Delete mirato (Storage ricorsivo, unlink profile, cascade notifiche).
+
+---
+
+## ★★ GOOGLE ADS + TRACCIAMENTO CONVERSIONI (27/08)
+
+**Stato: tracciamento COMPLETO e verificato in produzione. Campagne: in creazione (guidata a Mauro/Lorenzo nella UI Ads).**
+
+**Account Ads** (login `studio@successioniarmellin.it`): ID cliente **469-614-3939**.
+Google ha obbligato a creare una **campagna Smart fittizia** per attivare l'account →
+rimasta come **BOZZA non pubblicata** (non spende). C'è un **credito promo 400€** agganciato.
+Tutti gli ID/label in **`ACCESSI_LOCALE.md`** (sezione "Google Ads").
+
+**3 conversioni create (tutte Sito web / tag, formato `send_to: AW-.../label`):**
+- `Invio modulo per i lead` (Principale) · `Acquisto pratica` = "Acquisto (1)" (Principale) · `Contatto telefono/WhatsApp` (Principale).
+- Duplicato `Acquisto` importato da GA4 ("Configurazione errata") → messo **SECONDARIO** (no doppio conteggio).
+- GA4 `G-TBBB3D04GF` (prop. 545553802) **già collegato** ad Ads.
+
+**Codice (commit `b7963e7`):**
+- `web/src/lib/analytics.ts`: `trackAdsConversion` ora supporta `lead | purchase | contact`.
+  **Fix importante**: le label usano ora `process.env.NEXT_PUBLIC_*` **statico** (l'accesso
+  dinamico `process.env[key]` NON veniva inglobato lato client → le conversioni non partivano).
+- `web/src/components/analytics/contact-tracker.tsx`: click `tel:`/`wa.me` → `trackAdsConversion("contact")` (email resta solo evento GA4).
+- Env su **Vercel (Production)**: `NEXT_PUBLIC_GOOGLE_ADS_ID` + `_LEAD_LABEL` + `_PURCHASE_LABEL` + `_CONTACT_LABEL`. Deploy fatto, `AW-` verificato nell'HTML live.
+- Aggiunto **`.vercelignore`** (`/*` + `!/web`): la CLI caricava tutta la root (GB di `bozza video/`) e il deploy si bloccava. Ora carica solo `web/` (~65 MB).
+
+**Smoke test (subagent browser) = PASS su tutto:** cookie `sa_attr` cattura `gclid`+UTM;
+`gtag` + config `AW-18323297636` presenti; al click telefono partono sia GA4 `contact_click`
+sia il beacon Ads con label `cFHiCPXl3egcEOSqnaFE` e `gclid` propagato. Consent Mode v2 ok
+(conversioni con cookie **dopo** accettazione banner).
+
+**PROSSIMO PASSO (in corso): creare 2 campagne Search (soft-launch ~400€/mese, tilt locale)**
+secondo @09_Go_To_Market. Piano già definito e passato a Mauro (budget Locale 8€/gg + Nazionale 5€/gg,
+"Massimizza clic" con cap CPC 2€ per 2-3 settimane poi "Massimizza conversioni", obiettivi
+Lead+Contatto principali, keyword transazionali + negative, RSA + sitelink + call asset 320 157 0567).
+TODO dopo il lancio: attivare "chiamate dagli annunci" (call asset), ricalibrare bidding sui dati a 4-6 settimane,
+valutare enhanced conversions con email (fase 2).
 
 ---
 
@@ -1451,12 +1515,13 @@ NON toccato**: vedi "resta da fare" in fondo al blocco.
   SEMPLICE 10gg, COMPLETO 15gg, ZERO_STRESS 10gg (Lorenzo deve CONFERMARLI).
   Serve il deploy per vederle online (le entry sono lette dal JSON a build time).
 
-### Blocco 6 — Pulizia pratiche di prova (IN ATTESA CONFERMA MAURO)
+### Blocco 6 — Pulizia pratiche di prova (FATTO 30/08)
 - Script `web/scripts/cleanup-test-practices.mjs`: preview di default,
   `--delete` per cancellare (pratiche + file Storage + contatti orfani).
-  Tiene `SUC-2026-0022` e qualsiasi pratica con documenti reali su Storage.
-- Preview del 15/07: 18 pratiche, 17 da cancellare, da tenere solo la 0022.
-  Mauro deve confermare (dubbio: tenere anche SUC-2026-0020 Mauro PAGATO?).
+  Attenzione: `--delete` toglie TUTTE le pratiche senza doc reali (tranne
+  `KEEP_CODES`); per delete selettive non usarlo alla cieca.
+- **30/08**: CRM pratiche vuoto. Cancellate `0033` Lucia Jason, `0032` Pippo Gay,
+  `0031` test di prova, `0034`/`0035` checkout abbandonati. Vedi sezione in cima.
 
 ## 1. Progetto e stack
 - Monorepo Git. App Next.js (v16, App Router) nella cartella **`web/`** (Root Directory su Vercel = `web`).
@@ -1828,9 +1893,11 @@ renderizzate in UI; blocco `#guida` su /tariffe non renderizzato.
 - Twilio per OTP SMS (login cliente senza email): account con carta di Lorenzo.
 
 ### Pulizie tecniche (Mauro/agente)
-- Bonificare i **3 contatti duplicati** mauro.toncelli@gmail.com (lead di test) e
-  archiviare le pratiche di test (`SUC-2026-0016/18/19/20/22`); l'intestatario della
-  0022 e' "lorenzo armellin" (nome digitato nel checkout di test).
+- **30/08**: CRM pratiche vuoto. Rimosse le prove `0033` Lucia Jason,
+  `0032` Pippo Gay, `0031` test di prova, `0034`/`0035` checkout abbandonati.
+  Rubrica: restano 4 contatti senza pratica (Carla Toncelli, Mauro V.,
+  Francesca Baldacci, Matilde Bandecca) — da confermare se tenere.
+- Storico: vecchie prove `SUC-2026-0016/18/19/20/22` non risultano più nel DB.
 - **Rigenerare le chiavi Supabase** (anon/service_role passate in chat) e **revocare
   i token** Cloudflare (`cfut_`) e Supabase Management (`sbp_`) in ACCESSI_LOCALE.
 - **Rimuovere `ADMIN_PASSWORD`** da Vercel dopo il primo login admin riuscito con 2FA.
