@@ -1,20 +1,28 @@
 import "server-only";
 import { getAdminClient, isAdminConfigured } from "@/lib/supabase/admin";
-import { notifyDocsReminder } from "@/lib/notifications";
+import { notifyDocsReminder, notifyMandateReminder } from "@/lib/notifications";
 import { getCommsLocaleForPractice } from "@/lib/comms-locale";
 import {
   getNotifyEmailPreference,
   pushClientNotificationForPractice,
 } from "@/lib/client-notifications";
-import { docsReminderNotif } from "@/lib/comms-copy";
+import {
+  docsReminderNotif,
+  docsReminderMandateLine,
+  mandateReminderNotif,
+} from "@/lib/comms-copy";
+import { isMandateSigned } from "@/lib/practice-extras";
 import type { Communication, LogEvent } from "@/content/crm-data";
 import type { PracticeRow } from "@/lib/supabase/types";
 
 /*
-  Sollecito automatico documenti (@05): 24h dopo l'avvio (pagamento) e poi
-  ogni 48h finche i documenti obbligatori non sono tutti caricati.
+  Sollecito automatico documenti E firma mandato (@05): 24h dopo l'avvio
+  (pagamento) e poi ogni 48h finche i documenti obbligatori non sono tutti
+  caricati e il mandato non e firmato. UNA sola email per giro:
+  - mancano documenti -> sollecito documenti (con riga mandato se manca anche);
+  - documenti a posto ma mandato non firmato -> email dedicata alla firma.
   Eseguito dal cron Vercel GET /api/cron/docs-reminder. NO-DDL: timestamp
-  dell'ultimo invio nel log pratica (`sollecito_documenti`).
+  dell'ultimo invio nel log pratica (`sollecito_documenti`, cadenza condivisa).
 */
 
 export const DOCS_REMINDER_LOG = "sollecito_documenti";
@@ -75,13 +83,17 @@ export function practiceStartedAt(row: {
   );
 }
 
-export function shouldSendDocsReminder(
+/*
+  Requisiti comuni (stato/pagamento/email/tempi) SENZA guardare cosa manca:
+  documenti e mandato vengono controllati a valle, cosi la cadenza 24h/48h
+  resta condivisa e il cliente non riceve mai due promemoria nello stesso giro.
+*/
+export function reminderCadenceDue(
   row: Pick<
     PracticeRow,
     | "status"
     | "payment_status"
     | "client_email"
-    | "checklist"
     | "log"
     | "paid_at"
     | "opened_at"
@@ -92,7 +104,6 @@ export function shouldSendDocsReminder(
   if (!ELIGIBLE_STATUS.has(row.status)) return false;
   if (row.payment_status !== "PAID") return false;
   if (!row.client_email?.trim()) return false;
-  if (!hasMissingRequiredDocs(row.checklist)) return false;
 
   const started = practiceStartedAt(row);
   if (started == null) return false;
@@ -138,7 +149,22 @@ export async function runDocsReminders(
   result.scanned = rows.length;
 
   for (const row of rows) {
-    if (!shouldSendDocsReminder(row, now)) {
+    if (!reminderCadenceDue(row, now)) {
+      result.skipped += 1;
+      continue;
+    }
+
+    // Cosa manca davvero: documenti obbligatori e/o firma del mandato.
+    // Il mandato vive in _extras.json (Storage): lo si legge solo per le
+    // pratiche gia in cadenza, non per tutte le righe scansionate.
+    const missingDocs = hasMissingRequiredDocs(row.checklist);
+    let missingMandate = false;
+    try {
+      missingMandate = !(await isMandateSigned(row.id));
+    } catch (err) {
+      console.error("[docs-reminder] mandato", row.code, err);
+    }
+    if (!missingDocs && !missingMandate) {
       result.skipped += 1;
       continue;
     }
@@ -151,7 +177,12 @@ export async function runDocsReminders(
 
     const locale = await getCommsLocaleForPractice(row.id);
     try {
-      const notice = await notifyDocsReminder(row.client_email, { locale });
+      const notice = missingDocs
+        ? await notifyDocsReminder(row.client_email, {
+            locale,
+            includeMandate: missingMandate,
+          })
+        : await notifyMandateReminder(row.client_email, { locale });
       if (!notice.sent) {
         result.skipped += 1;
         continue;
@@ -180,12 +211,20 @@ export async function runDocsReminders(
         continue;
       }
 
-      const notif = docsReminderNotif(locale);
+      const notif = missingDocs
+        ? docsReminderNotif(locale)
+        : mandateReminderNotif(locale);
+      const body =
+        missingDocs && missingMandate
+          ? `${notif.body} ${docsReminderMandateLine(locale)}`
+          : notif.body;
       await pushClientNotificationForPractice(row.id, {
         kind: "documento",
         title: notif.title,
-        body: notif.body,
-        href: "/area-riservata/documenti",
+        body,
+        href: missingDocs
+          ? "/area-riservata/documenti"
+          : "/area-riservata/mandato",
         dedupeMinutes: 36 * 60,
       });
 

@@ -157,6 +157,13 @@ export async function getSafeExtras(practiceId: string): Promise<SafeExtras> {
   return toSafe(await readExtras(admin, practiceId));
 }
 
+/** True se il mandato risulta firmato (online o cartaceo ricaricato). */
+export async function isMandateSigned(practiceId: string): Promise<boolean> {
+  const admin = getAdminClient();
+  const extras = await readExtras(admin, practiceId);
+  return Boolean(extras.mandate?.signedAt);
+}
+
 export async function signMandateElectronic(
   practiceId: string,
   signerName: string,
