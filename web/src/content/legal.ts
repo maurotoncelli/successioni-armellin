@@ -336,7 +336,7 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
       { type: "h2", text: "9. Garanzia commerciale \"Soddisfatti o Rimborsati\"" },
       {
         type: "p",
-        text: "Il professionista può offrire, in aggiunta e volontariamente, una garanzia di rimborso alle condizioni indicate nella pagina Garanzia. Tale garanzia è aggiuntiva e non limita i diritti di legge del consumatore.",
+        text: "In aggiunta ai diritti di legge, il professionista offre volontariamente la garanzia commerciale \"Soddisfatti o Rimborsati\" alle condizioni pubblicate nella pagina Garanzia, che costituisce parte integrante delle presenti Condizioni. La garanzia riguarda solo l'onorario professionale pagato, non le imposte di Stato, e non limita i diritti del consumatore.",
       },
       { type: "h2", text: "10. Limitazioni di responsabilità" },
       {
@@ -432,43 +432,81 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
     eyebrow: "Le tue tutele",
     intro:
       "La promessa Soddisfatti o Rimborsati: una tutela in più che offriamo noi, oltre ai tuoi diritti di legge.",
-    updatedAt: "Versione preliminare - condizioni di dettaglio da definire",
-    notice: {
-      tone: "warning",
-      title: "Condizioni in fase di definizione",
-      text:
-        "Casi coperti, importi e tempistiche della garanzia sono in corso di definizione e saranno pubblicati in forma definitiva prima del go-live. " +
-        LANG_NOTE,
-    },
+    updatedAt: "Ultimo aggiornamento: 1 settembre 2026",
+    notice: LANG_NOTICE,
     body: [
       { type: "h2", text: "La promessa" },
       {
         type: "p",
-        text: "Vogliamo che tu sia tranquillo dall'inizio alla fine. Per questo, oltre alle tutele di legge, offriamo volontariamente una garanzia \"Soddisfatti o Rimborsati\": se qualcosa non va come avevamo concordato, ne parliamo e troviamo una soluzione, fino al rimborso nei casi previsti.",
-      },
-      { type: "h2", text: "Come funziona" },
-      {
-        type: "ol",
-        items: [
-          "Ci segnali il problema scrivendoci o dalla tua area personale.",
-          "Verifichiamo insieme la situazione, in modo trasparente.",
-          "Se rientra nei casi coperti, procediamo al rimborso con lo stesso metodo di pagamento, nei tempi indicati. (Casi, importi e tempi specifici: da definire.)",
-        ],
+        text: "Paghi l'onorario in anticipo: è giusto che tu sappia esattamente cosa succede se qualcosa non va. Oltre al recesso di legge (14 giorni), offriamo volontariamente la garanzia commerciale \"Soddisfatti o Rimborsati\". È una tutela in più, non un sostituto dei tuoi diritti di consumatore.",
       },
       {
         type: "callout",
         tone: "info",
         title: "Garanzia e recesso sono due cose diverse",
-        text: "Il recesso è un tuo diritto di legge nei primi 14 giorni (vedi pagina Recesso). La garanzia Soddisfatti o Rimborsati è una promessa commerciale in più, aggiuntiva e volontaria, che non limita in alcun modo i tuoi diritti di consumatore.",
+        text: "Il recesso è un tuo diritto di legge nei primi 14 giorni dalla conclusione del contratto (pagina Recesso). La garanzia Soddisfatti o Rimborsati è una promessa commerciale aggiuntiva e volontaria: copre l'onorario anche oltre quella finestra, nei casi descritti qui. Non limita in alcun modo i tuoi diritti di consumatore.",
+      },
+      { type: "h2", text: "Cosa si rimborsa" },
+      {
+        type: "p",
+        text: "Solo l'onorario professionale che ci hai pagato (pacchetto Semplice, Completo o preventivo su misura), con lo stesso mezzo di pagamento. Mai le imposte, i tributi, i bolli o gli importi versati allo Stato o ad altri enti: non sono nostri e non ci applichiamo ricarico.",
+      },
+      { type: "h2", text: "Casi coperti" },
+      {
+        type: "table",
+        headers: ["Situazione", "Cosa ottieni"],
+        rows: [
+          [
+            "Non possiamo avviare o completare la pratica per causa imputabile allo Studio",
+            "Rimborso del 100% dell'onorario",
+          ],
+          [
+            "La dichiarazione non è ancora stata trasmessa all'Agenzia delle Entrate e non sei soddisfatto del servizio",
+            "Rimborso del 100% dell'onorario, se chiedi la garanzia nei termini sotto",
+          ],
+          [
+            "Errore materiale imputabile a noi (dati, quadri, volture) prima o dopo l'invio",
+            "Correzione a nostre spese. Se la dichiarazione non è ancora inviata e preferisci chiudere, rimborso del 100% dell'onorario",
+          ],
+        ],
+      },
+      {
+        type: "p",
+        text: "Se la dichiarazione è già stata trasmessa correttamente e il dissenso non dipende da un nostro errore, l'onorario non è rimborsabile: il lavoro professionale è stato eseguito. Restano salvi recesso (se ancora esercitabile) e ogni altro diritto di legge.",
+      },
+      { type: "h2", text: "Tempi per chiederla" },
+      {
+        type: "ul",
+        items: [
+          "Entro 14 giorni di calendario dalla nostra comunicazione che non possiamo procedere, oppure",
+          "entro 14 giorni di calendario dalla comunicazione che la pratica è chiusa e i documenti finali sono disponibili, oppure",
+          "entro 14 giorni dalla scoperta di un errore imputabile a noi, se successivo a quelle date.",
+        ],
+      },
+      { type: "h2", text: "Come si chiede" },
+      {
+        type: "ol",
+        items: [
+          "Scrivici a {{email}} o via PEC {{pec}}, oppure dalla tua area personale (stesso canale del recesso va bene: indica che si tratta della garanzia commerciale).",
+          "Racconta cosa non ha funzionato e, se utile, allega riferimenti (numero pratica, date).",
+          "Ti rispondiamo per iscritto entro 7 giorni lavorativi con esito motivato (accoglimento, proposta di correzione, o diniego nei casi non coperti).",
+          "Se il rimborso è dovuto, parte con lo stesso metodo di pagamento entro 14 giorni dalla nostra accettazione, senza costi a tuo carico.",
+        ],
       },
       { type: "h2", text: "Cosa non copre" },
       {
         type: "ul",
         items: [
-          "Le imposte e i tributi dovuti allo Stato (non sono nostro onorario e non hanno ricarico).",
-          "Ritardi o esiti dipendenti da documenti errati, incompleti o forniti in ritardo dal cliente.",
-          "Tempi e decisioni di enti terzi (Agenzia delle Entrate, Catasto, banche).",
+          "Imposte, tributi, bolli e versamenti allo Stato o ad enti terzi.",
+          "Ritardi, errori o sanzioni dovuti a documenti o dati incompleti, inesatti o tardivi da parte tua.",
+          "Tempi e decisioni di Agenzia delle Entrate, Catasto, banche o altri terzi.",
+          "Mancata firma del mandato o della dichiarazione da parte tua, o interruzione della pratica per tua scelta dopo un invio già effettuato in modo corretto.",
+          "Servizi esclusi dal pacchetto acquistato (contenzioso, notarile, attività non previste), salvo diverso accordo scritto.",
         ],
+      },
+      {
+        type: "p",
+        text: "Queste condizioni si applicano agli acquisti conclusi dal 1 settembre 2026. Per i rapporti già in corso resta fermo quanto accettato al checkout; in caso di dubbio, si applica la soluzione più favorevole al consumatore.",
       },
     ],
     cta: { label: "Calcola il preventivo gratis", href: "/preventivo" },

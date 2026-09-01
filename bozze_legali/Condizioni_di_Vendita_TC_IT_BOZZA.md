@@ -59,8 +59,9 @@
 8.5 Il rimborso eventualmente dovuto e effettuato con lo stesso mezzo di pagamento, senza ritardo e comunque entro 14 giorni.
 
 ## 9. Garanzia commerciale "Soddisfatti o Rimborsati" (volontaria)
-9.1 Il professionista puo offrire, in aggiunta e volontariamente, una garanzia di rimborso alle condizioni indicate sul sito. [DA DEFINIRE casi, importi, tempistiche]
-9.2 Tale garanzia e aggiuntiva e non limita i diritti di legge del consumatore.
+9.1 In aggiunta ai diritti di legge, il professionista offre volontariamente la garanzia commerciale "Soddisfatti o Rimborsati". Condizioni complete (casi, importi, termini, come chiederla): pagina /garanzia del sito, parte integrante di queste Condizioni.
+9.2 La garanzia riguarda solo l'onorario professionale pagato, non le imposte di Stato. Sintesi: rimborso 100% dell'onorario se lo Studio non puo avviare/completare per causa propria, o se la dichiarazione non e ancora trasmessa all'AdE e il cliente non e soddisfatto (richiesta entro 14 giorni dalle comunicazioni previste); errore imputabile allo Studio = correzione a nostre spese (e rimborso 100% se non ancora inviata e il cliente vuole chiudere). Dopo trasmissione corretta, niente rimborso onorario per mero ripensamento.
+9.3 Tale garanzia e aggiuntiva e non limita i diritti di legge del consumatore.
 
 ## 10. Limitazioni di responsabilita
 10.1 Il professionista esegue l'incarico secondo diligenza professionale (obbligazione di mezzi). Salvo dolo o colpa grave, la responsabilita e limitata, nei limiti di legge, all'importo dell'onorario corrisposto per la pratica. [DA VALIDARE legale]

@@ -1887,7 +1887,7 @@ renderizzate in UI; blocco `#guida` su /tariffe non renderizzato.
   nell’estratto home. Evitare claim tipo “da sempre” se non verificabili
   (albo Pisa dal 21/01/2022). Domande già predisposte in chat 28/07.
 - Test XML reale col modulo di controllo AdE (Desktop Telematico) su una pratica vera.
-- Garanzia "Soddisfatti o Rimborsati": condizioni ancora "da definire" su `/garanzia`.
+- Garanzia "Soddisfatti o Rimborsati": condizioni pubblicate su `/garanzia` (1/09/2026): rimborso 100% onorario se non partiamo/chiudiamo per causa nostra o se dichiarazione non ancora inviata AdE; errore nostro = correzione a nostre spese. Imposte mai rimborsate. IT fa fede. Da far validare a un legale.
 - DPA OpenAI da accettare nel pannello OpenAI (GDPR art. 28).
 - WhatsApp Cloud API (notifiche): serve Meta Business verificato di Lorenzo + costi.
 - Twilio per OTP SMS (login cliente senza email): account con carta di Lorenzo.
