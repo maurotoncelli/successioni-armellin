@@ -86,32 +86,25 @@ export function decodeHeirs(raw: string | undefined): HeirsComposition | null {
   return totalHeirs(c) > 0 ? c : null;
 }
 
-/** Capienza pacchetto Completo in vetrina (1–3 immobili). Oltre → su misura. */
-export const COMPLETO_MAX_PROPERTIES = 3;
-
 export function computeEsito(input: {
   /** Conservato per analytics/CRM: NON influenza l'esito (i pacchetti
    *  coprono anche le successioni con testamento; Riunione 2 + conferma Mauro). */
   hasWill?: string;
   allDirectLine: boolean;
   hasRealEstate: string;
-  /** Numero immobili se hasRealEstate === "si". Oltre Completo → esito C. */
+  /** Numero immobili se hasRealEstate === "si". NON influenza l'esito: oltre
+   *  i 3 inclusi nel Completo scatta il sovrapprezzo (lib/order.ts), non il
+   *  su misura (decisione 05/09). Conservato per il calcolo del prezzo. */
   realEstateCount?: number | null;
   hasOther: string;
   over100k?: string;
 }): Esito {
-  // Su misura: altri beni (quote, aziende…), immobili "non so", oppure oltre
-  // la capienza Completo (niente 790 in vetrina; niente +60 per ora).
+  // Su misura SOLO per i casi speciali: altri beni (quote societarie, aziende,
+  // imbarcazioni…) oppure immobili "non so". Il numero di immobili e di eredi
+  // resta nei pacchetti con sovrapprezzo (+60 per immobile oltre il 3o, +60
+  // per erede oltre il 5o nel Completo, vedi lib/order.ts).
   // Il testamento resta nei pacchetti (serve solo come documento in checklist).
   if (input.hasOther === "si" || input.hasRealEstate === "nonso") return "c";
-  if (
-    input.hasRealEstate === "si" &&
-    typeof input.realEstateCount === "number" &&
-    Number.isFinite(input.realEstateCount) &&
-    input.realEstateCount > COMPLETO_MAX_PROPERTIES
-  ) {
-    return "c";
-  }
   if (input.hasRealEstate === "no" && input.allDirectLine) {
     // L'esonero art. 28 c.7 TUS vale solo con attivo ereditario <= 100.000 EUR:
     // sopra soglia la dichiarazione e' dovuta anche in linea retta -> Semplice.

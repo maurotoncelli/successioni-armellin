@@ -815,7 +815,7 @@
       "key": "su_misura_text",
       "locale": "de",
       "is_published": true,
-      "value": "Mehr als 3 Immobilien, Agrarflächen, Unternehmen oder Anteile? Individueller Kostenvoranschlag — ohne Überraschungen."
+      "value": "Agrarflächen, Unternehmen, Gesellschaftsanteile, Boote oder andere besondere Vermögenswerte? Individueller Kostenvoranschlag — ohne Überraschungen."
     },
     {
       "collection": "tariffe",
@@ -4407,7 +4407,8 @@
         "empty_order": "Keine Akte mit zu zahlendem Paket. Erst Kostenvoranschlag — dann passendes Paket und Zahlungsverknüpfung.",
         "empty_cta": "Zum Kostenvoranschlag →",
         "meta_title": "Bestellung abschließen",
-        "extra_property": "Zusätzliche Immobilien ({extra} × {fee}€)"
+        "extra_property": "Zusätzliche Immobilien ({extra} × {fee}€)",
+        "extra_heir": "Zusätzliche Erben ({extra} × {fee}€)"
       }
     },
     {

@@ -45,6 +45,8 @@ export type CheckoutUiLabels = {
   total_fee: string;
   /** Template surcharge: `{extra}` × `{fee}` */
   extra_property: string;
+  /** Template surcharge eredi oltre capienza: `{extra}` × `{fee}` */
+  extra_heir: string;
   empty_order: string;
   empty_cta: string;
   meta_title: string;
@@ -202,6 +204,7 @@ export const CHECKOUT_UI_IT: CheckoutUiLabels = {
     "Pagamento annullato. Nessun addebito effettuato: puoi riprovare quando vuoi.",
   total_fee: "Totale onorario",
   extra_property: "Immobili aggiuntivi ({extra} × {fee}€)",
+  extra_heir: "Eredi aggiuntivi ({extra} × {fee}€)",
   empty_order:
     "Non risulta una pratica con un pacchetto da pagare. Calcola prima il preventivo: ti proponiamo il pacchetto giusto e colleghiamo il pagamento alla tua pratica.",
   empty_cta: "Vai al preventivo →",

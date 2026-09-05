@@ -1,0 +1,6 @@
+# Su Vercel il "Root Directory" del progetto e' web/, quindi al deploy serve
+# caricare solo quella cartella. Tutto il resto (video 4K, foto RAW/PSD,
+# blueprint, materiali di lavoro) e' pesante e inutile al build: lo escludiamo
+# per rendere l'upload veloce ed evitare deploy bloccati.
+/*
+!/web

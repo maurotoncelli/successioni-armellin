@@ -815,7 +815,7 @@
       "key": "su_misura_text",
       "locale": "fr",
       "is_published": true,
-      "value": "Plus de 3 biens, terrains agricoles, entreprises ou parts sociales ? Chaque cas est différent : nous préparons un devis sur mesure, sans surprise."
+      "value": "Terrains agricoles, entreprises, parts sociales, bateaux ou autres biens particuliers ? Chaque cas est différent : nous préparons un devis sur mesure, sans surprise."
     },
     {
       "collection": "tariffe",
@@ -969,7 +969,7 @@
       "key": "su_misura_body",
       "locale": "fr",
       "is_published": true,
-      "value": "Plus de 3 biens, terrains agricoles, entreprises ou parts sociales ? Les cas les plus complexes ne rentrent pas dans un forfait standard : nous étudions le vôtre et préparons un devis dédié, sans surprise."
+      "value": "Terrains agricoles, entreprises, parts sociales, bateaux ou autres biens particuliers ? Les cas les plus complexes ne rentrent pas dans un forfait standard : nous étudions le vôtre et préparons un devis dédié, sans surprise."
     },
     {
       "collection": "pacchetti",
@@ -4407,7 +4407,8 @@
         "empty_order": "Aucun dossier avec un forfait à payer. Calculez d'abord le devis : nous vous proposons le bon forfait et associons le paiement à votre dossier.",
         "empty_cta": "Aller au devis →",
         "meta_title": "Finaliser la commande",
-        "extra_property": "Biens immobiliers supplémentaires ({extra} × {fee}€)"
+        "extra_property": "Biens immobiliers supplémentaires ({extra} × {fee}€)",
+        "extra_heir": "Héritiers supplémentaires ({extra} × {fee}€)"
       }
     },
     {

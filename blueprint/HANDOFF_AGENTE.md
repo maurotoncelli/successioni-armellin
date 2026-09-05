@@ -1,6 +1,6 @@
 # HANDOFF per il prossimo agente
 
-> Documento di passaggio di consegne. Aggiornato: **2026-08-30**.
+> Documento di passaggio di consegne. Aggiornato: **2026-09-05**.
 > Scopo: permettere a un nuovo agente (senza contesto) di riprendere il lavoro.
 > Riferimenti chiave: @RUNBOOK_GoLive (procedura go-live), @SPEC_Env_Vars,
 > @DOMANDE_PER_LORENZO, @PROSSIMO_INCONTRO_LORENZO, @07_Stack.
@@ -15,6 +15,59 @@ Chat precedente TR/FR/SQ + EN/AR + SEO:
 **NON committare** `bozza video/` (asset untracked).  
 **NON toccare** `web/src/app/crm/**` per i18n (CRM sempre IT/LTR).  
 **Traduzioni UI = agente** (niente OpenAI/API). Preferenza Mauro: subagent **Composer 2.5** per le mappe stringhe.
+
+---
+
+## ★★ ADD-ON +60 IMMOBILE / +60 EREDE OLTRE CAPIENZA COMPLETO (05/09)
+
+**Decisione Mauro/Lorenzo:** la vetrina resta **290 / 490 / su misura**, ma il Completo
+copre fino a **3 immobili e 5 eredi** e oltre si aggiungono **+60 € per immobile** e
+**+60 € per erede** invece di mandare a su misura. Gli extra compaiono **solo al
+risultato** del quiz (es. «490 + Immobili aggiuntivi (1 × 60€) + Eredi aggiuntivi (2 × 60€) = 670»),
+nel checkout, nell'email di riepilogo e nel link CRM. **Casi speciali** (altri beni:
+quote societarie, aziende, imbarcazioni…, immobili «non so») → ancora **su misura** (esito C).
+
+Codice:
+- `web/src/lib/order.ts`: `buildOrder` ora prende anche `heirsCount`; regole in
+  `SURCHARGE_RULES` (solo `COMPLETO`: 3 immobili / 5 eredi inclusi). Costo immobile =
+  `packages.extra_property_fee` (CRM Listino; **vuoto = 60 predefinito, 0 = spento**),
+  costo erede = `EXTRA_HEIR_FEE` fisso 60. Righe `SURCHARGE` `EXTRA_PROPERTY` / `EXTRA_HEIR`.
+- `web/src/lib/quote.ts`: `computeEsito` **non** manda più a C per >3 immobili
+  (rimosso `COMPLETO_MAX_PROPERTIES`); C solo per `hasOther=si` o `hasRealEstate=nonso`.
+- `heirsCount` passato ovunque si calcola il prezzo: grazie (da `comp`), checkout page
+  (pratica → `comp` → `heirs`), `payments.ts` (`row.heirs_count`), `preventivo/actions.ts`.
+- Label i18n: `site_ui.checkout_ui.extra_heir` in 11 lingue (+ `CHECKOUT_UI_IT`).
+  Copy `tariffe.su_misura_text` / `pacchetti.su_misura_body` senza «oltre 3 immobili» (11 lingue).
+- Fixture `site.ts` COMPLETO `extraPropertyFee: 60`; `scripts/update-prod-content.mjs` allineato.
+- **DB prod già aggiornato 05/09** (DML): `packages.COMPLETO.extra_property_fee = 60`.
+- Semplice: nessun sovrapprezzo (anche con molti eredi). Nessun tetto massimo a immobili/eredi
+  self-serve: se servisse, aggiungerlo in `computeEsito`.
+
+---
+
+## ★ HOME: BARRA CONTATORE «250+ successioni gestite» (05/09)
+
+Sotto la `TrustBar` in home: `components/site/success-counter.tsx` (server, legge
+`home.success_counter` → `{target, suffix, eyebrow, label, note}` in 11 lingue) →
+`success-counter-band.tsx` + `count-up.tsx` (client: count-up con IntersectionObserver +
+rAF, DOM diretto senza setState, rispetta `prefers-reduced-motion`, numero sempre LTR).
+Per cambiare il numero basta editare `target` nei `content_entries.<locale>.json`.
+
+---
+
+## ★★ GARANZIA SODDISFATTI O RIMBORSATI (01/09)
+
+**Live** su `/garanzia` (tutte le lingue). Commit `a3b8ec8`, deploy Vercel prod
+alias `www.successioniarmellin.it`. Niente più avviso «in fase di definizione / prima del go-live».
+
+Condizioni (solo **onorario**, mai imposte/bolli):
+- 100% se lo Studio non avvia/completa per causa propria, o se la dichiarazione **non è ancora inviata** AdE e il cliente non è soddisfatto (richiesta entro 14 gg dalle comunicazioni previste);
+- errore materiale nostro → correzione a nostre spese; se non ancora inviata e vuole chiudere → 100%;
+- già inviata **in modo corretto** e non è errore nostro → niente rimborso onorario.
+Risposta 7 gg lavorativi; rimborso stesso metodo entro 14 gg. Recesso 14 gg resta distinto.
+IT fa fede. **Da far validare a un legale** (non è consulenza).
+
+T&C art. 9 allineato (pagina Garanzia parte integrante). Bozza `bozze_legali/Condizioni_di_Vendita_TC_IT_BOZZA.md` aggiornata.
 
 ---
 
@@ -46,39 +99,47 @@ Script bulk `web/scripts/cleanup-test-practices.mjs` **non** usato in `--delete`
 
 ---
 
-## ★★ GOOGLE ADS + TRACCIAMENTO CONVERSIONI (27/08)
+## ★★ GOOGLE ADS + CAMPAGNE SEARCH (aggiornato 02/09)
 
-**Stato: tracciamento COMPLETO e verificato in produzione. Campagne: in creazione (guidata a Mauro/Lorenzo nella UI Ads).**
+**Tracciamento: COMPLETO** (27/08, invariato). **Campagne: create in UI con Mauro; da rifinire.**
 
-**Account Ads** (login `studio@successioniarmellin.it`): ID cliente **469-614-3939**.
-Google ha obbligato a creare una **campagna Smart fittizia** per attivare l'account →
-rimasta come **BOZZA non pubblicata** (non spende). C'è un **credito promo 400€** agganciato.
-Tutti gli ID/label in **`ACCESSI_LOCALE.md`** (sezione "Google Ads").
+**Account** `studio@successioniarmellin.it` · ID **469-614-3939**. Credito promo **400€**.
+ID/label conversioni in **`ACCESSI_LOCALE.md`**. GA4 `G-TBBB3D04GF` collegato.
+Conversioni Principali: Lead + Acquisto (1) + Contatto tel/WA. Duplicato GA4 «Acquisto» = **secondario**.
+Codice: commit `b7963e7` (`trackAdsConversion` lead|purchase|contact, label `NEXT_PUBLIC_*` statiche).
+Smoke test 27/08 PASS (gclid, `AW-18323297636`, Consent Mode v2).
 
-**3 conversioni create (tutte Sito web / tag, formato `send_to: AW-.../label`):**
-- `Invio modulo per i lead` (Principale) · `Acquisto pratica` = "Acquisto (1)" (Principale) · `Contatto telefono/WhatsApp` (Principale).
-- Duplicato `Acquisto` importato da GA4 ("Configurazione errata") → messo **SECONDARIO** (no doppio conteggio).
-- GA4 `G-TBBB3D04GF` (prop. 545553802) **già collegato** ad Ads.
+### Soft launch (~400€/mese, tilt locale) — @09
 
-**Codice (commit `b7963e7`):**
-- `web/src/lib/analytics.ts`: `trackAdsConversion` ora supporta `lead | purchase | contact`.
-  **Fix importante**: le label usano ora `process.env.NEXT_PUBLIC_*` **statico** (l'accesso
-  dinamico `process.env[key]` NON veniva inglobato lato client → le conversioni non partivano).
-- `web/src/components/analytics/contact-tracker.tsx`: click `tel:`/`wa.me` → `trackAdsConversion("contact")` (email resta solo evento GA4).
-- Env su **Vercel (Production)**: `NEXT_PUBLIC_GOOGLE_ADS_ID` + `_LEAD_LABEL` + `_PURCHASE_LABEL` + `_CONTACT_LABEL`. Deploy fatto, `AW-` verificato nell'HTML live.
-- Aggiunto **`.vercelignore`** (`/*` + `!/web`): la CLI caricava tutta la root (GB di `bozza video/`) e il deploy si bloccava. Ora carica solo `web/` (~65 MB).
+| Campagna | Budget | Targeting | Offerte | Stato |
+|---|---|---|---|---|
+| `Search \| Locale Toscana \| Soft launch` | **8 €/gg** | Comuni Valdera (Pontedera + 10) · Presenza · IT | Massimizza i clic | **Pubblicata 27/08** |
+| `Search \| Nazionale \| Soft launch` (in UI anche `Leads-Search-2 / soft launch / Nazionale`) | **5 €/gg** | Italia · Presenza · IT | Massimizza i clic | **Pubblicata** (path ads `online > preventivo`); sitelink da re-associare |
+| Smart fittizia «Successioni Armellin» | — | — | — | Google l’ha fatta partire: **messa in pausa 27/08 sera**. Non riattivare |
 
-**Smoke test (subagent browser) = PASS su tutto:** cookie `sa_attr` cattura `gclid`+UTM;
-`gtag` + config `AW-18323297636` presenti; al click telefono partono sia GA4 `contact_click`
-sia il beacon Ads con label `cFHiCPXl3egcEOSqnaFE` e `gclid` propagato. Consent Mode v2 ok
-(conversioni con cookie **dopo** accettazione banner).
+Reti: solo Search (niente Display/Partner). AI Max **off**. Asset creati automaticamente **off**.
+Broad match **off**. Keyword: 8 a campagna (frase + 1 esatta), transazionali.
+Elenco negative condiviso **`escluse`** (20, corrispondenza generica: gratis, pdf, precompilata, AdE, fai da te, corsi, …) **agganciato alla Locale**. **Agganciarlo anche alla Nazionale** se non già fatto.
 
-**PROSSIMO PASSO (in corso): creare 2 campagne Search (soft-launch ~400€/mese, tilt locale)**
-secondo @09_Go_To_Market. Piano già definito e passato a Mauro (budget Locale 8€/gg + Nazionale 5€/gg,
-"Massimizza clic" con cap CPC 2€ per 2-3 settimane poi "Massimizza conversioni", obiettivi
-Lead+Contatto principali, keyword transazionali + negative, RSA + sitelink + call asset 320 157 0567).
-TODO dopo il lancio: attivare "chiamate dagli annunci" (call asset), ricalibrare bidding sui dati a 4-6 settimane,
-valutare enhanced conversions con email (fase 2).
+RSA: titoli/descrizioni da piano (Locale Pontedera/Valdera; Nazionale remoto/prezzo). Call asset Locale: **320 157 0567**.
+Sitelink previsti: Preventivo, Pacchetti, Chi sono, FAQ. **Sulla Nazionale i sitelink creati in wizard sono spariti** (glitch `Annunci: Nessuno` + verifica identità) → ricrearli/associare dalla libreria.
+
+**Cap CPC 2 €:** in creazione si è scelto Clic; dopo, «Modifica strategia» proponeva solo conversioni/CPA/ROAS. **Cap non impostato.** Con 8€/gg e frase il CPC stimato era ~1,4€. Riprovare da Impostazioni → Offerte (non dal menu Copia/Pausa).
+
+### Problema titolo «Collegio Geometri… n. 1969» (31/08)
+
+Google **non** usa i titoli RSA: pesca l’Albo dal sito (JSON-LD `memberOf` + trust bar). Causa: **Impostazione annunci dinamici della rete di ricerca (DSA)** accesa (titoli personalizzati dal sito). Asset automatici e AI Max erano già off.
+**Da fare:** Impostazioni campagna (Locale **e** Nazionale) → riga DSA → **non** inserire il dominio, **disattivare** / Annulla se il campo Website è vuoto. Poi pinnare 3 titoli RSA (pos. 1–3). Non mettere l’Albo nei titoli Ads; sul sito resta (E-E-A-T).
+
+### Blocchi aperti Ads
+
+- **Verifica inserzionista** (banner arancione): SMS/chiamata sul cell **di Lorenzo**. Senza, Google può fermare gli annunci. Non usare un altro numero.
+- Sitelink + elenco `escluse` sulla **Nazionale**.
+- Spegnere DSA se ancora on; pinnare titoli.
+- Cap CPC 2€ se il campo c’è.
+- Dopo 2–3 settimane dati: passare a Massimizza conversioni; a 4–6 settimane ricalibrare split. Enhanced conversions email = fase 2.
+
+TODO vecchio ancora valido: call asset «chiamate dagli annunci» se non coperto dal numero già aggiunto.
 
 ---
 
@@ -111,10 +172,9 @@ valutare enhanced conversions con email (fase 2).
 ## ★★ STRATEGIA PRICING / POSIZIONAMENTO (22/07) — CONFERMATA Lorenzo 27/07
 
 > **Stato 27/07:** Lorenzo conferma vetrina **290 / 490 / su misura**. Zero Stress
-> fuori listino pubblico; **+60 extra immobile disattivato** (oltre 3 → su misura).
-> Implementato in codice + content; allineare CMS prod con
-> `node scripts/update-prod-content.mjs` (patch `is_active=false` su ZERO_STRESS +
-> `extra_property_fee=null`). **NON** ripetere a Lorenzo l’ancoraggio sul 790.
+> fuori listino pubblico. **NON** ripetere a Lorenzo l’ancoraggio sul 790.
+> **Agg. 05/09:** +60 extra immobile **riattivato** e aggiunto +60 extra erede oltre
+> la capienza Completo (vedi sezione in cima); vetrina invariata, extra solo al risultato.
 
 ### Contesto
 - Lorenzo **non fa pace** col pacchetto pubblico **790** (Zero Stress): teme che
@@ -1775,7 +1835,7 @@ Implementato (build ok, NON ancora committato ne' testato con documenti reali):
 - "Area Riservata" -> lato UTENTE si chiama sempre **"Area personale"** (vedi @DECISIONI).
 - Etichetta data-driven: `settings.area_label`.
 - Funnel result-first: confermato da Mauro; **da validare con Lorenzo** (scelta di marketing).
-- Testi legali (privacy/termini/cookie/garanzia): pubblicati come versione interinale, **da far validare a un legale/DPO**; definire condizioni di garanzia e retention lead non convertiti.
+- Testi legali (privacy/termini/cookie/garanzia): pubblicati; **garanzia condizioni chiuse 01/09** (vedi sezione in cima). Resta: validazione legale/DPO + retention lead non convertiti.
 - Pagamenti: **solo carte** (Stripe).
 - Dati studio confermati (footer/legale): P.IVA `02432220503`, C.F. `RMLLNZ90E27G843J`,
   Albo Geometri Pisa n. 1969 (dal 21/01/2022), PEC `lorenzo.armellin@geopec.it`,
@@ -1887,7 +1947,7 @@ renderizzate in UI; blocco `#guida` su /tariffe non renderizzato.
   nell’estratto home. Evitare claim tipo “da sempre” se non verificabili
   (albo Pisa dal 21/01/2022). Domande già predisposte in chat 28/07.
 - Test XML reale col modulo di controllo AdE (Desktop Telematico) su una pratica vera.
-- Garanzia "Soddisfatti o Rimborsati": condizioni pubblicate su `/garanzia` (1/09/2026): rimborso 100% onorario se non partiamo/chiudiamo per causa nostra o se dichiarazione non ancora inviata AdE; errore nostro = correzione a nostre spese. Imposte mai rimborsate. IT fa fede. Da far validare a un legale.
+- Far **validare da un legale** i testi garanzia/T&C ora live (`/garanzia`, art. 9 Condizioni). Condizioni già pubblicate 01/09 (vedi sezione in cima).
 - DPA OpenAI da accettare nel pannello OpenAI (GDPR art. 28).
 - WhatsApp Cloud API (notifiche): serve Meta Business verificato di Lorenzo + costi.
 - Twilio per OTP SMS (login cliente senza email): account con carta di Lorenzo.

@@ -815,7 +815,7 @@
       "key": "su_misura_text",
       "locale": "tr",
       "is_published": true,
-      "value": "3'den fazla gayrimenkul, tarım arazisi, işletme veya şirket payı mı? Her durum farklıdır: sürprizsiz özel ön teklif hazırlarız."
+      "value": "Tarım arazisi, işletme, şirket payı, tekne veya başka özel varlıklar mı? Her durum farklıdır: sürprizsiz özel ön teklif hazırlarız."
     },
     {
       "collection": "tariffe",
@@ -969,7 +969,7 @@
       "key": "su_misura_body",
       "locale": "tr",
       "is_published": true,
-      "value": "3'den fazla gayrimenkul, tarım arazisi, işletme veya şirket payı mı? Karmaşık durumlar standart pakete sığmaz: dosyanızı inceler ve sürprizsiz özel ön teklif hazırlarız."
+      "value": "Tarım arazisi, işletme, şirket payı, tekne veya başka özel varlıklar mı? Karmaşık durumlar standart pakete sığmaz: dosyanızı inceler ve sürprizsiz özel ön teklif hazırlarız."
     },
     {
       "collection": "pacchetti",
@@ -4407,7 +4407,8 @@
         "empty_order": "Ödenecek paketli bir dosya bulunamadı. Önce ön teklif hesaplayın: doğru paketi öneririz ve ödemeyi dosyanıza bağlarız.",
         "empty_cta": "Ön teklife git →",
         "meta_title": "Siparişi tamamla",
-        "extra_property": "Ek taşınmazlar ({extra} × {fee}€)"
+        "extra_property": "Ek taşınmazlar ({extra} × {fee}€)",
+        "extra_heir": "Ek mirasçılar ({extra} × {fee}€)"
       }
     },
     {

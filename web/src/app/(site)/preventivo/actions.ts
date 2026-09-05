@@ -168,6 +168,7 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
         "checkout_ui",
         {
           extra_property: "Immobili aggiuntivi ({extra} × {fee}€)",
+          extra_heir: "Eredi aggiuntivi ({extra} × {fee}€)",
         },
         locale,
       );
@@ -188,10 +189,17 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
             getPackages("it"),
           ]);
           const order = buildOrder(
-            { packageKey: pkgKey, realEstateCount: input.realEstateCount },
+            {
+              packageKey: pkgKey,
+              realEstateCount: input.realEstateCount,
+              heirsCount,
+            },
             packagesUi,
             addonsUi,
-            { extraProperty: checkoutUi.extra_property },
+            {
+              extraProperty: checkoutUi.extra_property,
+              extraHeir: checkoutUi.extra_heir,
+            },
           );
           const pkgUi = packagesUi.find((p) => p.key === pkgKey);
           const pkgIt = packagesIt.find((p) => p.key === pkgKey);

@@ -815,7 +815,7 @@
       "key": "su_misura_text",
       "locale": "zh",
       "is_published": true,
-      "value": "超过 3 处房产、农业用地、企业或公司股份？每案不同：我们提供定制报价，无意外。"
+      "value": "农业用地、企业、公司股份、船舶或其他特殊资产？每案不同：我们提供定制报价，无意外。"
     },
     {
       "collection": "tariffe",
@@ -969,7 +969,7 @@
       "key": "su_misura_body",
       "locale": "zh",
       "is_published": true,
-      "value": "超过 3 处房产、农业用地、企业或公司股份？更复杂的情形不适合标准套餐：我们研究您的情况并准备专项报价，无意外。"
+      "value": "农业用地、企业、公司股份、船舶或其他特殊资产？更复杂的情形不适合标准套餐：我们研究您的情况并准备专项报价，无意外。"
     },
     {
       "collection": "pacchetti",
@@ -4407,7 +4407,8 @@
         "empty_order": "未找到待支付套餐的案件。请先计算报价：我们推荐合适套餐并将支付关联至您的案件。",
         "empty_cta": "前往报价 →",
         "meta_title": "完成订单",
-        "extra_property": "额外房产（{extra} × {fee}€）"
+        "extra_property": "额外房产（{extra} × {fee}€）",
+        "extra_heir": "额外继承人（{extra} × {fee}€）"
       }
     },
     {

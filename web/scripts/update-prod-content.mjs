@@ -218,8 +218,9 @@ const packageUpdates = [
         "Voltura catastale inclusa",
       ],
       badge: "Il più scelto",
-      // 27/07: niente +60 in self-serve; oltre 3 immobili → su misura.
-      extra_property_fee: null,
+      // 05/09: riattivato +60 per immobile oltre il 3° (il +60 per erede oltre il
+      // 5° è fisso in lib/order.ts). Vetrina invariata: extra solo al risultato.
+      extra_property_fee: 60,
     },
   },
   {

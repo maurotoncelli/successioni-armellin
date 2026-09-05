@@ -54,8 +54,9 @@ export const packages: Package[] = [
       "Voltura catastale inclusa",
     ],
     price: 490,
-    // Sovrapprezzo +60/immobile oltre il 3°: disattivato (27/07). Oltre 3 → su misura.
-    extraPropertyFee: null,
+    // 05/09: +60 per immobile oltre il 3° (e +60 per erede oltre il 5°, fisso in
+    // lib/order.ts). In vetrina resta 490: gli extra compaiono solo al risultato.
+    extraPropertyFee: 60,
     slaDays: 10,
     badge: "Il più scelto",
     sortOrder: 2,

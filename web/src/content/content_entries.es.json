@@ -815,7 +815,7 @@
       "key": "su_misura_text",
       "locale": "es",
       "is_published": true,
-      "value": "¿Más de 3 inmuebles, terrenos agrícolas, empresas o participaciones? Cada caso es distinto: te hacemos un presupuesto a medida, sin sorpresas."
+      "value": "¿Terrenos agrícolas, empresas, participaciones, embarcaciones u otros bienes especiales? Cada caso es distinto: te hacemos un presupuesto a medida, sin sorpresas."
     },
     {
       "collection": "tariffe",
@@ -969,7 +969,7 @@
       "key": "su_misura_body",
       "locale": "es",
       "is_published": true,
-      "value": "¿Más de 3 inmuebles, terrenos agrícolas, empresas o participaciones? Los casos más complejos no caben en un paquete estándar: estudiamos el tuyo y te preparamos un presupuesto dedicado, sin sorpresas."
+      "value": "¿Terrenos agrícolas, empresas, participaciones, embarcaciones u otros bienes especiales? Los casos más complejos no caben en un paquete estándar: estudiamos el tuyo y te preparamos un presupuesto dedicado, sin sorpresas."
     },
     {
       "collection": "pacchetti",
@@ -4407,7 +4407,8 @@
         "empty_order": "No hay ningún expediente con un paquete pendiente de pago. Calcula primero el presupuesto: te proponemos el paquete adecuado y vinculamos el pago a tu expediente.",
         "empty_cta": "Ir al presupuesto →",
         "meta_title": "Completar el pedido",
-        "extra_property": "Inmuebles adicionales ({extra} × {fee}€)"
+        "extra_property": "Inmuebles adicionales ({extra} × {fee}€)",
+        "extra_heir": "Herederos adicionales ({extra} × {fee}€)"
       }
     },
     {

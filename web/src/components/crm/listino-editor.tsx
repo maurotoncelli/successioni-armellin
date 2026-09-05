@@ -142,6 +142,12 @@ function PackageForm({ pkg }: { pkg: PackageRow }) {
               defaultValue={pkg.extra_property_fee ?? ""}
               className={input}
             />
+            {pkg.key === "COMPLETO" && (
+              <p className="mt-1 text-xs text-text-muted">
+                Oltre il 3° immobile (vuoto = 60 predefinito, 0 = disattivato).
+                Erede oltre il 5°: +60 fisso.
+              </p>
+            )}
           </div>
           <div>
             <label className={fieldLabel}>SLA consegna (giorni)</label>

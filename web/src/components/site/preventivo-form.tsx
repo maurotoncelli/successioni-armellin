@@ -186,7 +186,8 @@ export function PreventivoForm({
     { value: "nonso", label: ui.unknown },
   ];
 
-  // Con immobili "si" il numero è obbligatorio: decide Completo vs su misura (>3).
+  // Con immobili "si" il numero è obbligatorio: oltre i 3 inclusi nel Completo
+  // scatta il sovrapprezzo al risultato (+60/immobile), non il su misura.
   const parsedReCount = Number.parseInt(realEstateCount, 10);
   const reCountValid =
     hasRealEstate !== "si" ||

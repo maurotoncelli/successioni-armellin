@@ -815,7 +815,7 @@
       "key": "su_misura_text",
       "locale": "it",
       "is_published": true,
-      "value": "Oltre 3 immobili, terreni agricoli, aziende o quote societarie? Ogni caso è diverso: ti facciamo un preventivo su misura, senza sorprese."
+      "value": "Terreni agricoli, aziende, quote societarie, imbarcazioni o altri beni particolari? Ogni caso è diverso: ti facciamo un preventivo su misura, senza sorprese."
     },
     {
       "collection": "tariffe",
@@ -969,7 +969,7 @@
       "key": "su_misura_body",
       "locale": "it",
       "is_published": true,
-      "value": "Oltre 3 immobili, terreni agricoli, aziende o quote societarie? I casi più complessi non stanno in un pacchetto standard: studiamo il tuo e ti prepariamo un preventivo dedicato, senza sorprese."
+      "value": "Terreni agricoli, aziende, quote societarie, imbarcazioni o altri beni particolari? I casi più complessi non stanno in un pacchetto standard: studiamo il tuo e ti prepariamo un preventivo dedicato, senza sorprese."
     },
     {
       "collection": "pacchetti",
@@ -4421,7 +4421,8 @@
         "empty_order": "Non risulta una pratica con un pacchetto da pagare. Calcola prima il preventivo: ti proponiamo il pacchetto giusto e colleghiamo il pagamento alla tua pratica.",
         "empty_cta": "Vai al preventivo →",
         "meta_title": "Completa l'ordine",
-        "extra_property": "Immobili aggiuntivi ({extra} × {fee}€)"
+        "extra_property": "Immobili aggiuntivi ({extra} × {fee}€)",
+        "extra_heir": "Eredi aggiuntivi ({extra} × {fee}€)"
       }
     },
     {

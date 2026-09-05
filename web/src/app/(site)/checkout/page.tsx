@@ -12,7 +12,7 @@ import { CheckoutPanel } from "@/components/site/checkout-panel";
 import { getPackages, getAddons } from "@/lib/cms";
 import { getPractice } from "@/lib/crm";
 import { buildOrder } from "@/lib/order";
-import { isPackageKey } from "@/lib/quote";
+import { decodeHeirs, isPackageKey, totalHeirs } from "@/lib/quote";
 import type { PackageKey } from "@/lib/supabase/types";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -67,16 +67,27 @@ export default async function CheckoutPage({
     paramPackage) as PackageKey | undefined;
 
   const realEstateCount = practice?.realEstateCount ?? paramReCount ?? null;
+  // Eredi: dalla pratica, altrimenti dalla composizione del quiz (comp) o dal totale (heirs).
+  const paramComposition = decodeHeirs(sp.comp);
+  const paramHeirs = sp.heirs ? Number.parseInt(sp.heirs, 10) : null;
+  const heirsCount =
+    practice?.heirsCount ??
+    (paramComposition ? totalHeirs(paramComposition) : null) ??
+    (Number.isFinite(paramHeirs) ? paramHeirs : null);
 
   const order = packageKey
     ? buildOrder(
         {
           packageKey,
           realEstateCount,
+          heirsCount,
         },
         packages,
         addons,
-        { extraProperty: checkoutUi.extra_property },
+        {
+          extraProperty: checkoutUi.extra_property,
+          extraHeir: checkoutUi.extra_heir,
+        },
       )
     : null;
 

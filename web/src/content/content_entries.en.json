@@ -815,7 +815,7 @@
       "key": "su_misura_text",
       "locale": "en",
       "is_published": true,
-      "value": "More than 3 properties, agricultural land, businesses or company shares? Every case is different: we'll prepare a custom quote, no surprises."
+      "value": "Agricultural land, businesses, company shares, boats or other special assets? Every case is different: we'll prepare a custom quote, no surprises."
     },
     {
       "collection": "tariffe",
@@ -969,7 +969,7 @@
       "key": "su_misura_body",
       "locale": "en",
       "is_published": true,
-      "value": "More than 3 properties, agricultural land, businesses or company shares? Complex cases don't fit a standard package: we study yours and prepare a dedicated quote, no surprises."
+      "value": "Agricultural land, businesses, company shares, boats or other special assets? Complex cases don't fit a standard package: we study yours and prepare a dedicated quote, no surprises."
     },
     {
       "collection": "pacchetti",
@@ -4421,7 +4421,8 @@
         "empty_order": "There's no case with a package to pay. Get a quote first: we'll suggest the right package and link payment to your case.",
         "empty_cta": "Go to quote →",
         "meta_title": "Complete the order",
-        "extra_property": "Extra properties ({extra} × €{fee})"
+        "extra_property": "Extra properties ({extra} × €{fee})",
+        "extra_heir": "Extra heirs ({extra} × €{fee})"
       }
     },
     {

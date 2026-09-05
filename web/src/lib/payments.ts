@@ -106,8 +106,15 @@ export async function createCheckoutSession(
     badge: r.badge,
     sortOrder: r.sort_order,
   }));
+  // Prezzo SEMPRE ricalcolato lato server dai dati della pratica (immobili ed
+  // eredi oltre la capienza inclusa → sovrapprezzi), mai dal client.
   const order = buildOrder(
-    { packageKey, addonKeys: opts.addonKeys, realEstateCount: row.real_estate_count },
+    {
+      packageKey,
+      addonKeys: opts.addonKeys,
+      realEstateCount: row.real_estate_count,
+      heirsCount: row.heirs_count,
+    },
     packagesForOrder,
     addons,
   );

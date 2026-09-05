@@ -4,6 +4,7 @@ import {
   CHROME_UI_IT,
   CHECKOUT_UI_IT,
   SOFT_LEAD_UI_IT,
+  type CheckoutUiLabels,
   type SoftLeadUiLabels,
 } from "@/lib/site-ui-labels";
 import Link from "next/link";
@@ -116,12 +117,24 @@ export default async function GraziePage({
   const docItems = docsFromContent.length > 0 ? docsFromContent : documentsList;
 
   // Esito B: mostriamo SUBITO il pacchetto consigliato (nome + prezzo) senza
-  // chiedere nulla. Il prezzo e calcolato dalle risposte (pacchetto + immobili).
+  // chiedere nulla. Il prezzo e calcolato dalle risposte (pacchetto + immobili
+  // + eredi oltre la capienza inclusa: righe SURCHARGE mostrate una per una).
   let suggestedPkg:
-    | { name: string; price: number; tagline: string | null; total: number }
+    | {
+        name: string;
+        price: number;
+        tagline: string | null;
+        total: number;
+        surcharges: { key: string; label: string; amount: number }[];
+      }
     | null = null;
   let checkoutHref = "/checkout";
   const chrome = await tObj("site_ui", "chrome_ui", CHROME_UI_IT);
+  const checkoutUi = await tObj<CheckoutUiLabels>(
+    "site_ui",
+    "checkout_ui",
+    CHECKOUT_UI_IT,
+  );
 
   if (esito === "b") {
     // Con le risposte del quiz il pacchetto si ricava da quelle; altrimenti
@@ -132,17 +145,22 @@ export default async function GraziePage({
       ? (suggestedPackage(esito, answers.hasRealEstate) ?? "COMPLETO")
       : (fromUrl ?? "COMPLETO");
     const locale = await getRequestLocale();
-    const [packages, addons, checkoutUi] = await Promise.all([
+    const [packages, addons] = await Promise.all([
       getPackages(locale),
       getAddons(locale),
-      tObj("site_ui", "checkout_ui", CHECKOUT_UI_IT),
     ]);
     const pkg = packages.find((p) => p.key === packageKey);
+    const heirsCount = composition
+      ? totalHeirs(composition)
+      : Number.parseInt(answers.heirs || "0", 10) || null;
     const order = buildOrder(
-      { packageKey, realEstateCount: answers.realEstateCount },
+      { packageKey, realEstateCount: answers.realEstateCount, heirsCount },
       packages,
       addons,
-      { extraProperty: checkoutUi.extra_property },
+      {
+        extraProperty: checkoutUi.extra_property,
+        extraHeir: checkoutUi.extra_heir,
+      },
     );
     if (pkg && order) {
       suggestedPkg = {
@@ -150,6 +168,9 @@ export default async function GraziePage({
         price: pkg.price,
         tagline: pkg.tagline,
         total: order.total,
+        surcharges: order.lineItems
+          .filter((li) => li.type === "SURCHARGE")
+          .map((li) => ({ key: li.key, label: li.label, amount: li.amount })),
       };
     }
     const params = new URLSearchParams({ pkg: packageKey });
@@ -239,14 +260,46 @@ export default async function GraziePage({
                           )
                         ).replace("{name}", suggestedPkg.name)}
                       </span>
-                      <span className="shrink-0 font-display text-xl font-bold text-accent">
-                        {suggestedPkg.total}&euro;
+                      <span
+                        className={
+                          suggestedPkg.surcharges.length > 0
+                            ? "shrink-0 font-display text-lg font-semibold text-primary"
+                            : "shrink-0 font-display text-xl font-bold text-accent"
+                        }
+                      >
+                        {suggestedPkg.price}&euro;
                       </span>
                     </div>
                     {suggestedPkg.tagline && (
                       <p className="mt-1 text-sm text-text-muted">
                         {suggestedPkg.tagline}
                       </p>
+                    )}
+                    {/* Oltre la capienza inclusa (3 immobili / 5 eredi): ogni
+                        extra e' una riga esplicita, poi il totale. Il listino
+                        in vetrina resta 290 / 490 / su misura. */}
+                    {suggestedPkg.surcharges.length > 0 && (
+                      <div className="mt-3 space-y-1.5 border-t border-accent/20 pt-3 text-sm">
+                        {suggestedPkg.surcharges.map((s) => (
+                          <div
+                            key={s.key}
+                            className="flex items-baseline justify-between gap-3"
+                          >
+                            <span className="text-text">{s.label}</span>
+                            <span className="shrink-0 font-medium text-primary">
+                              +{s.amount}&euro;
+                            </span>
+                          </div>
+                        ))}
+                        <div className="flex items-baseline justify-between gap-3 border-t border-accent/20 pt-2">
+                          <span className="font-semibold text-primary">
+                            {checkoutUi.total_fee}
+                          </span>
+                          <span className="shrink-0 font-display text-xl font-bold text-accent">
+                            {suggestedPkg.total}&euro;
+                          </span>
+                        </div>
+                      </div>
                     )}
                     <p className="mt-2 text-xs text-text-muted">
                       {await t(
