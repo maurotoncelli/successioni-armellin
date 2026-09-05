@@ -7,6 +7,7 @@ import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { ButtonLink } from "@/components/ui/button";
 import { TrustBar } from "@/components/site/trust-bar";
+import { SuccessCounter } from "@/components/site/success-counter";
 import { EmpatiaBlock } from "@/components/site/empatia-block";
 import { PackageCards } from "@/components/site/package-cards";
 import { FaqAccordion } from "@/components/site/faq-accordion";
@@ -124,6 +125,9 @@ export default async function HomePage() {
       </section>
 
       <TrustBar />
+
+      {/* Social proof: contatore animato "250+ successioni gestite" (data-driven). */}
+      <SuccessCounter />
 
       {/* Empatia editoriale: foto + tesi + vantaggi diseguali (catasto in picco). */}
       <Section>

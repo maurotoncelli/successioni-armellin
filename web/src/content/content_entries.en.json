@@ -353,6 +353,19 @@
     },
     {
       "collection": "home",
+      "key": "success_counter",
+      "locale": "en",
+      "is_published": true,
+      "value": {
+        "target": 250,
+        "suffix": "+",
+        "eyebrow": "Real numbers",
+        "label": "successions handled",
+        "note": "From first contact to e-filing with the Italian Revenue Agency: every case handled personally, one at a time."
+      }
+    },
+    {
+      "collection": "home",
       "key": "problema_title",
       "locale": "en",
       "is_published": true,

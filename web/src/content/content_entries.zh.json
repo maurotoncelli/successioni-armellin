@@ -353,6 +353,19 @@
     },
     {
       "collection": "home",
+      "key": "success_counter",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "target": 250,
+        "suffix": "+",
+        "eyebrow": "真实数据",
+        "label": "件遗产继承案件",
+        "note": "从首次联系到向意大利税务局（Agenzia delle Entrate）在线提交：每一件案件都由本人亲自、逐一办理。"
+      }
+    },
+    {
+      "collection": "home",
       "key": "problema_title",
       "locale": "zh",
       "is_published": true,

@@ -353,6 +353,19 @@
     },
     {
       "collection": "home",
+      "key": "success_counter",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "target": 250,
+        "suffix": "+",
+        "eyebrow": "أرقام حقيقية",
+        "label": "ملف ميراث تمت متابعته",
+        "note": "من أول تواصل حتى الإرسال الإلكتروني إلى مصلحة الضرائب الإيطالية (Agenzia delle Entrate): كل ملف يُتابَع شخصياً، واحداً تلو الآخر."
+      }
+    },
+    {
+      "collection": "home",
       "key": "problema_title",
       "locale": "ar",
       "is_published": true,

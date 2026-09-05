@@ -353,6 +353,19 @@
     },
     {
       "collection": "home",
+      "key": "success_counter",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "target": 250,
+        "suffix": "+",
+        "eyebrow": "वास्तविक आँकड़े",
+        "label": "उत्तराधिकार मामले संभाले गए",
+        "note": "पहले संपर्क से लेकर Agenzia delle Entrate को ऑनलाइन दाखिल करने तक: हर मामला व्यक्तिगत रूप से, एक-एक करके संभाला जाता है।"
+      }
+    },
+    {
+      "collection": "home",
       "key": "problema_title",
       "locale": "hi",
       "is_published": true,

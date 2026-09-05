@@ -353,6 +353,19 @@
     },
     {
       "collection": "home",
+      "key": "success_counter",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "target": 250,
+        "suffix": "+",
+        "eyebrow": "Gerçek rakamlar",
+        "label": "tamamlanan veraset işlemi",
+        "note": "İlk görüşmeden Agenzia delle Entrate'ye elektronik gönderime kadar: her dosya bizzat, tek tek takip edilir."
+      }
+    },
+    {
+      "collection": "home",
       "key": "problema_title",
       "locale": "tr",
       "is_published": true,

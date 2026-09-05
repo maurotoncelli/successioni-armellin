@@ -353,6 +353,19 @@
     },
     {
       "collection": "home",
+      "key": "success_counter",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "target": 250,
+        "suffix": "+",
+        "eyebrow": "Numeri reali",
+        "label": "successioni gestite",
+        "note": "Dal primo contatto all'invio telematico all'Agenzia delle Entrate: pratiche seguite di persona, una alla volta."
+      }
+    },
+    {
+      "collection": "home",
       "key": "problema_title",
       "locale": "it",
       "is_published": true,

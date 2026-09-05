@@ -353,6 +353,19 @@
     },
     {
       "collection": "home",
+      "key": "success_counter",
+      "locale": "de",
+      "is_published": true,
+      "value": {
+        "target": 250,
+        "suffix": "+",
+        "eyebrow": "Echte Zahlen",
+        "label": "bearbeitete Erbschaften",
+        "note": "Vom ersten Kontakt bis zur elektronischen Einreichung bei der Agenzia delle Entrate: jeder Fall persönlich betreut, einer nach dem anderen."
+      }
+    },
+    {
+      "collection": "home",
       "key": "problema_title",
       "locale": "de",
       "is_published": true,

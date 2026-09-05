@@ -353,6 +353,19 @@
     },
     {
       "collection": "home",
+      "key": "success_counter",
+      "locale": "fr",
+      "is_published": true,
+      "value": {
+        "target": 250,
+        "suffix": "+",
+        "eyebrow": "Des chiffres réels",
+        "label": "successions traitées",
+        "note": "Du premier contact à la transmission en ligne à l'Agenzia delle Entrate : chaque dossier suivi personnellement, un à la fois."
+      }
+    },
+    {
+      "collection": "home",
       "key": "problema_title",
       "locale": "fr",
       "is_published": true,

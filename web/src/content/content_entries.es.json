@@ -353,6 +353,19 @@
     },
     {
       "collection": "home",
+      "key": "success_counter",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "target": 250,
+        "suffix": "+",
+        "eyebrow": "Cifras reales",
+        "label": "sucesiones tramitadas",
+        "note": "Desde el primer contacto hasta el envío telemático a la Agenzia delle Entrate: cada expediente gestionado personalmente, uno a uno."
+      }
+    },
+    {
+      "collection": "home",
       "key": "problema_title",
       "locale": "es",
       "is_published": true,

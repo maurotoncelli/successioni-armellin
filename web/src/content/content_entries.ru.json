@@ -353,6 +353,19 @@
     },
     {
       "collection": "home",
+      "key": "success_counter",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "target": 250,
+        "suffix": "+",
+        "eyebrow": "Реальные цифры",
+        "label": "дел по наследству",
+        "note": "От первого обращения до электронной подачи в Agenzia delle Entrate: каждое дело ведётся лично, одно за другим."
+      }
+    },
+    {
+      "collection": "home",
       "key": "problema_title",
       "locale": "ru",
       "is_published": true,

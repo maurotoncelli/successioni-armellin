@@ -353,6 +353,19 @@
     },
     {
       "collection": "home",
+      "key": "success_counter",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "target": 250,
+        "suffix": "+",
+        "eyebrow": "Shifra reale",
+        "label": "trashëgimi të ndjekura",
+        "note": "Nga kontakti i parë deri te dërgimi elektronik në Agenzia delle Entrate: çdo dosje ndiqet personalisht, një nga një."
+      }
+    },
+    {
+      "collection": "home",
       "key": "problema_title",
       "locale": "sq",
       "is_published": true,
