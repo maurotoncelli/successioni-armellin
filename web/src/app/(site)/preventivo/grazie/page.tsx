@@ -19,6 +19,7 @@ import { SoftLead, type SoftLeadAnswers } from "@/components/site/soft-lead";
 import { TrackQuoteComplete } from "@/components/site/track-quote-complete";
 import { getPackages, getAddons } from "@/lib/cms";
 import { buildOrder } from "@/lib/order";
+import type { QuizSnapshot } from "@/lib/quiz-summary";
 import {
   computeEsito,
   decodeHeirs,
@@ -136,6 +137,27 @@ export default async function GraziePage({
     CHECKOUT_UI_IT,
   );
 
+  const locale = await getRequestLocale();
+  const heirsCount = composition
+    ? totalHeirs(composition)
+    : Number.parseInt(answers.heirs || "0", 10) || null;
+  // Snapshot in chiaro per il CRM (etichette IT): esito, pacchetto + cifra
+  // esatta, risposte. Niente "esito a/b/c" per Lorenzo.
+  const crmSnapshot: QuizSnapshot = {
+    esito,
+    packageKey: null,
+    answers: {
+      hasWill: answers.hasWill,
+      heirs: composition,
+      heirsTotal: heirsCount ?? 0,
+      hasRealEstate: answers.hasRealEstate,
+      realEstateCount: answers.realEstateCount,
+      hasOther: answers.hasOther,
+      over100k: answers.over100k,
+    },
+    locale,
+  };
+
   if (esito === "b") {
     // Con le risposte del quiz il pacchetto si ricava da quelle; altrimenti
     // dall'URL (mai ZERO_STRESS, fuori vetrina).
@@ -144,15 +166,26 @@ export default async function GraziePage({
     const packageKey = hasQuizAnswers
       ? (suggestedPackage(esito, answers.hasRealEstate) ?? "COMPLETO")
       : (fromUrl ?? "COMPLETO");
-    const locale = await getRequestLocale();
-    const [packages, addons] = await Promise.all([
+    const [packages, addons, packagesIt] = await Promise.all([
       getPackages(locale),
       getAddons(locale),
+      locale === "it" ? null : getPackages("it"),
     ]);
     const pkg = packages.find((p) => p.key === packageKey);
-    const heirsCount = composition
-      ? totalHeirs(composition)
-      : Number.parseInt(answers.heirs || "0", 10) || null;
+    const orderIt = buildOrder(
+      { packageKey, realEstateCount: answers.realEstateCount, heirsCount },
+      packagesIt ?? packages,
+      addons,
+    );
+    crmSnapshot.packageKey = packageKey;
+    crmSnapshot.packageName =
+      (packagesIt ?? packages).find((p) => p.key === packageKey)?.name ?? null;
+    crmSnapshot.lineItems = orderIt?.lineItems.map((li) => ({
+      key: li.key,
+      label: li.label,
+      amount: li.amount,
+    }));
+    crmSnapshot.total = orderIt?.total ?? null;
     const order = buildOrder(
       { packageKey, realEstateCount: answers.realEstateCount, heirsCount },
       packages,
@@ -224,11 +257,7 @@ export default async function GraziePage({
 
   return (
     <Section tone="muted">
-      <TrackQuoteComplete
-        esito={esito}
-        packageLabel={suggestedPkg?.name}
-        fingerprint={trackFingerprint}
-      />
+      <TrackQuoteComplete snapshot={crmSnapshot} fingerprint={trackFingerprint} />
       <div className="mx-auto max-w-2xl">
         <div className="mb-6">
           <BackLink label={chrome.back} fallbackHref="/preventivo" />

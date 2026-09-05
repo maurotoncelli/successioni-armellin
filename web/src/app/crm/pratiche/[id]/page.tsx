@@ -40,6 +40,20 @@ import { getSafeExtras } from "@/lib/practice-extras";
 import { getExtraction, isAiConfigured } from "@/lib/extraction";
 import { isInvoicingConfigured } from "@/lib/invoice";
 import { listItemFiles } from "@/lib/documents";
+import { QuizOutcomeCard } from "@/components/crm/quiz-outcome-card";
+import { getPackages, getAddons } from "@/lib/cms";
+import { buildOrder } from "@/lib/order";
+import {
+  PAYMENT_METHOD_IT,
+  PAYMENT_STATUS_IT,
+  formatDateAtTimeIt,
+  formatDateIt,
+  formatDateTimeIt,
+  formatEuro,
+  logLabelIt,
+  packageNameIt,
+  quizFromPractice,
+} from "@/lib/quiz-summary";
 
 const channelIcon = {
   EMAIL: Mail,
@@ -59,6 +73,29 @@ export default async function SchedaPraticaPage({
 
   const extras = await getSafeExtras(p.id);
   const extraction = await getExtraction(p.id);
+  const quiz = quizFromPractice(p);
+  // Pratiche precedenti alla fotografia del quiz: ricalcolo la cifra esatta
+  // dal listino IT (pacchetto + immobili/eredi oltre quelli inclusi).
+  if (quiz?.derived && quiz.snapshot.esito === "b" && quiz.snapshot.packageKey && !quiz.snapshot.total) {
+    const [packagesIt, addonsIt] = await Promise.all([getPackages("it"), getAddons("it")]);
+    const order = buildOrder(
+      {
+        packageKey: quiz.snapshot.packageKey,
+        realEstateCount: p.realEstateCount,
+        heirsCount: p.heirsCount,
+      },
+      packagesIt,
+      addonsIt,
+    );
+    if (order) {
+      quiz.snapshot.packageName = packagesIt.find((x) => x.key === quiz.snapshot.packageKey)?.name ?? null;
+      quiz.snapshot.lineItems = order.lineItems;
+      quiz.snapshot.total = order.total;
+    }
+  }
+  const quizAnswers = quiz?.derived ? null : quiz?.snapshot.answers;
+  const yesNoUnknown = (v: string | undefined, fallback: boolean) =>
+    v === "nonso" ? "Non lo sa" : v === "si" || (v === undefined && fallback) ? "Si" : "No";
   const docsWithFile = p.checklist.filter((c) => listItemFiles(c).length > 0).length;
 
   const approved = p.checklist.filter((c) => c.status === "APPROVATO").length;
@@ -124,24 +161,34 @@ export default async function SchedaPraticaPage({
             />
           )}
 
+          {/* Questionario dal sito: esito in chiaro, cifra, orario, risposte */}
+          {quiz && <QuizOutcomeCard quiz={quiz} />}
+
           {/* Riepilogo pratica */}
           <CrmCard>
             <SectionTitle>Riepilogo pratica</SectionTitle>
             <dl className="mt-4 grid grid-cols-2 gap-x-6 gap-y-3 text-sm sm:grid-cols-3">
-              <Field label="Data decesso" value={p.dateOfDeath} />
-              <Field label="Residenza" value={p.residence} />
-              <Field label="Eredi (composizione)" value={p.relation} />
+              <Field label="Data decesso" value={p.dateOfDeath || "—"} />
+              <Field label="Residenza" value={p.residence || "—"} />
+              <Field label="Eredi (composizione)" value={p.relation || "—"} />
               <Field label="N. eredi" value={String(p.heirsCount)} />
               <Field label="Eredi minorenni" value={p.hasMinorHeirs ? "Si" : "No"} />
-              <Field label="Testamento" value={p.hasWill ? "Si" : "No"} />
+              <Field
+                label="Testamento"
+                value={yesNoUnknown(quizAnswers?.hasWill || undefined, p.hasWill)}
+              />
               <Field
                 label="Immobili"
                 value={
-                  p.hasRealEstate ? `Si (${p.realEstateCount ?? "?"})` : "No"
+                  quizAnswers?.hasRealEstate === "nonso"
+                    ? "Non lo sa"
+                    : p.hasRealEstate
+                      ? `Si (${p.realEstateCount ?? "?"})`
+                      : "No"
                 }
               />
               <Field
-                label="Su misura"
+                label="Preventivo su misura"
                 value={p.requiresCustomQuote ? "Si" : "No"}
               />
               <Field label="Urgente" value={p.urgent ? "Si" : "No"} />
@@ -156,19 +203,29 @@ export default async function SchedaPraticaPage({
                 p.lineItems.map((item, i) => (
                   <div key={i} className="flex justify-between text-crm-text2">
                     <span>{item.label}</span>
-                    <span className="text-crm-text">{item.amount} €</span>
+                    <span className="text-crm-text">{formatEuro(item.amount)}</span>
                   </div>
                 ))
               ) : (
                 <p className="text-crm-muted">
-                  Nessun pacchetto selezionato (lead da lavorare).
+                  {p.requiresCustomQuote
+                    ? "Preventivo su misura: l'onorario va definito con il cliente."
+                    : "Nessun pacchetto selezionato (lead da lavorare)."}
                 </p>
               )}
               {p.price > 0 && (
                 <div className="flex justify-between border-t border-crm-border pt-2 font-semibold text-crm-text">
-                  <span>Totale onorario</span>
-                  <span>{p.price} €</span>
+                  <span>
+                    {p.paymentStatus === "PAID" ? "Totale onorario pagato" : "Totale onorario preventivato"}
+                  </span>
+                  <span>{formatEuro(p.price)}</span>
                 </div>
+              )}
+              {p.price > 0 && p.paymentStatus !== "PAID" && (
+                <p className="text-xs text-crm-muted">
+                  Cifra calcolata dalle risposte del sito (pacchetto + eventuali immobili/eredi oltre
+                  quelli inclusi). Non ancora incassata.
+                </p>
               )}
             </div>
             <p className="mt-3 rounded-lg bg-crm-bg2/60 p-3 text-xs text-crm-muted">
@@ -263,16 +320,40 @@ export default async function SchedaPraticaPage({
             <div className="mt-3 space-y-2 text-sm">
               <div className="flex justify-between">
                 <span className="text-crm-text2">Stato</span>
-                <span className="text-crm-text">{p.paymentStatus}</span>
+                <span className="text-crm-text">
+                  {PAYMENT_STATUS_IT[p.paymentStatus] ?? p.paymentStatus}
+                </span>
               </div>
+              {p.paidAt && (
+                <div className="flex justify-between gap-3">
+                  <span className="text-crm-text2">Pagato il</span>
+                  <span className="text-right text-crm-text">{formatDateAtTimeIt(p.paidAt)}</span>
+                </div>
+              )}
               <div className="flex justify-between">
                 <span className="text-crm-text2">Metodo</span>
-                <span className="text-crm-text">{p.paymentMethod ?? "—"}</span>
+                <span className="text-crm-text">
+                  {p.paymentMethod ? PAYMENT_METHOD_IT[p.paymentMethod] ?? p.paymentMethod : "—"}
+                </span>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between gap-3">
                 <span className="text-crm-text2">Pacchetto</span>
-                <span className="text-crm-text">{p.selectedPackage ?? "—"}</span>
+                <span className="text-right text-crm-text">
+                  {p.selectedPackage
+                    ? packageNameIt(p.selectedPackage)
+                    : p.suggestedPackage
+                      ? `${packageNameIt(p.suggestedPackage)} (consigliato)`
+                      : p.requiresCustomQuote
+                        ? "Su misura"
+                        : "—"}
+                </span>
               </div>
+              {p.price > 0 && (
+                <div className="flex justify-between">
+                  <span className="text-crm-text2">Importo</span>
+                  <span className="font-medium text-crm-text">{formatEuro(p.price)}</span>
+                </div>
+              )}
             </div>
             {p.paymentStatus !== "PAID" && (
               <>
@@ -299,10 +380,14 @@ export default async function SchedaPraticaPage({
           <CrmCard>
             <SectionTitle>Date chiave</SectionTitle>
             <ul className="mt-3 space-y-2 text-sm">
-              <DateRow icon={<CalendarDays className="h-4 w-4" />} label="Creazione" value={p.createdAt} />
-              <DateRow icon={<CalendarDays className="h-4 w-4" />} label="Apertura scheda" value={p.openedAt} />
-              <DateRow icon={<Clock className="h-4 w-4" />} label="Consegna prevista" value={p.dueDate} />
-              <DateRow icon={<Check className="h-4 w-4" />} label="Invio AdE" value={p.submittedAt} />
+              <DateRow
+                icon={<CalendarDays className="h-4 w-4" />}
+                label="Creazione"
+                value={p.createdAtIso ? formatDateAtTimeIt(p.createdAtIso) : formatDateIt(p.createdAt)}
+              />
+              <DateRow icon={<CalendarDays className="h-4 w-4" />} label="Apertura scheda" value={p.openedAt && formatDateIt(p.openedAt)} />
+              <DateRow icon={<Clock className="h-4 w-4" />} label="Consegna prevista" value={p.dueDate && formatDateIt(p.dueDate)} />
+              <DateRow icon={<Check className="h-4 w-4" />} label="Invio AdE" value={p.submittedAt && formatDateIt(p.submittedAt)} />
             </ul>
             <DueDateForm practiceId={p.id} current={p.dueDate} />
           </CrmCard>
@@ -334,12 +419,16 @@ export default async function SchedaPraticaPage({
                 <li key={i} className="flex gap-3 text-sm">
                   <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-crm-accent" />
                   <div>
-                    <p className="text-crm-text">{e.action.replace(/_/g, " ")}</p>
-                    <p className="text-xs text-crm-muted">{e.at}</p>
+                    <p className="text-crm-text">{logLabelIt(e.action)}</p>
+                    <p className="text-xs text-crm-muted">{formatDateTimeIt(e.at)}</p>
                   </div>
                 </li>
               ))}
+              {p.log.length === 0 && (
+                <li className="text-sm text-crm-muted">Nessun evento registrato.</li>
+              )}
             </ul>
+            <p className="mt-3 text-[11px] text-crm-muted">Orari italiani (Europe/Rome).</p>
           </CrmCard>
         </div>
       </div>
@@ -406,7 +495,7 @@ function CommunicationRow({ comm }: { comm: Communication }) {
         </div>
         <p className="text-xs text-crm-muted">
           {comm.direction === "OUTBOUND" ? "In uscita" : "In entrata"} ·{" "}
-          {comm.occurredAt}
+          {formatDateTimeIt(comm.occurredAt)}
         </p>
       </div>
     </li>

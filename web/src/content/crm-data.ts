@@ -4,6 +4,8 @@
   In Fase 5 verranno sostituiti da letture Supabase (stesse forme).
 */
 
+import type { QuizSnapshot } from "@/lib/quiz-summary";
+
 export type PracticeStatus =
   | "LEAD"
   | "PREVENTIVO_INVIATO"
@@ -110,7 +112,12 @@ export type Communication = {
   occurredAt: string;
 };
 
-export type LogEvent = { action: string; at: string };
+/**
+ * Evento di timeline. `quiz` e' presente solo sull'evento
+ * "questionario_compilato": fotografa esito, prezzo e risposte del sito
+ * cosi la scheda CRM le mostra in chiaro anche mesi dopo.
+ */
+export type LogEvent = { action: string; at: string; quiz?: QuizSnapshot };
 export type TaskItem = { title: string; dueDate: string | null; done: boolean };
 export type LineItem = { label: string; amount: number };
 
@@ -150,6 +157,8 @@ export type Practice = {
   dueDate: string | null;
   submittedAt: string | null;
   createdAt: string;
+  /** created_at completo (ISO, con ora) per mostrare l'orario esatto nel CRM. */
+  createdAtIso?: string | null;
   /** Data pagamento (da paid_at): fa partire i 14 giorni di recesso. */
   paidAt?: string | null;
   // imposte

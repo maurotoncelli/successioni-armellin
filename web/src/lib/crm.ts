@@ -16,6 +16,7 @@ import {
 } from "@/content/crm-data";
 import type { ContactRow, PracticeRow } from "@/lib/supabase/types";
 import { parseAttribution } from "@/lib/attribution-shared";
+import { esitoShort, formatDateTimeIt, quizFromPractice } from "@/lib/quiz-summary";
 
 /*
   Layer di accesso ai dati operativi del CRM (contatti e pratiche).
@@ -77,6 +78,7 @@ export function mapPractice(row: PracticeRow): Practice {
     dueDate: row.due_date,
     submittedAt: row.submitted_at,
     createdAt: (row.created_at ?? "").slice(0, 10),
+    createdAtIso: row.created_at ?? null,
     paidAt: row.paid_at,
     stateTaxes: row.state_taxes === null ? null : Number(row.state_taxes),
     callNotes: row.call_notes,
@@ -253,11 +255,16 @@ export function deriveAlerts(practices: Practice[]): Alert[] {
       p.clientName.trim() || p.clientEmail.trim() || p.clientPhone.trim(),
     );
     if (p.status === "LEAD" && (hasContact || p.requiresCustomQuote)) {
+      // Esito del questionario in chiaro (pacchetto + cifra esatta, su misura,
+      // possibile esonero) e orario italiano: Lorenzo capisce subito cosa fare.
+      const quiz = quizFromPractice(p);
+      const when = quiz?.at ? ` · ${formatDateTimeIt(quiz.at)}` : "";
+      const who = p.clientName || p.clientEmail || "il lead";
       alerts.push({
         kind: "lead",
         text: p.requiresCustomQuote
-          ? `${p.code} - preventivo su misura richiesto: ricontattare ${p.clientName || "il lead"}`
-          : `${p.code} - nuovo lead dal sito: ${p.clientName || p.clientEmail}`,
+          ? `${p.code} - preventivo su misura richiesto: ricontattare ${who}${when}`
+          : `${p.code} - nuovo lead dal sito: ${who}${quiz ? ` · ${esitoShort(quiz.snapshot)}` : ""}${when}`,
         practiceId: p.id,
       });
     }

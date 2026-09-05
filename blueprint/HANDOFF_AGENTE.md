@@ -18,6 +18,39 @@ Chat precedente TR/FR/SQ + EN/AR + SEO:
 
 ---
 
+## ★★ CRM: ESITO QUESTIONARIO IN CHIARO (05/09 pomeriggio)
+
+Richiesta Mauro: nel CRM niente più «esito A/B/C», ma pacchetto + **cifra esatta**,
+**orario esatto (ora italiana)** e le risposte date.
+
+- **`lib/quiz-summary.ts`** (puro, usabile client+server): `QuizSnapshot` (esito, pacchetto,
+  righe/totale, risposte, lingua), etichette IT (`esitoTitle` «Pacchetto consigliato:
+  Successione con Immobili · 670 €» / «Possibile esonero…» / «Preventivo su misura
+  richiesto», `esitoShort` per badge, `esitoReason`, `priceBreakdown`, `answersLine`,
+  `answersFields`), `quizNotificationText`, formattazione ore **Europe/Rome**
+  (`formatDateTimeIt`, `formatDateAtTimeIt`; gli stamp log sono UTC senza Z),
+  `logLabelIt` (timeline in italiano), `PAYMENT_STATUS_IT`/`PAYMENT_METHOD_IT`,
+  `quizFromPractice` (legge la fotografia dal log; fallback «derived» per pratiche vecchie).
+- **Persistenza (NO-DDL):** il log della pratica ha un evento
+  `questionario_compilato` con campo `quiz: QuizSnapshot` (tipo `LogEvent.quiz`), scritto da
+  `createLead` (soft lead) e `createCheckoutPractice` (checkout). Per l’esito B vengono
+  salvati subito anche `price` + `line_items` (cifra preventivata visibile nel CRM prima del
+  pagamento; `lib/payments.ts` la ricalcola comunque al link Stripe). KPI incassi usano
+  solo `PAID`, quindi nessun impatto.
+- **Notifiche CRM:** `trackQuoteCompleted` riceve lo snapshot (dalla pagina grazie, etichette
+  IT anche se il sito era in EN/AR…) → titolo «Questionario compilato — Pacchetto consigliato:
+  … · 670 €», corpo: onorario dettagliato, motivo (su misura/esonero), risposte, «Compilato il
+  05/09/2026 alle 12:58 (ora italiana)». Notifica lead idem + contatto + nota cliente. Email a
+  Lorenzo (`notifyAdminNewLead.quizLines`) con le stesse righe. Le 40 notifiche storiche in
+  prod sono state riscritte in chiaro (script one-shot, non nel repo).
+- **UI CRM:** scheda pratica → card **«Questionario dal sito»** (`components/crm/quiz-outcome-card.tsx`),
+  Pagamento in italiano (stato, «Pagato il», metodo, pacchetto per nome, importo), Riepilogo
+  ordine «preventivato/pagato», Date chiave con ora, Timeline con etichette IT + ora italiana.
+  Kanban/lista → badge esito («Con Immobili · 670 €», «Su misura», «Possibile esonero») +
+  colonna «Esito sito». Alert lead con esito e orario. Statistiche: hint senza A/B/C.
+- Nota: `npm run lint` segnala un `set-state-in-effect` preesistente in
+  `notifications-panel.tsx` (non introdotto qui).
+
 ## ★★ ADD-ON +60 IMMOBILE / +60 EREDE OLTRE CAPIENZA COMPLETO (05/09)
 
 **Decisione Mauro/Lorenzo:** la vetrina resta **290 / 490 / su misura**, ma il Completo

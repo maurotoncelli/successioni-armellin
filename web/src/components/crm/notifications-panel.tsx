@@ -100,17 +100,15 @@ const kindMeta: Record<
   },
 };
 
+/* Orario italiano esplicito ("oggi 12:58" / "sab 5 set 2026, 12:58"). */
 function formatWhen(iso: string): string {
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return "";
-  const today = new Date();
-  const sameDay = d.toDateString() === today.toDateString();
-  const time = d.toLocaleTimeString("it-IT", {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-  if (sameDay) return `oggi ${time}`;
-  return `${d.toLocaleDateString("it-IT", { day: "numeric", month: "short" })} ${time}`;
+  const tz = "Europe/Rome";
+  const dayKey = (x: Date) => x.toLocaleDateString("it-IT", { timeZone: tz });
+  const time = d.toLocaleTimeString("it-IT", { timeZone: tz, hour: "2-digit", minute: "2-digit" });
+  if (dayKey(d) === dayKey(new Date())) return `oggi alle ${time}`;
+  return `${d.toLocaleDateString("it-IT", { timeZone: tz, weekday: "short", day: "numeric", month: "short", year: "numeric" })}, ${time}`;
 }
 
 function loadFilter(): FilterState {
@@ -309,7 +307,7 @@ export function NotificationsPanel({
                 <div className="min-w-0 flex-1">
                   <p className="text-sm font-medium text-crm-text">{n.title}</p>
                   {n.body && (
-                    <p className="mt-0.5 text-xs leading-relaxed text-crm-text2">
+                    <p className="mt-0.5 whitespace-pre-line text-xs leading-relaxed text-crm-text2">
                       {n.body}
                     </p>
                   )}

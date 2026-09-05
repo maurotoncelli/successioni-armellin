@@ -179,6 +179,8 @@ export async function notifyAdminNewLead(input: {
   custom: boolean;
   packageLabel?: string;
   clientNote?: string;
+  /** Righe gia' in chiaro (esito, onorario, risposte, orario) dal questionario. */
+  quizLines?: string[];
 }): Promise<{ sent: boolean; subject: string }> {
   const admins = adminNotifyRecipients();
   const subject = input.custom
@@ -192,6 +194,7 @@ export async function notifyAdminNewLead(input: {
     input.phone &&
       `Telefono: <a href="tel:${esc(input.phone)}">${esc(input.phone)}</a>`,
     input.packageLabel && `Pacchetto suggerito: ${esc(input.packageLabel)}`,
+    ...(input.quizLines ?? []).map((line) => esc(line)),
   ]
     .filter(Boolean)
     .join("<br/>");

@@ -2,12 +2,11 @@
 
 import { pushCrmNotification } from "@/lib/crm-notifications";
 import { incrementQuoteCompleted } from "@/lib/quote-stats";
-import type { Esito } from "@/lib/quote";
+import { quizNotificationText, type QuizSnapshot } from "@/lib/quiz-summary";
 
 export type TrackQuoteInput = {
-  esito: Esito;
-  /** Pacchetto suggerito (solo esito B), etichetta gia' leggibile. */
-  packageLabel?: string;
+  /** Esito, prezzo e risposte gia' in chiaro (etichette IT per Lorenzo). */
+  snapshot: QuizSnapshot;
   /** Fingerprint client (sessionStorage) per anti-doppione lato UI. */
   fingerprint: string;
 };
@@ -28,7 +27,8 @@ function pruneFingerprints(now: number) {
 export async function trackQuoteCompleted(
   input: TrackQuoteInput,
 ): Promise<{ ok: boolean }> {
-  const esito = input.esito === "a" || input.esito === "c" ? input.esito : "b";
+  const snapshot = input.snapshot;
+  const esito = snapshot.esito === "a" || snapshot.esito === "c" ? snapshot.esito : "b";
   const fp = (input.fingerprint || "").slice(0, 120);
   if (!fp) return { ok: false };
 
@@ -39,19 +39,16 @@ export async function trackQuoteCompleted(
 
   await incrementQuoteCompleted(esito);
 
-  const esitoLabel =
-    esito === "a"
-      ? "Esito A · possibile esonero"
-      : esito === "c"
-        ? "Esito C · su misura"
-        : input.packageLabel
-          ? `Esito B · ${input.packageLabel}`
-          : "Esito B · pacchetto standard";
+  const { title, body } = quizNotificationText(
+    { ...snapshot, esito },
+    new Date(now).toISOString(),
+    "nessun contatto lasciato (solo esito del questionario)",
+  );
 
   await pushCrmNotification({
     kind: "preventivo",
-    title: "Questionario preventivo completato",
-    body: `${esitoLabel}. Contatto non ancora lasciato (solo esito del quiz).`,
+    title: `Questionario compilato — ${title}`,
+    body,
   });
 
   return { ok: true };

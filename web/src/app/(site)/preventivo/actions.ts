@@ -23,6 +23,7 @@ import {
 } from "@/lib/attribution-shared";
 import { getActionLocale } from "@/lib/action-locale";
 import { obj } from "@/lib/content";
+import { quizNotificationText, type QuizSnapshot } from "@/lib/quiz-summary";
 import type { Communication, LogEvent } from "@/content/crm-data";
 
 export type LeadInput = {
@@ -110,6 +111,45 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
     });
     if (!contactId) throw new Error("Impossibile creare/aggiornare il contatto.");
 
+    // Fotografia del questionario in chiaro (etichette IT per il CRM): esito,
+    // pacchetto consigliato con la cifra esatta e risposte date. Finisce nel log
+    // della pratica e, per l'esito B, anche in price/line_items cosi Lorenzo
+    // vede subito l'onorario preventivato senza aspettare il checkout.
+    const pkgKey = isCustom ? null : suggestedPackage(esito, input.hasRealEstate);
+    let orderIt: ReturnType<typeof buildOrder> = null;
+    let pkgNameIt: string | null = null;
+    if (pkgKey) {
+      const [packagesIt, addonsIt] = await Promise.all([getPackages("it"), getAddons("it")]);
+      orderIt = buildOrder(
+        { packageKey: pkgKey, realEstateCount: input.realEstateCount, heirsCount },
+        packagesIt,
+        addonsIt,
+      );
+      pkgNameIt = packagesIt.find((p) => p.key === pkgKey)?.name ?? null;
+    }
+    const snapshotLocale = await getActionLocale();
+    const snapshot: QuizSnapshot = {
+      esito,
+      packageKey: pkgKey,
+      packageName: pkgNameIt,
+      lineItems: orderIt?.lineItems.map((li) => ({ key: li.key, label: li.label, amount: li.amount })),
+      total: orderIt?.total ?? null,
+      answers: {
+        hasWill: input.hasWill,
+        heirs: input.heirsComposition,
+        heirsTotal: heirsCount,
+        hasRealEstate: input.hasRealEstate,
+        realEstateCount: input.realEstateCount ?? null,
+        hasOther: input.hasOther,
+        over100k: input.over100k,
+      },
+      locale: snapshotLocale,
+    };
+    const initialLog: LogEvent[] = [
+      { action: "questionario_compilato", at: nowStamp, quiz: snapshot },
+      { action: "lead_creato", at: nowStamp },
+    ];
+
     const { data: practice, error: practiceErr } = await admin
       .from("practices")
       .insert({
@@ -131,6 +171,9 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
           input.hasRealEstate === "si" ? (input.realEstateCount ?? null) : null,
         requires_custom_quote: isCustom,
         suggested_package: suggestedPackage(esito, input.hasRealEstate),
+        // Onorario preventivato (esito B): cifra esatta visibile nel CRM da
+        // subito. Verra' comunque ricalcolato alla creazione del link Stripe.
+        ...(orderIt ? { price: orderIt.total, line_items: orderIt.lineItems } : {}),
         notes: (() => {
           const base = isCustom
             ? "Richiesta di preventivo su misura dal sito."
@@ -146,7 +189,7 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
             done: false,
           },
         ],
-        log: [{ action: "lead_creato", at: nowStamp }],
+        log: initialLog,
         attribution,
       })
       .select("id, code")
@@ -157,12 +200,12 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
     // Lorenzo. Registrate in cronologia solo se l'invio e andato a buon fine;
     // un errore email non blocca mai la creazione del lead.
     const communications: Communication[] = [];
-    const log: LogEvent[] = [{ action: "lead_creato", at: nowStamp }];
+    const log: LogEvent[] = [...initialLog];
     let emailSent = false;
     try {
       // Pacchetto suggerito con prezzo (per il riepilogo e per Lorenzo).
       // Locale da cookie UI (qui non c'è ancora account / comms_locale).
-      const locale = await getActionLocale();
+      const locale = snapshotLocale;
       const checkoutUi = obj(
         "site_ui",
         "checkout_ui",
@@ -250,12 +293,16 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
         custom: isCustom,
         packageLabel: packageLabelAdmin,
         clientNote: input.notes?.trim() || undefined,
+        quizLines: quizNotificationText(snapshot, new Date().toISOString(), "").body
+          .split("\n")
+          .map((l) => l.replace(/ · $/, ""))
+          .filter(Boolean),
       });
       if (sentAdmin.sent) {
         log.push({ action: "notifica_admin_inviata", at: nowStamp });
       }
 
-      if (communications.length > 0 || log.length > 1) {
+      if (communications.length > 0 || log.length > initialLog.length) {
         await admin
           .from("practices")
           .update({ communications, log })
@@ -265,14 +312,17 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
       console.error("[preventivo] invio email lead fallito:", err);
     }
 
+    // Notifica CRM con l'esito in chiaro: chi e', cosa gli e' stato proposto
+    // (cifra esatta), cosa ha risposto e quando (ora italiana).
+    const contactLine = [fullName || "Contatto senza nome", emailNorm, input.phone.trim()]
+      .filter(Boolean)
+      .join(" · ");
+    const notif = quizNotificationText(snapshot, new Date().toISOString(), contactLine);
+    const clientNote = input.notes?.trim();
     await pushCrmNotification({
       kind: "lead",
-      title: isCustom
-        ? "Richiesta di preventivo su misura"
-        : "Nuovo lead dal preventivo del sito",
-      body: [fullName || "Contatto senza nome", input.email.trim(), input.phone.trim()]
-        .filter(Boolean)
-        .join(" · "),
+      title: `${isCustom ? "Richiesta su misura" : "Nuovo lead"} — ${notif.title}`,
+      body: clientNote ? `${notif.body}\nNota del cliente: ${clientNote}` : notif.body,
       practiceId: practice.id,
       practiceCode: practice.code,
     });

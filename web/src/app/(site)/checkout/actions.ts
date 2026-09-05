@@ -6,6 +6,11 @@ import { isStripeConfigured } from "@/lib/stripe";
 import { decodeHeirs, heirsSummary, isPackageKey, totalHeirs } from "@/lib/quote";
 import { readRequestAttribution } from "@/lib/attribution";
 import { parseAttribution } from "@/lib/attribution-shared";
+import { getPackages, getAddons } from "@/lib/cms";
+import { buildOrder } from "@/lib/order";
+import { getActionLocale } from "@/lib/action-locale";
+import type { QuizSnapshot } from "@/lib/quiz-summary";
+import type { LogEvent } from "@/content/crm-data";
 
 /*
   Crea la pratica SOLO al momento del pagamento (flusso "result-first" del sito):
@@ -46,6 +51,31 @@ export async function createCheckoutPractice(
       ? totalHeirs(composition)
       : Number.parseInt(input.heirs || "0", 10) || 0;
 
+    // Onorario esatto (pacchetto + eventuali immobili/eredi extra) e risposte
+    // del questionario in chiaro: nel CRM la pratica nasce gia' leggibile.
+    const [packagesIt, addonsIt] = await Promise.all([getPackages("it"), getAddons("it")]);
+    const orderIt = buildOrder(
+      { packageKey: input.packageKey, realEstateCount: input.realEstateCount, heirsCount },
+      packagesIt,
+      addonsIt,
+    );
+    const snapshot: QuizSnapshot = {
+      esito: "b",
+      packageKey: input.packageKey,
+      packageName: packagesIt.find((p) => p.key === input.packageKey)?.name ?? null,
+      lineItems: orderIt?.lineItems.map((li) => ({ key: li.key, label: li.label, amount: li.amount })),
+      total: orderIt?.total ?? null,
+      answers: {
+        hasWill: input.hasWill ?? "",
+        heirs: composition,
+        heirsTotal: heirsCount,
+        hasRealEstate: input.hasRealEstate ?? "",
+        realEstateCount: input.realEstateCount ?? null,
+        hasOther: input.hasOther ?? "",
+      },
+      locale: await getActionLocale(),
+    };
+
     const { data: practice, error } = await admin
       .from("practices")
       .insert({
@@ -62,7 +92,11 @@ export async function createCheckoutPractice(
         suggested_package: input.packageKey,
         selected_package: input.packageKey,
         notes: "Checkout diretto dal sito (in attesa di pagamento).",
-        log: [{ action: "checkout_avviato", at: nowStamp }],
+        ...(orderIt ? { price: orderIt.total, line_items: orderIt.lineItems } : {}),
+        log: [
+          { action: "questionario_compilato", at: nowStamp, quiz: snapshot },
+          { action: "checkout_avviato", at: nowStamp },
+        ] satisfies LogEvent[],
         attribution: parseAttribution(await readRequestAttribution()),
       })
       .select("id")

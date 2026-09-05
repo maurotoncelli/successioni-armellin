@@ -100,7 +100,7 @@ export default async function StatistichePage() {
           icon={<ClipboardList className="h-5 w-5" />}
           value={quoteStats.totalCompleted}
           label="Questionari completati"
-          hint={`A ${quoteStats.byEsito.a} · B ${quoteStats.byEsito.b} · C ${quoteStats.byEsito.c} · lead aperti ${leadsFromSite}`}
+          hint={`Pacchetto proposto ${quoteStats.byEsito.b} · Su misura ${quoteStats.byEsito.c} · Possibile esonero ${quoteStats.byEsito.a} · lead aperti ${leadsFromSite}`}
         />
         <KpiCard
           icon={<CircleDollarSign className="h-5 w-5" />}

@@ -17,8 +17,46 @@ import { hasExternalEffect } from "@/lib/transitions";
 import { TransitionConfirm } from "@/components/crm/transition-confirm";
 import { Celebration } from "@/components/crm/celebration";
 import { cn } from "@/lib/utils";
+import { esitoShort, formatEuro, quizFromPractice } from "@/lib/quiz-summary";
 
 type View = "kanban" | "list";
+
+/*
+  Etichetta in chiaro dell'esito del questionario (se la pratica arriva dal
+  sito): "Con Immobili · 670 €", "Su misura", "Possibile esonero". Per le
+  pratiche create a mano resta solo l'onorario.
+*/
+function QuoteBadge({ practice }: { practice: Practice }) {
+  const quiz = quizFromPractice(practice);
+  if (!quiz) return null;
+  const s = quiz.snapshot;
+  const tone =
+    s.esito === "c"
+      ? "bg-crm-purple/15 text-crm-purple"
+      : s.esito === "a"
+        ? "bg-crm-amber/15 text-crm-amber"
+        : "bg-crm-green/15 text-crm-green";
+  return (
+    <span
+      className={cn("inline-block max-w-full truncate rounded px-1.5 py-0.5 text-[10px] font-medium", tone)}
+      title={
+        s.esito === "b"
+          ? "Pacchetto consigliato dal sito con la cifra esatta"
+          : s.esito === "c"
+            ? "Il sito ha rimandato a un preventivo su misura"
+            : "Il sito ha indicato un possibile esonero"
+      }
+    >
+      {esitoShort(s)}
+    </span>
+  );
+}
+
+function feeLabel(p: Practice): string {
+  if (p.price <= 0) return "—";
+  const fee = formatEuro(p.price);
+  return p.paymentStatus === "PAID" ? fee : `${fee} (preventivo)`;
+}
 
 export function PracticesBoard({ practices }: { practices: Practice[] }) {
   const router = useRouter();
@@ -335,11 +373,17 @@ function KanbanCard({
         <Home className="h-3 w-3" />
         Defunto: {practice.deceasedName.trim() || "—"}
       </div>
-      <div className="mt-3 flex items-center justify-between">
+      <div className="mt-2">
+        <QuoteBadge practice={practice} />
+      </div>
+      <div className="mt-2 flex items-center justify-between gap-2">
         <ActionBadge owner={practice.actionOwner} />
         {practice.price > 0 && (
-          <span className="text-xs font-medium text-crm-text2">
-            {practice.price} €
+          <span
+            className="shrink-0 text-xs font-medium text-crm-text2"
+            title={practice.paymentStatus === "PAID" ? "Onorario pagato" : "Onorario preventivato, non ancora pagato"}
+          >
+            {formatEuro(practice.price)}
           </span>
         )}
       </div>
@@ -357,6 +401,7 @@ function ListView({ practices }: { practices: Practice[] }) {
             <th className="px-4 py-3 font-medium">Cliente</th>
             <th className="px-4 py-3 font-medium">Defunto</th>
             <th className="px-4 py-3 font-medium">Stato</th>
+            <th className="px-4 py-3 font-medium">Esito sito</th>
             <th className="px-4 py-3 font-medium">Azione</th>
             <th className="px-4 py-3 text-right font-medium">Onorario</th>
           </tr>
@@ -391,11 +436,12 @@ function ListView({ practices }: { practices: Practice[] }) {
                 <StatusPill status={p.status} />
               </td>
               <td className="px-4 py-3">
+                <QuoteBadge practice={p} />
+              </td>
+              <td className="px-4 py-3">
                 <ActionBadge owner={p.actionOwner} />
               </td>
-              <td className="px-4 py-3 text-right text-crm-text2">
-                {p.price > 0 ? `${p.price} €` : "—"}
-              </td>
+              <td className="px-4 py-3 text-right text-crm-text2">{feeLabel(p)}</td>
             </tr>
           ))}
         </tbody>
