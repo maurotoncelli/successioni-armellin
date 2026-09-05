@@ -359,9 +359,9 @@
       "value": {
         "target": 250,
         "suffix": "+",
-        "eyebrow": "Cifras reales",
-        "label": "sucesiones tramitadas",
-        "note": "Desde el primer contacto hasta el envío telemático a la Agenzia delle Entrate: cada expediente gestionado personalmente, uno a uno."
+        "eyebrow": "Experiencia desde 2012",
+        "label": "sucesiones gestionadas",
+        "note": "Estimación global de los expedientes gestionados por el despacho desde 2012, en oficina y online: cada sucesión llevada en persona, una a la vez."
       }
     },
     {
@@ -903,7 +903,7 @@
       "value": [
         {
           "titolo": "Qué paquete",
-          "testo": "**Simple** = solo cuentas y liquidez, sin inmuebles. **Con inmuebles** = de 1 a 3 inmuebles, cambio catastral incluido. Más allá, o casos particulares (terrenos, empresas, participaciones): **presupuesto a medida, gratis**. Si no sabes por dónde empezar, escribe a Lorenzo: te lo decimos nosotros."
+          "testo": "**Simple** = solo cuentas y liquidez, sin inmuebles. **Con inmuebles** = hasta 3 inmuebles y 5 herederos, cambio catastral incluido; si son más, cada inmueble o heredero adicional cuesta 60 € y lo ves claramente antes de pagar. Casos particulares (terrenos agrícolas, empresas, participaciones, embarcaciones): **presupuesto a medida, gratis**. Si no sabes por dónde empezar, escribe a Lorenzo: te lo decimos nosotros."
         },
         {
           "titolo": "Si pagas el paquete equivocado",
@@ -3369,7 +3369,7 @@
         {
           "category": "Costes e impuestos",
           "question": "¿Cuánto cuesta vuestro servicio?",
-          "answer": "Honorarios fijos sin IVA que añadir: Simple 290€ (solo liquidez) o Completo 490€ (hasta 3 inmuebles). Si el caso es más complejo, presupuesto a medida. Los impuestos del Estado son aparte, a cargo del heredero, y los calculamos antes del envío."
+          "answer": "Honorarios fijos sin IVA que añadir: Simple 290€ (solo liquidez) o Completo 490€ (hasta 3 inmuebles y 5 herederos; más allá, +60€ por cada inmueble o heredero adicional, indicado antes del pago). Para casos particulares (terrenos agrícolas, empresas, participaciones, embarcaciones), presupuesto a medida. Los impuestos del Estado son aparte, a cargo del heredero, y los calculamos antes del envío."
         },
         {
           "category": "Costes e impuestos",

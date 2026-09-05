@@ -359,9 +359,9 @@
       "value": {
         "target": 250,
         "suffix": "+",
-        "eyebrow": "Gerçek rakamlar",
-        "label": "tamamlanan veraset işlemi",
-        "note": "İlk görüşmeden Agenzia delle Entrate'ye elektronik gönderime kadar: her dosya bizzat, tek tek takip edilir."
+        "eyebrow": "2012'den beri deneyim",
+        "label": "miras dosyası yürütüldü",
+        "note": "2012'den bu yana büronun ofiste ve çevrimiçi yürüttüğü dosyaların genel tahmini: her miras bizzat, tek tek yönetilir."
       }
     },
     {
@@ -903,7 +903,7 @@
       "value": [
         {
           "titolo": "Hangi paket",
-          "testo": "**Basit** = yalnızca hesaplar ve nakit, gayrimenkul yok. **Gayrimenkullü** = 1–3 taşınmaz, kadastro devri dahil. Daha fazlası veya özel durumlar (arazi, şirket, pay): **ücretsiz özel teklif**. Emin değilseniz Lorenzo'ya yazın: biz söyleriz."
+          "testo": "**Basit** = yalnızca hesaplar ve nakit, gayrimenkul yok. **Gayrimenkullü** = en fazla 3 taşınmaz ve 5 mirasçı, kadastro devri dahil; daha fazlaysa her ek taşınmaz veya mirasçı 60 € ve bunu ödemeden önce açıkça görürsünüz. Özel durumlar (tarım arazisi, şirket, pay, tekne): **ücretsiz özel teklif**. Emin değilseniz Lorenzo'ya yazın: biz söyleriz."
         },
         {
           "titolo": "Yanlış paketi öderseniz",

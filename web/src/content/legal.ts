@@ -246,7 +246,7 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
     eyebrow: "Documento legale",
     intro:
       "I termini e le condizioni che regolano la vendita a distanza dei nostri servizi professionali ai consumatori (D.Lgs. 206/2005, Codice del Consumo).",
-    updatedAt: "Ultimo aggiornamento: 14 luglio 2026",
+    updatedAt: "Ultimo aggiornamento: 5 settembre 2026",
     notice: LANG_NOTICE,
     body: [
       { type: "h2", text: "1. Informazioni sul professionista (art. 49 Cod. Consumo)" },
@@ -284,7 +284,8 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
         type: "ul",
         items: [
           "Sono esclusi dal pacchetto, salvo diverso accordo, i servizi non espressamente indicati (es. contenzioso, pratiche notarili, consulenze fiscali complesse, casi non lineari). Eventuali attività aggiuntive o servizi correlati (es. riunione di usufrutto) sono preventivate a parte.",
-          "Preventivo personalizzato (casi complessi): per le pratiche che eccedono i pacchetti a prezzo fisso (es. oltre tre immobili, terreni/particelle agricole, quote societarie o altri beni non standard, recupero documentale oltre la capienza del pacchetto), il prezzo è determinato tramite preventivo individuale comunicato prima dell'acquisto.",
+          "Supplementi oltre la capienza inclusa: il pacchetto Completo comprende fino a 3 immobili e fino a 5 eredi; per ciascun immobile o erede in più si applica un supplemento fisso di 60 € (onorario), indicato come voce distinta nel riepilogo dell'ordine prima del pagamento. Non si applica al pacchetto Semplice.",
+          "Preventivo personalizzato (casi complessi): per le pratiche che eccedono i pacchetti a prezzo fisso (es. terreni/particelle agricole, quote societarie o altri beni non standard, recupero documentale oltre la capienza del pacchetto), il prezzo è determinato tramite preventivo individuale comunicato prima dell'acquisto.",
           "Il pacchetto proposto in esito al questionario online è indicativo: dopo la verifica della documentazione può applicarsi la procedura di modifica e conguaglio (art. 5).",
           "Verifica preliminare di non obbligo: ove dai dati forniti emerga che la dichiarazione non è dovuta per legge, il professionista lo segnala al cliente; la valutazione definitiva richiede l'esame del caso concreto.",
         ],

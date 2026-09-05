@@ -127,7 +127,7 @@ export const legalDocsSq: Record<LegalSlug, LegalDoc> = {
     title: "Kushtet e shitjes",
     eyebrow: "Dokument ligjor",
     intro: "Kushtet që rregullojnë shitjen në distancë të shërbimeve tona profesionale për konsumatorët (D.Lgs. 206/2005, Kodi i Konsumit).",
-    updatedAt: "Përditësimi i fundit: 14 korrik 2026",
+    updatedAt: "Përditësimi i fundit: 5 shtator 2026",
     notice: LANG_NOTICE,
     body: [
       { type: "h2", text: "1. Informacione mbi profesionistin (neni 49 Kodi i Konsumit)" },
@@ -151,7 +151,8 @@ export const legalDocsSq: Record<LegalSlug, LegalDoc> = {
         type: "ul",
         items: [
           "Përjashtohen nga paketa, përveç marrëveshjes së ndryshme, shërbimet që nuk janë shprehur (p.sh. kontencioz, praktika noteriale, këshillime fiskale komplekse, raste jo lineare). Aktivitetet shtesë parashikohen veç e veç.",
-          "Preventiv i personalizuar (raste komplekse): për praktikat që tejkalojnë paketat me çmim fiks (p.sh. më shumë se tre pasuri, toka/parcele bujqësore, kuota shoqërore ose pasuri të tjera jo standarde, rikuperim dokumentesh përtej kapacitetit të paketës), çmimi përcaktohet me preventiv individual të komunikuar para blerjes.",
+          "Shtesa përtej kapacitetit të përfshirë: paketa Completo përfshin deri në 3 pasuri dhe deri në 5 trashëgimtarë; për çdo pasuri ose trashëgimtar shtesë zbatohet një shtesë fikse prej 60 € (honorar), e treguar si zë më vete në përmbledhjen e porosisë para pagesës. Nuk zbatohet për paketën Semplice.",
+          "Preventiv i personalizuar (raste komplekse): për praktikat që tejkalojnë paketat me çmim fiks (p.sh. toka/parcele bujqësore, kuota shoqërore ose pasuri të tjera jo standarde, rikuperim dokumentesh përtej kapacitetit të paketës), çmimi përcaktohet me preventiv individual të komunikuar para blerjes.",
           "Paketa e propozuar pas pyetësorit online është orientuese: pas verifikimit të dokumentacionit mund të aplikohet procedura e modifikimit dhe barazimit (neni 5).",
           "Verifikim paraprak i mungesës së detyrimit: kur nga të dhënat e dhëna del se deklarata nuk është e detyrueshme me ligj, profesionisti e sinjalizon klientit; vlerësimi përfundimtar kërkon shqyrtimin e rastit konkret.",
         ],

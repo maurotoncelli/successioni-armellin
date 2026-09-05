@@ -127,7 +127,7 @@ export const legalDocsEs: Record<LegalSlug, LegalDoc> = {
     title: "Condiciones de venta",
     eyebrow: "Documento legal",
     intro: "Los términos y condiciones que regulan la venta a distancia de nuestros servicios profesionales a consumidores (D.Lgs. 206/2005, Código del Consumo).",
-    updatedAt: "Última actualización: 14 de julio de 2026",
+    updatedAt: "Última actualización: 5 de septiembre de 2026",
     notice: LANG_NOTICE,
     body: [
       { type: "h2", text: "1. Información sobre el profesional (art. 49 Cód. Consumo)" },
@@ -151,7 +151,8 @@ export const legalDocsEs: Record<LegalSlug, LegalDoc> = {
         type: "ul",
         items: [
           "Quedan excluidos del paquete, salvo acuerdo distinto, servicios no indicados expresamente (p. ej. contencioso, actos notariales, asesorías fiscales complejas, casos no lineales). Las actividades adicionales se presupuestan aparte.",
-          "Presupuesto personalizado (casos complejos): para expedientes que exceden los paquetes a precio fijo (p. ej. más de tres inmuebles, terrenos/parcelas agrícolas, participaciones societarias u otros bienes no estándar, recuperación documental fuera de la capacidad del paquete), el precio se determina mediante presupuesto individual comunicado antes de la compra.",
+          "Suplementos por encima de la capacidad incluida: el paquete Completo cubre hasta 3 inmuebles y hasta 5 herederos; por cada inmueble o heredero adicional se aplica un suplemento fijo de 60 € (honorario), indicado como línea separada en el resumen del pedido antes del pago. No se aplica al paquete Semplice.",
+          "Presupuesto personalizado (casos complejos): para expedientes que exceden los paquetes a precio fijo (p. ej. terrenos/parcelas agrícolas, participaciones societarias u otros bienes no estándar, recuperación documental fuera de la capacidad del paquete), el precio se determina mediante presupuesto individual comunicado antes de la compra.",
           "El paquete propuesto tras el cuestionario en línea es orientativo: tras la verificación de la documentación puede aplicarse el procedimiento de modificación y regularización (art. 5).",
           "Verificación preliminar de no obligación: cuando de los datos facilitados resulte que la declaración no es debida por ley, el profesional lo indica al cliente; la valoración definitiva requiere el examen del caso concreto.",
         ],

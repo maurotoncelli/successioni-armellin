@@ -42,6 +42,12 @@ Codice:
 - **DB prod già aggiornato 05/09** (DML): `packages.COMPLETO.extra_property_fee = 60`.
 - Semplice: nessun sovrapprezzo (anche con molti eredi). Nessun tetto massimo a immobili/eredi
   self-serve: se servisse, aggiungerlo in `computeEsito`.
+- **Testi allineati (05/09 pomeriggio):** T&C art. 3 in 11 lingue (`content/legal*.ts`: nuova
+  voce «Supplementi oltre la capienza inclusa» con 60 €, tolto «oltre tre immobili» dai casi su
+  misura, `updatedAt` T&C = 5 settembre 2026); guida «Quale pacchetto» su /tariffe#guida (11 lingue);
+  FAQ «Quanto costa» IT/EN/DE/ES/FR (content + fixture + **DB prod `faqs` aggiornato**);
+  bozza `bozze_legali/Condizioni_di_Vendita_TC_IT_BOZZA.md`. Garanzia/recesso/mandato non citano
+  la capienza → nessuna modifica.
 
 ---
 
@@ -52,6 +58,12 @@ Sotto la `TrustBar` in home: `components/site/success-counter.tsx` (server, legg
 `success-counter-band.tsx` + `count-up.tsx` (client: count-up con IntersectionObserver +
 rAF, DOM diretto senza setState, rispetta `prefers-reduced-motion`, numero sempre LTR).
 Per cambiare il numero basta editare `target` nei `content_entries.<locale>.json`.
+**Attenzione al dato:** 250+ è una **stima di Mauro/Lorenzo dell'intera carriera** (dal 2012,
+anche prima del sito), mentre in Riunione 2 Lorenzo aveva dichiarato «circa un centinaio»
+(@DECISIONI, @DOMANDE_PER_LORENZO). Copy reso prudente il 05/09: eyebrow «Esperienza dal 2012»,
+label «successioni seguite», nota che dichiara esplicitamente «stima complessiva… dal 2012, in
+ufficio e online» (niente «Numeri reali»). **Da far confermare a Lorenzo il numero**; se non lo
+conferma, abbassare `target` (es. 100) in tutte le lingue.
 
 ---
 

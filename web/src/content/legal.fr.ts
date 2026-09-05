@@ -127,7 +127,7 @@ export const legalDocsFr: Record<LegalSlug, LegalDoc> = {
     title: "Conditions de vente",
     eyebrow: "Document juridique",
     intro: "Les conditions générales régissant la vente à distance de nos services professionnels aux consommateurs (D.Lgs. 206/2005, Code de la consommation).",
-    updatedAt: "Dernière mise à jour : 14 juillet 2026",
+    updatedAt: "Dernière mise à jour : 5 septembre 2026",
     notice: LANG_NOTICE,
     body: [
       { type: "h2", text: "1. Informations sur le professionnel (art. 49 Code consommation)" },
@@ -151,7 +151,8 @@ export const legalDocsFr: Record<LegalSlug, LegalDoc> = {
         type: "ul",
         items: [
           "Sont exclus du forfait, sauf accord contraire, les services non expressément indiqués (p. ex. contentieux, actes notariés, conseils fiscaux complexes, cas non simples). Les activités supplémentaires font l'objet d'un devis séparé.",
-          "Devis personnalisé (cas complexes) : pour les dossiers qui dépassent les forfaits à prix fixe (p. ex. plus de trois biens, terrains/parcelles agricoles, parts sociales ou autres biens non standard, recherche documentaire au-delà du forfait), le prix est déterminé par un devis individuel communiqué avant l'achat.",
+          "Suppléments au-delà de la capacité incluse : le forfait Completo couvre jusqu'à 3 biens et jusqu'à 5 héritiers ; pour chaque bien ou héritier supplémentaire, un supplément fixe de 60 € (honoraires) s'applique, indiqué comme ligne distincte dans le récapitulatif de commande avant le paiement. Il ne s'applique pas au forfait Semplice.",
+          "Devis personnalisé (cas complexes) : pour les dossiers qui dépassent les forfaits à prix fixe (p. ex. terrains/parcelles agricoles, parts sociales ou autres biens non standard, recherche documentaire au-delà du forfait), le prix est déterminé par un devis individuel communiqué avant l'achat.",
           "Le forfait proposé à l'issue du questionnaire en ligne est indicatif : après vérification de la documentation, la procédure de modification et de régularisation (art. 5) peut s'appliquer.",
           "Vérification préliminaire de non-obligation : lorsque les données fournies indiquent que la déclaration n'est pas due en droit, le professionnel l'indique au client ; l'évaluation définitive exige l'examen du cas concret.",
         ],

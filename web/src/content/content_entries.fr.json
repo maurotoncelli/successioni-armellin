@@ -359,9 +359,9 @@
       "value": {
         "target": 250,
         "suffix": "+",
-        "eyebrow": "Des chiffres réels",
-        "label": "successions traitées",
-        "note": "Du premier contact à la transmission en ligne à l'Agenzia delle Entrate : chaque dossier suivi personnellement, un à la fois."
+        "eyebrow": "Expérience depuis 2012",
+        "label": "successions suivies",
+        "note": "Estimation globale des dossiers suivis par le cabinet depuis 2012, au bureau et en ligne : chaque succession gérée en personne, une à la fois."
       }
     },
     {
@@ -903,7 +903,7 @@
       "value": [
         {
           "titolo": "Quel forfait",
-          "testo": "**Simple** = comptes et liquidités seulement, pas d'immeubles. **Avec immeubles** = de 1 à 3 biens, mutation cadastrale incluse. Au-delà, ou cas particuliers (terrains, sociétés, parts) : **devis sur mesure, gratuit**. Si vous hésitez, écrivez à Lorenzo : nous vous le dirons."
+          "testo": "**Simple** = comptes et liquidités seulement, pas d'immeubles. **Avec immeubles** = jusqu'à 3 biens et 5 héritiers, mutation cadastrale incluse ; au-delà, chaque bien ou héritier supplémentaire coûte 60 €, affiché clairement avant le paiement. Cas particuliers (terrains agricoles, sociétés, parts, bateaux) : **devis sur mesure, gratuit**. Si vous hésitez, écrivez à Lorenzo : nous vous le dirons."
         },
         {
           "titolo": "Si vous payez le mauvais forfait",
@@ -3369,7 +3369,7 @@
         {
           "category": "Frais et impôts",
           "question": "Combien coûte votre service ?",
-          "answer": "Honoraires fixes sans TVA à ajouter : Simple 290€ (liquidités uniquement) ou Complet 490€ (jusqu'à 3 biens). Si le cas est plus complexe, devis sur mesure. Les impôts d'État sont séparés, à la charge de l'héritier, et nous les calculons avant l'envoi."
+          "answer": "Honoraires fixes sans TVA à ajouter : Simple 290€ (liquidités uniquement) ou Complet 490€ (jusqu'à 3 biens et 5 héritiers ; au-delà, +60€ par bien ou héritier supplémentaire, indiqué avant le paiement). Pour les cas particuliers (terrains agricoles, sociétés, parts, bateaux), devis sur mesure. Les impôts d'État sont séparés, à la charge de l'héritier, et nous les calculons avant l'envoi."
         },
         {
           "category": "Frais et impôts",

@@ -359,9 +359,9 @@
       "value": {
         "target": 250,
         "suffix": "+",
-        "eyebrow": "Real numbers",
+        "eyebrow": "Experience since 2012",
         "label": "successions handled",
-        "note": "From first contact to e-filing with the Italian Revenue Agency: every case handled personally, one at a time."
+        "note": "Overall estimate of the cases handled by the practice since 2012, in the office and online: every succession managed in person, one at a time."
       }
     },
     {
@@ -903,7 +903,7 @@
       "value": [
         {
           "titolo": "Which package",
-          "testo": "**Simple** = accounts and cash only, no property. **With property** = 1 to 3 properties, cadastral transfer included. Beyond that, or special cases (land, companies, shares): a **custom quote, free**. If you're unsure, write to Lorenzo: we'll tell you."
+          "testo": "**Simple** = accounts and cash only, no property. **With property** = up to 3 properties and 5 heirs, cadastral transfer included; if there are more, each extra property or heir costs €60, shown clearly before you pay. Special cases (agricultural land, companies, shares, boats): a **custom quote, free**. If you're unsure, write to Lorenzo: we'll tell you."
         },
         {
           "titolo": "If you pay for the wrong package",
@@ -3383,7 +3383,7 @@
         {
           "category": "Costs and taxes",
           "question": "How much does your service cost?",
-          "answer": "Fixed fee with no VAT to add: Simple €290 (cash/liquidity only) or Complete €490 (up to 3 properties). For more complex cases we prepare a custom quote. State taxes are separate, paid by the heir, and we calculate them before filing."
+          "answer": "Fixed fee with no VAT to add: Simple €290 (cash/liquidity only) or Complete €490 (up to 3 properties and 5 heirs; beyond that, +€60 for each extra property or heir, shown before payment). For special cases (agricultural land, companies, shares, boats) we prepare a custom quote. State taxes are separate, paid by the heir, and we calculate them before filing."
         },
         {
           "category": "Costs and taxes",

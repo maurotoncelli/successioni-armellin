@@ -127,7 +127,7 @@ export const legalDocsTr: Record<LegalSlug, LegalDoc> = {
     title: "Satış koşulları",
     eyebrow: "Yasal belge",
     intro: "Mesleki hizmetlerimizin tüketicilere uzaktan satışını düzenleyen şartlar ve koşullar (D.Lgs. 206/2005, Tüketici Kanunu).",
-    updatedAt: "Son güncelleme: 14 Temmuz 2026",
+    updatedAt: "Son güncelleme: 5 Eylül 2026",
     notice: LANG_NOTICE,
     body: [
       { type: "h2", text: "1. Meslek mensubu hakkında bilgi (Tüketici Kanunu md. 49)" },
@@ -151,7 +151,8 @@ export const legalDocsTr: Record<LegalSlug, LegalDoc> = {
         type: "ul",
         items: [
           "Aksi kararlaştırılmadıkça pakete dahil olmayan hizmetler (ör. dava, noter işlemleri, karmaşık vergi danışmanlığı, basit olmayan haller) hariçtir. Ek faaliyetler ayrıca teklif edilir.",
-          "Kişiselleştirilmiş teklif (karmaşık haller): sabit fiyatlı paketleri aşan dosyalar (ör. üçten fazla taşınmaz, tarla/tarım parselleri, şirket payları veya diğer standart dışı mallar, paket kapsamını aşan belge temini) için fiyat satın almadan önce bildirilen bireysel teklifle belirlenir.",
+          "Dahil kapasiteyi aşan ek ücretler: Completo paketi en fazla 3 taşınmaz ve 5 mirasçıyı kapsar; her ek taşınmaz veya mirasçı için 60 € (ücret) sabit ek ücret uygulanır ve ödeme öncesinde sipariş özetinde ayrı kalem olarak gösterilir. Semplice paketine uygulanmaz.",
+          "Kişiselleştirilmiş teklif (karmaşık haller): sabit fiyatlı paketleri aşan dosyalar (ör. tarla/tarım parselleri, şirket payları veya diğer standart dışı mallar, paket kapsamını aşan belge temini) için fiyat satın almadan önce bildirilen bireysel teklifle belirlenir.",
           "Çevrimiçi anket sonucu önerilen paket gösterge niteliğindedir: belgelerin kontrolünden sonra değişiklik ve mahsuplaşma prosedürü (md. 5) uygulanabilir.",
           "Zorunluluk olmama ön kontrolü: verilen bilgilerden beyanın kanunen gerekli olmadığı anlaşılırsa meslek mensubu müşteriye bildirir; kesin değerlendirme somut olayın incelenmesini gerektirir.",
         ],

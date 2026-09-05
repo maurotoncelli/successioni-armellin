@@ -127,7 +127,7 @@ export const legalDocsDe: Record<LegalSlug, LegalDoc> = {
     title: "Verkaufsbedingungen",
     eyebrow: "Rechtsdokument",
     intro: "AGB für Fernabsatz professioneller Dienstleistungen an Verbraucher (D.Lgs. 206/2005, Verbraucherschutzgesetz).",
-    updatedAt: "Letzte Aktualisierung: 14. Juli 2026",
+    updatedAt: "Letzte Aktualisierung: 5. September 2026",
     notice: LANG_NOTICE,
     body: [
       { type: "h2", text: "1. Angaben zum Fachmann (Art. 49 Verbraucherschutzgesetz)" },
@@ -151,7 +151,8 @@ export const legalDocsDe: Record<LegalSlug, LegalDoc> = {
         type: "ul",
         items: [
           "Nicht im Paket, sofern nicht anders vereinbart: nicht genannte Leistungen (Streit, Notariat, komplexe Steuerberatung, nicht lineare Fälle). Zusatzleistungen separat kalkuliert.",
-          "Individueller Kostenvoranschlag (komplexe Fälle): bei Übersteigen der Festpreis-Pakete (z. B. mehr als drei Immobilien, Agrarflächen, Gesellschaftsanteile oder andere nicht standardmäßige Güter, Dokumentenbeschaffung über die Paketkapazität hinaus) individueller Preis vor Kauf.",
+          "Zuschläge über die enthaltene Kapazität hinaus: das Paket Completo umfasst bis zu 3 Immobilien und bis zu 5 Erben; für jede weitere Immobilie bzw. jeden weiteren Erben gilt ein fester Zuschlag von 60 € (Honorar), der vor der Zahlung als eigene Position in der Bestellübersicht ausgewiesen wird. Gilt nicht für das Paket Semplice.",
+          "Individueller Kostenvoranschlag (komplexe Fälle): bei Übersteigen der Festpreis-Pakete (z. B. Agrarflächen, Gesellschaftsanteile oder andere nicht standardmäßige Güter, Dokumentenbeschaffung über die Paketkapazität hinaus) individueller Preis vor Kauf.",
           "Nach Fragebogen vorgeschlagenes Paket ist orientierend: nach Dokumentenprüfung ggf. Änderung und Ausgleich (Art. 5).",
           "Vorprüfung Nicht-Pflicht: bei Hinweis auf fehlende Pflicht informieren wir — endgültige Bewertung am konkreten Fall.",
         ],

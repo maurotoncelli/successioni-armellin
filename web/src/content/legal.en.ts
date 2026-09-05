@@ -127,7 +127,7 @@ export const legalDocsEn: Record<LegalSlug, LegalDoc> = {
     title: "Terms of sale",
     eyebrow: "Legal document",
     intro: "The terms and conditions governing distance selling of our professional services for succession declarations.",
-    updatedAt: "Last updated: 14 July 2026",
+    updatedAt: "Last updated: 5 September 2026",
     notice: LANG_NOTICE,
     body: [
       { type: "h2", text: "1. Information about the professional (Art. 49 Consumer Code)" },
@@ -151,7 +151,8 @@ export const legalDocsEn: Record<LegalSlug, LegalDoc> = {
         type: "ul",
         items: [
           "Unless otherwise agreed, services not expressly listed are excluded from the package (e.g. notarial deeds, disputes, subsequent acts).",
-          "Custom quote (complex cases): for cases that exceed fixed-price packages (e.g. more than three properties, agricultural land, company shares or other non-standard assets, document recovery beyond package scope), a dedicated quote is prepared before purchase.",
+          "Supplements beyond the included capacity: the Completo package covers up to 3 properties and up to 5 heirs; for each additional property or heir a fixed supplement of €60 (fee) applies, shown as a separate line in the order summary before payment. It does not apply to the Semplice package.",
+          "Custom quote (complex cases): for cases that exceed fixed-price packages (e.g. agricultural land, company shares or other non-standard assets, document recovery beyond package scope), a dedicated quote is prepared before purchase.",
           "The package proposed after the online questionnaire is indicative: after checking documentation the professional may suggest a change, with settlement of the difference only.",
           "Preliminary check of non-obligation: where the data suggest the declaration is not required, we say so and do not sell a useless service.",
         ],

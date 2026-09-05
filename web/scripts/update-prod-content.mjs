@@ -56,7 +56,7 @@ const faqUpdates = [
     match: "Quanto costa il vostro servizio?",
     question: "Quanto costa il vostro servizio?",
     answer:
-      "Onorario fisso senza IVA: Semplice 290€ (solo liquidità) o Completo 490€ (fino a 3 immobili). Se il caso è più complesso, ti facciamo un preventivo su misura. Le imposte di Stato sono separate, a carico dell'erede, e te le calcoliamo prima dell'invio.",
+      "Onorario fisso senza IVA: Semplice 290€ (solo liquidità) o Completo 490€ (fino a 3 immobili e 5 eredi; oltre, +60€ per ogni immobile o erede in più, indicato prima del pagamento). Per i casi particolari (terreni agricoli, aziende, quote, imbarcazioni) ti facciamo un preventivo su misura. Le imposte di Stato sono separate, a carico dell'erede, e te le calcoliamo prima dell'invio.",
     sort_order: 3,
   },
   {

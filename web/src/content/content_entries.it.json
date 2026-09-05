@@ -359,9 +359,9 @@
       "value": {
         "target": 250,
         "suffix": "+",
-        "eyebrow": "Numeri reali",
-        "label": "successioni gestite",
-        "note": "Dal primo contatto all'invio telematico all'Agenzia delle Entrate: pratiche seguite di persona, una alla volta."
+        "eyebrow": "Esperienza dal 2012",
+        "label": "successioni seguite",
+        "note": "Stima complessiva delle pratiche seguite dallo studio dal 2012, in ufficio e online: ogni successione gestita di persona, una alla volta."
       }
     },
     {
@@ -903,7 +903,7 @@
       "value": [
         {
           "titolo": "Quale pacchetto",
-          "testo": "**Semplice** = solo conti e liquidità, niente immobili. **Con immobili** = da 1 a 3 immobili, voltura inclusa. Oltre, o casi particolari (terreni, aziende, quote): **preventivo su misura, gratis**. Se non sai da che parte stare, scrivi a Lorenzo: te lo diciamo noi."
+          "testo": "**Semplice** = solo conti e liquidità, niente immobili. **Con immobili** = fino a 3 immobili e 5 eredi, voltura inclusa; se sono di più, ogni immobile o erede in più costa 60 € e lo vedi chiaramente prima di pagare. Casi particolari (terreni agricoli, aziende, quote, imbarcazioni): **preventivo su misura, gratis**. Se non sai da che parte stare, scrivi a Lorenzo: te lo diciamo noi."
         },
         {
           "titolo": "Se paghi il pacchetto sbagliato",
@@ -3383,7 +3383,7 @@
         {
           "category": "Costi e imposte",
           "question": "Quanto costa il vostro servizio?",
-          "answer": "Onorario fisso senza IVA: Semplice 290€ (solo liquidità) o Completo 490€ (fino a 3 immobili). Se il caso è più complesso, ti facciamo un preventivo su misura. Le imposte di Stato sono separate, a carico dell'erede, e te le calcoliamo prima dell'invio."
+          "answer": "Onorario fisso senza IVA: Semplice 290€ (solo liquidità) o Completo 490€ (fino a 3 immobili e 5 eredi; oltre, +60€ per ogni immobile o erede in più, indicato prima del pagamento). Per i casi particolari (terreni agricoli, aziende, quote, imbarcazioni) ti facciamo un preventivo su misura. Le imposte di Stato sono separate, a carico dell'erede, e te le calcoliamo prima dell'invio."
         },
         {
           "category": "Costi e imposte",

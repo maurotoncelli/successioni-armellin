@@ -359,9 +359,9 @@
       "value": {
         "target": 250,
         "suffix": "+",
-        "eyebrow": "Shifra reale",
+        "eyebrow": "Përvojë që nga 2012",
         "label": "trashëgimi të ndjekura",
-        "note": "Nga kontakti i parë deri te dërgimi elektronik në Agenzia delle Entrate: çdo dosje ndiqet personalisht, një nga një."
+        "note": "Vlerësim i përgjithshëm i praktikave të ndjekura nga studioja që nga 2012, në zyrë dhe online: çdo trashëgimi e menaxhuar personalisht, një nga një."
       }
     },
     {
@@ -903,7 +903,7 @@
       "value": [
         {
           "titolo": "Cila paketë",
-          "testo": "**E thjeshtë** = vetëm llogari dhe likuiditet, pa pasuri. **Me pasuri** = 1 deri 3 pasuri, volturë kadastrale e përfshirë. Më shumë, ose raste të veçanta: **preventiv me porosi, falas**. Nëse nuk di nga t'ia nisësh, shkruaji Lorenzo: ta themi ne."
+          "testo": "**E thjeshtë** = vetëm llogari dhe likuiditet, pa pasuri. **Me pasuri** = deri në 3 pasuri dhe 5 trashëgimtarë, volturë kadastrale e përfshirë; nëse janë më shumë, çdo pasuri ose trashëgimtar shtesë kushton 60 € dhe e sheh qartë para pagesës. Raste të veçanta (truall bujqësor, biznese, kuota, anije): **preventiv me porosi, falas**. Nëse nuk di nga t'ia nisësh, shkruaji Lorenzo: ta themi ne."
         },
         {
           "titolo": "Nëse paguan paketën e gabuar",

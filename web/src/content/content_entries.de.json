@@ -359,9 +359,9 @@
       "value": {
         "target": 250,
         "suffix": "+",
-        "eyebrow": "Echte Zahlen",
-        "label": "bearbeitete Erbschaften",
-        "note": "Vom ersten Kontakt bis zur elektronischen Einreichung bei der Agenzia delle Entrate: jeder Fall persönlich betreut, einer nach dem anderen."
+        "eyebrow": "Erfahrung seit 2012",
+        "label": "betreute Erbschaften",
+        "note": "Gesamtschätzung der seit 2012 von der Kanzlei betreuten Fälle, im Büro und online: jede Erbschaft persönlich betreut, eine nach der anderen."
       }
     },
     {
@@ -903,7 +903,7 @@
       "value": [
         {
           "titolo": "Welches Paket",
-          "testo": "**Einfach** = nur Konten und Liquidität, keine Immobilien. **Mit Immobilien** = 1 bis 3 Immobilien, Katasterumschreibung inklusive. Darüber hinaus oder Sonderfälle (Grundstücke, Unternehmen, Anteile): **kostenloses Angebot nach Maß**. Wenn Sie unsicher sind, schreiben Sie Lorenzo: wir sagen es Ihnen."
+          "testo": "**Einfach** = nur Konten und Liquidität, keine Immobilien. **Mit Immobilien** = bis zu 3 Immobilien und 5 Erben, Katasterumschreibung inklusive; sind es mehr, kostet jede weitere Immobilie bzw. jeder weitere Erbe 60 €, klar ausgewiesen vor der Zahlung. Sonderfälle (Agrarflächen, Unternehmen, Anteile, Boote): **kostenloses Angebot nach Maß**. Wenn Sie unsicher sind, schreiben Sie Lorenzo: wir sagen es Ihnen."
         },
         {
           "titolo": "Wenn Sie das falsche Paket zahlen",
@@ -3369,7 +3369,7 @@
         {
           "category": "Kosten und Steuern",
           "question": "Was kostet Ihr Service?",
-          "answer": "Festes Honorar ohne zusätzliche MwSt.: Einfach 290€ (nur Liquidität) oder Komplett 490€ (bis 3 Immobilien). Bei komplexeren Fällen individueller Kostenvoranschlag. Staatliche Steuern separat, vom Erben — wir berechnen sie vor der Einreichung."
+          "answer": "Festes Honorar ohne zusätzliche MwSt.: Einfach 290€ (nur Liquidität) oder Komplett 490€ (bis 3 Immobilien und 5 Erben; darüber +60€ je weitere Immobilie oder Erbe, vor der Zahlung ausgewiesen). Für Sonderfälle (Agrarflächen, Unternehmen, Anteile, Boote) individueller Kostenvoranschlag. Staatliche Steuern separat, vom Erben — wir berechnen sie vor der Einreichung."
         },
         {
           "category": "Kosten und Steuern",
