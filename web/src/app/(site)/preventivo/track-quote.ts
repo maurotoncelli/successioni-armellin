@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { pushCrmNotification } from "@/lib/crm-notifications";
 import { incrementQuoteCompleted } from "@/lib/quote-stats";
 import { quizNotificationText, type QuizSnapshot } from "@/lib/quiz-summary";
@@ -50,6 +51,9 @@ export async function trackQuoteCompleted(
     title: `Questionario compilato — ${title}`,
     body,
   });
+  // Home CRM e statistiche leggono le notifiche/contatore: invalida come createLead.
+  revalidatePath("/crm");
+  revalidatePath("/crm/statistiche");
 
   return { ok: true };
 }
