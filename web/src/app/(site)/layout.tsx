@@ -121,7 +121,17 @@ export default async function SiteLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const gaId = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID;
+  // GA4/Ads solo sul sito pubblicato: in dev (`npm run dev`) e nei preview Vercel
+  // il tag non viene montato, così localhost e i test non inquinano i dati
+  // (07/09: in GA4 comparivano referrer `localhost:3001`). Per forzarlo in
+  // locale: ANALYTICS_FORCE=1.
+  const analyticsOn =
+    process.env.ANALYTICS_FORCE === "1" ||
+    (process.env.NODE_ENV === "production" &&
+      process.env.VERCEL_ENV !== "preview");
+  const gaId = analyticsOn
+    ? process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID
+    : undefined;
   const adsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID?.trim();
   const offline = await getSiteOfflineState();
   const offlineOn = offline.enabled;

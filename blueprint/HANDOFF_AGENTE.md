@@ -37,28 +37,27 @@ Lettura dati GA4 (Data API) senza chiavi JSON: la policy Workspace
   personalizzate** `section` e `cta` registrate in GA4 (Amministrazione → Definizioni
   personalizzate); finché non ci sono, quella sezione viene saltata.
 
-### ☐ PROSSIMA SESSIONE — checklist Analytics/Ads (da fare con Mauro a schermo)
+### Checklist Analytics/Ads — stato al 07/09 (SA `ga4-reader` ora **Amministratore** GA4)
 
-Stato proprietà letto via Admin API il 07/09: **eventi chiave = solo `ads_conversion_Acquisto_1` e
-`purchase`**; **nessuna dimensione personalizzata**; **retention dati = 2 mesi**.
+Fatto via Admin API il 07/09 (script one-shot, non nel repo):
+- ✅ **Eventi chiave**: aggiunti `quote_result`, `contact_click`, `generate_lead`,
+  `begin_checkout`; **rimosso** `ads_conversion_Acquisto_1` (restano `purchase` + i 4).
+  Da oggi il rimbalzo GA4 non conta più come "rimbalzo" chi calcola un preventivo o contatta.
+- ✅ **Dimensioni personalizzate** (evento): `esito`, `package`, `method`, `cta`, `section`,
+  `page`, `kind`, `video_percent`, `tipo`. Popolate solo da ora in avanti (non retroattive);
+  il report `ga4-report.mjs` le usa per la sezione Come funziona.
+- ✅ **Conservazione dati: 14 mesi** (era 2).
+- ✅ **Codice**: `app/(site)/layout.tsx` monta GA4/Ads solo con `NODE_ENV=production` e
+  `VERCEL_ENV !== "preview"` (override `ANALYTICS_FORCE=1`). Niente più `localhost` in GA4.
 
-1. **GA4 → Amministrazione → Eventi → Eventi chiave**: marcare `quote_result`, `contact_click`
-   (e `generate_lead`, `begin_checkout`). Oggi GA4 non considera "conversione" né un preventivo
-   né un contatto: i report di coinvolgimento e le esplorazioni funnel sono monchi. Togliere
-   la stella a `ads_conversion_Acquisto_1` (vedi punto 5).
-2. **Definizioni personalizzate** (ambito evento): `method`, `cta`, `section`, `video_percent`,
-   `esito`/`package` se `quote_result` li manda (verificare i parametri in `lib/analytics` e
-   `track-quote-complete`). Senza, i parametri che già inviamo non sono interrogabili.
-3. **Impostazioni dati → Conservazione dati → 14 mesi** (gratis; oggi 2 mesi = tra 60 giorni
-   perdiamo lo storico nelle esplorazioni).
-4. **Traffico interno**: Flussi di dati → Configura impostazioni tag → Definisci traffico
-   interno (IP casa/studio di Mauro, studio e casa di Lorenzo) → poi Filtri dati → attivo.
-   Tracce chiare di noi: Roma 10 ut./237 viste, Chiavari 2/76, Firenze 8/93, Torino 5/67,
-   `come-funziona` 22 sessioni direct da 2 utenti mobile. **Compare anche `localhost:3001`
-   come referrer**: il dev locale spara su GA4 di produzione (`NEXT_PUBLIC_GA4_MEASUREMENT_ID`
-   in `.env.local`). **Fix codice da fare:** in `app/(site)/layout.tsx` montare
-   `GoogleAnalytics`/`ContactTracker` solo se `NODE_ENV === "production"` e
-   `VERCEL_ENV !== "preview"` (o togliere l'ID da `.env.local`).
+Da fare **in UI** (l'Admin API non espone traffico interno né filtri dati):
+4. **Traffico interno**: Amministrazione → Flussi di dati → web → Configura impostazioni tag →
+   Mostra tutto → **Definisci traffico interno** → Crea: nome `interno`, `traffic_type` =
+   `internal`, IP **uguale a** `185.231.163.121` (Mauro, 07/09) + IP studio Lorenzo + IP casa
+   Lorenzo (da https://whatismyip.com sui loro dispositivi). Poi **Filtri dati → Internal
+   Traffic** → stato **Attivo** (di default nasce in "Test"). Tracce di noi nei dati: Roma 10
+   ut./237 viste, Chiavari 2/76, Firenze 8/93, Torino 5/67, `come-funziona` 22 sessioni direct
+   da 2 utenti mobile. Nota: IP domestici cambiano; ricontrollare ogni tanto.
 5. **Google Ads → Obiettivi → Conversioni**: l'azione «Acquisto» spara **su ogni vista di
    /tariffe** (34 in 28 gg = viste della pagina; vera 1). È quasi certamente una conversione
    "caricamento pagina / URL" creata dal wizard. Eliminarla o renderla Secondaria; Principali
