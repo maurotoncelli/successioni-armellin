@@ -109,6 +109,16 @@
       }
     },
     {
+      "collection": "globals",
+      "key": "mobile_cta_whatsapp",
+      "locale": "en",
+      "is_published": true,
+      "value": {
+        "label": "Message on WhatsApp",
+        "prefill": "Hi Lorenzo, I saw your website and would like some information about the succession procedure."
+      }
+    },
+    {
       "collection": "footer",
       "key": "studio",
       "locale": "en",
@@ -1815,6 +1825,128 @@
       "value": {
         "label": "Talk to Lorenzo",
         "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_cta_label",
+      "locale": "en",
+      "is_published": true,
+      "value": "Get your free quote"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_cta_hint",
+      "locale": "en",
+      "is_published": true,
+      "value": "1 minute, no commitment"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_video_label",
+      "locale": "en",
+      "is_published": true,
+      "value": "Watch the video (2 min)"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_trust_items",
+      "locale": "en",
+      "is_published": true,
+      "value": [
+        "From €{price}",
+        "250+ successions handled",
+        "Fully online, from home"
+      ]
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_title",
+      "locale": "en",
+      "is_published": true,
+      "value": "Got how it works? Start with step 1."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_label",
+      "locale": "en",
+      "is_published": true,
+      "value": "Get your free quote"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_hint",
+      "locale": "en",
+      "is_published": true,
+      "value": "One minute, no sign-up: we tell you right away whether a filing is required and what it costs."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_eyebrow",
+      "locale": "en",
+      "is_published": true,
+      "value": "What it costs"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_title",
+      "locale": "en",
+      "is_published": true,
+      "value": "Clear prices, before you start"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_intro",
+      "locale": "en",
+      "is_published": true,
+      "value": "The fee is fixed and you know it upfront. Taxes are separate: we calculate them for you before filing."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_custom_name",
+      "locale": "en",
+      "is_published": true,
+      "value": "Tailored"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_custom_body",
+      "locale": "en",
+      "is_published": true,
+      "value": "Special cases (businesses, company shares, boats…): a personalised quote, no commitment."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_extra_hint",
+      "locale": "en",
+      "is_published": true,
+      "value": "+€{fee} for each property or heir beyond those included"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_link",
+      "locale": "en",
+      "is_published": true,
+      "value": {
+        "label": "Compare the packages in detail",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "faq_title",
+      "locale": "en",
+      "is_published": true,
+      "value": "The questions we get asked most"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "faq_link",
+      "locale": "en",
+      "is_published": true,
+      "value": {
+        "label": "All frequently asked questions",
+        "href": "/faq"
       }
     },
     {

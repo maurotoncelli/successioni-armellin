@@ -109,6 +109,16 @@
       }
     },
     {
+      "collection": "globals",
+      "key": "mobile_cta_whatsapp",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "راسلنا عبر واتساب",
+        "prefill": "مرحبًا لورينزو، رأيت الموقع وأود بعض المعلومات عن معاملة الإرث."
+      }
+    },
+    {
       "collection": "footer",
       "key": "studio",
       "locale": "ar",
@@ -1801,6 +1811,128 @@
       "value": {
         "label": "تحدّث مع Lorenzo",
         "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_cta_label",
+      "locale": "ar",
+      "is_published": true,
+      "value": "احسب عرض السعر مجانًا"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_cta_hint",
+      "locale": "ar",
+      "is_published": true,
+      "value": "دقيقة واحدة، بدون التزام"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_video_label",
+      "locale": "ar",
+      "is_published": true,
+      "value": "شاهد الفيديو (دقيقتان)"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_trust_items",
+      "locale": "ar",
+      "is_published": true,
+      "value": [
+        "ابتداءً من {price} €",
+        "أكثر من 250 معاملة إرث",
+        "كل شيء عبر الإنترنت، من المنزل"
+      ]
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "فهمت كيف يعمل؟ ابدأ من الخطوة 1."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_label",
+      "locale": "ar",
+      "is_published": true,
+      "value": "احسب عرض السعر مجانًا"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_hint",
+      "locale": "ar",
+      "is_published": true,
+      "value": "دقيقة واحدة، بدون تسجيل: نخبرك فورًا إن كان الإقرار مطلوبًا وكم يكلّف."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_eyebrow",
+      "locale": "ar",
+      "is_published": true,
+      "value": "كم التكلفة"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "أسعار واضحة قبل أن تبدأ"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_intro",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الأتعاب ثابتة وتعرفها مسبقًا. الضرائب منفصلة: نحسبها لك قبل الإرسال."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_custom_name",
+      "locale": "ar",
+      "is_published": true,
+      "value": "حسب الطلب"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_custom_body",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الحالات الخاصة (شركات، حصص شركات، قوارب…): عرض سعر مخصص، بدون التزام."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_extra_hint",
+      "locale": "ar",
+      "is_published": true,
+      "value": "+{fee} € لكل عقار أو وريث إضافي غير المشمولين"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_link",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "قارن الباقات بالتفصيل",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "faq_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الأسئلة الأكثر شيوعًا"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "faq_link",
+      "locale": "ar",
+      "is_published": true,
+      "value": {
+        "label": "كل الأسئلة الشائعة",
+        "href": "/faq"
       }
     },
     {

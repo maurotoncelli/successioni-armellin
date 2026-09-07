@@ -109,6 +109,16 @@
       }
     },
     {
+      "collection": "globals",
+      "key": "mobile_cta_whatsapp",
+      "locale": "fr",
+      "is_published": true,
+      "value": {
+        "label": "Écrire sur WhatsApp",
+        "prefill": "Bonjour Lorenzo, j'ai vu le site et je voudrais des informations sur la succession."
+      }
+    },
+    {
       "collection": "footer",
       "key": "studio",
       "locale": "fr",
@@ -1801,6 +1811,128 @@
       "value": {
         "label": "Parlez à Lorenzo",
         "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_cta_label",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Calculer mon devis gratuit"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_cta_hint",
+      "locale": "fr",
+      "is_published": true,
+      "value": "1 minute, sans engagement"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_video_label",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Voir la vidéo (2 min)"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_trust_items",
+      "locale": "fr",
+      "is_published": true,
+      "value": [
+        "À partir de {price} €",
+        "250+ successions suivies",
+        "Tout en ligne, depuis chez vous"
+      ]
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_title",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Vous avez compris ? Commencez par l'étape 1."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_label",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Calculer mon devis gratuit"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_hint",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Une minute, sans inscription : nous vous disons tout de suite si la déclaration est due et combien elle coûte."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_eyebrow",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Combien ça coûte"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_title",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Des prix clairs, avant de commencer"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_intro",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Les honoraires sont fixes et connus d'avance. Les impôts sont à part : nous les calculons pour vous avant l'envoi."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_custom_name",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Sur mesure"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_custom_body",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Cas particuliers (entreprises, parts de société, bateaux…) : devis personnalisé, sans engagement."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_extra_hint",
+      "locale": "fr",
+      "is_published": true,
+      "value": "+{fee} € par bien ou héritier au-delà de ceux inclus"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_link",
+      "locale": "fr",
+      "is_published": true,
+      "value": {
+        "label": "Comparer les formules en détail",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "faq_title",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Les questions qu'on nous pose le plus"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "faq_link",
+      "locale": "fr",
+      "is_published": true,
+      "value": {
+        "label": "Toutes les questions fréquentes",
+        "href": "/faq"
       }
     },
     {

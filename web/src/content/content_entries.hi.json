@@ -109,6 +109,16 @@
       }
     },
     {
+      "collection": "globals",
+      "key": "mobile_cta_whatsapp",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "WhatsApp पर लिखें",
+        "prefill": "नमस्ते Lorenzo, मैंने वेबसाइट देखी और उत्तराधिकार प्रक्रिया के बारे में जानकारी चाहता/चाहती हूँ।"
+      }
+    },
+    {
       "collection": "footer",
       "key": "studio",
       "locale": "hi",
@@ -1801,6 +1811,128 @@
       "value": {
         "label": "Lorenzo से बात करें",
         "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_cta_label",
+      "locale": "hi",
+      "is_published": true,
+      "value": "मुफ़्त अनुमान निकालें"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_cta_hint",
+      "locale": "hi",
+      "is_published": true,
+      "value": "1 मिनट, बिना बाध्यता"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_video_label",
+      "locale": "hi",
+      "is_published": true,
+      "value": "वीडियो देखें (2 मिनट)"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_trust_items",
+      "locale": "hi",
+      "is_published": true,
+      "value": [
+        "{price} € से",
+        "250+ उत्तराधिकार मामले",
+        "पूरी तरह ऑनलाइन, घर से"
+      ]
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "समझ गए यह कैसे काम करता है? चरण 1 से शुरू करें।"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_label",
+      "locale": "hi",
+      "is_published": true,
+      "value": "मुफ़्त अनुमान निकालें"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_hint",
+      "locale": "hi",
+      "is_published": true,
+      "value": "एक मिनट, बिना पंजीकरण: हम तुरंत बताते हैं कि घोषणा ज़रूरी है या नहीं और कितना खर्च होगा।"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_eyebrow",
+      "locale": "hi",
+      "is_published": true,
+      "value": "कितना खर्च"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "शुरू करने से पहले, साफ़ कीमतें"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_intro",
+      "locale": "hi",
+      "is_published": true,
+      "value": "शुल्क निश्चित है और आप इसे पहले से जानते हैं। कर अलग हैं: जमा करने से पहले हम उनकी गणना करते हैं।"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_custom_name",
+      "locale": "hi",
+      "is_published": true,
+      "value": "अनुकूलित"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_custom_body",
+      "locale": "hi",
+      "is_published": true,
+      "value": "विशेष मामले (कंपनियाँ, कंपनी शेयर, नावें…): व्यक्तिगत अनुमान, बिना बाध्यता।"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_extra_hint",
+      "locale": "hi",
+      "is_published": true,
+      "value": "शामिल से अधिक हर संपत्ति या वारिस के लिए +{fee} €"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_link",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "पैकेजों की विस्तृत तुलना",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "faq_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "सबसे ज़्यादा पूछे जाने वाले सवाल"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "faq_link",
+      "locale": "hi",
+      "is_published": true,
+      "value": {
+        "label": "सभी सामान्य प्रश्न",
+        "href": "/faq"
       }
     },
     {

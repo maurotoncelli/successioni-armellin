@@ -109,6 +109,16 @@
       }
     },
     {
+      "collection": "globals",
+      "key": "mobile_cta_whatsapp",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "WhatsApp'tan yaz",
+        "prefill": "Merhaba Lorenzo, siteyi gördüm ve miras işlemi hakkında bilgi almak istiyorum."
+      }
+    },
+    {
       "collection": "footer",
       "key": "studio",
       "locale": "tr",
@@ -1801,6 +1811,128 @@
       "value": {
         "label": "Lorenzo ile konuşun",
         "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_cta_label",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Ücretsiz teklifi hesapla"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_cta_hint",
+      "locale": "tr",
+      "is_published": true,
+      "value": "1 dakika, taahhütsüz"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_video_label",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Videoyu izle (2 dk)"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_trust_items",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        "{price} €'dan başlayan",
+        "250+ miras dosyası",
+        "Tamamen online, evden"
+      ]
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Nasıl çalıştığını anladınız mı? 1. adımdan başlayın."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_label",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Ücretsiz teklifi hesapla"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_hint",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bir dakika, kayıt yok: beyannamenin gerekli olup olmadığını ve ne kadar tuttuğunu hemen söylüyoruz."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_eyebrow",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Ne kadar tutar"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Başlamadan önce net fiyatlar"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_intro",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Ücret sabittir ve baştan bilirsiniz. Vergiler ayrıdır: göndermeden önce sizin için hesaplarız."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_custom_name",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Kişiye özel"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_custom_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Özel durumlar (şirketler, şirket hisseleri, tekneler…): taahhütsüz kişiye özel teklif."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_extra_hint",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Dahil olanların ötesindeki her taşınmaz veya mirasçı için +{fee} €"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_link",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Paketleri ayrıntılı karşılaştır",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "faq_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "En sık sorulan sorular"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "faq_link",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Tüm sık sorulan sorular",
+        "href": "/faq"
       }
     },
     {

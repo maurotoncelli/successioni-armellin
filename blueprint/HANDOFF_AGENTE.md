@@ -18,6 +18,48 @@ Chat precedente TR/FR/SQ + EN/AR + SEO:
 
 ---
 
+## ★★ COME FUNZIONA: ANTI-RIMBALZO + TRACKING SEZIONI/VIDEO (07/09)
+
+Richiesta Mauro: abbassare la frequenza di rimbalzo di `/come-funziona`. Diagnosi dal
+codice: unica CTA in fondo pagina, hero senza azione, video (asset più forte) sotto i 3
+passi, nessun prezzo, nessun link interno → vicolo cieco. **Nota sui dati GA4 (28 gg al
+06/09):** `/come-funziona` ha 134 viste su **11 utenti** (12 viste/utente, 7'42" di
+engagement) → dominata da test interni, il 34,5% di rimbalzo non è significativo. Da
+impostare in GA4 il filtro «traffico interno» (IP di Mauro/Lorenzo) prima di leggere i
+numeri. Traffico reale: ~60% mobile, google/cpc prima sorgente.
+
+Cosa è stato fatto (`web/src/app/(site)/come-funziona/page.tsx`):
+- **Hero con CTA**: bottone «Calcola il preventivo gratis» + hint «1 minuto, senza
+  impegno» + link «Guarda il video (2 min)» → `#video` + trust line (Da {price} € dal
+  minimo dei pacchetti DB, 250+ successioni, tutto online). `PageHero` ora accetta
+  `children`.
+- **CTA dopo i 3 passi** («Hai capito come funziona? Inizia dal passo 1») e **passo 1
+  cliccabile** (foto + titolo → `/preventivo`).
+- **Mobile: video prima dei passi** (wrapper flex con `order-*`; da md ordine originale).
+- **Fascia prezzi** (Semplice / Con Immobili / Su misura) da `getPackages(locale)`, con
+  hint «+60 € per immobile o erede oltre inclusi» se `extraPropertyFee`; link a Tariffe.
+- **Mini FAQ** (3 voci: una per come/costi/dopo, via `faqCategoryIntroKey`) + link a FAQ.
+- **Barra mobile** (`mobile-cta.tsx`, tutto il sito tranne /preventivo e /checkout): aggiunto
+  bottone verde **WhatsApp** con prefill (`globals.mobile_cta_whatsapp`) tra Preventivo e
+  Telefono. `data-cta` su tutti e tre.
+- Testi nuovi in `come_funziona.*` (hero_cta_label/hint, hero_video_label,
+  hero_trust_items, steps_cta_*, prices_*, faq_title, faq_link) in **11 lingue**.
+
+Tracking GA4 nuovo:
+- `section_view` {section, page} la prima volta che una sezione è visibile al 40%
+  (`components/analytics/section-view-tracker.tsx`, elementi con `data-track-section`:
+  steps, steps_cta, video, prices, panels, deliverable, faq, cta_final). Serve a vedere
+  dove mollano → **da leggere fra 2 settimane** in Esplorazioni per decidere il prossimo passo.
+- `video_start` / `video_progress` (25/50/75) / `video_complete` sul `<video>` nativo
+  (`WelcomeVideo` prop `trackingTitle`, attiva solo su come-funziona; il video di benvenuto
+  in home non è tracciato: passare `trackingTitle="benvenuto"` se serve).
+- `cta_click` {cta, link_url, location} per i link **interni** con `data-cta`
+  (`ContactTracker` esteso; tel/wa/mail restano `contact_click`).
+Verificato in locale che tutti gli eventi partono. Non sono eventi chiave: non toccano le
+conversioni Ads.
+
+---
+
 ## ★ RISULTATO PREVENTIVO (esito B): BOTTONE VERDE WHATSAPP (07/09)
 
 Richiesta Mauro: molti preferiscono scrivere su WhatsApp prima di pagare. Nel blocco

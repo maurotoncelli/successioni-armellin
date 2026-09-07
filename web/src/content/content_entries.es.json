@@ -109,6 +109,16 @@
       }
     },
     {
+      "collection": "globals",
+      "key": "mobile_cta_whatsapp",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Escribir por WhatsApp",
+        "prefill": "Hola Lorenzo, he visto la web y quisiera información sobre la sucesión."
+      }
+    },
+    {
       "collection": "footer",
       "key": "studio",
       "locale": "es",
@@ -1801,6 +1811,128 @@
       "value": {
         "label": "Habla con Lorenzo",
         "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_cta_label",
+      "locale": "es",
+      "is_published": true,
+      "value": "Calcula tu presupuesto gratis"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_cta_hint",
+      "locale": "es",
+      "is_published": true,
+      "value": "1 minuto, sin compromiso"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_video_label",
+      "locale": "es",
+      "is_published": true,
+      "value": "Ver el vídeo (2 min)"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_trust_items",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        "Desde {price} €",
+        "250+ sucesiones gestionadas",
+        "Todo online, desde casa"
+      ]
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "¿Ya sabes cómo funciona? Empieza por el paso 1."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_label",
+      "locale": "es",
+      "is_published": true,
+      "value": "Calcula tu presupuesto gratis"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_hint",
+      "locale": "es",
+      "is_published": true,
+      "value": "Un minuto, sin registro: te decimos al momento si la declaración es obligatoria y cuánto cuesta."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_eyebrow",
+      "locale": "es",
+      "is_published": true,
+      "value": "Cuánto cuesta"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Precios claros, antes de empezar"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_intro",
+      "locale": "es",
+      "is_published": true,
+      "value": "Los honorarios son fijos y los conoces desde el principio. Los impuestos van aparte: te los calculamos antes del envío."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_custom_name",
+      "locale": "es",
+      "is_published": true,
+      "value": "A medida"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_custom_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "Casos especiales (empresas, participaciones, embarcaciones…): presupuesto personalizado, sin compromiso."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_extra_hint",
+      "locale": "es",
+      "is_published": true,
+      "value": "+{fee} € por cada inmueble o heredero adicional a los incluidos"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_link",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Compara los paquetes en detalle",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "faq_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Las preguntas que más nos hacen"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "faq_link",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Todas las preguntas frecuentes",
+        "href": "/faq"
       }
     },
     {

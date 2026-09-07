@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { Captions, ChevronDown, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { trackEvent } from "@/lib/analytics";
 import {
   localeFlag,
   type WelcomeCaptionTrack,
@@ -38,6 +39,12 @@ type Props = {
   showTitle?: boolean;
   /** id del <select> sottotitoli (default welcome). */
   captionsSelectId?: string;
+  /**
+   * Se presente, manda a GA4 video_start / video_progress (25-50-75%) /
+   * video_complete con questo titolo (il <video> nativo non è tracciato
+   * dalla misurazione avanzata, che copre solo YouTube).
+   */
+  trackingTitle?: string;
 };
 
 type CaptionChoice = string; // locale code or "off"
@@ -71,11 +78,24 @@ export function WelcomeVideo({
   className,
   showTitle = true,
   captionsSelectId = "welcome-captions-lang",
+  trackingTitle,
 }: Props) {
   const ready = Boolean(src);
   const [playing, setPlaying] = useState(false);
   const [playbackSrc, setPlaybackSrc] = useState(src ?? "");
   const videoRef = useRef<HTMLVideoElement>(null);
+  /** Soglie di avanzamento già inviate a GA4 (per sessione di play). */
+  const progressSentRef = useRef<Set<number>>(new Set());
+
+  function videoParams(el: HTMLVideoElement, extra?: Record<string, unknown>) {
+    return {
+      video_title: trackingTitle,
+      video_provider: "html5",
+      video_duration: Number.isFinite(el.duration) ? Math.round(el.duration) : undefined,
+      video_current_time: Math.round(el.currentTime),
+      ...extra,
+    };
+  }
 
   const defaultLang = useMemo(
     () =>
@@ -137,11 +157,31 @@ export function WelcomeVideo({
       el.addEventListener("loadeddata", tryPlay, { once: true });
     }
 
-    const onEnded = () => setPlaying(false);
+    const onEnded = () => {
+      if (trackingTitle) {
+        trackEvent("video_complete", videoParams(el, { video_percent: 100 }));
+      }
+      setPlaying(false);
+    };
     const onFsChange = () => syncTrackMode(el);
     const mql = window.matchMedia("(min-width: 1024px)");
+    const onFirstPlay = () => {
+      if (trackingTitle) trackEvent("video_start", videoParams(el, { video_percent: 0 }));
+    };
+    const onTimeUpdate = () => {
+      if (!trackingTitle || !Number.isFinite(el.duration) || el.duration <= 0) return;
+      const pct = (el.currentTime / el.duration) * 100;
+      for (const step of [25, 50, 75]) {
+        if (pct >= step && !progressSentRef.current.has(step)) {
+          progressSentRef.current.add(step);
+          trackEvent("video_progress", videoParams(el, { video_percent: step }));
+        }
+      }
+    };
 
     el.addEventListener("ended", onEnded);
+    el.addEventListener("play", onFirstPlay, { once: true });
+    el.addEventListener("timeupdate", onTimeUpdate);
     el.addEventListener("webkitbeginfullscreen", onFsChange);
     el.addEventListener("webkitendfullscreen", onFsChange);
     document.addEventListener("fullscreenchange", onFsChange);
@@ -149,6 +189,8 @@ export function WelcomeVideo({
 
     return () => {
       el.removeEventListener("ended", onEnded);
+      el.removeEventListener("play", onFirstPlay);
+      el.removeEventListener("timeupdate", onTimeUpdate);
       el.removeEventListener("webkitbeginfullscreen", onFsChange);
       el.removeEventListener("webkitendfullscreen", onFsChange);
       document.removeEventListener("fullscreenchange", onFsChange);
@@ -169,6 +211,7 @@ export function WelcomeVideo({
 
   function start() {
     if (!ready || !src) return;
+    progressSentRef.current = new Set();
     setPlaybackSrc(pickPlaybackSrc(src, srcMobile));
     setPlaying(true);
   }

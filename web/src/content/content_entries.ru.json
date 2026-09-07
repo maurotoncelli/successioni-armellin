@@ -109,6 +109,16 @@
       }
     },
     {
+      "collection": "globals",
+      "key": "mobile_cta_whatsapp",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Написать в WhatsApp",
+        "prefill": "Здравствуйте, Лоренцо. Я видел(а) сайт и хотел(а) бы получить информацию о наследственном деле."
+      }
+    },
+    {
       "collection": "footer",
       "key": "studio",
       "locale": "ru",
@@ -1801,6 +1811,128 @@
       "value": {
         "label": "Поговорить с Lorenzo",
         "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_cta_label",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Рассчитать бесплатный расчёт"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_cta_hint",
+      "locale": "ru",
+      "is_published": true,
+      "value": "1 минута, без обязательств"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_video_label",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Смотреть видео (2 мин)"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_trust_items",
+      "locale": "ru",
+      "is_published": true,
+      "value": [
+        "От {price} €",
+        "250+ наследственных дел",
+        "Полностью онлайн, из дома"
+      ]
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Понятно, как это работает? Начните с шага 1."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_label",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Рассчитать бесплатный расчёт"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_hint",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Одна минута, без регистрации: сразу скажем, нужна ли декларация и сколько это стоит."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_eyebrow",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Сколько это стоит"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Понятные цены до начала работы"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_intro",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Гонорар фиксированный и известен заранее. Налоги оплачиваются отдельно: мы рассчитаем их до подачи."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_custom_name",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Индивидуально"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_custom_body",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Особые случаи (бизнес, доли в компаниях, лодки…): индивидуальный расчёт, без обязательств."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_extra_hint",
+      "locale": "ru",
+      "is_published": true,
+      "value": "+{fee} € за каждый объект или наследника сверх включённых"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_link",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Сравнить пакеты подробно",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "faq_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Самые частые вопросы"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "faq_link",
+      "locale": "ru",
+      "is_published": true,
+      "value": {
+        "label": "Все частые вопросы",
+        "href": "/faq"
       }
     },
     {

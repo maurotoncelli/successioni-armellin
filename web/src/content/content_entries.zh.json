@@ -109,6 +109,16 @@
       }
     },
     {
+      "collection": "globals",
+      "key": "mobile_cta_whatsapp",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "通过 WhatsApp 联系",
+        "prefill": "您好 Lorenzo，我看到了网站，想了解一些关于继承手续的信息。"
+      }
+    },
+    {
       "collection": "footer",
       "key": "studio",
       "locale": "zh",
@@ -1801,6 +1811,128 @@
       "value": {
         "label": "与 Lorenzo 沟通",
         "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_cta_label",
+      "locale": "zh",
+      "is_published": true,
+      "value": "免费获取报价"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_cta_hint",
+      "locale": "zh",
+      "is_published": true,
+      "value": "1 分钟，无需承诺"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_video_label",
+      "locale": "zh",
+      "is_published": true,
+      "value": "观看视频（2 分钟）"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_trust_items",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        "{price} € 起",
+        "250+ 件继承案件",
+        "全程在线，足不出户"
+      ]
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "了解流程了吗？从第 1 步开始。"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_label",
+      "locale": "zh",
+      "is_published": true,
+      "value": "免费获取报价"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_hint",
+      "locale": "zh",
+      "is_published": true,
+      "value": "一分钟，无需注册：立即告诉您是否需要申报以及费用多少。"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_eyebrow",
+      "locale": "zh",
+      "is_published": true,
+      "value": "费用"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "开始前，价格一目了然"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_intro",
+      "locale": "zh",
+      "is_published": true,
+      "value": "服务费固定，事先明确。税费另计：我们会在提交前为您计算。"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_custom_name",
+      "locale": "zh",
+      "is_published": true,
+      "value": "定制"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_custom_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "特殊情况（企业、公司股份、船只等）：个性化报价，无需承诺。"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_extra_hint",
+      "locale": "zh",
+      "is_published": true,
+      "value": "超出包含范围的每处房产或每位继承人 +{fee} €"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_link",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "详细比较各套餐",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "faq_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "最常见的问题"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "faq_link",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "全部常见问题",
+        "href": "/faq"
       }
     },
     {

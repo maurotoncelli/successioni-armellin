@@ -109,6 +109,16 @@
       }
     },
     {
+      "collection": "globals",
+      "key": "mobile_cta_whatsapp",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "label": "Scrivi su WhatsApp",
+        "prefill": "Ciao Lorenzo, ho visto il sito e vorrei qualche informazione sulla successione."
+      }
+    },
+    {
       "collection": "footer",
       "key": "studio",
       "locale": "it",
@@ -1815,6 +1825,128 @@
       "value": {
         "label": "Parla con Lorenzo",
         "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_cta_label",
+      "locale": "it",
+      "is_published": true,
+      "value": "Calcola il preventivo gratis"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_cta_hint",
+      "locale": "it",
+      "is_published": true,
+      "value": "1 minuto, senza impegno"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_video_label",
+      "locale": "it",
+      "is_published": true,
+      "value": "Guarda il video (2 min)"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_trust_items",
+      "locale": "it",
+      "is_published": true,
+      "value": [
+        "Da {price} €",
+        "250+ successioni seguite",
+        "Tutto online, anche da casa"
+      ]
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Hai capito come funziona? Inizia dal passo 1."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_label",
+      "locale": "it",
+      "is_published": true,
+      "value": "Calcola il preventivo gratis"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_hint",
+      "locale": "it",
+      "is_published": true,
+      "value": "Un minuto, nessuna registrazione: ti diciamo subito se la successione è dovuta e quanto costa."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_eyebrow",
+      "locale": "it",
+      "is_published": true,
+      "value": "Quanto costa"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Prezzi chiari, prima di iniziare"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_intro",
+      "locale": "it",
+      "is_published": true,
+      "value": "L'onorario è fisso e lo conosci subito. Le imposte sono a parte: te le calcoliamo noi prima dell'invio."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_custom_name",
+      "locale": "it",
+      "is_published": true,
+      "value": "Su misura"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_custom_body",
+      "locale": "it",
+      "is_published": true,
+      "value": "Casi particolari (aziende, quote societarie, barche…): preventivo personalizzato, senza impegno."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_extra_hint",
+      "locale": "it",
+      "is_published": true,
+      "value": "+{fee} € per ogni immobile o erede oltre quelli inclusi"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_link",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "label": "Confronta i pacchetti nel dettaglio",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "faq_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Le domande che ci fanno più spesso"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "faq_link",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "label": "Tutte le domande frequenti",
+        "href": "/faq"
       }
     },
     {

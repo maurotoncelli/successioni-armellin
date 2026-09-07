@@ -109,6 +109,16 @@
       }
     },
     {
+      "collection": "globals",
+      "key": "mobile_cta_whatsapp",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Shkruaj në WhatsApp",
+        "prefill": "Përshëndetje Lorenzo, pashë faqen dhe do të doja disa informacione për trashëgiminë."
+      }
+    },
+    {
       "collection": "footer",
       "key": "studio",
       "locale": "sq",
@@ -1801,6 +1811,128 @@
       "value": {
         "label": "Flisni me Lorenzo",
         "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_cta_label",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Llogarit preventivin falas"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_cta_hint",
+      "locale": "sq",
+      "is_published": true,
+      "value": "1 minutë, pa angazhim"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_video_label",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Shiko videon (2 min)"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_trust_items",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        "Nga {price} €",
+        "250+ trashëgimi të ndjekura",
+        "Gjithçka online, nga shtëpia"
+      ]
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "E kuptove si funksionon? Fillo nga hapi 1."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_label",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Llogarit preventivin falas"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_hint",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Një minutë, pa regjistrim: të themi menjëherë nëse deklarata është e detyrueshme dhe sa kushton."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_eyebrow",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Sa kushton"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Çmime të qarta, para se të fillosh"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_intro",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Tarifa është fikse dhe e di që në fillim. Taksat janë veç: t'i llogarisim ne para dërgimit."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_custom_name",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Me porosi"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_custom_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Raste të veçanta (biznese, kuota shoqërie, varka…): preventiv i personalizuar, pa angazhim."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_extra_hint",
+      "locale": "sq",
+      "is_published": true,
+      "value": "+{fee} € për çdo pronë ose trashëgimtar përtej atyre të përfshirë"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_link",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Krahaso paketat në detaje",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "faq_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Pyetjet që na bëjnë më shpesh"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "faq_link",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Të gjitha pyetjet e shpeshta",
+        "href": "/faq"
       }
     },
     {

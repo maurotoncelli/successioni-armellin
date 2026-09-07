@@ -15,6 +15,7 @@ export async function PageHero({
   image,
   video,
   overlay = "navy",
+  children,
 }: {
   eyebrow?: string;
   title?: string;
@@ -37,6 +38,8 @@ export async function PageHero({
   };
   /** `none` = solo foto, senza sfumatura né copy (il titolo sta sotto). */
   overlay?: "navy" | "none";
+  /** Contenuto extra sotto il sottotitolo (CTA, trust line). */
+  children?: React.ReactNode;
 }) {
   const chrome = back
     ? await tObj("site_ui", "chrome_ui", CHROME_UI_IT)
@@ -105,6 +108,7 @@ export async function PageHero({
                   {subtitle}
                 </p>
               )}
+              {children}
             </div>
           </Container>
         )}
@@ -137,6 +141,7 @@ export async function PageHero({
               {subtitle}
             </p>
           )}
+          {children}
         </div>
       </Container>
     </div>

@@ -109,6 +109,16 @@
       }
     },
     {
+      "collection": "globals",
+      "key": "mobile_cta_whatsapp",
+      "locale": "de",
+      "is_published": true,
+      "value": {
+        "label": "Über WhatsApp schreiben",
+        "prefill": "Hallo Lorenzo, ich habe die Website gesehen und hätte gern Informationen zur Erbschaftserklärung."
+      }
+    },
+    {
       "collection": "footer",
       "key": "studio",
       "locale": "de",
@@ -1801,6 +1811,128 @@
       "value": {
         "label": "Mit Lorenzo sprechen",
         "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_cta_label",
+      "locale": "de",
+      "is_published": true,
+      "value": "Kostenloses Angebot berechnen"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_cta_hint",
+      "locale": "de",
+      "is_published": true,
+      "value": "1 Minute, unverbindlich"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_video_label",
+      "locale": "de",
+      "is_published": true,
+      "value": "Video ansehen (2 Min.)"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_trust_items",
+      "locale": "de",
+      "is_published": true,
+      "value": [
+        "Ab {price} €",
+        "250+ betreute Erbschaften",
+        "Komplett online, von zu Hause"
+      ]
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_title",
+      "locale": "de",
+      "is_published": true,
+      "value": "Alles klar? Dann starten Sie mit Schritt 1."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_label",
+      "locale": "de",
+      "is_published": true,
+      "value": "Kostenloses Angebot berechnen"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_hint",
+      "locale": "de",
+      "is_published": true,
+      "value": "Eine Minute, keine Registrierung: Sie erfahren sofort, ob eine Erklärung nötig ist und was sie kostet."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_eyebrow",
+      "locale": "de",
+      "is_published": true,
+      "value": "Was es kostet"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_title",
+      "locale": "de",
+      "is_published": true,
+      "value": "Klare Preise, bevor Sie beginnen"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_intro",
+      "locale": "de",
+      "is_published": true,
+      "value": "Das Honorar ist fest und von Anfang an bekannt. Die Steuern kommen separat dazu: wir berechnen sie vor der Einreichung für Sie."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_custom_name",
+      "locale": "de",
+      "is_published": true,
+      "value": "Nach Maß"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_custom_body",
+      "locale": "de",
+      "is_published": true,
+      "value": "Sonderfälle (Unternehmen, Gesellschaftsanteile, Boote…): individuelles Angebot, unverbindlich."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_extra_hint",
+      "locale": "de",
+      "is_published": true,
+      "value": "+{fee} € für jede weitere Immobilie oder jeden weiteren Erben"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_link",
+      "locale": "de",
+      "is_published": true,
+      "value": {
+        "label": "Pakete im Detail vergleichen",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "faq_title",
+      "locale": "de",
+      "is_published": true,
+      "value": "Die häufigsten Fragen"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "faq_link",
+      "locale": "de",
+      "is_published": true,
+      "value": {
+        "label": "Alle häufigen Fragen",
+        "href": "/faq"
       }
     },
     {

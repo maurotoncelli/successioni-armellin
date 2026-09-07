@@ -21,7 +21,18 @@ export function ContactTracker() {
       if (href.startsWith("tel:")) method = "phone";
       else if (href.startsWith("mailto:")) method = "email";
       else if (href.includes("wa.me") || href.includes("whatsapp")) method = "whatsapp";
-      if (!method) return;
+      if (!method) {
+        // Link interni con data-cta (es. "Calcola il preventivo" nell'hero di
+        // Come funziona): evento leggero per capire quale bottone converte.
+        if (anchor.dataset.cta) {
+          trackEvent("cta_click", {
+            cta: anchor.dataset.cta,
+            link_url: href,
+            location: window.location.pathname,
+          });
+        }
+        return;
+      }
 
       // `cta` = quale bottone (data-cta sul link), per distinguere in GA4 il
       // WhatsApp del risultato preventivo dal WhatsApp generico del footer.
