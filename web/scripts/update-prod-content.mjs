@@ -66,14 +66,8 @@ const faqUpdates = [
       "No: il prezzo del pacchetto è l'onorario professionale. Le imposte (successione, ipotecaria, catastale, bolli) si versano con F24 e sono separate. Te le calcoliamo noi prima.",
     sort_order: 4,
   },
-  {
-    match: "Posso farla gratis da solo sul sito dell'Agenzia?",
-    question: "Posso farla gratis da solo sul sito dell'Agenzia?",
-    answer:
-      "Sì, esiste la successione precompilata gratuita ed è un'opzione onesta. Richiede però SPID e competenza: non valida i dati catastali e gli eventuali errori (e le sanzioni) restano a tuo carico.",
-    category: "Perché non da soli",
-    sort_order: 6,
-  },
+  // FAQ "Posso farla gratis da solo sul sito dell'Agenzia?" rimossa il 07/09 (richiesta Mauro):
+  // tolta da DB, fixture e JSON di tutte le lingue. Non reinserirla.
   {
     match: "Devo andare in qualche ufficio?",
     question: "Devo andare in qualche ufficio?",

@@ -150,12 +150,6 @@ export const faqs: Faq[] = [
       "Se almeno un erede ha i requisiti prima casa sull'immobile ereditato, le imposte ipotecaria e catastale si pagano in misura fissa (200 euro ciascuna) invece che in percentuale sul valore catastale. Verifichiamo noi se ti spetta e la indichiamo in dichiarazione.",
   },
   {
-    category: "Perché non da soli",
-    question: "Posso farla gratis da solo sul sito dell'Agenzia?",
-    answer:
-      "Sì, esiste la successione precompilata gratuita ed è un'opzione onesta. Richiede però SPID e competenza: non valida i dati catastali e gli eventuali errori (e le sanzioni) restano a tuo carico.",
-  },
-  {
     category: "Come funziona",
     question: "Devo andare in qualche ufficio?",
     answer:
