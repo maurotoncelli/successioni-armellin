@@ -111,8 +111,9 @@ rAF, DOM diretto senza setState, rispetta `prefers-reduced-motion`, numero sempr
 Per cambiare il numero basta editare `target` nei `content_entries.<locale>.json`.
 **Attenzione al dato:** 250+ è una **stima di Mauro/Lorenzo dell'intera carriera** (dal 2012,
 anche prima del sito), mentre in Riunione 2 Lorenzo aveva dichiarato «circa un centinaio»
-(@DECISIONI, @DOMANDE_PER_LORENZO). Copy reso prudente il 05/09: eyebrow «Esperienza dal 2012»,
-label «successioni seguite», nota che dichiara esplicitamente «stima complessiva… dal 2012, in
+(@DECISIONI, @DOMANDE_PER_LORENZO). Copy reso prudente il 05/09 e **senza anno dal 07/09**
+(richiesta Mauro: nessun riferimento al 2012): eyebrow «Esperienza sul campo», label
+«successioni seguite», nota «stima complessiva delle pratiche seguite dallo studio negli anni, in
 ufficio e online» (niente «Numeri reali»). **Da far confermare a Lorenzo il numero**; se non lo
 conferma, abbassare `target` (es. 100) in tutte le lingue.
 
