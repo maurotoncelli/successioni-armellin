@@ -18,6 +18,42 @@ Chat precedente TR/FR/SQ + EN/AR + SEO:
 
 ---
 
+## ★★ GA4 VIA API DAL TERMINALE (07/09) — `node scripts/ga4-report.mjs`
+
+Lettura dati GA4 (Data API) senza chiavi JSON: la policy Workspace
+`iam.disableServiceAccountKeyCreation` le blocca, e Google ha bloccato lo scope
+`analytics.readonly` sul client generico di gcloud. Soluzione: **ADC utente + impersonazione**.
+- Google Cloud: progetto `starry-descent-502809-n9` («My First Project», account
+  `studio@successioniarmellin.it`); SA `ga4-reader@starry-descent-502809-n9.iam.gserviceaccount.com`
+  con ruolo **Visualizzatore** sulla proprietà GA4 `properties/545553802`; a Mauro il ruolo
+  `roles/iam.serviceAccountTokenCreator` sulla SA; API abilitate: analyticsdata, analyticsadmin,
+  iamcredentials. (Esiste anche il progetto `successioniarmellin`, vuoto.)
+- Mac di Mauro: `brew install --cask google-cloud-sdk` (PATH
+  `/usr/local/share/google-cloud-sdk/bin`), `gcloud auth login --update-adc`,
+  quota project impostato. Se il token scade: ripetere `gcloud auth login --update-adc`.
+- Script: `web/scripts/ga4-report.mjs` (dev-dep `google-auth-library`): pagine con rimbalzo,
+  landing × sorgente, dispositivo, eventi, sezioni/video/CTA di Come funziona, città.
+  `--json` per output grezzo. Per il report degli eventi custom servono le **dimensioni
+  personalizzate** `section` e `cta` registrate in GA4 (Amministrazione → Definizioni
+  personalizzate); finché non ci sono, quella sezione viene saltata.
+
+**Prime evidenze (28 gg al 06/09):**
+- Il traffico è dominato da test interni: Roma 10 utenti / 237 viste, Chiavari 2 / 76,
+  Firenze 8 / 93, Torino 5 / 67. `/come-funziona` come landing = 18 sessioni **direct da 2
+  utenti mobile** con 78% di rimbalzo → è qualcuno di noi che apre il link, non clienti.
+  **Da fare in GA4:** definire traffico interno (IP Mauro/Lorenzo) + attivare il filtro.
+- Segnale vero: **landing Home da Google Ads 26 sessioni, rimbalzo 50%** (organico 4%).
+  Ultimi 7 gg: cpc 12 sessioni, rimbalzo 17% → in miglioramento. Da riguardare fra 2 settimane.
+- ⚠️ **`ads_conversion_Acquisto_1`: 34 eventi, tutti su `/tariffe`** (= le viste della pagina).
+  Non arriva dal nostro codice (`trackAdsConversion` spara solo su grazie/checkout/success con
+  label distinte): è quasi certamente un'**azione di conversione «Acquisto» di tipo
+  "caricamento pagina" su URL /tariffe** creata dal wizard Ads. Gonfia gli acquisti (34 vs 1
+  reale) ed è **Principale** → l'offerta ottimizza sulle visite a Tariffe. **Da sistemare in
+  Ads UI:** Obiettivi → Conversioni → «Acquisto» → se la sorgente è "pagina web / URL" →
+  eliminare o mettere Secondaria; tenere Principali solo Lead / Contatto / Acquisto da tag.
+
+---
+
 ## ★★ COME FUNZIONA: ANTI-RIMBALZO + TRACKING SEZIONI/VIDEO (07/09)
 
 Richiesta Mauro: abbassare la frequenza di rimbalzo di `/come-funziona`. Diagnosi dal

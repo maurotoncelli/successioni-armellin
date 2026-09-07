@@ -29,6 +29,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
+    "google-auth-library": "^9.15.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
