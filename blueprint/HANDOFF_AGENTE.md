@@ -37,7 +37,43 @@ Lettura dati GA4 (Data API) senza chiavi JSON: la policy Workspace
   personalizzate** `section` e `cta` registrate in GA4 (Amministrazione → Definizioni
   personalizzate); finché non ci sono, quella sezione viene saltata.
 
-**Prime evidenze (28 gg al 06/09):**
+### ☐ PROSSIMA SESSIONE — checklist Analytics/Ads (da fare con Mauro a schermo)
+
+Stato proprietà letto via Admin API il 07/09: **eventi chiave = solo `ads_conversion_Acquisto_1` e
+`purchase`**; **nessuna dimensione personalizzata**; **retention dati = 2 mesi**.
+
+1. **GA4 → Amministrazione → Eventi → Eventi chiave**: marcare `quote_result`, `contact_click`
+   (e `generate_lead`, `begin_checkout`). Oggi GA4 non considera "conversione" né un preventivo
+   né un contatto: i report di coinvolgimento e le esplorazioni funnel sono monchi. Togliere
+   la stella a `ads_conversion_Acquisto_1` (vedi punto 5).
+2. **Definizioni personalizzate** (ambito evento): `method`, `cta`, `section`, `video_percent`,
+   `esito`/`package` se `quote_result` li manda (verificare i parametri in `lib/analytics` e
+   `track-quote-complete`). Senza, i parametri che già inviamo non sono interrogabili.
+3. **Impostazioni dati → Conservazione dati → 14 mesi** (gratis; oggi 2 mesi = tra 60 giorni
+   perdiamo lo storico nelle esplorazioni).
+4. **Traffico interno**: Flussi di dati → Configura impostazioni tag → Definisci traffico
+   interno (IP casa/studio di Mauro, studio e casa di Lorenzo) → poi Filtri dati → attivo.
+   Tracce chiare di noi: Roma 10 ut./237 viste, Chiavari 2/76, Firenze 8/93, Torino 5/67,
+   `come-funziona` 22 sessioni direct da 2 utenti mobile. **Compare anche `localhost:3001`
+   come referrer**: il dev locale spara su GA4 di produzione (`NEXT_PUBLIC_GA4_MEASUREMENT_ID`
+   in `.env.local`). **Fix codice da fare:** in `app/(site)/layout.tsx` montare
+   `GoogleAnalytics`/`ContactTracker` solo se `NODE_ENV === "production"` e
+   `VERCEL_ENV !== "preview"` (o togliere l'ID da `.env.local`).
+5. **Google Ads → Obiettivi → Conversioni**: l'azione «Acquisto» spara **su ogni vista di
+   /tariffe** (34 in 28 gg = viste della pagina; vera 1). È quasi certamente una conversione
+   "caricamento pagina / URL" creata dal wizard. Eliminarla o renderla Secondaria; Principali
+   solo Lead / Contatto / Acquisto da tag (label `NEXT_PUBLIC_GOOGLE_ADS_*`).
+6. **Ads: campagna Locale Toscana non compare in GA4** (solo `Leads-Search-3 / soft launch /
+   nazionale` ha sessioni, più `(not set)` 10 sessioni con 100% rimbalzo su `/`, sospette:
+   anteprima annunci o bot). Verificare in Ads se la Locale spende/serve, e il campaign name.
+7. **Landing Ads**: nazionale → Home 14 sessioni (rimbalzo 14%, 1 evento chiave), → /preventivo
+   5 sessioni (20%), → /tariffe 2 (0%, 2 eventi chiave). Campione piccolo: rivalutare a 100+
+   sessioni se mandare l'annuncio principale su `/preventivo` invece che Home.
+8. **Pianificazione annunci**: picco sessioni 9-14 e 18-22, **sabato** primo giorno (34), poi
+   giovedì (33); mercoledì e domenica bassi. Controllare che la pianificazione Ads non tagli
+   il sabato e la sera.
+
+### Prime evidenze (28 gg al 06/09)
 - Il traffico è dominato da test interni: Roma 10 utenti / 237 viste, Chiavari 2 / 76,
   Firenze 8 / 93, Torino 5 / 67. `/come-funziona` come landing = 18 sessioni **direct da 2
   utenti mobile** con 78% di rimbalzo → è qualcuno di noi che apre il link, non clienti.
@@ -51,6 +87,15 @@ Lettura dati GA4 (Data API) senza chiavi JSON: la policy Workspace
   reale) ed è **Principale** → l'offerta ottimizza sulle visite a Tariffe. **Da sistemare in
   Ads UI:** Obiettivi → Conversioni → «Acquisto» → se la sorgente è "pagina web / URL" →
   eliminare o mettere Secondaria; tenere Principali solo Lead / Contatto / Acquisto da tag.
+- **Funnel preventivo (28 gg)**: 22 `quote_result` → 29 viste di `/preventivo/grazie` (15
+  utenti) → 12 `contact_click` (7 dalla pagina risultato) → 3 `begin_checkout` → 1 `purchase`.
+  Sulla pagina risultato la permanenza media è **15-17 s**: si legge il prezzo e si esce.
+  Il bottone WhatsApp verde (07/09) nasce da qui; il "soft lead" via email è quasi inutilizzato
+  (2 `form_start`). Esiti: quasi tutti B/COMPLETO con 1-2 immobili; 1 esito A; su misura rari.
+- **Lingue**: traffico non-IT trascurabile (EN 8 viste/2 utenti, verosimilmente noi). Nessuna
+  azione: le 11 lingue restano per SEO/immagine, non generano ancora sessioni.
+- **Scroll**: 72 `scroll` (90%) da 18 utenti su 52 → ~1/3 arriva in fondo alla pagina. Da
+  rileggere con `section_view` quando ci sono dati.
 
 ---
 
