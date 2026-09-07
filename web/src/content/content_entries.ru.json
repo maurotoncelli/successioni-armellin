@@ -2553,6 +2553,27 @@
     },
     {
       "collection": "grazie",
+      "key": "esito_b_whatsapp_prefill",
+      "locale": "ru",
+      "value": "Здравствуйте, Лоренцо! Я заполнил(а) анкету на сайте: результат — пакет {package} за {total} €. У меня есть несколько вопросов, прежде чем продолжить.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_whatsapp_label",
+      "locale": "ru",
+      "value": "Сначала написать в WhatsApp",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_whatsapp_hint",
+      "locale": "ru",
+      "value": "Без обязательств: Лоренцо отвечает лично, обычно в течение нескольких часов.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
       "key": "soft_custom_title",
       "locale": "ru",
       "is_published": true,

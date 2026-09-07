@@ -23,8 +23,12 @@ export function ContactTracker() {
       else if (href.includes("wa.me") || href.includes("whatsapp")) method = "whatsapp";
       if (!method) return;
 
+      // `cta` = quale bottone (data-cta sul link), per distinguere in GA4 il
+      // WhatsApp del risultato preventivo dal WhatsApp generico del footer.
+      const cta = anchor.dataset.cta || "generic";
       trackEvent("contact_click", {
         method,
+        cta,
         link_url: href,
         location: window.location.pathname,
       });

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-type Variant = "primary" | "secondary" | "ghost" | "outline";
+type Variant = "primary" | "secondary" | "ghost" | "outline" | "whatsapp";
 type Size = "md" | "lg";
 
 const base =
@@ -15,6 +15,8 @@ const variants: Record<Variant, string> = {
   outline:
     "border border-primary/25 text-primary hover:bg-primary/5",
   ghost: "text-primary hover:bg-primary/5",
+  // Verde WhatsApp (brand): CTA di contatto a basso impegno accanto al pagamento.
+  whatsapp: "bg-[#1DAA61] text-white hover:bg-[#178F51] shadow-sm",
 };
 
 const sizes: Record<Size, string> = {
@@ -40,6 +42,8 @@ type ButtonLinkProps = {
   size?: Size;
   className?: string;
   children: React.ReactNode;
+  /** Etichetta della CTA per analytics (`data-cta`, letta da ContactTracker). */
+  cta?: string;
 };
 
 export function ButtonLink({
@@ -48,20 +52,21 @@ export function ButtonLink({
   size = "md",
   className,
   children,
+  cta,
 }: ButtonLinkProps) {
   const classes = buttonClasses({ variant, size, className });
   const isInternal = href.startsWith("/") && !href.startsWith("//");
 
   if (isInternal) {
     return (
-      <Link href={href} className={classes}>
+      <Link href={href} className={classes} data-cta={cta}>
         {children}
       </Link>
     );
   }
 
   return (
-    <a href={href} className={classes}>
+    <a href={href} className={classes} data-cta={cta}>
       {children}
     </a>
   );

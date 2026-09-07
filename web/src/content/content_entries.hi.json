@@ -2553,6 +2553,27 @@
     },
     {
       "collection": "grazie",
+      "key": "esito_b_whatsapp_prefill",
+      "locale": "hi",
+      "value": "नमस्ते Lorenzo, मैंने आपकी वेबसाइट पर प्रश्नावली पूरी की: परिणाम {package} पैकेज है, {total} € में। आगे बढ़ने से पहले मेरे कुछ सवाल हैं।",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_whatsapp_label",
+      "locale": "hi",
+      "value": "पहले WhatsApp पर लिखें",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_whatsapp_hint",
+      "locale": "hi",
+      "value": "कोई बाध्यता नहीं: Lorenzo स्वयं जवाब देते हैं, आम तौर पर कुछ घंटों में।",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
       "key": "soft_custom_title",
       "locale": "hi",
       "is_published": true,

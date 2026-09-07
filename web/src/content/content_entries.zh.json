@@ -2553,6 +2553,27 @@
     },
     {
       "collection": "grazie",
+      "key": "esito_b_whatsapp_prefill",
+      "locale": "zh",
+      "value": "您好 Lorenzo，我在您的网站上完成了问卷：结果是 {package} 套餐，费用 {total} €。在继续之前我有几个问题。",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_whatsapp_label",
+      "locale": "zh",
+      "value": "先通过 WhatsApp 联系",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_whatsapp_hint",
+      "locale": "zh",
+      "value": "无需承诺：Lorenzo 本人回复，通常在几小时内。",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
       "key": "soft_custom_title",
       "locale": "zh",
       "is_published": true,

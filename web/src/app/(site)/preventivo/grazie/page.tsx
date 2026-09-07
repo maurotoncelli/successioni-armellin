@@ -112,6 +112,19 @@ export default async function GraziePage({
     "Ciao Lorenzo, ho appena calcolato il preventivo sul sito e avrei qualche domanda prima di procedere.",
   );
   const waHrefEsitoB = `${waBase}${waBase.includes("?") ? "&" : "?"}text=${encodeURIComponent(waPrefillEsitoB)}`;
+  // Esito B, bottone verde accanto al pagamento: il messaggio porta gia'
+  // pacchetto e cifra, cosi Lorenzo sa di cosa si parla al primo messaggio.
+  const waPrefillQuoteTpl = await t(
+    "grazie",
+    "esito_b_whatsapp_prefill",
+    "Ciao Lorenzo, ho compilato il questionario sul sito: mi risulta il pacchetto {package} a {total} €. Avrei qualche domanda prima di procedere.",
+  );
+  const waQuoteLabel = await t("grazie", "esito_b_whatsapp_label", "Scrivi prima su WhatsApp");
+  const waQuoteHint = await t(
+    "grazie",
+    "esito_b_whatsapp_hint",
+    "Nessun impegno: ti risponde Lorenzo in persona, di solito entro poche ore.",
+  );
 
   // Lista documenti data-driven (stessi nomi della checklist); fallback statico.
   const docsFromContent = await tList<DocItem>("documenti", "lista");
@@ -342,11 +355,37 @@ export default async function GraziePage({
                 <p className="mt-3 leading-relaxed text-text-muted">
                   {renderBody(await t("grazie", "esito_b_riallineamento"))}
                 </p>
-                <div className="mt-5">
-                  <ButtonLink href={checkoutHref} variant="primary">
+                {/* Due strade con lo stesso peso: pagare subito oppure scrivere
+                    prima su WhatsApp (verde, brand). Chi non e' pronto a pagare
+                    ha comunque un'azione facile da compiere. */}
+                <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  <ButtonLink
+                    href={checkoutHref}
+                    variant="primary"
+                    className="w-full sm:w-auto"
+                    cta="grazie_esito_b_paga"
+                  >
                     {(await tCta("grazie", "esito_b_cta")).label}
                   </ButtonLink>
+                  <ButtonLink
+                    href={
+                      suggestedPkg
+                        ? `${waBase}${waBase.includes("?") ? "&" : "?"}text=${encodeURIComponent(
+                            waPrefillQuoteTpl
+                              .replace("{package}", suggestedPkg.name)
+                              .replace("{total}", String(suggestedPkg.total)),
+                          )}`
+                        : waHrefEsitoB
+                    }
+                    variant="whatsapp"
+                    className="w-full sm:w-auto"
+                    cta="grazie_esito_b_whatsapp"
+                  >
+                    <MessageCircle className="h-4 w-4" />
+                    {waQuoteLabel}
+                  </ButtonLink>
                 </div>
+                <p className="mt-2 text-xs text-text-muted">{waQuoteHint}</p>
               </div>
             </div>
           )}
@@ -499,8 +538,9 @@ export default async function GraziePage({
               fieldLabels={softLeadUi}
             />
 
-            {/* Chi e' indeciso spesso preferisce una voce: telefono e WhatsApp
-                accanto all'invito email, stessi recapiti dell'esito C. */}
+            {/* Chi e' indeciso spesso preferisce una voce: telefono accanto
+                all'invito email. WhatsApp e' gia' il bottone verde nel blocco
+                del risultato, qui non lo ripetiamo. */}
             <div className="mt-5 text-center">
               <p className="text-sm text-text-muted">
                 {await t(
@@ -510,13 +550,9 @@ export default async function GraziePage({
                 )}
               </p>
               <div className="mt-3 flex flex-wrap justify-center gap-3">
-                <ButtonLink href={tel.cta_chiama} variant="outline">
+                <ButtonLink href={tel.cta_chiama} variant="outline" cta="grazie_esito_b_chiama">
                   <Phone className="h-4 w-4" />
                   {(await tCta("grazie", "esito_c_cta")).label}
-                </ButtonLink>
-                <ButtonLink href={waHrefEsitoB} variant="outline">
-                  <MessageCircle className="h-4 w-4" />
-                  {await t("grazie", "esito_c_whatsapp", "Scrivi su WhatsApp")}
                 </ButtonLink>
               </div>
             </div>

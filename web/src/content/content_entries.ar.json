@@ -2553,6 +2553,27 @@
     },
     {
       "collection": "grazie",
+      "key": "esito_b_whatsapp_prefill",
+      "locale": "ar",
+      "value": "مرحباً لورينزو، أكملت الاستبيان على موقعكم: النتيجة هي باقة {package} بسعر {total} €. لديّ بعض الأسئلة قبل المتابعة.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_whatsapp_label",
+      "locale": "ar",
+      "value": "اكتب أولاً على واتساب",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_whatsapp_hint",
+      "locale": "ar",
+      "value": "دون أي التزام: يجيبك لورينزو شخصياً، عادةً في غضون ساعات قليلة.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
       "key": "soft_custom_title",
       "locale": "ar",
       "is_published": true,

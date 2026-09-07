@@ -18,6 +18,24 @@ Chat precedente TR/FR/SQ + EN/AR + SEO:
 
 ---
 
+## ★ RISULTATO PREVENTIVO (esito B): BOTTONE VERDE WHATSAPP (07/09)
+
+Richiesta Mauro: molti preferiscono scrivere su WhatsApp prima di pagare. Nel blocco
+del pacchetto consigliato (`(site)/preventivo/grazie/page.tsx`) accanto a «Procedi al
+pagamento» c'è ora un bottone **verde WhatsApp** (`ButtonLink variant="whatsapp"`,
+`#1DAA61`) con messaggio precompilato che porta **pacchetto e cifra**
+(`grazie.esito_b_whatsapp_prefill` con `{package}` `{total}`, + `_label`, `_hint`, 11 lingue).
+Il WhatsApp duplicato nel blocco «Sei indeciso» è stato tolto (resta «Chiama Lorenzo»).
+
+Tracking: nessun evento nuovo. `ContactTracker` intercetta ogni link `wa.me`/`tel:` →
+GA4 `contact_click` {method, **cta**, link_url, location} + conversione Ads «Contatto»
+(`trackAdsConversion("contact")`, label in env prod). Novità: param `cta` da `data-cta`
+(`ButtonLink cta="…"`): `grazie_esito_b_whatsapp`, `grazie_esito_b_paga`,
+`grazie_esito_b_chiama`; altrove `generic`. Per vederlo come dimensione in GA4 va
+registrata **una volta** in Amministrazione → Definizioni personalizzate → `cta`
+(ambito evento); finché non lo si fa, l'evento arriva comunque ma il param non è
+filtrabile nei report standard (lo è in Esplorazioni dopo la registrazione).
+
 ## ★★ CRM: ESITO QUESTIONARIO IN CHIARO (05/09 pomeriggio)
 
 Richiesta Mauro: nel CRM niente più «esito A/B/C», ma pacchetto + **cifra esatta**,

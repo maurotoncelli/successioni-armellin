@@ -2553,6 +2553,27 @@
     },
     {
       "collection": "grazie",
+      "key": "esito_b_whatsapp_prefill",
+      "locale": "sq",
+      "value": "Përshëndetje Lorenzo, plotësova pyetësorin në faqen tuaj: rezultati është paketa {package} me {total} €. Kam disa pyetje para se të vazhdoj.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_whatsapp_label",
+      "locale": "sq",
+      "value": "Shkruaj fillimisht në WhatsApp",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_whatsapp_hint",
+      "locale": "sq",
+      "value": "Pa asnjë detyrim: Lorenzo përgjigjet personalisht, zakonisht brenda pak orësh.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
       "key": "soft_custom_title",
       "locale": "sq",
       "is_published": true,

@@ -2567,6 +2567,27 @@
     },
     {
       "collection": "grazie",
+      "key": "esito_b_whatsapp_prefill",
+      "locale": "it",
+      "value": "Ciao Lorenzo, ho compilato il questionario sul sito: mi risulta il pacchetto {package} a {total} €. Avrei qualche domanda prima di procedere.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_whatsapp_label",
+      "locale": "it",
+      "value": "Scrivi prima su WhatsApp",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_whatsapp_hint",
+      "locale": "it",
+      "value": "Nessun impegno: ti risponde Lorenzo in persona, di solito entro poche ore.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
       "key": "soft_custom_title",
       "locale": "it",
       "is_published": true,

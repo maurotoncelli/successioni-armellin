@@ -2553,6 +2553,27 @@
     },
     {
       "collection": "grazie",
+      "key": "esito_b_whatsapp_prefill",
+      "locale": "tr",
+      "value": "Merhaba Lorenzo, web sitenizdeki anketi doldurdum: sonuç {total} € karşılığında {package} paketi. Devam etmeden önce birkaç sorum var.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_whatsapp_label",
+      "locale": "tr",
+      "value": "Önce WhatsApp'tan yazın",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_whatsapp_hint",
+      "locale": "tr",
+      "value": "Bağlayıcı değil: Lorenzo bizzat yanıtlar, genellikle birkaç saat içinde.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
       "key": "soft_custom_title",
       "locale": "tr",
       "is_published": true,

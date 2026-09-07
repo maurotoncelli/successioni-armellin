@@ -2553,6 +2553,27 @@
     },
     {
       "collection": "grazie",
+      "key": "esito_b_whatsapp_prefill",
+      "locale": "es",
+      "value": "Hola Lorenzo, he completado el cuestionario en su web: el resultado es el paquete {package} por {total} €. Tengo algunas preguntas antes de continuar.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_whatsapp_label",
+      "locale": "es",
+      "value": "Escribir primero por WhatsApp",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_whatsapp_hint",
+      "locale": "es",
+      "value": "Sin compromiso: Lorenzo responde personalmente, normalmente en pocas horas.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
       "key": "soft_custom_title",
       "locale": "es",
       "is_published": true,
