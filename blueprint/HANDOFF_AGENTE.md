@@ -31,6 +31,8 @@ Lettura dati GA4 (Data API) senza chiavi JSON: la policy Workspace
 - Mac di Mauro: `brew install --cask google-cloud-sdk` (PATH
   `/usr/local/share/google-cloud-sdk/bin`), `gcloud auth login --update-adc`,
   quota project impostato. Se il token scade: ripetere `gcloud auth login --update-adc`.
+  Workspace fa scadere il consenso ogni ~3-4 giorni: l'errore è `invalid_grant (invalid_rapt)`,
+  si risolve solo rifacendo il login (Mauro deve completare il consenso nel browser).
 - Script: `web/scripts/ga4-report.mjs` (dev-dep `google-auth-library`): pagine con rimbalzo,
   landing × sorgente, dispositivo, eventi, sezioni/video/CTA di Come funziona, città.
   `--json` per output grezzo. Per il report degli eventi custom servono le **dimensioni
@@ -71,6 +73,27 @@ Da fare **in UI** (l'Admin API non espone traffico interno né filtri dati):
 8. **Pianificazione annunci**: picco sessioni 9-14 e 18-22, **sabato** primo giorno (34), poi
    giovedì (33); mercoledì e domenica bassi. Controllare che la pianificazione Ads non tagli
    il sabato e la sera.
+
+### Lettura dati dell'11/09 (dal 27/08) — cosa fare dopo
+- **Campagna Locale Toscana sospesa** da Lorenzo (zero clic: volume di ricerca locale nullo).
+  Per la Valdera la leva è la scheda Google Business, non Search. Punto 6 chiuso.
+- **AI Max attivato da Lorenzo l'10-11/09 "per stress"**: consiglio dato = spegnerlo
+  (espansione query con budget minimo, testi riscritti, final URL expansion, reset apprendimento).
+- **Sessioni Ads/giorno**: 7/09 → 4, 8/09 → 8, 9/09 → 6, **10/09 → 2 (1 utente), 11/09 → 0**.
+  Gli annunci si sono fermati: verificare in Ads impressioni/clic 10-11/09, la **verifica
+  inserzionista** (banner arancione) e lo stato dopo AI Max. Le 5 sessioni direct dell'11/09
+  con 100% rimbalzo sono Lorenzo (→ punto 4, traffico interno).
+- **Funnel 8-9/09**: 14 sessioni Ads → **8 `quote_result` da 8 utenti diversi** (1 su 2 fa il
+  quiz). Traffico nazionale vero, mobile, 2,7 pagine e ~2,5 min a sessione.
+- **Il buco è `/preventivo/grazie`**: permanenza 1-2 s per 7 utenti su 8 (una 58 s), 1 solo
+  `contact_click` in 5 gg, 0 acquisti. Su mobile sopra la piega c'è titolo + card con **490 €**;
+  i bottoni «Procedi al pagamento» e «Scrivi su WhatsApp» stanno sotto la piega e la barra
+  mobile fissa è nascosta su `/preventivo/*`. Proposta (non ancora fatta, attesa ok Lorenzo):
+  WhatsApp verde **prima** di «Paga» e dentro la prima schermata; riga sotto il prezzo che
+  chiarisca «onorario completo, le imposte le paghi tu allo Stato, te le diciamo prima»;
+  bottone «Fatti richiamare» (nome + telefono) al posto/accanto a «Ricevi via email»
+  (2 avvii, 0 invii in 28 gg).
+- Rumore: un quiz Ads con 14 conti, 36 eredi, «non so» ovunque (curioso/test).
 
 ### Prime evidenze (28 gg al 06/09)
 - Il traffico è dominato da test interni: Roma 10 utenti / 237 viste, Chiavari 2 / 76,
