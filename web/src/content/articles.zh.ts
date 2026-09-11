@@ -33,7 +33,7 @@ const FONTE_ADE_COME_PRESENTARE: ArticleSource = {
 };
 const FONTE_ADE_CODICE_FISCALE: ArticleSource = {
   label: "Agenzia delle Entrate - 税号申请（modello AA4/8）",
-  href: "https://www.agenziaentrate.gov.it/portale/web/guest/schede/istanze/richiesta-ts_cf/modello-aa4-8-cf-pf",
+  href: "https://www.agenziaentrate.gov.it/portale/codice-fiscale-e-tessera-sanitaria/modello-e-istruzioni-cittadini",
 };
 const FONTE_UE_650: ArticleSource = {
   label: "欧盟条例 650/2012 跨境继承",
