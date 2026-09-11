@@ -152,6 +152,63 @@ con delega** lo fa lui; **imposte pagate dallo studio come intermediario** «se 
   `tipo`), CTA `data-cta` `tool_ravvedimento_whatsapp` (prefill con i numeri) e
   `tool_ravvedimento_preventivo`. Risultati dichiarati come stima; nessuna promessa.
 
+### Piano marketing (appunti Mauro 11/09 sera) — 3 pilastri + referral. DA FARE, non iniziato
+Punto debole percepito: **il prezzo spaventa** (concorrenti a 290 € "tutto escluso"). Ogni
+intervento sotto serve a giustificare il valore, non ad abbassare il prezzo.
+
+1. **Intento di ricerca → campagne più mirate.** Portare chi ha *più bisogno* della
+   successione online: italiani all'estero (piano già in `ADS_EREDI_ESTERO.md`), eredi
+   lontani dall'immobile, chi è in ritardo (landing = calcolatore ravvedimento). Da inserire
+   in Ads: **negative keywords** (rivedere la lista: "gratis", "modulo", "fac simile",
+   "software", "corso", "concorso", "notaio" da valutare), **targeting geografico** migliore
+   (escludere aree con solo rimbalzi, presenza fisica non "interesse"), **retargeting**
+   (segmento GA4/Ads: chi ha visto grazie/tariffe senza contatto → annuncio "hai ancora il
+   tuo preventivo, scrivici su WhatsApp").
+2. **Preventivatore = pre-consulenza gratuita.** Funziona (8/14 arrivano all'esito): usarlo
+   per creare **micro-impegno e fiducia** con qualche domanda migliore, che faccia sentire
+   "visto" il caso. Idea da valutare: domanda «Ci sono tensioni tra gli eredi?» con
+   sottotitolo sul ruolo del geometra come **tecnico super partes** (non rappresenta un erede
+   contro l'altro; calcola quote e imposte in modo oggettivo). Ha senso se la risposta cambia
+   qualcosa nell'esito (es. nota "in caso di disaccordo lavoriamo con tutti gli eredi e la
+   dichiarazione la firma chi vuole") e non se è solo un questionario più lungo. Altre
+   domande candidate: «vivi all'estero?», «hai già una scadenza vicina / sei oltre i 12
+   mesi?» (aggancio al ravvedimento), «hai già i documenti o li dobbiamo recuperare noi?».
+3. **Aumento fiducia → tabella plus / confronto.** In `/tariffe` e nell'esito preventivo una
+   **tabellina "servizio low cost vs Successioni Armellin"** (o solo i plus, senza nominare
+   nessuno): delega totale · assistenza continua (WhatsApp/telefono) · calcolo imposte
+   garantito · **voltura inclusa** · consulenza telefonica · gestione del rischio (controlli,
+   ravvedimento, casi particolari) · geometra iscritto all'Albo, non call center. Regole:
+   nessun claim non verificabile sui concorrenti ("l'unico"), sì a "incluso / a parte".
+4. **Referral e codici sconto (più aggressivi).** A pratica chiusa, oltre a recensione + QR:
+   «Conosci qualcuno che ha bisogno di assistenza professionale per la sua successione?
+   Regalagli un codice sconto del 10%». Serve un **sistema codici sconto**: codici univoci
+   per cliente, gestibili dal gestionale (creazione, validità, uso singolo/multiplo,
+   tracciamento chi ha portato chi), applicati in checkout Stripe (coupon/promotion code) e
+   mostrati in esito preventivo. Valutare anche un ritorno per chi segnala (buono/rimborso
+   parziale) dentro i limiti deontologici del geometra.
+5. **Prezzo più appetibile all'esito.** Quando compare il prezzo dopo il preventivo:
+   «prezzo momentaneamente scontato» / prezzo pieno barrato, con una ragione credibile
+   (lancio, primo anno online) e una scadenza vera; oppure "blocca il prezzo per 7 giorni".
+   Attenzione: sconto "finto" perenne è vietato (Codice del consumo, prezzo più basso 30 gg).
+
+Altre idee (mie, da discutere):
+- **Recall/fatti richiamare** all'esito B: un campo telefono + orario preferito; per chi non
+  vuole né pagare né scrivere (dati: 7/8 escono dalla grazie in 1-2 s).
+- **Email/WhatsApp di follow-up** a chi lascia il contatto senza pagare: 3 messaggi in 10
+  giorni (riepilogo preventivo, cosa succede se non fai la successione, ultimo promemoria).
+- **Recensioni Google in evidenza** nell'esito e in tariffe (widget/estratti con nome e
+  città), non solo in home.
+- **"Cosa succede dopo il pagamento"** in 3 righe accanto al bottone paga: riduce la paura
+  di pagare 290-490 € a distanza.
+- **Garanzia esplicita** accanto al prezzo ("se emergono costi notarili non previsti ti
+  informiamo e puoi ritirarti con rimborso"): esiste già `/garanzia`, va portata sul prezzo.
+- **Pacchetto "Erede all'estero"** con codice fiscale via delega + pagamento imposte tramite
+  studio, prezzo dedicato: rende concreto il pilastro 1.
+- **Contenuti video brevi** (già ci sono) nell'esito preventivo: Lorenzo che spiega in 30 s
+  cosa è incluso.
+- **Prova sociale numerica** ("X pratiche trasmesse", "Y voltura incluse") appena i numeri
+  sono presentabili; evitare finché sono piccoli.
+
 ### Prime evidenze (28 gg al 06/09)
 - Il traffico è dominato da test interni: Roma 10 utenti / 237 viste, Chiavari 2 / 76,
   Firenze 8 / 93, Torino 5 / 67. `/come-funziona` come landing = 18 sessioni **direct da 2
