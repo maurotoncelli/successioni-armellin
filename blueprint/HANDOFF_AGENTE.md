@@ -205,6 +205,14 @@ Altre idee (mie, da discutere):
   città), non solo in home.
 - **"Cosa succede dopo il pagamento"** in 3 righe accanto al bottone paga: riduce la paura
   di pagare 290-490 € a distanza.
+- **Schermata di pagamento Stripe: riassunto di tutto ciò che è incluso** (richiesto da
+  Mauro 11/09). Oggi il checkout mostra solo nome pacchetto e prezzo. Deve elencare i plus:
+  assistenza continua di Lorenzo (WhatsApp/telefono), consulenza telefonica con Lorenzo,
+  delega totale, calcolo imposte garantito, voltura inclusa, gestione rischio/controlli,
+  garanzia rimborso. Due strade: (a) Stripe Checkout con `description` del prodotto lunga +
+  `custom_text` (submit/after_submit) e più line item a 0 € "incluso"; (b) pagina
+  pre-checkout nostra (`/paga` o esito preventivo) con riassunto completo e bottone Paga,
+  così il testo è multilingua e libero. Preferire (b) + descrizione breve in Stripe.
 - **Garanzia esplicita** accanto al prezzo ("se emergono costi notarili non previsti ti
   informiamo e puoi ritirarti con rimborso"): esiste già `/garanzia`, va portata sul prezzo.
 - **Pacchetto "Erede all'estero"** (APPROVATO da Mauro 11/09, da progettare) con codice
