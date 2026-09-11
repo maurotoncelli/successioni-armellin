@@ -2522,7 +2522,14 @@
       "key": "esito_b_taxes_note",
       "locale": "tr",
       "is_published": true,
-      "value": "+ durumunuza göre hesaplanan vergiler: gönderimden önce bildiririz."
+      "value": "Yasal vergiler herkeste ayrıdır: durumunuza göre hesaplarız, önceden bildiririz ve doğrudan Devlete siz ödersiniz."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_included_note",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Her şey dahil: geometra Lorenzo'nun kendisidir. Ayrıca ödenecek dış bir uzman yok, sonradan eklenen kalem yok."
     },
     {
       "collection": "grazie",

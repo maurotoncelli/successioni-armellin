@@ -2522,7 +2522,14 @@
       "key": "esito_b_taxes_note",
       "locale": "zh",
       "is_published": true,
-      "value": "+ 根据您情况计算的税款：提交前告知您。"
+      "value": "法定税费在任何机构都是另计的：我们根据您的情况计算，提前告知您金额，由您直接缴纳给国家。"
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_included_note",
+      "locale": "zh",
+      "is_published": true,
+      "value": "全部包含：测量师就是 Lorenzo 本人。无需另付外部专业人士费用，事后也没有额外项目。"
     },
     {
       "collection": "grazie",

@@ -2522,7 +2522,14 @@
       "key": "esito_b_taxes_note",
       "locale": "es",
       "is_published": true,
-      "value": "+ impuestos calculados para tu caso: te los comunicamos antes del envío."
+      "value": "Los impuestos legales van aparte con cualquier proveedor: los calculamos para tu caso, te los comunicamos antes y los pagas directamente al Estado."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_included_note",
+      "locale": "es",
+      "is_published": true,
+      "value": "Todo incluido: el geómetra es el propio Lorenzo. Ningún profesional externo que pagar aparte y ninguna partida añadida después."
     },
     {
       "collection": "grazie",

@@ -2536,7 +2536,14 @@
       "key": "esito_b_taxes_note",
       "locale": "it",
       "is_published": true,
-      "value": "+ imposte calcolate sul tuo caso: te le comunichiamo prima dell'invio."
+      "value": "Le imposte di legge sono a parte con chiunque: le calcoliamo sul tuo caso, te le comunichiamo prima e le versi direttamente allo Stato."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_included_note",
+      "locale": "it",
+      "is_published": true,
+      "value": "Tutto incluso: il geometra è Lorenzo. Nessun professionista esterno da pagare a parte e nessuna voce aggiuntiva dopo."
     },
     {
       "collection": "grazie",

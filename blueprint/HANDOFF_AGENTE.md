@@ -88,11 +88,17 @@ Da fare **in UI** (l'Admin API non espone traffico interno né filtri dati):
 - **Il buco è `/preventivo/grazie`**: permanenza 1-2 s per 7 utenti su 8 (una 58 s), 1 solo
   `contact_click` in 5 gg, 0 acquisti. Su mobile sopra la piega c'è titolo + card con **490 €**;
   i bottoni «Procedi al pagamento» e «Scrivi su WhatsApp» stanno sotto la piega e la barra
-  mobile fissa è nascosta su `/preventivo/*`. Proposta (non ancora fatta, attesa ok Lorenzo):
-  WhatsApp verde **prima** di «Paga» e dentro la prima schermata; riga sotto il prezzo che
-  chiarisca «onorario completo, le imposte le paghi tu allo Stato, te le diciamo prima»;
-  bottone «Fatti richiamare» (nome + telefono) al posto/accanto a «Ricevi via email»
-  (2 avvii, 0 invii in 28 gg).
+  mobile fissa è nascosta su `/preventivo/*`. **Fatto l'11/09** (ok Lorenzo), in
+  `app/(site)/preventivo/grazie/page.tsx` esito B: hero compatto su mobile; sotto il prezzo la
+  riga `grazie.esito_b_included_note` («Tutto incluso: il geometra è Lorenzo. Nessun
+  professionista esterno da pagare a parte…», argomento contro i concorrenti a 290 € che poi
+  mandano dal geometra come extra) e `esito_b_taxes_note` riscritta («le imposte sono a parte
+  con chiunque…»); bottoni subito sotto il prezzo con **WhatsApp verde per primo** e «Procedi
+  al pagamento» secondo; il paragrafo «guida» spostato dopo i bottoni. Su 390×844 prezzo +
+  entrambi i bottoni stanno nella prima schermata. 11 lingue. Da misurare in GA4 fra ~2
+  settimane: `cta_click` grazie_esito_b_whatsapp vs grazie_esito_b_paga e permanenza su grazie.
+  Idea rimasta fuori: bottone «Fatti richiamare» (nome + telefono) al posto di «Ricevi via
+  email» (2 avvii, 0 invii in 28 gg): richiede nuovo `kind` lead con email opzionale.
 - Rumore: un quiz Ads con 14 conti, 36 eredi, «non so» ovunque (curioso/test).
 
 ### Prime evidenze (28 gg al 06/09)

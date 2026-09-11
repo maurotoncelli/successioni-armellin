@@ -272,17 +272,19 @@ export default async function GraziePage({
     <Section tone="muted">
       <TrackQuoteComplete snapshot={crmSnapshot} fingerprint={trackFingerprint} />
       <div className="mx-auto max-w-2xl">
-        <div className="mb-6">
+        <div className="mb-4 sm:mb-6">
           <BackLink label={chrome.back} fallbackHref="/preventivo" />
         </div>
+        {/* Hero compatto su mobile: prezzo e bottoni devono entrare nella
+            prima schermata (390x844). */}
         <div className="text-center">
-          <CheckCircle2 className="mx-auto h-12 w-12 text-success" />
-          <h1 className="mt-4 text-3xl sm:text-4xl">
+          <CheckCircle2 className="mx-auto h-9 w-9 text-success sm:h-12 sm:w-12" />
+          <h1 className="mt-2 text-2xl sm:mt-4 sm:text-4xl">
             {await t("grazie", "header_title", "Ecco il risultato per il tuo caso")}
           </h1>
         </div>
 
-        <Card className="mt-10">
+        <Card className="mt-5 sm:mt-10">
           {esito === "b" && (
             <div className="flex items-start gap-4">
               <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-sand">
@@ -343,30 +345,34 @@ export default async function GraziePage({
                         </div>
                       </div>
                     )}
+                    {/* Il prezzo da solo fa chiudere la pagina (GA4 11/09:
+                        1-2 s di permanenza). Subito sotto: cosa include (il
+                        geometra e' Lorenzo, niente extra dopo) e che le imposte
+                        sono a parte con chiunque. */}
+                    <p className="mt-3 flex items-start gap-2 text-sm text-text">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-success" />
+                      <span>
+                        {await t(
+                          "grazie",
+                          "esito_b_included_note",
+                          "Tutto incluso: il geometra è Lorenzo. Nessun professionista esterno da pagare a parte e nessuna voce aggiuntiva dopo.",
+                        )}
+                      </span>
+                    </p>
                     <p className="mt-2 text-xs text-text-muted">
                       {await t(
                         "grazie",
                         "esito_b_taxes_note",
-                        "+ imposte calcolate sul tuo caso: te le comunichiamo prima dell'invio.",
+                        "Le imposte di legge sono a parte con chiunque: le calcoliamo sul tuo caso, te le comunichiamo prima e le versi direttamente allo Stato.",
                       )}
                     </p>
                   </div>
                 )}
-                <p className="mt-3 leading-relaxed text-text-muted">
-                  {renderBody(await t("grazie", "esito_b_riallineamento"))}
-                </p>
-                {/* Due strade con lo stesso peso: pagare subito oppure scrivere
-                    prima su WhatsApp (verde, brand). Chi non e' pronto a pagare
-                    ha comunque un'azione facile da compiere. */}
-                <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <ButtonLink
-                    href={checkoutHref}
-                    variant="primary"
-                    className="w-full sm:w-auto"
-                    cta="grazie_esito_b_paga"
-                  >
-                    {(await tCta("grazie", "esito_b_cta")).label}
-                  </ButtonLink>
+                {/* Bottoni SUBITO sotto il prezzo (su mobile devono stare nella
+                    prima schermata) e WhatsApp per primo: chi non e' pronto a
+                    pagare ha un'uscita leggera prima di chiudere. Il pagamento
+                    resta li', secondo. */}
+                <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                   <ButtonLink
                     href={
                       suggestedPkg
@@ -384,8 +390,19 @@ export default async function GraziePage({
                     <MessageCircle className="h-4 w-4" />
                     {waQuoteLabel}
                   </ButtonLink>
+                  <ButtonLink
+                    href={checkoutHref}
+                    variant="primary"
+                    className="w-full sm:w-auto"
+                    cta="grazie_esito_b_paga"
+                  >
+                    {(await tCta("grazie", "esito_b_cta")).label}
+                  </ButtonLink>
                 </div>
                 <p className="mt-2 text-xs text-text-muted">{waQuoteHint}</p>
+                <p className="mt-4 text-sm leading-relaxed text-text-muted">
+                  {renderBody(await t("grazie", "esito_b_riallineamento"))}
+                </p>
               </div>
             </div>
           )}

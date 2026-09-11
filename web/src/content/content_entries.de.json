@@ -2522,7 +2522,14 @@
       "key": "esito_b_taxes_note",
       "locale": "de",
       "is_published": true,
-      "value": "+ für Ihren Fall berechnete Steuern: wir teilen sie vor der Einreichung mit."
+      "value": "Die gesetzlichen Steuern fallen bei jedem Anbieter separat an: Wir berechnen sie für Ihren Fall, teilen sie Ihnen vorab mit, und Sie zahlen sie direkt an den Staat."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_included_note",
+      "locale": "de",
+      "is_published": true,
+      "value": "Alles inklusive: Lorenzo ist selbst der Geometer. Kein externer Fachmann, der separat bezahlt werden muss, und keine Zusatzposten im Nachhinein."
     },
     {
       "collection": "grazie",

@@ -2536,7 +2536,14 @@
       "key": "esito_b_taxes_note",
       "locale": "en",
       "is_published": true,
-      "value": "+ taxes calculated for your case: we tell you before filing."
+      "value": "Statutory taxes are always separate, whoever you choose: we calculate them for your case, tell you the amount in advance and you pay them directly to the State."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_included_note",
+      "locale": "en",
+      "is_published": true,
+      "value": "All inclusive: Lorenzo is the surveyor himself. No outside professional to pay separately and no extra items added later."
     },
     {
       "collection": "grazie",

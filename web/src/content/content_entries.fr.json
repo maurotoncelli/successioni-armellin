@@ -2522,7 +2522,14 @@
       "key": "esito_b_taxes_note",
       "locale": "fr",
       "is_published": true,
-      "value": "+ impôts calculés pour votre cas : nous vous les communiquons avant l'envoi."
+      "value": "Les impôts légaux sont toujours à part, chez tout le monde : nous les calculons pour votre cas, nous vous les communiquons avant et vous les versez directement à l'État."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_included_note",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Tout compris : Lorenzo est lui-même le géomètre. Aucun professionnel extérieur à payer à part, aucun supplément ajouté ensuite."
     },
     {
       "collection": "grazie",

@@ -2522,7 +2522,14 @@
       "key": "esito_b_taxes_note",
       "locale": "sq",
       "is_published": true,
-      "value": "+ taksa të llogaritura për rastin tuaj: jua komunikojmë para dërgimit."
+      "value": "Taksat ligjore janë gjithmonë veçmas, te çdo ofrues: i llogarisim për rastin tënd, t'i komunikojmë përpara dhe i paguan drejtpërdrejt shtetit."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_included_note",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Gjithçka e përfshirë: gjeometri është vetë Lorenzo. Asnjë profesionist i jashtëm për t'u paguar veçmas dhe asnjë zë shtesë më pas."
     },
     {
       "collection": "grazie",
