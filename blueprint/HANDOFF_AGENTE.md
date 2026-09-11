@@ -119,7 +119,8 @@ con delega** lo fa lui; **imposte pagate dallo studio come intermediario** «se 
   Soft launch` 7 €/gg, Paesi UE+CH+UK in «Presenza», lingua IT, 4 gruppi, keyword, negative,
   RSA con lunghezze verificate, landing `/guide/eredi-estero`, soglie di decisione a 100 clic.
   Fase 2: campagna EN. Da configurare **a mano in UI** (nessun accesso API Ads).
-- Prossimi passi sito (non fatti): domanda quiz «vivi all'estero?», landing `/eredi-estero`,
+- Prossimi passi sito (non fatti): domanda quiz «Qualcuno degli eredi vive all'estero?»
+  (No / Sì, io / Sì, un altro erede — vedi piano marketing sotto), landing `/eredi-estero`,
   pacchetto/supplemento «Erede all'estero», FAQ dedicate, portoghese per il Brasile.
 - **Regola Lorenzo (11/09): niente promesse «te lo diciamo prima/all'inizio»** nelle guide
   (uno può comprare il pacchetto prima di parlare con lui). Frasi sostituite con «se dai
@@ -166,13 +167,17 @@ intervento sotto serve a giustificare il valore, non ad abbassare il prezzo.
    tuo preventivo, scrivici su WhatsApp").
 2. **Preventivatore = pre-consulenza gratuita.** Funziona (8/14 arrivano all'esito): usarlo
    per creare **micro-impegno e fiducia** con qualche domanda migliore, che faccia sentire
-   "visto" il caso. Idea da valutare: domanda «Ci sono tensioni tra gli eredi?» con
-   sottotitolo sul ruolo del geometra come **tecnico super partes** (non rappresenta un erede
-   contro l'altro; calcola quote e imposte in modo oggettivo). Ha senso se la risposta cambia
-   qualcosa nell'esito (es. nota "in caso di disaccordo lavoriamo con tutti gli eredi e la
-   dichiarazione la firma chi vuole") e non se è solo un questionario più lungo. Altre
-   domande candidate: «vivi all'estero?», «hai già una scadenza vicina / sei oltre i 12
-   mesi?» (aggancio al ravvedimento), «hai già i documenti o li dobbiamo recuperare noi?».
+   "visto" il caso. Regola: ogni domanda nuova deve cambiare qualcosa nell'esito, altrimenti
+   allunga solo il quiz. (Scartata 11/09: «tensioni tra gli eredi» / ruolo super partes.)
+   Domanda decisa: **«Qualcuno degli eredi vive all'estero?»** con 3 risposte
+   *No / Sì, io / Sì, un altro erede* — non «vivi all'estero?», perché spesso compila il
+   fratello in Italia mentre l'erede all'estero è un altro, e operativamente conta che *un*
+   erede sia fuori (codice fiscale, delega, firma a distanza, pagamento imposte). «Sì, io» →
+   esito con pacchetto Erede all'estero e nota "gestiamo tutto a distanza"; «un altro erede»
+   → nota "recuperiamo CF e delega dell'erede all'estero, non deve venire in Italia".
+   Salvare la risposta nel lead (CRM) e come parametro evento GA4 per segmentare Ads.
+   Altre candidate: «sei oltre i 12 mesi dal decesso?» (aggancio ravvedimento), «hai già i
+   documenti o li recuperiamo noi?».
 3. **Aumento fiducia → tabella plus / confronto.** In `/tariffe` e nell'esito preventivo una
    **tabellina "servizio low cost vs Successioni Armellin"** (o solo i plus, senza nominare
    nessuno): delega totale · assistenza continua (WhatsApp/telefono) · calcolo imposte
@@ -202,8 +207,12 @@ Altre idee (mie, da discutere):
   di pagare 290-490 € a distanza.
 - **Garanzia esplicita** accanto al prezzo ("se emergono costi notarili non previsti ti
   informiamo e puoi ritirarti con rimborso"): esiste già `/garanzia`, va portata sul prezzo.
-- **Pacchetto "Erede all'estero"** con codice fiscale via delega + pagamento imposte tramite
-  studio, prezzo dedicato: rende concreto il pilastro 1.
+- **Pacchetto "Erede all'estero"** (APPROVATO da Mauro 11/09, da progettare) con codice
+  fiscale via delega + pagamento imposte tramite studio, prezzo dedicato: rende concreto il
+  pilastro 1. Collegato alla domanda quiz sopra e alla landing `/eredi-estero`.
+- **Referral** (APPROVATO 11/09): requisito vincolante = **gestibile dal CRM** (crea codice
+  univoco per cliente, vede usi e chi ha portato chi, disattiva). Il sito applica il codice
+  in checkout Stripe; il CRM resta la fonte di verità.
 - **Contenuti video brevi** (già ci sono) nell'esito preventivo: Lorenzo che spiega in 30 s
   cosa è incluso.
 - **Prova sociale numerica** ("X pratiche trasmesse", "Y voltura incluse") appena i numeri
