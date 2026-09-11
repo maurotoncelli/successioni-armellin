@@ -426,7 +426,7 @@ export const articles: Article[] = [
       { type: "h2", text: "Quando serve anche un notaio o il consolato" },
       {
         type: "p",
-        text: "La dichiarazione di successione non è un atto notarile e non lo richiede. Servono invece un notaio, o il consolato italiano che per i cittadini italiani svolge alcune funzioni notarili, per rinunciare all'eredità, per accettarla con beneficio d'inventario, per pubblicare un testamento e per vendere l'immobile ereditato. Se il tuo caso li prevede, te lo diciamo prima, non dopo.",
+        text: "La dichiarazione di successione non è un atto notarile e non lo richiede. Servono invece un notaio, o il consolato italiano che per i cittadini italiani svolge alcune funzioni notarili, per rinunciare all'eredità, per accettarla con beneficio d'inventario, per pubblicare un testamento e per vendere l'immobile ereditato. Se dai documenti emerge che il tuo caso li richiede, te lo segnaliamo e ti indichiamo a chi rivolgerti.",
       },
       { type: "h2", text: "Quanto costa" },
       {
@@ -559,7 +559,7 @@ export const articles: Article[] = [
         type: "callout",
         tone: "warning",
         title: "Dove finisce il nostro lavoro",
-        text: "Noi prepariamo e trasmettiamo la dichiarazione e la voltura sui beni in Italia. Se la successione è regolata da una legge straniera, se c'è un testamento estero da far valere o un certificato successorio europeo da ottenere, serve anche un notaio o un avvocato: te lo diciamo all'inizio, con nomi e passaggi, non a metà pratica.",
+        text: "Noi prepariamo e trasmettiamo la dichiarazione e la voltura sui beni in Italia. Se la successione è regolata da una legge straniera, se c'è un testamento estero da far valere o un certificato successorio europeo da ottenere, serve anche un notaio o un avvocato: appena emerge dai documenti te lo segnaliamo e ti indichiamo i passaggi.",
       },
       { type: "h2", text: "I documenti in più" },
       {
@@ -632,7 +632,7 @@ export const articles: Article[] = [
       { type: "h2", text: "Il testamento straniero" },
       {
         type: "p",
-        text: "Un testamento redatto all'estero va di norma pubblicato o fatto valere in Italia tramite un notaio, con traduzione giurata e, se serve, legalizzazione. È uno dei pochi passaggi in cui serve un professionista diverso da noi: te lo indichiamo subito e coordiniamo la dichiarazione con i suoi tempi.",
+        text: "Un testamento redatto all'estero va di norma pubblicato o fatto valere in Italia tramite un notaio, con traduzione giurata e, se serve, legalizzazione. È uno dei pochi passaggi in cui serve un professionista diverso da noi: te lo indichiamo e coordiniamo la dichiarazione con i suoi tempi.",
       },
       { type: "h2", text: "Documenti d'identità non italiani" },
       {

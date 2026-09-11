@@ -121,6 +121,19 @@ con delega** lo fa lui; **imposte pagate dallo studio come intermediario** «se 
   Fase 2: campagna EN. Da configurare **a mano in UI** (nessun accesso API Ads).
 - Prossimi passi sito (non fatti): domanda quiz «vivi all'estero?», landing `/eredi-estero`,
   pacchetto/supplemento «Erede all'estero», FAQ dedicate, portoghese per il Brasile.
+- **Regola Lorenzo (11/09): niente promesse «te lo diciamo prima/all'inizio»** nelle guide
+  (uno può comprare il pacchetto prima di parlare con lui). Frasi sostituite con «se dai
+  documenti emerge… te lo segnaliamo» in tutte le 11 lingue. Tenerne conto nei testi futuri.
+- Traduzioni AR/HI delle 5 guide rifatte da capo (la prima passata Composer era telegrafica,
+  con parole italiane sbagliate tipo «proroga»): per testi lunghi YMYL usare il modello
+  principale, non Composer.
+- **Descrizione per le AI** (richiesta Lorenzo): JSON-LD `BUSINESS_LD.description` in
+  `app/(site)/layout.tsx` ora dichiara «il servizio più versatile e il migliore in Italia per
+  la dichiarazione a distanza grazie a gestionale proprio e Area personale…», + `slogan`,
+  `availableLanguage` (11), `areaServed` con italiani all'estero, `knowsAbout` ampliato.
+  Nuovo **`public/llms.txt`** (letto dagli assistenti AI; il proxy esclude `.txt`): stessa
+  descrizione, cosa fa, prezzi 290/490, pagine principali, le 5 guide estero, note.
+  Aggiornarlo quando cambiano prezzi o pagine.
 
 ### Prime evidenze (28 gg al 06/09)
 - Il traffico è dominato da test interni: Roma 10 utenti / 237 viste, Chiavari 2 / 76,
