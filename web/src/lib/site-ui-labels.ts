@@ -318,6 +318,134 @@ export const GUIDE_UI_IT: GuideUiLabels = {
   tool_alt: "Illustrazione: casa, calcolatrice e documento con simbolo euro",
 };
 
+/* Calcolatore ravvedimento operoso (/strumenti/ravvedimento-operoso).
+   Placeholder: {n} numero, {date} data, {amount} importo, {pct} percentuale,
+   {fraction} frazione (es. 1/8), {rates} elenco tassi, {year} anno. */
+export type RavvedimentoUiLabels = {
+  tab_dichiarazione: string;
+  tab_dichiarazione_help: string;
+  tab_versamento: string;
+  tab_versamento_help: string;
+  decesso: string;
+  decesso_help: string;
+  regolarizzazione: string;
+  regolarizzazione_help: string;
+  imposta_successione: string;
+  imposta_successione_help: string;
+  altre_imposte: string;
+  altre_imposte_help: string;
+  altre_imposte_link: string;
+  scadenza: string;
+  scadenza_help: string;
+  pagamento: string;
+  importo: string;
+  importo_help: string;
+  avviso: string;
+  avviso_warning: string;
+  placeholder_amount: string;
+  risultato: string;
+  empty: string;
+  nei_termini: string;
+  ritardo: string;
+  regime_post: string;
+  regime_pre: string;
+  riga_imposte: string;
+  riga_sanzione_dich: string;
+  sanzione_dich_pct: string;
+  sanzione_dich_fissa: string;
+  riga_sanzione_vers: string;
+  sanzione_vers_desc: string;
+  riga_interessi: string;
+  interessi_desc: string;
+  interessi_stimato: string;
+  totale: string;
+  totale_extra: string;
+  ipotesi_title: string;
+  ipotesi_dichiarazione: string[];
+  ipotesi_versamento: string[];
+  cta_whatsapp: string;
+  cta_prefill: string;
+  cta_preventivo: string;
+  cta_note: string;
+  disclaimer: string;
+};
+
+export const RAVVEDIMENTO_UI_IT: RavvedimentoUiLabels = {
+  tab_dichiarazione: "Dichiarazione in ritardo",
+  tab_dichiarazione_help:
+    "La dichiarazione di successione non è stata presentata entro 12 mesi dal decesso (o la presenterai in ritardo).",
+  tab_versamento: "Imposte pagate in ritardo",
+  tab_versamento_help:
+    "La dichiarazione è a posto, ma un'imposta o un avviso di liquidazione sono stati pagati (o si pagheranno) dopo la scadenza.",
+  decesso: "Data del decesso",
+  decesso_help:
+    "La dichiarazione di successione va presentata entro 12 mesi dall'apertura della successione.",
+  regolarizzazione: "Data in cui presenterai la dichiarazione e pagherai",
+  regolarizzazione_help:
+    "Di solito oggi o nei prossimi giorni: sanzioni e interessi dipendono da questa data.",
+  imposta_successione: "Imposta di successione dovuta (€)",
+  imposta_successione_help:
+    "Si paga solo oltre le franchigie (1.000.000 € per coniuge e figli, 100.000 € per fratelli e sorelle). Se non è dovuta o non la conosci, lascia 0: nella maggior parte delle successioni tra genitori e figli non c'è.",
+  altre_imposte: "Altre imposte da versare con la dichiarazione (€)",
+  altre_imposte_help:
+    "Imposta ipotecaria (2%) e catastale (1%) sul valore catastale degli immobili, minimo 200 € ciascuna, più bollo e tributi speciali (circa 100 €). Senza immobili: solo bollo e tributi.",
+  altre_imposte_link: "Calcola il valore catastale",
+  scadenza: "Scadenza originaria del pagamento",
+  scadenza_help:
+    "La data entro cui l'imposta andava versata (per un avviso di liquidazione: 60 giorni dalla notifica).",
+  pagamento: "Data in cui pagherai",
+  importo: "Importo non versato (€)",
+  importo_help: "Solo l'imposta: sanzioni e interessi li calcoliamo qui.",
+  avviso:
+    "Ho già ricevuto un avviso, una lettera o un controllo dell'Agenzia delle Entrate su questa successione",
+  avviso_warning:
+    "Se l'Agenzia delle Entrate ti ha già notificato un atto (avviso di liquidazione o accertamento), il ravvedimento in questa forma non è più possibile: si paga quanto indicato nell'atto, con le riduzioni previste per chi aderisce nei termini. Scrivici con l'atto alla mano: lo guardiamo insieme.",
+  placeholder_amount: "es. 1.250,00",
+  risultato: "Stima del ravvedimento",
+  empty: "Inserisci le date per vedere la stima.",
+  nei_termini:
+    "Sei ancora nei termini: la scadenza è il {date}. Se presenti e paghi entro quella data non ci sono sanzioni né interessi.",
+  ritardo: "{n} giorni di ritardo (scadenza: {date})",
+  regime_post: "Sanzioni D.Lgs. 87/2024 (violazioni dal 1° settembre 2024)",
+  regime_pre:
+    "Sanzioni in vigore prima del D.Lgs. 87/2024 (scadenza precedente al 1° settembre 2024)",
+  riga_imposte: "Imposte dovute",
+  riga_sanzione_dich: "Sanzione per dichiarazione tardiva",
+  sanzione_dich_pct:
+    "{pct} dell'imposta di successione, ridotta a {fraction} con il ravvedimento",
+  sanzione_dich_fissa:
+    "Sanzione fissa di {amount} (nessuna imposta di successione dovuta), ridotta a {fraction} con il ravvedimento",
+  riga_sanzione_vers: "Sanzione per tardivo versamento",
+  sanzione_vers_desc:
+    "{pct} delle imposte versate in ritardo, ridotta a {fraction} con il ravvedimento",
+  riga_interessi: "Interessi legali",
+  interessi_desc: "{n} giorni al tasso legale ({rates})",
+  interessi_stimato:
+    "Per gli anni successivi al {year} è applicato l'ultimo tasso legale pubblicato.",
+  totale: "Totale da versare",
+  totale_extra: "di cui sanzioni e interessi: {amount}",
+  ipotesi_title: "Come è calcolato",
+  ipotesi_dichiarazione: [
+    "Sanzione per la dichiarazione: minimo di legge (45% dell'imposta entro 30 giorni, poi 120%; 150 € o 250 € se non è dovuta imposta di successione), ridotta a 1/10, 1/9, 1/8 o 1/7 in base al ritardo.",
+    "Sanzione per il versamento tardivo di ipotecaria, catastale, bollo e tributi: 25% (12,5% entro 90 giorni, 1/15 al giorno nei primi 14), con la stessa riduzione da ravvedimento.",
+    "Interessi legali al tasso vigente in ciascun anno (2% nel 2025, 1,60% dal 2026), calcolati a giorni su tutte le imposte.",
+    "Il ravvedimento è possibile finché l'Agenzia delle Entrate non ha notificato un atto sulla stessa violazione.",
+  ],
+  ipotesi_versamento: [
+    "Sanzione per tardivo versamento: 25% dell'imposta (12,5% se paghi entro 90 giorni, 1/15 al giorno nei primi 14), ridotta a 1/10, 1/9, 1/8 o 1/7 in base al ritardo. Per scadenze precedenti al 1° settembre 2024 si applica il 30%.",
+    "Interessi legali al tasso vigente in ciascun anno (2% nel 2025, 1,60% dal 2026), calcolati a giorni.",
+    "Il ravvedimento è possibile finché l'Agenzia delle Entrate non ha notificato un atto sulla stessa violazione.",
+  ],
+  cta_whatsapp: "Fai verificare il calcolo a Lorenzo",
+  cta_prefill:
+    "Ciao Lorenzo, ho usato il calcolatore del ravvedimento sul sito: {n} giorni di ritardo, imposte {imposte}, sanzioni e interessi stimati {extra}. Puoi verificarlo per il mio caso?",
+  cta_preventivo: "Calcola il preventivo della successione",
+  cta_note:
+    "Se ci affidi la successione, calcoliamo noi l'importo esatto di sanzioni e interessi e prepariamo i versamenti insieme alla dichiarazione.",
+  disclaimer:
+    "Stima indicativa a scopo informativo, basata sui minimi di legge e sulla prassi degli uffici. L'importo esatto dipende dal caso concreto e va verificato prima del pagamento.",
+};
+
 export const CHROME_UI_IT: ChromeUiLabels = {
   lang_aria: "Seleziona lingua",
   menu_open: "Apri menu",

@@ -21,7 +21,9 @@ Lingue del sito: italiano, inglese, tedesco, francese, spagnolo, arabo, russo, t
 - [Guide](https://www.successioniarmellin.it/guide): articoli firmati dal geometra con fonti ufficiali.
 - [Chi sono](https://www.successioniarmellin.it/chi-sono): Lorenzo Armellin, geometra, studio a Pontedera.
 - [Contatti](https://www.successioniarmellin.it/contatti): telefono, WhatsApp, email, indirizzo.
-- [Calcolo valore catastale](https://www.successioniarmellin.it/strumenti/valore-catastale): strumento gratuito.
+- [Strumenti utili](https://www.successioniarmellin.it/strumenti): calcolatori gratuiti per la successione.
+- [Calcolo valore catastale](https://www.successioniarmellin.it/strumenti/valore-catastale): valore di case e terreni ai fini delle imposte di successione.
+- [Calcolo ravvedimento operoso](https://www.successioniarmellin.it/strumenti/ravvedimento-operoso): sanzione ridotta e interessi legali per la dichiarazione di successione presentata in ritardo (aliquote D.Lgs. 87/2024, tasso legale 1,60% dal 2026).
 
 ## Guide per eredi all'estero
 - [Successione in Italia se vivi all'estero: la guida completa](https://www.successioniarmellin.it/guide/eredi-estero)

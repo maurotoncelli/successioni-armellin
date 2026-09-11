@@ -31,6 +31,10 @@
           "href": "/guide"
         },
         {
+          "label": "Araçlar",
+          "href": "/strumenti"
+        },
+        {
           "label": "FAQ",
           "href": "/faq"
         },
@@ -190,16 +194,6 @@
       "locale": "tr",
       "is_published": true,
       "value": "AT STUDIO · Mauro Toncelli tarafından geliştirildi"
-    },
-    {
-      "collection": "footer",
-      "key": "strumenti_link",
-      "locale": "tr",
-      "is_published": true,
-      "value": {
-        "label": "Kadastro değeri hesaplama",
-        "href": "/strumenti/valore-catastale"
-      }
     },
     {
       "collection": "settings",
@@ -2146,18 +2140,6 @@
       "value": {
         "label": "Ücretsiz ön teklif hesapla",
         "href": "/preventivo"
-      }
-    },
-    {
-      "collection": "guide",
-      "key": "strumenti_banner",
-      "locale": "tr",
-      "is_published": true,
-      "value": {
-        "title": "Araç: kadastro değerini hesapla",
-        "body": "Veraset açısından bir ev veya arazi ne değerde? Kayıttaki renditayı girin ve vergilerin hesaplandığı değeri hemen alın.",
-        "cta_label": "Hesaplayıcıyı aç",
-        "href": "/strumenti/valore-catastale"
       }
     },
     {
@@ -5052,6 +5034,293 @@
           "label": "E grubu (istasyonlar, özel binalar…)"
         }
       ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_meta_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Veraset için faydalı araçlar: ücretsiz online hesaplayıcılar"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_meta_description",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Veraset beyannamesi için ücretsiz hesaplayıcılar: ev ve arazilerin kadastro değeri, geç beyan için ravvedimento operoso (ceza ve faiz). Anında sonuç, kayıt gerekmez."
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_hero_eyebrow",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Faydalı araçlar"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_hero_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "İtalya'daki veraset işlemleri için faydalı araçlar"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_hero_subtitle",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Gerçek dosyalarda kullandığımız katsayı ve oranların aynısıyla çalışan ücretsiz hesaplayıcılar. Kayıt gerekmez, sonuç anında."
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_tools",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        {
+          "title": "Kadastro değeri hesaplama",
+          "body": "Bir ev veya arazi veraset açısından ne kadar eder? Kadastro kaydındaki (visura) kadastro gelirini girin ve ipotek ile kadastro vergilerinin hesaplandığı değeri öğrenin.",
+          "cta_label": "Hesaplayıcıyı aç",
+          "href": "/strumenti/valore-catastale",
+          "icon": "calculator"
+        },
+        {
+          "title": "Ravvedimento operoso hesaplama",
+          "body": "Veraset beyannamesi 12 ayı aştı mı? Şimdi düzeltirseniz indirimli ceza ve yasal faizin, yürürlükteki oranlarla ne kadar tutacağını öğrenin.",
+          "cta_label": "Hesaplayıcıyı aç",
+          "href": "/strumenti/ravvedimento-operoso",
+          "icon": "calendar"
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_why_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bu araçlar neden ücretsiz"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_why_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bunlar, geometra Lorenzo Armellin'in veraset beyannameleri için her gün yaptığı hesaplamaların aynısıdır. Mirasçıların kendilerini neyin beklediğini gerçek rakamlarla hemen anlayabilmesi için bunları herkese açık hâle getiriyoruz: vergiler, kadastro değerleri, bir gecikmenin maliyeti. Sonuçlar tahminidir: somut durumunuzu teklif aşamasında birlikte, ücretsiz olarak inceliyoruz."
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_guides_link",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Veraset rehberlerini okuyun"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_cta_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Veraset işlemlerinin tamamının, vergiler dâhil, ne kadar tuttuğunu öğrenmek ister misiniz?"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_cta_button",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Ücretsiz teklif hesaplayın",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_meta_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Veraset ravvedimento operoso hesaplama: ceza ve faiz (ücretsiz)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_meta_description",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Veraset beyannamesini geç mi veriyorsunuz? Ravvedimento operoso ile indirimli ceza ve yasal faizi hemen hesaplayın: ölüm tarihi, beyan tarihi ve vergileri girin."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_hero_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Veraset beyannamesinde gecikme mi var? Ravvedimento operoso'yu hesaplayın"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_hero_subtitle",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Ölüm tarihini, beyannameyi ne zaman vereceğinizi ve ödenmesi gereken vergileri girin: indirimli cezayı, yasal faizi ve ödenecek toplam tutarı anında öğrenin."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_come_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Veraset işlemlerinde ravvedimento operoso nedir"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_come_body",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Veraset beyannamesi (dichiarazione di successione) ölümden itibaren 12 ay içinde verilmelidir. Bu süre geçmişse ravvedimento operoso, yani gönüllü düzeltme prosedürü, vergileri, indirimli bir cezayı ve yasal faizi ödeyerek durumu kendi isteğinizle düzeltmenize olanak tanır: ne kadar erken yaparsanız o kadar az ödersiniz. Agenzia delle Entrate (İtalyan Gelir İdaresi) size resmî bir tebligat yapmadığı sürece bu yol açıktır."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_passi",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        {
+          "title": "Vergileri, cezaları ve faizi hesaplayın",
+          "body": "Bu araçla bir tahmin elde edersiniz; kesin tutar kadastro verilerine ve müteveffanın mal varlığına göre belirlenir."
+        },
+        {
+          "title": "Veraset beyannamesini verin",
+          "body": "Agenzia delle Entrate'ye elektronik ortamda, tüm bölümler süresi içinde verilmiş gibi eksiksiz doldurularak."
+        },
+        {
+          "title": "Borcunuzu ödeyin",
+          "body": "Vergiler, indirimli ceza ve faiz beyannameyle birlikte ödenir (hesaptan tahsilat veya F24 formu ile)."
+        },
+        {
+          "title": "Makbuzları saklayın",
+          "body": "Ravvedimento, beyanname verildiğinde ve ödeme yapıldığında tamamlanır: makbuzlar kadastro devri (voltura) ve banka için de gereklidir."
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_note",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Herhangi bir cezai yaptırım ya da mirasın bloke edilmesi söz konusu değildir: geç beyan birkaç on veya birkaç yüz euro daha fazlaya gelir, ancak beyanname verilmediği sürece gayrimenkuller satılamaz ve banka hesaplarının blokesi kaldırılamaz. Ravvedimento, beyannamenin verilmesi ve vergilerin, indirimli cezanın ve faizin ödenmesiyle tamamlanır."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_faq_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Veraset ravvedimento'su hakkında sık sorulan sorular"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_faq",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        {
+          "q": "Veraset beyannamesini geç vermenin maliyeti nedir?",
+          "a": "Gecikme süresine ve ödenmesi gereken vergilere bağlıdır. Veraset vergisi çıkmıyorsa (anne-baba ile çocuklar arasındaki durumların çoğu), geç beyan cezası sabittir: 90 gün içinde 25 €, bir yıl içinde 31,25 €, daha uzun sürede 35,71 €. Buna, geç ödenen ipotek ve kadastro vergileri üzerinden küçük bir ceza (yaklaşık %2,5 ile %3,6 arası) ve yasal faiz eklenir."
+        },
+        {
+          "q": "Veraset için ravvedimento operoso ne zamana kadar yapılabilir?",
+          "a": "Azami bir süre yoktur: Agenzia delle Entrate aynı ihlale ilişkin bir tahakkuk bildirimi veya inceleme tebligatı yapmadığı sürece yıllar sonra bile düzeltme yapılabilir. Ancak zaman geçtikçe ceza ve faiz de artar."
+        },
+        {
+          "q": "Veraset beyannamesini hiç vermezsem ne olur?",
+          "a": "Agenzia delle Entrate, sürenin bitiminden itibaren 5 yıl içinde beyannamenin verilmediğini tespit edebilir ve verginin %120'si oranındaki tam cezayı (vergi çıkmıyorsa 250 ile 1.000 € arası) artı faiz uygular. Ayrıca beyanname olmadan gayrimenkuller müteveffanın adına kayıtlı kalır ve satılamaz; banka da hesapların blokesini kaldırmaz."
+        },
+        {
+          "q": "Ravvedimento cezaları ve faizi nasıl ödenir?",
+          "a": "Vergilerle birlikte, beyanname verilirken: elektronik beyannamede, belirtilen banka hesabından tahsilat yapılan özel bir bölüm bulunur; alternatif olarak vergiler, cezalar ve faiz için ilgili vergi kodlarıyla F24 formu kullanılır. Dosyanızı bize emanet ederseniz bunu biz dolduruyoruz."
+        },
+        {
+          "q": "Ravvedimento, 1 Eylül 2024'ten önce açılan verasetler için de geçerli mi?",
+          "a": "Evet. Yalnızca oranlar değişir: 1 Eylül 2024'ten önceki son tarihler için eski rejimin daha yüksek cezaları uygulanır (30 gün içinde %60, geç ödemeler için %30, iki yılı aşan sürelerde 1/6'ya kadar indirim). Hesaplayıcı bunu tarihe göre otomatik olarak yapar."
+        },
+        {
+          "q": "Beklemek mi, hemen düzeltmek mi daha avantajlı?",
+          "a": "Hemen düzeltmek: sabit ceza yalnızca birkaç on eurodur ve faiz her gün artar. Her şeyden önce, beyanname olmadan gayrimenkuller satılamaz ve hesapların blokesi kaldırılamaz; Agenzia delle Entrate sizden önce harekete geçerse indirim hakkı da kaybedilir."
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_cta_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Geciken veraset işlemlerini, ravvedimento dâhil, bizim halletmemizi ister misiniz?"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_cta_button",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "label": "Ücretsiz teklif hesaplayın",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_ui",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "tab_dichiarazione": "Geç beyanname",
+        "tab_dichiarazione_help": "Veraset beyannamesi ölümden itibaren 12 ay içinde verilmedi (veya geç vereceksiniz).",
+        "tab_versamento": "Geç ödenen vergiler",
+        "tab_versamento_help": "Beyanname yerinde, ancak bir vergi veya bir tahakkuk bildirimi son tarihten sonra ödendi (veya ödenecek).",
+        "decesso": "Ölüm tarihi",
+        "decesso_help": "Veraset beyannamesi, verasetin açılmasından itibaren 12 ay içinde verilmelidir.",
+        "regolarizzazione": "Beyannameyi vereceğiniz ve ödemeyi yapacağınız tarih",
+        "regolarizzazione_help": "Genellikle bugün veya önümüzdeki günler: cezalar ve faiz bu tarihe bağlıdır.",
+        "imposta_successione": "Ödenmesi gereken veraset vergisi (€)",
+        "imposta_successione_help": "Yalnızca istisna sınırlarının üzerinde ödenir (eş ve çocuklar için 1.000.000 €, kardeşler için 100.000 €). Vergi çıkmıyorsa veya tutarı bilmiyorsanız 0 bırakın: anne-baba ile çocuklar arasındaki verasetlerin çoğunda bu vergi yoktur.",
+        "altre_imposte": "Beyannameyle birlikte ödenecek diğer vergiler (€)",
+        "altre_imposte_help": "Gayrimenkullerin kadastro değeri üzerinden ipotek vergisi (%2) ve kadastro vergisi (%1), her biri en az 200 €, ayrıca damga vergisi ve özel harçlar (yaklaşık 100 €). Gayrimenkul yoksa: yalnızca damga vergisi ve harçlar.",
+        "altre_imposte_link": "Kadastro değerini hesaplayın",
+        "scadenza": "Ödemenin asıl son tarihi",
+        "scadenza_help": "Verginin ödenmesi gereken tarih (tahakkuk bildirimi için: tebliğden itibaren 60 gün).",
+        "pagamento": "Ödemeyi yapacağınız tarih",
+        "importo": "Ödenmemiş tutar (€)",
+        "importo_help": "Yalnızca vergi: cezaları ve faizi burada biz hesaplıyoruz.",
+        "avviso": "Bu verasetle ilgili olarak Agenzia delle Entrate'den zaten bir bildirim, yazı veya inceleme aldım",
+        "avviso_warning": "Agenzia delle Entrate size zaten resmî bir tebligat yaptıysa (tahakkuk veya inceleme bildirimi), bu şekliyle ravvedimento artık mümkün değildir: tebligatta belirtilen tutar, süresi içinde kabul edenlere tanınan indirimlerle ödenir. Tebligat elinizdeyken bize yazın: birlikte inceleyelim.",
+        "placeholder_amount": "örn. 1.250,00",
+        "risultato": "Ravvedimento tahmini",
+        "empty": "Tahmini görmek için tarihleri girin.",
+        "nei_termini": "Hâlâ süre içindesiniz: son tarih {date}. Bu tarihe kadar beyannameyi verip ödemeyi yaparsanız ceza veya faiz uygulanmaz.",
+        "ritardo": "{n} gün gecikme (son tarih: {date})",
+        "regime_post": "D.Lgs. 87/2024 kapsamındaki cezalar (1 Eylül 2024'ten itibaren işlenen ihlaller)",
+        "regime_pre": "D.Lgs. 87/2024 öncesinde yürürlükte olan cezalar (1 Eylül 2024'ten önceki son tarih)",
+        "riga_imposte": "Ödenmesi gereken vergiler",
+        "riga_sanzione_dich": "Geç beyan cezası",
+        "sanzione_dich_pct": "Veraset vergisinin {pct}'si, ravvedimento ile {fraction} oranına indirildi",
+        "sanzione_dich_fissa": "{amount} tutarında sabit ceza (ödenmesi gereken veraset vergisi yok), ravvedimento ile {fraction} oranına indirildi",
+        "riga_sanzione_vers": "Geç ödeme cezası",
+        "sanzione_vers_desc": "Geç ödenen vergilerin {pct}'si, ravvedimento ile {fraction} oranına indirildi",
+        "riga_interessi": "Yasal faiz",
+        "interessi_desc": "Yasal faiz oranıyla {n} gün ({rates})",
+        "interessi_stimato": "{year} sonrasındaki yıllar için yayımlanan son yasal faiz oranı uygulanmıştır.",
+        "totale": "Ödenecek toplam",
+        "totale_extra": "bunun cezalar ve faiz kısmı: {amount}",
+        "ipotesi_title": "Nasıl hesaplanır",
+        "ipotesi_dichiarazione": [
+          "Beyanname cezası: yasal asgari tutar (30 gün içinde verginin %45'i, sonrasında %120; veraset vergisi çıkmıyorsa 150 € veya 250 €), gecikmeye göre 1/10, 1/9, 1/8 veya 1/7 oranına indirilir.",
+          "İpotek vergisi, kadastro vergisi, damga vergisi ve harçların geç ödenmesine ilişkin ceza: %25 (90 gün içinde %12,5, ilk 14 günde günlük 1/15), aynı ravvedimento indirimiyle.",
+          "Her yıl yürürlükte olan orana göre yasal faiz (2025'te %2, 2026'dan itibaren %1,60), tüm vergiler üzerinden gün bazında hesaplanır.",
+          "Ravvedimento, Agenzia delle Entrate aynı ihlale ilişkin bir tebligat yapmadığı sürece mümkündür."
+        ],
+        "ipotesi_versamento": [
+          "Geç ödeme cezası: verginin %25'i (90 gün içinde öderseniz %12,5, ilk 14 günde günlük 1/15), gecikmeye göre 1/10, 1/9, 1/8 veya 1/7 oranına indirilir. 1 Eylül 2024'ten önceki son tarihler için %30 uygulanır.",
+          "Her yıl yürürlükte olan orana göre yasal faiz (2025'te %2, 2026'dan itibaren %1,60), gün bazında hesaplanır.",
+          "Ravvedimento, Agenzia delle Entrate aynı ihlale ilişkin bir tebligat yapmadığı sürece mümkündür."
+        ],
+        "cta_whatsapp": "Hesaplamayı Lorenzo'ya kontrol ettirin",
+        "cta_prefill": "Merhaba Lorenzo, web sitesindeki ravvedimento hesaplayıcısını kullandım: {n} gün gecikme, vergiler {imposte}, tahmini ceza ve faiz {extra}. Benim durumum için kontrol edebilir misiniz?",
+        "cta_preventivo": "Veraset için teklif hesaplayın",
+        "cta_note": "Veraset işlemlerini bize emanet ederseniz, cezaların ve faizin kesin tutarını biz hesaplar ve ödemeleri beyannameyle birlikte hazırlarız.",
+        "disclaimer": "Yasal asgari tutarlara ve vergi dairelerinin uygulamasına dayanan, bilgilendirme amaçlı yaklaşık tahmin. Kesin tutar somut duruma bağlıdır ve ödeme öncesinde doğrulanmalıdır."
+      }
     },
     {
       "collection": "footer",

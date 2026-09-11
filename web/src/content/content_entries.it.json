@@ -31,6 +31,10 @@
           "href": "/guide"
         },
         {
+          "label": "Strumenti",
+          "href": "/strumenti"
+        },
+        {
           "label": "FAQ",
           "href": "/faq"
         },
@@ -190,16 +194,6 @@
       "locale": "it",
       "is_published": true,
       "value": "Realizzato da AT STUDIO · Mauro Toncelli"
-    },
-    {
-      "collection": "footer",
-      "key": "strumenti_link",
-      "locale": "it",
-      "is_published": true,
-      "value": {
-        "label": "Calcolo valore catastale",
-        "href": "/strumenti/valore-catastale"
-      }
     },
     {
       "collection": "settings",
@@ -2160,18 +2154,6 @@
       "value": {
         "label": "Calcola il preventivo gratis",
         "href": "/preventivo"
-      }
-    },
-    {
-      "collection": "guide",
-      "key": "strumenti_banner",
-      "locale": "it",
-      "is_published": true,
-      "value": {
-        "title": "Strumento: calcola il valore catastale",
-        "body": "Quanto vale una casa o un terreno ai fini della successione? Inserisci la rendita della visura e ottieni subito il valore su cui si calcolano le imposte.",
-        "cta_label": "Apri il calcolatore",
-        "href": "/strumenti/valore-catastale"
       }
     },
     {
@@ -5066,6 +5048,293 @@
           "label": "Gruppo E (stazioni, edifici speciali…)"
         }
       ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_meta_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Strumenti utili per la successione: calcolatori gratuiti online"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_meta_description",
+      "locale": "it",
+      "is_published": true,
+      "value": "Calcolatori gratuiti per la dichiarazione di successione: valore catastale di case e terreni, ravvedimento operoso per dichiarazione in ritardo (sanzioni e interessi). Risultato immediato, nessuna registrazione."
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_hero_eyebrow",
+      "locale": "it",
+      "is_published": true,
+      "value": "Strumenti utili"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_hero_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Strumenti utili per la successione"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_hero_subtitle",
+      "locale": "it",
+      "is_published": true,
+      "value": "Calcolatori gratuiti, con gli stessi coefficienti e le stesse aliquote che usiamo nelle pratiche vere. Nessuna registrazione, risultato immediato."
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_tools",
+      "locale": "it",
+      "is_published": true,
+      "value": [
+        {
+          "title": "Calcolo del valore catastale",
+          "body": "Quanto vale una casa o un terreno ai fini della successione? Inserisci la rendita della visura e ottieni il valore su cui si calcolano le imposte ipotecaria e catastale.",
+          "cta_label": "Apri il calcolatore",
+          "href": "/strumenti/valore-catastale",
+          "icon": "calculator"
+        },
+        {
+          "title": "Calcolo del ravvedimento operoso",
+          "body": "Dichiarazione di successione oltre i 12 mesi? Scopri quanto costano sanzione ridotta e interessi legali se regolarizzi adesso, con le aliquote in vigore.",
+          "cta_label": "Apri il calcolatore",
+          "href": "/strumenti/ravvedimento-operoso",
+          "icon": "calendar"
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_why_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Perché questi strumenti sono gratuiti"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_why_body",
+      "locale": "it",
+      "is_published": true,
+      "value": "Sono gli stessi calcoli che il geometra Lorenzo Armellin fa ogni giorno per le dichiarazioni di successione. Li mettiamo a disposizione perché chi eredita possa capire subito, con numeri veri, cosa lo aspetta: imposte, valori catastali, costi di un ritardo. I risultati sono stime: il caso concreto lo verifichiamo insieme, gratis, con il preventivo."
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_guides_link",
+      "locale": "it",
+      "is_published": true,
+      "value": "Leggi le guide alla successione"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_cta_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Vuoi sapere quanto costa tutta la successione, imposte incluse?"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_cta_button",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "label": "Calcola il preventivo gratis",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_meta_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Calcolo ravvedimento operoso successione: sanzioni e interessi (gratis)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_meta_description",
+      "locale": "it",
+      "is_published": true,
+      "value": "Dichiarazione di successione in ritardo? Calcola subito sanzione ridotta e interessi legali con il ravvedimento operoso: inserisci data del decesso, data di presentazione e imposte."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_hero_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Dichiarazione di successione in ritardo? Calcola il ravvedimento operoso"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_hero_subtitle",
+      "locale": "it",
+      "is_published": true,
+      "value": "Inserisci la data del decesso, quando presenterai la dichiarazione e le imposte dovute: ottieni subito sanzione ridotta, interessi legali e totale da versare."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_come_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Cos'è il ravvedimento operoso nella successione"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_come_body",
+      "locale": "it",
+      "is_published": true,
+      "value": "La dichiarazione di successione va presentata entro 12 mesi dal decesso. Se il termine è passato, il ravvedimento operoso permette di regolarizzare spontaneamente pagando le imposte, una sanzione ridotta e gli interessi legali: più presto lo fai, meno paghi. È possibile finché l'Agenzia delle Entrate non ti ha notificato un atto."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_passi",
+      "locale": "it",
+      "is_published": true,
+      "value": [
+        {
+          "title": "Calcola imposte, sanzioni e interessi",
+          "body": "Con questo strumento hai una stima; l'importo esatto si determina sui dati catastali e sul patrimonio del defunto."
+        },
+        {
+          "title": "Presenta la dichiarazione di successione",
+          "body": "In via telematica all'Agenzia delle Entrate, con tutti i quadri compilati come se fosse nei termini."
+        },
+        {
+          "title": "Versa il dovuto",
+          "body": "Imposte, sanzione ridotta e interessi si pagano insieme alla dichiarazione (addebito sul conto o F24)."
+        },
+        {
+          "title": "Conserva le ricevute",
+          "body": "Il ravvedimento si perfeziona con presentazione e pagamento: le ricevute servono anche per la voltura catastale e per la banca."
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_note",
+      "locale": "it",
+      "is_published": true,
+      "value": "Nessuna sanzione penale e nessun blocco dell'eredità: presentare in ritardo costa qualche decina o centinaia di euro in più, ma finché la dichiarazione manca gli immobili non possono essere venduti né i conti sbloccati. Il ravvedimento si perfeziona con la presentazione della dichiarazione e il pagamento di imposte, sanzione ridotta e interessi."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_faq_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Domande frequenti sul ravvedimento della successione"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_faq",
+      "locale": "it",
+      "is_published": true,
+      "value": [
+        {
+          "q": "Quanto costa presentare la dichiarazione di successione in ritardo?",
+          "a": "Dipende dal ritardo e dalle imposte dovute. Se non c'è imposta di successione (la maggior parte dei casi tra genitori e figli), la sanzione per la dichiarazione tardiva è fissa: 25 € entro 90 giorni, 31,25 € entro un anno, 35,71 € oltre. Si aggiungono una piccola sanzione sulle imposte ipotecaria e catastale versate in ritardo (dal 2,5% al 3,6% circa) e gli interessi legali."
+        },
+        {
+          "q": "Entro quando si può fare il ravvedimento operoso della successione?",
+          "a": "Non c'è un termine massimo: si può regolarizzare anche anni dopo, finché l'Agenzia delle Entrate non ha notificato un avviso di liquidazione o di accertamento sulla stessa violazione. Più passa il tempo, però, più crescono sanzione e interessi."
+        },
+        {
+          "q": "Cosa succede se non presento mai la dichiarazione di successione?",
+          "a": "L'Agenzia può accertare l'omissione entro 5 anni dalla scadenza, applicando la sanzione piena del 120% dell'imposta (o da 250 a 1.000 € se non è dovuta imposta) più interessi. Inoltre, senza dichiarazione gli immobili restano intestati al defunto e non si possono vendere, e la banca non sblocca i conti."
+        },
+        {
+          "q": "Come si pagano sanzioni e interessi del ravvedimento?",
+          "a": "Insieme alle imposte, al momento della presentazione: nella dichiarazione telematica c'è un quadro dedicato con addebito sul conto corrente indicato, in alternativa si usa il modello F24 con i codici tributo di imposte, sanzioni e interessi. Se ci affidi la pratica, lo compiliamo noi."
+        },
+        {
+          "q": "Il ravvedimento vale anche per le successioni aperte prima del 1° settembre 2024?",
+          "a": "Sì. Cambiano solo le percentuali: per le scadenze precedenti al 1° settembre 2024 si applicano le sanzioni più alte del vecchio regime (60% entro 30 giorni, 30% per i versamenti tardivi, riduzione fino a 1/6 oltre due anni). Il calcolatore lo fa in automatico in base alla data."
+        },
+        {
+          "q": "Conviene aspettare o regolarizzare subito?",
+          "a": "Regolarizzare subito: la sanzione fissa è di poche decine di euro e gli interessi crescono ogni giorno. Soprattutto, senza dichiarazione non si possono vendere gli immobili né sbloccare i conti, e se arriva prima l'Agenzia si perde la riduzione."
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_cta_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Vuoi che sistemiamo noi la successione in ritardo, ravvedimento incluso?"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_cta_button",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "label": "Calcola il preventivo gratis",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_ui",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "tab_dichiarazione": "Dichiarazione in ritardo",
+        "tab_dichiarazione_help": "La dichiarazione di successione non è stata presentata entro 12 mesi dal decesso (o la presenterai in ritardo).",
+        "tab_versamento": "Imposte pagate in ritardo",
+        "tab_versamento_help": "La dichiarazione è a posto, ma un'imposta o un avviso di liquidazione sono stati pagati (o si pagheranno) dopo la scadenza.",
+        "decesso": "Data del decesso",
+        "decesso_help": "La dichiarazione di successione va presentata entro 12 mesi dall'apertura della successione.",
+        "regolarizzazione": "Data in cui presenterai la dichiarazione e pagherai",
+        "regolarizzazione_help": "Di solito oggi o nei prossimi giorni: sanzioni e interessi dipendono da questa data.",
+        "imposta_successione": "Imposta di successione dovuta (€)",
+        "imposta_successione_help": "Si paga solo oltre le franchigie (1.000.000 € per coniuge e figli, 100.000 € per fratelli e sorelle). Se non è dovuta o non la conosci, lascia 0: nella maggior parte delle successioni tra genitori e figli non c'è.",
+        "altre_imposte": "Altre imposte da versare con la dichiarazione (€)",
+        "altre_imposte_help": "Imposta ipotecaria (2%) e catastale (1%) sul valore catastale degli immobili, minimo 200 € ciascuna, più bollo e tributi speciali (circa 100 €). Senza immobili: solo bollo e tributi.",
+        "altre_imposte_link": "Calcola il valore catastale",
+        "scadenza": "Scadenza originaria del pagamento",
+        "scadenza_help": "La data entro cui l'imposta andava versata (per un avviso di liquidazione: 60 giorni dalla notifica).",
+        "pagamento": "Data in cui pagherai",
+        "importo": "Importo non versato (€)",
+        "importo_help": "Solo l'imposta: sanzioni e interessi li calcoliamo qui.",
+        "avviso": "Ho già ricevuto un avviso, una lettera o un controllo dell'Agenzia delle Entrate su questa successione",
+        "avviso_warning": "Se l'Agenzia delle Entrate ti ha già notificato un atto (avviso di liquidazione o accertamento), il ravvedimento in questa forma non è più possibile: si paga quanto indicato nell'atto, con le riduzioni previste per chi aderisce nei termini. Scrivici con l'atto alla mano: lo guardiamo insieme.",
+        "placeholder_amount": "es. 1.250,00",
+        "risultato": "Stima del ravvedimento",
+        "empty": "Inserisci le date per vedere la stima.",
+        "nei_termini": "Sei ancora nei termini: la scadenza è il {date}. Se presenti e paghi entro quella data non ci sono sanzioni né interessi.",
+        "ritardo": "{n} giorni di ritardo (scadenza: {date})",
+        "regime_post": "Sanzioni D.Lgs. 87/2024 (violazioni dal 1° settembre 2024)",
+        "regime_pre": "Sanzioni in vigore prima del D.Lgs. 87/2024 (scadenza precedente al 1° settembre 2024)",
+        "riga_imposte": "Imposte dovute",
+        "riga_sanzione_dich": "Sanzione per dichiarazione tardiva",
+        "sanzione_dich_pct": "{pct} dell'imposta di successione, ridotta a {fraction} con il ravvedimento",
+        "sanzione_dich_fissa": "Sanzione fissa di {amount} (nessuna imposta di successione dovuta), ridotta a {fraction} con il ravvedimento",
+        "riga_sanzione_vers": "Sanzione per tardivo versamento",
+        "sanzione_vers_desc": "{pct} delle imposte versate in ritardo, ridotta a {fraction} con il ravvedimento",
+        "riga_interessi": "Interessi legali",
+        "interessi_desc": "{n} giorni al tasso legale ({rates})",
+        "interessi_stimato": "Per gli anni successivi al {year} è applicato l'ultimo tasso legale pubblicato.",
+        "totale": "Totale da versare",
+        "totale_extra": "di cui sanzioni e interessi: {amount}",
+        "ipotesi_title": "Come è calcolato",
+        "ipotesi_dichiarazione": [
+          "Sanzione per la dichiarazione: minimo di legge (45% dell'imposta entro 30 giorni, poi 120%; 150 € o 250 € se non è dovuta imposta di successione), ridotta a 1/10, 1/9, 1/8 o 1/7 in base al ritardo.",
+          "Sanzione per il versamento tardivo di ipotecaria, catastale, bollo e tributi: 25% (12,5% entro 90 giorni, 1/15 al giorno nei primi 14), con la stessa riduzione da ravvedimento.",
+          "Interessi legali al tasso vigente in ciascun anno (2% nel 2025, 1,60% dal 2026), calcolati a giorni su tutte le imposte.",
+          "Il ravvedimento è possibile finché l'Agenzia delle Entrate non ha notificato un atto sulla stessa violazione."
+        ],
+        "ipotesi_versamento": [
+          "Sanzione per tardivo versamento: 25% dell'imposta (12,5% se paghi entro 90 giorni, 1/15 al giorno nei primi 14), ridotta a 1/10, 1/9, 1/8 o 1/7 in base al ritardo. Per scadenze precedenti al 1° settembre 2024 si applica il 30%.",
+          "Interessi legali al tasso vigente in ciascun anno (2% nel 2025, 1,60% dal 2026), calcolati a giorni.",
+          "Il ravvedimento è possibile finché l'Agenzia delle Entrate non ha notificato un atto sulla stessa violazione."
+        ],
+        "cta_whatsapp": "Fai verificare il calcolo a Lorenzo",
+        "cta_prefill": "Ciao Lorenzo, ho usato il calcolatore del ravvedimento sul sito: {n} giorni di ritardo, imposte {imposte}, sanzioni e interessi stimati {extra}. Puoi verificarlo per il mio caso?",
+        "cta_preventivo": "Calcola il preventivo della successione",
+        "cta_note": "Se ci affidi la successione, calcoliamo noi l'importo esatto di sanzioni e interessi e prepariamo i versamenti insieme alla dichiarazione.",
+        "disclaimer": "Stima indicativa a scopo informativo, basata sui minimi di legge e sulla prassi degli uffici. L'importo esatto dipende dal caso concreto e va verificato prima del pagamento."
+      }
     },
     {
       "collection": "footer",

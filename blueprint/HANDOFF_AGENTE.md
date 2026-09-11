@@ -134,6 +134,23 @@ con delega** lo fa lui; **imposte pagate dallo studio come intermediario** «se 
   Nuovo **`public/llms.txt`** (letto dagli assistenti AI; il proxy esclude `.txt`): stessa
   descrizione, cosa fa, prezzi 290/490, pagine principali, le 5 guide estero, note.
   Aggiornarlo quando cambiano prezzi o pagine.
+- **Strumenti utili (11/09)**: nuovo hub `/strumenti` (`app/(site)/strumenti/page.tsx`,
+  CollectionPage+ItemList JSON-LD, card data-driven `strumenti.hub_tools`) con voce menu
+  «Strumenti» dopo Guide (`navbar.menu`, 11 lingue; tagline brand nascosta fino a 2xl per far
+  stare 7 voci a 1280px). Rimossi il banner calcolatore in `/guide` (`guide.strumenti_banner`)
+  e il link footer `footer.strumenti_link` (il footer «Naviga» ora eredita la voce menu).
+  Nuovo **calcolatore ravvedimento operoso** `/strumenti/ravvedimento-operoso`:
+  logica pura in `lib/ravvedimento.ts` (regime pre/post D.Lgs. 87/2024 in base alla
+  scadenza; sanzione dichiarazione tardiva 45%/120% o fissa 150/250 € ridotta 1/10-1/9-1/8-1/7
+  (1/6 solo ante riforma) come da scheda Geonetwork 276; sanzione tardivo versamento
+  25%/12,5%/1-15 al giorno su ipotecaria-catastale-bollo; interessi legali a giorni con
+  tabella `TASSI_LEGALI` — **aggiornare ogni dicembre** con il DM MEF, 2026 = 1,60%).
+  Form client `components/site/ravvedimento-calculator.tsx` (2 modalità: dichiarazione in
+  ritardo / imposte pagate in ritardo, checkbox «ho già ricevuto un avviso» che blocca),
+  label in `strumenti.ravvedimento_ui` (fallback `RAVVEDIMENTO_UI_IT` in site-ui-labels),
+  passi/FAQ/meta in `strumenti.ravvedimento_*`. Eventi GA4: `tool_ravvedimento` (param
+  `tipo`), CTA `data-cta` `tool_ravvedimento_whatsapp` (prefill con i numeri) e
+  `tool_ravvedimento_preventivo`. Risultati dichiarati come stima; nessuna promessa.
 
 ### Prime evidenze (28 gg al 06/09)
 - Il traffico è dominato da test interni: Roma 10 utenti / 237 viste, Chiavari 2 / 76,
@@ -2129,8 +2146,8 @@ Implementato (build ok, NON ancora committato ne' testato con documenti reali):
 - **Calcolatore valore catastale pubblico** `/strumenti/valore-catastale`
   (SEO, testi data-driven collection `strumenti`): logica estratta in
   `web/src/lib/catasto.ts` (condivisa col generatore SUC13, valori identici
-  al software AdE). Link: banner in `/guide` (`guide.strumenti_banner`) +
-  footer (`footer.strumenti_link`). sitemap.ts/robots.ts aggiunti nella
+  al software AdE). Link: dall'11/09 via hub `/strumenti` e voce menu «Strumenti»
+  (banner in `/guide` e `footer.strumenti_link` rimossi). sitemap.ts/robots.ts aggiunti nella
   sessione di debugging (vedi sotto).
 - **Email lead REALI** (prima non partiva nulla, ne a Lorenzo ne al visitatore,
   ma la cronologia CRM le registrava come inviate!): `createLead` ora invia

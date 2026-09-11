@@ -31,6 +31,10 @@
           "href": "/guide"
         },
         {
+          "label": "Rechner",
+          "href": "/strumenti"
+        },
+        {
           "label": "FAQ",
           "href": "/faq"
         },
@@ -190,16 +194,6 @@
       "locale": "de",
       "is_published": true,
       "value": "Erstellt von AT STUDIO · Mauro Toncelli"
-    },
-    {
-      "collection": "footer",
-      "key": "strumenti_link",
-      "locale": "de",
-      "is_published": true,
-      "value": {
-        "label": "Katasterwert-Rechner",
-        "href": "/strumenti/valore-catastale"
-      }
     },
     {
       "collection": "settings",
@@ -2146,18 +2140,6 @@
       "value": {
         "label": "Kostenlosen Kostenvoranschlag berechnen",
         "href": "/preventivo"
-      }
-    },
-    {
-      "collection": "guide",
-      "key": "strumenti_banner",
-      "locale": "de",
-      "is_published": true,
-      "value": {
-        "title": "Tool: Katasterwert berechnen",
-        "body": "Wert von Haus oder Grundstück für Erbschaft? Katasterertrag eingeben — sofort Steuerwert.",
-        "cta_label": "Rechner öffnen",
-        "href": "/strumenti/valore-catastale"
       }
     },
     {
@@ -5052,6 +5034,293 @@
           "label": "Gruppe E (Bahnhöfe, Sondergebäude…)"
         }
       ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_meta_title",
+      "locale": "de",
+      "is_published": true,
+      "value": "Nützliche Tools zur italienischen Erbschaft: kostenlose Rechner"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_meta_description",
+      "locale": "de",
+      "is_published": true,
+      "value": "Kostenlose Rechner zur Erbschaftserklärung: Katasterwert von Haus und Grundstück, ravvedimento operoso bei Verspätung (Strafe und Zinsen). Sofort, ohne Anmeldung."
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_hero_eyebrow",
+      "locale": "de",
+      "is_published": true,
+      "value": "Nützliche Tools"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_hero_title",
+      "locale": "de",
+      "is_published": true,
+      "value": "Nützliche Tools für die italienische Erbschaft"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_hero_subtitle",
+      "locale": "de",
+      "is_published": true,
+      "value": "Kostenlose Rechner mit denselben Koeffizienten und Steuersätzen, die wir in echten Fällen verwenden. Keine Anmeldung, sofortiges Ergebnis."
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_tools",
+      "locale": "de",
+      "is_published": true,
+      "value": [
+        {
+          "title": "Berechnung des Katasterwerts",
+          "body": "Wie viel ist ein Haus oder ein Grundstück für die Erbschaft wert? Geben Sie den Katasterertrag (rendita catastale) aus dem Katasterauszug ein und erhalten Sie den Wert, auf dem die Hypotheken- und Katastersteuer berechnet wird.",
+          "cta_label": "Rechner öffnen",
+          "href": "/strumenti/valore-catastale",
+          "icon": "calculator"
+        },
+        {
+          "title": "Berechnung des ravvedimento operoso",
+          "body": "Erbschaftserklärung nach mehr als 12 Monaten? Erfahren Sie, was ermäßigte Strafe und gesetzliche Zinsen kosten, wenn Sie die Versäumnis jetzt bereinigen – mit den geltenden Sätzen.",
+          "cta_label": "Rechner öffnen",
+          "href": "/strumenti/ravvedimento-operoso",
+          "icon": "calendar"
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_why_title",
+      "locale": "de",
+      "is_published": true,
+      "value": "Warum diese Tools kostenlos sind"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_why_body",
+      "locale": "de",
+      "is_published": true,
+      "value": "Es sind dieselben Berechnungen, die Geometra Lorenzo Armellin täglich für Erbschaftserklärungen durchführt. Wir stellen sie zur Verfügung, damit Erben sofort und mit echten Zahlen verstehen, was auf sie zukommt: Steuern, Katasterwerte, die Kosten einer Verspätung. Die Ergebnisse sind Schätzungen: den konkreten Fall prüfen wir gemeinsam, kostenlos, mit dem Kostenvoranschlag."
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_guides_link",
+      "locale": "de",
+      "is_published": true,
+      "value": "Ratgeber zur Erbschaft lesen"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_cta_title",
+      "locale": "de",
+      "is_published": true,
+      "value": "Möchten Sie wissen, was die gesamte Erbschaft kostet, Steuern inklusive?"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_cta_button",
+      "locale": "de",
+      "is_published": true,
+      "value": {
+        "label": "Kostenloses Angebot berechnen",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_meta_title",
+      "locale": "de",
+      "is_published": true,
+      "value": "Ravvedimento operoso Erbschaft: Strafe und Zinsen berechnen (gratis)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_meta_description",
+      "locale": "de",
+      "is_published": true,
+      "value": "Erbschaftserklärung verspätet? Ermäßigte Strafe und gesetzliche Zinsen per ravvedimento operoso sofort berechnen: Todesdatum, Abgabedatum und Steuern eingeben."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_hero_title",
+      "locale": "de",
+      "is_published": true,
+      "value": "Erbschaftserklärung verspätet? Berechnen Sie das ravvedimento operoso"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_hero_subtitle",
+      "locale": "de",
+      "is_published": true,
+      "value": "Geben Sie das Todesdatum, den Tag, an dem Sie die Erklärung einreichen werden, und die geschuldeten Steuern ein: Sie erhalten sofort ermäßigte Strafe, gesetzliche Zinsen und den zu zahlenden Gesamtbetrag."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_come_title",
+      "locale": "de",
+      "is_published": true,
+      "value": "Was das ravvedimento operoso bei der Erbschaft ist"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_come_body",
+      "locale": "de",
+      "is_published": true,
+      "value": "Die Erbschaftserklärung (dichiarazione di successione) muss innerhalb von 12 Monaten nach dem Todesfall eingereicht werden. Ist die Frist verstrichen, können Sie mit dem ravvedimento operoso (freiwillige Nachbesserung) die Versäumnis selbst bereinigen, indem Sie die Steuern, eine ermäßigte Strafe und die gesetzlichen Zinsen zahlen: Je früher Sie das tun, desto weniger zahlen Sie. Das ist möglich, solange die Agenzia delle Entrate (italienische Finanzverwaltung) Ihnen noch keinen Bescheid zugestellt hat."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_passi",
+      "locale": "de",
+      "is_published": true,
+      "value": [
+        {
+          "title": "Steuern, Strafen und Zinsen berechnen",
+          "body": "Mit diesem Tool erhalten Sie eine Schätzung; der genaue Betrag wird anhand der Katasterdaten und des Nachlasses des Verstorbenen ermittelt."
+        },
+        {
+          "title": "Erbschaftserklärung einreichen",
+          "body": "Elektronisch bei der Agenzia delle Entrate, mit allen Abschnitten so ausgefüllt, als wäre sie fristgerecht."
+        },
+        {
+          "title": "Den geschuldeten Betrag zahlen",
+          "body": "Steuern, ermäßigte Strafe und Zinsen werden zusammen mit der Erklärung gezahlt (Kontoabbuchung oder Formular F24)."
+        },
+        {
+          "title": "Belege aufbewahren",
+          "body": "Das ravvedimento ist mit Einreichung und Zahlung abgeschlossen: Die Belege werden auch für die Katasterumschreibung (voltura catastale) und für die Bank benötigt."
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_note",
+      "locale": "de",
+      "is_published": true,
+      "value": "Keine strafrechtlichen Folgen und keine Sperrung der Erbschaft: Eine verspätete Einreichung kostet einige Dutzend oder Hundert Euro mehr, doch solange die Erklärung fehlt, können die Immobilien nicht verkauft und die Konten nicht freigegeben werden. Das ravvedimento ist mit der Einreichung der Erklärung und der Zahlung von Steuern, ermäßigter Strafe und Zinsen abgeschlossen."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_faq_title",
+      "locale": "de",
+      "is_published": true,
+      "value": "Häufige Fragen zum ravvedimento bei der Erbschaft"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_faq",
+      "locale": "de",
+      "is_published": true,
+      "value": [
+        {
+          "q": "Was kostet es, die Erbschaftserklärung verspätet einzureichen?",
+          "a": "Das hängt von der Verspätung und den geschuldeten Steuern ab. Fällt keine Erbschaftssteuer an (die meisten Fälle zwischen Eltern und Kindern), ist die Strafe für die verspätete Erklärung fest: 25 € innerhalb von 90 Tagen, 31,25 € innerhalb eines Jahres, 35,71 € darüber hinaus. Hinzu kommen eine kleine Strafe auf die verspätet gezahlte Hypotheken- und Katastersteuer (etwa 2,5% bis 3,6%) und die gesetzlichen Zinsen."
+        },
+        {
+          "q": "Bis wann ist das ravvedimento operoso bei der Erbschaft möglich?",
+          "a": "Es gibt keine Höchstfrist: Sie können auch Jahre später nachbessern, solange die Agenzia delle Entrate keinen Zahlungs- oder Steuerbescheid (avviso di liquidazione o di accertamento) zu derselben Verletzung zugestellt hat. Je mehr Zeit vergeht, desto höher werden jedoch Strafe und Zinsen."
+        },
+        {
+          "q": "Was passiert, wenn ich die Erbschaftserklärung nie einreiche?",
+          "a": "Die Agenzia delle Entrate kann die Unterlassung innerhalb von 5 Jahren nach Fristablauf feststellen und die volle Strafe von 120% der Steuer (oder 250 bis 1.000 €, wenn keine Steuer geschuldet ist) plus Zinsen verhängen. Außerdem bleiben die Immobilien ohne Erklärung auf den Namen des Verstorbenen eingetragen und können nicht verkauft werden, und die Bank gibt die Konten nicht frei."
+        },
+        {
+          "q": "Wie werden Strafen und Zinsen des ravvedimento gezahlt?",
+          "a": "Zusammen mit den Steuern bei der Einreichung: Die elektronische Erklärung enthält einen eigenen Abschnitt mit Abbuchung vom angegebenen Bankkonto; alternativ nutzt man das Formular F24 mit den Abgabencodes für Steuern, Strafen und Zinsen. Wenn Sie uns den Fall anvertrauen, füllen wir das für Sie aus."
+        },
+        {
+          "q": "Gilt das ravvedimento auch für Erbschaften, die vor dem 1. September 2024 eröffnet wurden?",
+          "a": "Ja. Nur die Prozentsätze ändern sich: Für Fristen vor dem 1. September 2024 gelten die höheren Strafen der alten Regelung (60% innerhalb von 30 Tagen, 30% für verspätete Zahlungen, Ermäßigung bis auf 1/6 nach mehr als zwei Jahren). Der Rechner berücksichtigt das automatisch anhand des Datums."
+        },
+        {
+          "q": "Lohnt es sich zu warten oder sofort nachzubessern?",
+          "a": "Sofort nachbessern: Die feste Strafe beträgt nur wenige Dutzend Euro, und die Zinsen wachsen jeden Tag. Vor allem können Sie ohne Erklärung weder die Immobilien verkaufen noch die Konten freigeben lassen, und wenn die Agenzia delle Entrate zuerst kommt, verlieren Sie die Ermäßigung."
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_cta_title",
+      "locale": "de",
+      "is_published": true,
+      "value": "Sollen wir die verspätete Erbschaft für Sie regeln, ravvedimento inklusive?"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_cta_button",
+      "locale": "de",
+      "is_published": true,
+      "value": {
+        "label": "Kostenloses Angebot berechnen",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_ui",
+      "locale": "de",
+      "is_published": true,
+      "value": {
+        "tab_dichiarazione": "Verspätete Erklärung",
+        "tab_dichiarazione_help": "Die Erbschaftserklärung wurde nicht innerhalb von 12 Monaten nach dem Todesfall eingereicht (oder Sie werden sie verspätet einreichen).",
+        "tab_versamento": "Verspätet gezahlte Steuern",
+        "tab_versamento_help": "Die Erklärung ist in Ordnung, aber eine Steuer oder ein Zahlungsbescheid wurde (oder wird) nach Fristablauf gezahlt.",
+        "decesso": "Todesdatum",
+        "decesso_help": "Die Erbschaftserklärung muss innerhalb von 12 Monaten nach Eröffnung der Erbschaft eingereicht werden.",
+        "regolarizzazione": "Datum, an dem Sie die Erklärung einreichen und zahlen werden",
+        "regolarizzazione_help": "In der Regel heute oder in den nächsten Tagen: Strafen und Zinsen hängen von diesem Datum ab.",
+        "imposta_successione": "Geschuldete Erbschaftssteuer (€)",
+        "imposta_successione_help": "Fällt nur oberhalb der Freibeträge an (1.000.000 € für Ehepartner und Kinder, 100.000 € für Geschwister). Wenn keine geschuldet ist oder Sie sie nicht kennen, lassen Sie 0 stehen: Bei den meisten Erbschaften zwischen Eltern und Kindern fällt keine an.",
+        "altre_imposte": "Weitere mit der Erklärung zu zahlende Steuern (€)",
+        "altre_imposte_help": "Hypothekensteuer (2%) und Katastersteuer (1%) auf den Katasterwert der Immobilien, mindestens je 200 €, plus Stempelsteuer und Sondergebühren (etwa 100 €). Ohne Immobilien: nur Stempelsteuer und Gebühren.",
+        "altre_imposte_link": "Katasterwert berechnen",
+        "scadenza": "Ursprüngliche Zahlungsfrist",
+        "scadenza_help": "Das Datum, bis zu dem die Steuer zu zahlen war (bei einem Zahlungsbescheid: 60 Tage ab Zustellung).",
+        "pagamento": "Datum, an dem Sie zahlen werden",
+        "importo": "Nicht gezahlter Betrag (€)",
+        "importo_help": "Nur die Steuer: Strafen und Zinsen berechnen wir hier.",
+        "avviso": "Ich habe zu dieser Erbschaft bereits einen Bescheid, ein Schreiben oder eine Prüfung der Agenzia delle Entrate erhalten",
+        "avviso_warning": "Wenn die Agenzia delle Entrate Ihnen bereits einen Bescheid zugestellt hat (Zahlungs- oder Steuerbescheid), ist das ravvedimento in dieser Form nicht mehr möglich: Sie zahlen den im Bescheid angegebenen Betrag, mit den Ermäßigungen für alle, die fristgerecht zustimmen. Schreiben Sie uns mit dem Bescheid zur Hand: Wir sehen ihn uns gemeinsam an.",
+        "placeholder_amount": "z. B. 1.250,00",
+        "risultato": "Schätzung des ravvedimento",
+        "empty": "Geben Sie die Daten ein, um die Schätzung zu sehen.",
+        "nei_termini": "Sie sind noch innerhalb der Frist: Sie endet am {date}. Wenn Sie bis zu diesem Datum einreichen und zahlen, fallen weder Strafen noch Zinsen an.",
+        "ritardo": "{n} Tage Verspätung (Frist: {date})",
+        "regime_post": "Strafen nach D.Lgs. 87/2024 (Verstöße ab 1. September 2024)",
+        "regime_pre": "Strafen vor dem D.Lgs. 87/2024 (Frist vor dem 1. September 2024)",
+        "riga_imposte": "Geschuldete Steuern",
+        "riga_sanzione_dich": "Strafe für verspätete Erklärung",
+        "sanzione_dich_pct": "{pct} der Erbschaftssteuer, mit dem ravvedimento auf {fraction} ermäßigt",
+        "sanzione_dich_fissa": "Feste Strafe von {amount} (keine Erbschaftssteuer geschuldet), mit dem ravvedimento auf {fraction} ermäßigt",
+        "riga_sanzione_vers": "Strafe für verspätete Zahlung",
+        "sanzione_vers_desc": "{pct} der verspätet gezahlten Steuern, mit dem ravvedimento auf {fraction} ermäßigt",
+        "riga_interessi": "Gesetzliche Zinsen",
+        "interessi_desc": "{n} Tage zum gesetzlichen Zinssatz ({rates})",
+        "interessi_stimato": "Für die Jahre nach {year} wird der zuletzt veröffentlichte gesetzliche Zinssatz angewendet.",
+        "totale": "Zu zahlender Gesamtbetrag",
+        "totale_extra": "davon Strafen und Zinsen: {amount}",
+        "ipotesi_title": "So wird gerechnet",
+        "ipotesi_dichiarazione": [
+          "Strafe für die Erklärung: gesetzliches Minimum (45% der Steuer innerhalb von 30 Tagen, danach 120%; 150 € oder 250 €, wenn keine Erbschaftssteuer geschuldet ist), je nach Verspätung auf 1/10, 1/9, 1/8 oder 1/7 ermäßigt.",
+          "Strafe für die verspätete Zahlung von Hypotheken-, Kataster-, Stempelsteuer und Sondergebühren: 25% (12,5% innerhalb von 90 Tagen, 1/15 pro Tag in den ersten 14), mit derselben Ermäßigung durch das ravvedimento.",
+          "Gesetzliche Zinsen zum jeweils im Jahr geltenden Satz (2% im Jahr 2025, 1,60% ab 2026), tagesgenau auf alle Steuern berechnet.",
+          "Das ravvedimento ist möglich, solange die Agenzia delle Entrate keinen Bescheid zu derselben Verletzung zugestellt hat."
+        ],
+        "ipotesi_versamento": [
+          "Strafe für verspätete Zahlung: 25% der Steuer (12,5% bei Zahlung innerhalb von 90 Tagen, 1/15 pro Tag in den ersten 14), je nach Verspätung auf 1/10, 1/9, 1/8 oder 1/7 ermäßigt. Für Fristen vor dem 1. September 2024 gelten 30%.",
+          "Gesetzliche Zinsen zum jeweils im Jahr geltenden Satz (2% im Jahr 2025, 1,60% ab 2026), tagesgenau berechnet.",
+          "Das ravvedimento ist möglich, solange die Agenzia delle Entrate keinen Bescheid zu derselben Verletzung zugestellt hat."
+        ],
+        "cta_whatsapp": "Berechnung von Lorenzo prüfen lassen",
+        "cta_prefill": "Hallo Lorenzo, ich habe den ravvedimento-Rechner auf der Website benutzt: {n} Tage Verspätung, Steuern {imposte}, geschätzte Strafen und Zinsen {extra}. Können Sie das für meinen Fall prüfen?",
+        "cta_preventivo": "Angebot für die Erbschaft berechnen",
+        "cta_note": "Wenn Sie uns die Erbschaft anvertrauen, berechnen wir den genauen Betrag von Strafen und Zinsen und bereiten die Zahlungen zusammen mit der Erklärung vor.",
+        "disclaimer": "Unverbindliche Schätzung zu Informationszwecken, basierend auf den gesetzlichen Mindestsätzen und der Praxis der Ämter. Der genaue Betrag hängt vom konkreten Fall ab und ist vor der Zahlung zu prüfen."
+      }
     },
     {
       "collection": "footer",

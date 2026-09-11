@@ -31,6 +31,10 @@
           "href": "/guide"
         },
         {
+          "label": "Tools",
+          "href": "/strumenti"
+        },
+        {
           "label": "FAQ",
           "href": "/faq"
         },
@@ -190,16 +194,6 @@
       "locale": "en",
       "is_published": true,
       "value": "Built by AT STUDIO · Mauro Toncelli"
-    },
-    {
-      "collection": "footer",
-      "key": "strumenti_link",
-      "locale": "en",
-      "is_published": true,
-      "value": {
-        "label": "Cadastral value calculator",
-        "href": "/strumenti/valore-catastale"
-      }
     },
     {
       "collection": "settings",
@@ -2160,18 +2154,6 @@
       "value": {
         "label": "Get a free quote",
         "href": "/preventivo"
-      }
-    },
-    {
-      "collection": "guide",
-      "key": "strumenti_banner",
-      "locale": "en",
-      "is_published": true,
-      "value": {
-        "title": "Tool: calculate cadastral value",
-        "body": "What's a home or land worth for succession? Enter the cadastral income from the search and get the value used to calculate taxes.",
-        "cta_label": "Open the calculator",
-        "href": "/strumenti/valore-catastale"
       }
     },
     {
@@ -5066,6 +5048,293 @@
           "label": "Group E (stations, special buildings…)"
         }
       ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_meta_title",
+      "locale": "en",
+      "is_published": true,
+      "value": "Free online tools for the Italian succession: calculators"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_meta_description",
+      "locale": "en",
+      "is_published": true,
+      "value": "Free calculators for the Italian inheritance declaration: cadastral value of houses and land, late-filing penalty and interest (ravvedimento operoso). Instant result, no sign-up."
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_hero_eyebrow",
+      "locale": "en",
+      "is_published": true,
+      "value": "Useful tools"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_hero_title",
+      "locale": "en",
+      "is_published": true,
+      "value": "Useful tools for the Italian succession"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_hero_subtitle",
+      "locale": "en",
+      "is_published": true,
+      "value": "Free calculators using the same coefficients and rates we apply in real cases. No sign-up, instant result."
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_tools",
+      "locale": "en",
+      "is_published": true,
+      "value": [
+        {
+          "title": "Cadastral value calculator",
+          "body": "How much is a house or plot of land worth for succession purposes? Enter the cadastral income from the land-registry record and get the value on which the mortgage and cadastral taxes are calculated.",
+          "cta_label": "Open the calculator",
+          "href": "/strumenti/valore-catastale",
+          "icon": "calculator"
+        },
+        {
+          "title": "Late-filing penalty calculator (ravvedimento operoso)",
+          "body": "Succession declaration more than 12 months after the death? See what the reduced penalty and statutory interest cost if you regularise now, at the rates currently in force.",
+          "cta_label": "Open the calculator",
+          "href": "/strumenti/ravvedimento-operoso",
+          "icon": "calendar"
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_why_title",
+      "locale": "en",
+      "is_published": true,
+      "value": "Why these tools are free"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_why_body",
+      "locale": "en",
+      "is_published": true,
+      "value": "These are the same calculations that surveyor Lorenzo Armellin performs every day for succession declarations. We make them available so that heirs can understand straight away, with real figures, what to expect: taxes, cadastral values, the cost of a delay. The results are estimates: we check your actual case together, free of charge, with the quote."
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_guides_link",
+      "locale": "en",
+      "is_published": true,
+      "value": "Read the succession guides"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_cta_title",
+      "locale": "en",
+      "is_published": true,
+      "value": "Want to know what the whole succession costs, taxes included?"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_cta_button",
+      "locale": "en",
+      "is_published": true,
+      "value": {
+        "label": "Get your free quote",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_meta_title",
+      "locale": "en",
+      "is_published": true,
+      "value": "Late Italian succession declaration: penalty and interest calculator (free)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_meta_description",
+      "locale": "en",
+      "is_published": true,
+      "value": "Filing the Italian succession declaration late? Calculate the reduced penalty and statutory interest under the ravvedimento operoso instantly: enter the date of death, filing date and taxes due."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_hero_title",
+      "locale": "en",
+      "is_published": true,
+      "value": "Succession declaration filed late? Calculate the ravvedimento operoso"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_hero_subtitle",
+      "locale": "en",
+      "is_published": true,
+      "value": "Enter the date of death, when you will file the declaration and the taxes due: you immediately get the reduced penalty, statutory interest and total to pay."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_come_title",
+      "locale": "en",
+      "is_published": true,
+      "value": "What the ravvedimento operoso is in a succession"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_come_body",
+      "locale": "en",
+      "is_published": true,
+      "value": "The Italian succession declaration must be filed within 12 months of the death. If the deadline has passed, the ravvedimento operoso lets you regularise voluntarily by paying the taxes, a reduced penalty and statutory interest: the sooner you do it, the less you pay. It is available until the Italian Revenue Agency serves you a formal notice."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_passi",
+      "locale": "en",
+      "is_published": true,
+      "value": [
+        {
+          "title": "Calculate taxes, penalties and interest",
+          "body": "This tool gives you an estimate; the exact amount is determined from the cadastral data and the deceased's estate."
+        },
+        {
+          "title": "File the succession declaration",
+          "body": "Electronically with the Italian Revenue Agency, with every section completed as if it were on time."
+        },
+        {
+          "title": "Pay what is due",
+          "body": "Taxes, reduced penalty and interest are paid together with the declaration (direct debit or F24 form)."
+        },
+        {
+          "title": "Keep the receipts",
+          "body": "The ravvedimento is completed with filing and payment: the receipts are also needed for the land-registry transfer and for the bank."
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_note",
+      "locale": "en",
+      "is_published": true,
+      "value": "No criminal penalty and no freezing of the inheritance: filing late costs a few tens or hundreds of euros more, but as long as the declaration is missing the properties cannot be sold and the bank accounts cannot be released. The ravvedimento is completed by filing the declaration and paying the taxes, reduced penalty and interest."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_faq_title",
+      "locale": "en",
+      "is_published": true,
+      "value": "Frequently asked questions on the late succession declaration"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_faq",
+      "locale": "en",
+      "is_published": true,
+      "value": [
+        {
+          "q": "How much does it cost to file the succession declaration late?",
+          "a": "It depends on the delay and on the taxes due. If no inheritance tax is due (most cases between parents and children), the late-filing penalty is fixed: €25 within 90 days, €31.25 within one year, €35.71 beyond. A small penalty on the mortgage and cadastral taxes paid late (roughly 2.5% to 3.6%) and statutory interest are added."
+        },
+        {
+          "q": "Until when can the ravvedimento operoso be used for a succession?",
+          "a": "There is no maximum term: you can regularise even years later, as long as the Revenue Agency has not served a payment or assessment notice for the same violation. The longer you wait, however, the higher the penalty and interest."
+        },
+        {
+          "q": "What happens if I never file the succession declaration?",
+          "a": "The Revenue Agency can assess the omission within 5 years of the deadline, applying the full penalty of 120% of the tax (or €250 to €1,000 if no tax is due) plus interest. Moreover, without the declaration the properties remain in the deceased's name and cannot be sold, and the bank will not release the accounts."
+        },
+        {
+          "q": "How are the penalty and interest of the ravvedimento paid?",
+          "a": "Together with the taxes, when filing: the electronic declaration has a dedicated section with direct debit from the bank account indicated; alternatively the F24 form is used with the tax codes for taxes, penalties and interest. If you entrust the case to us, we complete it for you."
+        },
+        {
+          "q": "Does the ravvedimento also apply to successions opened before 1 September 2024?",
+          "a": "Yes. Only the percentages change: for deadlines before 1 September 2024 the higher penalties of the old regime apply (60% within 30 days, 30% for late payments, reduction down to 1/6 after two years). The calculator does this automatically based on the date."
+        },
+        {
+          "q": "Is it better to wait or to regularise now?",
+          "a": "Regularise now: the fixed penalty is a few tens of euros and interest grows every day. Above all, without the declaration you cannot sell the properties or release the accounts, and if the Revenue Agency acts first you lose the reduction."
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_cta_title",
+      "locale": "en",
+      "is_published": true,
+      "value": "Want us to sort out the late succession for you, ravvedimento included?"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_cta_button",
+      "locale": "en",
+      "is_published": true,
+      "value": {
+        "label": "Get your free quote",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_ui",
+      "locale": "en",
+      "is_published": true,
+      "value": {
+        "tab_dichiarazione": "Late declaration",
+        "tab_dichiarazione_help": "The succession declaration was not filed within 12 months of the death (or you will file it late).",
+        "tab_versamento": "Taxes paid late",
+        "tab_versamento_help": "The declaration is in order, but a tax or a payment notice was (or will be) paid after the deadline.",
+        "decesso": "Date of death",
+        "decesso_help": "The succession declaration must be filed within 12 months of the opening of the succession.",
+        "regolarizzazione": "Date on which you will file and pay",
+        "regolarizzazione_help": "Usually today or in the next few days: penalties and interest depend on this date.",
+        "imposta_successione": "Inheritance tax due (€)",
+        "imposta_successione_help": "Payable only above the exemption thresholds (€1,000,000 for spouse and children, €100,000 for siblings). If none is due or you don't know it, leave 0: in most parent-to-child successions there is none.",
+        "altre_imposte": "Other taxes to pay with the declaration (€)",
+        "altre_imposte_help": "Mortgage tax (2%) and cadastral tax (1%) on the cadastral value of the properties, minimum €200 each, plus stamp duty and special fees (about €100). Without properties: stamp duty and fees only.",
+        "altre_imposte_link": "Calculate the cadastral value",
+        "scadenza": "Original payment deadline",
+        "scadenza_help": "The date by which the tax had to be paid (for a payment notice: 60 days from service).",
+        "pagamento": "Date on which you will pay",
+        "importo": "Unpaid amount (€)",
+        "importo_help": "Tax only: we calculate penalties and interest here.",
+        "avviso": "I have already received a notice, letter or audit from the Italian Revenue Agency about this succession",
+        "avviso_warning": "If the Revenue Agency has already served you a formal notice (payment or assessment notice), the ravvedimento in this form is no longer available: you pay what the notice states, with the reductions granted to those who comply within the deadline. Write to us with the notice at hand: we will look at it together.",
+        "placeholder_amount": "e.g. 1,250.00",
+        "risultato": "Ravvedimento estimate",
+        "empty": "Enter the dates to see the estimate.",
+        "nei_termini": "You are still within the deadline: it falls on {date}. If you file and pay by that date there are no penalties or interest.",
+        "ritardo": "{n} days late (deadline: {date})",
+        "regime_post": "Penalties under Legislative Decree 87/2024 (violations from 1 September 2024)",
+        "regime_pre": "Penalties in force before Legislative Decree 87/2024 (deadline before 1 September 2024)",
+        "riga_imposte": "Taxes due",
+        "riga_sanzione_dich": "Late-filing penalty",
+        "sanzione_dich_pct": "{pct} of the inheritance tax, reduced to {fraction} with the ravvedimento",
+        "sanzione_dich_fissa": "Fixed penalty of {amount} (no inheritance tax due), reduced to {fraction} with the ravvedimento",
+        "riga_sanzione_vers": "Late-payment penalty",
+        "sanzione_vers_desc": "{pct} of the taxes paid late, reduced to {fraction} with the ravvedimento",
+        "riga_interessi": "Statutory interest",
+        "interessi_desc": "{n} days at the statutory rate ({rates})",
+        "interessi_stimato": "For years after {year} the latest published statutory rate is applied.",
+        "totale": "Total to pay",
+        "totale_extra": "of which penalties and interest: {amount}",
+        "ipotesi_title": "How it is calculated",
+        "ipotesi_dichiarazione": [
+          "Filing penalty: statutory minimum (45% of the tax within 30 days, then 120%; €150 or €250 if no inheritance tax is due), reduced to 1/10, 1/9, 1/8 or 1/7 depending on the delay.",
+          "Penalty for late payment of mortgage, cadastral, stamp and special taxes: 25% (12.5% within 90 days, 1/15 per day in the first 14), with the same ravvedimento reduction.",
+          "Statutory interest at the rate in force in each year (2% in 2025, 1.60% from 2026), calculated per day on all taxes.",
+          "The ravvedimento is available as long as the Revenue Agency has not served a notice for the same violation."
+        ],
+        "ipotesi_versamento": [
+          "Late-payment penalty: 25% of the tax (12.5% if you pay within 90 days, 1/15 per day in the first 14), reduced to 1/10, 1/9, 1/8 or 1/7 depending on the delay. For deadlines before 1 September 2024, 30% applies.",
+          "Statutory interest at the rate in force in each year (2% in 2025, 1.60% from 2026), calculated per day.",
+          "The ravvedimento is available as long as the Revenue Agency has not served a notice for the same violation."
+        ],
+        "cta_whatsapp": "Have Lorenzo check the calculation",
+        "cta_prefill": "Hi Lorenzo, I used the ravvedimento calculator on the website: {n} days late, taxes {imposte}, estimated penalties and interest {extra}. Can you check it for my case?",
+        "cta_preventivo": "Get a quote for the succession",
+        "cta_note": "If you entrust the succession to us, we calculate the exact penalties and interest and prepare the payments together with the declaration.",
+        "disclaimer": "Indicative estimate for information purposes, based on the statutory minimums and on the practice of the tax offices. The exact amount depends on the specific case and must be checked before payment."
+      }
     },
     {
       "collection": "footer",

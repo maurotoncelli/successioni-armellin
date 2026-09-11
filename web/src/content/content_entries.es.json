@@ -31,6 +31,10 @@
           "href": "/guide"
         },
         {
+          "label": "Herramientas",
+          "href": "/strumenti"
+        },
+        {
           "label": "FAQ",
           "href": "/faq"
         },
@@ -190,16 +194,6 @@
       "locale": "es",
       "is_published": true,
       "value": "Realizado por AT STUDIO · Mauro Toncelli"
-    },
-    {
-      "collection": "footer",
-      "key": "strumenti_link",
-      "locale": "es",
-      "is_published": true,
-      "value": {
-        "label": "Cálculo del valor catastral",
-        "href": "/strumenti/valore-catastale"
-      }
     },
     {
       "collection": "settings",
@@ -2146,18 +2140,6 @@
       "value": {
         "label": "Calcula el presupuesto gratis",
         "href": "/preventivo"
-      }
-    },
-    {
-      "collection": "guide",
-      "key": "strumenti_banner",
-      "locale": "es",
-      "is_published": true,
-      "value": {
-        "title": "Herramienta: calcula el valor catastral",
-        "body": "¿Cuánto vale una vivienda o un terreno a efectos de sucesión? Introduce la renta de la nota y obtén al instante el valor sobre el que se calculan los impuestos.",
-        "cta_label": "Abrir la calculadora",
-        "href": "/strumenti/valore-catastale"
       }
     },
     {
@@ -5052,6 +5034,293 @@
           "label": "Grupo E (estaciones, edificios especiales…)"
         }
       ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_meta_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Herramientas útiles para la sucesión: calculadoras gratuitas online"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_meta_description",
+      "locale": "es",
+      "is_published": true,
+      "value": "Calculadoras gratuitas para la sucesión: valor catastral de casas y terrenos, ravvedimento operoso por retraso (sanciones e intereses). Inmediato, sin registro."
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_hero_eyebrow",
+      "locale": "es",
+      "is_published": true,
+      "value": "Herramientas útiles"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_hero_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Herramientas útiles para la sucesión"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_hero_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "Calculadoras gratuitas, con los mismos coeficientes y los mismos tipos que usamos en los expedientes reales. Sin registro, resultado inmediato."
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_tools",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        {
+          "title": "Cálculo del valor catastral",
+          "body": "¿Cuánto vale una casa o un terreno a efectos de la sucesión? Introduce la renta catastral que figura en la visura (certificación catastral) y obtén el valor sobre el que se calculan el impuesto hipotecario y el catastral.",
+          "cta_label": "Abrir la calculadora",
+          "href": "/strumenti/valore-catastale",
+          "icon": "calculator"
+        },
+        {
+          "title": "Cálculo del ravvedimento operoso",
+          "body": "¿Declaración de sucesión pasados los 12 meses? Descubre cuánto cuestan la sanción reducida y los intereses legales si regularizas ahora, con los tipos vigentes.",
+          "cta_label": "Abrir la calculadora",
+          "href": "/strumenti/ravvedimento-operoso",
+          "icon": "calendar"
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_why_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Por qué estas herramientas son gratuitas"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_why_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "Son los mismos cálculos que el geometra Lorenzo Armellin hace cada día para las declaraciones de sucesión. Los ponemos a disposición para que quien hereda pueda entender enseguida, con cifras reales, lo que le espera: impuestos, valores catastrales, costes de un retraso. Los resultados son estimaciones: el caso concreto lo comprobamos juntos, gratis, con el presupuesto."
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_guides_link",
+      "locale": "es",
+      "is_published": true,
+      "value": "Lee las guías sobre la sucesión"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_cta_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "¿Quieres saber cuánto cuesta toda la sucesión, impuestos incluidos?"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_cta_button",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Calcula el presupuesto gratis",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_meta_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Cálculo ravvedimento operoso sucesión: sanciones e intereses (gratis)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_meta_description",
+      "locale": "es",
+      "is_published": true,
+      "value": "¿Declaración de sucesión tardía? Calcula ya sanción reducida e intereses legales con el ravvedimento operoso: fecha de fallecimiento, presentación e impuestos."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_hero_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "¿Declaración de sucesión con retraso? Calcula el ravvedimento operoso"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_hero_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "Introduce la fecha del fallecimiento, cuándo presentarás la declaración y los impuestos debidos: obtén enseguida la sanción reducida, los intereses legales y el total a pagar."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_come_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Qué es el ravvedimento operoso en la sucesión"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_come_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "La declaración de sucesión (dichiarazione di successione) debe presentarse en los 12 meses siguientes al fallecimiento. Si el plazo ha pasado, el ravvedimento operoso (regularización voluntaria) permite ponerse al día espontáneamente pagando los impuestos, una sanción reducida y los intereses legales: cuanto antes lo hagas, menos pagas. Es posible mientras la Agenzia delle Entrate (la agencia tributaria italiana) no te haya notificado un acto."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_passi",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        {
+          "title": "Calcula impuestos, sanciones e intereses",
+          "body": "Con esta herramienta tienes una estimación; el importe exacto se determina sobre los datos catastrales y el patrimonio del difunto."
+        },
+        {
+          "title": "Presenta la declaración de sucesión",
+          "body": "Por vía telemática a la Agenzia delle Entrate, con todos los apartados cumplimentados como si estuviera en plazo."
+        },
+        {
+          "title": "Paga lo debido",
+          "body": "Impuestos, sanción reducida e intereses se pagan junto con la declaración (cargo en cuenta o modelo F24)."
+        },
+        {
+          "title": "Conserva los recibos",
+          "body": "El ravvedimento se perfecciona con la presentación y el pago: los recibos sirven también para el cambio de titularidad catastral (voltura catastale) y para el banco."
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_note",
+      "locale": "es",
+      "is_published": true,
+      "value": "Ninguna sanción penal y ningún bloqueo de la herencia: presentar con retraso cuesta algunas decenas o centenas de euros más, pero mientras falte la declaración los inmuebles no se pueden vender ni desbloquear las cuentas. El ravvedimento se perfecciona con la presentación de la declaración y el pago de impuestos, sanción reducida e intereses."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_faq_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Preguntas frecuentes sobre el ravvedimento de la sucesión"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_faq",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        {
+          "q": "¿Cuánto cuesta presentar la declaración de sucesión con retraso?",
+          "a": "Depende del retraso y de los impuestos debidos. Si no hay impuesto de sucesiones (la mayoría de los casos entre padres e hijos), la sanción por declaración tardía es fija: 25 € en los primeros 90 días, 31,25 € dentro del año, 35,71 € después. Se añaden una pequeña sanción sobre los impuestos hipotecario y catastral pagados con retraso (del 2,5% al 3,6% aproximadamente) y los intereses legales."
+        },
+        {
+          "q": "¿Hasta cuándo se puede hacer el ravvedimento operoso de la sucesión?",
+          "a": "No hay un plazo máximo: se puede regularizar incluso años después, mientras la Agenzia delle Entrate no haya notificado un aviso de liquidación o de comprobación por la misma infracción. Sin embargo, cuanto más tiempo pasa, más crecen la sanción y los intereses."
+        },
+        {
+          "q": "¿Qué pasa si nunca presento la declaración de sucesión?",
+          "a": "La Agenzia delle Entrate puede comprobar la omisión en los 5 años siguientes al vencimiento, aplicando la sanción completa del 120% del impuesto (o de 250 a 1.000 € si no se debe impuesto) más intereses. Además, sin declaración los inmuebles siguen a nombre del difunto y no se pueden vender, y el banco no desbloquea las cuentas."
+        },
+        {
+          "q": "¿Cómo se pagan las sanciones y los intereses del ravvedimento?",
+          "a": "Junto con los impuestos, en el momento de la presentación: la declaración telemática tiene un apartado específico con cargo en la cuenta corriente indicada; como alternativa se usa el modelo F24 con los códigos tributarios de impuestos, sanciones e intereses. Si nos confías el expediente, lo cumplimentamos nosotros."
+        },
+        {
+          "q": "¿El ravvedimento vale también para las sucesiones abiertas antes del 1 de septiembre de 2024?",
+          "a": "Sí. Solo cambian los porcentajes: para los vencimientos anteriores al 1 de septiembre de 2024 se aplican las sanciones más altas del régimen anterior (60% en los primeros 30 días, 30% para los pagos tardíos, reducción hasta 1/6 pasados dos años). La calculadora lo hace automáticamente según la fecha."
+        },
+        {
+          "q": "¿Conviene esperar o regularizar enseguida?",
+          "a": "Regularizar enseguida: la sanción fija es de pocas decenas de euros y los intereses crecen cada día. Sobre todo, sin declaración no se pueden vender los inmuebles ni desbloquear las cuentas, y si la Agenzia delle Entrate llega antes se pierde la reducción."
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_cta_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "¿Quieres que nos ocupemos nosotros de la sucesión con retraso, ravvedimento incluido?"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_cta_button",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Calcula el presupuesto gratis",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_ui",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "tab_dichiarazione": "Declaración con retraso",
+        "tab_dichiarazione_help": "La declaración de sucesión no se presentó en los 12 meses siguientes al fallecimiento (o la presentarás con retraso).",
+        "tab_versamento": "Impuestos pagados con retraso",
+        "tab_versamento_help": "La declaración está en orden, pero un impuesto o un aviso de liquidación se pagó (o se pagará) después del vencimiento.",
+        "decesso": "Fecha del fallecimiento",
+        "decesso_help": "La declaración de sucesión debe presentarse en los 12 meses siguientes a la apertura de la sucesión.",
+        "regolarizzazione": "Fecha en la que presentarás la declaración y pagarás",
+        "regolarizzazione_help": "Normalmente hoy o en los próximos días: sanciones e intereses dependen de esta fecha.",
+        "imposta_successione": "Impuesto de sucesiones debido (€)",
+        "imposta_successione_help": "Se paga solo por encima de las franquicias (1.000.000 € para cónyuge e hijos, 100.000 € para hermanos y hermanas). Si no se debe o no lo conoces, deja 0: en la mayoría de las sucesiones entre padres e hijos no hay.",
+        "altre_imposte": "Otros impuestos a pagar con la declaración (€)",
+        "altre_imposte_help": "Impuesto hipotecario (2%) y catastral (1%) sobre el valor catastral de los inmuebles, mínimo 200 € cada uno, más timbre y tributos especiales (unos 100 €). Sin inmuebles: solo timbre y tributos.",
+        "altre_imposte_link": "Calcula el valor catastral",
+        "scadenza": "Vencimiento original del pago",
+        "scadenza_help": "La fecha en la que el impuesto debía pagarse (para un aviso de liquidación: 60 días desde la notificación).",
+        "pagamento": "Fecha en la que pagarás",
+        "importo": "Importe no pagado (€)",
+        "importo_help": "Solo el impuesto: las sanciones y los intereses los calculamos aquí.",
+        "avviso": "Ya he recibido un aviso, una carta o una comprobación de la Agenzia delle Entrate sobre esta sucesión",
+        "avviso_warning": "Si la Agenzia delle Entrate ya te ha notificado un acto (aviso de liquidación o de comprobación), el ravvedimento en esta forma ya no es posible: se paga lo indicado en el acto, con las reducciones previstas para quien se acoge en plazo. Escríbenos con el acto a mano: lo miramos juntos.",
+        "placeholder_amount": "ej. 1.250,00",
+        "risultato": "Estimación del ravvedimento",
+        "empty": "Introduce las fechas para ver la estimación.",
+        "nei_termini": "Todavía estás en plazo: el vencimiento es el {date}. Si presentas y pagas antes de esa fecha no hay sanciones ni intereses.",
+        "ritardo": "{n} días de retraso (vencimiento: {date})",
+        "regime_post": "Sanciones D.Lgs. 87/2024 (infracciones desde el 1 de septiembre de 2024)",
+        "regime_pre": "Sanciones vigentes antes del D.Lgs. 87/2024 (vencimiento anterior al 1 de septiembre de 2024)",
+        "riga_imposte": "Impuestos debidos",
+        "riga_sanzione_dich": "Sanción por declaración tardía",
+        "sanzione_dich_pct": "{pct} del impuesto de sucesiones, reducida a {fraction} con el ravvedimento",
+        "sanzione_dich_fissa": "Sanción fija de {amount} (ningún impuesto de sucesiones debido), reducida a {fraction} con el ravvedimento",
+        "riga_sanzione_vers": "Sanción por pago tardío",
+        "sanzione_vers_desc": "{pct} de los impuestos pagados con retraso, reducida a {fraction} con el ravvedimento",
+        "riga_interessi": "Intereses legales",
+        "interessi_desc": "{n} días al tipo legal ({rates})",
+        "interessi_stimato": "Para los años posteriores a {year} se aplica el último tipo legal publicado.",
+        "totale": "Total a pagar",
+        "totale_extra": "de los cuales sanciones e intereses: {amount}",
+        "ipotesi_title": "Cómo se calcula",
+        "ipotesi_dichiarazione": [
+          "Sanción por la declaración: mínimo legal (45% del impuesto en los primeros 30 días, después 120%; 150 € o 250 € si no se debe impuesto de sucesiones), reducida a 1/10, 1/9, 1/8 o 1/7 según el retraso.",
+          "Sanción por el pago tardío de los impuestos hipotecario y catastral, timbre y tributos: 25% (12,5% en los primeros 90 días, 1/15 al día en los primeros 14), con la misma reducción del ravvedimento.",
+          "Intereses legales al tipo vigente en cada año (2% en 2025, 1,60% desde 2026), calculados por días sobre todos los impuestos.",
+          "El ravvedimento es posible mientras la Agenzia delle Entrate no haya notificado un acto por la misma infracción."
+        ],
+        "ipotesi_versamento": [
+          "Sanción por pago tardío: 25% del impuesto (12,5% si pagas en los primeros 90 días, 1/15 al día en los primeros 14), reducida a 1/10, 1/9, 1/8 o 1/7 según el retraso. Para vencimientos anteriores al 1 de septiembre de 2024 se aplica el 30%.",
+          "Intereses legales al tipo vigente en cada año (2% en 2025, 1,60% desde 2026), calculados por días.",
+          "El ravvedimento es posible mientras la Agenzia delle Entrate no haya notificado un acto por la misma infracción."
+        ],
+        "cta_whatsapp": "Pide a Lorenzo que compruebe el cálculo",
+        "cta_prefill": "Hola Lorenzo, he usado la calculadora del ravvedimento de la web: {n} días de retraso, impuestos {imposte}, sanciones e intereses estimados {extra}. ¿Puedes comprobarlo para mi caso?",
+        "cta_preventivo": "Calcula el presupuesto de la sucesión",
+        "cta_note": "Si nos confías la sucesión, calculamos nosotros el importe exacto de sanciones e intereses y preparamos los pagos junto con la declaración.",
+        "disclaimer": "Estimación indicativa con fines informativos, basada en los mínimos legales y en la práctica de las oficinas. El importe exacto depende del caso concreto y debe comprobarse antes del pago."
+      }
     },
     {
       "collection": "footer",

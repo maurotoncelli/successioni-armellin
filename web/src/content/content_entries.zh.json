@@ -31,6 +31,10 @@
           "href": "/guide"
         },
         {
+          "label": "工具",
+          "href": "/strumenti"
+        },
+        {
           "label": "FAQ",
           "href": "/faq"
         },
@@ -190,16 +194,6 @@
       "locale": "zh",
       "is_published": true,
       "value": "由 AT STUDIO · Mauro Toncelli 制作"
-    },
-    {
-      "collection": "footer",
-      "key": "strumenti_link",
-      "locale": "zh",
-      "is_published": true,
-      "value": {
-        "label": "地籍价值计算",
-        "href": "/strumenti/valore-catastale"
-      }
     },
     {
       "collection": "settings",
@@ -2146,18 +2140,6 @@
       "value": {
         "label": "免费计算报价",
         "href": "/preventivo"
-      }
-    },
-    {
-      "collection": "guide",
-      "key": "strumenti_banner",
-      "locale": "zh",
-      "is_published": true,
-      "value": {
-        "title": "工具：计算地籍价值",
-        "body": "遗产继承中住宅或土地价值多少？输入查册租金，立即获得计税价值。",
-        "cta_label": "打开计算器",
-        "href": "/strumenti/valore-catastale"
       }
     },
     {
@@ -5052,6 +5034,293 @@
           "label": "E 类（车站、特殊建筑等）"
         }
       ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_meta_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "意大利遗产继承实用工具：免费在线计算器"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_meta_description",
+      "locale": "zh",
+      "is_published": true,
+      "value": "意大利遗产继承申报（dichiarazione di successione）免费计算器：房产与土地的地籍价值、逾期申报的自愿补正（ravvedimento operoso）罚款与利息。即时出结果，无需注册。"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_hero_eyebrow",
+      "locale": "zh",
+      "is_published": true,
+      "value": "实用工具"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_hero_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "意大利遗产继承实用工具"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_hero_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "免费计算器，采用的系数和税率与我们办理真实案件时完全一致。无需注册，即时出结果。"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_tools",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        {
+          "title": "地籍价值计算",
+          "body": "一套房产或一块土地在遗产继承中值多少钱？输入地籍登记摘录（visura）中的地籍收益（rendita），即可得出用于计算抵押登记税和地籍税的价值。",
+          "cta_label": "打开计算器",
+          "href": "/strumenti/valore-catastale",
+          "icon": "calculator"
+        },
+        {
+          "title": "自愿补正（ravvedimento operoso）计算",
+          "body": "遗产继承申报已超过 12 个月？了解如果现在按现行税率补正，减免后的罚款和法定利息需要多少。",
+          "cta_label": "打开计算器",
+          "href": "/strumenti/ravvedimento-operoso",
+          "icon": "calendar"
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_why_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "为什么这些工具是免费的"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_why_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "这些正是测量师（geometra）Lorenzo Armellin 每天为遗产继承申报所做的计算。我们将其公开，是为了让继承人能够立即通过真实数字了解自己将面对什么：税款、地籍价值以及延迟的代价。计算结果仅为估算：您的具体情况，我们会在提供报价时一起免费核实。"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_guides_link",
+      "locale": "zh",
+      "is_published": true,
+      "value": "阅读遗产继承指南"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_cta_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "想知道整个遗产继承流程（含税款）需要多少费用？"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_cta_button",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "免费计算报价",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_meta_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "遗产继承自愿补正（ravvedimento operoso）计算：罚款与利息（免费）"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_meta_description",
+      "locale": "zh",
+      "is_published": true,
+      "value": "遗产继承申报逾期？通过自愿补正（ravvedimento operoso）立即计算减免后的罚款和法定利息：输入死亡日期、申报日期和应缴税款即可。"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_hero_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "遗产继承申报逾期？计算自愿补正（ravvedimento operoso）"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_hero_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "输入死亡日期、您计划提交申报的日期以及应缴税款：即可立即获得减免后的罚款、法定利息和应缴总额。"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_come_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "什么是遗产继承中的 ravvedimento operoso"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_come_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "遗产继承申报（dichiarazione di successione）必须在死亡之日起 12 个月内提交。如果期限已过，自愿补正（ravvedimento operoso）允许您主动补正，缴纳税款、减免后的罚款和法定利息：越早办理，缴纳越少。只要意大利税务局（Agenzia delle Entrate）尚未向您送达正式文书，就可以办理。"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_passi",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        {
+          "title": "计算税款、罚款和利息",
+          "body": "本工具提供的是估算；准确金额需根据地籍数据和被继承人的遗产确定。"
+        },
+        {
+          "title": "提交遗产继承申报",
+          "body": "以电子方式向意大利税务局（Agenzia delle Entrate）提交，所有栏目均按正常期限内申报的要求填写完整。"
+        },
+        {
+          "title": "缴纳应缴款项",
+          "body": "税款、减免后的罚款和利息随申报一并缴纳（银行账户扣款或 F24 表格）。"
+        },
+        {
+          "title": "保存缴款凭证",
+          "body": "自愿补正在完成申报和缴款后即告完成：这些凭证在办理地籍过户和银行手续时同样需要。"
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_note",
+      "locale": "zh",
+      "is_published": true,
+      "value": "不涉及刑事处罚，遗产也不会被冻结：逾期申报只会多花几十或几百欧元，但只要申报尚未提交，房产就无法出售，银行账户也无法解冻。自愿补正在提交申报并缴纳税款、减免后的罚款和利息后即告完成。"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_faq_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "关于遗产继承自愿补正的常见问题"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_faq",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        {
+          "q": "逾期提交遗产继承申报需要多少费用？",
+          "a": "取决于逾期时间和应缴税款。如果无需缴纳遗产税（父母与子女之间的大多数情况），逾期申报的罚款为固定金额：90 天内 25 €，一年内 31.25 €，超过一年 35.71 €。此外还需加上对逾期缴纳的抵押登记税和地籍税的少量罚款（约 2.5% 至 3.6%）以及法定利息。"
+        },
+        {
+          "q": "遗产继承的自愿补正（ravvedimento operoso）最迟可以在什么时候办理？",
+          "a": "没有最长期限：即使多年之后也可以补正，只要意大利税务局尚未就同一违规行为送达清算通知或核定通知。不过，时间拖得越久，罚款和利息就越高。"
+        },
+        {
+          "q": "如果我一直不提交遗产继承申报会怎样？",
+          "a": "税务局可以在期限届满后 5 年内认定未申报行为，适用税款 120% 的全额罚款（如无应缴税款，则为 250 至 1,000 €）并加收利息。此外，未提交申报时，房产仍登记在被继承人名下而无法出售，银行也不会解冻账户。"
+        },
+        {
+          "q": "自愿补正的罚款和利息如何缴纳？",
+          "a": "与税款一起，在提交申报时缴纳：电子申报中设有专门栏目，可从指定的银行账户扣款；也可以使用 F24 表格，填写税款、罚款和利息对应的税目代码。如果您将案件委托给我们，我们会为您填写。"
+        },
+        {
+          "q": "自愿补正是否也适用于 2024 年 9 月 1 日之前开始的遗产继承？",
+          "a": "是的。只是适用的比例不同：对于 2024 年 9 月 1 日之前到期的情况，适用旧制度下更高的罚款（30 天内 60%，逾期缴款 30%，两年以上减至 1/6）。计算器会根据日期自动处理。"
+        },
+        {
+          "q": "是等一等好，还是马上补正好？",
+          "a": "马上补正：固定罚款只有几十欧元，而利息每天都在增加。最重要的是，没有申报就无法出售房产、解冻账户，而且如果税务局先行动，您将失去减免资格。"
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_cta_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "希望由我们为您处理逾期的遗产继承，包括自愿补正？"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_cta_button",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "免费计算报价",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_ui",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "tab_dichiarazione": "逾期申报",
+        "tab_dichiarazione_help": "遗产继承申报未在死亡之日起 12 个月内提交（或您将逾期提交）。",
+        "tab_versamento": "逾期缴税",
+        "tab_versamento_help": "申报没有问题，但某项税款或清算通知在到期日之后才缴纳（或将要缴纳）。",
+        "decesso": "死亡日期",
+        "decesso_help": "遗产继承申报必须在继承开始之日起 12 个月内提交。",
+        "regolarizzazione": "您提交申报并缴款的日期",
+        "regolarizzazione_help": "通常是今天或未来几天：罚款和利息取决于这个日期。",
+        "imposta_successione": "应缴遗产税（€）",
+        "imposta_successione_help": "仅在超过免税额时才需缴纳（配偶和子女 1,000,000 €，兄弟姐妹 100,000 €）。如果无需缴纳或您不清楚，请保留 0：父母与子女之间的大多数遗产继承无需缴纳此税。",
+        "altre_imposte": "随申报缴纳的其他税款（€）",
+        "altre_imposte_help": "按房产地籍价值计算的抵押登记税（2%）和地籍税（1%），每项最低 200 €，另加印花税和特别税费（约 100 €）。无房产时：仅印花税和税费。",
+        "altre_imposte_link": "计算地籍价值",
+        "scadenza": "原缴款期限",
+        "scadenza_help": "税款本应缴纳的最后日期（如为清算通知：送达之日起 60 天）。",
+        "pagamento": "您缴款的日期",
+        "importo": "未缴金额（€）",
+        "importo_help": "仅填写税款：罚款和利息由我们在此计算。",
+        "avviso": "我已收到意大利税务局（Agenzia delle Entrate）关于此遗产继承的通知、信函或稽查",
+        "avviso_warning": "如果意大利税务局已向您送达正式文书（清算通知或核定通知），则无法再以这种形式办理自愿补正：需按文书所载金额缴纳，并可享受在期限内配合者的法定减免。请带着文书联系我们：我们一起来看。",
+        "placeholder_amount": "例如 1,250.00",
+        "risultato": "自愿补正估算",
+        "empty": "请输入日期以查看估算结果。",
+        "nei_termini": "您仍在期限内：截止日期为 {date}。如果在该日期前提交申报并缴款，则无需缴纳罚款和利息。",
+        "ritardo": "逾期 {n} 天（截止日期：{date}）",
+        "regime_post": "第 87/2024 号法令（D.Lgs. 87/2024）规定的罚款（2024 年 9 月 1 日起的违规行为）",
+        "regime_pre": "D.Lgs. 87/2024 生效前的罚款（截止日期在 2024 年 9 月 1 日之前）",
+        "riga_imposte": "应缴税款",
+        "riga_sanzione_dich": "逾期申报罚款",
+        "sanzione_dich_pct": "遗产税的 {pct}，通过自愿补正减至 {fraction}",
+        "sanzione_dich_fissa": "固定罚款 {amount}（无应缴遗产税），通过自愿补正减至 {fraction}",
+        "riga_sanzione_vers": "逾期缴款罚款",
+        "sanzione_vers_desc": "逾期缴纳税款的 {pct}，通过自愿补正减至 {fraction}",
+        "riga_interessi": "法定利息",
+        "interessi_desc": "{n} 天，按法定利率（{rates}）计算",
+        "interessi_stimato": "{year} 年之后的年份，适用最新公布的法定利率。",
+        "totale": "应缴总额",
+        "totale_extra": "其中罚款和利息：{amount}",
+        "ipotesi_title": "计算方式",
+        "ipotesi_dichiarazione": [
+          "申报罚款：法定最低额（30 天内为税款的 45%，之后为 120%；无应缴遗产税时为 150 € 或 250 €），根据逾期时间减至 1/10、1/9、1/8 或 1/7。",
+          "抵押登记税、地籍税、印花税和特别税费的逾期缴纳罚款：25%（90 天内为 12.5%，前 14 天内每天 1/15），并适用相同的自愿补正减免。",
+          "法定利息按各年度现行利率计算（2025 年为 2%，2026 年起为 1.60%），对全部税款按日计算。",
+          "只要意大利税务局（Agenzia delle Entrate）尚未就同一违规行为送达文书，即可办理自愿补正。"
+        ],
+        "ipotesi_versamento": [
+          "逾期缴款罚款：税款的 25%（90 天内缴纳为 12.5%，前 14 天内每天 1/15），根据逾期时间减至 1/10、1/9、1/8 或 1/7。截止日期在 2024 年 9 月 1 日之前的，适用 30%。",
+          "法定利息按各年度现行利率计算（2025 年为 2%，2026 年起为 1.60%），按日计算。",
+          "只要意大利税务局（Agenzia delle Entrate）尚未就同一违规行为送达文书，即可办理自愿补正。"
+        ],
+        "cta_whatsapp": "请 Lorenzo 核对计算结果",
+        "cta_prefill": "Lorenzo 您好，我使用了网站上的自愿补正计算器：逾期 {n} 天，税款 {imposte}，估算的罚款和利息 {extra}。您能帮我核对一下我的情况吗？",
+        "cta_preventivo": "计算遗产继承报价",
+        "cta_note": "如果您将遗产继承委托给我们，我们会计算罚款和利息的准确金额，并随申报一并准备好各项缴款。",
+        "disclaimer": "本估算仅供参考，基于法定最低标准和税务机关的通常做法。准确金额取决于具体情况，缴款前须予以核实。"
+      }
     },
     {
       "collection": "footer",

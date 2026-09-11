@@ -18,7 +18,6 @@ export function NavbarClient({
   ctaPhone,
   areaLabel,
   ctaShort = "Preventivo",
-  brandTagline = "Successioni",
   locale,
   menuOpenLabel = "Apri menu",
   menuCloseLabel = "Chiudi menu",
@@ -30,7 +29,6 @@ export function NavbarClient({
   ctaPhone: Cta;
   areaLabel: string;
   ctaShort?: string;
-  brandTagline?: string;
   locale?: string;
   menuOpenLabel?: string;
   menuCloseLabel?: string;
@@ -48,9 +46,16 @@ export function NavbarClient({
   const hideQuoteCta =
     barePath.startsWith("/preventivo") || barePath.startsWith("/checkout");
 
+  // Da 2xl mostriamo testo "Area personale" e CTA lungo SOLO se le etichette
+  // della lingua sono corte: con 7 voci di menu, DE/RU/FR per esteso sforavano
+  // la barra (misurato a 1536px: ~1550px richiesti contro 1376 disponibili).
+  const menuChars = menu.reduce((n, item) => n + item.label.length, 0);
+  // Soglia: IT 95 e ES 99 stanno (misurati ~1290-1335px), FR 102 e RU 102 no.
+  const expanded = menuChars + cta.label.length + areaLabel.length <= 100;
+
   return (
     <header className="sticky top-0 z-40 overflow-x-clip border-b border-primary/10 bg-bg/90 backdrop-blur">
-      <nav className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-3 px-5 sm:px-8">
+      <nav className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-3 px-5 sm:px-8 2xl:max-w-[1440px]">
         <Link
           href={homeHref}
           className="flex shrink-0 items-center gap-2.5"
@@ -79,9 +84,6 @@ export function NavbarClient({
           </svg>
           <span className="font-serif text-lg font-semibold text-primary">
             Armellin
-            <span className="ms-1.5 hidden font-sans text-sm font-normal text-text-muted xl:inline">
-              · {brandTagline}
-            </span>
           </span>
         </Link>
 
@@ -106,7 +108,7 @@ export function NavbarClient({
             className="inline-flex items-center gap-1.5 whitespace-nowrap text-sm font-medium text-primary hover:text-accent"
           >
             <UserRound className="h-4 w-4 shrink-0" />
-            <span className="max-2xl:sr-only">{areaLabel}</span>
+            <span className={expanded ? "max-2xl:sr-only" : "sr-only"}>{areaLabel}</span>
           </Link>
           <LanguageSwitcher
             locale={locale}
@@ -133,8 +135,14 @@ export function NavbarClient({
                 className: "whitespace-nowrap",
               })}
             >
-              <span className="2xl:hidden">{ctaShort}</span>
-              <span className="hidden 2xl:inline">{cta.label}</span>
+              {expanded ? (
+                <>
+                  <span className="2xl:hidden">{ctaShort}</span>
+                  <span className="hidden 2xl:inline">{cta.label}</span>
+                </>
+              ) : (
+                ctaShort
+              )}
             </Link>
           )}
         </div>

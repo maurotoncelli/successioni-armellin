@@ -20,7 +20,6 @@ export async function Navbar() {
   });
   const areaLabel = await t("settings", "area_label", "Area personale");
   const ctaShort = await t("navbar", "cta_short", "Preventivo");
-  const brandTagline = await t("navbar", "brand_tagline", "Successioni");
   const chrome = await tObj<ChromeUiLabels>(
     "site_ui",
     "chrome_ui",
@@ -34,7 +33,6 @@ export async function Navbar() {
       ctaPhone={phoneCta}
       areaLabel={areaLabel}
       ctaShort={ctaShort}
-      brandTagline={brandTagline}
       locale={locale}
       menuOpenLabel={chrome.menu_open}
       menuCloseLabel={chrome.menu_close}

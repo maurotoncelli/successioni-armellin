@@ -31,6 +31,10 @@
           "href": "/guide"
         },
         {
+          "label": "Mjete",
+          "href": "/strumenti"
+        },
+        {
           "label": "FAQ",
           "href": "/faq"
         },
@@ -190,16 +194,6 @@
       "locale": "sq",
       "is_published": true,
       "value": "Realizuar nga AT STUDIO · Mauro Toncelli"
-    },
-    {
-      "collection": "footer",
-      "key": "strumenti_link",
-      "locale": "sq",
-      "is_published": true,
-      "value": {
-        "label": "Llogaritja e vlerës kadastrale",
-        "href": "/strumenti/valore-catastale"
-      }
     },
     {
       "collection": "settings",
@@ -2146,18 +2140,6 @@
       "value": {
         "label": "Llogaritni preventivin falas",
         "href": "/preventivo"
-      }
-    },
-    {
-      "collection": "guide",
-      "key": "strumenti_banner",
-      "locale": "sq",
-      "is_published": true,
-      "value": {
-        "title": "Mjet: llogarit vlerën kadastrale",
-        "body": "Sa vlen një shtëpi ose truall për trashëgiminë? Futni renditën e vizurës dhe merrni menjëherë vlerën mbi të cilën llogariten taksat.",
-        "cta_label": "Hapni kalkulatorin",
-        "href": "/strumenti/valore-catastale"
       }
     },
     {
@@ -5052,6 +5034,293 @@
           "label": "Grupi E (stacione, ndërtesa speciale…)"
         }
       ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_meta_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Mjete të dobishme për trashëgiminë: kalkulatorë falas online"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_meta_description",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kalkulatorë falas për trashëgiminë në Itali: vlera kadastrale, ravvedimento operoso për vonesë (gjoba dhe interesa). Rezultat i menjëhershëm, pa regjistrim."
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_hero_eyebrow",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Mjete të dobishme"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_hero_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Mjete të dobishme për trashëgiminë në Itali"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_hero_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kalkulatorë falas, me të njëjtët koeficientë dhe të njëjtat norma që përdorim në praktikat reale. Pa regjistrim, rezultat i menjëhershëm."
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_tools",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        {
+          "title": "Llogaritja e vlerës kadastrale",
+          "body": "Sa vlen një shtëpi ose një tokë për qëllime të trashëgimisë? Vendosni rentën kadastrale nga certifikata e kadastrës (visura) dhe merrni vlerën mbi të cilën llogariten taksa hipotekore dhe taksa kadastrale.",
+          "cta_label": "Hap kalkulatorin",
+          "href": "/strumenti/valore-catastale",
+          "icon": "calculator"
+        },
+        {
+          "title": "Llogaritja e ravvedimento operoso",
+          "body": "Deklarata e trashëgimisë përtej 12 muajve? Zbuloni sa kushtojnë gjoba e reduktuar dhe interesat ligjore nëse e rregulloni tani, me normat në fuqi.",
+          "cta_label": "Hap kalkulatorin",
+          "href": "/strumenti/ravvedimento-operoso",
+          "icon": "calendar"
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_why_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Pse këto mjete janë falas"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_why_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Janë të njëjtat llogaritje që gjeometri Lorenzo Armellin bën çdo ditë për deklaratat e trashëgimisë. I vëmë në dispozicion që kushdo që trashëgon të kuptojë menjëherë, me shifra reale, çfarë e pret: taksat, vlerat kadastrale, kostot e një vonese. Rezultatet janë vlerësime: rastin konkret e verifikojmë së bashku, falas, me ofertën e çmimit."
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_guides_link",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Lexoni udhëzuesit për trashëgiminë"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_cta_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Dëshironi të dini sa kushton e gjithë trashëgimia, përfshirë taksat?"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_cta_button",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Llogaritni ofertën falas",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_meta_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ravvedimento operoso për trashëgiminë: gjoba dhe interesa (falas)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_meta_description",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Deklaratë trashëgimie me vonesë? Llogaritni gjobën e reduktuar dhe interesat ligjore me ravvedimento operoso: data e vdekjes, data e paraqitjes dhe taksat."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_hero_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Deklaratë trashëgimie me vonesë? Llogaritni ravvedimento operoso"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_hero_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Vendosni datën e vdekjes, kur do ta paraqitni deklaratën dhe taksat që duhen paguar: merrni menjëherë gjobën e reduktuar, interesat ligjore dhe shumën totale për të paguar."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_come_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Çfarë është ravvedimento operoso në trashëgimi"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_come_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Deklarata e trashëgimisë (dichiarazione di successione) duhet të paraqitet brenda 12 muajve nga vdekja. Nëse afati ka kaluar, ravvedimento operoso, pra procedura e rregullimit vullnetar, ju lejon të rregulloni situatën me vullnetin tuaj duke paguar taksat, një gjobë të reduktuar dhe interesat ligjore: sa më shpejt e bëni, aq më pak paguani. Kjo është e mundur për sa kohë që Agenzia delle Entrate (administrata tatimore italiane) nuk ju ka njoftuar një akt."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_passi",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        {
+          "title": "Llogaritni taksat, gjobat dhe interesat",
+          "body": "Me këtë mjet merrni një vlerësim; shuma e saktë përcaktohet mbi të dhënat kadastrale dhe mbi pasurinë e të ndjerit."
+        },
+        {
+          "title": "Paraqitni deklaratën e trashëgimisë",
+          "body": "Në rrugë elektronike pranë Agenzia delle Entrate, me të gjitha seksionet të plotësuara si të ishte brenda afatit."
+        },
+        {
+          "title": "Paguani shumën e detyruar",
+          "body": "Taksat, gjoba e reduktuar dhe interesat paguhen së bashku me deklaratën (debitim në llogari ose formular F24)."
+        },
+        {
+          "title": "Ruani faturat",
+          "body": "Ravvedimento përfundon me paraqitjen dhe pagesën: faturat shërbejnë edhe për kalimin e pronësisë në kadastër (voltura) dhe për bankën."
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_note",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Asnjë sanksion penal dhe asnjë bllokim i trashëgimisë: paraqitja me vonesë kushton disa dhjetëra ose qindra euro më shumë, por për sa kohë që deklarata mungon, pasuritë e paluajtshme nuk mund të shiten dhe llogaritë bankare nuk mund të zhbllokohen. Ravvedimento përfundon me paraqitjen e deklaratës dhe me pagesën e taksave, të gjobës së reduktuar dhe të interesave."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_faq_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Pyetje të shpeshta për ravvedimento të trashëgimisë"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_faq",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        {
+          "q": "Sa kushton paraqitja e deklaratës së trashëgimisë me vonesë?",
+          "a": "Varet nga vonesa dhe nga taksat që duhen paguar. Nëse nuk ka taksë trashëgimie (shumica e rasteve mes prindërve dhe fëmijëve), gjoba për deklaratën e vonuar është fikse: 25 € brenda 90 ditëve, 31,25 € brenda një viti, 35,71 € përtej. Shtohen një gjobë e vogël mbi taksën hipotekore dhe taksën kadastrale të paguara me vonesë (nga rreth 2,5% deri në 3,6%) dhe interesat ligjore."
+        },
+        {
+          "q": "Deri kur mund të bëhet ravvedimento operoso për trashëgiminë?",
+          "a": "Nuk ka një afat maksimal: mund të rregulloni situatën edhe vite më vonë, për sa kohë që Agenzia delle Entrate nuk ka njoftuar një njoftim likuidimi ose një akt kontrolli për të njëjtën shkelje. Megjithatë, sa më shumë kalon koha, aq më shumë rriten gjoba dhe interesat."
+        },
+        {
+          "q": "Çfarë ndodh nëse nuk e paraqes kurrë deklaratën e trashëgimisë?",
+          "a": "Agenzia delle Entrate mund të konstatojë mosparaqitjen brenda 5 vjetëve nga afati, duke zbatuar gjobën e plotë prej 120% të taksës (ose nga 250 deri në 1.000 € nëse nuk ka taksë për të paguar) plus interesat. Për më tepër, pa deklaratë pasuritë e paluajtshme mbeten në emër të të ndjerit dhe nuk mund të shiten, dhe banka nuk i zhbllokon llogaritë."
+        },
+        {
+          "q": "Si paguhen gjobat dhe interesat e ravvedimento?",
+          "a": "Së bashku me taksat, në momentin e paraqitjes: në deklaratën elektronike ekziston një seksion i posaçëm me debitim në llogarinë bankare të treguar; si alternativë përdoret formulari F24 me kodet tatimore për taksat, gjobat dhe interesat. Nëse na e besoni praktikën, e plotësojmë ne."
+        },
+        {
+          "q": "Vlen ravvedimento edhe për trashëgimitë e hapura para 1 shtatorit 2024?",
+          "a": "Po. Ndryshojnë vetëm përqindjet: për afatet para 1 shtatorit 2024 zbatohen gjobat më të larta të regjimit të vjetër (60% brenda 30 ditëve, 30% për pagesat e vonuara, reduktim deri në 1/6 përtej dy vjetëve). Kalkulatori e bën këtë automatikisht në bazë të datës."
+        },
+        {
+          "q": "Ia vlen të prisni ose të rregulloni menjëherë?",
+          "a": "Të rregulloni menjëherë: gjoba fikse është vetëm disa dhjetëra euro dhe interesat rriten çdo ditë. Mbi të gjitha, pa deklaratë nuk mund të shiten pasuritë e paluajtshme dhe as të zhbllokohen llogaritë, dhe nëse Agenzia delle Entrate vepron e para, humbet reduktimi."
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_cta_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Dëshironi që trashëgiminë e vonuar ta rregullojmë ne, përfshirë ravvedimento?"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_cta_button",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Llogaritni ofertën falas",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_ui",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "tab_dichiarazione": "Deklaratë me vonesë",
+        "tab_dichiarazione_help": "Deklarata e trashëgimisë nuk është paraqitur brenda 12 muajve nga vdekja (ose do ta paraqitni me vonesë).",
+        "tab_versamento": "Taksa të paguara me vonesë",
+        "tab_versamento_help": "Deklarata është në rregull, por një taksë ose një njoftim likuidimi është paguar (ose do të paguhet) pas afatit.",
+        "decesso": "Data e vdekjes",
+        "decesso_help": "Deklarata e trashëgimisë duhet të paraqitet brenda 12 muajve nga hapja e trashëgimisë.",
+        "regolarizzazione": "Data në të cilën do ta paraqitni deklaratën dhe do të paguani",
+        "regolarizzazione_help": "Zakonisht sot ose në ditët në vijim: gjobat dhe interesat varen nga kjo datë.",
+        "imposta_successione": "Taksa e trashëgimisë për të paguar (€)",
+        "imposta_successione_help": "Paguhet vetëm përtej pragjeve të përjashtimit (1.000.000 € për bashkëshortin dhe fëmijët, 100.000 € për vëllezërit dhe motrat). Nëse nuk duhet paguar ose nuk e dini, lëreni 0: në shumicën e trashëgimive mes prindërve dhe fëmijëve nuk ka.",
+        "altre_imposte": "Taksa të tjera për të paguar me deklaratën (€)",
+        "altre_imposte_help": "Taksa hipotekore (2%) dhe taksa kadastrale (1%) mbi vlerën kadastrale të pasurive të paluajtshme, minimumi 200 € secila, plus pulla dhe tarifat speciale (rreth 100 €). Pa pasuri të paluajtshme: vetëm pulla dhe tarifat.",
+        "altre_imposte_link": "Llogaritni vlerën kadastrale",
+        "scadenza": "Afati fillestar i pagesës",
+        "scadenza_help": "Data brenda së cilës taksa duhej të paguhej (për një njoftim likuidimi: 60 ditë nga njoftimi).",
+        "pagamento": "Data në të cilën do të paguani",
+        "importo": "Shuma e papaguar (€)",
+        "importo_help": "Vetëm taksa: gjobat dhe interesat i llogarisim këtu.",
+        "avviso": "Kam marrë tashmë një njoftim, një letër ose një kontroll nga Agenzia delle Entrate për këtë trashëgimi",
+        "avviso_warning": "Nëse Agenzia delle Entrate ju ka njoftuar tashmë një akt (njoftim likuidimi ose akt kontrolli), ravvedimento në këtë formë nuk është më i mundur: paguhet shuma e treguar në akt, me reduktimet e parashikuara për ata që e pranojnë brenda afatit. Na shkruani me aktin në dorë: e shqyrtojmë së bashku.",
+        "placeholder_amount": "p.sh. 1.250,00",
+        "risultato": "Vlerësimi i ravvedimento",
+        "empty": "Vendosni datat për të parë vlerësimin.",
+        "nei_termini": "Jeni ende brenda afatit: afati është {date}. Nëse paraqitni dhe paguani brenda asaj date, nuk ka as gjoba as interesa.",
+        "ritardo": "{n} ditë vonesë (afati: {date})",
+        "regime_post": "Gjobat sipas D.Lgs. 87/2024 (shkelje nga 1 shtatori 2024)",
+        "regime_pre": "Gjobat në fuqi para D.Lgs. 87/2024 (afat para 1 shtatorit 2024)",
+        "riga_imposte": "Taksat për të paguar",
+        "riga_sanzione_dich": "Gjoba për deklaratë të vonuar",
+        "sanzione_dich_pct": "{pct} e taksës së trashëgimisë, reduktuar në {fraction} me ravvedimento",
+        "sanzione_dich_fissa": "Gjobë fikse prej {amount} (nuk ka taksë trashëgimie për të paguar), reduktuar në {fraction} me ravvedimento",
+        "riga_sanzione_vers": "Gjoba për pagesë të vonuar",
+        "sanzione_vers_desc": "{pct} e taksave të paguara me vonesë, reduktuar në {fraction} me ravvedimento",
+        "riga_interessi": "Interesat ligjore",
+        "interessi_desc": "{n} ditë me normën ligjore ({rates})",
+        "interessi_stimato": "Për vitet pas {year} zbatohet norma ligjore e fundit e publikuar.",
+        "totale": "Totali për të paguar",
+        "totale_extra": "nga të cilat gjoba dhe interesa: {amount}",
+        "ipotesi_title": "Si llogaritet",
+        "ipotesi_dichiarazione": [
+          "Gjoba për deklaratën: minimumi ligjor (45% e taksës brenda 30 ditëve, pastaj 120%; 150 € ose 250 € nëse nuk ka taksë trashëgimie për të paguar), reduktuar në 1/10, 1/9, 1/8 ose 1/7 sipas vonesës.",
+          "Gjoba për pagesën e vonuar të taksës hipotekore, taksës kadastrale, pullës dhe tarifave: 25% (12,5% brenda 90 ditëve, 1/15 në ditë për 14 ditët e para), me të njëjtin reduktim nga ravvedimento.",
+          "Interesat ligjore me normën në fuqi për çdo vit (2% në 2025, 1,60% nga 2026), të llogaritura me ditë mbi të gjitha taksat.",
+          "Ravvedimento është i mundur për sa kohë që Agenzia delle Entrate nuk ka njoftuar një akt për të njëjtën shkelje."
+        ],
+        "ipotesi_versamento": [
+          "Gjoba për pagesë të vonuar: 25% e taksës (12,5% nëse paguani brenda 90 ditëve, 1/15 në ditë për 14 ditët e para), reduktuar në 1/10, 1/9, 1/8 ose 1/7 sipas vonesës. Për afatet para 1 shtatorit 2024 zbatohet 30%.",
+          "Interesat ligjore me normën në fuqi për çdo vit (2% në 2025, 1,60% nga 2026), të llogaritura me ditë.",
+          "Ravvedimento është i mundur për sa kohë që Agenzia delle Entrate nuk ka njoftuar një akt për të njëjtën shkelje."
+        ],
+        "cta_whatsapp": "Kërkojini Lorenzos të verifikojë llogaritjen",
+        "cta_prefill": "Përshëndetje Lorenzo, përdora kalkulatorin e ravvedimento në faqen e internetit: {n} ditë vonesë, taksa {imposte}, gjoba dhe interesa të vlerësuara {extra}. Mund ta verifikoni për rastin tim?",
+        "cta_preventivo": "Llogaritni ofertën për trashëgiminë",
+        "cta_note": "Nëse na e besoni trashëgiminë, shumën e saktë të gjobave dhe interesave e llogarisim ne dhe përgatisim pagesat së bashku me deklaratën.",
+        "disclaimer": "Vlerësim orientues për qëllime informuese, i bazuar në minimumet ligjore dhe në praktikën e zyrave tatimore. Shuma e saktë varet nga rasti konkret dhe duhet të verifikohet para pagesës."
+      }
     },
     {
       "collection": "footer",

@@ -31,6 +31,10 @@
           "href": "/guide"
         },
         {
+          "label": "Outils",
+          "href": "/strumenti"
+        },
+        {
           "label": "FAQ",
           "href": "/faq"
         },
@@ -190,16 +194,6 @@
       "locale": "fr",
       "is_published": true,
       "value": "Réalisé par AT STUDIO · Mauro Toncelli"
-    },
-    {
-      "collection": "footer",
-      "key": "strumenti_link",
-      "locale": "fr",
-      "is_published": true,
-      "value": {
-        "label": "Calcul de la valeur cadastrale",
-        "href": "/strumenti/valore-catastale"
-      }
     },
     {
       "collection": "settings",
@@ -2146,18 +2140,6 @@
       "value": {
         "label": "Calculez le devis gratuitement",
         "href": "/preventivo"
-      }
-    },
-    {
-      "collection": "guide",
-      "key": "strumenti_banner",
-      "locale": "fr",
-      "is_published": true,
-      "value": {
-        "title": "Outil : calculer la valeur cadastrale",
-        "body": "Quelle est la valeur d'une maison ou d'un terrain aux fins de la succession ? Saisissez la rendita de l'extrait cadastral et obtenez immédiatement la valeur sur laquelle les impôts sont calculés.",
-        "cta_label": "Ouvrir le calculateur",
-        "href": "/strumenti/valore-catastale"
       }
     },
     {
@@ -5052,6 +5034,293 @@
           "label": "Groupe E (gares, bâtiments spéciaux…)"
         }
       ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_meta_title",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Outils utiles pour la succession en Italie : calculateurs gratuits"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_meta_description",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Calculateurs gratuits de succession : valeur cadastrale (maisons, terrains), ravvedimento operoso pour retard (pénalités, intérêts). Immédiat, sans inscription."
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_hero_eyebrow",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Outils utiles"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_hero_title",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Outils utiles pour la succession"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_hero_subtitle",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Des calculateurs gratuits, avec les mêmes coefficients et les mêmes taux que nous utilisons dans les dossiers réels. Sans inscription, résultat immédiat."
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_tools",
+      "locale": "fr",
+      "is_published": true,
+      "value": [
+        {
+          "title": "Calcul de la valeur cadastrale",
+          "body": "Combien vaut une maison ou un terrain aux fins de la succession ? Saisissez le revenu cadastral (rendita) figurant sur l'extrait cadastral (visura) et obtenez la valeur sur laquelle sont calculées les taxes hypothécaire et cadastrale.",
+          "cta_label": "Ouvrir le calculateur",
+          "href": "/strumenti/valore-catastale",
+          "icon": "calculator"
+        },
+        {
+          "title": "Calcul du ravvedimento operoso",
+          "body": "Déclaration de succession au-delà de 12 mois ? Découvrez combien coûtent la pénalité réduite et les intérêts légaux si vous régularisez maintenant, aux taux en vigueur.",
+          "cta_label": "Ouvrir le calculateur",
+          "href": "/strumenti/ravvedimento-operoso",
+          "icon": "calendar"
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_why_title",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Pourquoi ces outils sont gratuits"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_why_body",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Ce sont les mêmes calculs que le géomètre Lorenzo Armellin effectue chaque jour pour les déclarations de succession. Nous les mettons à disposition pour que les héritiers puissent comprendre tout de suite, avec de vrais chiffres, ce qui les attend : impôts, valeurs cadastrales, coût d'un retard. Les résultats sont des estimations : le cas concret, nous le vérifions ensemble, gratuitement, avec le devis."
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_guides_link",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Lire les guides sur la succession"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_cta_title",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Vous voulez savoir combien coûte toute la succession, impôts compris ?"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_cta_button",
+      "locale": "fr",
+      "is_published": true,
+      "value": {
+        "label": "Calculer le devis gratuit",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_meta_title",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Ravvedimento operoso succession : pénalités et intérêts (gratuit)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_meta_description",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Déclaration de succession tardive ? Calculez aussitôt pénalité réduite et intérêts légaux du ravvedimento operoso : date du décès, date de dépôt et impôts."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_hero_title",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Déclaration de succession en retard ? Calculez le ravvedimento operoso"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_hero_subtitle",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Saisissez la date du décès, la date à laquelle vous déposerez la déclaration et les impôts dus : vous obtenez tout de suite la pénalité réduite, les intérêts légaux et le total à verser."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_come_title",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Qu'est-ce que le ravvedimento operoso dans la succession"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_come_body",
+      "locale": "fr",
+      "is_published": true,
+      "value": "La déclaration de succession (dichiarazione di successione) doit être déposée dans les 12 mois suivant le décès. Si le délai est dépassé, le ravvedimento operoso (régularisation volontaire) permet de se mettre en règle spontanément en payant les impôts, une pénalité réduite et les intérêts légaux : plus vous le faites tôt, moins vous payez. C'est possible tant que l'Agenzia delle Entrate (administration fiscale italienne) ne vous a pas notifié d'acte."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_passi",
+      "locale": "fr",
+      "is_published": true,
+      "value": [
+        {
+          "title": "Calculez impôts, pénalités et intérêts",
+          "body": "Cet outil vous donne une estimation ; le montant exact se détermine sur la base des données cadastrales et du patrimoine du défunt."
+        },
+        {
+          "title": "Déposez la déclaration de succession",
+          "body": "Par voie télématique auprès de l'Agenzia delle Entrate, avec tous les cadres remplis comme si elle était dans les délais."
+        },
+        {
+          "title": "Versez le montant dû",
+          "body": "Impôts, pénalité réduite et intérêts se paient avec la déclaration (prélèvement sur le compte ou formulaire F24)."
+        },
+        {
+          "title": "Conservez les reçus",
+          "body": "Le ravvedimento est accompli avec le dépôt et le paiement : les reçus servent aussi pour la mutation cadastrale (voltura catastale) et pour la banque."
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_note",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Aucune sanction pénale et aucun blocage de l'héritage : déposer en retard coûte quelques dizaines ou centaines d'euros de plus, mais tant que la déclaration manque, les biens immobiliers ne peuvent pas être vendus ni les comptes débloqués. Le ravvedimento est accompli avec le dépôt de la déclaration et le paiement des impôts, de la pénalité réduite et des intérêts."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_faq_title",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Questions fréquentes sur le ravvedimento de la succession"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_faq",
+      "locale": "fr",
+      "is_published": true,
+      "value": [
+        {
+          "q": "Combien coûte le dépôt tardif de la déclaration de succession ?",
+          "a": "Cela dépend du retard et des impôts dus. S'il n'y a pas de droits de succession (la plupart des cas entre parents et enfants), la pénalité pour déclaration tardive est fixe : 25 € dans les 90 jours, 31,25 € dans l'année, 35,71 € au-delà. S'y ajoutent une petite pénalité sur les taxes hypothécaire et cadastrale versées en retard (d'environ 2,5 % à 3,6 %) et les intérêts légaux."
+        },
+        {
+          "q": "Jusqu'à quand peut-on faire le ravvedimento operoso de la succession ?",
+          "a": "Il n'y a pas de délai maximal : on peut régulariser même des années plus tard, tant que l'Agenzia delle Entrate n'a pas notifié d'avis de liquidation ou de redressement pour la même infraction. Plus le temps passe, toutefois, plus la pénalité et les intérêts augmentent."
+        },
+        {
+          "q": "Que se passe-t-il si je ne dépose jamais la déclaration de succession ?",
+          "a": "L'Agenzia delle Entrate peut constater l'omission dans les 5 ans suivant l'échéance, en appliquant la pénalité pleine de 120 % de l'impôt (ou de 250 à 1 000 € si aucun impôt n'est dû) plus les intérêts. De plus, sans déclaration, les biens immobiliers restent au nom du défunt et ne peuvent pas être vendus, et la banque ne débloque pas les comptes."
+        },
+        {
+          "q": "Comment paie-t-on les pénalités et intérêts du ravvedimento ?",
+          "a": "Avec les impôts, au moment du dépôt : la déclaration télématique comporte un cadre dédié avec prélèvement sur le compte courant indiqué ; sinon, on utilise le formulaire F24 avec les codes tributs (codici tributo) des impôts, pénalités et intérêts. Si vous nous confiez le dossier, nous le remplissons pour vous."
+        },
+        {
+          "q": "Le ravvedimento vaut-il aussi pour les successions ouvertes avant le 1er septembre 2024 ?",
+          "a": "Oui. Seuls les pourcentages changent : pour les échéances antérieures au 1er septembre 2024, ce sont les pénalités plus élevées de l'ancien régime qui s'appliquent (60 % dans les 30 jours, 30 % pour les versements tardifs, réduction jusqu'à 1/6 au-delà de deux ans). Le calculateur le fait automatiquement en fonction de la date."
+        },
+        {
+          "q": "Vaut-il mieux attendre ou régulariser tout de suite ?",
+          "a": "Régulariser tout de suite : la pénalité fixe n'est que de quelques dizaines d'euros et les intérêts augmentent chaque jour. Surtout, sans déclaration, on ne peut ni vendre les biens immobiliers ni débloquer les comptes, et si l'Agenzia delle Entrate arrive avant, on perd la réduction."
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_cta_title",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Vous voulez que nous réglions nous-mêmes la succession en retard, ravvedimento compris ?"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_cta_button",
+      "locale": "fr",
+      "is_published": true,
+      "value": {
+        "label": "Calculer le devis gratuit",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_ui",
+      "locale": "fr",
+      "is_published": true,
+      "value": {
+        "tab_dichiarazione": "Déclaration en retard",
+        "tab_dichiarazione_help": "La déclaration de succession n'a pas été déposée dans les 12 mois suivant le décès (ou vous la déposerez en retard).",
+        "tab_versamento": "Impôts payés en retard",
+        "tab_versamento_help": "La déclaration est en ordre, mais un impôt ou un avis de liquidation a été payé (ou sera payé) après l'échéance.",
+        "decesso": "Date du décès",
+        "decesso_help": "La déclaration de succession doit être déposée dans les 12 mois suivant l'ouverture de la succession.",
+        "regolarizzazione": "Date à laquelle vous déposerez la déclaration et paierez",
+        "regolarizzazione_help": "En général aujourd'hui ou dans les prochains jours : pénalités et intérêts dépendent de cette date.",
+        "imposta_successione": "Droits de succession dus (€)",
+        "imposta_successione_help": "Ils ne se paient qu'au-delà des abattements (1 000 000 € pour le conjoint et les enfants, 100 000 € pour les frères et sœurs). S'ils ne sont pas dus ou si vous ne les connaissez pas, laissez 0 : dans la plupart des successions entre parents et enfants, il n'y en a pas.",
+        "altre_imposte": "Autres impôts à verser avec la déclaration (€)",
+        "altre_imposte_help": "Taxe hypothécaire (2 %) et taxe cadastrale (1 %) sur la valeur cadastrale des biens immobiliers, minimum 200 € chacune, plus timbre et taxes spéciales (environ 100 €). Sans biens immobiliers : timbre et taxes seulement.",
+        "altre_imposte_link": "Calculer la valeur cadastrale",
+        "scadenza": "Échéance initiale du paiement",
+        "scadenza_help": "La date à laquelle l'impôt devait être versé (pour un avis de liquidation : 60 jours à compter de la notification).",
+        "pagamento": "Date à laquelle vous paierez",
+        "importo": "Montant non versé (€)",
+        "importo_help": "Uniquement l'impôt : pénalités et intérêts, nous les calculons ici.",
+        "avviso": "J'ai déjà reçu un avis, une lettre ou un contrôle de l'Agenzia delle Entrate concernant cette succession",
+        "avviso_warning": "Si l'Agenzia delle Entrate vous a déjà notifié un acte (avis de liquidation ou de redressement), le ravvedimento sous cette forme n'est plus possible : on paie ce qui est indiqué dans l'acte, avec les réductions prévues pour ceux qui acceptent dans les délais. Écrivez-nous avec l'acte sous la main : nous l'examinons ensemble.",
+        "placeholder_amount": "ex. 1 250,00",
+        "risultato": "Estimation du ravvedimento",
+        "empty": "Saisissez les dates pour voir l'estimation.",
+        "nei_termini": "Vous êtes encore dans les délais : l'échéance est le {date}. Si vous déposez et payez avant cette date, il n'y a ni pénalités ni intérêts.",
+        "ritardo": "{n} jours de retard (échéance : {date})",
+        "regime_post": "Pénalités D.Lgs. 87/2024 (infractions à partir du 1er septembre 2024)",
+        "regime_pre": "Pénalités en vigueur avant le D.Lgs. 87/2024 (échéance antérieure au 1er septembre 2024)",
+        "riga_imposte": "Impôts dus",
+        "riga_sanzione_dich": "Pénalité pour déclaration tardive",
+        "sanzione_dich_pct": "{pct} des droits de succession, réduite à {fraction} avec le ravvedimento",
+        "sanzione_dich_fissa": "Pénalité fixe de {amount} (aucun droit de succession dû), réduite à {fraction} avec le ravvedimento",
+        "riga_sanzione_vers": "Pénalité pour versement tardif",
+        "sanzione_vers_desc": "{pct} des impôts versés en retard, réduite à {fraction} avec le ravvedimento",
+        "riga_interessi": "Intérêts légaux",
+        "interessi_desc": "{n} jours au taux légal ({rates})",
+        "interessi_stimato": "Pour les années postérieures à {year}, le dernier taux légal publié est appliqué.",
+        "totale": "Total à verser",
+        "totale_extra": "dont pénalités et intérêts : {amount}",
+        "ipotesi_title": "Comment est-il calculé",
+        "ipotesi_dichiarazione": [
+          "Pénalité pour la déclaration : minimum légal (45 % de l'impôt dans les 30 jours, puis 120 % ; 150 € ou 250 € si aucun droit de succession n'est dû), réduite à 1/10, 1/9, 1/8 ou 1/7 selon le retard.",
+          "Pénalité pour versement tardif des taxes hypothécaire, cadastrale, du timbre et des taxes spéciales : 25 % (12,5 % dans les 90 jours, 1/15 par jour pendant les 14 premiers), avec la même réduction du ravvedimento.",
+          "Intérêts légaux au taux en vigueur chaque année (2 % en 2025, 1,60 % à partir de 2026), calculés par jour sur l'ensemble des impôts.",
+          "Le ravvedimento est possible tant que l'Agenzia delle Entrate n'a pas notifié d'acte pour la même infraction."
+        ],
+        "ipotesi_versamento": [
+          "Pénalité pour versement tardif : 25 % de l'impôt (12,5 % si vous payez dans les 90 jours, 1/15 par jour pendant les 14 premiers), réduite à 1/10, 1/9, 1/8 ou 1/7 selon le retard. Pour les échéances antérieures au 1er septembre 2024, c'est 30 % qui s'applique.",
+          "Intérêts légaux au taux en vigueur chaque année (2 % en 2025, 1,60 % à partir de 2026), calculés par jour.",
+          "Le ravvedimento est possible tant que l'Agenzia delle Entrate n'a pas notifié d'acte pour la même infraction."
+        ],
+        "cta_whatsapp": "Faire vérifier le calcul par Lorenzo",
+        "cta_prefill": "Bonjour Lorenzo, j'ai utilisé le calculateur du ravvedimento sur le site : {n} jours de retard, impôts {imposte}, pénalités et intérêts estimés {extra}. Pouvez-vous le vérifier pour mon cas ?",
+        "cta_preventivo": "Calculer le devis de la succession",
+        "cta_note": "Si vous nous confiez la succession, nous calculons le montant exact des pénalités et intérêts et préparons les versements avec la déclaration.",
+        "disclaimer": "Estimation indicative à titre informatif, fondée sur les minimums légaux et sur la pratique des bureaux. Le montant exact dépend du cas concret et doit être vérifié avant le paiement."
+      }
     },
     {
       "collection": "footer",
