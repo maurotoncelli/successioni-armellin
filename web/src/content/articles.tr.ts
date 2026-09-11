@@ -27,6 +27,26 @@ const FONTE_NORMATTIVA: ArticleSource = {
   label: "Normattiva - TUS Kanun Hükmünde Kararname 346/1990",
   href: "https://www.normattiva.it",
 };
+const FONTE_ADE_COME_PRESENTARE: ArticleSource = {
+  label: "Agenzia delle Entrate - Beyan nasıl ve ne zaman sunulur",
+  href: "https://www.agenziaentrate.gov.it/portale/schede/dichiarazioni/dichiarazione-di-successione/come-quando-dichsucc",
+};
+const FONTE_ADE_CODICE_FISCALE: ArticleSource = {
+  label: "Agenzia delle Entrate - Codice fiscale talebi (modello AA4/8)",
+  href: "https://www.agenziaentrate.gov.it/portale/web/guest/schede/istanze/richiesta-ts_cf/modello-aa4-8-cf-pf",
+};
+const FONTE_UE_650: ArticleSource = {
+  label: "(AB) 650/2012 sayılı Tüzük - Sınır ötesi verasetler",
+  href: "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32012R0650",
+};
+const FONTE_UE_1191: ArticleSource = {
+  label: "(AB) 2016/1191 Tüzüğü - Legalizasyon olmadan resmi belgeler",
+  href: "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R1191",
+};
+const FONTE_ESTERI: ArticleSource = {
+  label: "İtalya Dışişleri Bakanlığı - Yurt dışındaki İtalyanlar için konsolosluk hizmetleri",
+  href: "https://www.esteri.it/it/servizi-consolari-e-visti/",
+};
 
 export const articlesTr: Record<string, ArticleTrOverlay> = {
   "successione-cosa-e": {
@@ -173,26 +193,194 @@ export const articlesTr: Record<string, ArticleTrOverlay> = {
     sources: [FONTE_ADE_SCHEDA],
   },
   "eredi-estero": {
-    title: "Yurt dışında yaşayan mirasçılar: işlem nasıl yürütülür",
-    excerpt: "Mirasçılardan biri İtalya dışında ikamet ettiğinde ne değişir ve işlemi uzaktan, kendi dilinizde de nasıl takip ederiz.",
+    title: "Yurt dışında yaşıyorsanız İtalya'da veraset: eksiksiz rehber",
+    excerpt: "Almanya, İsviçre, Birleşik Krallık, Arjantin veya başka bir yerde yaşıyorsanız ve İtalya'da ev veya hesap miras aldınız mı? Gerçekte ne değişir, ne gerekir ve İtalya'ya dönmeden her şey nasıl yapılır.",
     reviewedBy: REVIEWED,
     body: [
-      { type: "p", text: "Yurt dışında yaşayan bir mirasçı sorun değildir: veraset beyanı İtalya'daki mal varlığını ilgilendirir ve yine Agenzia delle Entrate'e sunulur. Özellikle belge ve imza toplama şekli değişir; tamamını uzaktan yönetiriz." },
-      { type: "h2", text: "Gerçekten ne gerekir" },
+      { type: "p", text: "Yurt dışında yaşıyorsanız ve İtalya'da ebeveynlerinizin evi, bir arsa veya hesap kaldıysa, dichiarazione di successione (veraset beyanı) yine de İtalya'da, vefat tarihinden itibaren 12 ay içinde sunulmalıdır. İtalya'ya gelmeniz gerekmez: beyan telematik olarak yetkili bir aracı tarafından iletilir, yani biz. Hizmetimiz ofise gelemeyenler için online kuruldu; yurt dışında yaşayanlar için bu en çok önem taşır." },
+      { type: "h2", text: "İki tipik durum" },
       {
         type: "ul",
         items: [
-          "Her mirasçının İtalyan vergi numarası (C.F.) (yurt dışındakiler dahil): yoksa talep edilebilir.",
-          "Tüm mirasçıların kimlik belgeleri ve kişisel bilgileri.",
-          "Beyanı sunan bir mirasçı olduğu ve biz onun adına ilettiğimiz için aracıya vekalet veya yetki.",
+          "Vefat eden İtalya'da yaşıyordu, bir veya daha fazla mirasçı yurt dışında: işlem olağandır, yalnızca belge ve imza toplama şekli değişir.",
+          "Vefat eden yurt dışında yaşıyordu ve İtalya'da mal varlığı vardı: beyan yine de İtalya'da sunulur; yetkili ofis, vergiler ve uygulanacak hukuk konusunda ek kurallar vardır. Bunu ayrı bir rehberde anlatıyoruz.",
         ],
       },
-      { type: "p", text: "Yurt dışı ikamet edenler istisnaen yalnızca elektronik iletim mümkün değilse kağıt model sunabilir; vakaların büyük çoğunluğunda yetkili aracı olarak biz elektronik yolla ilerleriz." },
-      { type: "h2", text: "Tamamen uzaktan, kendi dilinizde de" },
-      { type: "p", text: "Anket, belgeler, iletişim ve imzalar çevrimiçi yapılır: İtalya'ya dönmeniz gerekmez. E-posta veya mesajlaşmayla kendi dilinizde takip edebiliriz; gerektiğinde tercümeli görüşme ayarlanabilir. Önemli noktaları (tutarlar, süreler, belgeler) her zaman yazılı onaylarız; resmi belgeler İtalyanca kalır." },
-      { type: "callout", tone: "info", title: "Saat dilimi ve mesafe önemli değil", text: "Belgeleri kişisel alanınızdan istediğiniz zaman yükleyin, telefon fotoğrafıyla bile. Kontrol etmeyi ve süreler içinde işlemi tamamlamayı biz üstleniriz." },
+      { type: "h2", text: "İtalya'da yaşamaya kıyasla ne değişir" },
+      {
+        type: "ul",
+        items: [
+          "Codice fiscale (İtalyan vergi numarası): her mirasçının olmalıdır, İtalya'da hiç yaşamamış olsa bile. Olmadan beyan iletilemez. Konsoloslukta alınabilir veya daha hızlı olarak bize vekalet vererek İtalya'da.",
+          "Yabancı belgeler: yurt dışında düzenlenen ölüm belgesi veya vasiyetname apostille veya legalizasyon ve tercüme gerektirebilir. Avrupa Birliği içinde kurallar daha basittir.",
+          "İmzalar: beyanı uzaktan imzalanmış vekaletinizle biz iletiriz. Yalnızca beyan için noter vekaleti gerekmez.",
+          "Vergi ödemesi: İtalyan banka hesabından tahsilatla yapılır. Yoksa çözümler vardır; aracı olarak ofis hesabından tahsilat dahil.",
+          "Saat dilimi ve dil: yazılı çalışırız, WhatsApp ve e-posta ile; uygun olduğunuzda yanıtlayın. Site ve iletişim birkaç dilde mevcuttur.",
+        ],
+      },
+      { type: "h2", text: "Nasıl işler: beş adım" },
+      {
+        type: "ol",
+        items: [
+          "Online anketi doldurursunuz: iki dakika, hangi pakete ihtiyacınız olduğunu ve ne kadar tuttuğunu hemen öğrenirsiniz.",
+          "WhatsApp'tan yazarsınız veya doğrudan ödersiniz. Durumunuza özel belge listesiyle kişisel alanınızı açarız.",
+          "Belgeleri istediğiniz zaman yüklersiniz, telefon fotoğrafıyla bile. Kadastro verilerini, menşe belgelerini ve codice fiscale'leri kontrol ederiz; eksik varsa çoğu zaman İtalya'da biz temin ederiz.",
+          "Vergileri ve tutarları yazılı onaylarız, siz vekaleti uzaktan imzalarsınız, beyanı Agenzia delle Entrate'e iletiriz.",
+          "Sunum makbuzunu alırsınız; taşınmaz varsa kadastro voltura (devir). Her şey kişisel alanınızda kalır.",
+        ],
+      },
+      { type: "callout", tone: "info", title: "İtalya'ya gelmeniz gerekmez", text: "Dichiarazione di successione'nin hiçbir aşaması fiziksel varlığınızı gerektirmez. İtalya'da gişede yapılan codice fiscale talebi veya kadastro sorgusu gibi işlemleri vekaletinizle biz yaparız." },
+      { type: "h2", text: "Biz somut olarak ne yaparız" },
+      {
+        type: "ul",
+        items: [
+          "Codice fiscale'i olmayan mirasçılar için vekalet ile Agenzia delle Entrate'ten talep ederiz.",
+          "Taşınmazları Kadastro'da ve tapularda kontrol ederiz: uzaktan yürütülen işlemler en çok burada takılır.",
+          "Yetkili aracı olarak beyanı ve kadastro voltura'sını hazırlayıp iletiriz.",
+          "İtalyan hesabınız yoksa vergileri ofis aracılığıyla, tutarlar ve makbuzlar yazılı olarak kararlaştırırız.",
+          "Hangi adımda noter veya konsolosluk gerektiğini ve hangisinin gerektiğini açıkça söyleriz.",
+        ],
+      },
+      { type: "h2", text: "Noter veya konsolosluk ne zaman de gerekir" },
+      { type: "p", text: "Dichiarazione di successione noter işlemi değildir ve noter gerektirmez. Mirastan feragat, beneficio d'inventario ile kabul, vasiyetname ilanı ve miras kalan taşınmazın satışı için noter veya İtalyan vatandaşları için bazı noter işlevlerini yürüten İtalyan konsolosluğu gerekir. Durumunuz bunları gerektiriyorsa baştan söyleriz, sonra değil." },
+      { type: "h2", text: "Ne kadar tutar" },
+      { type: "p", text: "Paketler İtalya'da yaşayanlarla aynıdır ve Tarifeler sayfasında görünür: ücret geometra, beyan ve voltura'yı kapsar. Kanuni vergiler herkes için ayrıdır ve iletimden önce bildiririz. Codice fiscale veya tercüme gibi ek adımlar gerekiyorsa hemen, tutarla birlikte söyleriz." },
+      { type: "callout", tone: "warning", title: "12 ay sizin için de geçerli", text: "Süre vefat tarihinden işler, siz ilgilenmeye başladığınız andan değil. Yakınsa hemen yazın: yurt dışında yaşayanlar için en uzun kısım çoğu zaman codice fiscale'dir." },
     ],
-    sources: [FONTE_ADE_SCHEDA],
+    sources: [FONTE_ADE_SCHEDA, FONTE_ADE_COME_PRESENTARE, FONTE_ADE_CODICE_FISCALE],
+  },
+  "codice-fiscale-erede-estero": {
+    title: "Yurt dışında yaşayan mirasçı için codice fiscale: nasıl alınır",
+    excerpt: "Her mirasçının codice fiscale'i olmadan beyan iletilemez. Kimin farkında olmadan zaten vardır; konsoloslukta veya vekalet ile İtalya'da nasıl talep edilir; ne gerekir.",
+    reviewedBy: REVIEWED,
+    body: [
+      { type: "p", text: "İtalyan codice fiscale (vergi numarası), yurt dışındaki mirasçıları olan verasetlerde en sık tıkanan noktadır: elektronik beyan her mirasçı ve legatario için ister; olmadan iletilmez. İyi haber: almak sandığınızdan kolaydır ve İtalya'ya gelmek gerekmez." },
+      { type: "h2", text: "Belki zaten vardır" },
+      { type: "p", text: "İtalya'da doğan, çalışan veya okuyan, eski tessera sanitaria'sı olan veya AIRE (yurt dışındaki İtalyanlar kaydı) kayıtlı olanların çoğunun codice fiscale'i vardır, yıllardır kullanmasa bile. Eski belgeleri, tessera sanitaria'yı veya vergi beyanını kontrol edin. Bulamazsanız kişisel verilerinizle biz var olup olmadığını kontrol edebiliriz: codice fiscale iki kez talep edilmez." },
+      { type: "h2", text: "Eksikse nasıl alınır" },
+      {
+        type: "ol",
+        items: [
+          "Yaşadığınız ülkenin İtalyan konsolosluğunda: yurt dışı ikamet eden vatandaşlar için olağan yol. Geçerli kimlikle modello AA4/8 sunulur. Süre konsolosluğa bağlıdır ve uzun olabilir.",
+          "İtalya'da, Agenzia delle Entrate'in herhangi bir ofisinde, vekil aracılığıyla: modello AA4/8'i siz imzalarsınız, vekalet bölümü doldurulur; vekil kendi kimliği ve sizin kopyanızla sunar. Bizim kullandığımız yol budur, genelde en hızlısıdır.",
+        ],
+      },
+      { type: "callout", tone: "info", title: "Vekaletinizle biz yaparız", text: "Önceden doldurulmuş modello AA4/8'i göndeririz, imzalarsınız ve kimlik kopyanızla iade edersiniz. Agenzia delle Entrate'e sunarız ve codice fiscale atanır atanmaz bildiririz." },
+      { type: "h2", text: "Ne gerekir" },
+      {
+        type: "ul",
+        items: [
+          "Geçerli pasaport veya kimlik kartı (okunaklı kopya, ön ve arka).",
+          "Tam kişisel bilgiler: soyad, ad, cinsiyet, doğum tarihi ve yeri, yurt dışı ikamet adresi.",
+          "Talep nedeni: İtalya'daki veraset. Modello AA4/8'de belirtilmelidir.",
+          "İmzalı modello AA4/8; biz sunuyorsak doldurulmuş vekalet bölümüyle.",
+        ],
+      },
+      { type: "h2", text: "İtalyan vatandaşı olmayan mirasçılar" },
+      { type: "p", text: "Aynı prosedür geçerlidir: modello AA4/8 gerekçeli olarak vekil aracılığıyla herhangi bir Agenzia delle Entrate ofisine sunulabilir. Yabancı vatandaşlar için İtalyan konsolosluğu yalnızca özel hallerde devreye girer; bu yüzden İtalya'daki vekalet neredeyse her zaman en basit yoldur." },
+      { type: "callout", tone: "warning", title: "Süre yakınsa buradan başlayın", text: "Codice fiscale tüm işlemde en az öngörülebilir süreye sahip adımdır. Vefat birkaç ay önce olduysa hemen talep edin: beyanın geri kalanı paralel hazırlanır." },
+    ],
+    sources: [FONTE_ADE_CODICE_FISCALE, FONTE_ADE_SCHEDA],
+  },
+  "successione-defunto-residente-estero": {
+    title: "Vefat eden yurt dışında yaşıyordu ve İtalya'da mal varlığı vardı: ne yapmalı",
+    excerpt: "Vefat yurt dışında olsa bile beyan İtalya'da sunulur: hangi ofis, hangi mal varlıkları vergilendirilir, AB veraset tüzüğü ne der ve noter ne zaman gerekir.",
+    reviewedBy: REVIEWED,
+    body: [
+      { type: "p", text: "Göçmen ailelerin klasik durumu: ebeveyn yıllarca Almanya, İsviçre veya Arjantin'de yaşadı ama İtalya'da köy evi veya kirada daire bıraktı. İtalya'da mal varlığı varsa dichiarazione di successione, vefat yurt dışında olsa ve tüm mirasçılar yurt dışında olsa bile, vefat tarihinden itibaren 12 ay içinde İtalya'da sunulmalıdır." },
+      { type: "h2", text: "Hangi mal varlıkları vergilendirilir" },
+      { type: "p", text: "Kural TUS'ta (md. 2). Vefat anında vefat eden İtalya'da ikamet ediyorsa vergi nerede olursa olsun tüm mal varlığına uygulanır. İtalya'da ikamet etmiyorsa yalnızca İtalya'daki mal varlığı: taşınmaz, İtalyan bankalardaki hesaplar, İtalyan şirketlerdeki paylar. Yurt dışındaki mal varlığı bulunduğu ülkenin kurallarına tabidir." },
+      { type: "callout", tone: "info", title: "Çifte vergilendirme", text: "İtalya'nın veraset konusunda çifte vergilendirmeyi önleyen anlaşmaları az sayıda ülkeyle vardır; Fransa, Birleşik Krallık ve ABD dahil. Diğerlerinde İtalya'daki İtalyan mal varlığına ödedikleriniz ikamet ülkenizdeki beyanla koordine edilmelidir: yerel danışmanla görüşmek iyi olur." },
+      { type: "h2", text: "Hangi ofis yetkilidir" },
+      { type: "p", text: "Vefat eden yurt dışına taşınmadan önce İtalya'da ikamet etmişse yetkili ofis son İtalyan ikametindeki Agenzia delle Entrate ofisidir. Hiç İtalya'da ikamet etmemişse veya son ikamet bilinmiyorsa Agenzia'nın belirlediği Roma ofisi yetkilidir. Elektronik sunumda bu ayrıntıyı beyan hazırlığında biz yönetiriz." },
+      { type: "h2", text: "Nasıl sunulur" },
+      { type: "p", text: "Yetkili aracı aracılığıyla elektronik olarak, İtalya'da yaşayanlar gibi: belgeleri ve imzaları uzaktan toplar ve biz iletiriz. Kanun yurt dışı ikamet edenlere yalnızca elektronik iletim imkansızsa kağıt modeli taahhütlü postayla göndermeye izin verir: pratikte neredeyse hiç gerekmediği bir istisnadır." },
+      { type: "h2", text: "Kim miras alır: uygulanacak hukuk" },
+      { type: "p", text: "Vergi tarafı ile medeni taraf farklı şeylerdir. Mirasçıların kim olduğu ve hangi paylarla miras aldığı verasete uygulanacak hukukla belirlenir. AB'de Regolamento 650/2012 geçerlidir: 17 agosto 2015'ten itibaren vefatlarda vefat edenin olağan ikametgahı ülkesinin hukuku uygulanır, vasiyette vatandaşlık ülkesi hukuku seçilmedikçe. Almanya'da ikamet eden İtalyan, vasiyetsiz Alman hukukuna göre miras alır; İtalya'daki ev dahil. Birleşik Krallık, İrlanda ve Danimarka tüzüğü uygulamaz; AB dışı ülkelerde İtalyan uluslararası özel hukuk kuralları geçerlidir." },
+      { type: "callout", tone: "warning", title: "Bizim işimizin bittiği yer", text: "İtalya'daki mal varlığı için beyanı ve voltura'yı hazırlayıp iletiriz. Veraset yabancı hukuka tabiyse, yabancı vasiyetname geçerli kılınacaksa veya Avrupa veraset belgesi alınacaksa noter veya avukat da gerekir: baştan, isimler ve adımlarla söyleriz, işin ortasında değil." },
+      { type: "h2", text: "Ek belgeler" },
+      {
+        type: "ul",
+        items: [
+          "Yurt dışında düzenlenen ölüm belgesi: vefat eden İtalyan vatandaşıysa kayıt konsolosluk aracılığıyla İtalyan belediyesine işlenir ve İtalyan belge verilir. Değilse yabancı belge, AB sadeleştirmeleri saklı, apostille veya legalizasyon ve tercüme ile.",
+          "Vefat edenin yurt dışı ikametinin kanıtı, örneğin AIRE kaydı veya yabancı ülke ikamet belgesi.",
+          "Vefat edenin ve tüm mirasçıların codice fiscale'i: İtalyan olmayan mirasçılar da sahip olmalıdır.",
+          "Varsa vasiyetname, ilanı veya Avrupa veraset belgesi ile.",
+        ],
+      },
+      { type: "h2", text: "Prima casa indirimi" },
+      { type: "p", text: "Miras kalan taşınmazda ipotek ve kadastro vergileri prima casa indirimiyle düşürülebilir; yurt dışında yaşayanlar için kurallar özeldir ve 2023'te değişti: taşınmazın yeri ve mirasçının İtalya ile bağlantısına bağlıdır. Vergileri hesaplamadan önce duruma göre kontrol ederiz." },
+    ],
+    sources: [FONTE_ADE_COME_PRESENTARE, FONTE_NORMATTIVA, FONTE_UE_650],
+  },
+  "documenti-esteri-successione-apostille": {
+    title: "Yurt dışından belgeler: apostille, tercümeler ve uzaktan imzalar",
+    excerpt: "Yabancı ölüm belgesi, yabancı vasiyetname, İtalyan olmayan kimlik belgeleri: apostille, legalizasyon veya yeminli tercüme ne zaman gerekir ve İtalya'ya gelmeden her şey nasıl imzalanır.",
+    reviewedBy: REVIEWED,
+    body: [
+      { type: "p", text: "Mirasçı veya vefat eden yurt dışında olan verasette neredeyse tüm belgeler İtalyan işlemle aynıdır. Başka ülkeden gelebilecekler az ama hassastır: vefat yurt dışındaysa ölüm belgesi, yabancı vasiyetname, mirasçı kimlik belgeleri ve bazen medeni hal belgeleri. Agenzia delle Entrate ve Kadastro'nun kabul etmesi için gerçekten ne gerekir." },
+      { type: "h2", text: "Ülkeye göre üç kural" },
+      {
+        type: "table",
+        headers: ["Düzenleyen ülke", "Legalizasyon", "Tercüme"],
+        rows: [
+          ["Avrupa Birliği", "Gerekmez: Regolamento 2016/1191 medeni hal belgelerinde apostille ve legalizasyonu kaldırır", "Belgeyle birlikte çok dilli standart form istenerek kaçınılabilir"],
+          ["1961 Lahey Sözleşmesi ülkeleri (ör. Birleşik Krallık, ABD, İsviçre, Arjantin, Brezilya, Avustralya)", "Apostille, belgeyi düzenleyen ülkenin makamı tarafından", "İtalya'da yeminli tercüme veya İtalyan konsolosluğu onaylı"],
+          ["Diğer ülkeler", "Düzenleyen ülkedeki İtalyan konsolosluğunda legalizasyon", "İtalya'da yeminli tercüme veya İtalyan konsolosluğu onaylı"],
+        ],
+      },
+      { type: "h2", text: "Ölüm belgesi" },
+      { type: "p", text: "Vefat eden İtalyan vatandaşıysa ve yurt dışında vefat ettiyse en basit yol ölüm kaydının konsolosluk aracılığıyla İtalyan belediyesine işlenmesidir: o andan itibaren belgeyi belediye İtalyanca verir; apostille ve tercüme gerekmez. İtalyan değilse tablodaki kurallarla yabancı belge kullanılır." },
+      { type: "h2", text: "Yabancı vasiyetname" },
+      { type: "p", text: "Yurt dışında düzenlenen vasiyetname genelde noter aracılığıyla İtalya'da ilan edilir veya geçerli kılınır; yeminli tercüme ve gerekiyorsa legalizasyon ile. Bizden farklı profesyonel gerektiren az adımdan biridir: hemen yönlendiririz ve beyanı onların süreleriyle koordine ederiz." },
+      { type: "h2", text: "İtalyan olmayan kimlik belgeleri" },
+      { type: "p", text: "Geçerli yabancı pasaport veya kimlik kartı dichiarazione di successione ve codice fiscale talebi için uygundur. Okunaklı kopya, ön ve arka yeterlidir; tercüme gerekmez." },
+      { type: "h2", text: "İmzalar: ne gerekir, ne gerekmez" },
+      {
+        type: "ul",
+        items: [
+          "Dichiarazione di successione ve voltura için noter vekaleti gerekmez: aracı olarak kişisel alanda veya kimlik kopyasıyla imzalanmış vekaletinizle iletiriz.",
+          "Codice fiscale için modello AA4/8'deki vekalet, sizin imzanızla yeterlidir.",
+          "Mirastan feragat, beneficio d'inventario ile kabul ve taşınmaz satış vekaleti için noter veya İtalyan konsolosluğu gerekir.",
+        ],
+      },
+      { type: "callout", tone: "info", title: "Önce fotoğraflar, sonra orijinaller", text: "İlk kontroller için kişisel alana yüklenen fotoğraf veya taramalar yeterlidir. Orijinaller veya apostille ve tercümeli kopyalar yalnızca gerçekten gereken belgeler için istenir; önceden söyleriz." },
+      { type: "callout", tone: "warning", title: "Apostille ve tercüme sürelerine dikkat", text: "Belge talebi, apostille ve yeminli tercüme arasında haftalar geçebilir. 12 aylık süre yakınsa bu belgelerle başlayın; biz geri kalanı hazırlarken." },
+    ],
+    sources: [FONTE_UE_1191, FONTE_ESTERI, FONTE_ADE_SCHEDA],
+  },
+  "pagare-imposte-successione-dall-estero": {
+    title: "İtalyan veraset vergilerini yurt dışından, İtalyan hesap olmadan ödemek",
+    excerpt: "Vergiler İtalyan hesaptan tahsilatla ödenir. Yurt dışında yaşıyorsanız ve hesabınız yoksa üç olası çözüm; aracı olarak ofis üzerinden ödeme dahil.",
+    reviewedBy: REVIEWED,
+    body: [
+      { type: "p", text: "Yurt dışında yaşayanlar için vergi ödemesi sık sık en can sıkıcı pratik engeldir: elektronik beyanla ödenmesi gereken tutarlar İtalyan vadesiz hesaptan tahsil edilir; birçok göçmenin artık hesabı yoktur. Hangi vergiler ödenir, nasıl ve İtalyan hesap yoksa çözümler." },
+      { type: "h2", text: "Hangi vergiler ödenir" },
+      {
+        type: "ul",
+        items: [
+          "Beyanla birlikte taşınmaz varsa: ipotek vergisi (%2) ve kadastro vergisi (%1) kadastro değeri üzerinden, her biri için minimum 200 euro, artı damga vergisi ve özel harçlar. Kendi kendine hesaplanır ve iletim anında ödenir.",
+          "Asıl veraset vergisi yalnızca mal varlığı muafiyetleri aşarsa: her çocuk veya eş için 1 milione di euro (%4), kardeşler için 100.000 euro (%6), diğerleri için muafiyet yok (%6 veya %8). 2025'ten itibaren açılan verasetlerde vergi mükellefi beyanda hesaplar; sunum süresinden itibaren 90 gün içinde veya hemen geri kalanla birlikte öder.",
+        ],
+      },
+      { type: "h2", text: "Elektronik beyanla ödeme nasıl yapılır" },
+      { type: "p", text: "Kendi kendine hesaplanan tutarlar Agenzia delle Entrate ile anlaşmalı bankada veya Poste Italiane'de açılmış vadesiz hesaptan tahsil edilir. Hesap beyan sahibine veya elektronik iletimden sorumlu kişiye, yani aracıya ait olabilir. Beyanda IBAN ve hesap sahibinin codice fiscale'i belirtilir." },
+      { type: "h2", text: "İtalyan hesabınız yoksa: üç çözüm" },
+      {
+        type: "ol",
+        items: [
+          "İtalya'da ikamet eden bir ortak mirasçı herkes için öder: beyanda mirasçılardan birinin hesabı gösterilebilir. Mümkün olduğunda en basit çözüm.",
+          "Aracı olarak ofis öder: yazılı bildirdiğimiz tam vergi tutarını önceden havale edersiniz; iletim anında ofis hesabından tahsil ederiz. Makbuzları alırsınız. Duruma göre kararlaştırırız.",
+          "Vekil aracılığıyla İtalya'da modello F24: beyan ofiste sunulduğunda mümkün ama en yavaş yol; ilk ikisi uygulanamazsa kullanırız.",
+        ],
+      },
+      { type: "callout", tone: "info", title: "Her şey önceden yazılı", text: "İletimden önce vergi hesaplamasını kalem kalem göndeririz. Yalnızca o tutarı, gördükten sonra ödersiniz. Vergiler devlete gider, bize değil: paket ücreti ayrıdır." },
+      { type: "h2", text: "Yurt dışından havaleler ve kur" },
+      { type: "p", text: "Vergiler euro cinsindendir. Hesabınız başka para birimindeyse banka komisyonlarını ve kurunu düşünün: euro bölgesi ve İsviçre'den SEPA havaleleri ucuzdur; diğer ülkelerden önce kontrol etmek iyi olur. Paket ücreti sitede Stripe ile kartla, her ülkeden ödenir." },
+      { type: "h2", text: "2025'ten önce açılan verasetler" },
+      { type: "p", text: "31 dicembre 2024'e kadar vefatlarda veraset vergisi, ödenmesi gerekiyorsa, hâlâ Agenzia delle Entrate tarafından hesaplanır ve avviso di liquidazione gelir; modello F24 ile 60 gün içinde ödenir. İtalyan hesabınız yoksa ödemeyi ofis aracılığıyla biz yönetebiliriz." },
+      { type: "callout", tone: "warning", title: "Tutarlar değişir", text: "Oranlar, muafiyetler ve minimumlar bu rehberin tarihinde yürürlükte olanlardır. Vergileri hesaplamadan önce somut durumu ve resmi kaynakları her zaman kontrol ederiz." },
+    ],
+    sources: [FONTE_ADE_IMPOSTE, FONTE_NORMATTIVA],
   },
   "fai-da-te-precompilata": {
     title: "Önceden doldurulmuş veraset: kendin yapmak mantıklı mı?",

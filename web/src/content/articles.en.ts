@@ -27,6 +27,26 @@ const FONTE_NORMATTIVA: ArticleSource = {
   label: "Normattiva - TUS Legislative Decree 346/1990",
   href: "https://www.normattiva.it",
 };
+const FONTE_ADE_COME_PRESENTARE: ArticleSource = {
+  label: "Agenzia delle Entrate - How and when to file the declaration",
+  href: "https://www.agenziaentrate.gov.it/portale/schede/dichiarazioni/dichiarazione-di-successione/come-quando-dichsucc",
+};
+const FONTE_ADE_CODICE_FISCALE: ArticleSource = {
+  label: "Agenzia delle Entrate - Tax code request (form AA4/8)",
+  href: "https://www.agenziaentrate.gov.it/portale/web/guest/schede/istanze/richiesta-ts_cf/modello-aa4-8-cf-pf",
+};
+const FONTE_UE_650: ArticleSource = {
+  label: "Regulation (EU) No 650/2012 on cross-border successions",
+  href: "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32012R0650",
+};
+const FONTE_UE_1191: ArticleSource = {
+  label: "Regulation (EU) 2016/1191 - Public documents without legalisation",
+  href: "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R1191",
+};
+const FONTE_ESTERI: ArticleSource = {
+  label: "Italian Ministry of Foreign Affairs - Consular services for Italians abroad",
+  href: "https://www.esteri.it/it/servizi-consolari-e-visti/",
+};
 
 export const articlesEn: Record<string, ArticleEnOverlay> = {
   "successione-cosa-e": {
@@ -173,26 +193,194 @@ export const articlesEn: Record<string, ArticleEnOverlay> = {
     sources: [FONTE_ADE_SCHEDA],
   },
   "eredi-estero": {
-    title: "Heirs living abroad: how to manage the case",
-    excerpt: "What changes when an heir lives outside Italy and how we follow the case remotely.",
+    title: "Italian inheritance when you live abroad: the complete guide",
+    excerpt: "Inherited a house or a bank account in Italy but living in Germany, Switzerland, the UK, the US, Argentina or elsewhere? What really changes, what you need, and how everything is done remotely, without travelling.",
     reviewedBy: REVIEWED,
     body: [
-      { type: "p", text: "Having an heir who lives abroad is not a problem: the succession declaration concerns Italian assets and can be handled entirely remotely." },
-      { type: "h2", text: "What you really need" },
+      { type: "p", text: "If you live abroad and your parents' house, a plot of land or a bank account remained in Italy, the succession declaration (dichiarazione di successione) must still be filed in Italy, within 12 months of the death. You don't need to travel: the declaration is filed electronically by an authorised intermediary, which is what we are. Our service was built online precisely for people who cannot walk into an office, and living abroad is the case where that matters most." },
+      { type: "h2", text: "The two typical cases" },
       {
         type: "ul",
         items: [
-          "The Italian tax code of every heir (including those living abroad): if missing, it can be obtained.",
-          "ID documents and personal details of all heirs.",
-          "A mandate or power of attorney to the intermediary, since the person filing is an heir and/or their representative.",
+          "The deceased lived in Italy and one or more heirs live abroad: the procedure is the ordinary one, only the way documents and signatures are collected changes.",
+          "The deceased lived abroad and owned assets in Italy: the declaration must still be filed in Italy, with a few extra rules on the competent office, taxes and applicable law. We cover it in a dedicated guide.",
         ],
       },
-      { type: "p", text: "Residents abroad may, exceptionally, file the paper form only if electronic filing is impossible; we handle the electronic route for you." },
-      { type: "h2", text: "Fully remote, in your language too" },
-      { type: "p", text: "Questionnaire, documents, communications and signatures happen online: you don't need to return to Italy for the declaration." },
-      { type: "callout", tone: "info", title: "Time zone and distance don't matter", text: "Upload documents whenever you like from your client area, even with phone photos. We take care of the rest." },
+      { type: "h2", text: "What changes compared with living in Italy" },
+      {
+        type: "ul",
+        items: [
+          "Tax code (codice fiscale): every heir must have one, even if they never lived in Italy. Without it the declaration cannot be transmitted. It can be obtained at the consulate or, faster, in Italy through a proxy given to us.",
+          "Foreign documents: a death certificate or a will issued abroad may need an apostille or legalisation and a translation. Within the European Union the rules are simpler.",
+          "Signatures: we transmit the declaration with your engagement letter signed remotely. No notarial power of attorney is needed for the declaration alone.",
+          "Paying the taxes: they are paid by direct debit from an Italian bank account. If you don't have one, there are solutions, including debiting the firm's account as intermediary.",
+          "Time zones and language: we work in writing, on WhatsApp and email, so you reply when you can. The site and our communications are available in several languages.",
+        ],
+      },
+      { type: "h2", text: "How it works, in five steps" },
+      {
+        type: "ol",
+        items: [
+          "You fill in the online questionnaire: two minutes, and you immediately know which package you need and what it costs.",
+          "You message us on WhatsApp or pay directly. We open your client area with the document list for your case.",
+          "You upload documents whenever you like, even as phone photos. We check cadastral data, title deeds and tax codes; if something is missing, we can often retrieve it in Italy.",
+          "We confirm taxes and amounts in writing, then you sign the engagement remotely and we transmit the declaration to Agenzia delle Entrate.",
+          "You receive the filing receipt and, if there are properties, the cadastral transfer (voltura). Everything stays in your client area.",
+        ],
+      },
+      { type: "callout", tone: "info", title: "You don't need to come to Italy", text: "No step of the succession declaration requires your physical presence. Things that in Italy are done at a counter, such as requesting a tax code or a cadastral search, we do for you with your proxy." },
+      { type: "h2", text: "What we actually do for you" },
+      {
+        type: "ul",
+        items: [
+          "We request the tax code for heirs who don't have one, by proxy, at Agenzia delle Entrate.",
+          "We check the properties in the Cadastre and in the deeds: this is where cases handled from a distance most often get stuck.",
+          "We prepare and transmit the declaration and the cadastral transfer as an authorised intermediary.",
+          "If you don't have an Italian bank account, we agree on paying the taxes through the firm, with amounts and receipts in writing.",
+          "We tell you clearly if any step requires a notary or the consulate, and which one.",
+        ],
+      },
+      { type: "h2", text: "When a notary or the consulate is also needed" },
+      { type: "p", text: "The succession declaration is not a notarial deed and does not require one. A notary, or the Italian consulate, which performs some notarial functions for Italian citizens, is needed instead to renounce the inheritance, to accept it with benefit of inventory, to publish a will and to sell the inherited property. If your case involves them, we tell you before, not after." },
+      { type: "h2", text: "How much it costs" },
+      { type: "p", text: "The packages are the same as for people living in Italy and are shown on the Pricing page: the fee includes the surveyor, the declaration and the cadastral transfer. Statutory taxes are separate for everyone and we tell you the amount before filing. If your case needs extra steps, such as a tax code or a translation, we tell you straight away, with the figure." },
+      { type: "callout", tone: "warning", title: "The 12 months apply to you too", text: "The deadline runs from the date of death, not from when you manage to deal with it. If it is close, write to us now: for people abroad, the longest part is often the tax code." },
     ],
-    sources: [FONTE_ADE_SCHEDA],
+    sources: [FONTE_ADE_SCHEDA, FONTE_ADE_COME_PRESENTARE, FONTE_ADE_CODICE_FISCALE],
+  },
+  "codice-fiscale-erede-estero": {
+    title: "Italian tax code for an heir living abroad: how to get it",
+    excerpt: "Without every heir's codice fiscale the declaration cannot be filed. Who already has one without knowing, how to request it at the consulate or in Italy by proxy, what you need.",
+    reviewedBy: REVIEWED,
+    body: [
+      { type: "p", text: "The Italian tax code (codice fiscale) is the single item that most often blocks successions with heirs abroad: the electronic declaration requires one for every heir and legatee, and without it the file is rejected. The good news is that getting one is easier than it seems, and does not require coming to Italy." },
+      { type: "h2", text: "You may already have one" },
+      { type: "p", text: "Anyone born in Italy, who worked or studied in Italy, has an old health card or is registered with AIRE often already has a tax code, even if unused for years. Check old documents, the health card or a tax return. If you can't find it, with your personal details we can check whether one already exists: a tax code is never issued twice." },
+      { type: "h2", text: "How to get one if missing" },
+      {
+        type: "ol",
+        items: [
+          "At the Italian consulate of the country where you live: the ordinary route for citizens resident abroad. You file form AA4/8 with a valid ID. Timing depends on the consulate and can be long.",
+          "In Italy, at any Agenzia delle Entrate office, through a proxy: form AA4/8 is signed by you, with the proxy section filled in, and the proxy holder files it with their own ID and a copy of yours. This is the route we use, because it is usually the fastest.",
+        ],
+      },
+      { type: "callout", tone: "info", title: "We do it with your proxy", text: "We send you the pre-filled form, you sign it and return it with a copy of your ID. We file it at Agenzia delle Entrate and send you the tax code as soon as it is issued." },
+      { type: "h2", text: "What you need" },
+      {
+        type: "ul",
+        items: [
+          "A valid passport or identity card (legible copy, front and back).",
+          "Full personal details: surname, name, sex, date and place of birth, residential address abroad.",
+          "The reason for the request: the succession in Italy. It must be stated on the form.",
+          "Form AA4/8 signed, with the proxy section completed if we file it.",
+        ],
+      },
+      { type: "h2", text: "Heirs who are not Italian citizens" },
+      { type: "p", text: "The same procedure applies: form AA4/8 can be filed at any Agenzia delle Entrate office through a proxy, with a stated reason. For foreign citizens the Italian consulate only steps in in special cases, so the proxy route in Italy is almost always the simplest." },
+      { type: "callout", tone: "warning", title: "Start here if the deadline is close", text: "The tax code is the step with the least predictable timing in the whole procedure. If the death was several months ago, request it now: the rest of the declaration is prepared in parallel." },
+    ],
+    sources: [FONTE_ADE_CODICE_FISCALE, FONTE_ADE_SCHEDA],
+  },
+  "successione-defunto-residente-estero": {
+    title: "The deceased lived abroad and owned assets in Italy: what to do",
+    excerpt: "The declaration is filed in Italy even if the death occurred abroad: which office, which assets are taxed, what the EU Succession Regulation says and when a notary is needed.",
+    reviewedBy: REVIEWED,
+    body: [
+      { type: "p", text: "It is the classic situation of many emigrant families: a parent lived for years in Germany, Switzerland or Argentina but left the family home or a rented flat in Italy. If there are assets in Italy, the succession declaration must be filed in Italy, within 12 months of the death, even if the death occurred abroad and even if all the heirs live abroad." },
+      { type: "h2", text: "Which assets are taxed" },
+      { type: "p", text: "The rule is in the Italian succession tax code (TUS, art. 2). If the deceased was resident in Italy at the time of death, the tax applies to all assets, wherever located. If the deceased was not resident in Italy, the tax applies only to assets located in Italy: real estate, accounts with Italian banks, shares in Italian companies. Assets abroad follow the rules of the country where they are." },
+      { type: "callout", tone: "info", title: "Double taxation", text: "Italy has inheritance-tax treaties with only a few countries, including France, the United Kingdom and the United States. Otherwise, what you pay in Italy on Italian assets must be coordinated with the estate filing in your country of residence: worth checking with a local adviser." },
+      { type: "h2", text: "Which office is competent" },
+      { type: "p", text: "If the deceased had lived in Italy before moving abroad, the competent office is the Agenzia delle Entrate office of the last Italian residence. If they were never resident in Italy or the last residence is unknown, a Rome office designated by the Agency is competent. With electronic filing we handle this detail when preparing the declaration." },
+      { type: "h2", text: "How it is filed" },
+      { type: "p", text: "Electronically through an authorised intermediary, exactly as for people living in Italy: we collect documents and signatures remotely and transmit the file. The law allows residents abroad, only if electronic filing is impossible, to post the paper form by registered mail: an exception that is almost never needed in practice." },
+      { type: "h2", text: "Who inherits: the applicable law" },
+      { type: "p", text: "The tax side and the civil side are two different things. Who the heirs are, and in which shares, is determined by the law applicable to the succession. In the European Union, Regulation 650/2012 applies: for deaths from 17 August 2015, the law of the country where the deceased was habitually resident governs, unless the will chose the law of the country of nationality. So an Italian resident in Germany without a will is inherited under German law, including for the house in Italy. The United Kingdom, Ireland and Denmark do not apply the Regulation; for non-EU countries, Italian private international law rules apply." },
+      { type: "callout", tone: "warning", title: "Where our work ends", text: "We prepare and transmit the declaration and the cadastral transfer for the assets in Italy. If the succession is governed by foreign law, if there is a foreign will to enforce or a European Certificate of Succession to obtain, a notary or a lawyer is also needed: we tell you at the start, with names and steps, not halfway through." },
+      { type: "h2", text: "The extra documents" },
+      {
+        type: "ul",
+        items: [
+          "Death certificate issued abroad: if the deceased was an Italian citizen, the record must be registered in the Italian municipality through the consulate, and an Italian certificate is then issued. Otherwise, the foreign certificate with apostille or legalisation and translation is needed, subject to EU simplifications.",
+          "Proof of the deceased's residence abroad, for example AIRE registration or a residence certificate from the foreign country.",
+          "Tax code of the deceased and of all heirs: non-Italian heirs must have one too.",
+          "The will, if any, with its publication or a European Certificate of Succession.",
+        ],
+      },
+      { type: "h2", text: "First-home relief" },
+      { type: "p", text: "Mortgage and cadastral taxes on the inherited property can be reduced with the first-home relief, but for people living abroad the rules are specific and changed in 2023: they depend on where the property is and on the heir's ties with Italy. We check it case by case before calculating the taxes." },
+    ],
+    sources: [FONTE_ADE_COME_PRESENTARE, FONTE_NORMATTIVA, FONTE_UE_650],
+  },
+  "documenti-esteri-successione-apostille": {
+    title: "Documents from abroad: apostille, translations and remote signatures",
+    excerpt: "Foreign death certificate, foreign will, non-Italian ID documents: when an apostille, legalisation or sworn translation is needed, and how everything is signed without coming to Italy.",
+    reviewedBy: REVIEWED,
+    body: [
+      { type: "p", text: "In a succession with heirs or deceased abroad, almost all documents are the same as in an Italian case. Those that may come from another country are few but delicate: the death certificate if the death occurred abroad, a foreign will, the heirs' ID documents and, in some cases, civil-status certificates. Here is what is really needed for Agenzia delle Entrate and the Cadastre to accept them." },
+      { type: "h2", text: "Three rules depending on the country" },
+      {
+        type: "table",
+        headers: ["Issuing country", "Legalisation", "Translation"],
+        rows: [
+          ["European Union", "Not needed: Regulation 2016/1191 removes apostille and legalisation for civil-status certificates", "Can be avoided by requesting the multilingual standard form together with the certificate"],
+          ["Countries of the 1961 Hague Convention (e.g. United Kingdom, United States, Switzerland, Argentina, Brazil, Australia)", "Apostille, affixed by the authority of the issuing country", "Sworn translation in Italy or certified by the Italian consulate"],
+          ["Other countries", "Legalisation at the Italian consulate in the issuing country", "Sworn translation in Italy or certified by the Italian consulate"],
+        ],
+      },
+      { type: "h2", text: "The death certificate" },
+      { type: "p", text: "If the deceased was an Italian citizen and died abroad, the simplest route is to have the death record registered in the Italian municipality through the consulate: from then on the certificate is issued by the municipality, in Italian, and neither apostille nor translation is needed. If the deceased was not Italian, the foreign certificate is used with the rules in the table." },
+      { type: "h2", text: "A foreign will" },
+      { type: "p", text: "A will drawn up abroad normally has to be published or enforced in Italy through a notary, with a sworn translation and, where needed, legalisation. It is one of the few steps that requires a professional other than us: we point you to one straight away and coordinate the declaration with their timing." },
+      { type: "h2", text: "Non-Italian ID documents" },
+      { type: "p", text: "A valid foreign passport or identity card is fine for the succession declaration and for the tax code request. A legible copy, front and back, is enough; no translation." },
+      { type: "h2", text: "Signatures: what is needed and what isn't" },
+      {
+        type: "ul",
+        items: [
+          "For the succession declaration and the cadastral transfer no notarial power of attorney is needed: we transmit them as intermediary, with your engagement signed remotely in the client area or returned signed with a copy of your ID.",
+          "For the tax code, the proxy included in form AA4/8, signed by you, is enough.",
+          "A notary or the Italian consulate, which performs notarial functions for Italian citizens, is needed instead to renounce the inheritance, to accept it with benefit of inventory and to sign a power of attorney to sell the property.",
+        ],
+      },
+      { type: "callout", tone: "info", title: "Photos first, originals later", text: "For the initial checks, photos or scans uploaded to the client area are enough. Originals, or copies with apostille and translation, are requested only for the documents that really require them, and we tell you beforehand." },
+      { type: "callout", tone: "warning", title: "Mind the timing of apostilles and translations", text: "Between requesting the certificate, the apostille and the sworn translation, weeks can pass. If the 12-month deadline is close, start with these documents while we prepare the rest." },
+    ],
+    sources: [FONTE_UE_1191, FONTE_ESTERI, FONTE_ADE_SCHEDA],
+  },
+  "pagare-imposte-successione-dall-estero": {
+    title: "Paying Italian inheritance taxes from abroad, without an Italian bank account",
+    excerpt: "Taxes are paid by direct debit from an Italian account. If you live abroad and don't have one, here are the three possible solutions, including payment through the firm as intermediary.",
+    reviewedBy: REVIEWED,
+    body: [
+      { type: "p", text: "For people living abroad, paying the taxes is often the most annoying practical hurdle: the amounts due with the electronic declaration are paid by direct debit from an Italian bank account, and many emigrants no longer have one. Here is which taxes are paid, how, and the solutions when the Italian account is missing." },
+      { type: "h2", text: "Which taxes are paid" },
+      {
+        type: "ul",
+        items: [
+          "With the declaration, if there are properties: mortgage tax (2%) and cadastral tax (1%) on the cadastral value, with a minimum of 200 euros each, plus stamp duty and special fees. They are self-assessed and paid at the time of filing.",
+          "Inheritance tax proper only if the estate exceeds the allowances: 1 million euros for each child or for the spouse (4% rate), 100,000 euros for siblings (6%), no allowance for others (6% or 8%). For successions opened from 2025 it is calculated by the taxpayer in the declaration and paid within 90 days of the filing deadline, or immediately together with the rest.",
+        ],
+      },
+      { type: "h2", text: "How payment works with electronic filing" },
+      { type: "p", text: "Self-assessed amounts are paid by direct debit from a current account held with a bank partnered with Agenzia delle Entrate or with Poste Italiane. The account may belong to the declarant or to the person in charge of the electronic transmission, i.e. the intermediary. The declaration states the IBAN and the tax code of the account holder." },
+      { type: "h2", text: "No Italian account? Three solutions" },
+      {
+        type: "ol",
+        items: [
+          "A co-heir resident in Italy pays for everyone: the declaration can state the account of one of the heirs. The simplest solution when available.",
+          "The firm pays as intermediary: you wire us in advance the exact amount of the taxes, which we confirm in writing, and we pay them by debit from the firm's account at the time of filing. You receive the receipts. This is an option we agree on case by case.",
+          "F24 form in Italy through a proxy: possible when the declaration is filed at the office, but it is the slowest route and we use it only if the first two are not feasible.",
+        ],
+      },
+      { type: "callout", tone: "info", title: "Everything in writing, beforehand", text: "Before filing we send you the tax calculation item by item. You pay only that figure, and only after seeing it. Taxes go to the State, not to us: the package fee is separate." },
+      { type: "h2", text: "Transfers from abroad and exchange rates" },
+      { type: "p", text: "Taxes are in euros. If your account is in another currency, consider your bank's fees and exchange rate: SEPA transfers from euro-area countries and Switzerland cost little, from other countries it is better to check first. The package fee, on the other hand, is paid on the site by card through Stripe, from any country." },
+      { type: "h2", text: "Successions opened before 2025" },
+      { type: "p", text: "For deaths up to 31 December 2024, inheritance tax, if due, is still calculated by Agenzia delle Entrate and a payment notice arrives, to be paid with an F24 form within 60 days. In this case too, if you don't have an Italian account, we can handle the payment through the firm." },
+      { type: "callout", tone: "warning", title: "Amounts change", text: "Rates, allowances and minimums are those in force at the date of this guide. We always check the specific case and the official sources before calculating the taxes." },
+    ],
+    sources: [FONTE_ADE_IMPOSTE, FONTE_NORMATTIVA],
   },
   "fai-da-te-precompilata": {
     title: "Pre-filled succession: is DIY worth it?",

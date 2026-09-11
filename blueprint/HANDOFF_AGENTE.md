@@ -101,6 +101,27 @@ Da fare **in UI** (l'Admin API non espone traffico interno né filtri dati):
   email» (2 avvii, 0 invii in 28 gg): richiede nuovo `kind` lead con email opzionale.
 - Rumore: un quiz Ads con 14 conti, 36 eredi, «non so» ovunque (curioso/test).
 
+### Nicchia «italiani all'estero» (11/09) — guide fatte, Ads da configurare in UI
+Decisione Lorenzo: provare il bacino degli italiani all'estero con successione in Italia
+(l'unico cliente pagante era un italiano in Germania). Lorenzo conferma: **codice fiscale
+con delega** lo fa lui; **imposte pagate dallo studio come intermediario** «se capita»
+(addebito sul conto dell'intermediario è previsto dall'AdE).
+- **Guide** (fixture `web/src/content/articles.ts`, categoria `stranieri`, 11 lingue via
+  overlay `articles.<locale>.ts`): `eredi-estero` rifatta come pilastro (**featured**),
+  nuove `codice-fiscale-erede-estero`, `successione-defunto-residente-estero`,
+  `documenti-esteri-successione-apostille`, `pagare-imposte-successione-dall-estero`.
+  Fatti verificati su AdE (ufficio competente = ultima residenza italiana, altrimenti Roma;
+  cartaceo per raccomandata solo se impossibilitati; pagamento con addebito su conto del
+  dichiarante **o dell'intermediario**; AA4/8 presentabile da delegato a qualunque ufficio).
+  Sitemap automatica. Nuove costanti fonte `FONTE_ADE_COME_PRESENTARE`,
+  `FONTE_ADE_CODICE_FISCALE`, `FONTE_UE_650`, `FONTE_UE_1191`, `FONTE_ESTERI`.
+- **Piano Ads completo in `blueprint/ADS_EREDI_ESTERO.md`**: campagna `Search | Estero IT |
+  Soft launch` 7 €/gg, Paesi UE+CH+UK in «Presenza», lingua IT, 4 gruppi, keyword, negative,
+  RSA con lunghezze verificate, landing `/guide/eredi-estero`, soglie di decisione a 100 clic.
+  Fase 2: campagna EN. Da configurare **a mano in UI** (nessun accesso API Ads).
+- Prossimi passi sito (non fatti): domanda quiz «vivi all'estero?», landing `/eredi-estero`,
+  pacchetto/supplemento «Erede all'estero», FAQ dedicate, portoghese per il Brasile.
+
 ### Prime evidenze (28 gg al 06/09)
 - Il traffico è dominato da test interni: Roma 10 utenti / 237 viste, Chiavari 2 / 76,
   Firenze 8 / 93, Torino 5 / 67. `/come-funziona` come landing = 18 sessioni **direct da 2

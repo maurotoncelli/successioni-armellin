@@ -27,6 +27,26 @@ const FONTE_NORMATTIVA: ArticleSource = {
   label: "Normattiva - TUS décret législatif 346/1990",
   href: "https://www.normattiva.it",
 };
+const FONTE_ADE_COME_PRESENTARE: ArticleSource = {
+  label: "Agenzia delle Entrate - Comment et quand déposer la déclaration",
+  href: "https://www.agenziaentrate.gov.it/portale/schede/dichiarazioni/dichiarazione-di-successione/come-quando-dichsucc",
+};
+const FONTE_ADE_CODICE_FISCALE: ArticleSource = {
+  label: "Agenzia delle Entrate - Demande de codice fiscale (formulaire AA4/8)",
+  href: "https://www.agenziaentrate.gov.it/portale/web/guest/schede/istanze/richiesta-ts_cf/modello-aa4-8-cf-pf",
+};
+const FONTE_UE_650: ArticleSource = {
+  label: "Règlement (UE) n° 650/2012 sur les successions transfrontalières",
+  href: "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32012R0650",
+};
+const FONTE_UE_1191: ArticleSource = {
+  label: "Règlement (UE) 2016/1191 - Documents publics sans légalisation",
+  href: "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32016R1191",
+};
+const FONTE_ESTERI: ArticleSource = {
+  label: "Ministère des Affaires étrangères italien - Services consulaires pour les Italiens à l'étranger",
+  href: "https://www.esteri.it/it/servizi-consolari-e-visti/",
+};
 
 export const articlesFr: Record<string, ArticleFrOverlay> = {
   "successione-cosa-e": {
@@ -173,26 +193,194 @@ export const articlesFr: Record<string, ArticleFrOverlay> = {
     sources: [FONTE_ADE_SCHEDA],
   },
   "eredi-estero": {
-    title: "Héritiers vivant à l'étranger : comment gérer la procédure",
-    excerpt: "Ce qui change lorsqu'un héritier réside hors d'Italie et comment nous suivons la procédure à distance, y compris dans votre langue.",
+    title: "Succession en Italie si vous vivez à l'étranger : le guide complet",
+    excerpt: "Vous avez hérité d'une maison ou d'un compte en Italie mais vivez en Allemagne, en Suisse, au Royaume-Uni, en Argentine ou ailleurs ? Ce qui change vraiment, ce qu'il faut et comment tout faire à distance, sans revenir.",
     reviewedBy: REVIEWED,
     body: [
-      { type: "p", text: "Avoir un héritier qui vit à l'étranger n'est pas un problème : la déclaration de succession concerne le patrimoine en Italie et se dépose néanmoins auprès de l'Agenzia delle Entrate. Ce qui change surtout, c'est la façon de recueillir documents et signatures, que nous gérons entièrement à distance." },
-      { type: "h2", text: "Ce qu'il faut vraiment" },
+      { type: "p", text: "Si vous vivez à l'étranger et qu'en Italie est restée la maison de vos parents, un terrain ou un compte, la dichiarazione di successione (déclaration de succession) doit être déposée en Italie dans les 12 mois suivant le décès. Pas besoin de revenir : la déclaration est télématique et la transmet un intermédiaire habilité, c'est-à-dire nous. Notre service a été conçu en ligne précisément pour ceux qui ne peuvent pas se rendre au guichet, et vivre à l'étranger est le cas où cela compte le plus." },
+      { type: "h2", text: "Les deux cas typiques" },
       {
         type: "ul",
         items: [
-          "Le code fiscal italien de chaque héritier (y compris ceux vivant à l'étranger) : s'il manque, il peut être demandé.",
-          "Les pièces d'identité et les données personnelles de tous les héritiers.",
-          "Un mandat ou une délégation à l'intermédiaire, puisque la déclaration est déposée par un héritier et que nous la transmettons pour son compte.",
+          "Le défunt vivait en Italie et un ou plusieurs héritiers vivent à l'étranger : la procédure est ordinaire, seule la façon de recueillir documents et signatures change.",
+          "Le défunt vivait à l'étranger et avait des biens en Italie : la déclaration se fait quand même en Italie, avec quelques règles supplémentaires sur l'office compétent, les impôts et la loi applicable. Nous en parlons dans un guide dédié.",
         ],
       },
-      { type: "p", text: "Les résidents à l'étranger peuvent, à titre exceptionnel, déposer le modèle papier uniquement s'ils sont dans l'impossibilité de transmettre par voie télématique ; dans la grande majorité des cas, nous procédons par voie télématique en tant qu'intermédiaire habilité." },
-      { type: "h2", text: "Tout à distance, y compris dans votre langue" },
-      { type: "p", text: "Questionnaire, documents, communications et signatures se font en ligne : vous n'avez pas à retourner en Italie. Nous pouvons vous accompagner par e-mail ou messagerie dans votre langue et, si besoin, organiser un appel avec traduction. Les points importants (montants, délais, documents) vous sont toujours confirmés par écrit ; les documents officiels restent en italien." },
-      { type: "callout", tone: "info", title: "Fuseau horaire et distance ne comptent pas", text: "Vous téléchargez les documents quand vous voulez depuis votre espace personnel, même en photo avec votre téléphone. Nous nous chargeons de les contrôler et de vous mettre en règle dans les délais." },
+      { type: "h2", text: "Ce qui change par rapport à qui vit en Italie" },
+      {
+        type: "ul",
+        items: [
+          "Codice fiscale (code fiscal italien) : chaque héritier doit en avoir un, même s'il n'a jamais vécu en Italie. Sans lui, la déclaration ne se transmet pas. Il peut s'obtenir au consulat ou, plus vite, en Italie par délégation à nous.",
+          "Documents étrangers : un certificat de décès ou un testament délivré à l'étranger peuvent exiger apostille ou légalisation et traduction. Au sein de l'Union européenne, les règles sont plus simples.",
+          "Signatures : nous transmettons la déclaration avec votre mandat signé à distance. Aucune procuration notariale n'est nécessaire pour la seule déclaration.",
+          "Paiement des impôts : il se fait par prélèvement sur un compte italien. Si vous n'en avez pas, il existe des solutions, y compris le prélèvement sur le compte du cabinet en tant qu'intermédiaire.",
+          "Fuseau horaire et langue : nous travaillons par écrit, sur WhatsApp et par e-mail, pour que vous répondiez quand vous le pouvez. Le site et les communications sont disponibles en plusieurs langues.",
+        ],
+      },
+      { type: "h2", text: "Comment ça marche, en cinq étapes" },
+      {
+        type: "ol",
+        items: [
+          "Vous remplissez le questionnaire en ligne : deux minutes, et vous savez tout de suite quel forfait il vous faut et combien ça coûte.",
+          "Vous nous écrivez sur WhatsApp ou payez directement. Nous ouvrons votre espace personnel avec la liste des documents pour votre cas.",
+          "Vous téléchargez les documents quand vous voulez, même en photo depuis le téléphone. Nous vérifions les données cadastrales, les actes de provenance et les codice fiscale ; s'il manque quelque chose, nous le récupérons souvent en Italie.",
+          "Nous vous confirmons par écrit impôts et montants, puis vous signez le mandat à distance et nous transmettons la déclaration à l'Agenzia delle Entrate (administration fiscale italienne).",
+          "Vous recevez l'accusé de dépôt et, s'il y a des immeubles, la voltura (mise à jour cadastrale). Tout reste dans votre espace personnel.",
+        ],
+      },
+      { type: "callout", tone: "info", title: "Vous n'avez pas à revenir en Italie", text: "Aucune étape de la déclaration de succession n'exige votre présence physique. Ce qui en Italie se fait au guichet — demander un codice fiscale ou une visure — nous le faisons avec votre délégation." },
+      { type: "h2", text: "Ce que nous faisons concrètement" },
+      {
+        type: "ul",
+        items: [
+          "Nous demandons le codice fiscale des héritiers qui n'en ont pas, par délégation, auprès de l'Agenzia delle Entrate.",
+          "Nous vérifions les immeubles au Cadastre et dans les actes : c'est là que les dossiers menés de loin bloquent le plus souvent.",
+          "Nous préparons et transmettons la déclaration et la voltura en tant qu'intermédiaire habilité.",
+          "Si vous n'avez pas de compte en Italie, nous convenons du paiement des impôts via le cabinet, avec montants et reçus par écrit.",
+          "Nous vous disons clairement si une étape requiert un notaire ou le consulat, et lequel.",
+        ],
+      },
+      { type: "h2", text: "Quand il faut aussi un notaire ou le consulat" },
+      { type: "p", text: "La déclaration de succession n'est pas un acte notarial et n'en exige pas. En revanche, un notaire — ou le consulat italien, qui pour les citoyens italiens exerce certaines fonctions notariales — est nécessaire pour renoncer à la succession, l'accepter avec bénéfice d'inventaire, publier un testament et vendre l'immeuble hérité. Si votre cas le prévoit, nous vous le disons avant, pas après." },
+      { type: "h2", text: "Combien ça coûte" },
+      { type: "p", text: "Les forfaits sont les mêmes que pour ceux qui vivent en Italie et figurent sur la page Tarifs : l'honoraire comprend le géomètre, la déclaration et la voltura. Les impôts légaux sont en sus pour tout le monde et nous vous les communiquons avant la transmission. Si votre cas exige des étapes supplémentaires, comme le codice fiscale ou une traduction, nous vous le disons tout de suite, avec le montant." },
+      { type: "callout", tone: "warning", title: "Les 12 mois valent aussi à l'étranger", text: "Le délai court à partir de la date du décès, pas du moment où vous pouvez vous en occuper. S'il approche, écrivez-nous tout de suite : pour ceux qui vivent à l'étranger, l'étape la plus longue est souvent le codice fiscale." },
     ],
-    sources: [FONTE_ADE_SCHEDA],
+    sources: [FONTE_ADE_SCHEDA, FONTE_ADE_COME_PRESENTARE, FONTE_ADE_CODICE_FISCALE],
+  },
+  "codice-fiscale-erede-estero": {
+    title: "Codice fiscale pour un héritier vivant à l'étranger : comment l'obtenir",
+    excerpt: "Sans le codice fiscale de chaque héritier, la déclaration ne se transmet pas. Qui en a déjà un sans le savoir, comment le demander au consulat ou en Italie par délégation, ce qu'il faut.",
+    reviewedBy: REVIEWED,
+    body: [
+      { type: "p", text: "Le codice fiscale italien est la donnée qui bloque le plus souvent les successions avec héritiers à l'étranger : la déclaration télématique exige celui de chaque héritier et légataire, et sans lui la transmission est impossible. La bonne nouvelle : l'obtenir est plus simple qu'il n'y paraît, et ne demande pas de venir en Italie." },
+      { type: "h2", text: "Vous l'avez peut-être déjà" },
+      { type: "p", text: "Qui est né en Italie, y a travaillé ou étudié, possède une ancienne carte sanitaire ou est inscrit à l'AIRE (registre des Italiens à l'étranger) a souvent déjà un codice fiscale, même s'il ne l'utilise plus depuis des années. Vérifiez d'anciens documents, la carte sanitaire ou une déclaration de revenus. Si vous ne le trouvez pas, avec vos données personnelles nous pouvons vérifier s'il existe déjà : un codice fiscale ne se demande pas deux fois." },
+      { type: "h2", text: "Comment l'obtenir s'il manque" },
+      {
+        type: "ol",
+        items: [
+          "Au consulat italien du pays où vous vivez : la voie ordinaire pour les citoyens résidents à l'étranger. On présente le formulaire AA4/8 avec une pièce d'identité valide. Les délais dépendent du consulat et peuvent être longs.",
+          "En Italie, dans n'importe quel bureau de l'Agenzia delle Entrate, par une personne déléguée : le formulaire AA4/8 est signé par vous, avec la partie délégation remplie, et le délégué le dépose avec sa pièce et une copie de la vôtre. C'est la voie que nous utilisons, car c'est en général la plus rapide.",
+        ],
+      },
+      { type: "callout", tone: "info", title: "Nous le faisons avec votre délégation", text: "Nous vous envoyons le formulaire prérempli, vous le signez et nous le renvoyez avec une copie de votre pièce d'identité. Nous le déposons auprès de l'Agenzia delle Entrate et vous communiquons le codice fiscale dès qu'il est attribué." },
+      { type: "h2", text: "Ce qu'il faut" },
+      {
+        type: "ul",
+        items: [
+          "Passeport ou carte d'identité en cours de validité (copie lisible, recto et verso).",
+          "Données personnelles complètes : nom, prénom, sexe, date et lieu de naissance, adresse de résidence à l'étranger.",
+          "Motif de la demande : la succession en Italie. Il doit figurer sur le formulaire.",
+          "Formulaire AA4/8 signé, avec la délégation remplie si nous le déposons.",
+        ],
+      },
+      { type: "h2", text: "Héritiers qui ne sont pas citoyens italiens" },
+      { type: "p", text: "Même procédure : le formulaire AA4/8 peut être déposé dans n'importe quel bureau de l'Agenzia delle Entrate par un délégué, avec une demande motivée. Pour les citoyens étrangers, le consulat italien n'intervient que dans des cas particuliers : la délégation en Italie est presque toujours la voie la plus simple." },
+      { type: "callout", tone: "warning", title: "Commencez par là si le délai approche", text: "Le codice fiscale est l'étape aux délais les moins prévisibles de toute la procédure. Si le décès remonte à plusieurs mois, demandez-le tout de suite : le reste de la déclaration se prépare en parallèle." },
+    ],
+    sources: [FONTE_ADE_CODICE_FISCALE, FONTE_ADE_SCHEDA],
+  },
+  "successione-defunto-residente-estero": {
+    title: "Le défunt vivait à l'étranger et avait des biens en Italie : que faire",
+    excerpt: "Déclaration en Italie même si le décès est survenu à l'étranger : quel office, quels biens sont imposés, ce que dit le règlement européen et quand un notaire est nécessaire.",
+    reviewedBy: REVIEWED,
+    body: [
+      { type: "p", text: "C'est le cas classique de tant de familles émigrées : un parent vivait depuis des années en Allemagne, en Suisse ou en Argentine, mais en Italie a laissé la maison du village ou un appartement loué. S'il y a des biens en Italie, la dichiarazione di successione doit être déposée en Italie dans les 12 mois suivant le décès, même si le décès est survenu à l'étranger et même si tous les héritiers vivent à l'étranger." },
+      { type: "h2", text: "Sur quels biens s'imposent les impôts" },
+      { type: "p", text: "La règle est dans le Testo unico sulle successioni (TUS, art. 2). Si le défunt était résident en Italie au moment du décès, l'impôt porte sur tous les biens, où qu'ils se trouvent. S'il n'était pas résident en Italie, l'impôt ne porte que sur les biens situés en Italie : immeubles, comptes auprès de banques italiennes, participations dans des sociétés italiennes. Les biens à l'étranger suivent les règles du pays où ils se trouvent." },
+      { type: "callout", tone: "info", title: "Double imposition", text: "L'Italie n'a des conventions contre la double imposition en matière de successions qu'avec quelques pays, dont la France, le Royaume-Uni et les États-Unis. Pour le reste, ce que vous payez en Italie sur les biens italiens doit être coordonné avec la déclaration dans le pays de résidence : il vaut la peine de consulter un conseiller local." },
+      { type: "h2", text: "Auprès de quel office déposer" },
+      { type: "p", text: "Si le défunt avait eu une résidence en Italie avant de s'installer à l'étranger, l'office compétent est celui de l'Agenzia delle Entrate de la dernière résidence italienne. S'il n'a jamais été résident en Italie ou si la dernière résidence est inconnue, la compétence revient à un office de Rome désigné par l'Agence. Avec la déclaration télématique, nous gérons ce détail lors de la compilation." },
+      { type: "h2", text: "Comment la déposer" },
+      { type: "p", text: "Par voie télématique via un intermédiaire habilité, exactement comme pour ceux qui vivent en Italie : nous recueillons documents et signatures à distance et transmettons. La loi permet aux résidents à l'étranger, seulement s'ils sont dans l'impossibilité de transmettre par voie télématique, d'envoyer le modèle papier par recommandé : une exception presque jamais utile en pratique." },
+      { type: "h2", text: "Qui hérite : la loi applicable" },
+      { type: "p", text: "Le volet fiscal et le volet civil sont deux choses distinctes. Qui sont les héritiers et en quelles quotes-parts, c'est la loi applicable à la succession qui le détermine. Dans l'Union européenne, le règlement 650/2012 s'applique : pour les décès à partir du 17 août 2015, c'est la loi du pays où le défunt avait sa résidence habituelle qui s'applique, sauf si le testament avait choisi la loi du pays de citoyenneté. Ainsi, un Italien résident en Allemagne sans testament hérite selon le droit allemand, y compris pour la maison en Italie. Le Royaume-Uni, l'Irlande et le Danemark n'appliquent pas le règlement ; hors UE, valent les règles italiennes de droit international privé." },
+      { type: "callout", tone: "warning", title: "Où s'arrête notre travail", text: "Nous préparons et transmettons la déclaration et la voltura sur les biens en Italie. Si la succession est régie par une loi étrangère, s'il y a un testament étranger à faire valoir ou un certificat successoral européen à obtenir, il faut aussi un notaire ou un avocat : nous vous le disons dès le départ, avec noms et étapes, pas au milieu de la procédure." },
+      { type: "h2", text: "Les documents supplémentaires" },
+      {
+        type: "ul",
+        items: [
+          "Certificat de décès délivré à l'étranger : si le défunt était citoyen italien, l'acte doit être transcrit dans la commune italienne via le consulat, et c'est la commune qui délivre ensuite le certificat. Sinon, le certificat étranger avec apostille ou légalisation et traduction, sous réserve des simplifications européennes.",
+          "Preuve de la résidence à l'étranger du défunt, par exemple inscription AIRE ou certificat de résidence du pays étranger.",
+          "Codice fiscale du défunt et de tous les héritiers : les héritiers non italiens doivent aussi en avoir un.",
+          "Testament, s'il y en a un, avec publication ou certificat successoral européen.",
+        ],
+      },
+      { type: "h2", text: "Avantage première maison" },
+      { type: "p", text: "Les impôts hypothécaire et cadastral sur l'immeuble hérité peuvent être réduits avec l'avantage première maison, mais pour ceux qui vivent à l'étranger les règles sont spécifiques et ont changé en 2023 : elles dépendent de l'emplacement de l'immeuble et du lien avec l'Italie de l'héritier. Nous le vérifions au cas par cas avant de calculer les impôts." },
+    ],
+    sources: [FONTE_ADE_COME_PRESENTARE, FONTE_NORMATTIVA, FONTE_UE_650],
+  },
+  "documenti-esteri-successione-apostille": {
+    title: "Documents de l'étranger : apostille, traductions et signatures à distance",
+    excerpt: "Certificat de décès étranger, testament étranger, pièces d'identité non italiennes : quand apostille, légalisation ou traduction assermentée sont nécessaires, et comment tout signer sans venir en Italie.",
+    reviewedBy: REVIEWED,
+    body: [
+      { type: "p", text: "Dans une succession avec héritiers ou défunt à l'étranger, presque tous les documents sont les mêmes que dans une procédure italienne. Ceux qui peuvent venir d'un autre pays sont peu nombreux mais délicats : le certificat de décès si le décès est survenu à l'étranger, un testament étranger, les pièces d'identité des héritiers et, parfois, des certificats d'état civil. Voyons ce qui est vraiment nécessaire pour que l'Agenzia delle Entrate et le Cadastre les acceptent." },
+      { type: "h2", text: "Trois règles selon le pays" },
+      {
+        type: "table",
+        headers: ["Pays de délivrance", "Légalisation", "Traduction"],
+        rows: [
+          ["Union européenne", "Inutile : le règlement 2016/1191 supprime apostille et légalisation pour les certificats d'état civil", "Peut être évitée en demandant le formulaire standard multilingue avec le certificat"],
+          ["Pays de la Convention de La Haye de 1961 (p. ex. Royaume-Uni, États-Unis, Suisse, Argentine, Brésil, Australie)", "Apostille, apposée par l'autorité du pays qui a délivré le document", "Traduction assermentée en Italie ou certifiée par le consulat italien"],
+          ["Autres pays", "Légalisation au consulat italien du pays de délivrance", "Traduction assermentée en Italie ou certifiée par le consulat italien"],
+        ],
+      },
+      { type: "h2", text: "Le certificat de décès" },
+      { type: "p", text: "Si le défunt était citoyen italien et que le décès est survenu à l'étranger, la voie la plus simple est de faire transcrire l'acte de décès dans la commune italienne via le consulat : à partir de ce moment, c'est la commune qui délivre le certificat, en italien, sans apostille ni traduction. Si le défunt n'était pas italien, on utilise le certificat étranger selon les règles du tableau." },
+      { type: "h2", text: "Le testament étranger" },
+      { type: "p", text: "Un testament rédigé à l'étranger doit en principe être publié ou fait valoir en Italie par un notaire, avec traduction assermentée et, si besoin, légalisation. C'est l'une des rares étapes qui requiert un professionnel autre que nous : nous vous l'indiquons tout de suite et coordonnons la déclaration avec ses délais." },
+      { type: "h2", text: "Pièces d'identité non italiennes" },
+      { type: "p", text: "Un passeport ou une carte d'identité étrangers en cours de validité conviennent pour la déclaration de succession et la demande de codice fiscale. Une copie lisible, recto et verso, suffit ; aucune traduction." },
+      { type: "h2", text: "Les signatures : ce qu'il faut et ce qu'il ne faut pas" },
+      {
+        type: "ul",
+        items: [
+          "Pour la déclaration de succession et la voltura, aucune procuration notariale n'est nécessaire : nous les transmettons en tant qu'intermédiaire, avec votre mandat signé à distance dans l'espace personnel ou renvoyé signé avec copie de votre pièce d'identité.",
+          "Pour le codice fiscale, la délégation incluse dans le formulaire AA4/8, signée par vous, suffit.",
+          "En revanche, un notaire ou le consulat italien, qui pour les citoyens italiens exerce des fonctions notariales, est nécessaire pour renoncer à la succession, l'accepter avec bénéfice d'inventaire et signer une procuration pour vendre l'immeuble.",
+        ],
+      },
+      { type: "callout", tone: "info", title: "D'abord les photos, ensuite les originaux", text: "Pour les contrôles initiaux, des photos ou scans téléchargés dans l'espace personnel suffisent. Les originaux, ou copies avec apostille et traduction, ne sont demandés que pour les documents qui les exigent vraiment, et nous vous le disons avant." },
+      { type: "callout", tone: "warning", title: "Attention aux délais d'apostille et de traductions", text: "Entre la demande du certificat, l'apostille et la traduction assermentée, des semaines peuvent s'écouler. Si le délai de 12 mois approche, commencez par ces documents pendant que nous préparons le reste." },
+    ],
+    sources: [FONTE_UE_1191, FONTE_ESTERI, FONTE_ADE_SCHEDA],
+  },
+  "pagare-imposte-successione-dall-estero": {
+    title: "Payer les impôts de succession depuis l'étranger, sans compte italien",
+    excerpt: "Les impôts se paient par prélèvement sur un compte italien. Si vous vivez à l'étranger sans en avoir un, voici les trois solutions possibles, y compris le paiement via le cabinet en tant qu'intermédiaire.",
+    reviewedBy: REVIEWED,
+    body: [
+      { type: "p", text: "Pour ceux qui vivent à l'étranger, le paiement des impôts est souvent l'obstacle pratique le plus gênant : les sommes dues avec la déclaration télématique se paient par prélèvement sur un compte courant italien, et beaucoup d'émigrés n'ont plus de compte en Italie. Voyons quels impôts se paient, comment, et les solutions quand le compte italien manque." },
+      { type: "h2", text: "Quels impôts se paient" },
+      {
+        type: "ul",
+        items: [
+          "Avec la déclaration, s'il y a des immeubles : impôt hypothécaire (2 %) et cadastral (1 %) sur la valeur cadastrale, avec un minimum de 200 euros chacun, plus droits de timbre et taxes spéciales. Autoliquidés et payés au moment de la transmission.",
+          "L'impôt de succession proprement dit seulement si le patrimoine dépasse les abattements : 1 million d'euros pour chaque enfant ou pour le conjoint (taux 4 %), 100.000 euros pour frères et sœurs (6 %), aucun abattement pour les autres (6 % ou 8 %). Pour les successions ouvertes à partir de 2025, le contribuable le calcule dans la déclaration et le paie dans les 90 jours suivant le délai de dépôt, ou immédiatement avec le reste.",
+        ],
+      },
+      { type: "h2", text: "Comment payer avec la déclaration télématique" },
+      { type: "p", text: "Les sommes autoliquidées se paient par prélèvement sur un compte courant ouvert auprès d'une banque conventionnée avec l'Agenzia delle Entrate ou auprès de Poste Italiane. Le compte peut être au nom du déclarant ou de la personne chargée de la transmission télématique, c'est-à-dire l'intermédiaire. La déclaration indique l'IBAN et le codice fiscale du titulaire du compte." },
+      { type: "h2", text: "Pas de compte en Italie ? Trois solutions" },
+      {
+        type: "ol",
+        items: [
+          "Un cohéritier résident en Italie paie pour tous : la déclaration peut indiquer le compte de l'un des héritiers. La solution la plus simple quand elle existe.",
+          "Le cabinet paie en tant qu'intermédiaire : vous nous faites un virement anticipé pour le montant exact des impôts, que nous vous communiquons par écrit, et nous les payons par prélèvement sur le compte du cabinet au moment de la transmission. Vous recevez les quittances. Possibilité que nous convenons au cas par cas.",
+          "Modèle F24 en Italie par un délégué : possible lorsque la déclaration est déposée au guichet, mais c'est la voie la plus lente et nous ne l'utilisons que si les deux premières ne sont pas praticables.",
+        ],
+      },
+      { type: "callout", tone: "info", title: "Tout par écrit, avant", text: "Avant la transmission, nous vous envoyons le calcul des impôts poste par poste. Vous ne payez que ce montant, et seulement après l'avoir vu. Les impôts vont à l'État, pas à nous : l'honoraire du forfait est séparé." },
+      { type: "h2", text: "Virements depuis l'étranger et change" },
+      { type: "p", text: "Les impôts sont en euros. Si votre compte est dans une autre devise, tenez compte des frais et du change de votre banque : les virements SEPA depuis les pays de la zone euro et la Suisse coûtent peu ; depuis d'autres pays, mieux vaut vérifier avant. L'honoraire du forfait, en revanche, se paie sur le site par carte via Stripe, depuis n'importe quel pays." },
+      { type: "h2", text: "Successions ouvertes avant 2025" },
+      { type: "p", text: "Pour les décès jusqu'au 31 décembre 2024, l'impôt de succession, s'il est dû, est encore calculé par l'Agenzia delle Entrate et un avis de liquidation arrive, à payer avec F24 dans les 60 jours. Là aussi, si vous n'avez pas de compte italien, nous pouvons gérer le paiement via le cabinet." },
+      { type: "callout", tone: "warning", title: "Les montants changent", text: "Taux, abattements et minima sont ceux en vigueur à la date de ce guide. Nous vérifions toujours le cas concret et les sources officielles avant de calculer les impôts." },
+    ],
+    sources: [FONTE_ADE_IMPOSTE, FONTE_NORMATTIVA],
   },
   "fai-da-te-precompilata": {
     title: "Succession préremplie : le faire soi-même, est-ce intéressant ?",
