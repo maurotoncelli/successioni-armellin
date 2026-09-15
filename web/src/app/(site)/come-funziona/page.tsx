@@ -33,6 +33,7 @@ import {
   IconUploadDocs,
 } from "@/components/site/come-funziona-icons";
 import { ComeFunzionaPanels } from "@/components/site/come-funziona-panels";
+import { getPromoContext, PromoPrice, PromoValidUntil } from "@/components/site/promo-ui";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -111,6 +112,7 @@ export default async function ComeFunzionaPage() {
 
   // Anti-rimbalzo (07/09): CTA nell'hero e dopo i passi, fascia prezzi, mini FAQ.
   const packages = await getPackages(locale);
+  const promoCtx = await getPromoContext();
   const minPrice = packages.length
     ? Math.min(...packages.map((p) => p.price))
     : 290;
@@ -351,10 +353,11 @@ export default async function ComeFunzionaPage() {
               className="group flex flex-col rounded-2xl border border-primary/10 bg-bg p-5 shadow-sm transition-colors hover:border-accent/50 sm:p-6"
             >
               <p className="text-sm font-semibold text-primary">{pkg.name}</p>
-              <p className="mt-2 font-display text-3xl font-bold text-primary sm:text-4xl">
-                {pkg.price}&euro;
-              </p>
+              <div className="mt-2">
+                <PromoPrice amount={pkg.price} ctx={promoCtx} size="md" />
+              </div>
               <p className="mt-1 text-xs text-text-muted">{priceSuffix}</p>
+              <PromoValidUntil ctx={promoCtx} className="mt-1" />
               <p className="mt-3 text-sm leading-relaxed text-text-muted">
                 {pkg.tagline}
               </p>

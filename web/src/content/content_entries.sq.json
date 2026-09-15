@@ -4550,6 +4550,41 @@
     },
     {
       "collection": "site_ui",
+      "key": "promo_ui",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "banner_text": "Zbritje lançimi −{pct}% për të gjitha paketat",
+        "banner_ends": "mbaron pas",
+        "banner_cta": "Llogarit ofertën",
+        "badge": "−{pct}% lançim",
+        "valid_until": "Çmimi i lançimit i vlefshëm deri më {date}",
+        "full_price": "Çmimi i plotë",
+        "discount_line": "Zbritje lançimi −{pct}%",
+        "ends_in": "Zbritja mbaron pas",
+        "save_line": "Kurseni {amount} € krahasuar me çmimin e plotë",
+        "checkout_note": "Zbritja është tashmë e aplikuar: do ta gjeni edhe në faqen e pagesës së sigurt.",
+        "countdown": {
+          "days": "ditë",
+          "hours": "orë",
+          "minutes": "min",
+          "seconds": "sek"
+        },
+        "included_title": "Çfarë përfshin çmimi",
+        "included_items": [
+          "Konsultë fillestare falas me Lorenzo-n, me telefon ose WhatsApp",
+          "Asistencë e vazhdueshme nga Lorenzo në orarin e zyrës: WhatsApp, telefon dhe email",
+          "Udhëzues hap pas hapi për të gjetur dhe mbledhur dokumentet",
+          "Zonë personale intuitive: ngarkoni dokumentet dhe ndiqni praktikën",
+          "Llogaritja e taksave dhe përpilimi i deklaratës së trashëgimisë",
+          "Dorëzimi në Agjencinë Tatimore italiane me prokurë të plotë: nuk duhet të shkoni askund",
+          "Kalimi kadastral (voltura) i përfshirë",
+          "Garanci: i kënaqur ose rimbursim"
+        ]
+      }
+    },
+    {
+      "collection": "site_ui",
       "key": "conferma_ui",
       "locale": "sq",
       "is_published": true,

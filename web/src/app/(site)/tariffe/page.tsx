@@ -21,6 +21,7 @@ import { PageHero } from "@/components/site/page-hero";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { ButtonLink } from "@/components/ui/button";
 import { PackageCards } from "@/components/site/package-cards";
+import { getPromoContext, PromoIncludedBand } from "@/components/site/promo-ui";
 import { CtaBand } from "@/components/site/cta-band";
 import { AddonCards } from "@/components/site/addon-cards";
 import { Emph, EmphBlock } from "@/components/site/emph";
@@ -52,6 +53,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function TariffePage() {
   const locale = await getRequestLocale();
+  const promoCtx = await getPromoContext();
   const deliverable = await tList<string>("tariffe", "deliverable_list");
   const finalCta = await tCta("tariffe", "cta_finale_button");
   const tiServeCta = await tCta("tariffe", "ti_serve_cta");
@@ -92,6 +94,9 @@ export default async function TariffePage() {
 
       <Section>
         <PackageCards />
+        {/* Subito sotto i prezzi: cosa è compreso (leggibile, non nascosto
+            nelle card) + countdown promo quando attiva. */}
+        <PromoIncludedBand ctx={promoCtx} className="mt-6 sm:mt-8" />
         <p className="mt-5 text-center text-sm text-text-muted sm:mt-8">
           {await t("tariffe", "rate_text")}
         </p>

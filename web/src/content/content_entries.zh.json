@@ -4550,6 +4550,41 @@
     },
     {
       "collection": "site_ui",
+      "key": "promo_ui",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "banner_text": "上线优惠：全部套餐立减 {pct}%",
+        "banner_ends": "距结束",
+        "banner_cta": "计算报价",
+        "badge": "上线 −{pct}%",
+        "valid_until": "上线价格有效期至 {date}",
+        "full_price": "原价",
+        "discount_line": "上线折扣 −{pct}%",
+        "ends_in": "优惠倒计时",
+        "save_line": "相比原价节省 {amount} €",
+        "checkout_note": "折扣已自动应用：在安全支付页面同样可见。",
+        "countdown": {
+          "days": "天",
+          "hours": "时",
+          "minutes": "分",
+          "seconds": "秒"
+        },
+        "included_title": "价格包含的服务",
+        "included_items": [
+          "与 Lorenzo 的免费初次咨询（电话或 WhatsApp）",
+          "办公时间内 Lorenzo 的持续协助：WhatsApp、电话和电子邮件",
+          "分步指南，帮您找到并收集所需文件",
+          "简洁直观的个人专区：上传文件、跟进办理进度",
+          "税费计算与继承申报书的编制",
+          "凭全权委托向意大利税务局提交：您无需亲自前往任何地方",
+          "包含地籍过户（voltura）",
+          "不满意即退款保证"
+        ]
+      }
+    },
+    {
+      "collection": "site_ui",
       "key": "conferma_ui",
       "locale": "zh",
       "is_published": true,

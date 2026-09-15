@@ -4564,6 +4564,41 @@
     },
     {
       "collection": "site_ui",
+      "key": "promo_ui",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "banner_text": "Sconto lancio −{pct}% su tutti i pacchetti",
+        "banner_ends": "scade tra",
+        "banner_cta": "Calcola il preventivo",
+        "badge": "−{pct}% lancio",
+        "valid_until": "Prezzo di lancio valido fino al {date}",
+        "full_price": "Prezzo pieno",
+        "discount_line": "Sconto lancio −{pct}%",
+        "ends_in": "Lo sconto scade tra",
+        "save_line": "Risparmi {amount} € rispetto al prezzo pieno",
+        "checkout_note": "Lo sconto è già applicato: lo ritrovi anche nella pagina di pagamento sicura.",
+        "countdown": {
+          "days": "giorni",
+          "hours": "ore",
+          "minutes": "min",
+          "seconds": "sec"
+        },
+        "included_title": "Cosa è compreso nel prezzo",
+        "included_items": [
+          "Consulenza iniziale gratuita con Lorenzo, per telefono o WhatsApp",
+          "Assistenza continua di Lorenzo in orario d'ufficio: WhatsApp, telefono ed email",
+          "Guide passo passo per trovare e raccogliere i documenti",
+          "Area personale intuitiva: carichi i documenti e segui la pratica",
+          "Calcolo delle imposte e compilazione della dichiarazione",
+          "Trasmissione all'Agenzia delle Entrate con delega totale: non devi andare da nessuna parte",
+          "Voltura catastale inclusa",
+          "Garanzia Soddisfatti o Rimborsati"
+        ]
+      }
+    },
+    {
+      "collection": "site_ui",
       "key": "conferma_ui",
       "locale": "it",
       "is_published": true,

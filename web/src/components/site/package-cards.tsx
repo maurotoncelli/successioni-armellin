@@ -3,10 +3,18 @@ import { getPackages } from "@/lib/cms";
 import { ButtonLink } from "@/components/ui/button";
 import { PackageCardDetails } from "@/components/site/package-card-details";
 import { cn } from "@/lib/utils";
+import {
+  getPromoContext,
+  PromoPrice,
+  PromoValidUntil,
+} from "@/components/site/promo-ui";
 
 export async function PackageCards() {
   const locale = await getRequestLocale();
-  const packages = await getPackages(locale);
+  const [packages, promoCtx] = await Promise.all([
+    getPackages(locale),
+    getPromoContext(),
+  ]);
   const priceSuffix = await t("pacchetti", "price_suffix", "onorario senza IVA");
   const slaLine = await t(
     "pacchetti",
@@ -66,11 +74,11 @@ export async function PackageCards() {
               <h3 className="text-2xl">{pkg.name}</h3>
               <p className="mt-1 text-sm text-text-muted">{pkg.tagline}</p>
 
-              <div className="mt-5 flex items-baseline gap-1">
-                <span className="font-display text-4xl font-bold text-primary">
-                  {pkg.price}&euro;
-                </span>
+              {/* Promo a tempo: pieno barrato + scontato (lib/promo.ts). */}
+              <div className="mt-5">
+                <PromoPrice amount={pkg.price} ctx={promoCtx} />
               </div>
+              <PromoValidUntil ctx={promoCtx} className="mt-1.5" />
               <div className="mt-3 flex flex-wrap gap-2">
                 <span className="rounded-full bg-bg-muted px-2.5 py-1 text-xs font-medium text-text-muted">
                   {priceSuffix}

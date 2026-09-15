@@ -100,11 +100,14 @@ export function priceBreakdown(s: Pick<QuizSnapshot, "lineItems" | "total">): st
   const items = s.lineItems ?? [];
   if (items.length === 0) return null;
   if (items.length === 1) return formatEuro(items[0].amount);
-  const parts = items.map((li, i) =>
-    i === 0 ? `${formatEuro(li.amount)} pacchetto` : `${formatEuro(li.amount)} ${li.label}`,
-  );
+  // Righe negative (sconto promo) con il segno "−" invece di "+ -98 €".
+  const parts = items.map((li, i) => {
+    const body = i === 0 ? `${formatEuro(Math.abs(li.amount))} pacchetto` : `${formatEuro(Math.abs(li.amount))} ${li.label}`;
+    if (i === 0) return body;
+    return `${li.amount < 0 ? "− " : "+ "}${body}`;
+  });
   const total = s.total ?? items.reduce((sum, li) => sum + li.amount, 0);
-  return `${parts.join(" + ")} = ${formatEuro(total)}`;
+  return `${parts.join(" ")} = ${formatEuro(total)}`;
 }
 
 /** Risposte del questionario in una riga, per notifiche ed email. */

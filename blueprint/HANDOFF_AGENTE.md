@@ -135,6 +135,34 @@ con delega** lo fa lui; **imposte pagate dallo studio come intermediario** «se 
   Nuovo **`public/llms.txt`** (letto dagli assistenti AI; il proxy esclude `.txt`): stessa
   descrizione, cosa fa, prezzi 290/490, pagine principali, le 5 guide estero, note.
   Aggiornarlo quando cambiano prezzi o pagine.
+- **Sconto lancio −20% a tempo (15/09, decisione Mauro)**: −20% su TUTTI i totali
+  (pacchetto + immobili/eredi extra + add-on) dal 15/09 al **25/09/2026 23:59 ora italiana**,
+  con conto alla rovescia. Un solo punto di verità: `lib/promo.ts` (`getActivePromo()`,
+  default 20% / date sopra; override senza codice via env Vercel `PROMO_PERCENT`,
+  `PROMO_STARTS_AT`, `PROMO_ENDS_AT`; `PROMO_PERCENT=0` la spegne). `buildOrder`
+  (`lib/order.ts`) applica la promo attiva **di default** come riga `DISCOUNT` negativa
+  (`amount: -X`, label `Sconto lancio −20%`), quindi la vedono automaticamente esito quiz,
+  checkout, snapshot CRM (`practices.price` / `line_items`), area personale, email riepilogo
+  e fattura di cortesia (**verificare la prima fattura FattureInCloud con riga negativa**).
+  Stripe non accetta righe negative: `createCheckoutSession` filtra la riga DISCOUNT e passa
+  un **coupon** `LANCIO20` (percent_off 20, duration once, creato al primo checkout e
+  riusato; `metadata.promo_code`). Verificato su Stripe test: 490+60 → 440. Alla scadenza
+  tutto torna al listino pieno da solo, nessun deploy. UI: `components/site/promo-ui.tsx`
+  (`getPromoContext`, `PromoPrice` pieno barrato + scontato + pillola, `PromoValidUntil`,
+  `PromoEndsIn`, `IncludedList`, `PromoIncludedBand`), countdown client
+  `promo-countdown.tsx` (`useSyncExternalStore`, niente mismatch idratazione; variant
+  `auto` = inline su mobile, 4 riquadri da sm), barra sopra la navbar `promo-banner.tsx`
+  (nascosta in `/checkout`, `data-cta=promo_banner`). Prezzi barrati in card tariffe/home,
+  fascia prezzi come-funziona, esito B (`grazie`: riga sconto, totale, countdown, «Risparmi
+  X €»), checkout (riga sconto, subtotale barrato, countdown, nota «già applicato su
+  Stripe»). Testi in `site_ui.promo_ui` (11 lingue, fallback `PROMO_UI_IT`).
+  **«Cosa è compreso nel prezzo»** (`promo_ui.included_items`, 8 voci: consulenza iniziale
+  gratuita, assistenza continua di Lorenzo in orario d'ufficio, guide documenti, area
+  personale, calcolo imposte, trasmissione con delega totale, voltura inclusa, garanzia)
+  mostrato in tariffe (fascia sotto le card), esito B (sotto i bottoni, così su mobile il
+  pagamento resta vicino alla cifra) e checkout: resta anche a promo finita.
+  Regole: FAQ/legal citano ancora 290/490 = listino, corretto. Non prorogare la promo
+  all'infinito (Codice del consumo art. 17-bis: prezzo barrato = più basso ultimi 30 gg).
 - **Strumenti utili (11/09)**: nuovo hub `/strumenti` (`app/(site)/strumenti/page.tsx`,
   CollectionPage+ItemList JSON-LD, card data-driven `strumenti.hub_tools`) con voce menu
   «Strumenti» dopo Guide (`navbar.menu`, 11 lingue; tagline brand nascosta fino a 2xl per far
@@ -195,6 +223,8 @@ intervento sotto serve a giustificare il valore, non ad abbassare il prezzo.
    «prezzo momentaneamente scontato» / prezzo pieno barrato, con una ragione credibile
    (lancio, primo anno online) e una scadenza vera; oppure "blocca il prezzo per 7 giorni".
    Attenzione: sconto "finto" perenne è vietato (Codice del consumo, prezzo più basso 30 gg).
+   → **FATTO 15/09**: sconto lancio −20% fino al 25/09 con countdown (vedi nota «Sconto
+   lancio» sopra) + lista «Cosa è compreso nel prezzo» accanto a ogni prezzo.
 
 Altre idee (mie, da discutere):
 - **Recall/fatti richiamare** all'esito B: un campo telefono + orario preferito; per chi non
@@ -213,6 +243,8 @@ Altre idee (mie, da discutere):
   `custom_text` (submit/after_submit) e più line item a 0 € "incluso"; (b) pagina
   pre-checkout nostra (`/paga` o esito preventivo) con riassunto completo e bottone Paga,
   così il testo è multilingua e libero. Preferire (b) + descrizione breve in Stripe.
+  → **FATTO 15/09 (strada b)**: la pagina `/checkout` mostra «Cosa è compreso nel prezzo»
+  accanto al totale. Resta da valutare la descrizione breve dentro Stripe.
 - **Garanzia esplicita** accanto al prezzo ("se emergono costi notarili non previsti ti
   informiamo e puoi ritirarti con rimborso"): esiste già `/garanzia`, va portata sul prezzo.
 - **Pacchetto "Erede all'estero"** (APPROVATO da Mauro 11/09, da progettare) con codice

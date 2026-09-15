@@ -5,7 +5,13 @@ import {
   type CheckoutUiLabels,
 } from "@/lib/site-ui-labels";
 import Link from "next/link";
-import { ShieldCheck, Info } from "lucide-react";
+import { ShieldCheck, Info, Tag } from "lucide-react";
+import {
+  formatAmount,
+  getPromoContext,
+  IncludedList,
+  PromoEndsIn,
+} from "@/components/site/promo-ui";
 import { Container } from "@/components/ui/container";
 import { Card } from "@/components/ui/card";
 import { CheckoutPanel } from "@/components/site/checkout-panel";
@@ -49,9 +55,10 @@ export default async function CheckoutPage({
   );
 
   const locale = await getRequestLocale();
-  const [packages, addons] = await Promise.all([
+  const [packages, addons, promoCtx] = await Promise.all([
     getPackages(locale),
     getAddons(locale),
+    getPromoContext(),
   ]);
   const practice = practiceId ? await getPractice(practiceId) : undefined;
 
@@ -87,6 +94,7 @@ export default async function CheckoutPage({
         {
           extraProperty: checkoutUi.extra_property,
           extraHeir: checkoutUi.extra_heir,
+          discount: promoCtx.ui.discount_line,
         },
       )
     : null;
@@ -138,9 +146,25 @@ export default async function CheckoutPage({
                           key={item.key}
                           className="flex items-start justify-between gap-3 text-sm"
                         >
-                          <span className="text-text">{item.label}</span>
-                          <span className="shrink-0 font-medium text-primary">
-                            {item.amount}&euro;
+                          <span
+                            className={
+                              item.type === "DISCOUNT"
+                                ? "inline-flex items-center gap-1.5 font-medium text-accent-dark"
+                                : "text-text"
+                            }
+                          >
+                            {item.type === "DISCOUNT" && <Tag className="h-3.5 w-3.5" />}
+                            {item.label}
+                          </span>
+                          <span
+                            className={
+                              item.type === "DISCOUNT"
+                                ? "shrink-0 font-semibold text-accent-dark"
+                                : "shrink-0 font-medium text-primary"
+                            }
+                          >
+                            {item.amount < 0 ? "−" : ""}
+                            {formatAmount(Math.abs(item.amount), promoCtx.intlLocale)}&euro;
                           </span>
                         </div>
                       ))}
@@ -150,10 +174,34 @@ export default async function CheckoutPage({
                       <span className="font-semibold text-primary">
                         {checkoutUi.total_fee}
                       </span>
-                      <span className="font-display text-2xl font-bold text-primary">
-                        {order.total}&euro;
+                      <span className="flex items-baseline gap-2">
+                        {order.discount && (
+                          <s className="text-sm font-medium text-text-muted decoration-text-muted/70">
+                            {formatAmount(order.subtotal, promoCtx.intlLocale)}&euro;
+                          </s>
+                        )}
+                        <span className="font-display text-2xl font-bold text-primary">
+                          {formatAmount(order.total, promoCtx.intlLocale)}&euro;
+                        </span>
                       </span>
                     </div>
+
+                    {/* Promo a tempo: countdown accanto al totale + nota che
+                        lo sconto e' gia' applicato anche su Stripe. */}
+                    {order.discount && (
+                      <>
+                        <PromoEndsIn ctx={promoCtx} className="mt-4" />
+                        <p className="mt-2 text-xs text-text-muted">{promoCtx.ui.checkout_note}</p>
+                      </>
+                    )}
+
+                    {/* Cosa e' compreso nel prezzo, accanto al totale: chi
+                        paga 290-490 EUR a distanza deve vederlo qui. */}
+                    <IncludedList
+                      ctx={promoCtx}
+                      compact
+                      className="mt-5 border-t border-primary/10 pt-4"
+                    />
 
                     <div className="mt-5 flex gap-2 rounded-[10px] bg-sand/60 p-3 text-xs leading-relaxed text-text-muted">
                       <Info className="h-4 w-4 shrink-0 text-accent" />

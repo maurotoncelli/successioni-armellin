@@ -4564,6 +4564,41 @@
     },
     {
       "collection": "site_ui",
+      "key": "promo_ui",
+      "locale": "en",
+      "is_published": true,
+      "value": {
+        "banner_text": "Launch offer: {pct}% off every package",
+        "banner_ends": "ends in",
+        "banner_cta": "Get your quote",
+        "badge": "−{pct}% launch",
+        "valid_until": "Launch price valid until {date}",
+        "full_price": "Full price",
+        "discount_line": "Launch discount −{pct}%",
+        "ends_in": "Offer ends in",
+        "save_line": "You save €{amount} compared to the full price",
+        "checkout_note": "The discount is already applied: you will see it on the secure payment page too.",
+        "countdown": {
+          "days": "days",
+          "hours": "hrs",
+          "minutes": "min",
+          "seconds": "sec"
+        },
+        "included_title": "What the price includes",
+        "included_items": [
+          "Free initial consultation with Lorenzo, by phone or WhatsApp",
+          "Ongoing support from Lorenzo during office hours: WhatsApp, phone and email",
+          "Step-by-step guides to find and collect the documents",
+          "Intuitive personal area: upload documents and follow your case",
+          "Tax calculation and preparation of the declaration",
+          "Filing with the Italian Revenue Agency under full power of attorney: you never have to go anywhere",
+          "Cadastral transfer (voltura) included",
+          "Satisfaction-or-refund guarantee"
+        ]
+      }
+    },
+    {
+      "collection": "site_ui",
       "key": "conferma_ui",
       "locale": "en",
       "is_published": true,

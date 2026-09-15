@@ -1,5 +1,6 @@
 import type { Package, Addon } from "@/content/site";
 import type { PackageKey } from "@/lib/supabase/types";
+import { getActivePromo, promoDiscount, round2, type Promo } from "@/lib/promo";
 
 /*
   Composizione dell'ordine (onorario) per UNA pratica = UN ordine (no carrello, @04).
@@ -14,10 +15,16 @@ import type { PackageKey } from "@/lib/supabase/types";
   aggiungono +60 € per immobile e +60 € per erede (righe SURCHARGE). I casi
   speciali (altri beni: quote, aziende, imbarcazioni…) restano su misura: li
   decide `computeEsito` (lib/quote.ts), non questa funzione.
+
+  Promo a tempo (15/09): se `getActivePromo()` è attiva, in coda alle righe
+  c'è una riga DISCOUNT negativa pari a -X% del subtotale e `total` è già
+  scontato. Stripe riceve le righe positive + un coupon percent_off (vedi
+  lib/payments.ts), così la cifra coincide al centesimo.
 */
 
 export type OrderLineItem = {
-  type: "PACKAGE" | "ADDON" | "SURCHARGE";
+  /** DISCOUNT = promo a tempo (lib/promo.ts): amount NEGATIVO. */
+  type: "PACKAGE" | "ADDON" | "SURCHARGE" | "DISCOUNT";
   key: string;
   label: string;
   amount: number;
@@ -35,11 +42,26 @@ export type OrderLabels = {
   extraProperty?: string;
   /** Template con `{extra}` e `{fee}` (default IT). */
   extraHeir?: string;
+  /** Template riga sconto con `{pct}` (default IT). */
+  discount?: string;
+};
+
+export type OrderDiscount = {
+  code: string;
+  percent: number;
+  /** Importo dello sconto, POSITIVO. */
+  amount: number;
+  /** Fine validità della promo (ISO). */
+  endsAt: string;
 };
 
 export type ComputedOrder = {
   packageKey: PackageKey;
   lineItems: OrderLineItem[];
+  /** Somma delle righe prima dello sconto (= total se nessuna promo). */
+  subtotal: number;
+  /** Promo applicata, null se nessuna. */
+  discount: OrderDiscount | null;
   total: number;
 };
 
@@ -73,16 +95,23 @@ const SURCHARGE_RULES: Partial<Record<PackageKey, SurchargeRules>> = {
 
 const EXTRA_PROPERTY_LABEL_IT = "Immobili aggiuntivi ({extra} × {fee}€)";
 const EXTRA_HEIR_LABEL_IT = "Eredi aggiuntivi ({extra} × {fee}€)";
+export const DISCOUNT_LABEL_IT = "Sconto lancio −{pct}%";
 
 function fill(tpl: string, extra: number, fee: number): string {
   return tpl.replace("{extra}", String(extra)).replace("{fee}", String(fee));
 }
 
+/**
+  `promo`: undefined = usa la promo attiva adesso (default, così ogni chiamante
+  è coerente senza ricordarsene); null = forza listino pieno; oggetto = promo
+  esplicita (test, o ricalcolo "come era al momento X").
+*/
 export function buildOrder(
   input: OrderInput,
   packages: Package[],
   addons: Addon[],
   labels?: OrderLabels,
+  promo: Promo | null | undefined = getActivePromo(),
 ): ComputedOrder | null {
   const pkg = packages.find((p) => p.key === input.packageKey);
   if (!pkg) return null;
@@ -132,6 +161,24 @@ export function buildOrder(
     }
   }
 
-  const total = lineItems.reduce((sum, item) => sum + item.amount, 0);
-  return { packageKey: pkg.key, lineItems, total };
+  const subtotal = round2(lineItems.reduce((sum, item) => sum + item.amount, 0));
+
+  // Promo a tempo: -X% su TUTTO il totale (pacchetto, extra, add-on), come
+  // riga negativa così CRM, email, area personale e fattura la vedono.
+  let discount: OrderDiscount | null = null;
+  if (promo && subtotal > 0) {
+    const amount = promoDiscount(subtotal, promo);
+    if (amount > 0) {
+      discount = { code: promo.code, percent: promo.percent, amount, endsAt: promo.endsAt };
+      lineItems.push({
+        type: "DISCOUNT",
+        key: promo.code,
+        label: (labels?.discount ?? DISCOUNT_LABEL_IT).replace("{pct}", String(promo.percent)),
+        amount: -amount,
+      });
+    }
+  }
+
+  const total = round2(subtotal - (discount?.amount ?? 0));
+  return { packageKey: pkg.key, lineItems, subtotal, discount, total };
 }

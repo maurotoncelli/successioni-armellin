@@ -8,7 +8,13 @@ import {
   type SoftLeadUiLabels,
 } from "@/lib/site-ui-labels";
 import Link from "next/link";
-import { CheckCircle2, Phone, CreditCard, MessageCircle } from "lucide-react";
+import { CheckCircle2, Phone, CreditCard, MessageCircle, Tag } from "lucide-react";
+import {
+  formatAmount,
+  getPromoContext,
+  IncludedList,
+  PromoEndsIn,
+} from "@/components/site/promo-ui";
 import { Section } from "@/components/ui/section";
 import { Card } from "@/components/ui/card";
 import { ButtonLink } from "@/components/ui/button";
@@ -140,8 +146,11 @@ export default async function GraziePage({
         tagline: string | null;
         total: number;
         surcharges: { key: string; label: string; amount: number }[];
+        /** Riga sconto promo (lib/promo.ts), null se non attiva. */
+        discount: { label: string; amount: number } | null;
       }
     | null = null;
+  const promoCtx = await getPromoContext();
   let checkoutHref = "/checkout";
   const chrome = await tObj("site_ui", "chrome_ui", CHROME_UI_IT);
   const checkoutUi = await tObj<CheckoutUiLabels>(
@@ -206,9 +215,11 @@ export default async function GraziePage({
       {
         extraProperty: checkoutUi.extra_property,
         extraHeir: checkoutUi.extra_heir,
+        discount: promoCtx.ui.discount_line,
       },
     );
     if (pkg && order) {
+      const discountLine = order.lineItems.find((li) => li.type === "DISCOUNT");
       suggestedPkg = {
         name: pkg.name,
         price: pkg.price,
@@ -217,6 +228,9 @@ export default async function GraziePage({
         surcharges: order.lineItems
           .filter((li) => li.type === "SURCHARGE")
           .map((li) => ({ key: li.key, label: li.label, amount: li.amount })),
+        discount: discountLine
+          ? { label: discountLine.label, amount: -discountLine.amount }
+          : null,
       };
     }
     const params = new URLSearchParams({ pkg: packageKey });
@@ -306,12 +320,16 @@ export default async function GraziePage({
                       </span>
                       <span
                         className={
-                          suggestedPkg.surcharges.length > 0
+                          suggestedPkg.surcharges.length > 0 || suggestedPkg.discount
                             ? "shrink-0 font-display text-lg font-semibold text-primary"
                             : "shrink-0 font-display text-xl font-bold text-accent"
                         }
                       >
-                        {suggestedPkg.price}&euro;
+                        {suggestedPkg.discount ? (
+                          <s className="decoration-text-muted/70">{suggestedPkg.price}&euro;</s>
+                        ) : (
+                          <>{suggestedPkg.price}&euro;</>
+                        )}
                       </span>
                     </div>
                     {suggestedPkg.tagline && (
@@ -320,9 +338,10 @@ export default async function GraziePage({
                       </p>
                     )}
                     {/* Oltre la capienza inclusa (3 immobili / 5 eredi): ogni
-                        extra e' una riga esplicita, poi il totale. Il listino
-                        in vetrina resta 290 / 490 / su misura. */}
-                    {suggestedPkg.surcharges.length > 0 && (
+                        extra e' una riga esplicita, poi lo sconto promo (se
+                        attivo) e il totale. Il listino in vetrina resta
+                        290 / 490 / su misura. */}
+                    {(suggestedPkg.surcharges.length > 0 || suggestedPkg.discount) && (
                       <div className="mt-3 space-y-1.5 border-t border-accent/20 pt-3 text-sm">
                         {suggestedPkg.surcharges.map((s) => (
                           <div
@@ -335,15 +354,39 @@ export default async function GraziePage({
                             </span>
                           </div>
                         ))}
+                        {suggestedPkg.discount && (
+                          <div className="flex items-baseline justify-between gap-3">
+                            <span className="inline-flex items-center gap-1.5 font-medium text-accent-dark">
+                              <Tag className="h-3.5 w-3.5" />
+                              {suggestedPkg.discount.label}
+                            </span>
+                            <span className="shrink-0 font-semibold text-accent-dark">
+                              &minus;{formatAmount(suggestedPkg.discount.amount, promoCtx.intlLocale)}&euro;
+                            </span>
+                          </div>
+                        )}
                         <div className="flex items-baseline justify-between gap-3 border-t border-accent/20 pt-2">
                           <span className="font-semibold text-primary">
                             {checkoutUi.total_fee}
                           </span>
-                          <span className="shrink-0 font-display text-xl font-bold text-accent">
-                            {suggestedPkg.total}&euro;
+                          <span className="shrink-0 font-display text-2xl font-bold text-accent">
+                            {formatAmount(suggestedPkg.total, promoCtx.intlLocale)}&euro;
                           </span>
                         </div>
                       </div>
+                    )}
+                    {/* Promo a tempo: countdown + risparmio, subito sotto il
+                        totale, prima dei bottoni. */}
+                    {suggestedPkg.discount && promoCtx.promo && (
+                      <>
+                        <PromoEndsIn ctx={promoCtx} className="mt-3" />
+                        <p className="mt-2 text-xs font-medium text-accent-dark">
+                          {promoCtx.ui.save_line.replace(
+                            "{amount}",
+                            formatAmount(suggestedPkg.discount.amount, promoCtx.intlLocale),
+                          )}
+                        </p>
+                      </>
                     )}
                     {/* Il prezzo da solo fa chiudere la pagina (GA4 11/09:
                         1-2 s di permanenza). Subito sotto: cosa include (il
@@ -379,7 +422,7 @@ export default async function GraziePage({
                         ? `${waBase}${waBase.includes("?") ? "&" : "?"}text=${encodeURIComponent(
                             waPrefillQuoteTpl
                               .replace("{package}", suggestedPkg.name)
-                              .replace("{total}", String(suggestedPkg.total)),
+                              .replace("{total}", formatAmount(suggestedPkg.total, promoCtx.intlLocale)),
                           )}`
                         : waHrefEsitoB
                     }
@@ -400,6 +443,16 @@ export default async function GraziePage({
                   </ButtonLink>
                 </div>
                 <p className="mt-2 text-xs text-text-muted">{waQuoteHint}</p>
+                {/* Cosa e' compreso: leggibile subito sotto prezzo e bottoni
+                    (decisione 15/09), ma DOPO i bottoni cosi' su mobile il
+                    pagamento resta vicino alla cifra. */}
+                {suggestedPkg && (
+                  <IncludedList
+                    ctx={promoCtx}
+                    compact
+                    className="mt-5 rounded-[10px] border border-primary/10 bg-bg-muted/60 p-4"
+                  />
+                )}
                 <p className="mt-4 text-sm leading-relaxed text-text-muted">
                   {renderBody(await t("grazie", "esito_b_riallineamento"))}
                 </p>

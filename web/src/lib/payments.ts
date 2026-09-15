@@ -1,4 +1,5 @@
 import "server-only";
+import type Stripe from "stripe";
 import { getAdminClient, isAdminConfigured } from "@/lib/supabase/admin";
 import { getStripe, isStripeConfigured } from "@/lib/stripe";
 import { getPackagesAdmin, getAddons } from "@/lib/cms";
@@ -29,6 +30,52 @@ function stripeAttributionMeta(
   if (a.utm_campaign) meta.utm_campaign = a.utm_campaign.slice(0, 100);
   if (a.ga_client_id) meta.ga_client_id = a.ga_client_id.slice(0, 80);
   return meta;
+}
+
+/*
+  Coupon Stripe della promo: id = code (es. LANCIO20), percent_off, durata
+  "once" (mode payment). Creato la prima volta e riusato; se esiste già con la
+  stessa percentuale va bene, altrimenti (percentuale cambiata a parità di id,
+  non dovrebbe succedere: il code include la percentuale) si crea un id nuovo.
+  Se Stripe fallisce qui l'errore risale e il pagamento NON parte: meglio un
+  errore che far pagare al cliente il listino pieno dopo aver visto lo sconto.
+*/
+async function ensurePromoCoupon(
+  stripe: Stripe,
+  code: string,
+  percent: number,
+  name: string,
+): Promise<string> {
+  try {
+    const existing = await stripe.coupons.retrieve(code);
+    if (existing.valid && existing.percent_off === percent) return existing.id;
+    // Stesso id ma parametri diversi/coupon non più valido: id derivato.
+    const altId = `${code}_P${percent}`;
+    try {
+      const alt = await stripe.coupons.retrieve(altId);
+      if (alt.valid && alt.percent_off === percent) return alt.id;
+    } catch {
+      /* non esiste: lo creiamo sotto */
+    }
+    const created = await stripe.coupons.create({
+      id: altId,
+      percent_off: percent,
+      duration: "once",
+      name,
+    });
+    return created.id;
+  } catch (err) {
+    const code_ = (err as { code?: string }).code;
+    const status = (err as { statusCode?: number }).statusCode;
+    if (code_ !== "resource_missing" && status !== 404) throw err;
+  }
+  const created = await stripe.coupons.create({
+    id: code,
+    percent_off: percent,
+    duration: "once",
+    name,
+  });
+  return created.id;
 }
 
 export type CreateCheckoutOptions = {
@@ -136,23 +183,37 @@ export async function createCheckoutSession(
 
   try {
     const stripe = getStripe();
+    // Promo a tempo: Stripe non accetta righe negative, quindi le righe
+    // positive restano a listino e lo sconto va come coupon percent_off (lo
+    // vede anche il cliente nella pagina Stripe: "Sconto lancio −20%").
+    const discountLine = order.lineItems.find((li) => li.type === "DISCOUNT");
+    const coupon =
+      order.discount && discountLine
+        ? await ensurePromoCoupon(stripe, order.discount.code, order.discount.percent, discountLine.label)
+        : null;
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       locale: "it",
       currency: "eur",
       client_reference_id: row.code,
       customer_email: row.client_email || undefined,
-      line_items: order.lineItems.map((item) => ({
-        quantity: 1,
-        price_data: {
-          currency: "eur",
-          unit_amount: Math.round(item.amount * 100),
-          product_data: { name: item.label },
-        },
-      })),
+      line_items: order.lineItems
+        .filter((item) => item.type !== "DISCOUNT")
+        .map((item) => ({
+          quantity: 1,
+          price_data: {
+            currency: "eur",
+            unit_amount: Math.round(item.amount * 100),
+            product_data: { name: item.label },
+          },
+        })),
+      ...(coupon ? { discounts: [{ coupon }] } : {}),
       metadata: {
         practice_id: row.id,
         practice_code: row.code,
+        ...(order.discount
+          ? { promo_code: order.discount.code, promo_percent: String(order.discount.percent) }
+          : {}),
         ...stripeAttributionMeta(row.attribution),
       },
       payment_intent_data: {

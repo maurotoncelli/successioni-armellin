@@ -4550,6 +4550,41 @@
     },
     {
       "collection": "site_ui",
+      "key": "promo_ui",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "banner_text": "Oferta de lanzamiento: −{pct}% en todos los paquetes",
+        "banner_ends": "termina en",
+        "banner_cta": "Calcula tu presupuesto",
+        "badge": "−{pct}% lanzamiento",
+        "valid_until": "Precio de lanzamiento válido hasta el {date}",
+        "full_price": "Precio completo",
+        "discount_line": "Descuento de lanzamiento −{pct}%",
+        "ends_in": "El descuento termina en",
+        "save_line": "Ahorras {amount} € respecto al precio completo",
+        "checkout_note": "El descuento ya está aplicado: lo verás también en la página de pago segura.",
+        "countdown": {
+          "days": "días",
+          "hours": "h",
+          "minutes": "min",
+          "seconds": "seg"
+        },
+        "included_title": "Qué incluye el precio",
+        "included_items": [
+          "Consulta inicial gratuita con Lorenzo, por teléfono o WhatsApp",
+          "Asistencia continua de Lorenzo en horario de oficina: WhatsApp, teléfono y correo",
+          "Guías paso a paso para encontrar y reunir los documentos",
+          "Área personal intuitiva: subes los documentos y sigues el expediente",
+          "Cálculo de impuestos y preparación de la declaración",
+          "Presentación ante la Agenzia delle Entrate con poder total: no tienes que ir a ningún sitio",
+          "Cambio de titularidad catastral (voltura) incluido",
+          "Garantía de satisfacción o reembolso"
+        ]
+      }
+    },
+    {
+      "collection": "site_ui",
       "key": "conferma_ui",
       "locale": "es",
       "is_published": true,

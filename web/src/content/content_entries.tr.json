@@ -4550,6 +4550,41 @@
     },
     {
       "collection": "site_ui",
+      "key": "promo_ui",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "banner_text": "Lansman indirimi: tüm paketlerde −%{pct}",
+        "banner_ends": "bitimine",
+        "banner_cta": "Teklifini hesapla",
+        "badge": "−%{pct} lansman",
+        "valid_until": "Lansman fiyatı {date} tarihine kadar geçerli",
+        "full_price": "Tam fiyat",
+        "discount_line": "Lansman indirimi −%{pct}",
+        "ends_in": "İndirimin bitimine",
+        "save_line": "Tam fiyata göre {amount} € tasarruf edersiniz",
+        "checkout_note": "İndirim zaten uygulanmış: güvenli ödeme sayfasında da göreceksiniz.",
+        "countdown": {
+          "days": "gün",
+          "hours": "sa",
+          "minutes": "dk",
+          "seconds": "sn"
+        },
+        "included_title": "Fiyata neler dahil",
+        "included_items": [
+          "Lorenzo ile telefon veya WhatsApp üzerinden ücretsiz ilk görüşme",
+          "Mesai saatlerinde Lorenzo'dan sürekli destek: WhatsApp, telefon ve e-posta",
+          "Belgeleri bulmak ve toplamak için adım adım rehberler",
+          "Kullanışlı kişisel alan: belgeleri yüklersiniz, dosyanızı takip edersiniz",
+          "Vergi hesaplaması ve veraset beyannamesinin hazırlanması",
+          "Tam vekâletle İtalyan Gelir İdaresi'ne ibraz: hiçbir yere gitmeniz gerekmez",
+          "Kadastro devri (voltura) dahil",
+          "Memnuniyet veya para iade garantisi"
+        ]
+      }
+    },
+    {
+      "collection": "site_ui",
       "key": "conferma_ui",
       "locale": "tr",
       "is_published": true,

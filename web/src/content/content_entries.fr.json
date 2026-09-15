@@ -4550,6 +4550,41 @@
     },
     {
       "collection": "site_ui",
+      "key": "promo_ui",
+      "locale": "fr",
+      "is_published": true,
+      "value": {
+        "banner_text": "Offre de lancement : −{pct}% sur tous les forfaits",
+        "banner_ends": "se termine dans",
+        "banner_cta": "Calculer mon devis",
+        "badge": "−{pct}% lancement",
+        "valid_until": "Prix de lancement valable jusqu'au {date}",
+        "full_price": "Prix plein",
+        "discount_line": "Remise de lancement −{pct}%",
+        "ends_in": "La remise se termine dans",
+        "save_line": "Vous économisez {amount} € par rapport au prix plein",
+        "checkout_note": "La remise est déjà appliquée : vous la retrouverez aussi sur la page de paiement sécurisée.",
+        "countdown": {
+          "days": "jours",
+          "hours": "h",
+          "minutes": "min",
+          "seconds": "sec"
+        },
+        "included_title": "Ce que le prix comprend",
+        "included_items": [
+          "Consultation initiale gratuite avec Lorenzo, par téléphone ou WhatsApp",
+          "Assistance continue de Lorenzo aux heures de bureau : WhatsApp, téléphone et e-mail",
+          "Guides pas à pas pour trouver et rassembler les documents",
+          "Espace personnel intuitif : vous déposez les documents et suivez le dossier",
+          "Calcul des impôts et préparation de la déclaration",
+          "Dépôt auprès de l'Agenzia delle Entrate avec mandat complet : vous n'avez à vous déplacer nulle part",
+          "Mutation cadastrale (voltura) incluse",
+          "Garantie satisfait ou remboursé"
+        ]
+      }
+    },
+    {
+      "collection": "site_ui",
       "key": "conferma_ui",
       "locale": "fr",
       "is_published": true,

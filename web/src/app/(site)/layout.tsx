@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { Navbar } from "@/components/site/navbar";
+import { PromoBanner } from "@/components/site/promo-banner";
 import { Footer } from "@/components/site/footer";
 import { MobileCta } from "@/components/site/mobile-cta";
 import { HideOnPaths } from "@/components/site/hide-on-paths";
@@ -160,6 +161,7 @@ export default async function SiteLayout({
       <AttributionCapture />
       {gaId && <GoogleAnalytics gaId={gaId} adsId={adsId} />}
       {gaId && <ContactTracker />}
+      {!offlineOn && <PromoBanner />}
       <Navbar />
       <main className={offlineOn ? "flex-1" : "flex-1 pb-20 lg:pb-0"}>
         {offlineOn ? <SiteOfflineNotice state={offline} /> : children}

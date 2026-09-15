@@ -188,6 +188,55 @@ export const PREVENTIVO_UI_IT: PreventivoUiLabels = {
   next: "Avanti",
 };
 
+/*
+  Promo a tempo (lib/promo.ts) + lista "cosa è compreso nel prezzo". Contenuto
+  in `site_ui.promo_ui` (11 lingue); placeholder: {pct} percentuale, {date}
+  giorno di fine, {amount} importo risparmiato.
+*/
+export type PromoUiLabels = {
+  /** Barra in alto: "Sconto lancio −{pct}% su tutti i pacchetti". */
+  banner_text: string;
+  banner_ends: string;
+  banner_cta: string;
+  /** Pillola accanto al prezzo barrato. */
+  badge: string;
+  valid_until: string;
+  full_price: string;
+  discount_line: string;
+  ends_in: string;
+  save_line: string;
+  checkout_note: string;
+  countdown: { days: string; hours: string; minutes: string; seconds: string };
+  included_title: string;
+  included_items: string[];
+};
+
+export const PROMO_UI_IT: PromoUiLabels = {
+  banner_text: "Sconto lancio −{pct}% su tutti i pacchetti",
+  banner_ends: "scade tra",
+  banner_cta: "Calcola il preventivo",
+  badge: "−{pct}% lancio",
+  valid_until: "Prezzo di lancio valido fino al {date}",
+  full_price: "Prezzo pieno",
+  discount_line: "Sconto lancio −{pct}%",
+  ends_in: "Lo sconto scade tra",
+  save_line: "Risparmi {amount} € rispetto al prezzo pieno",
+  checkout_note:
+    "Lo sconto è già applicato: lo ritrovi anche nella pagina di pagamento sicura.",
+  countdown: { days: "giorni", hours: "ore", minutes: "min", seconds: "sec" },
+  included_title: "Cosa è compreso nel prezzo",
+  included_items: [
+    "Consulenza iniziale gratuita con Lorenzo, per telefono o WhatsApp",
+    "Assistenza continua di Lorenzo in orario d'ufficio: WhatsApp, telefono ed email",
+    "Guide passo passo per trovare e raccogliere i documenti",
+    "Area personale intuitiva: carichi i documenti e segui la pratica",
+    "Calcolo delle imposte e compilazione della dichiarazione",
+    "Trasmissione all'Agenzia delle Entrate con delega totale: non devi andare da nessuna parte",
+    "Voltura catastale inclusa",
+    "Garanzia Soddisfatti o Rimborsati",
+  ],
+};
+
 export const CHECKOUT_UI_IT: CheckoutUiLabels = {
   stripe_blurb:
     "Pagamento sicuro tramite Stripe: carta di credito/debito e, dove disponibile, pagamento a rate. Verrai reindirizzato alla pagina protetta di Stripe.",

@@ -4550,6 +4550,41 @@
     },
     {
       "collection": "site_ui",
+      "key": "promo_ui",
+      "locale": "de",
+      "is_published": true,
+      "value": {
+        "banner_text": "Einführungsrabatt: −{pct}% auf alle Pakete",
+        "banner_ends": "endet in",
+        "banner_cta": "Angebot berechnen",
+        "badge": "−{pct}% Einführung",
+        "valid_until": "Einführungspreis gültig bis {date}",
+        "full_price": "Voller Preis",
+        "discount_line": "Einführungsrabatt −{pct}%",
+        "ends_in": "Der Rabatt endet in",
+        "save_line": "Sie sparen {amount} € gegenüber dem vollen Preis",
+        "checkout_note": "Der Rabatt ist bereits angewendet: Sie sehen ihn auch auf der sicheren Zahlungsseite.",
+        "countdown": {
+          "days": "Tage",
+          "hours": "Std",
+          "minutes": "Min",
+          "seconds": "Sek"
+        },
+        "included_title": "Was im Preis enthalten ist",
+        "included_items": [
+          "Kostenloses Erstgespräch mit Lorenzo, per Telefon oder WhatsApp",
+          "Laufende Betreuung durch Lorenzo zu Bürozeiten: WhatsApp, Telefon und E-Mail",
+          "Schritt-für-Schritt-Anleitungen zum Finden und Sammeln der Unterlagen",
+          "Intuitiver persönlicher Bereich: Unterlagen hochladen und den Stand verfolgen",
+          "Steuerberechnung und Erstellung der Erbschaftserklärung",
+          "Einreichung bei der italienischen Finanzbehörde mit Vollmacht: Sie müssen nirgendwo hin",
+          "Katasterumschreibung (voltura) inklusive",
+          "Zufriedenheits- oder Geld-zurück-Garantie"
+        ]
+      }
+    },
+    {
+      "collection": "site_ui",
       "key": "conferma_ui",
       "locale": "de",
       "is_published": true,
