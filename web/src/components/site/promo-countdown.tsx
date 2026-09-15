@@ -117,12 +117,12 @@ export function PromoCountdown({
       {cells.map((c) => (
         <span
           key={c.label}
-          className="flex min-w-[2.75rem] flex-col items-center rounded-md bg-primary px-1.5 py-1 text-white"
+          className="flex min-w-[2.75rem] flex-col items-center rounded-md border border-primary/15 bg-bg px-1.5 py-1 text-primary"
         >
           <span className="font-display text-base font-bold leading-none tabular-nums sm:text-lg">
             {pad(c.value)}
           </span>
-          <span className="mt-0.5 text-[10px] uppercase leading-none tracking-wide text-white/70">
+          <span className="mt-0.5 text-[10px] uppercase leading-none tracking-wide text-text-muted">
             {c.label}
           </span>
         </span>

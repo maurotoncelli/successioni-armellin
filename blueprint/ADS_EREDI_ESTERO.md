@@ -14,11 +14,53 @@ Contenuti già online a supporto (categoria Guide «Eredi stranieri / dall'ester
 
 ---
 
+## 0. Creazione (15/09/2026) — decisione Mauro: budget 50/50 con la Nazionale
+
+Budget totale attuale 13 €/gg (Nazionale 5 + Locale Toscana 8, sospesa) →
+**Nazionale 6,50 €/gg** e **`Search | Estero IT | Lancio` 6,50 €/gg**. Nome campagna con
+«Lancio» perché parte durante lo sconto −20% (fino al 25/09).
+
+**Strada rapida — Google Ads Editor** (file pronto: `blueprint/ads/estero_it_ads_editor.csv`,
+52 righe: campagna, 21 negative, 4 gruppi, 22 keyword, 4 RSA con titoli pinnati):
+1. Google Ads Editor → Account → Importa → *Da file* → scegli il CSV. Nella finestra di
+   mappatura le colonne hanno i nomi standard inglesi (Campaign, Ad Group, Keyword,
+   Criterion Type, Headline 1…, Description 1…, Final URL): Editor le riconosce da solo; se
+   una resta «Ignora», mapparla a mano.
+2. Controlla gli avvisi (le località come nomi inglesi vanno; se una non è riconosciuta,
+   aggiungerla a mano in Campagna → Località).
+3. Impostazioni che il CSV NON porta e vanno messe a mano in Editor o in UI **prima di
+   attivare**: Località = **Presenza** (non «presenza o interesse»); Partner di ricerca **off**;
+   **AI Max off, asset automatici off, DSA off** (campo Website vuoto); elenco negative
+   condiviso **`escluse`** agganciato; **cap CPC 2,50 €** sulla strategia Massimizza clic;
+   conversioni = quelle dell'account (nessuna nuova); pianificazione tutto il giorno.
+4. Asset a livello campagna: sitelink Preventivo `/preventivo` · Tariffe `/tariffe` · Codice
+   fiscale dall'estero `/guide/codice-fiscale-erede-estero` · Pagare le imposte
+   `/guide/pagare-imposte-successione-dall-estero`; callout `Tutto online`, `Geometra
+   abilitato`, `WhatsApp`, `Pagamento con carta`, `11 lingue`; call asset 320 157 0567.
+5. Pubblica; la campagna nasce **in pausa**: attivarla solo dopo il punto 3.
+6. Nazionale: abbassare il budget a 6,50 €/gg lo stesso giorno.
+
+**Strada manuale (UI, ~30 min):** Nuova campagna → obiettivo *Lead* → Search → togli Display e
+Partner → Località: i 9 Paesi del §1 in Presenza → Lingua italiano → Offerte: Clic con cap
+2,50 € → Budget 6,50 → salta «Genera con AI» → 4 gruppi con keyword del §3 (frase, esatta
+dove indicato) → RSA del §5 con titolo gruppo pinnato in 1 e «Tutto Online, Senza Rientrare»
+in 2 → negative §4 → asset. Final URL con `?utm_source=google&utm_medium=cpc&utm_campaign=estero_it`
+(così anche Supabase `leads.utm_campaign` legge la campagna).
+
+**Titolo promo `-20% Lancio Fino al 25/9`** (non pinnato, in tutti i 4 RSA): **il 26/09 va
+rimosso o sostituito** (es. `Da 290 €, Imposte a Parte`), altrimenti Google lo disapprova
+per informazione non più vera.
+
+Lettura risultati: §7 (100 clic o 3 settimane). Confronto con la Nazionale a pari budget: se
+la Estero porta contatti a CPC simile, restare 50/50; se meglio, 60/40 per l'estero.
+
+---
+
 ## 1. Struttura account (UI Google Ads, account 469-614-3939)
 
 | Campagna | Budget | Paesi (Presenza) | Lingua | Offerte | Rete |
 |---|---|---|---|---|---|
-| `Search \| Estero IT \| Soft launch` | **7 €/gg** | Fase 1: Germania, Svizzera, Regno Unito, Francia, Belgio, Spagna, Paesi Bassi, Lussemburgo | Italiano | Massimizza i clic, **cap CPC 2,50 €** | Solo Search |
+| `Search \| Estero IT \| Lancio` | **6,50 €/gg** (50/50 con la Nazionale, 15/09) | Fase 1: Germania, Svizzera, Regno Unito, Francia, Belgio, Spagna, Paesi Bassi, Lussemburgo, Austria | Italiano | Massimizza i clic, **cap CPC 2,50 €** | Solo Search |
 | `Search \| Estero EN \| Fase 2` | 5 €/gg (dopo 3 settimane di dati) | Regno Unito, Stati Uniti, Canada, Australia | Inglese | Massimizza i clic, cap 3 € | Solo Search |
 
 Fase 1 solo Paesi europei: SEPA per bonifici/imposte, documenti senza apostille (Reg. UE
