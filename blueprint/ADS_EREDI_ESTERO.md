@@ -47,6 +47,18 @@ dove indicato) → RSA del §5 con titolo gruppo pinnato in 1 e «Tutto Online, 
 in 2 → negative §4 → asset. Final URL con `?utm_source=google&utm_medium=cpc&utm_campaign=estero_it`
 (così anche Supabase `leads.utm_campaign` legge la campagna).
 
+**⚠ Norma Google «Documenti governativi e servizi ufficiali» (disapprovazione 15/09 sera).**
+Negli annunci, sitelink, callout e snippet **NON nominare codice fiscale né il pagamento delle
+imposte per conto del cliente** («Codice Fiscale con Delega», «Imposte Senza Conto Italiano»,
+«Paghi le Imposte Tramite Noi», sitelink alle guide codice fiscale/imposte): Google li legge
+come "procurare documenti pubblici / pagare pratiche allo Stato" e blocca l'annuncio. Non fare
+ricorso in «contestazione» (perde e limita i ricorsi futuri): modificare il testo e scegliere
+«Apportate modifiche». Sostituti approvabili: `Delega Totale: Facciamo Noi`, `Assistenza di
+Lorenzo, Sempre`, `Soddisfatti o Rimborsati`, `Area Personale in 11 Lingue`; descrizione
+`Delega totale: documenti da foto, dichiarazione preparata e trasmessa da noi. Tu resti lì.` (90).
+Codice fiscale e imposte restano nella landing e nelle guide (lì non è un problema). Il §5 sotto
+contiene ancora le versioni vecchie: **non usarle**. Il gruppo D punta alla guida generale.
+
 **Titolo promo `-20% Lancio Fino al 25/9`** (non pinnato, in tutti i 4 RSA): **il 26/09 va
 rimosso o sostituito** (es. `Da 290 €, Imposte a Parte`), altrimenti Google lo disapprova
 per informazione non più vera.
