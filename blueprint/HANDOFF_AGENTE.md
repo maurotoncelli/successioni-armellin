@@ -45,8 +45,9 @@ manca fiducia *e* un contatto. Senza recapito i lead restano anonimi.
 `recensioni_title` + `site_ui.soft_lead_ui.name_required` /
 `email_optional` in tutte le 11 `content_entries` + seed IT. Fallback `t()` IT.
 
-**Non fatto (scelta):** follow-up automatico email/WA a 3-10 gg; pagamento 50/50
-o Klarna; «paga alla consegna» come checkout. Follow-up a mano sul task CRM.
+**Non fatto (scelta):** follow-up automatico email/WA a 3-10 gg; Klarna/BNPL
+come prodotto; «paga alla consegna» come checkout. Follow-up a mano sul task CRM.
+Il **50/50 studio** è in v1 (due addebiti Stripe), vedi sotto.
 
 File: `preventivo/grazie/page.tsx`, `soft-lead.tsx`, `preventivo/actions.ts`,
 `contacts.ts`, `notifications.ts`, `quiz-summary.ts`, `contact-tracker.tsx`,
@@ -84,9 +85,36 @@ Places sync resta spento (no billing). Refresh a mano da scheda Google 5,0 · **
 `site-google-reviews-v2`. Home/chi-sono mostrano tutte le card; `/preventivo/grazie`
 resta compact max 3 (ora le tre più nuove).
 
-**50/50 (non implementato):** non è Klarna/rate. Sarebbe onorario studio in due
-tranche (50% all’avvio, 50% a dichiarazione pronta). Klarna/Pay in 3 = il cliente
-rateizza verso Stripe, lo studio incassa subito. Da fare solo se Mauro sceglie.
+---
+
+## ★★ PAGAMENTO 50/50 STUDIO (18/09)
+
+Due addebiti Stripe `mode: payment` sull’onorario (non Klarna/BNPL: quello resta
+`rate_nota`, il provider rateizza e lo studio incassa subito). Default checkout:
+**paga tutto**. Opzione: 50% oggi, 50% a dichiarazione pronta (prima dell’invio AdE).
+
+**Come funziona**
+- Spezzamento in centesimi (`lib/payment-plan.ts`) così le due metà sommano al totale.
+- Piano in `_extras.json` (`paymentPlan`, NO-DDL). Importi fissati al primo acconto:
+  la promo non cambia il saldo.
+- Dopo l’acconto la pratica va **PAGATO** (area, checklist, documenti). Stato
+  `payment_status` resta PAID; il saldo vive negli extras (`isBalanceDue`).
+- Fattura auto solo su pagamento intero o saldo (non sull’acconto).
+- Acconto/saldo: una riga Stripe, **niente coupon** (lo sconto è già nel totale).
+- Webhook: `metadata.installment` = full|deposit|balance. Saldo ≠ seconda email PAGATO.
+
+**UI**
+- Checkout: radio full vs 50/50; se acconto già pagato, banner + CTA saldo.
+- Conferma: `body_paid_deposit` se installment=deposit.
+- Area `/ordine`: acconto ricevuto + «Paga il saldo».
+- CRM scheda: piano 50/50, link intero / acconto / saldo, offline sul rimanente.
+
+Klarna-as-product e follow-up automatico: non richiesti.
+
+File: `lib/payment-plan.ts`, `practice-extras.ts`, `payments.ts`,
+`api/stripe/webhook`, `api/checkout`, `checkout-panel.tsx`, checkout/conferma/ordine,
+CRM `payment-link.tsx` + scheda pratica, `legal.ts` art. 5, i18n `checkout_ui` /
+`conferma_ui` / `ordine_ui`.
 
 ---
 

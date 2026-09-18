@@ -4520,7 +4520,11 @@
         "taxes_iban_edit": "Modifier",
         "taxes_pending": "Les impôts vous seront calculés et communiqués avant l'envoi.",
         "withdrawal_prompt": "Vous avez changé d'avis ?",
-        "withdrawal_cta": "Demander la rétractation"
+        "withdrawal_cta": "Demander la rétractation",
+        "deposit_paid": "Acompte de 50 % reçu ({amount} €)",
+        "balance_due": "Solde lorsque la déclaration est prête : {amount} €",
+        "balance_paid": "Solde reçu",
+        "pay_balance": "Payer le solde"
       }
     },
     {
@@ -4615,7 +4619,17 @@
         "empty_cta": "Aller au devis →",
         "meta_title": "Finaliser la commande",
         "extra_property": "Biens immobiliers supplémentaires ({extra} × {fee}€)",
-        "extra_heir": "Héritiers supplémentaires ({extra} × {fee}€)"
+        "extra_heir": "Héritiers supplémentaires ({extra} × {fee}€)",
+        "plan_full_title": "Payer la totalité maintenant",
+        "plan_full_hint": "Les honoraires complets en un seul paiement sécurisé.",
+        "plan_split_title": "50 % maintenant, 50 % lorsque la déclaration est prête",
+        "plan_split_hint": "Aujourd'hui {deposit} €. Le solde de {balance} € lorsque la déclaration est prête, avant l'envoi à l'administration fiscale.",
+        "plan_pay_full": "Payer {amount} €",
+        "plan_pay_deposit": "Payer l'acompte {amount} €",
+        "plan_pay_balance": "Payer le solde {amount} €",
+        "plan_today": "Aujourd'hui",
+        "plan_later": "Lorsque la déclaration est prête",
+        "balance_banner": "Acompte déjà reçu. Il reste {amount} €."
       }
     },
     {
@@ -4669,7 +4683,8 @@
         "cta_area": "Accéder à l'Espace personnel",
         "cta_home": "Retour à l'accueil",
         "taxes_note": "Les impôts sont séparés des honoraires : nous les calculons et vous les communiquons avant l'envoi.",
-        "meta_title": "Paiement reçu"
+        "meta_title": "Paiement reçu",
+        "body_paid_deposit": "Nous avons reçu l'acompte de 50 %. Lorenzo démarre le dossier ; le solde se paie lorsque la déclaration est prête, avant l'envoi à l'Agenzia delle Entrate."
       }
     },
     {

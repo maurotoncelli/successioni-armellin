@@ -160,7 +160,7 @@ export const legalDocsEn: Record<LegalSlug, LegalDoc> = {
       { type: "h2", text: "4. Conclusion of the contract" },
       { type: "p", text: "A quote request is not binding. The contract is concluded upon payment of the fee for the chosen package (or acceptance of the custom quote)." },
       { type: "h2", text: "5. Payment and package changes" },
-      { type: "p", text: "Payment of the fee is made in advance via the payment provider (Stripe). Instalment options may be available for the fee only, not for taxes." },
+      { type: "p", text: "Payment of the fee is made in advance via the payment provider (Stripe), either in full or in two 50% instalments (deposit when the case starts, balance when the declaration is ready, before filing with the Agenzia delle Entrate). The invoice is issued as required by law, normally once the balance is paid. State taxes are handled separately and paid by the heir as communicated." },
       { type: "p", text: "Package change and settlement: if, by agreement with the client, the package is changed after purchase, only the difference is settled." },
       { type: "h2", text: "6. Client obligations and liability" },
       {

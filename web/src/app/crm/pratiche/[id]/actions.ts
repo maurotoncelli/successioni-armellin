@@ -23,8 +23,12 @@ import {
   removeInvoice,
   setWithdrawalStatus,
   getSafeExtras,
+  getPaymentPlanRaw,
+  isBalanceDue,
+  upsertPaymentPlan,
   type WithdrawalStatus,
 } from "@/lib/practice-extras";
+import { isCheckoutPlan, type CheckoutPlan } from "@/lib/payment-plan";
 import { issueInvoiceForPractice } from "@/lib/invoice";
 import { slaDueDate } from "@/lib/cms";
 import { generateChecklist } from "@/lib/checklist";
@@ -82,13 +86,17 @@ export type PaymentLinkResult =
 
 export async function generatePaymentLink(
   practiceId: string,
+  plan?: CheckoutPlan,
 ): Promise<PaymentLinkResult> {
   const h = await headers();
   const host = h.get("x-forwarded-host") ?? h.get("host");
   const proto = h.get("x-forwarded-proto") ?? "https";
   const origin = host ? `${proto}://${host}` : "";
 
-  return createCheckoutSession(practiceId, { origin });
+  return createCheckoutSession(practiceId, {
+    origin,
+    plan: isCheckoutPlan(plan) ? plan : "full",
+  });
 }
 
 /*
@@ -1048,14 +1056,21 @@ export async function registerOfflinePayment(
     .eq("id", practiceId)
     .maybeSingle();
   if (!data) return { ok: false, error: "Pratica non trovata." };
-  if (data.payment_status === "PAID") {
+  const splitPlan = await getPaymentPlanRaw(practiceId);
+  const settlingBalance = data.payment_status === "PAID" && isBalanceDue(splitPlan);
+  if (data.payment_status === "PAID" && !settlingBalance) {
     return { ok: false, error: "La pratica risulta gia pagata." };
   }
 
   const now = stamp();
   const today = new Date().toISOString().slice(0, 10);
   const { communications, log } = loadArrays(data);
-  log.push({ action: `pagamento_offline:${input.method}`, at: now });
+  log.push({
+    action: settlingBalance
+      ? `saldo_offline:${input.method}`
+      : `pagamento_offline:${input.method}`,
+    at: now,
+  });
 
   const noteLine = `[${now}] Pagamento ${offlineLabels[input.method]} di ${input.amount}€ del ${input.date || today}${
     input.note?.trim() ? ` - ${input.note.trim()}` : ""
@@ -1063,6 +1078,33 @@ export async function registerOfflinePayment(
   const payment_notes = data.payment_notes
     ? `${data.payment_notes}\n${noteLine}`
     : noteLine;
+
+  if (settlingBalance && splitPlan) {
+    await upsertPaymentPlan(practiceId, {
+      ...splitPlan,
+      balancePaidAt: new Date().toISOString(),
+    });
+    log.push({ action: "saldo_ricevuto", at: now });
+    const { error } = await admin
+      .from("practices")
+      .update({ payment_notes, log })
+      .eq("id", practiceId);
+    if (error) {
+      console.error("[crm] registerOfflinePayment saldo:", error.message);
+      return { ok: false, error: "Registrazione non riuscita." };
+    }
+    revalidatePath(`/crm/pratiche/${practiceId}`);
+    revalidatePath("/crm/pratiche");
+    return { ok: true };
+  }
+
+  if (splitPlan?.plan === "split50" && !splitPlan.depositPaidAt) {
+    await upsertPaymentPlan(practiceId, {
+      ...splitPlan,
+      depositPaidAt: new Date().toISOString(),
+      balancePaidAt: new Date().toISOString(),
+    });
+  }
 
   const patch: Partial<PracticeRow> = {
     status: "PAGATO",

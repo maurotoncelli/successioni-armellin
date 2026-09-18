@@ -298,7 +298,7 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
       { type: "h2", text: "5. Pagamento e modifica del pacchetto" },
       {
         type: "p",
-        text: "Il pagamento dell'onorario avviene anticipatamente tramite il fornitore di pagamento (Stripe). La fattura è emessa secondo gli obblighi vigenti. Le imposte di Stato sono gestite separatamente e versate dall'erede secondo le modalità comunicate.",
+        text: "Il pagamento dell'onorario avviene anticipatamente tramite il fornitore di pagamento (Stripe), in un'unica soluzione oppure in due tranche del 50% ciascuna (acconto all'avvio della pratica e saldo a dichiarazione pronta, prima dell'invio all'Agenzia delle Entrate). La fattura è emessa secondo gli obblighi vigenti, di norma a saldo avvenuto. Le imposte di Stato sono gestite separatamente e versate dall'erede secondo le modalità comunicate.",
       },
       {
         type: "p",

@@ -4534,7 +4534,11 @@
         "taxes_iban_edit": "Edit",
         "taxes_pending": "Taxes will be calculated and notified to you before filing.",
         "withdrawal_prompt": "Changed your mind?",
-        "withdrawal_cta": "Request withdrawal"
+        "withdrawal_cta": "Request withdrawal",
+        "deposit_paid": "50% deposit received ({amount} €)",
+        "balance_due": "Balance due when the declaration is ready: {amount} €",
+        "balance_paid": "Balance received",
+        "pay_balance": "Pay the remaining 50%"
       }
     },
     {
@@ -4629,7 +4633,17 @@
         "empty_cta": "Go to quote →",
         "meta_title": "Complete the order",
         "extra_property": "Extra properties ({extra} × €{fee})",
-        "extra_heir": "Extra heirs ({extra} × €{fee})"
+        "extra_heir": "Extra heirs ({extra} × €{fee})",
+        "plan_full_title": "Pay in full now",
+        "plan_full_hint": "The full fee in one secure payment.",
+        "plan_split_title": "50% now, 50% when the declaration is ready",
+        "plan_split_hint": "Today {deposit} €. The remaining {balance} € when the declaration is ready, before filing with the tax office.",
+        "plan_pay_full": "Pay {amount} €",
+        "plan_pay_deposit": "Pay the 50% deposit {amount} €",
+        "plan_pay_balance": "Pay the remaining {amount} €",
+        "plan_today": "Today",
+        "plan_later": "When the declaration is ready",
+        "balance_banner": "Deposit received. Remaining balance: {amount} €."
       }
     },
     {
@@ -4683,7 +4697,8 @@
         "cta_area": "Go to client area",
         "cta_home": "Back to home",
         "taxes_note": "Taxes are separate from the fee: we calculate and notify them before filing.",
-        "meta_title": "Payment received"
+        "meta_title": "Payment received",
+        "body_paid_deposit": "We've received the 50% deposit. Lorenzo will start your case; the remaining 50% is due when the declaration is ready, before filing with the Agenzia delle Entrate."
       }
     },
     {

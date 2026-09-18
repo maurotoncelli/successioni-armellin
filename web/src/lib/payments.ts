@@ -7,6 +7,17 @@ import { buildOrder } from "@/lib/order";
 import type { PackageKey, PackageRow, PracticeRow } from "@/lib/supabase/types";
 import { parseAttribution } from "@/lib/attribution-shared";
 import type { Package } from "@/content/site";
+import {
+  getPaymentPlanRaw,
+  isBalanceDue,
+  upsertPaymentPlan,
+  clearUnpaidPaymentPlan,
+} from "@/lib/practice-extras";
+import {
+  isCheckoutPlan,
+  splitHonorarium,
+  type CheckoutPlan,
+} from "@/lib/payment-plan";
 
 /*
   Logica condivisa di creazione della sessione di pagamento Stripe per UNA pratica.
@@ -83,6 +94,8 @@ export type CreateCheckoutOptions = {
   addonKeys?: string[];
   /** Pacchetto forzato (es. dal checkout pubblico); altrimenti usa quello della pratica. */
   packageKey?: PackageKey;
+  /** full = onorario intero; deposit = acconto 50%; balance = saldo 50%. */
+  plan?: CheckoutPlan;
 };
 
 export async function createCheckoutSession(
@@ -111,9 +124,17 @@ export async function createCheckoutSession(
   if (!practice) return { ok: false, error: "Pratica non trovata." };
 
   const row = practice as PracticeRow;
+  const plan: CheckoutPlan = isCheckoutPlan(opts.plan) ? opts.plan : "full";
+  const existingPlan = await getPaymentPlanRaw(practiceId);
 
-  if (row.payment_status === "PAID") {
+  if (row.payment_status === "PAID" && !isBalanceDue(existingPlan)) {
     return { ok: false, error: "Questa pratica risulta gia pagata." };
+  }
+  if (row.payment_status === "PAID" && plan !== "balance") {
+    return { ok: false, error: "Resta solo il saldo del 50%: usa il link saldo." };
+  }
+  if (plan === "balance" && !isBalanceDue(existingPlan)) {
+    return { ok: false, error: "Nessun saldo 50% da incassare su questa pratica." };
   }
 
   const packageKey =
@@ -169,26 +190,64 @@ export async function createCheckoutSession(
     return { ok: false, error: "Importo dell'ordine non valido." };
   }
 
-  // Snapshot prezzo/righe sulla pratica + stato PENDING (in attesa del pagamento).
+  const split = existingPlan?.plan === "split50"
+    ? { deposit: existingPlan.deposit, balance: existingPlan.balance }
+    : splitHonorarium(order.total);
+  const chargeAmount =
+    plan === "deposit"
+      ? split.deposit
+      : plan === "balance"
+        ? split.balance
+        : order.total;
+  if (chargeAmount < 0.5) {
+    return { ok: false, error: "Importo dell'ordine non valido." };
+  }
+
+  // Snapshot prezzo/righe sulla pratica. PENDING solo se non è già pagato
+  // l'acconto (il saldo non deve far tornare la pratica in attesa).
+  const practicePatch: Partial<PracticeRow> = {
+    selected_package: order.packageKey,
+    price: order.total,
+    line_items: order.lineItems,
+  };
+  if (row.payment_status !== "PAID") {
+    practicePatch.payment_status = "PENDING";
+  }
   const { error: updErr } = await admin
     .from("practices")
-    .update({
-      selected_package: order.packageKey,
-      price: order.total,
-      line_items: order.lineItems,
-      payment_status: "PENDING",
-    })
+    .update(practicePatch)
     .eq("id", practiceId);
   if (updErr) return { ok: false, error: updErr.message };
 
+  if (plan === "deposit") {
+    await upsertPaymentPlan(practiceId, {
+      plan: "split50",
+      total: order.total,
+      deposit: split.deposit,
+      balance: split.balance,
+    });
+  } else if (plan === "full") {
+    await clearUnpaidPaymentPlan(practiceId);
+  }
+
   try {
     const stripe = getStripe();
+    const pkgLabel =
+      order.lineItems.find((li) => li.type === "PACKAGE")?.label ??
+      "Onorario dichiarazione di successione";
+    const splitLineName =
+      plan === "deposit"
+        ? `Acconto 50% — ${pkgLabel}`
+        : `Saldo 50% — ${pkgLabel}`;
+    const useSplitLine = plan === "deposit" || plan === "balance";
+
     // Promo a tempo: Stripe non accetta righe negative, quindi le righe
     // positive restano a listino e lo sconto va come coupon percent_off (lo
     // vede anche il cliente nella pagina Stripe: "Sconto lancio −20%").
+    // Sull'acconto/saldo lo sconto è già nel totale spezzato: niente coupon.
     const discountLine = order.lineItems.find((li) => li.type === "DISCOUNT");
     const coupon =
-      order.discount && discountLine
+      !useSplitLine && order.discount && discountLine
         ? await ensurePromoCoupon(stripe, order.discount.code, order.discount.percent, discountLine.label)
         : null;
     const session = await stripe.checkout.sessions.create({
@@ -197,20 +256,32 @@ export async function createCheckoutSession(
       currency: "eur",
       client_reference_id: row.code,
       customer_email: row.client_email || undefined,
-      line_items: order.lineItems
-        .filter((item) => item.type !== "DISCOUNT")
-        .map((item) => ({
-          quantity: 1,
-          price_data: {
-            currency: "eur",
-            unit_amount: Math.round(item.amount * 100),
-            product_data: { name: item.label },
-          },
-        })),
+      line_items: useSplitLine
+        ? [
+            {
+              quantity: 1,
+              price_data: {
+                currency: "eur",
+                unit_amount: Math.round(chargeAmount * 100),
+                product_data: { name: splitLineName },
+              },
+            },
+          ]
+        : order.lineItems
+            .filter((item) => item.type !== "DISCOUNT")
+            .map((item) => ({
+              quantity: 1,
+              price_data: {
+                currency: "eur",
+                unit_amount: Math.round(item.amount * 100),
+                product_data: { name: item.label },
+              },
+            })),
       ...(coupon ? { discounts: [{ coupon }] } : {}),
       metadata: {
         practice_id: row.id,
         practice_code: row.code,
+        installment: plan,
         ...(order.discount
           ? { promo_code: order.discount.code, promo_percent: String(order.discount.percent) }
           : {}),
@@ -220,6 +291,7 @@ export async function createCheckoutSession(
         metadata: {
           practice_id: row.id,
           practice_code: row.code,
+          installment: plan,
           ...stripeAttributionMeta(row.attribution),
         },
       },
@@ -236,7 +308,7 @@ export async function createCheckoutSession(
       .update({ stripe_session_id: session.id })
       .eq("id", practiceId);
 
-    return { ok: true, url: session.url, total: order.total };
+    return { ok: true, url: session.url, total: chargeAmount };
   } catch (err) {
     const message = err instanceof Error ? err.message : "Errore Stripe.";
     console.error("[payments] createCheckoutSession:", err);

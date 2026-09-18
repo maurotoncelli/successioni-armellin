@@ -4534,7 +4534,11 @@
         "taxes_iban_edit": "Modifica",
         "taxes_pending": "Le imposte ti verranno calcolate e comunicate prima dell'invio.",
         "withdrawal_prompt": "Hai cambiato idea?",
-        "withdrawal_cta": "Richiedi il recesso"
+        "withdrawal_cta": "Richiedi il recesso",
+        "deposit_paid": "Acconto 50% ricevuto ({amount} €)",
+        "balance_due": "Saldo a dichiarazione pronta: {amount} €",
+        "balance_paid": "Saldo ricevuto",
+        "pay_balance": "Paga il saldo"
       }
     },
     {
@@ -4629,7 +4633,17 @@
         "empty_cta": "Vai al preventivo →",
         "meta_title": "Completa l'ordine",
         "extra_property": "Immobili aggiuntivi ({extra} × {fee}€)",
-        "extra_heir": "Eredi aggiuntivi ({extra} × {fee}€)"
+        "extra_heir": "Eredi aggiuntivi ({extra} × {fee}€)",
+        "plan_full_title": "Paga tutto ora",
+        "plan_full_hint": "L'onorario completo in un unico pagamento sicuro.",
+        "plan_split_title": "50% ora, 50% a dichiarazione pronta",
+        "plan_split_hint": "Oggi {deposit} €. Il saldo di {balance} € quando la dichiarazione è pronta, prima dell'invio all'Agenzia.",
+        "plan_pay_full": "Paga {amount} €",
+        "plan_pay_deposit": "Paga l'acconto {amount} €",
+        "plan_pay_balance": "Paga il saldo {amount} €",
+        "plan_today": "Oggi",
+        "plan_later": "A dichiarazione pronta",
+        "balance_banner": "Acconto già ricevuto. Resta il saldo di {amount} €."
       }
     },
     {
@@ -4683,7 +4697,8 @@
         "cta_area": "Vai all'area personale",
         "cta_home": "Torna alla home",
         "taxes_note": "Le imposte sono separate dall'onorario: te le calcoliamo e comunichiamo prima dell'invio.",
-        "meta_title": "Pagamento ricevuto"
+        "meta_title": "Pagamento ricevuto",
+        "body_paid_deposit": "Abbiamo ricevuto l'acconto del 50%. Lorenzo parte con la pratica; il saldo si paga a dichiarazione pronta, prima dell'invio all'Agenzia delle Entrate."
       }
     },
     {

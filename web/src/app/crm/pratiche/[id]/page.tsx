@@ -36,7 +36,7 @@ import { OfflinePayment } from "@/components/crm/offline-payment";
 import { WithdrawalPanel } from "@/components/crm/withdrawal-panel";
 import { PracticeTasks } from "@/components/crm/practice-tasks";
 import { ExtractionPanel } from "@/components/crm/extraction-panel";
-import { getSafeExtras } from "@/lib/practice-extras";
+import { getSafeExtras, isBalanceDue } from "@/lib/practice-extras";
 import { getExtraction, isAiConfigured } from "@/lib/extraction";
 import { isInvoicingConfigured } from "@/lib/invoice";
 import { listItemFiles } from "@/lib/documents";
@@ -72,6 +72,8 @@ export default async function SchedaPraticaPage({
   if (!p) notFound();
 
   const extras = await getSafeExtras(p.id);
+  const splitDue = isBalanceDue(extras.paymentPlan);
+  const fullyPaid = p.paymentStatus === "PAID" && !splitDue;
   const extraction = await getExtraction(p.id);
   const quiz = quizFromPractice(p);
   // Pratiche precedenti alla fotografia del quiz: ricalcolo la cifra esatta
@@ -354,14 +356,58 @@ export default async function SchedaPraticaPage({
                   <span className="font-medium text-crm-text">{formatEuro(p.price)}</span>
                 </div>
               )}
+              {extras.paymentPlan?.plan === "split50" && (
+                <div className="mt-1 space-y-1.5 rounded-lg border border-crm-border bg-crm-bg2/40 px-2.5 py-2 text-xs">
+                  <p className="font-medium text-crm-text">Piano 50/50</p>
+                  <div className="flex justify-between gap-3">
+                    <span className="text-crm-text2">Acconto</span>
+                    <span className="text-right text-crm-text">
+                      {formatEuro(extras.paymentPlan.deposit)}
+                      {extras.paymentPlan.depositPaidAt
+                        ? ` · ${formatDateAtTimeIt(extras.paymentPlan.depositPaidAt)}`
+                        : " · da pagare"}
+                    </span>
+                  </div>
+                  <div className="flex justify-between gap-3">
+                    <span className="text-crm-text2">Saldo</span>
+                    <span className="text-right text-crm-text">
+                      {formatEuro(extras.paymentPlan.balance)}
+                      {extras.paymentPlan.balancePaidAt
+                        ? ` · ${formatDateAtTimeIt(extras.paymentPlan.balancePaidAt)}`
+                        : extras.paymentPlan.depositPaidAt
+                          ? " · in attesa"
+                          : " · a dichiarazione pronta"}
+                    </span>
+                  </div>
+                </div>
+              )}
             </div>
-            {p.paymentStatus !== "PAID" && (
-              <>
-                {(p.selectedPackage || p.suggestedPackage) && (
-                  <PaymentLinkButton practiceId={p.id} />
+            {!fullyPaid && (
+              <div className="mt-4 space-y-2 border-t border-crm-border pt-4">
+                {Boolean(p.selectedPackage || p.suggestedPackage) && splitDue && (
+                  <PaymentLinkButton practiceId={p.id} plan="balance" />
                 )}
-                <OfflinePayment practiceId={p.id} suggestedAmount={p.price} />
-              </>
+                {Boolean(p.selectedPackage || p.suggestedPackage) &&
+                  p.paymentStatus !== "PAID" && (
+                    <>
+                      <PaymentLinkButton practiceId={p.id} plan="full" />
+                      <PaymentLinkButton practiceId={p.id} plan="deposit" />
+                    </>
+                  )}
+                <OfflinePayment
+                  practiceId={p.id}
+                  suggestedAmount={
+                    splitDue && extras.paymentPlan
+                      ? extras.paymentPlan.balance
+                      : p.price
+                  }
+                  cta={
+                    splitDue
+                      ? "Registra saldo manuale"
+                      : "Registra pagamento manuale"
+                  }
+                />
+              </div>
             )}
           </CrmCard>
 
@@ -370,7 +416,7 @@ export default async function SchedaPraticaPage({
             practiceId={p.id}
             invoice={extras.invoice}
             invoicingConfigured={isInvoicingConfigured}
-            paid={p.paymentStatus === "PAID"}
+            paid={fullyPaid}
           />
 
           {/* Mandato & IBAN */}

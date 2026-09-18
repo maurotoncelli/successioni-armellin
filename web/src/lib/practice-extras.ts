@@ -56,6 +56,20 @@ export type WithdrawalInfo = {
   outcomeNote?: string; // nota dell'esito (Lorenzo)
 };
 
+/** 50/50 onorario: acconto all'avvio, saldo a dichiarazione pronta. */
+export type PaymentPlanInfo = {
+  plan: "split50";
+  total: number;
+  deposit: number;
+  balance: number;
+  depositPaidAt?: string;
+  depositSessionId?: string;
+  depositPaymentIntentId?: string;
+  balancePaidAt?: string;
+  balanceSessionId?: string;
+  balancePaymentIntentId?: string;
+};
+
 export type PracticeExtras = {
   mandate?: MandateInfo;
   iban?: { last4: string; enc: string; providedAt: string };
@@ -65,7 +79,12 @@ export type PracticeExtras = {
   finalDocuments?: FinalDocument[];
   invoice?: InvoiceInfo;
   withdrawal?: WithdrawalInfo;
+  paymentPlan?: PaymentPlanInfo;
 };
+
+export function isBalanceDue(plan?: PaymentPlanInfo | null): boolean {
+  return Boolean(plan?.plan === "split50" && plan.depositPaidAt && !plan.balancePaidAt);
+}
 
 // Vista "sicura" per il client (mai l'IBAN in chiaro ne il blob cifrato).
 export type SafeInvoice = {
@@ -83,6 +102,7 @@ export type SafeExtras = {
   finalDocuments?: { label: string; fileName: string; uploadedAt: string }[];
   invoice?: SafeInvoice;
   withdrawal?: WithdrawalInfo;
+  paymentPlan?: PaymentPlanInfo;
 };
 
 type Admin = ReturnType<typeof getAdminClient>;
@@ -143,6 +163,9 @@ function toSafe(extras: PracticeExtras): SafeExtras {
   }
   if (extras.withdrawal) {
     safe.withdrawal = extras.withdrawal;
+  }
+  if (extras.paymentPlan) {
+    safe.paymentPlan = extras.paymentPlan;
   }
   return safe;
 }
@@ -446,6 +469,33 @@ export async function setWithdrawalStatus(
   };
   await writeExtras(admin, practiceId, extras);
   return extras.withdrawal;
+}
+
+export async function getPaymentPlanRaw(
+  practiceId: string,
+): Promise<PaymentPlanInfo | undefined> {
+  const admin = getAdminClient();
+  const extras = await readExtras(admin, practiceId);
+  return extras.paymentPlan;
+}
+
+export async function upsertPaymentPlan(
+  practiceId: string,
+  patch: PaymentPlanInfo,
+): Promise<PaymentPlanInfo> {
+  const admin = getAdminClient();
+  const extras = await readExtras(admin, practiceId);
+  extras.paymentPlan = { ...extras.paymentPlan, ...patch };
+  await writeExtras(admin, practiceId, extras);
+  return extras.paymentPlan;
+}
+
+export async function clearUnpaidPaymentPlan(practiceId: string): Promise<void> {
+  const admin = getAdminClient();
+  const extras = await readExtras(admin, practiceId);
+  if (!extras.paymentPlan || extras.paymentPlan.depositPaidAt) return;
+  delete extras.paymentPlan;
+  await writeExtras(admin, practiceId, extras);
 }
 
 // Solo CRM (requireAdmin lato chiamante): IBAN in chiaro per il pagamento F24.

@@ -8,6 +8,7 @@ import { trackEvent } from "@/lib/analytics";
 import { createCheckoutPractice } from "@/app/(site)/checkout/actions";
 import { LegalLinksText } from "@/components/site/legal-links-text";
 import type { PackageKey } from "@/lib/supabase/types";
+import type { CheckoutPlan } from "@/lib/payment-plan";
 import {
   CHECKOUT_UI_IT,
   type CheckoutUiLabels,
@@ -42,6 +43,10 @@ type Props = {
   rateNota: string;
   recessoLink: { href: string; label: string };
   ui?: CheckoutUiLabels;
+  total?: number;
+  deposit?: number;
+  balance?: number;
+  balanceDue?: boolean;
 };
 
 export function CheckoutPanel({
@@ -56,14 +61,37 @@ export function CheckoutPanel({
   rateNota,
   recessoLink,
   ui = CHECKOUT_UI_IT,
+  total = 0,
+  deposit = 0,
+  balance = 0,
+  balanceDue = false,
 }: Props) {
   const [tc, setTc] = useState(false);
   const [avvio, setAvvio] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [plan, setPlan] = useState<CheckoutPlan>(balanceDue ? "balance" : "full");
 
   const hasOrder = Boolean(practiceId) || Boolean(packageKey);
   const canPay = hasOrder && tc && avvio && !loading;
+  const checkoutPlan: CheckoutPlan = balanceDue ? "balance" : plan;
+
+  function fmt(n: number) {
+    return n.toLocaleString("it-IT", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+  }
+  function fill(template: string, vars: Record<string, string>) {
+    return Object.entries(vars).reduce(
+      (acc, [k, v]) => acc.replaceAll(`{${k}}`, v),
+      template,
+    );
+  }
+
+  const payLabelLive =
+    checkoutPlan === "deposit"
+      ? fill(ui.plan_pay_deposit, { amount: fmt(deposit) })
+      : checkoutPlan === "balance"
+        ? fill(ui.plan_pay_balance, { amount: fmt(balance) })
+        : fill(ui.plan_pay_full, { amount: fmt(total) });
 
   async function startStripe(id: string) {
     const res = await fetch("/api/checkout", {
@@ -72,6 +100,7 @@ export function CheckoutPanel({
       body: JSON.stringify({
         practiceId: id,
         packageKey: packageKey ?? undefined,
+        plan: checkoutPlan,
       }),
     });
     const data = await res.json();
@@ -87,7 +116,11 @@ export function CheckoutPanel({
     if (!hasOrder) return;
     setLoading(true);
     setError(null);
-    trackEvent("begin_checkout", { practice_id: practiceId, package: packageKey });
+    trackEvent("begin_checkout", {
+      practice_id: practiceId,
+      package: packageKey,
+      plan: checkoutPlan,
+    });
     try {
       // Pratica gia esistente (CRM) -> avvio diretto.
       if (practiceId) {
@@ -128,6 +161,75 @@ export function CheckoutPanel({
         {ui.stripe_blurb}
       </p>
       <p className="mt-3 text-xs text-text-muted">{rateNota}</p>
+
+      {hasOrder && total > 0 && (
+        <fieldset className="mt-6 space-y-2">
+          <legend className="sr-only">{ui.plan_full_title}</legend>
+          {balanceDue ? (
+            <p className="rounded-[10px] border border-accent/30 bg-sand/50 px-3 py-2.5 text-sm text-text">
+              {fill(ui.balance_banner, { amount: fmt(balance) })}
+            </p>
+          ) : (
+            <>
+              <label
+                className={`flex cursor-pointer items-start gap-3 rounded-[12px] border p-3 text-sm transition-colors ${
+                  checkoutPlan === "full"
+                    ? "border-accent bg-sand/50"
+                    : "border-primary/10 bg-bg"
+                }`}
+              >
+                <input
+                  type="radio"
+                  name="pay-plan"
+                  className="mt-1 accent-[var(--color-accent)]"
+                  checked={checkoutPlan === "full"}
+                  onChange={() => setPlan("full")}
+                />
+                <span className="min-w-0 flex-1">
+                  <span className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                    <span className="font-medium text-text">{ui.plan_full_title}</span>
+                    <span className="tabular-nums font-semibold text-primary">
+                      {fmt(total)} €
+                    </span>
+                  </span>
+                  <span className="mt-1 block text-xs text-text-muted">
+                    {ui.plan_full_hint}
+                  </span>
+                </span>
+              </label>
+              <label
+                className={`flex cursor-pointer items-start gap-3 rounded-[12px] border p-3 text-sm transition-colors ${
+                  checkoutPlan === "deposit"
+                    ? "border-accent bg-sand/50"
+                    : "border-primary/10 bg-bg"
+                }`}
+              >
+                <input
+                  type="radio"
+                  name="pay-plan"
+                  className="mt-1 accent-[var(--color-accent)]"
+                  checked={checkoutPlan === "deposit"}
+                  onChange={() => setPlan("deposit")}
+                />
+                <span className="min-w-0 flex-1">
+                  <span className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                    <span className="font-medium text-text">{ui.plan_split_title}</span>
+                    <span className="tabular-nums text-sm text-text">
+                      {fmt(deposit)} €
+                    </span>
+                  </span>
+                  <span className="mt-1 block text-xs text-text-muted">
+                    {fill(ui.plan_split_hint, {
+                      deposit: fmt(deposit),
+                      balance: fmt(balance),
+                    })}
+                  </span>
+                </span>
+              </label>
+            </>
+          )}
+        </fieldset>
+      )}
 
       <div className="mt-6 space-y-3">
         <label className="flex items-start gap-3 text-sm">
@@ -177,7 +279,7 @@ export function CheckoutPanel({
         onClick={pay}
       >
         <Lock className="h-4 w-4" />
-        {loading ? ui.loading : payLabel}
+        {loading ? ui.loading : payLabelLive || payLabel}
       </Button>
       <p className="mt-2 text-center text-xs text-text-muted">{ctaNota}</p>
 

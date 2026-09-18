@@ -50,6 +50,19 @@ export type CheckoutUiLabels = {
   empty_order: string;
   empty_cta: string;
   meta_title: string;
+  plan_full_title: string;
+  plan_full_hint: string;
+  plan_split_title: string;
+  /** Template: `{deposit}` `{balance}` */
+  plan_split_hint: string;
+  /** Template: `{amount}` */
+  plan_pay_full: string;
+  plan_pay_deposit: string;
+  plan_pay_balance: string;
+  plan_today: string;
+  plan_later: string;
+  /** Template: `{amount}` */
+  balance_banner: string;
 };
 
 export type ConfermaUiLabels = {
@@ -64,6 +77,7 @@ export type ConfermaUiLabels = {
   cta_home: string;
   taxes_note: string;
   meta_title: string;
+  body_paid_deposit: string;
 };
 
 export type ContactUiLabels = {
@@ -260,6 +274,17 @@ export const CHECKOUT_UI_IT: CheckoutUiLabels = {
     "Non risulta una pratica con un pacchetto da pagare. Calcola prima il preventivo: ti proponiamo il pacchetto giusto e colleghiamo il pagamento alla tua pratica.",
   empty_cta: "Vai al preventivo →",
   meta_title: "Completa l'ordine",
+  plan_full_title: "Paga tutto ora",
+  plan_full_hint: "L'onorario completo in un unico pagamento sicuro.",
+  plan_split_title: "50% ora, 50% a dichiarazione pronta",
+  plan_split_hint:
+    "Oggi {deposit} €. Il saldo di {balance} € quando la dichiarazione è pronta, prima dell'invio all'Agenzia.",
+  plan_pay_full: "Paga {amount} €",
+  plan_pay_deposit: "Paga l'acconto {amount} €",
+  plan_pay_balance: "Paga il saldo {amount} €",
+  plan_today: "Oggi",
+  plan_later: "A dichiarazione pronta",
+  balance_banner: "Acconto già ricevuto. Resta il saldo di {amount} €.",
 };
 
 export const CONFERMA_UI_IT: ConfermaUiLabels = {
@@ -278,6 +303,8 @@ export const CONFERMA_UI_IT: ConfermaUiLabels = {
   taxes_note:
     "Le imposte sono separate dall'onorario: te le calcoliamo e comunichiamo prima dell'invio.",
   meta_title: "Pagamento ricevuto",
+  body_paid_deposit:
+    "Abbiamo ricevuto l'acconto del 50%. Lorenzo parte con la pratica; il saldo si paga a dichiarazione pronta, prima dell'invio all'Agenzia delle Entrate.",
 };
 
 export const CONTACT_UI_IT: ContactUiLabels = {

@@ -25,7 +25,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export const dynamic = "force-dynamic";
 
-type PaymentInfo = { paid: boolean; amount?: number; currency?: string };
+type PaymentInfo = {
+  paid: boolean;
+  amount?: number;
+  currency?: string;
+  installment?: string;
+};
 
 async function getPaymentInfo(sessionId?: string): Promise<PaymentInfo> {
   if (!sessionId || !isStripeConfigured) return { paid: false };
@@ -36,6 +41,7 @@ async function getPaymentInfo(sessionId?: string): Promise<PaymentInfo> {
       paid: true,
       amount: session.amount_total ? session.amount_total / 100 : undefined,
       currency: session.currency?.toUpperCase(),
+      installment: session.metadata?.installment,
     };
   } catch {
     return { paid: false };
@@ -80,7 +86,11 @@ export default async function ConfermaPage({
 
         <Card className="mt-8 text-start">
           <p className="leading-relaxed text-text-muted">
-            {paid ? ui.body_paid : ui.body_pending}
+            {paid
+              ? info.installment === "deposit"
+                ? ui.body_paid_deposit
+                : ui.body_paid
+              : ui.body_pending}
           </p>
           {paid && (
             <p className="mt-3 rounded-[10px] border border-accent/25 bg-sand/40 px-3 py-2.5 text-sm text-text">

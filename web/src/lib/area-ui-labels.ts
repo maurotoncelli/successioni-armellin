@@ -159,6 +159,10 @@ export type OrdineUiLabels = {
   taxes_pending: string;
   withdrawal_prompt: string;
   withdrawal_cta: string;
+  deposit_paid: string;
+  balance_due: string;
+  balance_paid: string;
+  pay_balance: string;
 };
 
 export type DocumentiPageLabels = {
@@ -347,6 +351,10 @@ export const ORDINE_UI_IT: OrdineUiLabels = {
     "Le imposte ti verranno calcolate e comunicate prima dell'invio.",
   withdrawal_prompt: "Hai cambiato idea?",
   withdrawal_cta: "Richiedi il recesso",
+  deposit_paid: "Acconto 50% ricevuto ({amount} €)",
+  balance_due: "Saldo a dichiarazione pronta: {amount} €",
+  balance_paid: "Saldo ricevuto",
+  pay_balance: "Paga il saldo",
 };
 
 export const DOCUMENTI_PAGE_IT: DocumentiPageLabels = {

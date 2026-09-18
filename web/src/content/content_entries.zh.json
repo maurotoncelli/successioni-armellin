@@ -4520,7 +4520,11 @@
         "taxes_iban_edit": "编辑",
         "taxes_pending": "税款将在提交前计算并告知您。",
         "withdrawal_prompt": "改变主意了？",
-        "withdrawal_cta": "申请撤回"
+        "withdrawal_cta": "申请撤回",
+        "deposit_paid": "已收到 50% 定金（{amount} €）",
+        "balance_due": "申报准备好后的余款：{amount} €",
+        "balance_paid": "余款已收到",
+        "pay_balance": "支付余款"
       }
     },
     {
@@ -4615,7 +4619,17 @@
         "empty_cta": "前往报价 →",
         "meta_title": "完成订单",
         "extra_property": "额外房产（{extra} × {fee}€）",
-        "extra_heir": "额外继承人（{extra} × {fee}€）"
+        "extra_heir": "额外继承人（{extra} × {fee}€）",
+        "plan_full_title": "现在一次性付清",
+        "plan_full_hint": "全部酬金一次安全支付。",
+        "plan_split_title": "现在付 50%，申报准备好后再付 50%",
+        "plan_split_hint": "今天 {deposit} €。其余 {balance} € 在申报准备好后、提交税务局之前支付。",
+        "plan_pay_full": "支付 {amount} €",
+        "plan_pay_deposit": "支付定金 {amount} €",
+        "plan_pay_balance": "支付余款 {amount} €",
+        "plan_today": "今天",
+        "plan_later": "申报准备好后",
+        "balance_banner": "定金已收到。余款 {amount} €。"
       }
     },
     {
@@ -4669,7 +4683,8 @@
         "cta_area": "前往个人区",
         "cta_home": "返回首页",
         "taxes_note": "税款与专业服务费分开：提交前我们计算并告知您。",
-        "meta_title": "已收到付款"
+        "meta_title": "已收到付款",
+        "body_paid_deposit": "我们已收到 50% 定金。Lorenzo 将开始办理；余款在申报准备好后、提交意大利税务局之前支付。"
       }
     },
     {

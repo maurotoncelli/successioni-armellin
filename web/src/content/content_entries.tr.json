@@ -4520,7 +4520,11 @@
         "taxes_iban_edit": "Düzenle",
         "taxes_pending": "Vergiler gönderimden önce hesaplanıp size bildirilecektir.",
         "withdrawal_prompt": "Fikrinizi mi değiştirdiniz?",
-        "withdrawal_cta": "Cayma talep et"
+        "withdrawal_cta": "Cayma talep et",
+        "deposit_paid": "%50 kapora alındı ({amount} €)",
+        "balance_due": "Beyan hazır olunca kalan tutar: {amount} €",
+        "balance_paid": "Kalan tutar alındı",
+        "pay_balance": "Kalanı öde"
       }
     },
     {
@@ -4615,7 +4619,17 @@
         "empty_cta": "Ön teklife git →",
         "meta_title": "Siparişi tamamla",
         "extra_property": "Ek taşınmazlar ({extra} × {fee}€)",
-        "extra_heir": "Ek mirasçılar ({extra} × {fee}€)"
+        "extra_heir": "Ek mirasçılar ({extra} × {fee}€)",
+        "plan_full_title": "Hepsini şimdi öde",
+        "plan_full_hint": "Tüm ücret tek güvenli ödemede.",
+        "plan_split_title": "%50 şimdi, %50 beyan hazır olunca",
+        "plan_split_hint": "Bugün {deposit} €. Kalan {balance} € beyan hazır olduğunda, vergi dairesine gönderilmeden önce.",
+        "plan_pay_full": "{amount} € öde",
+        "plan_pay_deposit": "Kapora {amount} € öde",
+        "plan_pay_balance": "Kalan {amount} € öde",
+        "plan_today": "Bugün",
+        "plan_later": "Beyan hazır olunca",
+        "balance_banner": "Kapora alındı. Kalan bakiye: {amount} €."
       }
     },
     {
@@ -4669,7 +4683,8 @@
         "cta_area": "Kişisel alana git",
         "cta_home": "Ana sayfaya dön",
         "taxes_note": "Vergiler ücretten ayrıdır: gönderimden önce hesaplayıp bildiriyoruz.",
-        "meta_title": "Ödeme alındı"
+        "meta_title": "Ödeme alındı",
+        "body_paid_deposit": "%50 kaporayı aldık. Lorenzo dosyayı başlatır; kalan tutar beyan hazır olduğunda, Agenzia delle Entrate'e gönderilmeden önce ödenir."
       }
     },
     {

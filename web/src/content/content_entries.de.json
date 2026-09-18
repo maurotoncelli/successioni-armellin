@@ -4520,7 +4520,11 @@
         "taxes_iban_edit": "Bearbeiten",
         "taxes_pending": "Steuern werden vor der Einreichung berechnet und mitgeteilt.",
         "withdrawal_prompt": "Haben Sie Ihre Meinung geändert?",
-        "withdrawal_cta": "Widerruf beantragen"
+        "withdrawal_cta": "Widerruf beantragen",
+        "deposit_paid": "50-%-Anzahlung erhalten ({amount} €)",
+        "balance_due": "Restbetrag wenn die Erklärung fertig ist: {amount} €",
+        "balance_paid": "Restbetrag erhalten",
+        "pay_balance": "Restbetrag zahlen"
       }
     },
     {
@@ -4615,7 +4619,17 @@
         "empty_cta": "Zum Kostenvoranschlag →",
         "meta_title": "Bestellung abschließen",
         "extra_property": "Zusätzliche Immobilien ({extra} × {fee}€)",
-        "extra_heir": "Zusätzliche Erben ({extra} × {fee}€)"
+        "extra_heir": "Zusätzliche Erben ({extra} × {fee}€)",
+        "plan_full_title": "Jetzt alles zahlen",
+        "plan_full_hint": "Das volle Honorar in einer sicheren Zahlung.",
+        "plan_split_title": "50 % jetzt, 50 % wenn die Erklärung fertig ist",
+        "plan_split_hint": "Heute {deposit} €. Der Rest von {balance} €, wenn die Erklärung fertig ist, vor der Übermittlung an das Finanzamt.",
+        "plan_pay_full": "{amount} € zahlen",
+        "plan_pay_deposit": "Anzahlung {amount} € zahlen",
+        "plan_pay_balance": "Restbetrag {amount} € zahlen",
+        "plan_today": "Heute",
+        "plan_later": "Wenn die Erklärung fertig ist",
+        "balance_banner": "Anzahlung erhalten. Restbetrag: {amount} €."
       }
     },
     {
@@ -4669,7 +4683,8 @@
         "cta_area": "Zum Persönlichen Bereich",
         "cta_home": "Zur Startseite",
         "taxes_note": "Steuern getrennt vom Honorar: berechnet und mitgeteilt vor der Einreichung.",
-        "meta_title": "Zahlung erhalten"
+        "meta_title": "Zahlung erhalten",
+        "body_paid_deposit": "Wir haben die 50-%-Anzahlung erhalten. Lorenzo beginnt mit der Akte; der Rest ist fällig, wenn die Erklärung fertig ist, vor der Übermittlung an die Agenzia delle Entrate."
       }
     },
     {

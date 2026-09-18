@@ -160,7 +160,7 @@ export const legalDocsDe: Record<LegalSlug, LegalDoc> = {
       { type: "h2", text: "4. Vertragsschluss" },
       { type: "p", text: "Kostenvoranschlagsanfrage unverbindlich. Vertrag mit Paketzahlung und ausdrücklicher Annahme dieser Bedingungen beim Checkout." },
       { type: "h2", text: "5. Zahlung und Paketänderung" },
-      { type: "p", text: "Honorarvorauszahlung über Stripe. Rechnung nach geltendem Recht. Staatssteuern separat vom Erben." },
+      { type: "p", text: "Das Honorar wird im Voraus über den Zahlungsdienstleister (Stripe) gezahlt, entweder vollständig oder in zwei Tranchen zu je 50 % (Anzahlung bei Beginn der Akte, Restbetrag wenn die Erklärung fertig ist, vor der Übermittlung an die Agenzia delle Entrate). Die Rechnung wird nach geltendem Recht ausgestellt, in der Regel nach Zahlung des Restbetrags. Staatssteuern werden getrennt behandelt und vom Erben nach den mitgeteilten Modalitäten gezahlt." },
       { type: "p", text: "Paketänderung und Ausgleich: bei Vereinbarung Differenzausgleich — höheres Paket: Nachzahlung; niedrigeres: Erstattung der Differenz. Bestätigung auf dauerhaftem Medium. Staatssteuern ausgeschlossen." },
       { type: "h2", text: "6. Pflichten und Haftung des Kunden" },
       {

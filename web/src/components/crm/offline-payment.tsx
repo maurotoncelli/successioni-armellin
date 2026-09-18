@@ -16,9 +16,11 @@ import {
 export function OfflinePayment({
   practiceId,
   suggestedAmount,
+  cta = "Registra pagamento manuale",
 }: {
   practiceId: string;
   suggestedAmount: number;
+  cta?: string;
 }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -60,7 +62,7 @@ export function OfflinePayment({
         className="mt-2 inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-crm-border bg-crm-surface px-3 py-2 text-sm text-crm-text2 hover:text-crm-text"
       >
         <Banknote className="h-4 w-4" />
-        Registra pagamento manuale
+        {cta}
       </button>
     );
   }

@@ -19,7 +19,13 @@ import {
   parseAttribution,
 } from "@/lib/attribution-shared";
 import { createAreaAccessLink } from "@/lib/area-access-link";
-import type { PracticeRow, PaymentStatusKey } from "@/lib/supabase/types";
+import {
+  getPaymentPlanRaw,
+  isBalanceDue,
+  upsertPaymentPlan,
+} from "@/lib/practice-extras";
+import { isCheckoutPlan, type CheckoutPlan } from "@/lib/payment-plan";
+import type { PaymentStatusKey, PracticeRow } from "@/lib/supabase/types";
 
 /*
   POST /api/stripe/webhook (@SPEC_API_Contracts, @11)
@@ -134,6 +140,17 @@ async function handleCheckoutCompleted(
     .maybeSingle();
   if (!practice) return;
   const row = practice as PracticeRow;
+  const installment: CheckoutPlan = isCheckoutPlan(session.metadata?.installment)
+    ? session.metadata.installment
+    : "full";
+  const existingPlan = await getPaymentPlanRaw(practiceId);
+
+  if (installment === "balance") {
+    if (!existingPlan || !isBalanceDue(existingPlan)) return;
+    await handleBalancePaid(admin, eventId, session, row, existingPlan);
+    return;
+  }
+
   if (row.payment_status === "PAID") return; // gia confermata
 
   const paymentIntentId =
@@ -198,7 +215,10 @@ async function handleCheckoutCompleted(
   });
 
   const log = asArray<Record<string, unknown>>(row.log);
-  log.unshift({ action: "pagamento_ricevuto", at: stamp });
+  log.unshift({
+    action: installment === "deposit" ? "acconto_ricevuto" : "pagamento_ricevuto",
+    at: stamp,
+  });
   if (!contactId) {
     log.unshift({ action: "contatto_non_agganciato", at: stamp });
   }
@@ -249,15 +269,51 @@ async function handleCheckoutCompleted(
     })
     .eq("id", practiceId);
 
+  if (installment === "deposit") {
+    const paidNow =
+      typeof session.amount_total === "number"
+        ? session.amount_total / 100
+        : existingPlan?.deposit ?? Number(row.price) / 2;
+    const base =
+      existingPlan?.plan === "split50"
+        ? existingPlan
+        : {
+            plan: "split50" as const,
+            total: Number(row.price),
+            deposit: paidNow,
+            balance: Math.round((Number(row.price) - paidNow) * 100) / 100,
+          };
+    await upsertPaymentPlan(practiceId, {
+      ...base,
+      depositPaidAt: new Date().toISOString(),
+      depositSessionId: session.id,
+      depositPaymentIntentId: paymentIntentId ?? undefined,
+    });
+  }
+
   await admin
     .from("stripe_events")
     .update({ practice_id: practiceId })
     .eq("id", eventId);
 
+  const paidNow =
+    typeof session.amount_total === "number"
+      ? session.amount_total / 100
+      : installment === "deposit" && existingPlan
+        ? existingPlan.deposit
+        : Number(row.price) || 0;
+  const balanceHint =
+    installment === "deposit" && existingPlan
+      ? ` Acconto 50%. Resta il saldo di ${eur(existingPlan.balance)} a dichiarazione pronta.`
+      : "";
+
   await pushCrmNotification({
     kind: "pagamento",
-    title: `Pagamento ricevuto: ${eur(Number(row.price))}`,
-    body: `${(backfill.client_name ?? row.client_name) || clientEmail || "Cliente"} ha pagato con carta. La pratica è ora attiva.`,
+    title:
+      installment === "deposit"
+        ? `Acconto 50% ricevuto: ${eur(paidNow)}`
+        : `Pagamento ricevuto: ${eur(Number(row.price))}`,
+    body: `${(backfill.client_name ?? row.client_name) || clientEmail || "Cliente"} ha pagato con carta.${balanceHint} La pratica è ora attiva.`,
     practiceId,
     practiceCode: row.code,
   });
@@ -296,7 +352,12 @@ async function handleCheckoutCompleted(
   // Fatturazione automatica dell'onorario (Opzione L), solo se attivata via env.
   // Best-effort: un eventuale errore NON deve far fallire il webhook (Stripe
   // ritenterebbe il pagamento gia confermato). Lorenzo puo emetterla a mano.
-  if (isInvoicingConfigured && process.env.INVOICE_AUTO_ON_PAYMENT === "1") {
+  // Acconto 50%: non fatturare l'intero onorario; si emette al saldo (o a mano).
+  if (
+    installment !== "deposit" &&
+    isInvoicingConfigured &&
+    process.env.INVOICE_AUTO_ON_PAYMENT === "1"
+  ) {
     try {
       const res = await issueInvoiceForPractice(practiceId, { notifyClient: true });
       if (!res.ok) console.error("[stripe-webhook] fattura:", res.error);
@@ -312,6 +373,83 @@ async function handleCheckoutCompleted(
   revalidatePath(`/crm/pratiche/${practiceId}`);
 }
 
+async function handleBalancePaid(
+  admin: AdminClient,
+  eventId: string,
+  session: Stripe.Checkout.Session,
+  row: PracticeRow,
+  existingPlan: NonNullable<Awaited<ReturnType<typeof getPaymentPlanRaw>>>,
+) {
+  const practiceId = row.id;
+  const paymentIntentId =
+    typeof session.payment_intent === "string"
+      ? session.payment_intent
+      : (session.payment_intent?.id ?? null);
+  const stamp = nowStamp();
+  const log = asArray<Record<string, unknown>>(row.log);
+  log.unshift({ action: "saldo_ricevuto", at: stamp });
+
+  await upsertPaymentPlan(practiceId, {
+    ...existingPlan,
+    balancePaidAt: new Date().toISOString(),
+    balanceSessionId: session.id,
+    balancePaymentIntentId: paymentIntentId ?? undefined,
+  });
+
+  await admin
+    .from("practices")
+    .update({
+      stripe_payment_intent_id: paymentIntentId,
+      stripe_session_id: session.id,
+      log,
+    })
+    .eq("id", practiceId);
+
+  await admin
+    .from("stripe_events")
+    .update({ practice_id: practiceId })
+    .eq("id", eventId);
+
+  const paidNow =
+    typeof session.amount_total === "number"
+      ? session.amount_total / 100
+      : existingPlan.balance;
+
+  await pushCrmNotification({
+    kind: "pagamento",
+    title: `Saldo 50% ricevuto: ${eur(paidNow)}`,
+    body: `Onorario completato (${eur(existingPlan.total)}). ${(row.client_name || row.client_email || "Cliente").trim()}.`,
+    practiceId,
+    practiceCode: row.code,
+  });
+
+  const attribution = parseAttribution(row.attribution);
+  await sendGa4Purchase({
+    transactionId: session.id,
+    value: paidNow,
+    currency: session.currency ?? "EUR",
+    packageKey: row.selected_package ?? undefined,
+    clientId: attribution.ga_client_id,
+    email: row.client_email,
+    phone: row.client_phone || undefined,
+  });
+
+  if (isInvoicingConfigured && process.env.INVOICE_AUTO_ON_PAYMENT === "1") {
+    try {
+      const res = await issueInvoiceForPractice(practiceId, { notifyClient: true });
+      if (!res.ok) console.error("[stripe-webhook] fattura saldo:", res.error);
+    } catch (err) {
+      console.error("[stripe-webhook] fattura saldo (eccezione):", err);
+    }
+    revalidatePath("/area-riservata/ordine");
+  }
+
+  revalidatePath("/crm");
+  revalidatePath("/crm/pratiche");
+  revalidatePath(`/crm/pratiche/${practiceId}`);
+  revalidatePath("/area-riservata/ordine");
+}
+
 async function handleChargeRefunded(admin: AdminClient, charge: Stripe.Charge) {
   const paymentIntentId =
     typeof charge.payment_intent === "string"
@@ -324,8 +462,19 @@ async function handleChargeRefunded(admin: AdminClient, charge: Stripe.Charge) {
     .select("*")
     .eq("stripe_payment_intent_id", paymentIntentId)
     .maybeSingle();
-  if (!practice) return;
-  const row = practice as PracticeRow;
+  let row = practice as PracticeRow | null;
+  if (!row) {
+    const metaId = charge.metadata?.practice_id;
+    if (metaId) {
+      const { data: byMeta } = await admin
+        .from("practices")
+        .select("*")
+        .eq("id", metaId)
+        .maybeSingle();
+      row = (byMeta as PracticeRow | null) ?? null;
+    }
+  }
+  if (!row) return;
 
   const fullyRefunded = charge.amount_refunded >= charge.amount;
   const newStatus: PaymentStatusKey = fullyRefunded

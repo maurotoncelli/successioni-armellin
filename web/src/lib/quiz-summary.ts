@@ -335,6 +335,8 @@ const LOG_LABELS_IT: Record<string, string> = {
   email_inviata: "Email inviata al cliente",
   notifica_admin_inviata: "Notifica email a Lorenzo",
   preventivo_inviato: "Preventivo inviato",
+  acconto_ricevuto: "Acconto 50% ricevuto",
+  saldo_ricevuto: "Saldo 50% ricevuto",
   pagamento_ricevuto: "Pagamento ricevuto",
   pagamento_offline: "Pagamento registrato a mano",
   rimborso_stripe_avviato: "Rimborso Stripe avviato",

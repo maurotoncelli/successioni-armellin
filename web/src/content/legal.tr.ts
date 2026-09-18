@@ -160,7 +160,7 @@ export const legalDocsTr: Record<LegalSlug, LegalDoc> = {
       { type: "h2", text: "4. Sözleşmenin kurulması" },
       { type: "p", text: "Teklif talebi bağlayıcı değildir. Sözleşme paket ödemesi ve ödeme sırasında bu Koşulların açık kabulüyle tamamlanır. Satın almadan önce müşteri hizmetin özelliklerini, toplam fiyatı, bu Koşulları ve gizlilik bilgilendirmesini inceler." },
       { type: "h2", text: "5. Ödeme ve paket değişikliği" },
-      { type: "p", text: "Ücret ödemesi ödeme sağlayıcısı (Stripe) aracılığıyla peşin yapılır. Fatura yürürlükteki yükümlülüklere göre düzenlenir. Devlet vergileri ayrı yönetilir ve bildirilen şekilde mirasçı tarafından ödenir." },
+      { type: "p", text: "Ücret ödemesi ödeme sağlayıcısı (Stripe) aracılığıyla peşin yapılır: tek seferde veya iki %50 dilimde (dosya başında kapora, beyan hazır olduğunda kalan tutar — Agenzia delle Entrate'e gönderilmeden önce). Fatura yürürlükteki yükümlülüklere göre, kural olarak bakiye ödendikten sonra düzenlenir. Devlet vergileri ayrı yönetilir ve bildirilen şekilde mirasçı tarafından ödenir." },
       { type: "p", text: "Paket değişikliği ve mahsuplaşma: müşteriyle anlaşmayla paket değiştirilirse fark mahsuplaştırılır. Üst pakete geçişte müşteri farkı ödeme bağlantısıyla tamamlar; alt pakete geçişte ödenen fark aynı yöntemle gecikmeksizin iade edilir. Değişiklik kalıcı ortamda onaylanır. Devlet vergileri her durumda mahsuplaşmaya dahil değildir." },
       { type: "h2", text: "6. Müşterinin yükümlülükleri ve sorumluluğu" },
       {

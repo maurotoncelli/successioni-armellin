@@ -160,7 +160,7 @@ export const legalDocsSq: Record<LegalSlug, LegalDoc> = {
       { type: "h2", text: "4. Përfundimi i kontratës" },
       { type: "p", text: "Kërkesa e preventivit nuk është detyruese. Kontrata përsoshet me pagesën e paketës dhe pranimin e qartë të këtyre Kushteve në checkout. Para blerjes klienti njeh karakteristikat e shërbimit, çmimin total, këto Kushte dhe informacionin e privatësisë." },
       { type: "h2", text: "5. Pagesa dhe modifikimi i paketës" },
-      { type: "p", text: "Pagesa e honorarit bëhet paraprakisht përmes ofruesit të pagesës (Stripe). Fatura lëshohet sipas detyrimeve në fuqi. Taksat shtetërore menaxhohen veç e veç dhe paguhen nga trashëgimtari sipas modaliteteve të komunikuara." },
+      { type: "p", text: "Pagesa e honorarit bëhet paraprakisht përmes ofruesit të pagesës (Stripe), në një këst të vetëm ose në dy këste nga 50% (paradhënie në nisje të praktikës dhe saldo kur deklarata është gati, para dërgimit te Agenzia delle Entrate). Fatura lëshohet sipas detyrimeve në fuqi, zakonisht pas pagesës së saldos. Taksat shtetërore menaxhohen veç e veç dhe paguhen nga trashëgimtari sipas modaliteteve të komunikuara." },
       { type: "p", text: "Modifikimi i paketës dhe barazimi: kur, me marrëveshje me klientin, paketa modifikohet, bëhet barazimi i diferencës. Në rast kalimi në paketë superiore, klienti plotëson diferencën me lidhje pagese; në rast pakete inferiore, diferenca e paguar kthehet me të njëjtin mjet, pa vonesë. Modifikimi konfirmohet në mbështetje të qëndrueshme. Taksat shtetërore mbeten gjithsesi jashtë barazimit." },
       { type: "h2", text: "6. Detyrimet dhe përgjegjësia e klientit" },
       {

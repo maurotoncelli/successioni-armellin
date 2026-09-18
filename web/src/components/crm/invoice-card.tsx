@@ -175,7 +175,8 @@ export function InvoiceCard({
               </button>
               {!paid && (
                 <p className="text-xs text-crm-muted">
-                  Disponibile dopo il pagamento dell&apos;onorario.
+                  Disponibile dopo il pagamento completo dell&apos;onorario
+                  (non solo l&apos;acconto).
                 </p>
               )}
             </>

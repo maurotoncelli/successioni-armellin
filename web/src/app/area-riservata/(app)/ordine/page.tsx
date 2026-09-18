@@ -7,7 +7,7 @@ import { InvoiceDownload } from "@/components/area/invoice-download";
 import { requireClientView } from "@/lib/area";
 import { isPracticeCancelled } from "@/content/area-data";
 import { getPackages } from "@/lib/cms";
-import { getSafeExtras } from "@/lib/practice-extras";
+import { getSafeExtras, isBalanceDue } from "@/lib/practice-extras";
 import { getRequestLocale, t, tObj } from "@/lib/locale";
 import {
   CLAIM_UI_IT,
@@ -104,9 +104,10 @@ export default async function OrdinePage() {
 
   const packages = await getPackages(await getRequestLocale());
   const pkg = packages.find((x) => x.key === p.selectedPackage);
-  const { invoice, iban } = await getSafeExtras(p.id);
+  const { invoice, iban, paymentPlan } = await getSafeExtras(p.id);
   const cancelled = isPracticeCancelled(p);
   const needsIban = Boolean(p.stateTaxes) && !iban && !cancelled;
+  const balanceDue = isBalanceDue(paymentPlan);
 
   return (
     <div>
@@ -153,7 +154,38 @@ export default async function OrdinePage() {
                     : "—"}
               </dd>
             </div>
+            {paymentPlan?.plan === "split50" && (
+              <div className="space-y-1.5 pt-1">
+                {paymentPlan.depositPaidAt && (
+                  <p className="text-sm text-text">
+                    {fillTemplate(ordineUi.deposit_paid, {
+                      amount: String(paymentPlan.deposit),
+                    })}
+                  </p>
+                )}
+                {paymentPlan.balancePaidAt ? (
+                  <p className="text-sm font-medium text-success">
+                    {ordineUi.balance_paid}
+                  </p>
+                ) : (
+                  <p className="text-sm text-text">
+                    {fillTemplate(ordineUi.balance_due, {
+                      amount: String(paymentPlan.balance),
+                    })}
+                  </p>
+                )}
+              </div>
+            )}
           </dl>
+
+          {balanceDue && !cancelled && (
+            <Link
+              href={`/checkout?practice=${p.id}`}
+              className="mt-4 inline-flex w-full items-center justify-center rounded-[10px] bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-dark"
+            >
+              {ordineUi.pay_balance}
+            </Link>
+          )}
 
           {invoice?.hasFile ? (
             <InvoiceDownload number={invoice.number} labels={invoiceUi} />

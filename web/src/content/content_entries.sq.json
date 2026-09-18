@@ -4520,7 +4520,11 @@
         "taxes_iban_edit": "Ndryshoni",
         "taxes_pending": "Taksat do t'ju llogariten dhe do t'ju komunikohen para dorëzimit.",
         "withdrawal_prompt": "Keni ndryshuar mendje?",
-        "withdrawal_cta": "Kërkoni tërheqje"
+        "withdrawal_cta": "Kërkoni tërheqje",
+        "deposit_paid": "Paradhënia 50% u mor ({amount} €)",
+        "balance_due": "Saldoja kur deklarata është gati: {amount} €",
+        "balance_paid": "Saldoja u mor",
+        "pay_balance": "Paguaj saldon"
       }
     },
     {
@@ -4615,7 +4619,17 @@
         "empty_cta": "Shkoni te preventivi →",
         "meta_title": "Përfundoni porosinë",
         "extra_property": "Prona shtesë ({extra} × {fee}€)",
-        "extra_heir": "Trashëgimtarë shtesë ({extra} × {fee}€)"
+        "extra_heir": "Trashëgimtarë shtesë ({extra} × {fee}€)",
+        "plan_full_title": "Paguaj të gjithën tani",
+        "plan_full_hint": "Honorari i plotë në një pagesë të sigurt.",
+        "plan_split_title": "50% tani, 50% kur deklarata është gati",
+        "plan_split_hint": "Sot {deposit} €. Saldoja {balance} € kur deklarata është gati, para dërgimit te Agjencia.",
+        "plan_pay_full": "Paguaj {amount} €",
+        "plan_pay_deposit": "Paguaj paradhënien {amount} €",
+        "plan_pay_balance": "Paguaj saldon {amount} €",
+        "plan_today": "Sot",
+        "plan_later": "Kur deklarata është gati",
+        "balance_banner": "Paradhënia u mor. Mbetet saldoja {amount} €."
       }
     },
     {
@@ -4669,7 +4683,8 @@
         "cta_area": "Shkoni te Zona personale",
         "cta_home": "Kthehuni te faqja kryesore",
         "taxes_note": "Taksat janë të ndara nga honorari: i llogaritim dhe i komunikojmë para dorëzimit.",
-        "meta_title": "Pagesa u mor"
+        "meta_title": "Pagesa u mor",
+        "body_paid_deposit": "Morrëm paradhënien 50%. Lorenzo nis praktikën; saldoja paguhet kur deklarata është gati, para dërgimit te Agenzia delle Entrate."
       }
     },
     {

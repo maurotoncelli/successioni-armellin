@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createCheckoutSession } from "@/lib/payments";
 import type { PackageKey } from "@/lib/supabase/types";
+import { isCheckoutPlan } from "@/lib/payment-plan";
 
 /*
   POST /api/checkout (@SPEC_API_Contracts)
@@ -27,6 +28,7 @@ export async function POST(req: Request) {
     practiceId?: string;
     addonKeys?: string[];
     packageKey?: string;
+    plan?: string;
   };
 
   if (!data.practiceId) {
@@ -47,6 +49,7 @@ export async function POST(req: Request) {
     origin,
     addonKeys: Array.isArray(data.addonKeys) ? data.addonKeys : undefined,
     packageKey,
+    plan: isCheckoutPlan(data.plan) ? data.plan : "full",
   });
 
   if (!result.ok) {

@@ -4520,7 +4520,11 @@
         "taxes_iban_edit": "تعديل",
         "taxes_pending": "سيُحسب مبلغ الضرائب ويُبلَّغ به قبل الإرسال.",
         "withdrawal_prompt": "غيّرت رأيك؟",
-        "withdrawal_cta": "اطلب الانسحاب"
+        "withdrawal_cta": "اطلب الانسحاب",
+        "deposit_paid": "تم استلام العربون 50٪ ({amount} €)",
+        "balance_due": "الرصيد عند جاهزية التصريح: {amount} €",
+        "balance_paid": "تم استلام الرصيد",
+        "pay_balance": "ادفع الرصيد"
       }
     },
     {
@@ -4615,7 +4619,17 @@
         "empty_cta": "اذهب إلى العرض ←",
         "meta_title": "أكمل الطلب",
         "extra_property": "عقارات إضافية ({extra} × {fee}€)",
-        "extra_heir": "ورثة إضافيون ({extra} × {fee}€)"
+        "extra_heir": "ورثة إضافيون ({extra} × {fee}€)",
+        "plan_full_title": "ادفع المبلغ كاملًا الآن",
+        "plan_full_hint": "الأتعاب كاملة في دفعة آمنة واحدة.",
+        "plan_split_title": "50٪ الآن و50٪ عند جاهزية التصريح",
+        "plan_split_hint": "اليوم {deposit} €. والرصيد {balance} € عند جاهزية التصريح، قبل الإرسال إلى الوكالة.",
+        "plan_pay_full": "ادفع {amount} €",
+        "plan_pay_deposit": "ادفع العربون {amount} €",
+        "plan_pay_balance": "ادفع الرصيد {amount} €",
+        "plan_today": "اليوم",
+        "plan_later": "عند جاهزية التصريح",
+        "balance_banner": "تم استلام العربون. يتبقى رصيد {amount} €."
       }
     },
     {
@@ -4669,7 +4683,8 @@
         "cta_area": "إلى المنطقة الشخصية",
         "cta_home": "العودة للرئيسية",
         "taxes_note": "الضرائب منفصلة عن الأتعاب: نحسبها ونبلّغك بها قبل الإرسال.",
-        "meta_title": "تم استلام الدفع"
+        "meta_title": "تم استلام الدفع",
+        "body_paid_deposit": "استلمنا العربون 50٪. Lorenzo يبدأ المعاملة؛ يُسدَّد الرصيد عند جاهزية التصريح وقبل الإرسال إلى وكالة الإيرادات."
       }
     },
     {

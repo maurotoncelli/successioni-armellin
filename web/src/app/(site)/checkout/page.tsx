@@ -18,6 +18,9 @@ import { CheckoutPanel } from "@/components/site/checkout-panel";
 import { getPackages, getAddons } from "@/lib/cms";
 import { getPractice } from "@/lib/crm";
 import { buildOrder } from "@/lib/order";
+import { splitHonorarium } from "@/lib/payment-plan";
+import { getSafeExtras, isBalanceDue } from "@/lib/practice-extras";
+import { isAdminConfigured } from "@/lib/supabase/admin";
 import { decodeHeirs, isPackageKey, totalHeirs } from "@/lib/quote";
 import type { PackageKey } from "@/lib/supabase/types";
 
@@ -100,6 +103,15 @@ export default async function CheckoutPage({
     : null;
 
   const pkg = packageKey ? packages.find((p) => p.key === packageKey) : undefined;
+
+  const extras =
+    practiceId && isAdminConfigured ? await getSafeExtras(practiceId) : {};
+  const storedPlan =
+    extras.paymentPlan?.plan === "split50" ? extras.paymentPlan : null;
+  const split = storedPlan
+    ? { deposit: storedPlan.deposit, balance: storedPlan.balance }
+    : splitHonorarium(order?.total ?? 0);
+  const balanceDue = isBalanceDue(storedPlan);
 
   const trustItems = await tList<string>("checkout", "trust_items");
   const modificaLink = await tCta("checkout", "modifica_link");
@@ -248,6 +260,10 @@ export default async function CheckoutPage({
                       label: recessoLink.label,
                     }}
                     ui={checkoutUi}
+                    total={order?.total ?? 0}
+                    deposit={split.deposit}
+                    balance={split.balance}
+                    balanceDue={balanceDue}
                   />
                 </div>
               </Card>

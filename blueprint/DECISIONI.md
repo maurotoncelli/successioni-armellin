@@ -89,7 +89,7 @@
 - Fonti di verita metriche: DB/Stripe (ricavi/lavori), GA4 (traffico/funnel), Google Ads (spesa); ROI/CAC = combinazione.
 - v1: Kanban, scheda lavoro, contacts+storico, rubrica, Brogliaccio PDF, Dossier ZIP, magic link, automazioni email, log, dashboard KPI base.
 - Estrazione documenti OCR/AI: ausilio ASSISTITO che legge gli upload e propone una bozza di dati ("Riepilogo dati consigliati") correggibile a mano nella scheda pratica, con affidabilita per campo e link al documento sorgente; decide sempre Lorenzo. Fornitori in UE con DPA + no-training (Document AI/Azure + LLM UE). Tabella `document_extractions`. Pianificato come **fast-follow V1.1** (dietro feature flag), NON nell'MVP di lancio. Limite: nessun import automatico affidabile in Sogei (output = report che velocizza l'inserimento manuale).
-- Rimandati (fase 2+): export gestionale (dipende da Lorenzo), pagamento 50/50, statistiche marketing/ROI avanzate.
+- Rimandati (fase 2+): export gestionale (dipende da Lorenzo), statistiche marketing/ROI avanzate. **Pagamento 50/50 studio** (acconto + saldo) è in v1: due sessioni Stripe, non Klarna/BNPL.
 - AI: assistente solo INTERNO al CRM (alert intelligenti, OCR/estrazione dati, bozze testi, riassunti) sempre con validazione umana; ESCLUSA chat AI pubblica lato cliente.
 - UI/stack CRM: stesso stack del progetto (Next.js + Tailwind + shadcn/ui), tema dark "Flowdesk - Armellin" applicato via design token (vedi @SPEC_Design_Tokens). NON si replica il React+CSS vanilla del Flowdesk personale: si riprende solo il linguaggio grafico. Scelta a favore di coerenza e ottimizzazione (un solo repo/toolchain, componenti/auth condivisi).
 
