@@ -31,10 +31,6 @@
           "href": "/guide"
         },
         {
-          "label": "Mjete",
-          "href": "/strumenti"
-        },
-        {
           "label": "FAQ",
           "href": "/faq"
         },
@@ -2077,7 +2073,7 @@
       "key": "hero_subtitle",
       "locale": "sq",
       "is_published": true,
-      "value": "Gjithçka që duhet të dini për trashëgiminë, taksat dhe dokumentet, shpjeguar thjesht nga ata që i bëjnë vërtet praktikat."
+      "value": "Gjithçka që duhet të dini për trashëgiminë, taksat dhe dokumentet, e shpjeguar thjesht nga ata që i bëjnë vërtet praktikat. Me kalkulatorë falas: vlera kadastrale dhe ravvedimento operoso."
     },
     {
       "collection": "guide",
@@ -4723,8 +4719,8 @@
       "locale": "sq",
       "is_published": true,
       "value": {
-        "search_placeholder": "Kërkoni te udhëzuesit (p.sh. taksa, dokumente, përjashtim)",
-        "search_aria": "Kërkoni midis udhëzuesve",
+        "search_placeholder": "Kërko udhëzues dhe mjete (p.sh. taksa, kadastra, ravvedimento)",
+        "search_aria": "Kërko udhëzues dhe mjete",
         "all": "Të gjitha",
         "free_tool": "Mjet falas",
         "back": "Kthehuni te udhëzuesit",
@@ -4734,12 +4730,12 @@
         "reading_minutes": "{n} min lexim",
         "read_guide": "Lexoni udhëzuesin",
         "read": "Lexoni",
-        "empty": "Nuk u gjet udhëzues për kërkimin tuaj. Provoni me një term tjetër ose na shkruani: u përgjigjemi të gjithëve.",
+        "empty": "Asnjë udhëzues ose mjet për këtë kërkim. Provo një term tjetër ose na shkruaj.",
         "updated": "Përditësuar më {date}",
         "sources": "Burime zyrtare",
         "breadcrumb_aria": "Rruga",
         "breadcrumb_guides": "Udhëzues",
-        "meta_title": "Udhëzues për trashëgiminë",
+        "meta_title": "Udhëzues dhe mjete për trashëgiminë",
         "meta_not_found": "Udhëzuesi nuk u gjet",
         "tool_alt": "Ilustrim: shtëpi, kalkulator dhe dokument me simbolin e euro"
       }

@@ -31,10 +31,6 @@
           "href": "/guide"
         },
         {
-          "label": "Rechner",
-          "href": "/strumenti"
-        },
-        {
           "label": "FAQ",
           "href": "/faq"
         },
@@ -2077,7 +2073,7 @@
       "key": "hero_subtitle",
       "locale": "de",
       "is_published": true,
-      "value": "Alles Wichtige zu Erbschaft, Steuern und Dokumenten — einfach erklärt von Praktikern."
+      "value": "Alles Wichtige zu Erbschaft, Steuern und Dokumenten, einfach erklärt von denen, die die Akten wirklich bearbeiten. Plus kostenlose Rechner: Einheitswert und ravvedimento operoso."
     },
     {
       "collection": "guide",
@@ -4723,8 +4719,8 @@
       "locale": "de",
       "is_published": true,
       "value": {
-        "search_placeholder": "Leitfäden durchsuchen (z. B. Steuern, Dokumente, Befreiung)",
-        "search_aria": "Leitfäden durchsuchen",
+        "search_placeholder": "Guides und Tools suchen (z. B. Steuern, Einheitswert, ravvedimento)",
+        "search_aria": "Guides und Tools durchsuchen",
         "all": "Alle",
         "free_tool": "Kostenloses Tool",
         "back": "Zurück zu den Leitfäden",
@@ -4734,12 +4730,12 @@
         "reading_minutes": "{n} Min. Lesezeit",
         "read_guide": "Leitfaden lesen",
         "read": "Lesen",
-        "empty": "Kein Leitfaden gefunden. Anderen Begriff versuchen oder schreiben — wir antworten allen.",
+        "empty": "Keine Guides oder Tools zu dieser Suche. Anderen Begriff versuchen oder uns schreiben.",
         "updated": "Aktualisiert am {date}",
         "sources": "Offizielle Quellen",
         "breadcrumb_aria": "Verlauf",
         "breadcrumb_guides": "Leitfäden",
-        "meta_title": "Leitfäden zur Erbschaft",
+        "meta_title": "Guides und Tools zur Erbschaft",
         "meta_not_found": "Leitfaden nicht gefunden",
         "tool_alt": "Illustration: Haus, Taschenrechner und Dokument mit Euro-Symbol"
       }

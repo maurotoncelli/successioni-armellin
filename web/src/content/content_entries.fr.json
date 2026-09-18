@@ -31,10 +31,6 @@
           "href": "/guide"
         },
         {
-          "label": "Outils",
-          "href": "/strumenti"
-        },
-        {
           "label": "FAQ",
           "href": "/faq"
         },
@@ -2077,7 +2073,7 @@
       "key": "hero_subtitle",
       "locale": "fr",
       "is_published": true,
-      "value": "Tout ce qu'il faut savoir sur la succession, les impôts et les documents, expliqué simplement par ceux qui gèrent ces dossiers au quotidien."
+      "value": "Tout ce qu'il faut savoir sur la succession, les impôts et les documents, expliqué simplement par ceux qui gèrent vraiment ces dossiers. Plus des calculateurs gratuits : valeur cadastrale et ravvedimento operoso."
     },
     {
       "collection": "guide",
@@ -4723,8 +4719,8 @@
       "locale": "fr",
       "is_published": true,
       "value": {
-        "search_placeholder": "Rechercher dans les guides (ex. impôts, documents, exonération)",
-        "search_aria": "Rechercher dans les guides",
+        "search_placeholder": "Rechercher guides et outils (ex. impôts, cadastre, ravvedimento)",
+        "search_aria": "Rechercher dans les guides et outils",
         "all": "Toutes",
         "free_tool": "Outil gratuit",
         "back": "Retour aux guides",
@@ -4734,12 +4730,12 @@
         "reading_minutes": "{n} min de lecture",
         "read_guide": "Lire le guide",
         "read": "Lire",
-        "empty": "Aucun guide trouvé pour votre recherche. Essayez un autre terme ou écrivez-nous : nous répondons à tous.",
+        "empty": "Aucun guide ni outil pour cette recherche. Essayez un autre terme ou écrivez-nous.",
         "updated": "Mis à jour le {date}",
         "sources": "Sources officielles",
         "breadcrumb_aria": "Parcours",
         "breadcrumb_guides": "Guides",
-        "meta_title": "Guides sur les successions",
+        "meta_title": "Guides et outils pour la succession",
         "meta_not_found": "Guide introuvable",
         "tool_alt": "Illustration : maison, calculatrice et document avec symbole euro"
       }

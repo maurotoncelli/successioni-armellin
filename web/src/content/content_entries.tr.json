@@ -31,10 +31,6 @@
           "href": "/guide"
         },
         {
-          "label": "Araçlar",
-          "href": "/strumenti"
-        },
-        {
           "label": "FAQ",
           "href": "/faq"
         },
@@ -2077,7 +2073,7 @@
       "key": "hero_subtitle",
       "locale": "tr",
       "is_published": true,
-      "value": "Veraset, vergiler ve belgeler hakkında bilmeniz gereken her şey, dosyaları gerçekten yapan biri tarafından basitçe anlatılıyor."
+      "value": "Miras, vergiler ve belgeler hakkında bilmeniz gereken her şey, bu dosyaları gerçekten yürütenlerden sade anlatım. Ücretsiz hesaplayıcılar: kadastro değeri ve ravvedimento operoso."
     },
     {
       "collection": "guide",
@@ -4723,8 +4719,8 @@
       "locale": "tr",
       "is_published": true,
       "value": {
-        "search_placeholder": "Rehberlerde ara (ör. vergiler, belgeler, muafiyet)",
-        "search_aria": "Rehberlerde ara",
+        "search_placeholder": "Rehber ve araçlarda ara (vergi, kadastro, ravvedimento)",
+        "search_aria": "Rehber ve araçlarda ara",
         "all": "Tümü",
         "free_tool": "Ücretsiz araç",
         "back": "Rehberlere dön",
@@ -4734,12 +4730,12 @@
         "reading_minutes": "{n} dk okuma",
         "read_guide": "Rehberi oku",
         "read": "Oku",
-        "empty": "Aramanız için rehber bulunamadı. Başka bir terim deneyin veya bize yazın: herkese yanıt veriyoruz.",
+        "empty": "Bu arama için rehber veya araç yok. Başka bir terim deneyin veya yazın.",
         "updated": "{date} tarihinde güncellendi",
         "sources": "Resmî kaynaklar",
         "breadcrumb_aria": "Yol",
         "breadcrumb_guides": "Rehberler",
-        "meta_title": "Veraset rehberleri",
+        "meta_title": "Miras rehberleri ve araçları",
         "meta_not_found": "Rehber bulunamadı",
         "tool_alt": "İllüstrasyon: ev, hesap makinesi ve euro simgeli belge"
       }

@@ -31,10 +31,6 @@
           "href": "/guide"
         },
         {
-          "label": "Herramientas",
-          "href": "/strumenti"
-        },
-        {
           "label": "FAQ",
           "href": "/faq"
         },
@@ -2077,7 +2073,7 @@
       "key": "hero_subtitle",
       "locale": "es",
       "is_published": true,
-      "value": "Todo lo que hay que saber sobre sucesión, impuestos y documentos, explicado de forma sencilla por quienes realmente tramitan estos expedientes."
+      "value": "Todo lo que hay que saber sobre sucesión, impuestos y documentos, explicado con claridad por quien tramita de verdad estos expedientes. También calculadoras gratuitas: valor catastral y ravvedimento operoso."
     },
     {
       "collection": "guide",
@@ -4723,8 +4719,8 @@
       "locale": "es",
       "is_published": true,
       "value": {
-        "search_placeholder": "Busca en las guías (p. ej. impuestos, documentos, exención)",
-        "search_aria": "Buscar en las guías",
+        "search_placeholder": "Busca guías y herramientas (p. ej. impuestos, catastro, ravvedimento)",
+        "search_aria": "Buscar guías y herramientas",
         "all": "Todas",
         "free_tool": "Herramienta gratuita",
         "back": "Volver a las guías",
@@ -4734,12 +4730,12 @@
         "reading_minutes": "{n} min de lectura",
         "read_guide": "Lee la guía",
         "read": "Leer",
-        "empty": "Ninguna guía encontrada para tu búsqueda. Prueba con otro término o escríbenos: respondemos a todos.",
+        "empty": "No hay guías ni herramientas para esa búsqueda. Prueba otro término o escríbenos.",
         "updated": "Actualizado el {date}",
         "sources": "Fuentes oficiales",
         "breadcrumb_aria": "Recorrido",
         "breadcrumb_guides": "Guías",
-        "meta_title": "Guías sobre sucesiones",
+        "meta_title": "Guías y herramientas para la sucesión",
         "meta_not_found": "Guía no encontrada",
         "tool_alt": "Ilustración: vivienda, calculadora y documento con símbolo del euro"
       }

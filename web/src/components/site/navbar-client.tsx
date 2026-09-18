@@ -47,7 +47,7 @@ export function NavbarClient({
     barePath.startsWith("/preventivo") || barePath.startsWith("/checkout");
 
   // Da 2xl mostriamo testo "Area personale" e CTA lungo SOLO se le etichette
-  // della lingua sono corte: con 7 voci di menu, DE/RU/FR per esteso sforavano
+  // della lingua sono corte: con molte voci di menu, DE/RU/FR per esteso sforavano
   // la barra (misurato a 1536px: ~1550px richiesti contro 1376 disponibili).
   const menuChars = menu.reduce((n, item) => n + item.label.length, 0);
   // Soglia: IT 95 e ES 99 stanno (misurati ~1290-1335px), FR 102 e RU 102 no.

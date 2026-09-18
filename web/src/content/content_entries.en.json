@@ -31,10 +31,6 @@
           "href": "/guide"
         },
         {
-          "label": "Tools",
-          "href": "/strumenti"
-        },
-        {
           "label": "FAQ",
           "href": "/faq"
         },
@@ -2091,7 +2087,7 @@
       "key": "hero_subtitle",
       "locale": "en",
       "is_published": true,
-      "value": "Everything you need to know about succession, taxes and documents, explained simply by people who actually handle these cases."
+      "value": "Everything you need to know about succession, taxes and documents, explained simply by people who actually handle these cases. Plus free calculators: cadastral value and ravvedimento operoso."
     },
     {
       "collection": "guide",
@@ -4737,8 +4733,8 @@
       "locale": "en",
       "is_published": true,
       "value": {
-        "search_placeholder": "Search guides (e.g. taxes, documents, exemption)",
-        "search_aria": "Search guides",
+        "search_placeholder": "Search guides and tools (e.g. taxes, cadastral value, ravvedimento)",
+        "search_aria": "Search guides and tools",
         "all": "All",
         "free_tool": "Free tool",
         "back": "Back to guides",
@@ -4748,12 +4744,12 @@
         "reading_minutes": "{n} min read",
         "read_guide": "Read the guide",
         "read": "Read",
-        "empty": "No guide found for your search. Try another term or write to us: we reply to everyone.",
+        "empty": "No guides or tools for that search. Try another term or write to us: we reply to everyone.",
         "updated": "Updated on {date}",
         "sources": "Official sources",
         "breadcrumb_aria": "Path",
         "breadcrumb_guides": "Guides",
-        "meta_title": "Succession guides",
+        "meta_title": "Succession guides and tools",
         "meta_not_found": "Guide not found",
         "tool_alt": "Illustration: house, calculator and document with euro symbol"
       }

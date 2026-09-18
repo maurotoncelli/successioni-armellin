@@ -31,10 +31,6 @@
           "href": "/guide"
         },
         {
-          "label": "工具",
-          "href": "/strumenti"
-        },
-        {
           "label": "FAQ",
           "href": "/faq"
         },
@@ -2077,7 +2073,7 @@
       "key": "hero_subtitle",
       "locale": "zh",
       "is_published": true,
-      "value": "关于遗产继承、税款与文件的一切，由真正办理案件的人简明讲解。"
+      "value": "继承、税费与文件一次讲清，由真正办案的人用白话说明。另有免费计算器：地籍价值和迟报（ravvedimento operoso）。"
     },
     {
       "collection": "guide",
@@ -4723,8 +4719,8 @@
       "locale": "zh",
       "is_published": true,
       "value": {
-        "search_placeholder": "搜索指南（如税款、文件、豁免）",
-        "search_aria": "搜索指南",
+        "search_placeholder": "搜索指南和工具（税、地籍、迟报）",
+        "search_aria": "搜索指南和工具",
         "all": "全部",
         "free_tool": "免费工具",
         "back": "返回指南",
@@ -4734,12 +4730,12 @@
         "reading_minutes": "阅读约 {n} 分钟",
         "read_guide": "阅读指南",
         "read": "阅读",
-        "empty": "未找到相关指南。请换关键词或联系我们：我们都会回复。",
+        "empty": "没有匹配的指南或工具。换个词，或写信给我们。",
         "updated": "更新于 {date}",
         "sources": "官方来源",
         "breadcrumb_aria": "流程",
         "breadcrumb_guides": "指南",
-        "meta_title": "遗产继承指南",
+        "meta_title": "继承指南与工具",
         "meta_not_found": "未找到指南",
         "tool_alt": "插图：房屋、计算器与带欧元符号的文件"
       }

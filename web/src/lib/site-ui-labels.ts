@@ -376,8 +376,9 @@ export const CATASTALE_CATEGORIE_IT: CatastaleCategoria[] = [
 ];
 
 export const GUIDE_UI_IT: GuideUiLabels = {
-  search_placeholder: "Cerca tra le guide (es. imposte, documenti, esonero)",
-  search_aria: "Cerca tra le guide",
+  search_placeholder:
+    "Cerca tra guide e strumenti (es. imposte, catastale, ravvedimento)",
+  search_aria: "Cerca tra guide e strumenti",
   all: "Tutte",
   free_tool: "Strumento gratuito",
   back: "Torna alle guide",
@@ -388,12 +389,12 @@ export const GUIDE_UI_IT: GuideUiLabels = {
   read_guide: "Leggi la guida",
   read: "Leggi",
   empty:
-    "Nessuna guida trovata per la tua ricerca. Prova con un altro termine o scrivici: rispondiamo a tutti.",
+    "Nessuna guida o strumento per la tua ricerca. Prova con un altro termine o scrivici: rispondiamo a tutti.",
   updated: "Aggiornato il {date}",
   sources: "Fonti ufficiali",
   breadcrumb_aria: "Percorso",
   breadcrumb_guides: "Guide",
-  meta_title: "Guide alle successioni",
+  meta_title: "Guide e strumenti per la successione",
   meta_not_found: "Guida non trovata",
   tool_alt: "Illustrazione: casa, calcolatrice e documento con simbolo euro",
 };

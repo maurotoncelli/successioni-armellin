@@ -116,8 +116,8 @@ export default async function RavvedimentoPage() {
       {
         "@type": "ListItem",
         position: 1,
-        name: await t("strumenti", "hub_hero_title", "Strumenti utili"),
-        item: `https://www.successioniarmellin.it${localePath("/strumenti", locale)}`,
+        name: await t("guide", "hero_eyebrow", "Guide"),
+        item: `https://www.successioniarmellin.it${localePath("/guide", locale)}`,
       },
       { "@type": "ListItem", position: 2, name: pageTitle, item: pageUrl },
     ],
