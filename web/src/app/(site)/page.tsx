@@ -283,6 +283,7 @@ export default async function HomePage() {
           poster={WELCOME_VIDEO_POSTER}
           src={welcomeSrc}
           captions={welcomeCaptions}
+          trackingTitle="benvenuto"
         />
       </Section>
 

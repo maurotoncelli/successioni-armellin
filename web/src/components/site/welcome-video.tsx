@@ -5,6 +5,8 @@ import Image from "next/image";
 import { Captions, ChevronDown, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { trackEvent } from "@/lib/analytics";
+import { trackVideoPlay } from "@/app/(site)/track-video";
+import { isVideoId } from "@/lib/video-ids";
 import {
   localeFlag,
   type WelcomeCaptionTrack,
@@ -86,6 +88,14 @@ export function WelcomeVideo({
   const videoRef = useRef<HTMLVideoElement>(null);
   /** Soglie di avanzamento già inviate a GA4 (per sessione di play). */
   const progressSentRef = useRef<Set<number>>(new Set());
+  const playIdRef = useRef("");
+
+  function pingCrm(event: "start" | "complete") {
+    const video = trackingTitle;
+    const playId = playIdRef.current;
+    if (!video || !isVideoId(video) || !playId) return;
+    void trackVideoPlay({ video, event, playId });
+  }
 
   function videoParams(el: HTMLVideoElement, extra?: Record<string, unknown>) {
     return {
@@ -161,12 +171,14 @@ export function WelcomeVideo({
       if (trackingTitle) {
         trackEvent("video_complete", videoParams(el, { video_percent: 100 }));
       }
+      pingCrm("complete");
       setPlaying(false);
     };
     const onFsChange = () => syncTrackMode(el);
     const mql = window.matchMedia("(min-width: 1024px)");
     const onFirstPlay = () => {
       if (trackingTitle) trackEvent("video_start", videoParams(el, { video_percent: 0 }));
+      pingCrm("start");
     };
     const onTimeUpdate = () => {
       if (!trackingTitle || !Number.isFinite(el.duration) || el.duration <= 0) return;
@@ -212,6 +224,10 @@ export function WelcomeVideo({
   function start() {
     if (!ready || !src) return;
     progressSentRef.current = new Set();
+    playIdRef.current =
+      typeof crypto !== "undefined" && crypto.randomUUID
+        ? crypto.randomUUID()
+        : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
     setPlaybackSrc(pickPlaybackSrc(src, srcMobile));
     setPlaying(true);
   }

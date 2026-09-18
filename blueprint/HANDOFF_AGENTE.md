@@ -54,6 +54,24 @@ File: `preventivo/grazie/page.tsx`, `soft-lead.tsx`, `preventivo/actions.ts`,
 
 ---
 
+## ★★ CRM STATISTICHE: RIPRODUZIONI VIDEO (18/09)
+
+Contatore first-party (NO-DDL `practice-docs/site/_video-stats.json`), stesso
+schema dei questionari. Ogni tasto play su `WelcomeVideo` incrementa avvii;
+`ended` incrementa completati. Dedupe per `playId` 30 min.
+
+- `benvenuto` — home + chi-sono (`trackingTitle` ora attivo anche lì, e GA4)
+- `come_funziona` — pagina Come funziona
+- Hero loop muted **non** conta
+
+CRM `/crm/statistiche`: KPI «Riproduzioni video» + card per video (avvii /
+completati). I numeri partono da questa attivazione (storico GA4 non importato).
+
+File: `lib/video-ids.ts`, `lib/video-stats.ts`, `app/(site)/track-video.ts`,
+`welcome-video.tsx`, `crm/statistiche/page.tsx`.
+
+---
+
 ## ★★ RECENSIONI GOOGLE REFRESH (18/09)
 
 Places sync resta spento (no billing). Refresh a mano da scheda Google 5,0 · **6 recensioni**.

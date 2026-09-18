@@ -111,6 +111,7 @@ export default async function ChiSonoPage() {
           poster={WELCOME_VIDEO_POSTER}
           src={welcomeSrc}
           captions={welcomeCaptions}
+          trackingTitle="benvenuto"
         />
       </Section>
 

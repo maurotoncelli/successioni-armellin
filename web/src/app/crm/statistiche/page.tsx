@@ -5,11 +5,14 @@ import {
   Receipt,
   ExternalLink,
   ClipboardList,
+  Play,
 } from "lucide-react";
 import { statusLabels, type PackageType } from "@/content/crm-data";
 import { getPractices, deriveKpi, statusCounts } from "@/lib/crm";
 import { getPackages } from "@/lib/cms";
 import { getQuoteStats } from "@/lib/quote-stats";
+import { getVideoStats } from "@/lib/video-stats";
+import { VIDEO_IDS, VIDEO_LABELS } from "@/lib/video-ids";
 import { CrmCard, SectionTitle } from "@/components/crm/ui";
 
 export const dynamic = "force-dynamic";
@@ -19,10 +22,11 @@ const GA4_URL = "https://analytics.google.com/analytics/web/";
 type PackageKey = Exclude<PackageType, null>;
 
 export default async function StatistichePage() {
-  const [practices, packages, quoteStats] = await Promise.all([
+  const [practices, packages, quoteStats, videoStats] = await Promise.all([
     getPractices(),
     getPackages(),
     getQuoteStats(),
+    getVideoStats(),
   ]);
   const kpi = deriveKpi(practices);
   const leadsFromSite = practices.filter((p) => p.status === "LEAD").length;
@@ -90,7 +94,7 @@ export default async function StatistichePage() {
         </p>
       )}
 
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         <KpiCard
           icon={<Briefcase className="h-5 w-5" />}
           value={practices.length}
@@ -116,6 +120,12 @@ export default async function StatistichePage() {
           icon={<TrendingUp className="h-5 w-5" />}
           value={`${kpi.conversionRate}%`}
           label="Conversione lead → cliente"
+        />
+        <KpiCard
+          icon={<Play className="h-5 w-5" />}
+          value={videoStats.totalStarts}
+          label="Riproduzioni video"
+          hint={`Completati fino in fondo ${videoStats.totalCompletes}`}
         />
       </div>
 
@@ -164,6 +174,50 @@ export default async function StatistichePage() {
           </p>
         </CrmCard>
       </div>
+
+      <CrmCard>
+        <SectionTitle>Riproduzioni video</SectionTitle>
+        <p className="mt-1 text-xs text-crm-muted">
+          Avvii dal tasto play (il loop muted in hero non conta). I numeri
+          partono da questa attivazione; GA4 resta per il dettaglio 25/50/75%.
+        </p>
+        <div className="mt-4 grid gap-3 sm:grid-cols-2">
+          {VIDEO_IDS.map((id) => {
+            const clip = videoStats.byVideo[id];
+            const max = Math.max(
+              ...VIDEO_IDS.map((k) => videoStats.byVideo[k].starts),
+              1,
+            );
+            return (
+              <div
+                key={id}
+                className="rounded-lg border border-crm-border bg-crm-bg2/40 px-3 py-3"
+              >
+                <div className="flex items-baseline justify-between gap-2 text-sm">
+                  <span className="font-medium text-crm-text">
+                    {VIDEO_LABELS[id]}
+                  </span>
+                  <span className="tabular-nums text-crm-text2">
+                    {clip.starts} avvii
+                  </span>
+                </div>
+                <div className="mt-2 h-2 overflow-hidden rounded-full bg-crm-bg2">
+                  <div
+                    className="h-full rounded-full crm-gradient"
+                    style={{ width: `${(clip.starts / max) * 100}%` }}
+                  />
+                </div>
+                <p className="mt-2 text-xs text-crm-muted">
+                  Completati {clip.completes}
+                  {clip.starts > 0
+                    ? ` · ${Math.round((clip.completes / clip.starts) * 100)}%`
+                    : ""}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </CrmCard>
     </div>
   );
 }
