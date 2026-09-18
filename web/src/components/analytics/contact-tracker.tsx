@@ -13,8 +13,18 @@ import { trackEvent, trackAdsConversion } from "@/lib/analytics";
 export function ContactTracker() {
   useEffect(() => {
     const handler = (e: MouseEvent) => {
-      const anchor = (e.target as HTMLElement | null)?.closest("a");
-      if (!anchor) return;
+      const target = (e.target as HTMLElement | null)?.closest("a, button");
+      if (!target) return;
+      if (target instanceof HTMLButtonElement) {
+        if (target.dataset.cta) {
+          trackEvent("cta_click", {
+            cta: target.dataset.cta,
+            location: window.location.pathname,
+          });
+        }
+        return;
+      }
+      const anchor = target as HTMLAnchorElement;
       const href = anchor.getAttribute("href") ?? "";
 
       let method: "phone" | "email" | "whatsapp" | null = null;

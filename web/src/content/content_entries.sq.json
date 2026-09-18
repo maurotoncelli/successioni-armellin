@@ -2614,7 +2614,7 @@
       "key": "soft_email_title",
       "locale": "sq",
       "is_published": true,
-      "value": "Preferoni ta mendoni? Merrni këtë preventiv me email"
+      "value": "Ose merre preventivin me email"
     },
     {
       "collection": "grazie",
@@ -2662,7 +2662,7 @@
       "collection": "grazie",
       "key": "soft_email_call_title",
       "locale": "sq",
-      "value": "Ende i pavendosur apo ke një pyetje? Bisedo shkurt me Lorenzon, pa asnjë detyrim.",
+      "value": "Preferon të telefonosh ti? Dy fjalë me Lorenzon, pa angazhim.",
       "is_published": true
     },
     {
@@ -2691,6 +2691,76 @@
       "key": "esito_b_whatsapp_hint",
       "locale": "sq",
       "value": "Pa asnjë detyrim: Lorenzo përgjigjet personalisht, zakonisht brenda pak orësh.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_after_pay",
+      "locale": "sq",
+      "value": "Pas pagesës Lorenzo të telefonon, hap hapësirën personale dhe fillon me dokumentet. Ke 14 ditë për t'u tërhequr.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "recensioni_title",
+      "locale": "sq",
+      "value": "Ata që tashmë i besuan Lorenzos",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_title",
+      "locale": "sq",
+      "value": "Kërko të të telefonojnë, pa angazhim",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_desc",
+      "locale": "sq",
+      "value": "Lë emrin dhe celularin: Lorenzo të telefonon vetë, zakonisht të njëjtën ditë. Pa presion për të paguar.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_submit",
+      "locale": "sq",
+      "value": "Më telefononi",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_ok_title",
+      "locale": "sq",
+      "value": "Kërkesa u mor",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_ok_body",
+      "locale": "sq",
+      "value": "Lorenzo të telefonon së shpejti, zakonisht të njëjtën ditë.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_footnote",
+      "locale": "sq",
+      "value": "Të telefonon Lorenzo personalisht. Orar zyre, zakonisht brenda pak orësh.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_notes_label",
+      "locale": "sq",
+      "value": "Kur je i arritshëm? (opsionale)",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_notes_placeholder",
+      "locale": "sq",
+      "value": "P.sh. pas orës 18, nesër në mëngjes…",
       "is_published": true
     },
     {
@@ -4627,7 +4697,9 @@
         "phone_optional": "Telefoni (opsional)",
         "submitting": "Dërgim…",
         "err_save": "Për momentin nuk arrijmë ta regjistrojmë kërkesën. Provoni më vonë ose na telefononi.",
-        "notes": "Shënim (opsional)"
+        "notes": "Shënim (opsional)",
+        "name_required": "Emri dhe mbiemri",
+        "email_optional": "Email (opsionale)"
       }
     },
     {

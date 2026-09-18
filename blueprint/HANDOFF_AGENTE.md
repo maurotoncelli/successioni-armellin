@@ -1,6 +1,6 @@
 # HANDOFF per il prossimo agente
 
-> Documento di passaggio di consegne. Aggiornato: **2026-09-05**.
+> Documento di passaggio di consegne. Aggiornato: **2026-09-18**.
 > Scopo: permettere a un nuovo agente (senza contesto) di riprendere il lavoro.
 > Riferimenti chiave: @RUNBOOK_GoLive (procedura go-live), @SPEC_Env_Vars,
 > @DOMANDE_PER_LORENZO, @PROSSIMO_INCONTRO_LORENZO, @07_Stack.
@@ -15,6 +15,42 @@ Chat precedente TR/FR/SQ + EN/AR + SEO:
 **NON committare** `bozza video/` (asset untracked).  
 **NON toccare** `web/src/app/crm/**` per i18n (CRM sempre IT/LTR).  
 **Traduzioni UI = agente** (niente OpenAI/API). Preferenza Mauro: subagent **Composer 2.5** per le mappe stringhe.
+
+---
+
+## ★★ ESITO PREVENTIVO: RICHIAMO + FIDUCIA (18/09)
+
+Problema: quiz ok, 6 esiti/giorno, nessuno contatta Lorenzo. Lo sconto non chiude:
+manca fiducia *e* un contatto. Senza recapito i lead restano anonimi.
+
+**Fatto su `/preventivo/grazie` esito B**
+- Form **«Fatti richiamare»** (aperto): nome + cellulare obbligatori, email no.
+  `kind: "callback"` in `createLead` / SoftLead. Upsert contatto anche solo per
+  telefono (`lib/contacts.ts`). Task CRM «Richiamare …» **oggi**. Note = orario
+  raggiungibile. Email «ricevi preventivo» resta chiusa sotto.
+- **Notifica CRM** `kind: lead`, titolo «Richiesta di richiamo — …» (badge
+  Importanti). **Email a Lorenzo** `notifyAdminNewLead({ callback: true })`
+  oggetto `Richiesta di richiamo · SUC-…`, stesso canale `ADMIN_NOTIFY_EMAILS`
+  / `ADMIN_EMAILS` degli altri lead.
+- Riga sotto Paga: `grazie.esito_b_after_pay` (cosa succede dopo + 14 giorni).
+- Recensioni Google compatte (max 3) in fondo, esito B e C.
+
+**Tracking (solo se il lead è salvato)**
+- GA4 `generate_lead` con `kind=callback` (dimensione `kind` già in GA4).
+- Ads `trackAdsConversion("lead")` stessa label Lead degli altri form.
+- `cta_click` `grazie_esito_b_callback` (submit) e `grazie_esito_b_email_open`
+  (apertura form email). ContactTracker ora legge anche `button[data-cta]`.
+
+**i18n:** chiavi `grazie.soft_callback_*`, `esito_b_after_pay`,
+`recensioni_title` + `site_ui.soft_lead_ui.name_required` /
+`email_optional` in tutte le 11 `content_entries` + seed IT. Fallback `t()` IT.
+
+**Non fatto (scelta):** follow-up automatico email/WA a 3-10 gg; pagamento 50/50
+o Klarna; «paga alla consegna» come checkout. Follow-up a mano sul task CRM.
+
+File: `preventivo/grazie/page.tsx`, `soft-lead.tsx`, `preventivo/actions.ts`,
+`contacts.ts`, `notifications.ts`, `quiz-summary.ts`, `contact-tracker.tsx`,
+`reviews.tsx`, `site-ui-labels.ts`.
 
 ---
 

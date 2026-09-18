@@ -153,7 +153,7 @@ export function answersFields(s: QuizSnapshot): { label: string; value: string }
   return fields;
 }
 
-export type QuizOrigin = "lead" | "custom_quote" | "checkout" | "unknown";
+export type QuizOrigin = "lead" | "custom_quote" | "callback" | "checkout" | "unknown";
 
 export type PracticeQuiz = {
   snapshot: QuizSnapshot;
@@ -193,7 +193,9 @@ export function quizFromPractice(p: PracticeLike): PracticeQuiz | null {
     : leadEvt
       ? p.requiresCustomQuote || /su misura/i.test(p.notes)
         ? "custom_quote"
-        : "lead"
+        : /richiamat/i.test(p.notes)
+          ? "callback"
+          : "lead"
       : "unknown";
 
   if (shot?.quiz) {
@@ -228,6 +230,7 @@ export function quizFromPractice(p: PracticeLike): PracticeQuiz | null {
 export const QUIZ_ORIGIN_IT: Record<QuizOrigin, string> = {
   lead: "Ha chiesto il preventivo via email dal risultato del sito",
   custom_quote: "Ha chiesto di essere ricontattato per un preventivo su misura",
+  callback: "Ha chiesto di essere richiamato dal risultato del preventivo",
   checkout: "Ha cliccato «Paga» dal risultato del sito (checkout Stripe)",
   unknown: "Questionario del sito",
 };

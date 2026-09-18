@@ -76,7 +76,9 @@ export type ContactUiLabels = {
 
 export type SoftLeadUiLabels = {
   name: string;
+  name_required: string;
   email: string;
+  email_optional: string;
   phone: string;
   phone_optional: string;
   submitting: string;
@@ -288,7 +290,9 @@ export const CONTACT_UI_IT: ContactUiLabels = {
 
 export const SOFT_LEAD_UI_IT: SoftLeadUiLabels = {
   name: "Nome e cognome (facoltativo)",
+  name_required: "Nome e cognome",
   email: "Email",
+  email_optional: "Email (facoltativa)",
   phone: "Telefono",
   phone_optional: "Telefono (facoltativo)",
   submitting: "Invio in corso…",

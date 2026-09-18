@@ -2329,6 +2329,76 @@
     },
     {
       "collection": "grazie",
+      "key": "esito_b_after_pay",
+      "locale": "it",
+      "is_published": true,
+      "value": "Dopo il pagamento Lorenzo ti chiama, ti apre l'area personale e parti dai documenti. Hai 14 giorni per ripensarci."
+    },
+    {
+      "collection": "grazie",
+      "key": "recensioni_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Chi si è già affidato a Lorenzo"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Fatti richiamare, senza impegno"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_desc",
+      "locale": "it",
+      "is_published": true,
+      "value": "Lascia nome e cellulare: Lorenzo ti chiama lui, di solito in giornata. Nessuna pressione a pagare."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_submit",
+      "locale": "it",
+      "is_published": true,
+      "value": "Richiamatemi"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_ok_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Richiesta ricevuta"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_ok_body",
+      "locale": "it",
+      "is_published": true,
+      "value": "Lorenzo ti chiama a breve, di solito in giornata."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_footnote",
+      "locale": "it",
+      "is_published": true,
+      "value": "Ti chiama Lorenzo in persona. Orario d'ufficio, di solito entro poche ore."
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_notes_label",
+      "locale": "it",
+      "is_published": true,
+      "value": "Quando sei raggiungibile? (facoltativo)"
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_notes_placeholder",
+      "locale": "it",
+      "is_published": true,
+      "value": "Es. dopo le 18, domani mattina…"
+    },
+    {
+      "collection": "grazie",
       "key": "esito_b_guida",
       "locale": "it",
       "is_published": true,
@@ -2380,7 +2450,7 @@
       "key": "soft_email_title",
       "locale": "it",
       "is_published": true,
-      "value": "Preferisci pensarci? Ricevi questo preventivo via email"
+      "value": "Oppure ricevi il preventivo via email"
     },
     {
       "collection": "grazie",
@@ -4319,7 +4389,9 @@
         "phone_optional": "Telefono (facoltativo)",
         "submitting": "Invio in corso…",
         "err_save": "Al momento non riusciamo a registrare la richiesta. Riprova più tardi o chiamaci.",
-        "notes": "Nota (facoltativa)"
+        "notes": "Nota (facoltativa)",
+        "name_required": "Nome e cognome",
+        "email_optional": "Email (facoltativa)"
       }
     },
     {

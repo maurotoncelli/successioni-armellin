@@ -2614,7 +2614,7 @@
       "key": "soft_email_title",
       "locale": "ru",
       "is_published": true,
-      "value": "Хотите подумать? Получите эту смету по email"
+      "value": "Или получите расчёт по email"
     },
     {
       "collection": "grazie",
@@ -2662,7 +2662,7 @@
       "collection": "grazie",
       "key": "soft_email_call_title",
       "locale": "ru",
-      "value": "Сомневаетесь или есть вопрос? Поговорите с Лоренцо — это ни к чему не обязывает.",
+      "value": "Предпочитаете позвонить сами? Пара слов с Лоренцо, без обязательств.",
       "is_published": true
     },
     {
@@ -2691,6 +2691,76 @@
       "key": "esito_b_whatsapp_hint",
       "locale": "ru",
       "value": "Без обязательств: Лоренцо отвечает лично, обычно в течение нескольких часов.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_after_pay",
+      "locale": "ru",
+      "value": "После оплаты Лоренцо вам позвонит, откроет личный кабинет — и вы начнёте с документов. Есть 14 дней, чтобы передумать.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "recensioni_title",
+      "locale": "ru",
+      "value": "Те, кто уже доверился Лоренцо",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_title",
+      "locale": "ru",
+      "value": "Попросите перезвонить — без обязательств",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_desc",
+      "locale": "ru",
+      "value": "Оставьте имя и мобильный: Лоренцо позвонит сам, обычно в тот же день. Без давления оплатить.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_submit",
+      "locale": "ru",
+      "value": "Перезвоните мне",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_ok_title",
+      "locale": "ru",
+      "value": "Заявка получена",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_ok_body",
+      "locale": "ru",
+      "value": "Лоренцо позвонит вскоре, обычно в тот же день.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_footnote",
+      "locale": "ru",
+      "value": "Звонит Лоренцо лично. В рабочие часы, обычно в течение нескольких часов.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_notes_label",
+      "locale": "ru",
+      "value": "Когда вам удобно? (необязательно)",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_notes_placeholder",
+      "locale": "ru",
+      "value": "Напр. после 18:00, завтра утром…",
       "is_published": true
     },
     {
@@ -4627,7 +4697,9 @@
         "phone_optional": "Телефон (необязательно)",
         "submitting": "Отправка…",
         "err_save": "Сейчас не можем зарегистрировать запрос. Попробуйте позже или позвоните.",
-        "notes": "Примечание (необязательно)"
+        "notes": "Примечание (необязательно)",
+        "name_required": "Имя и фамилия",
+        "email_optional": "Email (необязательно)"
       }
     },
     {

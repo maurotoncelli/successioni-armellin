@@ -2614,7 +2614,7 @@
       "key": "soft_email_title",
       "locale": "de",
       "is_published": true,
-      "value": "Möchten Sie nachdenken? Kostenvoranschlag per E-Mail"
+      "value": "Oder Angebot per E-Mail erhalten"
     },
     {
       "collection": "grazie",
@@ -2662,7 +2662,7 @@
       "collection": "grazie",
       "key": "soft_email_call_title",
       "locale": "de",
-      "value": "Noch unsicher oder eine Frage? Sprechen Sie unverbindlich kurz mit Lorenzo.",
+      "value": "Lieber selbst anrufen? Kurz mit Lorenzo sprechen, unverbindlich.",
       "is_published": true
     },
     {
@@ -2691,6 +2691,76 @@
       "key": "esito_b_whatsapp_hint",
       "locale": "de",
       "value": "Unverbindlich: Lorenzo antwortet persönlich, meist innerhalb weniger Stunden.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_after_pay",
+      "locale": "de",
+      "value": "Nach der Zahlung ruft Lorenzo an, öffnet Ihren Kundenbereich und Sie starten mit den Unterlagen. Sie haben 14 Tage Bedenkzeit.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "recensioni_title",
+      "locale": "de",
+      "value": "Menschen, die Lorenzo bereits vertraut haben",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_title",
+      "locale": "de",
+      "value": "Rückruf anfordern, unverbindlich",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_desc",
+      "locale": "de",
+      "value": "Name und Handy hinterlassen: Lorenzo ruft selbst an, meist am selben Tag. Kein Zahlungsdruck.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_submit",
+      "locale": "de",
+      "value": "Bitte zurückrufen",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_ok_title",
+      "locale": "de",
+      "value": "Anfrage erhalten",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_ok_body",
+      "locale": "de",
+      "value": "Lorenzo ruft in Kürze an, meist am selben Tag.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_footnote",
+      "locale": "de",
+      "value": "Lorenzo ruft persönlich an. Bürozeiten, meist innerhalb weniger Stunden.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_notes_label",
+      "locale": "de",
+      "value": "Wann sind Sie erreichbar? (optional)",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_notes_placeholder",
+      "locale": "de",
+      "value": "Z. B. nach 18 Uhr, morgen früh…",
       "is_published": true
     },
     {
@@ -4627,7 +4697,9 @@
         "phone_optional": "Telefon (optional)",
         "submitting": "Wird gesendet…",
         "err_save": "Anfrage derzeit nicht registrierbar. Später erneut versuchen oder anrufen.",
-        "notes": "Anmerkung (optional)"
+        "notes": "Anmerkung (optional)",
+        "name_required": "Vor- und Nachname",
+        "email_optional": "E-Mail (optional)"
       }
     },
     {

@@ -1,6 +1,6 @@
 import "server-only";
 import { getAdminClient, isAdminConfigured } from "@/lib/supabase/admin";
-import { findContactIdByEmail } from "@/lib/profiles";
+import { findContactIdByEmail, findContactIdByPhone } from "@/lib/profiles";
 import type { ContactRow } from "@/lib/supabase/types";
 import {
   attributionSourceLabel,
@@ -10,8 +10,9 @@ import {
 } from "@/lib/attribution-shared";
 
 /*
-  Anagrafica contacts: upsert per email (evita duplicati SoftLead/checkout
-  ripetuti). Usato da createLead e webhook Stripe.
+  Anagrafica contacts: upsert per email o telefono (evita duplicati SoftLead /
+  checkout ripetuti, e i "fatti richiamare" senza email). Usato da createLead
+  e webhook Stripe.
 */
 
 function isoDate(): string {
@@ -19,7 +20,7 @@ function isoDate(): string {
 }
 
 export type UpsertContactInput = {
-  email: string;
+  email?: string | null;
   firstName?: string;
   lastName?: string;
   phone?: string | null;
@@ -28,20 +29,26 @@ export type UpsertContactInput = {
   attribution?: Attribution | null;
 };
 
-/** Trova il contatto per email o lo crea. Aggiorna campi vuoti se gia esiste. */
+/**
+  Trova il contatto per email, altrimenti per telefono, o lo crea.
+  Serve anche ai lead "fatti richiamare" senza email.
+*/
 export async function upsertContactByEmail(
   input: UpsertContactInput,
 ): Promise<string | null> {
-  const email = input.email.trim();
-  if (!email || !isAdminConfigured) return null;
+  const email = (input.email ?? "").trim();
+  const phone = (input.phone ?? "").trim();
+  if ((!email && !phone) || !isAdminConfigured) return null;
 
   const admin = getAdminClient();
-  const existingId = await findContactIdByEmail(email);
+  const existingId = email
+    ? await findContactIdByEmail(email)
+    : await findContactIdByPhone(phone);
 
   if (existingId) {
     const { data: row } = await admin
       .from("contacts")
-      .select("first_name, last_name, phone, marketing_consent, source, attribution")
+      .select("first_name, last_name, email, phone, marketing_consent, source, attribution")
       .eq("id", existingId)
       .maybeSingle();
 
@@ -72,8 +79,11 @@ export async function upsertContactByEmail(
     if (input.lastName?.trim() && !(row?.last_name ?? "").trim()) {
       patch.last_name = input.lastName.trim();
     }
-    if (input.phone?.trim() && !(row?.phone ?? "").trim()) {
-      patch.phone = input.phone.trim();
+    if (phone && !(row?.phone ?? "").trim()) {
+      patch.phone = phone;
+    }
+    if (email && !(row?.email ?? "").trim()) {
+      patch.email = email;
     }
     if (input.marketingConsent && !row?.marketing_consent) {
       patch.marketing_consent = true;
@@ -95,8 +105,8 @@ export async function upsertContactByEmail(
     .insert({
       first_name: input.firstName?.trim() || "Cliente",
       last_name: input.lastName?.trim() || "",
-      email,
-      phone: input.phone?.trim() || null,
+      email: email || null,
+      phone: phone || null,
       source: attributionSourceLabel(
         parseAttribution(input.attribution),
         input.source,

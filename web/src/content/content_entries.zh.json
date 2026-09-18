@@ -2614,7 +2614,7 @@
       "key": "soft_email_title",
       "locale": "zh",
       "is_published": true,
-      "value": "需要时间考虑？通过邮件接收此报价"
+      "value": "或通过电子邮件收取报价"
     },
     {
       "collection": "grazie",
@@ -2662,7 +2662,7 @@
       "collection": "grazie",
       "key": "soft_email_call_title",
       "locale": "zh",
-      "value": "还没决定或有疑问？和 Lorenzo 聊几句，没有任何约束。",
+      "value": "更想自己打？和 Lorenzo 说两句，无需承诺。",
       "is_published": true
     },
     {
@@ -2691,6 +2691,76 @@
       "key": "esito_b_whatsapp_hint",
       "locale": "zh",
       "value": "无需承诺：Lorenzo 本人回复，通常在几小时内。",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_after_pay",
+      "locale": "zh",
+      "value": "付款后 Lorenzo 会给你打电话、开通个人专区，你从文件开始。14 天内可以改变主意。",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "recensioni_title",
+      "locale": "zh",
+      "value": "已经信任 Lorenzo 的人",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_title",
+      "locale": "zh",
+      "value": "请 Lorenzo 回电，无需承诺",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_desc",
+      "locale": "zh",
+      "value": "留下姓名和手机：Lorenzo 本人通常当天回电。不会催你付款。",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_submit",
+      "locale": "zh",
+      "value": "请回电",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_ok_title",
+      "locale": "zh",
+      "value": "已收到请求",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_ok_body",
+      "locale": "zh",
+      "value": "Lorenzo 很快会给你打电话，通常当天。",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_footnote",
+      "locale": "zh",
+      "value": "Lorenzo 本人来电。办公时间，通常几小时内。",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_notes_label",
+      "locale": "zh",
+      "value": "什么时间方便接听？（选填）",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_notes_placeholder",
+      "locale": "zh",
+      "value": "例如：18 点后、明天上午…",
       "is_published": true
     },
     {
@@ -4627,7 +4697,9 @@
         "phone_optional": "电话（选填）",
         "submitting": "发送中…",
         "err_save": "目前无法登记请求。请稍后重试或致电。",
-        "notes": "备注（选填）"
+        "notes": "备注（选填）",
+        "name_required": "姓名",
+        "email_optional": "邮箱（选填）"
       }
     },
     {

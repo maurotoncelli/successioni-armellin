@@ -2614,7 +2614,7 @@
       "key": "soft_email_title",
       "locale": "ar",
       "is_published": true,
-      "value": "تفضل التفكير؟ استلم هذا العرض عبر البريد"
+      "value": "أو استلم عرض السعر عبر البريد"
     },
     {
       "collection": "grazie",
@@ -2662,7 +2662,7 @@
       "collection": "grazie",
       "key": "soft_email_call_title",
       "locale": "ar",
-      "value": "لست متأكدًا بعد أو لديك سؤال؟ تحدّث قليلًا مع Lorenzo، دون أي التزام.",
+      "value": "تفضل أن تتصل أنت؟ كلمتان مع لورنزو، دون التزام.",
       "is_published": true
     },
     {
@@ -2691,6 +2691,76 @@
       "key": "esito_b_whatsapp_hint",
       "locale": "ar",
       "value": "دون أي التزام: يجيبك لورينزو شخصياً، عادةً في غضون ساعات قليلة.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_after_pay",
+      "locale": "ar",
+      "value": "بعد الدفع يتصل لورنزو، يفتح مساحتك الشخصية وتبدأ بالوثائق. لديك 14 يوماً لتغيير رأيك.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "recensioni_title",
+      "locale": "ar",
+      "value": "من وثق بلورنزو من قبل",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_title",
+      "locale": "ar",
+      "value": "اطلب أن نتصل بك، دون التزام",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_desc",
+      "locale": "ar",
+      "value": "اترك الاسم والجوال: لورنزو يتصل بنفسه، عادة في اليوم نفسه. بلا ضغط للدفع.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_submit",
+      "locale": "ar",
+      "value": "اتصلوا بي",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_ok_title",
+      "locale": "ar",
+      "value": "تم استلام الطلب",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_ok_body",
+      "locale": "ar",
+      "value": "سيتصل لورنزو قريباً، عادة في اليوم نفسه.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_footnote",
+      "locale": "ar",
+      "value": "يتصل لورنزو شخصياً. في ساعات العمل، عادة خلال ساعات قليلة.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_notes_label",
+      "locale": "ar",
+      "value": "متى يمكننا الوصول إليك؟ (اختياري)",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_notes_placeholder",
+      "locale": "ar",
+      "value": "مثلاً بعد الساعة 18، غداً صباحاً…",
       "is_published": true
     },
     {
@@ -4627,7 +4697,9 @@
         "phone_optional": "الهاتف (اختياري)",
         "submitting": "جاري الإرسال…",
         "err_save": "تعذّر تسجيل الطلب حاليًا. أعد المحاولة لاحقًا أو اتصل بنا.",
-        "notes": "ملاحظة (اختياري)"
+        "notes": "ملاحظة (اختياري)",
+        "name_required": "الاسم واللقب",
+        "email_optional": "البريد (اختياري)"
       }
     },
     {

@@ -177,6 +177,7 @@ export async function notifyAdminNewLead(input: {
   email: string;
   phone: string;
   custom: boolean;
+  callback?: boolean;
   packageLabel?: string;
   clientNote?: string;
   /** Righe gia' in chiaro (esito, onorario, risposte, orario) dal questionario. */
@@ -185,7 +186,9 @@ export async function notifyAdminNewLead(input: {
   const admins = adminNotifyRecipients();
   const subject = input.custom
     ? `Richiesta preventivo su misura · ${input.practiceCode}`
-    : `Nuovo lead dal sito · ${input.practiceCode}`;
+    : input.callback
+      ? `Richiesta di richiamo · ${input.practiceCode}`
+      : `Nuovo lead dal sito · ${input.practiceCode}`;
   if (admins.length === 0) return { sent: false, subject };
   const rows = [
     `<strong>${esc(input.clientName || "Contatto senza nome")}</strong>`,
@@ -204,12 +207,16 @@ export async function notifyAdminNewLead(input: {
   const html = emailLayout({
     heading: input.custom
       ? "Nuova richiesta di preventivo su misura"
-      : "Nuovo lead dal preventivo del sito",
+      : input.callback
+        ? "Vuole essere richiamato"
+        : "Nuovo lead dal preventivo del sito",
     bodyHtml: `<p style="margin:0 0 10px">${rows}</p>
       <p style="margin:0">${
         input.custom
           ? "Il cliente aspetta di essere ricontattato per studiare il caso insieme e ricevere il preventivo dedicato."
-          : "Ha richiesto il riepilogo del preventivo via email."
+          : input.callback
+            ? "Ha lasciato il telefono dal risultato del preventivo: richiamalo tu, di solito si aspetta una risposta in giornata."
+            : "Ha richiesto il riepilogo del preventivo via email."
       }</p>${noteHtml}`,
     ctaLabel: "Apri la pratica",
     ctaHref: crmPracticeUrl(input.practiceId),

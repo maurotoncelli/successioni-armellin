@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { CheckCircle2, Mail } from "lucide-react";
+import { CheckCircle2, Mail, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { createLead } from "@/app/(site)/preventivo/actions";
@@ -16,8 +16,8 @@ import {
 /*
   Cattura contatto OPZIONALE sulla pagina risultato: l'utente ha gia visto
   l'esito/prezzo. Solo qui (e solo se vuole) lascia i dati - mai come barriera
-  prima del valore. Usata in due modalita: "email_quote" (ricevi il preventivo
-  via email) e "custom_quote" (richiedi un preventivo su misura).
+  prima del valore. Tre modalita: "callback" (fatti richiamare), "email_quote"
+  (ricevi il preventivo via email) e "custom_quote" (preventivo su misura).
 */
 
 export type SoftLeadAnswers = {
@@ -32,8 +32,10 @@ export type SoftLeadAnswers = {
   over100k?: string;
 };
 
+export type SoftLeadKind = "email_quote" | "custom_quote" | "callback";
+
 type Props = {
-  kind: "email_quote" | "custom_quote";
+  kind: SoftLeadKind;
   answers: SoftLeadAnswers;
   title: string;
   description: string;
@@ -46,13 +48,17 @@ type Props = {
   successTitleNoEmail?: string;
   successBodyNoEmail?: string;
   requirePhone?: boolean;
+  requireName?: boolean;
+  requireEmail?: boolean;
   /** Nota sotto il pulsante (es. "ti ricontattiamo noi entro un giorno lavorativo"). */
   footnote?: string;
-  /** Campo note (soprattutto per preventivo su misura). */
+  /** Campo note (soprattutto per preventivo su misura / orario di richiamo). */
   showNotes?: boolean;
   notesLabel?: string;
   notesPlaceholder?: string;
   fieldLabels?: SoftLeadUiLabels;
+  /** Etichetta `data-cta` per GA4 (`cta_click` sul submit). */
+  cta?: string;
 };
 
 export function SoftLead({
@@ -68,15 +74,18 @@ export function SoftLead({
   successTitleNoEmail,
   successBodyNoEmail,
   requirePhone = false,
+  requireName = false,
+  requireEmail = true,
   footnote,
   showNotes = false,
   notesLabel,
   notesPlaceholder,
   fieldLabels = SOFT_LEAD_UI_IT,
+  cta,
 }: Props) {
   const resolvedNotesLabel =
     notesLabel ?? fieldLabels.notes ?? SOFT_LEAD_UI_IT.notes ?? "Nota (facoltativa)";
-  const [open, setOpen] = useState(kind === "custom_quote");
+  const [open, setOpen] = useState(kind === "custom_quote" || kind === "callback");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -90,12 +99,10 @@ export function SoftLead({
 
   const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
   const phoneValid = /^[+()\d][\d\s().-]{5,19}$/.test(phone.trim());
-  const canSubmit =
-    privacy &&
-    emailValid &&
-    (!requirePhone || phoneValid) &&
-    (phone.trim() === "" || phoneValid) &&
-    !pending;
+  const nameOk = !requireName || name.trim().length >= 2;
+  const emailOk = requireEmail ? emailValid : email.trim() === "" || emailValid;
+  const phoneOk = requirePhone ? phoneValid : phone.trim() === "" || phoneValid;
+  const canSubmit = privacy && nameOk && emailOk && phoneOk && !pending;
 
   function submit() {
     setError(null);
@@ -115,29 +122,29 @@ export function SoftLead({
         marketing,
         kind,
       });
-      trackEvent("generate_lead", { kind, esito: res.esito });
-      if (res.ok) trackAdsConversion("lead");
       if (res.ok) {
+        trackEvent("generate_lead", { kind, esito: res.esito });
+        trackAdsConversion("lead");
         setEmailWentOut(res.emailSent !== false);
         setDone(true);
       } else {
-        // Senza DB configurato non possiamo salvare: messaggio onesto.
         setError(fieldLabels.err_save);
       }
     });
   }
 
   if (done) {
+    const showEmailCopy = !requireEmail || emailWentOut;
     return (
-      <div className="rounded-2xl border border-success/30 bg-success/5 p-6">
+      <div className="rounded-2xl border border-success/30 bg-success/5 p-4 sm:p-6">
         <div className="flex items-start gap-3">
           <CheckCircle2 className="mt-0.5 h-6 w-6 shrink-0 text-success" />
           <div>
             <h3 className="text-lg font-semibold text-primary">
-              {emailWentOut ? successTitle : (successTitleNoEmail ?? successTitle)}
+              {showEmailCopy ? successTitle : (successTitleNoEmail ?? successTitle)}
             </h3>
             <p className="mt-1 text-sm text-text-muted">
-              {emailWentOut ? successBody : (successBodyNoEmail ?? successBody)}
+              {showEmailCopy ? successBody : (successBodyNoEmail ?? successBody)}
             </p>
           </div>
         </div>
@@ -151,41 +158,53 @@ export function SoftLead({
         type="button"
         onClick={() => setOpen(true)}
         className="flex w-full items-center justify-center gap-2 rounded-[10px] border border-primary/15 bg-bg px-4 py-3 text-sm font-medium text-text transition-colors hover:border-accent/50 hover:text-accent"
+        data-cta={cta ? `${cta}_open` : undefined}
       >
-        <Mail className="h-4 w-4" />
+        {kind === "callback" ? (
+          <Phone className="h-4 w-4" />
+        ) : (
+          <Mail className="h-4 w-4" />
+        )}
         {title}
       </button>
     );
   }
 
+  const phoneField = (
+    <Field
+      label={requirePhone ? fieldLabels.phone : fieldLabels.phone_optional}
+      type="tel"
+      value={phone}
+      onChange={setPhone}
+      autoComplete="tel"
+      inputMode="tel"
+    />
+  );
+  const emailField = (
+    <Field
+      label={requireEmail ? fieldLabels.email : fieldLabels.email_optional}
+      type="email"
+      value={email}
+      onChange={setEmail}
+      autoComplete="email"
+    />
+  );
+
   return (
-    <div className="rounded-2xl border border-primary/10 bg-bg p-6">
+    <div className="rounded-2xl border border-primary/10 bg-bg p-4 sm:p-6">
       <h3 className="text-lg font-semibold text-primary">{title}</h3>
       <p className="mt-1 text-sm text-text-muted">{description}</p>
 
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
         <Field
-          label={fieldLabels.name}
+          label={requireName ? fieldLabels.name_required : fieldLabels.name}
           value={name}
           onChange={setName}
+          autoComplete="name"
         />
-        <Field
-          label={fieldLabels.email}
-          type="email"
-          value={email}
-          onChange={setEmail}
-        />
+        {kind === "callback" ? phoneField : emailField}
       </div>
-      <div className="mt-3">
-        <Field
-          label={
-            requirePhone ? fieldLabels.phone : fieldLabels.phone_optional
-          }
-          type="tel"
-          value={phone}
-          onChange={setPhone}
-        />
-      </div>
+      <div className="mt-3">{kind === "callback" ? emailField : phoneField}</div>
 
       {showNotes && (
         <div className="mt-3">
@@ -195,7 +214,7 @@ export function SoftLead({
           <textarea
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
-            rows={3}
+            rows={kind === "callback" ? 2 : 3}
             maxLength={800}
             placeholder={notesPlaceholder}
             className="w-full resize-y rounded-[10px] border border-primary/20 bg-bg px-3 py-2.5 text-sm focus:border-accent focus:outline-none"
@@ -237,6 +256,7 @@ export function SoftLead({
         disabled={!canSubmit}
         className={cn("mt-5 w-full")}
         size="lg"
+        data-cta={cta}
       >
         {pending ? fieldLabels.submitting : submitLabel}
       </Button>
@@ -252,11 +272,15 @@ function Field({
   type = "text",
   value,
   onChange,
+  autoComplete,
+  inputMode,
 }: {
   label: string;
   type?: string;
   value: string;
   onChange: (v: string) => void;
+  autoComplete?: string;
+  inputMode?: React.HTMLAttributes<HTMLInputElement>["inputMode"];
 }) {
   return (
     <div>
@@ -267,6 +291,8 @@ function Field({
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        autoComplete={autoComplete}
+        inputMode={inputMode}
         className="w-full rounded-[10px] border border-primary/20 bg-bg px-3 py-2.5 text-sm focus:border-accent focus:outline-none"
       />
     </div>

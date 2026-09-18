@@ -2628,7 +2628,7 @@
       "key": "soft_email_title",
       "locale": "it",
       "is_published": true,
-      "value": "Preferisci pensarci? Ricevi questo preventivo via email"
+      "value": "Oppure ricevi il preventivo via email"
     },
     {
       "collection": "grazie",
@@ -2676,7 +2676,7 @@
       "collection": "grazie",
       "key": "soft_email_call_title",
       "locale": "it",
-      "value": "Sei indeciso o hai una domanda? Fai due parole con Lorenzo, senza impegno.",
+      "value": "Preferisci chiamare tu? Due parole con Lorenzo, senza impegno.",
       "is_published": true
     },
     {
@@ -2705,6 +2705,76 @@
       "key": "esito_b_whatsapp_hint",
       "locale": "it",
       "value": "Nessun impegno: ti risponde Lorenzo in persona, di solito entro poche ore.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_after_pay",
+      "locale": "it",
+      "value": "Dopo il pagamento Lorenzo ti chiama, ti apre l'area personale e parti dai documenti. Hai 14 giorni per ripensarci.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "recensioni_title",
+      "locale": "it",
+      "value": "Chi si è già affidato a Lorenzo",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_title",
+      "locale": "it",
+      "value": "Fatti richiamare, senza impegno",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_desc",
+      "locale": "it",
+      "value": "Lascia nome e cellulare: Lorenzo ti chiama lui, di solito in giornata. Nessuna pressione a pagare.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_submit",
+      "locale": "it",
+      "value": "Richiamatemi",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_ok_title",
+      "locale": "it",
+      "value": "Richiesta ricevuta",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_ok_body",
+      "locale": "it",
+      "value": "Lorenzo ti chiama a breve, di solito in giornata.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_footnote",
+      "locale": "it",
+      "value": "Ti chiama Lorenzo in persona. Orario d'ufficio, di solito entro poche ore.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_notes_label",
+      "locale": "it",
+      "value": "Quando sei raggiungibile? (facoltativo)",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_notes_placeholder",
+      "locale": "it",
+      "value": "Es. dopo le 18, domani mattina…",
       "is_published": true
     },
     {
@@ -4641,7 +4711,9 @@
         "phone_optional": "Telefono (facoltativo)",
         "submitting": "Invio in corso…",
         "err_save": "Al momento non riusciamo a registrare la richiesta. Riprova più tardi o chiamaci.",
-        "notes": "Nota (facoltativa)"
+        "notes": "Nota (facoltativa)",
+        "name_required": "Nome e cognome",
+        "email_optional": "Email (facoltativa)"
       }
     },
     {

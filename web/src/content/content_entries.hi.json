@@ -2614,7 +2614,7 @@
       "key": "soft_email_title",
       "locale": "hi",
       "is_published": true,
-      "value": "सोचना चाहते हैं? यह अनुमान ईमेल से पाएँ"
+      "value": "या ईमेल पर कोटेशन पाएँ"
     },
     {
       "collection": "grazie",
@@ -2662,7 +2662,7 @@
       "collection": "grazie",
       "key": "soft_email_call_title",
       "locale": "hi",
-      "value": "अभी तय नहीं कर पाए या कोई सवाल है? Lorenzo से बिना किसी बाध्यता के बात करें।",
+      "value": "खुद कॉल करना पसंद है? Lorenzo से दो शब्द, बिना प्रतिबद्धता।",
       "is_published": true
     },
     {
@@ -2691,6 +2691,76 @@
       "key": "esito_b_whatsapp_hint",
       "locale": "hi",
       "value": "कोई बाध्यता नहीं: Lorenzo स्वयं जवाब देते हैं, आम तौर पर कुछ घंटों में।",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_after_pay",
+      "locale": "hi",
+      "value": "भुगतान के बाद Lorenzo आपको कॉल करते हैं, व्यक्तिगत क्षेत्र खोलते हैं और आप दस्तावेज़ों से शुरू करते हैं। राय बदलने के लिए 14 दिन हैं।",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "recensioni_title",
+      "locale": "hi",
+      "value": "जो पहले ही Lorenzo पर भरोसा कर चुके हैं",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_title",
+      "locale": "hi",
+      "value": "वापस कॉल करवाएँ, बिना प्रतिबद्धता",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_desc",
+      "locale": "hi",
+      "value": "नाम और मोबाइल छोड़ें: Lorenzo स्वयं कॉल करते हैं, आमतौर पर उसी दिन। भुगतान का दबाव नहीं।",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_submit",
+      "locale": "hi",
+      "value": "मुझे कॉल करें",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_ok_title",
+      "locale": "hi",
+      "value": "अनुरोध प्राप्त",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_ok_body",
+      "locale": "hi",
+      "value": "Lorenzo जल्द कॉल करेंगे, आमतौर पर उसी दिन।",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_footnote",
+      "locale": "hi",
+      "value": "Lorenzo स्वयं कॉल करते हैं। कार्यालय समय, आमतौर पर कुछ घंटों में।",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_notes_label",
+      "locale": "hi",
+      "value": "आप कब उपलब्ध हैं? (वैकल्पिक)",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_notes_placeholder",
+      "locale": "hi",
+      "value": "जैसे शाम 6 बजे के बाद, कल सुबह…",
       "is_published": true
     },
     {
@@ -4627,7 +4697,9 @@
         "phone_optional": "फ़ोन (वैकल्पिक)",
         "submitting": "भेजा जा रहा है…",
         "err_save": "अभी अनुरोध दर्ज नहीं हो सका। बाद में या कॉल करें।",
-        "notes": "नोट (वैकल्पिक)"
+        "notes": "नोट (वैकल्पिक)",
+        "name_required": "पूरा नाम",
+        "email_optional": "ईमेल (वैकल्पिक)"
       }
     },
     {

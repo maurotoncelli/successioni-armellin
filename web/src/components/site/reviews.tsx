@@ -4,7 +4,13 @@ import { Card } from "@/components/ui/card";
 import { getSiteReviews } from "@/lib/google-reviews";
 import { cn } from "@/lib/utils";
 
-export async function Reviews() {
+export async function Reviews({
+  compact = false,
+  limit,
+}: {
+  compact?: boolean;
+  limit?: number;
+} = {}) {
   const { reviews, rating, totalCount, mapsUri } = await getSiteReviews();
   const writeReviewUrl = (await t("settings", "review_url")).trim();
   const ratingOf = await t("home", "recensioni_rating_of", "su 5");
@@ -20,17 +26,23 @@ export async function Reviews() {
   );
   const fromLabel = await t("home", "recensioni_from", "Recensioni da");
   const writeLabel = await t("home", "recensioni_write", "Scrivi una recensione");
+  const shown = typeof limit === "number" ? reviews.slice(0, limit) : reviews;
   const cols =
-    reviews.length >= 3
+    shown.length >= 3
       ? "md:grid-cols-3"
-      : reviews.length === 2
+      : shown.length === 2
         ? "md:grid-cols-2"
         : "md:grid-cols-1 max-w-xl mx-auto";
 
   return (
     <div>
       {(rating != null || totalCount != null) && (
-        <p className="mb-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-text-muted">
+        <p
+          className={cn(
+            "flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-text-muted",
+            compact ? "mb-4" : "mb-6",
+          )}
+        >
           {rating != null && (
             <span className="inline-flex items-center gap-1 font-medium text-text">
               <Star className="h-4 w-4 fill-accent text-accent" aria-hidden />
@@ -48,11 +60,11 @@ export async function Reviews() {
         </p>
       )}
 
-      <div className={cn("grid gap-6", cols)}>
-        {reviews.map((review) => (
+      <div className={cn("grid gap-6", compact ? "gap-4" : "gap-6", cols)}>
+        {shown.map((review) => (
           <Card
             key={`${review.author}-${review.text.slice(0, 24)}`}
-            className="flex flex-col"
+            className={cn("flex flex-col", compact && "p-4")}
           >
             <div
               className="flex gap-0.5 text-accent"
@@ -63,7 +75,12 @@ export async function Reviews() {
                 <Star key={i} className="h-4 w-4 fill-accent" aria-hidden />
               ))}
             </div>
-            <p className="mt-4 flex-1 text-sm leading-relaxed text-text">
+            <p
+              className={cn(
+                "mt-4 flex-1 text-sm leading-relaxed text-text",
+                compact && "mt-3 line-clamp-4",
+              )}
+            >
               &ldquo;{review.text}&rdquo;
             </p>
             <p className="mt-4 text-sm font-semibold text-primary">
@@ -90,7 +107,7 @@ export async function Reviews() {
         ))}
       </div>
 
-      <p className="mt-6 text-center text-xs text-text-muted">
+      <p className={cn("text-center text-xs text-text-muted", compact ? "mt-4" : "mt-6")}>
         {fromLabel}{" "}
         <a
           href={mapsUri}
@@ -100,7 +117,7 @@ export async function Reviews() {
         >
           Google
         </a>
-        {writeReviewUrl ? (
+        {writeReviewUrl && !compact ? (
           <>
             {" · "}
             <a

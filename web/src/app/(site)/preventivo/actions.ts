@@ -41,8 +41,8 @@ export type LeadInput = {
   /** Nota libera del visitatore (opzionale, tipicamente su misura). */
   notes?: string;
   marketing: boolean;
-  /** Da dove arriva il lead: opt-in email sul risultato o richiesta su misura. */
-  kind?: "email_quote" | "custom_quote";
+  /** Da dove arriva il lead: opt-in email, richiesta su misura, o richiamo. */
+  kind?: "email_quote" | "custom_quote" | "callback";
 };
 
 export type LeadResult = {
@@ -81,6 +81,16 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
   // Senza database configurato il sito resta funzionante: niente scrittura.
   if (!isAdminConfigured) return { ok: false, esito };
 
+  const phoneOk = /^[+()\d][\d\s().-]{5,19}$/.test(input.phone.trim());
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.email.trim());
+  if (input.kind === "callback") {
+    if (input.name.trim().length < 2 || !phoneOk) return { ok: false, esito };
+    if (input.email.trim() && !emailOk) return { ok: false, esito };
+  } else if (input.kind === "email_quote" || input.kind === "custom_quote") {
+    if (!emailOk) return { ok: false, esito };
+    if (input.kind === "custom_quote" && !phoneOk) return { ok: false, esito };
+  }
+
   try {
     const admin = getAdminClient();
     const { first, last } = splitName(input.name);
@@ -90,12 +100,15 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
     const fullName = input.name.trim() || `${first} ${last}`.trim();
     const nowStamp = new Date().toISOString().slice(0, 16).replace("T", " ");
     const isCustom = input.kind === "custom_quote" || esito === "c";
+    const isCallback = input.kind === "callback";
     const fallbackSource =
       input.kind === "custom_quote"
         ? "Richiesta preventivo su misura (sito)"
-        : input.kind === "email_quote"
-          ? "Preventivo via email (sito)"
-          : "Form sito";
+        : input.kind === "callback"
+          ? "Richiesta di richiamo (sito)"
+          : input.kind === "email_quote"
+            ? "Preventivo via email (sito)"
+            : "Form sito";
     const attribution = parseAttribution(await readRequestAttribution());
     const source = attributionSourceLabel(attribution, fallbackSource);
 
@@ -177,7 +190,9 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
         notes: (() => {
           const base = isCustom
             ? "Richiesta di preventivo su misura dal sito."
-            : "Lead dal preventivo del sito (opt-in email).";
+            : isCallback
+              ? "Ha chiesto di essere richiamato dal risultato del preventivo."
+              : "Lead dal preventivo del sito (opt-in email).";
           const extra = input.notes?.trim();
           return extra ? `${base}\n\nNota del cliente:\n${extra}` : base;
         })(),
@@ -185,7 +200,7 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
         tasks: [
           {
             title: `Richiamare ${fullName || "il contatto"} per consulenza`,
-            dueDate: isoDate(2),
+            dueDate: isoDate(isCallback || isCustom ? 0 : 2),
             done: false,
           },
         ],
@@ -291,6 +306,7 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
         email: input.email.trim(),
         phone: input.phone.trim(),
         custom: isCustom,
+        callback: isCallback,
         packageLabel: packageLabelAdmin,
         clientNote: input.notes?.trim() || undefined,
         quizLines: quizNotificationText(snapshot, new Date().toISOString(), "").body
@@ -321,7 +337,7 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
     const clientNote = input.notes?.trim();
     await pushCrmNotification({
       kind: "lead",
-      title: `${isCustom ? "Richiesta su misura" : "Nuovo lead"} — ${notif.title}`,
+      title: `${isCustom ? "Richiesta su misura" : isCallback ? "Richiesta di richiamo" : "Nuovo lead"} — ${notif.title}`,
       body: clientNote ? `${notif.body}\nNota del cliente: ${clientNote}` : notif.body,
       practiceId: practice.id,
       practiceCode: practice.code,

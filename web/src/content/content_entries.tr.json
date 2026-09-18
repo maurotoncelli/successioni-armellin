@@ -2614,7 +2614,7 @@
       "key": "soft_email_title",
       "locale": "tr",
       "is_published": true,
-      "value": "Düşünmek ister misiniz? Bu ön teklifi e-postayla alın"
+      "value": "Veya teklifi e-posta ile alın"
     },
     {
       "collection": "grazie",
@@ -2662,7 +2662,7 @@
       "collection": "grazie",
       "key": "soft_email_call_title",
       "locale": "tr",
-      "value": "Kararsız mısınız ya da bir sorunuz mu var? Lorenzo ile kısaca görüşün, hiçbir yükümlülük yok.",
+      "value": "Siz mi aramak istersiniz? Lorenzo ile iki kelime, yükümlülük yok.",
       "is_published": true
     },
     {
@@ -2691,6 +2691,76 @@
       "key": "esito_b_whatsapp_hint",
       "locale": "tr",
       "value": "Bağlayıcı değil: Lorenzo bizzat yanıtlar, genellikle birkaç saat içinde.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_after_pay",
+      "locale": "tr",
+      "value": "Ödemeden sonra Lorenzo sizi arar, kişisel alanınızı açar ve belgelerden başlarsınız. Fikrinizi değiştirmek için 14 gününüz var.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "recensioni_title",
+      "locale": "tr",
+      "value": "Lorenzo'ya zaten güvenenler",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_title",
+      "locale": "tr",
+      "value": "Sizi arasın, yükümlülük yok",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_desc",
+      "locale": "tr",
+      "value": "Ad ve cep bırakın: Lorenzo sizi kendisi arar, genellikle aynı gün. Ödeme baskısı yok.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_submit",
+      "locale": "tr",
+      "value": "Beni arayın",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_ok_title",
+      "locale": "tr",
+      "value": "Talep alındı",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_ok_body",
+      "locale": "tr",
+      "value": "Lorenzo kısa süre içinde, genellikle aynı gün arar.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_footnote",
+      "locale": "tr",
+      "value": "Sizi Lorenzo bizzat arar. Mesai saatlerinde, genellikle birkaç saat içinde.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_notes_label",
+      "locale": "tr",
+      "value": "Ne zaman ulaşılabilirsiniz? (isteğe bağlı)",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_notes_placeholder",
+      "locale": "tr",
+      "value": "Örn. 18'den sonra, yarın sabah…",
       "is_published": true
     },
     {
@@ -4627,7 +4697,9 @@
         "phone_optional": "Telefon (isteğe bağlı)",
         "submitting": "Gönderiliyor…",
         "err_save": "Şu an talebi kaydedemiyoruz. Daha sonra tekrar deneyin veya bizi arayın.",
-        "notes": "Not (isteğe bağlı)"
+        "notes": "Not (isteğe bağlı)",
+        "name_required": "Ad soyad",
+        "email_optional": "E-posta (isteğe bağlı)"
       }
     },
     {

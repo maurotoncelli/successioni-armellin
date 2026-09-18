@@ -2614,7 +2614,7 @@
       "key": "soft_email_title",
       "locale": "es",
       "is_published": true,
-      "value": "¿Prefieres pensarlo? Recibe este presupuesto por correo"
+      "value": "O recibe el presupuesto por email"
     },
     {
       "collection": "grazie",
@@ -2662,7 +2662,7 @@
       "collection": "grazie",
       "key": "soft_email_call_title",
       "locale": "es",
-      "value": "¿Aún tienes dudas o alguna pregunta? Habla un momento con Lorenzo, sin compromiso.",
+      "value": "¿Prefieres llamar tú? Dos palabras con Lorenzo, sin compromiso.",
       "is_published": true
     },
     {
@@ -2691,6 +2691,76 @@
       "key": "esito_b_whatsapp_hint",
       "locale": "es",
       "value": "Sin compromiso: Lorenzo responde personalmente, normalmente en pocas horas.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_after_pay",
+      "locale": "es",
+      "value": "Tras el pago Lorenzo te llama, te abre el área personal y empiezas por los documentos. Tienes 14 días para cambiar de opinión.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "recensioni_title",
+      "locale": "es",
+      "value": "Quienes ya confiaron en Lorenzo",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_title",
+      "locale": "es",
+      "value": "Pide que te llamen, sin compromiso",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_desc",
+      "locale": "es",
+      "value": "Deja nombre y móvil: Lorenzo te llama él mismo, normalmente el mismo día. Sin presión para pagar.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_submit",
+      "locale": "es",
+      "value": "Llamadme",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_ok_title",
+      "locale": "es",
+      "value": "Solicitud recibida",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_ok_body",
+      "locale": "es",
+      "value": "Lorenzo te llama en breve, normalmente el mismo día.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_footnote",
+      "locale": "es",
+      "value": "Te llama Lorenzo en persona. Horario de oficina, normalmente en pocas horas.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_notes_label",
+      "locale": "es",
+      "value": "¿Cuándo te podemos llamar? (opcional)",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_notes_placeholder",
+      "locale": "es",
+      "value": "Ej. después de las 18, mañana por la mañana…",
       "is_published": true
     },
     {
@@ -4627,7 +4697,9 @@
         "phone_optional": "Teléfono (opcional)",
         "submitting": "Enviando…",
         "err_save": "Por ahora no podemos registrar la solicitud. Inténtalo más tarde o llámanos.",
-        "notes": "Nota (opcional)"
+        "notes": "Nota (opcional)",
+        "name_required": "Nombre y apellidos",
+        "email_optional": "Email (opcional)"
       }
     },
     {

@@ -22,6 +22,7 @@ import { documentsList, type DocItem } from "@/content/site";
 import { BackLink } from "@/components/site/back-link";
 import { DocList } from "@/components/site/doc-list";
 import { SoftLead, type SoftLeadAnswers } from "@/components/site/soft-lead";
+import { Reviews } from "@/components/site/reviews";
 import { TrackQuoteComplete } from "@/components/site/track-quote-complete";
 import { getPackages, getAddons } from "@/lib/cms";
 import { buildOrder } from "@/lib/order";
@@ -442,6 +443,16 @@ export default async function GraziePage({
                     {(await tCta("grazie", "esito_b_cta")).label}
                   </ButtonLink>
                 </div>
+                <p className="mt-3 flex items-start gap-2 text-xs text-text sm:text-sm">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-success" />
+                  <span>
+                    {await t(
+                      "grazie",
+                      "esito_b_after_pay",
+                      "Dopo il pagamento Lorenzo ti chiama, ti apre l'area personale e parti dai documenti. Hai 14 giorni per ripensarci.",
+                    )}
+                  </span>
+                </p>
                 <p className="mt-2 text-xs text-text-muted">{waQuoteHint}</p>
                 {/* Cosa e' compreso: leggibile subito sotto prezzo e bottoni
                     (decisione 15/09), ma DOPO i bottoni cosi' su mobile il
@@ -560,63 +571,119 @@ export default async function GraziePage({
                 "Nessun impegno: ti ricontattiamo entro un giorno lavorativo per studiare il caso insieme.",
               )}
               fieldLabels={softLeadUi}
+              cta="grazie_esito_c_callback"
             />
           </div>
         )}
         {esito === "b" && (
           <div className="mt-6">
             <SoftLead
-              kind="email_quote"
+              kind="callback"
               answers={answers}
               title={await t(
                 "grazie",
-                "soft_email_title",
-                "Preferisci pensarci? Ricevi questo preventivo via email",
+                "soft_callback_title",
+                "Fatti richiamare, senza impegno",
               )}
               description={await t(
                 "grazie",
-                "soft_email_desc",
-                "Ti inviamo il riepilogo del preventivo cosi lo ritrovi quando vuoi. Nessuna pressione.",
+                "soft_callback_desc",
+                "Lascia nome e cellulare: Lorenzo ti chiama lui, di solito in giornata. Nessuna pressione a pagare.",
               )}
               submitLabel={await t(
                 "grazie",
-                "soft_email_submit",
-                "Inviami il preventivo via email",
+                "soft_callback_submit",
+                "Richiamatemi",
               )}
               consensoPrivacy={await t("preventivo", "consenso_privacy")}
               consensoMarketing={await t("preventivo", "consenso_marketing")}
               successTitle={await t(
                 "grazie",
-                "soft_email_ok_title",
-                "Fatto! Controlla la casella email",
+                "soft_callback_ok_title",
+                "Richiesta ricevuta",
               )}
               successBody={await t(
                 "grazie",
-                "soft_email_ok_body",
-                "Ti abbiamo inviato il riepilogo del preventivo. Quando vuoi, riprendi da li.",
+                "soft_callback_ok_body",
+                "Lorenzo ti chiama a breve, di solito in giornata.",
               )}
-              successTitleNoEmail={await t(
+              footnote={await t(
                 "grazie",
-                "soft_email_ok_title_noemail",
-                "Richiesta registrata!",
+                "soft_callback_footnote",
+                "Ti chiama Lorenzo in persona. Orario d'ufficio, di solito entro poche ore.",
               )}
-              successBodyNoEmail={await t(
+              requireName
+              requirePhone
+              requireEmail={false}
+              showNotes
+              notesLabel={await t(
                 "grazie",
-                "soft_email_ok_body_noemail",
-                "Abbiamo registrato la tua richiesta: ti invieremo il riepilogo del preventivo a breve.",
+                "soft_callback_notes_label",
+                "Quando sei raggiungibile? (facoltativo)",
+              )}
+              notesPlaceholder={await t(
+                "grazie",
+                "soft_callback_notes_placeholder",
+                "Es. dopo le 18, domani mattina…",
               )}
               fieldLabels={softLeadUi}
+              cta="grazie_esito_b_callback"
             />
 
-            {/* Chi e' indeciso spesso preferisce una voce: telefono accanto
-                all'invito email. WhatsApp e' gia' il bottone verde nel blocco
-                del risultato, qui non lo ripetiamo. */}
+            <div className="mt-4">
+              <SoftLead
+                kind="email_quote"
+                answers={answers}
+                title={await t(
+                  "grazie",
+                  "soft_email_title",
+                  "Oppure ricevi il preventivo via email",
+                )}
+                description={await t(
+                  "grazie",
+                  "soft_email_desc",
+                  "Ti inviamo il riepilogo del preventivo cosi lo ritrovi quando vuoi. Nessuna pressione.",
+                )}
+                submitLabel={await t(
+                  "grazie",
+                  "soft_email_submit",
+                  "Inviami il preventivo via email",
+                )}
+                consensoPrivacy={await t("preventivo", "consenso_privacy")}
+                consensoMarketing={await t("preventivo", "consenso_marketing")}
+                successTitle={await t(
+                  "grazie",
+                  "soft_email_ok_title",
+                  "Fatto! Controlla la casella email",
+                )}
+                successBody={await t(
+                  "grazie",
+                  "soft_email_ok_body",
+                  "Ti abbiamo inviato il riepilogo del preventivo. Quando vuoi, riprendi da li.",
+                )}
+                successTitleNoEmail={await t(
+                  "grazie",
+                  "soft_email_ok_title_noemail",
+                  "Richiesta registrata!",
+                )}
+                successBodyNoEmail={await t(
+                  "grazie",
+                  "soft_email_ok_body_noemail",
+                  "Abbiamo registrato la tua richiesta: ti invieremo il riepilogo del preventivo a breve.",
+                )}
+                fieldLabels={softLeadUi}
+                cta="grazie_esito_b_email"
+              />
+            </div>
+
+            {/* Chi e' indeciso puo' anche chiamare lui. WhatsApp e' gia' il
+                bottone verde nel blocco del risultato, qui non lo ripetiamo. */}
             <div className="mt-5 text-center">
               <p className="text-sm text-text-muted">
                 {await t(
                   "grazie",
                   "soft_email_call_title",
-                  "Sei indeciso o hai una domanda? Fai due parole con Lorenzo, senza impegno.",
+                  "Preferisci chiamare tu? Due parole con Lorenzo, senza impegno.",
                 )}
               </p>
               <div className="mt-3 flex flex-wrap justify-center gap-3">
@@ -645,6 +712,21 @@ export default async function GraziePage({
             <p className="mt-1 text-sm font-medium text-accent">
               {await t("grazie", "documenti_hook")}
             </p>
+          </Card>
+        )}
+
+        {esito !== "a" && (
+          <Card className="mt-6">
+            <h2 className="text-xl">
+              {await t(
+                "grazie",
+                "recensioni_title",
+                "Chi si è già affidato a Lorenzo",
+              )}
+            </h2>
+            <div className="mt-4">
+              <Reviews compact limit={3} />
+            </div>
           </Card>
         )}
       </div>
