@@ -54,6 +54,24 @@ File: `preventivo/grazie/page.tsx`, `soft-lead.tsx`, `preventivo/actions.ts`,
 
 ---
 
+## ★★ RECENSIONI GOOGLE REFRESH (18/09)
+
+Places sync resta spento (no billing). Refresh a mano da scheda Google 5,0 · **6 recensioni**.
+
+**Card sul sito (5 testi, più recenti prima)**
+- Zaza Raffaele, Mauro V., Andrea Vanni, Antonio Tognarelli, Mauro Toncelli.
+- Gino Toncelli: 5★ **senza testo** → solo nel conteggio, non in card.
+
+`reviewsGoogleMeta` in `site.ts`: rating 5, totalCount 6. Cache key
+`site-google-reviews-v2`. Home/chi-sono mostrano tutte le card; `/preventivo/grazie`
+resta compact max 3 (ora le tre più nuove).
+
+**50/50 (non implementato):** non è Klarna/rate. Sarebbe onorario studio in due
+tranche (50% all’avvio, 50% a dichiarazione pronta). Klarna/Pay in 3 = il cliente
+rateizza verso Stripe, lo studio incassa subito. Da fare solo se Mauro sceglie.
+
+---
+
 ## ★★ GA4 VIA API DAL TERMINALE (07/09) — `node scripts/ga4-report.mjs`
 
 Lettura dati GA4 (Data API) senza chiavi JSON: la policy Workspace

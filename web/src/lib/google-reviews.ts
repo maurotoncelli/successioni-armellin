@@ -1,6 +1,10 @@
 import "server-only";
 import { unstable_cache } from "next/cache";
-import { reviews as fallbackReviews, type Review } from "@/content/site";
+import {
+  reviews as fallbackReviews,
+  reviewsGoogleMeta,
+  type Review,
+} from "@/content/site";
 
 /*
   Recensioni Google (Places API New) per home / chi-sono.
@@ -59,7 +63,7 @@ function mapPlaceReviews(raw: PlacesReview[]): SiteReview[] {
       text,
       authorUri: r.authorAttribution?.uri ?? null,
     });
-    if (out.length >= 5) break;
+    if (out.length >= 6) break;
   }
   return out;
 }
@@ -135,11 +139,8 @@ async function fetchLiveReviews(): Promise<SiteReviewsPayload | null> {
 function fallbackPayload(): SiteReviewsPayload {
   return {
     reviews: fallbackReviews.map((r) => ({ ...r })),
-    rating: fallbackReviews.length
-      ? fallbackReviews.reduce((s, r) => s + r.rating, 0) /
-        fallbackReviews.length
-      : null,
-    totalCount: fallbackReviews.length,
+    rating: reviewsGoogleMeta.rating,
+    totalCount: reviewsGoogleMeta.totalCount,
     mapsUri: GOOGLE_MAPS_URI,
     source: "fallback",
   };
@@ -155,6 +156,6 @@ export const getSiteReviews = unstable_cache(
     }
     return fallbackPayload();
   },
-  ["site-google-reviews-v1"],
+  ["site-google-reviews-v2"],
   { revalidate: 60 * 60 * 12 },
 );

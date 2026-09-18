@@ -200,8 +200,30 @@ export type Review = {
   text: string;
 };
 
-/** Fallback se Places API non è configurata: testi reali da Google Maps (lug 2026). */
+/**
+ * Fallback se Places API non è configurata: testi reali da Google Maps (set 2026).
+ * `totalCount` include anche le 5★ senza testo (Gino Toncelli), che non mostriamo come card.
+ */
+export const reviewsGoogleMeta = {
+  rating: 5,
+  totalCount: 6,
+} as const;
+
 export const reviews: Review[] = [
+  {
+    author: "Zaza Raffaele",
+    location: "Google",
+    rating: 5,
+    text:
+      "Sono rimasto davvero molto soddisfatto del lavoro svolto dal Geom. Lorenzo Armellin per la pratica di successione. Ha gestito tutto con grande professionalità, disponibilità e soprattutto in tempi davvero brevi. Comunicazione chiara, precisa e sempre disponibile a rispondere alle mie domande. Un servizio serio, affidabile ed efficiente. Consigliatissimo a chi deve affrontare una pratica di successione e cerca un professionista competente e veloce. Grazie ancora, Lorenzo, per l'ottimo lavoro!",
+  },
+  {
+    author: "Mauro V.",
+    location: "Google",
+    rating: 5,
+    text:
+      "Praticamente facevo da referente per tre eredi sparsi. Lorenzo è stato paziente: spiegava le stesse cose anche due volte senza farmi sentire stupido. Anche se avrei potuto fare tutto da solo sul sito per sicurezza lo chiamavo e lui rispondeva sempre!!!",
+  },
   {
     author: "Andrea Vanni",
     location: "Google",
