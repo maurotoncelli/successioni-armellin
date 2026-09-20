@@ -10,7 +10,6 @@ import {
   formatAmount,
   getPromoContext,
   IncludedList,
-  PromoEndsIn,
 } from "@/components/site/promo-ui";
 import { Container } from "@/components/ui/container";
 import { Card } from "@/components/ui/card";
@@ -199,13 +198,8 @@ export default async function CheckoutPage({
                       </span>
                     </div>
 
-                    {/* Promo a tempo: countdown accanto al totale + nota che
-                        lo sconto e' gia' applicato anche su Stripe. */}
                     {order.discount && (
-                      <>
-                        <PromoEndsIn ctx={promoCtx} className="mt-4" />
-                        <p className="mt-2 text-xs text-text-muted">{promoCtx.ui.checkout_note}</p>
-                      </>
+                      <p className="mt-2 text-xs text-text-muted">{promoCtx.ui.checkout_note}</p>
                     )}
 
                     {/* Cosa e' compreso nel prezzo, accanto al totale: chi

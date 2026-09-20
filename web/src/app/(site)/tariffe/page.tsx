@@ -95,7 +95,7 @@ export default async function TariffePage() {
       <Section>
         <PackageCards />
         {/* Subito sotto i prezzi: cosa è compreso (leggibile, non nascosto
-            nelle card) + countdown promo quando attiva. */}
+            nelle card). */}
         <PromoIncludedBand ctx={promoCtx} className="mt-6 sm:mt-8" />
         <p className="mt-5 text-center text-sm text-text-muted sm:mt-8">
           {await t("tariffe", "rate_text")}

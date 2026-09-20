@@ -3,13 +3,11 @@ import { ArrowRight, Tag } from "lucide-react";
 import { getRequestLocale } from "@/lib/locale";
 import { localePath } from "@/lib/seo-locale";
 import { HideOnPaths } from "@/components/site/hide-on-paths";
-import { PromoCountdown } from "@/components/site/promo-countdown";
 import { fillPct, getPromoContext } from "@/components/site/promo-ui";
 
 /*
   Barra promo sopra la navbar (non sticky: scorre via, la navbar resta).
-  Sparisce da sola alla scadenza (server) e non compare nel checkout, che ha
-  già il suo countdown accanto al totale.
+  Sparisce da sola alla scadenza (server) e non compare nel checkout.
 */
 export async function PromoBanner() {
   const ctx = await getPromoContext();
@@ -27,15 +25,11 @@ export async function PromoBanner() {
             <Tag className="h-3.5 w-3.5 shrink-0 text-accent" />
             {fillPct(ctx.ui.banner_text, ctx.promo)}
           </span>
-          <span className="inline-flex items-center gap-1.5 text-white/85">
-            <span className="max-sm:sr-only">{ctx.ui.banner_ends}</span>
-            <PromoCountdown
-              endsAt={ctx.promo.endsAt}
-              labels={ctx.ui.countdown}
-              variant="inline"
-              className="font-semibold text-white"
-            />
-          </span>
+          {ctx.endDate ? (
+            <span className="text-white/85">
+              {ctx.ui.valid_until.replace("{date}", ctx.endDate)}
+            </span>
+          ) : null}
           <span className="hidden items-center gap-1 font-medium text-accent sm:inline-flex">
             {ctx.ui.banner_cta}
             <ArrowRight className="h-3.5 w-3.5" />

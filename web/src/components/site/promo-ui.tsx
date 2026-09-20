@@ -7,14 +7,12 @@ import {
   promoPrice,
   type Promo,
 } from "@/lib/promo";
-import { PromoCountdown } from "@/components/site/promo-countdown";
 import { cn } from "@/lib/utils";
 
 /*
   Pezzi server della promo (lib/promo.ts): etichette tradotte, prezzo barrato
-  + scontato, lista "cosa è compreso". Il countdown (client) sta in
-  promo-countdown.tsx. Se la promo non è attiva, i componenti prezzo mostrano
-  solo il listino pieno e il banner restituisce null.
+  + scontato, lista "cosa è compreso". Se la promo non è attiva, i componenti
+  prezzo mostrano solo il listino pieno e il banner restituisce null.
 */
 
 export const INTL_LOCALE: Record<string, string> = {
@@ -127,32 +125,10 @@ export function PromoValidUntil({
   );
 }
 
-/** Blocco "Lo sconto scade tra" + 4 riquadri (null senza promo). */
-export function PromoEndsIn({
-  ctx,
-  className,
-}: {
-  ctx: PromoContext;
-  className?: string;
-}) {
-  if (!ctx.promo) return null;
-  return (
-    <div
-      className={cn(
-        "flex flex-wrap items-center justify-between gap-3 rounded-[10px] border border-accent/30 bg-sand/60 px-3 py-2.5",
-        className,
-      )}
-    >
-      <span className="text-sm font-semibold text-primary">{ctx.ui.ends_in}</span>
-      <PromoCountdown endsAt={ctx.promo.endsAt} labels={ctx.ui.countdown} variant="auto" />
-    </div>
-  );
-}
-
 /**
   Fascia sotto le card prezzo (tariffe): lista "cosa è compreso" su due
-  colonne + countdown della promo quando attiva. Serve a rendere leggibile il
-  valore subito sotto la cifra, non dentro le card compresse.
+  colonne. Serve a rendere leggibile il valore subito sotto la cifra, non
+  dentro le card compresse.
 */
 export function PromoIncludedBand({ ctx, className }: { ctx: PromoContext; className?: string }) {
   if (ctx.ui.included_items.length === 0) return null;
@@ -165,17 +141,9 @@ export function PromoIncludedBand({ ctx, className }: { ctx: PromoContext; class
         className,
       )}
     >
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <h3 className="font-display text-xl font-semibold text-primary">
-          {ctx.ui.included_title}
-        </h3>
-        {ctx.promo ? (
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="text-sm font-semibold text-accent-dark">{ctx.ui.ends_in}</span>
-            <PromoCountdown endsAt={ctx.promo.endsAt} labels={ctx.ui.countdown} />
-          </div>
-        ) : null}
-      </div>
+      <h3 className="font-display text-xl font-semibold text-primary">
+        {ctx.ui.included_title}
+      </h3>
       <div className="mt-4 grid gap-x-8 gap-y-1.5 sm:grid-cols-2">
         {cols.map((col, i) => (
           <ul key={i} className="space-y-1.5 text-sm sm:text-[15px]">

@@ -13,7 +13,6 @@ import {
   formatAmount,
   getPromoContext,
   IncludedList,
-  PromoEndsIn,
 } from "@/components/site/promo-ui";
 import { Section } from "@/components/ui/section";
 import { Card } from "@/components/ui/card";
@@ -381,18 +380,15 @@ export default async function GraziePage({
                         </div>
                       </div>
                     )}
-                    {/* Promo a tempo: countdown + risparmio, subito sotto il
-                        totale, prima dei bottoni. */}
+                    {/* Promo a tempo: risparmio, subito sotto il totale,
+                        prima dei bottoni. */}
                     {suggestedPkg.discount && promoCtx.promo && (
-                      <>
-                        <PromoEndsIn ctx={promoCtx} className="mt-3" />
-                        <p className="mt-2 text-xs font-medium text-accent-dark">
-                          {promoCtx.ui.save_line.replace(
-                            "{amount}",
-                            formatAmount(suggestedPkg.discount.amount, promoCtx.intlLocale),
-                          )}
-                        </p>
-                      </>
+                      <p className="mt-3 text-xs font-medium text-accent-dark">
+                        {promoCtx.ui.save_line.replace(
+                          "{amount}",
+                          formatAmount(suggestedPkg.discount.amount, promoCtx.intlLocale),
+                        )}
+                      </p>
                     )}
                     {/* Il prezzo da solo fa chiudere la pagina (GA4 11/09:
                         1-2 s di permanenza). Subito sotto: cosa include (il
