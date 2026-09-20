@@ -268,7 +268,7 @@ export default async function HomePage() {
       </Section>
 
       {/* Vs altri servizi online: area personale + Lorenzo, non un modulo. */}
-      <Section tone="sand">
+      <Section tone="primary">
         <DistinguishesBlock
           title={await t(
             "home",

@@ -99,9 +99,9 @@ export function DistinguishesBlock({
             {eyebrow}
           </p>
         ) : null}
-        <h2 className="text-2xl sm:text-4xl">{title}</h2>
+        <h2 className="text-2xl text-white sm:text-4xl">{title}</h2>
         {intro ? (
-          <p className="mt-3 text-base leading-relaxed text-text-muted sm:mt-4 sm:text-lg">
+          <p className="mt-3 text-base leading-relaxed text-white/75 sm:mt-4 sm:text-lg">
             {intro}
           </p>
         ) : null}
@@ -114,7 +114,7 @@ export function DistinguishesBlock({
           return (
             <li
               key={item.titolo}
-              className="rounded-2xl border border-primary/10 bg-bg p-5 shadow-sm sm:p-6"
+              className="rounded-2xl border border-accent/40 bg-bg p-5 shadow-sm sm:p-6"
             >
               <span className="grid h-12 w-12 place-items-center rounded-xl border border-accent text-accent">
                 <Icon className="h-6 w-6" />
