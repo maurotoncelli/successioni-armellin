@@ -27,11 +27,9 @@ import { siteBaseUrl } from "@/lib/seo-locale";
 import {
   IconCheck,
   IconExternal,
-  IconQuiz,
-  IconSendPractice,
   IconStudio,
-  IconUploadDocs,
 } from "@/components/site/come-funziona-icons";
+import { ComeFunzionaStepArt } from "@/components/site/come-funziona-step-art";
 import { ComeFunzionaPanels } from "@/components/site/come-funziona-panels";
 import { getPromoContext, PromoPrice, PromoValidUntil } from "@/components/site/promo-ui";
 
@@ -45,8 +43,6 @@ export async function generateMetadata(): Promise<Metadata> {
 type Step = { numero: number; titolo: string; testo: string; dettaglio: string };
 type Address = { via: string; cap: string; citta: string };
 type OpeningHour = { giorni: string; orario: string };
-
-const stepIcons = [IconQuiz, IconUploadDocs, IconSendPractice] as const;
 
 /**
  * Mini FAQ di pagina: una domanda per ciascuna area utile a chi sta capendo
@@ -69,22 +65,6 @@ function pickProcessFaqs(faqs: Faq[]): Faq[] {
   }
   return picked;
 }
-
-/** Stesse foto della home (passo 3 = nuovo ritratto Lorenzo). */
-const stepImages = [
-  {
-    src: "/images/come-funziona-step-1-quiz.jpg",
-    alt: "Persona al computer che risponde alle domande del preventivo online",
-  },
-  {
-    src: "/images/come-funziona-step-2-documenti.jpg",
-    alt: "Persona che fotografa un documento con lo smartphone",
-  },
-  {
-    src: "/images/come-funziona-step-3-lorenzo.jpg",
-    alt: "Geom. Lorenzo Armellin al computer mentre predispone la pratica",
-  },
-] as const;
 
 export default async function ComeFunzionaPage() {
   const steps = await tList<Step>("come_funziona", "steps");
@@ -205,11 +185,23 @@ export default async function ComeFunzionaPage() {
         ) : null}
       </PageHero>
 
-      {/* Su mobile il video (asset piu forte) viene prima dei 3 passi; da md
-          torna dopo, come "picco visivo" della sequenza. */}
-      <div className="flex flex-col">
-      {/* Sequenza: nodi numerati + foto. */}
-      <Section className="order-2 md:order-1">
+      {/* Video prima dei 3 passi illustrati. */}
+      <Section id="video" tone="muted" className="scroll-mt-24">
+        <div data-track-section="video">
+          <WelcomeVideo
+            labels={processVideoLabels}
+            poster={COME_FUNZIONA_VIDEO_POSTER}
+            src={processVideoSrc}
+            srcMobile={processVideoSrcMobile}
+            captions={processVideoCaptions}
+            captionsSelectId="come-funziona-captions-lang"
+            trackingTitle="come_funziona"
+          />
+        </div>
+      </Section>
+
+      {/* Sequenza: nodi numerati + stesse illustrazioni della home. */}
+      <Section>
         <ol
           data-track-section="steps"
           className="relative mx-auto grid max-w-5xl gap-7 sm:gap-10 md:grid-cols-3 md:gap-0"
@@ -219,9 +211,8 @@ export default async function ComeFunzionaPage() {
             className="pointer-events-none absolute top-5 right-[16.5%] left-[16.5%] hidden h-px bg-gradient-to-r from-primary/20 via-accent/50 to-primary/20 md:block"
           />
           {steps.map((step, i) => {
-            const Icon = stepIcons[i] ?? IconQuiz;
             const isLast = i === steps.length - 1;
-            const img = stepImages[i];
+            const art = <ComeFunzionaStepArt index={i} title={step.titolo} />;
             return (
               <li key={step.numero} className="relative md:px-6 lg:px-8">
                 {!isLast && (
@@ -235,35 +226,17 @@ export default async function ComeFunzionaPage() {
                     {step.numero}
                   </span>
                   <div className="min-w-0 flex-1 pt-0.5 md:pt-0">
-                    {img ? (
-                      i === 0 ? (
-                        <Link
-                          href={previewHref}
-                          data-cta="come_funziona_step1_image"
-                          aria-label={step.titolo}
-                          className="group relative mt-1 block aspect-[4/3] overflow-hidden rounded-xl md:mt-4"
-                        >
-                          <Image
-                            src={img.src}
-                            alt={img.alt}
-                            fill
-                            sizes="(max-width: 768px) 80vw, 280px"
-                            className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-                          />
-                        </Link>
-                      ) : (
-                        <div className="relative mt-1 aspect-[4/3] overflow-hidden rounded-xl md:mt-4">
-                          <Image
-                            src={img.src}
-                            alt={img.alt}
-                            fill
-                            sizes="(max-width: 768px) 80vw, 280px"
-                            className="object-cover"
-                          />
-                        </div>
-                      )
+                    {i === 0 ? (
+                      <Link
+                        href={previewHref}
+                        data-cta="come_funziona_step1_image"
+                        aria-label={step.titolo}
+                        className="group block"
+                      >
+                        {art}
+                      </Link>
                     ) : (
-                      <Icon className="h-9 w-9 text-primary" />
+                      art
                     )}
                     <h3 className="mt-3 text-lg leading-snug sm:mt-4 sm:text-xl">
                       {i === 0 ? (
@@ -316,23 +289,6 @@ export default async function ComeFunzionaPage() {
           </div>
         </div>
       </Section>
-
-      {/* Picco visivo: video processo, dopo i 3 passi illustrati (da md).
-          Master 1080p + 720p mobile; fallback benvenuto se manca il file. */}
-      <Section id="video" tone="muted" className="order-1 scroll-mt-24 md:order-2">
-        <div data-track-section="video">
-          <WelcomeVideo
-            labels={processVideoLabels}
-            poster={COME_FUNZIONA_VIDEO_POSTER}
-            src={processVideoSrc}
-            srcMobile={processVideoSrcMobile}
-            captions={processVideoCaptions}
-            captionsSelectId="come-funziona-captions-lang"
-            trackingTitle="come_funziona"
-          />
-        </div>
-      </Section>
-      </div>
 
       {/* Fascia prezzi: la seconda domanda di chi legge "come funziona". */}
       <Section>
