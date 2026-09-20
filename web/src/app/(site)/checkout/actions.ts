@@ -28,6 +28,7 @@ export type CheckoutPracticeInput = {
   hasRealEstate?: string;
   hasWill?: string;
   hasOther?: string;
+  heirsAbroad?: string;
 };
 
 export type CheckoutPracticeResult =
@@ -69,6 +70,7 @@ export async function createCheckoutPractice(
         hasWill: input.hasWill ?? "",
         heirs: composition,
         heirsTotal: heirsCount,
+        heirsAbroad: input.heirsAbroad,
         hasRealEstate: input.hasRealEstate ?? "",
         realEstateCount: input.realEstateCount ?? null,
         hasOther: input.hasOther ?? "",

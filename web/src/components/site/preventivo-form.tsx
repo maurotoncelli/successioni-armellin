@@ -168,6 +168,7 @@ export function PreventivoForm({
 
   const [hasWill, setHasWill] = useState("");
   const [heirs, setHeirs] = useState<HeirsComposition>(emptyComposition);
+  const [heirsAbroad, setHeirsAbroad] = useState("");
   const [hasRealEstate, setHasRealEstate] = useState("");
   const [realEstateCount, setRealEstateCount] = useState("");
   const [hasOther, setHasOther] = useState("");
@@ -195,7 +196,7 @@ export function PreventivoForm({
 
   const stepValid =
     (step === 0 && hasWill !== "") ||
-    (step === 1 && heirsTotal > 0) ||
+    (step === 1 && heirsTotal > 0 && heirsAbroad !== "") ||
     (step === 2 &&
       hasRealEstate !== "" &&
       reCountValid &&
@@ -216,6 +217,7 @@ export function PreventivoForm({
         : null;
     const esito = computeEsito({
       hasWill,
+      heirsAbroad,
       allDirectLine,
       hasRealEstate,
       realEstateCount: recount,
@@ -230,6 +232,7 @@ export function PreventivoForm({
       hasre: hasRealEstate,
       will: hasWill || "no",
       other: hasOther || "no",
+      abroad: heirsAbroad || "nonso",
     });
     if (askOver100k && over100k) params.set("k100", over100k);
     if (pkg) params.set("pkg", pkg);
@@ -238,6 +241,7 @@ export function PreventivoForm({
       esito,
       has_will: hasWill,
       has_real_estate: hasRealEstate,
+      heirs_abroad: heirsAbroad,
     });
     router.push(`/preventivo/grazie?${params.toString()}`);
   }
@@ -281,7 +285,15 @@ export function PreventivoForm({
           )}
 
           {step === 1 && (
-            <HeirsCounter value={heirs} onChange={setHeirs} ui={ui} />
+            <>
+              <HeirsCounter value={heirs} onChange={setHeirs} ui={ui} />
+              <OptionGroup
+                label={ui.heirs_abroad_q}
+                options={yesNo}
+                value={heirsAbroad}
+                onChange={setHeirsAbroad}
+              />
+            </>
           )}
 
           {step === 2 && (

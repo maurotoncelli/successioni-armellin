@@ -24,6 +24,8 @@ export type QuizSnapshot = {
     hasWill: string; // si | no | nonso | ""
     heirs: HeirsComposition | null;
     heirsTotal: number;
+    /** si | no | nonso | "" — informativa, non pesa sull'esito. */
+    heirsAbroad?: string;
     hasRealEstate: string; // si | no | nonso | ""
     realEstateCount: number | null;
     hasOther: string; // si | no | nonso | ""
@@ -123,6 +125,7 @@ export function answersLine(s: QuizSnapshot): string {
   const parts = [
     `Testamento: ${yesNo(a.hasWill)}`,
     `Eredi: ${heirs}`,
+    `Eredi all'estero: ${yesNo(a.heirsAbroad)}`,
     `Immobili: ${immobili}`,
     `Altri beni: ${yesNo(a.hasOther)}`,
   ];
@@ -139,6 +142,7 @@ export function answersFields(s: QuizSnapshot): { label: string; value: string }
       label: "Eredi",
       value: a.heirs ? `${totalHeirs(a.heirs)} · ${heirsSummary(a.heirs)}` : String(a.heirsTotal || "—"),
     },
+    { label: "Eredi residenti all'estero", value: yesNo(a.heirsAbroad) },
     {
       label: "Immobili",
       value:

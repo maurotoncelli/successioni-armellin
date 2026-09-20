@@ -49,6 +49,11 @@ Sito + CRM, data-driven, 11 lingue. Icone/illustrazioni generate (niente foto st
     «Procedi al pagamento»).
 13. **Fatti richiamare**: titolo con sfondo sabbia, form bianco (`soft-lead.tsx`).
 
+**Cosa ci distingue (20/09, Mauro):** dopo il confronto AdE, blocco home
+`distinguishes_*` — titolo fisso «Cosa ci distingue dagli altri servizi di
+successione online». 4 card (area personale, Lorenzo, volture, comunicazioni).
+`distinguishes-block.tsx`, 11 lingue.
+
 File: `trust-bar.tsx`, `success-counter*.tsx`, `empatia-block.tsx`,
 `come-funziona-step-art.tsx`, `page.tsx` (home), `guide-index.tsx`,
 `contatti/page.tsx`, `soft-lead.tsx`, `crm/statistiche/*`, 11 `content_entries`.

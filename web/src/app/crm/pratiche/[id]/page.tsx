@@ -174,6 +174,14 @@ export default async function SchedaPraticaPage({
               <Field label="Residenza" value={p.residence || "—"} />
               <Field label="Eredi (composizione)" value={p.relation || "—"} />
               <Field label="N. eredi" value={String(p.heirsCount)} />
+              <Field
+                label="Eredi residenti all'estero"
+                value={
+                  quizAnswers?.heirsAbroad
+                    ? yesNoUnknown(quizAnswers.heirsAbroad, false)
+                    : "—"
+                }
+              />
               <Field label="Eredi minorenni" value={p.hasMinorHeirs ? "Si" : "No"} />
               <Field
                 label="Testamento"

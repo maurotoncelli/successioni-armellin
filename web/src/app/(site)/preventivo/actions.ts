@@ -35,6 +35,8 @@ export type LeadInput = {
   hasWill: string; // si | no | nonso
   hasOther: string; // si | no | nonso
   over100k?: string; // si | no | nonso - attivo oltre 100.000 EUR (solo linea retta senza immobili)
+  /** si | no | nonso — informativa per Lorenzo, NON influenza l'esito. */
+  heirsAbroad?: string;
   name: string;
   email: string;
   phone: string;
@@ -69,6 +71,7 @@ function isoDate(offsetDays = 0): string {
 export async function createLead(input: LeadInput): Promise<LeadResult> {
   const esito = computeEsito({
     hasWill: input.hasWill,
+    heirsAbroad: input.heirsAbroad,
     allDirectLine: input.heirsComposition
       ? isAllDirectLine(input.heirsComposition)
       : false,
@@ -151,6 +154,7 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
         hasWill: input.hasWill,
         heirs: input.heirsComposition,
         heirsTotal: heirsCount,
+        heirsAbroad: input.heirsAbroad,
         hasRealEstate: input.hasRealEstate,
         realEstateCount: input.realEstateCount ?? null,
         hasOther: input.hasOther,

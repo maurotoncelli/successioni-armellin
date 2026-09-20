@@ -4309,6 +4309,7 @@
         "will_unknown_note": "Va bene anche così: se emerge dopo, lo gestiamo in corso di pratica. Continua con le altre domande.",
         "heirs_legend": "Chi sono gli eredi? Indica quanti per ogni tipo.",
         "heirs_hint": "Conta tutte le persone che ereditano, compreso te se sei tra gli eredi.",
+        "heirs_abroad_q": "Uno o più eredi sono residenti all'estero?",
         "heir_coniuge": "Coniuge (o unito civilmente)",
         "heir_figli": "Figli/e",
         "heir_genitori": "Genitori",
@@ -4961,6 +4962,48 @@
         "note": "",
         "headline": "Centinaia di successioni seguite da Lorenzo"
       }
+    },
+    {
+      "collection": "home",
+      "key": "distinguishes_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Cosa ci distingue dagli altri servizi di successione online"
+    },
+    {
+      "collection": "home",
+      "key": "distinguishes_intro",
+      "locale": "it",
+      "is_published": true,
+      "value": "Non è un modulo da compilare e poi restare soli. Hai un'area in cui la pratica vive, e Lorenzo che ti segue — da geometra, non da call center."
+    },
+    {
+      "collection": "home",
+      "key": "distinguishes_items",
+      "locale": "it",
+      "is_published": true,
+      "value": [
+        {
+          "icon": "area",
+          "titolo": "Area personale avanzata",
+          "testo": "Modelli pronti, documenti caricati subito dal telefono, stati di avanzamento con notifica. Entri quando vuoi, da casa o in mobilità."
+        },
+        {
+          "icon": "lorenzo",
+          "titolo": "Lorenzo ti segue, caso per caso",
+          "testo": "Disposto a dirti come procedere in ogni situazione. Non un bot e non un call center: lo stesso geometra che firma la pratica."
+        },
+        {
+          "icon": "voltura",
+          "titolo": "Volture catastali incluse",
+          "testo": "Dove c'è un immobile, il passaggio in Catasto è nel pacchetto. Non è un extra che arriva dopo."
+        },
+        {
+          "icon": "comms",
+          "titolo": "Comunicazioni immediate",
+          "testo": "Ogni passo importante te lo comunichiamo: non devi inseguire lo studio per sapere dov'è la pratica."
+        }
+      ]
     }
   ]
 }

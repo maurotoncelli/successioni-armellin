@@ -13,6 +13,8 @@ export type PreventivoUiLabels = {
   will_unknown_note: string;
   heirs_legend: string;
   heirs_hint: string;
+  /** Informativa per Lorenzo: non altera l'esito del preventivo. */
+  heirs_abroad_q: string;
   heir_coniuge: string;
   heir_figli: string;
   heir_genitori: string;
@@ -183,6 +185,7 @@ export const PREVENTIVO_UI_IT: PreventivoUiLabels = {
   heirs_legend: "Chi sono gli eredi? Indica quanti per ogni tipo.",
   heirs_hint:
     "Conta tutte le persone che ereditano, compreso te se sei tra gli eredi.",
+  heirs_abroad_q: "Uno o più eredi sono residenti all'estero?",
   heir_coniuge: "Coniuge (o unito civilmente)",
   heir_figli: "Figli/e",
   heir_genitori: "Genitori",

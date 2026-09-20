@@ -30,6 +30,8 @@ export type SoftLeadAnswers = {
   hasWill: string;
   hasOther: string;
   over100k?: string;
+  /** si | no | nonso — informativa per Lorenzo, non pesa sul prezzo. */
+  heirsAbroad?: string;
 };
 
 export type SoftLeadKind = "email_quote" | "custom_quote" | "callback";
@@ -115,6 +117,7 @@ export function SoftLead({
         hasWill: answers.hasWill,
         hasOther: answers.hasOther,
         over100k: answers.over100k,
+        heirsAbroad: answers.heirsAbroad,
         name,
         email,
         phone,

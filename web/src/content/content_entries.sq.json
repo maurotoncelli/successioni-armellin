@@ -4578,6 +4578,7 @@
         "will_unknown_note": "Edhe kështu shkon mirë: nëse del më vonë, e menaxhojmë gjatë praktikës. Vazhdoni me pyetjet e tjera.",
         "heirs_legend": "Kush janë trashëgimtarët? Tregoni sa për çdo lloj.",
         "heirs_hint": "Numëroni të gjithë personat që trashëgojnë, duke përfshirë edhe ju nëse jeni midis trashëgimtarëve.",
+        "heirs_abroad_q": "A janë një ose më shumë trashëgimtarë rezidentë jashtë vendit?",
         "heir_coniuge": "Bashkëshort/e (ose partner/e civil)",
         "heir_figli": "Fëmijë",
         "heir_genitori": "Prindër",
@@ -5539,6 +5540,48 @@
       "locale": "sq",
       "is_published": true,
       "value": "Shkruaj në WhatsApp"
+    },
+    {
+      "collection": "home",
+      "key": "distinguishes_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Çfarë na dallon nga shërbimet e tjera të trashëgimisë online"
+    },
+    {
+      "collection": "home",
+      "key": "distinguishes_intro",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Nuk është një formular që e plotëson dhe pastaj mbetesh vetëm. Ke një hapësirë ku jeton praktika, dhe Lorenzo që të ndjek — gjeometër, jo call center."
+    },
+    {
+      "collection": "home",
+      "key": "distinguishes_items",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        {
+          "icon": "area",
+          "titolo": "Zonë personale e avancuar",
+          "testo": "Modele gati, dokumente të ngarkuara menjëherë nga telefoni, gjendje e punës me njoftim. Hyn kur të duash, nga shtëpia ose në lëvizje."
+        },
+        {
+          "icon": "lorenzo",
+          "titolo": "Lorenzo të ndjek, rast pas rasti",
+          "testo": "I gatshëm të të thotë si të veprosh në çdo situatë. Jo bot dhe jo call center: i njëjti gjeometër që nënshkruan praktikën."
+        },
+        {
+          "icon": "voltura",
+          "titolo": "Kalimet kadastrale të përfshira",
+          "testo": "Kur ka pasuri të paluajtshme, përditësimi në Katastër është në paketë. Nuk është një extra që vjen më vonë."
+        },
+        {
+          "icon": "comms",
+          "titolo": "Komunikime të menjëhershme",
+          "testo": "Çdo hap të rëndësishëm ta komunikohet: nuk të duhet t'i vraposh studiot për të ditur ku është praktika."
+        }
+      ]
     }
   ]
 }

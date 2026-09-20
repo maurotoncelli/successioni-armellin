@@ -4578,6 +4578,7 @@
         "will_unknown_note": "Bu şekilde de olur: sonradan ortaya çıkarsa dosya sürecinde hallederiz. Diğer sorularla devam edin.",
         "heirs_legend": "Mirasçılar kimler? Her türden kaç tane olduğunu belirtin.",
         "heirs_hint": "Mirasçı olan herkesi sayın, mirasçılardan biriyseniz kendinizi de dahil edin.",
+        "heirs_abroad_q": "Bir veya daha fazla mirasçı yurt dışında mı ikamet ediyor?",
         "heir_coniuge": "Eş (veya medeni birliktelik)",
         "heir_figli": "Çocuklar",
         "heir_genitori": "Ebeveynler",
@@ -5539,6 +5540,48 @@
       "locale": "tr",
       "is_published": true,
       "value": "WhatsApp’tan yaz"
+    },
+    {
+      "collection": "home",
+      "key": "distinguishes_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Bizi diğer çevrimiçi miras hizmetlerinden ayıran nedir"
+    },
+    {
+      "collection": "home",
+      "key": "distinguishes_intro",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Doldurup sonra yalnız bırakıldığınız bir form değil. Dosyanın yaşadığı bir alanınız var ve Lorenzo sizi takip ediyor — bir geometra, çağrı merkezi değil."
+    },
+    {
+      "collection": "home",
+      "key": "distinguishes_items",
+      "locale": "tr",
+      "is_published": true,
+      "value": [
+        {
+          "icon": "area",
+          "titolo": "Gelişmiş kişisel alan",
+          "testo": "Hazır modeller, belgeler telefondan hemen yüklenir, ilerleme durumları bildirimle. İstediğin zaman girersin, evden veya yoldayken."
+        },
+        {
+          "icon": "lorenzo",
+          "titolo": "Lorenzo senin dosyanı takip eder",
+          "testo": "Her durumda nasıl ilerleyeceğini söylemeye hazır. Bot değil, çağrı merkezi değil: dosyayı imzalayan aynı geometra."
+        },
+        {
+          "icon": "voltura",
+          "titolo": "Kadastro devirleri dahil",
+          "testo": "Taşınmaz varsa Catasto güncellemesi pakette. Sonradan gelen bir ekstra değil."
+        },
+        {
+          "icon": "comms",
+          "titolo": "Anında bildirimler",
+          "testo": "Her önemli adımı iletiyoruz: dosyanın nerede olduğunu öğrenmek için stüdyonun peşinden koşmazsın."
+        }
+      ]
     }
   ]
 }

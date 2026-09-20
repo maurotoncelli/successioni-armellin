@@ -90,6 +90,9 @@ export function computeEsito(input: {
   /** Conservato per analytics/CRM: NON influenza l'esito (i pacchetti
    *  coprono anche le successioni con testamento; Riunione 2 + conferma Mauro). */
   hasWill?: string;
+  /** Conservato per CRM: NON influenza l'esito (per ora). Residenza estera
+   *  di uno o più eredi: Lorenzo la vede nelle risposte, il prezzo no. */
+  heirsAbroad?: string;
   allDirectLine: boolean;
   hasRealEstate: string;
   /** Numero immobili se hasRealEstate === "si". NON influenza l'esito: oltre

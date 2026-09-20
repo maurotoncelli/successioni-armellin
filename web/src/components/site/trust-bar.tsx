@@ -23,14 +23,14 @@ export async function TrustBar() {
 
   return (
     <div className="bg-primary text-white">
-      <div aria-hidden className="h-0.5 bg-accent" />
       {/*
         Flex su div, non grid su <ul>: in Safari/WebKit gli <li> restano
         list-item e la griglia non parte — le 6 voci si impilano in colonna.
+        Ogni voce è un quadrato oro a sé: niente fascia unica sopra/sotto.
       */}
       <div
         role="list"
-        className="mx-auto flex w-full max-w-6xl flex-nowrap items-stretch gap-1.5 px-2 py-4 sm:gap-2.5 sm:px-4 sm:py-6 lg:gap-3 lg:px-6 lg:py-7"
+        className="mx-auto grid w-full max-w-6xl grid-cols-3 gap-2.5 px-3 py-5 sm:grid-cols-6 sm:gap-3 sm:px-5 sm:py-6 lg:gap-4"
       >
         {items.map((item, i) => {
           const Icon = trustIcons[i] ?? IconTrustAlbo;
@@ -38,17 +38,17 @@ export async function TrustBar() {
             <div
               key={item}
               role="listitem"
-              className="flex min-w-0 flex-1 flex-col items-center justify-center gap-1.5 rounded-xl border border-accent px-1 py-2.5 text-center sm:gap-2 sm:rounded-2xl sm:px-2 sm:py-3"
+              className="flex aspect-square flex-col items-center justify-center gap-1.5 rounded-xl px-1.5 text-center sm:gap-2 sm:rounded-2xl sm:px-2"
+              style={{ border: "2px solid #b5894e" }}
             >
               <Icon className="h-5 w-5 shrink-0 text-accent sm:h-6 sm:w-6 lg:h-7 lg:w-7" />
-              <span className="text-[10px] font-semibold leading-snug sm:text-xs lg:text-sm">
+              <span className="text-[9px] font-semibold leading-snug sm:text-[11px] lg:text-xs">
                 {item}
               </span>
             </div>
           );
         })}
       </div>
-      <div aria-hidden className="h-0.5 bg-accent" />
     </div>
   );
 }

@@ -4578,6 +4578,7 @@
         "will_unknown_note": "C'est aussi possible : si cela apparaît plus tard, nous le gérons en cours de dossier. Continuez avec les autres questions.",
         "heirs_legend": "Qui sont les héritiers ? Indiquez combien pour chaque type.",
         "heirs_hint": "Comptez toutes les personnes qui héritent, y compris vous si vous êtes héritier.",
+        "heirs_abroad_q": "Un ou plusieurs héritiers résident-ils à l'étranger ?",
         "heir_coniuge": "Conjoint(e) (ou uni(e) civilement)",
         "heir_figli": "Enfants",
         "heir_genitori": "Parents",
@@ -5539,6 +5540,48 @@
       "locale": "fr",
       "is_published": true,
       "value": "Écrire sur WhatsApp"
+    },
+    {
+      "collection": "home",
+      "key": "distinguishes_title",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Ce qui nous distingue des autres services de succession en ligne"
+    },
+    {
+      "collection": "home",
+      "key": "distinguishes_intro",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Ce n'est pas un formulaire à remplir pour ensuite rester seul. Vous avez un espace où le dossier vit, et Lorenzo qui vous suit — un géomètre, pas un centre d'appels."
+    },
+    {
+      "collection": "home",
+      "key": "distinguishes_items",
+      "locale": "fr",
+      "is_published": true,
+      "value": [
+        {
+          "icon": "area",
+          "titolo": "Espace personnel avancé",
+          "testo": "Modèles prêts, documents chargés tout de suite depuis le téléphone, états d'avancement notifiés. Vous entrez quand vous voulez, chez vous ou en déplacement."
+        },
+        {
+          "icon": "lorenzo",
+          "titolo": "Lorenzo vous suit, dossier par dossier",
+          "testo": "Prêt à vous dire comment procéder dans chaque situation. Pas un bot, pas un centre d'appels : le même géomètre qui signe le dossier."
+        },
+        {
+          "icon": "voltura",
+          "titolo": "Mutations cadastrales incluses",
+          "testo": "S'il y a un bien, le passage au cadastre est dans le forfait. Ce n'est pas un extra qui arrive après."
+        },
+        {
+          "icon": "comms",
+          "titolo": "Communications immédiates",
+          "testo": "Chaque étape importante vous est communiquée : vous n'avez pas à relancer le cabinet pour savoir où en est le dossier."
+        }
+      ]
     }
   ]
 }

@@ -29,6 +29,7 @@ type CheckoutAnswers = {
   hasRealEstate: string;
   hasWill: string;
   hasOther: string;
+  heirsAbroad?: string;
 };
 
 type Props = {
@@ -137,6 +138,7 @@ export function CheckoutPanel({
           hasRealEstate: answers?.hasRealEstate,
           hasWill: answers?.hasWill,
           hasOther: answers?.hasOther,
+          heirsAbroad: answers?.heirsAbroad,
         });
         if (!created.ok) {
           setError(

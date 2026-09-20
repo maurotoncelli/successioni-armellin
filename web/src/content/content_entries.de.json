@@ -4578,6 +4578,7 @@
         "will_unknown_note": "Auch in Ordnung: falls es später relevant wird, klären wir es in der Akte. Weiter mit den Fragen.",
         "heirs_legend": "Wer sind die Erben? Anzahl je Typ angeben.",
         "heirs_hint": "Alle erbenden Personen zählen, einschließlich Ihnen, falls Sie Erbe sind.",
+        "heirs_abroad_q": "Wohnen ein oder mehrere Erben im Ausland?",
         "heir_coniuge": "Ehepartner (oder eingetragener Partner)",
         "heir_figli": "Kinder",
         "heir_genitori": "Eltern",
@@ -5539,6 +5540,48 @@
       "locale": "de",
       "is_published": true,
       "value": "Auf WhatsApp schreiben"
+    },
+    {
+      "collection": "home",
+      "key": "distinguishes_title",
+      "locale": "de",
+      "is_published": true,
+      "value": "Was uns von anderen Online-Nachlassdiensten unterscheidet"
+    },
+    {
+      "collection": "home",
+      "key": "distinguishes_intro",
+      "locale": "de",
+      "is_published": true,
+      "value": "Kein Formular, das Sie ausfüllen und dann allein gelassen werden. Sie haben einen Bereich, in dem die Akte lebt, und Lorenzo begleitet Sie — als Geometer, nicht als Callcenter."
+    },
+    {
+      "collection": "home",
+      "key": "distinguishes_items",
+      "locale": "de",
+      "is_published": true,
+      "value": [
+        {
+          "icon": "area",
+          "titolo": "Ein fortgeschrittener persönlicher Bereich",
+          "testo": "Vorlagen bereit, Dokumente direkt vom Handy hochgeladen, Fortschritt mit Benachrichtigung. Sie steigen ein, wann Sie wollen, zu Hause oder unterwegs."
+        },
+        {
+          "icon": "lorenzo",
+          "titolo": "Lorenzo begleitet Ihren Fall",
+          "testo": "Er sagt Ihnen, wie Sie in jeder Situation vorgehen. Kein Bot und kein Callcenter: derselbe Geometer, der die Erklärung unterschreibt."
+        },
+        {
+          "icon": "voltura",
+          "titolo": "Katasterumschreibungen inklusive",
+          "testo": "Wo eine Immobilie dabei ist, gehört die Umschreibung im Catasto zum Paket. Kein Extra, das hinterher kommt."
+        },
+        {
+          "icon": "comms",
+          "titolo": "Sofortige Mitteilungen",
+          "testo": "Jeden wichtigen Schritt teilen wir mit: Sie müssen der Kanzlei nicht hinterherlaufen, um zu wissen, wo die Akte steht."
+        }
+      ]
     }
   ]
 }

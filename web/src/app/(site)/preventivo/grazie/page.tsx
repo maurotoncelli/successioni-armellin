@@ -64,6 +64,7 @@ export default async function GraziePage({
     will?: string;
     other?: string;
     k100?: string;
+    abroad?: string;
   }>;
 }) {
   const sp = await searchParams;
@@ -78,6 +79,7 @@ export default async function GraziePage({
     hasWill: sp.will ?? "no",
     hasOther: sp.other ?? "no",
     over100k: sp.k100,
+    heirsAbroad: sp.abroad,
   };
 
   // Ricalcolo server-side solo se il link porta le risposte del quiz (hasre):
@@ -87,6 +89,7 @@ export default async function GraziePage({
   const esito: Esito = hasQuizAnswers
     ? computeEsito({
         hasWill: answers.hasWill,
+        heirsAbroad: answers.heirsAbroad,
         allDirectLine: composition ? isAllDirectLine(composition) : false,
         hasRealEstate: answers.hasRealEstate,
         realEstateCount: answers.realEstateCount,
@@ -173,6 +176,7 @@ export default async function GraziePage({
       hasWill: answers.hasWill,
       heirs: composition,
       heirsTotal: heirsCount ?? 0,
+      heirsAbroad: answers.heirsAbroad,
       hasRealEstate: answers.hasRealEstate,
       realEstateCount: answers.realEstateCount,
       hasOther: answers.hasOther,
@@ -242,6 +246,7 @@ export default async function GraziePage({
     if (answers.hasRealEstate) params.set("hasre", answers.hasRealEstate);
     params.set("will", answers.hasWill);
     params.set("other", answers.hasOther);
+    if (answers.heirsAbroad) params.set("abroad", answers.heirsAbroad);
     checkoutHref = `/checkout?${params.toString()}`;
   }
 

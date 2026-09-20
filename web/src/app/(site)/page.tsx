@@ -10,6 +10,10 @@ import { ButtonLink } from "@/components/ui/button";
 import { TrustBar } from "@/components/site/trust-bar";
 import { SuccessCounter } from "@/components/site/success-counter";
 import { EmpatiaBlock } from "@/components/site/empatia-block";
+import {
+  DistinguishesBlock,
+  type DistinguishesItem,
+} from "@/components/site/distinguishes-block";
 import { PackageCards } from "@/components/site/package-cards";
 import { FaqAccordion } from "@/components/site/faq-accordion";
 import { getFaqs } from "@/lib/cms";
@@ -64,6 +68,10 @@ export default async function HomePage() {
   );
   const faidateDiy = await t("home", "faidate_col_diy", "Fai-da-te");
   const faidateUs = await t("home", "faidate_col_us", "Con noi");
+  const distinguishesItems = await tList<DistinguishesItem>(
+    "home",
+    "distinguishes_items",
+  );
   const videoCta = await tCta("home", "come_funziona_video_cta", {
     label: "Guarda il video",
     href: "/come-funziona#video",
@@ -257,6 +265,23 @@ export default async function HomePage() {
             </div>
           </div>
         </div>
+      </Section>
+
+      {/* Vs altri servizi online: area personale + Lorenzo, non un modulo. */}
+      <Section tone="sand">
+        <DistinguishesBlock
+          title={await t(
+            "home",
+            "distinguishes_title",
+            "Cosa ci distingue dagli altri servizi di successione online",
+          )}
+          intro={await t(
+            "home",
+            "distinguishes_intro",
+            "Non è un modulo da compilare e poi restare soli. Hai un'area in cui la pratica vive, e Lorenzo che ti segue — da geometra, non da call center.",
+          )}
+          items={distinguishesItems}
+        />
       </Section>
 
       {/* Video di benvenuto — subito dopo il confronto: è qui che nasce il

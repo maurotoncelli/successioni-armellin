@@ -4578,6 +4578,7 @@
         "will_unknown_note": "También está bien así: si surge después, lo gestionamos durante el expediente. Continúa con las demás preguntas.",
         "heirs_legend": "¿Quiénes son los herederos? Indica cuántos de cada tipo.",
         "heirs_hint": "Cuenta a todas las personas que heredan, incluido tú si eres heredero/a.",
+        "heirs_abroad_q": "¿Uno o más herederos residen en el extranjero?",
         "heir_coniuge": "Cónyuge (o pareja de hecho)",
         "heir_figli": "Hijos/as",
         "heir_genitori": "Padres",
@@ -5539,6 +5540,48 @@
       "locale": "es",
       "is_published": true,
       "value": "Escríbenos por WhatsApp"
+    },
+    {
+      "collection": "home",
+      "key": "distinguishes_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Qué nos distingue de otros servicios de sucesión online"
+    },
+    {
+      "collection": "home",
+      "key": "distinguishes_intro",
+      "locale": "es",
+      "is_published": true,
+      "value": "No es un formulario que rellenas y luego te quedas solo. Tienes un área donde vive el expediente, y Lorenzo que te sigue: un geometra, no un call center."
+    },
+    {
+      "collection": "home",
+      "key": "distinguishes_items",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        {
+          "icon": "area",
+          "titolo": "Área personal avanzada",
+          "testo": "Modelos listos, documentos cargados al momento desde el teléfono, estados de avance con aviso. Entras cuando quieres, en casa o en movilidad."
+        },
+        {
+          "icon": "lorenzo",
+          "titolo": "Lorenzo te sigue, caso a caso",
+          "testo": "Dispuesto a decirte cómo proceder en cada situación. Ni un bot ni un call center: el mismo geometra que firma el expediente."
+        },
+        {
+          "icon": "voltura",
+          "titolo": "Volturas catastrales incluidas",
+          "testo": "Si hay un inmueble, el cambio en el Catastro va en el paquete. No es un extra que llega después."
+        },
+        {
+          "icon": "comms",
+          "titolo": "Comunicaciones inmediatas",
+          "testo": "Cada paso importante te lo comunicamos: no tienes que perseguir al estudio para saber dónde está el expediente."
+        }
+      ]
     }
   ]
 }

@@ -24,6 +24,7 @@ const IT = {
     heirs_legend: "Chi sono gli eredi? Indica quanti per ogni tipo.",
     heirs_hint:
       "Conta tutte le persone che ereditano, compreso te se sei tra gli eredi.",
+    heirs_abroad_q: "Uno o più eredi sono residenti all'estero?",
     heir_coniuge: "Coniuge (o unito civilmente)",
     heir_figli: "Figli/e",
     heir_genitori: "Genitori",

@@ -47,6 +47,7 @@ export default async function CheckoutPage({
     hasre?: string;
     will?: string;
     other?: string;
+    abroad?: string;
   }>;
 }) {
   const sp = await searchParams;
@@ -249,6 +250,7 @@ export default async function CheckoutPage({
                       hasRealEstate: sp.hasre ?? "",
                       hasWill: sp.will ?? "no",
                       hasOther: sp.other ?? "no",
+                      heirsAbroad: sp.abroad ?? "",
                     }}
                     payLabel={(await tCta("checkout", "cta_pay")).label}
                     consensoTc={await t("checkout", "consenso_tc")}

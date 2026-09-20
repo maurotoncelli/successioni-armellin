@@ -4578,6 +4578,7 @@
         "will_unknown_note": "这样也可以：若之后出现，我们在办理过程中处理。请继续其他问题。",
         "heirs_legend": "继承人有哪些？请按类型填写人数。",
         "heirs_hint": "统计所有继承人，若您也是继承人则包括您。",
+        "heirs_abroad_q": "是否有一位或多位继承人居住在国外？",
         "heir_coniuge": "配偶（或民事结合伴侣）",
         "heir_figli": "子女",
         "heir_genitori": "父母",
@@ -5539,6 +5540,48 @@
       "locale": "zh",
       "is_published": true,
       "value": "通过 WhatsApp 联系"
+    },
+    {
+      "collection": "home",
+      "key": "distinguishes_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "我们与其他在线继承服务有何不同"
+    },
+    {
+      "collection": "home",
+      "key": "distinguishes_intro",
+      "locale": "zh",
+      "is_published": true,
+      "value": "不是填完表格就被丢下。你有一个案件所在的专区，洛伦佐全程跟进——是测量师，不是客服中心。"
+    },
+    {
+      "collection": "home",
+      "key": "distinguishes_items",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        {
+          "icon": "area",
+          "titolo": "进阶个人专区",
+          "testo": "现成模板、手机即可上传文件、进度状态会通知。随时登录，在家或在路上都行。"
+        },
+        {
+          "icon": "lorenzo",
+          "titolo": "洛伦佐个案跟进",
+          "testo": "随时说明下一步怎么走。不是机器人，也不是客服中心：签字办理的就是同一位测量师。"
+        },
+        {
+          "icon": "voltura",
+          "titolo": "地籍过户已包含",
+          "testo": "有房产时，地籍更新就在套餐里。不是事后另收费的项目。"
+        },
+        {
+          "icon": "comms",
+          "titolo": "即时通知",
+          "testo": "每个重要步骤都会告知：不必追着事务所问案件办到哪一步。"
+        }
+      ]
     }
   ]
 }

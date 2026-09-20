@@ -4592,6 +4592,7 @@
         "will_unknown_note": "That's fine too: if it comes up later, we'll handle it during the case. Continue with the other questions.",
         "heirs_legend": "Who are the heirs? Indicate how many of each type.",
         "heirs_hint": "Count everyone who inherits, including yourself if you are an heir.",
+        "heirs_abroad_q": "Are one or more heirs resident abroad?",
         "heir_coniuge": "Spouse (or civil partner)",
         "heir_figli": "Children",
         "heir_genitori": "Parents",
@@ -5553,6 +5554,48 @@
       "locale": "en",
       "is_published": true,
       "value": "Write on WhatsApp"
+    },
+    {
+      "collection": "home",
+      "key": "distinguishes_title",
+      "locale": "en",
+      "is_published": true,
+      "value": "What sets us apart from other online succession services"
+    },
+    {
+      "collection": "home",
+      "key": "distinguishes_intro",
+      "locale": "en",
+      "is_published": true,
+      "value": "This is not a form you fill in and then you're on your own. You get an area where the case lives, and Lorenzo following you — a surveyor, not a call centre."
+    },
+    {
+      "collection": "home",
+      "key": "distinguishes_items",
+      "locale": "en",
+      "is_published": true,
+      "value": [
+        {
+          "icon": "area",
+          "titolo": "An advanced personal area",
+          "testo": "Ready templates, documents uploaded straight from your phone, progress statuses with notifications. Log in whenever you want, at home or on the go."
+        },
+        {
+          "icon": "lorenzo",
+          "titolo": "Lorenzo follows your case",
+          "testo": "Ready to tell you how to proceed in every situation. Not a bot and not a call centre: the same surveyor who signs the filing."
+        },
+        {
+          "icon": "voltura",
+          "titolo": "Cadastral transfers included",
+          "testo": "Where there is a property, the Catasto update is in the package. It is not an extra that appears later."
+        },
+        {
+          "icon": "comms",
+          "titolo": "Immediate updates",
+          "testo": "Every important step is notified: you don't have to chase the firm to know where the case stands."
+        }
+      ]
     }
   ]
 }
