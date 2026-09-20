@@ -361,7 +361,8 @@
         "suffix": "+",
         "eyebrow": "实务经验",
         "label": "件继承案件",
-        "note": "事务所多年来线下及线上处理案件的总体估计：每一件继承均由本人亲自、逐件办理。"
+        "note": "事务所多年来线下及线上处理案件的总体估计：每一件继承均由本人亲自、逐件办理。",
+        "headline": "洛伦佐经办过的数百件继承案件"
       }
     },
     {
@@ -369,7 +370,7 @@
       "key": "problema_title",
       "locale": "zh",
       "is_published": true,
-      "value": "遗产继承，疑问重重。我们为您分担。"
+      "value": "一次继承，一位测量师从头到尾办理，全程在线，并有专人协助。"
     },
     {
       "collection": "home",
@@ -386,7 +387,8 @@
       "value": [
         {
           "titolo": "无需排队",
-          "testo": "一切在家完成，手机也可以：无需排队，无需窗口。"
+          "testo": "一切在家完成，手机也可以：无需排队，无需窗口。",
+          "extra": "可在个人专区随时查看进度。"
         },
         {
           "titolo": "零错误零处罚",
@@ -1176,7 +1178,7 @@
       "key": "video_title",
       "locale": "zh",
       "is_published": true,
-      "value": "有一分钟吗？听我说"
+      "value": "在线办理的优势"
     },
     {
       "collection": "chi_siamo",
@@ -1831,7 +1833,7 @@
       "is_published": true,
       "value": [
         "{price} € 起",
-        "250+ 件继承案件",
+        "数百件继承案件",
         "全程在线，足不出户"
       ]
     },
@@ -2546,7 +2548,7 @@
       "locale": "zh",
       "is_published": true,
       "value": {
-        "label": "继续支付",
+        "label": "立即购买并开始",
         "href": "/checkout"
       }
     },
@@ -5530,6 +5532,13 @@
       "locale": "zh",
       "is_published": true,
       "value": "由真人专业人士在线办理遗产继承申报：Geom. Lorenzo Armellin，协会注册。报价清晰，文件与案件可在家完成——也可在 Pontedera 面谈。"
+    },
+    {
+      "collection": "contatti",
+      "key": "whatsapp_cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": "通过 WhatsApp 联系"
     }
   ]
 }

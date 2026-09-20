@@ -1,7 +1,7 @@
 import "server-only";
 import { getAdminClient, isAdminConfigured } from "@/lib/supabase/admin";
 import { DOC_BUCKET, ensureDocBucket } from "@/lib/documents";
-import { VIDEO_IDS, type VideoId } from "@/lib/video-ids";
+import { VIDEO_IDS, isVideoId, type VideoId } from "@/lib/video-ids";
 
 /*
   Contatore riproduzioni video (tasto play, non il loop muted in hero).
@@ -21,6 +21,7 @@ export type VideoStats = {
   totalCompletes: number;
   byVideo: Record<VideoId, VideoClipStats>;
   updatedAt: string | null;
+  lastStartVideo: VideoId | null;
 };
 
 function emptyByVideo(): Record<VideoId, VideoClipStats> {
@@ -34,6 +35,7 @@ const EMPTY: VideoStats = {
   totalCompletes: 0,
   byVideo: emptyByVideo(),
   updatedAt: null,
+  lastStartVideo: null,
 };
 
 function clip(raw: unknown): VideoClipStats {
@@ -55,11 +57,16 @@ function normalize(raw: unknown): VideoStats {
   for (const id of VIDEO_IDS) {
     byVideo[id] = clip(o.byVideo?.[id]);
   }
+  const last =
+    typeof o.lastStartVideo === "string" && isVideoId(o.lastStartVideo)
+      ? o.lastStartVideo
+      : null;
   return {
     totalStarts: Math.max(0, Number(o.totalStarts) || 0),
     totalCompletes: Math.max(0, Number(o.totalCompletes) || 0),
     byVideo,
     updatedAt: typeof o.updatedAt === "string" ? o.updatedAt : null,
+    lastStartVideo: last,
   };
 }
 
@@ -77,33 +84,96 @@ export async function getVideoStats(): Promise<VideoStats> {
   }
 }
 
+async function persist(next: VideoStats): Promise<VideoStats> {
+  const admin = getAdminClient();
+  await ensureDocBucket(admin);
+  const blob = Buffer.from(JSON.stringify(next), "utf8");
+  const { error } = await admin.storage.from(DOC_BUCKET).upload(STORAGE_PATH, blob, {
+    contentType: "application/json",
+    upsert: true,
+  });
+  if (error) throw error;
+  return next;
+}
+
+function totalsFrom(byVideo: Record<VideoId, VideoClipStats>): {
+  totalStarts: number;
+  totalCompletes: number;
+} {
+  let totalStarts = 0;
+  let totalCompletes = 0;
+  for (const id of VIDEO_IDS) {
+    totalStarts += byVideo[id].starts;
+    totalCompletes += byVideo[id].completes;
+  }
+  return { totalStarts, totalCompletes };
+}
+
 export async function incrementVideoEvent(
   video: VideoId,
   event: "start" | "complete",
 ): Promise<VideoStats | null> {
   if (!isAdminConfigured) return null;
   try {
-    const admin = getAdminClient();
-    await ensureDocBucket(admin);
     const current = await getVideoStats();
     const clipNext = { ...current.byVideo[video] };
     if (event === "start") clipNext.starts += 1;
     else clipNext.completes += 1;
+    const byVideo = { ...current.byVideo, [video]: clipNext };
     const next: VideoStats = {
-      totalStarts: current.totalStarts + (event === "start" ? 1 : 0),
-      totalCompletes: current.totalCompletes + (event === "complete" ? 1 : 0),
-      byVideo: { ...current.byVideo, [video]: clipNext },
+      ...totalsFrom(byVideo),
+      byVideo,
       updatedAt: new Date().toISOString(),
+      lastStartVideo: event === "start" ? video : current.lastStartVideo,
     };
-    const blob = Buffer.from(JSON.stringify(next), "utf8");
-    const { error } = await admin.storage.from(DOC_BUCKET).upload(STORAGE_PATH, blob, {
-      contentType: "application/json",
-      upsert: true,
-    });
-    if (error) throw error;
-    return next;
+    return await persist(next);
   } catch (err) {
     console.error("[video-stats] increment:", err);
     return null;
   }
+}
+
+/** Toglie o rimette un avvio (CRM: tasto − / Annulla). Completati non superano gli avvii. */
+export async function adjustVideoStarts(
+  video: VideoId,
+  delta: 1 | -1,
+): Promise<VideoStats | null> {
+  if (!isAdminConfigured) return null;
+  try {
+    const current = await getVideoStats();
+    const clipNext = { ...current.byVideo[video] };
+    if (delta < 0) {
+      if (clipNext.starts <= 0) return current;
+      clipNext.starts -= 1;
+      if (clipNext.completes > clipNext.starts) clipNext.completes -= 1;
+    } else {
+      clipNext.starts += 1;
+    }
+    const byVideo = { ...current.byVideo, [video]: clipNext };
+    const next: VideoStats = {
+      ...totalsFrom(byVideo),
+      byVideo,
+      updatedAt: new Date().toISOString(),
+      lastStartVideo: delta > 0 ? video : current.lastStartVideo,
+    };
+    return await persist(next);
+  } catch (err) {
+    console.error("[video-stats] adjust:", err);
+    return null;
+  }
+}
+
+export function pickVideoForAdjust(stats: VideoStats): VideoId | null {
+  if (stats.lastStartVideo && stats.byVideo[stats.lastStartVideo].starts > 0) {
+    return stats.lastStartVideo;
+  }
+  let best: VideoId | null = null;
+  let max = 0;
+  for (const id of VIDEO_IDS) {
+    if (stats.byVideo[id].starts > max) {
+      max = stats.byVideo[id].starts;
+      best = id;
+    }
+  }
+  return best;
 }

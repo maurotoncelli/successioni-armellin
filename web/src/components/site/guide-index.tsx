@@ -277,8 +277,31 @@ export function GuideIndex({
       </div>
 
       <div className="mt-6 sm:mt-10">
+        {filteredArticles.length > 0 && (
+          <div>
+            <div className="grid gap-6 md:grid-cols-2">
+              {filteredArticles.map((article) => (
+                <ArticleCard
+                  key={article.slug}
+                  article={article}
+                  labels={labels}
+                  dateLocale={dateLocale}
+                  locale={locale}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
         {showToolsBlock && (
-          <section id="strumenti" className="scroll-mt-24">
+          <section
+            id="strumenti"
+            className={
+              filteredArticles.length > 0
+                ? "mt-10 scroll-mt-24 sm:mt-14"
+                : "scroll-mt-24"
+            }
+          >
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="font-serif text-2xl text-primary sm:text-3xl">
                 {heading}
@@ -300,22 +323,6 @@ export function GuideIndex({
               ))}
             </div>
           </section>
-        )}
-
-        {filteredArticles.length > 0 && (
-          <div className={showToolsBlock ? "mt-10 sm:mt-14" : undefined}>
-            <div className="grid gap-6 md:grid-cols-2">
-              {filteredArticles.map((article) => (
-                <ArticleCard
-                  key={article.slug}
-                  article={article}
-                  labels={labels}
-                  dateLocale={dateLocale}
-                  locale={locale}
-                />
-              ))}
-            </div>
-          </div>
         )}
 
         {empty && (

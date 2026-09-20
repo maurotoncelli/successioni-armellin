@@ -4,7 +4,7 @@ import type { WelcomeVideoLabels } from "@/components/site/welcome-video";
 
 export async function getWelcomeVideoLabels(): Promise<WelcomeVideoLabels> {
   return {
-    title: await t("chi_siamo", "video_title", "Hai un minuto? Ascoltami"),
+    title: await t("chi_siamo", "video_title", "Il vantaggio di farlo online"),
     caption: await t(
       "chi_siamo",
       "video_caption",

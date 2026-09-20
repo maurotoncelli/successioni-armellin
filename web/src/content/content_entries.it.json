@@ -361,7 +361,8 @@
         "suffix": "+",
         "eyebrow": "Esperienza sul campo",
         "label": "successioni seguite",
-        "note": "Stima complessiva delle pratiche seguite dallo studio negli anni, in ufficio e online: ogni successione gestita di persona, una alla volta."
+        "note": "Stima complessiva delle pratiche seguite dallo studio negli anni, in ufficio e online: ogni successione gestita di persona, una alla volta.",
+        "headline": "Centinaia di successioni seguite da Lorenzo"
       }
     },
     {
@@ -369,7 +370,7 @@
       "key": "problema_title",
       "locale": "it",
       "is_published": true,
-      "value": "Una successione, mille dubbi. Te la togliamo dalle spalle."
+      "value": "Una successione, un geometra che se ne occupa dall'inizio alla fine, tutto online, con supporto."
     },
     {
       "collection": "home",
@@ -386,7 +387,8 @@
       "value": [
         {
           "titolo": "Zero code",
-          "testo": "Tutto da casa, anche dal telefono: niente code, niente sportelli."
+          "testo": "Tutto da casa, anche dal telefono: niente code, niente sportelli.",
+          "extra": "Controlla comodamente dalla tua area personale."
         },
         {
           "titolo": "Zero errori e sanzioni",
@@ -1176,7 +1178,7 @@
       "key": "video_title",
       "locale": "it",
       "is_published": true,
-      "value": "Hai un minuto? Ascoltami"
+      "value": "Il vantaggio di farlo online"
     },
     {
       "collection": "chi_siamo",
@@ -1845,7 +1847,7 @@
       "is_published": true,
       "value": [
         "Da {price} €",
-        "250+ successioni seguite",
+        "Centinaia di successioni seguite",
         "Tutto online, anche da casa"
       ]
     },
@@ -2560,7 +2562,7 @@
       "locale": "it",
       "is_published": true,
       "value": {
-        "label": "Procedi al pagamento",
+        "label": "Acquista e inizia ora",
         "href": "/checkout"
       }
     },
@@ -5544,6 +5546,13 @@
       "locale": "it",
       "is_published": true,
       "value": "Dichiarazione di successione online con un professionista reale: Geom. Lorenzo Armellin, iscritto all'Albo. Preventivo chiaro, documenti e pratica da casa — anche di persona a Pontedera."
+    },
+    {
+      "collection": "contatti",
+      "key": "whatsapp_cta",
+      "locale": "it",
+      "is_published": true,
+      "value": "Scrivi su WhatsApp"
     }
   ]
 }

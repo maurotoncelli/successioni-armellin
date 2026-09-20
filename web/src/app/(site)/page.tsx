@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getRequestLocale, t, tCta, tList } from "@/lib/locale";
 import Image from "next/image";
-import { ArrowRight, Check, Play, X } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
+import { ComeFunzionaStepArt } from "@/components/site/come-funziona-step-art";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { ButtonLink } from "@/components/ui/button";
@@ -61,6 +62,8 @@ export default async function HomePage() {
     "home",
     "faidate_confronto",
   );
+  const faidateDiy = await t("home", "faidate_col_diy", "Fai-da-te");
+  const faidateUs = await t("home", "faidate_col_us", "Con noi");
   const videoCta = await tCta("home", "come_funziona_video_cta", {
     label: "Guarda il video",
     href: "/come-funziona#video",
@@ -126,7 +129,7 @@ export default async function HomePage() {
 
       <TrustBar />
 
-      {/* Social proof: contatore animato "250+ successioni gestite" (data-driven). */}
+      {/* Social proof: esperienza sul campo (data-driven, senza 250+). */}
       <SuccessCounter />
 
       {/* Empatia editoriale: foto + tesi + vantaggi diseguali (catasto in picco). */}
@@ -142,7 +145,7 @@ export default async function HomePage() {
         />
       </Section>
 
-      {/* Come funziona — sequenza collegata + foto data-driven. */}
+      {/* Come funziona — sequenza collegata + illustrazioni. */}
       <Section id="come-funziona" tone="sand">
         <SectionHeading
           eyebrow={await t("home", "come_funziona_eyebrow", "Semplice")}
@@ -168,17 +171,7 @@ export default async function HomePage() {
                     {i + 1}
                   </span>
                   <div className="min-w-0 flex-1 pt-0.5 md:pt-0">
-                    {step.immagine?.src ? (
-                      <div className="relative mt-1 aspect-[4/3] overflow-hidden rounded-xl md:mt-5">
-                        <Image
-                          src={step.immagine.src}
-                          alt={step.immagine.alt}
-                          fill
-                          sizes="(max-width: 768px) 80vw, 280px"
-                          className="object-cover"
-                        />
-                      </div>
-                    ) : null}
+                    <ComeFunzionaStepArt index={i} title={step.titolo} />
                     <h3 className="mt-3 text-lg leading-snug sm:mt-4 sm:text-xl">
                       {step.titolo}
                     </h3>
@@ -227,45 +220,36 @@ export default async function HomePage() {
           intro={await t("home", "faidate_intro")}
         />
         <div className="mx-auto mt-6 max-w-4xl sm:mt-12">
-          <div className="relative grid grid-cols-[1.2fr_1fr_1fr] overflow-hidden rounded-2xl border border-primary/10 bg-bg shadow-md sm:grid-cols-[1.5fr_1fr_1fr]">
-            {/* Tre lastre distinte: label | fai-da-te (perla) | con noi (sabbia). */}
-            <div className="flex items-end border-b border-primary/10 bg-bg p-4 sm:p-5">
-              <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-text-muted/80">
-                {await t("home", "faidate_col_corner", "Confronto")}
-              </span>
-            </div>
-            <div className="flex items-end justify-center border-b border-s border-primary/10 bg-bg-muted p-4 sm:p-5">
-              <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-text-muted">
-                {await t("home", "faidate_col_diy", "Fai-da-te")}
-              </span>
-            </div>
-            <div className="relative flex items-end justify-center border-b border-s border-accent/20 bg-sand p-4 sm:p-5">
-              <span className="absolute -top-px left-0 right-0 h-1 bg-accent" />
-              <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-accent-dark">
-                {await t("home", "faidate_col_us", "Con noi")}
-              </span>
-            </div>
-
+          <div className="space-y-3">
             {confronto.map((row) => (
-              <div key={row.voce} className="contents">
-                <div className="flex items-center border-t border-primary/10 bg-bg p-3 text-sm font-medium text-primary sm:p-5">
+              <div
+                key={row.voce}
+                className="overflow-hidden rounded-2xl border border-primary/10 bg-bg shadow-sm"
+              >
+                <p className="border-b border-primary/10 px-4 py-3 font-display text-base text-primary sm:px-5 sm:text-lg">
                   {row.voce}
-                </div>
-                <div className="flex items-center justify-center gap-1.5 border-t border-s border-primary/10 bg-bg-muted p-3 text-center text-sm text-text-muted sm:gap-2 sm:p-5">
-                  <X className="h-4 w-4 shrink-0 text-error/70" />
-                  <span>{row.faidate}</span>
-                </div>
-                <div className="flex items-center justify-center gap-1.5 border-t border-s border-accent/15 bg-sand p-3 text-center text-sm font-semibold text-primary sm:gap-2 sm:p-5">
-                  <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-success/15 text-success">
-                    <Check className="h-3 w-3" strokeWidth={3} />
-                  </span>
-                  <span>{row.noi}</span>
+                </p>
+                <div className="grid sm:grid-cols-2">
+                  <div className="bg-bg-muted px-4 py-3.5 sm:px-5 sm:py-4">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-text-muted">
+                      {faidateDiy}
+                    </p>
+                    <p className="mt-1 text-sm leading-relaxed text-text-muted">
+                      {row.faidate}
+                    </p>
+                  </div>
+                  <div className="border-t border-accent/15 bg-sand px-4 py-3.5 sm:border-t-0 sm:border-s sm:px-5 sm:py-4">
+                    <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-accent-dark">
+                      {faidateUs}
+                    </p>
+                    <p className="mt-1 text-sm font-semibold leading-relaxed text-primary">
+                      {row.noi}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
-
-            {/* Chiusura: CTA a tutta larghezza sotto il confronto */}
-            <div className="col-span-3 border-t border-primary/10 bg-bg-muted/60 p-5 text-center">
+            <div className="pt-2 text-center">
               <ButtonLink href={heroCtaPrimary.href} variant="primary">
                 {heroCtaPrimary.label}
                 <ArrowRight className="h-4 w-4 rtl:rotate-180" />

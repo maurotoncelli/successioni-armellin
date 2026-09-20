@@ -192,7 +192,15 @@ export function SoftLead({
 
   return (
     <div className="rounded-2xl border border-primary/10 bg-bg p-4 sm:p-6">
-      <h3 className="text-lg font-semibold text-primary">{title}</h3>
+      <h3
+        className={cn(
+          "text-lg font-semibold text-primary",
+          kind === "callback" &&
+            "-mx-4 -mt-4 mb-3 rounded-t-2xl bg-sand px-4 py-3.5 text-primary sm:-mx-6 sm:-mt-6 sm:px-6",
+        )}
+      >
+        {title}
+      </h3>
       <p className="mt-1 text-sm text-text-muted">{description}</p>
 
       <div className="mt-4 grid gap-3 sm:grid-cols-2">

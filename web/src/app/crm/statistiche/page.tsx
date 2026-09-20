@@ -14,6 +14,7 @@ import { getQuoteStats } from "@/lib/quote-stats";
 import { getVideoStats } from "@/lib/video-stats";
 import { VIDEO_IDS, VIDEO_LABELS } from "@/lib/video-ids";
 import { CrmCard, SectionTitle } from "@/components/crm/ui";
+import { StatsAdjust } from "@/components/crm/stats-adjust";
 
 export const dynamic = "force-dynamic";
 
@@ -105,7 +106,12 @@ export default async function StatistichePage() {
           value={quoteStats.totalCompleted}
           label="Questionari completati"
           hint={`Pacchetto proposto ${quoteStats.byEsito.b} · Su misura ${quoteStats.byEsito.c} · Possibile esonero ${quoteStats.byEsito.a} · lead aperti ${leadsFromSite}`}
-        />
+        >
+          <StatsAdjust
+            kind="quote"
+            disabled={quoteStats.totalCompleted <= 0}
+          />
+        </KpiCard>
         <KpiCard
           icon={<CircleDollarSign className="h-5 w-5" />}
           value={`${kpi.revenueYtd.toLocaleString("it-IT")} €`}
@@ -126,7 +132,12 @@ export default async function StatistichePage() {
           value={videoStats.totalStarts}
           label="Riproduzioni video"
           hint={`Completati fino in fondo ${videoStats.totalCompletes}`}
-        />
+        >
+          <StatsAdjust
+            kind="video"
+            disabled={videoStats.totalStarts <= 0}
+          />
+        </KpiCard>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">
@@ -213,6 +224,11 @@ export default async function StatistichePage() {
                     ? ` · ${Math.round((clip.completes / clip.starts) * 100)}%`
                     : ""}
                 </p>
+                <StatsAdjust
+                  kind="video"
+                  videoId={id}
+                  disabled={clip.starts <= 0}
+                />
               </div>
             );
           })}
@@ -227,11 +243,13 @@ function KpiCard({
   value,
   label,
   hint,
+  children,
 }: {
   icon: React.ReactNode;
   value: string | number;
   label: string;
   hint?: string;
+  children?: React.ReactNode;
 }) {
   return (
     <CrmCard>
@@ -241,6 +259,7 @@ function KpiCard({
       <p className="mt-3 text-2xl font-semibold text-crm-text">{value}</p>
       <p className="text-xs text-crm-text2">{label}</p>
       {hint && <p className="mt-1 text-[11px] text-crm-muted">{hint}</p>}
+      {children}
     </CrmCard>
   );
 }

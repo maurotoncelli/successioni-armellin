@@ -361,7 +361,8 @@
         "suffix": "+",
         "eyebrow": "Erfahrung aus der Praxis",
         "label": "betreute Erbschaften",
-        "note": "Gesamtschätzung der im Laufe der Jahre von der Kanzlei betreuten Fälle, im Büro und online: jede Erbschaft persönlich betreut, eine nach der anderen."
+        "note": "Gesamtschätzung der im Laufe der Jahre von der Kanzlei betreuten Fälle, im Büro und online: jede Erbschaft persönlich betreut, eine nach der anderen.",
+        "headline": "Hunderte von Erbschaften, die Lorenzo betreut hat"
       }
     },
     {
@@ -369,7 +370,7 @@
       "key": "problema_title",
       "locale": "de",
       "is_published": true,
-      "value": "Eine Erbschaft, tausend Fragen. Wir nehmen Ihnen das ab."
+      "value": "Eine Erbschaft, ein Geometer, der sie von Anfang bis Ende betreut — alles online, mit Unterstützung."
     },
     {
       "collection": "home",
@@ -386,7 +387,8 @@
       "value": [
         {
           "titolo": "Keine Warteschlangen",
-          "testo": "Alles von zu Hause, auch vom Handy: keine Schlangen, keine Ämter."
+          "testo": "Alles von zu Hause, auch vom Handy: keine Schlangen, keine Ämter.",
+          "extra": "Prüfen Sie alles bequem in Ihrem persönlichen Bereich."
         },
         {
           "titolo": "Keine Fehler und Bußgelder",
@@ -1176,7 +1178,7 @@
       "key": "video_title",
       "locale": "de",
       "is_published": true,
-      "value": "Hast du eine Minute? Hör mir zu"
+      "value": "Der Vorteil, es online zu erledigen"
     },
     {
       "collection": "chi_siamo",
@@ -1831,7 +1833,7 @@
       "is_published": true,
       "value": [
         "Ab {price} €",
-        "250+ betreute Erbschaften",
+        "Hunderte betreute Erbschaften",
         "Komplett online, von zu Hause"
       ]
     },
@@ -2546,7 +2548,7 @@
       "locale": "de",
       "is_published": true,
       "value": {
-        "label": "Zur Zahlung",
+        "label": "Jetzt kaufen und starten",
         "href": "/checkout"
       }
     },
@@ -5530,6 +5532,13 @@
       "locale": "de",
       "is_published": true,
       "value": "Erbschaftserklärung online mit Geom. Lorenzo Armellin. Klarer Kostenvoranschlag — auch persönlich in Pontedera."
+    },
+    {
+      "collection": "contatti",
+      "key": "whatsapp_cta",
+      "locale": "de",
+      "is_published": true,
+      "value": "Auf WhatsApp schreiben"
     }
   ]
 }

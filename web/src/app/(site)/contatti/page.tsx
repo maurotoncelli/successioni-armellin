@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { getRequestLocale, t, tObj } from "@/lib/locale";
 import Image from "next/image";
-import { Phone, Mail, MapPin, ExternalLink } from "lucide-react";
+import { Phone, Mail, MapPin, ExternalLink, MessageCircle } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { Card } from "@/components/ui/card";
+import { ButtonLink } from "@/components/ui/button";
 import { ContactForm } from "@/components/site/contact-form";
 import {
   CONTACT_UI_IT,
@@ -79,7 +80,17 @@ export default async function ContattiPage() {
               title={telefono.label}
               value={telefono.numero}
               href={telefono.cta_chiama}
-            />
+            >
+              <ButtonLink
+                href={telefono.cta_whatsapp}
+                variant="whatsapp"
+                className="mt-4 w-full"
+                cta="contatti_whatsapp"
+              >
+                <MessageCircle className="h-4 w-4" />
+                {await t("contatti", "whatsapp_cta", "Scrivi su WhatsApp")}
+              </ButtonLink>
+            </ContactInfo>
             <ContactInfo
               icon={<Mail className="h-5 w-5 text-accent" />}
               title={mapUi.email_label}
@@ -185,29 +196,34 @@ function ContactInfo({
   title,
   value,
   href,
+  children,
 }: {
   icon: React.ReactNode;
   title: string;
   value: string;
   href?: string;
+  children?: React.ReactNode;
 }) {
   return (
-    <Card className="flex items-center gap-4">
-      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-sand">
-        {icon}
-      </span>
-      <div>
-        <p className="text-sm font-semibold uppercase tracking-wide text-text-muted">
-          {title}
-        </p>
-        {href ? (
-          <a href={href} className="text-primary hover:text-accent">
-            {value}
-          </a>
-        ) : (
-          <p className="text-primary">{value}</p>
-        )}
+    <Card>
+      <div className="flex items-center gap-4">
+        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-sand">
+          {icon}
+        </span>
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-wide text-text-muted">
+            {title}
+          </p>
+          {href ? (
+            <a href={href} className="text-primary hover:text-accent">
+              {value}
+            </a>
+          ) : (
+            <p className="text-primary">{value}</p>
+          )}
+        </div>
       </div>
+      {children}
     </Card>
   );
 }

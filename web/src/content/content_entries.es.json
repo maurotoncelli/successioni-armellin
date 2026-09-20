@@ -361,7 +361,8 @@
         "suffix": "+",
         "eyebrow": "Experiencia real",
         "label": "sucesiones gestionadas",
-        "note": "Estimación global de los expedientes gestionados por el despacho a lo largo de los años, en oficina y online: cada sucesión llevada en persona, una a la vez."
+        "note": "Estimación global de los expedientes gestionados por el despacho a lo largo de los años, en oficina y online: cada sucesión llevada en persona, una a la vez.",
+        "headline": "Cientos de sucesiones seguidas por Lorenzo"
       }
     },
     {
@@ -369,7 +370,7 @@
       "key": "problema_title",
       "locale": "es",
       "is_published": true,
-      "value": "Una sucesión, mil dudas. Te la quitamos de encima."
+      "value": "Una sucesión, un geometra que se ocupa de ella de principio a fin, todo online, con asistencia."
     },
     {
       "collection": "home",
@@ -386,7 +387,8 @@
       "value": [
         {
           "titolo": "Sin colas",
-          "testo": "Todo desde casa, incluso desde el móvil: sin colas ni ventanillas."
+          "testo": "Todo desde casa, incluso desde el móvil: sin colas ni ventanillas.",
+          "extra": "Compruébalo cómodamente desde tu área personal."
         },
         {
           "titolo": "Cero errores y sanciones",
@@ -1176,7 +1178,7 @@
       "key": "video_title",
       "locale": "es",
       "is_published": true,
-      "value": "¿Tienes un minuto? Escúchame"
+      "value": "La ventaja de hacerlo online"
     },
     {
       "collection": "chi_siamo",
@@ -1831,7 +1833,7 @@
       "is_published": true,
       "value": [
         "Desde {price} €",
-        "250+ sucesiones gestionadas",
+        "Cientos de sucesiones gestionadas",
         "Todo online, desde casa"
       ]
     },
@@ -2546,7 +2548,7 @@
       "locale": "es",
       "is_published": true,
       "value": {
-        "label": "Proceder al pago",
+        "label": "Compra y empieza ahora",
         "href": "/checkout"
       }
     },
@@ -5530,6 +5532,13 @@
       "locale": "es",
       "is_published": true,
       "value": "Declaración de sucesión en línea con un profesional real: Geom. Lorenzo Armellin, inscrito en el Colegio. Presupuesto claro, documentos y expediente desde casa — también en persona en Pontedera."
+    },
+    {
+      "collection": "contatti",
+      "key": "whatsapp_cta",
+      "locale": "es",
+      "is_published": true,
+      "value": "Escríbenos por WhatsApp"
     }
   ]
 }

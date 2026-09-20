@@ -5,45 +5,46 @@ import { Container } from "@/components/ui/container";
 import { CountUp } from "@/components/site/count-up";
 
 /*
-  Banda "numeri reali" della home: contatore animato delle successioni gestite
-  + riga oro che si riempie in sincrono col numero. Sfondo sabbia, tipografia
-  display navy, accenti oro: stessa grammatica di TrustBar/SectionHeading.
-  Layout: mobile impilato e centrato; da sm numero+etichetta a inizio riga
-  (start) e nota a fine riga (end) — proprietà logiche, quindi ok anche in RTL.
-  La riga: SSR/no-JS piena; con JS e animazioni permesse parte vuota (prima
-  del paint) e si riempie al via del contatore. Mutazione DOM via ref, non
-  setState (regola lint react-hooks/set-state-in-effect).
+  Banda social proof home. Due modi (data-driven):
+  - headline: frase senza numero (es. «Centinaia di successioni seguite da Lorenzo»)
+  - target+label: contatore animato (legacy)
 */
+
 export function SuccessCounterBand({
   target,
   suffix,
   eyebrow,
   label,
   note,
+  headline,
 }: {
-  target: number;
-  suffix: string;
+  target?: number;
+  suffix?: string;
   eyebrow: string;
-  label: string;
+  label?: string;
   note: string;
+  headline?: string;
 }) {
   const fillRef = useRef<HTMLDivElement>(null);
+  const useHeadline = Boolean(headline);
 
   useLayoutEffect(() => {
+    if (useHeadline) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce || !("IntersectionObserver" in window)) return;
     if (fillRef.current) fillRef.current.style.width = "0%";
-  }, []);
+  }, [useHeadline]);
 
   const onStart = useCallback(() => {
     if (fillRef.current) fillRef.current.style.width = "100%";
   }, []);
 
+  const aria = useHeadline
+    ? `${eyebrow} ${headline}`
+    : `${target}${suffix} ${label}`;
+
   return (
-    <section
-      aria-label={`${target}${suffix} ${label}`}
-      className="relative overflow-hidden bg-sand"
-    >
+    <section aria-label={aria.trim()} className="relative overflow-hidden bg-sand">
       <div
         aria-hidden
         className="pointer-events-none absolute -bottom-24 -start-24 h-64 w-64 rounded-full bg-accent/10 blur-3xl"
@@ -56,17 +57,23 @@ export function SuccessCounterBand({
                 {eyebrow}
               </p>
             )}
-            <div className="flex flex-wrap items-baseline justify-center gap-x-3 gap-y-1 sm:justify-start">
-              <CountUp
-                target={target}
-                suffix={suffix}
-                onStart={onStart}
-                className="font-display text-5xl leading-none text-primary sm:text-6xl lg:text-7xl"
-              />
-              <span className="text-lg font-semibold leading-tight text-primary sm:text-xl lg:text-2xl">
-                {label}
-              </span>
-            </div>
+            {useHeadline ? (
+              <p className="font-display text-2xl leading-tight text-primary sm:text-3xl lg:text-4xl">
+                {headline}
+              </p>
+            ) : (
+              <div className="flex flex-wrap items-baseline justify-center gap-x-3 gap-y-1 sm:justify-start">
+                <CountUp
+                  target={target ?? 0}
+                  suffix={suffix ?? ""}
+                  onStart={onStart}
+                  className="font-display text-5xl leading-none text-primary sm:text-6xl lg:text-7xl"
+                />
+                <span className="text-lg font-semibold leading-tight text-primary sm:text-xl lg:text-2xl">
+                  {label}
+                </span>
+              </div>
+            )}
           </div>
           {note && (
             <p className="max-w-md text-sm leading-relaxed text-text-muted sm:max-w-sm sm:text-base lg:max-w-md">

@@ -2,25 +2,26 @@ import { tObj } from "@/lib/locale";
 import { SuccessCounterBand } from "@/components/site/success-counter-band";
 
 /*
-  Contatore "successioni gestite" della home (social proof, @02/@03).
-  Dati da content_entries `home.success_counter` (per lingua, fallback IT):
-  il numero e' un dato di business dichiarato da Lorenzo — aggiornarlo li',
-  non nel codice.
+  Social proof home: `home.success_counter`.
+  Se c'è `headline`, niente contatore 250+: mostriamo la frase (Mauro 20/09).
 */
+
 type SuccessCounterContent = {
   target: number;
   suffix: string;
   eyebrow: string;
   label: string;
   note: string;
+  headline?: string;
 };
 
 const FALLBACK: SuccessCounterContent = {
   target: 250,
   suffix: "+",
-  eyebrow: "Numeri reali",
-  label: "successioni gestite",
+  eyebrow: "Esperienza sul campo",
+  label: "successioni seguite",
   note: "",
+  headline: "Centinaia di successioni seguite da Lorenzo",
 };
 
 export async function SuccessCounter() {
@@ -29,7 +30,17 @@ export async function SuccessCounter() {
     "success_counter",
     FALLBACK,
   );
+  const headline = (c.headline ?? "").trim();
   const target = Number(c.target);
+  if (headline) {
+    return (
+      <SuccessCounterBand
+        eyebrow={c.eyebrow ?? ""}
+        headline={headline}
+        note={c.note ?? ""}
+      />
+    );
+  }
   if (!Number.isFinite(target) || target <= 0 || !c.label) return null;
 
   return (

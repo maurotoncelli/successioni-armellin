@@ -361,7 +361,8 @@
         "suffix": "+",
         "eyebrow": "Përvojë në terren",
         "label": "trashëgimi të ndjekura",
-        "note": "Vlerësim i përgjithshëm i praktikave të ndjekura nga studioja ndër vite, në zyrë dhe online: çdo trashëgimi e menaxhuar personalisht, një nga një."
+        "note": "Vlerësim i përgjithshëm i praktikave të ndjekura nga studioja ndër vite, në zyrë dhe online: çdo trashëgimi e menaxhuar personalisht, një nga një.",
+        "headline": "Qindra trashëgimi të ndjekura nga Lorenzo"
       }
     },
     {
@@ -369,7 +370,7 @@
       "key": "problema_title",
       "locale": "sq",
       "is_published": true,
-      "value": "Një trashëgim, mijë dyshime. Ju e heqim nga shpatullat."
+      "value": "Një trashëgimi, një gjeometër që merret me të nga fillimi në fund, të gjitha online, me mbështetje."
     },
     {
       "collection": "home",
@@ -386,7 +387,8 @@
       "value": [
         {
           "titolo": "Pa radhë",
-          "testo": "Gjithçka nga shtëpia, edhe nga telefoni: pa radhë, pa sportele."
+          "testo": "Gjithçka nga shtëpia, edhe nga telefoni: pa radhë, pa sportele.",
+          "extra": "Kontrollo rehat nga zona jote personale."
         },
         {
           "titolo": "Zero gabime dhe gjoba",
@@ -1176,7 +1178,7 @@
       "key": "video_title",
       "locale": "sq",
       "is_published": true,
-      "value": "Ke një minutë? Më dëgjo"
+      "value": "Avantazhi i ta bërit online"
     },
     {
       "collection": "chi_siamo",
@@ -1831,7 +1833,7 @@
       "is_published": true,
       "value": [
         "Nga {price} €",
-        "250+ trashëgimi të ndjekura",
+        "Qindra trashëgimi të ndjekura",
         "Gjithçka online, nga shtëpia"
       ]
     },
@@ -2546,7 +2548,7 @@
       "locale": "sq",
       "is_published": true,
       "value": {
-        "label": "Vazhdoni me pagesën",
+        "label": "Bli dhe fillo tani",
         "href": "/checkout"
       }
     },
@@ -5530,6 +5532,13 @@
       "locale": "sq",
       "is_published": true,
       "value": "Deklaratë trashëgimi online me profesionist real: Geom. Lorenzo Armellin, i regjistruar në Albo. Preventiv i qartë, dokumente dhe praktikë nga shtëpia — edhe personalisht në Pontedera."
+    },
+    {
+      "collection": "contatti",
+      "key": "whatsapp_cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Shkruaj në WhatsApp"
     }
   ]
 }

@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-type Item = { titolo: string; testo: string };
+type Item = { titolo: string; testo: string; extra?: string };
 
 /**
  * Empatia editoriale: due colonne (foto | tesi), pannello sabbia.
@@ -43,6 +43,11 @@ export function EmpatiaBlock({
                 <p className="mt-1 max-w-md text-sm leading-relaxed text-text-muted sm:text-base">
                   {item.testo}
                 </p>
+                {item.extra ? (
+                  <p className="mt-1 max-w-md text-sm leading-relaxed text-text-muted sm:text-base">
+                    {item.extra}
+                  </p>
+                ) : null}
               </li>
             ))}
           </ul>

@@ -19,6 +19,10 @@
   Nota legale (Codice del consumo, art. 17-bis): lo sconto va riferito al
   prezzo più basso degli ultimi 30 giorni. Il listino 290/490 è in vigore da
   mesi, quindi il prezzo barrato è corretto. NON prorogare all'infinito.
+
+  Mauro 20/09: confermato, lo sconto SCADÈ il 25/09 e poi si toglie.
+  Non estendere PROMO_ENDS_AT. Dopo la mezzanotte IT del 25/09 il banner
+  sparisce da solo (getActivePromo → null). Cleanup UI/env: dopo quella data.
 */
 
 export type Promo = {

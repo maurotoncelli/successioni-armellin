@@ -361,7 +361,8 @@
         "suffix": "+",
         "eyebrow": "Hands-on experience",
         "label": "successions handled",
-        "note": "Overall estimate of the cases handled by the practice over the years, in the office and online: every succession managed in person, one at a time."
+        "note": "Overall estimate of the cases handled by the practice over the years, in the office and online: every succession managed in person, one at a time.",
+        "headline": "Hundreds of successions handled by Lorenzo"
       }
     },
     {
@@ -369,7 +370,7 @@
       "key": "problema_title",
       "locale": "en",
       "is_published": true,
-      "value": "A succession, a thousand doubts. We take it off your shoulders."
+      "value": "One succession, a surveyor who handles it from start to finish, fully online, with support."
     },
     {
       "collection": "home",
@@ -386,7 +387,8 @@
       "value": [
         {
           "titolo": "No queues",
-          "testo": "Everything from home, even on your phone: no queues, no counters."
+          "testo": "Everything from home, even on your phone: no queues, no counters.",
+          "extra": "Check everything at your convenience from your personal area."
         },
         {
           "titolo": "No errors or penalties",
@@ -1176,7 +1178,7 @@
       "key": "video_title",
       "locale": "en",
       "is_published": true,
-      "value": "Got a minute? Hear me out"
+      "value": "The advantage of doing it online"
     },
     {
       "collection": "chi_siamo",
@@ -1845,7 +1847,7 @@
       "is_published": true,
       "value": [
         "From €{price}",
-        "250+ successions handled",
+        "Hundreds of successions handled",
         "Fully online, from home"
       ]
     },
@@ -2560,7 +2562,7 @@
       "locale": "en",
       "is_published": true,
       "value": {
-        "label": "Proceed to payment",
+        "label": "Buy and start now",
         "href": "/checkout"
       }
     },
@@ -5544,6 +5546,13 @@
       "locale": "en",
       "is_published": true,
       "value": "Online succession declaration with a real professional: Geom. Lorenzo Armellin, Board-registered. Clear quote, documents and case from home — or in person in Pontedera."
+    },
+    {
+      "collection": "contatti",
+      "key": "whatsapp_cta",
+      "locale": "en",
+      "is_published": true,
+      "value": "Write on WhatsApp"
     }
   ]
 }

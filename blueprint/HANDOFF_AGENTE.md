@@ -1,6 +1,6 @@
 # HANDOFF per il prossimo agente
 
-> Documento di passaggio di consegne. Aggiornato: **2026-09-18**.
+> Documento di passaggio di consegne. Aggiornato: **2026-09-20**.
 > Scopo: permettere a un nuovo agente (senza contesto) di riprendere il lavoro.
 > Riferimenti chiave: @RUNBOOK_GoLive (procedura go-live), @SPEC_Env_Vars,
 > @DOMANDE_PER_LORENZO, @PROSSIMO_INCONTRO_LORENZO, @07_Stack.
@@ -15,6 +15,43 @@ Chat precedente TR/FR/SQ + EN/AR + SEO:
 **NON committare** `bozza video/` (asset untracked).  
 **NON toccare** `web/src/app/crm/**` per i18n (CRM sempre IT/LTR).  
 **Traduzioni UI = agente** (niente OpenAI/API). Preferenza Mauro: subagent **Composer 2.5** per le mappe stringhe.
+
+---
+
+## ★★ COPY + UI 20/09 (13 punti Mauro)
+
+Sito + CRM, data-driven, 11 lingue. Icone/illustrazioni generate (niente foto stock).
+
+1. **Promo −20%**: Mauro conferma, **non prorogare**. Scade **25/09/2026 23:59 IT**
+   da sola (`lib/promo.ts` / `PROMO_ENDS_AT`). Dopo quella data togliere banner
+   se restasse visibile e `PROMO_PERCENT=0` in Vercel. Codice consumo 17-bis:
+   una proroga farebbe leggere lo sconto come permanente (e “truffa”).
+2. **Trust bar**: ogni voce (icona + titolo) in riquadro `rounded-xl/2xl` con
+   `border-accent` su fondo navy.
+3. **Esperienza sul campo**: niente 250+ CountUp. `home.success_counter.headline`
+   = «Centinaia di successioni seguite da Lorenzo». Stesso su
+   `come_funziona.hero_trust_items` (niente «250+»).
+4. **Claim** `home.problema_title`: «Una successione, un geometra che se ne
+   occupa dall'inizio alla fine, tutto online, con supporto.»
+5. **Zero code**: riga extra `problema_vantaggi[0].extra` —
+   «Controlla comodamente dalla tua area personale.»
+6. **Come funziona (home)**: 3 illustrazioni SVG (`come-funziona-step-art.tsx`)
+   al posto delle foto jpg.
+7. **Confronto Agenzia Entrate**: stesse 5 righe, card due colonne (Fai-da-te /
+   Con noi) senza X/V.
+8. **Video** `chi_siamo.video_title`: «Il vantaggio di farlo online».
+9. **CRM Statistiche**: tasto «Togli 1» + Annulla su questionari e views video
+   (`lib/video-stats.ts`, `lib/quote-stats.ts`, `crm/statistiche/actions.ts`).
+   NO-DDL, JSON Storage.
+10. **Guide**: strumenti sotto gli articoli (`guide-index.tsx`).
+11. **Contatti**: bottone verde WhatsApp sotto il telefono (`contatti.whatsapp_cta`).
+12. **CTA esito B**: `grazie.esito_b_cta` = «Acquista e inizia ora» (non
+    «Procedi al pagamento»).
+13. **Fatti richiamare**: titolo con sfondo sabbia, form bianco (`soft-lead.tsx`).
+
+File: `trust-bar.tsx`, `success-counter*.tsx`, `empatia-block.tsx`,
+`come-funziona-step-art.tsx`, `page.tsx` (home), `guide-index.tsx`,
+`contatti/page.tsx`, `soft-lead.tsx`, `crm/statistiche/*`, 11 `content_entries`.
 
 ---
 
