@@ -29,7 +29,6 @@ import {
   IconExternal,
   IconStudio,
 } from "@/components/site/come-funziona-icons";
-import { ComeFunzionaStepArt } from "@/components/site/come-funziona-step-art";
 import { ComeFunzionaPanels } from "@/components/site/come-funziona-panels";
 import { getPromoContext, PromoPrice, PromoValidUntil } from "@/components/site/promo-ui";
 
@@ -65,6 +64,21 @@ function pickProcessFaqs(faqs: Faq[]): Faq[] {
   }
   return picked;
 }
+
+const stepImages = [
+  {
+    src: "/images/come-funziona-step-1-quiz.jpg",
+    alt: "Persona al computer che risponde alle domande del preventivo online",
+  },
+  {
+    src: "/images/come-funziona-step-2-documenti.jpg",
+    alt: "Persona che fotografa un documento con lo smartphone",
+  },
+  {
+    src: "/images/come-funziona-step-3-lorenzo.jpg",
+    alt: "Geom. Lorenzo Armellin al computer mentre predispone la pratica",
+  },
+] as const;
 
 export default async function ComeFunzionaPage() {
   const steps = await tList<Step>("come_funziona", "steps");
@@ -200,7 +214,7 @@ export default async function ComeFunzionaPage() {
         </div>
       </Section>
 
-      {/* Sequenza: nodi numerati + stesse illustrazioni della home. */}
+      {/* Sequenza: nodi numerati + foto. */}
       <Section>
         <ol
           data-track-section="steps"
@@ -212,7 +226,7 @@ export default async function ComeFunzionaPage() {
           />
           {steps.map((step, i) => {
             const isLast = i === steps.length - 1;
-            const art = <ComeFunzionaStepArt index={i} title={step.titolo} />;
+            const img = stepImages[i];
             return (
               <li key={step.numero} className="relative md:px-6 lg:px-8">
                 {!isLast && (
@@ -226,18 +240,34 @@ export default async function ComeFunzionaPage() {
                     {step.numero}
                   </span>
                   <div className="min-w-0 flex-1 pt-0.5 md:pt-0">
-                    {i === 0 ? (
-                      <Link
-                        href={previewHref}
-                        data-cta="come_funziona_step1_image"
-                        aria-label={step.titolo}
-                        className="group block"
-                      >
-                        {art}
-                      </Link>
-                    ) : (
-                      art
-                    )}
+                    {img ? (
+                      i === 0 ? (
+                        <Link
+                          href={previewHref}
+                          data-cta="come_funziona_step1_image"
+                          aria-label={step.titolo}
+                          className="group relative mt-1 block aspect-[4/3] overflow-hidden rounded-xl md:mt-4"
+                        >
+                          <Image
+                            src={img.src}
+                            alt={img.alt}
+                            fill
+                            sizes="(max-width: 768px) 80vw, 280px"
+                            className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                          />
+                        </Link>
+                      ) : (
+                        <div className="relative mt-1 aspect-[4/3] overflow-hidden rounded-xl md:mt-4">
+                          <Image
+                            src={img.src}
+                            alt={img.alt}
+                            fill
+                            sizes="(max-width: 768px) 80vw, 280px"
+                            className="object-cover"
+                          />
+                        </div>
+                      )
+                    ) : null}
                     <h3 className="mt-3 text-lg leading-snug sm:mt-4 sm:text-xl">
                       {i === 0 ? (
                         <Link

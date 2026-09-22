@@ -3,7 +3,6 @@ import Link from "next/link";
 import { getRequestLocale, t, tCta, tList } from "@/lib/locale";
 import Image from "next/image";
 import { ArrowRight, Play } from "lucide-react";
-import { ComeFunzionaStepArt } from "@/components/site/come-funziona-step-art";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { ButtonLink } from "@/components/ui/button";
@@ -153,7 +152,7 @@ export default async function HomePage() {
         />
       </Section>
 
-      {/* Come funziona — sequenza collegata + illustrazioni. */}
+      {/* Come funziona — sequenza collegata + foto data-driven. */}
       <Section id="come-funziona" tone="sand">
         <SectionHeading
           eyebrow={await t("home", "come_funziona_eyebrow", "Semplice")}
@@ -179,7 +178,17 @@ export default async function HomePage() {
                     {i + 1}
                   </span>
                   <div className="min-w-0 flex-1 pt-0.5 md:pt-0">
-                    <ComeFunzionaStepArt index={i} title={step.titolo} />
+                    {step.immagine?.src ? (
+                      <div className="relative mt-1 aspect-[4/3] overflow-hidden rounded-xl md:mt-5">
+                        <Image
+                          src={step.immagine.src}
+                          alt={step.immagine.alt}
+                          fill
+                          sizes="(max-width: 768px) 80vw, 280px"
+                          className="object-cover"
+                        />
+                      </div>
+                    ) : null}
                     <h3 className="mt-3 text-lg leading-snug sm:mt-4 sm:text-xl">
                       {step.titolo}
                     </h3>
