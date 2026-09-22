@@ -8,7 +8,7 @@ import {
   type SoftLeadUiLabels,
 } from "@/lib/site-ui-labels";
 import Link from "next/link";
-import { CheckCircle2, Phone, CreditCard, MessageCircle, Tag } from "lucide-react";
+import { CheckCircle2, Phone, MessageCircle } from "lucide-react";
 import {
   formatAmount,
   getPromoContext,
@@ -133,6 +133,18 @@ export default async function GraziePage({
     "grazie",
     "esito_b_whatsapp_hint",
     "Nessun impegno: ti risponde Lorenzo in persona, di solito entro poche ore.",
+  );
+  const feeLabel = await t("grazie", "esito_b_fee_label", "Onorario");
+  const rethinkNote = await t(
+    "grazie",
+    "esito_b_rethink",
+    "Hai 14 giorni per ripensarci, con rimborso.",
+  );
+  const payLead = await t("grazie", "esito_b_pay_lead", "Se hai già deciso");
+  const callbackExtras = await t(
+    "grazie",
+    "soft_callback_extras",
+    "Email o orario (facoltativi)",
   );
 
   // Lista documenti data-driven (stessi nomi della checklist); fallback statico.
@@ -288,190 +300,198 @@ export default async function GraziePage({
   ].join("|");
 
   return (
-    <Section tone="muted">
+    <Section tone="muted" className="py-4 sm:py-12">
       <TrackQuoteComplete snapshot={crmSnapshot} fingerprint={trackFingerprint} />
       <div className="mx-auto max-w-2xl">
-        <div className="mb-4 sm:mb-6">
+        <div className="mb-3 sm:mb-5">
           <BackLink label={chrome.back} fallbackHref="/preventivo" />
         </div>
-        {/* Hero compatto su mobile: prezzo e bottoni devono entrare nella
-            prima schermata (390x844). */}
-        <div className="text-center">
-          <CheckCircle2 className="mx-auto h-9 w-9 text-success sm:h-12 sm:w-12" />
-          <h1 className="mt-2 text-2xl sm:mt-4 sm:text-4xl">
-            {await t("grazie", "header_title", "Ecco il risultato per il tuo caso")}
-          </h1>
-        </div>
+        <h1 className="text-xl leading-tight sm:text-3xl">
+          {await t("grazie", "header_title", "Ecco il risultato per il tuo caso")}
+        </h1>
 
-        <Card className="mt-5 sm:mt-10">
-          {esito === "b" && (
-            <div className="flex items-start gap-4">
-              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-sand">
-                <CreditCard className="h-7 w-7 text-accent" />
-              </span>
-              <div className="w-full">
-                <h2 className="text-xl">{await t("grazie", "esito_b_title")}</h2>
-                {suggestedPkg && (
-                  <div className="mt-3 rounded-[10px] border border-accent/30 bg-sand/50 p-4">
-                    <div className="flex items-baseline justify-between gap-3">
-                      <span className="font-display text-lg font-semibold text-primary">
-                        {(
-                          await t(
-                            "grazie",
-                            "esito_b_package_line",
-                            "Pacchetto {name}",
-                          )
-                        ).replace("{name}", suggestedPkg.name)}
-                      </span>
-                      <span
-                        className={
-                          suggestedPkg.surcharges.length > 0 || suggestedPkg.discount
-                            ? "shrink-0 font-display text-lg font-semibold text-primary"
-                            : "shrink-0 font-display text-xl font-bold text-accent"
-                        }
-                      >
-                        {suggestedPkg.discount ? (
-                          <s className="decoration-text-muted/70">{suggestedPkg.price}&euro;</s>
-                        ) : (
-                          <>{suggestedPkg.price}&euro;</>
-                        )}
-                      </span>
-                    </div>
-                    {suggestedPkg.tagline && (
-                      <p className="mt-1 text-sm text-text-muted">
-                        {suggestedPkg.tagline}
-                      </p>
-                    )}
-                    {/* Oltre la capienza inclusa (3 immobili / 5 eredi): ogni
-                        extra e' una riga esplicita, poi lo sconto promo (se
-                        attivo) e il totale. Il listino in vetrina resta
-                        290 / 490 / su misura. */}
-                    {(suggestedPkg.surcharges.length > 0 || suggestedPkg.discount) && (
-                      <div className="mt-3 space-y-1.5 border-t border-accent/20 pt-3 text-sm">
-                        {suggestedPkg.surcharges.map((s) => (
-                          <div
-                            key={s.key}
-                            className="flex items-baseline justify-between gap-3"
-                          >
-                            <span className="text-text">{s.label}</span>
-                            <span className="shrink-0 font-medium text-primary">
-                              +{s.amount}&euro;
-                            </span>
-                          </div>
-                        ))}
-                        {suggestedPkg.discount && (
-                          <div className="flex items-baseline justify-between gap-3">
-                            <span className="inline-flex items-center gap-1.5 font-medium text-accent-dark">
-                              <Tag className="h-3.5 w-3.5" />
-                              {suggestedPkg.discount.label}
-                            </span>
-                            <span className="shrink-0 font-semibold text-accent-dark">
-                              &minus;{formatAmount(suggestedPkg.discount.amount, promoCtx.intlLocale)}&euro;
-                            </span>
-                          </div>
-                        )}
-                        <div className="flex items-baseline justify-between gap-3 border-t border-accent/20 pt-2">
-                          <span className="font-semibold text-primary">
-                            {checkoutUi.total_fee}
-                          </span>
-                          <span className="shrink-0 font-display text-2xl font-bold text-accent">
-                            {formatAmount(suggestedPkg.total, promoCtx.intlLocale)}&euro;
+        {esito === "b" && (
+          <>
+            <Card className="mt-4 p-4 sm:mt-8 sm:p-6">
+              <p className="text-sm leading-snug text-text">
+                {await t(
+                  "grazie",
+                  "esito_b_included_note",
+                  "Il geometra è Lorenzo: voltura, dichiarazione e invio all'Agenzia. Nessun professionista esterno e nessuna voce in più dopo.",
+                )}
+              </p>
+              {suggestedPkg && (
+                <div className="mt-3">
+                  <p className="text-sm font-medium text-primary">
+                    {(
+                      await t("grazie", "esito_b_package_line", "Pacchetto {name}")
+                    ).replace("{name}", suggestedPkg.name)}
+                  </p>
+                  {suggestedPkg.surcharges.length > 0 && (
+                    <div className="mt-2 space-y-1 text-sm">
+                      {suggestedPkg.surcharges.map((s) => (
+                        <div
+                          key={s.key}
+                          className="flex items-baseline justify-between gap-3"
+                        >
+                          <span className="text-text">{s.label}</span>
+                          <span className="shrink-0 font-medium text-primary">
+                            +{s.amount}&euro;
                           </span>
                         </div>
-                      </div>
-                    )}
-                    {/* Promo a tempo: risparmio, subito sotto il totale,
-                        prima dei bottoni. */}
-                    {suggestedPkg.discount && promoCtx.promo && (
-                      <p className="mt-3 text-xs font-medium text-accent-dark">
-                        {promoCtx.ui.save_line.replace(
-                          "{amount}",
-                          formatAmount(suggestedPkg.discount.amount, promoCtx.intlLocale),
+                      ))}
+                    </div>
+                  )}
+                  <p className="mt-3 text-[11px] font-medium uppercase tracking-wide text-text-muted">
+                    {feeLabel}
+                  </p>
+                  <p className="mt-0.5 flex flex-wrap items-baseline gap-x-2">
+                    <span className="font-display text-4xl font-bold leading-none text-primary">
+                      {formatAmount(suggestedPkg.total, promoCtx.intlLocale)}&euro;
+                    </span>
+                    {suggestedPkg.discount && (
+                      <s className="text-base font-medium text-text-muted decoration-text-muted/70">
+                        {formatAmount(
+                          suggestedPkg.total + suggestedPkg.discount.amount,
+                          promoCtx.intlLocale,
                         )}
-                      </p>
+                        &euro;
+                      </s>
                     )}
-                    {/* Il prezzo da solo fa chiudere la pagina (GA4 11/09:
-                        1-2 s di permanenza). Subito sotto: cosa include (il
-                        geometra e' Lorenzo, niente extra dopo) e che le imposte
-                        sono a parte con chiunque. */}
-                    <p className="mt-3 flex items-start gap-2 text-sm text-text">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-success" />
-                      <span>
-                        {await t(
-                          "grazie",
-                          "esito_b_included_note",
-                          "Tutto incluso: il geometra è Lorenzo. Nessun professionista esterno da pagare a parte e nessuna voce aggiuntiva dopo.",
-                        )}
-                      </span>
-                    </p>
-                    <p className="mt-2 text-xs text-text-muted">
-                      {await t(
-                        "grazie",
-                        "esito_b_taxes_note",
-                        "Le imposte di legge sono a parte con chiunque: le calcoliamo sul tuo caso, te le comunichiamo prima e le versi direttamente allo Stato.",
-                      )}
-                    </p>
-                  </div>
-                )}
-                {/* Bottoni SUBITO sotto il prezzo (su mobile devono stare nella
-                    prima schermata) e WhatsApp per primo: chi non e' pronto a
-                    pagare ha un'uscita leggera prima di chiudere. Il pagamento
-                    resta li', secondo. */}
-                <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <ButtonLink
-                    href={
-                      suggestedPkg
-                        ? `${waBase}${waBase.includes("?") ? "&" : "?"}text=${encodeURIComponent(
-                            waPrefillQuoteTpl
-                              .replace("{package}", suggestedPkg.name)
-                              .replace("{total}", formatAmount(suggestedPkg.total, promoCtx.intlLocale)),
-                          )}`
-                        : waHrefEsitoB
-                    }
-                    variant="whatsapp"
-                    className="w-full sm:w-auto"
-                    cta="grazie_esito_b_whatsapp"
-                  >
-                    <MessageCircle className="h-4 w-4" />
-                    {waQuoteLabel}
-                  </ButtonLink>
-                  <ButtonLink
-                    href={checkoutHref}
-                    variant="primary"
-                    className="w-full sm:w-auto"
-                    cta="grazie_esito_b_paga"
-                  >
-                    {(await tCta("grazie", "esito_b_cta")).label}
-                  </ButtonLink>
+                  </p>
                 </div>
-                <p className="mt-3 flex items-start gap-2 text-xs text-text sm:text-sm">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-success" />
-                  <span>
-                    {await t(
-                      "grazie",
-                      "esito_b_after_pay",
-                      "Dopo il pagamento Lorenzo ti chiama, ti apre l'area personale e parti dai documenti. Hai 14 giorni per ripensarci.",
-                    )}
-                  </span>
-                </p>
-                <p className="mt-2 text-xs text-text-muted">{waQuoteHint}</p>
-                {/* Cosa e' compreso: leggibile subito sotto prezzo e bottoni
-                    (decisione 15/09), ma DOPO i bottoni cosi' su mobile il
-                    pagamento resta vicino alla cifra. */}
-                {suggestedPkg && (
-                  <IncludedList
-                    ctx={promoCtx}
-                    compact
-                    className="mt-5 rounded-[10px] border border-primary/10 bg-bg-muted/60 p-4"
-                  />
+              )}
+              <p className="mt-3 text-xs leading-relaxed text-text-muted">
+                {await t(
+                  "grazie",
+                  "esito_b_taxes_note",
+                  "Le imposte le calcoliamo sul tuo caso, te le diciamo prima e le versi tu allo Stato, senza ricarico.",
                 )}
-                <p className="mt-4 text-sm leading-relaxed text-text-muted">
-                  {renderBody(await t("grazie", "esito_b_riallineamento"))}
-                </p>
+              </p>
+              <p className="mt-2 flex items-start gap-1.5 text-xs leading-snug text-text">
+                <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-success" />
+                <span>{rethinkNote}</span>
+              </p>
+              <div className="mt-3">
+                <Reviews strip />
               </div>
-            </div>
-          )}
+            </Card>
 
+            <div className="mt-3">
+              <SoftLead
+                kind="callback"
+                compact
+                extrasSummary={callbackExtras}
+                answers={answers}
+                title={await t(
+                  "grazie",
+                  "soft_callback_title",
+                  "Fatti richiamare, senza impegno",
+                )}
+                description={await t(
+                  "grazie",
+                  "soft_callback_desc",
+                  "Lascia nome e cellulare: Lorenzo ti chiama lui, di solito in giornata. Nessuna pressione a pagare.",
+                )}
+                submitLabel={await t(
+                  "grazie",
+                  "soft_callback_submit",
+                  "Richiamatemi",
+                )}
+                consensoPrivacy={await t("preventivo", "consenso_privacy")}
+                consensoMarketing={await t("preventivo", "consenso_marketing")}
+                successTitle={await t(
+                  "grazie",
+                  "soft_callback_ok_title",
+                  "Richiesta ricevuta",
+                )}
+                successBody={await t(
+                  "grazie",
+                  "soft_callback_ok_body",
+                  "Lorenzo ti chiama a breve, di solito in giornata.",
+                )}
+                footnote={await t(
+                  "grazie",
+                  "soft_callback_footnote",
+                  "Ti chiama Lorenzo in persona. Orario d'ufficio, di solito entro poche ore.",
+                )}
+                requireName
+                requirePhone
+                requireEmail={false}
+                showNotes
+                notesLabel={await t(
+                  "grazie",
+                  "soft_callback_notes_label",
+                  "Quando sei raggiungibile? (facoltativo)",
+                )}
+                notesPlaceholder={await t(
+                  "grazie",
+                  "soft_callback_notes_placeholder",
+                  "Es. dopo le 18, domani mattina…",
+                )}
+                fieldLabels={softLeadUi}
+                cta="grazie_esito_b_callback"
+              />
+            </div>
+
+            <div className="mt-3">
+              <ButtonLink
+                href={
+                  suggestedPkg
+                    ? `${waBase}${waBase.includes("?") ? "&" : "?"}text=${encodeURIComponent(
+                        waPrefillQuoteTpl
+                          .replace("{package}", suggestedPkg.name)
+                          .replace(
+                            "{total}",
+                            formatAmount(suggestedPkg.total, promoCtx.intlLocale),
+                          ),
+                      )}`
+                    : waHrefEsitoB
+                }
+                variant="outline"
+                size="lg"
+                className="w-full border-[#1DAA61]/40 text-[#178F51] hover:bg-[#1DAA61]/10"
+                cta="grazie_esito_b_whatsapp"
+              >
+                <MessageCircle className="h-4 w-4" />
+                {waQuoteLabel}
+              </ButtonLink>
+              <p className="mt-2 text-center text-xs text-text-muted">{waQuoteHint}</p>
+              <p className="mt-4 text-center text-sm text-text-muted">
+                {payLead}
+                {": "}
+                <Link
+                  href={checkoutHref}
+                  data-cta="grazie_esito_b_paga"
+                  className="font-semibold text-primary underline underline-offset-2 hover:text-accent"
+                >
+                  {(await tCta("grazie", "esito_b_cta")).label}
+                </Link>
+              </p>
+              <p className="mt-1 text-center text-xs leading-relaxed text-text-muted">
+                {await t(
+                  "grazie",
+                  "esito_b_after_pay",
+                  "Dopo il pagamento Lorenzo ti chiama, ti apre l'area personale e parti dai documenti. Hai 14 giorni per ripensarci.",
+                )}
+              </p>
+            </div>
+
+            {suggestedPkg && (
+              <IncludedList
+                ctx={promoCtx}
+                compact
+                className="mt-5 rounded-[10px] border border-primary/10 bg-bg p-4"
+              />
+            )}
+            <p className="mt-4 text-sm leading-relaxed text-text-muted">
+              {renderBody(await t("grazie", "esito_b_riallineamento"))}
+            </p>
+          </>
+        )}
+
+        {esito !== "b" && (
+        <Card className="mt-4 p-4 sm:mt-8 sm:p-6">
           {esito === "a" && (
             <div className="flex items-start gap-4">
               <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-sand">
@@ -482,11 +502,11 @@ export default async function GraziePage({
                 <p className="mt-3 leading-relaxed text-text-muted">
                   {await t("grazie", "esito_a_body")}
                 </p>
-                <div className="mt-5 flex flex-wrap gap-3">
-                  <ButtonLink href={tel.cta_chiama} variant="primary">
+                <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  <ButtonLink href={tel.cta_chiama} variant="primary" className="w-full sm:w-auto">
                     {(await tCta("grazie", "esito_a_cta")).label}
                   </ButtonLink>
-                  <ButtonLink href={tel.cta_whatsapp} variant="outline">
+                  <ButtonLink href={tel.cta_whatsapp} variant="outline" className="w-full sm:w-auto">
                     <MessageCircle className="h-4 w-4" />
                     {await t("grazie", "esito_a_whatsapp", "WhatsApp")}
                   </ButtonLink>
@@ -505,12 +525,12 @@ export default async function GraziePage({
                 <p className="mt-3 leading-relaxed text-text-muted">
                   {await t("grazie", "esito_c_body")}
                 </p>
-                <div className="mt-5 flex flex-wrap gap-3">
-                  <ButtonLink href={waHref} variant="primary">
+                <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  <ButtonLink href={waHref} variant="primary" className="w-full sm:w-auto">
                     <MessageCircle className="h-4 w-4" />
                     {await t("grazie", "esito_c_whatsapp", "Scrivi su WhatsApp")}
                   </ButtonLink>
-                  <ButtonLink href={tel.cta_chiama} variant="outline">
+                  <ButtonLink href={tel.cta_chiama} variant="outline" className="w-full sm:w-auto">
                     <Phone className="h-4 w-4" />
                     {(await tCta("grazie", "esito_c_cta")).label}
                   </ButtonLink>
@@ -519,6 +539,7 @@ export default async function GraziePage({
             </div>
           )}
         </Card>
+        )}
 
         {/* Cattura contatto OPZIONALE dopo il valore. Esito A (esonero): niente
             form email — resta solo verifica gratuita telefono/WhatsApp. */}
@@ -579,61 +600,7 @@ export default async function GraziePage({
         {esito === "b" && (
           <div className="mt-6">
             <SoftLead
-              kind="callback"
-              answers={answers}
-              title={await t(
-                "grazie",
-                "soft_callback_title",
-                "Fatti richiamare, senza impegno",
-              )}
-              description={await t(
-                "grazie",
-                "soft_callback_desc",
-                "Lascia nome e cellulare: Lorenzo ti chiama lui, di solito in giornata. Nessuna pressione a pagare.",
-              )}
-              submitLabel={await t(
-                "grazie",
-                "soft_callback_submit",
-                "Richiamatemi",
-              )}
-              consensoPrivacy={await t("preventivo", "consenso_privacy")}
-              consensoMarketing={await t("preventivo", "consenso_marketing")}
-              successTitle={await t(
-                "grazie",
-                "soft_callback_ok_title",
-                "Richiesta ricevuta",
-              )}
-              successBody={await t(
-                "grazie",
-                "soft_callback_ok_body",
-                "Lorenzo ti chiama a breve, di solito in giornata.",
-              )}
-              footnote={await t(
-                "grazie",
-                "soft_callback_footnote",
-                "Ti chiama Lorenzo in persona. Orario d'ufficio, di solito entro poche ore.",
-              )}
-              requireName
-              requirePhone
-              requireEmail={false}
-              showNotes
-              notesLabel={await t(
-                "grazie",
-                "soft_callback_notes_label",
-                "Quando sei raggiungibile? (facoltativo)",
-              )}
-              notesPlaceholder={await t(
-                "grazie",
-                "soft_callback_notes_placeholder",
-                "Es. dopo le 18, domani mattina…",
-              )}
-              fieldLabels={softLeadUi}
-              cta="grazie_esito_b_callback"
-            />
-
-            <div className="mt-4">
-              <SoftLead
-                kind="email_quote"
+              kind="email_quote"
                 answers={answers}
                 title={await t(
                   "grazie",
@@ -675,10 +642,7 @@ export default async function GraziePage({
                 fieldLabels={softLeadUi}
                 cta="grazie_esito_b_email"
               />
-            </div>
 
-            {/* Chi e' indeciso puo' anche chiamare lui. WhatsApp e' gia' il
-                bottone verde nel blocco del risultato, qui non lo ripetiamo. */}
             <div className="mt-5 text-center">
               <p className="text-sm text-text-muted">
                 {await t(
@@ -688,7 +652,7 @@ export default async function GraziePage({
                 )}
               </p>
               <div className="mt-3 flex flex-wrap justify-center gap-3">
-                <ButtonLink href={tel.cta_chiama} variant="outline" cta="grazie_esito_b_chiama">
+                <ButtonLink href={tel.cta_chiama} variant="outline" className="w-full sm:w-auto" cta="grazie_esito_b_chiama">
                   <Phone className="h-4 w-4" />
                   {(await tCta("grazie", "esito_c_cta")).label}
                 </ButtonLink>

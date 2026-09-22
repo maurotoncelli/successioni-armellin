@@ -2516,14 +2516,14 @@
       "key": "esito_b_taxes_note",
       "locale": "en",
       "is_published": true,
-      "value": "Statutory taxes are always separate, whoever you choose: we calculate them for your case, tell you the amount in advance and you pay them directly to the State."
+      "value": "We work out the taxes on your case, tell you first, and you pay them to the State, with no markup."
     },
     {
       "collection": "grazie",
       "key": "esito_b_included_note",
       "locale": "en",
       "is_published": true,
-      "value": "All inclusive: Lorenzo is the surveyor himself. No outside professional to pay separately and no extra items added later."
+      "value": "Lorenzo is the surveyor: cadastral transfer, the declaration and filing with the tax office. No outside professional and no extra fee afterwards."
     },
     {
       "collection": "grazie",
@@ -2695,7 +2695,7 @@
       "collection": "grazie",
       "key": "esito_b_whatsapp_label",
       "locale": "en",
-      "value": "Message on WhatsApp first",
+      "value": "Message Lorenzo",
       "is_published": true
     },
     {
@@ -2710,6 +2710,34 @@
       "key": "esito_b_after_pay",
       "locale": "en",
       "value": "After payment Lorenzo calls you, opens your client area, and you start with the documents. You have 14 days to change your mind.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_extras",
+      "locale": "en",
+      "value": "Email or a time (optional)",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_pay_lead",
+      "locale": "en",
+      "value": "If you have already decided",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_rethink",
+      "locale": "en",
+      "value": "You have 14 days to change your mind, with a refund.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_fee_label",
+      "locale": "en",
+      "value": "Fee",
       "is_published": true
     },
     {

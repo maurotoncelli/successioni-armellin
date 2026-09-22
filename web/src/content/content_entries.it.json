@@ -2516,14 +2516,14 @@
       "key": "esito_b_taxes_note",
       "locale": "it",
       "is_published": true,
-      "value": "Le imposte di legge sono a parte con chiunque: le calcoliamo sul tuo caso, te le comunichiamo prima e le versi direttamente allo Stato."
+      "value": "Le imposte le calcoliamo sul tuo caso, te le diciamo prima e le versi tu allo Stato, senza ricarico."
     },
     {
       "collection": "grazie",
       "key": "esito_b_included_note",
       "locale": "it",
       "is_published": true,
-      "value": "Tutto incluso: il geometra è Lorenzo. Nessun professionista esterno da pagare a parte e nessuna voce aggiuntiva dopo."
+      "value": "Il geometra è Lorenzo: voltura, dichiarazione e invio all'Agenzia. Nessun professionista esterno e nessuna voce in più dopo."
     },
     {
       "collection": "grazie",
@@ -2695,7 +2695,7 @@
       "collection": "grazie",
       "key": "esito_b_whatsapp_label",
       "locale": "it",
-      "value": "Scrivi prima su WhatsApp",
+      "value": "Scrivi a Lorenzo",
       "is_published": true
     },
     {
@@ -2710,6 +2710,34 @@
       "key": "esito_b_after_pay",
       "locale": "it",
       "value": "Dopo il pagamento Lorenzo ti chiama, ti apre l'area personale e parti dai documenti. Hai 14 giorni per ripensarci.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_extras",
+      "locale": "it",
+      "value": "Email o orario (facoltativi)",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_pay_lead",
+      "locale": "it",
+      "value": "Se hai già deciso",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_rethink",
+      "locale": "it",
+      "value": "Hai 14 giorni per ripensarci, con rimborso.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_fee_label",
+      "locale": "it",
+      "value": "Onorario",
       "is_published": true
     },
     {

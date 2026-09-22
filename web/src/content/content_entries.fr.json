@@ -2502,14 +2502,14 @@
       "key": "esito_b_taxes_note",
       "locale": "fr",
       "is_published": true,
-      "value": "Les impôts légaux sont toujours à part, chez tout le monde : nous les calculons pour votre cas, nous vous les communiquons avant et vous les versez directement à l'État."
+      "value": "Nous calculons les impôts sur ton dossier, nous te les disons avant, et tu les verses à l'État, sans majoration."
     },
     {
       "collection": "grazie",
       "key": "esito_b_included_note",
       "locale": "fr",
       "is_published": true,
-      "value": "Tout compris : Lorenzo est lui-même le géomètre. Aucun professionnel extérieur à payer à part, aucun supplément ajouté ensuite."
+      "value": "Le géomètre, c'est Lorenzo : mutation cadastrale, déclaration et envoi à l'administration fiscale. Aucun professionnel externe et aucun supplément ensuite."
     },
     {
       "collection": "grazie",
@@ -2681,7 +2681,7 @@
       "collection": "grazie",
       "key": "esito_b_whatsapp_label",
       "locale": "fr",
-      "value": "Écrire d'abord sur WhatsApp",
+      "value": "Écrire à Lorenzo",
       "is_published": true
     },
     {
@@ -2696,6 +2696,34 @@
       "key": "esito_b_after_pay",
       "locale": "fr",
       "value": "Après le paiement, Lorenzo vous appelle, ouvre votre espace personnel et vous commencez par les documents. Vous avez 14 jours pour changer d'avis.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_extras",
+      "locale": "fr",
+      "value": "E-mail ou horaire (facultatif)",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_pay_lead",
+      "locale": "fr",
+      "value": "Si tu as déjà décidé",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_rethink",
+      "locale": "fr",
+      "value": "Tu as 14 jours pour te raviser, avec remboursement.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_fee_label",
+      "locale": "fr",
+      "value": "Honoraires",
       "is_published": true
     },
     {

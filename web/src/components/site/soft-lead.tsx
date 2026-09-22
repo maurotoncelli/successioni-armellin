@@ -61,6 +61,13 @@ type Props = {
   fieldLabels?: SoftLeadUiLabels;
   /** Etichetta `data-cta` per GA4 (`cta_click` sul submit). */
   cta?: string;
+  /**
+   * Prima schermata del risultato: campi stretti, email e orario dietro
+   * un riepilogo, input a 16px così il telefono non zooma.
+   */
+  compact?: boolean;
+  /** Testo del riepilogo che apre email e orario, in modalità compact. */
+  extrasSummary?: string;
 };
 
 export function SoftLead({
@@ -84,6 +91,8 @@ export function SoftLead({
   notesPlaceholder,
   fieldLabels = SOFT_LEAD_UI_IT,
   cta,
+  compact = false,
+  extrasSummary,
 }: Props) {
   const resolvedNotesLabel =
     notesLabel ?? fieldLabels.notes ?? SOFT_LEAD_UI_IT.notes ?? "Nota (facoltativa)";
@@ -173,6 +182,9 @@ export function SoftLead({
     );
   }
 
+  const fieldSize = compact ? "lg" : "md";
+  const foldExtras = compact && kind === "callback";
+
   const phoneField = (
     <Field
       label={requirePhone ? fieldLabels.phone : fieldLabels.phone_optional}
@@ -181,6 +193,7 @@ export function SoftLead({
       onChange={setPhone}
       autoComplete="tel"
       inputMode="tel"
+      size={fieldSize}
     />
   );
   const emailField = (
@@ -190,47 +203,79 @@ export function SoftLead({
       value={email}
       onChange={setEmail}
       autoComplete="email"
+      inputMode="email"
+      size={fieldSize}
     />
   );
 
+  const notesBlock = showNotes ? (
+    <div>
+      <label className="mb-1.5 block text-sm font-medium text-primary">
+        {resolvedNotesLabel}
+      </label>
+      <textarea
+        value={notes}
+        onChange={(e) => setNotes(e.target.value)}
+        rows={kind === "callback" ? 2 : 3}
+        maxLength={800}
+        placeholder={notesPlaceholder}
+        className={cn(
+          "w-full resize-y rounded-[10px] border border-primary/20 bg-bg px-3 py-2.5 focus:border-accent focus:outline-none",
+          compact ? "text-base" : "text-sm",
+        )}
+      />
+    </div>
+  ) : null;
+
   return (
-    <div className="rounded-2xl border border-primary/10 bg-bg p-4 sm:p-6">
+    <div
+      className={cn(
+        "rounded-2xl border border-primary/10 bg-bg",
+        compact ? "p-4" : "p-4 sm:p-6",
+      )}
+    >
       <h3
         className={cn(
-          "text-lg font-semibold text-primary",
+          "font-semibold text-primary",
+          compact ? "text-base" : "text-lg",
           kind === "callback" &&
-            "-mx-4 -mt-4 mb-3 rounded-t-2xl bg-sand px-4 py-3.5 text-primary sm:-mx-6 sm:-mt-6 sm:px-6",
+            "-mx-4 -mt-4 mb-3 rounded-t-2xl bg-sand px-4 text-primary",
+          kind === "callback" &&
+            (compact ? "py-3" : "py-3.5 sm:-mx-6 sm:-mt-6 sm:px-6"),
         )}
       >
         {title}
       </h3>
-      <p className="mt-1 text-sm text-text-muted">{description}</p>
+      <p className={cn("text-text-muted", compact ? "sr-only" : "mt-1 text-sm")}>
+        {description}
+      </p>
 
-      <div className="mt-4 grid gap-3 sm:grid-cols-2">
+      <div className={cn("mt-3 grid gap-3", compact ? "grid-cols-2 items-end" : "sm:grid-cols-2")}>
         <Field
           label={requireName ? fieldLabels.name_required : fieldLabels.name}
           value={name}
           onChange={setName}
           autoComplete="name"
+          size={fieldSize}
         />
         {kind === "callback" ? phoneField : emailField}
       </div>
-      <div className="mt-3">{kind === "callback" ? emailField : phoneField}</div>
+      {!foldExtras && (
+        <div className="mt-3">{kind === "callback" ? emailField : phoneField}</div>
+      )}
 
-      {showNotes && (
-        <div className="mt-3">
-          <label className="mb-1.5 block text-sm font-medium text-primary">
-            {resolvedNotesLabel}
-          </label>
-          <textarea
-            value={notes}
-            onChange={(e) => setNotes(e.target.value)}
-            rows={kind === "callback" ? 2 : 3}
-            maxLength={800}
-            placeholder={notesPlaceholder}
-            className="w-full resize-y rounded-[10px] border border-primary/20 bg-bg px-3 py-2.5 text-sm focus:border-accent focus:outline-none"
-          />
-        </div>
+      {!foldExtras && notesBlock ? <div className="mt-3">{notesBlock}</div> : null}
+
+      {foldExtras && (
+        <details className="mt-3">
+          <summary className="cursor-pointer text-sm text-text-muted marker:text-text-muted">
+            {extrasSummary}
+          </summary>
+          <div className="mt-3 space-y-3">
+            {emailField}
+            {notesBlock}
+          </div>
+        </details>
       )}
 
       <div className="mt-4 space-y-3">
@@ -265,7 +310,7 @@ export function SoftLead({
       <Button
         onClick={submit}
         disabled={!canSubmit}
-        className={cn("mt-5 w-full")}
+        className={cn(compact ? "mt-4 w-full" : "mt-5 w-full")}
         size="lg"
         data-cta={cta}
       >
@@ -285,6 +330,7 @@ function Field({
   onChange,
   autoComplete,
   inputMode,
+  size = "md",
 }: {
   label: string;
   type?: string;
@@ -292,9 +338,11 @@ function Field({
   onChange: (v: string) => void;
   autoComplete?: string;
   inputMode?: React.HTMLAttributes<HTMLInputElement>["inputMode"];
+  /** lg = 16px, così iOS non zooma al focus. */
+  size?: "md" | "lg";
 }) {
   return (
-    <div>
+    <div className="min-w-0">
       <label className="mb-1.5 block text-sm font-medium text-primary">
         {label}
       </label>
@@ -304,7 +352,10 @@ function Field({
         onChange={(e) => onChange(e.target.value)}
         autoComplete={autoComplete}
         inputMode={inputMode}
-        className="w-full rounded-[10px] border border-primary/20 bg-bg px-3 py-2.5 text-sm focus:border-accent focus:outline-none"
+        className={cn(
+          "w-full rounded-[10px] border border-primary/20 bg-bg px-3 focus:border-accent focus:outline-none",
+          size === "lg" ? "py-3 text-base" : "py-2.5 text-sm",
+        )}
       />
     </div>
   );

@@ -2502,14 +2502,14 @@
       "key": "esito_b_taxes_note",
       "locale": "ar",
       "is_published": true,
-      "value": "الضرائب القانونية منفصلة دائمًا وعند أي جهة: نحسبها على حالتك، ونبلغك بها مسبقًا، وتدفعها مباشرةً للدولة."
+      "value": "نحسب الضرائب على حالتك ونخبرك بها مسبقًا، وتدفعها أنت للدولة دون أي زيادة."
     },
     {
       "collection": "grazie",
       "key": "esito_b_included_note",
       "locale": "ar",
       "is_published": true,
-      "value": "كل شيء مشمول: لورينزو هو المسّاح نفسه. لا مهني خارجي تدفع له بشكل منفصل ولا بنود إضافية لاحقًا."
+      "value": "المساح هو لورينزو: نقل القيد، التصريح والإرسال إلى مصلحة الضرائب. لا مهني خارجي ولا بند إضافي بعد ذلك."
     },
     {
       "collection": "grazie",
@@ -2681,7 +2681,7 @@
       "collection": "grazie",
       "key": "esito_b_whatsapp_label",
       "locale": "ar",
-      "value": "اكتب أولاً على واتساب",
+      "value": "راسل لورينزو",
       "is_published": true
     },
     {
@@ -2696,6 +2696,34 @@
       "key": "esito_b_after_pay",
       "locale": "ar",
       "value": "بعد الدفع يتصل لورنزو، يفتح مساحتك الشخصية وتبدأ بالوثائق. لديك 14 يوماً لتغيير رأيك.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_extras",
+      "locale": "ar",
+      "value": "البريد أو الوقت (اختياري)",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_pay_lead",
+      "locale": "ar",
+      "value": "إذا كنت قد قررت",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_rethink",
+      "locale": "ar",
+      "value": "لديك 14 يومًا لتغيير رأيك، مع استرداد.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_fee_label",
+      "locale": "ar",
+      "value": "الأتعاب",
       "is_published": true
     },
     {

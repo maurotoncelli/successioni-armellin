@@ -205,9 +205,19 @@ export async function getRegisteredContactIds(): Promise<Set<string>> {
 
 /* --- Derivazioni (KPI, alert, calendario) calcolate dalle pratiche --- */
 
+function hasReachableContact(p: Practice): boolean {
+  return Boolean(
+    p.clientName.trim() || p.clientEmail.trim() || p.clientPhone.trim(),
+  );
+}
+
 export function deriveKpi(practices: Practice[]) {
   const paid = practices.filter((p) => p.paymentStatus === "PAID");
   const revenueYtd = paid.reduce((sum, p) => sum + p.price, 0);
+  const reachable = practices.filter(hasReachableContact);
+  const paidFromContact = reachable.filter(
+    (p) => p.paymentStatus === "PAID",
+  ).length;
   return {
     activePractices: practices.filter(
       (p) => !["CHIUSA", "ANNULLATA"].includes(p.status),
@@ -217,7 +227,13 @@ export function deriveKpi(practices: Practice[]) {
     waitingClient: practices.filter((p) => p.actionOwner === "CLIENT").length,
     revenueYtd,
     avgTicket: Math.round(revenueYtd / Math.max(paid.length, 1)),
-    conversionRate: 62,
+    /** Null se nessuno ha lasciato un recapito: niente percentuale finta. */
+    conversionRate:
+      reachable.length === 0
+        ? null
+        : Math.round((paidFromContact / reachable.length) * 100),
+    paidFromContact,
+    contactsWithReach: reachable.length,
   };
 }
 

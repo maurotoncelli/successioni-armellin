@@ -2502,14 +2502,14 @@
       "key": "esito_b_taxes_note",
       "locale": "ru",
       "is_published": true,
-      "value": "Государственные налоги всегда оплачиваются отдельно, у любого исполнителя: мы рассчитываем их для вашего случая, сообщаем сумму заранее, и вы платите их напрямую государству."
+      "value": "Налоги считаем по твоему случаю, называем заранее, и ты платишь их государству, без наценки."
     },
     {
       "collection": "grazie",
       "key": "esito_b_included_note",
       "locale": "ru",
       "is_published": true,
-      "value": "Всё включено: геометр — это сам Лоренцо. Никаких внешних специалистов, которым нужно платить отдельно, и никаких дополнительных пунктов потом."
+      "value": "Геодезист — Лоренцо: переоформление, декларация и отправка в налоговую. Никакого внешнего специалиста и никаких доплат потом."
     },
     {
       "collection": "grazie",
@@ -2681,7 +2681,7 @@
       "collection": "grazie",
       "key": "esito_b_whatsapp_label",
       "locale": "ru",
-      "value": "Сначала написать в WhatsApp",
+      "value": "Написать Лоренцо",
       "is_published": true
     },
     {
@@ -2696,6 +2696,34 @@
       "key": "esito_b_after_pay",
       "locale": "ru",
       "value": "После оплаты Лоренцо вам позвонит, откроет личный кабинет — и вы начнёте с документов. Есть 14 дней, чтобы передумать.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_extras",
+      "locale": "ru",
+      "value": "Почта или время (необязательно)",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_pay_lead",
+      "locale": "ru",
+      "value": "Если уже решил",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_rethink",
+      "locale": "ru",
+      "value": "14 дней, чтобы передумать, с возвратом.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_fee_label",
+      "locale": "ru",
+      "value": "Гонорар",
       "is_published": true
     },
     {

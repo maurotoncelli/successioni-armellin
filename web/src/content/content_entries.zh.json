@@ -2502,14 +2502,14 @@
       "key": "esito_b_taxes_note",
       "locale": "zh",
       "is_published": true,
-      "value": "法定税费在任何机构都是另计的：我们根据您的情况计算，提前告知您金额，由您直接缴纳给国家。"
+      "value": "税款按你的情况计算，事先告诉你，由你交给国家，我们不加价。"
     },
     {
       "collection": "grazie",
       "key": "esito_b_included_note",
       "locale": "zh",
       "is_published": true,
-      "value": "全部包含：测量师就是 Lorenzo 本人。无需另付外部专业人士费用，事后也没有额外项目。"
+      "value": "测量师就是 Lorenzo：地籍过户、申报并发送给税务机关。没有外部专业人员，之后也没有额外费用。"
     },
     {
       "collection": "grazie",
@@ -2681,7 +2681,7 @@
       "collection": "grazie",
       "key": "esito_b_whatsapp_label",
       "locale": "zh",
-      "value": "先通过 WhatsApp 联系",
+      "value": "给 Lorenzo 写信",
       "is_published": true
     },
     {
@@ -2696,6 +2696,34 @@
       "key": "esito_b_after_pay",
       "locale": "zh",
       "value": "付款后 Lorenzo 会给你打电话、开通个人专区，你从文件开始。14 天内可以改变主意。",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_extras",
+      "locale": "zh",
+      "value": "邮箱或方便的时间（可选）",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_pay_lead",
+      "locale": "zh",
+      "value": "如果已经决定",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_rethink",
+      "locale": "zh",
+      "value": "14 天内可以反悔，并退款。",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_fee_label",
+      "locale": "zh",
+      "value": "服务费",
       "is_published": true
     },
     {

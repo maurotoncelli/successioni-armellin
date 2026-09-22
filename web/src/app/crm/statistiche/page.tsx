@@ -75,7 +75,7 @@ export default async function StatistichePage() {
         <div>
           <h1 className="text-xl font-semibold text-crm-text">Statistiche</h1>
           <p className="text-sm text-crm-text2">
-            KPI operativi e finanziari (dati simulati).
+            Pratiche, questionari e incassi dal gestionale.
           </p>
         </div>
         <a
@@ -124,8 +124,13 @@ export default async function StatistichePage() {
         />
         <KpiCard
           icon={<TrendingUp className="h-5 w-5" />}
-          value={`${kpi.conversionRate}%`}
-          label="Conversione lead → cliente"
+          value={
+            kpi.contactsWithReach === 0
+              ? "0"
+              : `${kpi.paidFromContact} su ${kpi.contactsWithReach}`
+          }
+          label="Pagate su chi ha lasciato un recapito"
+          hint="I questionari senza telefono o email non contano."
         />
         <KpiCard
           icon={<Play className="h-5 w-5" />}

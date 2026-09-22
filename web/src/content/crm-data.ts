@@ -749,7 +749,7 @@ export function practicesByContact(contactId: string): Practice[] {
   return practices.filter((p) => p.contactId === contactId);
 }
 
-// KPI derivati dai dati finti
+// KPI dei dati finti di anteprima. Il CRM reale usa deriveKpi in lib/crm.ts.
 export const kpi = {
   activePractices: practices.filter(
     (p) => !["CHIUSA", "ANNULLATA"].includes(p.status),
@@ -766,5 +766,13 @@ export const kpi = {
       .reduce((sum, p) => sum + p.price, 0) /
       Math.max(practices.filter((p) => p.paymentStatus === "PAID").length, 1),
   ),
-  conversionRate: 62,
+  conversionRate: (() => {
+    const reachable = practices.filter(
+      (p) =>
+        p.clientName.trim() || p.clientEmail.trim() || p.clientPhone.trim(),
+    );
+    if (reachable.length === 0) return 0;
+    const paid = reachable.filter((p) => p.paymentStatus === "PAID").length;
+    return Math.round((paid / reachable.length) * 100);
+  })(),
 };

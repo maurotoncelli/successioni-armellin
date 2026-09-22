@@ -2502,14 +2502,14 @@
       "key": "esito_b_taxes_note",
       "locale": "de",
       "is_published": true,
-      "value": "Die gesetzlichen Steuern fallen bei jedem Anbieter separat an: Wir berechnen sie für Ihren Fall, teilen sie Ihnen vorab mit, und Sie zahlen sie direkt an den Staat."
+      "value": "Die Steuern rechnen wir an deinem Fall aus, nennen sie dir vorher, und du zahlst sie an den Staat, ohne Aufschlag."
     },
     {
       "collection": "grazie",
       "key": "esito_b_included_note",
       "locale": "de",
       "is_published": true,
-      "value": "Alles inklusive: Lorenzo ist selbst der Geometer. Kein externer Fachmann, der separat bezahlt werden muss, und keine Zusatzposten im Nachhinein."
+      "value": "Der Geometer ist Lorenzo: Umschreibung, Erklärung und Übermittlung an das Finanzamt. Kein externer Fachmann und keine spätere Zusatzposition."
     },
     {
       "collection": "grazie",
@@ -2681,7 +2681,7 @@
       "collection": "grazie",
       "key": "esito_b_whatsapp_label",
       "locale": "de",
-      "value": "Erst per WhatsApp schreiben",
+      "value": "Lorenzo schreiben",
       "is_published": true
     },
     {
@@ -2696,6 +2696,34 @@
       "key": "esito_b_after_pay",
       "locale": "de",
       "value": "Nach der Zahlung ruft Lorenzo an, öffnet Ihren Kundenbereich und Sie starten mit den Unterlagen. Sie haben 14 Tage Bedenkzeit.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_extras",
+      "locale": "de",
+      "value": "E-Mail oder Uhrzeit (freiwillig)",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_pay_lead",
+      "locale": "de",
+      "value": "Wenn du dich schon entschieden hast",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_rethink",
+      "locale": "de",
+      "value": "14 Tage Bedenkzeit, mit Rückerstattung.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_fee_label",
+      "locale": "de",
+      "value": "Honorar",
       "is_published": true
     },
     {

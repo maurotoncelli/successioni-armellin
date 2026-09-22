@@ -2502,14 +2502,14 @@
       "key": "esito_b_taxes_note",
       "locale": "es",
       "is_published": true,
-      "value": "Los impuestos legales van aparte con cualquier proveedor: los calculamos para tu caso, te los comunicamos antes y los pagas directamente al Estado."
+      "value": "Los impuestos los calculamos sobre tu caso, te los decimos antes y los pagas tú al Estado, sin recargo."
     },
     {
       "collection": "grazie",
       "key": "esito_b_included_note",
       "locale": "es",
       "is_published": true,
-      "value": "Todo incluido: el geómetra es el propio Lorenzo. Ningún profesional externo que pagar aparte y ninguna partida añadida después."
+      "value": "El técnico es Lorenzo: cambio catastral, declaración y envío a Hacienda. Ningún profesional externo y ningún cargo extra después."
     },
     {
       "collection": "grazie",
@@ -2681,7 +2681,7 @@
       "collection": "grazie",
       "key": "esito_b_whatsapp_label",
       "locale": "es",
-      "value": "Escribir primero por WhatsApp",
+      "value": "Escribir a Lorenzo",
       "is_published": true
     },
     {
@@ -2696,6 +2696,34 @@
       "key": "esito_b_after_pay",
       "locale": "es",
       "value": "Tras el pago Lorenzo te llama, te abre el área personal y empiezas por los documentos. Tienes 14 días para cambiar de opinión.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_extras",
+      "locale": "es",
+      "value": "Correo u horario (opcional)",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_pay_lead",
+      "locale": "es",
+      "value": "Si ya lo tienes decidido",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_rethink",
+      "locale": "es",
+      "value": "Tienes 14 días para pensártelo, con reembolso.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_fee_label",
+      "locale": "es",
+      "value": "Honorarios",
       "is_published": true
     },
     {

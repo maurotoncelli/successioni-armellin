@@ -2502,14 +2502,14 @@
       "key": "esito_b_taxes_note",
       "locale": "tr",
       "is_published": true,
-      "value": "Yasal vergiler herkeste ayrıdır: durumunuza göre hesaplarız, önceden bildiririz ve doğrudan Devlete siz ödersiniz."
+      "value": "Vergileri durumuna göre hesaplarız, önceden söyleriz; devlete sen ödersin, bindirim yok."
     },
     {
       "collection": "grazie",
       "key": "esito_b_included_note",
       "locale": "tr",
       "is_published": true,
-      "value": "Her şey dahil: geometra Lorenzo'nun kendisidir. Ayrıca ödenecek dış bir uzman yok, sonradan eklenen kalem yok."
+      "value": "Geometra Lorenzo'dur: kadastro devri, beyanname ve vergi dairesine gönderim. Dışarıdan bir meslek erbabı yok, sonra ek kalem yok."
     },
     {
       "collection": "grazie",
@@ -2681,7 +2681,7 @@
       "collection": "grazie",
       "key": "esito_b_whatsapp_label",
       "locale": "tr",
-      "value": "Önce WhatsApp'tan yazın",
+      "value": "Lorenzo'ya yaz",
       "is_published": true
     },
     {
@@ -2696,6 +2696,34 @@
       "key": "esito_b_after_pay",
       "locale": "tr",
       "value": "Ödemeden sonra Lorenzo sizi arar, kişisel alanınızı açar ve belgelerden başlarsınız. Fikrinizi değiştirmek için 14 gününüz var.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_extras",
+      "locale": "tr",
+      "value": "E-posta veya saat (isteğe bağlı)",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_pay_lead",
+      "locale": "tr",
+      "value": "Çoktan karar verdiysen",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_rethink",
+      "locale": "tr",
+      "value": "14 gün içinde vazgeçebilirsin, iade ile.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_fee_label",
+      "locale": "tr",
+      "value": "Ücret",
       "is_published": true
     },
     {

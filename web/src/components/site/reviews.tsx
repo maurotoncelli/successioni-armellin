@@ -7,9 +7,12 @@ import { cn } from "@/lib/utils";
 export async function Reviews({
   compact = false,
   limit,
+  strip = false,
 }: {
   compact?: boolean;
   limit?: number;
+  /** Solo il voto, senza le card: sta accanto al prezzo. */
+  strip?: boolean;
 } = {}) {
   const { reviews, rating, totalCount, mapsUri } = await getSiteReviews();
   const writeReviewUrl = (await t("settings", "review_url")).trim();
@@ -26,6 +29,42 @@ export async function Reviews({
   );
   const fromLabel = await t("home", "recensioni_from", "Recensioni da");
   const writeLabel = await t("home", "recensioni_write", "Scrivi una recensione");
+  if (strip) {
+    if (rating == null && totalCount == null) return null;
+    const countLabel =
+      totalCount == null
+        ? ""
+        : (totalCount === 1 ? countOne : countMany).replace(
+            "{n}",
+            String(totalCount),
+          );
+    return (
+      <p className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-sm text-text-muted">
+        {rating != null && (
+          <a
+            href={mapsUri}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 font-medium text-text hover:underline"
+          >
+            <Star className="h-3.5 w-3.5 fill-accent text-accent" aria-hidden />
+            {rating.toFixed(1).replace(".", ",")} {ratingOf}
+          </a>
+        )}
+        {countLabel ? (
+          <a
+            href={mapsUri}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline"
+          >
+            {countLabel}
+          </a>
+        ) : null}
+      </p>
+    );
+  }
+
   const shown = typeof limit === "number" ? reviews.slice(0, limit) : reviews;
   const cols =
     shown.length >= 3
