@@ -435,6 +435,15 @@ export default async function GraziePage({
               />
             </div>
 
+            <p className="mt-3 text-center text-sm">
+              <Link
+                href="/gatti"
+                className="font-medium text-primary underline underline-offset-2 hover:text-accent"
+              >
+                {gattiCopy(locale).link}
+              </Link>
+            </p>
+
             <div className="mt-3">
               <ButtonLink
                 href={
@@ -696,16 +705,6 @@ export default async function GraziePage({
           </Card>
         )}
 
-        {esito === "b" && (
-          <p className="mt-8 text-center text-sm text-text-muted">
-            <Link
-              href="/gatti"
-              className="underline underline-offset-2 hover:text-accent"
-            >
-              {gattiCopy(locale).link}
-            </Link>
-          </p>
-        )}
       </div>
     </Section>
   );
