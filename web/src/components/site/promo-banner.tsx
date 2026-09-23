@@ -14,7 +14,7 @@ export async function PromoBanner() {
   if (!ctx.promo) return null;
   const locale = await getRequestLocale();
   return (
-    <HideOnPaths prefixes={["/checkout", "/preventivo/grazie"]}>
+    <HideOnPaths prefixes={["/checkout", "/preventivo/grazie", "/gatti"]}>
       <div className="bg-primary text-white">
         <Link
           href={localePath("/preventivo", locale)}

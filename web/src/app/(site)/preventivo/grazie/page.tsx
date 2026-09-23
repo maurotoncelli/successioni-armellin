@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getRequestLocale, t, tCta, tList, tObj } from "@/lib/locale";
+import { gattiCopy } from "@/content/gatti";
 import {
   CHROME_UI_IT,
   CHECKOUT_UI_IT,
@@ -693,6 +694,17 @@ export default async function GraziePage({
               <Reviews compact limit={3} />
             </div>
           </Card>
+        )}
+
+        {esito === "b" && (
+          <p className="mt-8 text-center text-sm text-text-muted">
+            <Link
+              href="/gatti"
+              className="underline underline-offset-2 hover:text-accent"
+            >
+              {gattiCopy(locale).link}
+            </Link>
+          </p>
         )}
       </div>
     </Section>

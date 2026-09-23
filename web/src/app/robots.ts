@@ -17,6 +17,7 @@ export default function robots(): MetadataRoute.Robots {
         "/brogliaccio",
         "/checkout",
         "/preventivo/grazie",
+        "/gatti",
       ],
     },
     sitemap: `${BASE.replace(/\/$/, "")}/sitemap.xml`,

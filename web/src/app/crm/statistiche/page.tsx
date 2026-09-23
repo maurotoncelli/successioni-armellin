@@ -194,10 +194,11 @@ export default async function StatistichePage() {
       <CrmCard>
         <SectionTitle>Riproduzioni video</SectionTitle>
         <p className="mt-1 text-xs text-crm-muted">
-          Avvii dal tasto play (il loop muted in hero non conta). I numeri
-          partono da questa attivazione; GA4 resta per il dettaglio 25/50/75%.
+          Avvii dal tasto play (il loop muted in hero non conta). I video di
+          gattini sono a parte e non entrano nel totale in alto. GA4 resta per
+          il dettaglio 25/50/75% dei video del sito.
         </p>
-        <div className="mt-4 grid gap-3 sm:grid-cols-2">
+        <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {VIDEO_IDS.map((id) => {
             const clip = videoStats.byVideo[id];
             const max = Math.max(
@@ -224,10 +225,13 @@ export default async function StatistichePage() {
                   />
                 </div>
                 <p className="mt-2 text-xs text-crm-muted">
-                  Completati {clip.completes}
-                  {clip.starts > 0
-                    ? ` · ${Math.round((clip.completes / clip.starts) * 100)}%`
-                    : ""}
+                  {id === "gatti"
+                    ? "Ogni tap su Guarda conta un avvio."
+                    : `Completati ${clip.completes}${
+                        clip.starts > 0
+                          ? ` · ${Math.round((clip.completes / clip.starts) * 100)}%`
+                          : ""
+                      }`}
                 </p>
                 <StatsAdjust
                   kind="video"

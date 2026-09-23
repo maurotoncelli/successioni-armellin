@@ -18,6 +18,8 @@ const NO_SEO_PREFIX_PREFIXES = [
   "/crm-login",
   "/api",
   "/brogliaccio",
+  // Pausa non indicizzata: un solo URL, senza prefisso lingua.
+  "/gatti",
 ] as const;
 
 export function isSeoPathLocale(value: unknown): value is SeoPathLocale {

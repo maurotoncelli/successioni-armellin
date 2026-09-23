@@ -1,7 +1,12 @@
 import "server-only";
 import { getAdminClient, isAdminConfigured } from "@/lib/supabase/admin";
 import { DOC_BUCKET, ensureDocBucket } from "@/lib/documents";
-import { VIDEO_IDS, isVideoId, type VideoId } from "@/lib/video-ids";
+import {
+  VIDEO_IDS,
+  VIDEO_IDS_IN_TOTAL,
+  isVideoId,
+  type VideoId,
+} from "@/lib/video-ids";
 
 /*
   Contatore riproduzioni video (tasto play, non il loop muted in hero).
@@ -102,7 +107,7 @@ function totalsFrom(byVideo: Record<VideoId, VideoClipStats>): {
 } {
   let totalStarts = 0;
   let totalCompletes = 0;
-  for (const id of VIDEO_IDS) {
+  for (const id of VIDEO_IDS_IN_TOTAL) {
     totalStarts += byVideo[id].starts;
     totalCompletes += byVideo[id].completes;
   }
@@ -164,12 +169,16 @@ export async function adjustVideoStarts(
 }
 
 export function pickVideoForAdjust(stats: VideoStats): VideoId | null {
-  if (stats.lastStartVideo && stats.byVideo[stats.lastStartVideo].starts > 0) {
+  if (
+    stats.lastStartVideo &&
+    (VIDEO_IDS_IN_TOTAL as readonly string[]).includes(stats.lastStartVideo) &&
+    stats.byVideo[stats.lastStartVideo].starts > 0
+  ) {
     return stats.lastStartVideo;
   }
   let best: VideoId | null = null;
   let max = 0;
-  for (const id of VIDEO_IDS) {
+  for (const id of VIDEO_IDS_IN_TOTAL) {
     if (stats.byVideo[id].starts > max) {
       max = stats.byVideo[id].starts;
       best = id;
