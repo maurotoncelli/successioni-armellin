@@ -3,8 +3,6 @@ import { headers } from "next/headers";
 import { Navbar } from "@/components/site/navbar";
 import { PromoBanner } from "@/components/site/promo-banner";
 import { Footer } from "@/components/site/footer";
-import { MobileCta } from "@/components/site/mobile-cta";
-import { HideOnPaths } from "@/components/site/hide-on-paths";
 import { SiteOfflineNotice } from "@/components/site/site-offline-notice";
 import { ScrollReveal } from "@/components/site/scroll-reveal";
 import { GoogleAnalytics } from "@/components/analytics/google-analytics";
@@ -163,15 +161,10 @@ export default async function SiteLayout({
       {gaId && <ContactTracker />}
       {!offlineOn && <PromoBanner />}
       <Navbar />
-      <main className={offlineOn ? "flex-1" : "flex-1 pb-20 lg:pb-0"}>
+      <main className="flex-1">
         {offlineOn ? <SiteOfflineNotice state={offline} /> : children}
       </main>
       <Footer />
-      {!offlineOn && (
-        <HideOnPaths prefixes={["/preventivo", "/checkout"]}>
-          <MobileCta />
-        </HideOnPaths>
-      )}
       <ConsentBanner labels={cookieUi} />
       {!offlineOn && <ScrollReveal />}
     </div>
