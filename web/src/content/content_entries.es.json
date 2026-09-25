@@ -714,7 +714,7 @@
       "key": "box_trasparenza_body",
       "locale": "es",
       "is_published": true,
-      "value": "El precio del paquete son los **honorarios profesionales sin IVA**: el estudio opera en régimen forfettario (operación no sujeta a IVA).\n\nLos **impuestos de sucesión** (hipotecario, catastral, timbres) son **aparte, a cargo del heredero**, y se pagan con F24: los calculamos y comunicamos **antes del envío**."
+      "value": "El precio del paquete son los **honorarios profesionales, sin IVA que añadir**: el estudio opera en régimen forfettario (operación no sujeta a IVA).\n\nLos **impuestos de sucesión** (hipotecario, catastral, timbres) son **aparte, a cargo del heredero**, y se pagan con F24: los calculamos y comunicamos **antes del envío**."
     },
     {
       "collection": "tariffe",
@@ -3495,7 +3495,7 @@
       "key": "price_suffix",
       "locale": "es",
       "is_published": true,
-      "value": "honorarios sin IVA"
+      "value": "honorarios, sin IVA que añadir"
     },
     {
       "collection": "pacchetti",
@@ -4086,7 +4086,7 @@
       "key": "ordine_no_iva",
       "locale": "es",
       "is_published": true,
-      "value": "Honorarios sin IVA (régimen forfettario). Los impuestos son aparte (ver abajo)."
+      "value": "Honorarios sin IVA que añadir (régimen forfettario). Los impuestos son aparte (ver abajo)."
     },
     {
       "collection": "area",

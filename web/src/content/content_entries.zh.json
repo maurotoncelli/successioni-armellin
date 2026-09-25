@@ -714,7 +714,7 @@
       "key": "box_trasparenza_body",
       "locale": "zh",
       "is_published": true,
-      "value": "套餐价格是**不含增值税的专业服务费**：事务所适用定额税制（不征收增值税）。\n\n**继承相关税款**（抵押权税、地籍税、印花税）另行计算，**由继承人承担**，通过 F24 缴纳：我们在**提交前**计算并告知。"
+      "value": "套餐价格是**专业服务费，无需另加增值税**：事务所适用定额税制（不征收增值税）。\n\n**继承相关税款**（抵押权税、地籍税、印花税）另行计算，**由继承人承担**，通过 F24 缴纳：我们在**提交前**计算并告知。"
     },
     {
       "collection": "tariffe",
@@ -3495,7 +3495,7 @@
       "key": "price_suffix",
       "locale": "zh",
       "is_published": true,
-      "value": "专业服务费（不含增值税）"
+      "value": "专业服务费（无需另加增值税）"
     },
     {
       "collection": "pacchetti",
@@ -4086,7 +4086,7 @@
       "key": "ordine_no_iva",
       "locale": "zh",
       "is_published": true,
-      "value": "专业服务费不含增值税（定额税制）。税款另计（见下文）。"
+      "value": "专业服务费无需另加增值税（定额税制）。税款另计（见下文）。"
     },
     {
       "collection": "area",

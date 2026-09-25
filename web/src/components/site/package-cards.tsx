@@ -83,7 +83,7 @@ export async function PackageCards() {
     getPackages(locale),
     getPromoContext(),
   ]);
-  const priceSuffix = await t("pacchetti", "price_suffix", "onorario senza IVA");
+  const priceSuffix = await t("pacchetti", "price_suffix", "onorario senza IVA da aggiungere");
   const slaLine = await t(
     "pacchetti",
     "sla_line",

@@ -26,7 +26,8 @@
 ## Legale e compliance (@10)
 - Titolare del trattamento: Studio Geom. Lorenzo Armellin.
 - Antiriciclaggio NON applicabile (confermato Riunione 2: Lorenzo non svolge mediazione immobiliare).
-- Fiscale: regime forfettario, **nessuna IVA** in fattura; prezzi a display = onorario finale "tutto incluso". Da verificare col commercialista l'eventuale contributo integrativo Cassa Geometri (CIPAG). Fatturazione elettronica via Aruba.
+- Fiscale: regime forfettario, **nessuna IVA** in fattura; prezzi a display = onorario finale "tutto incluso".
+  - **Formula a display (Mauro 25/09)**: "senza IVA da aggiungere", come nelle Condizioni, in tutte le lingue (sans TVA à ajouter, ohne zusätzliche MwSt., sin IVA que añadir, no VAT to add, ayrıca KDV eklenmez, 无需另加增值税, pa TVSH për t'u shtuar, دون إضافة ضريبة القيمة المضافة, без начисления НДС сверху). Mai formule che si leggono "IVA esclusa" (hors TVA, KDV hariç, 不含增值税, ohne MwSt., sin IVA, without VAT). Da verificare col commercialista l'eventuale contributo integrativo Cassa Geometri (CIPAG). Fatturazione elettronica via Aruba.
 - Recesso: avvio immediato lavorazione subordinato a consenso espresso + accettazione perdita recesso, conferma su supporto durevole.
 - Firma (aggiornato Riunione 2): Lorenzo oggi raccoglie il mandato in **CARTACEO** ed e disposto ad aggiornarsi. v1 = **fallback cartaceo (scarica -> firma -> ricarica) come baseline** + **FES ad accettazione tracciata** (timestamp, IP, versione+hash, log) consigliata per consensi (checkout) e mandato (area riservata, prima dell'avvio); Lorenzo dispone di **CNS Aruba**; FEA/FEQ non in v1 (@10 par. 5.1).
 - Retention: in cloud restano i documenti FINALI; input sensibili minimizzati/cancellati post-lavorazione. Matrice per tipo (@10 par. 4.1): input grezzi ~30 gg dalla chiusura, finali/fiscali 10 anni, IBAN cancellato dopo l'addebito; purge automatico con log.

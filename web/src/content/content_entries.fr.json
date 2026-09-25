@@ -714,7 +714,7 @@
       "key": "box_trasparenza_body",
       "locale": "fr",
       "is_published": true,
-      "value": "Le prix du forfait correspond aux **honoraires professionnels hors TVA** : le cabinet opère en régime forfaitaire (opération non assujettie à la TVA).\n\nLes **impôts de succession** (hypothécaire, cadastrale, timbres) sont **séparés, à la charge de l'héritier**, et se paient via F24 : nous les calculons et vous les communiquons **avant l'envoi**."
+      "value": "Le prix du forfait correspond aux **honoraires professionnels, sans TVA à ajouter** : le cabinet opère en régime forfaitaire (opération non assujettie à la TVA).\n\nLes **impôts de succession** (hypothécaire, cadastrale, timbres) sont **séparés, à la charge de l'héritier**, et se paient via F24 : nous les calculons et vous les communiquons **avant l'envoi**."
     },
     {
       "collection": "tariffe",
@@ -3495,7 +3495,7 @@
       "key": "price_suffix",
       "locale": "fr",
       "is_published": true,
-      "value": "honoraires hors TVA"
+      "value": "honoraires, sans TVA à ajouter"
     },
     {
       "collection": "pacchetti",
@@ -4086,7 +4086,7 @@
       "key": "ordine_no_iva",
       "locale": "fr",
       "is_published": true,
-      "value": "Honoraires hors TVA (régime forfaitaire). Les impôts sont séparés (voir ci-dessous)."
+      "value": "Honoraires sans TVA à ajouter (régime forfaitaire). Les impôts sont séparés (voir ci-dessous)."
     },
     {
       "collection": "area",
