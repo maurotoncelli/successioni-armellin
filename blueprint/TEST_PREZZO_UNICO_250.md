@@ -1,8 +1,9 @@
 # Test prezzo unico 250 € tutto incluso (UNICO250)
 
-> Stato: **pronto sul branch `test/prezzo-unico-250`, NON in produzione**.
+> Stato: **online dal 25/09/2026**, fine prevista l'08/10/2026 (merge del branch
+> `test/prezzo-unico-250` su main).
 > Listino di prima salvato nel tag `listino-290-490` (commit `ae7123e`).
-> Richiesta di Mauro del 25/09/2026. **Serve l'OK di Lorenzo prima del go-live.**
+> Richiesta di Mauro del 25/09/2026; OK di Lorenzo riferito da Mauro lo stesso giorno.
 > Codice: `web/src/lib/flat-offer.ts` (interruttore e date).
 
 ## Perché
@@ -144,6 +145,7 @@ come funziona, preventivo, risultato, checkout e promo.
 ## Checklist go-live
 
 1. **OK di Lorenzo** su prezzo, perimetro, garanzia di 14 giorni e video con il 490.
+   **Fatto il 25/09** (riferito da Mauro).
 2. **Date**: se il go-live non è il 25/09, aggiornare `startsAt` e `endsAt` in
    `flat-offer.ts` (due settimane: `endsAt` = `startsAt` + 13 giorni) e la data
    "Ultimo aggiornamento" di Condizioni e Garanzia negli 11 `legal*.ts`.
@@ -154,8 +156,10 @@ come funziona, preventivo, risultato, checkout e promo.
 4. **Giro in anteprima**: home, tariffe, come funziona, FAQ, preventivo con esiti
    A/B/C, checkout fino alla pagina Stripe (senza pagare se le chiavi sono live),
    area riservata, CRM (listino, statistiche, scheda pratica), una lingua europea
-   e l'arabo.
+   e l'arabo. Fatto in locale prima del commit (sito; CRM e area riservata solo
+   con typecheck e build); Mauro ha scelto di partire senza giro in anteprima.
 5. **Merge su main** (deploy in produzione) e stesso giro veloce in produzione.
+   **Fatto il 25/09.**
 6. **Fuori dal sito**: annunci Google Ads che citano 290/490, scheda Google
    Business (servizi e prezzi; il video caricato lì dice 490 €), social,
    eventuali listini già inviati.
@@ -170,15 +174,18 @@ come funziona, preventivo, risultato, checkout e promo.
   col test); se serve il confronto, GA4 con `node scripts/ga4-report.mjs` (da `web/`).
 - **Su misura** (altri beni): importo concordato con pagamento manuale dal CRM; i
   link di pagamento applicano sempre 250 €.
-- **Non cambiare dal CRM** il testo delle due FAQ sul prezzo.
+- **Non cambiare dal CRM** la domanda delle due FAQ sul prezzo: il test le
+  riconosce da lì. La risposta si può correggere (durante il test non si vede).
 
 ## Chiusura del test
 
 1. `flat-offer.ts`: `FLAT_OFFER_ON = false` e `endsAt` = ultimo giorno reale (la
    garanzia di 14 giorni si conta da lì).
 2. **Legale**: annullare le modifiche del test negli 11 `legal*.ts` e nella bozza
-   md (`git diff listino-290-490 -- web/src/content/` le mostra tutte), con una
-   nuova data "Ultimo aggiornamento". Facoltativo: una riga che conferma il prezzo
+   md (`git diff listino-290-490 -- 'web/src/content/legal*.ts' bozze_legali/` le
+   mostra tutte), con una nuova data "Ultimo aggiornamento". Non riportare al tag
+   i `content_entries`: contengono anche la nota IVA "senza IVA da aggiungere"
+   (commit `d8b67a0` del 25/09), che è una correzione definitiva e non del test. Facoltativo: una riga che conferma il prezzo
    unico a chi l'ha avuto, fino alla scadenza della garanzia.
 3. **Commit e deploy**. Testi, FAQ, card, barra e CRM tornano da soli al listino
    290/490: il database non è mai stato toccato.

@@ -18,7 +18,7 @@ Chat precedente TR/FR/SQ + EN/AR + SEO:
 
 ---
 
-## ★★ TEST PREZZO UNICO 250 € (25/09) — branch `test/prezzo-unico-250`, NON in produzione
+## ★★ TEST PREZZO UNICO 250 € — ONLINE dal 25/09, fine prevista 08/10
 
 Piano, decisioni, checklist go-live e chiusura: **@TEST_PREZZO_UNICO_250**.
 
@@ -29,15 +29,15 @@ Piano, decisioni, checklist go-live e chiusura: **@TEST_PREZZO_UNICO_250**.
   `web/src/lib/flat-offer.ts` (`FLAT_OFFER_ON`, si cambia solo con un deploy); i
   testi dalle voci `prezzo_unico.*` dei content_entries (11 lingue); il database
   non si tocca.
-- **Prima del go-live**: OK di Lorenzo (contrasta con la sua conferma 290/490 del
-  27/07); se si parte dopo il 25/09, aggiornare le date in `flat-offer.ts` e negli
-  11 `legal*.ts`.
+- **Go-live 25/09**: OK di Lorenzo riferito da Mauro (supera, per la durata del
+  test, la sua conferma 290/490 del 27/07). Date in `flat-offer.ts` e negli 11
+  `legal*.ts` già giuste (25/09 → 08/10).
 - Video "Come funziona": resta l'originale, che cita 490 €. Scelta di Mauro:
   **non modificarlo e non nasconderlo**.
-- Stato al 25/09: commit `2aa977d` sul branch, pushato. Anteprima Vercel (serve
-  il login Vercel del team):
-  https://successioni-armellin-git-test-prezzo-unico-250-atstudio.vercel.app.
-  Merge su main = go-live: solo con l'OK di Lorenzo e il via di Mauro.
+- Stato al 25/09: **online** (branch unito a main). Spegnimento solo su richiesta
+  di Mauro, seguendo § Chiusura di @TEST_PREZZO_UNICO_250: alla chiusura NON
+  riportare i `content_entries` al tag, perché contengono anche la nota IVA
+  definitiva "senza IVA da aggiungere" (commit `d8b67a0`).
 
 ---
 
