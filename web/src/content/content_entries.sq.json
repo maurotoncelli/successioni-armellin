@@ -5621,7 +5621,7 @@
         "badge": "Çmim i vetëm",
         "title": "Trashëgimi gjithçka e përfshirë",
         "tagline": "Një çmim i vetëm, çfarëdo qoftë rasti juaj",
-        "price_note": "honorari përfundimtar, pa TVSH",
+        "price_note": "honorari përfundimtar, pa TVSH për t'u shtuar",
         "taxes_note": "Taksat shtetërore veç: i llogaritim ne",
         "sla": "Dorëzim brenda 7-10 ditëve pune nga dokumentet e plota",
         "features": [
@@ -5664,7 +5664,7 @@
       "value": [
         {
           "question": "Sa kushton shërbimi juaj?",
-          "answer": "250 € gjithçka e përfshirë: është honorari përfundimtar, pa TVSH (regjim forfettari), çfarëdo qoftë numri i pasurive, truallve ose trashëgimtarëve, me kalimin kadastral (voltura) të çdo pasurie. Vetëm për biznese, pjesë shoqërie, aksione ose anije ju bëjmë preventiv të personalizuar. Taksat shtetërore janë të ndara, në ngarkim të trashëgimtarëve, dhe i llogaritim para dorëzimit."
+          "answer": "250 € gjithçka e përfshirë: është honorari përfundimtar, pa TVSH për t'u shtuar (regjim forfettari), çfarëdo qoftë numri i pasurive, truallve ose trashëgimtarëve, me kalimin kadastral (voltura) të çdo pasurie. Vetëm për biznese, pjesë shoqërie, aksione ose anije ju bëjmë preventiv të personalizuar. Taksat shtetërore janë të ndara, në ngarkim të trashëgimtarëve, dhe i llogaritim para dorëzimit."
         },
         {
           "question": "A janë taksat të përfshira në çmim?",
@@ -5750,7 +5750,7 @@
       "key": "tariffe.box_trasparenza_body",
       "locale": "sq",
       "is_published": true,
-      "value": "Çmimi i vetëm 250 € është **honorari profesional pa TVSH**: studio operon në regjimin forfettari (operacion jo i nënshtruar TVSH-së). Është shuma përfundimtare: **asnjë shtesë** për pasuri, trashëgimtarë ose kalime kadastrale.\n\n**Taksat e trashëgimisë** (hipotekare, kadastrale, pulla) janë **të ndara, në ngarkim të trashëgimtarit**, dhe paguhen me F24: i llogaritim dhe i komunikojmë **para dorëzimit**."
+      "value": "Çmimi i vetëm 250 € është **honorari profesional, pa TVSH për t'u shtuar**: studio operon në regjimin forfettari (operacion jo i nënshtruar TVSH-së). Është shuma përfundimtare: **asnjë shtesë** për pasuri, trashëgimtarë ose kalime kadastrale.\n\n**Taksat e trashëgimisë** (hipotekare, kadastrale, pulla) janë **të ndara, në ngarkim të trashëgimtarit**, dhe paguhen me F24: i llogaritim dhe i komunikojmë **para dorëzimit**."
     },
     {
       "collection": "prezzo_unico",

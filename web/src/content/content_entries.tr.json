@@ -5621,7 +5621,7 @@
         "badge": "Tek fiyat",
         "title": "Veraset her şey dahil",
         "tagline": "Tek fiyat, durumunuz ne olursa olsun",
-        "price_note": "son ücret, KDV hariç",
+        "price_note": "son ücret, ayrıca KDV eklenmez",
         "taxes_note": "Devlet vergileri ayrı: biz hesaplarız",
         "sla": "Tüm belgeler tamam olduktan sonra 7-10 iş günü içinde gönderim",
         "features": [
@@ -5664,7 +5664,7 @@
       "value": [
         {
           "question": "Hizmetiniz ne kadar?",
-          "answer": "250 € her şey dahil: son ücret, KDV hariç (forfait rejimi), taşınmaz, arazi veya mirasçı sayısı ne olursa olsun, her taşınmaz için kadastro devri (voltura) dahil. Yalnızca şirketler, şirket payları, hisse senetleri veya gemiler için özel ön teklif hazırlarız. Devlet vergileri ayrıdır, mirasçıya aittir; gönderimden önce biz hesaplarız."
+          "answer": "250 € her şey dahil: son ücret, ayrıca KDV eklenmez (forfait rejimi), taşınmaz, arazi veya mirasçı sayısı ne olursa olsun, her taşınmaz için kadastro devri (voltura) dahil. Yalnızca şirketler, şirket payları, hisse senetleri veya gemiler için özel ön teklif hazırlarız. Devlet vergileri ayrıdır, mirasçıya aittir; gönderimden önce biz hesaplarız."
         },
         {
           "question": "Vergiler fiyata dahil mi?",
@@ -5750,7 +5750,7 @@
       "key": "tariffe.box_trasparenza_body",
       "locale": "tr",
       "is_published": true,
-      "value": "250 € tek fiyat **KDV hariç profesyonel ücrettir**: ofis forfait rejiminde çalışır (KDV'ye tabi değildir). Nihai tutardır: taşınmaz, mirasçı veya devirler için **ek ücret yok**.\n\n**Veraset vergileri** (ipotek, kadastro, damga) **ayrıdır, mirasçıya aittir** ve F24 ile ödenir: gönderimden **önce hesaplayıp bildiririz**."
+      "value": "250 € tek fiyat **profesyonel ücrettir, üzerine ayrıca KDV eklenmez**: ofis forfait rejiminde çalışır (KDV'ye tabi değildir). Nihai tutardır: taşınmaz, mirasçı veya devirler için **ek ücret yok**.\n\n**Veraset vergileri** (ipotek, kadastro, damga) **ayrıdır, mirasçıya aittir** ve F24 ile ödenir: gönderimden **önce hesaplayıp bildiririz**."
     },
     {
       "collection": "prezzo_unico",

@@ -5764,7 +5764,7 @@
       "key": "tariffe.box_trasparenza_body",
       "locale": "en",
       "is_published": true,
-      "value": "The single price of €250 is the **professional fee without VAT**: the studio operates under the flat-rate regime (not subject to VAT). It is the final amount: **no surcharge** for properties, heirs or cadastral transfers.\n\n**Succession taxes** (mortgage, cadastral, stamps) are **separate, paid by the heir** via F24: we calculate and notify them **before filing**."
+      "value": "The single price of €250 is the **professional fee, with no VAT to add**: the studio operates under the flat-rate regime (not subject to VAT). It is the final amount: **no surcharge** for properties, heirs or cadastral transfers.\n\n**Succession taxes** (mortgage, cadastral, stamps) are **separate, paid by the heir** via F24: we calculate and notify them **before filing**."
     },
     {
       "collection": "prezzo_unico",

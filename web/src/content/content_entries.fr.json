@@ -5621,7 +5621,7 @@
         "badge": "Prix unique",
         "title": "Succession tout inclus",
         "tagline": "Un seul prix, quel que soit votre dossier",
-        "price_note": "honoraires finaux, hors TVA",
+        "price_note": "honoraires finaux, sans TVA à ajouter",
         "taxes_note": "Impôts d'État en sus : nous les calculons pour vous",
         "sla": "Envoi sous 7 à 10 jours ouvrables à partir de la documentation complète",
         "features": [
@@ -5664,7 +5664,7 @@
       "value": [
         {
           "question": "Combien coûte votre service ?",
-          "answer": "250 € tout inclus : ce sont les honoraires finaux, hors TVA (régime forfaitaire), quel que soit le nombre de biens, terrains ou héritiers, avec la mutation cadastrale (voltura) de chaque bien. Seules les entreprises, parts sociales, actions ou embarcations nécessitent un devis sur mesure. Les impôts d'État sont séparés, à la charge des héritiers, et nous les calculons avant l'envoi."
+          "answer": "250 € tout inclus : ce sont les honoraires finaux, sans TVA à ajouter (régime forfaitaire), quel que soit le nombre de biens, terrains ou héritiers, avec la mutation cadastrale (voltura) de chaque bien. Seules les entreprises, parts sociales, actions ou embarcations nécessitent un devis sur mesure. Les impôts d'État sont séparés, à la charge des héritiers, et nous les calculons avant l'envoi."
         },
         {
           "question": "Les impôts sont-ils inclus dans le prix ?",
@@ -5750,7 +5750,7 @@
       "key": "tariffe.box_trasparenza_body",
       "locale": "fr",
       "is_published": true,
-      "value": "Le prix unique de 250 € correspond aux **honoraires professionnels hors TVA** : le cabinet opère en régime forfaitaire (opération non assujettie à la TVA). C'est le montant final : **aucun supplément** pour les biens, les héritiers ou les mutations cadastrales.\n\nLes **impôts de succession** (hypothécaire, cadastrale, timbres) sont **séparés, à la charge de l'héritier**, et se paient via F24 : nous les calculons et vous les communiquons **avant l'envoi**."
+      "value": "Le prix unique de 250 € correspond aux **honoraires professionnels, sans TVA à ajouter** : le cabinet opère en régime forfaitaire (opération non assujettie à la TVA). C'est le montant final : **aucun supplément** pour les biens, les héritiers ou les mutations cadastrales.\n\nLes **impôts de succession** (hypothécaire, cadastrale, timbres) sont **séparés, à la charge de l'héritier**, et se paient via F24 : nous les calculons et vous les communiquons **avant l'envoi**."
     },
     {
       "collection": "prezzo_unico",

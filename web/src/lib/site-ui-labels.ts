@@ -300,7 +300,7 @@ export const FLAT_OFFER_UI_IT: FlatOfferUiLabels = {
   badge: "Prezzo unico",
   title: "Successione tutto incluso",
   tagline: "Un solo prezzo, qualunque sia il tuo caso",
-  price_note: "onorario finale, senza IVA",
+  price_note: "onorario finale, senza IVA da aggiungere",
   taxes_note: "Imposte di Stato a parte: te le calcoliamo noi",
   sla: "Invio entro 7-10 giorni lavorativi dai documenti completi",
   features: [

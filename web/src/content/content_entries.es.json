@@ -5621,7 +5621,7 @@
         "badge": "Precio único",
         "title": "Sucesión todo incluido",
         "tagline": "Un solo precio, sea cual sea tu caso",
-        "price_note": "honorario final, sin IVA",
+        "price_note": "honorario final, sin IVA que añadir",
         "taxes_note": "Impuestos del Estado aparte: los calculamos nosotros",
         "sla": "Envío en 7-10 días laborables desde que la documentación esté completa",
         "features": [
@@ -5664,7 +5664,7 @@
       "value": [
         {
           "question": "¿Cuánto cuesta vuestro servicio?",
-          "answer": "250 € todo incluido: es el honorario final, sin IVA (régimen forfettario), sea cual sea el número de inmuebles, terrenos o herederos, con el cambio de titularidad catastral (voltura) de cada inmueble. Solo para empresas, participaciones sociales, acciones o embarcaciones te hacemos un presupuesto a medida. Los impuestos del Estado son aparte, a cargo de los herederos, y los calculamos antes del envío."
+          "answer": "250 € todo incluido: es el honorario final, sin IVA que añadir (régimen forfettario), sea cual sea el número de inmuebles, terrenos o herederos, con el cambio de titularidad catastral (voltura) de cada inmueble. Solo para empresas, participaciones sociales, acciones o embarcaciones te hacemos un presupuesto a medida. Los impuestos del Estado son aparte, a cargo de los herederos, y los calculamos antes del envío."
         },
         {
           "question": "¿Los impuestos están incluidos en el precio?",
@@ -5750,7 +5750,7 @@
       "key": "tariffe.box_trasparenza_body",
       "locale": "es",
       "is_published": true,
-      "value": "El precio único de 250 € son los **honorarios profesionales sin IVA**: el estudio opera en régimen forfettario (operación no sujeta a IVA). Es la cifra final: **ningún suplemento** por inmuebles, herederos o cambios catastrales.\n\nLos **impuestos de sucesión** (hipotecario, catastral, timbres) son **aparte, a cargo del heredero**, y se pagan con F24: los calculamos y comunicamos **antes del envío**."
+      "value": "El precio único de 250 € son los **honorarios profesionales, sin IVA que añadir**: el estudio opera en régimen forfettario (operación no sujeta a IVA). Es la cifra final: **ningún suplemento** por inmuebles, herederos o cambios catastrales.\n\nLos **impuestos de sucesión** (hipotecario, catastral, timbres) son **aparte, a cargo del heredero**, y se pagan con F24: los calculamos y comunicamos **antes del envío**."
     },
     {
       "collection": "prezzo_unico",

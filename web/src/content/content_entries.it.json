@@ -5635,7 +5635,7 @@
         "badge": "Prezzo unico",
         "title": "Successione tutto incluso",
         "tagline": "Un solo prezzo, qualunque sia il tuo caso",
-        "price_note": "onorario finale, senza IVA",
+        "price_note": "onorario finale, senza IVA da aggiungere",
         "taxes_note": "Imposte di Stato a parte: te le calcoliamo noi",
         "sla": "Invio entro 7-10 giorni lavorativi dai documenti completi",
         "features": [
@@ -5678,7 +5678,7 @@
       "value": [
         {
           "question": "Quanto costa il vostro servizio?",
-          "answer": "250 € tutto incluso: è l'onorario finale, senza IVA (regime forfettario), qualunque sia il numero di immobili, terreni o eredi, con la voltura catastale di ogni immobile. Solo per aziende, quote societarie, azioni o imbarcazioni ti facciamo un preventivo su misura. Le imposte di Stato sono separate, a carico degli eredi, e te le calcoliamo prima dell'invio."
+          "answer": "250 € tutto incluso: è l'onorario finale, senza IVA da aggiungere (regime forfettario), qualunque sia il numero di immobili, terreni o eredi, con la voltura catastale di ogni immobile. Solo per aziende, quote societarie, azioni o imbarcazioni ti facciamo un preventivo su misura. Le imposte di Stato sono separate, a carico degli eredi, e te le calcoliamo prima dell'invio."
         },
         {
           "question": "Le imposte sono comprese nel prezzo?",
@@ -5764,7 +5764,7 @@
       "key": "tariffe.box_trasparenza_body",
       "locale": "it",
       "is_published": true,
-      "value": "Il prezzo unico di 250 € è l'**onorario professionale senza IVA**: lo studio opera in regime forfettario (operazione non soggetta a IVA). È la cifra finale: **nessun supplemento** per immobili, eredi o volture.\n\nLe **imposte di successione** (ipotecaria, catastale, bolli) sono **separate, a carico dell'erede**, e si versano con F24: te le calcoliamo e comunichiamo **prima dell'invio**."
+      "value": "Il prezzo unico di 250 € è l'**onorario professionale, senza IVA da aggiungere**: lo studio opera in regime forfettario (operazione non soggetta a IVA). È la cifra finale: **nessun supplemento** per immobili, eredi o volture.\n\nLe **imposte di successione** (ipotecaria, catastale, bolli) sono **separate, a carico dell'erede**, e si versano con F24: te le calcoliamo e comunichiamo **prima dell'invio**."
     },
     {
       "collection": "prezzo_unico",

@@ -5621,7 +5621,7 @@
         "badge": "Einheitspreis",
         "title": "Erbschaft alles inklusive",
         "tagline": "Ein Preis, egal wie Ihr Fall aussieht",
-        "price_note": "Endhonorar, ohne MwSt.",
+        "price_note": "Endhonorar, ohne zusätzliche MwSt.",
         "taxes_note": "Staatliche Steuern extra: wir berechnen sie für Sie",
         "sla": "Einreichung innerhalb von 7–10 Werktagen nach vollständigen Unterlagen",
         "features": [
@@ -5664,7 +5664,7 @@
       "value": [
         {
           "question": "Was kostet Ihr Service?",
-          "answer": "250 € alles inklusive: das Endhonorar, ohne MwSt. (Pauschalregelung), unabhängig von der Zahl der Immobilien, Grundstücke oder Erben, mit Katasterumschreibung (voltura) für jede Immobilie. Nur für Unternehmen, Gesellschaftsanteile, Aktien oder Boote erstellen wir ein Angebot nach Maß. Staatliche Steuern sind separat, von den Erben zu tragen, und wir berechnen sie vor der Einreichung."
+          "answer": "250 € alles inklusive: das Endhonorar, ohne zusätzliche MwSt. (Pauschalregelung), unabhängig von der Zahl der Immobilien, Grundstücke oder Erben, mit Katasterumschreibung (voltura) für jede Immobilie. Nur für Unternehmen, Gesellschaftsanteile, Aktien oder Boote erstellen wir ein Angebot nach Maß. Staatliche Steuern sind separat, von den Erben zu tragen, und wir berechnen sie vor der Einreichung."
         },
         {
           "question": "Sind die Steuern im Preis enthalten?",
@@ -5750,7 +5750,7 @@
       "key": "tariffe.box_trasparenza_body",
       "locale": "de",
       "is_published": true,
-      "value": "Der Einheitspreis von 250 € ist das **Honorar ohne MwSt.**: Die Kanzlei arbeitet in der Pauschalregelung (nicht umsatzsteuerpflichtig). Das ist der Endbetrag: **kein Aufschlag** für Immobilien, Erben oder Katasterumschreibungen.\n\n**Erbschaftssteuern** (Hypothek, Kataster, Stempel) sind **separat, vom Erben zu tragen**, und werden per F24 gezahlt: wir berechnen und teilen sie **vor der Einreichung** mit."
+      "value": "Der Einheitspreis von 250 € ist das **Honorar ohne zusätzliche MwSt.**: Die Kanzlei arbeitet in der Pauschalregelung (nicht umsatzsteuerpflichtig). Das ist der Endbetrag: **kein Aufschlag** für Immobilien, Erben oder Katasterumschreibungen.\n\n**Erbschaftssteuern** (Hypothek, Kataster, Stempel) sind **separat, vom Erben zu tragen**, und werden per F24 gezahlt: wir berechnen und teilen sie **vor der Einreichung** mit."
     },
     {
       "collection": "prezzo_unico",
