@@ -1,6 +1,8 @@
 import type { Package, Addon } from "@/content/site";
 import type { PackageKey } from "@/lib/supabase/types";
 import { getActivePromo, promoDiscount, round2, type Promo } from "@/lib/promo";
+import { getFlatOffer, type FlatOffer } from "@/lib/flat-offer";
+import { FLAT_OFFER_UI_IT } from "@/lib/site-ui-labels";
 
 /*
   Composizione dell'ordine (onorario) per UNA pratica = UN ordine (no carrello, @04).
@@ -20,6 +22,10 @@ import { getActivePromo, promoDiscount, round2, type Promo } from "@/lib/promo";
   c'è una riga DISCOUNT negativa pari a -X% del subtotale e `total` è già
   scontato. Stripe riceve le righe positive + un coupon percent_off (vedi
   lib/payments.ts), così la cifra coincide al centesimo.
+
+  Test prezzo unico (25/09, lib/flat-offer.ts): Semplice e Completo diventano
+  UNA riga PACKAGE con chiave = codice dell'offerta e importo fisso; niente
+  supplementi né promo. Gli add-on restano righe a parte.
 */
 
 export type OrderLineItem = {
@@ -44,6 +50,8 @@ export type OrderLabels = {
   extraHeir?: string;
   /** Template riga sconto con `{pct}` (default IT). */
   discount?: string;
+  /** Riga unica del prezzo unico (default IT). */
+  flatLine?: string;
 };
 
 export type OrderDiscount = {
@@ -96,15 +104,32 @@ const SURCHARGE_RULES: Partial<Record<PackageKey, SurchargeRules>> = {
 const EXTRA_PROPERTY_LABEL_IT = "Immobili aggiuntivi ({extra} × {fee}€)";
 const EXTRA_HEIR_LABEL_IT = "Eredi aggiuntivi ({extra} × {fee}€)";
 export const DISCOUNT_LABEL_IT = "Sconto lancio −{pct}%";
+export const FLAT_LINE_LABEL_IT = FLAT_OFFER_UI_IT.line_label;
 
 function fill(tpl: string, extra: number, fee: number): string {
   return tpl.replace("{extra}", String(extra)).replace("{fee}", String(fee));
+}
+
+function pushAddons(lineItems: OrderLineItem[], addonKeys: string[] | undefined, addons: Addon[]) {
+  for (const key of addonKeys ?? []) {
+    const addon = addons.find((a) => a.key === key);
+    if (addon) {
+      lineItems.push({
+        type: "ADDON",
+        key: addon.key,
+        label: addon.name,
+        amount: addon.price,
+      });
+    }
+  }
 }
 
 /**
   `promo`: undefined = usa la promo attiva adesso (default, così ogni chiamante
   è coerente senza ricordarsene); null = forza listino pieno; oggetto = promo
   esplicita (test, o ricalcolo "come era al momento X").
+  `flat`: stessa convenzione per il prezzo unico (default = test acceso o no);
+  un oggetto esplicito serve alla garanzia del prezzo a test spento.
 */
 export function buildOrder(
   input: OrderInput,
@@ -112,9 +137,25 @@ export function buildOrder(
   addons: Addon[],
   labels?: OrderLabels,
   promo: Promo | null | undefined = getActivePromo(),
+  flat: FlatOffer | null | undefined = getFlatOffer(),
 ): ComputedOrder | null {
   const pkg = packages.find((p) => p.key === input.packageKey);
   if (!pkg) return null;
+
+  // Zero Stress è fuori vetrina: le pratiche storiche restano al loro listino.
+  if (flat && pkg.key !== "ZERO_STRESS") {
+    const flatItems: OrderLineItem[] = [
+      {
+        type: "PACKAGE",
+        key: flat.code,
+        label: labels?.flatLine ?? FLAT_LINE_LABEL_IT,
+        amount: flat.price,
+      },
+    ];
+    pushAddons(flatItems, input.addonKeys, addons);
+    const total = round2(flatItems.reduce((sum, item) => sum + item.amount, 0));
+    return { packageKey: pkg.key, lineItems: flatItems, subtotal: total, discount: null, total };
+  }
 
   const lineItems: OrderLineItem[] = [
     { type: "PACKAGE", key: pkg.key, label: pkg.name, amount: pkg.price },
@@ -149,17 +190,7 @@ export function buildOrder(
   }
 
   // Add-on selezionati (catalogo CMS)
-  for (const key of input.addonKeys ?? []) {
-    const addon = addons.find((a) => a.key === key);
-    if (addon) {
-      lineItems.push({
-        type: "ADDON",
-        key: addon.key,
-        label: addon.name,
-        amount: addon.price,
-      });
-    }
-  }
+  pushAddons(lineItems, input.addonKeys, addons);
 
   const subtotal = round2(lineItems.reduce((sum, item) => sum + item.amount, 0));
 

@@ -1,6 +1,6 @@
 # HANDOFF per il prossimo agente
 
-> Documento di passaggio di consegne. Aggiornato: **2026-09-20**.
+> Documento di passaggio di consegne. Aggiornato: **2026-09-25**.
 > Scopo: permettere a un nuovo agente (senza contesto) di riprendere il lavoro.
 > Riferimenti chiave: @RUNBOOK_GoLive (procedura go-live), @SPEC_Env_Vars,
 > @DOMANDE_PER_LORENZO, @PROSSIMO_INCONTRO_LORENZO, @07_Stack.
@@ -15,6 +15,29 @@ Chat precedente TR/FR/SQ + EN/AR + SEO:
 **NON committare** `bozza video/` (asset untracked).  
 **NON toccare** `web/src/app/crm/**` per i18n (CRM sempre IT/LTR).  
 **Traduzioni UI = agente** (niente OpenAI/API). Preferenza Mauro: subagent **Composer 2.5** per le mappe stringhe.
+
+---
+
+## ★★ TEST PREZZO UNICO 250 € — ONLINE dal 25/09, fine prevista 08/10
+
+Piano, decisioni, checklist go-live e chiusura: **@TEST_PREZZO_UNICO_250**.
+
+- Richiesta Mauro: due settimane a **250 € tutto incluso** (imposte di Stato a
+  parte) al posto di 290 / 490 / su misura; il preventivatore resta come conferma.
+  Su misura solo per gli altri beni (quote, azioni, aziende, barche).
+- Listino di prima nel tag `listino-290-490`. Tutto passa da
+  `web/src/lib/flat-offer.ts` (`FLAT_OFFER_ON`, si cambia solo con un deploy); i
+  testi dalle voci `prezzo_unico.*` dei content_entries (11 lingue); il database
+  non si tocca.
+- **Go-live 25/09**: OK di Lorenzo riferito da Mauro (supera, per la durata del
+  test, la sua conferma 290/490 del 27/07). Date in `flat-offer.ts` e negli 11
+  `legal*.ts` già giuste (25/09 → 08/10).
+- Video "Come funziona": resta l'originale, che cita 490 €. Scelta di Mauro:
+  **non modificarlo e non nasconderlo**.
+- Stato al 25/09: **online** (branch unito a main). Spegnimento solo su richiesta
+  di Mauro, seguendo § Chiusura di @TEST_PREZZO_UNICO_250: alla chiusura NON
+  riportare i `content_entries` al tag, perché contengono anche la nota IVA
+  definitiva "senza IVA da aggiungere" (commit `d8b67a0`).
 
 ---
 

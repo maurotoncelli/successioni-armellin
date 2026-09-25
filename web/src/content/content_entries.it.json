@@ -5624,6 +5624,339 @@
           "testo": "Ogni passo importante te lo comunichiamo: non devi inseguire lo studio per sapere dov'è la pratica."
         }
       ]
+    },
+    {
+      "collection": "site_ui",
+      "key": "flat_offer_ui",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "line_label": "Successione tutto incluso — prezzo unico",
+        "badge": "Prezzo unico",
+        "title": "Successione tutto incluso",
+        "tagline": "Un solo prezzo, qualunque sia il tuo caso",
+        "price_note": "onorario finale, senza IVA da aggiungere",
+        "taxes_note": "Imposte di Stato a parte: te le calcoliamo noi",
+        "sla": "Invio entro 7-10 giorni lavorativi dai documenti completi",
+        "features": [
+          "Qualsiasi numero di immobili, terreni compresi, con la voltura catastale di ciascuno",
+          "Qualsiasi numero di eredi, anche residenti all'estero",
+          "Con o senza testamento",
+          "Calcolo delle imposte, dichiarazione e invio all'Agenzia delle Entrate",
+          "Area personale e Lorenzo che ti segue dall'inizio alla fine",
+          "Garanzia Soddisfatti o Rimborsati"
+        ],
+        "cta": "Calcola il preventivo gratis",
+        "cta_hint": "In un minuto vedi cosa comprende per il tuo caso",
+        "custom_title": "Aziende, quote societarie, azioni o barche?",
+        "custom_text": "Questi beni non rientrano nel prezzo unico: ti facciamo un preventivo su misura, gratis, entro un giorno lavorativo.",
+        "custom_cta": "Richiedi il preventivo",
+        "banner_text": "Prezzo unico {price} € tutto incluso",
+        "banner_note": "imposte di Stato a parte",
+        "banner_cta": "Calcola il preventivo",
+        "result_title": "Il tuo caso rientra nel prezzo unico",
+        "result_price_label": "Prezzo unico, tutto incluso",
+        "result_case_title": "Nel tuo caso è compreso",
+        "case_property_one": "1 immobile, con la voltura catastale",
+        "case_property_many": "{n} immobili, ognuno con la voltura catastale",
+        "case_property_some": "Tutti gli immobili, con le volture catastali",
+        "case_property_unknown": "Gli immobili che risulteranno dalle verifiche, con le volture catastali",
+        "case_property_none": "Conti, titoli e gli altri beni da dichiarare",
+        "case_heir_one": "1 erede",
+        "case_heir_many": "{n} eredi",
+        "case_heirs_abroad": "Eredi residenti all'estero, senza costi in più",
+        "case_will": "Il testamento",
+        "case_core": "Calcolo delle imposte, dichiarazione e invio all'Agenzia delle Entrate",
+        "result_no_surcharge": "Nessun supplemento: il prezzo non cambia con il numero di immobili o di eredi."
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "faq_answers",
+      "locale": "it",
+      "is_published": true,
+      "value": [
+        {
+          "question": "Quanto costa il vostro servizio?",
+          "answer": "250 € tutto incluso: è l'onorario finale, senza IVA da aggiungere (regime forfettario), qualunque sia il numero di immobili, terreni o eredi, con la voltura catastale di ogni immobile. Solo per aziende, quote societarie, azioni o imbarcazioni ti facciamo un preventivo su misura. Le imposte di Stato sono separate, a carico degli eredi, e te le calcoliamo prima dell'invio."
+        },
+        {
+          "question": "Le imposte sono comprese nel prezzo?",
+          "answer": "No: il prezzo unico di 250 € è l'onorario professionale. Le imposte (successione, ipotecaria, catastale, bolli) si versano con F24 e sono separate. Te le calcoliamo noi prima dell'invio."
+        }
+      ]
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.hero_subtitle",
+      "locale": "it",
+      "is_published": true,
+      "value": "Ci pensa il Geom. Lorenzo Armellin, specializzato in successioni: prezzo unico di 250 € tutto incluso, tutto online (e se vuoi anche di persona), una persona reale che ti segue. Le imposte le calcoliamo noi."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.tariffe_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Un prezzo unico, tutto incluso"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.tariffe_intro",
+      "locale": "it",
+      "is_published": true,
+      "value": "250 € per tutta la successione, qualunque sia il numero di immobili o di eredi. Le imposte di Stato sono separate, a carico dell'erede, e te le calcoliamo noi."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.tariffe_cta",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "label": "Cosa comprende il prezzo",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.come_funziona_sla_note",
+      "locale": "it",
+      "is_published": true,
+      "value": "Invio entro 7-10 giorni lavorativi (10 se ci sono immobili) da quando abbiamo tutti i documenti completi."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.distinguishes_items",
+      "locale": "it",
+      "is_published": true,
+      "value": [
+        {
+          "icon": "area",
+          "titolo": "Area personale avanzata",
+          "testo": "Modelli pronti, documenti caricati subito dal telefono, stati di avanzamento con notifica. Entri quando vuoi, da casa o in mobilità."
+        },
+        {
+          "icon": "lorenzo",
+          "titolo": "Lorenzo ti segue, caso per caso",
+          "testo": "Disposto a dirti come procedere in ogni situazione. Non un bot e non un call center: lo stesso geometra che firma la pratica."
+        },
+        {
+          "icon": "voltura",
+          "titolo": "Volture catastali incluse",
+          "testo": "Dove c'è un immobile, il passaggio in Catasto è nel prezzo, per tutti gli immobili. Non è un extra che arriva dopo."
+        },
+        {
+          "icon": "comms",
+          "titolo": "Comunicazioni immediate",
+          "testo": "Ogni passo importante te lo comunichiamo: non devi inseguire lo studio per sapere dov'è la pratica."
+        }
+      ]
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.hero_subtitle",
+      "locale": "it",
+      "is_published": true,
+      "value": "Un prezzo unico: 250 € tutto incluso, qualunque sia il numero di immobili o di eredi. Le imposte di Stato sono separate e te le calcoliamo noi. Solo per aziende, quote societarie, azioni o barche serve un preventivo su misura."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.box_trasparenza_body",
+      "locale": "it",
+      "is_published": true,
+      "value": "Il prezzo unico di 250 € è l'**onorario professionale, senza IVA da aggiungere**: lo studio opera in regime forfettario (operazione non soggetta a IVA). È la cifra finale: **nessun supplemento** per immobili, eredi o volture.\n\nLe **imposte di successione** (ipotecaria, catastale, bolli) sono **separate, a carico dell'erede**, e si versano con F24: te le calcoliamo e comunichiamo **prima dell'invio**."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.sla_note",
+      "locale": "it",
+      "is_published": true,
+      "value": "L'invio della dichiarazione avviene entro **7 giorni lavorativi** se non ci sono immobili ed entro **10** se ci sono, dalla **documentazione completa** (non dal pagamento): così è una promessa che possiamo davvero mantenere.\n\nSono **esclusi i tempi di enti terzi** (Agenzia, Catasto, banche)."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.guida_scelta_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Prima di pagare (e dopo)"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.guida_scelta_items",
+      "locale": "it",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "Un solo prezzo, niente da scegliere",
+          "testo": "**250 € tutto incluso**: conti, case, terreni e box senza limiti di numero, con la voltura catastale di ogni immobile; qualsiasi numero di eredi, anche residenti all'estero, con o senza testamento. Solo aziende, quote societarie, azioni o imbarcazioni richiedono un **preventivo su misura, gratis**. Se hai un dubbio, scrivi a Lorenzo: te lo diciamo noi."
+        },
+        {
+          "titolo": "Cosa non è compreso",
+          "testo": "Le **imposte di Stato** (successione, ipotecaria, catastale, bolli): si versano con F24 e te le calcoliamo prima dell'invio. E i servizi diversi dalla successione, come la riunione di usufrutto, che si quotano a parte."
+        },
+        {
+          "titolo": "Cosa succede dopo il pagamento",
+          "testo": "Si apre l'**area personale**: lì carichi i documenti (anche da foto), firmi il mandato, segui la pratica e parli con Lorenzo. Non devi andare in nessuno sportello."
+        },
+        {
+          "titolo": "Se cambi idea",
+          "testo": "Hai **14 giorni** di recesso di legge. Se ci chiedi di partire subito e il lavoro è già finito, il recesso non si applica più — te lo diciamo prima, in modo chiaro."
+        }
+      ]
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.su_misura_text",
+      "locale": "it",
+      "is_published": true,
+      "value": "Aziende, quote societarie, azioni o imbarcazioni? Questi beni non rientrano nel prezzo unico: ti facciamo un preventivo su misura, gratis e senza sorprese."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.cta_finale_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Un minuto per verificare che il tuo caso rientri nel prezzo unico."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.addon_intro",
+      "locale": "it",
+      "is_published": true,
+      "value": "Altri servizi, separati dalla successione"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.addon_subtitle",
+      "locale": "it",
+      "is_published": true,
+      "value": "Non fanno parte della dichiarazione di successione, quindi non sono nel prezzo unico. Se ti servono li attiviamo su richiesta, con un preventivo dedicato."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.hero_trust_items",
+      "locale": "it",
+      "is_published": true,
+      "value": [
+        "{price} € tutto incluso",
+        "Centinaia di successioni seguite",
+        "Tutto online, anche da casa"
+      ]
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.prices_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Un prezzo unico, prima di iniziare"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.prices_intro",
+      "locale": "it",
+      "is_published": true,
+      "value": "250 € tutto incluso, qualunque sia il numero di immobili o di eredi. Le imposte sono a parte: te le calcoliamo noi prima dell'invio."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.prices_custom_body",
+      "locale": "it",
+      "is_published": true,
+      "value": "Aziende, quote societarie, azioni o barche: preventivo personalizzato, senza impegno."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.prices_link",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "label": "Cosa comprende il prezzo unico",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.sla_body",
+      "locale": "it",
+      "is_published": true,
+      "value": "I tempi partono da quando abbiamo **tutti i documenti completi e corretti** (non dal pagamento): invio entro **7 giorni lavorativi** se non ci sono immobili, entro **10** se ci sono. Così è una promessa che possiamo mantenere davvero.\n\nSono **esclusi i tempi di enti terzi** (Agenzia, Catasto, banche)."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "preventivo.intro_subtitle",
+      "locale": "it",
+      "is_published": true,
+      "value": "Rispondi a poche domande: vedi subito se il tuo caso rientra nel prezzo unico di 250 € tutto incluso e cosa comprende. Nessun impegno."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "site_ui.preventivo_ui",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "real_estate_hint": "Conta case, terreni, box e quote: il prezzo non cambia, ci serve per preparare la lista dei documenti.",
+        "will_yes_note": "Il prezzo unico copre anche i casi con testamento. Nella checklist documenti ti chiederemo la copia del testamento pubblicato."
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "grazie.esito_b_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Ecco il tuo preventivo"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "grazie.esito_b_whatsapp_prefill",
+      "locale": "it",
+      "is_published": true,
+      "value": "Ciao Lorenzo, ho compilato il questionario sul sito: il mio caso rientra nel prezzo unico di {total} €. Avrei qualche domanda prima di procedere."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "grazie.esito_c_body",
+      "locale": "it",
+      "is_published": true,
+      "value": "Dalle tue risposte emergono beni che non rientrano nel prezzo unico (quote societarie, azioni, aziende, imbarcazioni…). Non possiamo chiudere un prezzo qui: va studiato insieme a Lorenzo, così paghi né più né meno del giusto. Lascia i recapiti sotto (e, se vuoi, una nota) oppure scrivici: ti richiamiamo per chiarire i dettagli e prepararti il preventivo dedicato."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "checkout.modifica_link",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "label": "Modifica",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "site_ui.checkout_ui",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "need_quote_after": ": così verifichiamo che il tuo caso rientri nel prezzo unico.",
+        "empty_order": "Non risulta una pratica da pagare. Calcola prima il preventivo: verifichiamo il tuo caso e colleghiamo il pagamento alla tua pratica."
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "site_ui.promo_ui",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "included_items": [
+          "Consulenza iniziale gratuita con Lorenzo, per telefono o WhatsApp",
+          "Assistenza continua di Lorenzo in orario d'ufficio: WhatsApp, telefono ed email",
+          "Tutti gli immobili, terreni compresi, con la voltura catastale di ciascuno",
+          "Tutti gli eredi, anche residenti all'estero, con o senza testamento",
+          "Guide passo passo per trovare e raccogliere i documenti",
+          "Area personale intuitiva: carichi i documenti e segui la pratica",
+          "Calcolo delle imposte e compilazione della dichiarazione",
+          "Trasmissione all'Agenzia delle Entrate con delega totale: non devi andare da nessuna parte",
+          "Garanzia Soddisfatti o Rimborsati"
+        ]
+      }
     }
   ]
 }

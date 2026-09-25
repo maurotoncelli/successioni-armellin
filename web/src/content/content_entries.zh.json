@@ -5610,6 +5610,339 @@
           "testo": "每个重要步骤都会告知：不必追着事务所问案件办到哪一步。"
         }
       ]
+    },
+    {
+      "collection": "site_ui",
+      "key": "flat_offer_ui",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "line_label": "遗产继承全包 — 统一价",
+        "badge": "统一价",
+        "title": "遗产继承全包",
+        "tagline": "单一价格，无论何种情况",
+        "price_note": "最终服务费，无需另加增值税",
+        "taxes_note": "国家税款另计：由我们为您计算",
+        "sla": "文件齐全后 7–10 个工作日内提交",
+        "features": [
+          "任意数量房产，含土地，每处均含地籍过户（voltura）",
+          "任意数量继承人，含海外居住者",
+          "有遗嘱或无遗嘱均可",
+          "税费计算、申报书编制并提交至 Agenzia delle Entrate",
+          "个人专区及 Lorenzo 全程跟进",
+          "不满意即退款保证"
+        ],
+        "cta": "免费计算报价",
+        "cta_hint": "一分钟了解您的情况包含哪些内容",
+        "custom_title": "企业、公司股份、股票或船舶？",
+        "custom_text": "这些资产不在统一价范围内：我们免费在一个工作日内为您定制报价。",
+        "custom_cta": "申请报价",
+        "banner_text": "统一价 {price} € 全包",
+        "banner_note": "国家税款另计",
+        "banner_cta": "计算报价",
+        "result_title": "您的情况适用统一价",
+        "result_price_label": "统一价，全包",
+        "result_case_title": "您的情况包含",
+        "case_property_one": "1 处房产，含地籍过户（voltura）",
+        "case_property_many": "{n} 处房产，每处均含地籍过户（voltura）",
+        "case_property_some": "全部房产，含各地籍过户（voltura）",
+        "case_property_unknown": "核查后将确定的房产，含地籍过户（voltura）",
+        "case_property_none": "账户、证券及须申报的其他资产",
+        "case_heir_one": "1 名继承人",
+        "case_heir_many": "{n} 名继承人",
+        "case_heirs_abroad": "海外居住的继承人，不加价",
+        "case_will": "遗嘱",
+        "case_core": "税费计算、申报书编制并提交至 Agenzia delle Entrate",
+        "result_no_surcharge": "无附加费：价格不因房产或继承人数量而变。"
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "faq_answers",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        {
+          "question": "你们的服务多少钱？",
+          "answer": "250 € 全包：为最终服务费，无需另加增值税（定额税制），无论房产、土地或继承人多少，每处房产均含地籍过户（voltura）。仅企业、公司股份、股票或船舶需定制报价。国家税款另行计算，由继承人承担，我们在提交前为您计算。"
+        },
+        {
+          "question": "价格包含税款吗？",
+          "answer": "不包含：250 € 统一价为专业服务费。税款（继承税、抵押权税、地籍税、印花税）通过 F24 缴纳，另行计算。我们在提交前为您计算。"
+        }
+      ]
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.hero_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "由专攻遗产继承的 Geom. Lorenzo Armellin 办理：250 € 全包统一价，全程在线（如需也可面谈），真人跟进。税款由我们计算。"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.tariffe_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "统一价，全包"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.tariffe_intro",
+      "locale": "zh",
+      "is_published": true,
+      "value": "整宗遗产继承 250 €，无论房产或继承人多少。国家税款另计，由继承人承担，由我们计算。"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.tariffe_cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "价格包含哪些内容",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.come_funziona_sla_note",
+      "locale": "zh",
+      "is_published": true,
+      "value": "文件全部齐全后 7–10 个工作日内提交（有房产时为 10 个工作日）。"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.distinguishes_items",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        {
+          "icon": "area",
+          "titolo": "进阶个人专区",
+          "testo": "现成模板、手机即可上传文件、进度状态会通知。随时登录，在家或在路上都行。"
+        },
+        {
+          "icon": "lorenzo",
+          "titolo": "洛伦佐个案跟进",
+          "testo": "随时说明下一步怎么走。不是机器人，也不是客服中心：签字办理的就是同一位测量师。"
+        },
+        {
+          "icon": "voltura",
+          "titolo": "地籍过户已包含",
+          "testo": "有房产时，地籍更新已含在价格内，适用于所有房产。不是事后另收费的项目。"
+        },
+        {
+          "icon": "comms",
+          "titolo": "即时通知",
+          "testo": "每个重要步骤都会告知：不必追着事务所问案件办到哪一步。"
+        }
+      ]
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.hero_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "统一价：250 € 全包，无论房产或继承人多少。国家税款另计，由我们计算。仅企业、公司股份、股票或船舶需定制报价。"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.box_trasparenza_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "250 € 统一价是**专业服务费，无需另加增值税**：事务所适用定额税制（不征收增值税）。这是最终金额：**不会因房产、继承人或过户而加价**。\n\n**继承相关税款**（抵押权税、地籍税、印花税）另行计算，**由继承人承担**，通过 F24 缴纳：我们在**提交前**计算并告知。"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.sla_note",
+      "locale": "zh",
+      "is_published": true,
+      "value": "无房产时，自**文件齐全**之日起（非自付款日起）**7 个工作日**内提交申报；有房产时为 **10** 个工作日：这样才是我们能真正兑现的承诺。\n\n不含**第三方机构**（Agenzia、Catasto、银行）的处理时间。"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.guida_scelta_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "付款之前（以及之后）"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.guida_scelta_items",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "单一价格，无需选择",
+          "testo": "**250 € 全包**：账户、住宅、土地和车库数量不限，每处房产均含地籍过户（voltura）；继承人数量不限，含海外居住者，有遗嘱或无遗嘱均可。仅企业、公司股份、股票或船舶需**免费定制报价**。如有疑问，写信给 Lorenzo：我们告诉您。"
+        },
+        {
+          "titolo": "不包含的内容",
+          "testo": "**国家税款**（继承税、抵押权税、地籍税、印花税）：通过 F24 缴纳，我们在提交前为您计算。与继承无关的服务也单独报价，例如用益权合并（riunione di usufrutto）。"
+        },
+        {
+          "titolo": "付款之后",
+          "testo": "会打开**个人专区**：在那里上传文件（手机拍照也可以）、签署委托、跟进案件并与 Lorenzo 沟通。不用去任何窗口。"
+        },
+        {
+          "titolo": "如果改变主意",
+          "testo": "依法有 **14 天** 撤回权。若您要求立即开工且工作已经完成，撤回权不再适用——我们会事先说清楚。"
+        }
+      ]
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.su_misura_text",
+      "locale": "zh",
+      "is_published": true,
+      "value": "企业、公司股份、股票或船舶？这些资产不在统一价范围内：我们免费、无意外为您定制报价。"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.cta_finale_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "用一分钟确认您的情况是否适用统一价。"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.addon_intro",
+      "locale": "zh",
+      "is_published": true,
+      "value": "与继承分开的其他服务"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.addon_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "它们不属于遗产继承申报，因此不在统一价内。如您需要，我们按需提供，并单独报价。"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.hero_trust_items",
+      "locale": "zh",
+      "is_published": true,
+      "value": [
+        "{price} € 全包",
+        "数百件继承案件",
+        "全程在线，足不出户"
+      ]
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.prices_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "开始前，统一价"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.prices_intro",
+      "locale": "zh",
+      "is_published": true,
+      "value": "250 € 全包，无论房产或继承人多少。税费另计：我们会在提交前为您计算。"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.prices_custom_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "企业、公司股份、股票或船舶：个性化报价，无需承诺。"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.prices_link",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "统一价包含哪些内容",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.sla_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "时限自我们收到**全部完整正确的文件**起算（非自付款日起）：无房产时 **7 个工作日**内提交，有房产时为 **10** 个工作日。这样才是我们能真正兑现的承诺。\n\n不含**第三方机构**（Agenzia、Catasto、银行）的处理时间。"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "preventivo.intro_subtitle",
+      "locale": "zh",
+      "is_published": true,
+      "value": "回答几个简单问题：立即查看您的情况是否适用 250 € 全包统一价以及包含哪些内容。无义务。"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "site_ui.preventivo_ui",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "real_estate_hint": "统计住宅、土地、车库及份额：价格不变，我们用来准备文件清单。",
+        "will_yes_note": "统一价也涵盖有遗嘱的情形。文件清单中会要求已公布遗嘱副本。"
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "grazie.esito_b_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "这是您的报价"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "grazie.esito_b_whatsapp_prefill",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您好 Lorenzo，我在您的网站上完成了问卷：我的情况适用 {total} € 统一价。在继续之前我有几个问题。"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "grazie.esito_c_body",
+      "locale": "zh",
+      "is_published": true,
+      "value": "根据您的回答，出现了不在统一价范围内的资产（公司股份、股票、企业、船舶等）。此处无法直接定价：需与 Lorenzo 共同研究，以便您不多付也不少付。请在下方留下联系方式（如需可加备注）或写信：我们回电澄清细节并准备专项报价。"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "checkout.modifica_link",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "label": "编辑",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "site_ui.checkout_ui",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "need_quote_after": "：以便确认您的情况是否适用统一价。",
+        "empty_order": "未找到待支付的案件。请先计算报价：我们确认您的情况并将支付关联至您的案件。"
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "site_ui.promo_ui",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "included_items": [
+          "与 Lorenzo 的免费初次咨询（电话或 WhatsApp）",
+          "办公时间内 Lorenzo 的持续协助：WhatsApp、电话和电子邮件",
+          "全部房产，含土地，每处均含地籍过户（voltura）",
+          "全部继承人，含海外居住者，有遗嘱或无遗嘱均可",
+          "分步指南，帮您找到并收集所需文件",
+          "简洁直观的个人专区：上传文件、跟进办理进度",
+          "税费计算与继承申报书的编制",
+          "凭全权委托向意大利税务局提交：您无需亲自前往任何地方",
+          "不满意即退款保证"
+        ]
+      }
     }
   ]
 }

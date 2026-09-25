@@ -24,10 +24,15 @@ function pruneFingerprints(now: number) {
 /*
   Conta un questionario completato (pagina /preventivo/grazie), anche senza
   email/pagamento. Scrive notifica CRM kind=preventivo + contatore durable.
+  Solo in produzione: anteprime Vercel e sviluppo locale usano lo stesso
+  database e falserebbero le statistiche (es. il confronto del test prezzo).
 */
 export async function trackQuoteCompleted(
   input: TrackQuoteInput,
 ): Promise<{ ok: boolean }> {
+  if (process.env.NODE_ENV !== "production" || process.env.VERCEL_ENV === "preview") {
+    return { ok: true };
+  }
   const snapshot = input.snapshot;
   const esito = snapshot.esito === "a" || snapshot.esito === "c" ? snapshot.esito : "b";
   const fp = (input.fingerprint || "").slice(0, 120);

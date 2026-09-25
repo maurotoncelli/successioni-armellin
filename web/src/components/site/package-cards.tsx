@@ -1,15 +1,83 @@
-import { getRequestLocale, t, tCta, tList } from "@/lib/locale";
+import { CheckCircle2 } from "lucide-react";
+import { getRequestLocale, t, tCta, tList, tObj } from "@/lib/locale";
 import { getPackages } from "@/lib/cms";
+import { getFlatOffer } from "@/lib/flat-offer";
+import { FLAT_OFFER_UI_IT, type FlatOfferUiLabels } from "@/lib/site-ui-labels";
 import { ButtonLink } from "@/components/ui/button";
 import { PackageCardDetails } from "@/components/site/package-card-details";
 import { cn } from "@/lib/utils";
 import {
+  formatAmount,
   getPromoContext,
+  INTL_LOCALE,
   PromoPrice,
   PromoValidUntil,
 } from "@/components/site/promo-ui";
 
+/* Test prezzo unico (lib/flat-offer.ts): una card sola + nota su misura. */
+async function FlatOfferCards({ price }: { price: number }) {
+  const [locale, ui] = await Promise.all([
+    getRequestLocale(),
+    tObj<FlatOfferUiLabels>("site_ui", "flat_offer_ui", FLAT_OFFER_UI_IT),
+  ]);
+  const intlLocale = INTL_LOCALE[locale] ?? "it-IT";
+  return (
+    <div className="mx-auto grid max-w-5xl gap-4 sm:gap-5 lg:grid-cols-3 lg:gap-6">
+      <div className="relative flex flex-col rounded-2xl border border-accent bg-bg p-5 shadow-sm ring-1 ring-accent sm:p-7 lg:col-span-2">
+        <span className="absolute -top-3 start-7 rounded-full bg-accent px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
+          {ui.badge}
+        </span>
+        <div className="grid gap-6 md:grid-cols-2 md:gap-8">
+          <div className="flex flex-col">
+            <h3 className="text-2xl">{ui.title}</h3>
+            <p className="mt-1 text-sm text-text-muted">{ui.tagline}</p>
+            <p className="mt-5 font-display text-5xl font-bold leading-none text-primary">
+              {formatAmount(price, intlLocale)}&euro;
+            </p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              <span className="rounded-full bg-bg-muted px-2.5 py-1 text-xs font-medium text-text-muted">
+                {ui.price_note}
+              </span>
+              <span className="rounded-full bg-bg-muted px-2.5 py-1 text-xs font-medium text-text-muted">
+                {ui.sla}
+              </span>
+            </div>
+            <p className="mt-3 text-sm font-medium text-accent-dark">{ui.taxes_note}</p>
+            <div className="mt-6 md:mt-auto md:pt-6">
+              <ButtonLink href="/preventivo" variant="primary" className="w-full" cta="flat_offer_card">
+                {ui.cta}
+              </ButtonLink>
+              <p className="mt-2 text-center text-xs text-text-muted">{ui.cta_hint}</p>
+            </div>
+          </div>
+          <ul className="space-y-2.5 border-t border-primary/10 pt-5 text-sm sm:text-[15px] md:border-s md:border-t-0 md:ps-8 md:pt-0">
+            {ui.features.map((item) => (
+              <li key={item} className="flex items-start gap-2 text-text">
+                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-success" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className="flex flex-col rounded-2xl border border-dashed border-primary/25 bg-bg-muted/60 p-5 shadow-sm sm:p-7">
+        <h3 className="text-xl">{ui.custom_title}</h3>
+        <p className="mt-3 text-sm leading-relaxed text-text-muted">{ui.custom_text}</p>
+        <div className="mt-5 lg:mt-auto lg:pt-6">
+          <ButtonLink href="/preventivo" variant="outline" className="w-full" cta="flat_offer_custom">
+            {ui.custom_cta}
+          </ButtonLink>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export async function PackageCards() {
+  const flat = getFlatOffer();
+  if (flat) return <FlatOfferCards price={flat.price} />;
+
   const locale = await getRequestLocale();
   const [packages, promoCtx] = await Promise.all([
     getPackages(locale),

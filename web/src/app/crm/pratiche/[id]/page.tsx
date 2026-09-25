@@ -43,6 +43,7 @@ import { listItemFiles } from "@/lib/documents";
 import { QuizOutcomeCard } from "@/components/crm/quiz-outcome-card";
 import { getPackages, getAddons } from "@/lib/cms";
 import { buildOrder } from "@/lib/order";
+import { FLAT_OFFER, flatOfferForPractice, hasFlatOfferLine } from "@/lib/flat-offer";
 import {
   PAYMENT_METHOD_IT,
   PAYMENT_STATUS_IT,
@@ -74,6 +75,12 @@ export default async function SchedaPraticaPage({
   const extras = await getSafeExtras(p.id);
   const splitDue = isBalanceDue(extras.paymentPlan);
   const fullyPaid = p.paymentStatus === "PAID" && !splitDue;
+  const flatPractice = hasFlatOfferLine(p.lineItems);
+  // Importo che applicherà il prossimo link di pagamento (intero/acconto).
+  const linkFlat =
+    p.paymentStatus !== "PAID" && (p.selectedPackage || p.suggestedPackage)
+      ? flatOfferForPractice(p.lineItems)
+      : null;
   const extraction = await getExtraction(p.id);
   const quiz = quizFromPractice(p);
   // Pratiche precedenti alla fotografia del quiz: ricalcolo la cifra esatta
@@ -88,6 +95,9 @@ export default async function SchedaPraticaPage({
       },
       packagesIt,
       addonsIt,
+      undefined,
+      undefined,
+      flatPractice ? FLAT_OFFER : null,
     );
     if (order) {
       quiz.snapshot.packageName = packagesIt.find((x) => x.key === quiz.snapshot.packageKey)?.name ?? null;
@@ -233,8 +243,9 @@ export default async function SchedaPraticaPage({
               )}
               {p.price > 0 && p.paymentStatus !== "PAID" && (
                 <p className="text-xs text-crm-muted">
-                  Cifra calcolata dalle risposte del sito (pacchetto + eventuali immobili/eredi oltre
-                  quelli inclusi). Non ancora incassata.
+                  {flatPractice
+                    ? "Prezzo unico del test, tutto incluso: nessun supplemento per immobili o eredi. Non ancora incassato."
+                    : "Cifra calcolata dalle risposte del sito (pacchetto + eventuali immobili/eredi oltre quelli inclusi). Non ancora incassata."}
                 </p>
               )}
             </div>
@@ -356,6 +367,7 @@ export default async function SchedaPraticaPage({
                       : p.requiresCustomQuote
                         ? "Su misura"
                         : "—"}
+                  {flatPractice ? " · prezzo unico" : ""}
                 </span>
               </div>
               {p.price > 0 && (
@@ -392,6 +404,13 @@ export default async function SchedaPraticaPage({
             </div>
             {!fullyPaid && (
               <div className="mt-4 space-y-2 border-t border-crm-border pt-4">
+                {linkFlat && (
+                  <p className="rounded-lg bg-crm-accent/10 px-2.5 py-2 text-xs text-crm-text2">
+                    {p.price === linkFlat.price
+                      ? `Prezzo unico del test: i link di pagamento applicano ${formatEuro(linkFlat.price)} tutto incluso.`
+                      : `Test prezzo unico: i link di pagamento applicheranno ${formatEuro(linkFlat.price)} tutto incluso${p.price > 0 ? `, non ${formatEuro(p.price)}` : ""}. Per un importo diverso (es. preventivo su misura) registra un pagamento manuale.`}
+                  </p>
+                )}
                 {Boolean(p.selectedPackage || p.suggestedPackage) && splitDue && (
                   <PaymentLinkButton practiceId={p.id} plan="balance" />
                 )}

@@ -4,10 +4,13 @@ import { gattiCopy } from "@/content/gatti";
 import {
   CHROME_UI_IT,
   CHECKOUT_UI_IT,
+  FLAT_OFFER_UI_IT,
   SOFT_LEAD_UI_IT,
   type CheckoutUiLabels,
+  type FlatOfferUiLabels,
   type SoftLeadUiLabels,
 } from "@/lib/site-ui-labels";
+import { FLAT_OFFER, hasFlatOfferLine } from "@/lib/flat-offer";
 import Link from "next/link";
 import { CheckCircle2, Phone, MessageCircle } from "lucide-react";
 import {
@@ -49,6 +52,38 @@ function resolveEsito(value?: string): Esito {
   const v = (value ?? "").trim().toLowerCase();
   if (v === "a" || v === "c") return v;
   return "b";
+}
+
+/** Prezzo unico: cosa copre il prezzo per QUESTO caso, dalle risposte del quiz. */
+function flatCaseItems(
+  ui: FlatOfferUiLabels,
+  answers: SoftLeadAnswers,
+  heirsCount: number | null,
+): string[] {
+  const items: string[] = [];
+  const properties = answers.realEstateCount;
+  if (answers.hasRealEstate === "si") {
+    items.push(
+      properties && properties > 1
+        ? ui.case_property_many.replace("{n}", String(properties))
+        : properties === 1
+          ? ui.case_property_one
+          : ui.case_property_some,
+    );
+  } else if (answers.hasRealEstate === "nonso") {
+    items.push(ui.case_property_unknown);
+  } else if (answers.hasRealEstate === "no") {
+    items.push(ui.case_property_none);
+  }
+  if (heirsCount && heirsCount > 0) {
+    items.push(
+      heirsCount === 1 ? ui.case_heir_one : ui.case_heir_many.replace("{n}", String(heirsCount)),
+    );
+  }
+  if (answers.heirsAbroad === "si") items.push(ui.case_heirs_abroad);
+  if (answers.hasWill === "si") items.push(ui.case_will);
+  items.push(ui.case_core);
+  return items;
 }
 
 export default async function GraziePage({
@@ -164,9 +199,12 @@ export default async function GraziePage({
         surcharges: { key: string; label: string; amount: number }[];
         /** Riga sconto promo (lib/promo.ts), null se non attiva. */
         discount: { label: string; amount: number } | null;
+        /** Prezzo unico (lib/flat-offer.ts): niente pacchetto né supplementi. */
+        flat: boolean;
       }
     | null = null;
   const promoCtx = await getPromoContext();
+  const flatUi = await tObj<FlatOfferUiLabels>("site_ui", "flat_offer_ui", FLAT_OFFER_UI_IT);
   let checkoutHref = "/checkout";
   const chrome = await tObj("site_ui", "chrome_ui", CHROME_UI_IT);
   const checkoutUi = await tObj<CheckoutUiLabels>(
@@ -225,6 +263,7 @@ export default async function GraziePage({
       amount: li.amount,
     }));
     crmSnapshot.total = orderIt?.total ?? null;
+    crmSnapshot.offer = hasFlatOfferLine(orderIt?.lineItems) ? FLAT_OFFER.code : null;
     const order = buildOrder(
       { packageKey, realEstateCount: answers.realEstateCount, heirsCount },
       packages,
@@ -233,11 +272,13 @@ export default async function GraziePage({
         extraProperty: checkoutUi.extra_property,
         extraHeir: checkoutUi.extra_heir,
         discount: promoCtx.ui.discount_line,
+        flatLine: flatUi.line_label,
       },
     );
     if (pkg && order) {
       const discountLine = order.lineItems.find((li) => li.type === "DISCOUNT");
       suggestedPkg = {
+        flat: hasFlatOfferLine(order.lineItems),
         name: pkg.name,
         price: pkg.price,
         tagline: pkg.tagline,
@@ -321,7 +362,32 @@ export default async function GraziePage({
                   "Il geometra è Lorenzo: voltura, dichiarazione e invio all'Agenzia. Nessun professionista esterno e nessuna voce in più dopo.",
                 )}
               </p>
-              {suggestedPkg && (
+              {suggestedPkg?.flat && (
+                <div className="mt-3">
+                  <p className="text-sm font-medium text-primary">{flatUi.result_title}</p>
+                  <p className="mt-3 text-[11px] font-medium uppercase tracking-wide text-text-muted">
+                    {flatUi.result_price_label}
+                  </p>
+                  <p className="mt-0.5 font-display text-4xl font-bold leading-none text-primary">
+                    {formatAmount(suggestedPkg.total, promoCtx.intlLocale)}&euro;
+                  </p>
+                  <div className="mt-4 rounded-[10px] bg-sand/60 p-3 sm:p-4">
+                    <p className="text-sm font-semibold text-primary">{flatUi.result_case_title}</p>
+                    <ul className="mt-2 space-y-1.5 text-sm">
+                      {flatCaseItems(flatUi, answers, heirsCount).map((item) => (
+                        <li key={item} className="flex items-start gap-2 text-text">
+                          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-success" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="mt-3 text-xs font-medium leading-snug text-accent-dark">
+                      {flatUi.result_no_surcharge}
+                    </p>
+                  </div>
+                </div>
+              )}
+              {suggestedPkg && !suggestedPkg.flat && (
                 <div className="mt-3">
                   <p className="text-sm font-medium text-primary">
                     {(
@@ -450,7 +516,7 @@ export default async function GraziePage({
                   suggestedPkg
                     ? `${waBase}${waBase.includes("?") ? "&" : "?"}text=${encodeURIComponent(
                         waPrefillQuoteTpl
-                          .replace("{package}", suggestedPkg.name)
+                          .replace("{package}", suggestedPkg.flat ? flatUi.line_label : suggestedPkg.name)
                           .replace(
                             "{total}",
                             formatAmount(suggestedPkg.total, promoCtx.intlLocale),
@@ -494,9 +560,11 @@ export default async function GraziePage({
                 className="mt-5 rounded-[10px] border border-primary/10 bg-bg p-4"
               />
             )}
-            <p className="mt-4 text-sm leading-relaxed text-text-muted">
-              {renderBody(await t("grazie", "esito_b_riallineamento"))}
-            </p>
+            {!suggestedPkg?.flat && (
+              <p className="mt-4 text-sm leading-relaxed text-text-muted">
+                {renderBody(await t("grazie", "esito_b_riallineamento"))}
+              </p>
+            )}
           </>
         )}
 

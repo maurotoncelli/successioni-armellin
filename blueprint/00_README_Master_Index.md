@@ -79,6 +79,7 @@ verificabili in fase di sviluppo.
 - [DOMANDE_PER_LORENZO.md](DOMANDE_PER_LORENZO.md) - informazioni da raccogliere dal Geom. Armellin in riunione (sblocca i nodi aperti nei vari capitoli).
 - [PROSSIMO_INCONTRO_LORENZO.md](PROSSIMO_INCONTRO_LORENZO.md) - checklist operativa per il prossimo incontro: cose da finalizzare con/da Lorenzo (dominio, account Stripe, attivazione accessi ADMIN 2FA e CLIENTE, rigenerazione chiavi, validazione prototipo).
 - [ANALISI_COMPETITORS.md](ANALISI_COMPETITORS.md) - mappa dei competitor italiani, griglia di valutazione, domande per la riunione e analisi del naming.
+- [TEST_PREZZO_UNICO_250.md](TEST_PREZZO_UNICO_250.md) - test di due settimane a 250 € tutto incluso (25/09): decisioni, modifiche, checklist go-live e chiusura.
 - [DECISIONI.md](DECISIONI.md) - vincoli congelati aggregati (PRIMO file da dare in pasto all'AI).
 - [GESTIONE_PROGETTO.md](GESTIONE_PROGETTO.md) - fasi di release, step e gate di approvazione (incl. prototipi sito/CRM).
 

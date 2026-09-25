@@ -9,6 +9,7 @@
 - Attivita full-time; capacita target a regime ~25 pratiche/mese (tetto sostenibile ~30 da solo). **Obiettivo fatturato: minimo 10.000 EUR/mese, ideale 15.000 EUR/mese** (Riunione 2); crescita per fasi insieme al budget ADV. Soft launch: obiettivo gestire ~15 successioni.
 - Pacchetti a prezzo fisso, prezzi = onorario finale senza IVA (forfettario):
   - **Vetrina pubblica (confermato Lorenzo 27/07): Semplice 290 + Completo 490 + Su misura**. Niente terzo pacchetto-hero.
+  - **Test prezzo unico 250 € (proposta Mauro 25/09)**: due settimane, online dal 25/09 all'08/10 con l'OK di Lorenzo (riferito da Mauro). Non sostituisce questa decisione: spento il test torna la vetrina 290 / 490. Dettagli in @TEST_PREZZO_UNICO_250.
   - **Semplice 290** (soli conti/liquidita, nessun immobile).
   - **Completo 490**: fino a **5 eredi**, **1-3 immobili**, fino a **5 conti bancari**.
   - **Zero Stress / 790**: **fuori vetrina** (`is_active=false`); resta in catalogo CMS solo per storico/CRM. Non riproporre ancoraggio psicologico sul 790.
