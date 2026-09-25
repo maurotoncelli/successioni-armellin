@@ -5620,22 +5620,25 @@
         "line_label": "Sucesión todo incluido — precio único",
         "badge": "Precio único",
         "title": "Sucesión todo incluido",
-        "tagline": "Un solo precio, sea cual sea tu caso",
+        "tagline": "Un solo precio, sin suplementos",
         "price_note": "honorario final, sin IVA que añadir",
         "taxes_note": "Impuestos del Estado aparte: los calculamos nosotros",
         "sla": "Envío en 7-10 días laborables desde que la documentación esté completa",
         "features": [
-          "Cualquier número de inmuebles, terrenos incluidos, con el cambio de titularidad catastral (voltura) de cada uno",
-          "Cualquier número de herederos, incluso residentes en el extranjero",
+          "Hasta 10 inmuebles, terrenos incluidos, con el cambio de titularidad catastral (voltura) de cada uno",
+          "Hasta 10 herederos, incluso residentes en el extranjero",
           "Con o sin testamento",
           "Cálculo de impuestos, declaración y envío a la Agenzia delle Entrate",
           "Área personal y Lorenzo que te acompaña de principio a fin",
           "Garantía de satisfacción o reembolso"
         ],
+        "buy_cta": "Compra el servicio",
+        "whatsapp_cta": "Escríbenos por WhatsApp",
+        "whatsapp_prefill": "Hola Lorenzo, he visto en la web la sucesión todo incluido a {price} € y tengo algunas preguntas.",
         "cta": "Calcula el presupuesto gratis",
         "cta_hint": "En un minuto ves qué incluye para tu caso",
-        "custom_title": "¿Empresas, participaciones sociales, acciones o embarcaciones?",
-        "custom_text": "Estos bienes no entran en el precio único: te hacemos un presupuesto a medida, gratis, en un día laborable.",
+        "custom_title": "¿Un caso más grande o especial?",
+        "custom_text": "Más de 10 inmuebles o 10 herederos, o empresas, participaciones sociales, acciones o embarcaciones: te hacemos un presupuesto a medida, gratis, en un día laborable.",
         "custom_cta": "Solicita el presupuesto",
         "banner_text": "Precio único {price} € todo incluido",
         "banner_note": "impuestos del Estado aparte",
@@ -5646,14 +5649,39 @@
         "case_property_one": "1 inmueble, con el cambio de titularidad catastral (voltura)",
         "case_property_many": "{n} inmuebles, cada uno con el cambio de titularidad catastral (voltura)",
         "case_property_some": "Todos los inmuebles, con los cambios de titularidad catastral (voltura)",
-        "case_property_unknown": "Los inmuebles que resulten de las verificaciones, con los cambios de titularidad catastral (voltura)",
+        "case_property_unknown": "Los inmuebles que resulten de las verificaciones (hasta 10), con los cambios de titularidad catastral (voltura)",
         "case_property_none": "Cuentas, valores y los demás bienes a declarar",
         "case_heir_one": "1 heredero",
         "case_heir_many": "{n} herederos",
         "case_heirs_abroad": "Herederos residentes en el extranjero, sin coste adicional",
         "case_will": "El testamento",
         "case_core": "Cálculo de impuestos, declaración y envío a la Agenzia delle Entrate",
-        "result_no_surcharge": "Sin suplementos: el precio no cambia con el número de inmuebles o herederos."
+        "result_no_surcharge": "Sin suplementos: hasta 10 inmuebles y 10 herederos el precio se mantiene."
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "payment_ui",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "title": "Cómo se paga",
+        "intro": "Todo se paga online, de forma segura con Stripe. Tú eliges cómo:",
+        "options": [
+          {
+            "title": "Todo por adelantado",
+            "text": "Pagas los honorarios de una sola vez y te olvidas."
+          },
+          {
+            "title": "Mitad y mitad",
+            "text": "El 50% para empezar, el 50% restante cuando la declaración esté lista, antes de enviarla a la Agenzia delle Entrate."
+          }
+        ],
+        "note": "También puedes pagar los honorarios a plazos con PayPal Pay in 3, Klarna o Scalapay, donde estén disponibles.",
+        "cta_buy": "Compra el servicio",
+        "cta_quote": "Calcula el presupuesto gratis",
+        "cta_whatsapp": "Escríbenos por WhatsApp",
+        "whatsapp_prefill": "Hola Lorenzo, tengo una pregunta sobre cómo se paga la sucesión."
       }
     },
     {
@@ -5664,7 +5692,7 @@
       "value": [
         {
           "question": "¿Cuánto cuesta vuestro servicio?",
-          "answer": "250 € todo incluido: es el honorario final, sin IVA que añadir (régimen forfettario), sea cual sea el número de inmuebles, terrenos o herederos, con el cambio de titularidad catastral (voltura) de cada inmueble. Solo para empresas, participaciones sociales, acciones o embarcaciones te hacemos un presupuesto a medida. Los impuestos del Estado son aparte, a cargo de los herederos, y los calculamos antes del envío."
+          "answer": "250 € todo incluido: es el honorario final, sin IVA que añadir (régimen forfettario), hasta 10 inmuebles (terrenos incluidos) y 10 herederos, con el cambio de titularidad catastral (voltura) de cada inmueble. Más allá de estos números, o con empresas, participaciones sociales, acciones o embarcaciones, te hacemos un presupuesto a medida. Los impuestos del Estado son aparte, a cargo de los herederos, y los calculamos antes del envío."
         },
         {
           "question": "¿Los impuestos están incluidos en el precio?",
@@ -5691,7 +5719,7 @@
       "key": "home.tariffe_intro",
       "locale": "es",
       "is_published": true,
-      "value": "250 € por toda la sucesión, sea cual sea el número de inmuebles o herederos. Los impuestos del Estado son aparte, a cargo del heredero, y los calculamos nosotros."
+      "value": "250 € por toda la sucesión, hasta 10 inmuebles y 10 herederos. Los impuestos del Estado son aparte, a cargo del heredero, y los calculamos nosotros."
     },
     {
       "collection": "prezzo_unico",
@@ -5729,7 +5757,7 @@
         {
           "icon": "voltura",
           "titolo": "Cambios de titularidad catastral (voltura) incluidos",
-          "testo": "Si hay un inmueble, el cambio en el Catastro está incluido en el precio, para todos los inmuebles. No es un extra que llega después."
+          "testo": "Donde hay un inmueble, el paso en el Catastro está en el precio. No es un extra que llega después."
         },
         {
           "icon": "comms",
@@ -5743,7 +5771,7 @@
       "key": "tariffe.hero_subtitle",
       "locale": "es",
       "is_published": true,
-      "value": "Un precio único: 250 € todo incluido, sea cual sea el número de inmuebles o herederos. Los impuestos del Estado son aparte y los calculamos nosotros. Solo para empresas, participaciones sociales, acciones o embarcaciones hace falta un presupuesto a medida."
+      "value": "Un precio único: 250 € todo incluido, hasta 10 inmuebles y 10 herederos. Los impuestos del Estado son aparte y los calculamos nosotros. Para casos más grandes, o con empresas, participaciones sociales, acciones o embarcaciones, te hacemos un presupuesto a medida."
     },
     {
       "collection": "prezzo_unico",
@@ -5774,7 +5802,7 @@
       "value": [
         {
           "titolo": "Un solo precio, nada que elegir",
-          "testo": "**250 € todo incluido**: cuentas, viviendas, terrenos y trasteros sin límite de número, con el cambio de titularidad catastral (voltura) de cada inmueble; cualquier número de herederos, incluso residentes en el extranjero, con o sin testamento. Solo empresas, participaciones sociales, acciones o embarcaciones requieren un **presupuesto a medida, gratis**. Si tienes dudas, escribe a Lorenzo: te lo decimos nosotros."
+          "testo": "**250 € todo incluido**: cuentas, títulos y hasta 10 inmuebles (viviendas, terrenos, trasteros), con el cambio de titularidad catastral (voltura) de cada uno; hasta 10 herederos, incluso residentes en el extranjero, con o sin testamento. Más allá de estos números, o con empresas, participaciones sociales, acciones o embarcaciones, te hacemos un **presupuesto a medida, gratis**. Si tienes dudas, escribe a Lorenzo: te lo decimos nosotros."
         },
         {
           "titolo": "Qué no está incluido",
@@ -5795,7 +5823,7 @@
       "key": "tariffe.su_misura_text",
       "locale": "es",
       "is_published": true,
-      "value": "¿Empresas, participaciones sociales, acciones o embarcaciones? Estos bienes no entran en el precio único: te hacemos un presupuesto a medida, gratis y sin sorpresas."
+      "value": "¿Más de 10 inmuebles o 10 herederos, o empresas, participaciones sociales, acciones o embarcaciones? Estos casos no entran en el precio único: te hacemos un presupuesto a medida, gratis y sin sorpresas."
     },
     {
       "collection": "prezzo_unico",
@@ -5841,14 +5869,14 @@
       "key": "come_funziona.prices_intro",
       "locale": "es",
       "is_published": true,
-      "value": "250 € todo incluido, sea cual sea el número de inmuebles o herederos. Los impuestos van aparte: te los calculamos antes del envío."
+      "value": "250 € todo incluido, hasta 10 inmuebles y 10 herederos. Los impuestos van aparte: te los calculamos antes del envío."
     },
     {
       "collection": "prezzo_unico",
       "key": "come_funziona.prices_custom_body",
       "locale": "es",
       "is_published": true,
-      "value": "Empresas, participaciones sociales, acciones o embarcaciones: presupuesto personalizado, sin compromiso."
+      "value": "Más de 10 inmuebles o 10 herederos, o empresas, participaciones sociales, acciones o embarcaciones: presupuesto personalizado, sin compromiso."
     },
     {
       "collection": "prezzo_unico",
@@ -5880,7 +5908,7 @@
       "locale": "es",
       "is_published": true,
       "value": {
-        "real_estate_hint": "Cuenta viviendas, terrenos, trasteros y participaciones: el precio no cambia, nos sirve para preparar la lista de documentos.",
+        "real_estate_hint": "Cuenta viviendas, terrenos, trasteros y participaciones: hasta 10 el precio no cambia. También nos sirve para preparar la lista de documentos.",
         "will_yes_note": "El precio único cubre también los casos con testamento. En la checklist de documentos pediremos copia del testamento publicado."
       }
     },
@@ -5903,7 +5931,7 @@
       "key": "grazie.esito_c_body",
       "locale": "es",
       "is_published": true,
-      "value": "De tus respuestas surgen bienes que no entran en el precio único (participaciones sociales, acciones, empresas, embarcaciones…). No podemos cerrar un precio aquí: hay que estudiarlo con Lorenzo, para que pagues ni más ni menos de lo justo. Deja tus datos abajo (y, si quieres, una nota) o escríbenos: te llamamos para aclarar detalles y prepararte el presupuesto dedicado."
+      "value": "De tus respuestas resulta que tu caso no entra en el precio único (más de 10 inmuebles o 10 herederos, o bienes como participaciones sociales, acciones, empresas o embarcaciones). No podemos cerrar un precio aquí: hay que estudiarlo con Lorenzo, para que pagues ni más ni menos de lo justo. Deja tus datos abajo (y, si quieres, una nota) o escríbenos: te llamamos para aclarar detalles y prepararte el presupuesto dedicado."
     },
     {
       "collection": "prezzo_unico",
@@ -5934,8 +5962,8 @@
         "included_items": [
           "Consulta inicial gratuita con Lorenzo, por teléfono o WhatsApp",
           "Asistencia continua de Lorenzo en horario de oficina: WhatsApp, teléfono y correo",
-          "Todos los inmuebles, terrenos incluidos, con el cambio de titularidad catastral (voltura) de cada uno",
-          "Todos los herederos, incluso residentes en el extranjero, con o sin testamento",
+          "Hasta 10 inmuebles, terrenos incluidos, con el cambio de titularidad catastral (voltura) de cada uno",
+          "Hasta 10 herederos, incluso residentes en el extranjero, con o sin testamento",
           "Guías paso a paso para encontrar y reunir los documentos",
           "Área personal intuitiva: subes los documentos y sigues el expediente",
           "Cálculo de impuestos y preparación de la declaración",

@@ -1,5 +1,5 @@
 import type { PackageKey } from "@/lib/supabase/types";
-import { isFlatOfferOn } from "@/lib/flat-offer";
+import { exceedsFlatOfferLimits, isFlatOfferOn } from "@/lib/flat-offer";
 
 /*
   Logica PURA di pre-valutazione del preventivo (nessun side-effect, nessun
@@ -96,10 +96,13 @@ export function computeEsito(input: {
   heirsAbroad?: string;
   allDirectLine: boolean;
   hasRealEstate: string;
-  /** Numero immobili se hasRealEstate === "si". NON influenza l'esito: oltre
-   *  i 3 inclusi nel Completo scatta il sovrapprezzo (lib/order.ts), non il
-   *  su misura (decisione 05/09). Conservato per il calcolo del prezzo. */
+  /** Numero immobili se hasRealEstate === "si". Col listino NON influenza
+   *  l'esito: oltre i 3 inclusi nel Completo scatta il sovrapprezzo
+   *  (lib/order.ts), non il su misura (decisione 05/09). Col prezzo unico,
+   *  oltre `maxProperties` -> su misura. */
   realEstateCount?: number | null;
+  /** Totale eredi: conta solo col prezzo unico (oltre `maxHeirs` -> su misura). */
+  heirsTotal?: number | null;
   hasOther: string;
   over100k?: string;
 }): Esito {
@@ -108,10 +111,18 @@ export function computeEsito(input: {
   // resta nei pacchetti con sovrapprezzo (+60 per immobile oltre il 3o, +60
   // per erede oltre il 5o nel Completo, vedi lib/order.ts).
   // Il testamento resta nei pacchetti (serve solo come documento in checklist).
-  // Prezzo unico (lib/flat-offer.ts): il numero di immobili non conta, quindi
-  // "non so" resta nel prezzo; su misura solo per gli altri beni.
+  // Prezzo unico (lib/flat-offer.ts): "non so" resta nel prezzo; su misura
+  // per gli altri beni e oltre i tetti di immobili o eredi.
   if (input.hasOther === "si") return "c";
   if (input.hasRealEstate === "nonso" && !isFlatOfferOn()) return "c";
+  if (
+    exceedsFlatOfferLimits({
+      realEstateCount: input.hasRealEstate === "si" ? input.realEstateCount : null,
+      heirsTotal: input.heirsTotal,
+    })
+  ) {
+    return "c";
+  }
   if (input.hasRealEstate === "no" && input.allDirectLine) {
     // L'esonero art. 28 c.7 TUS vale solo con attivo ereditario <= 100.000 EUR:
     // sopra soglia la dichiarazione e' dovuta anche in linea retta -> Semplice.

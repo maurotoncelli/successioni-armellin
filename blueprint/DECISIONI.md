@@ -10,6 +10,8 @@
 - Pacchetti a prezzo fisso, prezzi = onorario finale senza IVA (forfettario):
   - **Vetrina pubblica (confermato Lorenzo 27/07): Semplice 290 + Completo 490 + Su misura**. Niente terzo pacchetto-hero.
   - **Test prezzo unico 250 € (proposta Mauro 25/09)**: due settimane, online dal 25/09 all'08/10 con l'OK di Lorenzo (riferito da Mauro). Non sostituisce questa decisione: spento il test torna la vetrina 290 / 490. Dettagli in @TEST_PREZZO_UNICO_250.
+    - **Tetti (Mauro 25/09)**: il prezzo unico vale **fino a 10 immobili (terreni compresi) e 10 eredi**; oltre, preventivo su misura. Mai claim "qualsiasi numero" o "senza limiti" di immobili o eredi. Nella card del prezzo: "Acquista il servizio" e "Scrivi su WhatsApp" subito dopo il prezzo.
+    - **"Come si paga" (Mauro 25/09)**: paragrafo con pulsanti in home e in Come funziona (online con Stripe, tutto in anticipo oppure 50% + 50%, rate dove disponibili). Resta anche dopo il test.
   - **Semplice 290** (soli conti/liquidita, nessun immobile).
   - **Completo 490**: fino a **5 eredi**, **1-3 immobili**, fino a **5 conti bancari**.
   - **Zero Stress / 790**: **fuori vetrina** (`is_active=false`); resta in catalogo CMS solo per storico/CRM. Non riproporre ancoraggio psicologico sul 790.

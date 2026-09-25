@@ -271,6 +271,10 @@ export type FlatOfferUiLabels = {
   taxes_note: string;
   sla: string;
   features: string[];
+  buy_cta: string;
+  whatsapp_cta: string;
+  /** Messaggio precompilato del pulsante WhatsApp; {price} prezzo unico. */
+  whatsapp_prefill: string;
   cta: string;
   cta_hint: string;
   custom_title: string;
@@ -299,23 +303,27 @@ export const FLAT_OFFER_UI_IT: FlatOfferUiLabels = {
   line_label: "Successione tutto incluso — prezzo unico",
   badge: "Prezzo unico",
   title: "Successione tutto incluso",
-  tagline: "Un solo prezzo, qualunque sia il tuo caso",
+  tagline: "Un solo prezzo, senza supplementi",
   price_note: "onorario finale, senza IVA da aggiungere",
   taxes_note: "Imposte di Stato a parte: te le calcoliamo noi",
   sla: "Invio entro 7-10 giorni lavorativi dai documenti completi",
   features: [
-    "Qualsiasi numero di immobili, terreni compresi, con la voltura catastale di ciascuno",
-    "Qualsiasi numero di eredi, anche residenti all'estero",
+    "Fino a 10 immobili, terreni compresi, con la voltura catastale di ciascuno",
+    "Fino a 10 eredi, anche residenti all'estero",
     "Con o senza testamento",
     "Calcolo delle imposte, dichiarazione e invio all'Agenzia delle Entrate",
     "Area personale e Lorenzo che ti segue dall'inizio alla fine",
     "Garanzia Soddisfatti o Rimborsati",
   ],
+  buy_cta: "Acquista il servizio",
+  whatsapp_cta: "Scrivi su WhatsApp",
+  whatsapp_prefill:
+    "Ciao Lorenzo, ho visto sul sito la successione tutto incluso a {price} € e avrei qualche domanda.",
   cta: "Calcola il preventivo gratis",
   cta_hint: "In un minuto vedi cosa comprende per il tuo caso",
-  custom_title: "Aziende, quote societarie, azioni o barche?",
+  custom_title: "Un caso più grande o particolare?",
   custom_text:
-    "Questi beni non rientrano nel prezzo unico: ti facciamo un preventivo su misura, gratis, entro un giorno lavorativo.",
+    "Più di 10 immobili o 10 eredi, oppure aziende, quote societarie, azioni o barche: ti facciamo un preventivo su misura, gratis, entro un giorno lavorativo.",
   custom_cta: "Richiedi il preventivo",
   banner_text: "Prezzo unico {price} € tutto incluso",
   banner_note: "imposte di Stato a parte",
@@ -326,7 +334,8 @@ export const FLAT_OFFER_UI_IT: FlatOfferUiLabels = {
   case_property_one: "1 immobile, con la voltura catastale",
   case_property_many: "{n} immobili, ognuno con la voltura catastale",
   case_property_some: "Tutti gli immobili, con le volture catastali",
-  case_property_unknown: "Gli immobili che risulteranno dalle verifiche, con le volture catastali",
+  case_property_unknown:
+    "Gli immobili che risulteranno dalle verifiche (fino a 10), con le volture catastali",
   case_property_none: "Conti, titoli e gli altri beni da dichiarare",
   case_heir_one: "1 erede",
   case_heir_many: "{n} eredi",
@@ -334,7 +343,43 @@ export const FLAT_OFFER_UI_IT: FlatOfferUiLabels = {
   case_will: "Il testamento",
   case_core: "Calcolo delle imposte, dichiarazione e invio all'Agenzia delle Entrate",
   result_no_surcharge:
-    "Nessun supplemento: il prezzo non cambia con il numero di immobili o di eredi.",
+    "Nessun supplemento: fino a 10 immobili e 10 eredi il prezzo resta questo.",
+};
+
+/*
+  Paragrafo "Come si paga" (home e Come funziona), valido con o senza prezzo
+  unico: `cta_buy` compare solo col prezzo unico, altrimenti `cta_quote`.
+  Contenuto in `site_ui.payment_ui` (11 lingue).
+*/
+export type PaymentUiLabels = {
+  title: string;
+  intro: string;
+  options: { title: string; text: string }[];
+  note: string;
+  cta_buy: string;
+  cta_quote: string;
+  cta_whatsapp: string;
+  whatsapp_prefill: string;
+};
+
+export const PAYMENT_UI_IT: PaymentUiLabels = {
+  title: "Come si paga",
+  intro: "Si paga tutto online, in modo sicuro con Stripe. Scegli tu come:",
+  options: [
+    {
+      title: "Tutto in anticipo",
+      text: "Paghi l'onorario in un'unica soluzione e non ci pensi più.",
+    },
+    {
+      title: "Metà e metà",
+      text: "Il 50% per iniziare, il restante 50% quando la dichiarazione è pronta, prima dell'invio all'Agenzia delle Entrate.",
+    },
+  ],
+  note: "Puoi anche pagare l'onorario a rate con PayPal Pay in 3, Klarna o Scalapay, dove disponibili.",
+  cta_buy: "Acquista il servizio",
+  cta_quote: "Calcola il preventivo gratis",
+  cta_whatsapp: "Scrivi su WhatsApp",
+  whatsapp_prefill: "Ciao Lorenzo, avrei una domanda su come si paga la successione.",
 };
 
 export const CHECKOUT_UI_IT: CheckoutUiLabels = {

@@ -5620,22 +5620,25 @@
         "line_label": "Succession tout inclus — prix unique",
         "badge": "Prix unique",
         "title": "Succession tout inclus",
-        "tagline": "Un seul prix, quel que soit votre dossier",
+        "tagline": "Un seul prix, sans supplément",
         "price_note": "honoraires finaux, sans TVA à ajouter",
         "taxes_note": "Impôts d'État en sus : nous les calculons pour vous",
         "sla": "Envoi sous 7 à 10 jours ouvrables à partir de la documentation complète",
         "features": [
-          "Autant de biens que nécessaire, terrains inclus, avec la mutation cadastrale (voltura) de chacun",
-          "Autant d'héritiers que nécessaire, y compris résidents à l'étranger",
+          "Jusqu'à 10 biens immobiliers, terrains inclus, avec la mutation cadastrale (voltura) de chacun",
+          "Jusqu'à 10 héritiers, y compris résidents à l'étranger",
           "Avec ou sans testament",
           "Calcul des impôts, déclaration et envoi à l'Agenzia delle Entrate",
           "Espace personnel et Lorenzo qui vous accompagne du début à la fin",
           "Garantie satisfait ou remboursé"
         ],
+        "buy_cta": "Achetez le service",
+        "whatsapp_cta": "Écrire sur WhatsApp",
+        "whatsapp_prefill": "Bonjour Lorenzo, j'ai vu sur le site la succession tout inclus à {price} € et j'aurais quelques questions.",
         "cta": "Calculez le devis gratuitement",
         "cta_hint": "En une minute, vous voyez ce qui est inclus pour votre dossier",
-        "custom_title": "Entreprises, parts sociales, actions ou bateaux ?",
-        "custom_text": "Ces biens n'entrent pas dans le prix unique : nous vous préparons un devis sur mesure, gratuit, sous un jour ouvré.",
+        "custom_title": "Un dossier plus volumineux ou particulier ?",
+        "custom_text": "Plus de 10 biens immobiliers ou 10 héritiers, ou entreprises, parts sociales, actions ou bateaux : nous vous préparons un devis sur mesure, gratuit, sous un jour ouvré.",
         "custom_cta": "Demandez le devis",
         "banner_text": "Prix unique {price} € tout inclus",
         "banner_note": "impôts d'État en sus",
@@ -5646,14 +5649,39 @@
         "case_property_one": "1 bien, avec la mutation cadastrale (voltura)",
         "case_property_many": "{n} biens, chacun avec la mutation cadastrale (voltura)",
         "case_property_some": "Tous les biens, avec les mutations cadastrales (voltura)",
-        "case_property_unknown": "Les biens qui ressortiront des vérifications, avec les mutations cadastrales (voltura)",
+        "case_property_unknown": "Les biens qui ressortiront des vérifications (jusqu'à 10), avec les mutations cadastrales (voltura)",
         "case_property_none": "Comptes, titres et les autres biens à déclarer",
         "case_heir_one": "1 héritier",
         "case_heir_many": "{n} héritiers",
         "case_heirs_abroad": "Héritiers résidents à l'étranger, sans surcoût",
         "case_will": "Le testament",
         "case_core": "Calcul des impôts, déclaration et envoi à l'Agenzia delle Entrate",
-        "result_no_surcharge": "Aucun supplément : le prix ne change pas avec le nombre de biens ou d'héritiers."
+        "result_no_surcharge": "Aucun supplément : jusqu'à 10 biens immobiliers et 10 héritiers, le prix reste le même."
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "payment_ui",
+      "locale": "fr",
+      "is_published": true,
+      "value": {
+        "title": "Comment payer",
+        "intro": "Vous payez tout en ligne, en toute sécurité avec Stripe. Choisissez comme vous voulez :",
+        "options": [
+          {
+            "title": "Tout à l'avance",
+            "text": "Vous réglez les honoraires en une seule fois et vous n'y pensez plus."
+          },
+          {
+            "title": "Moitié-moitié",
+            "text": "50 % pour commencer, les 50 % restants lorsque la déclaration est prête, avant l'envoi à l'Agenzia delle Entrate."
+          }
+        ],
+        "note": "Vous pouvez aussi payer les honoraires en plusieurs fois avec PayPal Pay in 3, Klarna ou Scalapay, là où c'est disponible.",
+        "cta_buy": "Achetez le service",
+        "cta_quote": "Calculez le devis gratuitement",
+        "cta_whatsapp": "Écrire sur WhatsApp",
+        "whatsapp_prefill": "Bonjour Lorenzo, j'aurais une question sur le mode de paiement de la succession."
       }
     },
     {
@@ -5664,7 +5692,7 @@
       "value": [
         {
           "question": "Combien coûte votre service ?",
-          "answer": "250 € tout inclus : ce sont les honoraires finaux, sans TVA à ajouter (régime forfaitaire), quel que soit le nombre de biens, terrains ou héritiers, avec la mutation cadastrale (voltura) de chaque bien. Seules les entreprises, parts sociales, actions ou embarcations nécessitent un devis sur mesure. Les impôts d'État sont séparés, à la charge des héritiers, et nous les calculons avant l'envoi."
+          "answer": "250 € tout inclus : ce sont les honoraires finaux, sans TVA à ajouter (régime forfaitaire), jusqu'à 10 biens immobiliers (terrains inclus) et 10 héritiers, avec la mutation cadastrale (voltura) de chaque bien. Au-delà de ces chiffres, ou avec entreprises, parts sociales, actions ou embarcations, nous vous préparons un devis sur mesure. Les impôts d'État sont séparés, à la charge des héritiers, et nous les calculons avant l'envoi."
         },
         {
           "question": "Les impôts sont-ils inclus dans le prix ?",
@@ -5691,7 +5719,7 @@
       "key": "home.tariffe_intro",
       "locale": "fr",
       "is_published": true,
-      "value": "250 € pour toute la succession, quel que soit le nombre de biens ou d'héritiers. Les impôts d'État sont séparés, à la charge de l'héritier, et nous les calculons pour vous."
+      "value": "250 € pour toute la succession, jusqu'à 10 biens immobiliers et 10 héritiers. Les impôts d'État sont séparés, à la charge de l'héritier, et nous les calculons pour vous."
     },
     {
       "collection": "prezzo_unico",
@@ -5729,7 +5757,7 @@
         {
           "icon": "voltura",
           "titolo": "Mutations cadastrales (voltura) incluses",
-          "testo": "S'il y a un bien, le passage au cadastre est inclus dans le prix, pour tous les biens. Ce n'est pas un extra qui arrive après."
+          "testo": "S'il y a un bien, le passage au cadastre est inclus dans le prix. Ce n'est pas un extra qui arrive après."
         },
         {
           "icon": "comms",
@@ -5743,7 +5771,7 @@
       "key": "tariffe.hero_subtitle",
       "locale": "fr",
       "is_published": true,
-      "value": "Un prix unique : 250 € tout inclus, quel que soit le nombre de biens ou d'héritiers. Les impôts d'État sont séparés et nous les calculons pour vous. Seules les entreprises, parts sociales, actions ou bateaux nécessitent un devis sur mesure."
+      "value": "Un prix unique : 250 € tout inclus, jusqu'à 10 biens immobiliers et 10 héritiers. Les impôts d'État sont séparés et nous les calculons pour vous. Pour les dossiers plus volumineux, ou avec entreprises, parts sociales, actions ou bateaux, nous vous préparons un devis sur mesure."
     },
     {
       "collection": "prezzo_unico",
@@ -5774,7 +5802,7 @@
       "value": [
         {
           "titolo": "Un seul prix, rien à choisir",
-          "testo": "**250 € tout inclus** : comptes, maisons, terrains et box sans limite de nombre, avec la mutation cadastrale (voltura) de chaque bien ; autant d'héritiers que nécessaire, y compris résidents à l'étranger, avec ou sans testament. Seules les entreprises, parts sociales, actions ou embarcations nécessitent un **devis sur mesure, gratuit**. Si vous hésitez, écrivez à Lorenzo : nous vous le dirons."
+          "testo": "**250 € tout inclus** : comptes, titres et jusqu'à 10 biens immobiliers (maisons, terrains, box), avec la mutation cadastrale (voltura) de chacun ; jusqu'à 10 héritiers, y compris résidents à l'étranger, avec ou sans testament. Au-delà de ces chiffres, ou avec entreprises, parts sociales, actions ou embarcations, nous vous préparons un **devis sur mesure, gratuit**. Si vous hésitez, écrivez à Lorenzo : nous vous le dirons."
         },
         {
           "titolo": "Ce qui n'est pas compris",
@@ -5795,7 +5823,7 @@
       "key": "tariffe.su_misura_text",
       "locale": "fr",
       "is_published": true,
-      "value": "Entreprises, parts sociales, actions ou embarcations ? Ces biens n'entrent pas dans le prix unique : nous vous préparons un devis sur mesure, gratuit et sans surprise."
+      "value": "Plus de 10 biens immobiliers ou 10 héritiers, ou entreprises, parts sociales, actions ou embarcations ? Ces cas n'entrent pas dans le prix unique : nous vous préparons un devis sur mesure, gratuit et sans surprise."
     },
     {
       "collection": "prezzo_unico",
@@ -5841,14 +5869,14 @@
       "key": "come_funziona.prices_intro",
       "locale": "fr",
       "is_published": true,
-      "value": "250 € tout inclus, quel que soit le nombre de biens ou d'héritiers. Les impôts sont à part : nous les calculons pour vous avant l'envoi."
+      "value": "250 € tout inclus, jusqu'à 10 biens immobiliers et 10 héritiers. Les impôts sont à part : nous les calculons pour vous avant l'envoi."
     },
     {
       "collection": "prezzo_unico",
       "key": "come_funziona.prices_custom_body",
       "locale": "fr",
       "is_published": true,
-      "value": "Entreprises, parts sociales, actions ou bateaux : devis personnalisé, sans engagement."
+      "value": "Plus de 10 biens immobiliers ou 10 héritiers, ou entreprises, parts sociales, actions ou bateaux : devis personnalisé, sans engagement."
     },
     {
       "collection": "prezzo_unico",
@@ -5880,7 +5908,7 @@
       "locale": "fr",
       "is_published": true,
       "value": {
-        "real_estate_hint": "Comptez maisons, terrains, box et parts : le prix ne change pas, cela nous sert à préparer la liste des documents.",
+        "real_estate_hint": "Comptez maisons, terrains, box et parts : jusqu'à 10, le prix ne change pas. Cela nous sert aussi à préparer la liste des documents.",
         "will_yes_note": "Le prix unique couvre aussi les cas avec testament. Dans la check-list documentaire, nous demanderons la copie du testament publié."
       }
     },
@@ -5903,7 +5931,7 @@
       "key": "grazie.esito_c_body",
       "locale": "fr",
       "is_published": true,
-      "value": "Vos réponses font apparaître des biens qui n'entrent pas dans le prix unique (parts sociales, actions, entreprises, embarcations…). Nous ne pouvons pas fixer un prix ici : il faut l'étudier avec Lorenzo, pour que vous ne payiez ni plus ni moins que le juste. Laissez vos coordonnées ci-dessous (et une note si vous voulez) ou écrivez-nous : nous vous rappelons pour clarifier et préparer le devis dédié."
+      "value": "D'après vos réponses, le dossier n'entre pas dans le prix unique (plus de 10 biens immobiliers ou 10 héritiers, ou des biens comme parts sociales, actions, entreprises ou embarcations). Nous ne pouvons pas fixer un prix ici : il faut l'étudier avec Lorenzo, pour que vous ne payiez ni plus ni moins que le juste. Laissez vos coordonnées ci-dessous (et une note si vous voulez) ou écrivez-nous : nous vous rappelons pour clarifier les détails et préparer le devis dédié."
     },
     {
       "collection": "prezzo_unico",
@@ -5934,8 +5962,8 @@
         "included_items": [
           "Consultation initiale gratuite avec Lorenzo, par téléphone ou WhatsApp",
           "Assistance continue de Lorenzo aux heures de bureau : WhatsApp, téléphone et e-mail",
-          "Tous les biens, terrains inclus, avec la mutation cadastrale (voltura) de chacun",
-          "Tous les héritiers, y compris résidents à l'étranger, avec ou sans testament",
+          "Jusqu'à 10 biens immobiliers, terrains inclus, avec la mutation cadastrale (voltura) de chacun",
+          "Jusqu'à 10 héritiers, y compris résidents à l'étranger, avec ou sans testament",
           "Guides pas à pas pour trouver et rassembler les documents",
           "Espace personnel intuitif : vous déposez les documents et suivez le dossier",
           "Calcul des impôts et préparation de la déclaration",

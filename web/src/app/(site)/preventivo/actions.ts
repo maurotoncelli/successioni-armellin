@@ -79,6 +79,9 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
       : false,
     hasRealEstate: input.hasRealEstate,
     realEstateCount: input.realEstateCount,
+    heirsTotal: input.heirsComposition
+      ? totalHeirs(input.heirsComposition)
+      : Number.parseInt(input.heirs, 10) || null,
     hasOther: input.hasOther,
     over100k: input.over100k,
   });

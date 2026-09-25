@@ -14,6 +14,7 @@ import {
   type DistinguishesItem,
 } from "@/components/site/distinguishes-block";
 import { PackageCards } from "@/components/site/package-cards";
+import { PaymentOptions } from "@/components/site/payment-options";
 import { FaqAccordion } from "@/components/site/faq-accordion";
 import { getFaqs } from "@/lib/cms";
 import { pickFeaturedFaqs } from "@/lib/faq-featured";
@@ -222,6 +223,7 @@ export default async function HomePage() {
         <div className="mt-6 sm:mt-12">
           <PackageCards />
         </div>
+        <PaymentOptions cta="home_payment" className="mt-8 sm:mt-12" />
         <div className="mt-6 text-center sm:mt-10">
           <ButtonLink href={tariffeCta.href} variant="outline" size="lg">
             {tariffeCta.label}

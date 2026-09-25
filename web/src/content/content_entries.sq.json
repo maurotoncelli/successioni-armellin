@@ -5620,22 +5620,25 @@
         "line_label": "Trashëgimi gjithçka e përfshirë — çmim i vetëm",
         "badge": "Çmim i vetëm",
         "title": "Trashëgimi gjithçka e përfshirë",
-        "tagline": "Një çmim i vetëm, çfarëdo qoftë rasti juaj",
+        "tagline": "Një çmim i vetëm, pa shtesa",
         "price_note": "honorari përfundimtar, pa TVSH për t'u shtuar",
         "taxes_note": "Taksat shtetërore veç: i llogaritim ne",
         "sla": "Dorëzim brenda 7-10 ditëve pune nga dokumentet e plota",
         "features": [
-          "Çdo numër pasurish, truall përfshirë, me kalimin kadastral (voltura) të secilës",
-          "Çdo numër trashëgimtarësh, edhe me banim jashtë vendit",
+          "Deri në 10 pasuri të paluajtshme, truall përfshirë, me kalimin kadastral (voltura) të secilës",
+          "Deri në 10 trashëgimtarë, edhe me banim jashtë vendit",
           "Me ose pa testament",
           "Llogaritja e taksave, deklarata dhe dërgimi te Agenzia delle Entrate",
           "Zona personale dhe Lorenzo që ju ndjek nga fillimi deri në fund",
           "Garanci: i kënaqur ose rimbursim"
         ],
+        "buy_cta": "Blini shërbimin",
+        "whatsapp_cta": "Shkruaj në WhatsApp",
+        "whatsapp_prefill": "Përshëndetje Lorenzo, pashë në faqe trashëgiminë gjithçka e përfshirë me {price} € dhe do të doja të pyesja diçka.",
         "cta": "Llogaritni preventivin falas",
         "cta_hint": "Në një minutë shihni çfarë përfshin për rastin tuaj",
-        "custom_title": "Biznese, pjesë shoqërie, aksione ose varka?",
-        "custom_text": "Këto pasuri nuk hyjnë në çmimin e vetëm: ju bëjmë preventiv të personalizuar, falas, brenda një dite pune.",
+        "custom_title": "Një rast më i madh ose i veçantë?",
+        "custom_text": "Më shumë se 10 pasuri të paluajtshme ose 10 trashëgimtarë, ose biznese, pjesë shoqërie, aksione ose varka: ju bëjmë preventiv të personalizuar, falas, brenda një dite pune.",
         "custom_cta": "Kërkoni preventivin",
         "banner_text": "Çmim i vetëm {price} € gjithçka e përfshirë",
         "banner_note": "taksat shtetërore veç",
@@ -5646,14 +5649,39 @@
         "case_property_one": "1 pasuri, me kalimin kadastral (voltura)",
         "case_property_many": "{n} pasuri, secila me kalimin kadastral (voltura)",
         "case_property_some": "Të gjitha pasuritë, me kalimet kadastrale (voltura)",
-        "case_property_unknown": "Pasuritë që do të dalin nga verifikimet, me kalimet kadastrale (voltura)",
+        "case_property_unknown": "Pasuritë e paluajtshme që do të dalin nga verifikimet (deri në 10), me kalimet kadastrale (voltura)",
         "case_property_none": "Llogari, tituj dhe pasuri të tjera për deklarim",
         "case_heir_one": "1 trashëgimtar",
         "case_heir_many": "{n} trashëgimtarë",
         "case_heirs_abroad": "Trashëgimtarë me banim jashtë vendit, pa kosto shtesë",
         "case_will": "Testamenti",
         "case_core": "Llogaritja e taksave, deklarata dhe dërgimi te Agenzia delle Entrate",
-        "result_no_surcharge": "Asnjë shtesë: çmimi nuk ndryshon me numrin e pasurive ose të trashëgimtarëve."
+        "result_no_surcharge": "Asnjë shtesë: deri në 10 pasuri të paluajtshme dhe 10 trashëgimtarë çmimi mbetet ky."
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "payment_ui",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "title": "Si paguhet",
+        "intro": "Paguahet gjithçka online, në mënyrë të sigurt me Stripe. Zgjidhni ju si:",
+        "options": [
+          {
+            "title": "Gjithçka paraprakisht",
+            "text": "Paguani honorarin në një këst të vetëm dhe nuk mendoni më për të."
+          },
+          {
+            "title": "Gjysmë e gjysmë",
+            "text": "50% për të filluar, 50% e mbetur kur deklarata është gati, para dërgimit te Agenzia delle Entrate."
+          }
+        ],
+        "note": "Mund të paguani edhe honorarin me këste me PayPal Pay in 3, Klarna ose Scalapay, ku janë të disponueshme.",
+        "cta_buy": "Blini shërbimin",
+        "cta_quote": "Llogaritni preventivin falas",
+        "cta_whatsapp": "Shkruaj në WhatsApp",
+        "whatsapp_prefill": "Përshëndetje Lorenzo, do të doja të pyesja si paguhet trashëgimia."
       }
     },
     {
@@ -5664,7 +5692,7 @@
       "value": [
         {
           "question": "Sa kushton shërbimi juaj?",
-          "answer": "250 € gjithçka e përfshirë: është honorari përfundimtar, pa TVSH për t'u shtuar (regjim forfettari), çfarëdo qoftë numri i pasurive, truallve ose trashëgimtarëve, me kalimin kadastral (voltura) të çdo pasurie. Vetëm për biznese, pjesë shoqërie, aksione ose anije ju bëjmë preventiv të personalizuar. Taksat shtetërore janë të ndara, në ngarkim të trashëgimtarëve, dhe i llogaritim para dorëzimit."
+          "answer": "250 € gjithçka e përfshirë: është honorari përfundimtar, pa TVSH për t'u shtuar (regime forfettari), deri në 10 pasuri të paluajtshme (truall përfshirë) dhe 10 trashëgimtarë, me kalimin kadastral (voltura) të çdo pasurie. Përtej këtyre numrave, ose me biznese, pjesë shoqërie, aksione ose anije, ju bëjmë preventiv të personalizuar. Taksat shtetërore janë të ndara, në ngarkim të trashëgimtarëve, dhe i llogaritim para dërgimit."
         },
         {
           "question": "A janë taksat të përfshira në çmim?",
@@ -5691,7 +5719,7 @@
       "key": "home.tariffe_intro",
       "locale": "sq",
       "is_published": true,
-      "value": "250 € për të gjithë trashëgiminë, çfarëdo qoftë numri i pasurive ose i trashëgimtarëve. Taksat shtetërore janë të ndara, në ngarkim të trashëgimtarit, dhe i llogaritim ne."
+      "value": "250 € për të gjithë trashëgiminë, deri në 10 pasuri të paluajtshme dhe 10 trashëgimtarë. Taksat shtetërore janë të ndara, në ngarkim të trashëgimtarit, dhe i llogaritim ne."
     },
     {
       "collection": "prezzo_unico",
@@ -5729,7 +5757,7 @@
         {
           "icon": "voltura",
           "titolo": "Kalimet kadastrale të përfshira",
-          "testo": "Kur ka pasuri të paluajtshme, kalimi në Katastër është në çmim, për të gjitha pasuritë. Nuk është një extra që vjen më vonë."
+          "testo": "Kur ka pasuri të paluajtshme, kalimi në Katastër është në çmim. Nuk është një extra që vjen më vonë."
         },
         {
           "icon": "comms",
@@ -5743,7 +5771,7 @@
       "key": "tariffe.hero_subtitle",
       "locale": "sq",
       "is_published": true,
-      "value": "Një çmim i vetëm: 250 € gjithçka e përfshirë, çfarëdo qoftë numri i pasurive ose i trashëgimtarëve. Taksat shtetërore janë të ndara dhe i llogaritim ne. Vetëm për biznese, pjesë shoqërie, aksione ose varka nevojitet preventiv i personalizuar."
+      "value": "Një çmim i vetëm: 250 € gjithçka e përfshirë, deri në 10 pasuri të paluajtshme dhe 10 trashëgimtarë. Taksat shtetërore janë të ndara dhe i llogaritim ne. Për raste më të mëdha, ose me biznese, pjesë shoqërie, aksione ose varka, ju bëjmë preventiv të personalizuar."
     },
     {
       "collection": "prezzo_unico",
@@ -5774,7 +5802,7 @@
       "value": [
         {
           "titolo": "Një çmim i vetëm, asgjë për të zgjedhur",
-          "testo": "**250 € gjithçka e përfshirë**: llogari, shtëpi, truall dhe box pa kufi numri, me kalimin kadastral (voltura) të çdo pasurie; çdo numër trashëgimtarësh, edhe me banim jashtë vendit, me ose pa testament. Vetëm biznese, pjesë shoqërie, aksione ose anije kërkojnë **preventiv të personalizuar, falas**. Nëse ke dyshim, shkruaji Lorenzo: ta themi ne."
+          "testo": "**250 € gjithçka e përfshirë**: llogari, tituj dhe deri në 10 pasuri të paluajtshme (shtëpi, truall, box), me kalimin kadastral (voltura) të secilës; deri në 10 trashëgimtarë, edhe me banim jashtë vendit, me ose pa testament. Përtej këtyre numrave, ose me biznese, pjesë shoqërie, aksione ose anije, ju bëjmë **preventiv të personalizuar, falas**. Nëse ke dyshim, shkruaji Lorenzo: ta themi ne."
         },
         {
           "titolo": "Çfarë nuk përfshihet",
@@ -5795,7 +5823,7 @@
       "key": "tariffe.su_misura_text",
       "locale": "sq",
       "is_published": true,
-      "value": "Biznese, pjesë shoqërie, aksione ose anije? Këto pasuri nuk hyjnë në çmimin e vetëm: ju bëjmë preventiv të personalizuar, falas dhe pa surpriza."
+      "value": "Më shumë se 10 pasuri të paluajtshme ose 10 trashëgimtarë, ose biznese, pjesë shoqërie, aksione ose anije? Këto raste nuk hyjnë në çmimin e vetëm: ju bëjmë preventiv të personalizuar, falas dhe pa surpriza."
     },
     {
       "collection": "prezzo_unico",
@@ -5841,14 +5869,14 @@
       "key": "come_funziona.prices_intro",
       "locale": "sq",
       "is_published": true,
-      "value": "250 € gjithçka e përfshirë, çfarëdo qoftë numri i pasurive ose i trashëgimtarëve. Taksat janë veç: t'i llogarisim ne para dërgimit."
+      "value": "250 € gjithçka e përfshirë, deri në 10 pasuri të paluajtshme dhe 10 trashëgimtarë. Taksat janë veç: i llogaritim ne para dërgimit."
     },
     {
       "collection": "prezzo_unico",
       "key": "come_funziona.prices_custom_body",
       "locale": "sq",
       "is_published": true,
-      "value": "Biznese, pjesë shoqërie, aksione ose varka: preventiv i personalizuar, pa angazhim."
+      "value": "Më shumë se 10 pasuri të paluajtshme ose 10 trashëgimtarë, ose biznese, pjesë shoqërie, aksione ose varka: preventiv i personalizuar, pa angazhim."
     },
     {
       "collection": "prezzo_unico",
@@ -5880,7 +5908,7 @@
       "locale": "sq",
       "is_published": true,
       "value": {
-        "real_estate_hint": "Numëroni shtëpi, truall, box dhe pjesë: çmimi nuk ndryshon, na duhet për të përgatitur listën e dokumenteve.",
+        "real_estate_hint": "Numëroni shtëpi, truall, box dhe pjesë: deri në 10 çmimi nuk ndryshon. Na duhet edhe për të përgatitur listën e dokumenteve.",
         "will_yes_note": "Çmimi i vetëm mbulon edhe rastet me testament. Në listën e dokumenteve do t'ju kërkojmë kopjen e testamenteve të publikuar."
       }
     },
@@ -5903,7 +5931,7 @@
       "key": "grazie.esito_c_body",
       "locale": "sq",
       "is_published": true,
-      "value": "Nga përgjigjet tuaja dalin pasuri që nuk hyjnë në çmimin e vetëm (pjesë shoqërie, aksione, biznese, anije…). Nuk mund të caktojmë çmim këtu: duhet studiuar së bashku me Lorenzo, që të paguani as më shumë as më pak se sa duhet. Lini kontaktet më poshtë (dhe, nëse dëshironi, një shënim) ose na shkruani: do t'ju telefonojmë për të sqaruar detajet dhe përgatitur preventivin e dedikuar."
+      "value": "Nga përgjigjet tuaja rasti nuk hyn në çmimin e vetëm (më shumë se 10 pasuri të paluajtshme ose 10 trashëgimtarë, ose pasuri si pjesë shoqërie, aksione, biznese ose anije). Nuk mund të caktojmë çmim këtu: duhet studiuar së bashku me Lorenzo, që të paguani as më shumë as më pak se sa duhet. Lini kontaktet më poshtë (dhe, nëse dëshironi, një shënim) ose na shkruani: do t'ju telefonojmë për të sqaruar detajet dhe përgatitur preventivin e dedikuar."
     },
     {
       "collection": "prezzo_unico",
@@ -5934,8 +5962,8 @@
         "included_items": [
           "Konsultë fillestare falas me Lorenzo-n, me telefon ose WhatsApp",
           "Asistencë e vazhdueshme nga Lorenzo në orarin e zyrës: WhatsApp, telefon dhe email",
-          "Të gjitha pasuritë, truall përfshirë, me kalimin kadastral (voltura) të secilës",
-          "Të gjithë trashëgimtarët, edhe me banim jashtë vendit, me ose pa testament",
+          "Deri në 10 pasuri të paluajtshme, truall përfshirë, me kalimin kadastral (voltura) të secilës",
+          "Deri në 10 trashëgimtarë, edhe me banim jashtë vendit, me ose pa testament",
           "Udhëzues hap pas hapi për të gjetur dhe mbledhur dokumentet",
           "Zonë personale intuitive: ngarkoni dokumentet dhe ndiqni praktikën",
           "Llogaritja e taksave dhe përpilimi i deklaratës së trashëgimisë",

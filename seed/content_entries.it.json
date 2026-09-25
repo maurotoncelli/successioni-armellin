@@ -5634,22 +5634,25 @@
         "line_label": "Successione tutto incluso — prezzo unico",
         "badge": "Prezzo unico",
         "title": "Successione tutto incluso",
-        "tagline": "Un solo prezzo, qualunque sia il tuo caso",
+        "tagline": "Un solo prezzo, senza supplementi",
         "price_note": "onorario finale, senza IVA da aggiungere",
         "taxes_note": "Imposte di Stato a parte: te le calcoliamo noi",
         "sla": "Invio entro 7-10 giorni lavorativi dai documenti completi",
         "features": [
-          "Qualsiasi numero di immobili, terreni compresi, con la voltura catastale di ciascuno",
-          "Qualsiasi numero di eredi, anche residenti all'estero",
+          "Fino a 10 immobili, terreni compresi, con la voltura catastale di ciascuno",
+          "Fino a 10 eredi, anche residenti all'estero",
           "Con o senza testamento",
           "Calcolo delle imposte, dichiarazione e invio all'Agenzia delle Entrate",
           "Area personale e Lorenzo che ti segue dall'inizio alla fine",
           "Garanzia Soddisfatti o Rimborsati"
         ],
+        "buy_cta": "Acquista il servizio",
+        "whatsapp_cta": "Scrivi su WhatsApp",
+        "whatsapp_prefill": "Ciao Lorenzo, ho visto sul sito la successione tutto incluso a {price} € e avrei qualche domanda.",
         "cta": "Calcola il preventivo gratis",
         "cta_hint": "In un minuto vedi cosa comprende per il tuo caso",
-        "custom_title": "Aziende, quote societarie, azioni o barche?",
-        "custom_text": "Questi beni non rientrano nel prezzo unico: ti facciamo un preventivo su misura, gratis, entro un giorno lavorativo.",
+        "custom_title": "Un caso più grande o particolare?",
+        "custom_text": "Più di 10 immobili o 10 eredi, oppure aziende, quote societarie, azioni o barche: ti facciamo un preventivo su misura, gratis, entro un giorno lavorativo.",
         "custom_cta": "Richiedi il preventivo",
         "banner_text": "Prezzo unico {price} € tutto incluso",
         "banner_note": "imposte di Stato a parte",
@@ -5660,14 +5663,39 @@
         "case_property_one": "1 immobile, con la voltura catastale",
         "case_property_many": "{n} immobili, ognuno con la voltura catastale",
         "case_property_some": "Tutti gli immobili, con le volture catastali",
-        "case_property_unknown": "Gli immobili che risulteranno dalle verifiche, con le volture catastali",
+        "case_property_unknown": "Gli immobili che risulteranno dalle verifiche (fino a 10), con le volture catastali",
         "case_property_none": "Conti, titoli e gli altri beni da dichiarare",
         "case_heir_one": "1 erede",
         "case_heir_many": "{n} eredi",
         "case_heirs_abroad": "Eredi residenti all'estero, senza costi in più",
         "case_will": "Il testamento",
         "case_core": "Calcolo delle imposte, dichiarazione e invio all'Agenzia delle Entrate",
-        "result_no_surcharge": "Nessun supplemento: il prezzo non cambia con il numero di immobili o di eredi."
+        "result_no_surcharge": "Nessun supplemento: fino a 10 immobili e 10 eredi il prezzo resta questo."
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "payment_ui",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "title": "Come si paga",
+        "intro": "Si paga tutto online, in modo sicuro con Stripe. Scegli tu come:",
+        "options": [
+          {
+            "title": "Tutto in anticipo",
+            "text": "Paghi l'onorario in un'unica soluzione e non ci pensi più."
+          },
+          {
+            "title": "Metà e metà",
+            "text": "Il 50% per iniziare, il restante 50% quando la dichiarazione è pronta, prima dell'invio all'Agenzia delle Entrate."
+          }
+        ],
+        "note": "Puoi anche pagare l'onorario a rate con PayPal Pay in 3, Klarna o Scalapay, dove disponibili.",
+        "cta_buy": "Acquista il servizio",
+        "cta_quote": "Calcola il preventivo gratis",
+        "cta_whatsapp": "Scrivi su WhatsApp",
+        "whatsapp_prefill": "Ciao Lorenzo, avrei una domanda su come si paga la successione."
       }
     },
     {
@@ -5678,7 +5706,7 @@
       "value": [
         {
           "question": "Quanto costa il vostro servizio?",
-          "answer": "250 € tutto incluso: è l'onorario finale, senza IVA da aggiungere (regime forfettario), qualunque sia il numero di immobili, terreni o eredi, con la voltura catastale di ogni immobile. Solo per aziende, quote societarie, azioni o imbarcazioni ti facciamo un preventivo su misura. Le imposte di Stato sono separate, a carico degli eredi, e te le calcoliamo prima dell'invio."
+          "answer": "250 € tutto incluso: è l'onorario finale, senza IVA da aggiungere (regime forfettario), fino a 10 immobili (terreni compresi) e 10 eredi, con la voltura catastale di ogni immobile. Oltre questi numeri, o con aziende, quote societarie, azioni o imbarcazioni, ti facciamo un preventivo su misura. Le imposte di Stato sono separate, a carico degli eredi, e te le calcoliamo prima dell'invio."
         },
         {
           "question": "Le imposte sono comprese nel prezzo?",
@@ -5705,7 +5733,7 @@
       "key": "home.tariffe_intro",
       "locale": "it",
       "is_published": true,
-      "value": "250 € per tutta la successione, qualunque sia il numero di immobili o di eredi. Le imposte di Stato sono separate, a carico dell'erede, e te le calcoliamo noi."
+      "value": "250 € per tutta la successione, fino a 10 immobili e 10 eredi. Le imposte di Stato sono separate, a carico dell'erede, e te le calcoliamo noi."
     },
     {
       "collection": "prezzo_unico",
@@ -5743,7 +5771,7 @@
         {
           "icon": "voltura",
           "titolo": "Volture catastali incluse",
-          "testo": "Dove c'è un immobile, il passaggio in Catasto è nel prezzo, per tutti gli immobili. Non è un extra che arriva dopo."
+          "testo": "Dove c'è un immobile, il passaggio in Catasto è nel prezzo. Non è un extra che arriva dopo."
         },
         {
           "icon": "comms",
@@ -5757,7 +5785,7 @@
       "key": "tariffe.hero_subtitle",
       "locale": "it",
       "is_published": true,
-      "value": "Un prezzo unico: 250 € tutto incluso, qualunque sia il numero di immobili o di eredi. Le imposte di Stato sono separate e te le calcoliamo noi. Solo per aziende, quote societarie, azioni o barche serve un preventivo su misura."
+      "value": "Un prezzo unico: 250 € tutto incluso, fino a 10 immobili e 10 eredi. Le imposte di Stato sono separate e te le calcoliamo noi. Per casi più grandi, o con aziende, quote societarie, azioni o barche, ti facciamo un preventivo su misura."
     },
     {
       "collection": "prezzo_unico",
@@ -5788,7 +5816,7 @@
       "value": [
         {
           "titolo": "Un solo prezzo, niente da scegliere",
-          "testo": "**250 € tutto incluso**: conti, case, terreni e box senza limiti di numero, con la voltura catastale di ogni immobile; qualsiasi numero di eredi, anche residenti all'estero, con o senza testamento. Solo aziende, quote societarie, azioni o imbarcazioni richiedono un **preventivo su misura, gratis**. Se hai un dubbio, scrivi a Lorenzo: te lo diciamo noi."
+          "testo": "**250 € tutto incluso**: conti, titoli e fino a 10 immobili (case, terreni, box), con la voltura catastale di ciascuno; fino a 10 eredi, anche residenti all'estero, con o senza testamento. Oltre questi numeri, o con aziende, quote societarie, azioni o imbarcazioni, ti facciamo un **preventivo su misura, gratis**. Se hai un dubbio, scrivi a Lorenzo: te lo diciamo noi."
         },
         {
           "titolo": "Cosa non è compreso",
@@ -5809,7 +5837,7 @@
       "key": "tariffe.su_misura_text",
       "locale": "it",
       "is_published": true,
-      "value": "Aziende, quote societarie, azioni o imbarcazioni? Questi beni non rientrano nel prezzo unico: ti facciamo un preventivo su misura, gratis e senza sorprese."
+      "value": "Più di 10 immobili o 10 eredi, oppure aziende, quote societarie, azioni o imbarcazioni? Questi casi non rientrano nel prezzo unico: ti facciamo un preventivo su misura, gratis e senza sorprese."
     },
     {
       "collection": "prezzo_unico",
@@ -5855,14 +5883,14 @@
       "key": "come_funziona.prices_intro",
       "locale": "it",
       "is_published": true,
-      "value": "250 € tutto incluso, qualunque sia il numero di immobili o di eredi. Le imposte sono a parte: te le calcoliamo noi prima dell'invio."
+      "value": "250 € tutto incluso, fino a 10 immobili e 10 eredi. Le imposte sono a parte: te le calcoliamo noi prima dell'invio."
     },
     {
       "collection": "prezzo_unico",
       "key": "come_funziona.prices_custom_body",
       "locale": "it",
       "is_published": true,
-      "value": "Aziende, quote societarie, azioni o barche: preventivo personalizzato, senza impegno."
+      "value": "Più di 10 immobili o 10 eredi, oppure aziende, quote societarie, azioni o barche: preventivo personalizzato, senza impegno."
     },
     {
       "collection": "prezzo_unico",
@@ -5894,7 +5922,7 @@
       "locale": "it",
       "is_published": true,
       "value": {
-        "real_estate_hint": "Conta case, terreni, box e quote: il prezzo non cambia, ci serve per preparare la lista dei documenti.",
+        "real_estate_hint": "Conta case, terreni, box e quote: fino a 10 il prezzo non cambia. Ci serve anche per preparare la lista dei documenti.",
         "will_yes_note": "Il prezzo unico copre anche i casi con testamento. Nella checklist documenti ti chiederemo la copia del testamento pubblicato."
       }
     },
@@ -5917,7 +5945,7 @@
       "key": "grazie.esito_c_body",
       "locale": "it",
       "is_published": true,
-      "value": "Dalle tue risposte emergono beni che non rientrano nel prezzo unico (quote societarie, azioni, aziende, imbarcazioni…). Non possiamo chiudere un prezzo qui: va studiato insieme a Lorenzo, così paghi né più né meno del giusto. Lascia i recapiti sotto (e, se vuoi, una nota) oppure scrivici: ti richiamiamo per chiarire i dettagli e prepararti il preventivo dedicato."
+      "value": "Dalle tue risposte il caso non rientra nel prezzo unico (più di 10 immobili o 10 eredi, oppure beni come quote societarie, azioni, aziende o imbarcazioni). Non possiamo chiudere un prezzo qui: va studiato insieme a Lorenzo, così paghi né più né meno del giusto. Lascia i recapiti sotto (e, se vuoi, una nota) oppure scrivici: ti richiamiamo per chiarire i dettagli e prepararti il preventivo dedicato."
     },
     {
       "collection": "prezzo_unico",
@@ -5948,8 +5976,8 @@
         "included_items": [
           "Consulenza iniziale gratuita con Lorenzo, per telefono o WhatsApp",
           "Assistenza continua di Lorenzo in orario d'ufficio: WhatsApp, telefono ed email",
-          "Tutti gli immobili, terreni compresi, con la voltura catastale di ciascuno",
-          "Tutti gli eredi, anche residenti all'estero, con o senza testamento",
+          "Fino a 10 immobili, terreni compresi, con la voltura catastale di ciascuno",
+          "Fino a 10 eredi, anche residenti all'estero, con o senza testamento",
           "Guide passo passo per trovare e raccogliere i documenti",
           "Area personale intuitiva: carichi i documenti e segui la pratica",
           "Calcolo delle imposte e compilazione della dichiarazione",

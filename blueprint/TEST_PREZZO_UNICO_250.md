@@ -4,7 +4,9 @@
 > `test/prezzo-unico-250` su main).
 > Listino di prima salvato nel tag `listino-290-490` (commit `ae7123e`).
 > Richiesta di Mauro del 25/09/2026; OK di Lorenzo riferito da Mauro lo stesso giorno.
-> Codice: `web/src/lib/flat-offer.ts` (interruttore e date).
+> Stesso giorno, dopo il go-live: tetti di 10 immobili e 10 eredi, pulsanti
+> "Acquista il servizio" e WhatsApp nella card, paragrafo "Come si paga".
+> Codice: `web/src/lib/flat-offer.ts` (interruttore, date e tetti).
 
 ## Perché
 
@@ -28,10 +30,17 @@ sul prezzo. Per questo il go-live richiede il suo OK esplicito.
 
 ## Decisioni di Mauro (25/09)
 
-- **Perimetro**: 250 € coprono case, terreni, conti ed eredi senza limiti di
-  numero (anche eredi all'estero, con o senza testamento), con la voltura
-  catastale di ogni immobile. **Su misura** solo per gli "altri beni" del quiz:
-  quote societarie, azioni, aziende, barche.
+- **Perimetro**: 250 € coprono conti e titoli, **fino a 10 immobili** (terreni
+  compresi) e **fino a 10 eredi** (anche all'estero, con o senza testamento), con
+  la voltura catastale di ogni immobile. **Su misura** oltre 10 immobili o 10 eredi
+  e per gli "altri beni" del quiz: quote societarie, azioni, aziende, barche. Al
+  go-live il perimetro era "senza limiti di numero"; i tetti sono arrivati lo
+  stesso giorno ("se sono 100, Lorenzo fallisce").
+- **Acquisto diretto**: nella card del prezzo, subito dopo il prezzo, "Acquista il
+  servizio" (checkout a 250 € senza questionario) e "Scrivi su WhatsApp" verde; il
+  questionario resta come link sotto.
+- **Come si paga**: paragrafo con pulsanti in home e in Come funziona (pagamento
+  online con Stripe, tutto in anticipo oppure 50% + 50%, rate dove disponibili).
 - **Nessuna scadenza pubblica**: niente date né conto alla rovescia sul sito. Il
   test si accende e si spegne con un deploy.
 - **Servizi correlati**: nascosta la "Voltura aggiuntiva" (`VOLTURA_EXTRA`, già
@@ -48,7 +57,8 @@ sul prezzo. Per questo il go-live richiede il suo OK esplicito.
 ## Come funziona (tecnico)
 
 - **Interruttore** (`lib/flat-offer.ts`): `FLAT_OFFER_ON` e `FLAT_OFFER`
-  (`code: "UNICO250"`, `price: 250`, `startsAt`, `endsAt`, `honorDays: 14`).
+  (`code: "UNICO250"`, `price: 250`, `startsAt`, `endsAt`, `honorDays: 14`,
+  `maxProperties: 10`, `maxHeirs: 10`).
   Cambia solo con un deploy: prezzi e testi devono cambiare insieme. Le date non
   accendono né spengono nulla; servono a banner CRM, statistiche e garanzia.
 - **Ordine** (`lib/order.ts`, `buildOrder`): con il test acceso c'è una sola riga
@@ -56,7 +66,13 @@ sul prezzo. Per questo il go-live richiede il suo OK esplicito.
   gli add-on restano righe a parte. Semplice/Completo restano solo come chiave
   interna (tempi di consegna, checklist, CRM). Zero Stress resta al suo listino.
 - **Esito del quiz** (`lib/quote.ts`, `computeEsito`): "immobili: non so" resta
-  nel prezzo unico; su misura solo con altri beni. L'esonero (esito A) non cambia.
+  nel prezzo unico; su misura con altri beni oppure oltre 10 immobili o 10 eredi
+  (`exceedsFlatOfferLimits`, stesso calcolo nel quiz, nel salvataggio del lead e
+  nella pagina del risultato). L'esonero (esito A) non cambia.
+- **Acquisto diretto** (`FLAT_OFFER_CHECKOUT_HREF` = `/checkout?pkg=COMPLETO`):
+  la pratica nasce senza risposte al questionario (nota "Checkout diretto dal
+  sito") e Lorenzo raccoglie i dati dopo. Il checkout non controlla i tetti: se
+  poi emergono più di 10 immobili o 10 eredi vale l'art. 5 delle Condizioni.
 - **Pagamenti** (`lib/payments.ts`): prezzo sempre ricalcolato lato server.
   - Garanzia: una pratica con riga `UNICO250` paga 250 € anche a test spento,
     fino a `endsAt` + 14 giorni (`flatOfferForPractice`). L'email al cliente dice
@@ -86,14 +102,21 @@ sul prezzo. Per questo il go-live richiede il suo OK esplicito.
 - **Barra sopra la navbar**: "Prezzo unico 250 € tutto incluso", senza date; non
   compare in checkout e nella pagina del risultato.
 - **Home e Tariffe**: una card unica da 250 € più il riquadro "su misura", al posto
-  di Semplice / Completo / Su misura.
+  di Semplice / Completo / Su misura. Nella card, subito dopo prezzo e note,
+  "Acquista il servizio" e "Scrivi su WhatsApp" (verde, messaggio precompilato col
+  prezzo); "Calcola il preventivo gratis" diventa un link sotto.
+- **Come si paga** (`components/site/payment-options.tsx`, `site_ui.payment_ui`):
+  in home sotto la card e in Come funziona sotto la fascia prezzi. Non dipende dal
+  test: a test spento resta, con "Calcola il preventivo gratis" al posto di
+  "Acquista il servizio".
 - **Tariffe**: guida alla scelta riscritta (cosa comprende, cosa no); "Voltura
   aggiuntiva" nascosta.
 - **Come funziona**: fascia prezzi con la card unica. Video invariato.
 - **Risultato del preventivo** (esito B): "Il tuo caso rientra nel prezzo unico",
   con l'elenco di cosa copre per quel caso (immobili, eredi, testamento…) e
   "Nessun supplemento". Nascosta la frase sul cambio di pacchetto. WhatsApp
-  precompilato con il prezzo unico. Esito C (su misura) con testo aggiornato.
+  precompilato con il prezzo unico. Esito C (su misura) con testo aggiornato:
+  oltre 10 immobili o 10 eredi, oppure altri beni.
 - **Checkout e Stripe**: riga "Successione tutto incluso — prezzo unico", 250 €.
 - **Area riservata**: ordine e dashboard mostrano il prezzo unico e cosa include.
 - **FAQ**: le due risposte dedicate.
@@ -112,8 +135,8 @@ sul prezzo. Per questo il go-live richiede il suo OK esplicito.
 ### Email
 
 - Riepilogo del preventivo al cliente (italiano e arabo; le altre lingue ricevono
-  l'italiano come oggi): "rientra nel prezzo unico", tutto incluso, imposte di
-  Stato a parte, prezzo bloccato almeno 14 giorni.
+  l'italiano come oggi): "rientra nel prezzo unico", tutto incluso fino a 10
+  immobili e 10 eredi, imposte di Stato a parte, prezzo bloccato almeno 14 giorni.
 - Notifica a Lorenzo: "Prezzo unico 250 € (test) · caso con/senza immobili".
 
 ### Testi (11 lingue)
@@ -124,6 +147,8 @@ sul prezzo. Per questo il go-live richiede il suo OK esplicito.
 come funziona, preventivo, risultato, checkout e promo.
 `seed/content_entries.it.json` è di nuovo una copia esatta del file del sito
 (era rimasto indietro di 65 voci, da prima del test).
+Con i tetti: una voce nuova `site_ui.payment_ui` ("Come si paga") e tre etichette
+nuove in `site_ui.flat_offer_ui` (`buy_cta`, `whatsapp_cta`, `whatsapp_prefill`).
 
 ### Legale (italiano + 10 traduzioni)
 
@@ -131,12 +156,14 @@ come funziona, preventivo, risultato, checkout e promo.
 
 - **Condizioni di vendita**: art. 2 (servizi "come descritti nella pagina Tariffe
   e nel riepilogo dell'ordine"), art. 3 "Prezzo, cosa comprende ed esclusioni"
-  (prezzo unico di 250 € senza limiti di immobili, eredi e rapporti; beni esclusi
-  con preventivo individuale prima dell'acquisto; il prezzo non cambia dopo la
-  verifica dei documenti), art. 4 ("pagamento dell'onorario"), art. 5 "Pagamento
-  e beni esclusi emersi dopo l'acquisto" (proposta per la sola parte aggiuntiva;
-  se il cliente non accetta, recesso con rimborso integrale), art. 7 (tempi
-  indicativi per successioni senza/con immobili).
+  (prezzo unico di 250 € fino a 10 immobili e 10 eredi, senza limiti di rapporti
+  finanziari; oltre i tetti o con beni esclusi, preventivo individuale prima
+  dell'acquisto; entro i tetti il prezzo non cambia dopo la verifica dei
+  documenti), art. 4 ("pagamento dell'onorario"), art. 5 "Pagamento e casi fuori
+  dal prezzo unico emersi dopo l'acquisto" (più di 10 immobili, più di 10 eredi o
+  beni esclusi: proposta per la sola parte aggiuntiva; se il cliente non accetta,
+  recesso con rimborso integrale), art. 7 (tempi indicativi per successioni
+  senza/con immobili).
 - **Garanzia**: "prezzo unico o preventivo su misura"; "servizi non compresi nel
   prezzo pagato".
 - `bozze_legali/Condizioni_di_Vendita_TC_IT_BOZZA.md` allineata, con la nota per il
@@ -172,8 +199,10 @@ come funziona, preventivo, risultato, checkout e promo.
   pratiche pagate al giorno; poi onorari al giorno e questionari al giorno. Per i
   questionari del periodo prima c'è solo il totale (il contatore giornaliero parte
   col test); se serve il confronto, GA4 con `node scripts/ga4-report.mjs` (da `web/`).
-- **Su misura** (altri beni): importo concordato con pagamento manuale dal CRM; i
-  link di pagamento applicano sempre 250 €.
+- **Su misura** (altri beni, oltre 10 immobili o 10 eredi): importo concordato con
+  pagamento manuale dal CRM; i link di pagamento applicano sempre 250 €.
+- **Acquisti diretti** dalla card (senza questionario): in CRM hanno la nota
+  "Checkout diretto dal sito" e risposte vuote; se il caso supera i tetti, art. 5.
 - **Non cambiare dal CRM** la domanda delle due FAQ sul prezzo: il test le
   riconosce da lì. La risposta si può correggere (durante il test non si vede).
 
@@ -187,8 +216,9 @@ come funziona, preventivo, risultato, checkout e promo.
    i `content_entries`: contengono anche la nota IVA "senza IVA da aggiungere"
    (commit `d8b67a0` del 25/09), che è una correzione definitiva e non del test. Facoltativo: una riga che conferma il prezzo
    unico a chi l'ha avuto, fino alla scadenza della garanzia.
-3. **Commit e deploy**. Testi, FAQ, card, barra e CRM tornano da soli al listino
-   290/490: il database non è mai stato toccato.
+3. **Commit e deploy**. Testi, FAQ, card (con i suoi pulsanti), barra e CRM
+   tornano da soli al listino 290/490: il database non è mai stato toccato. "Come
+   si paga" resta e il suo pulsante torna "Calcola il preventivo gratis".
 4. **Pratiche a prezzo unico**: i link di pagamento applicano 250 € fino a
    `endsAt` + 14 giorni; i saldi 50/50 seguono l'acconto. In CRM si riconoscono da
    "prezzo unico".
@@ -202,6 +232,12 @@ come funziona, preventivo, risultato, checkout e promo.
 per esteso in 9 voci di testo e in un paragrafo delle Condizioni, in 11 lingue.
 Le pratiche esistenti sono marcate `UNICO250`: cambiando `code` perdono garanzia
 e badge.
+
+**Se cambiano i tetti (10 immobili / 10 eredi)**: oltre a `maxProperties` e
+`maxHeirs`, il "10" è scritto per esteso in 16 testi per lingua (card, risultato,
+tariffe, come funziona, FAQ, promo, quiz), negli artt. 3 e 5 delle Condizioni in
+11 lingue, nelle email IT/AR (`lib/notifications.ts`), nei fallback di
+`lib/site-ui-labels.ts` e nella bozza md.
 
 ## Punti aperti
 

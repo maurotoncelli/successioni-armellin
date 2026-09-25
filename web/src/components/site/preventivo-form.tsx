@@ -221,6 +221,7 @@ export function PreventivoForm({
       allDirectLine,
       hasRealEstate,
       realEstateCount: recount,
+      heirsTotal,
       hasOther,
       over100k: askOver100k ? over100k : undefined,
     });

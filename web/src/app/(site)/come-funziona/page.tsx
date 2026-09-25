@@ -30,6 +30,7 @@ import {
   IconStudio,
 } from "@/components/site/come-funziona-icons";
 import { ComeFunzionaPanels } from "@/components/site/come-funziona-panels";
+import { PaymentOptions } from "@/components/site/payment-options";
 import {
   formatAmount,
   getPromoContext,
@@ -402,6 +403,7 @@ export default async function ComeFunzionaPage() {
             </p>
           </Link>
         </div>
+        <PaymentOptions cta="come_funziona_payment" className="mt-8 sm:mt-10" />
         <p className="mt-6 text-center sm:mt-8">
           <Link
             href={pricesLink.href}

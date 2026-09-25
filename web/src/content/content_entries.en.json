@@ -5634,22 +5634,25 @@
         "line_label": "All-inclusive succession — single price",
         "badge": "Single price",
         "title": "All-inclusive succession",
-        "tagline": "One price, whatever your case",
+        "tagline": "One price, no surcharges",
         "price_note": "final fee, no VAT to add",
         "taxes_note": "State taxes separate: we calculate them for you",
         "sla": "Filing within 7–10 business days once documents are complete",
         "features": [
-          "Any number of properties, land included, with cadastral transfer (voltura) for each",
-          "Any number of heirs, including those living abroad",
+          "Up to 10 properties, land included, with cadastral transfer (voltura) for each",
+          "Up to 10 heirs, including those living abroad",
           "With or without a will",
           "Tax calculation, declaration and filing with Agenzia delle Entrate",
           "Personal area and Lorenzo supporting you from start to finish",
           "Satisfaction-or-refund guarantee"
         ],
+        "buy_cta": "Buy the service",
+        "whatsapp_cta": "Write on WhatsApp",
+        "whatsapp_prefill": "Hi Lorenzo, I saw the all-inclusive succession at {price} € on the site and I have a few questions.",
         "cta": "Calculate your free quote",
         "cta_hint": "In one minute you'll see what's included for your case",
-        "custom_title": "Businesses, company shares, stocks or boats?",
-        "custom_text": "These assets aren't covered by the single price: we'll prepare a custom quote for you, free, within one business day.",
+        "custom_title": "A bigger or more complex case?",
+        "custom_text": "More than 10 properties or 10 heirs, or businesses, company shares, stocks or boats: we'll prepare a custom quote for you, free, within one business day.",
         "custom_cta": "Request a quote",
         "banner_text": "Single price €{price} all inclusive",
         "banner_note": "State taxes separate",
@@ -5660,14 +5663,39 @@
         "case_property_one": "1 property, with cadastral transfer (voltura)",
         "case_property_many": "{n} properties, each with cadastral transfer (voltura)",
         "case_property_some": "All properties, with cadastral transfers (voltura)",
-        "case_property_unknown": "The properties identified in our checks, with cadastral transfers (voltura)",
+        "case_property_unknown": "The properties identified in our checks (up to 10), with cadastral transfers (voltura)",
         "case_property_none": "Accounts, securities and other assets to declare",
         "case_heir_one": "1 heir",
         "case_heir_many": "{n} heirs",
         "case_heirs_abroad": "Heirs living abroad, at no extra cost",
         "case_will": "The will",
         "case_core": "Tax calculation, declaration and filing with Agenzia delle Entrate",
-        "result_no_surcharge": "No surcharge: the price doesn't change with the number of properties or heirs."
+        "result_no_surcharge": "No surcharge: for up to 10 properties and 10 heirs, this is the price."
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "payment_ui",
+      "locale": "en",
+      "is_published": true,
+      "value": {
+        "title": "How to pay",
+        "intro": "You pay everything online, securely with Stripe. You choose how:",
+        "options": [
+          {
+            "title": "Pay in full upfront",
+            "text": "You pay the fee in one go and you're done."
+          },
+          {
+            "title": "Half and half",
+            "text": "50% to get started, the remaining 50% when the declaration is ready, before filing with the Agenzia delle Entrate."
+          }
+        ],
+        "note": "You can also pay the fee in instalments with PayPal Pay in 3, Klarna or Scalapay, where available.",
+        "cta_buy": "Buy the service",
+        "cta_quote": "Calculate your free quote",
+        "cta_whatsapp": "Write on WhatsApp",
+        "whatsapp_prefill": "Hi Lorenzo, I have a question about how to pay for the succession."
       }
     },
     {
@@ -5678,7 +5706,7 @@
       "value": [
         {
           "question": "How much does your service cost?",
-          "answer": "€250 all inclusive: it's the final fee, with no VAT to add (flat-rate regime), whatever the number of properties, land or heirs, with cadastral transfer (voltura) for each property. Only for businesses, company shares, stocks or boats we prepare a custom quote. State taxes are separate, paid by the heirs, and we calculate them before filing."
+          "answer": "€250 all inclusive: it's the final fee, with no VAT to add (flat-rate regime), for up to 10 properties (land included) and 10 heirs, with cadastral transfer (voltura) for each property. Beyond those limits, or with businesses, company shares, stocks or boats, we prepare a custom quote. State taxes are separate, paid by the heirs, and we calculate them before filing."
         },
         {
           "question": "Are taxes included in the price?",
@@ -5705,7 +5733,7 @@
       "key": "home.tariffe_intro",
       "locale": "en",
       "is_published": true,
-      "value": "€250 for the entire succession, whatever the number of properties or heirs. State taxes are separate, paid by the heir, and we calculate them for you."
+      "value": "€250 for the entire succession, for up to 10 properties and 10 heirs. State taxes are separate, paid by the heir, and we calculate them for you."
     },
     {
       "collection": "prezzo_unico",
@@ -5743,7 +5771,7 @@
         {
           "icon": "voltura",
           "titolo": "Cadastral transfers included",
-          "testo": "Where there is a property, the Catasto update is included in the price, for all properties. It is not an extra that appears later."
+          "testo": "Where there is a property, the Catasto update is in the price. It is not an extra that appears later."
         },
         {
           "icon": "comms",
@@ -5757,7 +5785,7 @@
       "key": "tariffe.hero_subtitle",
       "locale": "en",
       "is_published": true,
-      "value": "One single price: €250 all inclusive, whatever the number of properties or heirs. State taxes are separate and we calculate them for you. Only for businesses, company shares, stocks or boats you need a custom quote."
+      "value": "One single price: €250 all inclusive, for up to 10 properties and 10 heirs. State taxes are separate and we calculate them for you. For larger cases, or with businesses, company shares, stocks or boats, we'll prepare a custom quote."
     },
     {
       "collection": "prezzo_unico",
@@ -5788,7 +5816,7 @@
       "value": [
         {
           "titolo": "One price, nothing to choose",
-          "testo": "**€250 all inclusive**: accounts, homes, land and garages with no limit on number, with cadastral transfer (voltura) for each property; any number of heirs, including those living abroad, with or without a will. Only businesses, company shares, stocks or boats require a **custom quote, free**. If you're unsure, write to Lorenzo: we'll tell you."
+          "testo": "**€250 all inclusive**: accounts, securities and up to 10 properties (homes, land, garages), with cadastral transfer (voltura) for each; up to 10 heirs, including those living abroad, with or without a will. Beyond those limits, or with businesses, company shares, stocks or boats, we offer a **custom quote, free**. If you're unsure, write to Lorenzo: we'll tell you."
         },
         {
           "titolo": "What's not included",
@@ -5809,7 +5837,7 @@
       "key": "tariffe.su_misura_text",
       "locale": "en",
       "is_published": true,
-      "value": "Businesses, company shares, stocks or boats? These assets aren't covered by the single price: we'll prepare a custom quote for you, free and with no surprises."
+      "value": "More than 10 properties or 10 heirs, or businesses, company shares, stocks or boats? These cases aren't covered by the single price: we'll prepare a custom quote for you, free and with no surprises."
     },
     {
       "collection": "prezzo_unico",
@@ -5855,14 +5883,14 @@
       "key": "come_funziona.prices_intro",
       "locale": "en",
       "is_published": true,
-      "value": "€250 all inclusive, whatever the number of properties or heirs. Taxes are separate: we calculate them for you before filing."
+      "value": "€250 all inclusive, for up to 10 properties and 10 heirs. Taxes are separate: we calculate them for you before filing."
     },
     {
       "collection": "prezzo_unico",
       "key": "come_funziona.prices_custom_body",
       "locale": "en",
       "is_published": true,
-      "value": "Businesses, company shares, stocks or boats: a personalised quote, no commitment."
+      "value": "More than 10 properties or 10 heirs, or businesses, company shares, stocks or boats: a personalised quote, no commitment."
     },
     {
       "collection": "prezzo_unico",
@@ -5894,7 +5922,7 @@
       "locale": "en",
       "is_published": true,
       "value": {
-        "real_estate_hint": "Count homes, land, garages and shares: the price doesn't change — we need this to prepare your document list.",
+        "real_estate_hint": "Count homes, land, garages and shares: for up to 10 the price doesn't change. We need this to prepare your document list.",
         "will_yes_note": "The single price also covers cases with a will. In the document checklist we'll ask for a copy of the published will."
       }
     },
@@ -5917,7 +5945,7 @@
       "key": "grazie.esito_c_body",
       "locale": "en",
       "is_published": true,
-      "value": "Your answers show assets that aren't covered by the single price (company shares, stocks, businesses, boats…). We can't set a price here: it needs to be reviewed with Lorenzo, so you pay neither more nor less than is fair. Leave your details below (and a note if you like) or write to us: we'll call you back to clarify the details and prepare your dedicated quote."
+      "value": "Your answers show a case that isn't covered by the single price (more than 10 properties or 10 heirs, or assets such as company shares, stocks, businesses or boats). We can't set a price here: it needs to be reviewed with Lorenzo, so you pay neither more nor less than is fair. Leave your details below (and a note if you like) or write to us: we'll call you back to clarify the details and prepare your dedicated quote."
     },
     {
       "collection": "prezzo_unico",
@@ -5948,8 +5976,8 @@
         "included_items": [
           "Free initial consultation with Lorenzo, by phone or WhatsApp",
           "Ongoing support from Lorenzo during office hours: WhatsApp, phone and email",
-          "All properties, land included, with cadastral transfer (voltura) for each",
-          "All heirs, including those living abroad, with or without a will",
+          "Up to 10 properties, land included, with cadastral transfer (voltura) for each",
+          "Up to 10 heirs, including those living abroad, with or without a will",
           "Step-by-step guides to find and collect the documents",
           "Intuitive personal area: upload documents and follow your case",
           "Tax calculation and preparation of the declaration",

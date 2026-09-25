@@ -5620,22 +5620,25 @@
         "line_label": "Erbschaft alles inklusive — Einheitspreis",
         "badge": "Einheitspreis",
         "title": "Erbschaft alles inklusive",
-        "tagline": "Ein Preis, egal wie Ihr Fall aussieht",
+        "tagline": "Ein Preis, ohne Aufschläge",
         "price_note": "Endhonorar, ohne zusätzliche MwSt.",
         "taxes_note": "Staatliche Steuern extra: wir berechnen sie für Sie",
         "sla": "Einreichung innerhalb von 7–10 Werktagen nach vollständigen Unterlagen",
         "features": [
-          "Beliebig viele Immobilien, Grundstücke inklusive, mit Katasterumschreibung (voltura) für jede",
-          "Beliebig viele Erben, auch im Ausland wohnhaft",
+          "Bis zu 10 Immobilien, Grundstücke inklusive, mit Katasterumschreibung (voltura) für jede",
+          "Bis zu 10 Erben, auch im Ausland wohnhaft",
           "Mit oder ohne Testament",
           "Steuerberechnung, Erklärung und Einreichung bei Agenzia delle Entrate",
           "Persönlicher Bereich und Lorenzo begleitet Sie von Anfang bis Ende",
           "Zufriedenheits- oder Geld-zurück-Garantie"
         ],
+        "buy_cta": "Service kaufen",
+        "whatsapp_cta": "Auf WhatsApp schreiben",
+        "whatsapp_prefill": "Hallo Lorenzo, ich habe auf der Website die Erbschaft alles inklusive für {price} € gesehen und hätte ein paar Fragen.",
         "cta": "Kostenlosen Kostenvoranschlag berechnen",
         "cta_hint": "In einer Minute sehen Sie, was für Ihren Fall enthalten ist",
-        "custom_title": "Unternehmen, Gesellschaftsanteile, Aktien oder Boote?",
-        "custom_text": "Diese Vermögenswerte sind nicht im Einheitspreis enthalten: Wir erstellen kostenlos innerhalb eines Werktags ein Angebot nach Maß.",
+        "custom_title": "Ein größerer oder besonderer Fall?",
+        "custom_text": "Mehr als 10 Immobilien oder 10 Erben, oder Unternehmen, Gesellschaftsanteile, Aktien oder Boote: Wir erstellen kostenlos innerhalb eines Werktags ein Angebot nach Maß.",
         "custom_cta": "Kostenvoranschlag anfordern",
         "banner_text": "Einheitspreis {price} € alles inklusive",
         "banner_note": "Staatliche Steuern extra",
@@ -5646,14 +5649,39 @@
         "case_property_one": "1 Immobilie, mit Katasterumschreibung (voltura)",
         "case_property_many": "{n} Immobilien, jede mit Katasterumschreibung (voltura)",
         "case_property_some": "Alle Immobilien, mit Katasterumschreibungen (voltura)",
-        "case_property_unknown": "Die Immobilien, die sich aus den Prüfungen ergeben, mit Katasterumschreibungen (voltura)",
+        "case_property_unknown": "Die Immobilien, die sich aus den Prüfungen ergeben (bis zu 10), mit Katasterumschreibungen (voltura)",
         "case_property_none": "Konten, Wertpapiere und andere zu erklärende Vermögenswerte",
         "case_heir_one": "1 Erbe",
         "case_heir_many": "{n} Erben",
         "case_heirs_abroad": "Im Ausland wohnhafte Erben, ohne Mehrkosten",
         "case_will": "Das Testament",
         "case_core": "Steuerberechnung, Erklärung und Einreichung bei Agenzia delle Entrate",
-        "result_no_surcharge": "Kein Aufschlag: Der Preis ändert sich nicht mit der Zahl der Immobilien oder Erben."
+        "result_no_surcharge": "Kein Aufschlag: Bis zu 10 Immobilien und 10 Erben bleibt der Preis dieser."
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "payment_ui",
+      "locale": "de",
+      "is_published": true,
+      "value": {
+        "title": "So bezahlen Sie",
+        "intro": "Sie zahlen alles online, sicher mit Stripe. Sie wählen, wie:",
+        "options": [
+          {
+            "title": "Alles im Voraus",
+            "text": "Sie zahlen das Honorar in einer Summe und müssen nicht mehr daran denken."
+          },
+          {
+            "title": "Hälfte und Hälfte",
+            "text": "50 % zum Start, die restlichen 50 %, wenn die Erklärung fertig ist, vor der Übermittlung an die Agenzia delle Entrate."
+          }
+        ],
+        "note": "Sie können das Honorar auch in Raten mit PayPal Pay in 3, Klarna oder Scalapay zahlen, wo verfügbar.",
+        "cta_buy": "Service kaufen",
+        "cta_quote": "Kostenlosen Kostenvoranschlag berechnen",
+        "cta_whatsapp": "Auf WhatsApp schreiben",
+        "whatsapp_prefill": "Hallo Lorenzo, ich hätte eine Frage dazu, wie man die Erbschaft bezahlt."
       }
     },
     {
@@ -5664,7 +5692,7 @@
       "value": [
         {
           "question": "Was kostet Ihr Service?",
-          "answer": "250 € alles inklusive: das Endhonorar, ohne zusätzliche MwSt. (Pauschalregelung), unabhängig von der Zahl der Immobilien, Grundstücke oder Erben, mit Katasterumschreibung (voltura) für jede Immobilie. Nur für Unternehmen, Gesellschaftsanteile, Aktien oder Boote erstellen wir ein Angebot nach Maß. Staatliche Steuern sind separat, von den Erben zu tragen, und wir berechnen sie vor der Einreichung."
+          "answer": "250 € alles inklusive: das Endhonorar, ohne zusätzliche MwSt. (Pauschalregelung), für bis zu 10 Immobilien (Grundstücke inklusive) und 10 Erben, mit Katasterumschreibung (voltura) für jede Immobilie. Über diese Zahlen hinaus oder bei Unternehmen, Gesellschaftsanteilen, Aktien oder Booten erstellen wir ein Angebot nach Maß. Staatliche Steuern sind separat, von den Erben zu tragen, und wir berechnen sie vor der Einreichung."
         },
         {
           "question": "Sind die Steuern im Preis enthalten?",
@@ -5691,7 +5719,7 @@
       "key": "home.tariffe_intro",
       "locale": "de",
       "is_published": true,
-      "value": "250 € für die gesamte Erbschaftserklärung, unabhängig von der Zahl der Immobilien oder Erben. Staatliche Steuern sind separat, vom Erben zu tragen — wir berechnen sie."
+      "value": "250 € für die gesamte Erbschaftserklärung, für bis zu 10 Immobilien und 10 Erben. Staatliche Steuern sind separat, vom Erben zu tragen — wir berechnen sie für Sie."
     },
     {
       "collection": "prezzo_unico",
@@ -5729,7 +5757,7 @@
         {
           "icon": "voltura",
           "titolo": "Katasterumschreibungen inklusive",
-          "testo": "Wo eine Immobilie dabei ist, gehört die Umschreibung im Catasto zum Preis, für alle Immobilien. Kein Extra, das hinterher kommt."
+          "testo": "Wo eine Immobilie dabei ist, gehört die Umschreibung im Catasto zum Preis. Kein Extra, das hinterher kommt."
         },
         {
           "icon": "comms",
@@ -5743,7 +5771,7 @@
       "key": "tariffe.hero_subtitle",
       "locale": "de",
       "is_published": true,
-      "value": "Ein Einheitspreis: 250 € alles inklusive, unabhängig von der Zahl der Immobilien oder Erben. Staatliche Steuern sind separat und wir berechnen sie. Nur für Unternehmen, Gesellschaftsanteile, Aktien oder Boote brauchen Sie ein Angebot nach Maß."
+      "value": "Ein Einheitspreis: 250 € alles inklusive, für bis zu 10 Immobilien und 10 Erben. Staatliche Steuern sind separat und wir berechnen sie für Sie. Bei größeren Fällen oder mit Unternehmen, Gesellschaftsanteilen, Aktien oder Booten erstellen wir ein Angebot nach Maß."
     },
     {
       "collection": "prezzo_unico",
@@ -5774,7 +5802,7 @@
       "value": [
         {
           "titolo": "Ein Preis, nichts zu wählen",
-          "testo": "**250 € alles inklusive**: Konten, Häuser, Grundstücke und Garagen ohne Begrenzung der Zahl, mit Katasterumschreibung (voltura) für jede Immobilie; beliebig viele Erben, auch im Ausland wohnhaft, mit oder ohne Testament. Nur Unternehmen, Gesellschaftsanteile, Aktien oder Boote erfordern ein **kostenloses Angebot nach Maß**. Wenn Sie unsicher sind, schreiben Sie Lorenzo: wir sagen es Ihnen."
+          "testo": "**250 € alles inklusive**: Konten, Wertpapiere und bis zu 10 Immobilien (Häuser, Grundstücke, Garagen), mit Katasterumschreibung (voltura) für jede; bis zu 10 Erben, auch im Ausland wohnhaft, mit oder ohne Testament. Über diese Zahlen hinaus oder bei Unternehmen, Gesellschaftsanteilen, Aktien oder Booten erstellen wir ein **kostenloses Angebot nach Maß**. Wenn Sie unsicher sind, schreiben Sie Lorenzo: Wir sagen es Ihnen."
         },
         {
           "titolo": "Was nicht enthalten ist",
@@ -5795,7 +5823,7 @@
       "key": "tariffe.su_misura_text",
       "locale": "de",
       "is_published": true,
-      "value": "Unternehmen, Gesellschaftsanteile, Aktien oder Boote? Diese Vermögenswerte sind nicht im Einheitspreis enthalten: Wir erstellen kostenlos und ohne Überraschungen ein Angebot nach Maß."
+      "value": "Mehr als 10 Immobilien oder 10 Erben, oder Unternehmen, Gesellschaftsanteile, Aktien oder Boote? Diese Fälle fallen nicht unter den Einheitspreis: Wir erstellen kostenlos und ohne Überraschungen ein Angebot nach Maß."
     },
     {
       "collection": "prezzo_unico",
@@ -5841,14 +5869,14 @@
       "key": "come_funziona.prices_intro",
       "locale": "de",
       "is_published": true,
-      "value": "250 € alles inklusive, unabhängig von der Zahl der Immobilien oder Erben. Steuern kommen separat dazu: wir berechnen sie vor der Einreichung für Sie."
+      "value": "250 € alles inklusive, für bis zu 10 Immobilien und 10 Erben. Steuern kommen separat dazu: wir berechnen sie vor der Einreichung für Sie."
     },
     {
       "collection": "prezzo_unico",
       "key": "come_funziona.prices_custom_body",
       "locale": "de",
       "is_published": true,
-      "value": "Unternehmen, Gesellschaftsanteile, Aktien oder Boote: individuelles Angebot, unverbindlich."
+      "value": "Mehr als 10 Immobilien oder 10 Erben, oder Unternehmen, Gesellschaftsanteile, Aktien oder Boote: individuelles Angebot, unverbindlich."
     },
     {
       "collection": "prezzo_unico",
@@ -5880,7 +5908,7 @@
       "locale": "de",
       "is_published": true,
       "value": {
-        "real_estate_hint": "Zählen Sie Häuser, Grundstücke, Garagen und Anteile: Der Preis ändert sich nicht — wir brauchen das für Ihre Dokumentenliste.",
+        "real_estate_hint": "Zählen Sie Häuser, Grundstücke, Garagen und Anteile: Bis zu 10 ändert sich der Preis nicht. Wir brauchen das auch für Ihre Dokumentenliste.",
         "will_yes_note": "Der Einheitspreis gilt auch bei Testament. In der Dokumenten-Checkliste fragen wir nach einer Kopie des veröffentlichten Testaments."
       }
     },
@@ -5903,7 +5931,7 @@
       "key": "grazie.esito_c_body",
       "locale": "de",
       "is_published": true,
-      "value": "Aus Ihren Antworten gehen Vermögenswerte hervor, die nicht in den Einheitspreis fallen (Gesellschaftsanteile, Aktien, Unternehmen, Boote…). Hier können wir keinen Festpreis nennen: Das muss mit Lorenzo geprüft werden, damit Sie weder mehr noch weniger als angemessen zahlen. Hinterlassen Sie unten Ihre Kontaktdaten (und optional eine Notiz) oder schreiben Sie uns: Wir rufen zurück, klären die Details und erstellen Ihr individuelles Angebot."
+      "value": "Aus Ihren Antworten geht hervor, dass der Fall nicht unter den Einheitspreis fällt (mehr als 10 Immobilien oder 10 Erben, oder Vermögenswerte wie Gesellschaftsanteile, Aktien, Unternehmen oder Boote). Hier können wir keinen Festpreis nennen: Das muss mit Lorenzo geprüft werden, damit Sie weder mehr noch weniger als angemessen zahlen. Hinterlassen Sie unten Ihre Kontaktdaten (und optional eine Notiz) oder schreiben Sie uns: Wir rufen zurück, klären die Details und erstellen Ihr individuelles Angebot."
     },
     {
       "collection": "prezzo_unico",
@@ -5934,8 +5962,8 @@
         "included_items": [
           "Kostenloses Erstgespräch mit Lorenzo, per Telefon oder WhatsApp",
           "Laufende Betreuung durch Lorenzo zu Bürozeiten: WhatsApp, Telefon und E-Mail",
-          "Alle Immobilien, Grundstücke inklusive, mit Katasterumschreibung (voltura) für jede",
-          "Alle Erben, auch im Ausland wohnhaft, mit oder ohne Testament",
+          "Bis zu 10 Immobilien, Grundstücke inklusive, mit Katasterumschreibung (voltura) für jede",
+          "Bis zu 10 Erben, auch im Ausland wohnhaft, mit oder ohne Testament",
           "Schritt-für-Schritt-Anleitungen zum Finden und Sammeln der Unterlagen",
           "Intuitiver persönlicher Bereich: Unterlagen hochladen und den Stand verfolgen",
           "Steuerberechnung und Erstellung der Erbschaftserklärung",

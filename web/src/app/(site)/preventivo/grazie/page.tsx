@@ -128,6 +128,7 @@ export default async function GraziePage({
         allDirectLine: composition ? isAllDirectLine(composition) : false,
         hasRealEstate: answers.hasRealEstate,
         realEstateCount: answers.realEstateCount,
+        heirsTotal: Number.parseInt(answers.heirs, 10) || null,
         hasOther: answers.hasOther,
         over100k: answers.over100k,
       })

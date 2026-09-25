@@ -1,7 +1,8 @@
-import { CheckCircle2 } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
 import { getRequestLocale, t, tCta, tList, tObj } from "@/lib/locale";
 import { getPackages } from "@/lib/cms";
-import { getFlatOffer } from "@/lib/flat-offer";
+import { FLAT_OFFER_CHECKOUT_HREF, getFlatOffer } from "@/lib/flat-offer";
 import { FLAT_OFFER_UI_IT, type FlatOfferUiLabels } from "@/lib/site-ui-labels";
 import { ButtonLink } from "@/components/ui/button";
 import { PackageCardDetails } from "@/components/site/package-card-details";
@@ -16,11 +17,15 @@ import {
 
 /* Test prezzo unico (lib/flat-offer.ts): una card sola + nota su misura. */
 async function FlatOfferCards({ price }: { price: number }) {
-  const [locale, ui] = await Promise.all([
+  const [locale, ui, tel] = await Promise.all([
     getRequestLocale(),
     tObj<FlatOfferUiLabels>("site_ui", "flat_offer_ui", FLAT_OFFER_UI_IT),
+    tObj("contatti", "telefono", { cta_whatsapp: "https://wa.me/393201570567" }),
   ]);
   const intlLocale = INTL_LOCALE[locale] ?? "it-IT";
+  const waBase = String(tel.cta_whatsapp || "https://wa.me/393201570567");
+  const waPrefill = ui.whatsapp_prefill.replace("{price}", formatAmount(price, intlLocale));
+  const waHref = `${waBase}${waBase.includes("?") ? "&" : "?"}text=${encodeURIComponent(waPrefill)}`;
   return (
     <div className="mx-auto grid max-w-5xl gap-4 sm:gap-5 lg:grid-cols-3 lg:gap-6">
       <div className="relative flex flex-col rounded-2xl border border-accent bg-bg p-5 shadow-sm ring-1 ring-accent sm:p-7 lg:col-span-2">
@@ -43,11 +48,35 @@ async function FlatOfferCards({ price }: { price: number }) {
               </span>
             </div>
             <p className="mt-3 text-sm font-medium text-accent-dark">{ui.taxes_note}</p>
-            <div className="mt-6 md:mt-auto md:pt-6">
-              <ButtonLink href="/preventivo" variant="primary" className="w-full" cta="flat_offer_card">
-                {ui.cta}
+            <div className="mt-6 flex flex-col gap-2.5">
+              <ButtonLink
+                href={FLAT_OFFER_CHECKOUT_HREF}
+                variant="primary"
+                className="w-full"
+                cta="flat_offer_card_buy"
+              >
+                {ui.buy_cta}
               </ButtonLink>
-              <p className="mt-2 text-center text-xs text-text-muted">{ui.cta_hint}</p>
+              <ButtonLink
+                href={waHref}
+                variant="whatsapp"
+                className="w-full"
+                cta="flat_offer_card_whatsapp"
+              >
+                <MessageCircle className="h-4 w-4" />
+                {ui.whatsapp_cta}
+              </ButtonLink>
+            </div>
+            <div className="mt-5 text-center md:mt-auto md:pt-5">
+              <Link
+                href="/preventivo"
+                data-cta="flat_offer_card"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-dark"
+              >
+                {ui.cta}
+                <ArrowRight className="h-4 w-4 rtl:rotate-180" />
+              </Link>
+              <p className="mt-1 text-xs text-text-muted">{ui.cta_hint}</p>
             </div>
           </div>
           <ul className="space-y-2.5 border-t border-primary/10 pt-5 text-sm sm:text-[15px] md:border-s md:border-t-0 md:ps-8 md:pt-0">

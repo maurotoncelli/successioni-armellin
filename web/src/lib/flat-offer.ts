@@ -12,7 +12,8 @@
     per immobili/eredi e niente promo. Semplice/Completo restano solo come
     chiave interna (tempi di consegna, checklist, CRM);
   - computeEsito (lib/quote.ts): "immobili: non so" resta nel prezzo unico;
-    su misura solo per gli "altri beni" (quote, azioni, aziende, barche);
+    su misura per gli "altri beni" (quote, azioni, aziende, barche) e oltre
+    `maxProperties` immobili o `maxHeirs` eredi;
   - testi: le voci `prezzo_unico.<collection>.<key>` dei content_entries
     sostituiscono `<collection>.<key>` (lib/content.ts); le FAQ sul prezzo
     hanno risposte dedicate (lib/cms.ts). Il listino nel database resta
@@ -35,6 +36,13 @@ export type FlatOffer = {
   endsAt: string;
   /** Giorni dopo `endsAt` in cui chi ha avuto il preventivo a `price` lo paga ancora così. */
   honorDays: number;
+  /**
+    Tetti del prezzo unico (Mauro 25/09): oltre, preventivo su misura. I testi
+    e le Condizioni (content_entries, legal*.ts) riportano il numero in
+    chiaro: se cambia, vanno aggiornati anche loro.
+  */
+  maxProperties: number;
+  maxHeirs: number;
 };
 
 export const FLAT_OFFER: FlatOffer = {
@@ -43,10 +51,19 @@ export const FLAT_OFFER: FlatOffer = {
   startsAt: "2026-09-25",
   endsAt: "2026-10-08",
   honorDays: 14,
+  maxProperties: 10,
+  maxHeirs: 10,
 };
 
 /** Interruttore del test. Cambiarlo richiede un deploy. */
 export const FLAT_OFFER_ON = true;
+
+/**
+  Acquisto diretto senza questionario (card del prezzo, "Come si paga"). Col
+  prezzo unico il pacchetto non cambia l'importo: il Completo è quello che
+  copre anche gli immobili, che qui non conosciamo ancora.
+*/
+export const FLAT_OFFER_CHECKOUT_HREF = "/checkout?pkg=COMPLETO";
 
 export function getFlatOffer(): FlatOffer | null {
   return FLAT_OFFER_ON ? FLAT_OFFER : null;
@@ -54,6 +71,19 @@ export function getFlatOffer(): FlatOffer | null {
 
 export function isFlatOfferOn(): boolean {
   return FLAT_OFFER_ON;
+}
+
+/** true se il caso supera i tetti del prezzo unico attivo (immobili o eredi). */
+export function exceedsFlatOfferLimits(counts: {
+  realEstateCount?: number | null;
+  heirsTotal?: number | null;
+}): boolean {
+  const offer = getFlatOffer();
+  if (!offer) return false;
+  return (
+    (counts.realEstateCount ?? 0) > offer.maxProperties ||
+    (counts.heirsTotal ?? 0) > offer.maxHeirs
+  );
 }
 
 /** true se le righe d'ordine salvate su una pratica sono quelle del prezzo unico. */

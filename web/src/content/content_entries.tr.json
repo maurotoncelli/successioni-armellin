@@ -5620,22 +5620,25 @@
         "line_label": "Veraset her şey dahil — tek fiyat",
         "badge": "Tek fiyat",
         "title": "Veraset her şey dahil",
-        "tagline": "Tek fiyat, durumunuz ne olursa olsun",
+        "tagline": "Tek fiyat, ek ücret yok",
         "price_note": "son ücret, ayrıca KDV eklenmez",
         "taxes_note": "Devlet vergileri ayrı: biz hesaplarız",
         "sla": "Tüm belgeler tamam olduktan sonra 7-10 iş günü içinde gönderim",
         "features": [
-          "Kaç taşınmaz olursa olsun, arazi dahil, her biri için kadastro devri (voltura) ile",
-          "Kaç mirasçı olursa olsun, yurt dışında ikamet edenler dahil",
+          "10 taşınmaza kadar, arazi dahil, her biri için kadastro devri (voltura) ile",
+          "10 mirasçıya kadar, yurt dışında ikamet edenler dahil",
           "Vasiyetli veya vasiyetsiz",
           "Vergi hesaplaması, beyanname ve Agenzia delle Entrate'a gönderim",
           "Kişisel alan ve baştan sona sizi takip eden Lorenzo",
           "Memnuniyet veya para iade garantisi"
         ],
+        "buy_cta": "Hizmeti satın alın",
+        "whatsapp_cta": "WhatsApp’tan yaz",
+        "whatsapp_prefill": "Merhaba Lorenzo, sitede {price} € her şey dahil veraseti gördüm ve birkaç sorum var.",
         "cta": "Ücretsiz ön teklif hesapla",
         "cta_hint": "Bir dakikada durumunuz için nelerin dahil olduğunu görürsünüz",
-        "custom_title": "Şirket, şirket payı, hisse senedi veya tekne?",
-        "custom_text": "Bu varlıklar tek fiyata dahil değil: size ücretsiz, bir iş günü içinde özel ön teklif hazırlarız.",
+        "custom_title": "Daha büyük veya özel bir durum mu?",
+        "custom_text": "10'dan fazla taşınmaz veya 10 mirasçı, ya da şirket, şirket payı, hisse senedi veya tekne: size ücretsiz, bir iş günü içinde özel ön teklif hazırlarız.",
         "custom_cta": "Ön teklif iste",
         "banner_text": "Tek fiyat {price} € her şey dahil",
         "banner_note": "devlet vergileri ayrı",
@@ -5646,14 +5649,39 @@
         "case_property_one": "1 taşınmaz, kadastro devri (voltura) ile",
         "case_property_many": "{n} taşınmaz, her biri kadastro devri (voltura) ile",
         "case_property_some": "Tüm taşınmazlar, kadastro devirleri (voltura) ile",
-        "case_property_unknown": "Kontrollerden çıkacak taşınmazlar, kadastro devirleri (voltura) ile",
+        "case_property_unknown": "Kontrollerden çıkacak taşınmazlar (10'a kadar), kadastro devirleri (voltura) ile",
         "case_property_none": "Hesaplar, menkul kıymetler ve beyan edilecek diğer varlıklar",
         "case_heir_one": "1 mirasçı",
         "case_heir_many": "{n} mirasçı",
         "case_heirs_abroad": "Yurt dışında ikamet eden mirasçılar, ek ücret yok",
         "case_will": "Vasiyetname",
         "case_core": "Vergi hesaplaması, beyanname ve Agenzia delle Entrate'a gönderim",
-        "result_no_surcharge": "Ek ücret yok: fiyat taşınmaz veya mirasçı sayısına göre değişmez."
+        "result_no_surcharge": "Ek ücret yok: 10 taşınmaz ve 10 mirasçıya kadar fiyat aynı kalır."
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "payment_ui",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "title": "Nasıl ödenir",
+        "intro": "Her şeyi çevrimiçi, Stripe ile güvenli ödersiniz. Nasıl ödeyeceğinizi siz seçersiniz:",
+        "options": [
+          {
+            "title": "Peşin tamamı",
+            "text": "Ücreti tek seferde ödersiniz ve işiniz biter."
+          },
+          {
+            "title": "Yarı yarıya",
+            "text": "Başlamak için %50, beyan hazır olduğunda kalan %50, Agenzia delle Entrate'e gönderilmeden önce."
+          }
+        ],
+        "note": "Ücreti taksitle de ödeyebilirsiniz (PayPal Pay in 3, Klarna veya Scalapay, mevcut olduğu yerlerde).",
+        "cta_buy": "Hizmeti satın alın",
+        "cta_quote": "Ücretsiz ön teklif hesapla",
+        "cta_whatsapp": "WhatsApp’tan yaz",
+        "whatsapp_prefill": "Merhaba Lorenzo, veraset ödemesinin nasıl yapıldığı hakkında bir sorum var."
       }
     },
     {
@@ -5664,7 +5692,7 @@
       "value": [
         {
           "question": "Hizmetiniz ne kadar?",
-          "answer": "250 € her şey dahil: son ücret, ayrıca KDV eklenmez (forfait rejimi), taşınmaz, arazi veya mirasçı sayısı ne olursa olsun, her taşınmaz için kadastro devri (voltura) dahil. Yalnızca şirketler, şirket payları, hisse senetleri veya gemiler için özel ön teklif hazırlarız. Devlet vergileri ayrıdır, mirasçıya aittir; gönderimden önce biz hesaplarız."
+          "answer": "250 € her şey dahil: son ücret, ayrıca KDV eklenmez (forfait rejimi), 10 taşınmaza kadar (arazi dahil) ve 10 mirasçıya kadar, her taşınmaz için kadastro devri (voltura) dahil. Bu sınırların üzerinde veya şirket, şirket payları, hisse senetleri veya gemiler için özel ön teklif hazırlarız. Devlet vergileri ayrıdır, mirasçıya aittir; gönderimden önce hesaplarız."
         },
         {
           "question": "Vergiler fiyata dahil mi?",
@@ -5691,7 +5719,7 @@
       "key": "home.tariffe_intro",
       "locale": "tr",
       "is_published": true,
-      "value": "Tüm veraset için 250 €, taşınmaz veya mirasçı sayısı ne olursa olsun. Devlet vergileri ayrıdır, mirasçıya aittir; biz sizin için hesaplarız."
+      "value": "250 € tüm veraset için, 10 taşınmaz ve 10 mirasçıya kadar. Devlet vergileri ayrıdır, mirasçıya aittir; biz sizin için hesaplarız."
     },
     {
       "collection": "prezzo_unico",
@@ -5729,7 +5757,7 @@
         {
           "icon": "voltura",
           "titolo": "Kadastro devirleri dahil",
-          "testo": "Taşınmaz varsa Catasto güncellemesi fiyata dahil, tüm taşınmazlar için. Sonradan gelen bir ekstra değil."
+          "testo": "Taşınmaz varsa Catasto güncellemesi fiyata dahil. Sonradan gelen bir ekstra değil."
         },
         {
           "icon": "comms",
@@ -5743,7 +5771,7 @@
       "key": "tariffe.hero_subtitle",
       "locale": "tr",
       "is_published": true,
-      "value": "Tek fiyat: 250 € her şey dahil, taşınmaz veya mirasçı sayısı ne olursa olsun. Devlet vergileri ayrıdır ve biz hesaplarız. Yalnızca şirketler, şirket payları, hisse senetleri veya tekneler için özel ön teklif gerekir."
+      "value": "Tek fiyat: 250 € her şey dahil, 10 taşınmaz ve 10 mirasçıya kadar. Devlet vergileri ayrıdır ve biz hesaplarız. Daha büyük durumlar veya şirket, şirket payı, hisse senedi veya tekne için özel ön teklif hazırlarız."
     },
     {
       "collection": "prezzo_unico",
@@ -5774,7 +5802,7 @@
       "value": [
         {
           "titolo": "Tek fiyat, seçilecek bir şey yok",
-          "testo": "**250 € her şey dahil**: hesaplar, evler, araziler ve garajlar sayı sınırı olmadan, her taşınmaz için kadastro devri (voltura); kaç mirasçı olursa olsun, yurt dışında ikamet edenler dahil, vasiyetli veya vasiyetsiz. Yalnızca şirketler, şirket payları, hisse senetleri veya gemiler **ücretsiz özel ön teklif** gerektirir. Bir sorunuz varsa Lorenzo'ya yazın: biz söyleriz."
+          "testo": "**250 € her şey dahil**: hesaplar, menkul kıymetler ve 10 taşınmaza kadar (ev, arazi, garaj), her biri için kadastro devri (voltura); 10 mirasçıya kadar, yurt dışında ikamet edenler dahil, vasiyetli veya vasiyetsiz. Bu sınırların üzerinde veya şirket, şirket payları, hisse senetleri veya gemiler için **ücretsiz özel ön teklif** hazırlarız. Bir sorunuz varsa Lorenzo'ya yazın: biz söyleriz."
         },
         {
           "titolo": "Neler dahil değil",
@@ -5795,7 +5823,7 @@
       "key": "tariffe.su_misura_text",
       "locale": "tr",
       "is_published": true,
-      "value": "Şirket, şirket payı, hisse senedi veya gemi mi? Bu varlıklar tek fiyata dahil değil: size ücretsiz ve sürprizsiz özel ön teklif hazırlarız."
+      "value": "10'dan fazla taşınmaz veya 10 mirasçı, ya da şirket, şirket payı, hisse senedi veya tekne? Bu durumlar tek fiyata dahil değil: size ücretsiz ve sürprizsiz özel ön teklif hazırlarız."
     },
     {
       "collection": "prezzo_unico",
@@ -5841,14 +5869,14 @@
       "key": "come_funziona.prices_intro",
       "locale": "tr",
       "is_published": true,
-      "value": "250 € her şey dahil, taşınmaz veya mirasçı sayısı ne olursa olsun. Vergiler ayrıdır: gönderimden önce sizin için hesaplarız."
+      "value": "250 € her şey dahil, 10 taşınmaz ve 10 mirasçıya kadar. Vergiler ayrıdır: gönderimden önce sizin için hesaplarız."
     },
     {
       "collection": "prezzo_unico",
       "key": "come_funziona.prices_custom_body",
       "locale": "tr",
       "is_published": true,
-      "value": "Şirketler, şirket payları, hisse senetleri veya tekneler: taahhütsüz kişiye özel teklif."
+      "value": "10'dan fazla taşınmaz veya 10 mirasçı, ya da şirket, şirket payları, hisse senetleri veya tekneler: taahhütsüz kişiye özel teklif."
     },
     {
       "collection": "prezzo_unico",
@@ -5880,7 +5908,7 @@
       "locale": "tr",
       "is_published": true,
       "value": {
-        "real_estate_hint": "Ev, arazi, garaj ve payları sayın: fiyat değişmez, belge listesini hazırlamamız için bize lazım.",
+        "real_estate_hint": "Ev, arazi, garaj ve payları sayın: 10'a kadar fiyat değişmez. Belge listesini hazırlamamız için bize lazım.",
         "will_yes_note": "Tek fiyat vasiyetli durumları da kapsar. Belge kontrol listesinde yayımlanmış vasiyetin kopyasını isteyeceğiz."
       }
     },
@@ -5903,7 +5931,7 @@
       "key": "grazie.esito_c_body",
       "locale": "tr",
       "is_published": true,
-      "value": "Yanıtlarınızda tek fiyata dahil olmayan varlıklar görünüyor (şirket payları, hisse senetleri, şirketler, gemiler…). Burada fiyat belirleyemeyiz: Lorenzo ile birlikte incelenmeli, ne fazla ne eksik ödersiniz. Aşağıya iletişim bilgilerinizi (ve isterseniz not) bırakın veya yazın: ayrıntıları netleştirmek ve özel ön teklifi hazırlamak için sizi ararız."
+      "value": "Yanıtlarınıza göre durumunuz tek fiyata dahil değil (10'dan fazla taşınmaz veya 10 mirasçı, ya da şirket payları, hisse senetleri, şirketler veya gemiler gibi varlıklar). Burada fiyat belirleyemeyiz: Lorenzo ile birlikte incelenmeli, ne fazla ne eksik ödersiniz. Aşağıya iletişim bilgilerinizi (ve isterseniz not) bırakın veya yazın: ayrıntıları netleştirmek ve özel ön teklifi hazırlamak için sizi ararız."
     },
     {
       "collection": "prezzo_unico",
@@ -5934,8 +5962,8 @@
         "included_items": [
           "Lorenzo ile telefon veya WhatsApp üzerinden ücretsiz ilk görüşme",
           "Mesai saatlerinde Lorenzo'dan sürekli destek: WhatsApp, telefon ve e-posta",
-          "Taşınmaz sayısı ne olursa olsun, arazi dahil, her biri için kadastro devri (voltura) ile",
-          "Tüm mirasçılar, yurt dışında ikamet edenler dahil, vasiyetli veya vasiyetsiz",
+          "10 taşınmaza kadar, arazi dahil, her biri için kadastro devri (voltura) ile",
+          "10 mirasçıya kadar, yurt dışında ikamet edenler dahil, vasiyetli veya vasiyetsiz",
           "Belgeleri bulmak ve toplamak için adım adım rehberler",
           "Kullanışlı kişisel alan: belgeleri yüklersiniz, dosyanızı takip edersiniz",
           "Vergi hesaplaması ve veraset beyannamesinin hazırlanması",

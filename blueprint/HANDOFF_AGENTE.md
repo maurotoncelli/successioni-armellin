@@ -24,7 +24,11 @@ Piano, decisioni, checklist go-live e chiusura: **@TEST_PREZZO_UNICO_250**.
 
 - Richiesta Mauro: due settimane a **250 € tutto incluso** (imposte di Stato a
   parte) al posto di 290 / 490 / su misura; il preventivatore resta come conferma.
-  Su misura solo per gli altri beni (quote, azioni, aziende, barche).
+  **Fino a 10 immobili e 10 eredi** (tetti del 25/09, `maxProperties`/`maxHeirs`);
+  su misura oltre i tetti e per gli altri beni (quote, azioni, aziende, barche).
+- Card del prezzo con "Acquista il servizio" (checkout diretto) e "Scrivi su
+  WhatsApp" verde; paragrafo "Come si paga" in home e Come funziona
+  (`components/site/payment-options.tsx`), che resta anche dopo il test.
 - Listino di prima nel tag `listino-290-490`. Tutto passa da
   `web/src/lib/flat-offer.ts` (`FLAT_OFFER_ON`, si cambia solo con un deploy); i
   testi dalle voci `prezzo_unico.*` dei content_entries (11 lingue); il database
