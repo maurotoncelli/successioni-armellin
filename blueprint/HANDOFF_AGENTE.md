@@ -34,8 +34,10 @@ Piano, decisioni, checklist go-live e chiusura: **@TEST_PREZZO_UNICO_250**.
   11 `legal*.ts`.
 - Video "Come funziona": resta l'originale, che cita 490 €. Scelta di Mauro:
   **non modificarlo e non nasconderlo**.
-- Stato al 25/09: modifiche sul branch in attesa di commit. Chiedere a Mauro
-  prima di commit, push o merge.
+- Stato al 25/09: commit `2aa977d` sul branch, pushato. Anteprima Vercel (serve
+  il login Vercel del team):
+  https://successioni-armellin-git-test-prezzo-unico-250-atstudio.vercel.app.
+  Merge su main = go-live: solo con l'OK di Lorenzo e il via di Mauro.
 
 ---
 

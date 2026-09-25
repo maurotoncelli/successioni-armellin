@@ -149,6 +149,8 @@ come funziona, preventivo, risultato, checkout e promo.
    "Ultimo aggiornamento" di Condizioni e Garanzia negli 11 `legal*.ts`.
 3. **Commit** sul branch dei soli file del test (mai `bozza video/`, mai gli script
    non tracciati già presenti in `web/scripts`), push del branch, anteprima Vercel.
+   **Fatto il 25/09** (commit `2aa977d`). Anteprima, protetta dal login Vercel del
+   team: https://successioni-armellin-git-test-prezzo-unico-250-atstudio.vercel.app
 4. **Giro in anteprima**: home, tariffe, come funziona, FAQ, preventivo con esiti
    A/B/C, checkout fino alla pagina Stripe (senza pagare se le chiavi sono live),
    area riservata, CRM (listino, statistiche, scheda pratica), una lingua europea
