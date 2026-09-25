@@ -714,7 +714,7 @@
       "key": "box_trasparenza_body",
       "locale": "en",
       "is_published": true,
-      "value": "The package price is the **professional fee without VAT**: the studio operates under the flat-rate regime (not subject to VAT).\n\n**Succession taxes** (mortgage, cadastral, stamps) are **separate, paid by the heir** via F24: we calculate and notify them **before filing**."
+      "value": "The package price is the **professional fee, with no VAT to add**: the studio operates under the flat-rate regime (not subject to VAT).\n\n**Succession taxes** (mortgage, cadastral, stamps) are **separate, paid by the heir** via F24: we calculate and notify them **before filing**."
     },
     {
       "collection": "tariffe",
@@ -3509,7 +3509,7 @@
       "key": "price_suffix",
       "locale": "en",
       "is_published": true,
-      "value": "fee without VAT"
+      "value": "fee, no VAT to add"
     },
     {
       "collection": "pacchetti",
@@ -4100,7 +4100,7 @@
       "key": "ordine_no_iva",
       "locale": "en",
       "is_published": true,
-      "value": "Fee without VAT (flat-rate regime). Taxes are separate (see below)."
+      "value": "Fee with no VAT to add (flat-rate regime). Taxes are separate (see below)."
     },
     {
       "collection": "area",

@@ -714,7 +714,7 @@
       "key": "box_trasparenza_body",
       "locale": "tr",
       "is_published": true,
-      "value": "Paket fiyatı **KDV hariç profesyonel ücrettir**: ofis forfait rejiminde çalışır (KDV'ye tabi değildir).\n\n**Veraset vergileri** (ipotek, kadastro, damga) **ayrıdır, mirasçıya aittir** ve F24 ile ödenir: gönderimden **önce hesaplayıp bildiririz**."
+      "value": "Paket fiyatı **profesyonel ücrettir, üzerine ayrıca KDV eklenmez**: ofis forfait rejiminde çalışır (KDV'ye tabi değildir).\n\n**Veraset vergileri** (ipotek, kadastro, damga) **ayrıdır, mirasçıya aittir** ve F24 ile ödenir: gönderimden **önce hesaplayıp bildiririz**."
     },
     {
       "collection": "tariffe",
@@ -3495,7 +3495,7 @@
       "key": "price_suffix",
       "locale": "tr",
       "is_published": true,
-      "value": "KDV hariç ücret"
+      "value": "ücret, ayrıca KDV eklenmez"
     },
     {
       "collection": "pacchetti",
@@ -4086,7 +4086,7 @@
       "key": "ordine_no_iva",
       "locale": "tr",
       "is_published": true,
-      "value": "KDV hariç ücret (forfait rejim). Vergiler ayrıdır (aşağıya bakın)."
+      "value": "Ücrete ayrıca KDV eklenmez (forfait rejim). Vergiler ayrıdır (aşağıya bakın)."
     },
     {
       "collection": "area",

@@ -714,7 +714,7 @@
       "key": "box_trasparenza_body",
       "locale": "it",
       "is_published": true,
-      "value": "Il prezzo del pacchetto è l'**onorario professionale senza IVA**: lo studio opera in regime forfettario (operazione non soggetta a IVA).\n\nLe **imposte di successione** (ipotecaria, catastale, bolli) sono **separate, a carico dell'erede**, e si versano con F24: te le calcoliamo e comunichiamo **prima dell'invio**."
+      "value": "Il prezzo del pacchetto è l'**onorario professionale, senza IVA da aggiungere**: lo studio opera in regime forfettario (operazione non soggetta a IVA).\n\nLe **imposte di successione** (ipotecaria, catastale, bolli) sono **separate, a carico dell'erede**, e si versano con F24: te le calcoliamo e comunichiamo **prima dell'invio**."
     },
     {
       "collection": "tariffe",
@@ -3509,7 +3509,7 @@
       "key": "price_suffix",
       "locale": "it",
       "is_published": true,
-      "value": "onorario senza IVA"
+      "value": "onorario senza IVA da aggiungere"
     },
     {
       "collection": "pacchetti",
@@ -3621,7 +3621,7 @@
         {
           "category": "Costi e imposte",
           "question": "Quanto costa il vostro servizio?",
-          "answer": "Onorario fisso senza IVA: Semplice 290€ (solo liquidità) o Completo 490€ (fino a 3 immobili e 5 eredi; oltre, +60€ per ogni immobile o erede in più, indicato prima del pagamento). Per i casi particolari (terreni agricoli, aziende, quote, imbarcazioni) ti facciamo un preventivo su misura. Le imposte di Stato sono separate, a carico dell'erede, e te le calcoliamo prima dell'invio."
+          "answer": "Onorario fisso senza IVA da aggiungere: Semplice 290€ (solo liquidità) o Completo 490€ (fino a 3 immobili e 5 eredi; oltre, +60€ per ogni immobile o erede in più, indicato prima del pagamento). Per i casi particolari (terreni agricoli, aziende, quote, imbarcazioni) ti facciamo un preventivo su misura. Le imposte di Stato sono separate, a carico dell'erede, e te le calcoliamo prima dell'invio."
         },
         {
           "category": "Costi e imposte",
@@ -4100,7 +4100,7 @@
       "key": "ordine_no_iva",
       "locale": "it",
       "is_published": true,
-      "value": "Onorario senza IVA (regime forfettario). Le imposte sono separate (vedi sotto)."
+      "value": "Onorario senza IVA da aggiungere (regime forfettario). Le imposte sono separate (vedi sotto)."
     },
     {
       "collection": "area",

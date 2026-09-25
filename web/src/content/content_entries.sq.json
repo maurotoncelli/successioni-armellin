@@ -714,7 +714,7 @@
       "key": "box_trasparenza_body",
       "locale": "sq",
       "is_published": true,
-      "value": "Çmimi i paketës është **honorari profesional pa TVSH**: studio operon në regjimin forfettari (operacion jo i nënshtruar TVSH-së).\n\n**Taksat e trashëgimisë** (hipotekare, kadastrale, pulla) janë **të ndara, në ngarkim të trashëgimtarit**, dhe paguhen me F24: i llogaritim dhe i komunikojmë **para dorëzimit**."
+      "value": "Çmimi i paketës është **honorari profesional, pa TVSH për t'u shtuar**: studio operon në regjimin forfettari (operacion jo i nënshtruar TVSH-së).\n\n**Taksat e trashëgimisë** (hipotekare, kadastrale, pulla) janë **të ndara, në ngarkim të trashëgimtarit**, dhe paguhen me F24: i llogaritim dhe i komunikojmë **para dorëzimit**."
     },
     {
       "collection": "tariffe",
@@ -3495,7 +3495,7 @@
       "key": "price_suffix",
       "locale": "sq",
       "is_published": true,
-      "value": "onorari pa TVSH"
+      "value": "honorari, pa TVSH për t'u shtuar"
     },
     {
       "collection": "pacchetti",
@@ -4086,7 +4086,7 @@
       "key": "ordine_no_iva",
       "locale": "sq",
       "is_published": true,
-      "value": "Honorar pa TVSH (regjimi forfettari). Taksat janë të ndara (shihni më poshtë)."
+      "value": "Honorar pa TVSH për t'u shtuar (regjimi forfettari). Taksat janë të ndara (shihni më poshtë)."
     },
     {
       "collection": "area",

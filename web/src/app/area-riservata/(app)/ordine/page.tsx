@@ -53,7 +53,7 @@ export default async function OrdinePage() {
     t(
       "area",
       "ordine_no_iva",
-      "Onorario senza IVA (regime forfettario). Le imposte sono separate (vedi sotto).",
+      "Onorario senza IVA da aggiungere (regime forfettario). Le imposte sono separate (vedi sotto).",
     ),
     t("area", "ordine_payment_status", "Stato pagamento"),
     t("area", "ordine_method", "Metodo"),

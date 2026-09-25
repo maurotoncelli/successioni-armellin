@@ -714,7 +714,7 @@
       "key": "box_trasparenza_body",
       "locale": "de",
       "is_published": true,
-      "value": "Paketpreis = **Honorar ohne MwSt.** (Pauschalregelung).\n\n**Erbschaftssteuern separat**, per F24, **vom Erben** — berechnet und mitgeteilt **vor Einreichung**."
+      "value": "Paketpreis = **Honorar ohne zusätzliche MwSt.** (Pauschalregelung).\n\n**Erbschaftssteuern separat**, per F24, **vom Erben** — berechnet und mitgeteilt **vor Einreichung**."
     },
     {
       "collection": "tariffe",
@@ -3495,7 +3495,7 @@
       "key": "price_suffix",
       "locale": "de",
       "is_published": true,
-      "value": "Honorar ohne MwSt."
+      "value": "Honorar ohne zusätzliche MwSt."
     },
     {
       "collection": "pacchetti",
@@ -4086,7 +4086,7 @@
       "key": "ordine_no_iva",
       "locale": "de",
       "is_published": true,
-      "value": "Honorar ohne MwSt. (Pauschalregelung). Steuern separat (siehe unten)."
+      "value": "Honorar ohne zusätzliche MwSt. (Pauschalregelung). Steuern separat (siehe unten)."
     },
     {
       "collection": "area",
