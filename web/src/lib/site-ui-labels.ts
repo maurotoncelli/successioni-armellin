@@ -271,10 +271,9 @@ export type FlatOfferUiLabels = {
   taxes_note: string;
   sla: string;
   features: string[];
+  /** Pulsanti sotto il prezzo nel risultato del preventivo. */
   buy_cta: string;
   whatsapp_cta: string;
-  /** Messaggio precompilato del pulsante WhatsApp; {price} prezzo unico. */
-  whatsapp_prefill: string;
   cta: string;
   cta_hint: string;
   custom_title: string;
@@ -317,8 +316,6 @@ export const FLAT_OFFER_UI_IT: FlatOfferUiLabels = {
   ],
   buy_cta: "Acquista il servizio",
   whatsapp_cta: "Scrivi su WhatsApp",
-  whatsapp_prefill:
-    "Ciao Lorenzo, ho visto sul sito la successione tutto incluso a {price} € e avrei qualche domanda.",
   cta: "Calcola il preventivo gratis",
   cta_hint: "In un minuto vedi cosa comprende per il tuo caso",
   custom_title: "Un caso più grande o particolare?",

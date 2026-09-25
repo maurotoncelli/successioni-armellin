@@ -26,8 +26,9 @@ Piano, decisioni, checklist go-live e chiusura: **@TEST_PREZZO_UNICO_250**.
   parte) al posto di 290 / 490 / su misura; il preventivatore resta come conferma.
   **Fino a 10 immobili e 10 eredi** (tetti del 25/09, `maxProperties`/`maxHeirs`);
   su misura oltre i tetti e per gli altri beni (quote, azioni, aziende, barche).
-- Card del prezzo con "Acquista il servizio" (checkout diretto) e "Scrivi su
-  WhatsApp" verde; paragrafo "Come si paga" in home e Come funziona
+- Risultato del preventivo con "Acquista il servizio" e "Scrivi su WhatsApp"
+  verde subito sotto il prezzo (solo col prezzo unico; la card di home e tariffe
+  resta col questionario); paragrafo "Come si paga" in home e Come funziona
   (`components/site/payment-options.tsx`), che resta anche dopo il test.
 - Listino di prima nel tag `listino-290-490`. Tutto passa da
   `web/src/lib/flat-offer.ts` (`FLAT_OFFER_ON`, si cambia solo con un deploy); i

@@ -5,7 +5,8 @@
 > Listino di prima salvato nel tag `listino-290-490` (commit `ae7123e`).
 > Richiesta di Mauro del 25/09/2026; OK di Lorenzo riferito da Mauro lo stesso giorno.
 > Stesso giorno, dopo il go-live: tetti di 10 immobili e 10 eredi, pulsanti
-> "Acquista il servizio" e WhatsApp nella card, paragrafo "Come si paga".
+> "Acquista il servizio" e WhatsApp sotto il prezzo nel risultato del preventivo,
+> paragrafo "Come si paga".
 > Codice: `web/src/lib/flat-offer.ts` (interruttore, date e tetti).
 
 ## Perché
@@ -36,9 +37,10 @@ sul prezzo. Per questo il go-live richiede il suo OK esplicito.
   e per gli "altri beni" del quiz: quote societarie, azioni, aziende, barche. Al
   go-live il perimetro era "senza limiti di numero"; i tetti sono arrivati lo
   stesso giorno ("se sono 100, Lorenzo fallisce").
-- **Acquisto diretto**: nella card del prezzo, subito dopo il prezzo, "Acquista il
-  servizio" (checkout a 250 € senza questionario) e "Scrivi su WhatsApp" verde; il
-  questionario resta come link sotto.
+- **Risultato del preventivo**: subito dopo il prezzo, "Acquista il servizio" e
+  "Scrivi su WhatsApp" verde, come prima del 22/09; "Fatti richiamare" resta sotto
+  la scheda. La card di home e tariffe resta col solo "Calcola il preventivo
+  gratis".
 - **Come si paga**: paragrafo con pulsanti in home e in Come funziona (pagamento
   online con Stripe, tutto in anticipo oppure 50% + 50%, rate dove disponibili).
 - **Nessuna scadenza pubblica**: niente date né conto alla rovescia sul sito. Il
@@ -69,10 +71,12 @@ sul prezzo. Per questo il go-live richiede il suo OK esplicito.
   nel prezzo unico; su misura con altri beni oppure oltre 10 immobili o 10 eredi
   (`exceedsFlatOfferLimits`, stesso calcolo nel quiz, nel salvataggio del lead e
   nella pagina del risultato). L'esonero (esito A) non cambia.
-- **Acquisto diretto** (`FLAT_OFFER_CHECKOUT_HREF` = `/checkout?pkg=COMPLETO`):
-  la pratica nasce senza risposte al questionario (nota "Checkout diretto dal
-  sito") e Lorenzo raccoglie i dati dopo. Il checkout non controlla i tetti: se
-  poi emergono più di 10 immobili o 10 eredi vale l'art. 5 delle Condizioni.
+- **Acquisto diretto** da "Come si paga" (`FLAT_OFFER_CHECKOUT_HREF` =
+  `/checkout?pkg=COMPLETO`): la pratica nasce senza risposte al questionario
+  (nota "Checkout diretto dal sito") e Lorenzo raccoglie i dati dopo. Il checkout
+  non controlla i tetti: se poi emergono più di 10 immobili o 10 eredi vale
+  l'art. 5 delle Condizioni. Dal risultato del preventivo invece il checkout
+  riceve le risposte del questionario.
 - **Pagamenti** (`lib/payments.ts`): prezzo sempre ricalcolato lato server.
   - Garanzia: una pratica con riga `UNICO250` paga 250 € anche a test spento,
     fino a `endsAt` + 14 giorni (`flatOfferForPractice`). L'email al cliente dice
@@ -102,9 +106,7 @@ sul prezzo. Per questo il go-live richiede il suo OK esplicito.
 - **Barra sopra la navbar**: "Prezzo unico 250 € tutto incluso", senza date; non
   compare in checkout e nella pagina del risultato.
 - **Home e Tariffe**: una card unica da 250 € più il riquadro "su misura", al posto
-  di Semplice / Completo / Su misura. Nella card, subito dopo prezzo e note,
-  "Acquista il servizio" e "Scrivi su WhatsApp" (verde, messaggio precompilato col
-  prezzo); "Calcola il preventivo gratis" diventa un link sotto.
+  di Semplice / Completo / Su misura.
 - **Come si paga** (`components/site/payment-options.tsx`, `site_ui.payment_ui`):
   in home sotto la card e in Come funziona sotto la fascia prezzi. Non dipende dal
   test: a test spento resta, con "Calcola il preventivo gratis" al posto di
@@ -114,9 +116,12 @@ sul prezzo. Per questo il go-live richiede il suo OK esplicito.
 - **Come funziona**: fascia prezzi con la card unica. Video invariato.
 - **Risultato del preventivo** (esito B): "Il tuo caso rientra nel prezzo unico",
   con l'elenco di cosa copre per quel caso (immobili, eredi, testamento…) e
-  "Nessun supplemento". Nascosta la frase sul cambio di pacchetto. WhatsApp
-  precompilato con il prezzo unico. Esito C (su misura) con testo aggiornato:
-  oltre 10 immobili o 10 eredi, oppure altri beni.
+  "Nessun supplemento". Subito sotto il prezzo "Acquista il servizio" (checkout con
+  le risposte del questionario) e "Scrivi su WhatsApp" verde, precompilato con il
+  prezzo unico, poi la riga "Dopo il pagamento…"; sotto la scheda restano solo
+  "Fatti richiamare" e il resto della pagina. Nascosta la frase sul cambio di
+  pacchetto. Esito C (su misura) con testo aggiornato: oltre 10 immobili o 10
+  eredi, oppure altri beni.
 - **Checkout e Stripe**: riga "Successione tutto incluso — prezzo unico", 250 €.
 - **Area riservata**: ordine e dashboard mostrano il prezzo unico e cosa include.
 - **FAQ**: le due risposte dedicate.
@@ -147,8 +152,9 @@ sul prezzo. Per questo il go-live richiede il suo OK esplicito.
 come funziona, preventivo, risultato, checkout e promo.
 `seed/content_entries.it.json` è di nuovo una copia esatta del file del sito
 (era rimasto indietro di 65 voci, da prima del test).
-Con i tetti: una voce nuova `site_ui.payment_ui` ("Come si paga") e tre etichette
-nuove in `site_ui.flat_offer_ui` (`buy_cta`, `whatsapp_cta`, `whatsapp_prefill`).
+Con i tetti: una voce nuova `site_ui.payment_ui` ("Come si paga") e due etichette
+nuove in `site_ui.flat_offer_ui` (`buy_cta`, `whatsapp_cta`: pulsanti del
+risultato).
 
 ### Legale (italiano + 10 traduzioni)
 
@@ -201,8 +207,9 @@ nuove in `site_ui.flat_offer_ui` (`buy_cta`, `whatsapp_cta`, `whatsapp_prefill`)
   col test); se serve il confronto, GA4 con `node scripts/ga4-report.mjs` (da `web/`).
 - **Su misura** (altri beni, oltre 10 immobili o 10 eredi): importo concordato con
   pagamento manuale dal CRM; i link di pagamento applicano sempre 250 €.
-- **Acquisti diretti** dalla card (senza questionario): in CRM hanno la nota
-  "Checkout diretto dal sito" e risposte vuote; se il caso supera i tetti, art. 5.
+- **Acquisti diretti** da "Come si paga" (senza questionario): in CRM hanno la
+  nota "Checkout diretto dal sito" e risposte vuote; se il caso supera i tetti,
+  art. 5.
 - **Non cambiare dal CRM** la domanda delle due FAQ sul prezzo: il test le
   riconosce da lì. La risposta si può correggere (durante il test non si vede).
 
@@ -216,9 +223,11 @@ nuove in `site_ui.flat_offer_ui` (`buy_cta`, `whatsapp_cta`, `whatsapp_prefill`)
    i `content_entries`: contengono anche la nota IVA "senza IVA da aggiungere"
    (commit `d8b67a0` del 25/09), che è una correzione definitiva e non del test. Facoltativo: una riga che conferma il prezzo
    unico a chi l'ha avuto, fino alla scadenza della garanzia.
-3. **Commit e deploy**. Testi, FAQ, card (con i suoi pulsanti), barra e CRM
-   tornano da soli al listino 290/490: il database non è mai stato toccato. "Come
-   si paga" resta e il suo pulsante torna "Calcola il preventivo gratis".
+3. **Commit e deploy**. Testi, FAQ, card, barra e CRM tornano da soli al listino
+   290/490: il database non è mai stato toccato. "Come si paga" resta e il suo
+   pulsante torna "Calcola il preventivo gratis". Il risultato del preventivo
+   torna com'era dal 22/09 (pulsanti sotto "Fatti richiamare", pagamento come
+   link): se si vogliono i pulsanti sotto il prezzo anche col listino, va deciso.
 4. **Pratiche a prezzo unico**: i link di pagamento applicano 250 € fino a
    `endsAt` + 14 giorni; i saldi 50/50 seguono l'acconto. In CRM si riconoscono da
    "prezzo unico".

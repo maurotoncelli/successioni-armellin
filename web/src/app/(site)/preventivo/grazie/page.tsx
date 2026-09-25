@@ -304,6 +304,19 @@ export default async function GraziePage({
     checkoutHref = `/checkout?${params.toString()}`;
   }
 
+  const waQuoteHref = suggestedPkg
+    ? `${waBase}${waBase.includes("?") ? "&" : "?"}text=${encodeURIComponent(
+        waPrefillQuoteTpl
+          .replace("{package}", suggestedPkg.flat ? flatUi.line_label : suggestedPkg.name)
+          .replace("{total}", formatAmount(suggestedPkg.total, promoCtx.intlLocale)),
+      )}`
+    : waHrefEsitoB;
+  const afterPay = await t(
+    "grazie",
+    "esito_b_after_pay",
+    "Dopo il pagamento Lorenzo ti chiama, ti apre l'area personale e parti dai documenti. Hai 14 giorni per ripensarci.",
+  );
+
   const guidaCta = await tCta("grazie", "esito_b_guida", {
     label: "guida",
     href: "/tariffe#guida",
@@ -372,6 +385,32 @@ export default async function GraziePage({
                   <p className="mt-0.5 font-display text-4xl font-bold leading-none text-primary">
                     {formatAmount(suggestedPkg.total, promoCtx.intlLocale)}&euro;
                   </p>
+                  {/* Subito sotto il prezzo: su mobile devono stare nella prima schermata. */}
+                  <div className="mt-4 flex flex-col gap-2.5 sm:flex-row">
+                    <ButtonLink
+                      href={checkoutHref}
+                      variant="primary"
+                      size="lg"
+                      className="w-full sm:flex-1"
+                      cta="grazie_esito_b_paga"
+                    >
+                      {flatUi.buy_cta}
+                    </ButtonLink>
+                    <ButtonLink
+                      href={waQuoteHref}
+                      variant="whatsapp"
+                      size="lg"
+                      className="w-full sm:flex-1"
+                      cta="grazie_esito_b_whatsapp"
+                    >
+                      <MessageCircle className="h-4 w-4" />
+                      {flatUi.whatsapp_cta}
+                    </ButtonLink>
+                  </div>
+                  <p className="mt-2.5 flex items-start gap-1.5 text-xs leading-snug text-text">
+                    <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-success" />
+                    <span>{afterPay}</span>
+                  </p>
                   <div className="mt-4 rounded-[10px] bg-sand/60 p-3 sm:p-4">
                     <p className="text-sm font-semibold text-primary">{flatUi.result_case_title}</p>
                     <ul className="mt-2 space-y-1.5 text-sm">
@@ -436,10 +475,12 @@ export default async function GraziePage({
                   "Le imposte le calcoliamo sul tuo caso, te le diciamo prima e le versi tu allo Stato, senza ricarico.",
                 )}
               </p>
-              <p className="mt-2 flex items-start gap-1.5 text-xs leading-snug text-text">
-                <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-success" />
-                <span>{rethinkNote}</span>
-              </p>
+              {!suggestedPkg?.flat && (
+                <p className="mt-2 flex items-start gap-1.5 text-xs leading-snug text-text">
+                  <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-success" />
+                  <span>{rethinkNote}</span>
+                </p>
+              )}
               <div className="mt-3">
                 <Reviews strip />
               </div>
@@ -511,48 +552,35 @@ export default async function GraziePage({
               </Link>
             </p>
 
-            <div className="mt-3">
-              <ButtonLink
-                href={
-                  suggestedPkg
-                    ? `${waBase}${waBase.includes("?") ? "&" : "?"}text=${encodeURIComponent(
-                        waPrefillQuoteTpl
-                          .replace("{package}", suggestedPkg.flat ? flatUi.line_label : suggestedPkg.name)
-                          .replace(
-                            "{total}",
-                            formatAmount(suggestedPkg.total, promoCtx.intlLocale),
-                          ),
-                      )}`
-                    : waHrefEsitoB
-                }
-                variant="outline"
-                size="lg"
-                className="w-full border-[#1DAA61]/40 text-[#178F51] hover:bg-[#1DAA61]/10"
-                cta="grazie_esito_b_whatsapp"
-              >
-                <MessageCircle className="h-4 w-4" />
-                {waQuoteLabel}
-              </ButtonLink>
-              <p className="mt-2 text-center text-xs text-text-muted">{waQuoteHint}</p>
-              <p className="mt-4 text-center text-sm text-text-muted">
-                {payLead}
-                {": "}
-                <Link
-                  href={checkoutHref}
-                  data-cta="grazie_esito_b_paga"
-                  className="font-semibold text-primary underline underline-offset-2 hover:text-accent"
+            {!suggestedPkg?.flat && (
+              <div className="mt-3">
+                <ButtonLink
+                  href={waQuoteHref}
+                  variant="outline"
+                  size="lg"
+                  className="w-full border-[#1DAA61]/40 text-[#178F51] hover:bg-[#1DAA61]/10"
+                  cta="grazie_esito_b_whatsapp"
                 >
-                  {(await tCta("grazie", "esito_b_cta")).label}
-                </Link>
-              </p>
-              <p className="mt-1 text-center text-xs leading-relaxed text-text-muted">
-                {await t(
-                  "grazie",
-                  "esito_b_after_pay",
-                  "Dopo il pagamento Lorenzo ti chiama, ti apre l'area personale e parti dai documenti. Hai 14 giorni per ripensarci.",
-                )}
-              </p>
-            </div>
+                  <MessageCircle className="h-4 w-4" />
+                  {waQuoteLabel}
+                </ButtonLink>
+                <p className="mt-2 text-center text-xs text-text-muted">{waQuoteHint}</p>
+                <p className="mt-4 text-center text-sm text-text-muted">
+                  {payLead}
+                  {": "}
+                  <Link
+                    href={checkoutHref}
+                    data-cta="grazie_esito_b_paga"
+                    className="font-semibold text-primary underline underline-offset-2 hover:text-accent"
+                  >
+                    {(await tCta("grazie", "esito_b_cta")).label}
+                  </Link>
+                </p>
+                <p className="mt-1 text-center text-xs leading-relaxed text-text-muted">
+                  {afterPay}
+                </p>
+              </div>
+            )}
 
             {suggestedPkg && (
               <IncludedList
