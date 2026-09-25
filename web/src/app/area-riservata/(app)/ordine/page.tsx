@@ -9,6 +9,8 @@ import { isPracticeCancelled } from "@/content/area-data";
 import { getPackages } from "@/lib/cms";
 import { getSafeExtras, isBalanceDue } from "@/lib/practice-extras";
 import { getRequestLocale, t, tObj } from "@/lib/locale";
+import { hasFlatOfferLine } from "@/lib/flat-offer";
+import { FLAT_OFFER_UI_IT, type FlatOfferUiLabels } from "@/lib/site-ui-labels";
 import {
   CLAIM_UI_IT,
   INVOICE_UI_IT,
@@ -103,7 +105,13 @@ export default async function OrdinePage() {
   }
 
   const packages = await getPackages(await getRequestLocale());
-  const pkg = packages.find((x) => x.key === p.selectedPackage);
+  // Prezzo unico (lib/flat-offer.ts): cosa include è quello del prezzo unico,
+  // non del pacchetto interno (Semplice/Completo) usato per tempi e checklist.
+  const flatUi = hasFlatOfferLine(p.lineItems)
+    ? await tObj<FlatOfferUiLabels>("site_ui", "flat_offer_ui", FLAT_OFFER_UI_IT)
+    : null;
+  const pkgFound = packages.find((x) => x.key === p.selectedPackage);
+  const pkg = flatUi ? { name: flatUi.title, features: flatUi.features } : pkgFound;
   const { invoice, iban, paymentPlan } = await getSafeExtras(p.id);
   const cancelled = isPracticeCancelled(p);
   const needsIban = Boolean(p.stateTaxes) && !iban && !cancelled;

@@ -30,7 +30,14 @@ import {
   IconStudio,
 } from "@/components/site/come-funziona-icons";
 import { ComeFunzionaPanels } from "@/components/site/come-funziona-panels";
-import { getPromoContext, PromoPrice, PromoValidUntil } from "@/components/site/promo-ui";
+import {
+  formatAmount,
+  getPromoContext,
+  PromoPrice,
+  PromoValidUntil,
+} from "@/components/site/promo-ui";
+import { getFlatOffer } from "@/lib/flat-offer";
+import { FLAT_OFFER_UI_IT, type FlatOfferUiLabels } from "@/lib/site-ui-labels";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -107,9 +114,15 @@ export default async function ComeFunzionaPage() {
   // Anti-rimbalzo (07/09): CTA nell'hero e dopo i passi, fascia prezzi, mini FAQ.
   const packages = await getPackages(locale);
   const promoCtx = await getPromoContext();
-  const minPrice = packages.length
-    ? Math.min(...packages.map((p) => p.price))
-    : 290;
+  const flat = getFlatOffer();
+  const flatUi = flat
+    ? await tObj<FlatOfferUiLabels>("site_ui", "flat_offer_ui", FLAT_OFFER_UI_IT)
+    : null;
+  const minPrice = flat
+    ? flat.price
+    : packages.length
+      ? Math.min(...packages.map((p) => p.price))
+      : 290;
   const priceSuffix = await t("pacchetti", "price_suffix", "onorario senza IVA");
   const heroCtaLabel = await t("come_funziona", "hero_cta_label", finalButton.label);
   const heroCtaHint = await t("come_funziona", "hero_cta_hint");
@@ -331,7 +344,28 @@ export default async function ComeFunzionaPage() {
           data-track-section="prices"
           className="mx-auto mt-8 grid max-w-4xl gap-4 sm:mt-10 sm:grid-cols-3"
         >
-          {packages.map((pkg) => (
+          {flat && flatUi ? (
+            <Link
+              href={pricesLink.href}
+              data-cta="come_funziona_price_flat"
+              className="group flex flex-col rounded-2xl border border-accent bg-bg p-5 shadow-sm ring-1 ring-accent transition-colors hover:border-accent/50 sm:col-span-2 sm:p-6"
+            >
+              <p className="text-sm font-semibold text-primary">{flatUi.title}</p>
+              <p className="mt-2 font-display text-3xl font-bold text-primary sm:text-4xl">
+                {formatAmount(flat.price, promoCtx.intlLocale)}&euro;
+              </p>
+              <p className="mt-1 text-xs text-text-muted">{flatUi.price_note}</p>
+              <ul className="mt-3 space-y-1.5 text-sm leading-relaxed text-text-muted">
+                {flatUi.features.slice(0, 3).map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <IconCheck className="mt-1 h-3.5 w-3.5 shrink-0 text-success" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </Link>
+          ) : null}
+          {!flat && packages.map((pkg) => (
             <Link
               key={pkg.key}
               href={pricesLink.href}

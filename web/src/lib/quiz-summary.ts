@@ -1,6 +1,7 @@
 import type { PackageKey } from "@/lib/supabase/types";
 import type { Esito, HeirsComposition } from "@/lib/quote";
 import { heirsSummary, totalHeirs } from "@/lib/quote";
+import { FLAT_OFFER, hasFlatOfferLine } from "@/lib/flat-offer";
 
 /*
   Riepilogo LEGGIBILE (italiano, per Lorenzo) di un questionario del sito.
@@ -20,6 +21,8 @@ export type QuizSnapshot = {
   /** Righe e totale onorario calcolati dalle risposte (esito B). */
   lineItems?: QuizLineItem[];
   total?: number | null;
+  /** Codice del prezzo unico (lib/flat-offer.ts) se il preventivo l'ha applicato. */
+  offer?: string | null;
   answers: {
     hasWill: string; // si | no | nonso | ""
     heirs: HeirsComposition | null;
@@ -58,18 +61,28 @@ function yesNo(v: string | undefined): string {
 }
 
 /** Titolo dell'esito in chiaro, es. "Pacchetto consigliato: Successione con Immobili · 670 €". */
-export function esitoTitle(s: Pick<QuizSnapshot, "esito" | "packageKey" | "packageName" | "total">): string {
+export function esitoTitle(
+  s: Pick<QuizSnapshot, "esito" | "packageKey" | "packageName" | "total" | "offer">,
+): string {
   if (s.esito === "a") return "Possibile esonero: dichiarazione forse non dovuta";
   if (s.esito === "c") return "Preventivo su misura richiesto";
-  const name = s.packageName || packageNameIt(s.packageKey);
   const total = typeof s.total === "number" && s.total > 0 ? ` · ${formatEuro(s.total)}` : "";
+  if (s.offer) {
+    const kind = s.packageKey === "SEMPLICE" ? "senza immobili" : "con immobili";
+    return `Prezzo unico (test)${total} · caso ${kind}`;
+  }
+  const name = s.packageName || packageNameIt(s.packageKey);
   return `Pacchetto consigliato: ${name}${total}`;
 }
 
 /** Etichetta corta per badge (kanban, tabella), es. "Con Immobili · 670 €". */
-export function esitoShort(s: Pick<QuizSnapshot, "esito" | "packageKey" | "total">): string {
+export function esitoShort(s: Pick<QuizSnapshot, "esito" | "packageKey" | "total" | "offer">): string {
   if (s.esito === "a") return "Possibile esonero";
   if (s.esito === "c") return "Su misura";
+  if (s.offer) {
+    const total = typeof s.total === "number" && s.total > 0 ? ` · ${formatEuro(s.total)}` : "";
+    return `Prezzo unico${total}`;
+  }
   const short =
     s.packageKey === "SEMPLICE"
       ? "Semplice"
@@ -216,6 +229,7 @@ export function quizFromPractice(p: PracticeLike): PracticeQuiz | null {
       packageKey: esito === "c" ? null : packageKey,
       lineItems: lineItems.length > 0 ? lineItems : undefined,
       total: p.price > 0 ? p.price : null,
+      offer: hasFlatOfferLine(p.lineItems) ? FLAT_OFFER.code : null,
       answers: {
         hasWill: p.hasWill ? "si" : "no",
         heirs: null,

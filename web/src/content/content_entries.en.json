@@ -5624,6 +5624,339 @@
           "testo": "Every important step is notified: you don't have to chase the firm to know where the case stands."
         }
       ]
+    },
+    {
+      "collection": "site_ui",
+      "key": "flat_offer_ui",
+      "locale": "en",
+      "is_published": true,
+      "value": {
+        "line_label": "All-inclusive succession — single price",
+        "badge": "Single price",
+        "title": "All-inclusive succession",
+        "tagline": "One price, whatever your case",
+        "price_note": "final fee, no VAT to add",
+        "taxes_note": "State taxes separate: we calculate them for you",
+        "sla": "Filing within 7–10 business days once documents are complete",
+        "features": [
+          "Any number of properties, land included, with cadastral transfer (voltura) for each",
+          "Any number of heirs, including those living abroad",
+          "With or without a will",
+          "Tax calculation, declaration and filing with Agenzia delle Entrate",
+          "Personal area and Lorenzo supporting you from start to finish",
+          "Satisfaction-or-refund guarantee"
+        ],
+        "cta": "Calculate your free quote",
+        "cta_hint": "In one minute you'll see what's included for your case",
+        "custom_title": "Businesses, company shares, stocks or boats?",
+        "custom_text": "These assets aren't covered by the single price: we'll prepare a custom quote for you, free, within one business day.",
+        "custom_cta": "Request a quote",
+        "banner_text": "Single price €{price} all inclusive",
+        "banner_note": "State taxes separate",
+        "banner_cta": "Calculate your quote",
+        "result_title": "Your case is covered by the single price",
+        "result_price_label": "Single price, all inclusive",
+        "result_case_title": "Included in your case",
+        "case_property_one": "1 property, with cadastral transfer (voltura)",
+        "case_property_many": "{n} properties, each with cadastral transfer (voltura)",
+        "case_property_some": "All properties, with cadastral transfers (voltura)",
+        "case_property_unknown": "The properties identified in our checks, with cadastral transfers (voltura)",
+        "case_property_none": "Accounts, securities and other assets to declare",
+        "case_heir_one": "1 heir",
+        "case_heir_many": "{n} heirs",
+        "case_heirs_abroad": "Heirs living abroad, at no extra cost",
+        "case_will": "The will",
+        "case_core": "Tax calculation, declaration and filing with Agenzia delle Entrate",
+        "result_no_surcharge": "No surcharge: the price doesn't change with the number of properties or heirs."
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "faq_answers",
+      "locale": "en",
+      "is_published": true,
+      "value": [
+        {
+          "question": "How much does your service cost?",
+          "answer": "€250 all inclusive: it's the final fee, with no VAT to add (flat-rate regime), whatever the number of properties, land or heirs, with cadastral transfer (voltura) for each property. Only for businesses, company shares, stocks or boats we prepare a custom quote. State taxes are separate, paid by the heirs, and we calculate them before filing."
+        },
+        {
+          "question": "Are taxes included in the price?",
+          "answer": "No: the single price of €250 is the professional fee. Taxes (succession, mortgage, cadastral, stamps) are paid via F24 and are separate. We calculate them for you before filing."
+        }
+      ]
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.hero_subtitle",
+      "locale": "en",
+      "is_published": true,
+      "value": "Geom. Lorenzo Armellin, specialised in successions, takes care of it: a single all-inclusive price of €250, fully online (or in person if you prefer), a real person who follows you. We calculate the taxes."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.tariffe_title",
+      "locale": "en",
+      "is_published": true,
+      "value": "One single price, all inclusive"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.tariffe_intro",
+      "locale": "en",
+      "is_published": true,
+      "value": "€250 for the entire succession, whatever the number of properties or heirs. State taxes are separate, paid by the heir, and we calculate them for you."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.tariffe_cta",
+      "locale": "en",
+      "is_published": true,
+      "value": {
+        "label": "What's included in the price",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.come_funziona_sla_note",
+      "locale": "en",
+      "is_published": true,
+      "value": "Filing within 7–10 business days (10 if there are properties) once we have all complete documents."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.distinguishes_items",
+      "locale": "en",
+      "is_published": true,
+      "value": [
+        {
+          "icon": "area",
+          "titolo": "An advanced personal area",
+          "testo": "Ready templates, documents uploaded straight from your phone, progress statuses with notifications. Log in whenever you want, at home or on the go."
+        },
+        {
+          "icon": "lorenzo",
+          "titolo": "Lorenzo follows your case",
+          "testo": "Ready to tell you how to proceed in every situation. Not a bot and not a call centre: the same surveyor who signs the filing."
+        },
+        {
+          "icon": "voltura",
+          "titolo": "Cadastral transfers included",
+          "testo": "Where there is a property, the Catasto update is included in the price, for all properties. It is not an extra that appears later."
+        },
+        {
+          "icon": "comms",
+          "titolo": "Immediate updates",
+          "testo": "Every important step is notified: you don't have to chase the firm to know where the case stands."
+        }
+      ]
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.hero_subtitle",
+      "locale": "en",
+      "is_published": true,
+      "value": "One single price: €250 all inclusive, whatever the number of properties or heirs. State taxes are separate and we calculate them for you. Only for businesses, company shares, stocks or boats you need a custom quote."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.box_trasparenza_body",
+      "locale": "en",
+      "is_published": true,
+      "value": "The single price of €250 is the **professional fee without VAT**: the studio operates under the flat-rate regime (not subject to VAT). It is the final amount: **no surcharge** for properties, heirs or cadastral transfers.\n\n**Succession taxes** (mortgage, cadastral, stamps) are **separate, paid by the heir** via F24: we calculate and notify them **before filing**."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.sla_note",
+      "locale": "en",
+      "is_published": true,
+      "value": "The declaration is filed within **7 business days** if there are no properties and within **10** if there are, from **complete documentation** (not from payment): so it's a promise we can truly keep.\n\n**Third-party times** (Agency, Cadastre, banks) are excluded."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.guida_scelta_title",
+      "locale": "en",
+      "is_published": true,
+      "value": "Before you pay (and after)"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.guida_scelta_items",
+      "locale": "en",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "One price, nothing to choose",
+          "testo": "**€250 all inclusive**: accounts, homes, land and garages with no limit on number, with cadastral transfer (voltura) for each property; any number of heirs, including those living abroad, with or without a will. Only businesses, company shares, stocks or boats require a **custom quote, free**. If you're unsure, write to Lorenzo: we'll tell you."
+        },
+        {
+          "titolo": "What's not included",
+          "testo": "**State taxes** (succession, mortgage, cadastral, stamps): paid via F24 and we calculate them before filing. And services other than the succession, such as usufruct reunion, which are quoted separately."
+        },
+        {
+          "titolo": "What happens after payment",
+          "testo": "Your **personal area** opens: there you upload documents (even from photos), sign the mandate, follow the case and talk to Lorenzo. No counters, no offices."
+        },
+        {
+          "titolo": "If you change your mind",
+          "testo": "You have **14 days** of statutory withdrawal. If you ask us to start immediately and the work is already done, withdrawal no longer applies — we tell you clearly beforehand."
+        }
+      ]
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.su_misura_text",
+      "locale": "en",
+      "is_published": true,
+      "value": "Businesses, company shares, stocks or boats? These assets aren't covered by the single price: we'll prepare a custom quote for you, free and with no surprises."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.cta_finale_title",
+      "locale": "en",
+      "is_published": true,
+      "value": "One minute to check that your case is covered by the single price."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.addon_intro",
+      "locale": "en",
+      "is_published": true,
+      "value": "Other services, separate from the succession"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.addon_subtitle",
+      "locale": "en",
+      "is_published": true,
+      "value": "They are not part of the succession declaration, so they are not included in the single price. If you need them we activate them on request, with a dedicated quote."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.hero_trust_items",
+      "locale": "en",
+      "is_published": true,
+      "value": [
+        "€{price} all inclusive",
+        "Hundreds of successions handled",
+        "Fully online, from home"
+      ]
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.prices_title",
+      "locale": "en",
+      "is_published": true,
+      "value": "One single price, before you start"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.prices_intro",
+      "locale": "en",
+      "is_published": true,
+      "value": "€250 all inclusive, whatever the number of properties or heirs. Taxes are separate: we calculate them for you before filing."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.prices_custom_body",
+      "locale": "en",
+      "is_published": true,
+      "value": "Businesses, company shares, stocks or boats: a personalised quote, no commitment."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.prices_link",
+      "locale": "en",
+      "is_published": true,
+      "value": {
+        "label": "What's included in the single price",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.sla_body",
+      "locale": "en",
+      "is_published": true,
+      "value": "Timelines start when we have **all complete, correct documents** (not from payment): filing within **7 business days** if there are no properties, within **10** if there are. So it's a promise we can truly keep.\n\n**Third-party times** (Agency, Cadastre, banks) are excluded."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "preventivo.intro_subtitle",
+      "locale": "en",
+      "is_published": true,
+      "value": "Answer a few questions: you'll see right away whether your case is covered by the single all-inclusive price of €250 and what's included. No obligation."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "site_ui.preventivo_ui",
+      "locale": "en",
+      "is_published": true,
+      "value": {
+        "real_estate_hint": "Count homes, land, garages and shares: the price doesn't change — we need this to prepare your document list.",
+        "will_yes_note": "The single price also covers cases with a will. In the document checklist we'll ask for a copy of the published will."
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "grazie.esito_b_title",
+      "locale": "en",
+      "is_published": true,
+      "value": "Here's your quote"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "grazie.esito_b_whatsapp_prefill",
+      "locale": "en",
+      "is_published": true,
+      "value": "Hi Lorenzo, I completed the questionnaire on your website: my case is covered by the single price of €{total}. I have a few questions before going ahead."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "grazie.esito_c_body",
+      "locale": "en",
+      "is_published": true,
+      "value": "Your answers show assets that aren't covered by the single price (company shares, stocks, businesses, boats…). We can't set a price here: it needs to be reviewed with Lorenzo, so you pay neither more nor less than is fair. Leave your details below (and a note if you like) or write to us: we'll call you back to clarify the details and prepare your dedicated quote."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "checkout.modifica_link",
+      "locale": "en",
+      "is_published": true,
+      "value": {
+        "label": "Edit",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "site_ui.checkout_ui",
+      "locale": "en",
+      "is_published": true,
+      "value": {
+        "need_quote_after": ": so we can check that your case is covered by the single price.",
+        "empty_order": "There's no case to pay for. Get a quote first: we'll verify your case and link payment to it."
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "site_ui.promo_ui",
+      "locale": "en",
+      "is_published": true,
+      "value": {
+        "included_items": [
+          "Free initial consultation with Lorenzo, by phone or WhatsApp",
+          "Ongoing support from Lorenzo during office hours: WhatsApp, phone and email",
+          "All properties, land included, with cadastral transfer (voltura) for each",
+          "All heirs, including those living abroad, with or without a will",
+          "Step-by-step guides to find and collect the documents",
+          "Intuitive personal area: upload documents and follow your case",
+          "Tax calculation and preparation of the declaration",
+          "Filing with the Italian Revenue Agency under full power of attorney: you never have to go anywhere",
+          "Satisfaction-or-refund guarantee"
+        ]
+      }
     }
   ]
 }

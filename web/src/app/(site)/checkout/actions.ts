@@ -8,6 +8,7 @@ import { readRequestAttribution } from "@/lib/attribution";
 import { parseAttribution } from "@/lib/attribution-shared";
 import { getPackages, getAddons } from "@/lib/cms";
 import { buildOrder } from "@/lib/order";
+import { FLAT_OFFER, hasFlatOfferLine } from "@/lib/flat-offer";
 import { getActionLocale } from "@/lib/action-locale";
 import type { QuizSnapshot } from "@/lib/quiz-summary";
 import type { LogEvent } from "@/content/crm-data";
@@ -66,6 +67,7 @@ export async function createCheckoutPractice(
       packageName: packagesIt.find((p) => p.key === input.packageKey)?.name ?? null,
       lineItems: orderIt?.lineItems.map((li) => ({ key: li.key, label: li.label, amount: li.amount })),
       total: orderIt?.total ?? null,
+      offer: hasFlatOfferLine(orderIt?.lineItems) ? FLAT_OFFER.code : null,
       answers: {
         hasWill: input.hasWill ?? "",
         heirs: composition,

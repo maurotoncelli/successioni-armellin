@@ -236,6 +236,8 @@ export async function notifyLeadRecap(
         total: number;
         checkoutUrl: string;
         locale?: string;
+        /** Prezzo unico (lib/flat-offer.ts): testo "rientra nel prezzo unico". */
+        flat?: boolean;
       },
 ): Promise<{ sent: boolean; subject: string }> {
   const locale = resolveLocale(input.locale);
@@ -285,7 +287,11 @@ export async function notifyLeadRecap(
     const subject = "ملخص عرض السعر الخاص بك";
     const html = emailLayout({
       heading: "إليك عرض السعر",
-      bodyHtml: `<p style="margin:0 0 10px">بناءً على إجاباتك، الحزمة المناسبة لحالتك هي:</p>
+      bodyHtml: input.flat
+        ? `<p style="margin:0 0 10px">بناءً على إجاباتك، حالتك مشمولة بالسعر الموحّد:</p>
+      <p style="margin:0 0 10px;font-size:18px"><strong>${input.packageLabel}</strong> — <span style="font-size:22px;font-weight:700;color:#1f6f5c">${input.total.toLocaleString("ar")} €</span></p>
+      <p style="margin:0">كل شيء مشمول: أي عدد من العقارات والورثة، مع نقل الملكية في السجل العقاري (voltura) لكل عقار. ضرائب الدولة منفصلة: نحسبها نحن. يبقى هذا السعر محفوظًا لك 14 يومًا على الأقل. عندما تريد، تابع من هنا:</p>`
+        : `<p style="margin:0 0 10px">بناءً على إجاباتك، الحزمة المناسبة لحالتك هي:</p>
       <p style="margin:0 0 10px;font-size:18px"><strong>${input.packageLabel}</strong> — <span style="font-size:22px;font-weight:700;color:#1f6f5c">${input.total.toLocaleString("ar")} €</span></p>
       <p style="margin:0">سعر واضح مسبقًا (الضرائب منفصلة: نحسبها نحن). عندما تريد، تابع من هنا:</p>`,
       ctaLabel: "تابع عندما تكون جاهزًا",
@@ -298,7 +304,11 @@ export async function notifyLeadRecap(
   const subject = "Il riepilogo del tuo preventivo";
   const html = emailLayout({
     heading: "Ecco il tuo preventivo",
-    bodyHtml: `<p style="margin:0 0 10px">In base alle tue risposte, il pacchetto giusto per il tuo caso e:</p>
+    bodyHtml: input.flat
+      ? `<p style="margin:0 0 10px">In base alle tue risposte, il tuo caso rientra nel prezzo unico:</p>
+      <p style="margin:0 0 10px;font-size:18px"><strong>${input.packageLabel}</strong> — <span style="font-size:22px;font-weight:700;color:#1f6f5c">${input.total.toLocaleString("it-IT")} €</span></p>
+      <p style="margin:0">Tutto incluso: qualsiasi numero di immobili ed eredi, con la voltura catastale di ogni immobile. Le imposte di Stato sono a parte: te le calcoliamo noi. Questo prezzo resta bloccato per te almeno 14 giorni. Quando vuoi, riprendi da qui:</p>`
+      : `<p style="margin:0 0 10px">In base alle tue risposte, il pacchetto giusto per il tuo caso e:</p>
       <p style="margin:0 0 10px;font-size:18px"><strong>${input.packageLabel}</strong> — <span style="font-size:22px;font-weight:700;color:#1f6f5c">${input.total.toLocaleString("it-IT")} €</span></p>
       <p style="margin:0">Prezzo chiaro, deciso prima (le imposte sono a parte: te le calcoliamo noi). Quando vuoi, riprendi da qui:</p>`,
     ctaLabel: "Procedi quando sei pronto",

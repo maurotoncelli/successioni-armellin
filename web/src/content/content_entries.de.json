@@ -5610,6 +5610,339 @@
           "testo": "Jeden wichtigen Schritt teilen wir mit: Sie müssen der Kanzlei nicht hinterherlaufen, um zu wissen, wo die Akte steht."
         }
       ]
+    },
+    {
+      "collection": "site_ui",
+      "key": "flat_offer_ui",
+      "locale": "de",
+      "is_published": true,
+      "value": {
+        "line_label": "Erbschaft alles inklusive — Einheitspreis",
+        "badge": "Einheitspreis",
+        "title": "Erbschaft alles inklusive",
+        "tagline": "Ein Preis, egal wie Ihr Fall aussieht",
+        "price_note": "Endhonorar, ohne MwSt.",
+        "taxes_note": "Staatliche Steuern extra: wir berechnen sie für Sie",
+        "sla": "Einreichung innerhalb von 7–10 Werktagen nach vollständigen Unterlagen",
+        "features": [
+          "Beliebig viele Immobilien, Grundstücke inklusive, mit Katasterumschreibung (voltura) für jede",
+          "Beliebig viele Erben, auch im Ausland wohnhaft",
+          "Mit oder ohne Testament",
+          "Steuerberechnung, Erklärung und Einreichung bei Agenzia delle Entrate",
+          "Persönlicher Bereich und Lorenzo begleitet Sie von Anfang bis Ende",
+          "Zufriedenheits- oder Geld-zurück-Garantie"
+        ],
+        "cta": "Kostenlosen Kostenvoranschlag berechnen",
+        "cta_hint": "In einer Minute sehen Sie, was für Ihren Fall enthalten ist",
+        "custom_title": "Unternehmen, Gesellschaftsanteile, Aktien oder Boote?",
+        "custom_text": "Diese Vermögenswerte sind nicht im Einheitspreis enthalten: Wir erstellen kostenlos innerhalb eines Werktags ein Angebot nach Maß.",
+        "custom_cta": "Kostenvoranschlag anfordern",
+        "banner_text": "Einheitspreis {price} € alles inklusive",
+        "banner_note": "Staatliche Steuern extra",
+        "banner_cta": "Kostenvoranschlag berechnen",
+        "result_title": "Ihr Fall fällt unter den Einheitspreis",
+        "result_price_label": "Einheitspreis, alles inklusive",
+        "result_case_title": "In Ihrem Fall enthalten",
+        "case_property_one": "1 Immobilie, mit Katasterumschreibung (voltura)",
+        "case_property_many": "{n} Immobilien, jede mit Katasterumschreibung (voltura)",
+        "case_property_some": "Alle Immobilien, mit Katasterumschreibungen (voltura)",
+        "case_property_unknown": "Die Immobilien, die sich aus den Prüfungen ergeben, mit Katasterumschreibungen (voltura)",
+        "case_property_none": "Konten, Wertpapiere und andere zu erklärende Vermögenswerte",
+        "case_heir_one": "1 Erbe",
+        "case_heir_many": "{n} Erben",
+        "case_heirs_abroad": "Im Ausland wohnhafte Erben, ohne Mehrkosten",
+        "case_will": "Das Testament",
+        "case_core": "Steuerberechnung, Erklärung und Einreichung bei Agenzia delle Entrate",
+        "result_no_surcharge": "Kein Aufschlag: Der Preis ändert sich nicht mit der Zahl der Immobilien oder Erben."
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "faq_answers",
+      "locale": "de",
+      "is_published": true,
+      "value": [
+        {
+          "question": "Was kostet Ihr Service?",
+          "answer": "250 € alles inklusive: das Endhonorar, ohne MwSt. (Pauschalregelung), unabhängig von der Zahl der Immobilien, Grundstücke oder Erben, mit Katasterumschreibung (voltura) für jede Immobilie. Nur für Unternehmen, Gesellschaftsanteile, Aktien oder Boote erstellen wir ein Angebot nach Maß. Staatliche Steuern sind separat, von den Erben zu tragen, und wir berechnen sie vor der Einreichung."
+        },
+        {
+          "question": "Sind die Steuern im Preis enthalten?",
+          "answer": "Nein: Der Einheitspreis von 250 € ist das Honorar. Steuern (Erbschaft, Hypothek, Kataster, Stempel) werden per F24 gezahlt und sind separat. Wir berechnen sie vor der Einreichung für Sie."
+        }
+      ]
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.hero_subtitle",
+      "locale": "de",
+      "is_published": true,
+      "value": "Geom. Lorenzo Armellin, spezialisiert auf Erbschaften, kümmert sich darum: Einheitspreis von 250 € alles inklusive, alles online (oder persönlich, wenn Sie möchten), ein echter Ansprechpartner. Die Steuern berechnen wir."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.tariffe_title",
+      "locale": "de",
+      "is_published": true,
+      "value": "Ein Einheitspreis, alles inklusive"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.tariffe_intro",
+      "locale": "de",
+      "is_published": true,
+      "value": "250 € für die gesamte Erbschaftserklärung, unabhängig von der Zahl der Immobilien oder Erben. Staatliche Steuern sind separat, vom Erben zu tragen — wir berechnen sie."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.tariffe_cta",
+      "locale": "de",
+      "is_published": true,
+      "value": {
+        "label": "Was der Preis umfasst",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.come_funziona_sla_note",
+      "locale": "de",
+      "is_published": true,
+      "value": "Einreichung innerhalb von 7–10 Werktagen (10 bei Immobilien), sobald alle Unterlagen vollständig sind."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.distinguishes_items",
+      "locale": "de",
+      "is_published": true,
+      "value": [
+        {
+          "icon": "area",
+          "titolo": "Ein fortgeschrittener persönlicher Bereich",
+          "testo": "Vorlagen bereit, Dokumente direkt vom Handy hochgeladen, Fortschritt mit Benachrichtigung. Sie steigen ein, wann Sie wollen, zu Hause oder unterwegs."
+        },
+        {
+          "icon": "lorenzo",
+          "titolo": "Lorenzo begleitet Ihren Fall",
+          "testo": "Er sagt Ihnen, wie Sie in jeder Situation vorgehen. Kein Bot und kein Callcenter: derselbe Geometer, der die Erklärung unterschreibt."
+        },
+        {
+          "icon": "voltura",
+          "titolo": "Katasterumschreibungen inklusive",
+          "testo": "Wo eine Immobilie dabei ist, gehört die Umschreibung im Catasto zum Preis, für alle Immobilien. Kein Extra, das hinterher kommt."
+        },
+        {
+          "icon": "comms",
+          "titolo": "Sofortige Mitteilungen",
+          "testo": "Jeden wichtigen Schritt teilen wir mit: Sie müssen der Kanzlei nicht hinterherlaufen, um zu wissen, wo die Akte steht."
+        }
+      ]
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.hero_subtitle",
+      "locale": "de",
+      "is_published": true,
+      "value": "Ein Einheitspreis: 250 € alles inklusive, unabhängig von der Zahl der Immobilien oder Erben. Staatliche Steuern sind separat und wir berechnen sie. Nur für Unternehmen, Gesellschaftsanteile, Aktien oder Boote brauchen Sie ein Angebot nach Maß."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.box_trasparenza_body",
+      "locale": "de",
+      "is_published": true,
+      "value": "Der Einheitspreis von 250 € ist das **Honorar ohne MwSt.**: Die Kanzlei arbeitet in der Pauschalregelung (nicht umsatzsteuerpflichtig). Das ist der Endbetrag: **kein Aufschlag** für Immobilien, Erben oder Katasterumschreibungen.\n\n**Erbschaftssteuern** (Hypothek, Kataster, Stempel) sind **separat, vom Erben zu tragen**, und werden per F24 gezahlt: wir berechnen und teilen sie **vor der Einreichung** mit."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.sla_note",
+      "locale": "de",
+      "is_published": true,
+      "value": "Die Erklärung wird innerhalb von **7 Werktagen** eingereicht, wenn keine Immobilien dabei sind, und innerhalb von **10**, wenn welche dabei sind — ab **vollständigen Unterlagen** (nicht ab Zahlung): so ist es ein Versprechen, das wir wirklich halten können.\n\n**Fristen Dritter** (Agenzia, Kataster, Banken) sind ausgeschlossen."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.guida_scelta_title",
+      "locale": "de",
+      "is_published": true,
+      "value": "Bevor Sie zahlen (und danach)"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.guida_scelta_items",
+      "locale": "de",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "Ein Preis, nichts zu wählen",
+          "testo": "**250 € alles inklusive**: Konten, Häuser, Grundstücke und Garagen ohne Begrenzung der Zahl, mit Katasterumschreibung (voltura) für jede Immobilie; beliebig viele Erben, auch im Ausland wohnhaft, mit oder ohne Testament. Nur Unternehmen, Gesellschaftsanteile, Aktien oder Boote erfordern ein **kostenloses Angebot nach Maß**. Wenn Sie unsicher sind, schreiben Sie Lorenzo: wir sagen es Ihnen."
+        },
+        {
+          "titolo": "Was nicht enthalten ist",
+          "testo": "**Staatliche Steuern** (Erbschaft, Hypothek, Kataster, Stempel): Zahlung per F24, wir berechnen sie vor der Einreichung. Und Leistungen außerhalb der Erbschaftserklärung, wie die Zusammenlegung des Nießbrauchs, die separat angeboten werden."
+        },
+        {
+          "titolo": "Was nach der Zahlung passiert",
+          "testo": "Ihr **persönlicher Bereich** öffnet sich: dort laden Sie Dokumente hoch (auch per Foto), unterschreiben das Mandat, verfolgen die Akte und sprechen mit Lorenzo. Keine Schalter, keine Ämter."
+        },
+        {
+          "titolo": "Wenn Sie es sich anders überlegen",
+          "testo": "Sie haben **14 Tage** gesetzliches Widerrufsrecht. Wenn Sie uns bitten, sofort zu beginnen und die Arbeit bereits fertig ist, gilt der Widerruf nicht mehr — wir sagen es Ihnen vorher klar."
+        }
+      ]
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.su_misura_text",
+      "locale": "de",
+      "is_published": true,
+      "value": "Unternehmen, Gesellschaftsanteile, Aktien oder Boote? Diese Vermögenswerte sind nicht im Einheitspreis enthalten: Wir erstellen kostenlos und ohne Überraschungen ein Angebot nach Maß."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.cta_finale_title",
+      "locale": "de",
+      "is_published": true,
+      "value": "Eine Minute, um zu prüfen, ob Ihr Fall unter den Einheitspreis fällt."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.addon_intro",
+      "locale": "de",
+      "is_published": true,
+      "value": "Weitere Leistungen, getrennt von der Erbschaftserklärung"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.addon_subtitle",
+      "locale": "de",
+      "is_published": true,
+      "value": "Sie gehören nicht zur Erbschaftserklärung und sind daher nicht im Einheitspreis enthalten. Wenn Sie sie brauchen, aktivieren wir sie auf Anfrage mit einem eigenen Kostenvoranschlag."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.hero_trust_items",
+      "locale": "de",
+      "is_published": true,
+      "value": [
+        "{price} € alles inklusive",
+        "Hunderte betreute Erbschaften",
+        "Komplett online, von zu Hause"
+      ]
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.prices_title",
+      "locale": "de",
+      "is_published": true,
+      "value": "Ein Einheitspreis, bevor Sie beginnen"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.prices_intro",
+      "locale": "de",
+      "is_published": true,
+      "value": "250 € alles inklusive, unabhängig von der Zahl der Immobilien oder Erben. Steuern kommen separat dazu: wir berechnen sie vor der Einreichung für Sie."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.prices_custom_body",
+      "locale": "de",
+      "is_published": true,
+      "value": "Unternehmen, Gesellschaftsanteile, Aktien oder Boote: individuelles Angebot, unverbindlich."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.prices_link",
+      "locale": "de",
+      "is_published": true,
+      "value": {
+        "label": "Was der Einheitspreis umfasst",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.sla_body",
+      "locale": "de",
+      "is_published": true,
+      "value": "Die Fristen beginnen, wenn wir **alle vollständigen und korrekten Unterlagen** haben (nicht ab Zahlung): Einreichung innerhalb von **7 Werktagen**, wenn keine Immobilien dabei sind, innerhalb von **10**, wenn welche dabei sind. So ist es ein Versprechen, das wir wirklich halten können.\n\n**Fristen Dritter** (Agenzia, Kataster, Banken) sind ausgeschlossen."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "preventivo.intro_subtitle",
+      "locale": "de",
+      "is_published": true,
+      "value": "Beantworten Sie wenige Fragen: Sie sehen sofort, ob Ihr Fall unter den Einheitspreis von 250 € alles inklusive fällt und was enthalten ist. Unverbindlich."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "site_ui.preventivo_ui",
+      "locale": "de",
+      "is_published": true,
+      "value": {
+        "real_estate_hint": "Zählen Sie Häuser, Grundstücke, Garagen und Anteile: Der Preis ändert sich nicht — wir brauchen das für Ihre Dokumentenliste.",
+        "will_yes_note": "Der Einheitspreis gilt auch bei Testament. In der Dokumenten-Checkliste fragen wir nach einer Kopie des veröffentlichten Testaments."
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "grazie.esito_b_title",
+      "locale": "de",
+      "is_published": true,
+      "value": "Ihr Kostenvoranschlag"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "grazie.esito_b_whatsapp_prefill",
+      "locale": "de",
+      "is_published": true,
+      "value": "Hallo Lorenzo, ich habe den Fragebogen auf Ihrer Website ausgefüllt: Mein Fall fällt unter den Einheitspreis von {total} €. Ich hätte vorab noch ein paar Fragen."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "grazie.esito_c_body",
+      "locale": "de",
+      "is_published": true,
+      "value": "Aus Ihren Antworten gehen Vermögenswerte hervor, die nicht in den Einheitspreis fallen (Gesellschaftsanteile, Aktien, Unternehmen, Boote…). Hier können wir keinen Festpreis nennen: Das muss mit Lorenzo geprüft werden, damit Sie weder mehr noch weniger als angemessen zahlen. Hinterlassen Sie unten Ihre Kontaktdaten (und optional eine Notiz) oder schreiben Sie uns: Wir rufen zurück, klären die Details und erstellen Ihr individuelles Angebot."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "checkout.modifica_link",
+      "locale": "de",
+      "is_published": true,
+      "value": {
+        "label": "Bearbeiten",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "site_ui.checkout_ui",
+      "locale": "de",
+      "is_published": true,
+      "value": {
+        "need_quote_after": ": so prüfen wir, ob Ihr Fall unter den Einheitspreis fällt.",
+        "empty_order": "Es liegt keine zu zahlende Akte vor. Berechnen Sie zuerst den Kostenvoranschlag: Wir prüfen Ihren Fall und verknüpfen die Zahlung mit Ihrer Akte."
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "site_ui.promo_ui",
+      "locale": "de",
+      "is_published": true,
+      "value": {
+        "included_items": [
+          "Kostenloses Erstgespräch mit Lorenzo, per Telefon oder WhatsApp",
+          "Laufende Betreuung durch Lorenzo zu Bürozeiten: WhatsApp, Telefon und E-Mail",
+          "Alle Immobilien, Grundstücke inklusive, mit Katasterumschreibung (voltura) für jede",
+          "Alle Erben, auch im Ausland wohnhaft, mit oder ohne Testament",
+          "Schritt-für-Schritt-Anleitungen zum Finden und Sammeln der Unterlagen",
+          "Intuitiver persönlicher Bereich: Unterlagen hochladen und den Stand verfolgen",
+          "Steuerberechnung und Erstellung der Erbschaftserklärung",
+          "Einreichung bei der italienischen Finanzbehörde mit Vollmacht: Sie müssen nirgendwo hin",
+          "Zufriedenheits- oder Geld-zurück-Garantie"
+        ]
+      }
     }
   ]
 }

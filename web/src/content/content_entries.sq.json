@@ -5610,6 +5610,339 @@
           "testo": "Çdo hap të rëndësishëm ta komunikohet: nuk të duhet t'i vraposh studiot për të ditur ku është praktika."
         }
       ]
+    },
+    {
+      "collection": "site_ui",
+      "key": "flat_offer_ui",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "line_label": "Trashëgimi gjithçka e përfshirë — çmim i vetëm",
+        "badge": "Çmim i vetëm",
+        "title": "Trashëgimi gjithçka e përfshirë",
+        "tagline": "Një çmim i vetëm, çfarëdo qoftë rasti juaj",
+        "price_note": "honorari përfundimtar, pa TVSH",
+        "taxes_note": "Taksat shtetërore veç: i llogaritim ne",
+        "sla": "Dorëzim brenda 7-10 ditëve pune nga dokumentet e plota",
+        "features": [
+          "Çdo numër pasurish, truall përfshirë, me kalimin kadastral (voltura) të secilës",
+          "Çdo numër trashëgimtarësh, edhe me banim jashtë vendit",
+          "Me ose pa testament",
+          "Llogaritja e taksave, deklarata dhe dërgimi te Agenzia delle Entrate",
+          "Zona personale dhe Lorenzo që ju ndjek nga fillimi deri në fund",
+          "Garanci: i kënaqur ose rimbursim"
+        ],
+        "cta": "Llogaritni preventivin falas",
+        "cta_hint": "Në një minutë shihni çfarë përfshin për rastin tuaj",
+        "custom_title": "Biznese, pjesë shoqërie, aksione ose varka?",
+        "custom_text": "Këto pasuri nuk hyjnë në çmimin e vetëm: ju bëjmë preventiv të personalizuar, falas, brenda një dite pune.",
+        "custom_cta": "Kërkoni preventivin",
+        "banner_text": "Çmim i vetëm {price} € gjithçka e përfshirë",
+        "banner_note": "taksat shtetërore veç",
+        "banner_cta": "Llogaritni preventivin",
+        "result_title": "Rasti juaj hyn në çmimin e vetëm",
+        "result_price_label": "Çmim i vetëm, gjithçka e përfshirë",
+        "result_case_title": "Në rastin tuaj përfshihet",
+        "case_property_one": "1 pasuri, me kalimin kadastral (voltura)",
+        "case_property_many": "{n} pasuri, secila me kalimin kadastral (voltura)",
+        "case_property_some": "Të gjitha pasuritë, me kalimet kadastrale (voltura)",
+        "case_property_unknown": "Pasuritë që do të dalin nga verifikimet, me kalimet kadastrale (voltura)",
+        "case_property_none": "Llogari, tituj dhe pasuri të tjera për deklarim",
+        "case_heir_one": "1 trashëgimtar",
+        "case_heir_many": "{n} trashëgimtarë",
+        "case_heirs_abroad": "Trashëgimtarë me banim jashtë vendit, pa kosto shtesë",
+        "case_will": "Testamenti",
+        "case_core": "Llogaritja e taksave, deklarata dhe dërgimi te Agenzia delle Entrate",
+        "result_no_surcharge": "Asnjë shtesë: çmimi nuk ndryshon me numrin e pasurive ose të trashëgimtarëve."
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "faq_answers",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        {
+          "question": "Sa kushton shërbimi juaj?",
+          "answer": "250 € gjithçka e përfshirë: është honorari përfundimtar, pa TVSH (regjim forfettari), çfarëdo qoftë numri i pasurive, truallve ose trashëgimtarëve, me kalimin kadastral (voltura) të çdo pasurie. Vetëm për biznese, pjesë shoqërie, aksione ose anije ju bëjmë preventiv të personalizuar. Taksat shtetërore janë të ndara, në ngarkim të trashëgimtarëve, dhe i llogaritim para dorëzimit."
+        },
+        {
+          "question": "A janë taksat të përfshira në çmim?",
+          "answer": "Jo: çmimi i vetëm 250 € është honorari profesional. Taksat (trashëgimi, hipotekare, kadastrale, pulla) paguhen me F24 dhe janë të ndara. I llogaritim ne para dorëzimit."
+        }
+      ]
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.hero_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Merret Geom. Lorenzo Armellin, i specializuar në trashëgimi: çmim i vetëm 250 € gjithçka e përfshirë, gjithçka online (dhe nëse dëshironi edhe personalisht), një person real që ju ndjek. Taksat i llogaritim ne."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.tariffe_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Një çmim i vetëm, gjithçka e përfshirë"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.tariffe_intro",
+      "locale": "sq",
+      "is_published": true,
+      "value": "250 € për të gjithë trashëgiminë, çfarëdo qoftë numri i pasurive ose i trashëgimtarëve. Taksat shtetërore janë të ndara, në ngarkim të trashëgimtarit, dhe i llogaritim ne."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.tariffe_cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Çfarë përfshin çmimi",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.come_funziona_sla_note",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Dorëzim brenda 7-10 ditëve pune (10 nëse ka pasuri) nga kur kemi të gjitha dokumentet e plota."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.distinguishes_items",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        {
+          "icon": "area",
+          "titolo": "Zonë personale e avancuar",
+          "testo": "Modele gati, dokumente të ngarkuara menjëherë nga telefoni, gjendje e punës me njoftim. Hyn kur të duash, nga shtëpia ose në lëvizje."
+        },
+        {
+          "icon": "lorenzo",
+          "titolo": "Lorenzo të ndjek, rast pas rasti",
+          "testo": "I gatshëm të të thotë si të veprosh në çdo situatë. Jo bot dhe jo call center: i njëjti gjeometër që nënshkruan praktikën."
+        },
+        {
+          "icon": "voltura",
+          "titolo": "Kalimet kadastrale të përfshira",
+          "testo": "Kur ka pasuri të paluajtshme, kalimi në Katastër është në çmim, për të gjitha pasuritë. Nuk është një extra që vjen më vonë."
+        },
+        {
+          "icon": "comms",
+          "titolo": "Komunikime të menjëhershme",
+          "testo": "Çdo hap të rëndësishëm ta komunikohet: nuk të duhet t'i vraposh studiot për të ditur ku është praktika."
+        }
+      ]
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.hero_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Një çmim i vetëm: 250 € gjithçka e përfshirë, çfarëdo qoftë numri i pasurive ose i trashëgimtarëve. Taksat shtetërore janë të ndara dhe i llogaritim ne. Vetëm për biznese, pjesë shoqërie, aksione ose varka nevojitet preventiv i personalizuar."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.box_trasparenza_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Çmimi i vetëm 250 € është **honorari profesional pa TVSH**: studio operon në regjimin forfettari (operacion jo i nënshtruar TVSH-së). Është shuma përfundimtare: **asnjë shtesë** për pasuri, trashëgimtarë ose kalime kadastrale.\n\n**Taksat e trashëgimisë** (hipotekare, kadastrale, pulla) janë **të ndara, në ngarkim të trashëgimtarit**, dhe paguhen me F24: i llogaritim dhe i komunikojmë **para dorëzimit**."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.sla_note",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Dorëzimi i deklaratës bëhet brenda **7 ditëve pune** nëse nuk ka pasuri dhe brenda **10** nëse ka, nga **dokumentacioni i plotë** (jo nga pagesa): kështu është premtim që mund ta mbajmë vërtet.\n\n**Përjashtohen kohët e enteve të treta** (Agenzia, Kadastër, banka)."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.guida_scelta_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Para se të paguash (dhe pas)"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.guida_scelta_items",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "Një çmim i vetëm, asgjë për të zgjedhur",
+          "testo": "**250 € gjithçka e përfshirë**: llogari, shtëpi, truall dhe box pa kufi numri, me kalimin kadastral (voltura) të çdo pasurie; çdo numër trashëgimtarësh, edhe me banim jashtë vendit, me ose pa testament. Vetëm biznese, pjesë shoqërie, aksione ose anije kërkojnë **preventiv të personalizuar, falas**. Nëse ke dyshim, shkruaji Lorenzo: ta themi ne."
+        },
+        {
+          "titolo": "Çfarë nuk përfshihet",
+          "testo": "**Taksat shtetërore** (trashëgimi, hipotekare, kadastrale, pulla): paguhen me F24 dhe i llogaritim para dorëzimit. Dhe shërbimet e ndryshme nga trashëgimi, si riunione di usufrutto, që kuotohen veçmas."
+        },
+        {
+          "titolo": "Çfarë ndodh pas pagesës",
+          "testo": "Hapet **zona personale**: aty ngarkon dokumentet (edhe nga foto), nënshkruan mandatin, ndjek praktikën dhe flet me Lorenzo. Asnjë sportel."
+        },
+        {
+          "titolo": "Nëse ndryshon mendje",
+          "testo": "Ke **14 ditë** të drejtë recesioni ligjor. Nëse na kërkon të nisim menjëherë dhe puna ka mbaruar, recesioni nuk zbatohet më — ta themi qartë paraprakisht."
+        }
+      ]
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.su_misura_text",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Biznese, pjesë shoqërie, aksione ose anije? Këto pasuri nuk hyjnë në çmimin e vetëm: ju bëjmë preventiv të personalizuar, falas dhe pa surpriza."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.cta_finale_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Një minutë për të verifikuar që rasti juaj hyn në çmimin e vetëm."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.addon_intro",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Shërbime të tjera, të ndara nga trashëgimi"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.addon_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Nuk bëjnë pjesë në deklaratën e trashëgimisë, prandaj nuk janë në çmimin e vetëm. Nëse ju duhen, i aktivizojmë me kërkesë, me preventiv të dedikuar."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.hero_trust_items",
+      "locale": "sq",
+      "is_published": true,
+      "value": [
+        "{price} € gjithçka e përfshirë",
+        "Qindra trashëgimi të ndjekura",
+        "Gjithçka online, nga shtëpia"
+      ]
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.prices_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Një çmim i vetëm, para se të fillosh"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.prices_intro",
+      "locale": "sq",
+      "is_published": true,
+      "value": "250 € gjithçka e përfshirë, çfarëdo qoftë numri i pasurive ose i trashëgimtarëve. Taksat janë veç: t'i llogarisim ne para dërgimit."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.prices_custom_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Biznese, pjesë shoqërie, aksione ose varka: preventiv i personalizuar, pa angazhim."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.prices_link",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Çfarë përfshin çmimi i vetëm",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.sla_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Afatet fillojnë kur kemi **të gjitha dokumentet e plota dhe të sakta** (jo nga pagesa): dorëzim brenda **7 ditëve pune** nëse nuk ka pasuri, brenda **10** nëse ka. Kështu është premtim që mund ta mbajmë vërtet.\n\n**Përjashtohen kohët e enteve të treta** (Agenzia, Kadastër, banka)."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "preventivo.intro_subtitle",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Përgjigjuni disa pyetjeve: shihni menjëherë nëse rasti juaj hyn në çmimin e vetëm 250 € gjithçka e përfshirë dhe çfarë përfshin. Pa detyrim."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "site_ui.preventivo_ui",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "real_estate_hint": "Numëroni shtëpi, truall, box dhe pjesë: çmimi nuk ndryshon, na duhet për të përgatitur listën e dokumenteve.",
+        "will_yes_note": "Çmimi i vetëm mbulon edhe rastet me testament. Në listën e dokumenteve do t'ju kërkojmë kopjen e testamenteve të publikuar."
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "grazie.esito_b_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Ja preventivi juaj"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "grazie.esito_b_whatsapp_prefill",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Përshëndetje Lorenzo, plotësova pyetësorin në faqen tuaj: rasti im hyn në çmimin e vetëm {total} €. Kam disa pyetje para se të vazhdoj."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "grazie.esito_c_body",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Nga përgjigjet tuaja dalin pasuri që nuk hyjnë në çmimin e vetëm (pjesë shoqërie, aksione, biznese, anije…). Nuk mund të caktojmë çmim këtu: duhet studiuar së bashku me Lorenzo, që të paguani as më shumë as më pak se sa duhet. Lini kontaktet më poshtë (dhe, nëse dëshironi, një shënim) ose na shkruani: do t'ju telefonojmë për të sqaruar detajet dhe përgatitur preventivin e dedikuar."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "checkout.modifica_link",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "label": "Ndryshoni",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "site_ui.checkout_ui",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "need_quote_after": ": kështu verifikojmë që rasti juaj hyn në çmimin e vetëm.",
+        "empty_order": "Nuk rezulton praktikë për pagesë. Llogaritni fillimisht preventivin: verifikojmë rastin tuaj dhe lidhim pagesën me praktikën tuaj."
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "site_ui.promo_ui",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "included_items": [
+          "Konsultë fillestare falas me Lorenzo-n, me telefon ose WhatsApp",
+          "Asistencë e vazhdueshme nga Lorenzo në orarin e zyrës: WhatsApp, telefon dhe email",
+          "Të gjitha pasuritë, truall përfshirë, me kalimin kadastral (voltura) të secilës",
+          "Të gjithë trashëgimtarët, edhe me banim jashtë vendit, me ose pa testament",
+          "Udhëzues hap pas hapi për të gjetur dhe mbledhur dokumentet",
+          "Zonë personale intuitive: ngarkoni dokumentet dhe ndiqni praktikën",
+          "Llogaritja e taksave dhe përpilimi i deklaratës së trashëgimisë",
+          "Dorëzimi në Agjencinë Tatimore italiane me prokurë të plotë: nuk duhet të shkoni askund",
+          "Garanci: i kënaqur ose rimbursim"
+        ]
+      }
     }
   ]
 }

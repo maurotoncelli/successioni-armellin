@@ -15,6 +15,8 @@ import {
   toClientDocState,
 } from "@/content/area-data";
 import { CLAIM_UI_IT, type ClaimUiLabels } from "@/lib/area-ui-labels";
+import { hasFlatOfferLine } from "@/lib/flat-offer";
+import { FLAT_OFFER_UI_IT, type FlatOfferUiLabels } from "@/lib/site-ui-labels";
 
 export default async function DashboardPage() {
   const view = await requireClientView();
@@ -235,7 +237,15 @@ export default async function DashboardPage() {
         <Card>
           <h2 className="text-sm font-semibold text-text">{summaryHeading}</h2>
           <dl className="mt-3 space-y-2 text-sm">
-            <Row label={summaryPackage} value={p.selectedPackage ?? "—"} />
+            <Row
+              label={summaryPackage}
+              value={
+                hasFlatOfferLine(p.lineItems)
+                  ? (await tObj<FlatOfferUiLabels>("site_ui", "flat_offer_ui", FLAT_OFFER_UI_IT))
+                      .title
+                  : (p.selectedPackage ?? "—")
+              }
+            />
           </dl>
           <Link
             href="/area-riservata/ordine"

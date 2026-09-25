@@ -9,6 +9,7 @@ import zhRaw from "@/content/content_entries.zh.json";
 import hiRaw from "@/content/content_entries.hi.json";
 import arRaw from "@/content/content_entries.ar.json";
 import sqRaw from "@/content/content_entries.sq.json";
+import { isFlatOfferOn } from "@/lib/flat-offer";
 
 /*
   Loader contenuti del sito (Fase 1+).
@@ -106,18 +107,42 @@ export function coerceLocale(
   return DEFAULT_LOCALE;
 }
 
-function lookup(
-  collection: string,
-  key: string,
-  locale: string,
-): Entry | undefined {
-  const id = `${collection}.${key}`;
+function lookupId(id: string, locale: string): Entry | undefined {
   const hit = byLocale.get(locale)?.get(id);
   if (hit) return hit;
   if (locale !== DEFAULT_LOCALE) {
     return byLocale.get(DEFAULT_LOCALE)?.get(id);
   }
   return undefined;
+}
+
+/*
+  Test prezzo unico (lib/flat-offer.ts): a test acceso la voce
+  `prezzo_unico.<collection>.<key>` prende il posto di `<collection>.<key>`.
+  Gli oggetti si fondono con l'originale (basta scrivere le chiavi che
+  cambiano); stringhe e liste si sostituiscono per intero. A test spento le
+  voci `prezzo_unico` restano nel file ma non vengono lette.
+*/
+export const FLAT_OFFER_COLLECTION = "prezzo_unico";
+
+function isPlainObject(value: unknown): value is Record<string, unknown> {
+  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
+}
+
+function lookup(
+  collection: string,
+  key: string,
+  locale: string,
+): Entry | undefined {
+  const id = `${collection}.${key}`;
+  const base = lookupId(id, locale);
+  if (!isFlatOfferOn() || collection === FLAT_OFFER_COLLECTION) return base;
+  const override = lookupId(`${FLAT_OFFER_COLLECTION}.${id}`, locale);
+  if (!override) return base;
+  if (base && isPlainObject(base.value) && isPlainObject(override.value)) {
+    return { ...override, value: { ...base.value, ...override.value } };
+  }
+  return override;
 }
 
 /**

@@ -5610,6 +5610,339 @@
           "testo": "Cada paso importante te lo comunicamos: no tienes que perseguir al estudio para saber dónde está el expediente."
         }
       ]
+    },
+    {
+      "collection": "site_ui",
+      "key": "flat_offer_ui",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "line_label": "Sucesión todo incluido — precio único",
+        "badge": "Precio único",
+        "title": "Sucesión todo incluido",
+        "tagline": "Un solo precio, sea cual sea tu caso",
+        "price_note": "honorario final, sin IVA",
+        "taxes_note": "Impuestos del Estado aparte: los calculamos nosotros",
+        "sla": "Envío en 7-10 días laborables desde que la documentación esté completa",
+        "features": [
+          "Cualquier número de inmuebles, terrenos incluidos, con el cambio de titularidad catastral (voltura) de cada uno",
+          "Cualquier número de herederos, incluso residentes en el extranjero",
+          "Con o sin testamento",
+          "Cálculo de impuestos, declaración y envío a la Agenzia delle Entrate",
+          "Área personal y Lorenzo que te acompaña de principio a fin",
+          "Garantía de satisfacción o reembolso"
+        ],
+        "cta": "Calcula el presupuesto gratis",
+        "cta_hint": "En un minuto ves qué incluye para tu caso",
+        "custom_title": "¿Empresas, participaciones sociales, acciones o embarcaciones?",
+        "custom_text": "Estos bienes no entran en el precio único: te hacemos un presupuesto a medida, gratis, en un día laborable.",
+        "custom_cta": "Solicita el presupuesto",
+        "banner_text": "Precio único {price} € todo incluido",
+        "banner_note": "impuestos del Estado aparte",
+        "banner_cta": "Calcula el presupuesto",
+        "result_title": "Tu caso entra en el precio único",
+        "result_price_label": "Precio único, todo incluido",
+        "result_case_title": "En tu caso está incluido",
+        "case_property_one": "1 inmueble, con el cambio de titularidad catastral (voltura)",
+        "case_property_many": "{n} inmuebles, cada uno con el cambio de titularidad catastral (voltura)",
+        "case_property_some": "Todos los inmuebles, con los cambios de titularidad catastral (voltura)",
+        "case_property_unknown": "Los inmuebles que resulten de las verificaciones, con los cambios de titularidad catastral (voltura)",
+        "case_property_none": "Cuentas, valores y los demás bienes a declarar",
+        "case_heir_one": "1 heredero",
+        "case_heir_many": "{n} herederos",
+        "case_heirs_abroad": "Herederos residentes en el extranjero, sin coste adicional",
+        "case_will": "El testamento",
+        "case_core": "Cálculo de impuestos, declaración y envío a la Agenzia delle Entrate",
+        "result_no_surcharge": "Sin suplementos: el precio no cambia con el número de inmuebles o herederos."
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "faq_answers",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        {
+          "question": "¿Cuánto cuesta vuestro servicio?",
+          "answer": "250 € todo incluido: es el honorario final, sin IVA (régimen forfettario), sea cual sea el número de inmuebles, terrenos o herederos, con el cambio de titularidad catastral (voltura) de cada inmueble. Solo para empresas, participaciones sociales, acciones o embarcaciones te hacemos un presupuesto a medida. Los impuestos del Estado son aparte, a cargo de los herederos, y los calculamos antes del envío."
+        },
+        {
+          "question": "¿Los impuestos están incluidos en el precio?",
+          "answer": "No: el precio único de 250 € es el honorario profesional. Los impuestos (sucesión, hipotecario, catastral, timbres) se pagan con F24 y van aparte. Los calculamos nosotros antes del envío."
+        }
+      ]
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.hero_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "Se encarga el Geom. Lorenzo Armellin, especializado en sucesiones: precio único de 250 € todo incluido, todo en línea (y en persona si quieres), una persona real que te acompaña. Calculamos los impuestos nosotros."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.tariffe_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Un precio único, todo incluido"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.tariffe_intro",
+      "locale": "es",
+      "is_published": true,
+      "value": "250 € por toda la sucesión, sea cual sea el número de inmuebles o herederos. Los impuestos del Estado son aparte, a cargo del heredero, y los calculamos nosotros."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.tariffe_cta",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Qué incluye el precio",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.come_funziona_sla_note",
+      "locale": "es",
+      "is_published": true,
+      "value": "Envío en 7-10 días laborables (10 si hay inmuebles) desde que tenemos todos los documentos completos."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.distinguishes_items",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        {
+          "icon": "area",
+          "titolo": "Área personal avanzada",
+          "testo": "Modelos listos, documentos cargados al momento desde el teléfono, estados de avance con aviso. Entras cuando quieres, en casa o en movilidad."
+        },
+        {
+          "icon": "lorenzo",
+          "titolo": "Lorenzo te sigue, caso a caso",
+          "testo": "Dispuesto a decirte cómo proceder en cada situación. Ni un bot ni un call center: el mismo geometra que firma el expediente."
+        },
+        {
+          "icon": "voltura",
+          "titolo": "Cambios de titularidad catastral (voltura) incluidos",
+          "testo": "Si hay un inmueble, el cambio en el Catastro está incluido en el precio, para todos los inmuebles. No es un extra que llega después."
+        },
+        {
+          "icon": "comms",
+          "titolo": "Comunicaciones inmediatas",
+          "testo": "Cada paso importante te lo comunicamos: no tienes que perseguir al estudio para saber dónde está el expediente."
+        }
+      ]
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.hero_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "Un precio único: 250 € todo incluido, sea cual sea el número de inmuebles o herederos. Los impuestos del Estado son aparte y los calculamos nosotros. Solo para empresas, participaciones sociales, acciones o embarcaciones hace falta un presupuesto a medida."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.box_trasparenza_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "El precio único de 250 € son los **honorarios profesionales sin IVA**: el estudio opera en régimen forfettario (operación no sujeta a IVA). Es la cifra final: **ningún suplemento** por inmuebles, herederos o cambios catastrales.\n\nLos **impuestos de sucesión** (hipotecario, catastral, timbres) son **aparte, a cargo del heredero**, y se pagan con F24: los calculamos y comunicamos **antes del envío**."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.sla_note",
+      "locale": "es",
+      "is_published": true,
+      "value": "El envío de la declaración se realiza en **7 días laborables** si no hay inmuebles y en **10** si los hay, desde la **documentación completa** (no desde el pago): así es una promesa que realmente podemos cumplir.\n\nQuedan **excluidos los plazos de terceros** (Agenzia, Catasto, bancos)."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.guida_scelta_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Antes de pagar (y después)"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.guida_scelta_items",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "Un solo precio, nada que elegir",
+          "testo": "**250 € todo incluido**: cuentas, viviendas, terrenos y trasteros sin límite de número, con el cambio de titularidad catastral (voltura) de cada inmueble; cualquier número de herederos, incluso residentes en el extranjero, con o sin testamento. Solo empresas, participaciones sociales, acciones o embarcaciones requieren un **presupuesto a medida, gratis**. Si tienes dudas, escribe a Lorenzo: te lo decimos nosotros."
+        },
+        {
+          "titolo": "Qué no está incluido",
+          "testo": "Los **impuestos del Estado** (sucesión, hipotecario, catastral, timbres): se pagan con F24 y los calculamos antes del envío. Y servicios distintos de la sucesión, como la reunión de usufructo, que se presupuestan aparte."
+        },
+        {
+          "titolo": "Qué ocurre después del pago",
+          "testo": "Se abre el **área personal**: allí subes los documentos (también desde fotos), firmas el mandato, sigues el expediente y hablas con Lorenzo. No tienes que ir a ninguna ventanilla."
+        },
+        {
+          "titolo": "Si cambias de opinión",
+          "testo": "Tienes **14 días** de desistimiento legal. Si nos pides empezar de inmediato y el trabajo ya está terminado, el desistimiento ya no se aplica — te lo decimos antes, con claridad."
+        }
+      ]
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.su_misura_text",
+      "locale": "es",
+      "is_published": true,
+      "value": "¿Empresas, participaciones sociales, acciones o embarcaciones? Estos bienes no entran en el precio único: te hacemos un presupuesto a medida, gratis y sin sorpresas."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.cta_finale_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Un minuto para comprobar que tu caso entra en el precio único."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.addon_intro",
+      "locale": "es",
+      "is_published": true,
+      "value": "Otros servicios, separados de la sucesión"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.addon_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "No forman parte de la declaración de sucesión, así que no están en el precio único. Si los necesitas, los activamos bajo solicitud, con un presupuesto dedicado."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.hero_trust_items",
+      "locale": "es",
+      "is_published": true,
+      "value": [
+        "{price} € todo incluido",
+        "Cientos de sucesiones gestionadas",
+        "Todo online, desde casa"
+      ]
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.prices_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Un precio único, antes de empezar"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.prices_intro",
+      "locale": "es",
+      "is_published": true,
+      "value": "250 € todo incluido, sea cual sea el número de inmuebles o herederos. Los impuestos van aparte: te los calculamos antes del envío."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.prices_custom_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "Empresas, participaciones sociales, acciones o embarcaciones: presupuesto personalizado, sin compromiso."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.prices_link",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Qué incluye el precio único",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.sla_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "Los plazos empiezan cuando tenemos **todos los documentos completos y correctos** (no desde el pago): envío en **7 días laborables** si no hay inmuebles, en **10** si los hay. Así es una promesa que realmente podemos cumplir.\n\nQuedan **excluidos los plazos de terceros** (Agenzia, Catasto, bancos)."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "preventivo.intro_subtitle",
+      "locale": "es",
+      "is_published": true,
+      "value": "Responde a unas preguntas: ves al instante si tu caso entra en el precio único de 250 € todo incluido y qué incluye. Sin compromiso."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "site_ui.preventivo_ui",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "real_estate_hint": "Cuenta viviendas, terrenos, trasteros y participaciones: el precio no cambia, nos sirve para preparar la lista de documentos.",
+        "will_yes_note": "El precio único cubre también los casos con testamento. En la checklist de documentos pediremos copia del testamento publicado."
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "grazie.esito_b_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "Aquí está tu presupuesto"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "grazie.esito_b_whatsapp_prefill",
+      "locale": "es",
+      "is_published": true,
+      "value": "Hola Lorenzo, he completado el cuestionario en su web: mi caso entra en el precio único de {total} €. Tengo algunas preguntas antes de continuar."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "grazie.esito_c_body",
+      "locale": "es",
+      "is_published": true,
+      "value": "De tus respuestas surgen bienes que no entran en el precio único (participaciones sociales, acciones, empresas, embarcaciones…). No podemos cerrar un precio aquí: hay que estudiarlo con Lorenzo, para que pagues ni más ni menos de lo justo. Deja tus datos abajo (y, si quieres, una nota) o escríbenos: te llamamos para aclarar detalles y prepararte el presupuesto dedicado."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "checkout.modifica_link",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "label": "Editar",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "site_ui.checkout_ui",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "need_quote_after": ": así verificamos que tu caso entra en el precio único.",
+        "empty_order": "No consta ningún expediente que pagar. Calcula primero el presupuesto: verificamos tu caso y vinculamos el pago a tu expediente."
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "site_ui.promo_ui",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "included_items": [
+          "Consulta inicial gratuita con Lorenzo, por teléfono o WhatsApp",
+          "Asistencia continua de Lorenzo en horario de oficina: WhatsApp, teléfono y correo",
+          "Todos los inmuebles, terrenos incluidos, con el cambio de titularidad catastral (voltura) de cada uno",
+          "Todos los herederos, incluso residentes en el extranjero, con o sin testamento",
+          "Guías paso a paso para encontrar y reunir los documentos",
+          "Área personal intuitiva: subes los documentos y sigues el expediente",
+          "Cálculo de impuestos y preparación de la declaración",
+          "Presentación ante la Agenzia delle Entrate con poder total: no tienes que ir a ningún sitio",
+          "Garantía de satisfacción o reembolso"
+        ]
+      }
     }
   ]
 }

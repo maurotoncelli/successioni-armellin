@@ -7,20 +7,78 @@ import {
   ClipboardList,
   Play,
 } from "lucide-react";
-import { statusLabels, type PackageType } from "@/content/crm-data";
+import { statusLabels, type PackageType, type Practice } from "@/content/crm-data";
 import { getPractices, deriveKpi, statusCounts } from "@/lib/crm";
 import { getPackages } from "@/lib/cms";
-import { getQuoteStats } from "@/lib/quote-stats";
+import {
+  getQuoteStats,
+  romeDayKey,
+  sumQuoteDays,
+  type QuoteStats,
+} from "@/lib/quote-stats";
 import { getVideoStats } from "@/lib/video-stats";
 import { VIDEO_IDS, VIDEO_LABELS } from "@/lib/video-ids";
+import { FLAT_OFFER, hasFlatOfferLine, isFlatOfferOn } from "@/lib/flat-offer";
 import { CrmCard, SectionTitle } from "@/components/crm/ui";
 import { StatsAdjust } from "@/components/crm/stats-adjust";
 
 export const dynamic = "force-dynamic";
 
 const GA4_URL = "https://analytics.google.com/analytics/web/";
+const DAY_MS = 86_400_000;
+const FLAT_BEFORE_DAYS = 14;
 
 type PackageKey = Exclude<PackageType, null>;
+
+type FlatWindow = {
+  days: number;
+  /** null = contatore giornaliero non ancora attivo in quel periodo. */
+  quizzes: number | null;
+  requests: number;
+  paid: number;
+  paidFlat: number;
+  revenue: number;
+};
+
+/* Test prezzo unico: stesso conteggio sul periodo del test e sui 14 giorni prima. */
+function flatTestWindows(practices: Practice[], stats: QuoteStats) {
+  const start = new Date(`${FLAT_OFFER.startsAt}T00:00:00+02:00`);
+  const end = new Date(`${FLAT_OFFER.endsAt}T23:59:59+02:00`);
+  const now = new Date();
+  const testTo = now < end ? now : end;
+  const firstTrackedDay = Object.keys(stats.byDay).sort()[0] ?? romeDayKey(now);
+
+  const measure = (from: Date, to: Date): FlatWindow => {
+    const inRange = (iso?: string | null) => {
+      if (!iso) return false;
+      const t = new Date(iso).getTime();
+      return t >= from.getTime() && t <= to.getTime();
+    };
+    const paid = practices.filter((p) => p.paymentStatus === "PAID" && inRange(p.paidAt));
+    const fromDay = romeDayKey(from);
+    return {
+      days: Math.max(1, Math.ceil((to.getTime() - from.getTime()) / DAY_MS)),
+      quizzes:
+        firstTrackedDay <= fromDay ? sumQuoteDays(stats, fromDay, romeDayKey(to)) : null,
+      requests: practices.filter((p) => inRange(p.createdAtIso)).length,
+      paid: paid.length,
+      paidFlat: paid.filter((p) => hasFlatOfferLine(p.lineItems)).length,
+      revenue: paid.reduce((s, p) => s + p.price, 0),
+    };
+  };
+
+  const test = measure(start, testTo);
+  // Il contatore giornaliero nasce col test: conta dal primo giorno registrato.
+  if (test.quizzes === null && firstTrackedDay <= romeDayKey(testTo)) {
+    test.quizzes = sumQuoteDays(stats, firstTrackedDay, romeDayKey(testTo));
+  }
+  return {
+    before: measure(new Date(start.getTime() - FLAT_BEFORE_DAYS * DAY_MS), new Date(start.getTime() - 1)),
+    test,
+    started: now >= start,
+    ended: now > end,
+  };
+}
 
 export default async function StatistichePage() {
   const [practices, packages, quoteStats, videoStats] = await Promise.all([
@@ -68,6 +126,10 @@ export default async function StatistichePage() {
   }
 
   const measurementId = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID;
+  const flatTest =
+    isFlatOfferOn() || practices.some((p) => hasFlatOfferLine(p.lineItems))
+      ? flatTestWindows(practices, quoteStats)
+      : null;
 
   return (
     <div className="space-y-6">
@@ -144,6 +206,70 @@ export default async function StatistichePage() {
           />
         </KpiCard>
       </div>
+
+      {flatTest && flatTest.started && (
+        <CrmCard>
+          <SectionTitle>Test prezzo unico {FLAT_OFFER.price} €</SectionTitle>
+          <p className="mt-1 text-xs text-crm-muted">
+            {flatTest.ended ? "Test concluso" : "Test in corso"}: dal {FLAT_OFFER.startsAt} al{" "}
+            {FLAT_OFFER.endsAt}, confrontato con i {FLAT_BEFORE_DAYS} giorni prima (listino a
+            pacchetti). I numeri &quot;al giorno&quot; tolgono l&apos;effetto della diversa durata.
+          </p>
+          <div className="mt-4 overflow-x-auto">
+            <table className="w-full min-w-[420px] text-sm">
+              <thead>
+                <tr className="text-left text-xs text-crm-muted">
+                  <th className="pb-2 font-medium">Misura</th>
+                  <th className="pb-2 font-medium">
+                    {FLAT_BEFORE_DAYS} giorni prima
+                  </th>
+                  <th className="pb-2 font-medium">
+                    Test ({flatTest.test.days} {flatTest.test.days === 1 ? "giorno" : "giorni"})
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-crm-border">
+                <FlatRow
+                  label="Questionari completati"
+                  before={flatTest.before.quizzes}
+                  test={flatTest.test.quizzes}
+                  beforeDays={flatTest.before.days}
+                  testDays={flatTest.test.days}
+                />
+                <FlatRow
+                  label="Pratiche nate dal sito o dal CRM"
+                  before={flatTest.before.requests}
+                  test={flatTest.test.requests}
+                  beforeDays={flatTest.before.days}
+                  testDays={flatTest.test.days}
+                />
+                <FlatRow
+                  label="Pratiche pagate"
+                  before={flatTest.before.paid}
+                  test={flatTest.test.paid}
+                  beforeDays={flatTest.before.days}
+                  testDays={flatTest.test.days}
+                  testNote={`di cui a prezzo unico ${flatTest.test.paidFlat}`}
+                />
+                <FlatRow
+                  label="Onorari delle pratiche pagate"
+                  before={flatTest.before.revenue}
+                  test={flatTest.test.revenue}
+                  beforeDays={flatTest.before.days}
+                  testDays={flatTest.test.days}
+                  euro
+                />
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-3 rounded-lg bg-crm-bg2/60 p-3 text-xs text-crm-muted">
+            Come leggerlo: se le pratiche pagate al giorno non salgono nemmeno a{" "}
+            {FLAT_OFFER.price} €, il freno non è il prezzo; se salgono, gli onorari al giorno dicono
+            se il prezzo più basso si ripaga. Questionari: il conteggio giornaliero parte con il
+            test, quindi per il periodo prima non c&apos;è il dato (resta il totale in alto).
+          </p>
+        </CrmCard>
+      )}
 
       <div className="grid gap-6 lg:grid-cols-2">
         {/* Pratiche per stato */}
@@ -244,6 +370,53 @@ export default async function StatistichePage() {
         </div>
       </CrmCard>
     </div>
+  );
+}
+
+function perDay(value: number, days: number, euro: boolean): string {
+  const rate = value / Math.max(1, days);
+  return euro
+    ? `${Math.round(rate).toLocaleString("it-IT")} € al giorno`
+    : `${rate.toLocaleString("it-IT", { maximumFractionDigits: 1 })} al giorno`;
+}
+
+function FlatRow({
+  label,
+  before,
+  test,
+  beforeDays,
+  testDays,
+  euro = false,
+  testNote,
+}: {
+  label: string;
+  before: number | null;
+  test: number | null;
+  beforeDays: number;
+  testDays: number;
+  euro?: boolean;
+  testNote?: string;
+}) {
+  const cell = (value: number | null, days: number, note?: string) =>
+    value === null ? (
+      <span className="text-crm-muted">—</span>
+    ) : (
+      <>
+        <span className="font-medium text-crm-text">
+          {euro ? `${value.toLocaleString("it-IT")} €` : value}
+        </span>
+        <span className="block text-[11px] text-crm-muted">
+          {perDay(value, days, euro)}
+          {note ? ` · ${note}` : ""}
+        </span>
+      </>
+    );
+  return (
+    <tr>
+      <td className="py-2 pr-3 text-crm-text2">{label}</td>
+      <td className="py-2 pr-3">{cell(before, beforeDays)}</td>
+      <td className="py-2">{cell(test, testDays, testNote)}</td>
+    </tr>
   );
 }
 

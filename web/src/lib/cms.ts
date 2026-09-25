@@ -10,7 +10,8 @@ import {
 } from "@/content/site";
 import { articles as fixtureArticles, type Article } from "@/content/articles";
 import type { PackageRow, AddonRow, FaqRow } from "@/lib/supabase/types";
-import { DEFAULT_LOCALE, list } from "@/lib/content";
+import { DEFAULT_LOCALE, FLAT_OFFER_COLLECTION, list } from "@/lib/content";
+import { isFlatOfferOn } from "@/lib/flat-offer";
 import {
   applyAddonI18n,
   applyPackageI18n,
@@ -145,6 +146,10 @@ export async function getAddons(
  * subito tutte le righe nel CRM, e Lorenzo continua a editare l'IT dal listino.
  */
 export async function getFaqs(locale: string = "it"): Promise<Faq[]> {
+  return applyFlatOfferFaqs(await getFaqsBase(locale), locale);
+}
+
+async function getFaqsBase(locale: string): Promise<Faq[]> {
   if (locale === "it") {
     const fromDb = await fetchFaqsFromDb("it");
     if (fromDb.length > 0) return fromDb;
@@ -164,6 +169,30 @@ export async function getFaqs(locale: string = "it"): Promise<Faq[]> {
   const itContent = listFaqItems("it");
   if (itContent.length > 0) return itContent;
   return fixtureFaqs;
+}
+
+/*
+  Test prezzo unico: le FAQ sul prezzo (IT dal listino CRM, altre lingue dal
+  content) prendono la risposta da `prezzo_unico.faq_answers`, abbinata per
+  testo della domanda. Il database non si tocca.
+*/
+function applyFlatOfferFaqs(faqs: Faq[], locale: string): Faq[] {
+  if (!isFlatOfferOn()) return faqs;
+  const answers = list<{ question?: string; answer?: string }>(
+    FLAT_OFFER_COLLECTION,
+    "faq_answers",
+    locale,
+  );
+  if (answers.length === 0) return faqs;
+  const byQuestion = new Map(
+    answers
+      .filter((a) => a.question && a.answer)
+      .map((a) => [a.question!.trim(), a.answer!]),
+  );
+  return faqs.map((f) => {
+    const answer = byQuestion.get(f.question.trim());
+    return answer ? { ...f, answer } : f;
+  });
 }
 
 function listFaqItems(locale: string): Faq[] {

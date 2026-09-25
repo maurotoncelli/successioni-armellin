@@ -256,6 +256,87 @@ export const PROMO_UI_IT: PromoUiLabels = {
   ],
 };
 
+/*
+  Test prezzo unico (lib/flat-offer.ts): card in vetrina, barra in alto e
+  risultato del questionario. Contenuto in `site_ui.flat_offer_ui` (11 lingue);
+  placeholder: {price} prezzo unico, {n} numero di immobili o eredi.
+*/
+export type FlatOfferUiLabels = {
+  /** Riga d'ordine (checkout, email, Stripe in IT). */
+  line_label: string;
+  badge: string;
+  title: string;
+  tagline: string;
+  price_note: string;
+  taxes_note: string;
+  sla: string;
+  features: string[];
+  cta: string;
+  cta_hint: string;
+  custom_title: string;
+  custom_text: string;
+  custom_cta: string;
+  banner_text: string;
+  banner_note: string;
+  banner_cta: string;
+  result_title: string;
+  result_price_label: string;
+  result_case_title: string;
+  case_property_one: string;
+  case_property_many: string;
+  case_property_some: string;
+  case_property_unknown: string;
+  case_property_none: string;
+  case_heir_one: string;
+  case_heir_many: string;
+  case_heirs_abroad: string;
+  case_will: string;
+  case_core: string;
+  result_no_surcharge: string;
+};
+
+export const FLAT_OFFER_UI_IT: FlatOfferUiLabels = {
+  line_label: "Successione tutto incluso — prezzo unico",
+  badge: "Prezzo unico",
+  title: "Successione tutto incluso",
+  tagline: "Un solo prezzo, qualunque sia il tuo caso",
+  price_note: "onorario finale, senza IVA",
+  taxes_note: "Imposte di Stato a parte: te le calcoliamo noi",
+  sla: "Invio entro 7-10 giorni lavorativi dai documenti completi",
+  features: [
+    "Qualsiasi numero di immobili, terreni compresi, con la voltura catastale di ciascuno",
+    "Qualsiasi numero di eredi, anche residenti all'estero",
+    "Con o senza testamento",
+    "Calcolo delle imposte, dichiarazione e invio all'Agenzia delle Entrate",
+    "Area personale e Lorenzo che ti segue dall'inizio alla fine",
+    "Garanzia Soddisfatti o Rimborsati",
+  ],
+  cta: "Calcola il preventivo gratis",
+  cta_hint: "In un minuto vedi cosa comprende per il tuo caso",
+  custom_title: "Aziende, quote societarie, azioni o barche?",
+  custom_text:
+    "Questi beni non rientrano nel prezzo unico: ti facciamo un preventivo su misura, gratis, entro un giorno lavorativo.",
+  custom_cta: "Richiedi il preventivo",
+  banner_text: "Prezzo unico {price} € tutto incluso",
+  banner_note: "imposte di Stato a parte",
+  banner_cta: "Calcola il preventivo",
+  result_title: "Il tuo caso rientra nel prezzo unico",
+  result_price_label: "Prezzo unico, tutto incluso",
+  result_case_title: "Nel tuo caso è compreso",
+  case_property_one: "1 immobile, con la voltura catastale",
+  case_property_many: "{n} immobili, ognuno con la voltura catastale",
+  case_property_some: "Tutti gli immobili, con le volture catastali",
+  case_property_unknown: "Gli immobili che risulteranno dalle verifiche, con le volture catastali",
+  case_property_none: "Conti, titoli e gli altri beni da dichiarare",
+  case_heir_one: "1 erede",
+  case_heir_many: "{n} eredi",
+  case_heirs_abroad: "Eredi residenti all'estero, senza costi in più",
+  case_will: "Il testamento",
+  case_core: "Calcolo delle imposte, dichiarazione e invio all'Agenzia delle Entrate",
+  result_no_surcharge:
+    "Nessun supplemento: il prezzo non cambia con il numero di immobili o di eredi.",
+};
+
 export const CHECKOUT_UI_IT: CheckoutUiLabels = {
   stripe_blurb:
     "Pagamento sicuro tramite Stripe: carta di credito/debito e, dove disponibile, pagamento a rate. Verrai reindirizzato alla pagina protetta di Stripe.",

@@ -4,6 +4,7 @@ import { getAdminClient, isAdminConfigured } from "@/lib/supabase/admin";
 import { getStripe, isStripeConfigured } from "@/lib/stripe";
 import { getPackagesAdmin, getAddons } from "@/lib/cms";
 import { buildOrder } from "@/lib/order";
+import { FLAT_OFFER, flatOfferForPractice, hasFlatOfferLine } from "@/lib/flat-offer";
 import type { PackageKey, PackageRow, PracticeRow } from "@/lib/supabase/types";
 import { parseAttribution } from "@/lib/attribution-shared";
 import type { Package } from "@/content/site";
@@ -176,6 +177,14 @@ export async function createCheckoutSession(
   }));
   // Prezzo SEMPRE ricalcolato lato server dai dati della pratica (immobili ed
   // eredi oltre la capienza inclusa → sovrapprezzi), mai dal client.
+  // Prezzo unico: attivo, oppure garantito a chi l'ha già avuto (lib/flat-offer.ts).
+  // Il saldo segue la regola con cui è stato pagato l'acconto.
+  const flat =
+    plan === "balance"
+      ? hasFlatOfferLine(row.line_items)
+        ? FLAT_OFFER
+        : null
+      : flatOfferForPractice(row.line_items);
   const order = buildOrder(
     {
       packageKey,
@@ -185,6 +194,9 @@ export async function createCheckoutSession(
     },
     packagesForOrder,
     addons,
+    undefined,
+    undefined,
+    flat,
   );
   if (!order || order.total <= 0) {
     return { ok: false, error: "Importo dell'ordine non valido." };
@@ -204,20 +216,27 @@ export async function createCheckoutSession(
   }
 
   // Snapshot prezzo/righe sulla pratica. PENDING solo se non è già pagato
-  // l'acconto (il saldo non deve far tornare la pratica in attesa).
-  const practicePatch: Partial<PracticeRow> = {
-    selected_package: order.packageKey,
-    price: order.total,
-    line_items: order.lineItems,
-  };
+  // l'acconto (il saldo non deve far tornare la pratica in attesa). Al saldo
+  // prezzo e righe restano quelli dell'acconto (promo o listino di allora):
+  // la fattura li legge da qui.
+  const practicePatch: Partial<PracticeRow> =
+    plan === "balance"
+      ? {}
+      : {
+          selected_package: order.packageKey,
+          price: order.total,
+          line_items: order.lineItems,
+        };
   if (row.payment_status !== "PAID") {
     practicePatch.payment_status = "PENDING";
   }
-  const { error: updErr } = await admin
-    .from("practices")
-    .update(practicePatch)
-    .eq("id", practiceId);
-  if (updErr) return { ok: false, error: updErr.message };
+  if (Object.keys(practicePatch).length > 0) {
+    const { error: updErr } = await admin
+      .from("practices")
+      .update(practicePatch)
+      .eq("id", practiceId);
+    if (updErr) return { ok: false, error: updErr.message };
+  }
 
   if (plan === "deposit") {
     await upsertPaymentPlan(practiceId, {
@@ -232,7 +251,14 @@ export async function createCheckoutSession(
 
   try {
     const stripe = getStripe();
+    const storedPkgLabel =
+      plan === "balance" && Array.isArray(row.line_items)
+        ? (row.line_items as { type?: string; label?: string }[]).find(
+            (li) => li?.type === "PACKAGE",
+          )?.label
+        : undefined;
     const pkgLabel =
+      storedPkgLabel ??
       order.lineItems.find((li) => li.type === "PACKAGE")?.label ??
       "Onorario dichiarazione di successione";
     const splitLineName =
@@ -285,6 +311,7 @@ export async function createCheckoutSession(
         ...(order.discount
           ? { promo_code: order.discount.code, promo_percent: String(order.discount.percent) }
           : {}),
+        ...(hasFlatOfferLine(order.lineItems) ? { flat_offer: FLAT_OFFER.code } : {}),
         ...stripeAttributionMeta(row.attribution),
       },
       payment_intent_data: {

@@ -1,4 +1,5 @@
 import type { PackageKey } from "@/lib/supabase/types";
+import { isFlatOfferOn } from "@/lib/flat-offer";
 
 /*
   Logica PURA di pre-valutazione del preventivo (nessun side-effect, nessun
@@ -107,7 +108,10 @@ export function computeEsito(input: {
   // resta nei pacchetti con sovrapprezzo (+60 per immobile oltre il 3o, +60
   // per erede oltre il 5o nel Completo, vedi lib/order.ts).
   // Il testamento resta nei pacchetti (serve solo come documento in checklist).
-  if (input.hasOther === "si" || input.hasRealEstate === "nonso") return "c";
+  // Prezzo unico (lib/flat-offer.ts): il numero di immobili non conta, quindi
+  // "non so" resta nel prezzo; su misura solo per gli altri beni.
+  if (input.hasOther === "si") return "c";
+  if (input.hasRealEstate === "nonso" && !isFlatOfferOn()) return "c";
   if (input.hasRealEstate === "no" && input.allDirectLine) {
     // L'esonero art. 28 c.7 TUS vale solo con attivo ereditario <= 100.000 EUR:
     // sopra soglia la dichiarazione e' dovuta anche in linea retta -> Semplice.

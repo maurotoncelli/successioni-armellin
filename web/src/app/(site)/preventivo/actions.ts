@@ -13,6 +13,8 @@ import {
 } from "@/lib/quote";
 import { getPackages, getAddons } from "@/lib/cms";
 import { buildOrder } from "@/lib/order";
+import { FLAT_OFFER, hasFlatOfferLine } from "@/lib/flat-offer";
+import { FLAT_OFFER_UI_IT } from "@/lib/site-ui-labels";
 import { notifyAdminNewLead, notifyLeadRecap, siteBase } from "@/lib/notifications";
 import { pushCrmNotification } from "@/lib/crm-notifications";
 import { upsertContactByEmail } from "@/lib/contacts";
@@ -150,6 +152,7 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
       packageName: pkgNameIt,
       lineItems: orderIt?.lineItems.map((li) => ({ key: li.key, label: li.label, amount: li.amount })),
       total: orderIt?.total ?? null,
+      offer: hasFlatOfferLine(orderIt?.lineItems) ? FLAT_OFFER.code : null,
       answers: {
         hasWill: input.hasWill,
         heirs: input.heirsComposition,
@@ -234,6 +237,7 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
         },
         locale,
       );
+      const flatUi = obj("site_ui", "flat_offer_ui", FLAT_OFFER_UI_IT, locale);
 
       // packageLabel admin = sempre IT (CRM/Lorenzo); recap cliente = locale UI.
       let packageLabelAdmin: string | undefined;
@@ -261,12 +265,17 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
             {
               extraProperty: checkoutUi.extra_property,
               extraHeir: checkoutUi.extra_heir,
+              flatLine: flatUi.line_label,
             },
           );
           const pkgUi = packagesUi.find((p) => p.key === pkgKey);
           const pkgIt = packagesIt.find((p) => p.key === pkgKey);
           if (order && pkgUi) {
-            packageLabelAdmin = `${pkgIt?.name ?? pkgUi.name} (${order.total.toLocaleString("it-IT")} €)`;
+            const flat = hasFlatOfferLine(order.lineItems);
+            const totalIt = `${order.total.toLocaleString("it-IT")} €`;
+            packageLabelAdmin = flat
+              ? `Prezzo unico ${totalIt} (test) · caso ${pkgKey === "SEMPLICE" ? "senza" : "con"} immobili`
+              : `${pkgIt?.name ?? pkgUi.name} (${totalIt})`;
             const base = siteBase();
             // Importante: riusa la pratica SoftLead (practice=), altrimenti il
             // checkout creerebbe una SECONDA pratica anonima e il lead originale
@@ -279,10 +288,11 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
               params.set("recount", String(input.realEstateCount));
             recap = {
               kind: "package",
-              packageLabel: pkgUi.name,
+              packageLabel: flat ? flatUi.line_label : pkgUi.name,
               total: order.total,
               checkoutUrl: `${base}/checkout?${params.toString()}`,
               locale,
+              flat,
             };
           }
         }

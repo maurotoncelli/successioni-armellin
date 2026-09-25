@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import { getRequestLocale, t, tCta, tList, tObj } from "@/lib/locale";
 import {
   CHECKOUT_UI_IT,
+  FLAT_OFFER_UI_IT,
   type CheckoutUiLabels,
+  type FlatOfferUiLabels,
 } from "@/lib/site-ui-labels";
+import { FLAT_OFFER, flatOfferForPractice, hasFlatOfferLine } from "@/lib/flat-offer";
 import Link from "next/link";
 import { ShieldCheck, Info, Tag } from "lucide-react";
 import {
@@ -85,6 +88,23 @@ export default async function CheckoutPage({
     (paramComposition ? totalHeirs(paramComposition) : null) ??
     (Number.isFinite(paramHeirs) ? paramHeirs : null);
 
+  const extras =
+    practiceId && isAdminConfigured ? await getSafeExtras(practiceId) : {};
+  const storedPlan =
+    extras.paymentPlan?.plan === "split50" ? extras.paymentPlan : null;
+  const balanceDue = isBalanceDue(storedPlan);
+
+  // Prezzo unico: attivo, oppure garantito alla pratica che l'ha già avuto; il
+  // saldo segue la regola dell'acconto (come lib/payments.ts: pagina e Stripe
+  // coincidono).
+  const flatUi = await tObj<FlatOfferUiLabels>("site_ui", "flat_offer_ui", FLAT_OFFER_UI_IT);
+  const flat = practice
+    ? balanceDue
+      ? hasFlatOfferLine(practice.lineItems)
+        ? FLAT_OFFER
+        : null
+      : flatOfferForPractice(practice.lineItems)
+    : undefined;
   const order = packageKey
     ? buildOrder(
         {
@@ -98,20 +118,18 @@ export default async function CheckoutPage({
           extraProperty: checkoutUi.extra_property,
           extraHeir: checkoutUi.extra_heir,
           discount: promoCtx.ui.discount_line,
+          flatLine: flatUi.line_label,
         },
+        undefined,
+        flat,
       )
     : null;
 
   const pkg = packageKey ? packages.find((p) => p.key === packageKey) : undefined;
 
-  const extras =
-    practiceId && isAdminConfigured ? await getSafeExtras(practiceId) : {};
-  const storedPlan =
-    extras.paymentPlan?.plan === "split50" ? extras.paymentPlan : null;
   const split = storedPlan
     ? { deposit: storedPlan.deposit, balance: storedPlan.balance }
     : splitHonorarium(order?.total ?? 0);
-  const balanceDue = isBalanceDue(storedPlan);
 
   const trustItems = await tList<string>("checkout", "trust_items");
   const modificaLink = await tCta("checkout", "modifica_link");

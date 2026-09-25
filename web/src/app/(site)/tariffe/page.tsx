@@ -26,6 +26,7 @@ import { CtaBand } from "@/components/site/cta-band";
 import { AddonCards } from "@/components/site/addon-cards";
 import { Emph, EmphBlock } from "@/components/site/emph";
 import { getAddons } from "@/lib/cms";
+import { isFlatOfferOn } from "@/lib/flat-offer";
 import Link from "next/link";
 
 /** Icone per `tariffe.deliverable_list` (ordine fisso delle voci in content). */
@@ -44,6 +45,17 @@ const GUIDA_ICONS: { Icon: LucideIcon; accent: boolean }[] = [
   { Icon: Undo2, accent: false },
 ];
 
+/* Prezzo unico: la seconda voce è "cosa non è compreso", non il cambio pacchetto. */
+const GUIDA_ICONS_FLAT: { Icon: LucideIcon; accent: boolean }[] = [
+  { Icon: Package, accent: true },
+  { Icon: Receipt, accent: false },
+  { Icon: FolderOpen, accent: true },
+  { Icon: Undo2, accent: false },
+];
+
+/* La voltura è già nel prezzo unico per ogni immobile. */
+const ADDONS_HIDDEN_FLAT = new Set(["VOLTURA_EXTRA"]);
+
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: await navPageTitle("/tariffe", "Tariffe"),
@@ -57,7 +69,11 @@ export default async function TariffePage() {
   const deliverable = await tList<string>("tariffe", "deliverable_list");
   const finalCta = await tCta("tariffe", "cta_finale_button");
   const tiServeCta = await tCta("tariffe", "ti_serve_cta");
-  const addons = await getAddons(locale);
+  const flatOn = isFlatOfferOn();
+  const guidaIcons = flatOn ? GUIDA_ICONS_FLAT : GUIDA_ICONS;
+  const addons = (await getAddons(locale)).filter(
+    (a) => !flatOn || !ADDONS_HIDDEN_FLAT.has(a.key),
+  );
 
   const telefono = await tObj("contatti", "telefono", {
     numero: "",
@@ -109,7 +125,7 @@ export default async function TariffePage() {
         />
         <div className="mx-auto mt-8 grid max-w-4xl gap-3 sm:mt-10 sm:grid-cols-2 sm:gap-4">
           {guidaItems.map((item, i) => {
-            const { Icon, accent } = GUIDA_ICONS[i] ?? GUIDA_ICONS[0];
+            const { Icon, accent } = guidaIcons[i] ?? guidaIcons[0];
             return (
               <article
                 key={item.titolo}

@@ -109,6 +109,16 @@
       }
     },
     {
+      "collection": "globals",
+      "key": "mobile_cta_whatsapp",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "label": "Scrivi su WhatsApp",
+        "prefill": "Ciao Lorenzo, ho visto il sito e vorrei qualche informazione sulla successione."
+      }
+    },
+    {
       "collection": "footer",
       "key": "studio",
       "locale": "it",
@@ -127,7 +137,7 @@
       "key": "trust_line",
       "locale": "it",
       "is_published": true,
-      "value": "Geom. abilitato Entratel - con supervisione fiscale di commercialisti"
+      "value": "Geometra abilitato all'esercizio della libera professione."
     },
     {
       "collection": "footer",
@@ -180,16 +190,6 @@
       "locale": "it",
       "is_published": true,
       "value": "Realizzato da AT STUDIO · Mauro Toncelli"
-    },
-    {
-      "collection": "footer",
-      "key": "strumenti_link",
-      "locale": "it",
-      "is_published": true,
-      "value": {
-        "label": "Calcolo valore catastale",
-        "href": "/strumenti/valore-catastale"
-      }
     },
     {
       "collection": "settings",
@@ -272,7 +272,7 @@
       "key": "hero_subtitle",
       "locale": "it",
       "is_published": true,
-      "value": "Ci pensa il Geom. Lorenzo Armellin, specializzato in successioni: prezzo chiaro, tutto online (e se vuoi anche di persona), una persona reale che ti segue. Le imposte le calcoliamo noi, prima di farti pagare."
+      "value": "Ci pensa il Geom. Lorenzo Armellin, specializzato in successioni: prezzo chiaro, tutto online (e se vuoi anche di persona), una persona reale che ti segue. Le imposte le calcoliamo noi."
     },
     {
       "collection": "home",
@@ -353,6 +353,20 @@
     },
     {
       "collection": "home",
+      "key": "success_counter",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "target": 250,
+        "suffix": "+",
+        "eyebrow": "Esperienza sul campo",
+        "label": "successioni seguite",
+        "note": "Stima complessiva delle pratiche seguite dallo studio negli anni, in ufficio e online: ogni successione gestita di persona, una alla volta.",
+        "headline": "Centinaia di successioni seguite da Lorenzo"
+      }
+    },
+    {
+      "collection": "home",
       "key": "problema_title",
       "locale": "it",
       "is_published": true,
@@ -373,16 +387,16 @@
       "value": [
         {
           "titolo": "Zero code",
-          "testo": "Fai tutto da casa, anche da telefono.",
+          "testo": "Tutto da casa, anche dal telefono: niente code, niente sportelli.",
           "extra": "Controlla comodamente dalla tua area personale."
         },
         {
           "titolo": "Zero errori e sanzioni",
-          "testo": "Controllo tecnico dei dati catastali da un geometra abilitato."
+          "testo": "Un geometra abilitato controlla i dati catastali e gli atti di provenienza, dove le pratiche si bloccano."
         },
         {
           "titolo": "Assistenza umana",
-          "testo": "Parli sempre con una persona reale, non con un bot."
+          "testo": "Una persona reale ti segue dall'inizio alla fine. Mai un bot."
         }
       ]
     },
@@ -437,7 +451,17 @@
       "key": "come_funziona_sla_note",
       "locale": "it",
       "is_published": true,
-      "value": "Invio entro 10-15 giorni lavorativi (in base al pacchetto) da quando abbiamo tutti i documenti completi."
+      "value": "Invio entro 7-10 giorni lavorativi (in base al pacchetto) da quando abbiamo tutti i documenti completi."
+    },
+    {
+      "collection": "home",
+      "key": "come_funziona_video_cta",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "label": "Guarda il video",
+        "href": "/come-funziona#video"
+      }
     },
     {
       "collection": "home",
@@ -578,7 +602,7 @@
       "key": "chisono_estratto",
       "locale": "it",
       "is_published": true,
-      "value": "Sono Lorenzo Armellin, geometra abilitato a trasmettere le successioni all'Agenzia delle Entrate. Con la supervisione fiscale di commercialisti, unisco la precisione sui dati catastali alla sicurezza sui numeri."
+      "value": "Sono Lorenzo Armellin, geometra abilitato all'esercizio della libera professione. Predispongo e trasmetto la dichiarazione di successione: sono abilitato a farlo."
     },
     {
       "collection": "home",
@@ -690,7 +714,7 @@
       "key": "box_trasparenza_body",
       "locale": "it",
       "is_published": true,
-      "value": "Il prezzo del pacchetto è l'onorario professionale senza IVA: lo studio opera in regime forfettario (operazione non soggetta a IVA). Le imposte di successione (ipotecaria, catastale, bolli) sono separate, a carico dell'erede, e si versano con F24: te le calcoliamo e comunichiamo PRIMA dell'invio."
+      "value": "Il prezzo del pacchetto è l'**onorario professionale senza IVA**: lo studio opera in regime forfettario (operazione non soggetta a IVA).\n\nLe **imposte di successione** (ipotecaria, catastale, bolli) sono **separate, a carico dell'erede**, e si versano con F24: te le calcoliamo e comunichiamo **prima dell'invio**."
     },
     {
       "collection": "tariffe",
@@ -731,7 +755,7 @@
       "key": "sla_note",
       "locale": "it",
       "is_published": true,
-      "value": "Ogni pacchetto indica l'invio della dichiarazione entro un numero preciso di giorni lavorativi dalla documentazione COMPLETA (non dal pagamento): così è una promessa che possiamo davvero mantenere. Sono esclusi i tempi di enti terzi (Agenzia, Catasto, banche)."
+      "value": "Ogni pacchetto indica l'invio della dichiarazione entro un numero preciso di **giorni lavorativi** dalla **documentazione completa** (non dal pagamento): così è una promessa che possiamo davvero mantenere.\n\nSono **esclusi i tempi di enti terzi** (Agenzia, Catasto, banche)."
     },
     {
       "collection": "tariffe",
@@ -793,7 +817,7 @@
       "key": "su_misura_text",
       "locale": "it",
       "is_published": true,
-      "value": "Oltre 3 immobili, terreni agricoli, aziende o quote societarie? Ogni caso è diverso: ti facciamo un preventivo su misura, senza sorprese."
+      "value": "Terreni agricoli, aziende, quote societarie, imbarcazioni o altri beni particolari? Ogni caso è diverso: ti facciamo un preventivo su misura, senza sorprese."
     },
     {
       "collection": "tariffe",
@@ -817,7 +841,7 @@
       "key": "ti_serve_body",
       "locale": "it",
       "is_published": true,
-      "value": "In alcuni casi (eredi diretti, solo liquidità modesta entro le soglie di legge, nessun immobile) la dichiarazione potrebbe non essere dovuta. Verifichiamo il tuo caso prima di farti pagare: se non ti serve, te lo diciamo. La verifica definitiva è sempre sul caso concreto."
+      "value": "In alcuni casi (eredi diretti, solo liquidità modesta entro le soglie di legge, nessun immobile) la dichiarazione potrebbe non essere dovuta. Verifichiamo il tuo caso gratis: se non ti serve, te lo diciamo. La verifica definitiva è sempre sul caso concreto."
     },
     {
       "collection": "tariffe",
@@ -834,14 +858,14 @@
       "key": "guida_scelta_title",
       "locale": "it",
       "is_published": true,
-      "value": "Non sai quale scegliere?"
+      "value": "Prima di scegliere (e dopo aver pagato)"
     },
     {
       "collection": "tariffe",
       "key": "guida_scelta_body",
       "locale": "it",
       "is_published": true,
-      "value": "Leggi la guida rapida alla scelta del pacchetto, oppure fai due chiacchiere con Lorenzo: in pochi minuti capisci quello giusto. E se cambi idea, cambiare pacchetto è semplice e regoli solo la differenza."
+      "value": "Tre minuti per capire come funziona, senza sorprese."
     },
     {
       "collection": "tariffe",
@@ -865,10 +889,44 @@
     },
     {
       "collection": "tariffe",
+      "key": "guida_scelta_recesso",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "label": "Come funziona il recesso",
+        "href": "/recesso"
+      }
+    },
+    {
+      "collection": "tariffe",
+      "key": "guida_scelta_items",
+      "locale": "it",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "Quale pacchetto",
+          "testo": "**Semplice** = solo conti e liquidità, niente immobili. **Con immobili** = fino a 3 immobili e 5 eredi, voltura inclusa; se sono di più, ogni immobile o erede in più costa 60 € e lo vedi chiaramente prima di pagare. Casi particolari (terreni agricoli, aziende, quote, imbarcazioni): **preventivo su misura, gratis**. Se non sai da che parte stare, scrivi a Lorenzo: te lo diciamo noi."
+        },
+        {
+          "titolo": "Se paghi il pacchetto sbagliato",
+          "testo": "Non è un problema. Si cambia: paghi o ti rimborsiamo **solo la differenza**. Non si ricomincia da capo e non si butta via quello già versato."
+        },
+        {
+          "titolo": "Cosa succede dopo il pagamento",
+          "testo": "Si apre l'**area personale**: lì carichi i documenti (anche da foto), firmi il mandato, segui la pratica e parli con Lorenzo. Non devi andare in nessuno sportello."
+        },
+        {
+          "titolo": "Se cambi idea",
+          "testo": "Hai **14 giorni** di recesso di legge. Se ci chiedi di partire subito e il lavoro è già finito, il recesso non si applica più — te lo diciamo prima, in modo chiaro."
+        }
+      ]
+    },
+    {
+      "collection": "tariffe",
       "key": "microtrust",
       "locale": "it",
       "is_published": true,
-      "value": "Geometra abilitato Entratel, con supervisione fiscale di commercialisti."
+      "value": "Geometra abilitato all'esercizio della libera professione."
     },
     {
       "collection": "tariffe",
@@ -913,7 +971,7 @@
       "key": "su_misura_body",
       "locale": "it",
       "is_published": true,
-      "value": "Oltre 3 immobili, terreni agricoli, aziende o quote societarie? I casi più complessi non stanno in un pacchetto standard: studiamo il tuo e ti prepariamo un preventivo dedicato, senza sorprese."
+      "value": "Terreni agricoli, aziende, quote societarie, imbarcazioni o altri beni particolari? I casi più complessi non stanno in un pacchetto standard: studiamo il tuo e ti prepariamo un preventivo dedicato, senza sorprese."
     },
     {
       "collection": "pacchetti",
@@ -1006,14 +1064,14 @@
       "key": "team_title",
       "locale": "it",
       "is_published": true,
-      "value": "Geometra sui catastali, commercialisti sui numeri"
+      "value": "Geometra: la figura professionale giusta per la dichiarazione di successione."
     },
     {
       "collection": "chi_siamo",
       "key": "team_body",
       "locale": "it",
       "is_published": true,
-      "value": "Predispongo e trasmetto io la dichiarazione: sono abilitato a farlo. Per la parte fiscale mi avvalgo della supervisione di commercialisti. Così hai il controllo tecnico sui dati catastali e la sicurezza sui calcoli, senza spezzare la pratica tra studi diversi."
+      "value": "Per la redazione della successione occorrono competenze **catastali, giuridiche e fiscali**: la figura che le racchiude tutte per sua formazione è il geometra. Predispongo e trasmetto la dichiarazione: **sono abilitato a farlo**."
     },
     {
       "collection": "chi_siamo",
@@ -1044,7 +1102,7 @@
       "key": "perche_geometra_body",
       "locale": "it",
       "is_published": true,
-      "value": "Molti si aspettano un commercialista, un CAF o un notaio. Nella successione, però, il punto più delicato sono i dati catastali: è il mestiere del geometra. Per il deposito serve un intermediario Entratel — lo sono. Il notaio interviene solo per atti successivi, non per la dichiarazione."
+      "value": "Molti si aspettano un commercialista, un CAF o un notaio. Nella successione, però, il punto più delicato sono **i dati catastali: è il mestiere del geometra**. Per il deposito serve un **intermediario Entratel — lo sono**. Il notaio interviene solo per atti successivi, non per la dichiarazione."
     },
     {
       "collection": "chi_siamo",
@@ -1083,7 +1141,7 @@
       "key": "studio_foto_alt",
       "locale": "it",
       "is_published": true,
-      "value": "Duomo di Pontedera"
+      "value": "Via Vittorio Veneto, Pontedera"
     },
     {
       "collection": "chi_siamo",
@@ -1335,6 +1393,13 @@
     },
     {
       "collection": "faq",
+      "key": "featured_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Prima i dubbi che bloccano"
+    },
+    {
+      "collection": "faq",
       "key": "hero_search",
       "locale": "it",
       "is_published": true,
@@ -1557,6 +1622,69 @@
     },
     {
       "collection": "come_funziona",
+      "key": "video_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Guarda come funziona"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_caption",
+      "locale": "it",
+      "is_published": true,
+      "value": "Una ragazza fa la successione sul sito: dal preventivo ai documenti, da casa. Due minuti."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_alt",
+      "locale": "it",
+      "is_published": true,
+      "value": "Video esplicativo: una ragazza completa la dichiarazione di successione sul sito"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_play",
+      "locale": "it",
+      "is_published": true,
+      "value": "Riproduci il video su come funziona"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_badge",
+      "locale": "it",
+      "is_published": true,
+      "value": "Video in arrivo"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_duration",
+      "locale": "it",
+      "is_published": true,
+      "value": "Circa 2 min"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_duration_placeholder",
+      "locale": "it",
+      "is_published": true,
+      "value": "Anteprima — video definitivo in arrivo"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_captions_label",
+      "locale": "it",
+      "is_published": true,
+      "value": "Sottotitoli"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "video_captions_off",
+      "locale": "it",
+      "is_published": true,
+      "value": "Nessuno"
+    },
+    {
+      "collection": "come_funziona",
       "key": "steps",
       "locale": "it",
       "is_published": true,
@@ -1593,7 +1721,7 @@
       "key": "sla_body",
       "locale": "it",
       "is_published": true,
-      "value": "I tempi dipendono dal pacchetto e partono da quando abbiamo TUTTI i documenti completi e corretti (non dal pagamento): così è una promessa che possiamo mantenere davvero. Sono esclusi i tempi di enti terzi (Agenzia, Catasto, banche)."
+      "value": "I tempi dipendono dal pacchetto e partono da quando abbiamo **tutti i documenti completi e corretti** (non dal pagamento): così è una promessa che possiamo mantenere davvero.\n\nSono **esclusi i tempi di enti terzi** (Agenzia, Catasto, banche)."
     },
     {
       "collection": "come_funziona",
@@ -1607,7 +1735,7 @@
       "key": "valore_body",
       "locale": "it",
       "is_published": true,
-      "value": "Verifichiamo a mano i dati catastali - particelle, subalterni, annessi, atti di provenienza - che sono il punto dove le pratiche si bloccano. Con la supervisione fiscale di commercialisti sui numeri. È la differenza tra un modulo riempito e una pratica fatta bene."
+      "value": "Verifichiamo a mano i **dati catastali e gli atti di provenienza** — particelle, subalterni, annessi — che sono il punto dove le pratiche si bloccano. È la differenza tra un modulo riempito e **una pratica fatta bene**."
     },
     {
       "collection": "come_funziona",
@@ -1621,7 +1749,7 @@
       "key": "distanza_body",
       "locale": "it",
       "is_published": true,
-      "value": "Non devi andare in nessun ufficio né in banca: questionario, documenti, comunicazioni e invio all'Agenzia avvengono online. C'è sempre una chiamata con Lorenzo per spiegarti tutto."
+      "value": "Non devi andare in **nessun ufficio né in banca**: questionario, documenti, comunicazioni e invio all'Agenzia avvengono **online**.\n\nC'è sempre **una chiamata con Lorenzo** per spiegarti tutto."
     },
     {
       "collection": "come_funziona",
@@ -1689,6 +1817,128 @@
       "value": {
         "label": "Parla con Lorenzo",
         "href": "tel:+393201570567"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_cta_label",
+      "locale": "it",
+      "is_published": true,
+      "value": "Calcola il preventivo gratis"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_cta_hint",
+      "locale": "it",
+      "is_published": true,
+      "value": "1 minuto, senza impegno"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_video_label",
+      "locale": "it",
+      "is_published": true,
+      "value": "Guarda il video (2 min)"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "hero_trust_items",
+      "locale": "it",
+      "is_published": true,
+      "value": [
+        "Da {price} €",
+        "Centinaia di successioni seguite",
+        "Tutto online, anche da casa"
+      ]
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Hai capito come funziona? Inizia dal passo 1."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_label",
+      "locale": "it",
+      "is_published": true,
+      "value": "Calcola il preventivo gratis"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "steps_cta_hint",
+      "locale": "it",
+      "is_published": true,
+      "value": "Un minuto, nessuna registrazione: ti diciamo subito se la successione è dovuta e quanto costa."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_eyebrow",
+      "locale": "it",
+      "is_published": true,
+      "value": "Quanto costa"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Prezzi chiari, prima di iniziare"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_intro",
+      "locale": "it",
+      "is_published": true,
+      "value": "L'onorario è fisso e lo conosci subito. Le imposte sono a parte: te le calcoliamo noi prima dell'invio."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_custom_name",
+      "locale": "it",
+      "is_published": true,
+      "value": "Su misura"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_custom_body",
+      "locale": "it",
+      "is_published": true,
+      "value": "Casi particolari (aziende, quote societarie, barche…): preventivo personalizzato, senza impegno."
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_extra_hint",
+      "locale": "it",
+      "is_published": true,
+      "value": "+{fee} € per ogni immobile o erede oltre quelli inclusi"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "prices_link",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "label": "Confronta i pacchetti nel dettaglio",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "come_funziona",
+      "key": "faq_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Le domande che ci fanno più spesso"
+    },
+    {
+      "collection": "come_funziona",
+      "key": "faq_link",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "label": "Tutte le domande frequenti",
+        "href": "/faq"
       }
     },
     {
@@ -1905,18 +2155,6 @@
       }
     },
     {
-      "collection": "guide",
-      "key": "strumenti_banner",
-      "locale": "it",
-      "is_published": true,
-      "value": {
-        "title": "Strumento: calcola il valore catastale",
-        "body": "Quanto vale una casa o un terreno ai fini della successione? Inserisci la rendita della visura e ottieni subito il valore su cui si calcolano le imposte.",
-        "cta_label": "Apri il calcolatore",
-        "href": "/strumenti/valore-catastale"
-      }
-    },
-    {
       "collection": "strumenti",
       "key": "catastale_hero_eyebrow",
       "locale": "it",
@@ -2123,7 +2361,7 @@
       "value": {
         "autore": "Geom. Lorenzo Armellin",
         "ruolo": "Geometra abilitato Entratel",
-        "reviewed_by": "Rivisto sulla parte fiscale da commercialisti",
+        "reviewed_by": "",
         "foto": {
           "asset_key": "ritratto_lorenzo"
         },
@@ -2278,7 +2516,14 @@
       "key": "esito_b_taxes_note",
       "locale": "it",
       "is_published": true,
-      "value": "+ imposte calcolate sul tuo caso: te le diciamo prima di farti pagare."
+      "value": "Le imposte le calcoliamo sul tuo caso, te le diciamo prima e le versi tu allo Stato, senza ricarico."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_included_note",
+      "locale": "it",
+      "is_published": true,
+      "value": "Il geometra è Lorenzo: voltura, dichiarazione e invio all'Agenzia. Nessun professionista esterno e nessuna voce in più dopo."
     },
     {
       "collection": "grazie",
@@ -2330,82 +2575,12 @@
     },
     {
       "collection": "grazie",
-      "key": "esito_b_after_pay",
-      "locale": "it",
-      "is_published": true,
-      "value": "Dopo il pagamento Lorenzo ti chiama, ti apre l'area personale e parti dai documenti. Hai 14 giorni per ripensarci."
-    },
-    {
-      "collection": "grazie",
-      "key": "recensioni_title",
-      "locale": "it",
-      "is_published": true,
-      "value": "Chi si è già affidato a Lorenzo"
-    },
-    {
-      "collection": "grazie",
-      "key": "soft_callback_title",
-      "locale": "it",
-      "is_published": true,
-      "value": "Fatti richiamare, senza impegno"
-    },
-    {
-      "collection": "grazie",
-      "key": "soft_callback_desc",
-      "locale": "it",
-      "is_published": true,
-      "value": "Lascia nome e cellulare: Lorenzo ti chiama lui, di solito in giornata. Nessuna pressione a pagare."
-    },
-    {
-      "collection": "grazie",
-      "key": "soft_callback_submit",
-      "locale": "it",
-      "is_published": true,
-      "value": "Richiamatemi"
-    },
-    {
-      "collection": "grazie",
-      "key": "soft_callback_ok_title",
-      "locale": "it",
-      "is_published": true,
-      "value": "Richiesta ricevuta"
-    },
-    {
-      "collection": "grazie",
-      "key": "soft_callback_ok_body",
-      "locale": "it",
-      "is_published": true,
-      "value": "Lorenzo ti chiama a breve, di solito in giornata."
-    },
-    {
-      "collection": "grazie",
-      "key": "soft_callback_footnote",
-      "locale": "it",
-      "is_published": true,
-      "value": "Ti chiama Lorenzo in persona. Orario d'ufficio, di solito entro poche ore."
-    },
-    {
-      "collection": "grazie",
-      "key": "soft_callback_notes_label",
-      "locale": "it",
-      "is_published": true,
-      "value": "Quando sei raggiungibile? (facoltativo)"
-    },
-    {
-      "collection": "grazie",
-      "key": "soft_callback_notes_placeholder",
-      "locale": "it",
-      "is_published": true,
-      "value": "Es. dopo le 18, domani mattina…"
-    },
-    {
-      "collection": "grazie",
       "key": "esito_b_guida",
       "locale": "it",
       "is_published": true,
       "value": {
         "label": "guida",
-        "href": "/tariffe"
+        "href": "/tariffe#guida"
       }
     },
     {
@@ -2497,6 +2672,139 @@
     },
     {
       "collection": "grazie",
+      "key": "soft_email_call_title",
+      "locale": "it",
+      "value": "Preferisci chiamare tu? Due parole con Lorenzo, senza impegno.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_email_whatsapp_prefill",
+      "locale": "it",
+      "value": "Ciao Lorenzo, ho appena calcolato il preventivo sul sito e avrei qualche domanda prima di procedere.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_whatsapp_prefill",
+      "locale": "it",
+      "value": "Ciao Lorenzo, ho compilato il questionario sul sito: mi risulta il pacchetto {package} a {total} €. Avrei qualche domanda prima di procedere.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_whatsapp_label",
+      "locale": "it",
+      "value": "Scrivi a Lorenzo",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_whatsapp_hint",
+      "locale": "it",
+      "value": "Nessun impegno: ti risponde Lorenzo in persona, di solito entro poche ore.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_after_pay",
+      "locale": "it",
+      "value": "Dopo il pagamento Lorenzo ti chiama, ti apre l'area personale e parti dai documenti. Hai 14 giorni per ripensarci.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_extras",
+      "locale": "it",
+      "value": "Email o orario (facoltativi)",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_pay_lead",
+      "locale": "it",
+      "value": "Se hai già deciso",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_rethink",
+      "locale": "it",
+      "value": "Hai 14 giorni per ripensarci, con rimborso.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_fee_label",
+      "locale": "it",
+      "value": "Onorario",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "recensioni_title",
+      "locale": "it",
+      "value": "Chi si è già affidato a Lorenzo",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_title",
+      "locale": "it",
+      "value": "Fatti richiamare, senza impegno",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_desc",
+      "locale": "it",
+      "value": "Lascia nome e cellulare: Lorenzo ti chiama lui, di solito in giornata. Nessuna pressione a pagare.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_submit",
+      "locale": "it",
+      "value": "Richiamatemi",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_ok_title",
+      "locale": "it",
+      "value": "Richiesta ricevuta",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_ok_body",
+      "locale": "it",
+      "value": "Lorenzo ti chiama a breve, di solito in giornata.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_footnote",
+      "locale": "it",
+      "value": "Ti chiama Lorenzo in persona. Orario d'ufficio, di solito entro poche ore.",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_notes_label",
+      "locale": "it",
+      "value": "Quando sei raggiungibile? (facoltativo)",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
+      "key": "soft_callback_notes_placeholder",
+      "locale": "it",
+      "value": "Es. dopo le 18, domani mattina…",
+      "is_published": true
+    },
+    {
+      "collection": "grazie",
       "key": "soft_custom_title",
       "locale": "it",
       "is_published": true,
@@ -2566,7 +2874,12 @@
       "value": [
         {
           "name": "Documento d'identità e codice fiscale",
-          "description": "Di tutti gli eredi e del defunto.",
+          "description": "Documento d'identità del defunto e degli eredi. Il codice fiscale serve solo per gli eredi.",
+          "when": "Sempre"
+        },
+        {
+          "name": "IBAN dell'erede",
+          "description": "Serve sempre, per rimborsi o per l'addebito delle imposte.",
           "when": "Sempre"
         },
         {
@@ -2695,7 +3008,7 @@
       "key": "microtrust",
       "locale": "it",
       "is_published": true,
-      "value": "Paghi un geometra abilitato Entratel, con supervisione fiscale di commercialisti. Pagamenti sicuri con Stripe."
+      "value": "Paghi un geometra abilitato all'esercizio della libera professione. Pagamenti sicuri con Stripe."
     },
     {
       "collection": "checkout",
@@ -3308,7 +3621,7 @@
         {
           "category": "Costi e imposte",
           "question": "Quanto costa il vostro servizio?",
-          "answer": "Onorario fisso senza IVA: Semplice 290€ (solo liquidità) o Completo 490€ (fino a 3 immobili). Se il caso è più complesso, ti facciamo un preventivo su misura. Le imposte di Stato sono separate, a carico dell'erede, e te le calcoliamo prima dell'invio."
+          "answer": "Onorario fisso senza IVA: Semplice 290€ (solo liquidità) o Completo 490€ (fino a 3 immobili e 5 eredi; oltre, +60€ per ogni immobile o erede in più, indicato prima del pagamento). Per i casi particolari (terreni agricoli, aziende, quote, imbarcazioni) ti facciamo un preventivo su misura. Le imposte di Stato sono separate, a carico dell'erede, e te le calcoliamo prima dell'invio."
         },
         {
           "category": "Costi e imposte",
@@ -3321,11 +3634,6 @@
           "answer": "Se almeno un erede ha i requisiti prima casa sull'immobile ereditato, le imposte ipotecaria e catastale si pagano in misura fissa (200 euro ciascuna) invece che in percentuale sul valore catastale. Verifichiamo noi se ti spetta e la indichiamo in dichiarazione."
         },
         {
-          "category": "Perché non da soli",
-          "question": "Posso farla gratis da solo sul sito dell'Agenzia?",
-          "answer": "Sì, esiste la successione precompilata gratuita ed è un'opzione onesta. Richiede però SPID e competenza: non valida i dati catastali e gli eventuali errori (e le sanzioni) restano a tuo carico."
-        },
-        {
           "category": "Come funziona",
           "question": "Devo andare in qualche ufficio?",
           "answer": "No. Questionario, documenti, comunicazioni e invio all'Agenzia avvengono online. C'è sempre una chiamata con Lorenzo per spiegarti tutto."
@@ -3333,7 +3641,7 @@
         {
           "category": "Come funziona",
           "question": "Quali documenti servono?",
-          "answer": "Dipende dal tuo caso: ti diamo una lista personalizzata. Se ti manca qualcosa, spesso lo possiamo recuperare noi (visure, atti di provenienza)."
+          "answer": "Dipende dal tuo caso: ti diamo una lista personalizzata. Servono sempre certificato di morte, documenti degli eredi e l'IBAN dell'erede. Se ti manca qualcosa, spesso lo possiamo recuperare noi (visure, atti di provenienza)."
         },
         {
           "category": "Documenti e Area personale",
@@ -4084,7 +4392,10 @@
         "err_delete_network": "Eliminazione non riuscita, riprova.",
         "state_da_caricare": "Da caricare",
         "state_caricato": "Caricato",
-        "state_da_rifare": "Da rifare"
+        "state_da_rifare": "Da rifare",
+        "draft_title": "Lorenzo ha preparato una bozza per te",
+        "draft_help": "Scaricala, controlla e completa i campi vuoti se servono, firma dove richiesto e ricaricala qui.",
+        "draft_download": "Scarica la bozza"
       }
     },
     {
@@ -4349,6 +4660,7 @@
         "empty_cta": "Vai al preventivo →",
         "meta_title": "Completa l'ordine",
         "extra_property": "Immobili aggiuntivi ({extra} × {fee}€)",
+        "extra_heir": "Eredi aggiuntivi ({extra} × {fee}€)",
         "plan_full_title": "Paga tutto ora",
         "plan_full_hint": "L'onorario completo in un unico pagamento sicuro.",
         "plan_split_title": "50% ora, 50% a dichiarazione pronta",
@@ -4359,6 +4671,41 @@
         "plan_today": "Oggi",
         "plan_later": "A dichiarazione pronta",
         "balance_banner": "Acconto già ricevuto. Resta il saldo di {amount} €."
+      }
+    },
+    {
+      "collection": "site_ui",
+      "key": "promo_ui",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "banner_text": "Sconto lancio −{pct}% su tutti i pacchetti",
+        "banner_ends": "scade tra",
+        "banner_cta": "Calcola il preventivo",
+        "badge": "−{pct}% lancio",
+        "valid_until": "Prezzo di lancio valido fino al {date}",
+        "full_price": "Prezzo pieno",
+        "discount_line": "Sconto lancio −{pct}%",
+        "ends_in": "Lo sconto scade tra",
+        "save_line": "Risparmi {amount} € rispetto al prezzo pieno",
+        "checkout_note": "Lo sconto è già applicato: lo ritrovi anche nella pagina di pagamento sicura.",
+        "countdown": {
+          "days": "giorni",
+          "hours": "ore",
+          "minutes": "min",
+          "seconds": "sec"
+        },
+        "included_title": "Cosa è compreso nel prezzo",
+        "included_items": [
+          "Consulenza iniziale gratuita con Lorenzo, per telefono o WhatsApp",
+          "Assistenza continua di Lorenzo in orario d'ufficio: WhatsApp, telefono ed email",
+          "Guide passo passo per trovare e raccogliere i documenti",
+          "Area personale intuitiva: carichi i documenti e segui la pratica",
+          "Calcolo delle imposte e compilazione della dichiarazione",
+          "Trasmissione all'Agenzia delle Entrate con delega totale: non devi andare da nessuna parte",
+          "Voltura catastale inclusa",
+          "Garanzia Soddisfatti o Rimborsati"
+        ]
       }
     },
     {
@@ -4811,7 +5158,7 @@
         "map_title": "Lo studio a {citta}",
         "maps_cta": "Apri in Google Maps",
         "map_iframe_title": "Mappa dello studio - {address}",
-        "photo_caption": "Duomo di Pontedera",
+        "photo_caption": "Via Vittorio Veneto, Pontedera",
         "photo_credit": "Foto: SeesaTheDoctor / Wikimedia (CC BY 4.0)"
       }
     },
@@ -4850,6 +5197,293 @@
           "label": "Gruppo E (stazioni, edifici speciali…)"
         }
       ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_meta_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Strumenti utili per la successione: calcolatori gratuiti online"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_meta_description",
+      "locale": "it",
+      "is_published": true,
+      "value": "Calcolatori gratuiti per la dichiarazione di successione: valore catastale di case e terreni, ravvedimento operoso per dichiarazione in ritardo (sanzioni e interessi). Risultato immediato, nessuna registrazione."
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_hero_eyebrow",
+      "locale": "it",
+      "is_published": true,
+      "value": "Strumenti utili"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_hero_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Strumenti utili per la successione"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_hero_subtitle",
+      "locale": "it",
+      "is_published": true,
+      "value": "Calcolatori gratuiti, con gli stessi coefficienti e le stesse aliquote che usiamo nelle pratiche vere. Nessuna registrazione, risultato immediato."
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_tools",
+      "locale": "it",
+      "is_published": true,
+      "value": [
+        {
+          "title": "Calcolo del valore catastale",
+          "body": "Quanto vale una casa o un terreno ai fini della successione? Inserisci la rendita della visura e ottieni il valore su cui si calcolano le imposte ipotecaria e catastale.",
+          "cta_label": "Apri il calcolatore",
+          "href": "/strumenti/valore-catastale",
+          "icon": "calculator"
+        },
+        {
+          "title": "Calcolo del ravvedimento operoso",
+          "body": "Dichiarazione di successione oltre i 12 mesi? Scopri quanto costano sanzione ridotta e interessi legali se regolarizzi adesso, con le aliquote in vigore.",
+          "cta_label": "Apri il calcolatore",
+          "href": "/strumenti/ravvedimento-operoso",
+          "icon": "calendar"
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_why_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Perché questi strumenti sono gratuiti"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_why_body",
+      "locale": "it",
+      "is_published": true,
+      "value": "Sono gli stessi calcoli che il geometra Lorenzo Armellin fa ogni giorno per le dichiarazioni di successione. Li mettiamo a disposizione perché chi eredita possa capire subito, con numeri veri, cosa lo aspetta: imposte, valori catastali, costi di un ritardo. I risultati sono stime: il caso concreto lo verifichiamo insieme, gratis, con il preventivo."
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_guides_link",
+      "locale": "it",
+      "is_published": true,
+      "value": "Leggi le guide alla successione"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_cta_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Vuoi sapere quanto costa tutta la successione, imposte incluse?"
+    },
+    {
+      "collection": "strumenti",
+      "key": "hub_cta_button",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "label": "Calcola il preventivo gratis",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_meta_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Calcolo ravvedimento operoso successione: sanzioni e interessi (gratis)"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_meta_description",
+      "locale": "it",
+      "is_published": true,
+      "value": "Dichiarazione di successione in ritardo? Calcola subito sanzione ridotta e interessi legali con il ravvedimento operoso: inserisci data del decesso, data di presentazione e imposte."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_hero_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Dichiarazione di successione in ritardo? Calcola il ravvedimento operoso"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_hero_subtitle",
+      "locale": "it",
+      "is_published": true,
+      "value": "Inserisci la data del decesso, quando presenterai la dichiarazione e le imposte dovute: ottieni subito sanzione ridotta, interessi legali e totale da versare."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_come_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Cos'è il ravvedimento operoso nella successione"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_come_body",
+      "locale": "it",
+      "is_published": true,
+      "value": "La dichiarazione di successione va presentata entro 12 mesi dal decesso. Se il termine è passato, il ravvedimento operoso permette di regolarizzare spontaneamente pagando le imposte, una sanzione ridotta e gli interessi legali: più presto lo fai, meno paghi. È possibile finché l'Agenzia delle Entrate non ti ha notificato un atto."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_passi",
+      "locale": "it",
+      "is_published": true,
+      "value": [
+        {
+          "title": "Calcola imposte, sanzioni e interessi",
+          "body": "Con questo strumento hai una stima; l'importo esatto si determina sui dati catastali e sul patrimonio del defunto."
+        },
+        {
+          "title": "Presenta la dichiarazione di successione",
+          "body": "In via telematica all'Agenzia delle Entrate, con tutti i quadri compilati come se fosse nei termini."
+        },
+        {
+          "title": "Versa il dovuto",
+          "body": "Imposte, sanzione ridotta e interessi si pagano insieme alla dichiarazione (addebito sul conto o F24)."
+        },
+        {
+          "title": "Conserva le ricevute",
+          "body": "Il ravvedimento si perfeziona con presentazione e pagamento: le ricevute servono anche per la voltura catastale e per la banca."
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_note",
+      "locale": "it",
+      "is_published": true,
+      "value": "Nessuna sanzione penale e nessun blocco dell'eredità: presentare in ritardo costa qualche decina o centinaia di euro in più, ma finché la dichiarazione manca gli immobili non possono essere venduti né i conti sbloccati. Il ravvedimento si perfeziona con la presentazione della dichiarazione e il pagamento di imposte, sanzione ridotta e interessi."
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_faq_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Domande frequenti sul ravvedimento della successione"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_faq",
+      "locale": "it",
+      "is_published": true,
+      "value": [
+        {
+          "q": "Quanto costa presentare la dichiarazione di successione in ritardo?",
+          "a": "Dipende dal ritardo e dalle imposte dovute. Se non c'è imposta di successione (la maggior parte dei casi tra genitori e figli), la sanzione per la dichiarazione tardiva è fissa: 25 € entro 90 giorni, 31,25 € entro un anno, 35,71 € oltre. Si aggiungono una piccola sanzione sulle imposte ipotecaria e catastale versate in ritardo (dal 2,5% al 3,6% circa) e gli interessi legali."
+        },
+        {
+          "q": "Entro quando si può fare il ravvedimento operoso della successione?",
+          "a": "Non c'è un termine massimo: si può regolarizzare anche anni dopo, finché l'Agenzia delle Entrate non ha notificato un avviso di liquidazione o di accertamento sulla stessa violazione. Più passa il tempo, però, più crescono sanzione e interessi."
+        },
+        {
+          "q": "Cosa succede se non presento mai la dichiarazione di successione?",
+          "a": "L'Agenzia può accertare l'omissione entro 5 anni dalla scadenza, applicando la sanzione piena del 120% dell'imposta (o da 250 a 1.000 € se non è dovuta imposta) più interessi. Inoltre, senza dichiarazione gli immobili restano intestati al defunto e non si possono vendere, e la banca non sblocca i conti."
+        },
+        {
+          "q": "Come si pagano sanzioni e interessi del ravvedimento?",
+          "a": "Insieme alle imposte, al momento della presentazione: nella dichiarazione telematica c'è un quadro dedicato con addebito sul conto corrente indicato, in alternativa si usa il modello F24 con i codici tributo di imposte, sanzioni e interessi. Se ci affidi la pratica, lo compiliamo noi."
+        },
+        {
+          "q": "Il ravvedimento vale anche per le successioni aperte prima del 1° settembre 2024?",
+          "a": "Sì. Cambiano solo le percentuali: per le scadenze precedenti al 1° settembre 2024 si applicano le sanzioni più alte del vecchio regime (60% entro 30 giorni, 30% per i versamenti tardivi, riduzione fino a 1/6 oltre due anni). Il calcolatore lo fa in automatico in base alla data."
+        },
+        {
+          "q": "Conviene aspettare o regolarizzare subito?",
+          "a": "Regolarizzare subito: la sanzione fissa è di poche decine di euro e gli interessi crescono ogni giorno. Soprattutto, senza dichiarazione non si possono vendere gli immobili né sbloccare i conti, e se arriva prima l'Agenzia si perde la riduzione."
+        }
+      ]
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_cta_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Vuoi che sistemiamo noi la successione in ritardo, ravvedimento incluso?"
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_cta_button",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "label": "Calcola il preventivo gratis",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "strumenti",
+      "key": "ravvedimento_ui",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "tab_dichiarazione": "Dichiarazione in ritardo",
+        "tab_dichiarazione_help": "La dichiarazione di successione non è stata presentata entro 12 mesi dal decesso (o la presenterai in ritardo).",
+        "tab_versamento": "Imposte pagate in ritardo",
+        "tab_versamento_help": "La dichiarazione è a posto, ma un'imposta o un avviso di liquidazione sono stati pagati (o si pagheranno) dopo la scadenza.",
+        "decesso": "Data del decesso",
+        "decesso_help": "La dichiarazione di successione va presentata entro 12 mesi dall'apertura della successione.",
+        "regolarizzazione": "Data in cui presenterai la dichiarazione e pagherai",
+        "regolarizzazione_help": "Di solito oggi o nei prossimi giorni: sanzioni e interessi dipendono da questa data.",
+        "imposta_successione": "Imposta di successione dovuta (€)",
+        "imposta_successione_help": "Si paga solo oltre le franchigie (1.000.000 € per coniuge e figli, 100.000 € per fratelli e sorelle). Se non è dovuta o non la conosci, lascia 0: nella maggior parte delle successioni tra genitori e figli non c'è.",
+        "altre_imposte": "Altre imposte da versare con la dichiarazione (€)",
+        "altre_imposte_help": "Imposta ipotecaria (2%) e catastale (1%) sul valore catastale degli immobili, minimo 200 € ciascuna, più bollo e tributi speciali (circa 100 €). Senza immobili: solo bollo e tributi.",
+        "altre_imposte_link": "Calcola il valore catastale",
+        "scadenza": "Scadenza originaria del pagamento",
+        "scadenza_help": "La data entro cui l'imposta andava versata (per un avviso di liquidazione: 60 giorni dalla notifica).",
+        "pagamento": "Data in cui pagherai",
+        "importo": "Importo non versato (€)",
+        "importo_help": "Solo l'imposta: sanzioni e interessi li calcoliamo qui.",
+        "avviso": "Ho già ricevuto un avviso, una lettera o un controllo dell'Agenzia delle Entrate su questa successione",
+        "avviso_warning": "Se l'Agenzia delle Entrate ti ha già notificato un atto (avviso di liquidazione o accertamento), il ravvedimento in questa forma non è più possibile: si paga quanto indicato nell'atto, con le riduzioni previste per chi aderisce nei termini. Scrivici con l'atto alla mano: lo guardiamo insieme.",
+        "placeholder_amount": "es. 1.250,00",
+        "risultato": "Stima del ravvedimento",
+        "empty": "Inserisci le date per vedere la stima.",
+        "nei_termini": "Sei ancora nei termini: la scadenza è il {date}. Se presenti e paghi entro quella data non ci sono sanzioni né interessi.",
+        "ritardo": "{n} giorni di ritardo (scadenza: {date})",
+        "regime_post": "Sanzioni D.Lgs. 87/2024 (violazioni dal 1° settembre 2024)",
+        "regime_pre": "Sanzioni in vigore prima del D.Lgs. 87/2024 (scadenza precedente al 1° settembre 2024)",
+        "riga_imposte": "Imposte dovute",
+        "riga_sanzione_dich": "Sanzione per dichiarazione tardiva",
+        "sanzione_dich_pct": "{pct} dell'imposta di successione, ridotta a {fraction} con il ravvedimento",
+        "sanzione_dich_fissa": "Sanzione fissa di {amount} (nessuna imposta di successione dovuta), ridotta a {fraction} con il ravvedimento",
+        "riga_sanzione_vers": "Sanzione per tardivo versamento",
+        "sanzione_vers_desc": "{pct} delle imposte versate in ritardo, ridotta a {fraction} con il ravvedimento",
+        "riga_interessi": "Interessi legali",
+        "interessi_desc": "{n} giorni al tasso legale ({rates})",
+        "interessi_stimato": "Per gli anni successivi al {year} è applicato l'ultimo tasso legale pubblicato.",
+        "totale": "Totale da versare",
+        "totale_extra": "di cui sanzioni e interessi: {amount}",
+        "ipotesi_title": "Come è calcolato",
+        "ipotesi_dichiarazione": [
+          "Sanzione per la dichiarazione: minimo di legge (45% dell'imposta entro 30 giorni, poi 120%; 150 € o 250 € se non è dovuta imposta di successione), ridotta a 1/10, 1/9, 1/8 o 1/7 in base al ritardo.",
+          "Sanzione per il versamento tardivo di ipotecaria, catastale, bollo e tributi: 25% (12,5% entro 90 giorni, 1/15 al giorno nei primi 14), con la stessa riduzione da ravvedimento.",
+          "Interessi legali al tasso vigente in ciascun anno (2% nel 2025, 1,60% dal 2026), calcolati a giorni su tutte le imposte.",
+          "Il ravvedimento è possibile finché l'Agenzia delle Entrate non ha notificato un atto sulla stessa violazione."
+        ],
+        "ipotesi_versamento": [
+          "Sanzione per tardivo versamento: 25% dell'imposta (12,5% se paghi entro 90 giorni, 1/15 al giorno nei primi 14), ridotta a 1/10, 1/9, 1/8 o 1/7 in base al ritardo. Per scadenze precedenti al 1° settembre 2024 si applica il 30%.",
+          "Interessi legali al tasso vigente in ciascun anno (2% nel 2025, 1,60% dal 2026), calcolati a giorni.",
+          "Il ravvedimento è possibile finché l'Agenzia delle Entrate non ha notificato un atto sulla stessa violazione."
+        ],
+        "cta_whatsapp": "Fai verificare il calcolo a Lorenzo",
+        "cta_prefill": "Ciao Lorenzo, ho usato il calcolatore del ravvedimento sul sito: {n} giorni di ritardo, imposte {imposte}, sanzioni e interessi stimati {extra}. Puoi verificarlo per il mio caso?",
+        "cta_preventivo": "Calcola il preventivo della successione",
+        "cta_note": "Se ci affidi la successione, calcoliamo noi l'importo esatto di sanzioni e interessi e prepariamo i versamenti insieme alla dichiarazione.",
+        "disclaimer": "Stima indicativa a scopo informativo, basata sui minimi di legge e sulla prassi degli uffici. L'importo esatto dipende dal caso concreto e va verificato prima del pagamento."
+      }
     },
     {
       "collection": "footer",
@@ -4951,20 +5585,6 @@
     },
     {
       "collection": "home",
-      "key": "success_counter",
-      "locale": "it",
-      "is_published": true,
-      "value": {
-        "target": 250,
-        "suffix": "+",
-        "eyebrow": "Esperienza sul campo",
-        "label": "successioni seguite",
-        "note": "",
-        "headline": "Centinaia di successioni seguite da Lorenzo"
-      }
-    },
-    {
-      "collection": "home",
       "key": "distinguishes_title",
       "locale": "it",
       "is_published": true,
@@ -5004,6 +5624,339 @@
           "testo": "Ogni passo importante te lo comunichiamo: non devi inseguire lo studio per sapere dov'è la pratica."
         }
       ]
+    },
+    {
+      "collection": "site_ui",
+      "key": "flat_offer_ui",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "line_label": "Successione tutto incluso — prezzo unico",
+        "badge": "Prezzo unico",
+        "title": "Successione tutto incluso",
+        "tagline": "Un solo prezzo, qualunque sia il tuo caso",
+        "price_note": "onorario finale, senza IVA",
+        "taxes_note": "Imposte di Stato a parte: te le calcoliamo noi",
+        "sla": "Invio entro 7-10 giorni lavorativi dai documenti completi",
+        "features": [
+          "Qualsiasi numero di immobili, terreni compresi, con la voltura catastale di ciascuno",
+          "Qualsiasi numero di eredi, anche residenti all'estero",
+          "Con o senza testamento",
+          "Calcolo delle imposte, dichiarazione e invio all'Agenzia delle Entrate",
+          "Area personale e Lorenzo che ti segue dall'inizio alla fine",
+          "Garanzia Soddisfatti o Rimborsati"
+        ],
+        "cta": "Calcola il preventivo gratis",
+        "cta_hint": "In un minuto vedi cosa comprende per il tuo caso",
+        "custom_title": "Aziende, quote societarie, azioni o barche?",
+        "custom_text": "Questi beni non rientrano nel prezzo unico: ti facciamo un preventivo su misura, gratis, entro un giorno lavorativo.",
+        "custom_cta": "Richiedi il preventivo",
+        "banner_text": "Prezzo unico {price} € tutto incluso",
+        "banner_note": "imposte di Stato a parte",
+        "banner_cta": "Calcola il preventivo",
+        "result_title": "Il tuo caso rientra nel prezzo unico",
+        "result_price_label": "Prezzo unico, tutto incluso",
+        "result_case_title": "Nel tuo caso è compreso",
+        "case_property_one": "1 immobile, con la voltura catastale",
+        "case_property_many": "{n} immobili, ognuno con la voltura catastale",
+        "case_property_some": "Tutti gli immobili, con le volture catastali",
+        "case_property_unknown": "Gli immobili che risulteranno dalle verifiche, con le volture catastali",
+        "case_property_none": "Conti, titoli e gli altri beni da dichiarare",
+        "case_heir_one": "1 erede",
+        "case_heir_many": "{n} eredi",
+        "case_heirs_abroad": "Eredi residenti all'estero, senza costi in più",
+        "case_will": "Il testamento",
+        "case_core": "Calcolo delle imposte, dichiarazione e invio all'Agenzia delle Entrate",
+        "result_no_surcharge": "Nessun supplemento: il prezzo non cambia con il numero di immobili o di eredi."
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "faq_answers",
+      "locale": "it",
+      "is_published": true,
+      "value": [
+        {
+          "question": "Quanto costa il vostro servizio?",
+          "answer": "250 € tutto incluso: è l'onorario finale, senza IVA (regime forfettario), qualunque sia il numero di immobili, terreni o eredi, con la voltura catastale di ogni immobile. Solo per aziende, quote societarie, azioni o imbarcazioni ti facciamo un preventivo su misura. Le imposte di Stato sono separate, a carico degli eredi, e te le calcoliamo prima dell'invio."
+        },
+        {
+          "question": "Le imposte sono comprese nel prezzo?",
+          "answer": "No: il prezzo unico di 250 € è l'onorario professionale. Le imposte (successione, ipotecaria, catastale, bolli) si versano con F24 e sono separate. Te le calcoliamo noi prima dell'invio."
+        }
+      ]
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.hero_subtitle",
+      "locale": "it",
+      "is_published": true,
+      "value": "Ci pensa il Geom. Lorenzo Armellin, specializzato in successioni: prezzo unico di 250 € tutto incluso, tutto online (e se vuoi anche di persona), una persona reale che ti segue. Le imposte le calcoliamo noi."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.tariffe_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Un prezzo unico, tutto incluso"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.tariffe_intro",
+      "locale": "it",
+      "is_published": true,
+      "value": "250 € per tutta la successione, qualunque sia il numero di immobili o di eredi. Le imposte di Stato sono separate, a carico dell'erede, e te le calcoliamo noi."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.tariffe_cta",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "label": "Cosa comprende il prezzo",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.come_funziona_sla_note",
+      "locale": "it",
+      "is_published": true,
+      "value": "Invio entro 7-10 giorni lavorativi (10 se ci sono immobili) da quando abbiamo tutti i documenti completi."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "home.distinguishes_items",
+      "locale": "it",
+      "is_published": true,
+      "value": [
+        {
+          "icon": "area",
+          "titolo": "Area personale avanzata",
+          "testo": "Modelli pronti, documenti caricati subito dal telefono, stati di avanzamento con notifica. Entri quando vuoi, da casa o in mobilità."
+        },
+        {
+          "icon": "lorenzo",
+          "titolo": "Lorenzo ti segue, caso per caso",
+          "testo": "Disposto a dirti come procedere in ogni situazione. Non un bot e non un call center: lo stesso geometra che firma la pratica."
+        },
+        {
+          "icon": "voltura",
+          "titolo": "Volture catastali incluse",
+          "testo": "Dove c'è un immobile, il passaggio in Catasto è nel prezzo, per tutti gli immobili. Non è un extra che arriva dopo."
+        },
+        {
+          "icon": "comms",
+          "titolo": "Comunicazioni immediate",
+          "testo": "Ogni passo importante te lo comunichiamo: non devi inseguire lo studio per sapere dov'è la pratica."
+        }
+      ]
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.hero_subtitle",
+      "locale": "it",
+      "is_published": true,
+      "value": "Un prezzo unico: 250 € tutto incluso, qualunque sia il numero di immobili o di eredi. Le imposte di Stato sono separate e te le calcoliamo noi. Solo per aziende, quote societarie, azioni o barche serve un preventivo su misura."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.box_trasparenza_body",
+      "locale": "it",
+      "is_published": true,
+      "value": "Il prezzo unico di 250 € è l'**onorario professionale senza IVA**: lo studio opera in regime forfettario (operazione non soggetta a IVA). È la cifra finale: **nessun supplemento** per immobili, eredi o volture.\n\nLe **imposte di successione** (ipotecaria, catastale, bolli) sono **separate, a carico dell'erede**, e si versano con F24: te le calcoliamo e comunichiamo **prima dell'invio**."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.sla_note",
+      "locale": "it",
+      "is_published": true,
+      "value": "L'invio della dichiarazione avviene entro **7 giorni lavorativi** se non ci sono immobili ed entro **10** se ci sono, dalla **documentazione completa** (non dal pagamento): così è una promessa che possiamo davvero mantenere.\n\nSono **esclusi i tempi di enti terzi** (Agenzia, Catasto, banche)."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.guida_scelta_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Prima di pagare (e dopo)"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.guida_scelta_items",
+      "locale": "it",
+      "is_published": true,
+      "value": [
+        {
+          "titolo": "Un solo prezzo, niente da scegliere",
+          "testo": "**250 € tutto incluso**: conti, case, terreni e box senza limiti di numero, con la voltura catastale di ogni immobile; qualsiasi numero di eredi, anche residenti all'estero, con o senza testamento. Solo aziende, quote societarie, azioni o imbarcazioni richiedono un **preventivo su misura, gratis**. Se hai un dubbio, scrivi a Lorenzo: te lo diciamo noi."
+        },
+        {
+          "titolo": "Cosa non è compreso",
+          "testo": "Le **imposte di Stato** (successione, ipotecaria, catastale, bolli): si versano con F24 e te le calcoliamo prima dell'invio. E i servizi diversi dalla successione, come la riunione di usufrutto, che si quotano a parte."
+        },
+        {
+          "titolo": "Cosa succede dopo il pagamento",
+          "testo": "Si apre l'**area personale**: lì carichi i documenti (anche da foto), firmi il mandato, segui la pratica e parli con Lorenzo. Non devi andare in nessuno sportello."
+        },
+        {
+          "titolo": "Se cambi idea",
+          "testo": "Hai **14 giorni** di recesso di legge. Se ci chiedi di partire subito e il lavoro è già finito, il recesso non si applica più — te lo diciamo prima, in modo chiaro."
+        }
+      ]
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.su_misura_text",
+      "locale": "it",
+      "is_published": true,
+      "value": "Aziende, quote societarie, azioni o imbarcazioni? Questi beni non rientrano nel prezzo unico: ti facciamo un preventivo su misura, gratis e senza sorprese."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.cta_finale_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Un minuto per verificare che il tuo caso rientri nel prezzo unico."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.addon_intro",
+      "locale": "it",
+      "is_published": true,
+      "value": "Altri servizi, separati dalla successione"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "tariffe.addon_subtitle",
+      "locale": "it",
+      "is_published": true,
+      "value": "Non fanno parte della dichiarazione di successione, quindi non sono nel prezzo unico. Se ti servono li attiviamo su richiesta, con un preventivo dedicato."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.hero_trust_items",
+      "locale": "it",
+      "is_published": true,
+      "value": [
+        "{price} € tutto incluso",
+        "Centinaia di successioni seguite",
+        "Tutto online, anche da casa"
+      ]
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.prices_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Un prezzo unico, prima di iniziare"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.prices_intro",
+      "locale": "it",
+      "is_published": true,
+      "value": "250 € tutto incluso, qualunque sia il numero di immobili o di eredi. Le imposte sono a parte: te le calcoliamo noi prima dell'invio."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.prices_custom_body",
+      "locale": "it",
+      "is_published": true,
+      "value": "Aziende, quote societarie, azioni o barche: preventivo personalizzato, senza impegno."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.prices_link",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "label": "Cosa comprende il prezzo unico",
+        "href": "/tariffe"
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "come_funziona.sla_body",
+      "locale": "it",
+      "is_published": true,
+      "value": "I tempi partono da quando abbiamo **tutti i documenti completi e corretti** (non dal pagamento): invio entro **7 giorni lavorativi** se non ci sono immobili, entro **10** se ci sono. Così è una promessa che possiamo mantenere davvero.\n\nSono **esclusi i tempi di enti terzi** (Agenzia, Catasto, banche)."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "preventivo.intro_subtitle",
+      "locale": "it",
+      "is_published": true,
+      "value": "Rispondi a poche domande: vedi subito se il tuo caso rientra nel prezzo unico di 250 € tutto incluso e cosa comprende. Nessun impegno."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "site_ui.preventivo_ui",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "real_estate_hint": "Conta case, terreni, box e quote: il prezzo non cambia, ci serve per preparare la lista dei documenti.",
+        "will_yes_note": "Il prezzo unico copre anche i casi con testamento. Nella checklist documenti ti chiederemo la copia del testamento pubblicato."
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "grazie.esito_b_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Ecco il tuo preventivo"
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "grazie.esito_b_whatsapp_prefill",
+      "locale": "it",
+      "is_published": true,
+      "value": "Ciao Lorenzo, ho compilato il questionario sul sito: il mio caso rientra nel prezzo unico di {total} €. Avrei qualche domanda prima di procedere."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "grazie.esito_c_body",
+      "locale": "it",
+      "is_published": true,
+      "value": "Dalle tue risposte emergono beni che non rientrano nel prezzo unico (quote societarie, azioni, aziende, imbarcazioni…). Non possiamo chiudere un prezzo qui: va studiato insieme a Lorenzo, così paghi né più né meno del giusto. Lascia i recapiti sotto (e, se vuoi, una nota) oppure scrivici: ti richiamiamo per chiarire i dettagli e prepararti il preventivo dedicato."
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "checkout.modifica_link",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "label": "Modifica",
+        "href": "/preventivo"
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "site_ui.checkout_ui",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "need_quote_after": ": così verifichiamo che il tuo caso rientri nel prezzo unico.",
+        "empty_order": "Non risulta una pratica da pagare. Calcola prima il preventivo: verifichiamo il tuo caso e colleghiamo il pagamento alla tua pratica."
+      }
+    },
+    {
+      "collection": "prezzo_unico",
+      "key": "site_ui.promo_ui",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "included_items": [
+          "Consulenza iniziale gratuita con Lorenzo, per telefono o WhatsApp",
+          "Assistenza continua di Lorenzo in orario d'ufficio: WhatsApp, telefono ed email",
+          "Tutti gli immobili, terreni compresi, con la voltura catastale di ciascuno",
+          "Tutti gli eredi, anche residenti all'estero, con o senza testamento",
+          "Guide passo passo per trovare e raccogliere i documenti",
+          "Area personale intuitiva: carichi i documenti e segui la pratica",
+          "Calcolo delle imposte e compilazione della dichiarazione",
+          "Trasmissione all'Agenzia delle Entrate con delega totale: non devi andare da nessuna parte",
+          "Garanzia Soddisfatti o Rimborsati"
+        ]
+      }
     }
   ]
 }
