@@ -451,7 +451,7 @@
       "key": "come_funziona_sla_note",
       "locale": "tr",
       "is_published": true,
-      "value": "Tüm belgeler tamamlandıktan sonra 7-10 iş günü içinde gönderim (pakete göre)."
+      "value": "Tüm belgeler tamam olduktan sonra 48 saat içinde gönderim (yalnızca iş günleri sayılır)."
     },
     {
       "collection": "home",
@@ -755,7 +755,7 @@
       "key": "sla_note",
       "locale": "tr",
       "is_published": true,
-      "value": "Her paket, beyannamenin **tam belgelerden** (ödemeden değil) itibaren belirli bir **iş günü** sayısı içinde gönderileceğini belirtir: böylece gerçekten tutabileceğimiz bir söz veririz.\n\n**Üçüncü taraf süreleri** (Agenzia, Kadastro, bankalar) hariçtir."
+      "value": "Beyanname **48 saat içinde (yalnızca iş günleri)** gönderilir; süre **belgelerin tamamlanmasından** itibaren başlar (ödemeden değil): böylece gerçekten tutabileceğimiz bir söz veririz.\n\n**Üçüncü taraf süreleri** (Agenzia, Kadastro, bankalar) hariçtir."
     },
     {
       "collection": "tariffe",
@@ -1707,7 +1707,7 @@
       "key": "sla_body",
       "locale": "tr",
       "is_published": true,
-      "value": "Süreler pakete bağlıdır ve **tüm belgeler tam ve doğru** olduğunda başlar (ödemeden değil): böylece gerçekten tutabileceğimiz bir söz veririz.\n\n**Üçüncü taraf süreleri** (Agenzia, Kadastro, bankalar) hariçtir."
+      "value": "Süreler **tüm belgeler tam ve doğru** olduğunda başlar (ödemeden değil): **48 saat içinde (yalnızca iş günleri)** gönderim. Böylece gerçekten tutabileceğimiz bir söz veririz.\n\n**Üçüncü taraf süreleri** (Agenzia, Kadastro, bankalar) hariçtir."
     },
     {
       "collection": "come_funziona",
@@ -5628,7 +5628,7 @@
         "tagline": "Tek fiyat, ek ücret yok",
         "price_note": "son ücret, ayrıca KDV eklenmez",
         "taxes_note": "Devlet vergileri ayrı: biz hesaplarız",
-        "sla": "Tüm belgeler tamam olduktan sonra 7-10 iş günü içinde gönderim",
+        "sla": "Tüm belgeler tamam olduktan sonra 48 saat içinde gönderim (iş günleri)",
         "features": [
           "10 taşınmaza kadar, arazi dahil, her biri için kadastro devri (voltura) ile",
           "10 mirasçıya kadar, yurt dışında ikamet edenler dahil",
@@ -5693,6 +5693,39 @@
       }
     },
     {
+      "collection": "site_ui",
+      "key": "payment_trust_ui",
+      "locale": "tr",
+      "is_published": true,
+      "value": {
+        "title": "Gönül rahatlığıyla ödeyin: nedeni şu",
+        "items": [
+          {
+            "icon": "albo",
+            "title": "Odaya kayıtlı bir geometraya ödersiniz",
+            "text": "Geom. Lorenzo Armellin, Collegio Geometri di Pisa no. 1969, P.IVA 02432220503. Ofis: Via Vittorio Veneto 31, Pontedera — yüz yüze de gelebilirsiniz."
+          },
+          {
+            "icon": "stripe",
+            "title": "Ödemeyi Stripe yönetir",
+            "text": "Ödeme sayfası Stripe’a aittir: kart bilgileriniz bize hiç ulaşmaz."
+          },
+          {
+            "icon": "invoice",
+            "title": "Adınıza fatura",
+            "text": "Kişisel alanınızda bulup indirebilirsiniz."
+          },
+          {
+            "icon": "refund",
+            "title": "Fikrinizi değiştirirseniz iade ederiz",
+            "text": "14 gün cayma hakkı: Lorenzo henüz başlamadıysa tam iade, başladıysa orantılı iade. Ayrıca memnuniyet veya para iade garantimiz."
+          }
+        ],
+        "methods": "Kart · PayPal ile 3 taksit, Klarna veya Scalapay (mevcutsa) · %50 + %50 · veya belgeler kontrol edildikten sonra ödeme",
+        "guarantee_link": "Garantiyi okuyun"
+      }
+    },
+    {
       "collection": "prezzo_unico",
       "key": "faq_answers",
       "locale": "tr",
@@ -5744,7 +5777,7 @@
       "key": "home.come_funziona_sla_note",
       "locale": "tr",
       "is_published": true,
-      "value": "Tüm belgeler tamam olduktan sonra 7-10 iş günü içinde gönderim (taşınmaz varsa 10)."
+      "value": "Tüm belgeler tamam olduktan sonra 48 saat içinde gönderim (yalnızca iş günleri sayılır)."
     },
     {
       "collection": "prezzo_unico",
@@ -5793,7 +5826,7 @@
       "key": "tariffe.sla_note",
       "locale": "tr",
       "is_published": true,
-      "value": "Beyanname gönderimi taşınmaz yoksa **7 iş günü** içinde, taşınmaz varsa **10** iş günü içinde yapılır; süre **belgelerin tamamlanmasından** itibaren başlar (ödemeden değil): böylece gerçekten tutabileceğimiz bir söz veririz.\n\n**Üçüncü taraf süreleri** (Agenzia, Kadastro, bankalar) hariçtir."
+      "value": "Beyanname **48 saat içinde (yalnızca iş günleri)** gönderilir; süre **belgelerin tamamlanmasından** itibaren başlar (ödemeden değil): böylece gerçekten tutabileceğimiz bir söz veririz.\n\n**Üçüncü taraf süreleri** (Agenzia, Kadastro, bankalar) hariçtir."
     },
     {
       "collection": "prezzo_unico",
@@ -5901,7 +5934,7 @@
       "key": "come_funziona.sla_body",
       "locale": "tr",
       "is_published": true,
-      "value": "Süreler **tüm belgeler tam ve doğru** olduğunda başlar (ödemeden değil): taşınmaz yoksa **7 iş günü** içinde, taşınmaz varsa **10** iş günü içinde gönderim. Böylece gerçekten tutabileceğimiz bir söz veririz.\n\n**Üçüncü taraf süreleri** (Agenzia, Kadastro, bankalar) hariçtir."
+      "value": "Süreler **tüm belgeler tam ve doğru** olduğunda başlar (ödemeden değil): **48 saat içinde (yalnızca iş günleri)** gönderim. Böylece gerçekten tutabileceğimiz bir söz veririz.\n\n**Üçüncü taraf süreleri** (Agenzia, Kadastro, bankalar) hariçtir."
     },
     {
       "collection": "prezzo_unico",

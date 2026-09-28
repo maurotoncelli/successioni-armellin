@@ -127,7 +127,7 @@ export const legalDocsHi: Record<LegalSlug, LegalDoc> = {
     title: "बिक्री की शर्तें",
     eyebrow: "कानूनी दस्तावेज़",
     intro: "उपभोक्ताओं को दी जाने वाली हमारी पेशेवर सेवाओं की दूरस्थ बिक्री को नियंत्रित करने वाले नियम और शर्तें (D.Lgs. 206/2005, Cod. Consumo)।",
-    updatedAt: "अंतिम अपडेट: 25 सितंबर 2026",
+    updatedAt: "अंतिम अपडेट: 28 सितंबर 2026",
     notice: LANG_NOTICE,
     body: [
       { type: "h2", text: "1. पेशेवर के बारे में जानकारी (art. 49 Cod. Consumo)" },
@@ -171,7 +171,7 @@ export const legalDocsHi: Record<LegalSlug, LegalDoc> = {
         ],
       },
       { type: "h2", text: "7. निष्पादन समय" },
-      { type: "p", text: "साइट पर दर्शाए delivery समय estimates हैं, payment की तारीख से नहीं बल्कि तब से जब ग्राहक ने सभी आवश्यक, पूर्ण, सही documentation पेशेवर द्वारा validated प्रदान की; third-party times excluded। संकेतात्मक: बिना अचल संपत्ति वाले उत्तराधिकार मामलों के लिए 7 कार्य दिवसों के भीतर, अचल संपत्ति वाले मामलों के लिए 10 कार्य दिवसों के भीतर; कस्टम कोट पर सहमत अवधि लागू। जब तक documentation incomplete है term suspended रहता है और last missing document validate होने पर resume होता है।" },
+      { type: "p", text: "साइट पर दर्शाए delivery समय estimates हैं, payment की तारीख से नहीं बल्कि तब से जब ग्राहक ने सभी आवश्यक, पूर्ण, सही documentation पेशेवर द्वारा validated प्रदान की; third-party times excluded। संकेतात्मक: 48 घंटों के भीतर जमा, केवल कार्य दिवस गिनते हुए (शनिवार, रविवार और सार्वजनिक अवकाश छोड़कर); कस्टम कोट पर सहमत अवधि लागू। यदि ग्राहक ने दो किस्तों में भुगतान चुना है, तो जमा शेष राशि के भुगतान के बाद होता है और अवधि में ग्राहक द्वारा उसे चुकाने में लगा समय शामिल नहीं है। जब तक documentation incomplete है term suspended रहता है और last missing document validate होने पर resume होता है।" },
       { type: "h2", text: "8. recesso का अधिकार (artt. 52-59 Cod. Consumo)" },
       {
         type: "ul",

@@ -127,7 +127,7 @@ export const legalDocsSq: Record<LegalSlug, LegalDoc> = {
     title: "Kushtet e shitjes",
     eyebrow: "Dokument ligjor",
     intro: "Kushtet që rregullojnë shitjen në distancë të shërbimeve tona profesionale për konsumatorët (D.Lgs. 206/2005, Kodi i Konsumit).",
-    updatedAt: "Përditësimi i fundit: 25 shtator 2026",
+    updatedAt: "Përditësimi i fundit: 28 shtator 2026",
     notice: LANG_NOTICE,
     body: [
       { type: "h2", text: "1. Informacione mbi profesionistin (neni 49 Kodi i Konsumit)" },
@@ -171,7 +171,7 @@ export const legalDocsSq: Record<LegalSlug, LegalDoc> = {
         ],
       },
       { type: "h2", text: "7. Kohët e ekzekutimit" },
-      { type: "p", text: "Kohët e dorëzimit të treguara në faqe janë vlerësime që fillojnë nga momenti kur klienti ka dhënë të gjithë dokumentacionin e nevojshëm, të plotë, të saktë dhe të vërtetuar nga profesionisti (jo nga data e pagesës), dhe nuk përfshijnë kohët e enteve të treta. Orientuesisht: brenda 7 ditëve pune për trashëgimitë pa pasuri të paluajtshme, brenda 10 ditëve pune për ato me pasuri të paluajtshme; për ofertat e personalizuara vlen afati i dakordësuar. Derisa dokumentacioni është i paplotë ose në pritje të plotësimit, afati mbetet i pezulluar dhe rifillon nga marrja/vërtetimi i dokumentit të fundit që mungon." },
+      { type: "p", text: "Kohët e dorëzimit të treguara në faqe janë vlerësime që fillojnë nga momenti kur klienti ka dhënë të gjithë dokumentacionin e nevojshëm, të plotë, të saktë dhe të vërtetuar nga profesionisti (jo nga data e pagesës), dhe nuk përfshijnë kohët e enteve të treta. Orientuesisht: dorëzim brenda 48 orëve, duke llogaritur vetëm ditët e punës (pa të shtunat, të dielat dhe festat zyrtare); për ofertat e personalizuara vlen afati i dakordësuar. Nëse klienti ka zgjedhur pagesën në dy pjesë, dorëzimi bëhet pas pagesës së mbetjes dhe afati nuk përfshin kohën që i duhet klientit për ta paguar. Derisa dokumentacioni është i paplotë ose në pritje të plotësimit, afati mbetet i pezulluar dhe rifillon nga marrja/vërtetimi i dokumentit të fundit që mungon." },
       { type: "h2", text: "8. E drejta e tërheqjes (nenet 52-59 Kodi i Konsumit)" },
       {
         type: "ul",

@@ -451,7 +451,7 @@
       "key": "come_funziona_sla_note",
       "locale": "it",
       "is_published": true,
-      "value": "Invio entro 7-10 giorni lavorativi (in base al pacchetto) da quando abbiamo tutti i documenti completi."
+      "value": "Invio entro 48 ore lavorative da quando abbiamo tutti i documenti completi."
     },
     {
       "collection": "home",
@@ -755,7 +755,7 @@
       "key": "sla_note",
       "locale": "it",
       "is_published": true,
-      "value": "Ogni pacchetto indica l'invio della dichiarazione entro un numero preciso di **giorni lavorativi** dalla **documentazione completa** (non dal pagamento): così è una promessa che possiamo davvero mantenere.\n\nSono **esclusi i tempi di enti terzi** (Agenzia, Catasto, banche)."
+      "value": "L'invio della dichiarazione avviene entro **48 ore lavorative** dalla **documentazione completa** (non dal pagamento): così è una promessa che possiamo davvero mantenere.\n\nSono **esclusi i tempi di enti terzi** (Agenzia, Catasto, banche)."
     },
     {
       "collection": "tariffe",
@@ -1721,7 +1721,7 @@
       "key": "sla_body",
       "locale": "it",
       "is_published": true,
-      "value": "I tempi dipendono dal pacchetto e partono da quando abbiamo **tutti i documenti completi e corretti** (non dal pagamento): così è una promessa che possiamo mantenere davvero.\n\nSono **esclusi i tempi di enti terzi** (Agenzia, Catasto, banche)."
+      "value": "I tempi partono da quando abbiamo **tutti i documenti completi e corretti** (non dal pagamento): invio entro **48 ore lavorative**. Così è una promessa che possiamo mantenere davvero.\n\nSono **esclusi i tempi di enti terzi** (Agenzia, Catasto, banche)."
     },
     {
       "collection": "come_funziona",
@@ -5642,7 +5642,7 @@
         "tagline": "Un solo prezzo, senza supplementi",
         "price_note": "onorario finale, senza IVA da aggiungere",
         "taxes_note": "Imposte di Stato a parte: te le calcoliamo noi",
-        "sla": "Invio entro 7-10 giorni lavorativi dai documenti completi",
+        "sla": "Invio entro 48 ore lavorative dai documenti completi",
         "features": [
           "Fino a 10 immobili, terreni compresi, con la voltura catastale di ciascuno",
           "Fino a 10 eredi, anche residenti all'estero",
@@ -5707,6 +5707,39 @@
       }
     },
     {
+      "collection": "site_ui",
+      "key": "payment_trust_ui",
+      "locale": "it",
+      "is_published": true,
+      "value": {
+        "title": "Paghi tranquillo: ecco perché",
+        "items": [
+          {
+            "icon": "albo",
+            "title": "Paghi un geometra iscritto all'Albo",
+            "text": "Geom. Lorenzo Armellin, Collegio Geometri di Pisa n. 1969, P.IVA 02432220503. Studio in Via Vittorio Veneto 31 a Pontedera: puoi anche passare di persona."
+          },
+          {
+            "icon": "stripe",
+            "title": "Il pagamento lo gestisce Stripe",
+            "text": "La pagina di pagamento è di Stripe: i dati della carta non arrivano mai a noi."
+          },
+          {
+            "icon": "invoice",
+            "title": "Fattura intestata a te",
+            "text": "La trovi e la scarichi nella tua area personale."
+          },
+          {
+            "icon": "refund",
+            "title": "Se cambi idea, ti rimborsiamo",
+            "text": "14 giorni di recesso: rimborso pieno se Lorenzo non ha ancora iniziato, in proporzione se ha iniziato. In più la garanzia Soddisfatti o Rimborsati."
+          }
+        ],
+        "methods": "Carta · PayPal in 3 rate, Klarna o Scalapay (dove disponibili) · 50% + 50% · oppure paghi dopo il controllo dei documenti",
+        "guarantee_link": "Leggi la garanzia"
+      }
+    },
+    {
       "collection": "prezzo_unico",
       "key": "faq_answers",
       "locale": "it",
@@ -5758,7 +5791,7 @@
       "key": "home.come_funziona_sla_note",
       "locale": "it",
       "is_published": true,
-      "value": "Invio entro 7-10 giorni lavorativi (10 se ci sono immobili) da quando abbiamo tutti i documenti completi."
+      "value": "Invio entro 48 ore lavorative da quando abbiamo tutti i documenti completi."
     },
     {
       "collection": "prezzo_unico",
@@ -5807,7 +5840,7 @@
       "key": "tariffe.sla_note",
       "locale": "it",
       "is_published": true,
-      "value": "L'invio della dichiarazione avviene entro **7 giorni lavorativi** se non ci sono immobili ed entro **10** se ci sono, dalla **documentazione completa** (non dal pagamento): così è una promessa che possiamo davvero mantenere.\n\nSono **esclusi i tempi di enti terzi** (Agenzia, Catasto, banche)."
+      "value": "L'invio della dichiarazione avviene entro **48 ore lavorative** dalla **documentazione completa** (non dal pagamento): così è una promessa che possiamo davvero mantenere.\n\nSono **esclusi i tempi di enti terzi** (Agenzia, Catasto, banche)."
     },
     {
       "collection": "prezzo_unico",
@@ -5915,7 +5948,7 @@
       "key": "come_funziona.sla_body",
       "locale": "it",
       "is_published": true,
-      "value": "I tempi partono da quando abbiamo **tutti i documenti completi e corretti** (non dal pagamento): invio entro **7 giorni lavorativi** se non ci sono immobili, entro **10** se ci sono. Così è una promessa che possiamo mantenere davvero.\n\nSono **esclusi i tempi di enti terzi** (Agenzia, Catasto, banche)."
+      "value": "I tempi partono da quando abbiamo **tutti i documenti completi e corretti** (non dal pagamento): invio entro **48 ore lavorative**. Così è una promessa che possiamo mantenere davvero.\n\nSono **esclusi i tempi di enti terzi** (Agenzia, Catasto, banche)."
     },
     {
       "collection": "prezzo_unico",

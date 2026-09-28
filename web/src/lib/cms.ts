@@ -289,10 +289,11 @@ export async function getRelatedArticles(
 }
 
 /*
-  Data di consegna prevista calcolata dallo SLA del pacchetto, a partire da una
-  data (di norma il giorno del pagamento). Ritorna null se il pacchetto non ha
-  uno SLA. Usata per popolare automaticamente `due_date` al pagamento
-  (calendario CRM). Listino: Semplice 7, Con immobili 10, su misura concordato.
+  Data di consegna prevista dallo SLA del pacchetto (`sla_days`, giorni
+  lavorativi: sabato e domenica non contano, i festivi sì), a partire dal
+  giorno in cui i documenti obbligatori sono tutti approvati. Ritorna null se
+  il pacchetto non ha uno SLA. Listino: 2 giorni (48 ore lavorative), su misura
+  concordato.
 */
 export async function slaDueDate(
   packageKey: string | null,
@@ -303,7 +304,12 @@ export async function slaDueDate(
   if (!pkg?.slaDays) return null;
   const d = new Date(`${fromDate}T00:00:00Z`);
   if (Number.isNaN(d.getTime())) return null;
-  d.setUTCDate(d.getUTCDate() + pkg.slaDays);
+  let left = pkg.slaDays;
+  while (left > 0) {
+    d.setUTCDate(d.getUTCDate() + 1);
+    const day = d.getUTCDay();
+    if (day !== 0 && day !== 6) left -= 1;
+  }
   return d.toISOString().slice(0, 10);
 }
 

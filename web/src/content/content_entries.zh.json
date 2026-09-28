@@ -451,7 +451,7 @@
       "key": "come_funziona_sla_note",
       "locale": "zh",
       "is_published": true,
-      "value": "文件全部齐全后 7–10 个工作日内提交（视套餐而定）。"
+      "value": "文件全部齐全后 48 小时内提交（仅计工作日）。"
     },
     {
       "collection": "home",
@@ -755,7 +755,7 @@
       "key": "sla_note",
       "locale": "zh",
       "is_published": true,
-      "value": "每个套餐标明自**文件齐全之日**起若干**工作日**内提交申报（非自付款日起）：这样才是我们能真正兑现的承诺。\n\n不含**第三方机构**（Agenzia、Catasto、银行）的处理时间。"
+      "value": "自**文件齐全**之日起（非自付款日起）**48 小时内（仅计工作日）**提交申报：这样才是我们能真正兑现的承诺。\n\n不含**第三方机构**（Agenzia、Catasto、银行）的处理时间。"
     },
     {
       "collection": "tariffe",
@@ -1707,7 +1707,7 @@
       "key": "sla_body",
       "locale": "zh",
       "is_published": true,
-      "value": "时限取决于套餐，自我们收到**全部完整正确的文件**起算（非自付款日起）：这样才是我们能真正兑现的承诺。\n\n不含**第三方机构**（Agenzia、Catasto、银行）的处理时间。"
+      "value": "时限自我们收到**全部完整正确的文件**起算（非自付款日起）：**48 小时内（仅计工作日）**提交。这样才是我们能真正兑现的承诺。\n\n不含**第三方机构**（Agenzia、Catasto、银行）的处理时间。"
     },
     {
       "collection": "come_funziona",
@@ -5628,7 +5628,7 @@
         "tagline": "单一价格，无附加费",
         "price_note": "最终服务费，无需另加增值税",
         "taxes_note": "国家税款另计：由我们为您计算",
-        "sla": "文件齐全后 7–10 个工作日内提交",
+        "sla": "文件齐全后 48 小时内提交（仅计工作日）",
         "features": [
           "最多 10 处房产，含土地，每处均含地籍过户（voltura）",
           "最多 10 位继承人，含海外居住者",
@@ -5693,6 +5693,39 @@
       }
     },
     {
+      "collection": "site_ui",
+      "key": "payment_trust_ui",
+      "locale": "zh",
+      "is_published": true,
+      "value": {
+        "title": "放心付款：原因如下",
+        "items": [
+          {
+            "icon": "albo",
+            "title": "您付款给在册测量师",
+            "text": "Geom. Lorenzo Armellin，比萨测量师协会（Collegio Geometri di Pisa）第 1969 号，税号 P.IVA 02432220503。事务所地址：Via Vittorio Veneto 31, Pontedera，也可亲自前来。"
+          },
+          {
+            "icon": "stripe",
+            "title": "付款由 Stripe 处理",
+            "text": "付款页面属于 Stripe：您的银行卡信息从不经过我们。"
+          },
+          {
+            "icon": "invoice",
+            "title": "开具您名下的发票",
+            "text": "可在个人区查看并下载。"
+          },
+          {
+            "icon": "refund",
+            "title": "改变主意可退款",
+            "text": "14 天撤回期：Lorenzo 尚未开始时全额退款，已开始时按比例退款。另有我们的不满意即退款保证。"
+          }
+        ],
+        "methods": "银行卡 · PayPal 分 3 期、Klarna 或 Scalapay（如可用）· 50% + 50% · 或在文件检查后付款",
+        "guarantee_link": "查看保证条款"
+      }
+    },
+    {
       "collection": "prezzo_unico",
       "key": "faq_answers",
       "locale": "zh",
@@ -5744,7 +5777,7 @@
       "key": "home.come_funziona_sla_note",
       "locale": "zh",
       "is_published": true,
-      "value": "文件全部齐全后 7–10 个工作日内提交（有房产时为 10 个工作日）。"
+      "value": "文件全部齐全后 48 小时内提交（仅计工作日）。"
     },
     {
       "collection": "prezzo_unico",
@@ -5793,7 +5826,7 @@
       "key": "tariffe.sla_note",
       "locale": "zh",
       "is_published": true,
-      "value": "无房产时，自**文件齐全**之日起（非自付款日起）**7 个工作日**内提交申报；有房产时为 **10** 个工作日：这样才是我们能真正兑现的承诺。\n\n不含**第三方机构**（Agenzia、Catasto、银行）的处理时间。"
+      "value": "自**文件齐全**之日起（非自付款日起）**48 小时内（仅计工作日）**提交申报：这样才是我们能真正兑现的承诺。\n\n不含**第三方机构**（Agenzia、Catasto、银行）的处理时间。"
     },
     {
       "collection": "prezzo_unico",
@@ -5901,7 +5934,7 @@
       "key": "come_funziona.sla_body",
       "locale": "zh",
       "is_published": true,
-      "value": "时限自我们收到**全部完整正确的文件**起算（非自付款日起）：无房产时 **7 个工作日**内提交，有房产时为 **10** 个工作日。这样才是我们能真正兑现的承诺。\n\n不含**第三方机构**（Agenzia、Catasto、银行）的处理时间。"
+      "value": "时限自我们收到**全部完整正确的文件**起算（非自付款日起）：**48 小时内（仅计工作日）**提交。这样才是我们能真正兑现的承诺。\n\n不含**第三方机构**（Agenzia、Catasto、银行）的处理时间。"
     },
     {
       "collection": "prezzo_unico",

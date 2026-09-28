@@ -203,7 +203,37 @@ export async function deleteInvoice(practiceId: string) {
 export async function approveDocument(practiceId: string, index: number) {
   await requireAdmin();
   await setDocStatus(practiceId, index, "APPROVATO");
+  await setDueDateWhenDocsComplete(practiceId);
   revalidatePath(`/crm/pratiche/${practiceId}`);
+}
+
+/*
+  Lo SLA pubblico (48 ore lavorative) decorre dai documenti completi, non dal
+  pagamento: la consegna prevista si fissa quando l'ultimo documento
+  obbligatorio viene approvato. Una data già impostata da Lorenzo non si tocca.
+*/
+async function setDueDateWhenDocsComplete(practiceId: string) {
+  const admin = getAdminClient();
+  const { data } = await admin
+    .from("practices")
+    .select("checklist, due_date, selected_package, log")
+    .eq("id", practiceId)
+    .maybeSingle();
+  if (!data || data.due_date) return;
+  const checklist = Array.isArray(data.checklist)
+    ? (data.checklist as { required?: boolean; status?: string }[])
+    : [];
+  const required = checklist.filter((c) => c.required);
+  const complete =
+    required.length > 0 &&
+    required.every((c) => c.status === "APPROVATO" || c.status === "NON_APPLICABILE");
+  if (!complete) return;
+  const today = new Date().toISOString().slice(0, 10);
+  const due = await slaDueDate(data.selected_package, today);
+  if (!due) return;
+  const log = Array.isArray(data.log) ? [...data.log] : [];
+  log.push({ action: "consegna_auto_sla", at: stamp() });
+  await admin.from("practices").update({ due_date: due, log }).eq("id", practiceId);
 }
 
 export async function rejectDocument(
@@ -1116,15 +1146,6 @@ export async function registerOfflinePayment(
     opened_at: data.opened_at ?? today,
     payment_notes,
   };
-
-  // Auto-calcolo consegna prevista da SLA pacchetto (se non gia impostata).
-  if (!data.due_date) {
-    const due = await slaDueDate(data.selected_package, today);
-    if (due) {
-      patch.due_date = due;
-      log.push({ action: "consegna_auto_sla", at: now });
-    }
-  }
 
   // Checklist documenti auto-generata al pagamento, come nel webhook Stripe.
   if (!Array.isArray(data.checklist) || data.checklist.length === 0) {

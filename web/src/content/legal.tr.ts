@@ -127,7 +127,7 @@ export const legalDocsTr: Record<LegalSlug, LegalDoc> = {
     title: "Satış koşulları",
     eyebrow: "Yasal belge",
     intro: "Mesleki hizmetlerimizin tüketicilere uzaktan satışını düzenleyen şartlar ve koşullar (D.Lgs. 206/2005, Tüketici Kanunu).",
-    updatedAt: "Son güncelleme: 25 Eylül 2026",
+    updatedAt: "Son güncelleme: 28 Eylül 2026",
     notice: LANG_NOTICE,
     body: [
       { type: "h2", text: "1. Meslek mensubu hakkında bilgi (Tüketici Kanunu md. 49)" },
@@ -171,7 +171,7 @@ export const legalDocsTr: Record<LegalSlug, LegalDoc> = {
         ],
       },
       { type: "h2", text: "7. İfa süreleri" },
-      { type: "p", text: "Sitede belirtilen teslim süreleri, müşterinin gerekli tüm belgeleri eksiksiz, doğru ve meslek mensubu tarafından onaylanmış şekilde sağladığı andan itibaren (ödeme tarihinden değil) başlayan tahminlerdir; üçüncü kurum süreleri dahil değildir. Yaklaşık: taşınmaz içermeyen verasetlerde 7 iş günü, taşınmaz içerenlerde 10 iş günü içinde; özel tekliflerde kararlaştırılan süre geçerlidir. Belgeler eksik veya tamamlama bekliyorsa süre askıda kalır; son eksik belgenin alınması/onaylanmasıyla devam eder." },
+      { type: "p", text: "Sitede belirtilen teslim süreleri, müşterinin gerekli tüm belgeleri eksiksiz, doğru ve meslek mensubu tarafından onaylanmış şekilde sağladığı andan itibaren (ödeme tarihinden değil) başlayan tahminlerdir; üçüncü kurum süreleri dahil değildir. Yaklaşık: yalnızca iş günleri sayılarak (cumartesi, pazar ve resmî tatiller hariç) 48 saat içinde gönderim; özel tekliflerde kararlaştırılan süre geçerlidir. Müşteri iki taksitle ödemeyi seçtiyse gönderim kalan tutar ödendikten sonra yapılır ve süre, müşterinin bu ödemeyi yapması için geçen zamanı kapsamaz. Belgeler eksik veya tamamlama bekliyorsa süre askıda kalır; son eksik belgenin alınması/onaylanmasıyla devam eder." },
       { type: "h2", text: "8. Cayma hakkı (Tüketici Kanunu md. 52-59)" },
       {
         type: "ul",

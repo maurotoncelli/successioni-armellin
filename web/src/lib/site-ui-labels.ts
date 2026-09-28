@@ -305,7 +305,7 @@ export const FLAT_OFFER_UI_IT: FlatOfferUiLabels = {
   tagline: "Un solo prezzo, senza supplementi",
   price_note: "onorario finale, senza IVA da aggiungere",
   taxes_note: "Imposte di Stato a parte: te le calcoliamo noi",
-  sla: "Invio entro 7-10 giorni lavorativi dai documenti completi",
+  sla: "Invio entro 48 ore lavorative dai documenti completi",
   features: [
     "Fino a 10 immobili, terreni compresi, con la voltura catastale di ciascuno",
     "Fino a 10 eredi, anche residenti all'estero",
@@ -384,6 +384,44 @@ export const PAYMENT_UI_IT: PaymentUiLabels = {
   cta_whatsapp: "Manda i documenti su WhatsApp",
   whatsapp_prefill:
     "Ciao Lorenzo, vorrei mandarti i documenti per la successione e pagare dopo il tuo controllo. Come procedo?",
+};
+
+export type PaymentTrustIcon = "albo" | "stripe" | "invoice" | "refund";
+
+export type PaymentTrustUiLabels = {
+  title: string;
+  items: { icon: PaymentTrustIcon; title: string; text: string }[];
+  methods: string;
+  guarantee_link: string;
+};
+
+export const PAYMENT_TRUST_UI_IT: PaymentTrustUiLabels = {
+  title: "Paghi tranquillo: ecco perché",
+  items: [
+    {
+      icon: "albo",
+      title: "Paghi un geometra iscritto all'Albo",
+      text: "Geom. Lorenzo Armellin, Collegio Geometri di Pisa n. 1969, P.IVA 02432220503. Studio in Via Vittorio Veneto 31 a Pontedera: puoi anche passare di persona.",
+    },
+    {
+      icon: "stripe",
+      title: "Il pagamento lo gestisce Stripe",
+      text: "La pagina di pagamento è di Stripe: i dati della carta non arrivano mai a noi.",
+    },
+    {
+      icon: "invoice",
+      title: "Fattura intestata a te",
+      text: "La trovi e la scarichi nella tua area personale.",
+    },
+    {
+      icon: "refund",
+      title: "Se cambi idea, ti rimborsiamo",
+      text: "14 giorni di recesso: rimborso pieno se Lorenzo non ha ancora iniziato, in proporzione se ha iniziato. In più la garanzia Soddisfatti o Rimborsati.",
+    },
+  ],
+  methods:
+    "Carta · PayPal in 3 rate, Klarna o Scalapay (dove disponibili) · 50% + 50% · oppure paghi dopo il controllo dei documenti",
+  guarantee_link: "Leggi la garanzia",
 };
 
 export const CHECKOUT_UI_IT: CheckoutUiLabels = {

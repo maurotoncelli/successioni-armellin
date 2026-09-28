@@ -127,7 +127,7 @@ export const legalDocsEn: Record<LegalSlug, LegalDoc> = {
     title: "Terms of sale",
     eyebrow: "Legal document",
     intro: "The terms and conditions governing distance selling of our professional services for succession declarations.",
-    updatedAt: "Last updated: 25 September 2026",
+    updatedAt: "Last updated: 28 September 2026",
     notice: LANG_NOTICE,
     body: [
       { type: "h2", text: "1. Information about the professional (Art. 49 Consumer Code)" },
@@ -171,7 +171,7 @@ export const legalDocsEn: Record<LegalSlug, LegalDoc> = {
         ],
       },
       { type: "h2", text: "7. Performance times" },
-      { type: "p", text: "Delivery times stated on the site are estimates running from when the client has provided all the necessary documentation, complete, correct and validated by the professional (and not from the date of payment), and do not include the time taken by third-party bodies. As a guide: within 7 business days for successions without properties, within 10 business days for those with properties; for custom quotes the agreed term applies. While the documentation is incomplete or additional documents are awaited, the term is suspended and resumes running from receipt/validation of the last missing document." },
+      { type: "p", text: "Delivery times stated on the site are estimates running from when the client has provided all the necessary documentation, complete, correct and validated by the professional (and not from the date of payment), and do not include the time taken by third-party bodies. As a guide: filing within 48 hours, counting business days only (excluding Saturdays, Sundays and public holidays); for custom quotes the agreed term applies. If the client has chosen to pay in two instalments, filing takes place after the balance is paid and the term does not include the time the client takes to pay it. While the documentation is incomplete or additional documents are awaited, the term is suspended and resumes running from receipt/validation of the last missing document." },
       { type: "h2", text: "8. Right of withdrawal (Arts. 52–59 Consumer Code)" },
       {
         type: "ul",

@@ -37,7 +37,7 @@ export const packages: Package[] = [
     ],
     price: 290,
     extraPropertyFee: null,
-    slaDays: 7,
+    slaDays: 2,
     badge: null,
     sortOrder: 1,
   },
@@ -57,7 +57,7 @@ export const packages: Package[] = [
     // 05/09: +60 per immobile oltre il 3° (e +60 per erede oltre il 5°, fisso in
     // lib/order.ts). In vetrina resta 490: gli extra compaiono solo al risultato.
     extraPropertyFee: 60,
-    slaDays: 10,
+    slaDays: 2,
     badge: "Il più scelto",
     sortOrder: 2,
   },
@@ -76,7 +76,7 @@ export const packages: Package[] = [
     ],
     price: 790,
     extraPropertyFee: null,
-    slaDays: 10,
+    slaDays: 2,
     badge: null,
     sortOrder: 3,
   },

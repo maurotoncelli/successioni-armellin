@@ -223,6 +223,9 @@ risultato).
    i `content_entries`: contengono anche la nota IVA "senza IVA da aggiungere"
    (commit `d8b67a0` del 25/09), che è una correzione definitiva e non del test. Facoltativo: una riga che conferma il prezzo
    unico a chi l'ha avuto, fino alla scadenza della garanzia.
+   **Attenzione**: l'art. 7 (48 ore lavorative, 28/09) e le date "28 settembre 2026"
+   delle Condizioni NON sono del test: annullando le modifiche del test col diff dal
+   tag, tenere l'art. 7 com'è.
 3. **Commit e deploy**. Testi, FAQ, card, barra e CRM tornano da soli al listino
    290/490: il database non è mai stato toccato. "Come si paga" resta e il suo
    pulsante torna "Calcola il preventivo gratis". Il risultato del preventivo

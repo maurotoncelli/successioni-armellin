@@ -127,7 +127,7 @@ export const legalDocsDe: Record<LegalSlug, LegalDoc> = {
     title: "Verkaufsbedingungen",
     eyebrow: "Rechtsdokument",
     intro: "AGB für Fernabsatz professioneller Dienstleistungen an Verbraucher (D.Lgs. 206/2005, Verbraucherschutzgesetz).",
-    updatedAt: "Letzte Aktualisierung: 25. September 2026",
+    updatedAt: "Letzte Aktualisierung: 28. September 2026",
     notice: LANG_NOTICE,
     body: [
       { type: "h2", text: "1. Angaben zum Fachmann (Art. 49 Verbraucherschutzgesetz)" },
@@ -171,7 +171,7 @@ export const legalDocsDe: Record<LegalSlug, LegalDoc> = {
         ],
       },
       { type: "h2", text: "7. Ausführungsfristen" },
-      { type: "p", text: "Die auf der Website angegebenen Lieferzeiten sind Schätzungen, die ab dem Zeitpunkt laufen, zu dem der Kunde alle erforderlichen Unterlagen vollständig, korrekt und vom Fachmann validiert bereitgestellt hat (und nicht ab dem Zahlungsdatum); die Bearbeitungszeiten dritter Stellen sind darin nicht enthalten. Richtwerte: innerhalb von 7 Werktagen für Erbschaften ohne Immobilien, innerhalb von 10 Werktagen für Erbschaften mit Immobilien; bei individuellen Angeboten gilt die vereinbarte Frist. Solange die Unterlagen unvollständig sind oder noch ergänzt werden müssen, ist die Frist ausgesetzt; sie läuft ab Eingang/Validierung des letzten fehlenden Dokuments weiter." },
+      { type: "p", text: "Die auf der Website angegebenen Lieferzeiten sind Schätzungen, die ab dem Zeitpunkt laufen, zu dem der Kunde alle erforderlichen Unterlagen vollständig, korrekt und vom Fachmann validiert bereitgestellt hat (und nicht ab dem Zahlungsdatum); die Bearbeitungszeiten dritter Stellen sind darin nicht enthalten. Richtwert: Einreichung innerhalb von 48 Stunden, wobei nur Werktage zählen (ohne Samstage, Sonn- und Feiertage); bei individuellen Angeboten gilt die vereinbarte Frist. Hat der Kunde die Zahlung in zwei Raten gewählt, erfolgt die Einreichung nach Zahlung des Restbetrags; die Frist umfasst nicht die Zeit, die der Kunde dafür benötigt. Solange die Unterlagen unvollständig sind oder noch ergänzt werden müssen, ist die Frist ausgesetzt; sie läuft ab Eingang/Validierung des letzten fehlenden Dokuments weiter." },
       { type: "h2", text: "8. Widerrufsrecht (Art. 52–59 Verbraucherschutzgesetz)" },
       {
         type: "ul",

@@ -9,7 +9,6 @@ import { pushClientStatusNotification } from "@/lib/client-notifications";
 import { getCommsLocaleForContact } from "@/lib/comms-locale";
 import { paymentReceivedCommSubject } from "@/lib/comms-copy";
 import { issueInvoiceForPractice, isInvoicingConfigured } from "@/lib/invoice";
-import { slaDueDate } from "@/lib/cms";
 import { generateChecklist } from "@/lib/checklist";
 import { sendGa4Purchase } from "@/lib/analytics-server";
 import { upsertContactByEmail } from "@/lib/contacts";
@@ -223,16 +222,6 @@ async function handleCheckoutCompleted(
     log.unshift({ action: "contatto_non_agganciato", at: stamp });
   }
 
-  // Auto-calcolo consegna prevista da SLA pacchetto (se non gia impostata).
-  let dueDate = row.due_date;
-  if (!dueDate) {
-    const due = await slaDueDate(row.selected_package, today);
-    if (due) {
-      dueDate = due;
-      log.unshift({ action: "consegna_auto_sla", at: stamp });
-    }
-  }
-
   // Checklist documenti auto-generata al pagamento (@06): senza, il cliente
   // pagante troverebbe l'area documenti vuota. Solo se non gia presente
   // (una checklist personalizzata da Lorenzo non va mai sovrascritta).
@@ -260,7 +249,6 @@ async function handleCheckoutCompleted(
       contact_id: contactId,
       paid_at: new Date().toISOString(),
       opened_at: row.opened_at ?? today,
-      due_date: dueDate,
       checklist,
       communications,
       log,

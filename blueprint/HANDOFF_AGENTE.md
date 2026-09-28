@@ -46,6 +46,30 @@ Piano, decisioni, checklist go-live e chiusura: **@TEST_PREZZO_UNICO_250**.
 
 ---
 
+## ★★ 48 ORE LAVORATIVE + RIQUADRO "PAGHI TRANQUILLO" (28/09 sera, Mauro, OK Lorenzo)
+
+- **SLA pubblico unico**: "invio entro 48 ore lavorative dai documenti completi"
+  (solo giorni feriali). 11 lingue, sia le voci base sia le `prezzo_unico.*`:
+  `site_ui.flat_offer_ui.sla`, `home.come_funziona_sla_note`, `tariffe.sla_note`,
+  `come_funziona.sla_body`. Traduzioni scelte per non leggersi "48 ore di lavoro"
+  (EN "48 hours (business days)", FR "48 heures ouvrées", ES "48 horas laborables"…).
+- **Condizioni art. 7** (11 `legal*.ts` + bozza md): 48 ore lavorative, esclusi
+  sabato/domenica/festivi; con il 50/50 l'invio segue il saldo e il termine non
+  conta il tempo del cliente. "Ultimo aggiornamento" delle Condizioni: 28/09/2026.
+  Non è del test: alla chiusura del test non riportarlo al tag.
+- **CRM**: `slaDueDate` conta solo i giorni feriali; la consegna prevista NON si
+  fissa più al pagamento (webhook Stripe e pagamento manuale) ma in
+  `approveDocument`, quando tutti i documenti obbligatori sono APPROVATO/N.A. e
+  `due_date` è vuota. `sla_days` = 2 nei fixture (`site.ts`); **nel DB (Listino)
+  da portare a 2 alla pubblicazione**.
+- **"Paghi tranquillo"** (`components/site/payment-trust.tsx`, voce
+  `site_ui.payment_trust_ui`, fallback `PAYMENT_TRUST_UI_IT`): sotto "Come si
+  paga" in home e Come funziona. Albo n. 1969 + P.IVA + studio, Stripe, fattura
+  nell'area, recesso 14 gg + garanzia (link `/garanzia`), riga metodi.
+  `data-track-section="payment_trust"`; `SectionViewTracker` aggiunto anche in home.
+
+---
+
 ## ★★ CARICA PRIMA, PAGA DOPO + DOCUMENTI SU WHATSAPP (28/09, Mauro)
 
 Dal confronto con `dichiarazionepratichesuccessione.it` (Studio GG, Roma: 250 € IVA

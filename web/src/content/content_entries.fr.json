@@ -451,7 +451,7 @@
       "key": "come_funziona_sla_note",
       "locale": "fr",
       "is_published": true,
-      "value": "Envoi sous 7 à 10 jours ouvrables (selon le forfait) dès que nous avons tous les documents complets."
+      "value": "Envoi sous 48 heures ouvrées dès que nous avons tous les documents complets."
     },
     {
       "collection": "home",
@@ -755,7 +755,7 @@
       "key": "sla_note",
       "locale": "fr",
       "is_published": true,
-      "value": "Chaque forfait indique l'envoi de la déclaration sous un nombre précis de **jours ouvrables** à partir de la **documentation complète** (pas du paiement) : c'est une promesse que nous pouvons tenir.\n\nLes **délais des tiers** (Agenzia, Cadastre, banques) sont exclus."
+      "value": "L'envoi de la déclaration intervient sous **48 heures ouvrées** à partir de la **documentation complète** (pas du paiement) : c'est une promesse que nous pouvons tenir.\n\nLes **délais des tiers** (Agenzia, Cadastre, banques) sont exclus."
     },
     {
       "collection": "tariffe",
@@ -1707,7 +1707,7 @@
       "key": "sla_body",
       "locale": "fr",
       "is_published": true,
-      "value": "Les délais dépendent du forfait et commencent lorsque nous avons **tous les documents complets et corrects** (pas au paiement) : c'est une promesse que nous pouvons tenir.\n\nLes **délais des tiers** (Agenzia, Cadastre, banques) sont exclus."
+      "value": "Les délais commencent lorsque nous avons **tous les documents complets et corrects** (pas au paiement) : envoi sous **48 heures ouvrées**. C'est une promesse que nous pouvons tenir.\n\nLes **délais des tiers** (Agenzia, Cadastre, banques) sont exclus."
     },
     {
       "collection": "come_funziona",
@@ -5628,7 +5628,7 @@
         "tagline": "Un seul prix, sans supplément",
         "price_note": "honoraires finaux, sans TVA à ajouter",
         "taxes_note": "Impôts d'État en sus : nous les calculons pour vous",
-        "sla": "Envoi sous 7 à 10 jours ouvrables à partir de la documentation complète",
+        "sla": "Envoi sous 48 heures ouvrées à partir de la documentation complète",
         "features": [
           "Jusqu'à 10 biens immobiliers, terrains inclus, avec la mutation cadastrale (voltura) de chacun",
           "Jusqu'à 10 héritiers, y compris résidents à l'étranger",
@@ -5693,6 +5693,39 @@
       }
     },
     {
+      "collection": "site_ui",
+      "key": "payment_trust_ui",
+      "locale": "fr",
+      "is_published": true,
+      "value": {
+        "title": "Payez en toute confiance : voici pourquoi",
+        "items": [
+          {
+            "icon": "albo",
+            "title": "Vous payez un géomètre inscrit à l'Ordre",
+            "text": "Geom. Lorenzo Armellin, Collegio Geometri di Pisa n° 1969, P. IVA 02432220503. Cabinet Via Vittorio Veneto 31, Pontedera : vous pouvez aussi passer en personne."
+          },
+          {
+            "icon": "stripe",
+            "title": "Le paiement est géré par Stripe",
+            "text": "La page de paiement appartient à Stripe : vos données de carte ne nous parviennent jamais."
+          },
+          {
+            "icon": "invoice",
+            "title": "Une facture à votre nom",
+            "text": "Vous la retrouvez et la téléchargez dans votre Espace personnel."
+          },
+          {
+            "icon": "refund",
+            "title": "Si vous changez d'avis, nous vous remboursons",
+            "text": "14 jours de rétractation : remboursement intégral si Lorenzo n'a pas encore commencé, au prorata s'il a commencé. En plus, notre garantie satisfait ou remboursé."
+          }
+        ],
+        "methods": "Carte · PayPal en 3 fois, Klarna ou Scalapay (selon disponibilité) · 50 % + 50 % · ou paiement après la vérification des documents",
+        "guarantee_link": "Lire la garantie"
+      }
+    },
+    {
       "collection": "prezzo_unico",
       "key": "faq_answers",
       "locale": "fr",
@@ -5744,7 +5777,7 @@
       "key": "home.come_funziona_sla_note",
       "locale": "fr",
       "is_published": true,
-      "value": "Envoi sous 7 à 10 jours ouvrables (10 s'il y a des biens) dès que nous avons tous les documents complets."
+      "value": "Envoi sous 48 heures ouvrées dès que nous avons tous les documents complets."
     },
     {
       "collection": "prezzo_unico",
@@ -5793,7 +5826,7 @@
       "key": "tariffe.sla_note",
       "locale": "fr",
       "is_published": true,
-      "value": "L'envoi de la déclaration intervient sous **7 jours ouvrables** s'il n'y a pas de biens et sous **10** s'il y en a, à partir de la **documentation complète** (pas du paiement) : c'est une promesse que nous pouvons tenir.\n\nLes **délais des tiers** (Agenzia, Cadastre, banques) sont exclus."
+      "value": "L'envoi de la déclaration intervient sous **48 heures ouvrées** à partir de la **documentation complète** (pas du paiement) : c'est une promesse que nous pouvons tenir.\n\nLes **délais des tiers** (Agenzia, Cadastre, banques) sont exclus."
     },
     {
       "collection": "prezzo_unico",
@@ -5901,7 +5934,7 @@
       "key": "come_funziona.sla_body",
       "locale": "fr",
       "is_published": true,
-      "value": "Les délais commencent lorsque nous avons **tous les documents complets et corrects** (pas au paiement) : envoi sous **7 jours ouvrables** s'il n'y a pas de biens, sous **10** s'il y en a. C'est une promesse que nous pouvons tenir.\n\nLes **délais des tiers** (Agenzia, Cadastre, banques) sont exclus."
+      "value": "Les délais commencent lorsque nous avons **tous les documents complets et corrects** (pas au paiement) : envoi sous **48 heures ouvrées**. C'est une promesse que nous pouvons tenir.\n\nLes **délais des tiers** (Agenzia, Cadastre, banques) sont exclus."
     },
     {
       "collection": "prezzo_unico",

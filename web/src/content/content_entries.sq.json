@@ -451,7 +451,7 @@
       "key": "come_funziona_sla_note",
       "locale": "sq",
       "is_published": true,
-      "value": "Dorëzim brenda 7-10 ditëve pune (sipas paketës) nga kur kemi të gjitha dokumentet e plota."
+      "value": "Dorëzim brenda 48 orëve (numërohen vetëm ditët e punës) nga kur kemi të gjitha dokumentet e plota."
     },
     {
       "collection": "home",
@@ -755,7 +755,7 @@
       "key": "sla_note",
       "locale": "sq",
       "is_published": true,
-      "value": "Çdo paketë tregon dorëzimin e deklaratës brenda një numri të saktë **ditësh pune** nga **dokumentacioni i plotë** (jo nga pagesa): kështu është premtim që mund ta mbajmë vërtet.\n\n**Përjashtohen kohët e enteve të treta** (Agenzia, Kadastër, banka)."
+      "value": "Dorëzimi i deklaratës bëhet brenda **48 orëve (vetëm ditë pune)** nga **dokumentacioni i plotë** (jo nga pagesa): kështu është premtim që mund ta mbajmë vërtet.\n\n**Përjashtohen kohët e enteve të treta** (Agenzia, Kadastër, banka)."
     },
     {
       "collection": "tariffe",
@@ -1707,7 +1707,7 @@
       "key": "sla_body",
       "locale": "sq",
       "is_published": true,
-      "value": "Afatet varen nga paketa dhe fillojnë kur kemi **të gjitha dokumentet e plota dhe të sakta** (jo nga pagesa): kështu është premtim që mund ta mbajmë vërtet.\n\n**Përjashtohen kohët e enteve të treta** (Agenzia, Kadastër, banka)."
+      "value": "Afatet fillojnë kur kemi **të gjitha dokumentet e plota dhe të sakta** (jo nga pagesa): dorëzim brenda **48 orëve (vetëm ditë pune)**. Kështu është premtim që mund ta mbajmë vërtet.\n\n**Përjashtohen kohët e enteve të treta** (Agenzia, Kadastër, banka)."
     },
     {
       "collection": "come_funziona",
@@ -5628,7 +5628,7 @@
         "tagline": "Një çmim i vetëm, pa shtesa",
         "price_note": "honorari përfundimtar, pa TVSH për t'u shtuar",
         "taxes_note": "Taksat shtetërore veç: i llogaritim ne",
-        "sla": "Dorëzim brenda 7-10 ditëve pune nga dokumentet e plota",
+        "sla": "Dorëzim brenda 48 orëve (ditë pune) nga dokumentet e plota",
         "features": [
           "Deri në 10 pasuri të paluajtshme, truall përfshirë, me kalimin kadastral (voltura) të secilës",
           "Deri në 10 trashëgimtarë, edhe me banim jashtë vendit",
@@ -5693,6 +5693,39 @@
       }
     },
     {
+      "collection": "site_ui",
+      "key": "payment_trust_ui",
+      "locale": "sq",
+      "is_published": true,
+      "value": {
+        "title": "Paguani të qetë: ja pse",
+        "items": [
+          {
+            "icon": "albo",
+            "title": "Paguani një gjeometër të regjistruar",
+            "text": "Geom. Lorenzo Armellin, Collegio Geometri di Pisa nr. 1969, P.IVA 02432220503. Zyra në Via Vittorio Veneto 31, Pontedera: mund të vini edhe personalisht."
+          },
+          {
+            "icon": "stripe",
+            "title": "Pagesën e menaxhon Stripe",
+            "text": "Faqja e pagesës është e Stripe: të dhënat e kartës suaj nuk na arrijnë kurrë."
+          },
+          {
+            "icon": "invoice",
+            "title": "Faturë në emrin tuaj",
+            "text": "E gjeni dhe e shkarkoni në Zonën tuaj personale."
+          },
+          {
+            "icon": "refund",
+            "title": "Nëse ndërroni mendje, ju rimbursojmë",
+            "text": "14 ditë tërheqjeje: rimbursim i plotë nëse Lorenzo nuk ka filluar ende, proporcional nëse ka filluar. Plus garancia jonë: i kënaqur ose rimbursim."
+          }
+        ],
+        "methods": "Kartë · PayPal me 3 këste, Klarna ose Scalapay (ku janë të disponueshme) · 50% + 50% · ose paguani pas kontrollit të dokumenteve",
+        "guarantee_link": "Lexoni garancinë"
+      }
+    },
+    {
       "collection": "prezzo_unico",
       "key": "faq_answers",
       "locale": "sq",
@@ -5744,7 +5777,7 @@
       "key": "home.come_funziona_sla_note",
       "locale": "sq",
       "is_published": true,
-      "value": "Dorëzim brenda 7-10 ditëve pune (10 nëse ka pasuri) nga kur kemi të gjitha dokumentet e plota."
+      "value": "Dorëzim brenda 48 orëve (numërohen vetëm ditët e punës) nga kur kemi të gjitha dokumentet e plota."
     },
     {
       "collection": "prezzo_unico",
@@ -5793,7 +5826,7 @@
       "key": "tariffe.sla_note",
       "locale": "sq",
       "is_published": true,
-      "value": "Dorëzimi i deklaratës bëhet brenda **7 ditëve pune** nëse nuk ka pasuri dhe brenda **10** nëse ka, nga **dokumentacioni i plotë** (jo nga pagesa): kështu është premtim që mund ta mbajmë vërtet.\n\n**Përjashtohen kohët e enteve të treta** (Agenzia, Kadastër, banka)."
+      "value": "Dorëzimi i deklaratës bëhet brenda **48 orëve (vetëm ditë pune)** nga **dokumentacioni i plotë** (jo nga pagesa): kështu është premtim që mund ta mbajmë vërtet.\n\n**Përjashtohen kohët e enteve të treta** (Agenzia, Kadastër, banka)."
     },
     {
       "collection": "prezzo_unico",
@@ -5901,7 +5934,7 @@
       "key": "come_funziona.sla_body",
       "locale": "sq",
       "is_published": true,
-      "value": "Afatet fillojnë kur kemi **të gjitha dokumentet e plota dhe të sakta** (jo nga pagesa): dorëzim brenda **7 ditëve pune** nëse nuk ka pasuri, brenda **10** nëse ka. Kështu është premtim që mund ta mbajmë vërtet.\n\n**Përjashtohen kohët e enteve të treta** (Agenzia, Kadastër, banka)."
+      "value": "Afatet fillojnë kur kemi **të gjitha dokumentet e plota dhe të sakta** (jo nga pagesa): dorëzim brenda **48 orëve (vetëm ditë pune)**. Kështu është premtim që mund ta mbajmë vërtet.\n\n**Përjashtohen kohët e enteve të treta** (Agenzia, Kadastër, banka)."
     },
     {
       "collection": "prezzo_unico",

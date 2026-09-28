@@ -451,7 +451,7 @@
       "key": "come_funziona_sla_note",
       "locale": "es",
       "is_published": true,
-      "value": "Envío en 7-10 días laborables (según paquete) desde que tenemos todos los documentos completos."
+      "value": "Envío en 48 horas laborables desde que tenemos todos los documentos completos."
     },
     {
       "collection": "home",
@@ -755,7 +755,7 @@
       "key": "sla_note",
       "locale": "es",
       "is_published": true,
-      "value": "Cada paquete indica el envío de la declaración en un número preciso de **días laborables** desde la **documentación completa** (no desde el pago): así es una promesa que realmente podemos cumplir.\n\nQuedan **excluidos los plazos de terceros** (Agenzia, Catasto, bancos)."
+      "value": "El envío de la declaración se realiza en **48 horas laborables** desde la **documentación completa** (no desde el pago): así es una promesa que realmente podemos cumplir.\n\nQuedan **excluidos los plazos de terceros** (Agenzia, Catasto, bancos)."
     },
     {
       "collection": "tariffe",
@@ -1707,7 +1707,7 @@
       "key": "sla_body",
       "locale": "es",
       "is_published": true,
-      "value": "Los plazos dependen del paquete y empiezan cuando tenemos **todos los documentos completos y correctos** (no desde el pago): así es una promesa que realmente podemos cumplir.\n\nQuedan **excluidos los plazos de terceros** (Agenzia, Catasto, bancos)."
+      "value": "Los plazos empiezan cuando tenemos **todos los documentos completos y correctos** (no desde el pago): envío en **48 horas laborables**. Así es una promesa que realmente podemos cumplir.\n\nQuedan **excluidos los plazos de terceros** (Agenzia, Catasto, bancos)."
     },
     {
       "collection": "come_funziona",
@@ -5628,7 +5628,7 @@
         "tagline": "Un solo precio, sin suplementos",
         "price_note": "honorario final, sin IVA que añadir",
         "taxes_note": "Impuestos del Estado aparte: los calculamos nosotros",
-        "sla": "Envío en 7-10 días laborables desde que la documentación esté completa",
+        "sla": "Envío en 48 horas laborables desde que la documentación esté completa",
         "features": [
           "Hasta 10 inmuebles, terrenos incluidos, con el cambio de titularidad catastral (voltura) de cada uno",
           "Hasta 10 herederos, incluso residentes en el extranjero",
@@ -5693,6 +5693,39 @@
       }
     },
     {
+      "collection": "site_ui",
+      "key": "payment_trust_ui",
+      "locale": "es",
+      "is_published": true,
+      "value": {
+        "title": "Paga tranquilo: te explicamos por qué",
+        "items": [
+          {
+            "icon": "albo",
+            "title": "Pagas a un geómetra colegiado",
+            "text": "Geom. Lorenzo Armellin, Collegio Geometri di Pisa n.º 1969, P. IVA 02432220503. Despacho en Via Vittorio Veneto 31, Pontedera: también puedes pasar en persona."
+          },
+          {
+            "icon": "stripe",
+            "title": "El pago lo gestiona Stripe",
+            "text": "La página de pago es de Stripe: los datos de tu tarjeta nunca nos llegan."
+          },
+          {
+            "icon": "invoice",
+            "title": "Factura a tu nombre",
+            "text": "La encuentras y la descargas en tu área personal."
+          },
+          {
+            "icon": "refund",
+            "title": "Si cambias de idea, te devolvemos el dinero",
+            "text": "14 días de desistimiento: reembolso completo si Lorenzo aún no ha empezado, proporcional si ya ha empezado. Además, nuestra garantía de satisfacción o reembolso."
+          }
+        ],
+        "methods": "Tarjeta · PayPal en 3 plazos, Klarna o Scalapay (donde estén disponibles) · 50% + 50% · o pagas después de la revisión de los documentos",
+        "guarantee_link": "Lee la garantía"
+      }
+    },
+    {
       "collection": "prezzo_unico",
       "key": "faq_answers",
       "locale": "es",
@@ -5744,7 +5777,7 @@
       "key": "home.come_funziona_sla_note",
       "locale": "es",
       "is_published": true,
-      "value": "Envío en 7-10 días laborables (10 si hay inmuebles) desde que tenemos todos los documentos completos."
+      "value": "Envío en 48 horas laborables desde que tenemos todos los documentos completos."
     },
     {
       "collection": "prezzo_unico",
@@ -5793,7 +5826,7 @@
       "key": "tariffe.sla_note",
       "locale": "es",
       "is_published": true,
-      "value": "El envío de la declaración se realiza en **7 días laborables** si no hay inmuebles y en **10** si los hay, desde la **documentación completa** (no desde el pago): así es una promesa que realmente podemos cumplir.\n\nQuedan **excluidos los plazos de terceros** (Agenzia, Catasto, bancos)."
+      "value": "El envío de la declaración se realiza en **48 horas laborables** desde la **documentación completa** (no desde el pago): así es una promesa que realmente podemos cumplir.\n\nQuedan **excluidos los plazos de terceros** (Agenzia, Catasto, bancos)."
     },
     {
       "collection": "prezzo_unico",
@@ -5901,7 +5934,7 @@
       "key": "come_funziona.sla_body",
       "locale": "es",
       "is_published": true,
-      "value": "Los plazos empiezan cuando tenemos **todos los documentos completos y correctos** (no desde el pago): envío en **7 días laborables** si no hay inmuebles, en **10** si los hay. Así es una promesa que realmente podemos cumplir.\n\nQuedan **excluidos los plazos de terceros** (Agenzia, Catasto, bancos)."
+      "value": "Los plazos empiezan cuando tenemos **todos los documentos completos y correctos** (no desde el pago): envío en **48 horas laborables**. Así es una promesa que realmente podemos cumplir.\n\nQuedan **excluidos los plazos de terceros** (Agenzia, Catasto, bancos)."
     },
     {
       "collection": "prezzo_unico",

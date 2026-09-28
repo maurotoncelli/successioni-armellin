@@ -127,7 +127,7 @@ export const legalDocsEs: Record<LegalSlug, LegalDoc> = {
     title: "Condiciones de venta",
     eyebrow: "Documento legal",
     intro: "Los términos y condiciones que regulan la venta a distancia de nuestros servicios profesionales a consumidores (D.Lgs. 206/2005, Código del Consumo).",
-    updatedAt: "Última actualización: 25 de septiembre de 2026",
+    updatedAt: "Última actualización: 28 de septiembre de 2026",
     notice: LANG_NOTICE,
     body: [
       { type: "h2", text: "1. Información sobre el profesional (art. 49 Cód. Consumo)" },
@@ -171,7 +171,7 @@ export const legalDocsEs: Record<LegalSlug, LegalDoc> = {
         ],
       },
       { type: "h2", text: "7. Plazos de ejecución" },
-      { type: "p", text: "Los plazos de entrega indicados en el sitio son estimaciones que corren desde el momento en que el cliente ha facilitado toda la documentación necesaria, completa, correcta y validada por el profesional (y no desde la fecha de pago), y no comprenden los plazos de organismos terceros. Orientativamente: en un plazo de 7 días laborables para las sucesiones sin inmuebles y de 10 días laborables para aquellas con inmuebles; para presupuestos a medida vale el plazo acordado. Mientras la documentación esté incompleta o pendiente de integración, el plazo queda suspendido y reanuda con la recepción/validación del último documento faltante." },
+      { type: "p", text: "Los plazos de entrega indicados en el sitio son estimaciones que corren desde el momento en que el cliente ha facilitado toda la documentación necesaria, completa, correcta y validada por el profesional (y no desde la fecha de pago), y no comprenden los plazos de organismos terceros. Orientativamente: envío en un plazo de 48 horas laborables, contando solo los días laborables (excluidos sábados, domingos y festivos); para presupuestos a medida vale el plazo acordado. Si el cliente ha elegido pagar en dos partes, el envío se realiza tras el pago del saldo y el plazo no incluye el tiempo que el cliente tarda en abonarlo. Mientras la documentación esté incompleta o pendiente de integración, el plazo queda suspendido y reanuda con la recepción/validación del último documento faltante." },
       { type: "h2", text: "8. Derecho de desistimiento (art. 52-59 Cód. Consumo)" },
       {
         type: "ul",

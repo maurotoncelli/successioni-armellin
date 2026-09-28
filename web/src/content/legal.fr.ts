@@ -127,7 +127,7 @@ export const legalDocsFr: Record<LegalSlug, LegalDoc> = {
     title: "Conditions de vente",
     eyebrow: "Document juridique",
     intro: "Les conditions générales régissant la vente à distance de nos services professionnels aux consommateurs (D.Lgs. 206/2005, Code de la consommation).",
-    updatedAt: "Dernière mise à jour : 25 septembre 2026",
+    updatedAt: "Dernière mise à jour : 28 septembre 2026",
     notice: LANG_NOTICE,
     body: [
       { type: "h2", text: "1. Informations sur le professionnel (art. 49 Code consommation)" },
@@ -171,7 +171,7 @@ export const legalDocsFr: Record<LegalSlug, LegalDoc> = {
         ],
       },
       { type: "h2", text: "7. Délais d'exécution" },
-      { type: "p", text: "Les délais de livraison indiqués sur le site sont des estimations courant à partir du moment où le client a fourni toute la documentation nécessaire, complète, correcte et validée par le professionnel (et non à partir de la date de paiement), et ne comprennent pas les délais des organismes tiers. À titre indicatif : sous 7 jours ouvrés pour les successions sans biens immobiliers, sous 10 jours ouvrés pour celles comprenant des biens immobiliers ; pour les devis sur mesure, le délai convenu s'applique. Tant que la documentation est incomplète ou en attente de complément, le délai reste suspendu et reprend à la réception/validation du dernier document manquant." },
+      { type: "p", text: "Les délais de livraison indiqués sur le site sont des estimations courant à partir du moment où le client a fourni toute la documentation nécessaire, complète, correcte et validée par le professionnel (et non à partir de la date de paiement), et ne comprennent pas les délais des organismes tiers. À titre indicatif : envoi sous 48 heures ouvrées, en ne comptant que les jours ouvrés (hors samedis, dimanches et jours fériés) ; pour les devis sur mesure, le délai convenu s'applique. Si le client a choisi de payer en deux fois, l'envoi a lieu après le paiement du solde et le délai ne comprend pas le temps que le client met à le régler. Tant que la documentation est incomplète ou en attente de complément, le délai reste suspendu et reprend à la réception/validation du dernier document manquant." },
       { type: "h2", text: "8. Droit de rétractation (art. 52-59 Code consommation)" },
       {
         type: "ul",

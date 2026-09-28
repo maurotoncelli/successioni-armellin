@@ -451,7 +451,7 @@
       "key": "come_funziona_sla_note",
       "locale": "en",
       "is_published": true,
-      "value": "Filing within 7–10 business days (depending on package) once we have all complete documents."
+      "value": "Filing within 48 hours (business days) once we have all complete documents."
     },
     {
       "collection": "home",
@@ -755,7 +755,7 @@
       "key": "sla_note",
       "locale": "en",
       "is_published": true,
-      "value": "Each package states filing within a set number of **business days** from **complete documentation** (not from payment): so it's a promise we can truly keep.\n\n**Third-party times** (Agency, Cadastre, banks) are excluded."
+      "value": "The declaration is filed within **48 hours, counting business days only**, from **complete documentation** (not from payment): so it's a promise we can truly keep.\n\n**Third-party times** (Agency, Cadastre, banks) are excluded."
     },
     {
       "collection": "tariffe",
@@ -1721,7 +1721,7 @@
       "key": "sla_body",
       "locale": "en",
       "is_published": true,
-      "value": "Timelines depend on the package and start when we have **all complete, correct documents** (not from payment): so it's a promise we can truly keep.\n\n**Third-party times** (Agency, Cadastre, banks) are excluded."
+      "value": "Timelines start when we have **all complete, correct documents** (not from payment): filing within **48 hours, counting business days only**. So it's a promise we can truly keep.\n\n**Third-party times** (Agency, Cadastre, banks) are excluded."
     },
     {
       "collection": "come_funziona",
@@ -5642,7 +5642,7 @@
         "tagline": "One price, no surcharges",
         "price_note": "final fee, no VAT to add",
         "taxes_note": "State taxes separate: we calculate them for you",
-        "sla": "Filing within 7–10 business days once documents are complete",
+        "sla": "Filing within 48 hours (business days) once documents are complete",
         "features": [
           "Up to 10 properties, land included, with cadastral transfer (voltura) for each",
           "Up to 10 heirs, including those living abroad",
@@ -5707,6 +5707,39 @@
       }
     },
     {
+      "collection": "site_ui",
+      "key": "payment_trust_ui",
+      "locale": "en",
+      "is_published": true,
+      "value": {
+        "title": "Pay with peace of mind: here's why",
+        "items": [
+          {
+            "icon": "albo",
+            "title": "You pay a registered surveyor",
+            "text": "Geom. Lorenzo Armellin, Collegio Geometri di Pisa no. 1969, VAT no. 02432220503. Office at Via Vittorio Veneto 31, Pontedera: you can also drop by in person."
+          },
+          {
+            "icon": "stripe",
+            "title": "Payment is handled by Stripe",
+            "text": "The payment page belongs to Stripe: your card details never reach us."
+          },
+          {
+            "icon": "invoice",
+            "title": "An invoice in your name",
+            "text": "You'll find it and can download it in your client area."
+          },
+          {
+            "icon": "refund",
+            "title": "If you change your mind, we refund you",
+            "text": "14-day right of withdrawal: full refund if Lorenzo hasn't started yet, proportional if he has. Plus our satisfaction-or-refund guarantee."
+          }
+        ],
+        "methods": "Card · PayPal Pay in 3, Klarna or Scalapay (where available) · 50% + 50% · or pay after the document check",
+        "guarantee_link": "Read the guarantee"
+      }
+    },
+    {
       "collection": "prezzo_unico",
       "key": "faq_answers",
       "locale": "en",
@@ -5758,7 +5791,7 @@
       "key": "home.come_funziona_sla_note",
       "locale": "en",
       "is_published": true,
-      "value": "Filing within 7–10 business days (10 if there are properties) once we have all complete documents."
+      "value": "Filing within 48 hours (business days) once we have all complete documents."
     },
     {
       "collection": "prezzo_unico",
@@ -5807,7 +5840,7 @@
       "key": "tariffe.sla_note",
       "locale": "en",
       "is_published": true,
-      "value": "The declaration is filed within **7 business days** if there are no properties and within **10** if there are, from **complete documentation** (not from payment): so it's a promise we can truly keep.\n\n**Third-party times** (Agency, Cadastre, banks) are excluded."
+      "value": "The declaration is filed within **48 hours, counting business days only**, from **complete documentation** (not from payment): so it's a promise we can truly keep.\n\n**Third-party times** (Agency, Cadastre, banks) are excluded."
     },
     {
       "collection": "prezzo_unico",
@@ -5915,7 +5948,7 @@
       "key": "come_funziona.sla_body",
       "locale": "en",
       "is_published": true,
-      "value": "Timelines start when we have **all complete, correct documents** (not from payment): filing within **7 business days** if there are no properties, within **10** if there are. So it's a promise we can truly keep.\n\n**Third-party times** (Agency, Cadastre, banks) are excluded."
+      "value": "Timelines start when we have **all complete, correct documents** (not from payment): filing within **48 hours, counting business days only**. So it's a promise we can truly keep.\n\n**Third-party times** (Agency, Cadastre, banks) are excluded."
     },
     {
       "collection": "prezzo_unico",

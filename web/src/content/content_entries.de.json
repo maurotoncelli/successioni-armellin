@@ -451,7 +451,7 @@
       "key": "come_funziona_sla_note",
       "locale": "de",
       "is_published": true,
-      "value": "Einreichung innerhalb von 7–10 Werktagen (je nach Paket), sobald alle Unterlagen vollständig sind."
+      "value": "Einreichung innerhalb von 48 Stunden (nur Werktage), sobald alle Unterlagen vollständig sind."
     },
     {
       "collection": "home",
@@ -755,7 +755,7 @@
       "key": "sla_note",
       "locale": "de",
       "is_published": true,
-      "value": "Jedes Paket: Einreichung innerhalb fester **Werktage** nach **vollständigen Dokumenten** (nicht ab Zahlung).\n\n**Dritte** (Agenzia, Kataster, Banken) ausgeschlossen."
+      "value": "Die Erklärung wird innerhalb von **48 Stunden (nur Werktage)** eingereicht — ab **vollständigen Unterlagen** (nicht ab Zahlung): so ist es ein Versprechen, das wir wirklich halten können.\n\n**Fristen Dritter** (Agenzia, Kataster, Banken) sind ausgeschlossen."
     },
     {
       "collection": "tariffe",
@@ -1707,7 +1707,7 @@
       "key": "sla_body",
       "locale": "de",
       "is_published": true,
-      "value": "Fristen ab **vollständigen Dokumenten** (nicht ab Zahlung).\n\n**Dritte** (Agenzia, Kataster, Banken) ausgeschlossen."
+      "value": "Die Fristen beginnen, wenn wir **alle vollständigen und korrekten Unterlagen** haben (nicht ab Zahlung): Einreichung innerhalb von **48 Stunden (nur Werktage)**. So ist es ein Versprechen, das wir wirklich halten können.\n\n**Fristen Dritter** (Agenzia, Kataster, Banken) sind ausgeschlossen."
     },
     {
       "collection": "come_funziona",
@@ -5628,7 +5628,7 @@
         "tagline": "Ein Preis, ohne Aufschläge",
         "price_note": "Endhonorar, ohne zusätzliche MwSt.",
         "taxes_note": "Staatliche Steuern extra: wir berechnen sie für Sie",
-        "sla": "Einreichung innerhalb von 7–10 Werktagen nach vollständigen Unterlagen",
+        "sla": "Einreichung innerhalb von 48 Stunden (Werktage) nach vollständigen Unterlagen",
         "features": [
           "Bis zu 10 Immobilien, Grundstücke inklusive, mit Katasterumschreibung (voltura) für jede",
           "Bis zu 10 Erben, auch im Ausland wohnhaft",
@@ -5693,6 +5693,39 @@
       }
     },
     {
+      "collection": "site_ui",
+      "key": "payment_trust_ui",
+      "locale": "de",
+      "is_published": true,
+      "value": {
+        "title": "Sicher bezahlen: darum",
+        "items": [
+          {
+            "icon": "albo",
+            "title": "Sie bezahlen einen eingetragenen Geometra",
+            "text": "Geom. Lorenzo Armellin, Collegio Geometri di Pisa Nr. 1969, P.IVA 02432220503. Büro in der Via Vittorio Veneto 31, Pontedera: Sie können auch persönlich vorbeikommen."
+          },
+          {
+            "icon": "stripe",
+            "title": "Die Zahlung wickelt Stripe ab",
+            "text": "Die Zahlungsseite gehört Stripe: Ihre Kartendaten erreichen uns nie."
+          },
+          {
+            "icon": "invoice",
+            "title": "Rechnung auf Ihren Namen",
+            "text": "Sie finden sie in Ihrem Persönlichen Bereich und können sie dort herunterladen."
+          },
+          {
+            "icon": "refund",
+            "title": "Wenn Sie es sich anders überlegen, erstatten wir",
+            "text": "14 Tage Widerrufsrecht: volle Erstattung, wenn Lorenzo noch nicht begonnen hat, anteilig, wenn er schon begonnen hat. Dazu unsere Zufriedenheits- oder Geld-zurück-Garantie."
+          }
+        ],
+        "methods": "Karte · PayPal in 3 Raten, Klarna oder Scalapay (wo verfügbar) · 50 % + 50 % · oder Zahlung nach Prüfung der Unterlagen",
+        "guarantee_link": "Garantie lesen"
+      }
+    },
+    {
       "collection": "prezzo_unico",
       "key": "faq_answers",
       "locale": "de",
@@ -5744,7 +5777,7 @@
       "key": "home.come_funziona_sla_note",
       "locale": "de",
       "is_published": true,
-      "value": "Einreichung innerhalb von 7–10 Werktagen (10 bei Immobilien), sobald alle Unterlagen vollständig sind."
+      "value": "Einreichung innerhalb von 48 Stunden (nur Werktage), sobald alle Unterlagen vollständig sind."
     },
     {
       "collection": "prezzo_unico",
@@ -5793,7 +5826,7 @@
       "key": "tariffe.sla_note",
       "locale": "de",
       "is_published": true,
-      "value": "Die Erklärung wird innerhalb von **7 Werktagen** eingereicht, wenn keine Immobilien dabei sind, und innerhalb von **10**, wenn welche dabei sind — ab **vollständigen Unterlagen** (nicht ab Zahlung): so ist es ein Versprechen, das wir wirklich halten können.\n\n**Fristen Dritter** (Agenzia, Kataster, Banken) sind ausgeschlossen."
+      "value": "Die Erklärung wird innerhalb von **48 Stunden (nur Werktage)** eingereicht — ab **vollständigen Unterlagen** (nicht ab Zahlung): so ist es ein Versprechen, das wir wirklich halten können.\n\n**Fristen Dritter** (Agenzia, Kataster, Banken) sind ausgeschlossen."
     },
     {
       "collection": "prezzo_unico",
@@ -5901,7 +5934,7 @@
       "key": "come_funziona.sla_body",
       "locale": "de",
       "is_published": true,
-      "value": "Die Fristen beginnen, wenn wir **alle vollständigen und korrekten Unterlagen** haben (nicht ab Zahlung): Einreichung innerhalb von **7 Werktagen**, wenn keine Immobilien dabei sind, innerhalb von **10**, wenn welche dabei sind. So ist es ein Versprechen, das wir wirklich halten können.\n\n**Fristen Dritter** (Agenzia, Kataster, Banken) sind ausgeschlossen."
+      "value": "Die Fristen beginnen, wenn wir **alle vollständigen und korrekten Unterlagen** haben (nicht ab Zahlung): Einreichung innerhalb von **48 Stunden (nur Werktage)**. So ist es ein Versprechen, das wir wirklich halten können.\n\n**Fristen Dritter** (Agenzia, Kataster, Banken) sind ausgeschlossen."
     },
     {
       "collection": "prezzo_unico",

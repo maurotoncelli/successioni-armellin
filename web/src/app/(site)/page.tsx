@@ -15,6 +15,7 @@ import {
 } from "@/components/site/distinguishes-block";
 import { PackageCards } from "@/components/site/package-cards";
 import { PaymentOptions } from "@/components/site/payment-options";
+import { SectionViewTracker } from "@/components/analytics/section-view-tracker";
 import { FaqAccordion } from "@/components/site/faq-accordion";
 import { getFaqs } from "@/lib/cms";
 import { pickFeaturedFaqs } from "@/lib/faq-featured";
@@ -90,6 +91,7 @@ export default async function HomePage() {
 
   return (
     <>
+      <SectionViewTracker page="/" />
       {welcomeReady ? (
         <WelcomeVideoJsonLd
           name={welcomeLabels.title}

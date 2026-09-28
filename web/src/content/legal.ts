@@ -246,7 +246,7 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
     eyebrow: "Documento legale",
     intro:
       "I termini e le condizioni che regolano la vendita a distanza dei nostri servizi professionali ai consumatori (D.Lgs. 206/2005, Codice del Consumo).",
-    updatedAt: "Ultimo aggiornamento: 25 settembre 2026",
+    updatedAt: "Ultimo aggiornamento: 28 settembre 2026",
     notice: LANG_NOTICE,
     body: [
       { type: "h2", text: "1. Informazioni sul professionista (art. 49 Cod. Consumo)" },
@@ -315,7 +315,7 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
       { type: "h2", text: "7. Tempi di esecuzione" },
       {
         type: "p",
-        text: "I tempi di consegna indicati sul sito sono stime che decorrono dal momento in cui il cliente ha fornito tutta la documentazione necessaria, completa, corretta e validata dal professionista (e non dalla data del pagamento), e non comprendono i tempi degli enti terzi. Indicativamente: entro 7 giorni lavorativi per le successioni senza immobili, entro 10 giorni lavorativi per quelle con immobili; per i preventivi su misura vale il termine concordato. Finché la documentazione è incompleta o in attesa di integrazione, il termine resta sospeso e riprende a decorrere dalla ricezione/validazione dell'ultimo documento mancante.",
+        text: "I tempi di consegna indicati sul sito sono stime che decorrono dal momento in cui il cliente ha fornito tutta la documentazione necessaria, completa, corretta e validata dal professionista (e non dalla data del pagamento), e non comprendono i tempi degli enti terzi. Indicativamente: invio entro 48 ore lavorative, contando solo i giorni feriali (esclusi sabato, domenica e festivi); per i preventivi su misura vale il termine concordato. Se il cliente ha scelto il pagamento in due parti, l'invio avviene dopo il saldo e il termine non comprende il tempo che il cliente impiega a versarlo. Finché la documentazione è incompleta o in attesa di integrazione, il termine resta sospeso e riprende a decorrere dalla ricezione/validazione dell'ultimo documento mancante.",
       },
       { type: "h2", text: "8. Diritto di recesso (artt. 52-59 Cod. Consumo)" },
       {
