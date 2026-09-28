@@ -60,8 +60,8 @@ Piano, decisioni, checklist go-live e chiusura: **@TEST_PREZZO_UNICO_250**.
 - **CRM**: `slaDueDate` conta solo i giorni feriali; la consegna prevista NON si
   fissa più al pagamento (webhook Stripe e pagamento manuale) ma in
   `approveDocument`, quando tutti i documenti obbligatori sono APPROVATO/N.A. e
-  `due_date` è vuota. `sla_days` = 2 nei fixture (`site.ts`); **nel DB (Listino)
-  da portare a 2 alla pubblicazione**.
+  `due_date` è vuota. `sla_days` = 2 nei fixture (`site.ts`) e nel DB (Listino,
+  tutti i pacchetti, 28/09 dopo il deploy di `28af5bd`; prima 7 / 10 / 10).
 - **"Paghi tranquillo"** (`components/site/payment-trust.tsx`, voce
   `site_ui.payment_trust_ui`, fallback `PAYMENT_TRUST_UI_IT`): sotto "Come si
   paga" in home e Come funziona. Albo n. 1969 + P.IVA + studio, Stripe, fattura
