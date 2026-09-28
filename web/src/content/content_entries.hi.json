@@ -2674,21 +2674,21 @@
       "collection": "grazie",
       "key": "esito_b_whatsapp_prefill",
       "locale": "hi",
-      "value": "नमस्ते Lorenzo, मैंने आपकी वेबसाइट पर प्रश्नावली पूरी की: परिणाम {package} पैकेज है, {total} € में। आगे बढ़ने से पहले मेरे कुछ सवाल हैं।",
+      "value": "नमस्ते Lorenzo, मैंने आपकी वेबसाइट पर प्रश्नावली पूरी की: परिणाम {package} पैकेज है, {total} € में। क्या आप बता सकते हैं कि मुझे कितना कर देना होगा और कौन से दस्तावेज़ चाहिए?",
       "is_published": true
     },
     {
       "collection": "grazie",
       "key": "esito_b_whatsapp_label",
       "locale": "hi",
-      "value": "Lorenzo को लिखें",
+      "value": "WhatsApp पर कर पूछें",
       "is_published": true
     },
     {
       "collection": "grazie",
       "key": "esito_b_whatsapp_hint",
       "locale": "hi",
-      "value": "कोई बाध्यता नहीं: Lorenzo स्वयं जवाब देते हैं, आम तौर पर कुछ घंटों में।",
+      "value": "WhatsApp पर Lorenzo आपके मामले के लिए कर का मुफ़्त अनुमान और ज़रूरी दस्तावेज़ों की सूची भेजते हैं। कोई बाध्यता नहीं।",
       "is_published": true
     },
     {
@@ -2744,7 +2744,7 @@
       "collection": "grazie",
       "key": "soft_callback_desc",
       "locale": "hi",
-      "value": "नाम और मोबाइल छोड़ें: Lorenzo स्वयं कॉल करते हैं, आमतौर पर उसी दिन। भुगतान का दबाव नहीं।",
+      "value": "नाम और मोबाइल छोड़ें: Lorenzo स्वयं कॉल करते हैं, आमतौर पर उसी दिन, और कर का पहला अनुमान भी बताते हैं। भुगतान का दबाव नहीं।",
       "is_published": true
     },
     {
@@ -5633,7 +5633,7 @@
           "संतुष्टि या धन-वापसी की गारंटी"
         ],
         "buy_cta": "सेवा खरीदें",
-        "whatsapp_cta": "WhatsApp पर लिखें",
+        "whatsapp_cta": "WhatsApp पर कर पूछें",
         "cta": "मुफ़्त अनुमान निकालें",
         "cta_hint": "एक मिनट में देखें आपके मामले में क्या शामिल है",
         "custom_title": "कोई बड़ा या विशेष मामला?",
@@ -5923,7 +5923,7 @@
       "key": "grazie.esito_b_whatsapp_prefill",
       "locale": "hi",
       "is_published": true,
-      "value": "नमस्ते Lorenzo, मैंने आपकी वेबसाइट पर प्रश्नावली पूरी की: मेरा मामला {total} € की एकल कीमत में आता है। आगे बढ़ने से पहले मेरे कुछ सवाल हैं।"
+      "value": "नमस्ते Lorenzo, मैंने आपकी वेबसाइट पर प्रश्नावली पूरी की: मेरा मामला {total} € की एकल कीमत में आता है। क्या आप बता सकते हैं कि मुझे कितना कर देना होगा और कौन से दस्तावेज़ चाहिए?"
     },
     {
       "collection": "prezzo_unico",

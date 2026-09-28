@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { getRequestLocale, t, tCta, tList, tObj } from "@/lib/locale";
-import { gattiCopy } from "@/content/gatti";
 import {
   CHROME_UI_IT,
   CHECKOUT_UI_IT,
@@ -163,13 +162,13 @@ export default async function GraziePage({
   const waPrefillQuoteTpl = await t(
     "grazie",
     "esito_b_whatsapp_prefill",
-    "Ciao Lorenzo, ho compilato il questionario sul sito: mi risulta il pacchetto {package} a {total} €. Avrei qualche domanda prima di procedere.",
+    "Ciao Lorenzo, ho compilato il questionario sul sito: mi risulta il pacchetto {package} a {total} €. Mi dici quanto pagherei di imposte e quali documenti servono?",
   );
-  const waQuoteLabel = await t("grazie", "esito_b_whatsapp_label", "Scrivi prima su WhatsApp");
+  const waQuoteLabel = await t("grazie", "esito_b_whatsapp_label", "Chiedi le imposte su WhatsApp");
   const waQuoteHint = await t(
     "grazie",
     "esito_b_whatsapp_hint",
-    "Nessun impegno: ti risponde Lorenzo in persona, di solito entro poche ore.",
+    "Su WhatsApp Lorenzo ti manda gratis una stima delle imposte e la lista dei documenti per il tuo caso. Nessun impegno.",
   );
   const feeLabel = await t("grazie", "esito_b_fee_label", "Onorario");
   const rethinkNote = await t(
@@ -408,6 +407,10 @@ export default async function GraziePage({
                     </ButtonLink>
                   </div>
                   <p className="mt-2.5 flex items-start gap-1.5 text-xs leading-snug text-text">
+                    <MessageCircle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#178F51]" />
+                    <span>{waQuoteHint}</span>
+                  </p>
+                  <p className="mt-1.5 flex items-start gap-1.5 text-xs leading-snug text-text">
                     <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-success" />
                     <span>{afterPay}</span>
                   </p>
@@ -500,7 +503,7 @@ export default async function GraziePage({
                 description={await t(
                   "grazie",
                   "soft_callback_desc",
-                  "Lascia nome e cellulare: Lorenzo ti chiama lui, di solito in giornata. Nessuna pressione a pagare.",
+                  "Lascia nome e cellulare: Lorenzo ti chiama lui, di solito in giornata, e ti fa una prima stima delle imposte. Nessuna pressione a pagare.",
                 )}
                 submitLabel={await t(
                   "grazie",
@@ -542,15 +545,6 @@ export default async function GraziePage({
                 cta="grazie_esito_b_callback"
               />
             </div>
-
-            <p className="mt-3 text-center text-sm">
-              <Link
-                href="/gatti"
-                className="font-medium text-primary underline underline-offset-2 hover:text-accent"
-              >
-                {gattiCopy(locale).link}
-              </Link>
-            </p>
 
             {!suggestedPkg?.flat && (
               <div className="mt-3">

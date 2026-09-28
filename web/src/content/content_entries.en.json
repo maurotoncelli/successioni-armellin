@@ -2688,21 +2688,21 @@
       "collection": "grazie",
       "key": "esito_b_whatsapp_prefill",
       "locale": "en",
-      "value": "Hi Lorenzo, I completed the questionnaire on your website: the result is the {package} package at €{total}. I have a few questions before going ahead.",
+      "value": "Hi Lorenzo, I completed the questionnaire on your website: the result is the {package} package at €{total}. Could you tell me how much I would pay in taxes and which documents I need?",
       "is_published": true
     },
     {
       "collection": "grazie",
       "key": "esito_b_whatsapp_label",
       "locale": "en",
-      "value": "Message Lorenzo",
+      "value": "Ask about taxes on WhatsApp",
       "is_published": true
     },
     {
       "collection": "grazie",
       "key": "esito_b_whatsapp_hint",
       "locale": "en",
-      "value": "No commitment: Lorenzo answers personally, usually within a few hours.",
+      "value": "On WhatsApp Lorenzo sends you a free estimate of the taxes and the list of documents for your case. No commitment.",
       "is_published": true
     },
     {
@@ -2758,7 +2758,7 @@
       "collection": "grazie",
       "key": "soft_callback_desc",
       "locale": "en",
-      "value": "Leave your name and mobile: Lorenzo calls you himself, usually the same day. No pressure to pay.",
+      "value": "Leave your name and mobile: Lorenzo calls you himself, usually the same day, and gives you a first estimate of the taxes. No pressure to pay.",
       "is_published": true
     },
     {
@@ -5647,7 +5647,7 @@
           "Satisfaction-or-refund guarantee"
         ],
         "buy_cta": "Buy the service",
-        "whatsapp_cta": "Write on WhatsApp",
+        "whatsapp_cta": "Ask about taxes on WhatsApp",
         "cta": "Calculate your free quote",
         "cta_hint": "In one minute you'll see what's included for your case",
         "custom_title": "A bigger or more complex case?",
@@ -5937,7 +5937,7 @@
       "key": "grazie.esito_b_whatsapp_prefill",
       "locale": "en",
       "is_published": true,
-      "value": "Hi Lorenzo, I completed the questionnaire on your website: my case is covered by the single price of €{total}. I have a few questions before going ahead."
+      "value": "Hi Lorenzo, I completed the questionnaire on your website: my case is covered by the single price of €{total}. Could you tell me how much I would pay in taxes and which documents I need?"
     },
     {
       "collection": "prezzo_unico",

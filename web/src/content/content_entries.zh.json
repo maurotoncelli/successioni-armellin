@@ -2674,21 +2674,21 @@
       "collection": "grazie",
       "key": "esito_b_whatsapp_prefill",
       "locale": "zh",
-      "value": "您好 Lorenzo，我在您的网站上完成了问卷：结果是 {package} 套餐，费用 {total} €。在继续之前我有几个问题。",
+      "value": "您好 Lorenzo，我在您的网站上完成了问卷：结果是 {package} 套餐，费用 {total} €。请问我大概要交多少税款，需要哪些文件？",
       "is_published": true
     },
     {
       "collection": "grazie",
       "key": "esito_b_whatsapp_label",
       "locale": "zh",
-      "value": "给 Lorenzo 写信",
+      "value": "通过 WhatsApp 询问税款",
       "is_published": true
     },
     {
       "collection": "grazie",
       "key": "esito_b_whatsapp_hint",
       "locale": "zh",
-      "value": "无需承诺：Lorenzo 本人回复，通常在几小时内。",
+      "value": "Lorenzo 会通过 WhatsApp 免费发给你税款估算和你的情况所需的文件清单。无需承诺。",
       "is_published": true
     },
     {
@@ -2744,7 +2744,7 @@
       "collection": "grazie",
       "key": "soft_callback_desc",
       "locale": "zh",
-      "value": "留下姓名和手机：Lorenzo 本人通常当天回电。不会催你付款。",
+      "value": "留下姓名和手机：Lorenzo 本人通常当天回电，并先给你一个税款估算。不会催你付款。",
       "is_published": true
     },
     {
@@ -5633,7 +5633,7 @@
           "不满意即退款保证"
         ],
         "buy_cta": "购买服务",
-        "whatsapp_cta": "通过 WhatsApp 联系",
+        "whatsapp_cta": "通过 WhatsApp 询问税款",
         "cta": "免费计算报价",
         "cta_hint": "一分钟了解您的情况包含哪些内容",
         "custom_title": "规模较大或较特殊的情况？",
@@ -5923,7 +5923,7 @@
       "key": "grazie.esito_b_whatsapp_prefill",
       "locale": "zh",
       "is_published": true,
-      "value": "您好 Lorenzo，我在您的网站上完成了问卷：我的情况适用 {total} € 统一价。在继续之前我有几个问题。"
+      "value": "您好 Lorenzo，我在您的网站上完成了问卷：我的情况适用 {total} € 统一价。请问我大概要交多少税款，需要哪些文件？"
     },
     {
       "collection": "prezzo_unico",

@@ -315,7 +315,7 @@ export const FLAT_OFFER_UI_IT: FlatOfferUiLabels = {
     "Garanzia Soddisfatti o Rimborsati",
   ],
   buy_cta: "Acquista il servizio",
-  whatsapp_cta: "Scrivi su WhatsApp",
+  whatsapp_cta: "Chiedi le imposte su WhatsApp",
   cta: "Calcola il preventivo gratis",
   cta_hint: "In un minuto vedi cosa comprende per il tuo caso",
   custom_title: "Un caso più grande o particolare?",

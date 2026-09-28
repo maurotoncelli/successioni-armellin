@@ -2674,21 +2674,21 @@
       "collection": "grazie",
       "key": "esito_b_whatsapp_prefill",
       "locale": "es",
-      "value": "Hola Lorenzo, he completado el cuestionario en su web: el resultado es el paquete {package} por {total} €. Tengo algunas preguntas antes de continuar.",
+      "value": "Hola Lorenzo, he completado el cuestionario en su web: el resultado es el paquete {package} por {total} €. ¿Me puede decir cuánto pagaría de impuestos y qué documentos necesito?",
       "is_published": true
     },
     {
       "collection": "grazie",
       "key": "esito_b_whatsapp_label",
       "locale": "es",
-      "value": "Escribir a Lorenzo",
+      "value": "Pregunta los impuestos por WhatsApp",
       "is_published": true
     },
     {
       "collection": "grazie",
       "key": "esito_b_whatsapp_hint",
       "locale": "es",
-      "value": "Sin compromiso: Lorenzo responde personalmente, normalmente en pocas horas.",
+      "value": "Por WhatsApp Lorenzo te envía gratis una estimación de los impuestos y la lista de documentos para tu caso. Sin compromiso.",
       "is_published": true
     },
     {
@@ -2744,7 +2744,7 @@
       "collection": "grazie",
       "key": "soft_callback_desc",
       "locale": "es",
-      "value": "Deja nombre y móvil: Lorenzo te llama él mismo, normalmente el mismo día. Sin presión para pagar.",
+      "value": "Deja nombre y móvil: Lorenzo te llama él mismo, normalmente el mismo día, y te da una primera estimación de los impuestos. Sin presión para pagar.",
       "is_published": true
     },
     {
@@ -5633,7 +5633,7 @@
           "Garantía de satisfacción o reembolso"
         ],
         "buy_cta": "Compra el servicio",
-        "whatsapp_cta": "Escríbenos por WhatsApp",
+        "whatsapp_cta": "Pregunta los impuestos por WhatsApp",
         "cta": "Calcula el presupuesto gratis",
         "cta_hint": "En un minuto ves qué incluye para tu caso",
         "custom_title": "¿Un caso más grande o especial?",
@@ -5923,7 +5923,7 @@
       "key": "grazie.esito_b_whatsapp_prefill",
       "locale": "es",
       "is_published": true,
-      "value": "Hola Lorenzo, he completado el cuestionario en su web: mi caso entra en el precio único de {total} €. Tengo algunas preguntas antes de continuar."
+      "value": "Hola Lorenzo, he completado el cuestionario en su web: mi caso entra en el precio único de {total} €. ¿Me puede decir cuánto pagaría de impuestos y qué documentos necesito?"
     },
     {
       "collection": "prezzo_unico",

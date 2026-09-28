@@ -2674,21 +2674,21 @@
       "collection": "grazie",
       "key": "esito_b_whatsapp_prefill",
       "locale": "fr",
-      "value": "Bonjour Lorenzo, j'ai rempli le questionnaire sur votre site : le résultat est le forfait {package} à {total} €. J'aurais quelques questions avant de continuer.",
+      "value": "Bonjour Lorenzo, j'ai rempli le questionnaire sur votre site : le résultat est le forfait {package} à {total} €. Pouvez-vous me dire combien je paierais d'impôts et quels documents il me faut ?",
       "is_published": true
     },
     {
       "collection": "grazie",
       "key": "esito_b_whatsapp_label",
       "locale": "fr",
-      "value": "Écrire à Lorenzo",
+      "value": "Demander les impôts sur WhatsApp",
       "is_published": true
     },
     {
       "collection": "grazie",
       "key": "esito_b_whatsapp_hint",
       "locale": "fr",
-      "value": "Sans engagement : Lorenzo répond en personne, généralement en quelques heures.",
+      "value": "Sur WhatsApp, Lorenzo vous envoie gratuitement une estimation des impôts et la liste des documents pour votre dossier. Sans engagement.",
       "is_published": true
     },
     {
@@ -2744,7 +2744,7 @@
       "collection": "grazie",
       "key": "soft_callback_desc",
       "locale": "fr",
-      "value": "Laissez nom et portable : Lorenzo vous appelle lui-même, en général le jour même. Aucune pression pour payer.",
+      "value": "Laissez nom et portable : Lorenzo vous appelle lui-même, en général le jour même, et vous donne une première estimation des impôts. Aucune pression pour payer.",
       "is_published": true
     },
     {
@@ -5633,7 +5633,7 @@
           "Garantie satisfait ou remboursé"
         ],
         "buy_cta": "Achetez le service",
-        "whatsapp_cta": "Écrire sur WhatsApp",
+        "whatsapp_cta": "Demander les impôts sur WhatsApp",
         "cta": "Calculez le devis gratuitement",
         "cta_hint": "En une minute, vous voyez ce qui est inclus pour votre dossier",
         "custom_title": "Un dossier plus volumineux ou particulier ?",
@@ -5923,7 +5923,7 @@
       "key": "grazie.esito_b_whatsapp_prefill",
       "locale": "fr",
       "is_published": true,
-      "value": "Bonjour Lorenzo, j'ai rempli le questionnaire sur votre site : mon dossier entre dans le prix unique de {total} €. J'aurais quelques questions avant de continuer."
+      "value": "Bonjour Lorenzo, j'ai rempli le questionnaire sur votre site : mon dossier entre dans le prix unique de {total} €. Pouvez-vous me dire combien je paierais d'impôts et quels documents il me faut ?"
     },
     {
       "collection": "prezzo_unico",

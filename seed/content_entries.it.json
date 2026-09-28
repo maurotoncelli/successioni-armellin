@@ -2688,21 +2688,21 @@
       "collection": "grazie",
       "key": "esito_b_whatsapp_prefill",
       "locale": "it",
-      "value": "Ciao Lorenzo, ho compilato il questionario sul sito: mi risulta il pacchetto {package} a {total} €. Avrei qualche domanda prima di procedere.",
+      "value": "Ciao Lorenzo, ho compilato il questionario sul sito: mi risulta il pacchetto {package} a {total} €. Mi dici quanto pagherei di imposte e quali documenti servono?",
       "is_published": true
     },
     {
       "collection": "grazie",
       "key": "esito_b_whatsapp_label",
       "locale": "it",
-      "value": "Scrivi a Lorenzo",
+      "value": "Chiedi le imposte su WhatsApp",
       "is_published": true
     },
     {
       "collection": "grazie",
       "key": "esito_b_whatsapp_hint",
       "locale": "it",
-      "value": "Nessun impegno: ti risponde Lorenzo in persona, di solito entro poche ore.",
+      "value": "Su WhatsApp Lorenzo ti manda gratis una stima delle imposte e la lista dei documenti per il tuo caso. Nessun impegno.",
       "is_published": true
     },
     {
@@ -2758,7 +2758,7 @@
       "collection": "grazie",
       "key": "soft_callback_desc",
       "locale": "it",
-      "value": "Lascia nome e cellulare: Lorenzo ti chiama lui, di solito in giornata. Nessuna pressione a pagare.",
+      "value": "Lascia nome e cellulare: Lorenzo ti chiama lui, di solito in giornata, e ti fa una prima stima delle imposte. Nessuna pressione a pagare.",
       "is_published": true
     },
     {
@@ -5647,7 +5647,7 @@
           "Garanzia Soddisfatti o Rimborsati"
         ],
         "buy_cta": "Acquista il servizio",
-        "whatsapp_cta": "Scrivi su WhatsApp",
+        "whatsapp_cta": "Chiedi le imposte su WhatsApp",
         "cta": "Calcola il preventivo gratis",
         "cta_hint": "In un minuto vedi cosa comprende per il tuo caso",
         "custom_title": "Un caso più grande o particolare?",
@@ -5937,7 +5937,7 @@
       "key": "grazie.esito_b_whatsapp_prefill",
       "locale": "it",
       "is_published": true,
-      "value": "Ciao Lorenzo, ho compilato il questionario sul sito: il mio caso rientra nel prezzo unico di {total} €. Avrei qualche domanda prima di procedere."
+      "value": "Ciao Lorenzo, ho compilato il questionario sul sito: il mio caso rientra nel prezzo unico di {total} €. Mi dici quanto pagherei di imposte e quali documenti servono?"
     },
     {
       "collection": "prezzo_unico",

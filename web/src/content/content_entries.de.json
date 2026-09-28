@@ -2674,21 +2674,21 @@
       "collection": "grazie",
       "key": "esito_b_whatsapp_prefill",
       "locale": "de",
-      "value": "Hallo Lorenzo, ich habe den Fragebogen auf Ihrer Website ausgefüllt: Ergebnis ist das Paket {package} für {total} €. Ich hätte vorab noch ein paar Fragen.",
+      "value": "Hallo Lorenzo, ich habe den Fragebogen auf Ihrer Website ausgefüllt: Ergebnis ist das Paket {package} für {total} €. Können Sie mir sagen, wie viel Steuern ich zahlen würde und welche Unterlagen ich brauche?",
       "is_published": true
     },
     {
       "collection": "grazie",
       "key": "esito_b_whatsapp_label",
       "locale": "de",
-      "value": "Lorenzo schreiben",
+      "value": "Steuern per WhatsApp erfragen",
       "is_published": true
     },
     {
       "collection": "grazie",
       "key": "esito_b_whatsapp_hint",
       "locale": "de",
-      "value": "Unverbindlich: Lorenzo antwortet persönlich, meist innerhalb weniger Stunden.",
+      "value": "Per WhatsApp schickt dir Lorenzo kostenlos eine Schätzung der Steuern und die Liste der Unterlagen für deinen Fall. Unverbindlich.",
       "is_published": true
     },
     {
@@ -2744,7 +2744,7 @@
       "collection": "grazie",
       "key": "soft_callback_desc",
       "locale": "de",
-      "value": "Name und Handy hinterlassen: Lorenzo ruft selbst an, meist am selben Tag. Kein Zahlungsdruck.",
+      "value": "Name und Handy hinterlassen: Lorenzo ruft selbst an, meist am selben Tag, und gibt dir eine erste Schätzung der Steuern. Kein Zahlungsdruck.",
       "is_published": true
     },
     {
@@ -5633,7 +5633,7 @@
           "Zufriedenheits- oder Geld-zurück-Garantie"
         ],
         "buy_cta": "Service kaufen",
-        "whatsapp_cta": "Auf WhatsApp schreiben",
+        "whatsapp_cta": "Steuern per WhatsApp erfragen",
         "cta": "Kostenlosen Kostenvoranschlag berechnen",
         "cta_hint": "In einer Minute sehen Sie, was für Ihren Fall enthalten ist",
         "custom_title": "Ein größerer oder besonderer Fall?",
@@ -5923,7 +5923,7 @@
       "key": "grazie.esito_b_whatsapp_prefill",
       "locale": "de",
       "is_published": true,
-      "value": "Hallo Lorenzo, ich habe den Fragebogen auf Ihrer Website ausgefüllt: Mein Fall fällt unter den Einheitspreis von {total} €. Ich hätte vorab noch ein paar Fragen."
+      "value": "Hallo Lorenzo, ich habe den Fragebogen auf Ihrer Website ausgefüllt: Mein Fall fällt unter den Einheitspreis von {total} €. Können Sie mir sagen, wie viel Steuern ich zahlen würde und welche Unterlagen ich brauche?"
     },
     {
       "collection": "prezzo_unico",

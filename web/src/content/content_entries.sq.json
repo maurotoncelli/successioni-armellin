@@ -2674,21 +2674,21 @@
       "collection": "grazie",
       "key": "esito_b_whatsapp_prefill",
       "locale": "sq",
-      "value": "Përshëndetje Lorenzo, plotësova pyetësorin në faqen tuaj: rezultati është paketa {package} me {total} €. Kam disa pyetje para se të vazhdoj.",
+      "value": "Përshëndetje Lorenzo, plotësova pyetësorin në faqen tuaj: rezultati është paketa {package} me {total} €. Mund të më thoni sa tatime do të paguaja dhe cilat dokumente duhen?",
       "is_published": true
     },
     {
       "collection": "grazie",
       "key": "esito_b_whatsapp_label",
       "locale": "sq",
-      "value": "Shkruaj Lorenzos",
+      "value": "Pyet për tatimet në WhatsApp",
       "is_published": true
     },
     {
       "collection": "grazie",
       "key": "esito_b_whatsapp_hint",
       "locale": "sq",
-      "value": "Pa asnjë detyrim: Lorenzo përgjigjet personalisht, zakonisht brenda pak orësh.",
+      "value": "Në WhatsApp Lorenzo të dërgon falas një vlerësim të tatimeve dhe listën e dokumenteve për rastin tënd. Pa asnjë detyrim.",
       "is_published": true
     },
     {
@@ -2744,7 +2744,7 @@
       "collection": "grazie",
       "key": "soft_callback_desc",
       "locale": "sq",
-      "value": "Lë emrin dhe celularin: Lorenzo të telefonon vetë, zakonisht të njëjtën ditë. Pa presion për të paguar.",
+      "value": "Lë emrin dhe celularin: Lorenzo të telefonon vetë, zakonisht të njëjtën ditë, dhe të jep një vlerësim të parë të tatimeve. Pa presion për të paguar.",
       "is_published": true
     },
     {
@@ -5633,7 +5633,7 @@
           "Garanci: i kënaqur ose rimbursim"
         ],
         "buy_cta": "Blini shërbimin",
-        "whatsapp_cta": "Shkruaj në WhatsApp",
+        "whatsapp_cta": "Pyet për tatimet në WhatsApp",
         "cta": "Llogaritni preventivin falas",
         "cta_hint": "Në një minutë shihni çfarë përfshin për rastin tuaj",
         "custom_title": "Një rast më i madh ose i veçantë?",
@@ -5923,7 +5923,7 @@
       "key": "grazie.esito_b_whatsapp_prefill",
       "locale": "sq",
       "is_published": true,
-      "value": "Përshëndetje Lorenzo, plotësova pyetësorin në faqen tuaj: rasti im hyn në çmimin e vetëm {total} €. Kam disa pyetje para se të vazhdoj."
+      "value": "Përshëndetje Lorenzo, plotësova pyetësorin në faqen tuaj: rasti im hyn në çmimin e vetëm {total} €. Mund të më thoni sa tatime do të paguaja dhe cilat dokumente duhen?"
     },
     {
       "collection": "prezzo_unico",

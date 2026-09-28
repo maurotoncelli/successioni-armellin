@@ -2674,21 +2674,21 @@
       "collection": "grazie",
       "key": "esito_b_whatsapp_prefill",
       "locale": "tr",
-      "value": "Merhaba Lorenzo, web sitenizdeki anketi doldurdum: sonuç {total} € karşılığında {package} paketi. Devam etmeden önce birkaç sorum var.",
+      "value": "Merhaba Lorenzo, web sitenizdeki anketi doldurdum: sonuç {total} € karşılığında {package} paketi. Ne kadar vergi ödeyeceğimi ve hangi belgelerin gerektiğini söyleyebilir misiniz?",
       "is_published": true
     },
     {
       "collection": "grazie",
       "key": "esito_b_whatsapp_label",
       "locale": "tr",
-      "value": "Lorenzo'ya yaz",
+      "value": "Vergileri WhatsApp’tan sor",
       "is_published": true
     },
     {
       "collection": "grazie",
       "key": "esito_b_whatsapp_hint",
       "locale": "tr",
-      "value": "Bağlayıcı değil: Lorenzo bizzat yanıtlar, genellikle birkaç saat içinde.",
+      "value": "Lorenzo WhatsApp’tan size ücretsiz bir vergi tahmini ve durumunuz için gereken belgelerin listesini gönderir. Bağlayıcı değil.",
       "is_published": true
     },
     {
@@ -2744,7 +2744,7 @@
       "collection": "grazie",
       "key": "soft_callback_desc",
       "locale": "tr",
-      "value": "Ad ve cep bırakın: Lorenzo sizi kendisi arar, genellikle aynı gün. Ödeme baskısı yok.",
+      "value": "Ad ve cep bırakın: Lorenzo sizi kendisi arar, genellikle aynı gün, ve vergiler için ilk bir tahmin verir. Ödeme baskısı yok.",
       "is_published": true
     },
     {
@@ -5633,7 +5633,7 @@
           "Memnuniyet veya para iade garantisi"
         ],
         "buy_cta": "Hizmeti satın alın",
-        "whatsapp_cta": "WhatsApp’tan yaz",
+        "whatsapp_cta": "Vergileri WhatsApp’tan sor",
         "cta": "Ücretsiz ön teklif hesapla",
         "cta_hint": "Bir dakikada durumunuz için nelerin dahil olduğunu görürsünüz",
         "custom_title": "Daha büyük veya özel bir durum mu?",
@@ -5923,7 +5923,7 @@
       "key": "grazie.esito_b_whatsapp_prefill",
       "locale": "tr",
       "is_published": true,
-      "value": "Merhaba Lorenzo, web sitenizdeki anketi doldurdum: durumum {total} € tek fiyata dahil. Devam etmeden önce birkaç sorum var."
+      "value": "Merhaba Lorenzo, web sitenizdeki anketi doldurdum: durumum {total} € tek fiyata dahil. Ne kadar vergi ödeyeceğimi ve hangi belgelerin gerektiğini söyleyebilir misiniz?"
     },
     {
       "collection": "prezzo_unico",

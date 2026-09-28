@@ -46,6 +46,39 @@ Piano, decisioni, checklist go-live e chiusura: **@TEST_PREZZO_UNICO_250**.
 
 ---
 
+## ★★ LETTURA DATI 28/09: MOLTI PREVENTIVI, ZERO ACQUISTI — aggancio "stima imposte"
+
+Dati 1-28/09 (GA4 con costi Ads collegati + DB): 413 € di Ads, 499 clic, 82
+`quote_result` (~57 utenti), 2 clic "Acquista" (18 e 20/09), 0 WhatsApp dal
+risultato, 1 richiamo (era un test di Mauro, `SUC-2026-0037`), 0 checkout, 0
+acquisti. Col 250 € (dal 25/09) nessun cambiamento. Unica vendita: 30/08, 490 €,
+pagata in 90 s, senza gclid.
+
+- **Intento**: i termini di ricerca sono quasi tutti "quanto costa una
+  successione", "imposta di successione quanto si paga", più fuori target
+  ("gratis", "modello agenzia entrate", "software", "programma successioni e
+  volture", "macchina"). Il preventivo per loro è l'arrivo, non un passo.
+- **Campagna allargata dal 16/09**: impressioni ×2,8, CPC da 1,44 a 0,55 €, tutto
+  Google Search (coerente con AI Max acceso il 10-11/09). Più questionari, zero contatti.
+- **Misura falsata**: `ads_conversion_Acquisto_1` scatta solo su `/tariffe` (60
+  a settembre). L'azione "Acquisto" di Ads con regola URL va eliminata o messa
+  Secondaria (punto 5 della checklist 07/09, ancora aperto).
+- **Pagina risultato**: 7-10 s a vista, 4 utenti su ~55 arrivano in fondo, la
+  maggior parte torna a `/preventivo` a rifare il quiz.
+- GA4 vede ~1 clic Ads su 3 (consenso cookie); il contatore CRM è completo.
+
+**Fatto il 28/09 (non ancora online)** in `/preventivo/grazie` esito B, 11 lingue + seed:
+- Tolto il link ai video di gattini (la pagina `/gatti` resta, nascosta).
+- WhatsApp come aggancio: pulsante "Chiedi le imposte su WhatsApp"
+  (`flat_offer_ui.whatsapp_cta`, `grazie.esito_b_whatsapp_label`), riga sotto i
+  pulsanti anche col prezzo unico (`grazie.esito_b_whatsapp_hint`: stima gratuita
+  delle imposte + lista documenti), messaggio precompilato che chiede imposte e
+  documenti (`grazie.esito_b_whatsapp_prefill` e `prezzo_unico.grazie.*`),
+  "Fatti richiamare" con "prima stima delle imposte" (`grazie.soft_callback_desc`).
+- Da confermare con Lorenzo: risponde lui alle richieste di stima prima dell'acquisto.
+
+---
+
 ## ★★ COPY + UI 20/09 (13 punti Mauro)
 
 Sito + CRM, data-driven, 11 lingue. Icone/illustrazioni generate (niente foto stock).
