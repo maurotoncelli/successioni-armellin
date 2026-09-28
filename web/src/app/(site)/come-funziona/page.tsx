@@ -31,6 +31,7 @@ import {
 } from "@/components/site/come-funziona-icons";
 import { ComeFunzionaPanels } from "@/components/site/come-funziona-panels";
 import { PaymentOptions } from "@/components/site/payment-options";
+import { PaymentTrust } from "@/components/site/payment-trust";
 import {
   formatAmount,
   getPromoContext,
@@ -415,6 +416,8 @@ export default async function ComeFunzionaPage() {
           </Link>
         </p>
       </Section>
+
+      <PaymentTrust />
 
       {/* Pannelli: su mobile accordion (testo al tap), da md card a 3 colonne. */}
       <Section tone="sand">

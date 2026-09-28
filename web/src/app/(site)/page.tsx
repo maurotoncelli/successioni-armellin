@@ -15,6 +15,7 @@ import {
 } from "@/components/site/distinguishes-block";
 import { PackageCards } from "@/components/site/package-cards";
 import { PaymentOptions } from "@/components/site/payment-options";
+import { PaymentTrust } from "@/components/site/payment-trust";
 import { SectionViewTracker } from "@/components/analytics/section-view-tracker";
 import { FaqAccordion } from "@/components/site/faq-accordion";
 import { getFaqs } from "@/lib/cms";
@@ -233,6 +234,8 @@ export default async function HomePage() {
           </ButtonLink>
         </div>
       </Section>
+
+      <PaymentTrust />
 
       {/* Fai da te */}
       <Section tone="muted">

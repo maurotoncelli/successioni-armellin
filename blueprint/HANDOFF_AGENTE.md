@@ -63,9 +63,15 @@ Piano, decisioni, checklist go-live e chiusura: **@TEST_PREZZO_UNICO_250**.
   `due_date` è vuota. `sla_days` = 2 nei fixture (`site.ts`) e nel DB (Listino,
   tutti i pacchetti, 28/09 dopo il deploy di `28af5bd`; prima 7 / 10 / 10).
 - **"Paghi tranquillo"** (`components/site/payment-trust.tsx`, voce
-  `site_ui.payment_trust_ui`, fallback `PAYMENT_TRUST_UI_IT`): sotto "Come si
-  paga" in home e Come funziona. Albo n. 1969 + P.IVA + studio, Stripe, fattura
-  nell'area, recesso 14 gg + garanzia (link `/garanzia`), riga metodi.
+  `site_ui.payment_trust_ui`, fallback `PAYMENT_TRUST_UI_IT`): albo n. 1969 +
+  P.IVA + studio, Stripe, fattura nell'area, recesso 14 gg + garanzia (link
+  `/garanzia`), riga metodi. Dal 28/09 sera (richiesta Mauro, "come il
+  competitor") è una **fascia navy a tutta larghezza** (`Section tone="primary"`),
+  testi bianchi e 4 illustrazioni SVG nello stile di `come-funziona-step-art`
+  (attestato con sigillo, carta + lucchetto, fattura €, moneta con freccia).
+  Sta come sezione a sé subito dopo i prezzi: in home dopo Tariffe, in Come
+  funziona dopo la sezione prezzi (non più dentro `PaymentOptions`). Su mobile
+  illustrazione piccola a sinistra e testo a destra.
   `data-track-section="payment_trust"`; `SectionViewTracker` aggiunto anche in home.
 
 ---
