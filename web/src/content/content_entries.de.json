@@ -189,7 +189,7 @@
       "key": "credit",
       "locale": "de",
       "is_published": true,
-      "value": "Erstellt von AT STUDIO · Mauro Toncelli"
+      "value": "Erstellt von AT STUDIO"
     },
     {
       "collection": "settings",
@@ -430,7 +430,7 @@
         },
         {
           "titolo": "Sie laden die Dokumente hoch",
-          "testo": "Aus Ihrem Persönlichen Bereich, auch per Foto. Exakte Liste von uns.",
+          "testo": "Im Persönlichen Bereich oder per WhatsApp, auch per Foto. Exakte Liste von uns.",
           "immagine": {
             "src": "/images/come-funziona-step-2-documenti.jpg",
             "alt": "Person fotografiert ein Dokument mit dem Smartphone"
@@ -1684,7 +1684,7 @@
         {
           "numero": 2,
           "titolo": "Sie laden die Dokumente hoch",
-          "testo": "Dokumente im Persönlichen Bereich hochladen, auch per Handy-Foto. Individuelle Liste. Fehlendes oft von uns beschaffbar.",
+          "testo": "Dokumente im Persönlichen Bereich hochladen oder per WhatsApp schicken, auch per Handy-Foto. Individuelle Liste. Fehlendes oft von uns beschaffbar.",
           "dettaglio": "Eine echte Person prüft alles: keine halb ausgefüllten Formulare."
         },
         {
@@ -2688,7 +2688,7 @@
       "collection": "grazie",
       "key": "esito_b_whatsapp_hint",
       "locale": "de",
-      "value": "Per WhatsApp schickt dir Lorenzo kostenlos eine Schätzung der Steuern und die Liste der Unterlagen für deinen Fall. Unverbindlich.",
+      "value": "Per WhatsApp kannst du auch die Unterlagen als Foto schicken: Lorenzo prüft sie kostenlos, nennt dir die Steuern, und du zahlst erst danach. Unverbindlich.",
       "is_published": true
     },
     {
@@ -3648,6 +3648,11 @@
           "category": "Dokumente und Persönlicher Bereich",
           "question": "Wie erfahre ich, dass die Dokumente in Ordnung sind?",
           "answer": "Im Persönlichen Bereich Status je Eintrag. «Fertig» senden — E-Mail-Updates bei jedem Schritt."
+        },
+        {
+          "category": "Dokumente und Persönlicher Bereich",
+          "question": "Kann ich die Unterlagen per WhatsApp schicken und später zahlen?",
+          "answer": "Ja. Sie können die Unterlagen per WhatsApp oder E-Mail schicken, auch als Handy-Foto. Lorenzo prüft sie kostenlos und bestätigt Preis und Steuern; Sie zahlen erst danach über den Zahlungslink, den er Ihnen schickt, und dann beginnt die Bearbeitung. Wenn Sie möchten, können Sie auch sofort online zahlen und die Unterlagen im Persönlichen Bereich hochladen."
         },
         {
           "category": "Nach dem Service",
@@ -5679,8 +5684,12 @@
         "note": "Sie können das Honorar auch in Raten mit PayPal Pay in 3, Klarna oder Scalapay zahlen, wo verfügbar.",
         "cta_buy": "Service kaufen",
         "cta_quote": "Kostenlosen Kostenvoranschlag berechnen",
-        "cta_whatsapp": "Auf WhatsApp schreiben",
-        "whatsapp_prefill": "Hallo Lorenzo, ich hätte eine Frage dazu, wie man die Erbschaft bezahlt."
+        "cta_whatsapp": "Unterlagen per WhatsApp senden",
+        "whatsapp_prefill": "Hallo Lorenzo, ich möchte Ihnen die Unterlagen für die Erbschaft schicken und nach Ihrer Prüfung zahlen. Wie gehe ich vor?",
+        "pay_later": {
+          "title": "Erst Unterlagen senden, dann zahlen",
+          "text": "Sie schicken die Unterlagen per WhatsApp, auch als Foto. Lorenzo prüft sie kostenlos und bestätigt Preis und Steuern: Sie zahlen erst danach, über den Link, den er Ihnen schickt."
+        }
       }
     },
     {

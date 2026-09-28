@@ -189,7 +189,7 @@
       "key": "credit",
       "locale": "sq",
       "is_published": true,
-      "value": "Realizuar nga AT STUDIO · Mauro Toncelli"
+      "value": "Realizuar nga AT STUDIO"
     },
     {
       "collection": "settings",
@@ -430,7 +430,7 @@
         },
         {
           "titolo": "Ju ngarkoni dokumentet",
-          "testo": "Nga Zona juaj personale, edhe me foto. Ju japim listën e saktë.",
+          "testo": "Nga Zona juaj personale ose në WhatsApp, edhe me foto. Ju japim listën e saktë.",
           "immagine": {
             "src": "/images/come-funziona-step-2-documenti.jpg",
             "alt": "Person që fotografon një dokument me smartphone"
@@ -1684,7 +1684,7 @@
         {
           "numero": 2,
           "titolo": "Ju ngarkoni dokumentet",
-          "testo": "Nga Zona juaj personale ngarkoni dokumentet, edhe me foto nga telefoni. Ju japim listën e saktë, të personalizuar për rastin tuaj. Nëse ju mungon diçka, shpesh mund ta sigurojmë ne.",
+          "testo": "Ngarkoni dokumentet nga Zona juaj personale ose i dërgoni në WhatsApp, edhe me foto nga telefoni. Ju japim listën e saktë, të personalizuar për rastin tuaj. Nëse ju mungon diçka, shpesh mund ta sigurojmë ne.",
           "dettaglio": "Një person real kontrollon gjithçka: asnjë formular pa përfunduar."
         },
         {
@@ -2688,7 +2688,7 @@
       "collection": "grazie",
       "key": "esito_b_whatsapp_hint",
       "locale": "sq",
-      "value": "Në WhatsApp Lorenzo të dërgon falas një vlerësim të tatimeve dhe listën e dokumenteve për rastin tënd. Pa asnjë detyrim.",
+      "value": "Në WhatsApp mund të dërgosh edhe dokumentet me foto: Lorenzo i kontrollon falas, të thotë tatimet dhe paguan vetëm më pas. Pa asnjë detyrim.",
       "is_published": true
     },
     {
@@ -3648,6 +3648,11 @@
           "category": "Dokumente dhe Zona personale",
           "question": "Si e di kur dokumentet janë në rregull?",
           "answer": "Në Zonën personale shihni gjendjen e çdo elementi (për ngarkim, i ngarkuar, i aprovuar, për rishikim). Kur keni mbaruar shtypni «Kam mbaruar»: merrni përditësime me email në çdo hap dhe mund të kontrolloni gjithmonë ku ndodhet praktika."
+        },
+        {
+          "category": "Dokumente dhe Zona personale",
+          "question": "A mund t'i dërgoj dokumentet në WhatsApp dhe të paguaj më pas?",
+          "answer": "Po. Mund t'i dërgoni dokumentet në WhatsApp ose me email, edhe me foto nga telefoni. Lorenzo i kontrollon falas dhe ju konfirmon çmimin dhe tatimet; paguani vetëm më pas, me linkun e pagesës që ju dërgon ai, dhe atëherë nis praktika. Nëse preferoni, mund të paguani edhe menjëherë online dhe t'i ngarkoni nga Zona juaj personale."
         },
         {
           "category": "Pas shërbimit",
@@ -5679,8 +5684,12 @@
         "note": "Mund të paguani edhe honorarin me këste me PayPal Pay in 3, Klarna ose Scalapay, ku janë të disponueshme.",
         "cta_buy": "Blini shërbimin",
         "cta_quote": "Llogaritni preventivin falas",
-        "cta_whatsapp": "Shkruaj në WhatsApp",
-        "whatsapp_prefill": "Përshëndetje Lorenzo, do të doja të pyesja si paguhet trashëgimia."
+        "cta_whatsapp": "Dërgo dokumentet në WhatsApp",
+        "whatsapp_prefill": "Përshëndetje Lorenzo, do të doja t'ju dërgoja dokumentet për trashëgiminë dhe të paguaja pas kontrollit tuaj. Si të veproj?",
+        "pay_later": {
+          "title": "Dërgo më parë, paguaj më pas",
+          "text": "Dërgoni dokumentet në WhatsApp, edhe me foto. Lorenzo i kontrollon falas dhe ju konfirmon çmimin dhe tatimet: paguani vetëm më pas, me linkun që ju dërgon ai."
+        }
       }
     },
     {

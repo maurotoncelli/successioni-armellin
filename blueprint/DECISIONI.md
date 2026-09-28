@@ -18,6 +18,7 @@
   - **Add-on oltre capienza Completo (05/09)**: **+60 € per immobile oltre il 3°** e **+60 € per erede oltre il 5°** (righe `SURCHARGE` in `line_items`, stesso calcolo in risultato quiz, checkout, email e link CRM — `web/src/lib/order.ts`). **In vetrina resta 290 / 490 / su misura**: gli extra compaiono solo al risultato (es. "490 + 60 immobile aggiuntivo"). Costo immobile extra editabile dal CRM Listino (`extra_property_fee`, vuoto = 60, 0 = spento); costo erede extra fisso nel codice. Solo il Completo: il Semplice non ha sovrapprezzi.
   - **Add-on / servizi correlati** (catalogo, non upsell obbligatorio in checkout): **Riunione di usufrutto 150** + **Adeguamento/ricalcolo IMU** (90 EUR proposto) + voltura aggiuntiva.
 - Pagamento anticipato dell'onorario; imposte di Stato separate e a carico dell'erede.
+  - **"Carica prima, paga dopo" (Mauro 28/09)**: in alternativa il cliente manda i documenti su WhatsApp o via email, Lorenzo li controlla gratis e conferma prezzo e imposte, poi manda il link di pagamento dal CRM. Si paga comunque prima che la pratica parta; nessun lavoro sulla dichiarazione prima del pagamento.
 - Casi complessi -> **preventivo personalizzato** dal CRM dopo consulenza, NO terzo prezzo da marketing. **Trigger "su misura" (agg. 05/09): SI** = altri beni / casi speciali (quote societarie, aziende, imbarcazioni, azioni…), immobili "non so", particelle agricole/terreni; **NO** (restano nei pacchetti) = numero di immobili ed eredi (oltre capienza → add-on +60), annessi, testamento, eredi all'estero.
 - Cambio pacchetto con conguaglio: CONFERMATO (Riunione 2). SLA di consegna: CONFERMATI (lavorazione effettiva ~3-4 gg con documenti completi; SLA pubblici prudenziali).
 - Onesta sul non-obbligo: se la dichiarazione non e dovuta, si avvisa il cliente prima dell'acquisto (Esito A del form, @04). Criterio legale (esonero, art. 28 c.7 TUS): NON dovuta solo se TUTTE e tre: (1) eredi = coniuge/parenti in linea retta; (2) attivo lordo <= 100.000 EUR; (3) nessun immobile/diritto reale immobiliare.
@@ -100,7 +101,7 @@
 ## Area riservata (@06)
 - Accesso passwordless: Magic Link via email (primario) + OTP via email; **opzione OTP via telefono/SMS** per chi preferisce (Riunione 2).
 - Mandato: baseline **cartaceo** (scarica/firma/ricarica) + FES ad accettazione tracciata consigliata (Lorenzo oggi cartaceo, disposto ad adottare la firma online; ha CNS Aruba).
-- Area sbloccata dopo il pagamento; nessun "paga per sbloccare" sui documenti finali.
+- Area sbloccata dopo il pagamento; nessun "paga per sbloccare" sui documenti finali. **Documenti anche su WhatsApp/email prima del pagamento (Mauro 28/09)**: Lorenzo li carica nella pratica dal CRM ("Carica per il cliente").
 - Upload con checklist dinamica = la checklist gestita da Lorenzo (`document_requirements`); il cliente vede solo le voci applicabili; stato documenti visibile e ricaricabile.
 - Vista "Il tuo acquisto" (`/ordine`): riepilogo di cosa ha acquistato e cosa include (da snapshot `line_items`), importo, stato pagamento, fattura. Sempre consultabile.
 - Imposte di Stato comunicate al cliente prima dell'invio (riquadro in `/ordine` + card dashboard), separate dall'onorario, F24/autoliquidazione, nessun ricarico (`state_taxes_*`); prova di presentazione registrata da Lorenzo (`submission_info`) e mostrata al cliente (@05/@06).

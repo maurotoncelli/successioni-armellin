@@ -189,7 +189,7 @@
       "key": "credit",
       "locale": "fr",
       "is_published": true,
-      "value": "Réalisé par AT STUDIO · Mauro Toncelli"
+      "value": "Réalisé par AT STUDIO"
     },
     {
       "collection": "settings",
@@ -430,7 +430,7 @@
         },
         {
           "titolo": "Vous importez les documents",
-          "testo": "Depuis votre Espace personnel, y compris par photo. Nous vous donnons la liste exacte.",
+          "testo": "Depuis votre Espace personnel ou sur WhatsApp, y compris par photo. Nous vous donnons la liste exacte.",
           "immagine": {
             "src": "/images/come-funziona-step-2-documenti.jpg",
             "alt": "Personne photographiant un document avec un smartphone"
@@ -1684,7 +1684,7 @@
         {
           "numero": 2,
           "titolo": "Vous importez les documents",
-          "testo": "Depuis votre Espace personnel, vous téléversez les documents, y compris par photo avec le téléphone. Nous vous donnons la liste exacte, personnalisée pour votre cas. S'il manque quelque chose, nous pouvons souvent le récupérer.",
+          "testo": "Vous téléversez les documents depuis votre Espace personnel ou vous les envoyez sur WhatsApp, y compris par photo avec le téléphone. Nous vous donnons la liste exacte, personnalisée pour votre cas. S'il manque quelque chose, nous pouvons souvent le récupérer.",
           "dettaglio": "Une personne réelle vérifie tout : pas de formulaires laissés inachevés."
         },
         {
@@ -2688,7 +2688,7 @@
       "collection": "grazie",
       "key": "esito_b_whatsapp_hint",
       "locale": "fr",
-      "value": "Sur WhatsApp, Lorenzo vous envoie gratuitement une estimation des impôts et la liste des documents pour votre dossier. Sans engagement.",
+      "value": "Sur WhatsApp, vous pouvez aussi envoyer les documents en photo : Lorenzo les vérifie gratuitement, vous indique les impôts et vous ne payez qu'ensuite. Sans engagement.",
       "is_published": true
     },
     {
@@ -3648,6 +3648,11 @@
           "category": "Documents et Espace personnel",
           "question": "Comment savoir quand les documents sont conformes ?",
           "answer": "Dans l'Espace personnel, vous voyez l'état de chaque élément (à téléverser, téléversé, approuvé, à refaire). Quand vous avez terminé, appuyez sur « J'ai terminé » : vous recevez des mises à jour par e-mail à chaque étape et pouvez toujours suivre l'avancement du dossier."
+        },
+        {
+          "category": "Documents et Espace personnel",
+          "question": "Puis-je envoyer les documents sur WhatsApp et payer ensuite ?",
+          "answer": "Oui. Vous pouvez envoyer les documents sur WhatsApp ou par e-mail, même en photo avec le téléphone. Lorenzo les vérifie gratuitement et vous confirme le prix et les impôts ; vous ne payez qu'ensuite, avec le lien de paiement qu'il vous envoie, et le dossier démarre alors. Si vous préférez, vous pouvez aussi payer tout de suite en ligne et les téléverser depuis votre Espace personnel."
         },
         {
           "category": "Après le service",
@@ -5679,8 +5684,12 @@
         "note": "Vous pouvez aussi payer les honoraires en plusieurs fois avec PayPal Pay in 3, Klarna ou Scalapay, là où c'est disponible.",
         "cta_buy": "Achetez le service",
         "cta_quote": "Calculez le devis gratuitement",
-        "cta_whatsapp": "Écrire sur WhatsApp",
-        "whatsapp_prefill": "Bonjour Lorenzo, j'aurais une question sur le mode de paiement de la succession."
+        "cta_whatsapp": "Envoyer les documents sur WhatsApp",
+        "whatsapp_prefill": "Bonjour Lorenzo, je voudrais vous envoyer les documents de la succession et payer après votre vérification. Comment dois-je faire ?",
+        "pay_later": {
+          "title": "Envoyez d'abord, payez ensuite",
+          "text": "Vous envoyez les documents sur WhatsApp, même en photo. Lorenzo les vérifie gratuitement et vous confirme le prix et les impôts : vous ne payez qu'ensuite, avec le lien qu'il vous envoie."
+        }
       }
     },
     {

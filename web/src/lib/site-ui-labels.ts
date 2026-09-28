@@ -352,6 +352,8 @@ export type PaymentUiLabels = {
   title: string;
   intro: string;
   options: { title: string; text: string }[];
+  /** Documenti su WhatsApp, controllo di Lorenzo, poi link di pagamento dal CRM. */
+  pay_later: { title: string; text: string };
   note: string;
   cta_buy: string;
   cta_quote: string;
@@ -372,11 +374,16 @@ export const PAYMENT_UI_IT: PaymentUiLabels = {
       text: "Il 50% per iniziare, il restante 50% quando la dichiarazione è pronta, prima dell'invio all'Agenzia delle Entrate.",
     },
   ],
+  pay_later: {
+    title: "Carica prima, paga dopo",
+    text: "Mandi i documenti su WhatsApp, anche in foto. Lorenzo li controlla gratis e ti conferma prezzo e imposte: paghi solo dopo, con il link che ti manda lui.",
+  },
   note: "Puoi anche pagare l'onorario a rate con PayPal Pay in 3, Klarna o Scalapay, dove disponibili.",
   cta_buy: "Acquista il servizio",
   cta_quote: "Calcola il preventivo gratis",
-  cta_whatsapp: "Scrivi su WhatsApp",
-  whatsapp_prefill: "Ciao Lorenzo, avrei una domanda su come si paga la successione.",
+  cta_whatsapp: "Manda i documenti su WhatsApp",
+  whatsapp_prefill:
+    "Ciao Lorenzo, vorrei mandarti i documenti per la successione e pagare dopo il tuo controllo. Come procedo?",
 };
 
 export const CHECKOUT_UI_IT: CheckoutUiLabels = {

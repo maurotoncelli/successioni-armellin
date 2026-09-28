@@ -46,6 +46,32 @@ Piano, decisioni, checklist go-live e chiusura: **@TEST_PREZZO_UNICO_250**.
 
 ---
 
+## ★★ CARICA PRIMA, PAGA DOPO + DOCUMENTI SU WHATSAPP (28/09, Mauro)
+
+Dal confronto con `dichiarazionepratichesuccessione.it` (Studio GG, Roma: 250 € IVA
+inclusa, "carica prima, paga dopo", documenti via WhatsApp/email, 48 ore). Flusso
+senza codice nuovo lato server: cliente → WhatsApp con i documenti → Lorenzo
+controlla, crea la pratica e carica i file dal CRM ("Carica per il cliente") →
+link di pagamento dal CRM → la pratica parte. Condizioni invariate: si paga prima
+del lavoro sulla dichiarazione.
+
+- `site_ui.payment_ui.pay_later` (nuovo, 11 lingue + fallback `PAYMENT_UI_IT`):
+  riquadro verde a tutta larghezza in "Come si paga" (`payment-options.tsx`) e nel
+  checkout pubblico sotto "Paga" (`checkout/page.tsx`, solo senza `practice`),
+  pulsante `cta_whatsapp` "Manda i documenti su WhatsApp" con `whatsapp_prefill`.
+  `data-cta`: `checkout_pay_later_whatsapp`, `<prefisso>_whatsapp` in Come si paga.
+- Risultato del preventivo: `grazie.esito_b_whatsapp_hint` ora dice documenti in
+  foto + imposte + "paghi solo dopo".
+- Passo 2 di home (`home.come_funziona_steps`) e Come funziona
+  (`come_funziona.steps`): "dall'area personale o su WhatsApp".
+- FAQ "Posso mandare i documenti su WhatsApp e pagare dopo?": IT nel DB (`faqs`,
+  categoria "Documenti e Area personale", sort 14, inserita il 28/09), altre lingue
+  in `faq.items` dopo le FAQ documenti.
+- Piè di pagina: `footer.credit` = "Realizzato da AT STUDIO" (tolto "· Mauro
+  Toncelli", 11 lingue). Nel CRM il credito resta.
+
+---
+
 ## ★★ LETTURA DATI 28/09: MOLTI PREVENTIVI, ZERO ACQUISTI — aggancio "stima imposte"
 
 Dati 1-28/09 (GA4 con costi Ads collegati + DB): 413 € di Ads, 499 clic, 82
@@ -67,7 +93,7 @@ pagata in 90 s, senza gclid.
   maggior parte torna a `/preventivo` a rifare il quiz.
 - GA4 vede ~1 clic Ads su 3 (consenso cookie); il contatore CRM è completo.
 
-**Fatto il 28/09 (non ancora online)** in `/preventivo/grazie` esito B, 11 lingue + seed:
+**Fatto il 28/09 (online, commit `4ff4ac1`)** in `/preventivo/grazie` esito B, 11 lingue + seed:
 - Tolto il link ai video di gattini (la pagina `/gatti` resta, nascosta).
 - WhatsApp come aggancio: pulsante "Chiedi le imposte su WhatsApp"
   (`flat_offer_ui.whatsapp_cta`, `grazie.esito_b_whatsapp_label`), riga sotto i

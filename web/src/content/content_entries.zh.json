@@ -189,7 +189,7 @@
       "key": "credit",
       "locale": "zh",
       "is_published": true,
-      "value": "由 AT STUDIO · Mauro Toncelli 制作"
+      "value": "由 AT STUDIO 制作"
     },
     {
       "collection": "settings",
@@ -430,7 +430,7 @@
         },
         {
           "titolo": "您上传文件",
-          "testo": "在个人区上传，也可拍照。我们提供准确清单。",
+          "testo": "在个人区上传或通过 WhatsApp 发送，也可拍照。我们提供准确清单。",
           "immagine": {
             "src": "/images/come-funziona-step-2-documenti.jpg",
             "alt": "用手机拍摄文件的人"
@@ -1684,7 +1684,7 @@
         {
           "numero": 2,
           "titolo": "您上传文件",
-          "testo": "在个人区上传文件，也可用手机拍照。我们提供针对您情况的准确清单。若缺失，我们通常可以帮您获取。",
+          "testo": "在个人区上传文件或通过 WhatsApp 发送，也可用手机拍照。我们提供针对您情况的准确清单。若缺失，我们通常可以帮您获取。",
           "dettaglio": "真人全程核查：不会留下半填的表格。"
         },
         {
@@ -2688,7 +2688,7 @@
       "collection": "grazie",
       "key": "esito_b_whatsapp_hint",
       "locale": "zh",
-      "value": "Lorenzo 会通过 WhatsApp 免费发给你税款估算和你的情况所需的文件清单。无需承诺。",
+      "value": "也可以通过 WhatsApp 拍照发送文件：Lorenzo 免费检查，告诉你税款，之后再付款。无需承诺。",
       "is_published": true
     },
     {
@@ -3648,6 +3648,11 @@
           "category": "文件与个人区",
           "question": "如何知道文件是否合格？",
           "answer": "在个人区可查看每项状态（待上传、已上传、已批准、需重做）。完成后点击「已完成」：每个步骤都会收到邮件更新，随时可查看案件进展。"
+        },
+        {
+          "category": "文件与个人区",
+          "question": "可以通过 WhatsApp 发送文件，之后再付款吗？",
+          "answer": "可以。您可以通过 WhatsApp 或电子邮件发送文件，手机拍照也可以。Lorenzo 免费检查，并确认价格和税款；之后您再通过他发来的付款链接付款，办理随即开始。如果您愿意，也可以直接在线付款，然后在个人区上传文件。"
         },
         {
           "category": "服务完成后",
@@ -5679,8 +5684,12 @@
         "note": "在可用的情况下，您也可通过 PayPal Pay in 3、Klarna 或 Scalapay 分期支付专业服务费。",
         "cta_buy": "购买服务",
         "cta_quote": "免费计算报价",
-        "cta_whatsapp": "通过 WhatsApp 联系",
-        "whatsapp_prefill": "您好 Lorenzo，想请教一下遗产继承的付款方式。"
+        "cta_whatsapp": "通过 WhatsApp 发送文件",
+        "whatsapp_prefill": "您好 Lorenzo，我想先把遗产继承的文件发给您，您检查后我再付款。请问怎么操作？",
+        "pay_later": {
+          "title": "先发文件，后付款",
+          "text": "您可通过 WhatsApp 发送文件，拍照也可以。Lorenzo 免费检查，并确认价格和税款：之后再通过他发给您的链接付款。"
+        }
       }
     },
     {

@@ -189,7 +189,7 @@
       "key": "credit",
       "locale": "es",
       "is_published": true,
-      "value": "Realizado por AT STUDIO · Mauro Toncelli"
+      "value": "Realizado por AT STUDIO"
     },
     {
       "collection": "settings",
@@ -430,7 +430,7 @@
         },
         {
           "titolo": "Subes los documentos",
-          "testo": "Desde tu área personal, también con fotos. Te damos la lista exacta.",
+          "testo": "Desde tu área personal o por WhatsApp, también con fotos. Te damos la lista exacta.",
           "immagine": {
             "src": "/images/come-funziona-step-2-documenti.jpg",
             "alt": "Persona fotografiando un documento con el móvil"
@@ -1684,7 +1684,7 @@
         {
           "numero": 2,
           "titolo": "Subes los documentos",
-          "testo": "Desde tu área personal subes los documentos, también con fotos del móvil. Te damos la lista exacta, personalizada para tu caso. Si te falta algo, a menudo podemos recuperarlo nosotros.",
+          "testo": "Subes los documentos desde tu área personal o los mandas por WhatsApp, también con fotos del móvil. Te damos la lista exacta, personalizada para tu caso. Si te falta algo, a menudo podemos recuperarlo nosotros.",
           "dettaglio": "Una persona real lo revisa todo: nada de formularios a medias."
         },
         {
@@ -2688,7 +2688,7 @@
       "collection": "grazie",
       "key": "esito_b_whatsapp_hint",
       "locale": "es",
-      "value": "Por WhatsApp Lorenzo te envía gratis una estimación de los impuestos y la lista de documentos para tu caso. Sin compromiso.",
+      "value": "Por WhatsApp también puedes mandar los documentos en foto: Lorenzo los revisa gratis, te dice los impuestos y pagas solo después. Sin compromiso.",
       "is_published": true
     },
     {
@@ -3648,6 +3648,11 @@
           "category": "Documentos y Área personal",
           "question": "¿Cómo sé cuándo los documentos están correctos?",
           "answer": "En el Área personal ves el estado de cada ítem (por subir, subido, aprobado, a rehacer). Cuando termines pulsa «He terminado»: recibes actualizaciones por correo en cada paso y siempre puedes ver en qué punto está el expediente."
+        },
+        {
+          "category": "Documentos y Área personal",
+          "question": "¿Puedo enviar los documentos por WhatsApp y pagar después?",
+          "answer": "Sí. Puedes enviar los documentos por WhatsApp o por email, también con fotos del móvil. Lorenzo los revisa gratis y te confirma el precio y los impuestos; pagas solo después, con el enlace de pago que te envía él, y entonces empieza el trámite. Si lo prefieres, también puedes pagar online enseguida y subirlos desde tu área personal."
         },
         {
           "category": "Después del servicio",
@@ -5679,8 +5684,12 @@
         "note": "También puedes pagar los honorarios a plazos con PayPal Pay in 3, Klarna o Scalapay, donde estén disponibles.",
         "cta_buy": "Compra el servicio",
         "cta_quote": "Calcula el presupuesto gratis",
-        "cta_whatsapp": "Escríbenos por WhatsApp",
-        "whatsapp_prefill": "Hola Lorenzo, tengo una pregunta sobre cómo se paga la sucesión."
+        "cta_whatsapp": "Envía los documentos por WhatsApp",
+        "whatsapp_prefill": "Hola Lorenzo, quiero enviarle los documentos de la sucesión y pagar después de su revisión. ¿Cómo lo hago?",
+        "pay_later": {
+          "title": "Envía primero, paga después",
+          "text": "Mandas los documentos por WhatsApp, también en foto. Lorenzo los revisa gratis y te confirma el precio y los impuestos: pagas solo después, con el enlace que te envía él."
+        }
       }
     },
     {

@@ -189,7 +189,7 @@
       "key": "credit",
       "locale": "en",
       "is_published": true,
-      "value": "Built by AT STUDIO · Mauro Toncelli"
+      "value": "Built by AT STUDIO"
     },
     {
       "collection": "settings",
@@ -430,7 +430,7 @@
         },
         {
           "titolo": "You upload the documents",
-          "testo": "From your client area, even via photos. We give you the exact list.",
+          "testo": "From your client area or on WhatsApp, even as photos. We give you the exact list.",
           "immagine": {
             "src": "/images/come-funziona-step-2-documenti.jpg",
             "alt": "Person photographing a document with a smartphone"
@@ -1698,7 +1698,7 @@
         {
           "numero": 2,
           "titolo": "You upload the documents",
-          "testo": "From your client area you upload documents, including phone photos. We give you the exact list for your case. If something is missing, we can often retrieve it.",
+          "testo": "You upload documents from your client area or send them on WhatsApp, including phone photos. We give you the exact list for your case. If something is missing, we can often retrieve it.",
           "dettaglio": "A real person checks everything: no forms left half-done."
         },
         {
@@ -2702,7 +2702,7 @@
       "collection": "grazie",
       "key": "esito_b_whatsapp_hint",
       "locale": "en",
-      "value": "On WhatsApp Lorenzo sends you a free estimate of the taxes and the list of documents for your case. No commitment.",
+      "value": "On WhatsApp you can also send the documents as photos: Lorenzo checks them for free, tells you the taxes, and you only pay afterwards. No commitment.",
       "is_published": true
     },
     {
@@ -3662,6 +3662,11 @@
           "category": "Documents and Client area",
           "question": "How do I know when the documents are OK?",
           "answer": "In the Client area you see each item's status (to upload, uploaded, approved, to redo). When finished press «I'm done»: you get email updates at each step and can always check where the case stands."
+        },
+        {
+          "category": "Documents and Client area",
+          "question": "Can I send the documents on WhatsApp and pay later?",
+          "answer": "Yes. You can send the documents on WhatsApp or by email, even as phone photos. Lorenzo checks them for free and confirms the price and taxes; you only pay afterwards, with the payment link he sends you, and then the case starts. If you prefer, you can also pay online right away and upload them from your client area."
         },
         {
           "category": "After the service",
@@ -5693,8 +5698,12 @@
         "note": "You can also pay the fee in instalments with PayPal Pay in 3, Klarna or Scalapay, where available.",
         "cta_buy": "Buy the service",
         "cta_quote": "Calculate your free quote",
-        "cta_whatsapp": "Write on WhatsApp",
-        "whatsapp_prefill": "Hi Lorenzo, I have a question about how to pay for the succession."
+        "cta_whatsapp": "Send documents on WhatsApp",
+        "whatsapp_prefill": "Hi Lorenzo, I'd like to send you the documents for the succession and pay after your check. How do I proceed?",
+        "pay_later": {
+          "title": "Upload first, pay later",
+          "text": "You send the documents on WhatsApp, even as photos. Lorenzo checks them for free and confirms the price and taxes: you only pay afterwards, with the link he sends you."
+        }
       }
     },
     {

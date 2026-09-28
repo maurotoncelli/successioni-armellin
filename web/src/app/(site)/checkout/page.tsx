@@ -3,12 +3,15 @@ import { getRequestLocale, t, tCta, tList, tObj } from "@/lib/locale";
 import {
   CHECKOUT_UI_IT,
   FLAT_OFFER_UI_IT,
+  PAYMENT_UI_IT,
   type CheckoutUiLabels,
   type FlatOfferUiLabels,
+  type PaymentUiLabels,
 } from "@/lib/site-ui-labels";
 import { FLAT_OFFER, flatOfferForPractice, hasFlatOfferLine } from "@/lib/flat-offer";
 import Link from "next/link";
-import { ShieldCheck, Info, Tag } from "lucide-react";
+import { ShieldCheck, Info, Tag, MessageCircle } from "lucide-react";
+import { ButtonLink } from "@/components/ui/button";
 import {
   formatAmount,
   getPromoContext,
@@ -130,6 +133,19 @@ export default async function CheckoutPage({
   const split = storedPlan
     ? { deposit: storedPlan.deposit, balance: storedPlan.balance }
     : splitHonorarium(order?.total ?? 0);
+
+  // "Carica prima, paga dopo" solo nel checkout pubblico: chi arriva dal link
+  // del CRM ha già parlato con Lorenzo.
+  const [paymentUi, tel] = practiceId
+    ? [null, null]
+    : await Promise.all([
+        tObj<PaymentUiLabels>("site_ui", "payment_ui", PAYMENT_UI_IT),
+        tObj("contatti", "telefono", { cta_whatsapp: "https://wa.me/393201570567" }),
+      ]);
+  const waBase = String(tel?.cta_whatsapp || "https://wa.me/393201570567");
+  const payLaterHref = paymentUi
+    ? `${waBase}${waBase.includes("?") ? "&" : "?"}text=${encodeURIComponent(paymentUi.whatsapp_prefill)}`
+    : null;
 
   const trustItems = await tList<string>("checkout", "trust_items");
   const modificaLink = await tCta("checkout", "modifica_link");
@@ -280,6 +296,23 @@ export default async function CheckoutPage({
                     balanceDue={balanceDue}
                   />
                 </div>
+                {paymentUi?.pay_later && payLaterHref && (
+                  <div className="mt-6 rounded-[10px] border border-[#1DAA61]/30 bg-[#1DAA61]/5 p-4">
+                    <p className="font-semibold text-primary">{paymentUi.pay_later.title}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-text-muted">
+                      {paymentUi.pay_later.text}
+                    </p>
+                    <ButtonLink
+                      href={payLaterHref}
+                      variant="whatsapp"
+                      className="mt-3 w-full sm:w-auto"
+                      cta="checkout_pay_later_whatsapp"
+                    >
+                      <MessageCircle className="h-4 w-4" />
+                      {paymentUi.cta_whatsapp}
+                    </ButtonLink>
+                  </div>
+                )}
               </Card>
             </div>
           </div>

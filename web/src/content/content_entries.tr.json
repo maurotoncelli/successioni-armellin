@@ -189,7 +189,7 @@
       "key": "credit",
       "locale": "tr",
       "is_published": true,
-      "value": "AT STUDIO · Mauro Toncelli tarafından geliştirildi"
+      "value": "AT STUDIO tarafından geliştirildi"
     },
     {
       "collection": "settings",
@@ -430,7 +430,7 @@
         },
         {
           "titolo": "Belgeleri siz yüklersiniz",
-          "testo": "Kişisel alanınızdan, fotoğrafla da olur. Size tam listeyi veriyoruz.",
+          "testo": "Kişisel alanınızdan veya WhatsApp’tan, fotoğrafla da olur. Size tam listeyi veriyoruz.",
           "immagine": {
             "src": "/images/come-funziona-step-2-documenti.jpg",
             "alt": "Akıllı telefonla belge fotoğraflayan kişi"
@@ -1684,7 +1684,7 @@
         {
           "numero": 2,
           "titolo": "Belgeleri siz yüklersiniz",
-          "testo": "Kişisel alanınızdan belgeleri yükleyin, telefon fotoğrafıyla da olur. Durumunuza özel tam listeyi veririz. Eksik bir şey varsa çoğu zaman biz temin ederiz.",
+          "testo": "Belgeleri kişisel alanınızdan yükleyin veya WhatsApp’tan gönderin, telefon fotoğrafıyla da olur. Durumunuza özel tam listeyi veririz. Eksik bir şey varsa çoğu zaman biz temin ederiz.",
           "dettaglio": "Her şeyi gerçek bir kişi kontrol eder: yarım kalmış form yok."
         },
         {
@@ -2688,7 +2688,7 @@
       "collection": "grazie",
       "key": "esito_b_whatsapp_hint",
       "locale": "tr",
-      "value": "Lorenzo WhatsApp’tan size ücretsiz bir vergi tahmini ve durumunuz için gereken belgelerin listesini gönderir. Bağlayıcı değil.",
+      "value": "WhatsApp’tan belgeleri fotoğraf olarak da gönderebilirsiniz: Lorenzo ücretsiz kontrol eder, vergileri söyler ve ödemeyi ancak sonra yaparsınız. Bağlayıcı değil.",
       "is_published": true
     },
     {
@@ -3648,6 +3648,11 @@
           "category": "Belgeler ve Kişisel alan",
           "question": "Belgelerin uygun olduğunu nasıl anlarım?",
           "answer": "Kişisel alanda her maddenin durumunu görürsünüz (yüklenecek, yüklendi, onaylandı, yeniden yapılacak). Bitince «Bitti»ye basın: her adımda e-posta güncellemesi alır ve dosyanın nerede olduğunu kontrol edebilirsiniz."
+        },
+        {
+          "category": "Belgeler ve Kişisel alan",
+          "question": "Belgeleri WhatsApp’tan gönderip sonra ödeyebilir miyim?",
+          "answer": "Evet. Belgeleri WhatsApp’tan veya e-postayla, telefon fotoğrafı olarak da gönderebilirsiniz. Lorenzo bunları ücretsiz kontrol eder, fiyatı ve vergileri onaylar; ödemeyi ancak bundan sonra, size gönderdiği ödeme bağlantısıyla yaparsınız ve işlem o zaman başlar. İsterseniz hemen çevrimiçi ödeyip belgeleri kişisel alanınızdan da yükleyebilirsiniz."
         },
         {
           "category": "Hizmet sonrası",
@@ -5679,8 +5684,12 @@
         "note": "Ücreti taksitle de ödeyebilirsiniz (PayPal Pay in 3, Klarna veya Scalapay, mevcut olduğu yerlerde).",
         "cta_buy": "Hizmeti satın alın",
         "cta_quote": "Ücretsiz ön teklif hesapla",
-        "cta_whatsapp": "WhatsApp’tan yaz",
-        "whatsapp_prefill": "Merhaba Lorenzo, veraset ödemesinin nasıl yapıldığı hakkında bir sorum var."
+        "cta_whatsapp": "Belgeleri WhatsApp’tan gönder",
+        "whatsapp_prefill": "Merhaba Lorenzo, veraset belgelerini size göndermek ve kontrolünüzden sonra ödemek istiyorum. Nasıl ilerleyeyim?",
+        "pay_later": {
+          "title": "Önce belgeler, sonra ödeme",
+          "text": "Belgeleri WhatsApp’tan, fotoğraf olarak da gönderirsiniz. Lorenzo bunları ücretsiz kontrol eder, fiyatı ve vergileri onaylar: ödemeyi ancak bundan sonra, size gönderdiği bağlantıyla yaparsınız."
+        }
       }
     },
     {

@@ -189,7 +189,7 @@
       "key": "credit",
       "locale": "it",
       "is_published": true,
-      "value": "Realizzato da AT STUDIO · Mauro Toncelli"
+      "value": "Realizzato da AT STUDIO"
     },
     {
       "collection": "settings",
@@ -430,7 +430,7 @@
         },
         {
           "titolo": "Carichi i documenti",
-          "testo": "Dalla tua area personale, anche da foto. Ti diamo la lista esatta.",
+          "testo": "Dall'area personale o su WhatsApp, anche in foto. Ti diamo la lista esatta.",
           "immagine": {
             "src": "/images/come-funziona-step-2-documenti.jpg",
             "alt": "Persona che fotografa un documento con lo smartphone"
@@ -1698,7 +1698,7 @@
         {
           "numero": 2,
           "titolo": "Carichi i documenti",
-          "testo": "Dalla tua area personale carichi i documenti, anche da foto col telefono. Ti diamo la lista esatta, personalizzata sul tuo caso. Se ti manca qualcosa, spesso lo possiamo recuperare noi.",
+          "testo": "Carichi i documenti dalla tua area personale oppure li mandi su WhatsApp, anche in foto col telefono. Ti diamo la lista esatta, personalizzata sul tuo caso. Se ti manca qualcosa, spesso lo possiamo recuperare noi.",
           "dettaglio": "Una persona reale controlla tutto: niente moduli lasciati a metà."
         },
         {
@@ -2702,7 +2702,7 @@
       "collection": "grazie",
       "key": "esito_b_whatsapp_hint",
       "locale": "it",
-      "value": "Su WhatsApp Lorenzo ti manda gratis una stima delle imposte e la lista dei documenti per il tuo caso. Nessun impegno.",
+      "value": "Su WhatsApp puoi mandare anche i documenti in foto: Lorenzo li controlla gratis, ti dice le imposte e paghi solo dopo. Nessun impegno.",
       "is_published": true
     },
     {
@@ -3662,6 +3662,11 @@
           "category": "Documenti e Area personale",
           "question": "Come faccio a sapere quando i documenti sono ok?",
           "answer": "Nell'Area personale vedi lo stato di ogni voce (da caricare, caricato, approvato, da rifare). Quando hai finito premi «Ho finito»: ricevi aggiornamenti via email a ogni passaggio e puoi sempre controllare a che punto è la pratica."
+        },
+        {
+          "category": "Documenti e Area personale",
+          "question": "Posso mandare i documenti su WhatsApp e pagare dopo?",
+          "answer": "Sì. Puoi mandare i documenti su WhatsApp o via email, anche in foto col telefono. Lorenzo li controlla gratis e ti conferma prezzo e imposte; paghi solo dopo, con il link di pagamento che ti manda lui, e a quel punto parte la pratica. Se preferisci, puoi anche pagare subito online e caricarli dall'area personale."
         },
         {
           "category": "Dopo il servizio",
@@ -5693,8 +5698,12 @@
         "note": "Puoi anche pagare l'onorario a rate con PayPal Pay in 3, Klarna o Scalapay, dove disponibili.",
         "cta_buy": "Acquista il servizio",
         "cta_quote": "Calcola il preventivo gratis",
-        "cta_whatsapp": "Scrivi su WhatsApp",
-        "whatsapp_prefill": "Ciao Lorenzo, avrei una domanda su come si paga la successione."
+        "cta_whatsapp": "Manda i documenti su WhatsApp",
+        "whatsapp_prefill": "Ciao Lorenzo, vorrei mandarti i documenti per la successione e pagare dopo il tuo controllo. Come procedo?",
+        "pay_later": {
+          "title": "Carica prima, paga dopo",
+          "text": "Mandi i documenti su WhatsApp, anche in foto. Lorenzo li controlla gratis e ti conferma prezzo e imposte: paghi solo dopo, con il link che ti manda lui."
+        }
       }
     },
     {

@@ -168,7 +168,7 @@ export default async function GraziePage({
   const waQuoteHint = await t(
     "grazie",
     "esito_b_whatsapp_hint",
-    "Su WhatsApp Lorenzo ti manda gratis una stima delle imposte e la lista dei documenti per il tuo caso. Nessun impegno.",
+    "Su WhatsApp puoi mandare anche i documenti in foto: Lorenzo li controlla gratis, ti dice le imposte e paghi solo dopo. Nessun impegno.",
   );
   const feeLabel = await t("grazie", "esito_b_fee_label", "Onorario");
   const rethinkNote = await t(

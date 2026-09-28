@@ -5,7 +5,10 @@ import { PAYMENT_UI_IT, type PaymentUiLabels } from "@/lib/site-ui-labels";
 import { ButtonLink } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-/* "Come si paga": online, tutto in anticipo o 50/50, rate dove disponibili. */
+/*
+  "Come si paga": online, tutto in anticipo o 50/50, rate dove disponibili,
+  oppure documenti su WhatsApp e pagamento dopo il controllo di Lorenzo.
+*/
 export async function PaymentOptions({
   cta,
   className,
@@ -42,6 +45,12 @@ export async function PaymentOptions({
             <p className="mt-1 text-sm leading-relaxed text-text-muted">{option.text}</p>
           </li>
         ))}
+        {ui.pay_later && (
+          <li className="rounded-xl border border-[#1DAA61]/30 bg-[#1DAA61]/5 p-4 sm:col-span-2">
+            <p className="font-semibold text-primary">{ui.pay_later.title}</p>
+            <p className="mt-1 text-sm leading-relaxed text-text-muted">{ui.pay_later.text}</p>
+          </li>
+        )}
       </ul>
       <p className="mt-4 text-xs leading-relaxed text-text-muted sm:text-sm">{ui.note}</p>
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
