@@ -2693,6 +2693,41 @@
     },
     {
       "collection": "grazie",
+      "key": "abroad_title",
+      "locale": "hi",
+      "is_published": true,
+      "value": "वारिस विदेश में? हम सब कुछ दूर से करते हैं"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_text",
+      "locale": "hi",
+      "is_published": true,
+      "value": "प्रतिनिधि-पत्र से इतालवी कर कोड, विदेशी दस्तावेज़, इतालवी खाते के बिना कर और Agenzia delle Entrate को जमा: इटली आने की ज़रूरत नहीं।"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_cta",
+      "locale": "hi",
+      "is_published": true,
+      "value": "WhatsApp पर Lorenzo को लिखें"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_link",
+      "locale": "hi",
+      "is_published": true,
+      "value": "विदेश में रहते हों तो यह कैसे काम करता है"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_prefill",
+      "locale": "hi",
+      "is_published": true,
+      "value": "नमस्ते Lorenzo, मैंने आपकी वेबसाइट पर प्रश्नावली पूरी की: एक या अधिक वारिस विदेश में रहते हैं। हम कैसे आगे बढ़ें?"
+    },
+    {
+      "collection": "grazie",
       "key": "esito_b_after_pay",
       "locale": "hi",
       "value": "भुगतान के बाद Lorenzo आपको कॉल करते हैं, व्यक्तिगत क्षेत्र खोलते हैं और आप दस्तावेज़ों से शुरू करते हैं। राय बदलने के लिए 14 दिन हैं।",

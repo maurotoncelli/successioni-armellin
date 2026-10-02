@@ -170,6 +170,48 @@ export default async function GraziePage({
     "esito_b_whatsapp_hint",
     "Su WhatsApp puoi mandare anche i documenti in foto: Lorenzo li controlla gratis, ti dice le imposte e paghi solo dopo. Nessun impegno.",
   );
+  const abroadUi =
+    answers.heirsAbroad === "si"
+      ? {
+          title: await t("grazie", "abroad_title", "Eredi all'estero? Facciamo tutto a distanza"),
+          text: await t(
+            "grazie",
+            "abroad_text",
+            "Codice fiscale con delega, documenti esteri, imposte senza conto italiano e invio all'Agenzia: non serve venire in Italia.",
+          ),
+          cta: await t("grazie", "abroad_cta", "Scrivi a Lorenzo su WhatsApp"),
+          link: await t("grazie", "abroad_link", "Come funziona per chi vive all'estero"),
+          prefill: await t(
+            "grazie",
+            "abroad_prefill",
+            "Ciao Lorenzo, ho compilato il questionario sul sito: uno o più eredi vivono all'estero. Come procediamo?",
+          ),
+        }
+      : null;
+  const abroadBlock = abroadUi ? (
+    <div className="mt-3 rounded-[10px] border border-[#1DAA61]/30 bg-[#1DAA61]/5 p-4 sm:p-5">
+      <p className="font-semibold text-primary">{abroadUi.title}</p>
+      <p className="mt-1 text-sm leading-relaxed text-text-muted">{abroadUi.text}</p>
+      <div className="mt-3 flex flex-col gap-2.5 sm:flex-row sm:items-center sm:gap-4">
+        <ButtonLink
+          href={`${waBase}${waBase.includes("?") ? "&" : "?"}text=${encodeURIComponent(abroadUi.prefill)}`}
+          variant="whatsapp"
+          className="w-full sm:w-auto"
+          cta="grazie_abroad_whatsapp"
+        >
+          <MessageCircle className="h-4 w-4" />
+          {abroadUi.cta}
+        </ButtonLink>
+        <Link
+          href="/eredi-estero"
+          data-cta="grazie_abroad_landing"
+          className="text-center text-sm font-medium text-primary underline underline-offset-2 hover:text-accent sm:text-left"
+        >
+          {abroadUi.link}
+        </Link>
+      </div>
+    </div>
+  ) : null;
   const feeLabel = await t("grazie", "esito_b_fee_label", "Onorario");
   const rethinkNote = await t(
     "grazie",
@@ -489,6 +531,8 @@ export default async function GraziePage({
               </div>
             </Card>
 
+            {abroadBlock}
+
             <div className="mt-3">
               <SoftLead
                 kind="callback"
@@ -641,6 +685,8 @@ export default async function GraziePage({
           )}
         </Card>
         )}
+
+        {esito === "c" && abroadBlock}
 
         {/* Cattura contatto OPZIONALE dopo il valore. Esito A (esonero): niente
             form email — resta solo verifica gratuita telefono/WhatsApp. */}

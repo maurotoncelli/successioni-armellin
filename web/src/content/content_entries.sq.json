@@ -2693,6 +2693,41 @@
     },
     {
       "collection": "grazie",
+      "key": "abroad_title",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Trashëgimtarë jashtë vendit? I bëjmë të gjitha nga larg"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_text",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Kodi fiskal me autorizim, dokumente të huaja, tatime pa llogari italiane dhe dërgim te Agenzia delle Entrate: nuk ka nevojë të vini në Itali."
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_cta",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Shkruaji Lorenzos në WhatsApp"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_link",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Si funksionon nëse jetoni jashtë vendit"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_prefill",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Përshëndetje Lorenzo, plotësova pyetësorin në faqen tuaj: një ose më shumë trashëgimtarë jetojnë jashtë vendit. Si të veprojmë?"
+    },
+    {
+      "collection": "grazie",
       "key": "esito_b_after_pay",
       "locale": "sq",
       "value": "Pas pagesës Lorenzo të telefonon, hap hapësirën personale dhe fillon me dokumentet. Ke 14 ditë për t'u tërhequr.",

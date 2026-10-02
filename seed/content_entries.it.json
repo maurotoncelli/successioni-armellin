@@ -2707,6 +2707,41 @@
     },
     {
       "collection": "grazie",
+      "key": "abroad_title",
+      "locale": "it",
+      "is_published": true,
+      "value": "Eredi all'estero? Facciamo tutto a distanza"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_text",
+      "locale": "it",
+      "is_published": true,
+      "value": "Codice fiscale con delega, documenti esteri, imposte senza conto italiano e invio all'Agenzia: non serve venire in Italia."
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_cta",
+      "locale": "it",
+      "is_published": true,
+      "value": "Scrivi a Lorenzo su WhatsApp"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_link",
+      "locale": "it",
+      "is_published": true,
+      "value": "Come funziona per chi vive all'estero"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_prefill",
+      "locale": "it",
+      "is_published": true,
+      "value": "Ciao Lorenzo, ho compilato il questionario sul sito: uno o più eredi vivono all'estero. Come procediamo?"
+    },
+    {
+      "collection": "grazie",
       "key": "esito_b_after_pay",
       "locale": "it",
       "value": "Dopo il pagamento Lorenzo ti chiama, ti apre l'area personale e parti dai documenti. Hai 14 giorni per ripensarci.",

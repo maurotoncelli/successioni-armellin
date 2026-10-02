@@ -2693,6 +2693,41 @@
     },
     {
       "collection": "grazie",
+      "key": "abroad_title",
+      "locale": "de",
+      "is_published": true,
+      "value": "Erben im Ausland? Wir erledigen alles aus der Ferne"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_text",
+      "locale": "de",
+      "is_published": true,
+      "value": "Steuernummer per Vollmacht, ausländische Dokumente, Steuern ohne italienisches Konto und Einreichung bei der Agenzia delle Entrate: Du musst nicht nach Italien kommen."
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_cta",
+      "locale": "de",
+      "is_published": true,
+      "value": "Lorenzo auf WhatsApp schreiben"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_link",
+      "locale": "de",
+      "is_published": true,
+      "value": "So funktioniert es, wenn du im Ausland lebst"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_prefill",
+      "locale": "de",
+      "is_published": true,
+      "value": "Hallo Lorenzo, ich habe den Fragebogen auf Ihrer Website ausgefüllt: Ein oder mehrere Erben leben im Ausland. Wie gehen wir vor?"
+    },
+    {
+      "collection": "grazie",
       "key": "esito_b_after_pay",
       "locale": "de",
       "value": "Nach der Zahlung ruft Lorenzo an, öffnet Ihren Kundenbereich und Sie starten mit den Unterlagen. Sie haben 14 Tage Bedenkzeit.",

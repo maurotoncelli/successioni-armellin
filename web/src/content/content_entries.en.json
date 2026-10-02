@@ -2707,6 +2707,41 @@
     },
     {
       "collection": "grazie",
+      "key": "abroad_title",
+      "locale": "en",
+      "is_published": true,
+      "value": "Heirs living abroad? We handle everything remotely"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_text",
+      "locale": "en",
+      "is_published": true,
+      "value": "Tax code by proxy, foreign documents, taxes without an Italian bank account and filing with the Agenzia delle Entrate: no need to travel to Italy."
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_cta",
+      "locale": "en",
+      "is_published": true,
+      "value": "Message Lorenzo on WhatsApp"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_link",
+      "locale": "en",
+      "is_published": true,
+      "value": "How it works if you live abroad"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_prefill",
+      "locale": "en",
+      "is_published": true,
+      "value": "Hi Lorenzo, I completed the questionnaire on your website: one or more heirs live abroad. How do we proceed?"
+    },
+    {
+      "collection": "grazie",
       "key": "esito_b_after_pay",
       "locale": "en",
       "value": "After payment Lorenzo calls you, opens your client area, and you start with the documents. You have 14 days to change your mind.",

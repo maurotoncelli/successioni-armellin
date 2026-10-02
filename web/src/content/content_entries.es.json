@@ -2693,6 +2693,41 @@
     },
     {
       "collection": "grazie",
+      "key": "abroad_title",
+      "locale": "es",
+      "is_published": true,
+      "value": "¿Herederos en el extranjero? Lo hacemos todo a distancia"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_text",
+      "locale": "es",
+      "is_published": true,
+      "value": "Código fiscal con delegación, documentos extranjeros, impuestos sin cuenta italiana y envío a la Agenzia delle Entrate: no hace falta venir a Italia."
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_cta",
+      "locale": "es",
+      "is_published": true,
+      "value": "Escribe a Lorenzo por WhatsApp"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_link",
+      "locale": "es",
+      "is_published": true,
+      "value": "Cómo funciona si vives en el extranjero"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_prefill",
+      "locale": "es",
+      "is_published": true,
+      "value": "Hola Lorenzo, he completado el cuestionario en su web: uno o más herederos viven en el extranjero. ¿Cómo procedemos?"
+    },
+    {
+      "collection": "grazie",
       "key": "esito_b_after_pay",
       "locale": "es",
       "value": "Tras el pago Lorenzo te llama, te abre el área personal y empiezas por los documentos. Tienes 14 días para cambiar de opinión.",

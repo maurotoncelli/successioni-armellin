@@ -46,6 +46,31 @@ Piano, decisioni, checklist go-live e chiusura: **@TEST_PREZZO_UNICO_250**.
 
 ---
 
+## ★★ LANDING EREDI ALL'ESTERO + RIQUADRO NEL RISULTATO (03/10, Mauro)
+
+Perché: su 3 successioni vendute, 3 clienti stranieri o all'estero (italiano in
+Germania 30/08, americano con doppia successione arrivato fuori dal sito); chi
+vive in Italia fa il preventivo e non compra. A settembre la campagna Ads estero
+ha avuto 7 impressioni e 1 clic (2 €) contro 413 € sulla nazionale.
+
+- **`/eredi-estero`** (`app/(site)/eredi-estero/page.tsx`, testi in
+  `content/eredi-estero.ts`): **solo IT + EN**; le altre lingue mostrano l'inglese
+  con canonical `/en/eredi-estero` (niente redirect, così non cambia il cookie
+  lingua). hreflang it/en/x-default=en, sitemap con le due URL.
+  Hero con foto di Lorenzo e WhatsApp primario; 6 punti (codice fiscale con
+  delega, firme a distanza, documenti esteri, imposte senza conto italiano,
+  invio e volture, tutto per iscritto); 3 passi con "carica prima, paga dopo";
+  `PackageCards` + `PaymentTrust`; 7 FAQ; link alle 5 guide `stranieri`; CTA
+  finale. Fatti allineati alle guide (articles.ts): se cambiano lì, aggiornare qui.
+  `data-cta` `eredi_estero_*`, `SectionViewTracker page="/eredi-estero"`.
+- **Risultato del preventivo**: se `abroad=si`, riquadro verde dopo la scheda
+  (esito B) o dopo la scheda su misura (esito C) con WhatsApp (prefill dedicato)
+  e link a `/eredi-estero`. Voci `grazie.abroad_*` in 11 lingue + seed.
+- **Da fare in Ads**: URL finale della campagna estero IT → `/eredi-estero`;
+  futura campagna EN → `/en/eredi-estero`.
+
+---
+
 ## ★★ 48 ORE LAVORATIVE + RIQUADRO "PAGHI TRANQUILLO" (28/09 sera, Mauro, OK Lorenzo)
 
 - **SLA pubblico unico**: "invio entro 48 ore lavorative dai documenti completi"

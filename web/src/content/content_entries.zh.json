@@ -2693,6 +2693,41 @@
     },
     {
       "collection": "grazie",
+      "key": "abroad_title",
+      "locale": "zh",
+      "is_published": true,
+      "value": "有继承人在国外？我们全程远程办理"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_text",
+      "locale": "zh",
+      "is_published": true,
+      "value": "凭委托办理意大利税号、处理外国文件、无意大利账户也能缴税，并向意大利税务局（Agenzia delle Entrate）提交：无需前往意大利。"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_cta",
+      "locale": "zh",
+      "is_published": true,
+      "value": "通过 WhatsApp 联系 Lorenzo"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_link",
+      "locale": "zh",
+      "is_published": true,
+      "value": "身在国外如何办理"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_prefill",
+      "locale": "zh",
+      "is_published": true,
+      "value": "您好 Lorenzo，我在您的网站上完成了问卷：有一位或多位继承人住在国外。我们该如何进行？"
+    },
+    {
+      "collection": "grazie",
       "key": "esito_b_after_pay",
       "locale": "zh",
       "value": "付款后 Lorenzo 会给你打电话、开通个人专区，你从文件开始。14 天内可以改变主意。",

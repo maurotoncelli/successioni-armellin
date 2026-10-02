@@ -2693,6 +2693,41 @@
     },
     {
       "collection": "grazie",
+      "key": "abroad_title",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Наследники за границей? Всё сделаем дистанционно"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_text",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Налоговый код по доверенности, иностранные документы, налоги без итальянского счёта и подача в Agenzia delle Entrate: приезжать в Италию не нужно."
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_cta",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Написать Лоренцо в WhatsApp"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_link",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Как это работает, если вы живёте за границей"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_prefill",
+      "locale": "ru",
+      "is_published": true,
+      "value": "Здравствуйте, Лоренцо! Я заполнил(а) анкету на сайте: один или несколько наследников живут за границей. Как нам действовать?"
+    },
+    {
+      "collection": "grazie",
       "key": "esito_b_after_pay",
       "locale": "ru",
       "value": "После оплаты Лоренцо вам позвонит, откроет личный кабинет — и вы начнёте с документов. Есть 14 дней, чтобы передумать.",

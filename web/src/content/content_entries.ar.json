@@ -2693,6 +2693,41 @@
     },
     {
       "collection": "grazie",
+      "key": "abroad_title",
+      "locale": "ar",
+      "is_published": true,
+      "value": "ورثة في الخارج؟ ننجز كل شيء عن بُعد"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_text",
+      "locale": "ar",
+      "is_published": true,
+      "value": "الرمز الضريبي الإيطالي بتوكيل، والمستندات الأجنبية، والضرائب من دون حساب إيطالي، والإرسال إلى وكالة الإيرادات: لا حاجة للمجيء إلى إيطاليا."
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_cta",
+      "locale": "ar",
+      "is_published": true,
+      "value": "راسل لورينزو على واتساب"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_link",
+      "locale": "ar",
+      "is_published": true,
+      "value": "كيف يعمل الأمر إذا كنت تعيش في الخارج"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_prefill",
+      "locale": "ar",
+      "is_published": true,
+      "value": "مرحباً لورينزو، أكملت الاستبيان على موقعكم: وارث أو أكثر يعيشون في الخارج. كيف نتابع؟"
+    },
+    {
+      "collection": "grazie",
       "key": "esito_b_after_pay",
       "locale": "ar",
       "value": "بعد الدفع يتصل لورنزو، يفتح مساحتك الشخصية وتبدأ بالوثائق. لديك 14 يوماً لتغيير رأيك.",

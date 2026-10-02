@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getArticles } from "@/lib/cms";
-import { sitemapEntriesForPath } from "@/lib/seo-locale";
+import { absoluteUrl, sitemapEntriesForPath } from "@/lib/seo-locale";
 
 // Route pubbliche indicizzabili (checkout e /preventivo/grazie sono noindex).
 const STATIC_ROUTES: { path: string; priority: number }[] = [
@@ -37,5 +37,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ),
   );
 
-  return [...staticEntries, ...articleEntries];
+  // Landing eredi all'estero: esiste solo in italiano e in inglese.
+  const erediEsteroLanguages = {
+    it: absoluteUrl("/eredi-estero"),
+    en: absoluteUrl("/en/eredi-estero"),
+  };
+  const erediEsteroEntries = Object.values(erediEsteroLanguages).map((url) => ({
+    url,
+    priority: 0.8,
+    alternates: { languages: erediEsteroLanguages },
+  }));
+
+  return [...staticEntries, ...erediEsteroEntries, ...articleEntries];
 }

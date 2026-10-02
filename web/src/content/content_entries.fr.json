@@ -2693,6 +2693,41 @@
     },
     {
       "collection": "grazie",
+      "key": "abroad_title",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Des héritiers à l'étranger ? Nous faisons tout à distance"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_text",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Code fiscal par procuration, documents étrangers, impôts sans compte italien et envoi à l'Agenzia delle Entrate : inutile de venir en Italie."
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_cta",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Écrire à Lorenzo sur WhatsApp"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_link",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Comment ça marche si vous vivez à l'étranger"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_prefill",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Bonjour Lorenzo, j'ai rempli le questionnaire sur votre site : un ou plusieurs héritiers vivent à l'étranger. Comment procédons-nous ?"
+    },
+    {
+      "collection": "grazie",
       "key": "esito_b_after_pay",
       "locale": "fr",
       "value": "Après le paiement, Lorenzo vous appelle, ouvre votre espace personnel et vous commencez par les documents. Vous avez 14 jours pour changer d'avis.",

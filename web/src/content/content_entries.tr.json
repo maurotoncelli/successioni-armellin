@@ -2693,6 +2693,41 @@
     },
     {
       "collection": "grazie",
+      "key": "abroad_title",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Yurt dışında yaşayan mirasçılar mı var? Her şeyi uzaktan hallederiz"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_text",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Vekaletle vergi numarası, yabancı belgeler, İtalyan hesabı olmadan vergiler ve Agenzia delle Entrate'ye gönderim: İtalya'ya gelmenize gerek yok."
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_cta",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Lorenzo'ya WhatsApp’tan yaz"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_link",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Yurt dışında yaşıyorsanız nasıl işler"
+    },
+    {
+      "collection": "grazie",
+      "key": "abroad_prefill",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Merhaba Lorenzo, web sitenizdeki anketi doldurdum: bir veya daha fazla mirasçı yurt dışında yaşıyor. Nasıl ilerleyelim?"
+    },
+    {
+      "collection": "grazie",
       "key": "esito_b_after_pay",
       "locale": "tr",
       "value": "Ödemeden sonra Lorenzo sizi arar, kişisel alanınızı açar ve belgelerden başlarsınız. Fikrinizi değiştirmek için 14 gününüz var.",
