@@ -1,5 +1,11 @@
 # Google Ads — Campagna «Italiani all'estero» (piano operativo, 11/09/2026)
 
+> **05/10/2026: la prossima campagna è quella in @HANDOFF_AGENTE (sezione "Prossima
+> campagna Ads", 200 €/mese, tutte le lingue, keyword generiche, landing `/eredi-estero`).**
+> Qui restano validi le keyword estero (§3 A-C), le negative (§4), la norma Google sui
+> documenti governativi (§0) e le soglie (§7). Prezzi 290, landing `/guide/eredi-estero`,
+> gruppo D e titoli su codice fiscale/imposte sono superati.
+
 Obiettivo: intercettare chi vive fuori dall'Italia e deve fare una successione in Italia
 (casa dei genitori, terreno, conto). È il pubblico per cui «tutto online, senza rientrare»
 non è un vantaggio ma una necessità; concorrenza Search debole; l'unico cliente pagante

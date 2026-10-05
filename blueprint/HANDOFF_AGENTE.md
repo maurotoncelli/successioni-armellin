@@ -18,6 +18,111 @@ Chat precedente TR/FR/SQ + EN/AR + SEO:
 
 ---
 
+## ★★ PROSSIMA CAMPAGNA ADS: SOLO ITALIANI ALL'ESTERO, 200 €/MESE (da fare, 05/10)
+
+**Decisione Lorenzo (riferita da Mauro, 05/10):** tutte le campagne attuali sono **ferme**
+(Nazionale, Locale Toscana, `Search | Estero IT | Lancio`); se ne fa **una sola**, da
+**200 € al mese**, rivolta **solo agli italiani all'estero**. Da creare in Google Ads
+(account 469-614-3939, `studio@successioniarmellin.it`). Le campagne vecchie restano in
+pausa, non cancellarle (storico).
+
+**Perché cambia rispetto al piano dell'11/09** (@ADS_EREDI_ESTERO): a settembre
+`Estero IT | Lancio` ha fatto **7 impressioni e 1 clic** (2 €). Due cause:
+1. **Lingua = solo italiano**: Google la legge come lingua dell'interfaccia dell'utente.
+   Un italiano in Germania con Google in tedesco non vedeva l'annuncio.
+2. **Keyword troppo di nicchia** ("successione in italia dall'estero" e simili): quasi
+   nessuno le cerca così. Ma con la località impostata su **Paesi esteri in "Presenza"**,
+   chi cerca "dichiarazione di successione" da Berlino o Zurigo è già il nostro pubblico:
+   la parola "estero" nella keyword non serve.
+
+### Impostazioni
+
+| Voce | Valore |
+|---|---|
+| Nome | `Search \| Estero \| 200 mese` |
+| Obiettivo / tipo | Lead · Rete di ricerca (togliere Display e Partner di ricerca) |
+| Budget | **6,50 €/giorno** (Google spende al massimo 30,4 × giornaliero = **197,60 €/mese**) |
+| Offerte | Massimizza i clic, **CPC massimo 2,50 €** (dati troppo pochi per le conversioni) |
+| Località | Germania, Svizzera, Regno Unito, Francia, Belgio, Paesi Bassi, Lussemburgo, Austria, Spagna, Stati Uniti, Canada, Australia. Opzione **"Presenza"** (NON "presenza o interesse"). Italia esclusa |
+| Lingue | **Tutte le lingue** (il filtro lo fanno keyword e località) |
+| Da spegnere | AI Max, asset automatici, annunci dinamici (DSA, campo sito vuoto), corrispondenza generica |
+| Pianificazione | Tutti i giorni, tutto il giorno (fusi orari diversi) |
+| Conversioni | Quelle dell'account (Lead, Contatto tel/WhatsApp, Acquisto da tag) |
+| Negative | Elenco condiviso `escluse` + negative §4 di @ADS_EREDI_ESTERO + gruppo C: `lawyer`, `attorney`, `citizenship`, `jure sanguinis`, `visa`, `buy`, `mortgage`, `free`, `template`, `jobs` |
+
+**URL finale** (con UTM, così i lead nel CRM portano la campagna):
+- gruppi A e B: `https://www.successioniarmellin.it/eredi-estero?utm_source=google&utm_medium=cpc&utm_campaign=estero_200`
+- gruppo C: `https://www.successioniarmellin.it/en/eredi-estero?utm_source=google&utm_medium=cpc&utm_campaign=estero_200`
+
+### Gruppi e keyword (corrispondenza a frase, salvo [esatta])
+
+- **A — Successione generica** (il grosso del volume): "dichiarazione di successione",
+  "pratica di successione", "successione online", "fare la successione", "successione
+  ereditaria", "geometra successione", "voltura catastale successione",
+  "quanto costa una successione", [dichiarazione di successione].
+- **B — Estero esplicito**: le keyword dei gruppi A, B e C del §3 di @ADS_EREDI_ESTERO
+  ("successione in italia dall'estero", "casa ereditata in italia vivo all'estero",
+  "defunto residente all'estero successione italia"…). Il gruppo D (codice fiscale /
+  imposte) **non si fa**: è proprio quello che Google blocca (vedi sotto).
+- **C — Inglese** (landing EN): "italian inheritance", "inheritance in italy",
+  "italian succession declaration", "inherited property in italy", "inherited house in
+  italy", "italian estate declaration", "succession declaration italy".
+
+### Annunci (RSA, lunghezze verificate il 05/10)
+
+Titoli IT (≤ 30): `Successione Italia dall'Estero` (pin 1) · `Tutto Online, Senza Rientrare`
+(pin 2) · `Per Italiani all'Estero` · `Stesso Prezzo dall'Estero` · `Da 299 €, Imposte a Parte` ·
+`Geometra Abilitato, Non un Bot` · `Delega Totale: Facciamo Noi` · `Firma a Distanza, Zero Viaggi` ·
+`Documenti da Foto col Telefono` · `Risposta su WhatsApp` · `Preventivo Online in 2 Minuti` ·
+`Voltura Catastale Inclusa` · `Soddisfatti o Rimborsati` · `Casa Ereditata in Italia?` ·
+`Area Personale in 11 Lingue`.
+
+Descrizioni IT (≤ 90):
+- `Successione per chi vive all'estero: tutto a distanza, con un geometra abilitato.`
+- `Delega totale: documenti da foto, dichiarazione preparata e trasmessa da noi. Tu resti lì.`
+- `Da 299 € senza immobili, 600 € con immobili. Stesso prezzo che in Italia, imposte a parte.`
+- `Scrivi su WhatsApp: risponde Lorenzo in persona. Eredi in Germania, Svizzera, UK e oltre.`
+
+Gruppo C, titoli EN: `Italian Inheritance Online` (pin 1) · `No Travel to Italy Needed` (pin 2) ·
+`Inherited a House in Italy?` · `Licensed Italian Surveyor` · `Fixed Fee from €299` ·
+`Same Price as in Italy` · `Reply on WhatsApp` · `Cadastral Transfer Included` ·
+`Quote Online in 2 Minutes`. Descrizioni EN:
+`Succession declaration for heirs abroad: documents by photo, remote signature, clear fee.` ·
+`From €299 without property, €600 with property. Same price as in Italy, taxes separate.` ·
+`Lorenzo, licensed surveyor in Tuscany, files your Italian succession remotely. WhatsApp.`
+
+**⚠ Norma Google "Documenti governativi e servizi ufficiali"** (disapprovazione del 15/09):
+in titoli, descrizioni e asset **mai** codice fiscale né pagamento delle imposte per conto
+del cliente. Stanno nella landing, lì vanno bene. Se arriva una disapprovazione: modificare
+il testo ("Apportate modifiche"), non fare ricorso.
+
+**Asset**: sitelink Eredi all'estero (`/eredi-estero`), Preventivo (`/preventivo`), Tariffe
+(`/tariffe`), Chi sono (`/chi-sono`); callout `Tutto online`, `Geometra abilitato`,
+`Risposta su WhatsApp`, `Pagamento con carta`, `Soddisfatti o rimborsati`; asset di chiamata
++39 320 157 0567. **Non** importare il vecchio `blueprint/ads/estero_it_ads_editor.csv`
+così com'è: ha prezzi 290 e titoli già bocciati.
+
+### Prima di attivare
+
+1. **Conversione "Acquisto" con regola URL su /tariffe**: eliminarla o metterla Secondaria
+   (punto aperto dal 07/09). Altrimenti ogni visita a /tariffe conta come acquisto e i
+   numeri della campagna sono falsi.
+2. **Verifica inserzionista** completata (niente banner arancione).
+3. Le altre campagne restano in pausa.
+
+### Come leggerla
+
+- **Dopo 7 giorni**: se le impressioni sono sotto 300, aggiungere Argentina e Brasile alle
+  località e la corrispondenza generica solo sul gruppo A.
+- **Dopo 4 settimane (circa 200 €) o 100 clic**: soglie del §7 di @ADS_EREDI_ESTERO (CTR ≥ 4%,
+  CPC ≤ 2,50 €, `quote_result` ≥ 20% delle sessioni, contatti ≥ 8%). Contano soprattutto i
+  WhatsApp da `/eredi-estero` (`data-cta` `eredi_estero_*`) e i lead nel CRM con
+  `utm_campaign=estero_200`.
+- Spesa: in GA4 (`advertiserAdCost`, script `scripts/ga4-report.mjs`) o in Google Ads. Il
+  login gcloud del Mac va rifatto (`gcloud auth login --update-adc`): il 05/10 era scaduto.
+
+---
+
 ## ★ HOME PIÙ CORTA + "ITALIA E ESTERO" AL POSTO DI "CENTINAIA" (05/10 pomeriggio, Mauro)
 
 - **Banda sotto la hero** (`home.success_counter`): titolo "Successioni gestite in
