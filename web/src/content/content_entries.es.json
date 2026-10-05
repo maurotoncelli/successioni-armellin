@@ -817,7 +817,7 @@
       "key": "su_misura_text",
       "locale": "es",
       "is_published": true,
-      "value": "¿Terrenos agrícolas, empresas, participaciones, embarcaciones u otros bienes especiales? Cada caso es distinto: te hacemos un presupuesto a medida, sin sorpresas."
+      "value": "¿Empresas, participaciones societarias, acciones, embarcaciones u otros bienes especiales? Cada caso es distinto: te hacemos un presupuesto a medida, sin sorpresas."
     },
     {
       "collection": "tariffe",
@@ -905,7 +905,7 @@
       "value": [
         {
           "titolo": "Qué paquete",
-          "testo": "**Simple** = solo cuentas y liquidez, sin inmuebles. **Con inmuebles** = hasta 3 inmuebles y 5 herederos, cambio catastral incluido; si son más, cada inmueble o heredero adicional cuesta 60 € y lo ves claramente antes de pagar. Casos particulares (terrenos agrícolas, empresas, participaciones, embarcaciones): **presupuesto a medida, gratis**. Si no sabes por dónde empezar, escribe a Lorenzo: te lo decimos nosotros."
+          "testo": "**Simple** = solo cuentas y liquidez, sin inmuebles: precio fijo, con cualquier número de herederos. **Con inmuebles** = hasta 3 inmuebles (viviendas, terrenos, garajes) y 3 herederos, cambio catastral incluido; si son más, cada inmueble o heredero adicional cuesta 60 € y lo ves claramente antes de pagar. Herederos en el extranjero: mismo precio. Empresas, participaciones societarias, acciones o embarcaciones: **presupuesto a medida, gratis**. Si no sabes por dónde empezar, escribe a Lorenzo: te lo decimos nosotros."
         },
         {
           "titolo": "Si pagas el paquete equivocado",
@@ -971,7 +971,7 @@
       "key": "su_misura_body",
       "locale": "es",
       "is_published": true,
-      "value": "¿Terrenos agrícolas, empresas, participaciones, embarcaciones u otros bienes especiales? Los casos más complejos no caben en un paquete estándar: estudiamos el tuyo y te preparamos un presupuesto dedicado, sin sorpresas."
+      "value": "¿Empresas, participaciones societarias, acciones, embarcaciones u otros bienes especiales? Los casos más complejos no caben en un paquete estándar: estudiamos el tuyo y te preparamos un presupuesto dedicado, sin sorpresas."
     },
     {
       "collection": "pacchetti",
@@ -2520,6 +2520,20 @@
     },
     {
       "collection": "grazie",
+      "key": "esito_b_case_note_semplice",
+      "locale": "es",
+      "is_published": true,
+      "value": "Precio fijo: no cambia con el número de herederos."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_case_note_completo",
+      "locale": "es",
+      "is_published": true,
+      "value": "El paquete incluye hasta {properties} inmuebles y {heirs} herederos; cada inmueble o heredero adicional cuesta {fee} €, ya calculado en el precio."
+    },
+    {
+      "collection": "grazie",
       "key": "esito_a_body",
       "locale": "es",
       "is_published": true,
@@ -2581,7 +2595,7 @@
       "key": "esito_c_body",
       "locale": "es",
       "is_published": true,
-      "value": "De tus respuestas emerge un caso con elementos particulares (muchos inmuebles, terrenos agrícolas, participaciones, empresas…). No podemos cerrar un precio aquí: hay que estudiarlo con Lorenzo, para que pagues ni más ni menos de lo justo. Deja tus datos abajo (y, si quieres, una nota) o escríbenos: te llamamos para aclarar detalles y prepararte el presupuesto dedicado."
+      "value": "De tus respuestas emerge un caso con elementos particulares (participaciones societarias, acciones, empresas, embarcaciones o inmuebles aún por aclarar). No podemos cerrar un precio aquí: hay que estudiarlo con Lorenzo, para que pagues ni más ni menos de lo justo. Deja tus datos abajo (y, si quieres, una nota) o escríbenos: te llamamos para aclarar detalles y prepararte el presupuesto dedicado."
     },
     {
       "collection": "grazie",
@@ -3642,7 +3656,7 @@
         {
           "category": "Costes e impuestos",
           "question": "¿Cuánto cuesta vuestro servicio?",
-          "answer": "Honorarios fijos sin IVA que añadir: Simple 290€ (solo liquidez) o Completo 490€ (hasta 3 inmuebles y 5 herederos; más allá, +60€ por cada inmueble o heredero adicional, indicado antes del pago). Para casos particulares (terrenos agrícolas, empresas, participaciones, embarcaciones), presupuesto a medida. Los impuestos del Estado son aparte, a cargo del heredero, y los calculamos antes del envío."
+          "answer": "Honorarios fijos sin IVA que añadir: Simple 299 € (solo cuentas y liquidez, sin inmuebles, con cualquier número de herederos) o Con inmuebles 600 € (hasta 3 inmuebles, terrenos incluidos, y 3 herederos; más allá, +60 € por cada inmueble o heredero adicional, indicado antes del pago). Quien vive en el extranjero paga el mismo precio. Para empresas, participaciones societarias, acciones o embarcaciones, te hacemos un presupuesto a medida. Los impuestos del Estado son aparte, a cargo del heredero, y los calculamos antes del envío."
         },
         {
           "category": "Costes e impuestos",
@@ -4658,7 +4672,7 @@
         "real_estate_q": "¿Hay inmuebles (viviendas, terrenos, trasteros)?",
         "real_estate_count": "¿Cuántos inmuebles en total?",
         "real_estate_placeholder": "Ej. 2",
-        "real_estate_hint": "Cuenta viviendas, terrenos, trasteros y participaciones: cada inmueble extra puede afectar al presupuesto.",
+        "real_estate_hint": "Cuenta viviendas, terrenos, trasteros y participaciones: hasta 3 están incluidos en el precio, luego +60 € por cada inmueble adicional.",
         "over_100k_q": "¿El valor total de la herencia (cuentas, títulos, etc.) supera los 100.000 euros?",
         "other_assets_q": "¿Hay otros bienes (participaciones, acciones, empresas, embarcaciones…)?",
         "back": "Atrás",

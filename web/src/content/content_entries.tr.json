@@ -817,7 +817,7 @@
       "key": "su_misura_text",
       "locale": "tr",
       "is_published": true,
-      "value": "Tarım arazisi, işletme, şirket payı, tekne veya başka özel varlıklar mı? Her durum farklıdır: sürprizsiz özel ön teklif hazırlarız."
+      "value": "İşletme, şirket payı, hisse senedi, tekne veya başka özel varlıklar mı? Her durum farklıdır: sürprizsiz özel ön teklif hazırlarız."
     },
     {
       "collection": "tariffe",
@@ -905,7 +905,7 @@
       "value": [
         {
           "titolo": "Hangi paket",
-          "testo": "**Basit** = yalnızca hesaplar ve nakit, gayrimenkul yok. **Gayrimenkullü** = en fazla 3 taşınmaz ve 5 mirasçı, kadastro devri dahil; daha fazlaysa her ek taşınmaz veya mirasçı 60 € ve bunu ödemeden önce açıkça görürsünüz. Özel durumlar (tarım arazisi, şirket, pay, tekne): **ücretsiz özel teklif**. Emin değilseniz Lorenzo'ya yazın: biz söyleriz."
+          "testo": "**Basit** = yalnızca hesaplar ve nakit, gayrimenkul yok: mirasçı sayısı ne olursa olsun sabit fiyat. **Gayrimenkullü** = en fazla 3 taşınmaz (ev, arsa, garaj) ve 3 mirasçı, kadastro devri dahil; daha fazlaysa her ek taşınmaz veya mirasçı 60 € ve bunu ödemeden önce açıkça görürsünüz. Yurt dışındaki mirasçılar: aynı fiyat. İşletme, şirket payı, hisse senedi veya tekne: **ücretsiz özel teklif**. Emin değilseniz Lorenzo'ya yazın: biz söyleriz."
         },
         {
           "titolo": "Yanlış paketi öderseniz",
@@ -971,7 +971,7 @@
       "key": "su_misura_body",
       "locale": "tr",
       "is_published": true,
-      "value": "Tarım arazisi, işletme, şirket payı, tekne veya başka özel varlıklar mı? Karmaşık durumlar standart pakete sığmaz: dosyanızı inceler ve sürprizsiz özel ön teklif hazırlarız."
+      "value": "İşletme, şirket payı, hisse senedi, tekne veya başka özel varlıklar mı? Karmaşık durumlar standart pakete sığmaz: dosyanızı inceler ve sürprizsiz özel ön teklif hazırlarız."
     },
     {
       "collection": "pacchetti",
@@ -2520,6 +2520,20 @@
     },
     {
       "collection": "grazie",
+      "key": "esito_b_case_note_semplice",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Sabit fiyat: mirasçı sayısı ne olursa olsun aynı kalır."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_case_note_completo",
+      "locale": "tr",
+      "is_published": true,
+      "value": "Paket en fazla {properties} gayrimenkul ve {heirs} mirasçıyı kapsar; her ek gayrimenkul veya mirasçı {fee} €, fiyata zaten eklenmiştir."
+    },
+    {
+      "collection": "grazie",
       "key": "esito_a_body",
       "locale": "tr",
       "is_published": true,
@@ -2581,7 +2595,7 @@
       "key": "esito_c_body",
       "locale": "tr",
       "is_published": true,
-      "value": "Yanıtlarınızda özel unsurlar olan bir durum görünüyor (çok sayıda gayrimenkul, tarım arazisi, paylar, işletmeler…). Burada fiyat belirleyemeyiz: Lorenzo ile birlikte incelenmeli, ne fazla ne eksik ödersiniz. Aşağıya iletişim bilgilerinizi (ve isterseniz not) bırakın veya yazın: ayrıntıları netleştirmek ve özel ön teklifi hazırlamak için sizi ararız."
+      "value": "Yanıtlarınızda özel unsurlar olan bir durum görünüyor (şirket payları, hisse senetleri, işletmeler, tekneler veya henüz netleşmemiş gayrimenkuller). Burada fiyat belirleyemeyiz: Lorenzo ile birlikte incelenmeli, ne fazla ne eksik ödersiniz. Aşağıya iletişim bilgilerinizi (ve isterseniz not) bırakın veya yazın: ayrıntıları netleştirmek ve özel ön teklifi hazırlamak için sizi ararız."
     },
     {
       "collection": "grazie",
@@ -3642,7 +3656,7 @@
         {
           "category": "Maliyetler ve vergiler",
           "question": "Hizmetiniz ne kadar?",
-          "answer": "Pakete göre sabit ücret ödersiniz. Vergiler ayrıdır, mirasçıya aittir; gönderimden önce hesaplayıp bildiririz."
+          "answer": "Üzerine KDV eklenmeyen sabit ücret: Basit 299 € (yalnızca hesaplar ve nakit, gayrimenkul yok, mirasçı sayısı fark etmez) veya Gayrimenkullü 600 € (arsa dahil en fazla 3 gayrimenkul ve 3 mirasçı; fazlası için her ek gayrimenkul veya mirasçı başına +60 €, ödemeden önce gösterilir). Yurt dışında yaşayan mirasçılar aynı fiyatı öder. İşletme, şirket payı, hisse senedi veya tekne için özel teklif hazırlarız. Devlet vergileri ayrıdır, mirasçıya aittir; gönderimden önce biz hesaplarız."
         },
         {
           "category": "Maliyetler ve vergiler",
@@ -4658,7 +4672,7 @@
         "real_estate_q": "Taşınmaz var mı (evler, araziler, garajlar)?",
         "real_estate_count": "Toplam kaç taşınmaz?",
         "real_estate_placeholder": "Örn. 2",
-        "real_estate_hint": "Ev, arazi, garaj ve payları sayın: her ek gayrimenkul ön teklifi etkileyebilir.",
+        "real_estate_hint": "Ev, arazi, garaj ve payları sayın: 3'e kadarı fiyata dahildir, sonra her ek gayrimenkul için +60 €.",
         "over_100k_q": "Mirasın toplam değeri (hesaplar, menkul kıymetler vb.) 100.000 euroyu aşıyor mu?",
         "other_assets_q": "Başka varlıklar var mı (şirket payları, hisse senetleri, işletmeler, tekneler…)?",
         "back": "Geri",

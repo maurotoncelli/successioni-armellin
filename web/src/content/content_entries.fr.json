@@ -817,7 +817,7 @@
       "key": "su_misura_text",
       "locale": "fr",
       "is_published": true,
-      "value": "Terrains agricoles, entreprises, parts sociales, bateaux ou autres biens particuliers ? Chaque cas est différent : nous préparons un devis sur mesure, sans surprise."
+      "value": "Entreprises, parts sociales, actions, bateaux ou autres biens particuliers ? Chaque cas est différent : nous préparons un devis sur mesure, sans surprise."
     },
     {
       "collection": "tariffe",
@@ -905,7 +905,7 @@
       "value": [
         {
           "titolo": "Quel forfait",
-          "testo": "**Simple** = comptes et liquidités seulement, pas d'immeubles. **Avec immeubles** = jusqu'à 3 biens et 5 héritiers, mutation cadastrale incluse ; au-delà, chaque bien ou héritier supplémentaire coûte 60 €, affiché clairement avant le paiement. Cas particuliers (terrains agricoles, sociétés, parts, bateaux) : **devis sur mesure, gratuit**. Si vous hésitez, écrivez à Lorenzo : nous vous le dirons."
+          "testo": "**Simple** = comptes et liquidités seulement, pas d'immeubles : prix fixe, quel que soit le nombre d'héritiers. **Avec immeubles** = jusqu'à 3 biens (maisons, terrains, box) et 3 héritiers, mutation cadastrale incluse ; au-delà, chaque bien ou héritier supplémentaire coûte 60 €, affiché clairement avant le paiement. Héritiers à l'étranger : même prix. Entreprises, parts sociales, actions ou bateaux : **devis sur mesure, gratuit**. Si vous hésitez, écrivez à Lorenzo : nous vous le dirons."
         },
         {
           "titolo": "Si vous payez le mauvais forfait",
@@ -971,7 +971,7 @@
       "key": "su_misura_body",
       "locale": "fr",
       "is_published": true,
-      "value": "Terrains agricoles, entreprises, parts sociales, bateaux ou autres biens particuliers ? Les cas les plus complexes ne rentrent pas dans un forfait standard : nous étudions le vôtre et préparons un devis dédié, sans surprise."
+      "value": "Entreprises, parts sociales, actions, bateaux ou autres biens particuliers ? Les cas les plus complexes ne rentrent pas dans un forfait standard : nous étudions le vôtre et préparons un devis dédié, sans surprise."
     },
     {
       "collection": "pacchetti",
@@ -2520,6 +2520,20 @@
     },
     {
       "collection": "grazie",
+      "key": "esito_b_case_note_semplice",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Prix fixe : il ne change pas, quel que soit le nombre d'héritiers."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_case_note_completo",
+      "locale": "fr",
+      "is_published": true,
+      "value": "Le forfait comprend jusqu'à {properties} biens et {heirs} héritiers ; chaque bien ou héritier supplémentaire coûte {fee} €, déjà compté dans le prix."
+    },
+    {
+      "collection": "grazie",
       "key": "esito_a_body",
       "locale": "fr",
       "is_published": true,
@@ -2581,7 +2595,7 @@
       "key": "esito_c_body",
       "locale": "fr",
       "is_published": true,
-      "value": "Vos réponses révèlent un dossier avec des éléments particuliers (nombreux biens, terrains agricoles, parts, entreprises…). Nous ne pouvons pas fixer un prix ici : il faut l'étudier avec Lorenzo, pour que vous ne payiez ni plus ni moins que le juste. Laissez vos coordonnées ci-dessous (et une note si vous voulez) ou écrivez-nous : nous vous rappelons pour clarifier et préparer le devis dédié."
+      "value": "Vos réponses révèlent un dossier avec des éléments particuliers (parts sociales, actions, entreprises, bateaux ou biens immobiliers encore à préciser). Nous ne pouvons pas fixer un prix ici : il faut l'étudier avec Lorenzo, pour que vous ne payiez ni plus ni moins que le juste. Laissez vos coordonnées ci-dessous (et une note si vous voulez) ou écrivez-nous : nous vous rappelons pour clarifier et préparer le devis dédié."
     },
     {
       "collection": "grazie",
@@ -3642,7 +3656,7 @@
         {
           "category": "Frais et impôts",
           "question": "Combien coûte votre service ?",
-          "answer": "Honoraires fixes sans TVA à ajouter : Simple 290€ (liquidités uniquement) ou Complet 490€ (jusqu'à 3 biens et 5 héritiers ; au-delà, +60€ par bien ou héritier supplémentaire, indiqué avant le paiement). Pour les cas particuliers (terrains agricoles, sociétés, parts, bateaux), devis sur mesure. Les impôts d'État sont séparés, à la charge de l'héritier, et nous les calculons avant l'envoi."
+          "answer": "Honoraires fixes sans TVA à ajouter : Simple 299 € (comptes et liquidités uniquement, sans immobilier, quel que soit le nombre d'héritiers) ou Avec immobilier 600 € (jusqu'à 3 biens, terrains compris, et 3 héritiers ; au-delà, +60 € par bien ou héritier supplémentaire, indiqué avant le paiement). Les héritiers résidant à l'étranger paient le même prix. Pour les entreprises, parts sociales, actions ou bateaux, nous préparons un devis sur mesure. Les impôts d'État sont séparés, à la charge de l'héritier, et nous les calculons avant l'envoi."
         },
         {
           "category": "Frais et impôts",
@@ -4658,7 +4672,7 @@
         "real_estate_q": "Y a-t-il des biens immobiliers (maisons, terrains, box) ?",
         "real_estate_count": "Combien de biens immobiliers au total ?",
         "real_estate_placeholder": "Ex. 2",
-        "real_estate_hint": "Comptez maisons, terrains, box et parts : chaque bien supplémentaire peut influencer le devis.",
+        "real_estate_hint": "Comptez maisons, terrains, box et parts : jusqu'à 3 sont compris dans le prix, puis +60 € par bien supplémentaire.",
         "over_100k_q": "La valeur totale de la succession (comptes, titres, etc.) dépasse-t-elle 100 000 euros ?",
         "other_assets_q": "Y a-t-il d'autres biens (parts sociales, actions, entreprises, bateaux…) ?",
         "back": "Retour",

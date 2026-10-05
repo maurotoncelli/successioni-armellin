@@ -198,7 +198,7 @@ export const PREVENTIVO_UI_IT: PreventivoUiLabels = {
   real_estate_count: "Quanti immobili in tutto?",
   real_estate_placeholder: "Es. 2",
   real_estate_hint:
-    "Conta case, terreni, box e quote: ogni immobile in più può incidere sul preventivo.",
+    "Conta case, terreni, box e quote: fino a 3 sono compresi nel prezzo, poi +60 € per ogni immobile in più.",
   over_100k_q:
     "Il valore totale dell'eredità (conti, titoli, ecc.) supera i 100.000 euro?",
   other_assets_q:

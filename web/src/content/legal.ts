@@ -246,7 +246,7 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
     eyebrow: "Documento legale",
     intro:
       "I termini e le condizioni che regolano la vendita a distanza dei nostri servizi professionali ai consumatori (D.Lgs. 206/2005, Codice del Consumo).",
-    updatedAt: "Ultimo aggiornamento: 28 settembre 2026",
+    updatedAt: "Ultimo aggiornamento: 5 ottobre 2026",
     notice: LANG_NOTICE,
     body: [
       { type: "h2", text: "1. Informazioni sul professionista (art. 49 Cod. Consumo)" },
@@ -269,10 +269,10 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
         type: "p",
         text: "L'invio telematico all'Agenzia delle Entrate è effettuato dal professionista in qualità di intermediario abilitato ENTRATEL, previo conferimento di apposito mandato/incarico e ricezione della dichiarazione firmata dal cliente. Il contratto si conclude a distanza, in modalità elettronica.",
       },
-      { type: "h2", text: "3. Prezzo, cosa comprende ed esclusioni" },
+      { type: "h2", text: "3. Pacchetti, prezzi ed esclusioni" },
       {
         type: "p",
-        text: "Il servizio è offerto a un prezzo unico di 250 €, indicato nella pagina Tariffe. Il prezzo unico comprende la predisposizione e la trasmissione telematica della dichiarazione di successione, il calcolo delle imposte, le verifiche catastali e le volture catastali, per successioni fino a 10 immobili (terreni compresi) e fino a 10 eredi (anche residenti all'estero), senza limiti di numero di rapporti finanziari, con o senza testamento. Per le successioni con più di 10 immobili o più di 10 eredi, o che comprendono beni esclusi (punto successivo), è disponibile un preventivo su misura. Il prezzo indicato si riferisce esclusivamente all'onorario professionale (regime forfettario: senza IVA da aggiungere).",
+        text: "I pacchetti a prezzo fisso e i relativi prezzi (onorario) sono indicati nella pagina Tariffe (Semplice e Completo). Per i casi che eccedono la capienza dei pacchetti fissi è disponibile un preventivo su misura. Il prezzo indicato si riferisce esclusivamente all'onorario professionale (regime forfettario: senza IVA da aggiungere).",
       },
       {
         type: "callout",
@@ -283,9 +283,10 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
       {
         type: "ul",
         items: [
-          "Sono esclusi dal prezzo unico, salvo diverso accordo, i servizi non espressamente indicati (es. contenzioso, pratiche notarili, consulenze fiscali complesse). Eventuali attività aggiuntive o servizi correlati (es. riunione di usufrutto) sono preventivate a parte.",
-          "Casi fuori dal prezzo unico e preventivo personalizzato: per le successioni con più di 10 immobili o più di 10 eredi, o che comprendono beni esclusi (partecipazioni societarie, azioni, aziende, imbarcazioni o altri beni non standard), il prezzo è determinato tramite preventivo individuale comunicato prima dell'acquisto.",
-          "Il prezzo unico non cambia dopo la verifica della documentazione entro 10 immobili e 10 eredi, qualunque sia il numero di rapporti finanziari. Solo se emergono più di 10 immobili, più di 10 eredi o beni esclusi si applica l'art. 5.",
+          "Sono esclusi dal pacchetto, salvo diverso accordo, i servizi non espressamente indicati (es. contenzioso, pratiche notarili, consulenze fiscali complesse). Eventuali attività aggiuntive o servizi correlati (es. riunione di usufrutto) sono preventivate a parte.",
+          "Supplementi oltre la capienza inclusa: il pacchetto Completo comprende fino a 3 immobili (terreni compresi) e fino a 3 eredi; per ciascun immobile o erede in più si applica un supplemento fisso di 60 € (onorario), indicato come voce distinta nel riepilogo dell'ordine prima del pagamento. Non si applica al pacchetto Semplice, il cui prezzo non dipende dal numero degli eredi. Il prezzo non cambia se uno o più eredi risiedono all'estero.",
+          "Preventivo personalizzato (casi complessi): per le pratiche che comprendono beni esclusi dai pacchetti a prezzo fisso (partecipazioni societarie, azioni, aziende, imbarcazioni o altri beni non standard) o un recupero documentale oltre la capienza del pacchetto, il prezzo è determinato tramite preventivo individuale comunicato prima dell'acquisto.",
+          "Il pacchetto proposto in esito al questionario online è indicativo: dopo la verifica della documentazione può applicarsi la procedura di modifica e conguaglio (art. 5).",
           "Verifica preliminare di non obbligo: ove dai dati forniti emerga che la dichiarazione non è dovuta per legge, il professionista lo segnala al cliente; la valutazione definitiva richiede l'esame del caso concreto.",
         ],
       },
@@ -294,14 +295,14 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
         type: "p",
         text: "La richiesta di preventivo non è vincolante. Il contratto si perfeziona con il pagamento dell'onorario e l'accettazione esplicita delle presenti Condizioni in fase di checkout. Prima dell'acquisto il cliente prende visione delle caratteristiche del servizio, del prezzo totale, delle presenti Condizioni e dell'informativa privacy.",
       },
-      { type: "h2", text: "5. Pagamento e casi fuori dal prezzo unico emersi dopo l'acquisto" },
+      { type: "h2", text: "5. Pagamento e modifica del pacchetto" },
       {
         type: "p",
         text: "Il pagamento dell'onorario avviene anticipatamente tramite il fornitore di pagamento (Stripe), in un'unica soluzione oppure in due tranche del 50% ciascuna (acconto all'avvio della pratica e saldo a dichiarazione pronta, prima dell'invio all'Agenzia delle Entrate). La fattura è emessa secondo gli obblighi vigenti, di norma a saldo avvenuto. Le imposte di Stato sono gestite separatamente e versate dall'erede secondo le modalità comunicate.",
       },
       {
         type: "p",
-        text: "Casi fuori dal prezzo unico emersi dopo l'acquisto: se dalla documentazione emergono più di 10 immobili, più di 10 eredi o beni esclusi dal prezzo unico (art. 3), il professionista invia al cliente, su supporto durevole, una proposta di preventivo per la sola parte aggiuntiva. Se il cliente non la accetta, può recedere dal contratto con rimborso integrale dell'onorario versato, con lo stesso mezzo di pagamento e senza ritardo. Le imposte di Stato restano in ogni caso escluse.",
+        text: "Modifica del pacchetto e conguaglio: qualora, d'accordo con il cliente, il pacchetto venga modificato, oppure dalla documentazione emergano più immobili o più eredi di quelli indicati nel questionario (supplementi dell'art. 3), si procede al conguaglio della differenza. Se l'importo aumenta, il cliente integra la differenza tramite link di pagamento; se non la accetta, può recedere dal contratto con rimborso integrale dell'onorario versato. Se l'importo diminuisce, la differenza già versata è rimborsata con lo stesso mezzo, senza ritardo. La modifica è confermata su supporto durevole. Le imposte di Stato restano in ogni caso escluse dal conguaglio.",
       },
       { type: "h2", text: "6. Obblighi e responsabilità del cliente" },
       {
@@ -432,7 +433,7 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
     eyebrow: "Le tue tutele",
     intro:
       "La promessa Soddisfatti o Rimborsati: una tutela in più che offriamo noi, oltre ai tuoi diritti di legge.",
-    updatedAt: "Ultimo aggiornamento: 25 settembre 2026",
+    updatedAt: "Ultimo aggiornamento: 5 ottobre 2026",
     notice: LANG_NOTICE,
     body: [
       { type: "h2", text: "La promessa" },
@@ -449,7 +450,7 @@ export const legalDocs: Record<LegalSlug, LegalDoc> = {
       { type: "h2", text: "Cosa si rimborsa" },
       {
         type: "p",
-        text: "Solo l'onorario professionale che ci hai pagato (prezzo unico o preventivo su misura), con lo stesso mezzo di pagamento. Mai le imposte, i tributi, i bolli o gli importi versati allo Stato o ad altri enti: non sono nostri e non ci applichiamo ricarico.",
+        text: "Solo l'onorario professionale che ci hai pagato (pacchetto Semplice, Completo o preventivo su misura), con lo stesso mezzo di pagamento. Mai le imposte, i tributi, i bolli o gli importi versati allo Stato o ad altri enti: non sono nostri e non ci applichiamo ricarico.",
       },
       { type: "h2", text: "Casi coperti" },
       {

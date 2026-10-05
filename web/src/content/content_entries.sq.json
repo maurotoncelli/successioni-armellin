@@ -817,7 +817,7 @@
       "key": "su_misura_text",
       "locale": "sq",
       "is_published": true,
-      "value": "Truall bujqësor, biznese, pjesë shoqërie, anije ose pasuri të tjera të veçanta? Çdo rast është ndryshe: ju bëjmë preventiv të personalizuar, pa surpriza."
+      "value": "Biznese, pjesë shoqërie, aksione, anije ose pasuri të tjera të veçanta? Çdo rast është ndryshe: ju bëjmë preventiv të personalizuar, pa surpriza."
     },
     {
       "collection": "tariffe",
@@ -905,7 +905,7 @@
       "value": [
         {
           "titolo": "Cila paketë",
-          "testo": "**E thjeshtë** = vetëm llogari dhe likuiditet, pa pasuri. **Me pasuri** = deri në 3 pasuri dhe 5 trashëgimtarë, volturë kadastrale e përfshirë; nëse janë më shumë, çdo pasuri ose trashëgimtar shtesë kushton 60 € dhe e sheh qartë para pagesës. Raste të veçanta (truall bujqësor, biznese, kuota, anije): **preventiv me porosi, falas**. Nëse nuk di nga t'ia nisësh, shkruaji Lorenzo: ta themi ne."
+          "testo": "**E thjeshtë** = vetëm llogari dhe likuiditet, pa pasuri: çmim fiks, me çdo numër trashëgimtarësh. **Me pasuri** = deri në 3 pasuri (shtëpi, truall, box) dhe 3 trashëgimtarë, volturë kadastrale e përfshirë; nëse janë më shumë, çdo pasuri ose trashëgimtar shtesë kushton 60 € dhe e sheh qartë para pagesës. Trashëgimtarë jashtë vendit: i njëjti çmim. Biznese, pjesë shoqërie, aksione ose anije: **preventiv me porosi, falas**. Nëse nuk di nga t'ia nisësh, shkruaji Lorenzo: ta themi ne."
         },
         {
           "titolo": "Nëse paguan paketën e gabuar",
@@ -971,7 +971,7 @@
       "key": "su_misura_body",
       "locale": "sq",
       "is_published": true,
-      "value": "Truall bujqësor, biznese, pjesë shoqërie, anije ose pasuri të tjera të veçanta? Rastet më komplekse nuk hyjnë në paketë standarde: studiojmë tuajin dhe ju përgatisim preventiv të dedikuar, pa surpriza."
+      "value": "Biznese, pjesë shoqërie, aksione, anije ose pasuri të tjera të veçanta? Rastet më komplekse nuk hyjnë në paketë standarde: studiojmë tuajin dhe ju përgatisim preventiv të dedikuar, pa surpriza."
     },
     {
       "collection": "pacchetti",
@@ -2520,6 +2520,20 @@
     },
     {
       "collection": "grazie",
+      "key": "esito_b_case_note_semplice",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Çmim fiks: mbetet i njëjtë me çdo numër trashëgimtarësh."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_case_note_completo",
+      "locale": "sq",
+      "is_published": true,
+      "value": "Paketa përfshin deri në {properties} pasuri dhe {heirs} trashëgimtarë; çdo pasuri ose trashëgimtar shtesë kushton {fee} €, i llogaritur tashmë në çmim."
+    },
+    {
+      "collection": "grazie",
       "key": "esito_a_body",
       "locale": "sq",
       "is_published": true,
@@ -2581,7 +2595,7 @@
       "key": "esito_c_body",
       "locale": "sq",
       "is_published": true,
-      "value": "Nga përgjigjet tuaja del një rast me elemente të veçanta (shumë pasuri, truall bujqësor, pjesë, biznese…). Nuk mund të caktojmë çmim këtu: duhet studiuar së bashku me Lorenzo, që të paguani as më shumë as më pak se sa duhet. Lini kontaktet më poshtë (dhe, nëse dëshironi, një shënim) ose na shkruani: do t'ju telefonojmë për të sqaruar detajet dhe përgatitur preventivin e dedikuar."
+      "value": "Nga përgjigjet tuaja del një rast me elemente të veçanta (pjesë shoqërie, aksione, biznese, anije, ose pasuri ende për t'u sqaruar). Nuk mund të caktojmë çmim këtu: duhet studiuar së bashku me Lorenzo, që të paguani as më shumë as më pak se sa duhet. Lini kontaktet më poshtë (dhe, nëse dëshironi, një shënim) ose na shkruani: do t'ju telefonojmë për të sqaruar detajet dhe përgatitur preventivin e dedikuar."
     },
     {
       "collection": "grazie",
@@ -3642,7 +3656,7 @@
         {
           "category": "Kostot dhe taksat",
           "question": "Sa kushton shërbimi juaj?",
-          "answer": "Paguani honorar fiks sipas paketës. Taksat janë të ndara, në ngarkim të trashëgimtarit, dhe i llogaritim dhe i komunikojmë para dorëzimit."
+          "answer": "Honorar fiks, pa TVSH për të shtuar: E thjeshtë 299 € (vetëm llogari dhe likuiditet, pa pasuri të paluajtshme, me çdo numër trashëgimtarësh) ose Me pasuri 600 € (deri në 3 pasuri, përfshirë truallin, dhe 3 trashëgimtarë; përtej kësaj, +60 € për çdo pasuri ose trashëgimtar shtesë, i treguar para pagesës). Kush jeton jashtë vendit paguan të njëjtin çmim. Për biznese, pjesë shoqërie, aksione ose anije ju bëjmë preventiv të personalizuar. Taksat e shtetit janë të ndara, në ngarkim të trashëgimtarit, dhe i llogaritim ne para dorëzimit."
         },
         {
           "category": "Kostot dhe taksat",
@@ -4658,7 +4672,7 @@
         "real_estate_q": "Ka prona (shtëpi, toka, box)?",
         "real_estate_count": "Sa prona në total?",
         "real_estate_placeholder": "P.sh. 2",
-        "real_estate_hint": "Numëroni shtëpi, truall, box dhe pjesë: çdo pasuri shtesë mund të ndikojë në preventiv.",
+        "real_estate_hint": "Numëroni shtëpi, truall, box dhe pjesë: deri në 3 janë të përfshira në çmim, pastaj +60 € për çdo pasuri shtesë.",
         "over_100k_q": "A e kalon vlera totale e trashëgimisë (llogari, tituj, etj.) 100.000 euro?",
         "other_assets_q": "Ka pasuri të tjera (pjesë shoqërie, aksione, biznese, varka…)?",
         "back": "Kthehuni",

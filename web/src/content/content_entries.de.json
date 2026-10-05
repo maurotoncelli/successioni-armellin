@@ -817,7 +817,7 @@
       "key": "su_misura_text",
       "locale": "de",
       "is_published": true,
-      "value": "Agrarflächen, Unternehmen, Gesellschaftsanteile, Boote oder andere besondere Vermögenswerte? Individueller Kostenvoranschlag — ohne Überraschungen."
+      "value": "Unternehmen, Gesellschaftsanteile, Aktien, Boote oder andere besondere Vermögenswerte? Jeder Fall ist anders: Wir erstellen Ihnen einen individuellen Kostenvoranschlag, ohne Überraschungen."
     },
     {
       "collection": "tariffe",
@@ -905,7 +905,7 @@
       "value": [
         {
           "titolo": "Welches Paket",
-          "testo": "**Einfach** = nur Konten und Liquidität, keine Immobilien. **Mit Immobilien** = bis zu 3 Immobilien und 5 Erben, Katasterumschreibung inklusive; sind es mehr, kostet jede weitere Immobilie bzw. jeder weitere Erbe 60 €, klar ausgewiesen vor der Zahlung. Sonderfälle (Agrarflächen, Unternehmen, Anteile, Boote): **kostenloses Angebot nach Maß**. Wenn Sie unsicher sind, schreiben Sie Lorenzo: wir sagen es Ihnen."
+          "testo": "**Einfach** = nur Konten und Liquidität, keine Immobilien: Festpreis, bei beliebig vielen Erben. **Mit Immobilien** = bis zu 3 Immobilien (Häuser, Grundstücke, Garagen) und 3 Erben, Katasterumschreibung inklusive; sind es mehr, kostet jede weitere Immobilie bzw. jeder weitere Erbe 60 €, klar ausgewiesen vor der Zahlung. Erben im Ausland: gleicher Preis. Unternehmen, Gesellschaftsanteile, Aktien oder Boote: **kostenloses Angebot nach Maß**. Wenn Sie unsicher sind, schreiben Sie Lorenzo: wir sagen es Ihnen."
         },
         {
           "titolo": "Wenn Sie das falsche Paket zahlen",
@@ -971,7 +971,7 @@
       "key": "su_misura_body",
       "locale": "de",
       "is_published": true,
-      "value": "Komplexe Fälle brauchen individuellen Kostenvoranschlag — ohne Überraschungen."
+      "value": "Unternehmen, Gesellschaftsanteile, Aktien, Boote oder andere besondere Vermögenswerte? Komplexe Fälle passen in kein Standardpaket: Wir prüfen Ihren Fall und erstellen einen eigenen Kostenvoranschlag, ohne Überraschungen."
     },
     {
       "collection": "pacchetti",
@@ -2520,6 +2520,20 @@
     },
     {
       "collection": "grazie",
+      "key": "esito_b_case_note_semplice",
+      "locale": "de",
+      "is_published": true,
+      "value": "Festpreis: Er bleibt gleich, egal wie viele Erben es gibt."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_case_note_completo",
+      "locale": "de",
+      "is_published": true,
+      "value": "Das Paket umfasst bis zu {properties} Immobilien und {heirs} Erben; jede weitere Immobilie bzw. jeder weitere Erbe kostet {fee} €, bereits im Preis berechnet."
+    },
+    {
+      "collection": "grazie",
       "key": "esito_a_body",
       "locale": "de",
       "is_published": true,
@@ -2581,7 +2595,7 @@
       "key": "esito_c_body",
       "locale": "de",
       "is_published": true,
-      "value": "Besonderer Fall — kein Festpreis hier. Mit Lorenzo klären. Kontaktdaten hinterlassen für individuellen Kostenvoranschlag."
+      "value": "Ihre Antworten zeigen einen Fall mit besonderen Elementen (Gesellschaftsanteile, Aktien, Unternehmen, Boote oder noch zu klärende Immobilien). Einen Preis können wir hier nicht festlegen: Der Fall muss mit Lorenzo geprüft werden, damit Sie weder mehr noch weniger als angemessen zahlen. Hinterlassen Sie unten Ihre Kontaktdaten (und gern eine Notiz) oder schreiben Sie uns: Wir rufen Sie an, klären die Details und erstellen den individuellen Kostenvoranschlag."
     },
     {
       "collection": "grazie",
@@ -3642,7 +3656,7 @@
         {
           "category": "Kosten und Steuern",
           "question": "Was kostet Ihr Service?",
-          "answer": "Festes Honorar ohne zusätzliche MwSt.: Einfach 290€ (nur Liquidität) oder Komplett 490€ (bis 3 Immobilien und 5 Erben; darüber +60€ je weitere Immobilie oder Erbe, vor der Zahlung ausgewiesen). Für Sonderfälle (Agrarflächen, Unternehmen, Anteile, Boote) individueller Kostenvoranschlag. Staatliche Steuern separat, vom Erben — wir berechnen sie vor der Einreichung."
+          "answer": "Festes Honorar ohne zusätzliche MwSt.: Einfach 299 € (nur Konten und Liquidität, keine Immobilien, beliebig viele Erben) oder Mit Immobilien 600 € (bis zu 3 Immobilien, Grundstücke inbegriffen, und 3 Erben; darüber +60 € je weitere Immobilie oder weiteren Erben, vor der Zahlung ausgewiesen). Erben im Ausland zahlen denselben Preis. Für Unternehmen, Gesellschaftsanteile, Aktien oder Boote erstellen wir einen individuellen Kostenvoranschlag. Staatliche Steuern sind separat, vom Erben zu tragen, und wir berechnen sie vor der Einreichung."
         },
         {
           "category": "Kosten und Steuern",
@@ -4658,7 +4672,7 @@
         "real_estate_q": "Gibt es Immobilien (Häuser, Grundstücke, Garagen)?",
         "real_estate_count": "Wie viele Immobilien insgesamt?",
         "real_estate_placeholder": "z. B. 2",
-        "real_estate_hint": "Häuser, Grundstücke, Garagen und Anteile zählen: jede weitere Immobilie kann den Preis beeinflussen.",
+        "real_estate_hint": "Häuser, Grundstücke, Garagen und Anteile zählen: bis zu 3 sind im Preis enthalten, danach +60 € je weitere Immobilie.",
         "over_100k_q": "Übersteigt der Gesamtwert des Nachlasses (Konten, Wertpapiere usw.) 100.000 Euro?",
         "other_assets_q": "Weitere Vermögenswerte (Gesellschaftsanteile, Aktien, Unternehmen, Boote…)?",
         "back": "Zurück",

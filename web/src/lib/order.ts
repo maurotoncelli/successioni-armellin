@@ -12,9 +12,9 @@ import { FLAT_OFFER_UI_IT } from "@/lib/site-ui-labels";
   pagamento dal CRM, cosi il prezzo e sempre coerente.
   Le imposte di Stato restano SEPARATE (non qui).
 
-  Regola (05/09, decisione Lorenzo/Mauro): la vetrina resta 290 / 490 / su
-  misura; il Completo copre 3 immobili e 5 eredi, e oltre la capienza si
-  aggiungono +60 € per immobile e +60 € per erede (righe SURCHARGE). I casi
+  Regola (listino 05/10, Mauro): Semplice 299 / Completo 600 / su misura; il
+  Completo copre 3 immobili e 3 eredi, e oltre la capienza si aggiungono
+  +60 € per immobile e +60 € per erede (righe SURCHARGE). I casi
   speciali (altri beni: quote, aziende, imbarcazioni…) restano su misura: li
   decide `computeEsito` (lib/quote.ts), non questa funzione.
 
@@ -81,7 +81,7 @@ export type ComputedOrder = {
   vuoto = predefinito 60, 0 = disattivato. Il costo per erede extra e' fisso.
 */
 export const COMPLETO_INCLUDED_PROPERTIES = 3;
-export const COMPLETO_INCLUDED_HEIRS = 5;
+export const COMPLETO_INCLUDED_HEIRS = 3;
 export const DEFAULT_EXTRA_PROPERTY_FEE = 60;
 export const EXTRA_HEIR_FEE = 60;
 

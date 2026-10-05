@@ -1,6 +1,6 @@
 # HANDOFF per il prossimo agente
 
-> Documento di passaggio di consegne. Aggiornato: **2026-09-25**.
+> Documento di passaggio di consegne. Aggiornato: **2026-10-05**.
 > Scopo: permettere a un nuovo agente (senza contesto) di riprendere il lavoro.
 > Riferimenti chiave: @RUNBOOK_GoLive (procedura go-live), @SPEC_Env_Vars,
 > @DOMANDE_PER_LORENZO, @PROSSIMO_INCONTRO_LORENZO, @07_Stack.
@@ -18,7 +18,53 @@ Chat precedente TR/FR/SQ + EN/AR + SEO:
 
 ---
 
-## ★★ TEST PREZZO UNICO 250 € — ONLINE dal 25/09, fine prevista 08/10
+## ★★ LISTINO 299 / 600 / SU MISURA (05/10, Mauro, OK Lorenzo riferito da Mauro)
+
+Chiude il test prezzo unico 250 € (sezione sotto) tre giorni prima della fine
+prevista. Decisioni del 05/10:
+
+- **Semplice 299 €**: senza immobili, dichiarazione dovuta, **prezzo fisso con
+  qualsiasi numero di eredi**.
+- **Completo 600 €**: fino a **3 immobili** (terreni compresi) e **3 eredi**;
+  **+60 €** per ogni immobile o erede in più. Nessun limite sui conti (tolto il
+  vecchio "5 conti").
+- **Su misura** come prima: altri beni (quote, azioni, aziende, barche) o
+  immobili "non so". **Terreni = immobili** (non più su misura nei testi).
+- **Italia o estero: stesso prezzo.**
+- **Risultato del preventivo**: "Acquista il servizio" e WhatsApp subito sotto il
+  prezzo anche col listino, poi "Nel tuo caso è compreso" (voci `flat_offer_ui.case_*`)
+  con la nota `grazie.esito_b_case_note_completo` (`{properties}`, `{heirs}`,
+  `{fee}` dal codice) o `grazie.esito_b_case_note_semplice`. Tolti il link "Se hai
+  già deciso" e il WhatsApp in fondo.
+- **Video "Come funziona"**: dice ancora 490 €, scelta di Mauro di lasciarlo.
+
+Dove sta cosa:
+
+- Prezzi e testi IT dei pacchetti: **database** (`packages`, Listino CRM),
+  aggiornati con `web/scripts/listino-299-600.mjs` (fatto il 05/10). Traduzioni
+  dei pacchetti: seed in `lib/packages-i18n.ts` (il file su Storage
+  `site/_packages-i18n.json` non esiste; se qualcuno lo crea dal CRM, prevale lui).
+- Eredi inclusi: `COMPLETO_INCLUDED_HEIRS = 3` in `lib/order.ts`.
+- `lib/flat-offer.ts`: `FLAT_OFFER_ON = false`, `endsAt = "2026-10-05"`; chi ha
+  avuto il preventivo a 250 € lo paga così fino al **19/10** (automatico).
+- Testi 11 lingue + seed: FAQ "Quanto costa" (ora con i prezzi in tutte le
+  lingue; IT anche nel DB `faqs`), `tariffe.guida_scelta_items[0]`,
+  `tariffe.su_misura_text`, `pacchetti.su_misura_body`, `grazie.esito_c_body`,
+  `site_ui.preventivo_ui.real_estate_hint`, `public/llms.txt`.
+- Legale 11 lingue + bozza md (5 ottobre 2026): Condizioni art. 3 (pacchetti,
+  supplementi 3 + 3, Semplice senza supplementi, stesso prezzo all'estero, su
+  misura senza terreni) e art. 5 (modifica e conguaglio, anche per immobili o
+  eredi emersi dopo; se il cliente non accetta l'aumento, recesso con rimborso
+  integrale); Garanzia "Semplice, Completo o su misura".
+- Se cambiano di nuovo prezzi o capienza: DB (Listino CRM o script), `order.ts`,
+  fixture `site.ts`, seed `packages-i18n.ts`, le voci di testo sopra in 11 lingue,
+  artt. 3 e 5 delle Condizioni, `llms.txt`, `update-prod-content.mjs`.
+- **Fuori dal sito (Mauro)**: annunci Google Ads e scheda Google Business
+  (servizi, prezzi, video col 490), social.
+
+---
+
+## ★★ TEST PREZZO UNICO 250 € — CHIUSO il 05/10 (era online dal 25/09)
 
 Piano, decisioni, checklist go-live e chiusura: **@TEST_PREZZO_UNICO_250**.
 

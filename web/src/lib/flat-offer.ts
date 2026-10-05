@@ -16,8 +16,8 @@
     `maxProperties` immobili o `maxHeirs` eredi;
   - testi: le voci `prezzo_unico.<collection>.<key>` dei content_entries
     sostituiscono `<collection>.<key>` (lib/content.ts); le FAQ sul prezzo
-    hanno risposte dedicate (lib/cms.ts). Il listino nel database resta
-    290/490 e torna valido spegnendo il test.
+    hanno risposte dedicate (lib/cms.ts). Il listino nel database torna
+    valido spegnendo il test.
 
   Modulo senza dipendenze: lo usano anche componenti client (quiz).
 */
@@ -49,14 +49,14 @@ export const FLAT_OFFER: FlatOffer = {
   code: "UNICO250",
   price: 250,
   startsAt: "2026-09-25",
-  endsAt: "2026-10-08",
+  endsAt: "2026-10-05",
   honorDays: 14,
   maxProperties: 10,
   maxHeirs: 10,
 };
 
 /** Interruttore del test. Cambiarlo richiede un deploy. */
-export const FLAT_OFFER_ON = true;
+export const FLAT_OFFER_ON = false;
 
 /**
   Acquisto diretto senza questionario (card del prezzo, "Come si paga"). Col

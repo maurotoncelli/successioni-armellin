@@ -1,7 +1,8 @@
 # Test prezzo unico 250 € tutto incluso (UNICO250)
 
-> Stato: **online dal 25/09/2026**, fine prevista l'08/10/2026 (merge del branch
-> `test/prezzo-unico-250` su main).
+> Stato: **chiuso il 05/10/2026** (online dal 25/09/2026, fine prevista era
+> l'08/10) per il nuovo listino 299 / 600 / su misura: vedi § "Chiusura del
+> 05/10" in fondo e @HANDOFF_AGENTE. Garanzia del prezzo fino al 19/10/2026.
 > Listino di prima salvato nel tag `listino-290-490` (commit `ae7123e`).
 > Richiesta di Mauro del 25/09/2026; OK di Lorenzo riferito da Mauro lo stesso giorno.
 > Stesso giorno, dopo il go-live: tetti di 10 immobili e 10 eredi, pulsanti
@@ -263,3 +264,26 @@ tariffe, come funziona, FAQ, promo, quiz), negli artt. 3 e 5 delle Condizioni in
 - Video "Come funziona" del sito e video della scheda Google Business: citano
   490 € (scelta di lasciarli).
 - Non legato al test: le chiavi `chi_siamo.video_captions_*` mancano in 9 lingue.
+
+## Chiusura del 05/10
+
+Richiesta di Mauro: chiudere il test e passare al listino **299 / 600 / su
+misura** (Completo con 3 immobili e 3 eredi inclusi, +60 € per ognuno in più).
+Fatto seguendo § Chiusura del test, con queste differenze:
+
+- `flat-offer.ts`: `FLAT_OFFER_ON = false`, `endsAt = "2026-10-05"`. Garanzia del
+  prezzo per le pratiche con riga `UNICO250` fino al **19/10/2026**.
+- **Legale**: non riportato al tag. Gli artt. 3 e 5 delle Condizioni e il
+  paragrafo "Cosa si rimborsa" della Garanzia sono stati riscritti per il
+  listino partendo dal testo del test (11 lingue + bozza md, data 5 ottobre
+  2026); artt. 2, 4 e 7 restano come nel test.
+- **Risultato del preventivo**: i pulsanti restano sotto il prezzo anche col
+  listino (decisione del 05/10), col riquadro "Nel tuo caso è compreso".
+- **Database**: prezzi e testi del Completo e FAQ "Quanto costa" con
+  `web/scripts/listino-299-600.mjs`.
+- `mandato.ts` torna coerente con le Condizioni (pacchetto e conguaglio): il
+  punto aperto qui sopra si chiude da solo.
+- **Esito del test**: nessun acquisto in più rispetto a 290 / 490 (vedi
+  @HANDOFF_AGENTE, lettura dati 28/09). Il prezzo non era il freno.
+- Le voci `prezzo_unico.*` e il codice del test restano, spenti, almeno fino al
+  19/10.

@@ -110,7 +110,7 @@ export function esitoReason(s: QuizSnapshot): string | null {
   return null;
 }
 
-/** Dettaglio prezzo, es. "490 € pacchetto + 60 € Immobili aggiuntivi (1 × 60€) = 670 €". */
+/** Dettaglio prezzo, es. "600 € pacchetto + 60 € Immobili aggiuntivi (1 × 60€) = 660 €". */
 export function priceBreakdown(s: Pick<QuizSnapshot, "lineItems" | "total">): string | null {
   const items = s.lineItems ?? [];
   if (items.length === 0) return null;

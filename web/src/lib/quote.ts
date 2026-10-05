@@ -109,7 +109,7 @@ export function computeEsito(input: {
   // Su misura SOLO per i casi speciali: altri beni (quote societarie, aziende,
   // imbarcazioni…) oppure immobili "non so". Il numero di immobili e di eredi
   // resta nei pacchetti con sovrapprezzo (+60 per immobile oltre il 3o, +60
-  // per erede oltre il 5o nel Completo, vedi lib/order.ts).
+  // per erede oltre il 3o nel Completo, vedi lib/order.ts).
   // Il testamento resta nei pacchetti (serve solo come documento in checklist).
   // Prezzo unico (lib/flat-offer.ts): "non so" resta nel prezzo; su misura
   // per gli altri beni e oltre i tetti di immobili o eredi.

@@ -237,7 +237,7 @@ export default async function CheckoutPage({
                     )}
 
                     {/* Cosa e' compreso nel prezzo, accanto al totale: chi
-                        paga 290-490 EUR a distanza deve vederlo qui. */}
+                        paga 299-600 EUR a distanza deve vederlo qui. */}
                     <IncludedList
                       ctx={promoCtx}
                       compact

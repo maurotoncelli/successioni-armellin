@@ -56,7 +56,7 @@ const faqUpdates = [
     match: "Quanto costa il vostro servizio?",
     question: "Quanto costa il vostro servizio?",
     answer:
-      "Onorario fisso senza IVA: Semplice 290€ (solo liquidità) o Completo 490€ (fino a 3 immobili e 5 eredi; oltre, +60€ per ogni immobile o erede in più, indicato prima del pagamento). Per i casi particolari (terreni agricoli, aziende, quote, imbarcazioni) ti facciamo un preventivo su misura. Le imposte di Stato sono separate, a carico dell'erede, e te le calcoliamo prima dell'invio.",
+      "Onorario fisso senza IVA da aggiungere: Semplice 299 € (solo conti e liquidità, niente immobili, con qualsiasi numero di eredi) o Con immobili 600 € (fino a 3 immobili, terreni compresi, e 3 eredi; oltre, +60 € per ogni immobile o erede in più, indicato prima del pagamento). Chi vive all'estero paga lo stesso prezzo. Per aziende, quote societarie, azioni o imbarcazioni ti facciamo un preventivo su misura. Le imposte di Stato sono separate, a carico dell'erede, e te le calcoliamo prima dell'invio.",
     sort_order: 3,
   },
   {
@@ -202,18 +202,18 @@ const packageUpdates = [
     key: "COMPLETO",
     patch: {
       name: "Successione con Immobili",
-      tagline: "Da 1 a 3 immobili, voltura catastale inclusa",
+      tagline: "Fino a 3 immobili e 3 eredi, voltura inclusa",
       description:
-        "Il pacchetto per chi eredita una casa o pochi immobili: controllo dei dati catastali, dichiarazione, invio e voltura catastale. Copre fino a 5 eredi e 5 conti bancari.",
+        "Il pacchetto per chi eredita una casa o pochi immobili: controllo dei dati catastali e atti di provenienza, dichiarazione, invio e voltura catastale. Comprende fino a 3 immobili e 3 eredi; ogni immobile o erede in più costa 60 €.",
       features: [
         "Tutto quello del pacchetto Semplice",
-        "Da 1 a 3 immobili, fino a 5 eredi e 5 conti",
-        "Controllo dei dati catastali da geometra",
+        "Fino a 3 immobili e 3 eredi, +60 € per ognuno in più",
+        "Controllo dei dati catastali e atti di provenienza",
         "Voltura catastale inclusa",
       ],
       badge: "Il più scelto",
-      // 05/09: riattivato +60 per immobile oltre il 3° (il +60 per erede oltre il
-      // 5° è fisso in lib/order.ts). Vetrina invariata: extra solo al risultato.
+      // +60 per immobile oltre il 3° (il +60 per erede oltre il 3° è fisso in
+      // lib/order.ts). Vetrina invariata: extra solo al risultato.
       extra_property_fee: 60,
     },
   },
@@ -230,7 +230,7 @@ const packageUpdates = [
         "Recupero dei documenti mancanti presso enti e banche",
         "Priorità di lavorazione",
       ],
-      // 27/07: fuori vetrina pubblica (Lorenzo: solo 290 / 490 / su misura).
+      // 27/07: fuori vetrina pubblica (Lorenzo: solo Semplice / Completo / su misura).
       is_active: false,
       extra_property_fee: null,
     },

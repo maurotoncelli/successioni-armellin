@@ -817,7 +817,7 @@
       "key": "su_misura_text",
       "locale": "en",
       "is_published": true,
-      "value": "Agricultural land, businesses, company shares, boats or other special assets? Every case is different: we'll prepare a custom quote, no surprises."
+      "value": "Businesses, company shares, stocks, boats or other special assets? Every case is different: we'll prepare a custom quote, no surprises."
     },
     {
       "collection": "tariffe",
@@ -905,7 +905,7 @@
       "value": [
         {
           "titolo": "Which package",
-          "testo": "**Simple** = accounts and cash only, no property. **With property** = up to 3 properties and 5 heirs, cadastral transfer included; if there are more, each extra property or heir costs €60, shown clearly before you pay. Special cases (agricultural land, companies, shares, boats): a **custom quote, free**. If you're unsure, write to Lorenzo: we'll tell you."
+          "testo": "**Simple** = accounts and cash only, no property: fixed price, with any number of heirs. **With property** = up to 3 properties (homes, land, garages) and 3 heirs, cadastral transfer included; if there are more, each extra property or heir costs €60, shown clearly before you pay. Heirs abroad: same price. Businesses, company shares, stocks or boats: a **custom quote, free**. If you're unsure, write to Lorenzo: we'll tell you."
         },
         {
           "titolo": "If you pay for the wrong package",
@@ -971,7 +971,7 @@
       "key": "su_misura_body",
       "locale": "en",
       "is_published": true,
-      "value": "Agricultural land, businesses, company shares, boats or other special assets? Complex cases don't fit a standard package: we study yours and prepare a dedicated quote, no surprises."
+      "value": "Businesses, company shares, stocks, boats or other special assets? Complex cases don't fit a standard package: we study yours and prepare a dedicated quote, no surprises."
     },
     {
       "collection": "pacchetti",
@@ -2534,6 +2534,20 @@
     },
     {
       "collection": "grazie",
+      "key": "esito_b_case_note_semplice",
+      "locale": "en",
+      "is_published": true,
+      "value": "Fixed price: it stays the same with any number of heirs."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_case_note_completo",
+      "locale": "en",
+      "is_published": true,
+      "value": "The package covers up to {properties} properties and {heirs} heirs; each extra property or heir costs €{fee}, already included in the price."
+    },
+    {
+      "collection": "grazie",
       "key": "esito_a_body",
       "locale": "en",
       "is_published": true,
@@ -2595,7 +2609,7 @@
       "key": "esito_c_body",
       "locale": "en",
       "is_published": true,
-      "value": "Your answers show a case with special elements (many properties, agricultural land, shares, businesses…). We can't lock a price here: it needs to be reviewed with Lorenzo, so you pay neither more nor less than fair. Leave your details below (and a note if you like) or write to us: we'll call back to clarify and prepare a dedicated quote."
+      "value": "Your answers show a case with special elements (company shares, stocks, businesses, boats, or properties still to be clarified). We can't lock a price here: it needs to be reviewed with Lorenzo, so you pay neither more nor less than fair. Leave your details below (and a note if you like) or write to us: we'll call back to clarify and prepare a dedicated quote."
     },
     {
       "collection": "grazie",
@@ -3656,7 +3670,7 @@
         {
           "category": "Costs and taxes",
           "question": "How much does your service cost?",
-          "answer": "Fixed fee with no VAT to add: Simple €290 (cash/liquidity only) or Complete €490 (up to 3 properties and 5 heirs; beyond that, +€60 for each extra property or heir, shown before payment). For special cases (agricultural land, companies, shares, boats) we prepare a custom quote. State taxes are separate, paid by the heir, and we calculate them before filing."
+          "answer": "Fixed fee with no VAT to add: Simple €299 (accounts and cash only, no property, any number of heirs) or With property €600 (up to 3 properties, land included, and 3 heirs; beyond that, +€60 for each extra property or heir, shown before payment). Heirs living abroad pay the same price. For businesses, company shares, stocks or boats we prepare a custom quote. State taxes are separate, paid by the heir, and we calculate them before filing."
         },
         {
           "category": "Costs and taxes",
@@ -4672,7 +4686,7 @@
         "real_estate_q": "Are there properties (homes, land, garages)?",
         "real_estate_count": "How many properties in total?",
         "real_estate_placeholder": "E.g. 2",
-        "real_estate_hint": "Count homes, land, garages and shares: each extra property may affect the quote.",
+        "real_estate_hint": "Count homes, land, garages and shares: up to 3 are included in the price, then +€60 for each extra property.",
         "over_100k_q": "Does the total estate value (accounts, securities, etc.) exceed €100,000?",
         "other_assets_q": "Are there other assets (company shares, stocks, businesses, boats…)?",
         "back": "Back",

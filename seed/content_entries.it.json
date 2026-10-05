@@ -817,7 +817,7 @@
       "key": "su_misura_text",
       "locale": "it",
       "is_published": true,
-      "value": "Terreni agricoli, aziende, quote societarie, imbarcazioni o altri beni particolari? Ogni caso è diverso: ti facciamo un preventivo su misura, senza sorprese."
+      "value": "Aziende, quote societarie, azioni, imbarcazioni o altri beni particolari? Ogni caso è diverso: ti facciamo un preventivo su misura, senza sorprese."
     },
     {
       "collection": "tariffe",
@@ -905,7 +905,7 @@
       "value": [
         {
           "titolo": "Quale pacchetto",
-          "testo": "**Semplice** = solo conti e liquidità, niente immobili. **Con immobili** = fino a 3 immobili e 5 eredi, voltura inclusa; se sono di più, ogni immobile o erede in più costa 60 € e lo vedi chiaramente prima di pagare. Casi particolari (terreni agricoli, aziende, quote, imbarcazioni): **preventivo su misura, gratis**. Se non sai da che parte stare, scrivi a Lorenzo: te lo diciamo noi."
+          "testo": "**Semplice** = solo conti e liquidità, niente immobili: prezzo fisso, con qualsiasi numero di eredi. **Con immobili** = fino a 3 immobili (case, terreni, box) e 3 eredi, voltura inclusa; se sono di più, ogni immobile o erede in più costa 60 € e lo vedi chiaramente prima di pagare. Eredi all'estero: stesso prezzo. Aziende, quote societarie, azioni o imbarcazioni: **preventivo su misura, gratis**. Se non sai da che parte stare, scrivi a Lorenzo: te lo diciamo noi."
         },
         {
           "titolo": "Se paghi il pacchetto sbagliato",
@@ -971,7 +971,7 @@
       "key": "su_misura_body",
       "locale": "it",
       "is_published": true,
-      "value": "Terreni agricoli, aziende, quote societarie, imbarcazioni o altri beni particolari? I casi più complessi non stanno in un pacchetto standard: studiamo il tuo e ti prepariamo un preventivo dedicato, senza sorprese."
+      "value": "Aziende, quote societarie, azioni, imbarcazioni o altri beni particolari? I casi più complessi non stanno in un pacchetto standard: studiamo il tuo e ti prepariamo un preventivo dedicato, senza sorprese."
     },
     {
       "collection": "pacchetti",
@@ -2534,6 +2534,20 @@
     },
     {
       "collection": "grazie",
+      "key": "esito_b_case_note_semplice",
+      "locale": "it",
+      "is_published": true,
+      "value": "Prezzo fisso: resta questo con qualsiasi numero di eredi."
+    },
+    {
+      "collection": "grazie",
+      "key": "esito_b_case_note_completo",
+      "locale": "it",
+      "is_published": true,
+      "value": "Il pacchetto comprende fino a {properties} immobili e {heirs} eredi; ogni immobile o erede in più costa {fee} €, già calcolato nel prezzo."
+    },
+    {
+      "collection": "grazie",
       "key": "esito_a_body",
       "locale": "it",
       "is_published": true,
@@ -2595,7 +2609,7 @@
       "key": "esito_c_body",
       "locale": "it",
       "is_published": true,
-      "value": "Dalle tue risposte emerge un caso con elementi particolari (molti immobili, terreni agricoli, quote, aziende…). Non possiamo chiudere un prezzo qui: va studiato insieme a Lorenzo, così paghi né più né meno del giusto. Lascia i recapiti sotto (e, se vuoi, una nota) oppure scrivici: ti richiamiamo per chiarire i dettagli e prepararti il preventivo dedicato."
+      "value": "Dalle tue risposte emerge un caso con elementi particolari (quote societarie, azioni, aziende, imbarcazioni, oppure immobili ancora da capire). Non possiamo chiudere un prezzo qui: va studiato insieme a Lorenzo, così paghi né più né meno del giusto. Lascia i recapiti sotto (e, se vuoi, una nota) oppure scrivici: ti richiamiamo per chiarire i dettagli e prepararti il preventivo dedicato."
     },
     {
       "collection": "grazie",
@@ -3656,7 +3670,7 @@
         {
           "category": "Costi e imposte",
           "question": "Quanto costa il vostro servizio?",
-          "answer": "Onorario fisso senza IVA da aggiungere: Semplice 290€ (solo liquidità) o Completo 490€ (fino a 3 immobili e 5 eredi; oltre, +60€ per ogni immobile o erede in più, indicato prima del pagamento). Per i casi particolari (terreni agricoli, aziende, quote, imbarcazioni) ti facciamo un preventivo su misura. Le imposte di Stato sono separate, a carico dell'erede, e te le calcoliamo prima dell'invio."
+          "answer": "Onorario fisso senza IVA da aggiungere: Semplice 299 € (solo conti e liquidità, niente immobili, con qualsiasi numero di eredi) o Con immobili 600 € (fino a 3 immobili, terreni compresi, e 3 eredi; oltre, +60 € per ogni immobile o erede in più, indicato prima del pagamento). Chi vive all'estero paga lo stesso prezzo. Per aziende, quote societarie, azioni o imbarcazioni ti facciamo un preventivo su misura. Le imposte di Stato sono separate, a carico dell'erede, e te le calcoliamo prima dell'invio."
         },
         {
           "category": "Costi e imposte",
@@ -4672,7 +4686,7 @@
         "real_estate_q": "Ci sono immobili (case, terreni, box)?",
         "real_estate_count": "Quanti immobili in tutto?",
         "real_estate_placeholder": "Es. 2",
-        "real_estate_hint": "Conta case, terreni, box e quote: ogni immobile in più può incidere sul preventivo.",
+        "real_estate_hint": "Conta case, terreni, box e quote: fino a 3 sono compresi nel prezzo, poi +60 € per ogni immobile in più.",
         "over_100k_q": "Il valore totale dell'eredità (conti, titoli, ecc.) supera i 100.000 euro?",
         "other_assets_q": "Ci sono altri beni (quote societarie, azioni, aziende, imbarcazioni…)?",
         "back": "Indietro",

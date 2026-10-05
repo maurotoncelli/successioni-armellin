@@ -124,7 +124,7 @@ export default async function ComeFunzionaPage() {
     ? flat.price
     : packages.length
       ? Math.min(...packages.map((p) => p.price))
-      : 290;
+      : 299;
   const priceSuffix = await t("pacchetti", "price_suffix", "onorario senza IVA da aggiungere");
   const heroCtaLabel = await t("come_funziona", "hero_cta_label", finalButton.label);
   const heroCtaHint = await t("come_funziona", "hero_cta_hint");

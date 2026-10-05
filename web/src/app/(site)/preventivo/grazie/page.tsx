@@ -27,7 +27,13 @@ import { SoftLead, type SoftLeadAnswers } from "@/components/site/soft-lead";
 import { Reviews } from "@/components/site/reviews";
 import { TrackQuoteComplete } from "@/components/site/track-quote-complete";
 import { getPackages, getAddons } from "@/lib/cms";
-import { buildOrder } from "@/lib/order";
+import {
+  buildOrder,
+  COMPLETO_INCLUDED_HEIRS,
+  COMPLETO_INCLUDED_PROPERTIES,
+  DEFAULT_EXTRA_PROPERTY_FEE,
+} from "@/lib/order";
+import type { PackageKey } from "@/lib/supabase/types";
 import type { QuizSnapshot } from "@/lib/quiz-summary";
 import {
   computeEsito,
@@ -53,8 +59,8 @@ function resolveEsito(value?: string): Esito {
   return "b";
 }
 
-/** Prezzo unico: cosa copre il prezzo per QUESTO caso, dalle risposte del quiz. */
-function flatCaseItems(
+/** Cosa copre il prezzo per QUESTO caso, dalle risposte del quiz. */
+function caseItems(
   ui: FlatOfferUiLabels,
   answers: SoftLeadAnswers,
   heirsCount: number | null,
@@ -164,7 +170,6 @@ export default async function GraziePage({
     "esito_b_whatsapp_prefill",
     "Ciao Lorenzo, ho compilato il questionario sul sito: mi risulta il pacchetto {package} a {total} €. Mi dici quanto pagherei di imposte e quali documenti servono?",
   );
-  const waQuoteLabel = await t("grazie", "esito_b_whatsapp_label", "Chiedi le imposte su WhatsApp");
   const waQuoteHint = await t(
     "grazie",
     "esito_b_whatsapp_hint",
@@ -213,12 +218,6 @@ export default async function GraziePage({
     </div>
   ) : null;
   const feeLabel = await t("grazie", "esito_b_fee_label", "Onorario");
-  const rethinkNote = await t(
-    "grazie",
-    "esito_b_rethink",
-    "Hai 14 giorni per ripensarci, con rimborso.",
-  );
-  const payLead = await t("grazie", "esito_b_pay_lead", "Se hai già deciso");
   const callbackExtras = await t(
     "grazie",
     "soft_callback_extras",
@@ -234,6 +233,7 @@ export default async function GraziePage({
   // + eredi oltre la capienza inclusa: righe SURCHARGE mostrate una per una).
   let suggestedPkg:
     | {
+        key: PackageKey;
         name: string;
         price: number;
         tagline: string | null;
@@ -243,6 +243,8 @@ export default async function GraziePage({
         discount: { label: string; amount: number } | null;
         /** Prezzo unico (lib/flat-offer.ts): niente pacchetto né supplementi. */
         flat: boolean;
+        /** Supplemento per immobile/erede oltre la capienza del Completo. */
+        extraFee: number;
       }
     | null = null;
   const promoCtx = await getPromoContext();
@@ -321,6 +323,8 @@ export default async function GraziePage({
       const discountLine = order.lineItems.find((li) => li.type === "DISCOUNT");
       suggestedPkg = {
         flat: hasFlatOfferLine(order.lineItems),
+        extraFee: pkg.extraPropertyFee ?? DEFAULT_EXTRA_PROPERTY_FEE,
+        key: pkg.key,
         name: pkg.name,
         price: pkg.price,
         tagline: pkg.tagline,
@@ -357,6 +361,26 @@ export default async function GraziePage({
     "esito_b_after_pay",
     "Dopo il pagamento Lorenzo ti chiama, ti apre l'area personale e parti dai documenti. Hai 14 giorni per ripensarci.",
   );
+  const caseNote = !suggestedPkg
+    ? null
+    : suggestedPkg.flat
+      ? flatUi.result_no_surcharge
+      : suggestedPkg.key === "COMPLETO"
+        ? (
+            await t(
+              "grazie",
+              "esito_b_case_note_completo",
+              "Il pacchetto comprende fino a {properties} immobili e {heirs} eredi; ogni immobile o erede in più costa {fee} €, già calcolato nel prezzo.",
+            )
+          )
+            .replace("{properties}", String(COMPLETO_INCLUDED_PROPERTIES))
+            .replace("{heirs}", String(COMPLETO_INCLUDED_HEIRS))
+            .replace("{fee}", String(suggestedPkg.extraFee))
+        : await t(
+            "grazie",
+            "esito_b_case_note_semplice",
+            "Prezzo fisso: resta questo con qualsiasi numero di eredi.",
+          );
 
   const guidaCta = await tCta("grazie", "esito_b_guida", {
     label: "guida",
@@ -426,50 +450,6 @@ export default async function GraziePage({
                   <p className="mt-0.5 font-display text-4xl font-bold leading-none text-primary">
                     {formatAmount(suggestedPkg.total, promoCtx.intlLocale)}&euro;
                   </p>
-                  {/* Subito sotto il prezzo: su mobile devono stare nella prima schermata. */}
-                  <div className="mt-4 flex flex-col gap-2.5 sm:flex-row">
-                    <ButtonLink
-                      href={checkoutHref}
-                      variant="primary"
-                      size="lg"
-                      className="w-full sm:flex-1"
-                      cta="grazie_esito_b_paga"
-                    >
-                      {flatUi.buy_cta}
-                    </ButtonLink>
-                    <ButtonLink
-                      href={waQuoteHref}
-                      variant="whatsapp"
-                      size="lg"
-                      className="w-full sm:flex-1"
-                      cta="grazie_esito_b_whatsapp"
-                    >
-                      <MessageCircle className="h-4 w-4" />
-                      {flatUi.whatsapp_cta}
-                    </ButtonLink>
-                  </div>
-                  <p className="mt-2.5 flex items-start gap-1.5 text-xs leading-snug text-text">
-                    <MessageCircle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#178F51]" />
-                    <span>{waQuoteHint}</span>
-                  </p>
-                  <p className="mt-1.5 flex items-start gap-1.5 text-xs leading-snug text-text">
-                    <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-success" />
-                    <span>{afterPay}</span>
-                  </p>
-                  <div className="mt-4 rounded-[10px] bg-sand/60 p-3 sm:p-4">
-                    <p className="text-sm font-semibold text-primary">{flatUi.result_case_title}</p>
-                    <ul className="mt-2 space-y-1.5 text-sm">
-                      {flatCaseItems(flatUi, answers, heirsCount).map((item) => (
-                        <li key={item} className="flex items-start gap-2 text-text">
-                          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-success" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <p className="mt-3 text-xs font-medium leading-snug text-accent-dark">
-                      {flatUi.result_no_surcharge}
-                    </p>
-                  </div>
                 </div>
               )}
               {suggestedPkg && !suggestedPkg.flat && (
@@ -513,6 +493,54 @@ export default async function GraziePage({
                   </p>
                 </div>
               )}
+              {/* Subito sotto il prezzo: su mobile devono stare nella prima schermata. */}
+              <div className="mt-4 flex flex-col gap-2.5 sm:flex-row">
+                <ButtonLink
+                  href={checkoutHref}
+                  variant="primary"
+                  size="lg"
+                  className="w-full sm:flex-1"
+                  cta="grazie_esito_b_paga"
+                >
+                  {flatUi.buy_cta}
+                </ButtonLink>
+                <ButtonLink
+                  href={waQuoteHref}
+                  variant="whatsapp"
+                  size="lg"
+                  className="w-full sm:flex-1"
+                  cta="grazie_esito_b_whatsapp"
+                >
+                  <MessageCircle className="h-4 w-4" />
+                  {flatUi.whatsapp_cta}
+                </ButtonLink>
+              </div>
+              <p className="mt-2.5 flex items-start gap-1.5 text-xs leading-snug text-text">
+                <MessageCircle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#178F51]" />
+                <span>{waQuoteHint}</span>
+              </p>
+              <p className="mt-1.5 flex items-start gap-1.5 text-xs leading-snug text-text">
+                <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-success" />
+                <span>{afterPay}</span>
+              </p>
+              {suggestedPkg && (
+                <div className="mt-4 rounded-[10px] bg-sand/60 p-3 sm:p-4">
+                  <p className="text-sm font-semibold text-primary">{flatUi.result_case_title}</p>
+                  <ul className="mt-2 space-y-1.5 text-sm">
+                    {caseItems(flatUi, answers, heirsCount).map((item) => (
+                      <li key={item} className="flex items-start gap-2 text-text">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-success" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  {caseNote && (
+                    <p className="mt-3 text-xs font-medium leading-snug text-accent-dark">
+                      {caseNote}
+                    </p>
+                  )}
+                </div>
+              )}
               <p className="mt-3 text-xs leading-relaxed text-text-muted">
                 {await t(
                   "grazie",
@@ -520,12 +548,6 @@ export default async function GraziePage({
                   "Le imposte le calcoliamo sul tuo caso, te le diciamo prima e le versi tu allo Stato, senza ricarico.",
                 )}
               </p>
-              {!suggestedPkg?.flat && (
-                <p className="mt-2 flex items-start gap-1.5 text-xs leading-snug text-text">
-                  <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-success" />
-                  <span>{rethinkNote}</span>
-                </p>
-              )}
               <div className="mt-3">
                 <Reviews strip />
               </div>
@@ -589,36 +611,6 @@ export default async function GraziePage({
                 cta="grazie_esito_b_callback"
               />
             </div>
-
-            {!suggestedPkg?.flat && (
-              <div className="mt-3">
-                <ButtonLink
-                  href={waQuoteHref}
-                  variant="outline"
-                  size="lg"
-                  className="w-full border-[#1DAA61]/40 text-[#178F51] hover:bg-[#1DAA61]/10"
-                  cta="grazie_esito_b_whatsapp"
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  {waQuoteLabel}
-                </ButtonLink>
-                <p className="mt-2 text-center text-xs text-text-muted">{waQuoteHint}</p>
-                <p className="mt-4 text-center text-sm text-text-muted">
-                  {payLead}
-                  {": "}
-                  <Link
-                    href={checkoutHref}
-                    data-cta="grazie_esito_b_paga"
-                    className="font-semibold text-primary underline underline-offset-2 hover:text-accent"
-                  >
-                    {(await tCta("grazie", "esito_b_cta")).label}
-                  </Link>
-                </p>
-                <p className="mt-1 text-center text-xs leading-relaxed text-text-muted">
-                  {afterPay}
-                </p>
-              </div>
-            )}
 
             {suggestedPkg && (
               <IncludedList
