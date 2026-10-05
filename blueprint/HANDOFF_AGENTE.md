@@ -18,6 +18,21 @@ Chat precedente TR/FR/SQ + EN/AR + SEO:
 
 ---
 
+## ★ HOME PIÙ CORTA + "ITALIA E ESTERO" AL POSTO DI "CENTINAIA" (05/10 pomeriggio, Mauro)
+
+- **Banda sotto la hero** (`home.success_counter`): titolo "Successioni gestite in
+  tutta Italia e all'estero" e nota su studio di Pontedera / eredi all'estero, al
+  posto di "Centinaia di successioni seguite da Lorenzo". Stessa idea nel secondo
+  punto di `come_funziona.hero_trust_items` (anche `prezzo_unico.*`). 11 lingue + seed.
+- **"Allora perché noi?"** (sezione fai-da-te della home, `app/(site)/page.tsx`):
+  da 5 card a una tabella unica (desktop: voce | Fai-da-te | Con noi; telefono: voce
+  sopra, due risposte affiancate). Desktop ~1150 → ~730 px, telefono ~1360 → ~750 px.
+  Corretta l'ultima riga ("Rischio sanzioni") in 8 traduzioni.
+- **"Cosa ci distingue"** (`components/site/distinguishes-block.tsx`): su telefono
+  icona piccola a lato del testo e riquadri stretti (~1180 → ~730 px); desktop invariato.
+
+---
+
 ## ★★ LISTINO 299 / 600 / SU MISURA (05/10, Mauro, OK Lorenzo riferito da Mauro)
 
 Chiude il test prezzo unico 250 € (sezione sotto) tre giorni prima della fine

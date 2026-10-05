@@ -101,12 +101,13 @@ export function DistinguishesBlock({
         ) : null}
         <h2 className="text-2xl text-white sm:text-4xl">{title}</h2>
         {intro ? (
-          <p className="mt-3 text-base leading-relaxed text-white/75 sm:mt-4 sm:text-lg">
+          <p className="mt-2.5 text-sm leading-relaxed text-white/75 sm:mt-4 sm:text-lg">
             {intro}
           </p>
         ) : null}
       </div>
-      <ul className="mt-8 grid gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-5">
+      {/* Telefono: icona piccola a lato del testo, riquadri stretti. */}
+      <ul className="mt-5 grid gap-2.5 sm:mt-12 sm:grid-cols-2 sm:gap-5">
         {items.map((item, i) => {
           const Icon =
             ICONS[item.icon ?? "area"] ??
@@ -114,17 +115,19 @@ export function DistinguishesBlock({
           return (
             <li
               key={item.titolo}
-              className="rounded-2xl border border-accent/40 bg-bg p-5 shadow-sm sm:p-6"
+              className="flex items-start gap-3 rounded-xl border border-accent/40 bg-bg p-3.5 shadow-sm sm:block sm:rounded-2xl sm:p-6"
             >
-              <span className="grid h-12 w-12 place-items-center rounded-xl border border-accent text-accent">
-                <Icon className="h-6 w-6" />
+              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-accent text-accent sm:h-12 sm:w-12 sm:rounded-xl">
+                <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
               </span>
-              <h3 className="mt-4 font-display text-lg text-primary sm:text-xl">
-                {item.titolo}
-              </h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-text-muted sm:text-base">
-                {item.testo}
-              </p>
+              <div className="min-w-0">
+                <h3 className="font-display text-base leading-snug text-primary sm:mt-4 sm:text-xl">
+                  {item.titolo}
+                </h3>
+                <p className="mt-0.5 text-[13px] leading-snug text-text-muted sm:mt-1.5 sm:text-base sm:leading-relaxed">
+                  {item.testo}
+                </p>
+              </div>
             </li>
           );
         })}

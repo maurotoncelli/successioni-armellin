@@ -361,8 +361,8 @@
         "suffix": "+",
         "eyebrow": "Esperienza sul campo",
         "label": "successioni seguite",
-        "note": "Stima complessiva delle pratiche seguite dallo studio negli anni, in ufficio e online: ogni successione gestita di persona, una alla volta.",
-        "headline": "Centinaia di successioni seguite da Lorenzo"
+        "note": "Dallo studio di Pontedera, in ufficio e online, per chi vive in Italia e per gli eredi all'estero: ogni successione seguita di persona da Lorenzo, una alla volta.",
+        "headline": "Successioni gestite in tutta Italia e all'estero"
       }
     },
     {
@@ -1847,7 +1847,7 @@
       "is_published": true,
       "value": [
         "Da {price} €",
-        "Centinaia di successioni seguite",
+        "Successioni in Italia e all'estero",
         "Tutto online, anche da casa"
       ]
     },
@@ -5957,7 +5957,7 @@
       "is_published": true,
       "value": [
         "{price} € tutto incluso",
-        "Centinaia di successioni seguite",
+        "Successioni in Italia e all'estero",
         "Tutto online, anche da casa"
       ]
     },

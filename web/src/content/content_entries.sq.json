@@ -361,8 +361,8 @@
         "suffix": "+",
         "eyebrow": "Përvojë në terren",
         "label": "trashëgimi të ndjekura",
-        "note": "Vlerësim i përgjithshëm i praktikave të ndjekura nga studioja ndër vite, në zyrë dhe online: çdo trashëgimi e menaxhuar personalisht, një nga një.",
-        "headline": "Qindra trashëgimi të ndjekura nga Lorenzo"
+        "note": "Nga studioja në Pontedera, në zyrë dhe online, për ata që jetojnë në Itali dhe për trashëgimtarët jashtë vendit: çdo trashëgimi e ndjek vetë Lorenzo, një nga një.",
+        "headline": "Trashëgimi të ndjekura në gjithë Italinë dhe jashtë saj"
       }
     },
     {
@@ -571,8 +571,8 @@
         },
         {
           "voce": "Rrezik ndëshkimesh",
-          "faidate": "Juaj",
-          "noi": "Menaxhuar"
+          "faidate": "I juaji",
+          "noi": "E menaxhojmë ne"
         }
       ]
     },
@@ -1833,7 +1833,7 @@
       "is_published": true,
       "value": [
         "Nga {price} €",
-        "Qindra trashëgimi të ndjekura",
+        "Trashëgimi në Itali dhe jashtë",
         "Gjithçka online, nga shtëpia"
       ]
     },
@@ -5943,7 +5943,7 @@
       "is_published": true,
       "value": [
         "{price} € gjithçka e përfshirë",
-        "Qindra trashëgimi të ndjekura",
+        "Trashëgimi në Itali dhe jashtë",
         "Gjithçka online, nga shtëpia"
       ]
     },

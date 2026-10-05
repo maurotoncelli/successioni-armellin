@@ -6,7 +6,7 @@ import { CountUp } from "@/components/site/count-up";
 
 /*
   Banda social proof home. Due modi (data-driven):
-  - headline: frase senza numero (es. «Centinaia di successioni seguite da Lorenzo»)
+  - headline: frase senza numero (es. «Successioni gestite in tutta Italia e all'estero»)
   - target+label: contatore animato (legacy)
 */
 

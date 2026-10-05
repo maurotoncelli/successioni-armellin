@@ -361,8 +361,8 @@
         "suffix": "+",
         "eyebrow": "Experiencia real",
         "label": "sucesiones gestionadas",
-        "note": "Estimación global de los expedientes gestionados por el despacho a lo largo de los años, en oficina y online: cada sucesión llevada en persona, una a la vez.",
-        "headline": "Cientos de sucesiones seguidas por Lorenzo"
+        "note": "Desde el despacho de Pontedera, en persona y online, para quien vive en Italia y para los herederos en el extranjero: cada sucesión la sigue Lorenzo personalmente, una a una.",
+        "headline": "Sucesiones gestionadas en toda Italia y en el extranjero"
       }
     },
     {
@@ -571,8 +571,8 @@
         },
         {
           "voce": "Riesgo de sanciones",
-          "faidate": "Tu",
-          "noi": "Gestionado"
+          "faidate": "Tuyo",
+          "noi": "Lo gestionamos nosotros"
         }
       ]
     },
@@ -1833,7 +1833,7 @@
       "is_published": true,
       "value": [
         "Desde {price} €",
-        "Cientos de sucesiones gestionadas",
+        "Sucesiones en Italia y en el extranjero",
         "Todo online, desde casa"
       ]
     },
@@ -5943,7 +5943,7 @@
       "is_published": true,
       "value": [
         "{price} € todo incluido",
-        "Cientos de sucesiones gestionadas",
+        "Sucesiones en Italia y en el extranjero",
         "Todo online, desde casa"
       ]
     },

@@ -361,8 +361,8 @@
         "suffix": "+",
         "eyebrow": "Hands-on experience",
         "label": "successions handled",
-        "note": "Overall estimate of the cases handled by the practice over the years, in the office and online: every succession managed in person, one at a time.",
-        "headline": "Hundreds of successions handled by Lorenzo"
+        "note": "From the Pontedera office, in person and online, for people living in Italy and heirs abroad: every succession followed personally by Lorenzo, one at a time.",
+        "headline": "Successions handled across Italy and abroad"
       }
     },
     {
@@ -571,8 +571,8 @@
         },
         {
           "voce": "Risk of penalties",
-          "faidate": "Your",
-          "noi": "Handled"
+          "faidate": "Yours",
+          "noi": "Handled by us"
         }
       ]
     },
@@ -1847,7 +1847,7 @@
       "is_published": true,
       "value": [
         "From €{price}",
-        "Hundreds of successions handled",
+        "Successions in Italy and abroad",
         "Fully online, from home"
       ]
     },
@@ -5957,7 +5957,7 @@
       "is_published": true,
       "value": [
         "€{price} all inclusive",
-        "Hundreds of successions handled",
+        "Successions in Italy and abroad",
         "Fully online, from home"
       ]
     },

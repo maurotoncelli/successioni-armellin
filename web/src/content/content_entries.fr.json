@@ -361,8 +361,8 @@
         "suffix": "+",
         "eyebrow": "Expérience de terrain",
         "label": "successions suivies",
-        "note": "Estimation globale des dossiers suivis par le cabinet au fil des ans, au bureau et en ligne : chaque succession gérée en personne, une à la fois.",
-        "headline": "Des centaines de successions suivies par Lorenzo"
+        "note": "Depuis le cabinet de Pontedera, sur place et en ligne, pour ceux qui vivent en Italie et pour les héritiers à l'étranger : chaque succession suivie personnellement par Lorenzo, une à la fois.",
+        "headline": "Des successions gérées dans toute l'Italie et à l'étranger"
       }
     },
     {
@@ -571,7 +571,7 @@
         },
         {
           "voce": "Risque de sanctions",
-          "faidate": "Votre",
+          "faidate": "Le vôtre",
           "noi": "Pris en charge"
         }
       ]
@@ -1833,7 +1833,7 @@
       "is_published": true,
       "value": [
         "À partir de {price} €",
-        "Des centaines de successions suivies",
+        "Successions en Italie et à l'étranger",
         "Tout en ligne, depuis chez vous"
       ]
     },
@@ -5943,7 +5943,7 @@
       "is_published": true,
       "value": [
         "{price} € tout inclus",
-        "Des centaines de successions suivies",
+        "Successions en Italie et à l'étranger",
         "Tout en ligne, depuis chez vous"
       ]
     },

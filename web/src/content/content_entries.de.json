@@ -361,8 +361,8 @@
         "suffix": "+",
         "eyebrow": "Erfahrung aus der Praxis",
         "label": "betreute Erbschaften",
-        "note": "Gesamtschätzung der im Laufe der Jahre von der Kanzlei betreuten Fälle, im Büro und online: jede Erbschaft persönlich betreut, eine nach der anderen.",
-        "headline": "Hunderte von Erbschaften, die Lorenzo betreut hat"
+        "note": "Aus der Kanzlei in Pontedera, im Büro und online, für Menschen in Italien und Erben im Ausland: Jede Erbschaft betreut Lorenzo persönlich, eine nach der anderen.",
+        "headline": "Erbschaften in ganz Italien und im Ausland betreut"
       }
     },
     {
@@ -571,8 +571,8 @@
         },
         {
           "voce": "Bußgeldrisiko",
-          "faidate": "Ihr",
-          "noi": "Bearbeitet"
+          "faidate": "Bei Ihnen",
+          "noi": "Übernehmen wir"
         }
       ]
     },
@@ -1833,7 +1833,7 @@
       "is_published": true,
       "value": [
         "Ab {price} €",
-        "Hunderte betreute Erbschaften",
+        "Erbschaften in Italien und im Ausland",
         "Komplett online, von zu Hause"
       ]
     },
@@ -5943,7 +5943,7 @@
       "is_published": true,
       "value": [
         "{price} € alles inklusive",
-        "Hunderte betreute Erbschaften",
+        "Erbschaften in Italien und im Ausland",
         "Komplett online, von zu Hause"
       ]
     },

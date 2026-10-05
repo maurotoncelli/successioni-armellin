@@ -21,7 +21,7 @@ const FALLBACK: SuccessCounterContent = {
   eyebrow: "Esperienza sul campo",
   label: "successioni seguite",
   note: "",
-  headline: "Centinaia di successioni seguite da Lorenzo",
+  headline: "Successioni gestite in tutta Italia e all'estero",
 };
 
 export async function SuccessCounter() {

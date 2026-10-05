@@ -361,8 +361,8 @@
         "suffix": "+",
         "eyebrow": "Sahada edinilmiş deneyim",
         "label": "miras dosyası yürütüldü",
-        "note": "Büronun yıllar içinde ofiste ve çevrimiçi yürüttüğü dosyaların genel tahmini: her miras bizzat, tek tek yönetilir.",
-        "headline": "Lorenzo’nun takip ettiği yüzlerce miras dosyası"
+        "note": "Pontedera'daki bürodan, yüz yüze ve çevrimiçi, İtalya'da yaşayanlar ve yurt dışındaki mirasçılar için: her dosyayı Lorenzo bizzat, tek tek takip eder.",
+        "headline": "İtalya genelinde ve yurt dışında miras dosyaları"
       }
     },
     {
@@ -571,8 +571,8 @@
         },
         {
           "voce": "Ceza riski",
-          "faidate": "Sizin",
-          "noi": "Yönetildi"
+          "faidate": "Size ait",
+          "noi": "Biz üstleniriz"
         }
       ]
     },
@@ -1833,7 +1833,7 @@
       "is_published": true,
       "value": [
         "{price} €'dan başlayan",
-        "Yüzlerce takip edilen miras",
+        "İtalya'da ve yurt dışında miras",
         "Tamamen online, evden"
       ]
     },
@@ -5943,7 +5943,7 @@
       "is_published": true,
       "value": [
         "{price} € her şey dahil",
-        "Yüzlerce takip edilen miras",
+        "İtalya'da ve yurt dışında miras",
         "Tamamen online, evden"
       ]
     },

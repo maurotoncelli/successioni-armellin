@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getRequestLocale, t, tCta, tList } from "@/lib/locale";
 import Image from "next/image";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, Check, Play, X } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { ButtonLink } from "@/components/ui/button";
@@ -70,6 +70,7 @@ export default async function HomePage() {
   );
   const faidateDiy = await t("home", "faidate_col_diy", "Fai-da-te");
   const faidateUs = await t("home", "faidate_col_us", "Con noi");
+  const faidateCorner = await t("home", "faidate_col_corner", "Confronto");
   const distinguishesItems = await tList<DistinguishesItem>(
     "home",
     "distinguishes_items",
@@ -243,42 +244,44 @@ export default async function HomePage() {
           title={await t("home", "faidate_title")}
           intro={await t("home", "faidate_intro")}
         />
-        <div className="mx-auto mt-6 max-w-4xl sm:mt-12">
-          <div className="space-y-3">
+        {/* Tabella unica: su telefono la voce sta sopra e le due risposte affiancate. */}
+        <div className="mx-auto mt-5 max-w-3xl sm:mt-10">
+          <div className="overflow-hidden rounded-2xl border border-primary/10 bg-bg shadow-sm">
+            <div className="grid grid-cols-2 text-[11px] uppercase tracking-[0.14em] sm:grid-cols-[1.2fr_1fr_1fr]">
+              <p className="hidden px-5 py-3 font-semibold text-text-muted sm:block">
+                {faidateCorner}
+              </p>
+              <p className="bg-bg-muted px-3.5 py-2.5 font-semibold text-text-muted sm:px-5 sm:py-3">
+                {faidateDiy}
+              </p>
+              <p className="bg-sand px-3.5 py-2.5 font-bold text-accent-dark sm:px-5 sm:py-3">
+                {faidateUs}
+              </p>
+            </div>
             {confronto.map((row) => (
               <div
                 key={row.voce}
-                className="overflow-hidden rounded-2xl border border-primary/10 bg-bg shadow-sm"
+                className="grid grid-cols-2 border-t border-primary/10 sm:grid-cols-[1.2fr_1fr_1fr]"
               >
-                <p className="border-b border-primary/10 px-4 py-3 font-display text-base text-primary sm:px-5 sm:text-lg">
+                <p className="col-span-2 px-3.5 pb-1.5 pt-2.5 font-display text-[15px] leading-snug text-primary sm:col-span-1 sm:px-5 sm:py-3 sm:text-base">
                   {row.voce}
                 </p>
-                <div className="grid sm:grid-cols-2">
-                  <div className="bg-bg-muted px-4 py-3.5 sm:px-5 sm:py-4">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-text-muted">
-                      {faidateDiy}
-                    </p>
-                    <p className="mt-1 text-sm leading-relaxed text-text-muted">
-                      {row.faidate}
-                    </p>
-                  </div>
-                  <div className="border-t border-accent/15 bg-sand px-4 py-3.5 sm:border-t-0 sm:border-s sm:px-5 sm:py-4">
-                    <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-accent-dark">
-                      {faidateUs}
-                    </p>
-                    <p className="mt-1 text-sm font-semibold leading-relaxed text-primary">
-                      {row.noi}
-                    </p>
-                  </div>
-                </div>
+                <p className="flex items-start gap-1.5 bg-bg-muted/70 px-3.5 py-2 text-[13px] leading-snug text-text-muted sm:px-5 sm:py-3 sm:text-sm">
+                  <X aria-hidden className="mt-0.5 h-3.5 w-3.5 shrink-0 opacity-60" />
+                  {row.faidate}
+                </p>
+                <p className="flex items-start gap-1.5 bg-sand/70 px-3.5 py-2 text-[13px] font-semibold leading-snug text-primary sm:px-5 sm:py-3 sm:text-sm">
+                  <Check aria-hidden className="mt-0.5 h-3.5 w-3.5 shrink-0 text-success" />
+                  {row.noi}
+                </p>
               </div>
             ))}
-            <div className="pt-2 text-center">
-              <ButtonLink href={heroCtaPrimary.href} variant="primary">
-                {heroCtaPrimary.label}
-                <ArrowRight className="h-4 w-4 rtl:rotate-180" />
-              </ButtonLink>
-            </div>
+          </div>
+          <div className="mt-5 text-center sm:mt-8">
+            <ButtonLink href={heroCtaPrimary.href} variant="primary">
+              {heroCtaPrimary.label}
+              <ArrowRight className="h-4 w-4 rtl:rotate-180" />
+            </ButtonLink>
           </div>
         </div>
       </Section>
