@@ -23,8 +23,12 @@ Chat precedente TR/FR/SQ + EN/AR + SEO:
 **Decisione Lorenzo (riferita da Mauro, 05/10):** tutte le campagne attuali sono **ferme**
 (Nazionale, Locale Toscana, `Search | Estero IT | Lancio`); se ne fa **una sola**, da
 **200 € al mese**, rivolta **solo agli italiani all'estero**. Da creare in Google Ads
-(account 469-614-3939, `studio@successioniarmellin.it`). Le campagne vecchie restano in
-pausa, non cancellarle (storico).
+(account 469-614-3939, `studio@successioniarmellin.it`). **Crearla da zero, non copiarla**
+da `Estero IT | Lancio`: la copia si porta dietro annunci e asset disapprovati. Le vecchie
+`Estero IT | Lancio` e la Smart fittizia si possono rimuovere (le statistiche restano nei
+report); Nazionale e Locale restano in pausa, riutilizzabili se il budget cresce.
+La campagna è **bilingue IT + EN** (annunci e keyword), con lingue di destinazione "tutte";
+niente tedesco/francese/spagnolo finché `/eredi-estero` esiste solo in IT ed EN.
 
 **Perché cambia rispetto al piano dell'11/09** (@ADS_EREDI_ESTERO): a settembre
 `Estero IT | Lancio` ha fatto **7 impressioni e 1 clic** (2 €). Due cause:
