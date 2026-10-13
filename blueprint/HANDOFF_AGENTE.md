@@ -50,17 +50,38 @@ resta compact max 3 (le tre più nuove: Marco, Matteo, Francesca).
 
 ---
 
-## ★★ PROSSIMA CAMPAGNA ADS: SOLO ITALIANI ALL'ESTERO, 200 €/MESE (da fare, 05/10)
+## ★★ CAMPAGNA ADS UNICA: SOLO ESTERO, 4 PAESI (impostata 13/10)
 
-**Decisione Lorenzo (riferita da Mauro, 05/10):** tutte le campagne attuali sono **ferme**
-(Nazionale, Locale Toscana, `Search | Estero IT | Lancio`); se ne fa **una sola**, da
-**200 € al mese**, rivolta **solo agli italiani all'estero**. Da creare in Google Ads
-(account 469-614-3939, `studio@successioniarmellin.it`). **Crearla da zero, non copiarla**
-da `Estero IT | Lancio`: la copia si porta dietro annunci e asset disapprovati. Le vecchie
-`Estero IT | Lancio` e la Smart fittizia si possono rimuovere (le statistiche restano nei
-report); Nazionale e Locale restano in pausa, riutilizzabili se il budget cresce.
+**Decisione Lorenzo (riferita da Mauro, 05/10), eseguita in UI il 13/10:** tutte le
+campagne precedenti restano **ferme** (Nazionale, Locale Toscana, `Search | Estero IT | Lancio`);
+ne gira **una sola**, **200 € al mese**, solo italiani all'estero. Account 469-614-3939,
+`studio@successioniarmellin.it`. È stata creata da zero, non copiata da `Estero IT | Lancio`.
+Le vecchie `Estero IT | Lancio` e la Smart fittizia si possono rimuovere (le statistiche
+restano nei report); Nazionale e Locale restano in pausa, riutilizzabili se il budget cresce.
 La campagna è **bilingue IT + EN** (annunci e keyword), con lingue di destinazione "tutte";
 niente tedesco/francese/spagnolo finché `/eredi-estero` esiste solo in IT ed EN.
+
+**Località effettive (13/10, Mauro):** per il budget di adesso, solo **Austria,
+Belgio, Germania, Svizzera** (in UI: Sedi 4, tutte "paese", opzione **Presenza**).
+Italia esclusa. Non è un limite del servizio: la successione si fa per chiunque
+viva all'estero, anche fuori da questi quattro (es. Thailandia). Gli annunci
+possono citare altri paesi. Altri paesi **in campagna** solo se Mauro alza il budget.
+
+**Asset aggiunti il 13/10**
+- Due snippet strutturati. IT, intestazione **Tipi**: `Successione semplice`,
+  `Successione con immobili`, `Eredi all'estero`, `Casi su misura`. EN, intestazione
+  **Types**: `Simple succession`, `With property`, `Heirs abroad`, `Custom cases`.
+  Lingua dell'asset impostata di conseguenza. Niente prezzi, codice fiscale o imposte.
+- Sitelink **Contatti** (`/contatti`), oltre a quelli già previsti sotto.
+
+**Monitoraggio conversioni (13/10).** Il team tecnico di Google non era ancora
+partito. Sul sito il tag (`G-TBBB3D04GF` + `AW-18323297636`) è nel primo HTML,
+con consenso negato di default e `url_passthrough` + `ads_data_redaction`: un clic
+sull'annuncio si misura anche prima di «Accetta tutti», senza salvare il cookie.
+Lead / Contatto / Acquisto restano `trackAdsConversion`. Resta un gesto solo
+nell'account: la conversione «Acquisto» con regola URL su `/tariffe` va eliminata
+o messa Secondaria (aperta dal 07/09), altrimenti ogni visita a Tariffe conta
+come acquisto.
 
 **Perché cambia rispetto al piano dell'11/09** (@ADS_EREDI_ESTERO): a settembre
 `Estero IT | Lancio` ha fatto **7 impressioni e 1 clic** (2 €). Due cause:
@@ -79,12 +100,12 @@ niente tedesco/francese/spagnolo finché `/eredi-estero` esiste solo in IT ed EN
 | Obiettivo / tipo | Lead · Rete di ricerca (togliere Display e Partner di ricerca) |
 | Budget | **6,50 €/giorno** (Google spende al massimo 30,4 × giornaliero = **197,60 €/mese**) |
 | Offerte | Massimizza i clic, **CPC massimo 2,50 €** (dati troppo pochi per le conversioni) |
-| Località | Germania, Svizzera, Regno Unito, Francia, Belgio, Paesi Bassi, Lussemburgo, Austria, Spagna, Stati Uniti, Canada, Australia. Opzione **"Presenza"** (NON "presenza o interesse"). Italia esclusa |
+| Località | **Budget attuale: solo Austria, Belgio, Germania, Svizzera** (13/10). Opzione **"Presenza"**. Italia esclusa. Il servizio vale anche per gli altri paesi: non sono in campagna finché il budget non sale |
 | Lingue | **Tutte le lingue** (il filtro lo fanno keyword e località) |
 | Da spegnere | AI Max, asset automatici, annunci dinamici (DSA, campo sito vuoto), corrispondenza generica |
 | Pianificazione | Tutti i giorni, tutto il giorno (fusi orari diversi) |
 | Conversioni | Quelle dell'account (Lead, Contatto tel/WhatsApp, Acquisto da tag) |
-| Negative | Elenco condiviso `escluse` + negative §4 di @ADS_EREDI_ESTERO + gruppo C: `lawyer`, `attorney`, `citizenship`, `jure sanguinis`, `visa`, `buy`, `mortgage`, `free`, `template`, `jobs` |
+| Negative | Elenco condiviso `escluse` (se non è già agganciato) + lista a frase del 13/10, sotto |
 
 **URL finale** (con UTM, così i lead nel CRM portano la campagna):
 - gruppi A e B: `https://www.successioniarmellin.it/eredi-estero?utm_source=google&utm_medium=cpc&utm_campaign=estero_200`
@@ -133,23 +154,42 @@ del cliente. Stanno nella landing, lì vanno bene. Se arriva una disapprovazione
 il testo ("Apportate modifiche"), non fare ricorso.
 
 **Asset**: sitelink Eredi all'estero (`/eredi-estero`), Preventivo (`/preventivo`), Tariffe
-(`/tariffe`), Chi sono (`/chi-sono`); callout `Tutto online`, `Geometra abilitato`,
+(`/tariffe`), Chi sono (`/chi-sono`), **Contatti** (`/contatti`, aggiunto 13/10);
+snippet strutturati IT/EN del 13/10 (vedi sopra); callout `Tutto online`, `Geometra abilitato`,
 `Risposta su WhatsApp`, `Pagamento con carta`, `Soddisfatti o rimborsati`; asset di chiamata
 +39 320 157 0567. **Non** importare il vecchio `blueprint/ads/estero_it_ads_editor.csv`
-così com'è: ha prezzi 290 e titoli già bocciati.
+così com'è: ha prezzi 290 e titoli già bocciati. «UK e oltre» negli annunci va bene:
+i 4 paesi sono solo il budget, non il pubblico del servizio.
+
+### Parole da escludere (13/10, a frase, livello campagna)
+
+Agganicare anche l'elenco condiviso `escluse` se non c'è già. Queste si incollano
+in campagna con le virgolette (corrispondenza a frase). Non escludono
+«successione», «estero», «eredità», «quanto costa», «italy», «inheritance».
+
+`lavoro` `pensione` `inps` `iscrizione aire` `cittadinanza` `passaporto` `visto`
+`consolato` `trasferirsi` `residenza fiscale` `tasse redditi estero` `notaio`
+`avvocato` `gratis` `gratuito` `modulo` `fac simile` `precompilata` `precompilato`
+`agenzia entrate` `spid` `software` `programma` `corso` `corsi` `fai da te` `pdf`
+`modello` `codice fiscale` `successione ereditaria legge` `quote ereditarie`
+`testamento come fare` `imposta di successione` `calcolo imposte` `franchigia`
+`macchina` `università` `tesi` `appunti`
+`lawyer` `attorney` `solicitor` `citizenship` `jure sanguinis` `visa` `passport`
+`mortgage` `buy property` `free` `template` `jobs` `salary` `course` `diy` `probate`
 
 ### Prima di attivare
 
-1. **Conversione "Acquisto" con regola URL su /tariffe**: eliminarla o metterla Secondaria
-   (punto aperto dal 07/09). Altrimenti ogni visita a /tariffe conta come acquisto e i
-   numeri della campagna sono falsi.
+1. **In account, a mano:** la conversione "Acquisto" con regola URL su /tariffe va
+   eliminata o messa Secondaria (aperta dal 07/09). Altrimenti ogni visita a
+   /tariffe conta come acquisto. Il tag sul sito è a posto dal 13/10.
 2. **Verifica inserzionista** completata (niente banner arancione).
 3. Le altre campagne restano in pausa.
 
 ### Come leggerla
 
-- **Dopo 7 giorni**: se le impressioni sono sotto 300, aggiungere Argentina e Brasile alle
-  località e la corrispondenza generica solo sul gruppo A.
+- **Dopo 7 giorni**: i 4 paesi restano finché il budget è 200 €. Se le impressioni sono
+  sotto 300, la corrispondenza generica solo sul gruppo A. Altri paesi in campagna solo
+  se Mauro alza il budget.
 - **Dopo 4 settimane (circa 200 €) o 100 clic**: soglie del §7 di @ADS_EREDI_ESTERO (CTR ≥ 4%,
   CPC ≤ 2,50 €, `quote_result` ≥ 20% delle sessioni, contatti ≥ 8%). Contano soprattutto i
   WhatsApp da `/eredi-estero` (`data-cta` `eredi_estero_*`) e i lead nel CRM con
