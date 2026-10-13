@@ -156,6 +156,6 @@ export const getSiteReviews = unstable_cache(
     }
     return fallbackPayload();
   },
-  ["site-google-reviews-v2"],
+  ["site-google-reviews-v3"],
   { revalidate: 60 * 60 * 12 },
 );

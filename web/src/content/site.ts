@@ -201,15 +201,51 @@ export type Review = {
 };
 
 /**
- * Fallback se Places API non è configurata: testi reali da Google Maps (set 2026).
- * `totalCount` include anche le 5★ senza testo (Gino Toncelli), che non mostriamo come card.
+ * Fallback se Places API non è configurata: testi reali da Google Maps (13/10/2026).
+ * Ordine: più recenti prima. `totalCount` include anche le 5★ senza testo
+ * (Gino Toncelli), che non mostriamo come card.
  */
 export const reviewsGoogleMeta = {
   rating: 5,
-  totalCount: 6,
+  totalCount: 11,
 } as const;
 
 export const reviews: Review[] = [
+  {
+    author: "Marco Lucarelli",
+    location: "Google",
+    rating: 5,
+    text:
+      "Mi sono rivolto a Lorenzo per una successione particolarmente complessa e si è dimostrato fin da subito un professionista concreto, competente e affidabile. È riuscito a risolvere diverse situazioni ingarbugliate, affrontando ogni problematica con pragmatismo e grande attenzione. Ho apprezzato particolarmente anche il tatto e la sensibilità con cui ha gestito questioni spesso delicate, non solo dal punto di vista tecnico. Un professionista serio, che consiglio vivamente.",
+  },
+  {
+    author: "Matteo Puccini",
+    location: "Google",
+    rating: 5,
+    text:
+      "Mi sono affidato a questo geometra per una pratica di successione e sono rimasto molto soddisfatto. Si è dimostrato un vero professionista, seguendo ogni passaggio con precisione e attenzione. Ho apprezzato soprattutto la disponibilità e la chiarezza con cui ha risposto alle mie domande, rendendo più semplice una pratica per me poco familiare. Lo consiglio con piacere.",
+  },
+  {
+    author: "Francesca Baldacci",
+    location: "Google",
+    rating: 5,
+    text:
+      "Vivo all'estero e ho trovato questo professionista online. Seguendomi da remoto, Lorenzo mi ha aiutata a risolvere un problema di successione e si è dimostrato veramente un grande professionista, oltre ogni aspettativa. Grazie ancora Lorenzo!",
+  },
+  {
+    author: "Cinzia della vecchia",
+    location: "Google",
+    rating: 5,
+    text:
+      "Vivo all'estero da molti anni e potroppo è venuto a mancare un perente caro, impossibilitata a rientrare per motivi lavorativi, ho trovato questo servizio online e mi ha ispirato fiducia subito. Abbiamo avuto diversi colloqui da remoto con Lorenzo e sono rimasta molto sorpresa di quanto si sia dimostrato competente nonostante sia un giovane professionista. C'è stata empatia da subito e mi ha seguita in ogni passaggio con attenzione e cura. Grazie ancora Lorenzo!",
+  },
+  {
+    author: "Lorenzo Vallini",
+    location: "Google",
+    rating: 5,
+    text:
+      "Ho utilizzato il servizio online 'Successioni Armellin' per gestire una pratica di successione e mi sono trovato benissimo. L'applicazione web è stata intuitiva ed effettivamente mi ha semplificato l'iter burocratico. Il Geom. Lorenzo Armellin si è dimostrato un professionista serio, competente e sempre disponibile per chiarire ogni mio dubbio. Servizio rapido, trasparente e comodissimo da usare a distanza. Grazie ancora Lorenzo!",
+  },
   {
     author: "Zaza Raffaele",
     location: "Google",

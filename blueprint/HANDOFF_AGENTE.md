@@ -1,6 +1,6 @@
 # HANDOFF per il prossimo agente
 
-> Documento di passaggio di consegne. Aggiornato: **2026-10-05**.
+> Documento di passaggio di consegne. Aggiornato: **2026-10-13**.
 > Scopo: permettere a un nuovo agente (senza contesto) di riprendere il lavoro.
 > Riferimenti chiave: @RUNBOOK_GoLive (procedura go-live), @SPEC_Env_Vars,
 > @DOMANDE_PER_LORENZO, @PROSSIMO_INCONTRO_LORENZO, @07_Stack.
@@ -15,6 +15,38 @@ Chat precedente TR/FR/SQ + EN/AR + SEO:
 **NON committare** `bozza video/` (asset untracked).  
 **NON toccare** `web/src/app/crm/**` per i18n (CRM sempre IT/LTR).  
 **Traduzioni UI = agente** (niente OpenAI/API). Preferenza Mauro: subagent **Composer 2.5** per le mappe stringhe.
+
+---
+
+## ★★ REPOSITORY DI BASE: SSD SITI WEB (13/10)
+
+L'11 ottobre 2026 il progetto è stato spostato dall'SSD Programs all'SSD **Siti web**.
+Quella copia è il **repository di base**: leggi e scrivi solo lì.
+
+| | Percorso |
+|---|---|
+| **Base (unico da modificare)** | `/Volumes/Siti web/Successioni Armellin` |
+| Copia congelata, non si tocca | `/Volumes/Programs/Temporary files/Progetti cursor/2026_Lorenzo_Armellin` |
+
+Repo GitHub invariato: `maurotoncelli/successioni-armellin`, branch `main`.
+
+---
+
+## ★★ RECENSIONI GOOGLE REFRESH (13/10)
+
+Places sync resta spento (no billing). Refresh a mano dalla scheda Google: **5,0 · 11 recensioni**.
+
+**Nuove (13/10, tutte 5★, più recenti prima)**
+- Marco Lucarelli, Matteo Puccini, Francesca Baldacci, Cinzia della vecchia, Lorenzo Vallini.
+- Testi copiati come su Google, refusi compresi (Cinzia: «potroppo», «perente»).
+
+**Già sul sito**
+- Zaza Raffaele, Mauro V., Andrea Vanni, Antonio Tognarelli, Mauro Toncelli.
+- Gino Toncelli: 5★ **senza testo** → solo nel conteggio, non in card.
+
+`reviewsGoogleMeta` in `site.ts`: rating 5, totalCount **11**. Cache key
+`site-google-reviews-v3`. Home e chi-sono mostrano tutte le 10 card; `/preventivo/grazie`
+resta compact max 3 (le tre più nuove: Marco, Matteo, Francesca).
 
 ---
 
@@ -427,9 +459,9 @@ File: `lib/video-ids.ts`, `lib/video-stats.ts`, `app/(site)/track-video.ts`,
 
 ---
 
-## ★★ RECENSIONI GOOGLE REFRESH (18/09)
+## ★★ RECENSIONI GOOGLE REFRESH (18/09) — superato dal refresh del 13/10
 
-Places sync resta spento (no billing). Refresh a mano da scheda Google 5,0 · **6 recensioni**.
+Places sync resta spento (no billing). Al 18/09: 5,0 · **6 recensioni**. Conteggio e testi aggiornati il 13/10 (vedi in cima).
 
 **Card sul sito (5 testi, più recenti prima)**
 - Zaza Raffaele, Mauro V., Andrea Vanni, Antonio Tognarelli, Mauro Toncelli.
