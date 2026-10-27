@@ -4,14 +4,16 @@ import { useState, useTransition } from "react";
 import { Minus } from "lucide-react";
 import { adjustStat, type StatAdjustKind } from "@/app/crm/statistiche/actions";
 import type { VideoId } from "@/lib/video-ids";
+import type { QuoteCtaId } from "@/lib/quote";
 
 type Props = {
   kind: StatAdjustKind;
   videoId?: VideoId;
+  ctaId?: QuoteCtaId;
   disabled?: boolean;
 };
 
-export function StatsAdjust({ kind, videoId, disabled }: Props) {
+export function StatsAdjust({ kind, videoId, ctaId, disabled }: Props) {
   const [pending, startTransition] = useTransition();
   const [undoVideo, setUndoVideo] = useState<VideoId | undefined>();
   const [canUndo, setCanUndo] = useState(false);
@@ -20,7 +22,7 @@ export function StatsAdjust({ kind, videoId, disabled }: Props) {
   function minus() {
     setError(null);
     startTransition(async () => {
-      const res = await adjustStat({ kind, delta: -1, videoId });
+      const res = await adjustStat({ kind, delta: -1, videoId, ctaId });
       if (!res.ok) {
         setError(res.error ?? "Errore");
         return;
@@ -37,6 +39,7 @@ export function StatsAdjust({ kind, videoId, disabled }: Props) {
         kind,
         delta: 1,
         videoId: undoVideo ?? videoId,
+        ctaId,
       });
       if (!res.ok) {
         setError(res.error ?? "Errore");

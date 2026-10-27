@@ -6,10 +6,18 @@ import {
   ExternalLink,
   ClipboardList,
   Play,
+  ShoppingBag,
+  MessageCircle,
+  PhoneCall,
 } from "lucide-react";
 import { statusLabels, type PackageType, type Practice } from "@/content/crm-data";
 import { getPractices, deriveKpi, statusCounts } from "@/lib/crm";
 import { getPackages } from "@/lib/cms";
+import {
+  QUOTE_CTA_IDS,
+  QUOTE_CTA_LABELS,
+  type QuoteCtaId,
+} from "@/lib/quote";
 import {
   getQuoteStats,
   romeDayKey,
@@ -27,6 +35,24 @@ export const dynamic = "force-dynamic";
 const GA4_URL = "https://analytics.google.com/analytics/web/";
 const DAY_MS = 86_400_000;
 const FLAT_BEFORE_DAYS = 14;
+
+const QUOTE_CTA_META: Record<
+  QuoteCtaId,
+  { icon: typeof ShoppingBag; hint: string }
+> = {
+  buy: {
+    icon: ShoppingBag,
+    hint: "Clic su «Acquista il servizio»",
+  },
+  whatsapp_taxes: {
+    icon: MessageCircle,
+    hint: "Clic su «Chiedi le imposte su WhatsApp»",
+  },
+  callback: {
+    icon: PhoneCall,
+    hint: "Invii del form «Fatti richiamare»",
+  },
+};
 
 type PackageKey = Exclude<PackageType, null>;
 
@@ -206,6 +232,61 @@ export default async function StatistichePage() {
           />
         </KpiCard>
       </div>
+
+      <CrmCard>
+        <SectionTitle>Azioni sul risultato del preventivo</SectionTitle>
+        <p className="mt-1 text-xs text-crm-muted">
+          Quanti visitatori hanno premuto i pulsanti «Acquista» o «Chiedi le
+          imposte su WhatsApp», e quanti hanno inviato il form «Fatti
+          richiamare» (contatore diretto, anche senza consenso cookie).
+        </p>
+        <div className="mt-4 grid gap-3 sm:grid-cols-3">
+          {QUOTE_CTA_IDS.map((id) => {
+            const count = quoteStats.ctas[id];
+            const maxCta = Math.max(
+              ...QUOTE_CTA_IDS.map((k) => quoteStats.ctas[k]),
+              1,
+            );
+            const meta = QUOTE_CTA_META[id];
+            const Icon = meta.icon;
+            return (
+              <div
+                key={id}
+                className="rounded-lg border border-crm-border bg-crm-bg2/40 px-3.5 py-3.5"
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <span className="inline-flex items-center gap-2 text-sm font-medium text-crm-text">
+                    <span className="grid h-7 w-7 shrink-0 place-items-center rounded-md bg-crm-accent/15 text-crm-accent">
+                      <Icon className="h-4 w-4" />
+                    </span>
+                    {QUOTE_CTA_LABELS[id]}
+                  </span>
+                  <span className="text-xl font-semibold tabular-nums text-crm-text">
+                    {count}
+                  </span>
+                </div>
+                <div className="mt-2.5 h-2 overflow-hidden rounded-full bg-crm-bg2">
+                  <div
+                    className="h-full rounded-full crm-gradient"
+                    style={{ width: `${(count / maxCta) * 100}%` }}
+                  />
+                </div>
+                <p className="mt-2 text-xs text-crm-muted">
+                  {meta.hint}
+                  {count > 0 && quoteStats.byEsito.b > 0
+                    ? ` · ${Math.round((count / quoteStats.byEsito.b) * 100)}% dei preventivi con prezzo`
+                    : ""}
+                </p>
+                <StatsAdjust
+                  kind="quote_cta"
+                  ctaId={id}
+                  disabled={count <= 0}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </CrmCard>
 
       {flatTest && flatTest.started && (
         <CrmCard>

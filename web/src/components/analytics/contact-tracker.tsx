@@ -2,13 +2,42 @@
 
 import { useEffect } from "react";
 import { trackEvent, trackAdsConversion } from "@/lib/analytics";
+import { quoteCtaFromDataset } from "@/lib/quote";
+import { trackQuoteCtaClick } from "@/app/(site)/preventivo/track-quote";
 
 /*
   Tracker globale degli "intenti di contatto" (click su telefono, WhatsApp, email)
   ovunque nel sito, senza dover instrumentare ogni singolo link. GA4 NON traccia
   da solo i link tel:/mailto: (non sono "outbound"), quindi li intercettiamo qui.
   Rispetta il consenso: trackEvent passa da gtag, gated dal Consent Mode v2.
+  Per i pulsanti chiave del risultato preventivo («Acquista il servizio» e
+  «Chiedi le imposte su WhatsApp») aggiorna anche il contatore first-party del
+  CRM (/crm/statistiche), così il dato resta completo anche senza cookie.
 */
+
+const lastCtaPing = new Map<string, number>();
+const CTA_COOLDOWN_MS = 3_000;
+
+function pingQuoteCta(rawCta: string | undefined) {
+  const cta = quoteCtaFromDataset(rawCta);
+  if (!cta) return;
+  const now = Date.now();
+  const prev = lastCtaPing.get(cta) ?? 0;
+  if (now - prev < CTA_COOLDOWN_MS) return;
+  lastCtaPing.set(cta, now);
+
+  const clickId =
+    typeof crypto !== "undefined" && "randomUUID" in crypto
+      ? crypto.randomUUID()
+      : `${now}-${Math.random().toString(16).slice(2)}`;
+  const payload = JSON.stringify({ cta, clickId });
+
+  if (typeof navigator !== "undefined" && typeof navigator.sendBeacon === "function") {
+    const blob = new Blob([payload], { type: "application/json" });
+    if (navigator.sendBeacon("/api/track-cta", blob)) return;
+  }
+  void trackQuoteCtaClick({ cta, clickId });
+}
 
 export function ContactTracker() {
   useEffect(() => {
@@ -17,6 +46,7 @@ export function ContactTracker() {
       if (!target) return;
       if (target instanceof HTMLButtonElement) {
         if (target.dataset.cta) {
+          pingQuoteCta(target.dataset.cta);
           trackEvent("cta_click", {
             cta: target.dataset.cta,
             location: window.location.pathname,
@@ -26,6 +56,8 @@ export function ContactTracker() {
       }
       const anchor = target as HTMLAnchorElement;
       const href = anchor.getAttribute("href") ?? "";
+
+      pingQuoteCta(anchor.dataset.cta);
 
       let method: "phone" | "email" | "whatsapp" | null = null;
       if (href.startsWith("tel:")) method = "phone";

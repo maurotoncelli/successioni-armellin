@@ -1,6 +1,6 @@
 # HANDOFF per il prossimo agente
 
-> Documento di passaggio di consegne. Aggiornato: **2026-10-13**.
+> Documento di passaggio di consegne. Aggiornato: **2026-10-27**.
 > Scopo: permettere a un nuovo agente (senza contesto) di riprendere il lavoro.
 > Riferimenti chiave: @RUNBOOK_GoLive (procedura go-live), @SPEC_Env_Vars,
 > @DOMANDE_PER_LORENZO, @PROSSIMO_INCONTRO_LORENZO, @07_Stack.
@@ -29,6 +29,26 @@ Quella copia è il **repository di base**: leggi e scrivi solo lì.
 | Copia congelata, non si tocca | `/Volumes/Programs/Temporary files/Progetti cursor/2026_Lorenzo_Armellin` |
 
 Repo GitHub invariato: `maurotoncelli/successioni-armellin`, branch `main`.
+
+---
+
+## ★★ CRM STATISTICHE: AZIONI SUL RISULTATO DEL PREVENTIVO (27/10, Mauro)
+
+Nel CRM (`/crm/statistiche`) nuova card **«Azioni sul risultato del preventivo»**
+con tre contatori first-party (NO-DDL, salvati in `practice-docs/site/_quote-stats.json`,
+campo `ctas`: `buy`, `whatsapp_taxes`, `callback`), attivi anche senza consenso cookie:
+
+1. **Pulsante «Acquista»** (`buy`): clic su «Acquista il servizio» (`data-cta="grazie_esito_b_paga"` / `*_payment_buy`), inviato via `navigator.sendBeacon("/api/track-cta")` con fallback server action `trackQuoteCtaClick`.
+2. **Chiedi imposte su WhatsApp** (`whatsapp_taxes`): clic sul bottone verde «Chiedi le imposte su WhatsApp» (`data-cta="grazie_esito_b_whatsapp"`), inviato via `sendBeacon` prima che il browser apra `wa.me`.
+3. **Form «Fatti richiamare»** (`callback`): invii reali del form di richiamo (`createLead` con `kind === "callback"` in `preventivo/actions.ts`).
+
+Ogni contatore ha il tasto **«Togli 1» / «Annulla»** (`StatsAdjust kind="quote_cta"`) per ripulire eventuali clic di prova.
+
+File: `lib/quote.ts`, `lib/quote-stats.ts`, `app/api/track-cta/route.ts`,
+`app/(site)/preventivo/track-quote.ts`, `app/(site)/preventivo/actions.ts`,
+`components/analytics/contact-tracker.tsx`, `app/(site)/layout.tsx`,
+`app/crm/statistiche/page.tsx`, `app/crm/statistiche/actions.ts`,
+`components/crm/stats-adjust.tsx`.
 
 ---
 
@@ -74,14 +94,21 @@ possono citare altri paesi. Altri paesi **in campagna** solo se Mauro alza il bu
   Lingua dell'asset impostata di conseguenza. Niente prezzi, codice fiscale o imposte.
 - Sitelink **Contatti** (`/contatti`), oltre a quelli già previsti sotto.
 
-**Monitoraggio conversioni (13/10).** Il team tecnico di Google non era ancora
-partito. Sul sito il tag (`G-TBBB3D04GF` + `AW-18323297636`) è nel primo HTML,
-con consenso negato di default e `url_passthrough` + `ads_data_redaction`: un clic
-sull'annuncio si misura anche prima di «Accetta tutti», senza salvare il cookie.
-Lead / Contatto / Acquisto restano `trackAdsConversion`. Resta un gesto solo
-nell'account: la conversione «Acquisto» con regola URL su `/tariffe` va eliminata
-o messa Secondaria (aperta dal 07/09), altrimenti ogni visita a Tariffe conta
-come acquisto.
+**Monitoraggio conversioni (13/10, ore 11:39).** Il tag sul sito è nel primo HTML
+(`G-TBBB3D04GF` + `AW-18323297636`, consenso negato, `url_passthrough`).
+In Obiettivi, Acquisto aperto il 13/10 ore 11:42 mostra due azioni, entrambe a 0:
+«Acquisto (1)» origine Sito web, **Principale**, Configurazione errata (tasto
+Risolvi i problemi); «Acquisto (da rimuovere)» origine GA4, già **Secondaria**,
+stesso errore. La secondaria si elimina. Il rosso dell'obiettivo dipende dalla
+principale: se «Risolvi i problemi» dice che scatta al caricamento di `/tariffe`,
+va messa Secondaria; se dice che il tag non è stato trovato, si lascia e si
+aspetta il ricontrollo di Google (il tag nel primo HTML è online da stamattina).
+Ore 11:44, clic su «Risolvi i problemi» di Acquisto (1): il testo è «Non sono state
+registrate conversioni negli ultimi 7 giorni», ultimo ping **30 ago 2026 ore 13:45**
+(l’acquisto vero da 490 €). Non è un tag mancante. «Visualizza le istruzioni» non
+va seguito: incollare un altro snippet sdoppierebbe il tag, che è già nel primo HTML.
+Il rosso resta finché non c’è un altro pagamento. Con Massimizza i clic la campagna
+parte lo stesso. «Acquisto (da rimuovere)», la copia GA4 già Secondaria, si elimina.
 
 **Perché cambia rispetto al piano dell'11/09** (@ADS_EREDI_ESTERO): a settembre
 `Estero IT | Lancio` ha fatto **7 impressioni e 1 clic** (2 €). Due cause:

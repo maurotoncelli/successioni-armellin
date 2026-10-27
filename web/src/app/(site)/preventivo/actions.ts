@@ -17,6 +17,7 @@ import { FLAT_OFFER, hasFlatOfferLine } from "@/lib/flat-offer";
 import { FLAT_OFFER_UI_IT } from "@/lib/site-ui-labels";
 import { notifyAdminNewLead, notifyLeadRecap, siteBase } from "@/lib/notifications";
 import { pushCrmNotification } from "@/lib/crm-notifications";
+import { incrementQuoteCta } from "@/lib/quote-stats";
 import { upsertContactByEmail } from "@/lib/contacts";
 import { readRequestAttribution } from "@/lib/attribution";
 import {
@@ -360,9 +361,14 @@ export async function createLead(input: LeadInput): Promise<LeadResult> {
       practiceCode: practice.code,
     });
 
+    if (isCallback && process.env.VERCEL_ENV !== "preview") {
+      await incrementQuoteCta("callback");
+    }
+
     revalidatePath("/crm");
     revalidatePath("/crm/pratiche");
     revalidatePath("/crm/contatti");
+    revalidatePath("/crm/statistiche");
 
     return { ok: true, esito, code: practice.code, practiceId: practice.id, emailSent };
   } catch (err) {

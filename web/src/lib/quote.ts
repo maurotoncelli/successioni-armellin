@@ -147,3 +147,39 @@ export function suggestedPackage(
 export function isPackageKey(value: unknown): value is PackageKey {
   return value === "SEMPLICE" || value === "COMPLETO" || value === "ZERO_STRESS";
 }
+
+export const QUOTE_CTA_IDS = ["buy", "whatsapp_taxes", "callback"] as const;
+
+export type QuoteCtaId = (typeof QUOTE_CTA_IDS)[number];
+
+export const QUOTE_CTA_LABELS: Record<QuoteCtaId, string> = {
+  buy: "Pulsante «Acquista»",
+  whatsapp_taxes: "Chiedi imposte su WhatsApp",
+  callback: "Form «Fatti richiamare»",
+};
+
+export function isQuoteCtaId(value: unknown): value is QuoteCtaId {
+  return (
+    typeof value === "string" &&
+    (QUOTE_CTA_IDS as readonly string[]).includes(value)
+  );
+}
+
+/** Mappa il `data-cta` del bottone sul sito al contatore CRM corrispondente. */
+export function quoteCtaFromDataset(
+  cta: string | undefined,
+): "buy" | "whatsapp_taxes" | null {
+  if (!cta) return null;
+  if (
+    cta === "grazie_esito_b_paga" ||
+    cta === "home_payment_buy" ||
+    cta === "come_funziona_payment_buy"
+  ) {
+    return "buy";
+  }
+  if (cta === "grazie_esito_b_whatsapp") {
+    return "whatsapp_taxes";
+  }
+  return null;
+}
+

@@ -158,7 +158,7 @@ export default async function SiteLayout({
       />
       <AttributionCapture />
       {gaId && <GoogleAnalytics gaId={gaId} adsId={adsId} />}
-      {gaId && <ContactTracker />}
+      <ContactTracker />
       {!offlineOn && <PromoBanner />}
       <Navbar />
       <main className="flex-1">

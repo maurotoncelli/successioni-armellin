@@ -2,7 +2,8 @@
 
 import { revalidatePath } from "next/cache";
 import { pushCrmNotification } from "@/lib/crm-notifications";
-import { incrementQuoteCompleted } from "@/lib/quote-stats";
+import { isQuoteCtaId } from "@/lib/quote";
+import { incrementQuoteCompleted, incrementQuoteCta } from "@/lib/quote-stats";
 import { quizNotificationText, type QuizSnapshot } from "@/lib/quiz-summary";
 
 export type TrackQuoteInput = {
@@ -13,11 +14,18 @@ export type TrackQuoteInput = {
 };
 
 const recentFingerprints = new Map<string, number>();
+const recentCtaClicks = new Map<string, number>();
 const DEDUPE_MS = 10 * 60_000;
 
 function pruneFingerprints(now: number) {
   for (const [k, t] of recentFingerprints) {
     if (now - t > DEDUPE_MS) recentFingerprints.delete(k);
+  }
+}
+
+function pruneCtaClicks(now: number) {
+  for (const [k, t] of recentCtaClicks) {
+    if (now - t > DEDUPE_MS) recentCtaClicks.delete(k);
   }
 }
 
@@ -62,3 +70,31 @@ export async function trackQuoteCompleted(
 
   return { ok: true };
 }
+
+/*
+  Conta un clic sui pulsanti del risultato preventivo («Acquista il servizio»,
+  «Chiedi le imposte su WhatsApp»). Fallback server action quando sendBeacon non
+  è disponibile; la rotta /api/track-cta usa la stessa logica.
+*/
+export async function trackQuoteCtaClick(input: {
+  cta: string;
+  clickId: string;
+}): Promise<{ ok: boolean }> {
+  if (process.env.VERCEL_ENV === "preview") {
+    return { ok: true };
+  }
+  if (!isQuoteCtaId(input.cta)) return { ok: false };
+  const clickId = (input.clickId || "").slice(0, 80);
+  if (!clickId) return { ok: false };
+
+  const now = Date.now();
+  pruneCtaClicks(now);
+  const key = `${input.cta}:${clickId}`;
+  if (recentCtaClicks.has(key)) return { ok: true };
+  recentCtaClicks.set(key, now);
+
+  await incrementQuoteCta(input.cta);
+  revalidatePath("/crm/statistiche");
+  return { ok: true };
+}
+

@@ -1,10 +1,16 @@
 import "server-only";
 import { getAdminClient, isAdminConfigured } from "@/lib/supabase/admin";
 import { DOC_BUCKET, ensureDocBucket } from "@/lib/documents";
-import type { Esito } from "@/lib/quote";
+import {
+  QUOTE_CTA_IDS,
+  type Esito,
+  type QuoteCtaId,
+} from "@/lib/quote";
 
 /*
-  Contatore questionari preventivo completati (anche senza lasciare email).
+  Contatore questionari preventivo completati (anche senza lasciare email)
+  e azioni sul risultato (pulsante Acquista, Chiedi imposte su WhatsApp,
+  invio form Fatti richiamare).
   NO-DDL: JSON in Storage `practice-docs/site/_quote-stats.json`.
   Complementare alle notifiche CRM (che Lorenzo puo cancellare): qui il totale
   resta per le Statistiche. `byDay` (giorno di Roma → completati) serve a
@@ -14,19 +20,27 @@ import type { Esito } from "@/lib/quote";
 const STORAGE_PATH = "site/_quote-stats.json";
 const BY_DAY_KEEP = 400;
 
+export type QuoteCtaCounts = Record<QuoteCtaId, number>;
+
 export type QuoteStats = {
   totalCompleted: number;
   byEsito: Record<Esito, number>;
   byDay: Record<string, number>;
+  ctas: QuoteCtaCounts;
   updatedAt: string | null;
   lastEsito: Esito | null;
 };
+
+function emptyCtas(): QuoteCtaCounts {
+  return { buy: 0, whatsapp_taxes: 0, callback: 0 };
+}
 
 function emptyStats(): QuoteStats {
   return {
     totalCompleted: 0,
     byEsito: { a: 0, b: 0, c: 0 },
     byDay: {},
+    ctas: emptyCtas(),
     updatedAt: null,
     lastEsito: null,
   };
@@ -62,6 +76,16 @@ function bumpDay(byDay: Record<string, number>, delta: number): Record<string, n
   return next;
 }
 
+function normalizeCtas(raw: unknown): QuoteCtaCounts {
+  const out = emptyCtas();
+  if (!raw || typeof raw !== "object") return out;
+  const o = raw as Partial<Record<QuoteCtaId, unknown>>;
+  for (const id of QUOTE_CTA_IDS) {
+    out[id] = Math.max(0, Number(o[id]) || 0);
+  }
+  return out;
+}
+
 function normalize(raw: unknown): QuoteStats {
   if (!raw || typeof raw !== "object") return emptyStats();
   const o = raw as Partial<QuoteStats>;
@@ -77,6 +101,7 @@ function normalize(raw: unknown): QuoteStats {
       c: Math.max(0, Number(by.c) || 0),
     },
     byDay: normalizeByDay(o.byDay),
+    ctas: normalizeCtas(o.ctas),
     updatedAt: typeof o.updatedAt === "string" ? o.updatedAt : null,
     lastEsito: isEsito(o.lastEsito) ? o.lastEsito : null,
   };
@@ -124,6 +149,7 @@ export async function incrementQuoteCompleted(
   try {
     const current = await getQuoteStats();
     const next: QuoteStats = {
+      ...current,
       totalCompleted: current.totalCompleted + 1,
       byEsito: {
         ...current.byEsito,
@@ -136,6 +162,51 @@ export async function incrementQuoteCompleted(
     return await persistQuote(next);
   } catch (err) {
     console.error("[quote-stats] increment:", err);
+    return null;
+  }
+}
+
+export async function incrementQuoteCta(
+  cta: QuoteCtaId,
+): Promise<QuoteStats | null> {
+  if (!isAdminConfigured) return null;
+  try {
+    const current = await getQuoteStats();
+    const next: QuoteStats = {
+      ...current,
+      ctas: {
+        ...current.ctas,
+        [cta]: current.ctas[cta] + 1,
+      },
+      updatedAt: new Date().toISOString(),
+    };
+    return await persistQuote(next);
+  } catch (err) {
+    console.error("[quote-stats] incrementCta:", err);
+    return null;
+  }
+}
+
+/** Toglie o rimette 1 su uno dei contatori azioni/CTA del preventivo (CRM: tasto − / Annulla). */
+export async function adjustQuoteCta(
+  cta: QuoteCtaId,
+  delta: 1 | -1,
+): Promise<QuoteStats | null> {
+  if (!isAdminConfigured) return null;
+  try {
+    const current = await getQuoteStats();
+    if (delta < 0 && current.ctas[cta] <= 0) return current;
+    const next: QuoteStats = {
+      ...current,
+      ctas: {
+        ...current.ctas,
+        [cta]: Math.max(0, current.ctas[cta] + delta),
+      },
+      updatedAt: new Date().toISOString(),
+    };
+    return await persistQuote(next);
+  } catch (err) {
+    console.error("[quote-stats] adjustCta:", err);
     return null;
   }
 }
@@ -167,6 +238,7 @@ export async function adjustQuoteCompleted(
         return current;
       }
       const next: QuoteStats = {
+        ...current,
         totalCompleted: current.totalCompleted - 1,
         byEsito: { ...current.byEsito, [esito]: current.byEsito[esito] - 1 },
         byDay: bumpDay(current.byDay, -1),
@@ -177,6 +249,7 @@ export async function adjustQuoteCompleted(
     }
     const restore = esito ?? "b";
     const next: QuoteStats = {
+      ...current,
       totalCompleted: current.totalCompleted + 1,
       byEsito: { ...current.byEsito, [restore]: current.byEsito[restore] + 1 },
       byDay: bumpDay(current.byDay, 1),
