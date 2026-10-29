@@ -138,10 +138,6 @@ export default async function SiteLayout({
     process.env.ANALYTICS_FORCE === "1" ||
     (process.env.NODE_ENV === "production" &&
       process.env.VERCEL_ENV !== "preview");
-  const gaId = analyticsOn
-    ? process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID
-    : undefined;
-  const adsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID?.trim();
   const offline = await getSiteOfflineState();
   const offlineOn = offline.enabled;
   const cookieUi = await tObj<CookieUiLabels>(
@@ -157,7 +153,7 @@ export default async function SiteLayout({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(BUSINESS_LD) }}
       />
       <AttributionCapture />
-      {gaId && <GoogleAnalytics gaId={gaId} adsId={adsId} />}
+      {analyticsOn && <GoogleAnalytics />}
       <ContactTracker />
       {!offlineOn && <PromoBanner />}
       <Navbar />

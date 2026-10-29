@@ -1,6 +1,6 @@
 # HANDOFF per il prossimo agente
 
-> Documento di passaggio di consegne. Aggiornato: **2026-10-27**.
+> Documento di passaggio di consegne. Aggiornato: **2026-10-29**.
 > Scopo: permettere a un nuovo agente (senza contesto) di riprendere il lavoro.
 > Riferimenti chiave: @RUNBOOK_GoLive (procedura go-live), @SPEC_Env_Vars,
 > @DOMANDE_PER_LORENZO, @PROSSIMO_INCONTRO_LORENZO, @07_Stack.
@@ -94,8 +94,12 @@ possono citare altri paesi. Altri paesi **in campagna** solo se Mauro alza il bu
   Lingua dell'asset impostata di conseguenza. Niente prezzi, codice fiscale o imposte.
 - Sitelink **Contatti** (`/contatti`), oltre a quelli già previsti sotto.
 
-**Monitoraggio conversioni (13/10, ore 11:39).** Il tag sul sito è nel primo HTML
-(`G-TBBB3D04GF` + `AW-18323297636`, consenso negato, `url_passthrough`).
+**Monitoraggio conversioni (aggiornato 29/10).** Il tag sul sito nel primo HTML
+(`web/src/components/analytics/google-analytics.tsx`) è stato sostituito con il
+contenitore Google Tag Manager unificato **`GTM-KRWDDHRV`** (`gtm.js?id=GTM-KRWDDHRV`
++ `window.dataLayer` / `gtag('js', new Date())`), che al suo interno carica già
+GA4 `G-TBBB3D04GF`, Google Ads `AW-18323297636` e il Conversion Linker (`__gclidw`
+con `url_passthrough`).
 In Obiettivi, Acquisto aperto il 13/10 ore 11:42 mostra due azioni, entrambe a 0:
 «Acquisto (1)» origine Sito web, **Principale**, Configurazione errata (tasto
 Risolvi i problemi); «Acquisto (da rimuovere)» origine GA4, già **Secondaria**,
